@@ -13,7 +13,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://maven.apache.org/POM/4.0.0"
-            class="org.apache.maven.pom._4._0._0Package"
+            class="maven.MavenPackage"
             genModel="model/maven4.genmodel"/>
    </extension>
 

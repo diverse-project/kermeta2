@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="_0"
-    nsURI="http://maven.apache.org/POM/4.0.0" nsPrefix="_0">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="maven"
+    nsURI="http://maven.apache.org/POM/4.0.0" nsPrefix="maven">
   <eClassifiers xsi:type="ecore:EClass" name="Activation">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="4.0.0&#xA;&#xA;        The conditions within the build runtime environment which will trigger&#xA;        the automatic inclusion of the build profile.&#xA;      "/>

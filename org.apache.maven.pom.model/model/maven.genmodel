@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.apache.maven.pom.model/src"
+    modelPluginID="org.apache.maven.pom.model" modelName="Maven" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>maven.ecore</foreignModel>
+  <genPackages prefix="Maven" resource="XML" disposableProviderFactory="true" ecorePackage="maven.ecore#/">
+    <genClasses ecoreClass="maven.ecore#//Activation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Activation/activeByDefault"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Activation/jdk"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Activation/os"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Activation/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Activation/file"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ActivationFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ActivationFile/missing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ActivationFile/exists"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ActivationOS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ActivationOS/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ActivationOS/family"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ActivationOS/arch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ActivationOS/version"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ActivationProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ActivationProperty/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ActivationProperty/value"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Build">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Build/sourceDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Build/scriptSourceDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Build/testSourceDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Build/outputDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Build/testOutputDirectory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Build/extensions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Build/defaultGoal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Build/resources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Build/testResources"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Build/directory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Build/finalName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Build/filters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Build/pluginManagement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Build/plugins"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//BuildBase">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//BuildBase/defaultGoal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//BuildBase/resources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//BuildBase/testResources"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//BuildBase/directory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//BuildBase/finalName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//BuildBase/filters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//BuildBase/pluginManagement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//BuildBase/plugins"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//CiManagement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//CiManagement/system"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//CiManagement/url"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//CiManagement/notifiers"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ConfigurationType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//ConfigurationType/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ConfigurationType1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//ConfigurationType1/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ConfigurationType2">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//ConfigurationType2/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ConfigurationType3">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//ConfigurationType3/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ConfigurationType4">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//ConfigurationType4/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Contributor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Contributor/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Contributor/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Contributor/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Contributor/organization"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Contributor/organizationUrl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Contributor/roles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Contributor/timezone"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Contributor/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ContributorsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ContributorsType/contributor"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//DependenciesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//DependenciesType/dependency"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//DependenciesType1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//DependenciesType1/dependency"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//DependenciesType2">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//DependenciesType2/dependency"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//DependenciesType3">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//DependenciesType3/dependency"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Dependency">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Dependency/groupId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Dependency/artifactId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Dependency/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Dependency/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Dependency/classifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Dependency/scope"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Dependency/systemPath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Dependency/exclusions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Dependency/optional"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//DependencyManagement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//DependencyManagement/dependencies"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//DeploymentRepository">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//DeploymentRepository/uniqueVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//DeploymentRepository/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//DeploymentRepository/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//DeploymentRepository/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//DeploymentRepository/layout"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Developer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Developer/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Developer/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Developer/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Developer/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Developer/organization"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Developer/organizationUrl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Developer/roles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Developer/timezone"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Developer/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//DevelopersType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//DevelopersType/developer"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//DistributionManagement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//DistributionManagement/repository"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//DistributionManagement/snapshotRepository"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//DistributionManagement/site"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//DistributionManagement/downloadUrl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//DistributionManagement/relocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//DistributionManagement/status"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference maven.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference maven.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//DocumentRoot/project"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ExcludesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ExcludesType/exclude"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Exclusion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Exclusion/artifactId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Exclusion/groupId"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ExclusionsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ExclusionsType/exclusion"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ExecutionsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ExecutionsType/execution"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Extension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Extension/groupId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Extension/artifactId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Extension/version"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ExtensionsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ExtensionsType/extension"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//FiltersType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//FiltersType/filter"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//FiltersType1">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//FiltersType1/filter"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//GoalsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//GoalsType/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//GoalsType1">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//GoalsType1/goal"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//IncludesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//IncludesType/include"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//IssueManagement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//IssueManagement/system"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//IssueManagement/url"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//License">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//License/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//License/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//License/distribution"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//License/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//LicensesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//LicensesType/license"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//MailingList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//MailingList/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//MailingList/subscribe"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//MailingList/unsubscribe"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//MailingList/post"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//MailingList/archive"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//MailingList/otherArchives"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//MailingListsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//MailingListsType/mailingList"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/parent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Model/modelVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Model/groupId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Model/artifactId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Model/packaging"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Model/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Model/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Model/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Model/url"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/prerequisites"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/issueManagement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/ciManagement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Model/inceptionYear"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/mailingLists"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/developers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/contributors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/licenses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/scm"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/organization"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/build"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/profiles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/modules"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/repositories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/pluginRepositories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/dependencies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/reports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/reporting"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/dependencyManagement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/distributionManagement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Model/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ModulesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ModulesType/module"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ModulesType1">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ModulesType1/module"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Notifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Notifier/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Notifier/sendOnError"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Notifier/sendOnFailure"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Notifier/sendOnSuccess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Notifier/sendOnWarning"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Notifier/address"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Notifier/configuration"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//NotifiersType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//NotifiersType/notifier"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Organization">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Organization/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Organization/url"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//OtherArchivesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//OtherArchivesType/otherArchive"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Parent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Parent/artifactId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Parent/groupId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Parent/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Parent/relativePath"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Plugin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Plugin/groupId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Plugin/artifactId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Plugin/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Plugin/extensions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Plugin/executions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Plugin/dependencies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Plugin/goals"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Plugin/inherited"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Plugin/configuration"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PluginExecution">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//PluginExecution/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//PluginExecution/phase"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//PluginExecution/goals"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//PluginExecution/inherited"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//PluginExecution/configuration"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PluginManagement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//PluginManagement/plugins"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PluginRepositoriesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//PluginRepositoriesType/pluginRepository"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PluginRepositoriesType1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//PluginRepositoriesType1/pluginRepository"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PluginsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//PluginsType/plugin"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PluginsType1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//PluginsType1/plugin"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PluginsType2">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//PluginsType2/plugin"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PluginsType3">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//PluginsType3/plugin"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Prerequisites">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Prerequisites/maven"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Profile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Profile/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Profile/activation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Profile/build"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Profile/modules"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Profile/repositories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Profile/pluginRepositories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Profile/dependencies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Profile/reports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Profile/reporting"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Profile/dependencyManagement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Profile/distributionManagement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Profile/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ProfilesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ProfilesType/profile"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PropertiesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//PropertiesType/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PropertiesType1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//PropertiesType1/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PropertiesType2">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//PropertiesType2/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//PropertiesType3">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//PropertiesType3/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Relocation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Relocation/groupId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Relocation/artifactId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Relocation/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Relocation/message"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Reporting">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Reporting/excludeDefaults"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Reporting/outputDirectory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Reporting/plugins"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ReportPlugin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ReportPlugin/groupId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ReportPlugin/artifactId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ReportPlugin/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ReportPlugin/inherited"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ReportPlugin/configuration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ReportPlugin/reportSets"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ReportSet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ReportSet/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ReportSet/configuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ReportSet/inherited"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ReportSet/reports"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ReportSetsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ReportSetsType/reportSet"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ReportsType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//ReportsType/report"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ReportsType1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//ReportsType1/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ReportsType2">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute maven.ecore#//ReportsType2/any"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//RepositoriesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//RepositoriesType/repository"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//RepositoriesType1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//RepositoriesType1/repository"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Repository">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Repository/releases"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Repository/snapshots"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Repository/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Repository/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Repository/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Repository/layout"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//RepositoryPolicy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//RepositoryPolicy/enabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//RepositoryPolicy/updatePolicy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//RepositoryPolicy/checksumPolicy"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Resource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Resource/targetPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Resource/filtering"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Resource/directory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Resource/includes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//Resource/excludes"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ResourcesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ResourcesType/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//ResourcesType1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//ResourcesType1/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//RolesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//RolesType/role"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//RolesType1">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//RolesType1/role"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Scm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Scm/connection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Scm/developerConnection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Scm/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Scm/url"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//Site">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Site/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Site/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maven.ecore#//Site/url"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//TestResourcesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//TestResourcesType/testResource"/>
+    </genClasses>
+    <genClasses ecoreClass="maven.ecore#//TestResourcesType1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maven.ecore#//TestResourcesType1/testResource"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
