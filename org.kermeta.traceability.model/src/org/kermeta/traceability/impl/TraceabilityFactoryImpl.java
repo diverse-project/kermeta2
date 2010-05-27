@@ -32,7 +32,7 @@ public class TraceabilityFactoryImpl extends EFactoryImpl implements Traceabilit
 	 */
 	public static TraceabilityFactory init() {
 		try {
-			TraceabilityFactory theTraceabilityFactory = (TraceabilityFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.kermeta.org/Traceability"); 
+			TraceabilityFactory theTraceabilityFactory = (TraceabilityFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.kermeta.org/Traceability/2.0.0"); 
 			if (theTraceabilityFactory != null) {
 				return theTraceabilityFactory;
 			}
