@@ -15,7 +15,7 @@ package fr.irisa.triskell.kermeta.util;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
-import fr.irisa.triskell.kermeta.language.structure.Type;
+import org.kermeta.language.structure.Type;
 
 /**
  * This class is used to help to workaround bug #108 which is related to 

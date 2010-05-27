@@ -1,20 +1,50 @@
 <?xml version="1.0" encoding="ASCII"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="kermeta" nsURI="http://www.kermeta.org/kermeta/1_2_0//kermeta" nsPrefix="kermeta">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="kermeta" nsURI="http://www.kermeta.org/kermeta/2_0_0//kermeta" nsPrefix="kermeta">
   <eClassifiers xsi:type="ecore:EClass" name="DummyClass" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This class is used to workaround an EMF bug, it doesn't really belong to Kermeta metamodel"/>
     </eAnnotations>
   </eClassifiers>
-  <eSubpackages name="language" nsURI="http://www.kermeta.org/kermeta/1_2_0//kermeta/language" nsPrefix="kermeta_language">
+  <eSubpackages name="language" nsURI="http://www.kermeta.org/kermeta/2_0_0//kermeta/language" nsPrefix="kermeta_language">
     <eClassifiers xsi:type="ecore:EClass" name="DummyClass" abstract="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="This class is used to workaround an EMF bug, it doesn't really belong to Kermeta metamodel"/>
       </eAnnotations>
     </eClassifiers>
-    <eSubpackages name="behavior" nsURI="http://www.kermeta.org/kermeta/1_2_0//kermeta/language/behavior" nsPrefix="kermeta_language_behavior">
+    <eSubpackages name="behavior" nsURI="http://www.kermeta.org/kermeta/2_0_0//kermeta/language/behavior" nsPrefix="kermeta_language_behavior">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Contains all the classes that define the behavior of Kermeta (i.e the model representation&#xA;of operation bodies). It is the definition, in kermeta language, of the behavior part of the kermeta &#xA;metamodel, viewed as a model.&#xA;You can also find some information about the behavior package here : &lt;a href=&quot;http://www.kermeta.org/documents/manual/html.single&quot;>KermetaManual&lt;/a>&#xA;&lt;img src=&quot;platform:/plugin/fr.irisa.triskell.kermeta.documentation/src/figures/language_behavior_package.png&quot;>&#xA;&lt;img src=&quot;platform:/plugin/fr.irisa.triskell.kermeta.documentation/src/figures/language_behavior_visitable_package.png&quot;>"/>
       </eAnnotations>
+      <eClassifiers xsi:type="ecore:EClass" name="Assignment" eSuperTypes="//language/behavior/Expression">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Assignment is the model-element representation of the assignment statement &lt;code>x := y&lt;/code>&#xA;&lt;img alt=&quot;&quot; src=&quot;http://www.kermeta.org/docs/html.single/KerMeta-Manual/KerMeta-Manual_figures/kermeta_assign_expressions.png&quot;/>"/>
+        </eAnnotations>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1" eType="//language/behavior/CallExpression" containment="true">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Target of the assignment, as a CallExpression"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="//language/behavior/Expression" containment="true">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Value to be assigned, as a KerMeta expression"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="isCast" eType="//language/structure/Boolean">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Boolean stating whether current assignment corresponds to a cast operation "/>
+          </eAnnotations>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true" eSuperTypes="//language/structure/Object //language/structure/TypeContainer">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The base class for every entity used to define a behavior in operation body."/>
+        </eAnnotations>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="staticType" eType="//language/structure/Type">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Type of the Expression (set by type checking)"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+      </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="CallExpression" abstract="true" eSuperTypes="//language/behavior/Expression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Any callable expression inherits this class, e.g : &#xA;  - variable call&#xA;  - feature call ( &lt;code>a.b&lt;/code> : b is a feature call)&#xA;&#xA;&lt;img alt=&quot;&quot;  height=&quot;90%&quot; width=&quot;90%&quot;  src=&quot;http://www.kermeta.org/docs/html.single/KerMeta-Manual/KerMeta-Manual_figures/kermeta_call_expressions.png&quot; />"/>
@@ -35,13 +65,18 @@
           </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true" eSuperTypes="//language/structure/TypeContainer //language/structure/Object">
+      <eClassifiers xsi:type="ecore:EClass" name="Block" eSuperTypes="//language/behavior/Expression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The base class for every entity used to define a behavior in operation body."/>
+          <details key="documentation" value="Block is the model-element representation for the &lt;code>do...end&lt;/code> block."/>
         </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="staticType" eType="//language/structure/Type">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="statement" upperBound="-1" eType="//language/behavior/Expression" containment="true">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Type of the Expression (set by type checking)"/>
+            <details key="documentation" value="List of statements composing the block"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="rescueBlock" upperBound="-1" eType="//language/behavior/Rescue" containment="true">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="List of rescues defined for the block"/>
           </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>
@@ -99,41 +134,6 @@
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="CallValue refers to the use of the &lt;code>value&lt;/code> reserved keyword. This keyword is&#xA;only used in the body of the &lt;code>setter&lt;/code> part of derived properties."/>
         </eAnnotations>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="Assignment" eSuperTypes="//language/behavior/Expression">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Assignment is the model-element representation of the assignment statement &lt;code>x := y&lt;/code>&#xA;&lt;img alt=&quot;&quot; src=&quot;http://www.kermeta.org/docs/html.single/KerMeta-Manual/KerMeta-Manual_figures/kermeta_assign_expressions.png&quot;/>"/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1" eType="//language/behavior/CallExpression" containment="true">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Target of the assignment, as a CallExpression"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="//language/behavior/Expression" containment="true">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Value to be assigned, as a KerMeta expression"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="isCast" eType="//language/structure/Boolean">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Boolean stating whether current assignment corresponds to a cast operation "/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="Block" eSuperTypes="//language/behavior/Expression">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Block is the model-element representation for the &lt;code>do...end&lt;/code> block."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="statement" upperBound="-1" eType="//language/behavior/Expression" containment="true">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="List of statements composing the block"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="rescueBlock" upperBound="-1" eType="//language/behavior/Rescue" containment="true">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="List of rescues defined for the block"/>
-          </eAnnotations>
-        </eStructuralFeatures>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="Conditional" eSuperTypes="//language/behavior/Expression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -341,12 +341,28 @@
         </eStructuralFeatures>
       </eClassifiers>
     </eSubpackages>
-    <eSubpackages name="structure" nsURI="http://www.kermeta.org/kermeta/1_2_0//kermeta/language/structure" nsPrefix="kermeta_language_structure">
+    <eSubpackages name="structure" nsURI="http://www.kermeta.org/kermeta/2_0_0//kermeta/language/structure" nsPrefix="kermeta_language_structure">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Contains all the abstract classes used in the reflection mechanism. Implements the &lt;b>derived&#xA;properties&lt;/b> contained in the classes; declares the abstract operations.&#xA;Concrete implementation is in kermeta.language.structure.&#xA;&lt;img src=&quot;platform:/plugin/fr.irisa.triskell.kermeta.documentation/src/figures/reflection_package.png&quot;>"/>
       </eAnnotations>
       <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="kermeta::standard::String"/>
       <eClassifiers xsi:type="ecore:EDataType" name="Boolean" instanceClassName="kermeta::standard::Boolean"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Object">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Object definition: all entities of Kermeta metamodel explicitly inherit from Object"/>
+        </eAnnotations>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="tag" upperBound="-1" eType="//language/structure/Tag" eOpposite="//language/structure/Tag/object">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="An Object can be tagged by a Tag. &#xA;They are typically used to put comments/documentation on the object"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTags" upperBound="-1" eType="//language/structure/Tag" containment="true">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="An object can contains a Tag.  &#xA;Be careful, owning a tag doesn't means that the tag applies to the Object&#xA;To know which Tags apply to the object use the &quot;tag&quot; reference"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EDataType" name="Integer" instanceClassName="kermeta::standard::Integer"/>
       <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="//language/structure/MultiplicityElement">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Every one knows what an operation is."/>
@@ -505,22 +521,6 @@
           </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="Object">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Object definition: all entities of Kermeta metamodel explicitly inherit from Object"/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="tag" upperBound="-1" eType="//language/structure/Tag" eOpposite="//language/structure/Tag/object">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="An Object can be tagged by a Tag. &#xA;They are typically used to put comments/documentation on the object"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTags" upperBound="-1" eType="//language/structure/Tag" containment="true">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="An object can contains a Tag.  &#xA;Be careful, owning a tag doesn't means that the tag applies to the Object&#xA;To know which Tags apply to the object use the &quot;tag&quot; reference"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EDataType" name="Integer" instanceClassName="kermeta::standard::Integer"/>
       <eClassifiers xsi:type="ecore:EClass" name="MultiplicityElement" eSuperTypes="//language/structure/TypedElement">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value=" Model elements with a multiplicity [lower..upper] inherit this class"/>
@@ -765,6 +765,46 @@
         <eLiterals name="pre" value="1"/>
         <eLiterals name="post" value="2"/>
       </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="ModelingUnit" eSuperTypes="//language/structure/Object">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The modeling unit is the root of any kermeta model. It contains packages, requires and usings.&#xA;It also reference others modeling unit."/>
+        </eAnnotations>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="packages" upperBound="-1" eType="//language/structure/Package" containment="true">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="root packages contained by this ModelingUnit"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1" eType="//language/structure/Require" containment="true">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Set of &quot;require&quot; statements associated with this ModelingUnit. Ie. list of the other&#xA;files required to run this unit"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="usings" upperBound="-1" eType="//language/structure/Using" containment="true">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Set of &quot;using&quot; statement associated with this ModelingUnit. Ie. list of &quot;syntatic shortcut&quot;&#xA;that can be used within this unit."/>
+          </eAnnotations>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Require" eSuperTypes="//language/structure/Object">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="To be written"/>
+        </eAnnotations>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="//language/structure/String">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="To be written"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Using" eSuperTypes="//language/structure/Object">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="To be written"/>
+        </eAnnotations>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifiedName" eType="//language/structure/String">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="To be written"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+      </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="GenericTypeDefinition" abstract="true" eSuperTypes="//language/structure/TypeDefinition">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Abstracts the definition of generic type definitions (i.e. type definitions that&#xA;can be parameterized), namely, for ClassDefinition and ModelTypeDefinition."/>
@@ -860,71 +900,6 @@
           </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="ModelingUnit" eSuperTypes="//language/structure/Object">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The modeling unit is the root of any kermeta model. It contains packages, requires and usings.&#xA;It also reference others modeling unit."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="packages" upperBound="-1" eType="//language/structure/Package" containment="true">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="root packages contained by this ModelingUnit"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1" eType="//language/structure/Require" containment="true">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Set of &quot;require&quot; statements associated with this ModelingUnit. Ie. list of the other&#xA;files required to run this unit"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="usings" upperBound="-1" eType="//language/structure/Using" containment="true">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Set of &quot;using&quot; statement associated with this ModelingUnit. Ie. list of &quot;syntatic shortcut&quot;&#xA;that can be used within this unit."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="referencedModelingUnits" upperBound="-1" eType="//language/structure/ModelingUnit">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="To be written"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="includeFilters" upperBound="-1" eType="//language/structure/Filter" containment="true">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="list of filters that apply to this modeling unit.&#xA;This means that if the same unit was loaded without this filters, it would have loaded more content&#xA;only element whose qualified name begins with one of these filter will be loaded in the unit"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="excludeFilters" upperBound="-1" eType="//language/structure/Filter" containment="true">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="list of filters that apply to this modeling unit.&#xA;This means that if the same unit was loaded without this filters, it would have loaded more content&#xA;element whose qualified name begins with one of these filter will NOT be loaded in the unit"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="Require" eSuperTypes="//language/structure/Object">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="To be written"/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="//language/structure/String">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="To be written"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="Using" eSuperTypes="//language/structure/Object">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="To be written"/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifiedName" eType="//language/structure/String">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="To be written"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="Filter" eSuperTypes="//language/structure/Object">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Filter is the class that represent a filter on a ModelingUnit.&#xA;the qualifiedName represent the beginning of the matched names"/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifiedName" eType="//language/structure/String">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="To be written"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ProductType" eSuperTypes="//language/structure/TypeContainer //language/structure/Type">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Type corresponding to a set of Types&#xA;Only used in the context of FunctionType"/>
@@ -964,6 +939,12 @@
             <details key="documentation" value="Contained TypeDefinitions"/>
           </eAnnotations>
         </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="UnresolvedType" eSuperTypes="//language/structure/Type">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Special type reference whic is still unresolved.&#xD;&#xA;The reference string is used to create a real Type that points to the correct TypeDefinition"/>
+        </eAnnotations>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeIdentifier" eType="//language/structure/String"/>
       </eClassifiers>
     </eSubpackages>
   </eSubpackages>

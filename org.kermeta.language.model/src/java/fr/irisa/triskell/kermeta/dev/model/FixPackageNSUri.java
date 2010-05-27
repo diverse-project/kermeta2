@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
  */
 public class FixPackageNSUri {
 	
-	public static final String BaseNsURI = "http://www.kermeta.org/kermeta/1_2_0//kermeta";
+	public static final String BaseNsURI = "http://www.kermeta.org/kermeta/2_0_0//kermeta";
 	/**
 	 * Loads the ecore model from a xmi 2.0 (*.ecore) file
 	 * @param xmifile Path to the file to load

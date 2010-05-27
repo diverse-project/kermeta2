@@ -14,7 +14,7 @@
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package
-          class="fr.irisa.triskell.kermeta.KmPackage"
+          class="org.kermeta.KmPackage"
           genModel="build/ecore/kermeta.genmodel"
           uri="http://www.kermeta.org/kermeta/1_2_0//kermeta"/> 
   </extension>
@@ -22,33 +22,23 @@
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.kermeta.org/kermeta/1_2_0//kermeta/language" 
-       class = "fr.irisa.triskell.kermeta.language.LanguagePackage"
+       class = "org.kermeta.language.LanguagePackage"
        /> 
   </extension>
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.kermeta.org/kermeta/1_2_0//kermeta/language/behavior" 
-       class = "fr.irisa.triskell.kermeta.language.behavior.BehaviorPackage"
+       class = "org.kermeta.language.behavior.BehaviorPackage"
        /> 
   </extension>
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.kermeta.org/kermeta/1_2_0//kermeta/language/structure" 
-       class = "fr.irisa.triskell.kermeta.language.structure.StructurePackage"
+       class = "org.kermeta.language.structure.StructurePackage"
        /> 
   </extension>
   
-  <!--<extension
-         point="org.kermeta.diagramregistration.emfDiagramFile">
-      <emfDiagramFile
-            diagramFile="build/ecore/kermeta_java.ecoredi"
-            name="Kermeta metamodel"/>
-      <emfDiagramFile
-            diagramFile="build/ecore/kermeta_java.ecoredi"/>
-      <emfDiagramFile
-            diagramFile="build/ecore/kermeta_java.ecoredi"/>
-   </extension>-->
 </plugin>
 

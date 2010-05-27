@@ -124,17 +124,17 @@ public class CreateOptimizedVisitor {
 	
 	protected static String getParentAttributeAccessors() {
 		String result =
-			" \n  public void setParent(fr.irisa.triskell.kermeta.language.structure.Object parent) {\n";
+			" \n  public void setParent(org.kermeta.language.structure.Object parent) {\n";
 		result += "    this.parent = parent; }\n";
 		result +=
-			" \n  public fr.irisa.triskell.kermeta.language.structure.Object getParent() {\n";
+			" \n  public org.kermeta.language.structure.Object getParent() {\n";
 		result += "    return parent; }\n";
 		return result;
 	}
 	
 	protected static String getvisitMethodTemplate() {
 		if (visitMethodTemplate == null) {
-			visitMethodTemplate = "	public Object visitXNodeClassNameX(fr.irisa.triskell.XNodeTypeNameX node) {\n";
+			visitMethodTemplate = "	public Object visitXNodeClassNameX(org.XNodeTypeNameX node) {\n";
 			visitMethodTemplate += "	return genericVisitChildren(node);\n";
 			visitMethodTemplate += "	}\n";
 		}
@@ -146,7 +146,7 @@ public class CreateOptimizedVisitor {
 			visitCmdClassTemplate = "class XNodeClassNameXAcceptCommand extends AcceptCommand {\n";
 			visitCmdClassTemplate += "	public Object accept(EObject node, XclassNameX visitor) {\n";
 			visitCmdClassTemplate += "		return visitor\n";
-			visitCmdClassTemplate += "				.visitXNodeClassNameX((fr.irisa.triskell.XNodeTypeNameX) node);\n";
+			visitCmdClassTemplate += "				.visitXNodeClassNameX((org.XNodeTypeNameX) node);\n";
 			visitCmdClassTemplate += "	}\n";
 			visitCmdClassTemplate += "}\n";
 		}
@@ -185,8 +185,8 @@ public class CreateOptimizedVisitor {
 			classTemplate += "import org.eclipse.emf.ecore.EObject;\n";
 			classTemplate += "import org.slf4j.Logger;\n";
 			classTemplate += "import org.slf4j.LoggerFactory;\n";
-			classTemplate += "import fr.irisa.triskell.kermeta.language.structure.NamedElement;\n";
-			classTemplate += "import fr.irisa.triskell.kermeta.language.behavior.VariableDecl;\n";
+			classTemplate += "import org.kermeta.language.structure.NamedElement;\n";
+			classTemplate += "import org.kermeta.language.behavior.VariableDecl;\n";
 
 			classTemplate += "public class XclassNameX {\n";
 
@@ -194,7 +194,7 @@ public class CreateOptimizedVisitor {
 			classTemplate += "			.getLogger(\"KMT.model\");\n";
 
 			classTemplate += "  /** The parent of the node currently visited. */\n";
-			classTemplate += "  protected fr.irisa.triskell.kermeta.language.structure.Object parent;\n";
+			classTemplate += "  protected org.kermeta.language.structure.Object parent;\n";
 			classTemplate += "	private static Hashtable<String,AcceptCommand> acceptCmds = null;\n";
 			classTemplate += getParentAttributeAccessors();
 			classTemplate += "	private synchronized static AcceptCommand getAcceptCmd(EObject node) {\n";

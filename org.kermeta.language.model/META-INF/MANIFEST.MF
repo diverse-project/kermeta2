@@ -1,30 +1,26 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: fr.irisa.triskell.kermeta.model; singleton:=true
-Bundle-Version: 1.4.0
+Bundle-SymbolicName: org.kermeta.language.model;singleton:=true
+Bundle-Version: 1.4.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: fr.irisa.triskell.kermeta,
+Export-Package: org.kermeta,
  fr.irisa.triskell.kermeta.dev.model,
  fr.irisa.triskell.kermeta.error,
- fr.irisa.triskell.kermeta.impl,
- fr.irisa.triskell.kermeta.language,
- fr.irisa.triskell.kermeta.language.behavior,
- fr.irisa.triskell.kermeta.language.behavior.impl,
- fr.irisa.triskell.kermeta.language.behavior.util,
- fr.irisa.triskell.kermeta.language.behavior.validation,
- fr.irisa.triskell.kermeta.language.impl,
- fr.irisa.triskell.kermeta.language.structure,
- fr.irisa.triskell.kermeta.language.structure.impl,
- fr.irisa.triskell.kermeta.language.structure.util,
- fr.irisa.triskell.kermeta.language.structure.validation,
- fr.irisa.triskell.kermeta.language.util,
- fr.irisa.triskell.kermeta.language.validation,
+ org.kermeta.impl,
+ org.kermeta.language,
+ org.kermeta.language.behavior,
+ org.kermeta.language.behavior.impl,
+ org.kermeta.language.behavior.util,
+ org.kermeta.language.impl,
+ org.kermeta.language.structure,
+ org.kermeta.language.structure.impl,
+ org.kermeta.language.structure.util,
+ org.kermeta.language.util,
  fr.irisa.triskell.kermeta.model.plugin,
  fr.irisa.triskell.kermeta.util,
- fr.irisa.triskell.kermeta.validation,
  fr.irisa.triskell.kermeta.visitor
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,

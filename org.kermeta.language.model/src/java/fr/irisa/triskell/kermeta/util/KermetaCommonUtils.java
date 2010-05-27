@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import fr.irisa.triskell.kermeta.language.structure.Class;
-import fr.irisa.triskell.kermeta.language.structure.ClassDefinition;
-import fr.irisa.triskell.kermeta.language.structure.Object;
-import fr.irisa.triskell.kermeta.language.structure.Package;
-import fr.irisa.triskell.kermeta.language.structure.Property;
-import fr.irisa.triskell.kermeta.language.structure.Type;
-import fr.irisa.triskell.kermeta.language.structure.TypeDefinition;
+import org.kermeta.language.structure.Class;
+import org.kermeta.language.structure.ClassDefinition;
+import org.kermeta.language.structure.Object;
+import org.kermeta.language.structure.Package;
+import org.kermeta.language.structure.Property;
+import org.kermeta.language.structure.Type;
+import org.kermeta.language.structure.TypeDefinition;
 
 /**
  * KermetaCommonUtils contained some static methods used by the graphicaleditor
