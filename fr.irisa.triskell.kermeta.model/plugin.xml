@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id: plugin.xml,v 1.16 2008-03-19 16:34:14 cfaucher Exp $
+ */
+-->
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+          class="fr.irisa.triskell.kermeta.KmPackage"
+          genModel="build/ecore/kermeta.genmodel"
+          uri="http://www.kermeta.org/kermeta/1_2_0//kermeta"/> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.kermeta.org/kermeta/1_2_0//kermeta/language" 
+       class = "fr.irisa.triskell.kermeta.language.LanguagePackage"
+       /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.kermeta.org/kermeta/1_2_0//kermeta/language/behavior" 
+       class = "fr.irisa.triskell.kermeta.language.behavior.BehaviorPackage"
+       /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.kermeta.org/kermeta/1_2_0//kermeta/language/structure" 
+       class = "fr.irisa.triskell.kermeta.language.structure.StructurePackage"
+       /> 
+  </extension>
+  
+  <!--<extension
+         point="org.kermeta.diagramregistration.emfDiagramFile">
+      <emfDiagramFile
+            diagramFile="build/ecore/kermeta_java.ecoredi"
+            name="Kermeta metamodel"/>
+      <emfDiagramFile
+            diagramFile="build/ecore/kermeta_java.ecoredi"/>
+      <emfDiagramFile
+            diagramFile="build/ecore/kermeta_java.ecoredi"/>
+   </extension>-->
+</plugin>
+
