@@ -11,9 +11,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi,
  fr.irisa.triskell.eclipse.util
 Bundle-ActivationPolicy: lazy
-Export-Package: fr.irisa.triskell.traceability,
- fr.irisa.triskell.traceability.helper,
- fr.irisa.triskell.traceability.impl,
- fr.irisa.triskell.traceability.model,
- fr.irisa.triskell.traceability.util
+Export-Package: org.kermeta.traceability,
+ org.kermeta.traceability.impl,
+ org.kermeta.traceability.util
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
