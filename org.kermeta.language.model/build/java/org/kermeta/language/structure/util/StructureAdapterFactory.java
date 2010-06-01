@@ -147,52 +147,68 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createTypeDefinitionAdapter();
 			}
 			@Override
-			public Adapter caseClass(org.kermeta.language.structure.Class object) {
-				return createClassAdapter();
-			}
-			@Override
-			public Adapter caseDataType(DataType object) {
-				return createDataTypeAdapter();
-			}
-			@Override
-			public Adapter caseEnumeration(Enumeration object) {
-				return createEnumerationAdapter();
-			}
-			@Override
-			public Adapter caseNamedElement(NamedElement object) {
-				return createNamedElementAdapter();
-			}
-			@Override
-			public Adapter casePackage(org.kermeta.language.structure.Package object) {
-				return createPackageAdapter();
-			}
-			@Override
-			public Adapter caseParameter(Parameter object) {
-				return createParameterAdapter();
-			}
-			@Override
-			public Adapter casePrimitiveType(PrimitiveType object) {
-				return createPrimitiveTypeAdapter();
+			public Adapter caseClassDefinition(ClassDefinition object) {
+				return createClassDefinitionAdapter();
 			}
 			@Override
 			public Adapter caseTypedElement(TypedElement object) {
 				return createTypedElementAdapter();
 			}
 			@Override
-			public Adapter caseTag(Tag object) {
-				return createTagAdapter();
+			public Adapter caseTypeVariable(TypeVariable object) {
+				return createTypeVariableAdapter();
+			}
+			@Override
+			public Adapter caseProductType(ProductType object) {
+				return createProductTypeAdapter();
+			}
+			@Override
+			public Adapter caseFunctionType(FunctionType object) {
+				return createFunctionTypeAdapter();
+			}
+			@Override
+			public Adapter casePrimitiveType(PrimitiveType object) {
+				return createPrimitiveTypeAdapter();
+			}
+			@Override
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
 			}
 			@Override
 			public Adapter caseConstraint(Constraint object) {
 				return createConstraintAdapter();
 			}
 			@Override
-			public Adapter caseClassDefinition(ClassDefinition object) {
-				return createClassDefinitionAdapter();
+			public Adapter caseObjectTypeVariable(ObjectTypeVariable object) {
+				return createObjectTypeVariableAdapter();
 			}
 			@Override
-			public Adapter caseModelingUnit(ModelingUnit object) {
-				return createModelingUnitAdapter();
+			public Adapter caseClass(org.kermeta.language.structure.Class object) {
+				return createClassAdapter();
+			}
+			@Override
+			public Adapter casePackage(org.kermeta.language.structure.Package object) {
+				return createPackageAdapter();
+			}
+			@Override
+			public Adapter caseVoidType(VoidType object) {
+				return createVoidTypeAdapter();
+			}
+			@Override
+			public Adapter caseDataType(DataType object) {
+				return createDataTypeAdapter();
+			}
+			@Override
+			public Adapter caseParameterizedType(ParameterizedType object) {
+				return createParameterizedTypeAdapter();
+			}
+			@Override
+			public Adapter caseGenericTypeDefinition(GenericTypeDefinition object) {
+				return createGenericTypeDefinitionAdapter();
+			}
+			@Override
+			public Adapter caseTypeDefinitionContainer(TypeDefinitionContainer object) {
+				return createTypeDefinitionContainerAdapter();
 			}
 			@Override
 			public Adapter caseRequire(Require object) {
@@ -203,20 +219,16 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createUsingAdapter();
 			}
 			@Override
-			public Adapter caseGenericTypeDefinition(GenericTypeDefinition object) {
-				return createGenericTypeDefinitionAdapter();
+			public Adapter caseUnresolvedType(UnresolvedType object) {
+				return createUnresolvedTypeAdapter();
 			}
 			@Override
-			public Adapter caseParameterizedType(ParameterizedType object) {
-				return createParameterizedTypeAdapter();
+			public Adapter caseTag(Tag object) {
+				return createTagAdapter();
 			}
 			@Override
-			public Adapter caseTypeVariable(TypeVariable object) {
-				return createTypeVariableAdapter();
-			}
-			@Override
-			public Adapter caseObjectTypeVariable(ObjectTypeVariable object) {
-				return createObjectTypeVariableAdapter();
+			public Adapter caseModelingUnit(ModelingUnit object) {
+				return createModelingUnitAdapter();
 			}
 			@Override
 			public Adapter caseModelType(ModelType object) {
@@ -235,24 +247,12 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createModelAdapter();
 			}
 			@Override
-			public Adapter caseProductType(ProductType object) {
-				return createProductTypeAdapter();
+			public Adapter caseEnumeration(Enumeration object) {
+				return createEnumerationAdapter();
 			}
 			@Override
-			public Adapter caseFunctionType(FunctionType object) {
-				return createFunctionTypeAdapter();
-			}
-			@Override
-			public Adapter caseVoidType(VoidType object) {
-				return createVoidTypeAdapter();
-			}
-			@Override
-			public Adapter caseTypeDefinitionContainer(TypeDefinitionContainer object) {
-				return createTypeDefinitionContainerAdapter();
-			}
-			@Override
-			public Adapter caseUnresolvedType(UnresolvedType object) {
-				return createUnresolvedTypeAdapter();
+			public Adapter caseParameter(Parameter object) {
+				return createParameterAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {

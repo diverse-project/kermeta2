@@ -21,17 +21,17 @@ import org.kermeta.language.behavior.Expression;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.kermeta.language.structure.Property#getGetterBody <em>Getter Body</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getSetterBody <em>Setter Body</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#isIsGetterAbstract <em>Is Getter Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#isIsSetterAbstract <em>Is Setter Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getOwningClass <em>Owning Class</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#isIsReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#getDefault <em>Default</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#isIsComposite <em>Is Composite</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#isIsDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#isIsID <em>Is ID</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#getGetterBody <em>Getter Body</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#getSetterBody <em>Setter Body</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#isIsGetterAbstract <em>Is Getter Abstract</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#isIsSetterAbstract <em>Is Setter Abstract</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#getOwningClass <em>Owning Class</em>}</li>
  * </ul>
  * </p>
  *

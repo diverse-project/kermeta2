@@ -34,21 +34,31 @@ import org.kermeta.language.structure.Type;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.kermeta.language.behavior.impl.CallExpressionImpl#getStaticTypeVariableBindings <em>Static Type Variable Bindings</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.impl.CallExpressionImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.impl.CallExpressionImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.kermeta.language.behavior.impl.CallExpressionImpl#getStaticTypeVariableBindings <em>Static Type Variable Bindings</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class CallExpressionImpl extends ExpressionImpl implements CallExpression {
+public class CallExpressionImpl extends ExpressionImpl implements CallExpression {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final String copyright = "IRISA / INRIA / Universite de Rennes 1";
+
+	/**
+	 * The cached value of the '{@link #getStaticTypeVariableBindings() <em>Static Type Variable Bindings</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStaticTypeVariableBindings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Type> staticTypeVariableBindings;
 
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -79,16 +89,6 @@ public abstract class CallExpressionImpl extends ExpressionImpl implements CallE
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getStaticTypeVariableBindings() <em>Static Type Variable Bindings</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStaticTypeVariableBindings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Type> staticTypeVariableBindings;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,12 +176,12 @@ public abstract class CallExpressionImpl extends ExpressionImpl implements CallE
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BehaviorPackage.CALL_EXPRESSION__STATIC_TYPE_VARIABLE_BINDINGS:
+				return getStaticTypeVariableBindings();
 			case BehaviorPackage.CALL_EXPRESSION__PARAMETERS:
 				return getParameters();
 			case BehaviorPackage.CALL_EXPRESSION__NAME:
 				return getName();
-			case BehaviorPackage.CALL_EXPRESSION__STATIC_TYPE_VARIABLE_BINDINGS:
-				return getStaticTypeVariableBindings();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -195,16 +195,16 @@ public abstract class CallExpressionImpl extends ExpressionImpl implements CallE
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BehaviorPackage.CALL_EXPRESSION__STATIC_TYPE_VARIABLE_BINDINGS:
+				getStaticTypeVariableBindings().clear();
+				getStaticTypeVariableBindings().addAll((Collection<? extends Type>)newValue);
+				return;
 			case BehaviorPackage.CALL_EXPRESSION__PARAMETERS:
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends Expression>)newValue);
 				return;
 			case BehaviorPackage.CALL_EXPRESSION__NAME:
 				setName((String)newValue);
-				return;
-			case BehaviorPackage.CALL_EXPRESSION__STATIC_TYPE_VARIABLE_BINDINGS:
-				getStaticTypeVariableBindings().clear();
-				getStaticTypeVariableBindings().addAll((Collection<? extends Type>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -218,14 +218,14 @@ public abstract class CallExpressionImpl extends ExpressionImpl implements CallE
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BehaviorPackage.CALL_EXPRESSION__STATIC_TYPE_VARIABLE_BINDINGS:
+				getStaticTypeVariableBindings().clear();
+				return;
 			case BehaviorPackage.CALL_EXPRESSION__PARAMETERS:
 				getParameters().clear();
 				return;
 			case BehaviorPackage.CALL_EXPRESSION__NAME:
 				setName(NAME_EDEFAULT);
-				return;
-			case BehaviorPackage.CALL_EXPRESSION__STATIC_TYPE_VARIABLE_BINDINGS:
-				getStaticTypeVariableBindings().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -239,12 +239,12 @@ public abstract class CallExpressionImpl extends ExpressionImpl implements CallE
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BehaviorPackage.CALL_EXPRESSION__STATIC_TYPE_VARIABLE_BINDINGS:
+				return staticTypeVariableBindings != null && !staticTypeVariableBindings.isEmpty();
 			case BehaviorPackage.CALL_EXPRESSION__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 			case BehaviorPackage.CALL_EXPRESSION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case BehaviorPackage.CALL_EXPRESSION__STATIC_TYPE_VARIABLE_BINDINGS:
-				return staticTypeVariableBindings != null && !staticTypeVariableBindings.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

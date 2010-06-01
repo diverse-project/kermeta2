@@ -41,7 +41,7 @@
     <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="java.lang.String"/>
     <eClassifiers xsi:type="ecore:EClass" name="Operation"/>
     <eClassifiers xsi:type="ecore:EClass" name="Property"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Type"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="TypeContainer" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="EnumerationLiteral"/>
     <eClassifiers xsi:type="ecore:EClass" name="TypeVariableBinding"/>

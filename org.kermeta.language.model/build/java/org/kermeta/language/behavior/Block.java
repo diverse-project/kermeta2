@@ -19,8 +19,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.kermeta.language.behavior.Block#getStatement <em>Statement</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.Block#getRescueBlock <em>Rescue Block</em>}</li>
+ *   <li>{@link org.kermeta.language.behavior.Block#getStatement <em>Statement</em>}</li>
  * </ul>
  * </p>
  *

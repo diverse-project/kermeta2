@@ -21,15 +21,15 @@ import org.kermeta.language.behavior.Expression;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.Operation#isIsAbstract <em>Is Abstract</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Operation#getRaisedException <em>Raised Exception</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Operation#getOwnedParameter <em>Owned Parameter</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Operation#getPre <em>Pre</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Operation#getPost <em>Post</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Operation#getBody <em>Body</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Operation#getSuperOperation <em>Super Operation</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Operation#getPre <em>Pre</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Operation#getPost <em>Post</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Operation#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Operation#getOwningClass <em>Owning Class</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Operation#getTypeParameter <em>Type Parameter</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Operation#getRaisedException <em>Raised Exception</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Operation#getOwnedParameter <em>Owned Parameter</em>}</li>
  * </ul>
  * </p>
  *

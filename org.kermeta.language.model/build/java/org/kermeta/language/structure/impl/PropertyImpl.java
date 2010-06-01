@@ -28,17 +28,17 @@ import org.kermeta.language.structure.StructurePackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getGetterBody <em>Getter Body</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getSetterBody <em>Setter Body</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsGetterAbstract <em>Is Getter Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsSetterAbstract <em>Is Setter Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getOwningClass <em>Owning Class</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsComposite <em>Is Composite</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsID <em>Is ID</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getGetterBody <em>Getter Body</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getSetterBody <em>Setter Body</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsGetterAbstract <em>Is Getter Abstract</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsSetterAbstract <em>Is Setter Abstract</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getOwningClass <em>Owning Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +51,66 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 */
 	public static final String copyright = "IRISA / INRIA / Universite de Rennes 1";
+
+	/**
+	 * The cached value of the '{@link #getGetterBody() <em>Getter Body</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGetterBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression getterBody;
+
+	/**
+	 * The cached value of the '{@link #getSetterBody() <em>Setter Body</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSetterBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression setterBody;
+
+	/**
+	 * The default value of the '{@link #isIsGetterAbstract() <em>Is Getter Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsGetterAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_GETTER_ABSTRACT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsGetterAbstract() <em>Is Getter Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsGetterAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isGetterAbstract = IS_GETTER_ABSTRACT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsSetterAbstract() <em>Is Setter Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsSetterAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_SETTER_ABSTRACT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsSetterAbstract() <em>Is Setter Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsSetterAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isSetterAbstract = IS_SETTER_ABSTRACT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
@@ -161,66 +221,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @ordered
 	 */
 	protected boolean isID = IS_ID_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getGetterBody() <em>Getter Body</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGetterBody()
-	 * @generated
-	 * @ordered
-	 */
-	protected Expression getterBody;
-
-	/**
-	 * The cached value of the '{@link #getSetterBody() <em>Setter Body</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSetterBody()
-	 * @generated
-	 * @ordered
-	 */
-	protected Expression setterBody;
-
-	/**
-	 * The default value of the '{@link #isIsGetterAbstract() <em>Is Getter Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsGetterAbstract()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_GETTER_ABSTRACT_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIsGetterAbstract() <em>Is Getter Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsGetterAbstract()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isGetterAbstract = IS_GETTER_ABSTRACT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isIsSetterAbstract() <em>Is Setter Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsSetterAbstract()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_SETTER_ABSTRACT_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIsSetterAbstract() <em>Is Setter Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsSetterAbstract()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isSetterAbstract = IS_SETTER_ABSTRACT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -665,19 +665,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StructurePackage.PROPERTY__OPPOSITE:
-				if (resolve) return getOpposite();
-				return basicGetOpposite();
-			case StructurePackage.PROPERTY__IS_READ_ONLY:
-				return isIsReadOnly();
-			case StructurePackage.PROPERTY__DEFAULT:
-				return getDefault();
-			case StructurePackage.PROPERTY__IS_COMPOSITE:
-				return isIsComposite();
-			case StructurePackage.PROPERTY__IS_DERIVED:
-				return isIsDerived();
-			case StructurePackage.PROPERTY__IS_ID:
-				return isIsID();
 			case StructurePackage.PROPERTY__GETTER_BODY:
 				if (resolve) return getGetterBody();
 				return basicGetGetterBody();
@@ -691,6 +678,19 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 			case StructurePackage.PROPERTY__OWNING_CLASS:
 				if (resolve) return getOwningClass();
 				return basicGetOwningClass();
+			case StructurePackage.PROPERTY__OPPOSITE:
+				if (resolve) return getOpposite();
+				return basicGetOpposite();
+			case StructurePackage.PROPERTY__IS_READ_ONLY:
+				return isIsReadOnly();
+			case StructurePackage.PROPERTY__DEFAULT:
+				return getDefault();
+			case StructurePackage.PROPERTY__IS_COMPOSITE:
+				return isIsComposite();
+			case StructurePackage.PROPERTY__IS_DERIVED:
+				return isIsDerived();
+			case StructurePackage.PROPERTY__IS_ID:
+				return isIsID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -703,6 +703,21 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case StructurePackage.PROPERTY__GETTER_BODY:
+				setGetterBody((Expression)newValue);
+				return;
+			case StructurePackage.PROPERTY__SETTER_BODY:
+				setSetterBody((Expression)newValue);
+				return;
+			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
+				setIsGetterAbstract((Boolean)newValue);
+				return;
+			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
+				setIsSetterAbstract((Boolean)newValue);
+				return;
+			case StructurePackage.PROPERTY__OWNING_CLASS:
+				setOwningClass((ClassDefinition)newValue);
+				return;
 			case StructurePackage.PROPERTY__OPPOSITE:
 				setOpposite((Property)newValue);
 				return;
@@ -721,21 +736,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 			case StructurePackage.PROPERTY__IS_ID:
 				setIsID((Boolean)newValue);
 				return;
-			case StructurePackage.PROPERTY__GETTER_BODY:
-				setGetterBody((Expression)newValue);
-				return;
-			case StructurePackage.PROPERTY__SETTER_BODY:
-				setSetterBody((Expression)newValue);
-				return;
-			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
-				setIsGetterAbstract((Boolean)newValue);
-				return;
-			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
-				setIsSetterAbstract((Boolean)newValue);
-				return;
-			case StructurePackage.PROPERTY__OWNING_CLASS:
-				setOwningClass((ClassDefinition)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -748,6 +748,21 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case StructurePackage.PROPERTY__GETTER_BODY:
+				setGetterBody((Expression)null);
+				return;
+			case StructurePackage.PROPERTY__SETTER_BODY:
+				setSetterBody((Expression)null);
+				return;
+			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
+				setIsGetterAbstract(IS_GETTER_ABSTRACT_EDEFAULT);
+				return;
+			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
+				setIsSetterAbstract(IS_SETTER_ABSTRACT_EDEFAULT);
+				return;
+			case StructurePackage.PROPERTY__OWNING_CLASS:
+				setOwningClass((ClassDefinition)null);
+				return;
 			case StructurePackage.PROPERTY__OPPOSITE:
 				setOpposite((Property)null);
 				return;
@@ -766,21 +781,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 			case StructurePackage.PROPERTY__IS_ID:
 				setIsID(IS_ID_EDEFAULT);
 				return;
-			case StructurePackage.PROPERTY__GETTER_BODY:
-				setGetterBody((Expression)null);
-				return;
-			case StructurePackage.PROPERTY__SETTER_BODY:
-				setSetterBody((Expression)null);
-				return;
-			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
-				setIsGetterAbstract(IS_GETTER_ABSTRACT_EDEFAULT);
-				return;
-			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
-				setIsSetterAbstract(IS_SETTER_ABSTRACT_EDEFAULT);
-				return;
-			case StructurePackage.PROPERTY__OWNING_CLASS:
-				setOwningClass((ClassDefinition)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -793,6 +793,16 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case StructurePackage.PROPERTY__GETTER_BODY:
+				return getterBody != null;
+			case StructurePackage.PROPERTY__SETTER_BODY:
+				return setterBody != null;
+			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
+				return isGetterAbstract != IS_GETTER_ABSTRACT_EDEFAULT;
+			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
+				return isSetterAbstract != IS_SETTER_ABSTRACT_EDEFAULT;
+			case StructurePackage.PROPERTY__OWNING_CLASS:
+				return basicGetOwningClass() != null;
 			case StructurePackage.PROPERTY__OPPOSITE:
 				return opposite != null;
 			case StructurePackage.PROPERTY__IS_READ_ONLY:
@@ -805,16 +815,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 				return isDerived != IS_DERIVED_EDEFAULT;
 			case StructurePackage.PROPERTY__IS_ID:
 				return isID != IS_ID_EDEFAULT;
-			case StructurePackage.PROPERTY__GETTER_BODY:
-				return getterBody != null;
-			case StructurePackage.PROPERTY__SETTER_BODY:
-				return setterBody != null;
-			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
-				return isGetterAbstract != IS_GETTER_ABSTRACT_EDEFAULT;
-			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
-				return isSetterAbstract != IS_SETTER_ABSTRACT_EDEFAULT;
-			case StructurePackage.PROPERTY__OWNING_CLASS:
-				return basicGetOwningClass() != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -829,7 +829,11 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isReadOnly: ");
+		result.append(" (isGetterAbstract: ");
+		result.append(isGetterAbstract);
+		result.append(", isSetterAbstract: ");
+		result.append(isSetterAbstract);
+		result.append(", isReadOnly: ");
 		result.append(isReadOnly);
 		result.append(", default: ");
 		result.append(default_);
@@ -839,10 +843,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 		result.append(isDerived);
 		result.append(", isID: ");
 		result.append(isID);
-		result.append(", isGetterAbstract: ");
-		result.append(isGetterAbstract);
-		result.append(", isSetterAbstract: ");
-		result.append(isSetterAbstract);
 		result.append(')');
 		return result.toString();
 	}

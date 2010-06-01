@@ -30,9 +30,9 @@ import org.kermeta.language.structure.Tag;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.kermeta.language.structure.impl.TagImpl#getObject <em>Object</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.TagImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.TagImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.TagImpl#getObject <em>Object</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +45,16 @@ public class TagImpl extends ObjectImpl implements Tag {
 	 * @generated
 	 */
 	public static final String copyright = "IRISA / INRIA / Universite de Rennes 1";
+
+	/**
+	 * The cached value of the '{@link #getObject() <em>Object</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObject()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<org.kermeta.language.structure.Object> object;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -85,16 +95,6 @@ public class TagImpl extends ObjectImpl implements Tag {
 	 * @ordered
 	 */
 	protected String value = VALUE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getObject() <em>Object</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObject()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<org.kermeta.language.structure.Object> object;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -206,12 +206,12 @@ public class TagImpl extends ObjectImpl implements Tag {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case StructurePackage.TAG__OBJECT:
+				return getObject();
 			case StructurePackage.TAG__NAME:
 				return getName();
 			case StructurePackage.TAG__VALUE:
 				return getValue();
-			case StructurePackage.TAG__OBJECT:
-				return getObject();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,15 +225,15 @@ public class TagImpl extends ObjectImpl implements Tag {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case StructurePackage.TAG__OBJECT:
+				getObject().clear();
+				getObject().addAll((Collection<? extends org.kermeta.language.structure.Object>)newValue);
+				return;
 			case StructurePackage.TAG__NAME:
 				setName((String)newValue);
 				return;
 			case StructurePackage.TAG__VALUE:
 				setValue((String)newValue);
-				return;
-			case StructurePackage.TAG__OBJECT:
-				getObject().clear();
-				getObject().addAll((Collection<? extends org.kermeta.language.structure.Object>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -247,14 +247,14 @@ public class TagImpl extends ObjectImpl implements Tag {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case StructurePackage.TAG__OBJECT:
+				getObject().clear();
+				return;
 			case StructurePackage.TAG__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 			case StructurePackage.TAG__VALUE:
 				setValue(VALUE_EDEFAULT);
-				return;
-			case StructurePackage.TAG__OBJECT:
-				getObject().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -268,12 +268,12 @@ public class TagImpl extends ObjectImpl implements Tag {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case StructurePackage.TAG__OBJECT:
+				return object != null && !object.isEmpty();
 			case StructurePackage.TAG__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case StructurePackage.TAG__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-			case StructurePackage.TAG__OBJECT:
-				return object != null && !object.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

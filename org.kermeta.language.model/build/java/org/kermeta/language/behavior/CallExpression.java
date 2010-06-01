@@ -25,14 +25,14 @@ import org.kermeta.language.structure.Type;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.kermeta.language.behavior.CallExpression#getStaticTypeVariableBindings <em>Static Type Variable Bindings</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.CallExpression#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.CallExpression#getName <em>Name</em>}</li>
- *   <li>{@link org.kermeta.language.behavior.CallExpression#getStaticTypeVariableBindings <em>Static Type Variable Bindings</em>}</li>
  * </ul>
  * </p>
  *
  * @see org.kermeta.language.behavior.BehaviorPackage#getCallExpression()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface CallExpression extends Expression {

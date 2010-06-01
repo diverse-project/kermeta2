@@ -98,101 +98,6 @@ public class BehaviorSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case BehaviorPackage.ASSIGNMENT: {
-				Assignment assignment = (Assignment)theEObject;
-				T result = caseAssignment(assignment);
-				if (result == null) result = caseExpression(assignment);
-				if (result == null) result = caseTypeContainer(assignment);
-				if (result == null) result = caseObject(assignment);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.EXPRESSION: {
-				Expression expression = (Expression)theEObject;
-				T result = caseExpression(expression);
-				if (result == null) result = caseTypeContainer(expression);
-				if (result == null) result = caseObject(expression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.CALL_EXPRESSION: {
-				CallExpression callExpression = (CallExpression)theEObject;
-				T result = caseCallExpression(callExpression);
-				if (result == null) result = caseExpression(callExpression);
-				if (result == null) result = caseTypeContainer(callExpression);
-				if (result == null) result = caseObject(callExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.BLOCK: {
-				Block block = (Block)theEObject;
-				T result = caseBlock(block);
-				if (result == null) result = caseExpression(block);
-				if (result == null) result = caseTypeContainer(block);
-				if (result == null) result = caseObject(block);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.CALL_VARIABLE: {
-				CallVariable callVariable = (CallVariable)theEObject;
-				T result = caseCallVariable(callVariable);
-				if (result == null) result = caseCallExpression(callVariable);
-				if (result == null) result = caseExpression(callVariable);
-				if (result == null) result = caseTypeContainer(callVariable);
-				if (result == null) result = caseObject(callVariable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.CALL_FEATURE: {
-				CallFeature callFeature = (CallFeature)theEObject;
-				T result = caseCallFeature(callFeature);
-				if (result == null) result = caseCallExpression(callFeature);
-				if (result == null) result = caseExpression(callFeature);
-				if (result == null) result = caseTypeContainer(callFeature);
-				if (result == null) result = caseObject(callFeature);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.CALL_SUPER_OPERATION: {
-				CallSuperOperation callSuperOperation = (CallSuperOperation)theEObject;
-				T result = caseCallSuperOperation(callSuperOperation);
-				if (result == null) result = caseCallExpression(callSuperOperation);
-				if (result == null) result = caseExpression(callSuperOperation);
-				if (result == null) result = caseTypeContainer(callSuperOperation);
-				if (result == null) result = caseObject(callSuperOperation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.CALL_RESULT: {
-				CallResult callResult = (CallResult)theEObject;
-				T result = caseCallResult(callResult);
-				if (result == null) result = caseCallVariable(callResult);
-				if (result == null) result = caseCallExpression(callResult);
-				if (result == null) result = caseExpression(callResult);
-				if (result == null) result = caseTypeContainer(callResult);
-				if (result == null) result = caseObject(callResult);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.CALL_VALUE: {
-				CallValue callValue = (CallValue)theEObject;
-				T result = caseCallValue(callValue);
-				if (result == null) result = caseCallExpression(callValue);
-				if (result == null) result = caseExpression(callValue);
-				if (result == null) result = caseTypeContainer(callValue);
-				if (result == null) result = caseObject(callValue);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.CONDITIONAL: {
-				Conditional conditional = (Conditional)theEObject;
-				T result = caseConditional(conditional);
-				if (result == null) result = caseExpression(conditional);
-				if (result == null) result = caseTypeContainer(conditional);
-				if (result == null) result = caseObject(conditional);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case BehaviorPackage.RAISE: {
 				Raise raise = (Raise)theEObject;
 				T result = caseRaise(raise);
@@ -209,6 +114,23 @@ public class BehaviorSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case BehaviorPackage.EXPRESSION: {
+				Expression expression = (Expression)theEObject;
+				T result = caseExpression(expression);
+				if (result == null) result = caseTypeContainer(expression);
+				if (result == null) result = caseObject(expression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.BLOCK: {
+				Block block = (Block)theEObject;
+				T result = caseBlock(block);
+				if (result == null) result = caseExpression(block);
+				if (result == null) result = caseTypeContainer(block);
+				if (result == null) result = caseObject(block);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case BehaviorPackage.TYPE_REFERENCE: {
 				TypeReference typeReference = (TypeReference)theEObject;
 				T result = caseTypeReference(typeReference);
@@ -220,46 +142,21 @@ public class BehaviorSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case BehaviorPackage.LOOP: {
+				Loop loop = (Loop)theEObject;
+				T result = caseLoop(loop);
+				if (result == null) result = caseExpression(loop);
+				if (result == null) result = caseTypeContainer(loop);
+				if (result == null) result = caseObject(loop);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case BehaviorPackage.LITERAL: {
 				Literal literal = (Literal)theEObject;
 				T result = caseLiteral(literal);
 				if (result == null) result = caseExpression(literal);
 				if (result == null) result = caseTypeContainer(literal);
 				if (result == null) result = caseObject(literal);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.EMPTY_EXPRESSION: {
-				EmptyExpression emptyExpression = (EmptyExpression)theEObject;
-				T result = caseEmptyExpression(emptyExpression);
-				if (result == null) result = caseExpression(emptyExpression);
-				if (result == null) result = caseTypeContainer(emptyExpression);
-				if (result == null) result = caseObject(emptyExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.JAVA_STATIC_CALL: {
-				JavaStaticCall javaStaticCall = (JavaStaticCall)theEObject;
-				T result = caseJavaStaticCall(javaStaticCall);
-				if (result == null) result = caseExpression(javaStaticCall);
-				if (result == null) result = caseTypeContainer(javaStaticCall);
-				if (result == null) result = caseObject(javaStaticCall);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.LAMBDA_EXPRESSION: {
-				LambdaExpression lambdaExpression = (LambdaExpression)theEObject;
-				T result = caseLambdaExpression(lambdaExpression);
-				if (result == null) result = caseExpression(lambdaExpression);
-				if (result == null) result = caseTypeContainer(lambdaExpression);
-				if (result == null) result = caseObject(lambdaExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BehaviorPackage.LAMBDA_PARAMETER: {
-				LambdaParameter lambdaParameter = (LambdaParameter)theEObject;
-				T result = caseLambdaParameter(lambdaParameter);
-				if (result == null) result = caseObject(lambdaParameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -313,21 +210,115 @@ public class BehaviorSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case BehaviorPackage.LOOP: {
-				Loop loop = (Loop)theEObject;
-				T result = caseLoop(loop);
-				if (result == null) result = caseExpression(loop);
-				if (result == null) result = caseTypeContainer(loop);
-				if (result == null) result = caseObject(loop);
+			case BehaviorPackage.JAVA_STATIC_CALL: {
+				JavaStaticCall javaStaticCall = (JavaStaticCall)theEObject;
+				T result = caseJavaStaticCall(javaStaticCall);
+				if (result == null) result = caseExpression(javaStaticCall);
+				if (result == null) result = caseTypeContainer(javaStaticCall);
+				if (result == null) result = caseObject(javaStaticCall);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case BehaviorPackage.SELF_EXPRESSION: {
-				SelfExpression selfExpression = (SelfExpression)theEObject;
-				T result = caseSelfExpression(selfExpression);
-				if (result == null) result = caseExpression(selfExpression);
-				if (result == null) result = caseTypeContainer(selfExpression);
-				if (result == null) result = caseObject(selfExpression);
+			case BehaviorPackage.CONDITIONAL: {
+				Conditional conditional = (Conditional)theEObject;
+				T result = caseConditional(conditional);
+				if (result == null) result = caseExpression(conditional);
+				if (result == null) result = caseTypeContainer(conditional);
+				if (result == null) result = caseObject(conditional);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.CALL_FEATURE: {
+				CallFeature callFeature = (CallFeature)theEObject;
+				T result = caseCallFeature(callFeature);
+				if (result == null) result = caseCallExpression(callFeature);
+				if (result == null) result = caseExpression(callFeature);
+				if (result == null) result = caseTypeContainer(callFeature);
+				if (result == null) result = caseObject(callFeature);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.CALL_EXPRESSION: {
+				CallExpression callExpression = (CallExpression)theEObject;
+				T result = caseCallExpression(callExpression);
+				if (result == null) result = caseExpression(callExpression);
+				if (result == null) result = caseTypeContainer(callExpression);
+				if (result == null) result = caseObject(callExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.CALL_VARIABLE: {
+				CallVariable callVariable = (CallVariable)theEObject;
+				T result = caseCallVariable(callVariable);
+				if (result == null) result = caseCallExpression(callVariable);
+				if (result == null) result = caseExpression(callVariable);
+				if (result == null) result = caseTypeContainer(callVariable);
+				if (result == null) result = caseObject(callVariable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.CALL_SUPER_OPERATION: {
+				CallSuperOperation callSuperOperation = (CallSuperOperation)theEObject;
+				T result = caseCallSuperOperation(callSuperOperation);
+				if (result == null) result = caseCallExpression(callSuperOperation);
+				if (result == null) result = caseExpression(callSuperOperation);
+				if (result == null) result = caseTypeContainer(callSuperOperation);
+				if (result == null) result = caseObject(callSuperOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.CALL_RESULT: {
+				CallResult callResult = (CallResult)theEObject;
+				T result = caseCallResult(callResult);
+				if (result == null) result = caseCallVariable(callResult);
+				if (result == null) result = caseCallExpression(callResult);
+				if (result == null) result = caseExpression(callResult);
+				if (result == null) result = caseTypeContainer(callResult);
+				if (result == null) result = caseObject(callResult);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.CALL_VALUE: {
+				CallValue callValue = (CallValue)theEObject;
+				T result = caseCallValue(callValue);
+				if (result == null) result = caseCallExpression(callValue);
+				if (result == null) result = caseExpression(callValue);
+				if (result == null) result = caseTypeContainer(callValue);
+				if (result == null) result = caseObject(callValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.EMPTY_EXPRESSION: {
+				EmptyExpression emptyExpression = (EmptyExpression)theEObject;
+				T result = caseEmptyExpression(emptyExpression);
+				if (result == null) result = caseExpression(emptyExpression);
+				if (result == null) result = caseTypeContainer(emptyExpression);
+				if (result == null) result = caseObject(emptyExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.LAMBDA_EXPRESSION: {
+				LambdaExpression lambdaExpression = (LambdaExpression)theEObject;
+				T result = caseLambdaExpression(lambdaExpression);
+				if (result == null) result = caseExpression(lambdaExpression);
+				if (result == null) result = caseTypeContainer(lambdaExpression);
+				if (result == null) result = caseObject(lambdaExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.LAMBDA_PARAMETER: {
+				LambdaParameter lambdaParameter = (LambdaParameter)theEObject;
+				T result = caseLambdaParameter(lambdaParameter);
+				if (result == null) result = caseObject(lambdaParameter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.ASSIGNMENT: {
+				Assignment assignment = (Assignment)theEObject;
+				T result = caseAssignment(assignment);
+				if (result == null) result = caseExpression(assignment);
+				if (result == null) result = caseTypeContainer(assignment);
+				if (result == null) result = caseObject(assignment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -337,6 +328,15 @@ public class BehaviorSwitch<T> {
 				if (result == null) result = caseExpression(variableDecl);
 				if (result == null) result = caseTypeContainer(variableDecl);
 				if (result == null) result = caseObject(variableDecl);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BehaviorPackage.SELF_EXPRESSION: {
+				SelfExpression selfExpression = (SelfExpression)theEObject;
+				T result = caseSelfExpression(selfExpression);
+				if (result == null) result = caseExpression(selfExpression);
+				if (result == null) result = caseTypeContainer(selfExpression);
+				if (result == null) result = caseObject(selfExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

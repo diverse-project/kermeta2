@@ -18,6 +18,7 @@ import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.Constraint;
 import org.kermeta.language.structure.ConstraintLanguage;
 import org.kermeta.language.structure.ConstraintType;
+import org.kermeta.language.structure.DataType;
 import org.kermeta.language.structure.Enumeration;
 import org.kermeta.language.structure.EnumerationLiteral;
 import org.kermeta.language.structure.FunctionType;
@@ -26,6 +27,7 @@ import org.kermeta.language.structure.ModelType;
 import org.kermeta.language.structure.ModelTypeVariable;
 import org.kermeta.language.structure.ModelingUnit;
 import org.kermeta.language.structure.MultiplicityElement;
+import org.kermeta.language.structure.NamedElement;
 import org.kermeta.language.structure.ObjectTypeVariable;
 import org.kermeta.language.structure.Operation;
 import org.kermeta.language.structure.Parameter;
@@ -38,7 +40,9 @@ import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.structure.Tag;
 import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.TypeDefinition;
+import org.kermeta.language.structure.TypeVariable;
 import org.kermeta.language.structure.TypeVariableBinding;
+import org.kermeta.language.structure.TypedElement;
 import org.kermeta.language.structure.UnresolvedType;
 import org.kermeta.language.structure.Using;
 import org.kermeta.language.structure.VirtualType;
@@ -98,31 +102,34 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 			case StructurePackage.OBJECT: return createObject();
 			case StructurePackage.OPERATION: return createOperation();
 			case StructurePackage.PROPERTY: return createProperty();
-			case StructurePackage.TYPE: return createType();
 			case StructurePackage.ENUMERATION_LITERAL: return createEnumerationLiteral();
 			case StructurePackage.TYPE_VARIABLE_BINDING: return createTypeVariableBinding();
 			case StructurePackage.MULTIPLICITY_ELEMENT: return createMultiplicityElement();
 			case StructurePackage.TYPE_DEFINITION: return createTypeDefinition();
-			case StructurePackage.CLASS: return createClass();
-			case StructurePackage.ENUMERATION: return createEnumeration();
-			case StructurePackage.PACKAGE: return createPackage();
-			case StructurePackage.PARAMETER: return createParameter();
-			case StructurePackage.PRIMITIVE_TYPE: return createPrimitiveType();
-			case StructurePackage.TAG: return createTag();
-			case StructurePackage.CONSTRAINT: return createConstraint();
 			case StructurePackage.CLASS_DEFINITION: return createClassDefinition();
-			case StructurePackage.MODELING_UNIT: return createModelingUnit();
+			case StructurePackage.TYPED_ELEMENT: return createTypedElement();
+			case StructurePackage.TYPE_VARIABLE: return createTypeVariable();
+			case StructurePackage.PRODUCT_TYPE: return createProductType();
+			case StructurePackage.FUNCTION_TYPE: return createFunctionType();
+			case StructurePackage.PRIMITIVE_TYPE: return createPrimitiveType();
+			case StructurePackage.NAMED_ELEMENT: return createNamedElement();
+			case StructurePackage.CONSTRAINT: return createConstraint();
+			case StructurePackage.OBJECT_TYPE_VARIABLE: return createObjectTypeVariable();
+			case StructurePackage.CLASS: return createClass();
+			case StructurePackage.PACKAGE: return createPackage();
+			case StructurePackage.VOID_TYPE: return createVoidType();
+			case StructurePackage.DATA_TYPE: return createDataType();
 			case StructurePackage.REQUIRE: return createRequire();
 			case StructurePackage.USING: return createUsing();
-			case StructurePackage.OBJECT_TYPE_VARIABLE: return createObjectTypeVariable();
+			case StructurePackage.UNRESOLVED_TYPE: return createUnresolvedType();
+			case StructurePackage.TAG: return createTag();
+			case StructurePackage.MODELING_UNIT: return createModelingUnit();
 			case StructurePackage.MODEL_TYPE: return createModelType();
 			case StructurePackage.MODEL_TYPE_VARIABLE: return createModelTypeVariable();
 			case StructurePackage.VIRTUAL_TYPE: return createVirtualType();
 			case StructurePackage.MODEL: return createModel();
-			case StructurePackage.PRODUCT_TYPE: return createProductType();
-			case StructurePackage.FUNCTION_TYPE: return createFunctionType();
-			case StructurePackage.VOID_TYPE: return createVoidType();
-			case StructurePackage.UNRESOLVED_TYPE: return createUnresolvedType();
+			case StructurePackage.ENUMERATION: return createEnumeration();
+			case StructurePackage.PARAMETER: return createParameter();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -206,16 +213,6 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	public Property createProperty() {
 		PropertyImpl property = new PropertyImpl();
 		return property;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Type createType() {
-		TypeImpl type = new TypeImpl();
-		return type;
 	}
 
 	/**
@@ -313,6 +310,16 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NamedElement createNamedElement() {
+		NamedElementImpl namedElement = new NamedElementImpl();
+		return namedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Tag createTag() {
 		TagImpl tag = new TagImpl();
 		return tag;
@@ -336,6 +343,26 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	public ClassDefinition createClassDefinition() {
 		ClassDefinitionImpl classDefinition = new ClassDefinitionImpl();
 		return classDefinition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TypedElement createTypedElement() {
+		TypedElementImpl typedElement = new TypedElementImpl();
+		return typedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TypeVariable createTypeVariable() {
+		TypeVariableImpl typeVariable = new TypeVariableImpl();
+		return typeVariable;
 	}
 
 	/**
@@ -446,6 +473,16 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	public VoidType createVoidType() {
 		VoidTypeImpl voidType = new VoidTypeImpl();
 		return voidType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataType createDataType() {
+		DataTypeImpl dataType = new DataTypeImpl();
+		return dataType;
 	}
 
 	/**

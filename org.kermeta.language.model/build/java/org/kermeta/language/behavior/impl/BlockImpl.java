@@ -29,8 +29,8 @@ import org.kermeta.language.behavior.Rescue;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.behavior.impl.BlockImpl#getStatement <em>Statement</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.impl.BlockImpl#getRescueBlock <em>Rescue Block</em>}</li>
+ *   <li>{@link org.kermeta.language.behavior.impl.BlockImpl#getStatement <em>Statement</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,16 +45,6 @@ public class BlockImpl extends ExpressionImpl implements Block {
 	public static final String copyright = "IRISA / INRIA / Universite de Rennes 1";
 
 	/**
-	 * The cached value of the '{@link #getStatement() <em>Statement</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Expression> statement;
-
-	/**
 	 * The cached value of the '{@link #getRescueBlock() <em>Rescue Block</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,6 +53,16 @@ public class BlockImpl extends ExpressionImpl implements Block {
 	 * @ordered
 	 */
 	protected EList<Rescue> rescueBlock;
+
+	/**
+	 * The cached value of the '{@link #getStatement() <em>Statement</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatement()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Expression> statement;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,10 +115,10 @@ public class BlockImpl extends ExpressionImpl implements Block {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case BehaviorPackage.BLOCK__STATEMENT:
-				return ((InternalEList<?>)getStatement()).basicRemove(otherEnd, msgs);
 			case BehaviorPackage.BLOCK__RESCUE_BLOCK:
 				return ((InternalEList<?>)getRescueBlock()).basicRemove(otherEnd, msgs);
+			case BehaviorPackage.BLOCK__STATEMENT:
+				return ((InternalEList<?>)getStatement()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -131,10 +131,10 @@ public class BlockImpl extends ExpressionImpl implements Block {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case BehaviorPackage.BLOCK__STATEMENT:
-				return getStatement();
 			case BehaviorPackage.BLOCK__RESCUE_BLOCK:
 				return getRescueBlock();
+			case BehaviorPackage.BLOCK__STATEMENT:
+				return getStatement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -148,13 +148,13 @@ public class BlockImpl extends ExpressionImpl implements Block {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case BehaviorPackage.BLOCK__STATEMENT:
-				getStatement().clear();
-				getStatement().addAll((Collection<? extends Expression>)newValue);
-				return;
 			case BehaviorPackage.BLOCK__RESCUE_BLOCK:
 				getRescueBlock().clear();
 				getRescueBlock().addAll((Collection<? extends Rescue>)newValue);
+				return;
+			case BehaviorPackage.BLOCK__STATEMENT:
+				getStatement().clear();
+				getStatement().addAll((Collection<? extends Expression>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -168,11 +168,11 @@ public class BlockImpl extends ExpressionImpl implements Block {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case BehaviorPackage.BLOCK__STATEMENT:
-				getStatement().clear();
-				return;
 			case BehaviorPackage.BLOCK__RESCUE_BLOCK:
 				getRescueBlock().clear();
+				return;
+			case BehaviorPackage.BLOCK__STATEMENT:
+				getStatement().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -186,10 +186,10 @@ public class BlockImpl extends ExpressionImpl implements Block {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case BehaviorPackage.BLOCK__STATEMENT:
-				return statement != null && !statement.isEmpty();
 			case BehaviorPackage.BLOCK__RESCUE_BLOCK:
 				return rescueBlock != null && !rescueBlock.isEmpty();
+			case BehaviorPackage.BLOCK__STATEMENT:
+				return statement != null && !statement.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

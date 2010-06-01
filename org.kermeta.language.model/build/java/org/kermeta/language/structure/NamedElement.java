@@ -24,7 +24,7 @@ package org.kermeta.language.structure;
  * </p>
  *
  * @see org.kermeta.language.structure.StructurePackage#getNamedElement()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface NamedElement extends org.kermeta.language.structure.Object {
@@ -45,7 +45,7 @@ public interface NamedElement extends org.kermeta.language.structure.Object {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.kermeta.language.structure.StructurePackage#getNamedElement_Name()
-	 * @model dataType="org.kermeta.language.structure.String" required="true"
+	 * @model
 	 * @generated
 	 */
 	String getName();

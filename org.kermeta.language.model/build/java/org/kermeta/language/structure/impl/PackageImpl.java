@@ -33,7 +33,6 @@ import org.kermeta.language.structure.TypeDefinitionContainer;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.impl.PackageImpl#getOwnedTypeDefinition <em>Owned Type Definition</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PackageImpl#getNestedPackage <em>Nested Package</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PackageImpl#getNestingPackage <em>Nesting Package</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PackageImpl#getUri <em>Uri</em>}</li>
@@ -42,23 +41,13 @@ import org.kermeta.language.structure.TypeDefinitionContainer;
  *
  * @generated
  */
-public class PackageImpl extends NamedElementImpl implements org.kermeta.language.structure.Package {
+public class PackageImpl extends TypeDefinitionContainerImpl implements org.kermeta.language.structure.Package {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final String copyright = "IRISA / INRIA / Universite de Rennes 1";
-
-	/**
-	 * The cached value of the '{@link #getOwnedTypeDefinition() <em>Owned Type Definition</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedTypeDefinition()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TypeDefinition> ownedTypeDefinition;
 
 	/**
 	 * The cached value of the '{@link #getNestedPackage() <em>Nested Package</em>}' containment reference list.
@@ -107,18 +96,6 @@ public class PackageImpl extends NamedElementImpl implements org.kermeta.languag
 	@Override
 	protected EClass eStaticClass() {
 		return StructurePackage.Literals.PACKAGE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<TypeDefinition> getOwnedTypeDefinition() {
-		if (ownedTypeDefinition == null) {
-			ownedTypeDefinition = new EObjectContainmentEList.Resolving<TypeDefinition>(TypeDefinition.class, this, StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION);
-		}
-		return ownedTypeDefinition;
 	}
 
 	/**
@@ -232,8 +209,6 @@ public class PackageImpl extends NamedElementImpl implements org.kermeta.languag
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION:
-				return ((InternalEList<?>)getOwnedTypeDefinition()).basicRemove(otherEnd, msgs);
 			case StructurePackage.PACKAGE__NESTED_PACKAGE:
 				return ((InternalEList<?>)getNestedPackage()).basicRemove(otherEnd, msgs);
 			case StructurePackage.PACKAGE__NESTING_PACKAGE:
@@ -264,8 +239,6 @@ public class PackageImpl extends NamedElementImpl implements org.kermeta.languag
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION:
-				return getOwnedTypeDefinition();
 			case StructurePackage.PACKAGE__NESTED_PACKAGE:
 				return getNestedPackage();
 			case StructurePackage.PACKAGE__NESTING_PACKAGE:
@@ -286,10 +259,6 @@ public class PackageImpl extends NamedElementImpl implements org.kermeta.languag
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION:
-				getOwnedTypeDefinition().clear();
-				getOwnedTypeDefinition().addAll((Collection<? extends TypeDefinition>)newValue);
-				return;
 			case StructurePackage.PACKAGE__NESTED_PACKAGE:
 				getNestedPackage().clear();
 				getNestedPackage().addAll((Collection<? extends org.kermeta.language.structure.Package>)newValue);
@@ -312,9 +281,6 @@ public class PackageImpl extends NamedElementImpl implements org.kermeta.languag
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION:
-				getOwnedTypeDefinition().clear();
-				return;
 			case StructurePackage.PACKAGE__NESTED_PACKAGE:
 				getNestedPackage().clear();
 				return;
@@ -336,8 +302,6 @@ public class PackageImpl extends NamedElementImpl implements org.kermeta.languag
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION:
-				return ownedTypeDefinition != null && !ownedTypeDefinition.isEmpty();
 			case StructurePackage.PACKAGE__NESTED_PACKAGE:
 				return nestedPackage != null && !nestedPackage.isEmpty();
 			case StructurePackage.PACKAGE__NESTING_PACKAGE:
@@ -346,38 +310,6 @@ public class PackageImpl extends NamedElementImpl implements org.kermeta.languag
 				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == TypeDefinitionContainer.class) {
-			switch (derivedFeatureID) {
-				case StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION: return StructurePackage.TYPE_DEFINITION_CONTAINER__OWNED_TYPE_DEFINITION;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == TypeDefinitionContainer.class) {
-			switch (baseFeatureID) {
-				case StructurePackage.TYPE_DEFINITION_CONTAINER__OWNED_TYPE_DEFINITION: return StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

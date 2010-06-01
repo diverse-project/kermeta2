@@ -28,7 +28,7 @@ import org.kermeta.language.structure.TypeContainer;
  * @model abstract="true"
  * @generated
  */
-public interface Expression extends org.kermeta.language.structure.Object, TypeContainer {
+public interface Expression extends TypeContainer, org.kermeta.language.structure.Object {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

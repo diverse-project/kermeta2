@@ -17,10 +17,10 @@ package org.kermeta.language.structure;
  *
  *
  * @see org.kermeta.language.structure.StructurePackage#getDataType()
- * @model abstract="true"
+ * @model
  * @generated
  */
-public interface DataType extends Type, TypeDefinition {
+public interface DataType extends TypeDefinition, Type {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

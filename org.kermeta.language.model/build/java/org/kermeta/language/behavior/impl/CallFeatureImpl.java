@@ -28,11 +28,11 @@ import org.kermeta.language.structure.Property;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#isIsAtpre <em>Is Atpre</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#getStaticProperty <em>Static Property</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#getStaticOperation <em>Static Operation</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#getStaticEnumLiteral <em>Static Enum Literal</em>}</li>
+ *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#isIsAtpre <em>Is Atpre</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,36 +45,6 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	 * @generated
 	 */
 	public static final String copyright = "IRISA / INRIA / Universite de Rennes 1";
-
-	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTarget()
-	 * @generated
-	 * @ordered
-	 */
-	protected Expression target;
-
-	/**
-	 * The default value of the '{@link #isIsAtpre() <em>Is Atpre</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsAtpre()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_ATPRE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIsAtpre() <em>Is Atpre</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsAtpre()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isAtpre = IS_ATPRE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getStaticProperty() <em>Static Property</em>}' reference.
@@ -105,6 +75,36 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	 * @ordered
 	 */
 	protected EnumerationLiteral staticEnumLiteral;
+
+	/**
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression target;
+
+	/**
+	 * The default value of the '{@link #isIsAtpre() <em>Is Atpre</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsAtpre()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_ATPRE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsAtpre() <em>Is Atpre</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsAtpre()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isAtpre = IS_ATPRE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -348,11 +348,6 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case BehaviorPackage.CALL_FEATURE__TARGET:
-				if (resolve) return getTarget();
-				return basicGetTarget();
-			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
-				return isIsAtpre();
 			case BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY:
 				if (resolve) return getStaticProperty();
 				return basicGetStaticProperty();
@@ -362,6 +357,11 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 			case BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL:
 				if (resolve) return getStaticEnumLiteral();
 				return basicGetStaticEnumLiteral();
+			case BehaviorPackage.CALL_FEATURE__TARGET:
+				if (resolve) return getTarget();
+				return basicGetTarget();
+			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
+				return isIsAtpre();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -374,12 +374,6 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case BehaviorPackage.CALL_FEATURE__TARGET:
-				setTarget((Expression)newValue);
-				return;
-			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
-				setIsAtpre((Boolean)newValue);
-				return;
 			case BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY:
 				setStaticProperty((Property)newValue);
 				return;
@@ -388,6 +382,12 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 				return;
 			case BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL:
 				setStaticEnumLiteral((EnumerationLiteral)newValue);
+				return;
+			case BehaviorPackage.CALL_FEATURE__TARGET:
+				setTarget((Expression)newValue);
+				return;
+			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
+				setIsAtpre((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -401,12 +401,6 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case BehaviorPackage.CALL_FEATURE__TARGET:
-				setTarget((Expression)null);
-				return;
-			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
-				setIsAtpre(IS_ATPRE_EDEFAULT);
-				return;
 			case BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY:
 				setStaticProperty((Property)null);
 				return;
@@ -415,6 +409,12 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 				return;
 			case BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL:
 				setStaticEnumLiteral((EnumerationLiteral)null);
+				return;
+			case BehaviorPackage.CALL_FEATURE__TARGET:
+				setTarget((Expression)null);
+				return;
+			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
+				setIsAtpre(IS_ATPRE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -428,16 +428,16 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case BehaviorPackage.CALL_FEATURE__TARGET:
-				return target != null;
-			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
-				return isAtpre != IS_ATPRE_EDEFAULT;
 			case BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY:
 				return staticProperty != null;
 			case BehaviorPackage.CALL_FEATURE__STATIC_OPERATION:
 				return staticOperation != null;
 			case BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL:
 				return staticEnumLiteral != null;
+			case BehaviorPackage.CALL_FEATURE__TARGET:
+				return target != null;
+			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
+				return isAtpre != IS_ATPRE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

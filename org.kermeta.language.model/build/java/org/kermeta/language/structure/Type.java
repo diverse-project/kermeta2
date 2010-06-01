@@ -12,7 +12,7 @@ package org.kermeta.language.structure;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Alias to kermeta::standard::Integer
+ * Base class definition for the <b>use</b> of a type.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -23,7 +23,7 @@ package org.kermeta.language.structure;
  * </p>
  *
  * @see org.kermeta.language.structure.StructurePackage#getType()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Type extends org.kermeta.language.structure.Object {

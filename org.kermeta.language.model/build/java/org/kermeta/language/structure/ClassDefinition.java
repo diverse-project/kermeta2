@@ -40,7 +40,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ClassDefinition extends GenericTypeDefinition, TypeContainer {
+public interface ClassDefinition extends TypeContainer, GenericTypeDefinition {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -24,7 +24,7 @@ package org.kermeta.language.structure;
  * </p>
  *
  * @see org.kermeta.language.structure.StructurePackage#getTypeVariable()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface TypeVariable extends TypeContainer, Type, NamedElement {
