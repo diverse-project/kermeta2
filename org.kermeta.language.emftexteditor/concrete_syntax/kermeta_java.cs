@@ -15,6 +15,7 @@ OPTIONS {
 	tokenspace = "1";
 	srcFolder = "src/main/java";
 	srcGenFolder = "src/main/java-gen";
+	defaultTokenName = "STRING";
 }   
 
 TOKENS{
@@ -61,18 +62,19 @@ RULES{
 
 //STRUCTURE
 	structure.ModelingUnit ::= 
-	("require" referencedModelingUnits[STRING_LITERAL]!0)* (usings)* (packages)* 	;		
+	"package" namespacePrefix[]
+	(requires)* (usings)* (packages)* ;		
       
    	structure.Using ::=  
-   	"using" (qualifiedName[QUALIFIEDNAME]|qualifiedName[STRING]) !0;
+   	"using" (qualifiedName[QUALIFIEDNAME]|qualifiedName[]) !0;
    
    	structure.Require ::= 
-   	uri[STRING_LITERAL] !0;
+   	"require" uri[STRING_LITERAL] !0;
    
    	structure.Package ::=  
-   	("package" name[STRING] |
-   	//"package" (uri[STRING](#0"::"uri[STRING])*#0"::") name[STRING])
-   	"package" uri[STRING] #0"::"#0 name[STRING]) 
+   	("package" name[] |
+   	//"package" (uri[](#0"::"uri[])*#0"::") name[])
+   	"package" uri[] #0"::"#0 name[]) 
    	(
 	   (!0ownedTypeDefinition)+!0 
 	   |
@@ -87,8 +89,8 @@ RULES{
    
    	
    	structure.ClassDefinition ::=  
-   	("aspect")? ("abstract")? "class" name[STRING] 
-   	("inherits" superType[STRING] ("," superType[STRING] )* )?
+   	("aspect")? ("abstract")? "class" name[] 
+   	("inherits" superType[] ("," superType[] )* )?
 	   "{" 
 	   		(!1inv)*!0 
 	   		(!1ownedAttribute)*!0 
@@ -96,31 +98,28 @@ RULES{
 	   "}" !0;
    
  	structure.Property ::= 
-   	(("attribute" | "reference") name[STRING] (":" type[STRING])?| "property" name[STRING] (":" type[STRING])? getterBody setterBody );
+   	(("attribute" | "reference") name[] (":" type[])?| "property" name[] (":" type[])? getterBody setterBody );
    
    	structure.Operation::=  
    	pre* post* 
-   	"operation" name[STRING] 
+   	"operation" name[] 
    	//TODO find a way to handle 0 space or 1 space between token and ":"
-   						"("	( ownedParameter (#0":"type[STRING])? ("," ownedParameter (#0":" type[STRING])?)* )? ")" 
-   						(#0":" type[STRING] 
+   						"("	( ownedParameter (#0":"type[])? ("," ownedParameter (#0":" type[])?)* )? ")" 
+   						(#0":" type[] 
    						)?  "is" 
    	(!0body:bv.Block| "abstract") ;
    
    	structure.Parameter ::=  
-   	name[STRING] ":" type[STRING];
+   	name[] ":" type[];
    
    	structure.Class::= 
-   	typeDefinition[STRING] ;
-   	
-   	structure.Type ::=  
-	typeContainer[STRING] ;
+   	typeDefinition[] ;
 	
 	structure.Enumeration ::= 
-  	"enumeration" name[STRING] "{" (ownedLiteral";" (ownedLiteral";")*) "}"!0;
+  	"enumeration" name[] "{" (ownedLiteral";" (ownedLiteral";")*) "}"!0;
    
    	structure.EnumerationLiteral ::=  
-   	name[STRING];
+   	name[];
    
    	structure.Constraint ::= 
    	stereotype[] language[] ;
@@ -130,25 +129,25 @@ RULES{
 	
 	structure.Model::= "Model"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags  )* "}"  ;
 	
-	structure.ModelType::=isAspect[]? "ModelType"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "typeContainer"  ":" typeContainer[]| "name"  ":" name[STRING] | "includedTypeDefinition"  ":" includedTypeDefinition[] )* "}"  ;
+	structure.ModelType::=isAspect[]? "ModelType"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "typeContainer"  ":" typeContainer[]| "name"  ":" name[] | "includedTypeDefinition"  ":" includedTypeDefinition[] )* "}"  ;
 	
 	structure.TypeVariableBinding::= "TypeVariableBinding"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "variable"  ":" variable[]| "type"  ":" type[] )* "}"  ;
 	
-	structure.MultiplicityElement::=isOrdered[]?isUnique[]? "MultiplicityElement"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "name"  ":" name[STRING] | "type"  ":" type[]| "lower"  ":" lower[INTEGER]| "upper"  ":" upper[INTEGER] )* "}"  ;
+	structure.MultiplicityElement::=isOrdered[]?isUnique[]? "MultiplicityElement"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "name"  ":" name[] | "type"  ":" type[]| "lower"  ":" lower[INTEGER]| "upper"  ":" upper[INTEGER] )* "}"  ;
 	
-	structure.TypeDefinition::=isAspect[]? "TypeDefinition"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[STRING]  )* "}"  ;
+	structure.TypeDefinition::=isAspect[]? "TypeDefinition"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[]  )* "}"  ;
 	
-	structure.PrimitiveType::=isAspect[]? "PrimitiveType"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "typeContainer"  ":" typeContainer[]| "name"  ":" name[STRING] | "containedType"  ":" containedType | "instanceType"  ":" instanceType[] )* "}"  ;
+	structure.PrimitiveType::=isAspect[]? "PrimitiveType"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "typeContainer"  ":" typeContainer[]| "name"  ":" name[] | "containedType"  ":" containedType | "instanceType"  ":" instanceType[] )* "}"  ;
 	
-	structure.Tag::= "Tag"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[STRING] | "value"  ":" value[STRING] | "object"  ":" object[] )* "}"  ;
+	structure.Tag::= "Tag"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[] | "value"  ":" value[] | "object"  ":" object[] )* "}"  ;
 	
-	structure.Filter::= "Filter"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "qualifiedName"  ":" qualifiedName[QUALIFIEDNAME]  )* "}"  ;
+	//structure.Filter::= "Filter"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "qualifiedName"  ":" qualifiedName[QUALIFIEDNAME]  )* "}"  ;
 	
-	structure.ObjectTypeVariable::= "ObjectTypeVariable"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "typeContainer"  ":" typeContainer[]| "name"  ":" name[STRING] | "supertype"  ":" supertype[] )* "}"  ;
+	structure.ObjectTypeVariable::= "ObjectTypeVariable"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "typeContainer"  ":" typeContainer[]| "name"  ":" name[] | "supertype"  ":" supertype[] )* "}"  ;
 	
-	structure.ModelTypeVariable::= "ModelTypeVariable"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "typeContainer"  ":" typeContainer[]| "name"  ":" name[STRING] | "supertype"  ":" supertype[]| "virtualType"  ":" virtualType  )* "}"  ;
+	structure.ModelTypeVariable::= "ModelTypeVariable"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "typeContainer"  ":" typeContainer[]| "name"  ":" name[] | "supertype"  ":" supertype[]| "virtualType"  ":" virtualType  )* "}"  ;
 	
-	structure.VirtualType::= "VirtualType"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "typeContainer"  ":" typeContainer[]| "name"  ":" name[STRING] | "supertype"  ":" supertype[]| "classDefinition"  ":" classDefinition[]| "modelType"  ":" modelType[]| "typeParamBinding"  ":" typeParamBinding  )* "}"  ;
+	structure.VirtualType::= "VirtualType"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "typeContainer"  ":" typeContainer[]| "name"  ":" name[] | "supertype"  ":" supertype[]| "classDefinition"  ":" classDefinition[]| "modelType"  ":" modelType[]| "typeParamBinding"  ":" typeParamBinding  )* "}"  ;
 	
 	structure.ProductType::= "ProductType"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "typeContainer"  ":" typeContainer[]| "type"  ":" type[] )* "}"  ;
 	
@@ -168,11 +167,11 @@ RULES{
 	"end";
    
 	bv.Rescue ::=
-	"rescue" ("("exceptionName[STRING] ":" exceptionType")")? 
+	"rescue" ("("exceptionName[] ":" exceptionType")")? 
 	(!1body)?!0 ;
    
 	bv.TypeReference ::= 
-	type[STRING]; 
+	type[]; 
    
 	bv.Raise ::= 
 	"raise" expression ;
@@ -204,7 +203,7 @@ RULES{
    	)? ; 
    
    	bv.VariableDecl ::= 
-   	"var" identifier[STRING]  ":" type ("init" initialization)?; 
+   	"var" identifier[]  ":" type ("init" initialization)?; 
    
    	bv.TypeLiteral ::= 
    	typeref ;
@@ -226,35 +225,35 @@ RULES{
    	value:bv.IntegerLiteral|value:bv.BooleanLiteral|value:bv.StringLiteral) );
    	
    	bv.CallVariable::= 
-   		name[STRING];
+   		name[];
    
    	bv.SelfExpression ::=   
    	"self" ;
    
    	bv.CallFeature ::=   
  	"("(target:bv.BooleanLiteral|target:bv.CallVariable|target:bv.JavaStaticCall|target:bv.SelfExpression|target:bv.StringLiteral|target:bv.IntegerLiteral)
-   	#0 	("."staticProperty[STRING] | "."staticOperation[STRING]"("(parameters(","parameters)*)?")"|"."staticEnumLiteral[STRING]| "."staticOperation[STRING] )* "==" parameters ")" |
+   	#0 	("."staticProperty[] | "."staticOperation[]"("(parameters(","parameters)*)?")"|"."staticEnumLiteral[]| "."staticOperation[] )* "==" parameters ")" |
    	
  	(target:bv.BooleanLiteral|target:bv.CallVariable|target:bv.JavaStaticCall|target:bv.SelfExpression|target:bv.StringLiteral|target:bv.IntegerLiteral)
-   	#0 	("."staticProperty[STRING] | "."staticOperation[STRING]"("(parameters(","parameters)*)?")"|"."staticEnumLiteral[STRING]| "."staticOperation[STRING] )* "==" parameters | 	
+   	#0 	("."staticProperty[] | "."staticOperation[]"("(parameters(","parameters)*)?")"|"."staticEnumLiteral[]| "."staticOperation[] )* "==" parameters | 	
  	
  	(target:bv.BooleanLiteral|target:bv.CallVariable|target:bv.JavaStaticCall|target:bv.SelfExpression|target:bv.StringLiteral|target:bv.IntegerLiteral)
-   	#0 	("."staticProperty[STRING] | "."staticOperation[STRING]"("(parameters(","parameters)*)?")"|"."staticEnumLiteral[STRING]| "."staticOperation[STRING] )* (("+"|"-"|"/"|"*") parameters)* | 
+   	#0 	("."staticProperty[] | "."staticOperation[]"("(parameters(","parameters)*)?")"|"."staticEnumLiteral[]| "."staticOperation[] )* (("+"|"-"|"/"|"*") parameters)* | 
 
 	"("(target:bv.BooleanLiteral|target:bv.CallVariable|target:bv.JavaStaticCall|target:bv.SelfExpression|target:bv.StringLiteral|target:bv.IntegerLiteral)
-   	#0 	("."staticProperty[STRING] | "."staticOperation[STRING]"("(parameters(","parameters)*)?")"|"."staticEnumLiteral[STRING]| "."staticOperation[STRING] )* (("+"|"-"|"/"|"*") parameters)* ")" (("+"|"-"|"/"|"*") parameters)* 
+   	#0 	("."staticProperty[] | "."staticOperation[]"("(parameters(","parameters)*)?")"|"."staticEnumLiteral[]| "."staticOperation[] )* (("+"|"-"|"/"|"*") parameters)* ")" (("+"|"-"|"/"|"*") parameters)* 
 	;	
 
 	//By default - TODO
-	bv.CallValue::= "CallValue"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "staticType"  ":" staticType[]| "parameters"  ":" parameters | "name"  ":" name[STRING] | "staticTypeVariableBindings"  ":" staticTypeVariableBindings[] )* "}"  ;
+	bv.CallValue::= "CallValue"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "staticType"  ":" staticType[]| "parameters"  ":" parameters | "name"  ":" name[] | "staticTypeVariableBindings"  ":" staticTypeVariableBindings[] )* "}"  ;
 	
 	bv.EmptyExpression::= "EmptyExpression"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "staticType"  ":" staticType[] )* "}"  ;
 	
-	bv.JavaStaticCall::= "JavaStaticCall"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "staticType"  ":" staticType[]| "parameters"  ":" parameters | "jclass"  ":" jclass[STRING] | "jmethod"  ":" jmethod[STRING]  )* "}"  ;
+	bv.JavaStaticCall::= "JavaStaticCall"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "staticType"  ":" staticType[]| "parameters"  ":" parameters | "jclass"  ":" jclass[] | "jmethod"  ":" jmethod[]  )* "}"  ;
 	
 	bv.LambdaExpression::= "LambdaExpression"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "staticType"  ":" staticType[]| "parameters"  ":" parameters | "body"  ":" body  )* "}"  ;
 	
-	bv.LambdaParameter::= "LambdaParameter"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[STRING] | "type"  ":" type  )* "}"  ;
+	bv.LambdaParameter::= "LambdaParameter"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[] | "type"  ":" type  )* "}"  ;
 	
 	bv.VoidLiteral::= "Void";
 	   
