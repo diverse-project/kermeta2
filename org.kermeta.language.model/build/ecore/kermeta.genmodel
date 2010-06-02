@@ -260,6 +260,7 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/ModelingUnit/packages"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/ModelingUnit/requires"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/ModelingUnit/usings"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kermeta_java.ecore#//language/structure/ModelingUnit/namespacePrefix"/>
         </genClasses>
         <genClasses ecoreClass="kermeta_java.ecore#//language/structure/ModelType">
           <genFeatures notify="false" createChild="false" propertySortChoices="true"

@@ -7,6 +7,7 @@ package org.kermeta.language.structure.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -14,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -32,6 +34,7 @@ import org.kermeta.language.structure.Using;
  *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getPackages <em>Packages</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getUsings <em>Usings</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,6 +77,26 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 	 * @ordered
 	 */
 	protected EList<Using> usings;
+
+	/**
+	 * The default value of the '{@link #getNamespacePrefix() <em>Namespace Prefix</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNamespacePrefix()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAMESPACE_PREFIX_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getNamespacePrefix() <em>Namespace Prefix</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNamespacePrefix()
+	 * @generated
+	 * @ordered
+	 */
+	protected String namespacePrefix = NAMESPACE_PREFIX_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,6 +158,27 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getNamespacePrefix() {
+		return namespacePrefix;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNamespacePrefix(String newNamespacePrefix) {
+		String oldNamespacePrefix = namespacePrefix;
+		namespacePrefix = newNamespacePrefix;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX, oldNamespacePrefix, namespacePrefix));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -162,6 +206,8 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 				return getRequires();
 			case StructurePackage.MODELING_UNIT__USINGS:
 				return getUsings();
+			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
+				return getNamespacePrefix();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -187,6 +233,9 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 				getUsings().clear();
 				getUsings().addAll((Collection<? extends Using>)newValue);
 				return;
+			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
+				setNamespacePrefix((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -208,6 +257,9 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 			case StructurePackage.MODELING_UNIT__USINGS:
 				getUsings().clear();
 				return;
+			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
+				setNamespacePrefix(NAMESPACE_PREFIX_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -226,8 +278,26 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 				return requires != null && !requires.isEmpty();
 			case StructurePackage.MODELING_UNIT__USINGS:
 				return usings != null && !usings.isEmpty();
+			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
+				return NAMESPACE_PREFIX_EDEFAULT == null ? namespacePrefix != null : !NAMESPACE_PREFIX_EDEFAULT.equals(namespacePrefix);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (namespacePrefix: ");
+		result.append(namespacePrefix);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ModelingUnitImpl

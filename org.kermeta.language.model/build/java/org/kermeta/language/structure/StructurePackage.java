@@ -2378,13 +2378,22 @@ public interface StructurePackage extends EPackage {
 	int MODELING_UNIT__USINGS = OBJECT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Namespace Prefix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELING_UNIT__NAMESPACE_PREFIX = OBJECT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Modeling Unit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODELING_UNIT_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 3;
+	int MODELING_UNIT_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -3760,6 +3769,17 @@ public interface StructurePackage extends EPackage {
 	EReference getModelingUnit_Usings();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.ModelingUnit#getNamespacePrefix <em>Namespace Prefix</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Namespace Prefix</em>'.
+	 * @see org.kermeta.language.structure.ModelingUnit#getNamespacePrefix()
+	 * @see #getModelingUnit()
+	 * @generated
+	 */
+	EAttribute getModelingUnit_NamespacePrefix();
+
+	/**
 	 * Returns the meta object for class '{@link org.kermeta.language.structure.Require <em>Require</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4895,6 +4915,14 @@ public interface StructurePackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODELING_UNIT__USINGS = eINSTANCE.getModelingUnit_Usings();
+
+		/**
+		 * The meta object literal for the '<em><b>Namespace Prefix</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODELING_UNIT__NAMESPACE_PREFIX = eINSTANCE.getModelingUnit_NamespacePrefix();
 
 		/**
 		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.RequireImpl <em>Require</em>}' class.

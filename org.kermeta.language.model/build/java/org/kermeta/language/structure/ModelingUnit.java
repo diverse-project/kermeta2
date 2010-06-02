@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.kermeta.language.structure.ModelingUnit#getPackages <em>Packages</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ModelingUnit#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ModelingUnit#getUsings <em>Usings</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.ModelingUnit#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  * </ul>
  * </p>
  *
@@ -84,5 +85,31 @@ public interface ModelingUnit extends org.kermeta.language.structure.Object {
 	 * @generated
 	 */
 	EList<Using> getUsings();
+
+	/**
+	 * Returns the value of the '<em><b>Namespace Prefix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Namespace Prefix</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Namespace Prefix</em>' attribute.
+	 * @see #setNamespacePrefix(String)
+	 * @see org.kermeta.language.structure.StructurePackage#getModelingUnit_NamespacePrefix()
+	 * @model dataType="org.kermeta.language.structure.String"
+	 * @generated
+	 */
+	String getNamespacePrefix();
+
+	/**
+	 * Sets the value of the '{@link org.kermeta.language.structure.ModelingUnit#getNamespacePrefix <em>Namespace Prefix</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Namespace Prefix</em>' attribute.
+	 * @see #getNamespacePrefix()
+	 * @generated
+	 */
+	void setNamespacePrefix(String value);
 
 } // ModelingUnit
