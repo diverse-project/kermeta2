@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.kermeta.language.emftexteditor.ui.contribution1"
+            nameFilter="*.kermeta"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               label="Kermeta"
+               path="additions"
+               id="org.kermeta.language.emftexteditor.ui.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Generate km"
+               class="org.kermeta.language.emftexteditor.ui.popup.actions.GenerateKm"
+               menubarPath="org.eclipse.ui.articles.action.contribution.navigator.subMenu/kermetagroup1"
+               enablesFor="1"
+               id="org.kermeta.language.emftexteditor.ui.newAction">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.kermeta.language.emftexteditor.ui.contribution1"
+            nameFilter="*.km"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="org.kermeta.language.emftexteditor.ui.menu1"
+               label="Kermeta"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="org.kermeta.language.emftexteditor.ui.popup.actions.GenerateKmt"
+               enablesFor="1"
+               id="org.kermeta.language.emftexteditor.ui.newAction"
+               label="Generate kmt"
+               menubarPath="org.eclipse.ui.articles.action.contribution.navigator.subMenu/kermetagroup1">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
