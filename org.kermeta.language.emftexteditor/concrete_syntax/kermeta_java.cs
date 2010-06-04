@@ -72,20 +72,22 @@ RULES{
    	"require" uri[STRING_LITERAL] !0;
    
    	structure.Package ::=  
-   	("package" name[] |
-   	//"package" (uri[](#0"::"uri[])*#0"::") name[])
-   	"package" uri[] #0"::"#0 name[]) 
    	(
-	   (!0ownedTypeDefinition)+!0 
-	   |
-	   "{" 
-	   		(!1nestedPackage)*!0
-	   "}" 
-	   |
-	   "{"
-	   		(!1ownedTypeDefinition)+!0
-	   "}"
-   	)? !0;
+	   	("package" name[] | "package" uri[] #0"::"#0 name[])
+	   	//"package" (uri[](#0"::"uri[])*#0"::") name[])
+	   	(
+		   (!0ownedTypeDefinition)+!0 
+		   |
+		   "{" 
+		   		(!1nestedPackage)*!0
+		   "}" 
+		   |
+		   "{"
+		   		(!1ownedTypeDefinition)+!0
+		   "}"
+	   	)? !0
+   	) | ((!0ownedTypeDefinition)+!0 )
+   	;
    
    	
    	structure.ClassDefinition ::=  

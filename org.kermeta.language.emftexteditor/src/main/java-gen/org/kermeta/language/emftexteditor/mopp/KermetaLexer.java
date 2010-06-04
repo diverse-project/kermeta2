@@ -2014,12 +2014,12 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24934:11: ( '//' (~ ( '\\n' | '\\r' ) )* )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24935:2: '//' (~ ( '\\n' | '\\r' ) )*
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25268:11: ( '//' (~ ( '\\n' | '\\r' ) )* )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25269:2: '//' (~ ( '\\n' | '\\r' ) )*
             {
             match("//"); 
 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24935:6: (~ ( '\\n' | '\\r' ) )*
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25269:6: (~ ( '\\n' | '\\r' ) )*
             loop1:
             do {
                 int alt1=2;
@@ -2032,7 +2032,7 @@ public class KermetaLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24935:7: ~ ( '\\n' | '\\r' )
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25269:7: ~ ( '\\n' | '\\r' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2069,12 +2069,12 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24938:11: ( '/*' ( . )* '*/' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24939:2: '/*' ( . )* '*/'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25272:11: ( '/*' ( . )* '*/' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25273:2: '/*' ( . )* '*/'
             {
             match("/*"); 
 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24939:6: ( . )*
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25273:6: ( . )*
             loop2:
             do {
                 int alt2=2;
@@ -2099,7 +2099,7 @@ public class KermetaLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24939:6: .
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25273:6: .
             	    {
             	    matchAny(); 
 
@@ -2130,7 +2130,7 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24941:8: ( ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25275:8: ( ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -2148,9 +2148,9 @@ public class KermetaLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24942:2: ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )*
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25276:2: ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )*
                     {
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24942:2: ( '-' )?
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25276:2: ( '-' )?
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -2159,7 +2159,7 @@ public class KermetaLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24942:3: '-'
+                            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25276:3: '-'
                             {
                             match('-'); 
 
@@ -2168,14 +2168,14 @@ public class KermetaLexer extends Lexer {
 
                     }
 
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24942:8: ( '1' .. '9' )
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24942:9: '1' .. '9'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25276:8: ( '1' .. '9' )
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25276:9: '1' .. '9'
                     {
                     matchRange('1','9'); 
 
                     }
 
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24942:18: ( '0' .. '9' )*
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25276:18: ( '0' .. '9' )*
                     loop4:
                     do {
                         int alt4=2;
@@ -2188,7 +2188,7 @@ public class KermetaLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24942:19: '0' .. '9'
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25276:19: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -2204,7 +2204,7 @@ public class KermetaLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24942:30: '0'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25276:30: '0'
                     {
                     match('0'); 
 
@@ -2225,10 +2225,10 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24943:6: ( ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+ )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:2: ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25277:6: ( ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+ )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:2: ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+
             {
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:2: ( '-' )?
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:2: ( '-' )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -2237,7 +2237,7 @@ public class KermetaLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:3: '-'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:3: '-'
                     {
                     match('-'); 
 
@@ -2246,7 +2246,7 @@ public class KermetaLexer extends Lexer {
 
             }
 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:8: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:8: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -2264,16 +2264,16 @@ public class KermetaLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:9: ( '1' .. '9' ) ( '0' .. '9' )*
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:9: ( '1' .. '9' ) ( '0' .. '9' )*
                     {
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:9: ( '1' .. '9' )
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:10: '1' .. '9'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:9: ( '1' .. '9' )
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:10: '1' .. '9'
                     {
                     matchRange('1','9'); 
 
                     }
 
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:20: ( '0' .. '9' )*
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:20: ( '0' .. '9' )*
                     loop7:
                     do {
                         int alt7=2;
@@ -2286,7 +2286,7 @@ public class KermetaLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:21: '0' .. '9'
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:21: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -2302,7 +2302,7 @@ public class KermetaLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:34: '0'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:34: '0'
                     {
                     match('0'); 
 
@@ -2312,7 +2312,7 @@ public class KermetaLexer extends Lexer {
             }
 
             match('.'); 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:43: ( '0' .. '9' )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:43: ( '0' .. '9' )+
             int cnt9=0;
             loop9:
             do {
@@ -2326,7 +2326,7 @@ public class KermetaLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24944:44: '0' .. '9'
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25278:44: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -2359,7 +2359,7 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = BOOLEAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24946:8: ( 'true' | 'false' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25280:8: ( 'true' | 'false' )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -2377,7 +2377,7 @@ public class KermetaLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24947:2: 'true'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25281:2: 'true'
                     {
                     match("true"); 
 
@@ -2385,7 +2385,7 @@ public class KermetaLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24947:9: 'false'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25281:9: 'false'
                     {
                     match("false"); 
 
@@ -2407,7 +2407,7 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24948:15: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' ) | ( 'kermeta' ) )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25282:15: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' ) | ( 'kermeta' ) )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -2425,13 +2425,13 @@ public class KermetaLexer extends Lexer {
             }
             switch (alt12) {
                 case 1 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:2: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' )
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:2: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' )
                     {
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:2: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' )
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:3: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:2: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' )
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:3: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"'
                     {
                     match('\"'); 
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:6: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )*
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:6: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )*
                     loop11:
                     do {
                         int alt11=5;
@@ -2479,7 +2479,7 @@ public class KermetaLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:7: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:7: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -2495,10 +2495,10 @@ public class KermetaLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:48: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:48: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
                     	    {
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:48: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:49: '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:48: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:49: '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
                     	    {
                     	    match('\\'); 
                     	    match('u'); 
@@ -2545,11 +2545,11 @@ public class KermetaLexer extends Lexer {
                     	    }
                     	    break;
                     	case 3 :
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:170: '\\\\' ( '0' .. '7' )
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:170: '\\\\' ( '0' .. '7' )
                     	    {
                     	    match('\\'); 
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:174: ( '0' .. '7' )
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:175: '0' .. '7'
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:174: ( '0' .. '7' )
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:175: '0' .. '7'
                     	    {
                     	    matchRange('0','7'); 
 
@@ -2559,7 +2559,7 @@ public class KermetaLexer extends Lexer {
                     	    }
                     	    break;
                     	case 4 :
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:185: ~ ( '\\\\' | '\"' )
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:185: ~ ( '\\\\' | '\"' )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2587,10 +2587,10 @@ public class KermetaLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:203: ( 'kermeta' )
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:203: ( 'kermeta' )
                     {
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:203: ( 'kermeta' )
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24949:204: 'kermeta'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:203: ( 'kermeta' )
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25283:204: 'kermeta'
                     {
                     match("kermeta"); 
 
@@ -2615,10 +2615,10 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24951:7: ( ( '0' .. '9' | 'a' .. 'z' ( ( '_' | '-' ) ( 'a' .. 'z' ) )* | 'A' .. 'Z' ( ( '_' | '-' ) ( 'A' .. 'Z' ) )* | 'A' .. 'Z' ( '_' | '-' )? ( 'a' .. 'z' ) | 'a' .. 'z' ( '_' | '-' )? ( 'A' .. 'Z' ) )+ )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:2: ( '0' .. '9' | 'a' .. 'z' ( ( '_' | '-' ) ( 'a' .. 'z' ) )* | 'A' .. 'Z' ( ( '_' | '-' ) ( 'A' .. 'Z' ) )* | 'A' .. 'Z' ( '_' | '-' )? ( 'a' .. 'z' ) | 'a' .. 'z' ( '_' | '-' )? ( 'A' .. 'Z' ) )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25285:7: ( ( '0' .. '9' | 'a' .. 'z' ( ( '_' | '-' ) ( 'a' .. 'z' ) )* | 'A' .. 'Z' ( ( '_' | '-' ) ( 'A' .. 'Z' ) )* | 'A' .. 'Z' ( '_' | '-' )? ( 'a' .. 'z' ) | 'a' .. 'z' ( '_' | '-' )? ( 'A' .. 'Z' ) )+ )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:2: ( '0' .. '9' | 'a' .. 'z' ( ( '_' | '-' ) ( 'a' .. 'z' ) )* | 'A' .. 'Z' ( ( '_' | '-' ) ( 'A' .. 'Z' ) )* | 'A' .. 'Z' ( '_' | '-' )? ( 'a' .. 'z' ) | 'a' .. 'z' ( '_' | '-' )? ( 'A' .. 'Z' ) )+
             {
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:2: ( '0' .. '9' | 'a' .. 'z' ( ( '_' | '-' ) ( 'a' .. 'z' ) )* | 'A' .. 'Z' ( ( '_' | '-' ) ( 'A' .. 'Z' ) )* | 'A' .. 'Z' ( '_' | '-' )? ( 'a' .. 'z' ) | 'a' .. 'z' ( '_' | '-' )? ( 'A' .. 'Z' ) )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:2: ( '0' .. '9' | 'a' .. 'z' ( ( '_' | '-' ) ( 'a' .. 'z' ) )* | 'A' .. 'Z' ( ( '_' | '-' ) ( 'A' .. 'Z' ) )* | 'A' .. 'Z' ( '_' | '-' )? ( 'a' .. 'z' ) | 'a' .. 'z' ( '_' | '-' )? ( 'A' .. 'Z' ) )+
             int cnt17=0;
             loop17:
             do {
@@ -2626,17 +2626,17 @@ public class KermetaLexer extends Lexer {
                 alt17 = dfa17.predict(input);
                 switch (alt17) {
             	case 1 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:3: '0' .. '9'
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:3: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
             	    }
             	    break;
             	case 2 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:12: 'a' .. 'z' ( ( '_' | '-' ) ( 'a' .. 'z' ) )*
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:12: 'a' .. 'z' ( ( '_' | '-' ) ( 'a' .. 'z' ) )*
             	    {
             	    matchRange('a','z'); 
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:20: ( ( '_' | '-' ) ( 'a' .. 'z' ) )*
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:20: ( ( '_' | '-' ) ( 'a' .. 'z' ) )*
             	    loop13:
             	    do {
             	        int alt13=2;
@@ -2649,7 +2649,7 @@ public class KermetaLexer extends Lexer {
 
             	        switch (alt13) {
             	    	case 1 :
-            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:21: ( '_' | '-' ) ( 'a' .. 'z' )
+            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:21: ( '_' | '-' ) ( 'a' .. 'z' )
             	    	    {
             	    	    if ( input.LA(1)=='-'||input.LA(1)=='_' ) {
             	    	        input.consume();
@@ -2660,8 +2660,8 @@ public class KermetaLexer extends Lexer {
             	    	        recover(mse);
             	    	        throw mse;}
 
-            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:30: ( 'a' .. 'z' )
-            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:31: 'a' .. 'z'
+            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:30: ( 'a' .. 'z' )
+            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:31: 'a' .. 'z'
             	    	    {
             	    	    matchRange('a','z'); 
 
@@ -2680,10 +2680,10 @@ public class KermetaLexer extends Lexer {
             	    }
             	    break;
             	case 3 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:43: 'A' .. 'Z' ( ( '_' | '-' ) ( 'A' .. 'Z' ) )*
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:43: 'A' .. 'Z' ( ( '_' | '-' ) ( 'A' .. 'Z' ) )*
             	    {
             	    matchRange('A','Z'); 
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:51: ( ( '_' | '-' ) ( 'A' .. 'Z' ) )*
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:51: ( ( '_' | '-' ) ( 'A' .. 'Z' ) )*
             	    loop14:
             	    do {
             	        int alt14=2;
@@ -2696,7 +2696,7 @@ public class KermetaLexer extends Lexer {
 
             	        switch (alt14) {
             	    	case 1 :
-            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:52: ( '_' | '-' ) ( 'A' .. 'Z' )
+            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:52: ( '_' | '-' ) ( 'A' .. 'Z' )
             	    	    {
             	    	    if ( input.LA(1)=='-'||input.LA(1)=='_' ) {
             	    	        input.consume();
@@ -2707,8 +2707,8 @@ public class KermetaLexer extends Lexer {
             	    	        recover(mse);
             	    	        throw mse;}
 
-            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:61: ( 'A' .. 'Z' )
-            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:62: 'A' .. 'Z'
+            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:61: ( 'A' .. 'Z' )
+            	    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:62: 'A' .. 'Z'
             	    	    {
             	    	    matchRange('A','Z'); 
 
@@ -2727,10 +2727,10 @@ public class KermetaLexer extends Lexer {
             	    }
             	    break;
             	case 4 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:75: 'A' .. 'Z' ( '_' | '-' )? ( 'a' .. 'z' )
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:75: 'A' .. 'Z' ( '_' | '-' )? ( 'a' .. 'z' )
             	    {
             	    matchRange('A','Z'); 
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:84: ( '_' | '-' )?
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:84: ( '_' | '-' )?
             	    int alt15=2;
             	    int LA15_0 = input.LA(1);
 
@@ -2756,8 +2756,8 @@ public class KermetaLexer extends Lexer {
 
             	    }
 
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:95: ( 'a' .. 'z' )
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:96: 'a' .. 'z'
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:95: ( 'a' .. 'z' )
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:96: 'a' .. 'z'
             	    {
             	    matchRange('a','z'); 
 
@@ -2767,10 +2767,10 @@ public class KermetaLexer extends Lexer {
             	    }
             	    break;
             	case 5 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:107: 'a' .. 'z' ( '_' | '-' )? ( 'A' .. 'Z' )
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:107: 'a' .. 'z' ( '_' | '-' )? ( 'A' .. 'Z' )
             	    {
             	    matchRange('a','z'); 
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:116: ( '_' | '-' )?
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:116: ( '_' | '-' )?
             	    int alt16=2;
             	    int LA16_0 = input.LA(1);
 
@@ -2796,8 +2796,8 @@ public class KermetaLexer extends Lexer {
 
             	    }
 
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:127: ( 'A' .. 'Z' )
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24952:128: 'A' .. 'Z'
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:127: ( 'A' .. 'Z' )
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25286:128: 'A' .. 'Z'
             	    {
             	    matchRange('A','Z'); 
 
@@ -2832,10 +2832,10 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = QUALIFIEDNAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24953:14: ( ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ ( '::' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ )+ )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24954:2: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ ( '::' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25287:14: ( ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ ( '::' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ )+ )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25288:2: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ ( '::' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ )+
             {
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24954:2: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25288:2: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+
             int cnt18=0;
             loop18:
             do {
@@ -2873,7 +2873,7 @@ public class KermetaLexer extends Lexer {
                 cnt18++;
             } while (true);
 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24954:32: ( '::' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25288:32: ( '::' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ )+
             int cnt20=0;
             loop20:
             do {
@@ -2887,11 +2887,11 @@ public class KermetaLexer extends Lexer {
 
                 switch (alt20) {
             	case 1 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24954:33: '::' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25288:33: '::' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+
             	    {
             	    match("::"); 
 
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24954:38: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25288:38: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+
             	    int cnt19=0;
             	    loop19:
             	    do {
@@ -2958,8 +2958,8 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = CASTED;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24955:7: ( '?' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24956:2: '?'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25289:7: ( '?' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25290:2: '?'
             {
             match('?'); 
 
@@ -2978,10 +2978,10 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24957:5: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24958:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25291:5: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25292:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
             {
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24958:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25292:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
             int cnt21=0;
             loop21:
             do {
@@ -3036,8 +3036,8 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24960:11: ( ( ' ' | '\\t' | '\\f' ) )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24961:2: ( ' ' | '\\t' | '\\f' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25294:11: ( ( ' ' | '\\t' | '\\f' ) )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25295:2: ( ' ' | '\\t' | '\\f' )
             {
             if ( input.LA(1)=='\t'||input.LA(1)=='\f'||input.LA(1)==' ' ) {
                 input.consume();
@@ -3065,10 +3065,10 @@ public class KermetaLexer extends Lexer {
         try {
             int _type = LINEBREAK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24964:10: ( ( '\\r\\n' | '\\r' | '\\n' ) )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24965:2: ( '\\r\\n' | '\\r' | '\\n' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25298:10: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25299:2: ( '\\r\\n' | '\\r' | '\\n' )
             {
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24965:2: ( '\\r\\n' | '\\r' | '\\n' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25299:2: ( '\\r\\n' | '\\r' | '\\n' )
             int alt22=3;
             int LA22_0 = input.LA(1);
 
@@ -3092,7 +3092,7 @@ public class KermetaLexer extends Lexer {
             }
             switch (alt22) {
                 case 1 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24965:3: '\\r\\n'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25299:3: '\\r\\n'
                     {
                     match("\r\n"); 
 
@@ -3100,14 +3100,14 @@ public class KermetaLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24965:12: '\\r'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25299:12: '\\r'
                     {
                     match('\r'); 
 
                     }
                     break;
                 case 3 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:24965:19: '\\n'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:25299:19: '\\n'
                     {
                     match('\n'); 
 
@@ -3912,7 +3912,7 @@ public class KermetaLexer extends Lexer {
             this.transition = DFA17_transition;
         }
         public String getDescription() {
-            return "()+ loopback of 24952:2: ( '0' .. '9' | 'a' .. 'z' ( ( '_' | '-' ) ( 'a' .. 'z' ) )* | 'A' .. 'Z' ( ( '_' | '-' ) ( 'A' .. 'Z' ) )* | 'A' .. 'Z' ( '_' | '-' )? ( 'a' .. 'z' ) | 'a' .. 'z' ( '_' | '-' )? ( 'A' .. 'Z' ) )+";
+            return "()+ loopback of 25286:2: ( '0' .. '9' | 'a' .. 'z' ( ( '_' | '-' ) ( 'a' .. 'z' ) )* | 'A' .. 'Z' ( ( '_' | '-' ) ( 'A' .. 'Z' ) )* | 'A' .. 'Z' ( '_' | '-' )? ( 'a' .. 'z' ) | 'a' .. 'z' ( '_' | '-' )? ( 'A' .. 'Z' ) )+";
         }
     }
     static final String DFA23_eotS =
