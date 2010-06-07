@@ -24,6 +24,13 @@
   		</resource>
   	</resources>
   	<sourceDirectory>target/filtered-sources/java</sourceDirectory>
+  	<testResources>
+  		<testResource>
+  			<directory>src/test/resource</directory>
+  		</testResource>
+  	</testResources>
+  	<testSourceDirectory>src/test/java</testSourceDirectory>
+  	<testOutputDirectory>target/test-classes</testOutputDirectory>
   	<plugins>
   		<plugin>
   			<artifactId>maven-compiler-plugin</artifactId>
