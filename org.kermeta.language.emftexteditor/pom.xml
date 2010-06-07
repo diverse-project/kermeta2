@@ -4,7 +4,26 @@
   <artifactId>org.kermeta.language.emftexteditor-NoUI</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>Kermeta  - Kermeta Language EMFTexteditor V2 - no UI</name>
-  <build>
+  <build> 
+  	<resources>
+  		<resource>
+  			<directory>src/main/java</directory>
+  		</resource>
+  		<resource>
+  			<directory>src/main/java-noSwt</directory>
+  		</resource>
+  		<resource>
+  			<targetPath>../filtered-sources/java</targetPath>
+  			<filtering>true</filtering>
+  			<directory>src/main/java-gen</directory>
+  			<excludes>
+  				<exclude>**/org/kermeta/language/emftexteditor/ui/*.java</exclude>
+  				<exclude>**/org/kermeta/language/emftexteditor/mopp/KermetaPlugin.java</exclude>
+  				<exclude>**/org/kermeta/language/emftexteditor/mopp/KermetaMetaInformation.java</exclude>
+  			</excludes>
+  		</resource>
+  	</resources>
+  	<sourceDirectory>target/filtered-sources/java</sourceDirectory>
   	<plugins>
   		<plugin>
   			<artifactId>maven-compiler-plugin</artifactId>
@@ -27,44 +46,6 @@
 				</configuration>
 			</plugin>
   	</plugins>
-  	<resources>
-  		<resource>
-  			<directory>src/main/java</directory>
-  		</resource>
-  		<resource>
-  			<directory>src/main/java-noSwt</directory>
-  		</resource>
-  		<resource>
-  			<targetPath>../filtered-sources/java</targetPath>
-  			<filtering>true</filtering>
-  			<directory>src/main/java-gen</directory>
-  			<excludes>
-  				<exclude>**/org/kermeta/language/emftexteditor/ui/*.java</exclude>
-  				<exclude>**/org/kermeta/language/emftexteditor/mopp/KermetaPlugin.java</exclude>
-  				<exclude>**/org/kermeta/language/emftexteditor/mopp/KermetaMetaInformation.java</exclude>
-  			</excludes>
-  		</resource>
-  	</resources>
-  	<sourceDirectory>target/filtered-sources/java</sourceDirectory>
-  	<testSourceDirectory>src/test/java</testSourceDirectory>
-  	<testResources>
-  		<testResource>
-  			<directory>src/test/resources</directory>
-  		</testResource>
-  		<testResource>
-  			<directory>src/main/java-noSwt</directory>
-  		</testResource>
-  		<testResource>
-  			<targetPath>../filtered-sources/java</targetPath>
-  			<filtering>true</filtering>
-  			<directory>src/main/java-gen</directory>
-  			<excludes>
-  				<exclude>**/org/kermeta/language/emftexteditor/ui/*.java</exclude>
-  				<exclude>**/org/kermeta/language/emftexteditor/mopp/KermetaPlugin.java</exclude>
-  				<exclude>**/org/kermeta/language/emftexteditor/mopp/KermetaMetaInformation.java</exclude>
-  			</excludes>
-  		</testResource>
-  	</testResources>
   </build>
   <dependencies>
   	<dependency>
