@@ -14,8 +14,11 @@ import fr.irisa.triskell.kermeta.language.structure.ModelingUnit;
 public interface PortKermetaCore {
 
     /*TODO CREATE KERMETA PROJECT*/
-    public ModelingUnit load(String kermetaProject);
+    public void load(String kermetaProject);
 
+    public void reload(String uri);
+
+    public ModelingUnit getLastFullMergedModel();
 
     //TODO CREATE ACCESSOR TO KermetaProject
     

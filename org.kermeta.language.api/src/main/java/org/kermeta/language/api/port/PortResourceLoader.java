@@ -11,9 +11,10 @@ import fr.irisa.triskell.kermeta.language.structure.ModelingUnit;
  *
  * @author ffouquet
  */
-public interface PortKermetaLoader {
+public interface PortResourceLoader {
     
     public enum URIType {NSURI, FILE};
+    //MODELING UNIT NON TYPE RESOLVED
     public ModelingUnit load(String uri, URIType type);
 
 }

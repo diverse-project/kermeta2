@@ -5,12 +5,43 @@
 
 package org.kermeta.language.api;
 
+import org.kermeta.traceability.Reference;
+
 /**
  *
  * @author ffouquet
  */
-public interface KermetaError {
-    public String getMessage();
-    public fr.irisa.triskell.kermeta.language.structure.NamedElement getModelElement();
-    public KermetaResource getResources();
+public class KermetaError {
+
+    public enum Level {ERROR,WARNING};
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Reference getReference() {
+        return reference;
+    }
+
+    public void setReference(Reference reference) {
+        this.reference = reference;
+    }
+    private Reference reference;
+
+
+    private Level level;
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
 }

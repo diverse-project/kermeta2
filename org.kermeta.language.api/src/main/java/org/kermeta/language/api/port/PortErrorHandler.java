@@ -9,9 +9,9 @@ package org.kermeta.language.api.port;
  *
  * @author ffouquet
  */
-public interface PortKermetaError {
+public interface PortErrorHandler {
 
-    //TODO
-
+    //TODO ADD ONLY
+    public void process(org.kermeta.traceability.Trace trace);
 
 }
