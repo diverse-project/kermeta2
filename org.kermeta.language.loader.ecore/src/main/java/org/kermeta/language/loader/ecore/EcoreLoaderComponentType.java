@@ -8,7 +8,7 @@ import org.kermeta.language.api.port.PortErrorHandler;
 import org.kermeta.language.api.port.PortResourceLoader;
 
 @Provides({
-    @ProvidedPort(name="loader",className=PortResourceLoader.class),
+    @ProvidedPort(name="loader",className=PortResourceLoader.class)
 })
 @Requires({
     @RequiredPort(name="errorp",className=PortErrorHandler.class)
@@ -17,7 +17,17 @@ import org.kermeta.language.api.port.PortResourceLoader;
 public class EcoreLoaderComponentType extends AbstractComponentType implements PortResourceLoader
 {
 
-    @Override
+    @Start
+    public void init() {
+
+    }
+
+    @Stop
+    public void stop() {
+        
+    }
+
+    //@Override
     @Port(name="loader",method="load")
     public ModelingUnit load(String uri, URIType type) {
 
