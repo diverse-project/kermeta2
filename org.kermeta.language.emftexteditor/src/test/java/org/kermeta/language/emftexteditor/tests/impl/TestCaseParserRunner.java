@@ -33,6 +33,7 @@ public class TestCaseParserRunner extends TestCaseRunnerSetup {
 					+ "/src/test/java/org/kermeta/language/emftexteditor/tests/TestCaseParserRunnerGen.java";*/
 			String path = basePATH + "../../src/test/java/org/kermeta/language/emftexteditor/tests/gen/TestCaseParserRunnerGen.java";
 			//System.out.println(path);
+			System.out.println("File testCaseParserRunner path => " + path );
 			OutputStream out = new FileOutputStream(path);
 			PrintWriter writer = new PrintWriter(out);
 			String cmd = "package org.kermeta.language.emftexteditor.tests.gen;"

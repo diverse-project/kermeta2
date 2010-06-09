@@ -8,6 +8,7 @@ public class FileUtility {
 	
 	public static void compareFiles(String file1,String file2) throws Exception {
 		//System.out.println("compare =>\n"+file1+"\n"+file2+"\n");
+		System.out.println("File utility path => " + file1 );
 		FileInputStream fileOutput = new FileInputStream(file1);
 		InputStreamReader fileOutputReader = new InputStreamReader(fileOutput, "UTF-8");
 		BufferedReader fileOutputBufferedReader =  new BufferedReader(fileOutputReader);
