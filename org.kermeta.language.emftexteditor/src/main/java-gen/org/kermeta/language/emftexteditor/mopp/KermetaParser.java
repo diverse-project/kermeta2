@@ -1228,7 +1228,6 @@ public class KermetaParser extends KermetaANTLRParserBase {
     		TERMINAL_28.addFollower(TERMINAL_31);
     		TERMINAL_28.addFollower(TERMINAL_2);
     		TERMINAL_28.addFollower(TERMINAL_32);
-    		TERMINAL_30.addFollower(TERMINAL_2);
     		TERMINAL_30.addFollower(TERMINAL_3);
     		TERMINAL_30.addFollower(TERMINAL_4);
     		TERMINAL_30.addFollower(TERMINAL_5);
@@ -1239,29 +1238,6 @@ public class KermetaParser extends KermetaANTLRParserBase {
     		TERMINAL_30.addFollower(TERMINAL_10);
     		TERMINAL_30.addFollower(TERMINAL_11);
     		TERMINAL_30.addFollower(TERMINAL_12);
-    		TERMINAL_30.addFollower(TERMINAL_32);
-    		TERMINAL_32.addFollower(TERMINAL_2);
-    		TERMINAL_32.addFollower(TERMINAL_3);
-    		TERMINAL_32.addFollower(TERMINAL_4);
-    		TERMINAL_32.addFollower(TERMINAL_5);
-    		TERMINAL_32.addFollower(TERMINAL_6);
-    		TERMINAL_32.addFollower(TERMINAL_7);
-    		TERMINAL_32.addFollower(TERMINAL_8);
-    		TERMINAL_32.addFollower(TERMINAL_9);
-    		TERMINAL_32.addFollower(TERMINAL_10);
-    		TERMINAL_32.addFollower(TERMINAL_11);
-    		TERMINAL_32.addFollower(TERMINAL_12);
-    		TERMINAL_32.addFollower(TERMINAL_32);
-    		TERMINAL_31.addFollower(TERMINAL_3);
-    		TERMINAL_31.addFollower(TERMINAL_4);
-    		TERMINAL_31.addFollower(TERMINAL_5);
-    		TERMINAL_31.addFollower(TERMINAL_6);
-    		TERMINAL_31.addFollower(TERMINAL_7);
-    		TERMINAL_31.addFollower(TERMINAL_8);
-    		TERMINAL_31.addFollower(TERMINAL_9);
-    		TERMINAL_31.addFollower(TERMINAL_10);
-    		TERMINAL_31.addFollower(TERMINAL_11);
-    		TERMINAL_31.addFollower(TERMINAL_12);
     		TERMINAL_33.addFollower(TERMINAL_2);
     		TERMINAL_33.addFollower(TERMINAL_3);
     		TERMINAL_33.addFollower(TERMINAL_4);
@@ -1274,6 +1250,30 @@ public class KermetaParser extends KermetaANTLRParserBase {
     		TERMINAL_33.addFollower(TERMINAL_11);
     		TERMINAL_33.addFollower(TERMINAL_12);
     		TERMINAL_33.addFollower(TERMINAL_32);
+    		TERMINAL_31.addFollower(TERMINAL_2);
+    		TERMINAL_31.addFollower(TERMINAL_3);
+    		TERMINAL_31.addFollower(TERMINAL_4);
+    		TERMINAL_31.addFollower(TERMINAL_5);
+    		TERMINAL_31.addFollower(TERMINAL_6);
+    		TERMINAL_31.addFollower(TERMINAL_7);
+    		TERMINAL_31.addFollower(TERMINAL_8);
+    		TERMINAL_31.addFollower(TERMINAL_9);
+    		TERMINAL_31.addFollower(TERMINAL_10);
+    		TERMINAL_31.addFollower(TERMINAL_11);
+    		TERMINAL_31.addFollower(TERMINAL_12);
+    		TERMINAL_31.addFollower(TERMINAL_32);
+    		TERMINAL_32.addFollower(TERMINAL_2);
+    		TERMINAL_32.addFollower(TERMINAL_3);
+    		TERMINAL_32.addFollower(TERMINAL_4);
+    		TERMINAL_32.addFollower(TERMINAL_5);
+    		TERMINAL_32.addFollower(TERMINAL_6);
+    		TERMINAL_32.addFollower(TERMINAL_7);
+    		TERMINAL_32.addFollower(TERMINAL_8);
+    		TERMINAL_32.addFollower(TERMINAL_9);
+    		TERMINAL_32.addFollower(TERMINAL_10);
+    		TERMINAL_32.addFollower(TERMINAL_11);
+    		TERMINAL_32.addFollower(TERMINAL_12);
+    		TERMINAL_32.addFollower(TERMINAL_32);
     		TERMINAL_3.addFollower(TERMINAL_4);
     		TERMINAL_3.addFollower(TERMINAL_5);
     		TERMINAL_4.addFollower(TERMINAL_5);
@@ -6177,7 +6177,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
 
     // $ANTLR start "parse_org_kermeta_language_structure_Package"
-    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5679:1: parse_org_kermeta_language_structure_Package returns [org.kermeta.language.structure.Package element = null] : ( (a0= 'package' ( ( (a1= STRING ) a2= '.' ) )* (a3= STRING ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' ) )? ) | ( ( ( (a11_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ ) );
+    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5679:1: parse_org_kermeta_language_structure_Package returns [org.kermeta.language.structure.Package element = null] : ( (a0= 'package' ( ( (a1= STRING ) a2= '.' ) )* (a3= STRING ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )? ) | ( ( ( (a11_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ ) );
     public final org.kermeta.language.structure.Package parse_org_kermeta_language_structure_Package() throws RecognitionException {
         org.kermeta.language.structure.Package element =  null;
         int parse_org_kermeta_language_structure_Package_StartIndex = input.index();
@@ -6191,9 +6191,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
         Token a10=null;
         org.kermeta.language.structure.TypeDefinition a4_0 = null;
 
-        org.kermeta.language.structure.Package a6_0 = null;
+        org.kermeta.language.structure.TypeDefinition a6_0 = null;
 
-        org.kermeta.language.structure.TypeDefinition a9_0 = null;
+        org.kermeta.language.structure.Package a9_0 = null;
 
         org.kermeta.language.structure.TypeDefinition a11_0 = null;
 
@@ -6202,7 +6202,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return element; }
-            // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5682:1: ( (a0= 'package' ( ( (a1= STRING ) a2= '.' ) )* (a3= STRING ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' ) )? ) | ( ( ( (a11_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ ) )
+            // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5682:1: ( (a0= 'package' ( ( (a1= STRING ) a2= '.' ) )* (a3= STRING ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )? ) | ( ( ( (a11_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ ) )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -6221,10 +6221,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
             }
             switch (alt13) {
                 case 1 :
-                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5683:2: (a0= 'package' ( ( (a1= STRING ) a2= '.' ) )* (a3= STRING ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' ) )? )
+                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5683:2: (a0= 'package' ( ( (a1= STRING ) a2= '.' ) )* (a3= STRING ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )? )
                     {
-                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5683:2: (a0= 'package' ( ( (a1= STRING ) a2= '.' ) )* (a3= STRING ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' ) )? )
-                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5684:3: a0= 'package' ( ( (a1= STRING ) a2= '.' ) )* (a3= STRING ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' ) )?
+                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5683:2: (a0= 'package' ( ( (a1= STRING ) a2= '.' ) )* (a3= STRING ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )? )
+                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5684:3: a0= 'package' ( ( (a1= STRING ) a2= '.' ) )* (a3= STRING ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )?
                     {
                     a0=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_Package547); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
@@ -6400,14 +6400,14 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       			addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 17));
                       		
                     }
-                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5803:3: ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' ) )?
+                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5803:3: ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )?
                     int alt11=2;
                     alt11 = dfa11.predict(input);
                     switch (alt11) {
                         case 1 :
-                            // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' )
+                            // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' )
                             {
-                            // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' )
+                            // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' )
                             int alt10=3;
                             alt10 = dfa10.predict(input);
                             switch (alt10) {
@@ -6510,7 +6510,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     }
                                     break;
                                 case 2 :
-                                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5859:10: a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}'
+                                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5859:10: a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}'
                                     {
                                     a5=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_Package810); if (state.failed) return element;
                                     if ( state.backtracking==0 ) {
@@ -6525,7 +6525,6 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     if ( state.backtracking==0 ) {
 
                                       					// expected elements (follow set)
-                                      					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 20));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 20));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 20));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 20));
@@ -6536,32 +6535,32 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 20));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 20));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 20));
-                                      					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 20));
                                       				
                                     }
-                                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5882:5: ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )*
+                                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5880:5: ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+
+                                    int cnt8=0;
                                     loop8:
                                     do {
                                         int alt8=2;
                                         int LA8_0 = input.LA(1);
 
-                                        if ( (LA8_0==STRING||LA8_0==18||(LA8_0>=22 && LA8_0<=24)||LA8_0==35||LA8_0==41||(LA8_0>=52 && LA8_0<=53)) ) {
+                                        if ( (LA8_0==STRING||(LA8_0>=22 && LA8_0<=24)||LA8_0==35||LA8_0==41||(LA8_0>=52 && LA8_0<=53)) ) {
                                             alt8=1;
                                         }
 
 
                                         switch (alt8) {
                                     	case 1 :
-                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5883:6: ( (a6_0= parse_org_kermeta_language_structure_Package ) )
+                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5881:6: ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) )
                                     	    {
-                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5883:6: ( (a6_0= parse_org_kermeta_language_structure_Package ) )
-                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5884:7: (a6_0= parse_org_kermeta_language_structure_Package )
+                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5881:6: ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) )
+                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5882:7: (a6_0= parse_org_kermeta_language_structure_TypeDefinition )
                                     	    {
-                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5884:7: (a6_0= parse_org_kermeta_language_structure_Package )
-                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5885:8: a6_0= parse_org_kermeta_language_structure_Package
+                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5882:7: (a6_0= parse_org_kermeta_language_structure_TypeDefinition )
+                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5883:8: a6_0= parse_org_kermeta_language_structure_TypeDefinition
                                     	    {
-                                    	    pushFollow(FOLLOW_parse_org_kermeta_language_structure_Package_in_parse_org_kermeta_language_structure_Package857);
-                                    	    a6_0=parse_org_kermeta_language_structure_Package();
+                                    	    pushFollow(FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package857);
+                                    	    a6_0=parse_org_kermeta_language_structure_TypeDefinition();
 
                                     	    state._fsp--;
                                     	    if (state.failed) return element;
@@ -6575,7 +6574,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     	      								}
                                     	      								if (a6_0 != null) {
                                     	      									if (a6_0 != null) {
-                                    	      										addObjectToList(element, org.kermeta.language.structure.StructurePackage.PACKAGE__NESTED_PACKAGE, a6_0);
+                                    	      										addObjectToList(element, org.kermeta.language.structure.StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION, a6_0);
                                     	      										completedElement(a6_0);
                                     	      									}
                                     	      									collectHiddenTokens(element);
@@ -6588,7 +6587,6 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     	    if ( state.backtracking==0 ) {
 
                                     	      							// expected elements (follow set)
-                                    	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 21));
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 21));
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 21));
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 21));
@@ -6599,7 +6597,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 21));
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 21));
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 21));
-                                    	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 21));
+                                    	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_33, 21));
                                     	      						
                                     	    }
 
@@ -6610,14 +6608,18 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     	    break;
 
                                     	default :
-                                    	    break loop8;
+                                    	    if ( cnt8 >= 1 ) break loop8;
+                                    	    if (state.backtracking>0) {state.failed=true; return element;}
+                                                EarlyExitException eee =
+                                                    new EarlyExitException(8, input);
+                                                throw eee;
                                         }
+                                        cnt8++;
                                     } while (true);
 
                                     if ( state.backtracking==0 ) {
 
                                       					// expected elements (follow set)
-                                      					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 22));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 22));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 22));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 22));
@@ -6628,7 +6630,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 22));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 22));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 22));
-                                      					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 22));
+                                      					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_33, 22));
                                       				
                                     }
                                     a7=(Token)match(input,21,FOLLOW_21_in_parse_org_kermeta_language_structure_Package928); if (state.failed) return element;
@@ -6662,7 +6664,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     }
                                     break;
                                 case 3 :
-                                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5959:10: a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}'
+                                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5955:10: a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}'
                                     {
                                     a8=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_Package961); if (state.failed) return element;
                                     if ( state.backtracking==0 ) {
@@ -6677,6 +6679,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     if ( state.backtracking==0 ) {
 
                                       					// expected elements (follow set)
+                                      					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 24));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 24));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 24));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 24));
@@ -6687,32 +6690,32 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 24));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 24));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 24));
+                                      					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 24));
                                       				
                                     }
-                                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5980:5: ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+
-                                    int cnt9=0;
+                                    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5978:5: ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )*
                                     loop9:
                                     do {
                                         int alt9=2;
                                         int LA9_0 = input.LA(1);
 
-                                        if ( (LA9_0==STRING||(LA9_0>=22 && LA9_0<=24)||LA9_0==35||LA9_0==41||(LA9_0>=52 && LA9_0<=53)) ) {
+                                        if ( (LA9_0==STRING||LA9_0==18||(LA9_0>=22 && LA9_0<=24)||LA9_0==35||LA9_0==41||(LA9_0>=52 && LA9_0<=53)) ) {
                                             alt9=1;
                                         }
 
 
                                         switch (alt9) {
                                     	case 1 :
-                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5981:6: ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) )
+                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5979:6: ( (a9_0= parse_org_kermeta_language_structure_Package ) )
                                     	    {
-                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5981:6: ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) )
-                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5982:7: (a9_0= parse_org_kermeta_language_structure_TypeDefinition )
+                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5979:6: ( (a9_0= parse_org_kermeta_language_structure_Package ) )
+                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5980:7: (a9_0= parse_org_kermeta_language_structure_Package )
                                     	    {
-                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5982:7: (a9_0= parse_org_kermeta_language_structure_TypeDefinition )
-                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5983:8: a9_0= parse_org_kermeta_language_structure_TypeDefinition
+                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5980:7: (a9_0= parse_org_kermeta_language_structure_Package )
+                                    	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5981:8: a9_0= parse_org_kermeta_language_structure_Package
                                     	    {
-                                    	    pushFollow(FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package1008);
-                                    	    a9_0=parse_org_kermeta_language_structure_TypeDefinition();
+                                    	    pushFollow(FOLLOW_parse_org_kermeta_language_structure_Package_in_parse_org_kermeta_language_structure_Package1008);
+                                    	    a9_0=parse_org_kermeta_language_structure_Package();
 
                                     	    state._fsp--;
                                     	    if (state.failed) return element;
@@ -6726,7 +6729,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     	      								}
                                     	      								if (a9_0 != null) {
                                     	      									if (a9_0 != null) {
-                                    	      										addObjectToList(element, org.kermeta.language.structure.StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION, a9_0);
+                                    	      										addObjectToList(element, org.kermeta.language.structure.StructurePackage.PACKAGE__NESTED_PACKAGE, a9_0);
                                     	      										completedElement(a9_0);
                                     	      									}
                                     	      									collectHiddenTokens(element);
@@ -6739,6 +6742,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     	    if ( state.backtracking==0 ) {
 
                                     	      							// expected elements (follow set)
+                                    	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 25));
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 25));
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 25));
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 25));
@@ -6749,7 +6753,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 25));
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 25));
                                     	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 25));
-                                    	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_33, 25));
+                                    	      							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 25));
                                     	      						
                                     	    }
 
@@ -6760,18 +6764,14 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                     	    break;
 
                                     	default :
-                                    	    if ( cnt9 >= 1 ) break loop9;
-                                    	    if (state.backtracking>0) {state.failed=true; return element;}
-                                                EarlyExitException eee =
-                                                    new EarlyExitException(9, input);
-                                                throw eee;
+                                    	    break loop9;
                                         }
-                                        cnt9++;
                                     } while (true);
 
                                     if ( state.backtracking==0 ) {
 
                                       					// expected elements (follow set)
+                                      					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 26));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 26));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 26));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 26));
@@ -6782,7 +6782,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 26));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 26));
                                       					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 26));
-                                      					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_33, 26));
+                                      					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 26));
                                       				
                                     }
                                     a10=(Token)match(input,21,FOLLOW_21_in_parse_org_kermeta_language_structure_Package1079); if (state.failed) return element;
@@ -37323,36 +37323,37 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public final void synpred15_Kermeta_fragment() throws RecognitionException {   
         Token a5=null;
         Token a7=null;
-        org.kermeta.language.structure.Package a6_0 = null;
+        org.kermeta.language.structure.TypeDefinition a6_0 = null;
 
 
-        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5859:10: (a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' )
-        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5859:10: a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}'
+        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5859:10: (a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' )
+        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5859:10: a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}'
         {
         a5=(Token)match(input,20,FOLLOW_20_in_synpred15_Kermeta810); if (state.failed) return ;
-        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5882:5: ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )*
+        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5880:5: ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+
+        int cnt129=0;
         loop129:
         do {
             int alt129=2;
             int LA129_0 = input.LA(1);
 
-            if ( (LA129_0==STRING||LA129_0==18||(LA129_0>=22 && LA129_0<=24)||LA129_0==35||LA129_0==41||(LA129_0>=52 && LA129_0<=53)) ) {
+            if ( (LA129_0==STRING||(LA129_0>=22 && LA129_0<=24)||LA129_0==35||LA129_0==41||(LA129_0>=52 && LA129_0<=53)) ) {
                 alt129=1;
             }
 
 
             switch (alt129) {
         	case 1 :
-        	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5883:6: ( (a6_0= parse_org_kermeta_language_structure_Package ) )
+        	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5881:6: ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) )
         	    {
-        	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5883:6: ( (a6_0= parse_org_kermeta_language_structure_Package ) )
-        	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5884:7: (a6_0= parse_org_kermeta_language_structure_Package )
+        	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5881:6: ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) )
+        	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5882:7: (a6_0= parse_org_kermeta_language_structure_TypeDefinition )
         	    {
-        	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5884:7: (a6_0= parse_org_kermeta_language_structure_Package )
-        	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5885:8: a6_0= parse_org_kermeta_language_structure_Package
+        	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5882:7: (a6_0= parse_org_kermeta_language_structure_TypeDefinition )
+        	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5883:8: a6_0= parse_org_kermeta_language_structure_TypeDefinition
         	    {
-        	    pushFollow(FOLLOW_parse_org_kermeta_language_structure_Package_in_synpred15_Kermeta857);
-        	    a6_0=parse_org_kermeta_language_structure_Package();
+        	    pushFollow(FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred15_Kermeta857);
+        	    a6_0=parse_org_kermeta_language_structure_TypeDefinition();
 
         	    state._fsp--;
         	    if (state.failed) return ;
@@ -37367,8 +37368,13 @@ public class KermetaParser extends KermetaANTLRParserBase {
         	    break;
 
         	default :
-        	    break loop129;
+        	    if ( cnt129 >= 1 ) break loop129;
+        	    if (state.backtracking>0) {state.failed=true; return ;}
+                    EarlyExitException eee =
+                        new EarlyExitException(129, input);
+                    throw eee;
             }
+            cnt129++;
         } while (true);
 
         a7=(Token)match(input,21,FOLLOW_21_in_synpred15_Kermeta928); if (state.failed) return ;
@@ -37385,15 +37391,15 @@ public class KermetaParser extends KermetaANTLRParserBase {
         Token a10=null;
         org.kermeta.language.structure.TypeDefinition a4_0 = null;
 
-        org.kermeta.language.structure.Package a6_0 = null;
+        org.kermeta.language.structure.TypeDefinition a6_0 = null;
 
-        org.kermeta.language.structure.TypeDefinition a9_0 = null;
+        org.kermeta.language.structure.Package a9_0 = null;
 
 
-        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5804:4: ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' ) )
-        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' )
+        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5804:4: ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )
+        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' )
         {
-        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' )
+        // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' )
         int alt133=3;
         alt133 = dfa133.predict(input);
         switch (alt133) {
@@ -37451,32 +37457,33 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 }
                 break;
             case 2 :
-                // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5859:10: a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}'
+                // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5859:10: a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}'
                 {
                 a5=(Token)match(input,20,FOLLOW_20_in_synpred17_Kermeta810); if (state.failed) return ;
-                // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5882:5: ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )*
+                // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5880:5: ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+
+                int cnt131=0;
                 loop131:
                 do {
                     int alt131=2;
                     int LA131_0 = input.LA(1);
 
-                    if ( (LA131_0==STRING||LA131_0==18||(LA131_0>=22 && LA131_0<=24)||LA131_0==35||LA131_0==41||(LA131_0>=52 && LA131_0<=53)) ) {
+                    if ( (LA131_0==STRING||(LA131_0>=22 && LA131_0<=24)||LA131_0==35||LA131_0==41||(LA131_0>=52 && LA131_0<=53)) ) {
                         alt131=1;
                     }
 
 
                     switch (alt131) {
                 	case 1 :
-                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5883:6: ( (a6_0= parse_org_kermeta_language_structure_Package ) )
+                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5881:6: ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) )
                 	    {
-                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5883:6: ( (a6_0= parse_org_kermeta_language_structure_Package ) )
-                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5884:7: (a6_0= parse_org_kermeta_language_structure_Package )
+                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5881:6: ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) )
+                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5882:7: (a6_0= parse_org_kermeta_language_structure_TypeDefinition )
                 	    {
-                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5884:7: (a6_0= parse_org_kermeta_language_structure_Package )
-                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5885:8: a6_0= parse_org_kermeta_language_structure_Package
+                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5882:7: (a6_0= parse_org_kermeta_language_structure_TypeDefinition )
+                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5883:8: a6_0= parse_org_kermeta_language_structure_TypeDefinition
                 	    {
-                	    pushFollow(FOLLOW_parse_org_kermeta_language_structure_Package_in_synpred17_Kermeta857);
-                	    a6_0=parse_org_kermeta_language_structure_Package();
+                	    pushFollow(FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred17_Kermeta857);
+                	    a6_0=parse_org_kermeta_language_structure_TypeDefinition();
 
                 	    state._fsp--;
                 	    if (state.failed) return ;
@@ -37491,8 +37498,13 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 	    break;
 
                 	default :
-                	    break loop131;
+                	    if ( cnt131 >= 1 ) break loop131;
+                	    if (state.backtracking>0) {state.failed=true; return ;}
+                            EarlyExitException eee =
+                                new EarlyExitException(131, input);
+                            throw eee;
                     }
+                    cnt131++;
                 } while (true);
 
                 a7=(Token)match(input,21,FOLLOW_21_in_synpred17_Kermeta928); if (state.failed) return ;
@@ -37500,33 +37512,32 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 }
                 break;
             case 3 :
-                // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5959:10: a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}'
+                // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5955:10: a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}'
                 {
                 a8=(Token)match(input,20,FOLLOW_20_in_synpred17_Kermeta961); if (state.failed) return ;
-                // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5980:5: ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+
-                int cnt132=0;
+                // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5978:5: ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )*
                 loop132:
                 do {
                     int alt132=2;
                     int LA132_0 = input.LA(1);
 
-                    if ( (LA132_0==STRING||(LA132_0>=22 && LA132_0<=24)||LA132_0==35||LA132_0==41||(LA132_0>=52 && LA132_0<=53)) ) {
+                    if ( (LA132_0==STRING||LA132_0==18||(LA132_0>=22 && LA132_0<=24)||LA132_0==35||LA132_0==41||(LA132_0>=52 && LA132_0<=53)) ) {
                         alt132=1;
                     }
 
 
                     switch (alt132) {
                 	case 1 :
-                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5981:6: ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) )
+                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5979:6: ( (a9_0= parse_org_kermeta_language_structure_Package ) )
                 	    {
-                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5981:6: ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) )
-                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5982:7: (a9_0= parse_org_kermeta_language_structure_TypeDefinition )
+                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5979:6: ( (a9_0= parse_org_kermeta_language_structure_Package ) )
+                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5980:7: (a9_0= parse_org_kermeta_language_structure_Package )
                 	    {
-                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5982:7: (a9_0= parse_org_kermeta_language_structure_TypeDefinition )
-                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5983:8: a9_0= parse_org_kermeta_language_structure_TypeDefinition
+                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5980:7: (a9_0= parse_org_kermeta_language_structure_Package )
+                	    // /Users/Surfin/Documents/Work/Irisa/dev/64/EEMFtext/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5981:8: a9_0= parse_org_kermeta_language_structure_Package
                 	    {
-                	    pushFollow(FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred17_Kermeta1008);
-                	    a9_0=parse_org_kermeta_language_structure_TypeDefinition();
+                	    pushFollow(FOLLOW_parse_org_kermeta_language_structure_Package_in_synpred17_Kermeta1008);
+                	    a9_0=parse_org_kermeta_language_structure_Package();
 
                 	    state._fsp--;
                 	    if (state.failed) return ;
@@ -37541,13 +37552,8 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 	    break;
 
                 	default :
-                	    if ( cnt132 >= 1 ) break loop132;
-                	    if (state.backtracking>0) {state.failed=true; return ;}
-                            EarlyExitException eee =
-                                new EarlyExitException(132, input);
-                            throw eee;
+                	    break loop132;
                     }
-                    cnt132++;
                 } while (true);
 
                 a10=(Token)match(input,21,FOLLOW_21_in_synpred17_Kermeta1079); if (state.failed) return ;
@@ -42199,7 +42205,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             this.transition = DFA11_transition;
         }
         public String getDescription() {
-            return "5803:3: ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' ) )?";
+            return "5803:3: ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -42391,7 +42397,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             this.transition = DFA10_transition;
         }
         public String getDescription() {
-            return "5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' )";
+            return "5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' )";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -42624,7 +42630,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA12_acceptS =
         "\1\uffff\1\2\10\uffff\1\1";
     static final String DFA12_specialS =
-        "\2\uffff\1\6\1\5\1\0\1\2\1\1\1\4\1\3\1\7\1\uffff}>";
+        "\2\uffff\1\2\1\5\1\1\1\6\1\3\1\7\1\4\1\0\1\uffff}>";
     static final String[] DFA12_transitionS = {
             "\1\2\14\uffff\1\1\2\uffff\1\1\1\4\1\5\1\6\12\uffff\1\7\5\uffff"+
             "\1\10\12\uffff\1\3\1\11",
@@ -42677,6 +42683,21 @@ public class KermetaParser extends KermetaANTLRParserBase {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA12_9 = input.LA(1);
+
+                         
+                        int index12_9 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred19_Kermeta()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index12_9);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
                         int LA12_4 = input.LA(1);
 
                          
@@ -42691,7 +42712,22 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         input.seek(index12_4);
                         if ( s>=0 ) return s;
                         break;
-                    case 1 : 
+                    case 2 : 
+                        int LA12_2 = input.LA(1);
+
+                         
+                        int index12_2 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred19_Kermeta()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index12_2);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
                         int LA12_6 = input.LA(1);
 
                          
@@ -42706,22 +42742,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         input.seek(index12_6);
                         if ( s>=0 ) return s;
                         break;
-                    case 2 : 
-                        int LA12_5 = input.LA(1);
-
-                         
-                        int index12_5 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred19_Kermeta()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index12_5);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
+                    case 4 : 
                         int LA12_8 = input.LA(1);
 
                          
@@ -42734,21 +42755,6 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
                          
                         input.seek(index12_8);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
-                        int LA12_7 = input.LA(1);
-
-                         
-                        int index12_7 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred19_Kermeta()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index12_7);
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
@@ -42767,10 +42773,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         if ( s>=0 ) return s;
                         break;
                     case 6 : 
-                        int LA12_2 = input.LA(1);
+                        int LA12_5 = input.LA(1);
 
                          
-                        int index12_2 = input.index();
+                        int index12_5 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred19_Kermeta()) ) {s = 10;}
@@ -42778,14 +42784,14 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         else if ( (true) ) {s = 1;}
 
                          
-                        input.seek(index12_2);
+                        input.seek(index12_5);
                         if ( s>=0 ) return s;
                         break;
                     case 7 : 
-                        int LA12_9 = input.LA(1);
+                        int LA12_7 = input.LA(1);
 
                          
-                        int index12_9 = input.index();
+                        int index12_7 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred19_Kermeta()) ) {s = 10;}
@@ -42793,7 +42799,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         else if ( (true) ) {s = 1;}
 
                          
-                        input.seek(index12_9);
+                        input.seek(index12_7);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -43988,7 +43994,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA87_acceptS =
         "\1\uffff\1\1\6\uffff\1\3\1\5\1\7\1\11\1\6\1\4\1\2\1\12\1\10";
     static final String DFA87_specialS =
-        "\2\uffff\1\0\1\2\1\4\1\5\1\1\1\3\11\uffff}>";
+        "\2\uffff\1\0\1\2\1\1\1\3\1\4\1\5\11\uffff}>";
     static final String[] DFA87_transitionS = {
             "\1\3\1\6\1\7\1\2\27\uffff\1\1\62\uffff\1\4\1\10\2\uffff\1\5"+
             "\5\uffff\1\11\4\uffff\1\1\5\uffff\1\12",
@@ -44062,18 +44068,20 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA87_6 = input.LA(1);
+                        int LA87_4 = input.LA(1);
 
                          
-                        int index87_6 = input.index();
+                        int index87_4 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred212_Kermeta()) ) {s = 1;}
 
-                        else if ( (true) ) {s = 15;}
+                        else if ( (synpred215_Kermeta()) ) {s = 13;}
+
+                        else if ( (synpred217_Kermeta()) ) {s = 12;}
 
                          
-                        input.seek(index87_6);
+                        input.seek(index87_4);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
@@ -44092,38 +44100,6 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA87_7 = input.LA(1);
-
-                         
-                        int index87_7 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred212_Kermeta()) ) {s = 1;}
-
-                        else if ( (synpred219_Kermeta()) ) {s = 16;}
-
-                         
-                        input.seek(index87_7);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
-                        int LA87_4 = input.LA(1);
-
-                         
-                        int index87_4 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred212_Kermeta()) ) {s = 1;}
-
-                        else if ( (synpred215_Kermeta()) ) {s = 13;}
-
-                        else if ( (synpred217_Kermeta()) ) {s = 12;}
-
-                         
-                        input.seek(index87_4);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 5 : 
                         int LA87_5 = input.LA(1);
 
                          
@@ -44136,6 +44112,36 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
                          
                         input.seek(index87_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA87_6 = input.LA(1);
+
+                         
+                        int index87_6 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred212_Kermeta()) ) {s = 1;}
+
+                        else if ( (true) ) {s = 15;}
+
+                         
+                        input.seek(index87_6);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA87_7 = input.LA(1);
+
+                         
+                        int index87_7 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred212_Kermeta()) ) {s = 1;}
+
+                        else if ( (synpred219_Kermeta()) ) {s = 16;}
+
+                         
+                        input.seek(index87_7);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -44731,7 +44737,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             this.transition = DFA133_transition;
         }
         public String getDescription() {
-            return "5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_Package ) ) )* a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a10= '}' )";
+            return "5804:4: ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' )";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -44783,11 +44789,11 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Package621 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_STRING_in_parse_org_kermeta_language_structure_Package667 = new BitSet(new long[]{0x0030020801D40022L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package729 = new BitSet(new long[]{0x0030020801C40022L});
-    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_Package810 = new BitSet(new long[]{0x0030020801E40020L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Package_in_parse_org_kermeta_language_structure_Package857 = new BitSet(new long[]{0x0030020801E40020L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_Package810 = new BitSet(new long[]{0x0030020801C40020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package857 = new BitSet(new long[]{0x0030020801E40020L});
     public static final BitSet FOLLOW_21_in_parse_org_kermeta_language_structure_Package928 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_Package961 = new BitSet(new long[]{0x0030020801C40020L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package1008 = new BitSet(new long[]{0x0030020801E40020L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_Package961 = new BitSet(new long[]{0x0030020801E40020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Package_in_parse_org_kermeta_language_structure_Package1008 = new BitSet(new long[]{0x0030020801E40020L});
     public static final BitSet FOLLOW_21_in_parse_org_kermeta_language_structure_Package1079 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package1153 = new BitSet(new long[]{0x0030020801C40022L});
     public static final BitSet FOLLOW_22_in_parse_org_kermeta_language_structure_ClassDefinition1235 = new BitSet(new long[]{0x0000000001800000L});
@@ -45488,15 +45494,15 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Parameter_in_synpred5_Kermeta138 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_MultiplicityElement_in_synpred6_Kermeta152 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred12_Kermeta729 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_synpred15_Kermeta810 = new BitSet(new long[]{0x0030020801E40020L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Package_in_synpred15_Kermeta857 = new BitSet(new long[]{0x0030020801E40020L});
+    public static final BitSet FOLLOW_20_in_synpred15_Kermeta810 = new BitSet(new long[]{0x0030020801C40020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred15_Kermeta857 = new BitSet(new long[]{0x0030020801E40020L});
     public static final BitSet FOLLOW_21_in_synpred15_Kermeta928 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred17_Kermeta729 = new BitSet(new long[]{0x0030020801C40022L});
-    public static final BitSet FOLLOW_20_in_synpred17_Kermeta810 = new BitSet(new long[]{0x0030020801E40020L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Package_in_synpred17_Kermeta857 = new BitSet(new long[]{0x0030020801E40020L});
+    public static final BitSet FOLLOW_20_in_synpred17_Kermeta810 = new BitSet(new long[]{0x0030020801C40020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred17_Kermeta857 = new BitSet(new long[]{0x0030020801E40020L});
     public static final BitSet FOLLOW_21_in_synpred17_Kermeta928 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_synpred17_Kermeta961 = new BitSet(new long[]{0x0030020801C40020L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred17_Kermeta1008 = new BitSet(new long[]{0x0030020801E40020L});
+    public static final BitSet FOLLOW_20_in_synpred17_Kermeta961 = new BitSet(new long[]{0x0030020801E40020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Package_in_synpred17_Kermeta1008 = new BitSet(new long[]{0x0030020801E40020L});
     public static final BitSet FOLLOW_21_in_synpred17_Kermeta1079 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred19_Kermeta1153 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Constraint_in_synpred24_Kermeta1574 = new BitSet(new long[]{0x0000000000000002L});

@@ -1121,7 +1121,6 @@ options {
 		TERMINAL_28.addFollower(TERMINAL_31);
 		TERMINAL_28.addFollower(TERMINAL_2);
 		TERMINAL_28.addFollower(TERMINAL_32);
-		TERMINAL_30.addFollower(TERMINAL_2);
 		TERMINAL_30.addFollower(TERMINAL_3);
 		TERMINAL_30.addFollower(TERMINAL_4);
 		TERMINAL_30.addFollower(TERMINAL_5);
@@ -1132,29 +1131,6 @@ options {
 		TERMINAL_30.addFollower(TERMINAL_10);
 		TERMINAL_30.addFollower(TERMINAL_11);
 		TERMINAL_30.addFollower(TERMINAL_12);
-		TERMINAL_30.addFollower(TERMINAL_32);
-		TERMINAL_32.addFollower(TERMINAL_2);
-		TERMINAL_32.addFollower(TERMINAL_3);
-		TERMINAL_32.addFollower(TERMINAL_4);
-		TERMINAL_32.addFollower(TERMINAL_5);
-		TERMINAL_32.addFollower(TERMINAL_6);
-		TERMINAL_32.addFollower(TERMINAL_7);
-		TERMINAL_32.addFollower(TERMINAL_8);
-		TERMINAL_32.addFollower(TERMINAL_9);
-		TERMINAL_32.addFollower(TERMINAL_10);
-		TERMINAL_32.addFollower(TERMINAL_11);
-		TERMINAL_32.addFollower(TERMINAL_12);
-		TERMINAL_32.addFollower(TERMINAL_32);
-		TERMINAL_31.addFollower(TERMINAL_3);
-		TERMINAL_31.addFollower(TERMINAL_4);
-		TERMINAL_31.addFollower(TERMINAL_5);
-		TERMINAL_31.addFollower(TERMINAL_6);
-		TERMINAL_31.addFollower(TERMINAL_7);
-		TERMINAL_31.addFollower(TERMINAL_8);
-		TERMINAL_31.addFollower(TERMINAL_9);
-		TERMINAL_31.addFollower(TERMINAL_10);
-		TERMINAL_31.addFollower(TERMINAL_11);
-		TERMINAL_31.addFollower(TERMINAL_12);
 		TERMINAL_33.addFollower(TERMINAL_2);
 		TERMINAL_33.addFollower(TERMINAL_3);
 		TERMINAL_33.addFollower(TERMINAL_4);
@@ -1167,6 +1143,30 @@ options {
 		TERMINAL_33.addFollower(TERMINAL_11);
 		TERMINAL_33.addFollower(TERMINAL_12);
 		TERMINAL_33.addFollower(TERMINAL_32);
+		TERMINAL_31.addFollower(TERMINAL_2);
+		TERMINAL_31.addFollower(TERMINAL_3);
+		TERMINAL_31.addFollower(TERMINAL_4);
+		TERMINAL_31.addFollower(TERMINAL_5);
+		TERMINAL_31.addFollower(TERMINAL_6);
+		TERMINAL_31.addFollower(TERMINAL_7);
+		TERMINAL_31.addFollower(TERMINAL_8);
+		TERMINAL_31.addFollower(TERMINAL_9);
+		TERMINAL_31.addFollower(TERMINAL_10);
+		TERMINAL_31.addFollower(TERMINAL_11);
+		TERMINAL_31.addFollower(TERMINAL_12);
+		TERMINAL_31.addFollower(TERMINAL_32);
+		TERMINAL_32.addFollower(TERMINAL_2);
+		TERMINAL_32.addFollower(TERMINAL_3);
+		TERMINAL_32.addFollower(TERMINAL_4);
+		TERMINAL_32.addFollower(TERMINAL_5);
+		TERMINAL_32.addFollower(TERMINAL_6);
+		TERMINAL_32.addFollower(TERMINAL_7);
+		TERMINAL_32.addFollower(TERMINAL_8);
+		TERMINAL_32.addFollower(TERMINAL_9);
+		TERMINAL_32.addFollower(TERMINAL_10);
+		TERMINAL_32.addFollower(TERMINAL_11);
+		TERMINAL_32.addFollower(TERMINAL_12);
+		TERMINAL_32.addFollower(TERMINAL_32);
 		TERMINAL_3.addFollower(TERMINAL_4);
 		TERMINAL_3.addFollower(TERMINAL_5);
 		TERMINAL_4.addFollower(TERMINAL_5);
@@ -5865,7 +5865,6 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 				}
 				{
 					// expected elements (follow set)
-					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 20));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 20));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 20));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 20));
@@ -5876,13 +5875,12 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 20));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 20));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 20));
-					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 20));
 				}
 				
 				(
 					(
 						(
-							a6_0 = parse_org_kermeta_language_structure_Package							{
+							a6_0 = parse_org_kermeta_language_structure_TypeDefinition							{
 								if (terminateParsing) {
 									throw new org.kermeta.language.emftexteditor.mopp.KermetaTerminateParsingException();
 								}
@@ -5891,7 +5889,7 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 								}
 								if (a6_0 != null) {
 									if (a6_0 != null) {
-										addObjectToList(element, org.kermeta.language.structure.StructurePackage.PACKAGE__NESTED_PACKAGE, a6_0);
+										addObjectToList(element, org.kermeta.language.structure.StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION, a6_0);
 										completedElement(a6_0);
 									}
 									collectHiddenTokens(element);
@@ -5900,7 +5898,6 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 						)
 						{
 							// expected elements (follow set)
-							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 21));
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 21));
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 21));
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 21));
@@ -5911,14 +5908,13 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 21));
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 21));
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 21));
-							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 21));
+							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_33, 21));
 						}
 						
 					)
 					
-				)*				{
+				)+				{
 					// expected elements (follow set)
-					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 22));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 22));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 22));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 22));
@@ -5929,7 +5925,7 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 22));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 22));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 22));
-					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 22));
+					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_33, 22));
 				}
 				
 				a7 = '}' {
@@ -5965,6 +5961,7 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 				}
 				{
 					// expected elements (follow set)
+					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 24));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 24));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 24));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 24));
@@ -5975,12 +5972,13 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 24));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 24));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 24));
+					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 24));
 				}
 				
 				(
 					(
 						(
-							a9_0 = parse_org_kermeta_language_structure_TypeDefinition							{
+							a9_0 = parse_org_kermeta_language_structure_Package							{
 								if (terminateParsing) {
 									throw new org.kermeta.language.emftexteditor.mopp.KermetaTerminateParsingException();
 								}
@@ -5989,7 +5987,7 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 								}
 								if (a9_0 != null) {
 									if (a9_0 != null) {
-										addObjectToList(element, org.kermeta.language.structure.StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION, a9_0);
+										addObjectToList(element, org.kermeta.language.structure.StructurePackage.PACKAGE__NESTED_PACKAGE, a9_0);
 										completedElement(a9_0);
 									}
 									collectHiddenTokens(element);
@@ -5998,6 +5996,7 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 						)
 						{
 							// expected elements (follow set)
+							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 25));
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 25));
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 25));
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 25));
@@ -6008,13 +6007,14 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 25));
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 25));
 							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 25));
-							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_33, 25));
+							addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 25));
 						}
 						
 					)
 					
-				)+				{
+				)*				{
 					// expected elements (follow set)
+					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_2, 26));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_3, 26));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_4, 26));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 26));
@@ -6025,7 +6025,7 @@ parse_org_kermeta_language_structure_Package returns [org.kermeta.language.struc
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_10, 26));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 26));
 					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_12, 26));
-					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_33, 26));
+					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 26));
 				}
 				
 				a10 = '}' {

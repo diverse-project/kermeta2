@@ -80,11 +80,11 @@ RULES{
 		   (!0ownedTypeDefinition)+!0 
 		   |
 		   "{" 
-		   		(!1nestedPackage)*!0
+		   		(!1ownedTypeDefinition)+!0
 		   "}" 
 		   |
 		   "{"
-		   		(!1ownedTypeDefinition)+!0
+		   		(!1nestedPackage)*!0
 		   "}"
 	   	)? !0
    	) | ((!0ownedTypeDefinition)+!0 )

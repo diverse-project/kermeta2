@@ -625,12 +625,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		alt=0;
 		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTypeDefinition"		));
 		int tempMatchCount;
-		tempMatchCount=		0;
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTypeDefinition"		));
 		if (tempMatchCount > matches) {
 			alt = 1;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTypeDefinition"		));
+		tempMatchCount=		0;
 		if (tempMatchCount > matches) {
 			alt = 2;
 			matches = tempMatchCount;
@@ -645,6 +645,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				out.print("{");
 				out.print(" ");
 				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				print_org_kermeta_language_structure_Package_0_1_1(element, localtab, out, printCountingMap);
 				iterate = true;
 				while (iterate) {
 					sWriter = new java.io.StringWriter();
@@ -678,7 +679,6 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				out.print("{");
 				out.print(" ");
 				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				print_org_kermeta_language_structure_Package_0_1_2(element, localtab, out, printCountingMap);
 				iterate = true;
 				while (iterate) {
 					sWriter = new java.io.StringWriter();
@@ -761,30 +761,6 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		out.println();
 		out.print(localtab);
 		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("nestedPackage");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTED_PACKAGE));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("nestedPackage", count - 1);
-		}
-	}
-	public void print_org_kermeta_language_structure_Package_0_1_2(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
-		localtab += "	";
-		out.println();
-		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
 		count = printCountingMap.get("ownedTypeDefinition");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION));
@@ -799,6 +775,30 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
 			printCountingMap.put("ownedTypeDefinition", count - 1);
+		}
+	}
+	public void print_org_kermeta_language_structure_Package_0_1_2(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		java.lang.String localtab = outertab;
+		int count;
+		//////////////DEFINITION PART BEGINS (LineBreak):
+		localtab += "	";
+		out.println();
+		out.print(localtab);
+		//////////////DEFINITION PART BEGINS (Containment):
+		count = printCountingMap.get("nestedPackage");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTED_PACKAGE));
+			java.util.List<?> list = (java.util.List<?>) o;
+			int index = list.size() - count;
+			if (index >= 0) {
+				o = list.get(index);
+			} else {
+				o = null;
+			}
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("nestedPackage", count - 1);
 		}
 	}
 	public void print_org_kermeta_language_structure_Package_1(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
