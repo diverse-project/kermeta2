@@ -1,22 +1,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.kermeta</groupId>
-	<artifactId>org.kermeta.language.model</artifactId>
+	<groupId>org.kermeta.language</groupId>
+	<artifactId>language.model</artifactId>
 	<version>2.0.0-SNAPSHOT</version>
-	<name>Kermeta - Kermeta model</name>
+	<name>Kermeta - Kermeta language model</name>
 	<build>
 		<resources>
 			<resource>
-				<targetPath>../../target/filtered-sources/java</targetPath>
+				<targetPath>${basedir}/target/filtered-sources</targetPath>
 				<directory>src/java</directory>
 			</resource>
 			<resource>
-				<targetPath>../../target/filtered-sources/java</targetPath>
+				<targetPath>${basedir}/target/filtered-sources</targetPath>
 				<directory>build/java</directory>
 			</resource>
+			<resource>
+            	<directory>.</directory>
+            	<targetPath>${basedir}/target/filtered-sources</targetPath>
+                <filtering>true</filtering>    
+                <includes>
+	        		<include>plugin.xml</include>
+	        		<include>plugin.properties</include>
+	        		<include>build/ecore/*</include>
+	      		</includes>
+            </resource>
 		</resources>
-		<sourceDirectory>target/filtered-sources/java</sourceDirectory>
+		<sourceDirectory>target/filtered-sources</sourceDirectory>
 		<outputDirectory>build/class</outputDirectory>
         <plugins>
 			<plugin>
@@ -27,7 +37,26 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			<plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.0.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>org.kermeta.*
+                        </Export-Package>
+                        <Import-Package>
+						org.eclipse.emf.*,
+						org.osgi.framework
+                        </Import-Package>
+                        <Bundle-ClassPath>.</Bundle-ClassPath>
+                        <Bundle-SymbolicName>org.kermeta.language.model;singleton:=true</Bundle-SymbolicName>
+                    </instructions>
+                </configuration>
+            </plugin>
 		</plugins>
+		
 	</build>
 	<dependencies>
 		<dependency>
