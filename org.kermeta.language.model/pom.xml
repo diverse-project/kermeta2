@@ -40,7 +40,6 @@
 			<plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.0.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -52,10 +51,18 @@
                         </Import-Package>
                         <Bundle-ClassPath>.</Bundle-ClassPath>
                         <Bundle-SymbolicName>org.kermeta.language.model;singleton:=true</Bundle-SymbolicName>
+                        <!-- <Include-Resource>{maven-resources}</Include-Resource> -->                        
+                        <Include-Resource>build/ecore</Include-Resource>
+                        
                     </instructions>
                 </configuration>
             </plugin>
-		</plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.1.0</version>
+			</plugin>
+        </plugins>
 		
 	</build>
 	<dependencies>
