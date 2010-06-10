@@ -62,7 +62,7 @@ RULES{
 
 //STRUCTURE
 	structure.ModelingUnit ::= 
-	"package" namespacePrefix[]
+	//"package" namespacePrefix[]
 	(requires)* (usings)* (packages)* ;		
       
    	structure.Using ::=  
@@ -73,7 +73,8 @@ RULES{
    
    	structure.Package ::=  
    	(
-	   	("package" name[] | "package" uri[] #0"::"#0 name[])
+   		"package" (nestingPackage[] #0  ".")* name[]
+	   	//("package" name[] | "package" uri[] #0"::"#0 name[])
 	   	//"package" (uri[](#0"::"uri[])*#0"::") name[])
 	   	(
 		   (!0ownedTypeDefinition)+!0 

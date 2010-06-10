@@ -8,6 +8,7 @@ package org.kermeta.language.emftexteditor.mopp;
 
 public class KermetaReferenceResolverSwitch implements org.kermeta.language.emftexteditor.IKermetaReferenceResolverSwitch {
 	
+	protected org.kermeta.language.emftexteditor.analysis.PackageNestingPackageReferenceResolver packageNestingPackageReferenceResolver = new org.kermeta.language.emftexteditor.analysis.PackageNestingPackageReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.ClassDefinitionSuperTypeReferenceResolver classDefinitionSuperTypeReferenceResolver = new org.kermeta.language.emftexteditor.analysis.ClassDefinitionSuperTypeReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.TypedElementTypeReferenceResolver typedElementTypeReferenceResolver = new org.kermeta.language.emftexteditor.analysis.TypedElementTypeReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.ParameterizedTypeTypeDefinitionReferenceResolver parameterizedTypeTypeDefinitionReferenceResolver = new org.kermeta.language.emftexteditor.analysis.ParameterizedTypeTypeDefinitionReferenceResolver();
@@ -29,6 +30,10 @@ public class KermetaReferenceResolverSwitch implements org.kermeta.language.emft
 	protected org.kermeta.language.emftexteditor.analysis.CallFeatureStaticEnumLiteralReferenceResolver callFeatureStaticEnumLiteralReferenceResolver = new org.kermeta.language.emftexteditor.analysis.CallFeatureStaticEnumLiteralReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.ExpressionStaticTypeReferenceResolver expressionStaticTypeReferenceResolver = new org.kermeta.language.emftexteditor.analysis.ExpressionStaticTypeReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.CallExpressionStaticTypeVariableBindingsReferenceResolver callExpressionStaticTypeVariableBindingsReferenceResolver = new org.kermeta.language.emftexteditor.analysis.CallExpressionStaticTypeVariableBindingsReferenceResolver();
+	
+	public org.kermeta.language.emftexteditor.analysis.PackageNestingPackageReferenceResolver getPackageNestingPackageReferenceResolver() {
+		return packageNestingPackageReferenceResolver;
+	}
 	
 	public org.kermeta.language.emftexteditor.analysis.ClassDefinitionSuperTypeReferenceResolver getClassDefinitionSuperTypeReferenceResolver() {
 		return classDefinitionSuperTypeReferenceResolver;
@@ -115,6 +120,7 @@ public class KermetaReferenceResolverSwitch implements org.kermeta.language.emft
 	}
 	
 	public void setOptions(java.util.Map<?, ?> options) {
+		packageNestingPackageReferenceResolver.setOptions(options);
 		classDefinitionSuperTypeReferenceResolver.setOptions(options);
 		typedElementTypeReferenceResolver.setOptions(options);
 		parameterizedTypeTypeDefinitionReferenceResolver.setOptions(options);
@@ -141,6 +147,14 @@ public class KermetaReferenceResolverSwitch implements org.kermeta.language.emft
 	public void resolveFuzzy(java.lang.String identifier, org.eclipse.emf.ecore.EObject container, org.eclipse.emf.ecore.EReference reference, int position, org.kermeta.language.emftexteditor.IKermetaReferenceResolveResult<org.eclipse.emf.ecore.EObject> result) {
 		if (container == null) {
 			return;
+		}
+		if (org.kermeta.language.structure.StructurePackage.eINSTANCE.getPackage().isInstance(container)) {
+			KermetaFuzzyResolveResult<org.kermeta.language.structure.Package> frr = new KermetaFuzzyResolveResult<org.kermeta.language.structure.Package>(result);
+			java.lang.String referenceName = reference.getName();
+			org.eclipse.emf.ecore.EStructuralFeature feature = container.eClass().getEStructuralFeature(referenceName);
+			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("nestingPackage")) {
+				packageNestingPackageReferenceResolver.resolve(identifier, (org.kermeta.language.structure.Package) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
+			}
 		}
 		if (org.kermeta.language.structure.StructurePackage.eINSTANCE.getClassDefinition().isInstance(container)) {
 			KermetaFuzzyResolveResult<org.kermeta.language.structure.Type> frr = new KermetaFuzzyResolveResult<org.kermeta.language.structure.Type>(result);
