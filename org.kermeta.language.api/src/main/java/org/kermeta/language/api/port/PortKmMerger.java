@@ -5,7 +5,7 @@
 
 package org.kermeta.language.api.port;
 
-import fr.irisa.triskell.kermeta.language.structure.ModelingUnit;
+import org.kermeta.language.structure.ModelingUnit;
 
 /**
  *

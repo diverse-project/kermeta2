@@ -5,8 +5,8 @@
 
 package org.kermeta.language.api.port;
 
-import fr.irisa.triskell.kermeta.language.structure.TypeDefinition;
 import java.util.Collection;
+import org.kermeta.language.structure.TypeDefinition;
 
 /**
  *

@@ -12,6 +12,6 @@ package org.kermeta.language.api.port;
 public interface PortErrorHandler {
 
     //TODO ADD ONLY
-    public void process(org.kermeta.traceability.Trace trace);
+    public void send(org.kermeta.language.api.KermetaError errorMsg);
 
 }
