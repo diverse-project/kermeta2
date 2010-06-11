@@ -4,6 +4,7 @@
 	<groupId>org.kermeta.language</groupId>
 	<artifactId>language.model</artifactId>
 	<version>2.0.0-SNAPSHOT</version>
+	<packaging>bundle</packaging>
 	<name>Kermeta - Kermeta language model</name>
 	<build>
 		<resources>
@@ -15,19 +16,9 @@
 				<targetPath>${basedir}/target/filtered-sources</targetPath>
 				<directory>build/java</directory>
 			</resource>
-			<resource>
-            	<directory>.</directory>
-            	<targetPath>${basedir}/target/filtered-sources</targetPath>
-                <filtering>true</filtering>    
-                <includes>
-	        		<include>plugin.xml</include>
-	        		<include>plugin.properties</include>
-	        		<include>build/ecore/*</include>
-	      		</includes>
-            </resource>
 		</resources>
 		<sourceDirectory>target/filtered-sources</sourceDirectory>
-		<outputDirectory>build/class</outputDirectory>
+		<outputDirectory>target/classes</outputDirectory>
         <plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -43,16 +34,22 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>org.kermeta.*
+                        <Export-Package>org.kermeta.*,
+                        fr.irisa.triskell.kermeta.*
                         </Export-Package>
                         <Import-Package>
 						org.eclipse.emf.*,
-						org.osgi.framework
+						org.osgi.framework,
+						org.eclipse.core.runtime,
+						org.slf4j
                         </Import-Package>
                         <Bundle-ClassPath>.</Bundle-ClassPath>
                         <Bundle-SymbolicName>org.kermeta.language.model;singleton:=true</Bundle-SymbolicName>
-                        <!-- <Include-Resource>{maven-resources}</Include-Resource> -->                        
-                        <Include-Resource>build/ecore</Include-Resource>
+                        <!-- additional resources in the bundle -->                        
+                        <Include-Resource>{maven-resources},
+                        	build/ecore=build/ecore,
+                        	plugin.xml,
+                        	plugin.properties</Include-Resource>
                         
                     </instructions>
                 </configuration>
