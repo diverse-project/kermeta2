@@ -76,9 +76,7 @@ public class EcoreVisitor {
 					
 					Class<?> c = Class.forName(cname, true, node.getClass().getClassLoader());
 					Method m =  getMethod( c );
-					if ( m == null )
-						throw new NoSuchMethodException("No method visit found for " + c.toString() );
-					
+										
 					Object[] params = new Object[1];
 					params[0] = node;
 					result = m.invoke(this, params);
