@@ -22,6 +22,12 @@ public class TagHelper {
 	
 	public final static String KERMETA_EXECUTABLE= "executable";
 	
+	/** 
+	 * This is a helper class containing static operations, cannot create instance of it
+	 */
+	private TagHelper(){		
+	}
+	
 	static public Tag create(String value) {
 		return create(KERMETA_DOCUMENTATION, value);
 	}

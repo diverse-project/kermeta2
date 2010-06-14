@@ -18,6 +18,12 @@ public class NamedElementHelper {
 
 	final static private String DEFAULT_SEPARATOR = "::";
 	
+	/** 
+	 * This is a helper class containing static operations, cannot create instance of it
+	 */
+	private NamedElementHelper(){		
+	}
+	
 	/**
 	 * 
 	 * @param element

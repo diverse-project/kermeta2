@@ -20,6 +20,12 @@ import org.kermeta.language.structure.StructureFactory;
 
 public class ModelingUnitHelper {
 
+	/** 
+	 * This is a helper class containing static operations, cannot create instance of it
+	 */
+	private ModelingUnitHelper(){		
+	}
+	
 	/**
 	 * recursively create a Package from a qualified name
 	 * If already exist, simply return the existing Package
