@@ -35,9 +35,10 @@ public class NamedElementHelper {
 	 */
 	static public String qualifiedName(NamedElement element, String separator) {
 		if (element == null) return "";
-		if (element.eContainer() != null && element.eContainer() instanceof NamedElement)
+		if (element.eContainer() != null && element.eContainer() instanceof NamedElement){
 			return qualifiedName( (NamedElement)element.eContainer() ) + "::" + element.getName();
-		else return element.getName();	
+		}
+		else { return element.getName();}
 	}
 	
 }

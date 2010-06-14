@@ -47,9 +47,9 @@ public class ModelingUnitHelper {
 				p.setName( currentName );
 				
 				modelingUnit.getPackages().add( p );
-				if ( currentPackage != null )
+				if ( currentPackage != null ){
 					currentPackage.getNestedPackage().add( p );
-				
+				}
 			} 
 			currentPackage = p;
 			

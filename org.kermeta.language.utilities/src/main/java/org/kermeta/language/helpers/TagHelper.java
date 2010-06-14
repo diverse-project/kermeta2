@@ -36,9 +36,11 @@ public class TagHelper {
 	}
 	
 	static public Tag getTag(Object o, String tagName) {
-		for ( Tag t : o.getOwnedTags() )
-			if ( t.getName() != null && t.getName().equals(tagName) )
+		for ( Tag t : o.getOwnedTags() ){
+			if ( t.getName() != null && t.getName().equals(tagName) ){
 				return t;
+			}
+		}
 		return null;
 	}
 	
