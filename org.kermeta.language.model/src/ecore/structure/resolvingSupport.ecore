@@ -46,7 +46,7 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Operation">
+    <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="#//structure/AbstractOperation">
       <eStructuralFeatures xsi:type="ecore:EReference" name="ownedUnresolvedOperations"
           upperBound="-1" eType="#//structure/UnresolvedOperation" containment="true"/>
     </eClassifiers>

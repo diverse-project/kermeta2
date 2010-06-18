@@ -1,7 +1,7 @@
 //$Id:$
 /*
  * This code has been generated to visit a kermeta model
- * Creation date: Fri Jun 18 15:37:26 CEST 2010
+ * Creation date: Fri Jun 18 16:12:24 CEST 2010
  * Template Created on feb. 2005
  * By Franck FLEUREY (ffleurey@irisa.fr)
  * IRISA / INRIA / University of rennes 1
@@ -177,211 +177,211 @@ public class KermetaOptimizedVisitor {
 		// accept the node
 		return cmd.accept(node, this);
 	}
-		public Object visitAssignment(org.kermeta.language.behavior.Assignment node) {
+		public Object visitAssignment(org.kermeta.language.language.behavior.Assignment node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitBlock(org.kermeta.language.behavior.Block node) {
+	public Object visitBlock(org.kermeta.language.language.behavior.Block node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitCallVariable(org.kermeta.language.behavior.CallVariable node) {
+	public Object visitCallVariable(org.kermeta.language.language.behavior.CallVariable node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitCallFeature(org.kermeta.language.behavior.CallFeature node) {
+	public Object visitCallFeature(org.kermeta.language.language.behavior.CallFeature node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitCallSuperOperation(org.kermeta.language.behavior.CallSuperOperation node) {
+	public Object visitCallSuperOperation(org.kermeta.language.language.behavior.CallSuperOperation node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitCallResult(org.kermeta.language.behavior.CallResult node) {
+	public Object visitCallResult(org.kermeta.language.language.behavior.CallResult node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitCallValue(org.kermeta.language.behavior.CallValue node) {
+	public Object visitCallValue(org.kermeta.language.language.behavior.CallValue node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitConditional(org.kermeta.language.behavior.Conditional node) {
+	public Object visitConditional(org.kermeta.language.language.behavior.Conditional node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitRaise(org.kermeta.language.behavior.Raise node) {
+	public Object visitRaise(org.kermeta.language.language.behavior.Raise node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitRescue(org.kermeta.language.behavior.Rescue node) {
+	public Object visitRescue(org.kermeta.language.language.behavior.Rescue node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitTypeReference(org.kermeta.language.behavior.TypeReference node) {
+	public Object visitTypeReference(org.kermeta.language.language.behavior.TypeReference node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitEmptyExpression(org.kermeta.language.behavior.EmptyExpression node) {
+	public Object visitEmptyExpression(org.kermeta.language.language.behavior.EmptyExpression node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitJavaStaticCall(org.kermeta.language.behavior.JavaStaticCall node) {
+	public Object visitJavaStaticCall(org.kermeta.language.language.behavior.JavaStaticCall node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitLambdaExpression(org.kermeta.language.behavior.LambdaExpression node) {
+	public Object visitLambdaExpression(org.kermeta.language.language.behavior.LambdaExpression node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitLambdaParameter(org.kermeta.language.behavior.LambdaParameter node) {
+	public Object visitLambdaParameter(org.kermeta.language.language.behavior.LambdaParameter node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitIntegerLiteral(org.kermeta.language.behavior.IntegerLiteral node) {
+	public Object visitIntegerLiteral(org.kermeta.language.language.behavior.IntegerLiteral node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitStringLiteral(org.kermeta.language.behavior.StringLiteral node) {
+	public Object visitStringLiteral(org.kermeta.language.language.behavior.StringLiteral node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitBooleanLiteral(org.kermeta.language.behavior.BooleanLiteral node) {
+	public Object visitBooleanLiteral(org.kermeta.language.language.behavior.BooleanLiteral node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitTypeLiteral(org.kermeta.language.behavior.TypeLiteral node) {
+	public Object visitTypeLiteral(org.kermeta.language.language.behavior.TypeLiteral node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitVoidLiteral(org.kermeta.language.behavior.VoidLiteral node) {
+	public Object visitVoidLiteral(org.kermeta.language.language.behavior.VoidLiteral node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitLoop(org.kermeta.language.behavior.Loop node) {
+	public Object visitLoop(org.kermeta.language.language.behavior.Loop node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitSelfExpression(org.kermeta.language.behavior.SelfExpression node) {
+	public Object visitSelfExpression(org.kermeta.language.language.behavior.SelfExpression node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitVariableDecl(org.kermeta.language.behavior.VariableDecl node) {
+	public Object visitVariableDecl(org.kermeta.language.language.behavior.VariableDecl node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitObject(org.kermeta.language.structure.Object node) {
+	public Object visitObject(org.kermeta.language.language.structure.Object node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitOperation(org.kermeta.language.structure.Operation node) {
+	public Object visitOperation(org.kermeta.language.language.structure.Operation node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitProperty(org.kermeta.language.structure.Property node) {
+	public Object visitProperty(org.kermeta.language.language.structure.Property node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitEnumerationLiteral(org.kermeta.language.structure.EnumerationLiteral node) {
+	public Object visitEnumerationLiteral(org.kermeta.language.language.structure.EnumerationLiteral node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitTypeVariableBinding(org.kermeta.language.structure.TypeVariableBinding node) {
+	public Object visitTypeVariableBinding(org.kermeta.language.language.structure.TypeVariableBinding node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitMultiplicityElement(org.kermeta.language.structure.MultiplicityElement node) {
+	public Object visitMultiplicityElement(org.kermeta.language.language.structure.MultiplicityElement node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitTypeDefinition(org.kermeta.language.structure.TypeDefinition node) {
+	public Object visitTypeDefinition(org.kermeta.language.language.structure.TypeDefinition node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitClass(org.kermeta.language.structure.Class node) {
+	public Object visitClass(org.kermeta.language.language.structure.Class node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitEnumeration(org.kermeta.language.structure.Enumeration node) {
+	public Object visitEnumeration(org.kermeta.language.language.structure.Enumeration node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitPackage(org.kermeta.language.structure.Package node) {
+	public Object visitPackage(org.kermeta.language.language.structure.Package node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitParameter(org.kermeta.language.structure.Parameter node) {
+	public Object visitParameter(org.kermeta.language.language.structure.Parameter node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitPrimitiveType(org.kermeta.language.structure.PrimitiveType node) {
+	public Object visitPrimitiveType(org.kermeta.language.language.structure.PrimitiveType node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitTag(org.kermeta.language.structure.Tag node) {
+	public Object visitTag(org.kermeta.language.language.structure.Tag node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitConstraint(org.kermeta.language.structure.Constraint node) {
+	public Object visitConstraint(org.kermeta.language.language.structure.Constraint node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitClassDefinition(org.kermeta.language.structure.ClassDefinition node) {
+	public Object visitClassDefinition(org.kermeta.language.language.structure.ClassDefinition node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitModelingUnit(org.kermeta.language.structure.ModelingUnit node) {
+	public Object visitModelingUnit(org.kermeta.language.language.structure.ModelingUnit node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitRequire(org.kermeta.language.structure.Require node) {
+	public Object visitRequire(org.kermeta.language.language.structure.Require node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitUsing(org.kermeta.language.structure.Using node) {
+	public Object visitUsing(org.kermeta.language.language.structure.Using node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitObjectTypeVariable(org.kermeta.language.structure.ObjectTypeVariable node) {
+	public Object visitObjectTypeVariable(org.kermeta.language.language.structure.ObjectTypeVariable node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitModelType(org.kermeta.language.structure.ModelType node) {
+	public Object visitModelType(org.kermeta.language.language.structure.ModelType node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitModelTypeVariable(org.kermeta.language.structure.ModelTypeVariable node) {
+	public Object visitModelTypeVariable(org.kermeta.language.language.structure.ModelTypeVariable node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitVirtualType(org.kermeta.language.structure.VirtualType node) {
+	public Object visitVirtualType(org.kermeta.language.language.structure.VirtualType node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitModel(org.kermeta.language.structure.Model node) {
+	public Object visitModel(org.kermeta.language.language.structure.Model node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitUnresolvedType(org.kermeta.language.structure.UnresolvedType node) {
+	public Object visitUnresolvedType(org.kermeta.language.language.structure.UnresolvedType node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitUnresolvedProperty(org.kermeta.language.structure.UnresolvedProperty node) {
+	public Object visitUnresolvedProperty(org.kermeta.language.language.structure.UnresolvedProperty node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitUnresolvedOperation(org.kermeta.language.structure.UnresolvedOperation node) {
+	public Object visitUnresolvedOperation(org.kermeta.language.language.structure.UnresolvedOperation node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitProductType(org.kermeta.language.structure.ProductType node) {
+	public Object visitProductType(org.kermeta.language.language.structure.ProductType node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitFunctionType(org.kermeta.language.structure.FunctionType node) {
+	public Object visitFunctionType(org.kermeta.language.language.structure.FunctionType node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitVoidType(org.kermeta.language.structure.VoidType node) {
+	public Object visitVoidType(org.kermeta.language.language.structure.VoidType node) {
 	return genericVisitChildren(node);
 	}
 
@@ -393,313 +393,313 @@ abstract class AcceptCommand {
 class AssignmentAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitAssignment((org.kermeta.language.behavior.Assignment) node);
+				.visitAssignment((org.kermeta.language.language.behavior.Assignment) node);
 	}
 }
 class BlockAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitBlock((org.kermeta.language.behavior.Block) node);
+				.visitBlock((org.kermeta.language.language.behavior.Block) node);
 	}
 }
 class CallVariableAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitCallVariable((org.kermeta.language.behavior.CallVariable) node);
+				.visitCallVariable((org.kermeta.language.language.behavior.CallVariable) node);
 	}
 }
 class CallFeatureAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitCallFeature((org.kermeta.language.behavior.CallFeature) node);
+				.visitCallFeature((org.kermeta.language.language.behavior.CallFeature) node);
 	}
 }
 class CallSuperOperationAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitCallSuperOperation((org.kermeta.language.behavior.CallSuperOperation) node);
+				.visitCallSuperOperation((org.kermeta.language.language.behavior.CallSuperOperation) node);
 	}
 }
 class CallResultAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitCallResult((org.kermeta.language.behavior.CallResult) node);
+				.visitCallResult((org.kermeta.language.language.behavior.CallResult) node);
 	}
 }
 class CallValueAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitCallValue((org.kermeta.language.behavior.CallValue) node);
+				.visitCallValue((org.kermeta.language.language.behavior.CallValue) node);
 	}
 }
 class ConditionalAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitConditional((org.kermeta.language.behavior.Conditional) node);
+				.visitConditional((org.kermeta.language.language.behavior.Conditional) node);
 	}
 }
 class RaiseAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitRaise((org.kermeta.language.behavior.Raise) node);
+				.visitRaise((org.kermeta.language.language.behavior.Raise) node);
 	}
 }
 class RescueAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitRescue((org.kermeta.language.behavior.Rescue) node);
+				.visitRescue((org.kermeta.language.language.behavior.Rescue) node);
 	}
 }
 class TypeReferenceAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitTypeReference((org.kermeta.language.behavior.TypeReference) node);
+				.visitTypeReference((org.kermeta.language.language.behavior.TypeReference) node);
 	}
 }
 class EmptyExpressionAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitEmptyExpression((org.kermeta.language.behavior.EmptyExpression) node);
+				.visitEmptyExpression((org.kermeta.language.language.behavior.EmptyExpression) node);
 	}
 }
 class JavaStaticCallAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitJavaStaticCall((org.kermeta.language.behavior.JavaStaticCall) node);
+				.visitJavaStaticCall((org.kermeta.language.language.behavior.JavaStaticCall) node);
 	}
 }
 class LambdaExpressionAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitLambdaExpression((org.kermeta.language.behavior.LambdaExpression) node);
+				.visitLambdaExpression((org.kermeta.language.language.behavior.LambdaExpression) node);
 	}
 }
 class LambdaParameterAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitLambdaParameter((org.kermeta.language.behavior.LambdaParameter) node);
+				.visitLambdaParameter((org.kermeta.language.language.behavior.LambdaParameter) node);
 	}
 }
 class IntegerLiteralAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitIntegerLiteral((org.kermeta.language.behavior.IntegerLiteral) node);
+				.visitIntegerLiteral((org.kermeta.language.language.behavior.IntegerLiteral) node);
 	}
 }
 class StringLiteralAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitStringLiteral((org.kermeta.language.behavior.StringLiteral) node);
+				.visitStringLiteral((org.kermeta.language.language.behavior.StringLiteral) node);
 	}
 }
 class BooleanLiteralAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitBooleanLiteral((org.kermeta.language.behavior.BooleanLiteral) node);
+				.visitBooleanLiteral((org.kermeta.language.language.behavior.BooleanLiteral) node);
 	}
 }
 class TypeLiteralAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitTypeLiteral((org.kermeta.language.behavior.TypeLiteral) node);
+				.visitTypeLiteral((org.kermeta.language.language.behavior.TypeLiteral) node);
 	}
 }
 class VoidLiteralAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitVoidLiteral((org.kermeta.language.behavior.VoidLiteral) node);
+				.visitVoidLiteral((org.kermeta.language.language.behavior.VoidLiteral) node);
 	}
 }
 class LoopAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitLoop((org.kermeta.language.behavior.Loop) node);
+				.visitLoop((org.kermeta.language.language.behavior.Loop) node);
 	}
 }
 class SelfExpressionAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitSelfExpression((org.kermeta.language.behavior.SelfExpression) node);
+				.visitSelfExpression((org.kermeta.language.language.behavior.SelfExpression) node);
 	}
 }
 class VariableDeclAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitVariableDecl((org.kermeta.language.behavior.VariableDecl) node);
+				.visitVariableDecl((org.kermeta.language.language.behavior.VariableDecl) node);
 	}
 }
 class ObjectAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitObject((org.kermeta.language.structure.Object) node);
+				.visitObject((org.kermeta.language.language.structure.Object) node);
 	}
 }
 class OperationAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitOperation((org.kermeta.language.structure.Operation) node);
+				.visitOperation((org.kermeta.language.language.structure.Operation) node);
 	}
 }
 class PropertyAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitProperty((org.kermeta.language.structure.Property) node);
+				.visitProperty((org.kermeta.language.language.structure.Property) node);
 	}
 }
 class EnumerationLiteralAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitEnumerationLiteral((org.kermeta.language.structure.EnumerationLiteral) node);
+				.visitEnumerationLiteral((org.kermeta.language.language.structure.EnumerationLiteral) node);
 	}
 }
 class TypeVariableBindingAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitTypeVariableBinding((org.kermeta.language.structure.TypeVariableBinding) node);
+				.visitTypeVariableBinding((org.kermeta.language.language.structure.TypeVariableBinding) node);
 	}
 }
 class MultiplicityElementAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitMultiplicityElement((org.kermeta.language.structure.MultiplicityElement) node);
+				.visitMultiplicityElement((org.kermeta.language.language.structure.MultiplicityElement) node);
 	}
 }
 class TypeDefinitionAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitTypeDefinition((org.kermeta.language.structure.TypeDefinition) node);
+				.visitTypeDefinition((org.kermeta.language.language.structure.TypeDefinition) node);
 	}
 }
 class ClassAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitClass((org.kermeta.language.structure.Class) node);
+				.visitClass((org.kermeta.language.language.structure.Class) node);
 	}
 }
 class EnumerationAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitEnumeration((org.kermeta.language.structure.Enumeration) node);
+				.visitEnumeration((org.kermeta.language.language.structure.Enumeration) node);
 	}
 }
 class PackageAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitPackage((org.kermeta.language.structure.Package) node);
+				.visitPackage((org.kermeta.language.language.structure.Package) node);
 	}
 }
 class ParameterAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitParameter((org.kermeta.language.structure.Parameter) node);
+				.visitParameter((org.kermeta.language.language.structure.Parameter) node);
 	}
 }
 class PrimitiveTypeAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitPrimitiveType((org.kermeta.language.structure.PrimitiveType) node);
+				.visitPrimitiveType((org.kermeta.language.language.structure.PrimitiveType) node);
 	}
 }
 class TagAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitTag((org.kermeta.language.structure.Tag) node);
+				.visitTag((org.kermeta.language.language.structure.Tag) node);
 	}
 }
 class ConstraintAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitConstraint((org.kermeta.language.structure.Constraint) node);
+				.visitConstraint((org.kermeta.language.language.structure.Constraint) node);
 	}
 }
 class ClassDefinitionAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitClassDefinition((org.kermeta.language.structure.ClassDefinition) node);
+				.visitClassDefinition((org.kermeta.language.language.structure.ClassDefinition) node);
 	}
 }
 class ModelingUnitAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitModelingUnit((org.kermeta.language.structure.ModelingUnit) node);
+				.visitModelingUnit((org.kermeta.language.language.structure.ModelingUnit) node);
 	}
 }
 class RequireAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitRequire((org.kermeta.language.structure.Require) node);
+				.visitRequire((org.kermeta.language.language.structure.Require) node);
 	}
 }
 class UsingAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitUsing((org.kermeta.language.structure.Using) node);
+				.visitUsing((org.kermeta.language.language.structure.Using) node);
 	}
 }
 class ObjectTypeVariableAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitObjectTypeVariable((org.kermeta.language.structure.ObjectTypeVariable) node);
+				.visitObjectTypeVariable((org.kermeta.language.language.structure.ObjectTypeVariable) node);
 	}
 }
 class ModelTypeAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitModelType((org.kermeta.language.structure.ModelType) node);
+				.visitModelType((org.kermeta.language.language.structure.ModelType) node);
 	}
 }
 class ModelTypeVariableAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitModelTypeVariable((org.kermeta.language.structure.ModelTypeVariable) node);
+				.visitModelTypeVariable((org.kermeta.language.language.structure.ModelTypeVariable) node);
 	}
 }
 class VirtualTypeAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitVirtualType((org.kermeta.language.structure.VirtualType) node);
+				.visitVirtualType((org.kermeta.language.language.structure.VirtualType) node);
 	}
 }
 class ModelAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitModel((org.kermeta.language.structure.Model) node);
+				.visitModel((org.kermeta.language.language.structure.Model) node);
 	}
 }
 class UnresolvedTypeAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitUnresolvedType((org.kermeta.language.structure.UnresolvedType) node);
+				.visitUnresolvedType((org.kermeta.language.language.structure.UnresolvedType) node);
 	}
 }
 class UnresolvedPropertyAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitUnresolvedProperty((org.kermeta.language.structure.UnresolvedProperty) node);
+				.visitUnresolvedProperty((org.kermeta.language.language.structure.UnresolvedProperty) node);
 	}
 }
 class UnresolvedOperationAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitUnresolvedOperation((org.kermeta.language.structure.UnresolvedOperation) node);
+				.visitUnresolvedOperation((org.kermeta.language.language.structure.UnresolvedOperation) node);
 	}
 }
 class ProductTypeAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitProductType((org.kermeta.language.structure.ProductType) node);
+				.visitProductType((org.kermeta.language.language.structure.ProductType) node);
 	}
 }
 class FunctionTypeAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitFunctionType((org.kermeta.language.structure.FunctionType) node);
+				.visitFunctionType((org.kermeta.language.language.structure.FunctionType) node);
 	}
 }
 class VoidTypeAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
-				.visitVoidType((org.kermeta.language.structure.VoidType) node);
+				.visitVoidType((org.kermeta.language.language.structure.VoidType) node);
 	}
 }
 
