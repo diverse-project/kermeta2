@@ -322,7 +322,17 @@ public class StructureSwitch<T> {
 			case StructurePackage.MODELING_UNIT: {
 				ModelingUnit modelingUnit = (ModelingUnit)theEObject;
 				T result = caseModelingUnit(modelingUnit);
+				if (result == null) result = caseTypeDefinitionContainer(modelingUnit);
+				if (result == null) result = caseNamedElement(modelingUnit);
 				if (result == null) result = caseObject(modelingUnit);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StructurePackage.TYPE_DEFINITION_CONTAINER: {
+				TypeDefinitionContainer typeDefinitionContainer = (TypeDefinitionContainer)theEObject;
+				T result = caseTypeDefinitionContainer(typeDefinitionContainer);
+				if (result == null) result = caseNamedElement(typeDefinitionContainer);
+				if (result == null) result = caseObject(typeDefinitionContainer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -478,14 +488,6 @@ public class StructureSwitch<T> {
 				T result = caseVoidType(voidType);
 				if (result == null) result = caseType(voidType);
 				if (result == null) result = caseObject(voidType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StructurePackage.TYPE_DEFINITION_CONTAINER: {
-				TypeDefinitionContainer typeDefinitionContainer = (TypeDefinitionContainer)theEObject;
-				T result = caseTypeDefinitionContainer(typeDefinitionContainer);
-				if (result == null) result = caseNamedElement(typeDefinitionContainer);
-				if (result == null) result = caseObject(typeDefinitionContainer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

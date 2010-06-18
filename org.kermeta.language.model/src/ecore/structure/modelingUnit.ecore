@@ -26,7 +26,6 @@
           <details key="documentation" value="Set of &quot;using&quot; statement associated with this ModelingUnit. Ie. list of &quot;syntatic shortcut&quot;&#xA;that can be used within this unit."/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespacePrefix" eType="#//structure/String"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Package"/>
     <eClassifiers xsi:type="ecore:EClass" name="Require" eSuperTypes="#//structure/Object">

@@ -204,6 +204,10 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createModelingUnitAdapter();
 			}
 			@Override
+			public Adapter caseTypeDefinitionContainer(TypeDefinitionContainer object) {
+				return createTypeDefinitionContainerAdapter();
+			}
+			@Override
 			public Adapter caseRequire(Require object) {
 				return createRequireAdapter();
 			}
@@ -274,10 +278,6 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseVoidType(VoidType object) {
 				return createVoidTypeAdapter();
-			}
-			@Override
-			public Adapter caseTypeDefinitionContainer(TypeDefinitionContainer object) {
-				return createTypeDefinitionContainerAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {

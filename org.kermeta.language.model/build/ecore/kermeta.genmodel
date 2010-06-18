@@ -231,9 +231,12 @@
         </genClasses>
         <genClasses ecoreClass="kermeta_java.ecore#//language/structure/ModelingUnit">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/ModelingUnit/packages"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kermeta_java.ecore#//language/structure/ModelingUnit/namespacePrefix"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/ModelingUnit/requires"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/ModelingUnit/usings"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kermeta_java.ecore#//language/structure/ModelingUnit/namespacePrefix"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="kermeta_java.ecore#//language/structure/TypeDefinitionContainer">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/TypeDefinitionContainer/ownedTypeDefinition"/>
         </genClasses>
         <genClasses ecoreClass="kermeta_java.ecore#//language/structure/Require">
           <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kermeta_java.ecore#//language/structure/Require/uri"/>
@@ -292,9 +295,6 @@
               ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/FunctionType/right"/>
         </genClasses>
         <genClasses ecoreClass="kermeta_java.ecore#//language/structure/VoidType"/>
-        <genClasses image="false" ecoreClass="kermeta_java.ecore#//language/structure/TypeDefinitionContainer">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/TypeDefinitionContainer/ownedTypeDefinition"/>
-        </genClasses>
       </nestedGenPackages>
     </nestedGenPackages>
   </genPackages>

@@ -1246,15 +1246,6 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * @generated
 	 */
 	public EReference getModelingUnit_Requires() {
-		return (EReference)modelingUnitEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getModelingUnit_Usings() {
 		return (EReference)modelingUnitEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1263,8 +1254,17 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getModelingUnit_Usings() {
+		return (EReference)modelingUnitEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getModelingUnit_NamespacePrefix() {
-		return (EAttribute)modelingUnitEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)modelingUnitEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1805,9 +1805,12 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 
 		modelingUnitEClass = createEClass(MODELING_UNIT);
 		createEReference(modelingUnitEClass, MODELING_UNIT__PACKAGES);
+		createEAttribute(modelingUnitEClass, MODELING_UNIT__NAMESPACE_PREFIX);
 		createEReference(modelingUnitEClass, MODELING_UNIT__REQUIRES);
 		createEReference(modelingUnitEClass, MODELING_UNIT__USINGS);
-		createEAttribute(modelingUnitEClass, MODELING_UNIT__NAMESPACE_PREFIX);
+
+		typeDefinitionContainerEClass = createEClass(TYPE_DEFINITION_CONTAINER);
+		createEReference(typeDefinitionContainerEClass, TYPE_DEFINITION_CONTAINER__OWNED_TYPE_DEFINITION);
 
 		requireEClass = createEClass(REQUIRE);
 		createEAttribute(requireEClass, REQUIRE__URI);
@@ -1863,9 +1866,6 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		createEReference(functionTypeEClass, FUNCTION_TYPE__RIGHT);
 
 		voidTypeEClass = createEClass(VOID_TYPE);
-
-		typeDefinitionContainerEClass = createEClass(TYPE_DEFINITION_CONTAINER);
-		createEReference(typeDefinitionContainerEClass, TYPE_DEFINITION_CONTAINER__OWNED_TYPE_DEFINITION);
 
 		// Create enums
 		constraintLanguageEEnum = createEEnum(CONSTRAINT_LANGUAGE);
@@ -1936,7 +1936,9 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		constraintEClass.getESuperTypes().add(this.getNamedElement());
 		classDefinitionEClass.getESuperTypes().add(this.getGenericTypeDefinition());
 		classDefinitionEClass.getESuperTypes().add(this.getTypeContainer());
+		modelingUnitEClass.getESuperTypes().add(this.getTypeDefinitionContainer());
 		modelingUnitEClass.getESuperTypes().add(this.getObject());
+		typeDefinitionContainerEClass.getESuperTypes().add(this.getNamedElement());
 		requireEClass.getESuperTypes().add(this.getObject());
 		usingEClass.getESuperTypes().add(this.getObject());
 		genericTypeDefinitionEClass.getESuperTypes().add(this.getTypeDefinition());
@@ -1961,7 +1963,6 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		functionTypeEClass.getESuperTypes().add(this.getTypeContainer());
 		functionTypeEClass.getESuperTypes().add(this.getType());
 		voidTypeEClass.getESuperTypes().add(this.getType());
-		typeDefinitionContainerEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(objectEClass, org.kermeta.language.structure.Object.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2069,9 +2070,12 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 
 		initEClass(modelingUnitEClass, ModelingUnit.class, "ModelingUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelingUnit_Packages(), this.getPackage(), null, "packages", null, 0, -1, ModelingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelingUnit_NamespacePrefix(), this.getString(), "namespacePrefix", null, 0, 1, ModelingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelingUnit_Requires(), this.getRequire(), null, "requires", null, 0, -1, ModelingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelingUnit_Usings(), this.getUsing(), null, "usings", null, 0, -1, ModelingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModelingUnit_NamespacePrefix(), this.getString(), "namespacePrefix", null, 0, 1, ModelingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(typeDefinitionContainerEClass, TypeDefinitionContainer.class, "TypeDefinitionContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTypeDefinitionContainer_OwnedTypeDefinition(), this.getTypeDefinition(), null, "ownedTypeDefinition", null, 0, -1, TypeDefinitionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(requireEClass, Require.class, "Require", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRequire_Uri(), this.getString(), "uri", null, 0, 1, Require.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2127,9 +2131,6 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		initEReference(getFunctionType_Right(), this.getType(), null, "right", null, 0, 1, FunctionType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(voidTypeEClass, VoidType.class, "VoidType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(typeDefinitionContainerEClass, TypeDefinitionContainer.class, "TypeDefinitionContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTypeDefinitionContainer_OwnedTypeDefinition(), this.getTypeDefinition(), null, "ownedTypeDefinition", null, 0, -1, TypeDefinitionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(constraintLanguageEEnum, ConstraintLanguage.class, "ConstraintLanguage");

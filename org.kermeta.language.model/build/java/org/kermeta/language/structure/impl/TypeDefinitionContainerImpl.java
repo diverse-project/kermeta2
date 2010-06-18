@@ -34,7 +34,7 @@ import org.kermeta.language.structure.TypeDefinitionContainer;
  *
  * @generated
  */
-public abstract class TypeDefinitionContainerImpl extends NamedElementImpl implements TypeDefinitionContainer {
+public class TypeDefinitionContainerImpl extends NamedElementImpl implements TypeDefinitionContainer {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

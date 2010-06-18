@@ -40,6 +40,7 @@ import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.structure.Tag;
 import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.TypeDefinition;
+import org.kermeta.language.structure.TypeDefinitionContainer;
 import org.kermeta.language.structure.TypeVariable;
 import org.kermeta.language.structure.TypeVariableBinding;
 import org.kermeta.language.structure.UnresolvedOperation;
@@ -117,6 +118,7 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 			case StructurePackage.CONSTRAINT: return createConstraint();
 			case StructurePackage.CLASS_DEFINITION: return createClassDefinition();
 			case StructurePackage.MODELING_UNIT: return createModelingUnit();
+			case StructurePackage.TYPE_DEFINITION_CONTAINER: return createTypeDefinitionContainer();
 			case StructurePackage.REQUIRE: return createRequire();
 			case StructurePackage.USING: return createUsing();
 			case StructurePackage.OBJECT_TYPE_VARIABLE: return createObjectTypeVariable();
@@ -343,6 +345,16 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	public ModelingUnit createModelingUnit() {
 		ModelingUnitImpl modelingUnit = new ModelingUnitImpl();
 		return modelingUnit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TypeDefinitionContainer createTypeDefinitionContainer() {
+		TypeDefinitionContainerImpl typeDefinitionContainer = new TypeDefinitionContainerImpl();
+		return typeDefinitionContainer;
 	}
 
 	/**

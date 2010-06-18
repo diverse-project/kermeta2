@@ -176,6 +176,15 @@ public interface StructureFactory extends EFactory {
 	ModelingUnit createModelingUnit();
 
 	/**
+	 * Returns a new object of class '<em>Type Definition Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Type Definition Container</em>'.
+	 * @generated
+	 */
+	TypeDefinitionContainer createTypeDefinitionContainer();
+
+	/**
 	 * Returns a new object of class '<em>Require</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

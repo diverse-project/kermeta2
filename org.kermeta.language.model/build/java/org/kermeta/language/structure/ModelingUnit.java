@@ -13,17 +13,17 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * The modeling unit is the root of any kermeta model. It contains packages, requires and usings.
- * It also reference others modeling unit.
+ * Before normalization, for support of concrete syntax, a ModelingUnit can directly own TypeDefinition (ClassDefintion, ModelType, enumeration, ...)
+ * However, this suppose that a package is specified in the namespacePrefix.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
  *   <li>{@link org.kermeta.language.structure.ModelingUnit#getPackages <em>Packages</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.ModelingUnit#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ModelingUnit#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ModelingUnit#getUsings <em>Usings</em>}</li>
- *   <li>{@link org.kermeta.language.structure.ModelingUnit#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  * </ul>
  * </p>
  *
@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ModelingUnit extends org.kermeta.language.structure.Object {
+public interface ModelingUnit extends TypeDefinitionContainer, org.kermeta.language.structure.Object {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -94,6 +94,10 @@ public interface ModelingUnit extends org.kermeta.language.structure.Object {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The namespacePrefix is used to capture syntax shortcut for creating NamedElement (ModelDefinition, Package, ClassDefinition, ...) in the ModelingUnit.
+	 * The normalization process will replace the namespacePrefix by its equivalent NamedElement for all its declared elements.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Namespace Prefix</em>' attribute.
 	 * @see #setNamespacePrefix(String)
 	 * @see org.kermeta.language.structure.StructurePackage#getModelingUnit_NamespacePrefix()

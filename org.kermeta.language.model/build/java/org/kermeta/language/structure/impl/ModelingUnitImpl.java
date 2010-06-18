@@ -32,15 +32,15 @@ import org.kermeta.language.structure.Using;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getPackages <em>Packages</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getUsings <em>Usings</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
+public class ModelingUnitImpl extends TypeDefinitionContainerImpl implements ModelingUnit {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57,26 +57,6 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 	 * @ordered
 	 */
 	protected EList<org.kermeta.language.structure.Package> packages;
-
-	/**
-	 * The cached value of the '{@link #getRequires() <em>Requires</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRequires()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Require> requires;
-
-	/**
-	 * The cached value of the '{@link #getUsings() <em>Usings</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUsings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Using> usings;
 
 	/**
 	 * The default value of the '{@link #getNamespacePrefix() <em>Namespace Prefix</em>}' attribute.
@@ -97,6 +77,26 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 	 * @ordered
 	 */
 	protected String namespacePrefix = NAMESPACE_PREFIX_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getRequires() <em>Requires</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRequires()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Require> requires;
+
+	/**
+	 * The cached value of the '{@link #getUsings() <em>Usings</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUsings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Using> usings;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -202,12 +202,12 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 		switch (featureID) {
 			case StructurePackage.MODELING_UNIT__PACKAGES:
 				return getPackages();
+			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
+				return getNamespacePrefix();
 			case StructurePackage.MODELING_UNIT__REQUIRES:
 				return getRequires();
 			case StructurePackage.MODELING_UNIT__USINGS:
 				return getUsings();
-			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
-				return getNamespacePrefix();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,6 +225,9 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 				getPackages().clear();
 				getPackages().addAll((Collection<? extends org.kermeta.language.structure.Package>)newValue);
 				return;
+			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
+				setNamespacePrefix((String)newValue);
+				return;
 			case StructurePackage.MODELING_UNIT__REQUIRES:
 				getRequires().clear();
 				getRequires().addAll((Collection<? extends Require>)newValue);
@@ -232,9 +235,6 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 			case StructurePackage.MODELING_UNIT__USINGS:
 				getUsings().clear();
 				getUsings().addAll((Collection<? extends Using>)newValue);
-				return;
-			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
-				setNamespacePrefix((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -251,14 +251,14 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 			case StructurePackage.MODELING_UNIT__PACKAGES:
 				getPackages().clear();
 				return;
+			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
+				setNamespacePrefix(NAMESPACE_PREFIX_EDEFAULT);
+				return;
 			case StructurePackage.MODELING_UNIT__REQUIRES:
 				getRequires().clear();
 				return;
 			case StructurePackage.MODELING_UNIT__USINGS:
 				getUsings().clear();
-				return;
-			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
-				setNamespacePrefix(NAMESPACE_PREFIX_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -274,12 +274,12 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 		switch (featureID) {
 			case StructurePackage.MODELING_UNIT__PACKAGES:
 				return packages != null && !packages.isEmpty();
+			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
+				return NAMESPACE_PREFIX_EDEFAULT == null ? namespacePrefix != null : !NAMESPACE_PREFIX_EDEFAULT.equals(namespacePrefix);
 			case StructurePackage.MODELING_UNIT__REQUIRES:
 				return requires != null && !requires.isEmpty();
 			case StructurePackage.MODELING_UNIT__USINGS:
 				return usings != null && !usings.isEmpty();
-			case StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX:
-				return NAMESPACE_PREFIX_EDEFAULT == null ? namespacePrefix != null : !NAMESPACE_PREFIX_EDEFAULT.equals(namespacePrefix);
 		}
 		return super.eIsSet(featureID);
 	}
