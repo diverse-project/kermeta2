@@ -260,6 +260,7 @@
         <genClasses ecoreClass="kermeta_java.ecore#//language/structure/ModelType">
           <genFeatures notify="false" createChild="false" propertySortChoices="true"
               ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/ModelType/includedTypeDefinition"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/ModelType/ownedPackages"/>
         </genClasses>
         <genClasses ecoreClass="kermeta_java.ecore#//language/structure/ModelTypeVariable">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//language/structure/ModelTypeVariable/virtualType"/>

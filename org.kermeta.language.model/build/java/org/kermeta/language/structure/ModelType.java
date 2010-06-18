@@ -13,13 +13,16 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Type of a model, consisting of a set of included type definitions
+ * Type of a model, consisting of a set of included type definitions.
+ * For historical reason, this is both a type and a TypeDefinition, mainly due to the fact that a ModelDefinition isn't a GenericTypeDefinition (maybe this should be discussed again ?)
+ * 
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
  *   <li>{@link org.kermeta.language.structure.ModelType#getIncludedTypeDefinition <em>Included Type Definition</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.ModelType#getOwnedPackages <em>Owned Packages</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,5 +52,21 @@ public interface ModelType extends Type, TypeDefinition {
 	 * @generated
 	 */
 	EList<TypeDefinition> getIncludedTypeDefinition();
+
+	/**
+	 * Returns the value of the '<em><b>Owned Packages</b></em>' containment reference list.
+	 * The list contents are of type {@link org.kermeta.language.structure.Package}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * In Kermeta V2, a ModelDefinition can either defines its own TypeDefinition (through the ownedPackages reference)
+	 * or refer to external definition (through the includedTypeDefinition reference) (need to be discused)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Owned Packages</em>' containment reference list.
+	 * @see org.kermeta.language.structure.StructurePackage#getModelType_OwnedPackages()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	EList<org.kermeta.language.structure.Package> getOwnedPackages();
 
 } // ModelType

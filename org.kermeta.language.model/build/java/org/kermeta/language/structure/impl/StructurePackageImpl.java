@@ -1407,6 +1407,15 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getModelType_OwnedPackages() {
+		return (EReference)modelTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModelTypeVariable() {
 		return modelTypeVariableEClass;
 	}
@@ -1833,6 +1842,7 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 
 		modelTypeEClass = createEClass(MODEL_TYPE);
 		createEReference(modelTypeEClass, MODEL_TYPE__INCLUDED_TYPE_DEFINITION);
+		createEReference(modelTypeEClass, MODEL_TYPE__OWNED_PACKAGES);
 
 		modelTypeVariableEClass = createEClass(MODEL_TYPE_VARIABLE);
 		createEReference(modelTypeVariableEClass, MODEL_TYPE_VARIABLE__VIRTUAL_TYPE);
@@ -2098,6 +2108,7 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 
 		initEClass(modelTypeEClass, ModelType.class, "ModelType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelType_IncludedTypeDefinition(), this.getTypeDefinition(), null, "includedTypeDefinition", null, 0, -1, ModelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelType_OwnedPackages(), this.getPackage(), null, "ownedPackages", null, 0, -1, ModelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelTypeVariableEClass, ModelTypeVariable.class, "ModelTypeVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelTypeVariable_VirtualType(), this.getVirtualType(), this.getVirtualType_ModelType(), "virtualType", null, 0, -1, ModelTypeVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

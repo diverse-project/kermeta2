@@ -1,7 +1,7 @@
 //$Id:$
 /*
  * This code has been generated to visit a kermeta model
- * Creation date: Fri Jun 18 16:29:50 CEST 2010
+ * Creation date: Fri Jun 18 17:02:02 CEST 2010
  * Template Created on feb. 2005
  * By Franck FLEUREY (ffleurey@irisa.fr)
  * IRISA / INRIA / University of rennes 1

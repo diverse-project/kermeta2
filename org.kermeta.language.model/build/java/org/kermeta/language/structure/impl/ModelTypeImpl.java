@@ -9,14 +9,18 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.kermeta.language.structure.ModelType;
 import org.kermeta.language.structure.NamedElement;
 import org.kermeta.language.structure.StructurePackage;
@@ -32,6 +36,7 @@ import org.kermeta.language.structure.TypeDefinition;
  *   <li>{@link org.kermeta.language.structure.impl.ModelTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ModelTypeImpl#isIsAspect <em>Is Aspect</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ModelTypeImpl#getIncludedTypeDefinition <em>Included Type Definition</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.ModelTypeImpl#getOwnedPackages <em>Owned Packages</em>}</li>
  * </ul>
  * </p>
  *
@@ -94,6 +99,16 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 	 * @ordered
 	 */
 	protected EList<TypeDefinition> includedTypeDefinition;
+
+	/**
+	 * The cached value of the '{@link #getOwnedPackages() <em>Owned Packages</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedPackages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<org.kermeta.language.structure.Package> ownedPackages;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,6 +188,32 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<org.kermeta.language.structure.Package> getOwnedPackages() {
+		if (ownedPackages == null) {
+			ownedPackages = new EObjectContainmentEList.Resolving<org.kermeta.language.structure.Package>(org.kermeta.language.structure.Package.class, this, StructurePackage.MODEL_TYPE__OWNED_PACKAGES);
+		}
+		return ownedPackages;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case StructurePackage.MODEL_TYPE__OWNED_PACKAGES:
+				return ((InternalEList<?>)getOwnedPackages()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -182,6 +223,8 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 				return isIsAspect();
 			case StructurePackage.MODEL_TYPE__INCLUDED_TYPE_DEFINITION:
 				return getIncludedTypeDefinition();
+			case StructurePackage.MODEL_TYPE__OWNED_PACKAGES:
+				return getOwnedPackages();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -205,6 +248,10 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 				getIncludedTypeDefinition().clear();
 				getIncludedTypeDefinition().addAll((Collection<? extends TypeDefinition>)newValue);
 				return;
+			case StructurePackage.MODEL_TYPE__OWNED_PACKAGES:
+				getOwnedPackages().clear();
+				getOwnedPackages().addAll((Collection<? extends org.kermeta.language.structure.Package>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -226,6 +273,9 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 			case StructurePackage.MODEL_TYPE__INCLUDED_TYPE_DEFINITION:
 				getIncludedTypeDefinition().clear();
 				return;
+			case StructurePackage.MODEL_TYPE__OWNED_PACKAGES:
+				getOwnedPackages().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -244,6 +294,8 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 				return isAspect != IS_ASPECT_EDEFAULT;
 			case StructurePackage.MODEL_TYPE__INCLUDED_TYPE_DEFINITION:
 				return includedTypeDefinition != null && !includedTypeDefinition.isEmpty();
+			case StructurePackage.MODEL_TYPE__OWNED_PACKAGES:
+				return ownedPackages != null && !ownedPackages.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

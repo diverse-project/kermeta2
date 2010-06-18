@@ -2509,13 +2509,22 @@ public interface StructurePackage extends EPackage {
 	int MODEL_TYPE__INCLUDED_TYPE_DEFINITION = TYPE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Owned Packages</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_TYPE__OWNED_PACKAGES = TYPE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Model Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 3;
+	int MODEL_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -4119,6 +4128,17 @@ public interface StructurePackage extends EPackage {
 	EReference getModelType_IncludedTypeDefinition();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.kermeta.language.structure.ModelType#getOwnedPackages <em>Owned Packages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Packages</em>'.
+	 * @see org.kermeta.language.structure.ModelType#getOwnedPackages()
+	 * @see #getModelType()
+	 * @generated
+	 */
+	EReference getModelType_OwnedPackages();
+
+	/**
 	 * Returns the meta object for class '{@link org.kermeta.language.structure.ModelTypeVariable <em>Model Type Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5326,6 +5346,14 @@ public interface StructurePackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODEL_TYPE__INCLUDED_TYPE_DEFINITION = eINSTANCE.getModelType_IncludedTypeDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Packages</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_TYPE__OWNED_PACKAGES = eINSTANCE.getModelType_OwnedPackages();
 
 		/**
 		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.ModelTypeVariableImpl <em>Model Type Variable</em>}' class.
