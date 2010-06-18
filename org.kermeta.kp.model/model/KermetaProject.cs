@@ -1,6 +1,7 @@
  SYNTAXDEF kpt
 FOR <http://www.kermeta.org/kp/1.0.0>
-START KermetaProject,NamedElement
+START KermetaProject
+OPTIONS { basePackage="org.kermeta.kp.editor"; }
 
 TOKENS{
 	DEFINE COMMENT$'//'(~('\n'|'\r'|'\uffff'))*$;
@@ -19,12 +20,14 @@ TOKENSTYLES{
 	"group" COLOR #7F0055, BOLD;
 	"Dependency" COLOR #7F0055, BOLD;
 	"project" COLOR #7F0055, BOLD;
-	"NamedElement" COLOR #7F0055, BOLD;
 	"SourceFolder" COLOR #7F0055, BOLD;
+	"folderName" COLOR #7F0055, BOLD;
 	"SourceFile" COLOR #7F0055, BOLD;
+	"uri" COLOR #7F0055, BOLD;
 	"SourceNSURI" COLOR #7F0055, BOLD;
 	"from" COLOR #7F0055, BOLD;
 	"SourceQuery" COLOR #7F0055, BOLD;
+	"query" COLOR #7F0055, BOLD;
 	"WeaveDirective" COLOR #7F0055, BOLD;
 	"mix" COLOR #7F0055, BOLD;
 	"target" COLOR #7F0055, BOLD;
@@ -41,17 +44,15 @@ RULES{
 	
 	KermetaProject::= "KermetaProject"  "{" ( "name"  ":" name['"','"'] | "dependencies"  ":" dependencies | "sources"  ":" sources | "weaveDirectives"  ":" weaveDirectives | "options"  ":" options | "version"  ":" version['"','"'] | "group"  ":" group['"','"']  )* "}"  ;
 	
-	Dependency::= "Dependency"  "{" ( "name"  ":" name['"','"'] | "project"  ":" project[] )* "}"  ;
+	Dependency::=  ( "dependency" name['"','"'] | "project"  ":" project[]| "group"  ":" group['"','"'] | "version"  ":" version['"','"']  )*  ;
 	
-	NamedElement::= "NamedElement"  "{" ( "name"  ":" name['"','"']  )* "}"  ;
+	SourceFolder::= "SourceFolder"  "{" ( "folderName"  ":" folderName['"','"']  )* "}"  ;
 	
-	SourceFolder::= "SourceFolder"  "{"  "}"  ;
+	SourceFile::= "SourceFile"  "{" ( "uri"  ":" uri['"','"']  )* "}"  ;
 	
-	SourceFile::= "SourceFile"  "{"  "}"  ;
+	SourceNSURI::= "SourceNSURI"  "{" ( "from"  ":" from[]| "uri"  ":" uri['"','"']  )* "}"  ;
 	
-	SourceNSURI::= "SourceNSURI"  "{" ( "from"  ":" from[] )* "}"  ;
-	
-	SourceQuery::= "SourceQuery"  "{" ( "from"  ":" from[] )* "}"  ;
+	SourceQuery::= "SourceQuery"  "{" ( "from"  ":" from[]| "query"  ":" query['"','"']  )* "}"  ;
 	
 	WeaveDirective::= "WeaveDirective"  "{" ( "name"  ":" name['"','"'] | "mix"  ":" mix | "target"  ":" target  )* "}"  ;
 	
