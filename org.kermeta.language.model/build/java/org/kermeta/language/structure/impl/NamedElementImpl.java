@@ -33,7 +33,7 @@ import fr.irisa.triskell.kermeta.util.EncodingHelper;
  *
  * @generated
  */
-public class NamedElementImpl extends ObjectImpl implements NamedElement {
+public abstract class NamedElementImpl extends ObjectImpl implements NamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -24,7 +24,7 @@ package org.kermeta.language.structure;
  * </p>
  *
  * @see org.kermeta.language.structure.StructurePackage#getTypedElement()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface TypedElement extends TypeContainer, NamedElement {

@@ -19,9 +19,9 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.kermeta.language.structure.ParameterizedType#getVirtualTypeBinding <em>Virtual Type Binding</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ParameterizedType#getTypeParamBinding <em>Type Param Binding</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ParameterizedType#getTypeDefinition <em>Type Definition</em>}</li>
- *   <li>{@link org.kermeta.language.structure.ParameterizedType#getVirtualTypeBinding <em>Virtual Type Binding</em>}</li>
  * </ul>
  * </p>
  *

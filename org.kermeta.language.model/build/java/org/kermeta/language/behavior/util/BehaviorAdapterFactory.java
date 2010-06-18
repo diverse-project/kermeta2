@@ -83,6 +83,46 @@ public class BehaviorAdapterFactory extends AdapterFactoryImpl {
 	protected BehaviorSwitch<Adapter> modelSwitch =
 		new BehaviorSwitch<Adapter>() {
 			@Override
+			public Adapter caseAssignment(Assignment object) {
+				return createAssignmentAdapter();
+			}
+			@Override
+			public Adapter caseExpression(Expression object) {
+				return createExpressionAdapter();
+			}
+			@Override
+			public Adapter caseCallExpression(CallExpression object) {
+				return createCallExpressionAdapter();
+			}
+			@Override
+			public Adapter caseBlock(Block object) {
+				return createBlockAdapter();
+			}
+			@Override
+			public Adapter caseCallVariable(CallVariable object) {
+				return createCallVariableAdapter();
+			}
+			@Override
+			public Adapter caseCallFeature(CallFeature object) {
+				return createCallFeatureAdapter();
+			}
+			@Override
+			public Adapter caseCallSuperOperation(CallSuperOperation object) {
+				return createCallSuperOperationAdapter();
+			}
+			@Override
+			public Adapter caseCallResult(CallResult object) {
+				return createCallResultAdapter();
+			}
+			@Override
+			public Adapter caseCallValue(CallValue object) {
+				return createCallValueAdapter();
+			}
+			@Override
+			public Adapter caseConditional(Conditional object) {
+				return createConditionalAdapter();
+			}
+			@Override
 			public Adapter caseRaise(Raise object) {
 				return createRaiseAdapter();
 			}
@@ -91,24 +131,28 @@ public class BehaviorAdapterFactory extends AdapterFactoryImpl {
 				return createRescueAdapter();
 			}
 			@Override
-			public Adapter caseExpression(Expression object) {
-				return createExpressionAdapter();
-			}
-			@Override
-			public Adapter caseBlock(Block object) {
-				return createBlockAdapter();
-			}
-			@Override
 			public Adapter caseTypeReference(TypeReference object) {
 				return createTypeReferenceAdapter();
 			}
 			@Override
-			public Adapter caseLoop(Loop object) {
-				return createLoopAdapter();
-			}
-			@Override
 			public Adapter caseLiteral(Literal object) {
 				return createLiteralAdapter();
+			}
+			@Override
+			public Adapter caseEmptyExpression(EmptyExpression object) {
+				return createEmptyExpressionAdapter();
+			}
+			@Override
+			public Adapter caseJavaStaticCall(JavaStaticCall object) {
+				return createJavaStaticCallAdapter();
+			}
+			@Override
+			public Adapter caseLambdaExpression(LambdaExpression object) {
+				return createLambdaExpressionAdapter();
+			}
+			@Override
+			public Adapter caseLambdaParameter(LambdaParameter object) {
+				return createLambdaParameterAdapter();
 			}
 			@Override
 			public Adapter caseIntegerLiteral(IntegerLiteral object) {
@@ -131,60 +175,16 @@ public class BehaviorAdapterFactory extends AdapterFactoryImpl {
 				return createVoidLiteralAdapter();
 			}
 			@Override
-			public Adapter caseJavaStaticCall(JavaStaticCall object) {
-				return createJavaStaticCallAdapter();
-			}
-			@Override
-			public Adapter caseConditional(Conditional object) {
-				return createConditionalAdapter();
-			}
-			@Override
-			public Adapter caseCallFeature(CallFeature object) {
-				return createCallFeatureAdapter();
-			}
-			@Override
-			public Adapter caseCallExpression(CallExpression object) {
-				return createCallExpressionAdapter();
-			}
-			@Override
-			public Adapter caseCallVariable(CallVariable object) {
-				return createCallVariableAdapter();
-			}
-			@Override
-			public Adapter caseCallSuperOperation(CallSuperOperation object) {
-				return createCallSuperOperationAdapter();
-			}
-			@Override
-			public Adapter caseCallResult(CallResult object) {
-				return createCallResultAdapter();
-			}
-			@Override
-			public Adapter caseCallValue(CallValue object) {
-				return createCallValueAdapter();
-			}
-			@Override
-			public Adapter caseEmptyExpression(EmptyExpression object) {
-				return createEmptyExpressionAdapter();
-			}
-			@Override
-			public Adapter caseLambdaExpression(LambdaExpression object) {
-				return createLambdaExpressionAdapter();
-			}
-			@Override
-			public Adapter caseLambdaParameter(LambdaParameter object) {
-				return createLambdaParameterAdapter();
-			}
-			@Override
-			public Adapter caseAssignment(Assignment object) {
-				return createAssignmentAdapter();
-			}
-			@Override
-			public Adapter caseVariableDecl(VariableDecl object) {
-				return createVariableDeclAdapter();
+			public Adapter caseLoop(Loop object) {
+				return createLoopAdapter();
 			}
 			@Override
 			public Adapter caseSelfExpression(SelfExpression object) {
 				return createSelfExpressionAdapter();
+			}
+			@Override
+			public Adapter caseVariableDecl(VariableDecl object) {
+				return createVariableDeclAdapter();
 			}
 			@Override
 			public Adapter caseObject(org.kermeta.language.structure.Object object) {

@@ -36,16 +36,14 @@ import org.kermeta.language.structure.TypeDefinition;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.impl.PrimitiveTypeImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.PrimitiveTypeImpl#isIsAspect <em>Is Aspect</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.PrimitiveTypeImpl#getTypeContainer <em>Type Container</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.PrimitiveTypeImpl#getContainedType <em>Contained Type</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PrimitiveTypeImpl#getInstanceType <em>Instance Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PrimitiveTypeImpl extends TypeContainerImpl implements PrimitiveType {
+public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -54,44 +52,14 @@ public class PrimitiveTypeImpl extends TypeContainerImpl implements PrimitiveTyp
 	public static final String copyright = "IRISA / INRIA / Universite de Rennes 1";
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getContainedType() <em>Contained Type</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getContainedType()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsAspect()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_ASPECT_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsAspect()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isAspect = IS_ASPECT_EDEFAULT;
+	protected EList<Type> containedType;
 
 	/**
 	 * The cached value of the '{@link #getInstanceType() <em>Instance Type</em>}' reference.
@@ -127,92 +95,11 @@ public class PrimitiveTypeImpl extends TypeContainerImpl implements PrimitiveTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.PRIMITIVE_TYPE__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isIsAspect() {
-		return isAspect;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsAspect(boolean newIsAspect) {
-		boolean oldIsAspect = isAspect;
-		isAspect = newIsAspect;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.PRIMITIVE_TYPE__IS_ASPECT, oldIsAspect, isAspect));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TypeContainer getTypeContainer() {
-		if (eContainerFeatureID() != StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER) return null;
-		return (TypeContainer)eContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TypeContainer basicGetTypeContainer() {
-		if (eContainerFeatureID() != StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER) return null;
-		return (TypeContainer)eInternalContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTypeContainer(TypeContainer newTypeContainer, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newTypeContainer, StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTypeContainer(TypeContainer newTypeContainer) {
-		if (newTypeContainer != eInternalContainer() || (eContainerFeatureID() != StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER && newTypeContainer != null)) {
-			if (EcoreUtil.isAncestor(this, newTypeContainer))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newTypeContainer != null)
-				msgs = ((InternalEObject)newTypeContainer).eInverseAdd(this, StructurePackage.TYPE_CONTAINER__CONTAINED_TYPE, TypeContainer.class, msgs);
-			msgs = basicSetTypeContainer(newTypeContainer, msgs);
-			if (msgs != null) msgs.dispatch();
+	public EList<Type> getContainedType() {
+		if (containedType == null) {
+			containedType = new EObjectContainmentWithInverseEList.Resolving<Type>(Type.class, this, StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE, StructurePackage.TYPE__TYPE_CONTAINER);
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER, newTypeContainer, newTypeContainer));
+		return containedType;
 	}
 
 	/**
@@ -262,10 +149,8 @@ public class PrimitiveTypeImpl extends TypeContainerImpl implements PrimitiveTyp
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetTypeContainer((TypeContainer)otherEnd, msgs);
+			case StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getContainedType()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -278,8 +163,8 @@ public class PrimitiveTypeImpl extends TypeContainerImpl implements PrimitiveTyp
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER:
-				return basicSetTypeContainer(null, msgs);
+			case StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE:
+				return ((InternalEList<?>)getContainedType()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -290,29 +175,10 @@ public class PrimitiveTypeImpl extends TypeContainerImpl implements PrimitiveTyp
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER:
-				return eInternalContainer().eInverseRemove(this, StructurePackage.TYPE_CONTAINER__CONTAINED_TYPE, TypeContainer.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StructurePackage.PRIMITIVE_TYPE__NAME:
-				return getName();
-			case StructurePackage.PRIMITIVE_TYPE__IS_ASPECT:
-				return isIsAspect();
-			case StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER:
-				if (resolve) return getTypeContainer();
-				return basicGetTypeContainer();
+			case StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE:
+				return getContainedType();
 			case StructurePackage.PRIMITIVE_TYPE__INSTANCE_TYPE:
 				if (resolve) return getInstanceType();
 				return basicGetInstanceType();
@@ -329,14 +195,9 @@ public class PrimitiveTypeImpl extends TypeContainerImpl implements PrimitiveTyp
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case StructurePackage.PRIMITIVE_TYPE__NAME:
-				setName((String)newValue);
-				return;
-			case StructurePackage.PRIMITIVE_TYPE__IS_ASPECT:
-				setIsAspect((Boolean)newValue);
-				return;
-			case StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER:
-				setTypeContainer((TypeContainer)newValue);
+			case StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE:
+				getContainedType().clear();
+				getContainedType().addAll((Collection<? extends Type>)newValue);
 				return;
 			case StructurePackage.PRIMITIVE_TYPE__INSTANCE_TYPE:
 				setInstanceType((Type)newValue);
@@ -353,14 +214,8 @@ public class PrimitiveTypeImpl extends TypeContainerImpl implements PrimitiveTyp
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case StructurePackage.PRIMITIVE_TYPE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case StructurePackage.PRIMITIVE_TYPE__IS_ASPECT:
-				setIsAspect(IS_ASPECT_EDEFAULT);
-				return;
-			case StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER:
-				setTypeContainer((TypeContainer)null);
+			case StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE:
+				getContainedType().clear();
 				return;
 			case StructurePackage.PRIMITIVE_TYPE__INSTANCE_TYPE:
 				setInstanceType((Type)null);
@@ -377,12 +232,8 @@ public class PrimitiveTypeImpl extends TypeContainerImpl implements PrimitiveTyp
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case StructurePackage.PRIMITIVE_TYPE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case StructurePackage.PRIMITIVE_TYPE__IS_ASPECT:
-				return isAspect != IS_ASPECT_EDEFAULT;
-			case StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER:
-				return basicGetTypeContainer() != null;
+			case StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE:
+				return containedType != null && !containedType.isEmpty();
 			case StructurePackage.PRIMITIVE_TYPE__INSTANCE_TYPE:
 				return instanceType != null;
 		}
@@ -396,26 +247,9 @@ public class PrimitiveTypeImpl extends TypeContainerImpl implements PrimitiveTyp
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == NamedElement.class) {
+		if (baseClass == TypeContainer.class) {
 			switch (derivedFeatureID) {
-				case StructurePackage.PRIMITIVE_TYPE__NAME: return StructurePackage.NAMED_ELEMENT__NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == TypeDefinition.class) {
-			switch (derivedFeatureID) {
-				case StructurePackage.PRIMITIVE_TYPE__IS_ASPECT: return StructurePackage.TYPE_DEFINITION__IS_ASPECT;
-				default: return -1;
-			}
-		}
-		if (baseClass == Type.class) {
-			switch (derivedFeatureID) {
-				case StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER: return StructurePackage.TYPE__TYPE_CONTAINER;
-				default: return -1;
-			}
-		}
-		if (baseClass == DataType.class) {
-			switch (derivedFeatureID) {
+				case StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE: return StructurePackage.TYPE_CONTAINER__CONTAINED_TYPE;
 				default: return -1;
 			}
 		}
@@ -429,48 +263,13 @@ public class PrimitiveTypeImpl extends TypeContainerImpl implements PrimitiveTyp
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == NamedElement.class) {
+		if (baseClass == TypeContainer.class) {
 			switch (baseFeatureID) {
-				case StructurePackage.NAMED_ELEMENT__NAME: return StructurePackage.PRIMITIVE_TYPE__NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == TypeDefinition.class) {
-			switch (baseFeatureID) {
-				case StructurePackage.TYPE_DEFINITION__IS_ASPECT: return StructurePackage.PRIMITIVE_TYPE__IS_ASPECT;
-				default: return -1;
-			}
-		}
-		if (baseClass == Type.class) {
-			switch (baseFeatureID) {
-				case StructurePackage.TYPE__TYPE_CONTAINER: return StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER;
-				default: return -1;
-			}
-		}
-		if (baseClass == DataType.class) {
-			switch (baseFeatureID) {
+				case StructurePackage.TYPE_CONTAINER__CONTAINED_TYPE: return StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE;
 				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", isAspect: ");
-		result.append(isAspect);
-		result.append(')');
-		return result.toString();
 	}
 
 } //PrimitiveTypeImpl

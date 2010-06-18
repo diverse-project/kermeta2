@@ -390,7 +390,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	public EReference getCallExpression_Parameters() {
-		return (EReference)callExpressionEClass.getEStructuralFeatures().get(1);
+		return (EReference)callExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -399,7 +399,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	public EAttribute getCallExpression_Name() {
-		return (EAttribute)callExpressionEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)callExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -408,7 +408,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	public EReference getCallExpression_StaticTypeVariableBindings() {
-		return (EReference)callExpressionEClass.getEStructuralFeatures().get(0);
+		return (EReference)callExpressionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -426,7 +426,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	public EReference getBlock_Statement() {
-		return (EReference)blockEClass.getEStructuralFeatures().get(1);
+		return (EReference)blockEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -435,7 +435,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	public EReference getBlock_RescueBlock() {
-		return (EReference)blockEClass.getEStructuralFeatures().get(0);
+		return (EReference)blockEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -471,24 +471,6 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	public EReference getCallFeature_Target() {
-		return (EReference)callFeatureEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCallFeature_IsAtpre() {
-		return (EAttribute)callFeatureEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCallFeature_StaticProperty() {
 		return (EReference)callFeatureEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -497,8 +479,26 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCallFeature_IsAtpre() {
+		return (EAttribute)callFeatureEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCallFeature_StaticProperty() {
+		return (EReference)callFeatureEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getCallFeature_StaticOperation() {
-		return (EReference)callFeatureEClass.getEStructuralFeatures().get(1);
+		return (EReference)callFeatureEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -507,7 +507,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	public EReference getCallFeature_StaticEnumLiteral() {
-		return (EReference)callFeatureEClass.getEStructuralFeatures().get(2);
+		return (EReference)callFeatureEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -934,6 +934,44 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 		isCreated = true;
 
 		// Create classes and their features
+		assignmentEClass = createEClass(ASSIGNMENT);
+		createEReference(assignmentEClass, ASSIGNMENT__TARGET);
+		createEReference(assignmentEClass, ASSIGNMENT__VALUE);
+		createEAttribute(assignmentEClass, ASSIGNMENT__IS_CAST);
+
+		expressionEClass = createEClass(EXPRESSION);
+		createEReference(expressionEClass, EXPRESSION__STATIC_TYPE);
+
+		callExpressionEClass = createEClass(CALL_EXPRESSION);
+		createEReference(callExpressionEClass, CALL_EXPRESSION__PARAMETERS);
+		createEAttribute(callExpressionEClass, CALL_EXPRESSION__NAME);
+		createEReference(callExpressionEClass, CALL_EXPRESSION__STATIC_TYPE_VARIABLE_BINDINGS);
+
+		blockEClass = createEClass(BLOCK);
+		createEReference(blockEClass, BLOCK__STATEMENT);
+		createEReference(blockEClass, BLOCK__RESCUE_BLOCK);
+
+		callVariableEClass = createEClass(CALL_VARIABLE);
+		createEAttribute(callVariableEClass, CALL_VARIABLE__IS_ATPRE);
+
+		callFeatureEClass = createEClass(CALL_FEATURE);
+		createEReference(callFeatureEClass, CALL_FEATURE__TARGET);
+		createEAttribute(callFeatureEClass, CALL_FEATURE__IS_ATPRE);
+		createEReference(callFeatureEClass, CALL_FEATURE__STATIC_PROPERTY);
+		createEReference(callFeatureEClass, CALL_FEATURE__STATIC_OPERATION);
+		createEReference(callFeatureEClass, CALL_FEATURE__STATIC_ENUM_LITERAL);
+
+		callSuperOperationEClass = createEClass(CALL_SUPER_OPERATION);
+
+		callResultEClass = createEClass(CALL_RESULT);
+
+		callValueEClass = createEClass(CALL_VALUE);
+
+		conditionalEClass = createEClass(CONDITIONAL);
+		createEReference(conditionalEClass, CONDITIONAL__THEN_BODY);
+		createEReference(conditionalEClass, CONDITIONAL__ELSE_BODY);
+		createEReference(conditionalEClass, CONDITIONAL__CONDITION);
+
 		raiseEClass = createEClass(RAISE);
 		createEReference(raiseEClass, RAISE__EXPRESSION);
 
@@ -942,21 +980,24 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 		createEReference(rescueEClass, RESCUE__EXCEPTION_TYPE);
 		createEAttribute(rescueEClass, RESCUE__EXCEPTION_NAME);
 
-		expressionEClass = createEClass(EXPRESSION);
-		createEReference(expressionEClass, EXPRESSION__STATIC_TYPE);
-
-		blockEClass = createEClass(BLOCK);
-		createEReference(blockEClass, BLOCK__RESCUE_BLOCK);
-		createEReference(blockEClass, BLOCK__STATEMENT);
-
 		typeReferenceEClass = createEClass(TYPE_REFERENCE);
 
-		loopEClass = createEClass(LOOP);
-		createEReference(loopEClass, LOOP__INITIALIZATION);
-		createEReference(loopEClass, LOOP__BODY);
-		createEReference(loopEClass, LOOP__STOP_CONDITION);
-
 		literalEClass = createEClass(LITERAL);
+
+		emptyExpressionEClass = createEClass(EMPTY_EXPRESSION);
+
+		javaStaticCallEClass = createEClass(JAVA_STATIC_CALL);
+		createEReference(javaStaticCallEClass, JAVA_STATIC_CALL__PARAMETERS);
+		createEAttribute(javaStaticCallEClass, JAVA_STATIC_CALL__JCLASS);
+		createEAttribute(javaStaticCallEClass, JAVA_STATIC_CALL__JMETHOD);
+
+		lambdaExpressionEClass = createEClass(LAMBDA_EXPRESSION);
+		createEReference(lambdaExpressionEClass, LAMBDA_EXPRESSION__PARAMETERS);
+		createEReference(lambdaExpressionEClass, LAMBDA_EXPRESSION__BODY);
+
+		lambdaParameterEClass = createEClass(LAMBDA_PARAMETER);
+		createEAttribute(lambdaParameterEClass, LAMBDA_PARAMETER__NAME);
+		createEReference(lambdaParameterEClass, LAMBDA_PARAMETER__TYPE);
 
 		integerLiteralEClass = createEClass(INTEGER_LITERAL);
 		createEAttribute(integerLiteralEClass, INTEGER_LITERAL__VALUE);
@@ -972,58 +1013,17 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 
 		voidLiteralEClass = createEClass(VOID_LITERAL);
 
-		javaStaticCallEClass = createEClass(JAVA_STATIC_CALL);
-		createEReference(javaStaticCallEClass, JAVA_STATIC_CALL__PARAMETERS);
-		createEAttribute(javaStaticCallEClass, JAVA_STATIC_CALL__JCLASS);
-		createEAttribute(javaStaticCallEClass, JAVA_STATIC_CALL__JMETHOD);
+		loopEClass = createEClass(LOOP);
+		createEReference(loopEClass, LOOP__INITIALIZATION);
+		createEReference(loopEClass, LOOP__BODY);
+		createEReference(loopEClass, LOOP__STOP_CONDITION);
 
-		conditionalEClass = createEClass(CONDITIONAL);
-		createEReference(conditionalEClass, CONDITIONAL__THEN_BODY);
-		createEReference(conditionalEClass, CONDITIONAL__ELSE_BODY);
-		createEReference(conditionalEClass, CONDITIONAL__CONDITION);
-
-		callFeatureEClass = createEClass(CALL_FEATURE);
-		createEReference(callFeatureEClass, CALL_FEATURE__STATIC_PROPERTY);
-		createEReference(callFeatureEClass, CALL_FEATURE__STATIC_OPERATION);
-		createEReference(callFeatureEClass, CALL_FEATURE__STATIC_ENUM_LITERAL);
-		createEReference(callFeatureEClass, CALL_FEATURE__TARGET);
-		createEAttribute(callFeatureEClass, CALL_FEATURE__IS_ATPRE);
-
-		callExpressionEClass = createEClass(CALL_EXPRESSION);
-		createEReference(callExpressionEClass, CALL_EXPRESSION__STATIC_TYPE_VARIABLE_BINDINGS);
-		createEReference(callExpressionEClass, CALL_EXPRESSION__PARAMETERS);
-		createEAttribute(callExpressionEClass, CALL_EXPRESSION__NAME);
-
-		callVariableEClass = createEClass(CALL_VARIABLE);
-		createEAttribute(callVariableEClass, CALL_VARIABLE__IS_ATPRE);
-
-		callSuperOperationEClass = createEClass(CALL_SUPER_OPERATION);
-
-		callResultEClass = createEClass(CALL_RESULT);
-
-		callValueEClass = createEClass(CALL_VALUE);
-
-		emptyExpressionEClass = createEClass(EMPTY_EXPRESSION);
-
-		lambdaExpressionEClass = createEClass(LAMBDA_EXPRESSION);
-		createEReference(lambdaExpressionEClass, LAMBDA_EXPRESSION__PARAMETERS);
-		createEReference(lambdaExpressionEClass, LAMBDA_EXPRESSION__BODY);
-
-		lambdaParameterEClass = createEClass(LAMBDA_PARAMETER);
-		createEAttribute(lambdaParameterEClass, LAMBDA_PARAMETER__NAME);
-		createEReference(lambdaParameterEClass, LAMBDA_PARAMETER__TYPE);
-
-		assignmentEClass = createEClass(ASSIGNMENT);
-		createEReference(assignmentEClass, ASSIGNMENT__TARGET);
-		createEReference(assignmentEClass, ASSIGNMENT__VALUE);
-		createEAttribute(assignmentEClass, ASSIGNMENT__IS_CAST);
+		selfExpressionEClass = createEClass(SELF_EXPRESSION);
 
 		variableDeclEClass = createEClass(VARIABLE_DECL);
 		createEReference(variableDeclEClass, VARIABLE_DECL__INITIALIZATION);
 		createEAttribute(variableDeclEClass, VARIABLE_DECL__IDENTIFIER);
 		createEReference(variableDeclEClass, VARIABLE_DECL__TYPE);
-
-		selfExpressionEClass = createEClass(SELF_EXPRESSION);
 	}
 
 	/**
@@ -1057,35 +1057,73 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		assignmentEClass.getESuperTypes().add(this.getExpression());
+		expressionEClass.getESuperTypes().add(theStructurePackage.getObject());
+		expressionEClass.getESuperTypes().add(theStructurePackage.getTypeContainer());
+		callExpressionEClass.getESuperTypes().add(this.getExpression());
+		blockEClass.getESuperTypes().add(this.getExpression());
+		callVariableEClass.getESuperTypes().add(this.getCallExpression());
+		callFeatureEClass.getESuperTypes().add(this.getCallExpression());
+		callSuperOperationEClass.getESuperTypes().add(this.getCallExpression());
+		callResultEClass.getESuperTypes().add(this.getCallVariable());
+		callValueEClass.getESuperTypes().add(this.getCallExpression());
+		conditionalEClass.getESuperTypes().add(this.getExpression());
 		raiseEClass.getESuperTypes().add(this.getExpression());
 		rescueEClass.getESuperTypes().add(theStructurePackage.getObject());
-		expressionEClass.getESuperTypes().add(theStructurePackage.getTypeContainer());
-		expressionEClass.getESuperTypes().add(theStructurePackage.getObject());
-		blockEClass.getESuperTypes().add(this.getExpression());
 		typeReferenceEClass.getESuperTypes().add(theStructurePackage.getMultiplicityElement());
-		loopEClass.getESuperTypes().add(this.getExpression());
 		literalEClass.getESuperTypes().add(this.getExpression());
+		emptyExpressionEClass.getESuperTypes().add(this.getExpression());
+		javaStaticCallEClass.getESuperTypes().add(this.getExpression());
+		lambdaExpressionEClass.getESuperTypes().add(this.getExpression());
+		lambdaParameterEClass.getESuperTypes().add(theStructurePackage.getObject());
 		integerLiteralEClass.getESuperTypes().add(this.getLiteral());
 		stringLiteralEClass.getESuperTypes().add(this.getLiteral());
 		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
 		typeLiteralEClass.getESuperTypes().add(this.getLiteral());
 		voidLiteralEClass.getESuperTypes().add(this.getLiteral());
-		javaStaticCallEClass.getESuperTypes().add(this.getExpression());
-		conditionalEClass.getESuperTypes().add(this.getExpression());
-		callFeatureEClass.getESuperTypes().add(this.getCallExpression());
-		callExpressionEClass.getESuperTypes().add(this.getExpression());
-		callVariableEClass.getESuperTypes().add(this.getCallExpression());
-		callSuperOperationEClass.getESuperTypes().add(this.getCallExpression());
-		callResultEClass.getESuperTypes().add(this.getCallVariable());
-		callValueEClass.getESuperTypes().add(this.getCallExpression());
-		emptyExpressionEClass.getESuperTypes().add(this.getExpression());
-		lambdaExpressionEClass.getESuperTypes().add(this.getExpression());
-		lambdaParameterEClass.getESuperTypes().add(theStructurePackage.getObject());
-		assignmentEClass.getESuperTypes().add(this.getExpression());
-		variableDeclEClass.getESuperTypes().add(this.getExpression());
+		loopEClass.getESuperTypes().add(this.getExpression());
 		selfExpressionEClass.getESuperTypes().add(this.getExpression());
+		variableDeclEClass.getESuperTypes().add(this.getExpression());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(assignmentEClass, Assignment.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAssignment_Target(), this.getCallExpression(), null, "target", null, 1, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAssignment_Value(), this.getExpression(), null, "value", null, 1, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAssignment_IsCast(), theStructurePackage.getBoolean(), "isCast", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExpression_StaticType(), theStructurePackage.getType(), null, "staticType", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(callExpressionEClass, CallExpression.class, "CallExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCallExpression_Parameters(), this.getExpression(), null, "parameters", null, 0, -1, CallExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCallExpression_Name(), theStructurePackage.getString(), "name", null, 0, 1, CallExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCallExpression_StaticTypeVariableBindings(), theStructurePackage.getType(), null, "staticTypeVariableBindings", null, 0, -1, CallExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(blockEClass, Block.class, "Block", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBlock_Statement(), this.getExpression(), null, "statement", null, 0, -1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlock_RescueBlock(), this.getRescue(), null, "rescueBlock", null, 0, -1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(callVariableEClass, CallVariable.class, "CallVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCallVariable_IsAtpre(), theStructurePackage.getBoolean(), "isAtpre", null, 0, 1, CallVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(callFeatureEClass, CallFeature.class, "CallFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCallFeature_Target(), this.getExpression(), null, "target", null, 0, 1, CallFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCallFeature_IsAtpre(), theStructurePackage.getBoolean(), "isAtpre", null, 0, 1, CallFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCallFeature_StaticProperty(), theStructurePackage.getProperty(), null, "staticProperty", null, 0, 1, CallFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCallFeature_StaticOperation(), theStructurePackage.getOperation(), null, "staticOperation", null, 0, 1, CallFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCallFeature_StaticEnumLiteral(), theStructurePackage.getEnumerationLiteral(), null, "staticEnumLiteral", null, 0, 1, CallFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(callSuperOperationEClass, CallSuperOperation.class, "CallSuperOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(callResultEClass, CallResult.class, "CallResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(callValueEClass, CallValue.class, "CallValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(conditionalEClass, Conditional.class, "Conditional", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConditional_ThenBody(), this.getExpression(), null, "thenBody", null, 1, 1, Conditional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditional_ElseBody(), this.getExpression(), null, "elseBody", null, 0, 1, Conditional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditional_Condition(), this.getExpression(), null, "condition", null, 1, 1, Conditional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(raiseEClass, Raise.class, "Raise", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRaise_Expression(), this.getExpression(), null, "expression", null, 1, 1, Raise.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1094,21 +1132,24 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 		initEReference(getRescue_ExceptionType(), this.getTypeReference(), null, "exceptionType", null, 1, 1, Rescue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRescue_ExceptionName(), theStructurePackage.getString(), "exceptionName", null, 0, 1, Rescue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExpression_StaticType(), theStructurePackage.getType(), null, "staticType", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(blockEClass, Block.class, "Block", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBlock_RescueBlock(), this.getRescue(), null, "rescueBlock", null, 0, -1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBlock_Statement(), this.getExpression(), null, "statement", null, 0, -1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(typeReferenceEClass, TypeReference.class, "TypeReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(loopEClass, Loop.class, "Loop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLoop_Initialization(), this.getExpression(), null, "initialization", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLoop_Body(), this.getExpression(), null, "body", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLoop_StopCondition(), this.getExpression(), null, "stopCondition", null, 1, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(literalEClass, Literal.class, "Literal", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(emptyExpressionEClass, EmptyExpression.class, "EmptyExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(javaStaticCallEClass, JavaStaticCall.class, "JavaStaticCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJavaStaticCall_Parameters(), this.getExpression(), null, "parameters", null, 0, -1, JavaStaticCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJavaStaticCall_Jclass(), theStructurePackage.getString(), "jclass", null, 0, 1, JavaStaticCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJavaStaticCall_Jmethod(), theStructurePackage.getString(), "jmethod", null, 0, 1, JavaStaticCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lambdaExpressionEClass, LambdaExpression.class, "LambdaExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLambdaExpression_Parameters(), this.getLambdaParameter(), null, "parameters", null, 0, -1, LambdaExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLambdaExpression_Body(), this.getExpression(), null, "body", null, 1, 1, LambdaExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lambdaParameterEClass, LambdaParameter.class, "LambdaParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLambdaParameter_Name(), theStructurePackage.getString(), "name", null, 0, 1, LambdaParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLambdaParameter_Type(), this.getTypeReference(), null, "type", null, 1, 1, LambdaParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(integerLiteralEClass, IntegerLiteral.class, "IntegerLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIntegerLiteral_Value(), theStructurePackage.getInteger(), "value", null, 0, 1, IntegerLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1124,58 +1165,17 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 
 		initEClass(voidLiteralEClass, VoidLiteral.class, "VoidLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(javaStaticCallEClass, JavaStaticCall.class, "JavaStaticCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getJavaStaticCall_Parameters(), this.getExpression(), null, "parameters", null, 0, -1, JavaStaticCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getJavaStaticCall_Jclass(), theStructurePackage.getString(), "jclass", null, 0, 1, JavaStaticCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getJavaStaticCall_Jmethod(), theStructurePackage.getString(), "jmethod", null, 0, 1, JavaStaticCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(loopEClass, Loop.class, "Loop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLoop_Initialization(), this.getExpression(), null, "initialization", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLoop_Body(), this.getExpression(), null, "body", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLoop_StopCondition(), this.getExpression(), null, "stopCondition", null, 1, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(conditionalEClass, Conditional.class, "Conditional", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConditional_ThenBody(), this.getExpression(), null, "thenBody", null, 1, 1, Conditional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConditional_ElseBody(), this.getExpression(), null, "elseBody", null, 0, 1, Conditional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConditional_Condition(), this.getExpression(), null, "condition", null, 1, 1, Conditional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(callFeatureEClass, CallFeature.class, "CallFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCallFeature_StaticProperty(), theStructurePackage.getProperty(), null, "staticProperty", null, 0, 1, CallFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCallFeature_StaticOperation(), theStructurePackage.getOperation(), null, "staticOperation", null, 0, 1, CallFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCallFeature_StaticEnumLiteral(), theStructurePackage.getEnumerationLiteral(), null, "staticEnumLiteral", null, 0, 1, CallFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCallFeature_Target(), this.getExpression(), null, "target", null, 0, 1, CallFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCallFeature_IsAtpre(), theStructurePackage.getBoolean(), "isAtpre", null, 0, 1, CallFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(callExpressionEClass, CallExpression.class, "CallExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCallExpression_StaticTypeVariableBindings(), theStructurePackage.getType(), null, "staticTypeVariableBindings", null, 0, -1, CallExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCallExpression_Parameters(), this.getExpression(), null, "parameters", null, 0, -1, CallExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCallExpression_Name(), theStructurePackage.getString(), "name", null, 0, 1, CallExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(callVariableEClass, CallVariable.class, "CallVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCallVariable_IsAtpre(), theStructurePackage.getBoolean(), "isAtpre", null, 0, 1, CallVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(callSuperOperationEClass, CallSuperOperation.class, "CallSuperOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(callResultEClass, CallResult.class, "CallResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(callValueEClass, CallValue.class, "CallValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(emptyExpressionEClass, EmptyExpression.class, "EmptyExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(lambdaExpressionEClass, LambdaExpression.class, "LambdaExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLambdaExpression_Parameters(), this.getLambdaParameter(), null, "parameters", null, 0, -1, LambdaExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLambdaExpression_Body(), this.getExpression(), null, "body", null, 1, 1, LambdaExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(lambdaParameterEClass, LambdaParameter.class, "LambdaParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLambdaParameter_Name(), theStructurePackage.getString(), "name", null, 0, 1, LambdaParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLambdaParameter_Type(), this.getTypeReference(), null, "type", null, 1, 1, LambdaParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(assignmentEClass, Assignment.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAssignment_Target(), this.getCallExpression(), null, "target", null, 1, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAssignment_Value(), this.getExpression(), null, "value", null, 1, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAssignment_IsCast(), theStructurePackage.getBoolean(), "isCast", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(selfExpressionEClass, SelfExpression.class, "SelfExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(variableDeclEClass, VariableDecl.class, "VariableDecl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVariableDecl_Initialization(), this.getExpression(), null, "initialization", null, 0, 1, VariableDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariableDecl_Identifier(), theStructurePackage.getString(), "identifier", null, 0, 1, VariableDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariableDecl_Type(), this.getTypeReference(), null, "type", null, 1, 1, VariableDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(selfExpressionEClass, SelfExpression.class, "SelfExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}
 
 } //BehaviorPackageImpl

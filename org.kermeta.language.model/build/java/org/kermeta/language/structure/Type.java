@@ -12,7 +12,7 @@ package org.kermeta.language.structure;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Base class definition for the <b>use</b> of a type.
+ * Alias to kermeta::standard::Integer
  * <!-- end-model-doc -->
  *
  * <p>

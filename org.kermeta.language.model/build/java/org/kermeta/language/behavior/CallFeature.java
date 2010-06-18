@@ -23,11 +23,11 @@ import org.kermeta.language.structure.Property;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.kermeta.language.behavior.CallFeature#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.kermeta.language.behavior.CallFeature#isIsAtpre <em>Is Atpre</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.CallFeature#getStaticProperty <em>Static Property</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.CallFeature#getStaticOperation <em>Static Operation</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.CallFeature#getStaticEnumLiteral <em>Static Enum Literal</em>}</li>
- *   <li>{@link org.kermeta.language.behavior.CallFeature#getTarget <em>Target</em>}</li>
- *   <li>{@link org.kermeta.language.behavior.CallFeature#isIsAtpre <em>Is Atpre</em>}</li>
  * </ul>
  * </p>
  *

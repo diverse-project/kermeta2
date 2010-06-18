@@ -12,6 +12,8 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.kermeta.language.structure.AbstractOperation;
+import org.kermeta.language.structure.AbstractProperty;
 import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.Constraint;
 import org.kermeta.language.structure.DataType;
@@ -42,6 +44,9 @@ import org.kermeta.language.structure.TypeDefinitionContainer;
 import org.kermeta.language.structure.TypeVariable;
 import org.kermeta.language.structure.TypeVariableBinding;
 import org.kermeta.language.structure.TypedElement;
+import org.kermeta.language.structure.Unresolved;
+import org.kermeta.language.structure.UnresolvedOperation;
+import org.kermeta.language.structure.UnresolvedProperty;
 import org.kermeta.language.structure.UnresolvedType;
 import org.kermeta.language.structure.Using;
 import org.kermeta.language.structure.VirtualType;
@@ -147,68 +152,56 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createTypeDefinitionAdapter();
 			}
 			@Override
-			public Adapter caseClassDefinition(ClassDefinition object) {
-				return createClassDefinitionAdapter();
-			}
-			@Override
-			public Adapter caseTypedElement(TypedElement object) {
-				return createTypedElementAdapter();
-			}
-			@Override
-			public Adapter caseTypeVariable(TypeVariable object) {
-				return createTypeVariableAdapter();
-			}
-			@Override
-			public Adapter caseProductType(ProductType object) {
-				return createProductTypeAdapter();
-			}
-			@Override
-			public Adapter caseFunctionType(FunctionType object) {
-				return createFunctionTypeAdapter();
-			}
-			@Override
-			public Adapter casePrimitiveType(PrimitiveType object) {
-				return createPrimitiveTypeAdapter();
-			}
-			@Override
-			public Adapter caseNamedElement(NamedElement object) {
-				return createNamedElementAdapter();
-			}
-			@Override
-			public Adapter caseConstraint(Constraint object) {
-				return createConstraintAdapter();
-			}
-			@Override
-			public Adapter caseObjectTypeVariable(ObjectTypeVariable object) {
-				return createObjectTypeVariableAdapter();
-			}
-			@Override
 			public Adapter caseClass(org.kermeta.language.structure.Class object) {
 				return createClassAdapter();
-			}
-			@Override
-			public Adapter casePackage(org.kermeta.language.structure.Package object) {
-				return createPackageAdapter();
-			}
-			@Override
-			public Adapter caseVoidType(VoidType object) {
-				return createVoidTypeAdapter();
 			}
 			@Override
 			public Adapter caseDataType(DataType object) {
 				return createDataTypeAdapter();
 			}
 			@Override
-			public Adapter caseParameterizedType(ParameterizedType object) {
-				return createParameterizedTypeAdapter();
+			public Adapter caseEnumeration(Enumeration object) {
+				return createEnumerationAdapter();
 			}
 			@Override
-			public Adapter caseGenericTypeDefinition(GenericTypeDefinition object) {
-				return createGenericTypeDefinitionAdapter();
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
 			}
 			@Override
-			public Adapter caseTypeDefinitionContainer(TypeDefinitionContainer object) {
-				return createTypeDefinitionContainerAdapter();
+			public Adapter casePackage(org.kermeta.language.structure.Package object) {
+				return createPackageAdapter();
+			}
+			@Override
+			public Adapter caseParameter(Parameter object) {
+				return createParameterAdapter();
+			}
+			@Override
+			public Adapter casePrimitiveType(PrimitiveType object) {
+				return createPrimitiveTypeAdapter();
+			}
+			@Override
+			public Adapter caseTypedElement(TypedElement object) {
+				return createTypedElementAdapter();
+			}
+			@Override
+			public Adapter caseTag(Tag object) {
+				return createTagAdapter();
+			}
+			@Override
+			public Adapter caseAbstractProperty(AbstractProperty object) {
+				return createAbstractPropertyAdapter();
+			}
+			@Override
+			public Adapter caseConstraint(Constraint object) {
+				return createConstraintAdapter();
+			}
+			@Override
+			public Adapter caseClassDefinition(ClassDefinition object) {
+				return createClassDefinitionAdapter();
+			}
+			@Override
+			public Adapter caseModelingUnit(ModelingUnit object) {
+				return createModelingUnitAdapter();
 			}
 			@Override
 			public Adapter caseRequire(Require object) {
@@ -219,16 +212,20 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createUsingAdapter();
 			}
 			@Override
-			public Adapter caseUnresolvedType(UnresolvedType object) {
-				return createUnresolvedTypeAdapter();
+			public Adapter caseGenericTypeDefinition(GenericTypeDefinition object) {
+				return createGenericTypeDefinitionAdapter();
 			}
 			@Override
-			public Adapter caseTag(Tag object) {
-				return createTagAdapter();
+			public Adapter caseParameterizedType(ParameterizedType object) {
+				return createParameterizedTypeAdapter();
 			}
 			@Override
-			public Adapter caseModelingUnit(ModelingUnit object) {
-				return createModelingUnitAdapter();
+			public Adapter caseTypeVariable(TypeVariable object) {
+				return createTypeVariableAdapter();
+			}
+			@Override
+			public Adapter caseObjectTypeVariable(ObjectTypeVariable object) {
+				return createObjectTypeVariableAdapter();
 			}
 			@Override
 			public Adapter caseModelType(ModelType object) {
@@ -247,12 +244,40 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createModelAdapter();
 			}
 			@Override
-			public Adapter caseEnumeration(Enumeration object) {
-				return createEnumerationAdapter();
+			public Adapter caseAbstractOperation(AbstractOperation object) {
+				return createAbstractOperationAdapter();
 			}
 			@Override
-			public Adapter caseParameter(Parameter object) {
-				return createParameterAdapter();
+			public Adapter caseUnresolvedType(UnresolvedType object) {
+				return createUnresolvedTypeAdapter();
+			}
+			@Override
+			public Adapter caseUnresolved(Unresolved object) {
+				return createUnresolvedAdapter();
+			}
+			@Override
+			public Adapter caseUnresolvedProperty(UnresolvedProperty object) {
+				return createUnresolvedPropertyAdapter();
+			}
+			@Override
+			public Adapter caseUnresolvedOperation(UnresolvedOperation object) {
+				return createUnresolvedOperationAdapter();
+			}
+			@Override
+			public Adapter caseProductType(ProductType object) {
+				return createProductTypeAdapter();
+			}
+			@Override
+			public Adapter caseFunctionType(FunctionType object) {
+				return createFunctionTypeAdapter();
+			}
+			@Override
+			public Adapter caseVoidType(VoidType object) {
+				return createVoidTypeAdapter();
+			}
+			@Override
+			public Adapter caseTypeDefinitionContainer(TypeDefinitionContainer object) {
+				return createTypeDefinitionContainerAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -527,6 +552,20 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.AbstractProperty <em>Abstract Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.AbstractProperty
+	 * @generated
+	 */
+	public Adapter createAbstractPropertyAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -709,6 +748,20 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.AbstractOperation <em>Abstract Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.AbstractOperation
+	 * @generated
+	 */
+	public Adapter createAbstractOperationAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.ProductType <em>Product Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -775,6 +828,48 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUnresolvedTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.Unresolved <em>Unresolved</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.Unresolved
+	 * @generated
+	 */
+	public Adapter createUnresolvedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.UnresolvedProperty <em>Unresolved Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.UnresolvedProperty
+	 * @generated
+	 */
+	public Adapter createUnresolvedPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.UnresolvedOperation <em>Unresolved Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.UnresolvedOperation
+	 * @generated
+	 */
+	public Adapter createUnresolvedOperationAdapter() {
 		return null;
 	}
 

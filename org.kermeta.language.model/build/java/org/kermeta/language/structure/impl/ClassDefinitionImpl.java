@@ -41,9 +41,7 @@ import org.kermeta.language.structure.TypeContainer;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#isIsAspect <em>Is Aspect</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getTypeParameter <em>Type Parameter</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getContainedType <em>Contained Type</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getInv <em>Inv</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getOwnedAttribute <em>Owned Attribute</em>}</li>
@@ -54,7 +52,7 @@ import org.kermeta.language.structure.TypeContainer;
  *
  * @generated
  */
-public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefinition {
+public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements ClassDefinition {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,54 +61,14 @@ public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefin
 	public static final String copyright = "IRISA / INRIA / Universite de Rennes 1";
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getContainedType() <em>Contained Type</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getContainedType()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsAspect()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_ASPECT_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsAspect()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isAspect = IS_ASPECT_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getTypeParameter() <em>Type Parameter</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTypeParameter()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TypeVariable> typeParameter;
+	protected EList<Type> containedType;
 
 	/**
 	 * The cached value of the '{@link #getInv() <em>Inv</em>}' containment reference list.
@@ -196,53 +154,11 @@ public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.CLASS_DEFINITION__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isIsAspect() {
-		return isAspect;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsAspect(boolean newIsAspect) {
-		boolean oldIsAspect = isAspect;
-		isAspect = newIsAspect;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.CLASS_DEFINITION__IS_ASPECT, oldIsAspect, isAspect));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<TypeVariable> getTypeParameter() {
-		if (typeParameter == null) {
-			typeParameter = new EObjectContainmentEList.Resolving<TypeVariable>(TypeVariable.class, this, StructurePackage.CLASS_DEFINITION__TYPE_PARAMETER);
+	public EList<Type> getContainedType() {
+		if (containedType == null) {
+			containedType = new EObjectContainmentWithInverseEList.Resolving<Type>(Type.class, this, StructurePackage.CLASS_DEFINITION__CONTAINED_TYPE, StructurePackage.TYPE__TYPE_CONTAINER);
 		}
-		return typeParameter;
+		return containedType;
 	}
 
 	/**
@@ -323,6 +239,8 @@ public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefin
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case StructurePackage.CLASS_DEFINITION__CONTAINED_TYPE:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getContainedType()).basicAdd(otherEnd, msgs);
 			case StructurePackage.CLASS_DEFINITION__INV:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInv()).basicAdd(otherEnd, msgs);
 			case StructurePackage.CLASS_DEFINITION__OWNED_ATTRIBUTE:
@@ -341,8 +259,8 @@ public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefin
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StructurePackage.CLASS_DEFINITION__TYPE_PARAMETER:
-				return ((InternalEList<?>)getTypeParameter()).basicRemove(otherEnd, msgs);
+			case StructurePackage.CLASS_DEFINITION__CONTAINED_TYPE:
+				return ((InternalEList<?>)getContainedType()).basicRemove(otherEnd, msgs);
 			case StructurePackage.CLASS_DEFINITION__INV:
 				return ((InternalEList<?>)getInv()).basicRemove(otherEnd, msgs);
 			case StructurePackage.CLASS_DEFINITION__OWNED_ATTRIBUTE:
@@ -361,12 +279,8 @@ public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefin
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StructurePackage.CLASS_DEFINITION__NAME:
-				return getName();
-			case StructurePackage.CLASS_DEFINITION__IS_ASPECT:
-				return isIsAspect();
-			case StructurePackage.CLASS_DEFINITION__TYPE_PARAMETER:
-				return getTypeParameter();
+			case StructurePackage.CLASS_DEFINITION__CONTAINED_TYPE:
+				return getContainedType();
 			case StructurePackage.CLASS_DEFINITION__INV:
 				return getInv();
 			case StructurePackage.CLASS_DEFINITION__IS_ABSTRACT:
@@ -390,15 +304,9 @@ public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefin
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case StructurePackage.CLASS_DEFINITION__NAME:
-				setName((String)newValue);
-				return;
-			case StructurePackage.CLASS_DEFINITION__IS_ASPECT:
-				setIsAspect((Boolean)newValue);
-				return;
-			case StructurePackage.CLASS_DEFINITION__TYPE_PARAMETER:
-				getTypeParameter().clear();
-				getTypeParameter().addAll((Collection<? extends TypeVariable>)newValue);
+			case StructurePackage.CLASS_DEFINITION__CONTAINED_TYPE:
+				getContainedType().clear();
+				getContainedType().addAll((Collection<? extends Type>)newValue);
 				return;
 			case StructurePackage.CLASS_DEFINITION__INV:
 				getInv().clear();
@@ -431,14 +339,8 @@ public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefin
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case StructurePackage.CLASS_DEFINITION__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case StructurePackage.CLASS_DEFINITION__IS_ASPECT:
-				setIsAspect(IS_ASPECT_EDEFAULT);
-				return;
-			case StructurePackage.CLASS_DEFINITION__TYPE_PARAMETER:
-				getTypeParameter().clear();
+			case StructurePackage.CLASS_DEFINITION__CONTAINED_TYPE:
+				getContainedType().clear();
 				return;
 			case StructurePackage.CLASS_DEFINITION__INV:
 				getInv().clear();
@@ -467,12 +369,8 @@ public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefin
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case StructurePackage.CLASS_DEFINITION__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case StructurePackage.CLASS_DEFINITION__IS_ASPECT:
-				return isAspect != IS_ASPECT_EDEFAULT;
-			case StructurePackage.CLASS_DEFINITION__TYPE_PARAMETER:
-				return typeParameter != null && !typeParameter.isEmpty();
+			case StructurePackage.CLASS_DEFINITION__CONTAINED_TYPE:
+				return containedType != null && !containedType.isEmpty();
 			case StructurePackage.CLASS_DEFINITION__INV:
 				return inv != null && !inv.isEmpty();
 			case StructurePackage.CLASS_DEFINITION__IS_ABSTRACT:
@@ -494,21 +392,9 @@ public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefin
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == NamedElement.class) {
+		if (baseClass == TypeContainer.class) {
 			switch (derivedFeatureID) {
-				case StructurePackage.CLASS_DEFINITION__NAME: return StructurePackage.NAMED_ELEMENT__NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == TypeDefinition.class) {
-			switch (derivedFeatureID) {
-				case StructurePackage.CLASS_DEFINITION__IS_ASPECT: return StructurePackage.TYPE_DEFINITION__IS_ASPECT;
-				default: return -1;
-			}
-		}
-		if (baseClass == GenericTypeDefinition.class) {
-			switch (derivedFeatureID) {
-				case StructurePackage.CLASS_DEFINITION__TYPE_PARAMETER: return StructurePackage.GENERIC_TYPE_DEFINITION__TYPE_PARAMETER;
+				case StructurePackage.CLASS_DEFINITION__CONTAINED_TYPE: return StructurePackage.TYPE_CONTAINER__CONTAINED_TYPE;
 				default: return -1;
 			}
 		}
@@ -522,21 +408,9 @@ public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefin
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == NamedElement.class) {
+		if (baseClass == TypeContainer.class) {
 			switch (baseFeatureID) {
-				case StructurePackage.NAMED_ELEMENT__NAME: return StructurePackage.CLASS_DEFINITION__NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == TypeDefinition.class) {
-			switch (baseFeatureID) {
-				case StructurePackage.TYPE_DEFINITION__IS_ASPECT: return StructurePackage.CLASS_DEFINITION__IS_ASPECT;
-				default: return -1;
-			}
-		}
-		if (baseClass == GenericTypeDefinition.class) {
-			switch (baseFeatureID) {
-				case StructurePackage.GENERIC_TYPE_DEFINITION__TYPE_PARAMETER: return StructurePackage.CLASS_DEFINITION__TYPE_PARAMETER;
+				case StructurePackage.TYPE_CONTAINER__CONTAINED_TYPE: return StructurePackage.CLASS_DEFINITION__CONTAINED_TYPE;
 				default: return -1;
 			}
 		}
@@ -553,11 +427,7 @@ public class ClassDefinitionImpl extends TypeContainerImpl implements ClassDefin
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", isAspect: ");
-		result.append(isAspect);
-		result.append(", isAbstract: ");
+		result.append(" (isAbstract: ");
 		result.append(isAbstract);
 		result.append(')');
 		return result.toString();

@@ -31,7 +31,7 @@ import org.kermeta.language.structure.TypedElement;
  *
  * @generated
  */
-public class TypedElementImpl extends TypeContainerImpl implements TypedElement {
+public abstract class TypedElementImpl extends TypeContainerImpl implements TypedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

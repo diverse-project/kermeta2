@@ -140,15 +140,6 @@ public interface StructureFactory extends EFactory {
 	PrimitiveType createPrimitiveType();
 
 	/**
-	 * Returns a new object of class '<em>Named Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Named Element</em>'.
-	 * @generated
-	 */
-	NamedElement createNamedElement();
-
-	/**
 	 * Returns a new object of class '<em>Tag</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -174,24 +165,6 @@ public interface StructureFactory extends EFactory {
 	 * @generated
 	 */
 	ClassDefinition createClassDefinition();
-
-	/**
-	 * Returns a new object of class '<em>Typed Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Typed Element</em>'.
-	 * @generated
-	 */
-	TypedElement createTypedElement();
-
-	/**
-	 * Returns a new object of class '<em>Type Variable</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Type Variable</em>'.
-	 * @generated
-	 */
-	TypeVariable createTypeVariable();
 
 	/**
 	 * Returns a new object of class '<em>Modeling Unit</em>'.
@@ -293,15 +266,6 @@ public interface StructureFactory extends EFactory {
 	VoidType createVoidType();
 
 	/**
-	 * Returns a new object of class '<em>Data Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Type</em>'.
-	 * @generated
-	 */
-	DataType createDataType();
-
-	/**
 	 * Returns a new object of class '<em>Unresolved Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -309,6 +273,24 @@ public interface StructureFactory extends EFactory {
 	 * @generated
 	 */
 	UnresolvedType createUnresolvedType();
+
+	/**
+	 * Returns a new object of class '<em>Unresolved Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Unresolved Property</em>'.
+	 * @generated
+	 */
+	UnresolvedProperty createUnresolvedProperty();
+
+	/**
+	 * Returns a new object of class '<em>Unresolved Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Unresolved Operation</em>'.
+	 * @generated
+	 */
+	UnresolvedOperation createUnresolvedOperation();
 
 	/**
 	 * Returns the package supported by this factory.

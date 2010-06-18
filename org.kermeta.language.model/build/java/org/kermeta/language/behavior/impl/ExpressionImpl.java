@@ -37,19 +37,30 @@ import org.kermeta.language.structure.impl.ObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.kermeta.language.behavior.impl.ExpressionImpl#getContainedType <em>Contained Type</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.impl.ExpressionImpl#getStaticType <em>Static Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class ExpressionImpl extends TypeContainerImpl implements Expression {
+public abstract class ExpressionImpl extends ObjectImpl implements Expression {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final String copyright = "IRISA / INRIA / Universite de Rennes 1";
+
+	/**
+	 * The cached value of the '{@link #getContainedType() <em>Contained Type</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainedType()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Type> containedType;
 
 	/**
 	 * The cached value of the '{@link #getStaticType() <em>Static Type</em>}' reference.
@@ -78,6 +89,18 @@ public abstract class ExpressionImpl extends TypeContainerImpl implements Expres
 	@Override
 	protected EClass eStaticClass() {
 		return BehaviorPackage.Literals.EXPRESSION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Type> getContainedType() {
+		if (containedType == null) {
+			containedType = new EObjectContainmentWithInverseEList.Resolving<Type>(Type.class, this, BehaviorPackage.EXPRESSION__CONTAINED_TYPE, StructurePackage.TYPE__TYPE_CONTAINER);
+		}
+		return containedType;
 	}
 
 	/**
@@ -123,9 +146,40 @@ public abstract class ExpressionImpl extends TypeContainerImpl implements Expres
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case BehaviorPackage.EXPRESSION__CONTAINED_TYPE:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getContainedType()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case BehaviorPackage.EXPRESSION__CONTAINED_TYPE:
+				return ((InternalEList<?>)getContainedType()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BehaviorPackage.EXPRESSION__CONTAINED_TYPE:
+				return getContainedType();
 			case BehaviorPackage.EXPRESSION__STATIC_TYPE:
 				if (resolve) return getStaticType();
 				return basicGetStaticType();
@@ -142,6 +196,10 @@ public abstract class ExpressionImpl extends TypeContainerImpl implements Expres
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BehaviorPackage.EXPRESSION__CONTAINED_TYPE:
+				getContainedType().clear();
+				getContainedType().addAll((Collection<? extends Type>)newValue);
+				return;
 			case BehaviorPackage.EXPRESSION__STATIC_TYPE:
 				setStaticType((Type)newValue);
 				return;
@@ -157,6 +215,9 @@ public abstract class ExpressionImpl extends TypeContainerImpl implements Expres
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BehaviorPackage.EXPRESSION__CONTAINED_TYPE:
+				getContainedType().clear();
+				return;
 			case BehaviorPackage.EXPRESSION__STATIC_TYPE:
 				setStaticType((Type)null);
 				return;
@@ -172,10 +233,44 @@ public abstract class ExpressionImpl extends TypeContainerImpl implements Expres
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BehaviorPackage.EXPRESSION__CONTAINED_TYPE:
+				return containedType != null && !containedType.isEmpty();
 			case BehaviorPackage.EXPRESSION__STATIC_TYPE:
 				return staticType != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == TypeContainer.class) {
+			switch (derivedFeatureID) {
+				case BehaviorPackage.EXPRESSION__CONTAINED_TYPE: return StructurePackage.TYPE_CONTAINER__CONTAINED_TYPE;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == TypeContainer.class) {
+			switch (baseFeatureID) {
+				case StructurePackage.TYPE_CONTAINER__CONTAINED_TYPE: return BehaviorPackage.EXPRESSION__CONTAINED_TYPE;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //ExpressionImpl

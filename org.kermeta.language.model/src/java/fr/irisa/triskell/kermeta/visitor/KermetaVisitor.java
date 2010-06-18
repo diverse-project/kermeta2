@@ -1,6 +1,6 @@
 /*
  * This code has been generated to visit a kermeta model
- * Creation date: Wed Jun 02 10:52:00 CEST 2010
+ * Creation date: Fri Jun 18 15:37:23 CEST 2010
  * Template Created on feb. 2005
  * By Franck FLEUREY (ffleurey@irisa.fr)
  * IRISA / INRIA / University of rennes 1
@@ -74,6 +74,38 @@ public class KermetaVisitor {
 				return result;
 			}
 
+	public Object visit(org.kermeta.language.behavior.Assignment node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.behavior.Block node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.behavior.CallVariable node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.behavior.CallFeature node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.behavior.CallSuperOperation node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.behavior.CallResult node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.behavior.CallValue node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.behavior.Conditional node) {
+	return genericVisitChildren(node);
+	}
+
 	public Object visit(org.kermeta.language.behavior.Raise node) {
 	return genericVisitChildren(node);
 	}
@@ -82,15 +114,23 @@ public class KermetaVisitor {
 	return genericVisitChildren(node);
 	}
 
-	public Object visit(org.kermeta.language.behavior.Block node) {
-	return genericVisitChildren(node);
-	}
-
 	public Object visit(org.kermeta.language.behavior.TypeReference node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visit(org.kermeta.language.behavior.Loop node) {
+	public Object visit(org.kermeta.language.behavior.EmptyExpression node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.behavior.JavaStaticCall node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.behavior.LambdaExpression node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.behavior.LambdaParameter node) {
 	return genericVisitChildren(node);
 	}
 
@@ -114,59 +154,15 @@ public class KermetaVisitor {
 	return genericVisitChildren(node);
 	}
 
-	public Object visit(org.kermeta.language.behavior.JavaStaticCall node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.Conditional node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.CallFeature node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.CallExpression node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.CallVariable node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.CallSuperOperation node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.CallResult node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.CallValue node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.EmptyExpression node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.LambdaExpression node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.LambdaParameter node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.Assignment node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.behavior.VariableDecl node) {
+	public Object visit(org.kermeta.language.behavior.Loop node) {
 	return genericVisitChildren(node);
 	}
 
 	public Object visit(org.kermeta.language.behavior.SelfExpression node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.behavior.VariableDecl node) {
 	return genericVisitChildren(node);
 	}
 
@@ -198,43 +194,11 @@ public class KermetaVisitor {
 	return genericVisitChildren(node);
 	}
 
-	public Object visit(org.kermeta.language.structure.ClassDefinition node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.structure.TypedElement node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.structure.TypeVariable node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.structure.ProductType node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.structure.FunctionType node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.structure.PrimitiveType node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.structure.NamedElement node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.structure.Constraint node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.structure.ObjectTypeVariable node) {
-	return genericVisitChildren(node);
-	}
-
 	public Object visit(org.kermeta.language.structure.Class node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.Enumeration node) {
 	return genericVisitChildren(node);
 	}
 
@@ -242,11 +206,27 @@ public class KermetaVisitor {
 	return genericVisitChildren(node);
 	}
 
-	public Object visit(org.kermeta.language.structure.VoidType node) {
+	public Object visit(org.kermeta.language.structure.Parameter node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visit(org.kermeta.language.structure.DataType node) {
+	public Object visit(org.kermeta.language.structure.PrimitiveType node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.Tag node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.Constraint node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.ClassDefinition node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.ModelingUnit node) {
 	return genericVisitChildren(node);
 	}
 
@@ -258,15 +238,7 @@ public class KermetaVisitor {
 	return genericVisitChildren(node);
 	}
 
-	public Object visit(org.kermeta.language.structure.UnresolvedType node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.structure.Tag node) {
-	return genericVisitChildren(node);
-	}
-
-	public Object visit(org.kermeta.language.structure.ModelingUnit node) {
+	public Object visit(org.kermeta.language.structure.ObjectTypeVariable node) {
 	return genericVisitChildren(node);
 	}
 
@@ -286,11 +258,27 @@ public class KermetaVisitor {
 	return genericVisitChildren(node);
 	}
 
-	public Object visit(org.kermeta.language.structure.Enumeration node) {
+	public Object visit(org.kermeta.language.structure.UnresolvedType node) {
 	return genericVisitChildren(node);
 	}
 
-	public Object visit(org.kermeta.language.structure.Parameter node) {
+	public Object visit(org.kermeta.language.structure.UnresolvedProperty node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.UnresolvedOperation node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.ProductType node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.FunctionType node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.VoidType node) {
 	return genericVisitChildren(node);
 	}
 

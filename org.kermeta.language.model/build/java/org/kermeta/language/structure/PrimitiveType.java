@@ -29,7 +29,7 @@ package org.kermeta.language.structure;
  * @model
  * @generated
  */
-public interface PrimitiveType extends TypeContainer, DataType {
+public interface PrimitiveType extends DataType, TypeContainer {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

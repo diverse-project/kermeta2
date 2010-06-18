@@ -164,7 +164,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getTypedElement()
 	 * @generated
 	 */
-	int TYPED_ELEMENT = 10;
+	int TYPED_ELEMENT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -412,67 +412,13 @@ public interface StructurePackage extends EPackage {
 	int OPERATION__UPPER = MULTIPLICITY_ELEMENT__UPPER;
 
 	/**
-	 * The feature id for the '<em><b>Body</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__BODY = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Super Operation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__SUPER_OPERATION = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Pre</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__PRE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Post</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__POST = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
 	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__IS_ABSTRACT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Owning Class</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__OWNING_CLASS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Type Parameter</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__TYPE_PARAMETER = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 6;
+	int OPERATION__IS_ABSTRACT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Raised Exception</b></em>' reference list.
@@ -481,7 +427,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__RAISED_EXCEPTION = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 7;
+	int OPERATION__RAISED_EXCEPTION = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Owned Parameter</b></em>' containment reference list.
@@ -490,7 +436,70 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__OWNED_PARAMETER = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 8;
+	int OPERATION__OWNED_PARAMETER = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Pre</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__PRE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Post</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__POST = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__BODY = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Super Operation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__SUPER_OPERATION = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Owned Unresolved Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__OWNED_UNRESOLVED_OPERATIONS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Owning Class</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__OWNING_CLASS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__TYPE_PARAMETER = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Operation</em>' class.
@@ -499,7 +508,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 9;
+	int OPERATION_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.PropertyImpl <em>Property</em>}' class.
@@ -593,58 +602,13 @@ public interface StructurePackage extends EPackage {
 	int PROPERTY__UPPER = MULTIPLICITY_ELEMENT__UPPER;
 
 	/**
-	 * The feature id for the '<em><b>Getter Body</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__GETTER_BODY = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Setter Body</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__SETTER_BODY = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Is Getter Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__IS_GETTER_ABSTRACT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Is Setter Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__IS_SETTER_ABSTRACT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Owning Class</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__OWNING_CLASS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
 	 * The feature id for the '<em><b>Opposite</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__OPPOSITE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 5;
+	int PROPERTY__OPPOSITE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Is Read Only</b></em>' attribute.
@@ -653,7 +617,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__IS_READ_ONLY = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 6;
+	int PROPERTY__IS_READ_ONLY = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' attribute.
@@ -662,7 +626,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__DEFAULT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 7;
+	int PROPERTY__DEFAULT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Is Composite</b></em>' attribute.
@@ -671,7 +635,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__IS_COMPOSITE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 8;
+	int PROPERTY__IS_COMPOSITE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
@@ -680,7 +644,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__IS_DERIVED = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 9;
+	int PROPERTY__IS_DERIVED = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Is ID</b></em>' attribute.
@@ -689,7 +653,61 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__IS_ID = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 10;
+	int PROPERTY__IS_ID = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Getter Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__GETTER_BODY = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Setter Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__SETTER_BODY = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Is Getter Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__IS_GETTER_ABSTRACT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Is Setter Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__IS_SETTER_ABSTRACT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Owned Unresolved Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__OWNED_UNRESOLVED_PROPERTIES = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Owning Class</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__OWNING_CLASS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Property</em>' class.
@@ -698,7 +716,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 11;
+	int PROPERTY_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.TypeImpl <em>Type</em>}' class.
@@ -754,7 +772,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getNamedElement()
 	 * @generated
 	 */
-	int NAMED_ELEMENT = 15;
+	int NAMED_ELEMENT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -974,7 +992,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getParameterizedType()
 	 * @generated
 	 */
-	int PARAMETERIZED_TYPE = 22;
+	int PARAMETERIZED_TYPE = 25;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ClassImpl <em>Class</em>}' class.
@@ -984,7 +1002,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getClass_()
 	 * @generated
 	 */
-	int CLASS = 18;
+	int CLASS = 9;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.DataTypeImpl <em>Data Type</em>}' class.
@@ -994,7 +1012,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getDataType()
 	 * @generated
 	 */
-	int DATA_TYPE = 21;
+	int DATA_TYPE = 10;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.EnumerationImpl <em>Enumeration</em>}' class.
@@ -1004,7 +1022,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getEnumeration()
 	 * @generated
 	 */
-	int ENUMERATION = 34;
+	int ENUMERATION = 11;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.PackageImpl <em>Package</em>}' class.
@@ -1014,7 +1032,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getPackage()
 	 * @generated
 	 */
-	int PACKAGE = 19;
+	int PACKAGE = 13;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -1024,7 +1042,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 35;
+	int PARAMETER = 14;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.PrimitiveTypeImpl <em>Primitive Type</em>}' class.
@@ -1034,7 +1052,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getPrimitiveType()
 	 * @generated
 	 */
-	int PRIMITIVE_TYPE = 14;
+	int PRIMITIVE_TYPE = 15;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.TagImpl <em>Tag</em>}' class.
@@ -1044,7 +1062,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getTag()
 	 * @generated
 	 */
-	int TAG = 28;
+	int TAG = 17;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ConstraintImpl <em>Constraint</em>}' class.
@@ -1054,7 +1072,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getConstraint()
 	 * @generated
 	 */
-	int CONSTRAINT = 16;
+	int CONSTRAINT = 19;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.GenericTypeDefinitionImpl <em>Generic Type Definition</em>}' class.
@@ -1064,7 +1082,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getGenericTypeDefinition()
 	 * @generated
 	 */
-	int GENERIC_TYPE_DEFINITION = 23;
+	int GENERIC_TYPE_DEFINITION = 24;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ClassDefinitionImpl <em>Class Definition</em>}' class.
@@ -1074,115 +1092,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getClassDefinition()
 	 * @generated
 	 */
-	int CLASS_DEFINITION = 9;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION__TAG = TYPE_CONTAINER__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION__OWNED_TAGS = TYPE_CONTAINER__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION__CONTAINED_TYPE = TYPE_CONTAINER__CONTAINED_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION__NAME = TYPE_CONTAINER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Is Aspect</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION__IS_ASPECT = TYPE_CONTAINER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Type Parameter</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION__TYPE_PARAMETER = TYPE_CONTAINER_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Inv</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION__INV = TYPE_CONTAINER_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION__IS_ABSTRACT = TYPE_CONTAINER_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION__OWNED_ATTRIBUTE = TYPE_CONTAINER_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION__OWNED_OPERATION = TYPE_CONTAINER_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Super Type</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION__SUPER_TYPE = TYPE_CONTAINER_FEATURE_COUNT + 7;
-
-	/**
-	 * The number of structural features of the '<em>Class Definition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_DEFINITION_FEATURE_COUNT = TYPE_CONTAINER_FEATURE_COUNT + 8;
+	int CLASS_DEFINITION = 20;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ModelingUnitImpl <em>Modeling Unit</em>}' class.
@@ -1192,7 +1102,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getModelingUnit()
 	 * @generated
 	 */
-	int MODELING_UNIT = 29;
+	int MODELING_UNIT = 21;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.RequireImpl <em>Require</em>}' class.
@@ -1202,7 +1112,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getRequire()
 	 * @generated
 	 */
-	int REQUIRE = 25;
+	int REQUIRE = 22;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.UsingImpl <em>Using</em>}' class.
@@ -1212,7 +1122,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUsing()
 	 * @generated
 	 */
-	int USING = 26;
+	int USING = 23;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.TypeVariableImpl <em>Type Variable</em>}' class.
@@ -1222,70 +1132,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getTypeVariable()
 	 * @generated
 	 */
-	int TYPE_VARIABLE = 11;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_VARIABLE__TAG = TYPE_CONTAINER__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_VARIABLE__OWNED_TAGS = TYPE_CONTAINER__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_VARIABLE__CONTAINED_TYPE = TYPE_CONTAINER__CONTAINED_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_VARIABLE__TYPE_CONTAINER = TYPE_CONTAINER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_VARIABLE__NAME = TYPE_CONTAINER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Supertype</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_VARIABLE__SUPERTYPE = TYPE_CONTAINER_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Type Variable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_VARIABLE_FEATURE_COUNT = TYPE_CONTAINER_FEATURE_COUNT + 3;
+	int TYPE_VARIABLE = 26;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ObjectTypeVariableImpl <em>Object Type Variable</em>}' class.
@@ -1295,7 +1142,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getObjectTypeVariable()
 	 * @generated
 	 */
-	int OBJECT_TYPE_VARIABLE = 17;
+	int OBJECT_TYPE_VARIABLE = 27;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ModelTypeImpl <em>Model Type</em>}' class.
@@ -1305,7 +1152,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getModelType()
 	 * @generated
 	 */
-	int MODEL_TYPE = 30;
+	int MODEL_TYPE = 28;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ModelTypeVariableImpl <em>Model Type Variable</em>}' class.
@@ -1315,7 +1162,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getModelTypeVariable()
 	 * @generated
 	 */
-	int MODEL_TYPE_VARIABLE = 31;
+	int MODEL_TYPE_VARIABLE = 29;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.VirtualTypeImpl <em>Virtual Type</em>}' class.
@@ -1325,7 +1172,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getVirtualType()
 	 * @generated
 	 */
-	int VIRTUAL_TYPE = 32;
+	int VIRTUAL_TYPE = 30;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ModelImpl <em>Model</em>}' class.
@@ -1335,7 +1182,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getModel()
 	 * @generated
 	 */
-	int MODEL = 33;
+	int MODEL = 31;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ProductTypeImpl <em>Product Type</em>}' class.
@@ -1345,61 +1192,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getProductType()
 	 * @generated
 	 */
-	int PRODUCT_TYPE = 12;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_TYPE__TAG = TYPE_CONTAINER__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_TYPE__OWNED_TAGS = TYPE_CONTAINER__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_TYPE__CONTAINED_TYPE = TYPE_CONTAINER__CONTAINED_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_TYPE__TYPE_CONTAINER = TYPE_CONTAINER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_TYPE__TYPE = TYPE_CONTAINER_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Product Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_TYPE_FEATURE_COUNT = TYPE_CONTAINER_FEATURE_COUNT + 2;
+	int PRODUCT_TYPE = 37;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.FunctionTypeImpl <em>Function Type</em>}' class.
@@ -1409,7 +1202,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getFunctionType()
 	 * @generated
 	 */
-	int FUNCTION_TYPE = 13;
+	int FUNCTION_TYPE = 38;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -1418,7 +1211,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_TYPE__TAG = TYPE_CONTAINER__TAG;
+	int PARAMETERIZED_TYPE__TAG = TYPE__TAG;
 
 	/**
 	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
@@ -1427,16 +1220,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_TYPE__OWNED_TAGS = TYPE_CONTAINER__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTION_TYPE__CONTAINED_TYPE = TYPE_CONTAINER__CONTAINED_TYPE;
+	int PARAMETERIZED_TYPE__OWNED_TAGS = TYPE__OWNED_TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
@@ -1445,34 +1229,43 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_TYPE__TYPE_CONTAINER = TYPE_CONTAINER_FEATURE_COUNT + 0;
+	int PARAMETERIZED_TYPE__TYPE_CONTAINER = TYPE__TYPE_CONTAINER;
 
 	/**
-	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * The feature id for the '<em><b>Virtual Type Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_TYPE__LEFT = TYPE_CONTAINER_FEATURE_COUNT + 1;
+	int PARAMETERIZED_TYPE__VIRTUAL_TYPE_BINDING = TYPE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * The feature id for the '<em><b>Type Param Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_TYPE__RIGHT = TYPE_CONTAINER_FEATURE_COUNT + 2;
+	int PARAMETERIZED_TYPE__TYPE_PARAM_BINDING = TYPE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Function Type</em>' class.
+	 * The feature id for the '<em><b>Type Definition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_TYPE_FEATURE_COUNT = TYPE_CONTAINER_FEATURE_COUNT + 3;
+	int PARAMETERIZED_TYPE__TYPE_DEFINITION = TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Parameterized Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERIZED_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -1481,7 +1274,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE__TAG = TYPE_CONTAINER__TAG;
+	int CLASS__TAG = PARAMETERIZED_TYPE__TAG;
 
 	/**
 	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
@@ -1490,16 +1283,79 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE__OWNED_TAGS = TYPE_CONTAINER__OWNED_TAGS;
+	int CLASS__OWNED_TAGS = PARAMETERIZED_TYPE__OWNED_TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE__CONTAINED_TYPE = TYPE_CONTAINER__CONTAINED_TYPE;
+	int CLASS__TYPE_CONTAINER = PARAMETERIZED_TYPE__TYPE_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Virtual Type Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__VIRTUAL_TYPE_BINDING = PARAMETERIZED_TYPE__VIRTUAL_TYPE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Type Param Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__TYPE_PARAM_BINDING = PARAMETERIZED_TYPE__TYPE_PARAM_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Type Definition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__TYPE_DEFINITION = PARAMETERIZED_TYPE__TYPE_DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__OWNED_ATTRIBUTE = PARAMETERIZED_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Owned Operation</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__OWNED_OPERATION = PARAMETERIZED_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__SUPER_CLASS = PARAMETERIZED_TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__IS_ABSTRACT = PARAMETERIZED_TYPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1508,16 +1364,54 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE__NAME = TYPE_CONTAINER_FEATURE_COUNT + 0;
+	int CLASS__NAME = PARAMETERIZED_TYPE_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Is Aspect</b></em>' attribute.
+	 * The number of structural features of the '<em>Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE__IS_ASPECT = TYPE_CONTAINER_FEATURE_COUNT + 1;
+	int CLASS_FEATURE_COUNT = PARAMETERIZED_TYPE_FEATURE_COUNT + 5;
+
+	/**
+	 * The meta object id for the '{@link org.kermeta.language.structure.impl.VoidTypeImpl <em>Void Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.structure.impl.VoidTypeImpl
+	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getVoidType()
+	 * @generated
+	 */
+	int VOID_TYPE = 39;
+
+	/**
+	 * The meta object id for the '{@link org.kermeta.language.structure.impl.TypeDefinitionContainerImpl <em>Type Definition Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.structure.impl.TypeDefinitionContainerImpl
+	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getTypeDefinitionContainer()
+	 * @generated
+	 */
+	int TYPE_DEFINITION_CONTAINER = 40;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE__TAG = TYPE__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE__OWNED_TAGS = TYPE__OWNED_TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
@@ -1526,7 +1420,382 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE__TYPE_CONTAINER = TYPE_CONTAINER_FEATURE_COUNT + 2;
+	int DATA_TYPE__TYPE_CONTAINER = TYPE__TYPE_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE__NAME = TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Is Aspect</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE__IS_ASPECT = TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.kermeta.language.structure.impl.UnresolvedTypeImpl <em>Unresolved Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.structure.impl.UnresolvedTypeImpl
+	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolvedType()
+	 * @generated
+	 */
+	int UNRESOLVED_TYPE = 33;
+
+	/**
+	 * The meta object id for the '{@link org.kermeta.language.structure.impl.UnresolvedImpl <em>Unresolved</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.structure.impl.UnresolvedImpl
+	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolved()
+	 * @generated
+	 */
+	int UNRESOLVED = 34;
+
+	/**
+	 * The meta object id for the '{@link org.kermeta.language.structure.impl.UnresolvedPropertyImpl <em>Unresolved Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.structure.impl.UnresolvedPropertyImpl
+	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolvedProperty()
+	 * @generated
+	 */
+	int UNRESOLVED_PROPERTY = 35;
+
+	/**
+	 * The meta object id for the '{@link org.kermeta.language.structure.impl.UnresolvedOperationImpl <em>Unresolved Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.structure.impl.UnresolvedOperationImpl
+	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolvedOperation()
+	 * @generated
+	 */
+	int UNRESOLVED_OPERATION = 36;
+
+	/**
+	 * The meta object id for the '{@link org.kermeta.language.structure.impl.AbstractPropertyImpl <em>Abstract Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.structure.impl.AbstractPropertyImpl
+	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getAbstractProperty()
+	 * @generated
+	 */
+	int ABSTRACT_PROPERTY = 18;
+
+	/**
+	 * The meta object id for the '{@link org.kermeta.language.structure.impl.AbstractOperationImpl <em>Abstract Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.structure.impl.AbstractOperationImpl
+	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getAbstractOperation()
+	 * @generated
+	 */
+	int ABSTRACT_OPERATION = 32;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__TAG = DATA_TYPE__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__OWNED_TAGS = DATA_TYPE__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__TYPE_CONTAINER = DATA_TYPE__TYPE_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__NAME = DATA_TYPE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Is Aspect</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__IS_ASPECT = DATA_TYPE__IS_ASPECT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Literal</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__OWNED_LITERAL = DATA_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Enumeration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION_FEATURE_COUNT = DATA_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PACKAGE__TAG = NAMED_ELEMENT__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PACKAGE__OWNED_TAGS = NAMED_ELEMENT__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PACKAGE__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Owned Type Definition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PACKAGE__OWNED_TYPE_DEFINITION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Nested Package</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PACKAGE__NESTED_PACKAGE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Nesting Package</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PACKAGE__NESTING_PACKAGE = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PACKAGE__URI = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Package</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PACKAGE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__TAG = MULTIPLICITY_ELEMENT__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__OWNED_TAGS = MULTIPLICITY_ELEMENT__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__CONTAINED_TYPE = MULTIPLICITY_ELEMENT__CONTAINED_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__NAME = MULTIPLICITY_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__TYPE = MULTIPLICITY_ELEMENT__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Is Ordered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__IS_ORDERED = MULTIPLICITY_ELEMENT__IS_ORDERED;
+
+	/**
+	 * The feature id for the '<em><b>Is Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__IS_UNIQUE = MULTIPLICITY_ELEMENT__IS_UNIQUE;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__LOWER = MULTIPLICITY_ELEMENT__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__UPPER = MULTIPLICITY_ELEMENT__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Operation</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__OPERATION = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE__TAG = DATA_TYPE__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE__OWNED_TAGS = DATA_TYPE__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE__TYPE_CONTAINER = DATA_TYPE__TYPE_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE__NAME = DATA_TYPE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Is Aspect</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE__IS_ASPECT = DATA_TYPE__IS_ASPECT;
+
+	/**
+	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE__CONTAINED_TYPE = DATA_TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Instance Type</b></em>' reference.
@@ -1535,7 +1804,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE__INSTANCE_TYPE = TYPE_CONTAINER_FEATURE_COUNT + 3;
+	int PRIMITIVE_TYPE__INSTANCE_TYPE = DATA_TYPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Primitive Type</em>' class.
@@ -1544,7 +1813,70 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_FEATURE_COUNT = TYPE_CONTAINER_FEATURE_COUNT + 4;
+	int PRIMITIVE_TYPE_FEATURE_COUNT = DATA_TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG__TAG = OBJECT__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG__OWNED_TAGS = OBJECT__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG__NAME = OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG__VALUE = OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Object</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG__OBJECT = OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Tag</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PROPERTY_FEATURE_COUNT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -1643,467 +1975,6 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_TYPE_VARIABLE__TAG = TYPE_VARIABLE__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_TYPE_VARIABLE__OWNED_TAGS = TYPE_VARIABLE__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_TYPE_VARIABLE__CONTAINED_TYPE = TYPE_VARIABLE__CONTAINED_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_TYPE_VARIABLE__TYPE_CONTAINER = TYPE_VARIABLE__TYPE_CONTAINER;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_TYPE_VARIABLE__NAME = TYPE_VARIABLE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Supertype</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_TYPE_VARIABLE__SUPERTYPE = TYPE_VARIABLE__SUPERTYPE;
-
-	/**
-	 * The number of structural features of the '<em>Object Type Variable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_TYPE_VARIABLE_FEATURE_COUNT = TYPE_VARIABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERIZED_TYPE__TAG = TYPE__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERIZED_TYPE__OWNED_TAGS = TYPE__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERIZED_TYPE__TYPE_CONTAINER = TYPE__TYPE_CONTAINER;
-
-	/**
-	 * The feature id for the '<em><b>Type Param Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERIZED_TYPE__TYPE_PARAM_BINDING = TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Type Definition</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERIZED_TYPE__TYPE_DEFINITION = TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Virtual Type Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERIZED_TYPE__VIRTUAL_TYPE_BINDING = TYPE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Parameterized Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERIZED_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__TAG = PARAMETERIZED_TYPE__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__OWNED_TAGS = PARAMETERIZED_TYPE__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__TYPE_CONTAINER = PARAMETERIZED_TYPE__TYPE_CONTAINER;
-
-	/**
-	 * The feature id for the '<em><b>Type Param Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__TYPE_PARAM_BINDING = PARAMETERIZED_TYPE__TYPE_PARAM_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Type Definition</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__TYPE_DEFINITION = PARAMETERIZED_TYPE__TYPE_DEFINITION;
-
-	/**
-	 * The feature id for the '<em><b>Virtual Type Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__VIRTUAL_TYPE_BINDING = PARAMETERIZED_TYPE__VIRTUAL_TYPE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__OWNED_ATTRIBUTE = PARAMETERIZED_TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Owned Operation</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__OWNED_OPERATION = PARAMETERIZED_TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__SUPER_CLASS = PARAMETERIZED_TYPE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__IS_ABSTRACT = PARAMETERIZED_TYPE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__NAME = PARAMETERIZED_TYPE_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the '<em>Class</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_FEATURE_COUNT = PARAMETERIZED_TYPE_FEATURE_COUNT + 5;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.structure.impl.VoidTypeImpl <em>Void Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.structure.impl.VoidTypeImpl
-	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getVoidType()
-	 * @generated
-	 */
-	int VOID_TYPE = 20;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.structure.impl.TypeDefinitionContainerImpl <em>Type Definition Container</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.structure.impl.TypeDefinitionContainerImpl
-	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getTypeDefinitionContainer()
-	 * @generated
-	 */
-	int TYPE_DEFINITION_CONTAINER = 24;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_DEFINITION_CONTAINER__TAG = NAMED_ELEMENT__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_DEFINITION_CONTAINER__OWNED_TAGS = NAMED_ELEMENT__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_DEFINITION_CONTAINER__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Owned Type Definition</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_DEFINITION_CONTAINER__OWNED_TYPE_DEFINITION = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Type Definition Container</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_DEFINITION_CONTAINER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE__TAG = TYPE_DEFINITION_CONTAINER__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE__OWNED_TAGS = TYPE_DEFINITION_CONTAINER__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE__NAME = TYPE_DEFINITION_CONTAINER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Owned Type Definition</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE__OWNED_TYPE_DEFINITION = TYPE_DEFINITION_CONTAINER__OWNED_TYPE_DEFINITION;
-
-	/**
-	 * The feature id for the '<em><b>Nested Package</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE__NESTED_PACKAGE = TYPE_DEFINITION_CONTAINER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Nesting Package</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE__NESTING_PACKAGE = TYPE_DEFINITION_CONTAINER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE__URI = TYPE_DEFINITION_CONTAINER_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Package</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE_FEATURE_COUNT = TYPE_DEFINITION_CONTAINER_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VOID_TYPE__TAG = TYPE__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VOID_TYPE__OWNED_TAGS = TYPE__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VOID_TYPE__TYPE_CONTAINER = TYPE__TYPE_CONTAINER;
-
-	/**
-	 * The number of structural features of the '<em>Void Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VOID_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_TYPE__TAG = TYPE_DEFINITION__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_TYPE__OWNED_TAGS = TYPE_DEFINITION__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_TYPE__NAME = TYPE_DEFINITION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Is Aspect</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_TYPE__IS_ASPECT = TYPE_DEFINITION__IS_ASPECT;
-
-	/**
-	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_TYPE__TYPE_CONTAINER = TYPE_DEFINITION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Data Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_TYPE_FEATURE_COUNT = TYPE_DEFINITION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
 	int GENERIC_TYPE_DEFINITION__TAG = TYPE_DEFINITION__TAG;
 
 	/**
@@ -2150,6 +2021,177 @@ public interface StructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int GENERIC_TYPE_DEFINITION_FEATURE_COUNT = TYPE_DEFINITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION__TAG = GENERIC_TYPE_DEFINITION__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION__OWNED_TAGS = GENERIC_TYPE_DEFINITION__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION__NAME = GENERIC_TYPE_DEFINITION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Is Aspect</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION__IS_ASPECT = GENERIC_TYPE_DEFINITION__IS_ASPECT;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION__TYPE_PARAMETER = GENERIC_TYPE_DEFINITION__TYPE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION__CONTAINED_TYPE = GENERIC_TYPE_DEFINITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Inv</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION__INV = GENERIC_TYPE_DEFINITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION__IS_ABSTRACT = GENERIC_TYPE_DEFINITION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION__OWNED_ATTRIBUTE = GENERIC_TYPE_DEFINITION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION__OWNED_OPERATION = GENERIC_TYPE_DEFINITION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Super Type</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION__SUPER_TYPE = GENERIC_TYPE_DEFINITION_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Class Definition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_DEFINITION_FEATURE_COUNT = GENERIC_TYPE_DEFINITION_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELING_UNIT__TAG = OBJECT__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELING_UNIT__OWNED_TAGS = OBJECT__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Packages</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELING_UNIT__PACKAGES = OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Requires</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELING_UNIT__REQUIRES = OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Usings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELING_UNIT__USINGS = OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Namespace Prefix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELING_UNIT__NAMESPACE_PREFIX = OBJECT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Modeling Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELING_UNIT_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -2224,23 +2266,13 @@ public interface StructurePackage extends EPackage {
 	int USING_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.kermeta.language.structure.impl.UnresolvedTypeImpl <em>Unresolved Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.structure.impl.UnresolvedTypeImpl
-	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolvedType()
-	 * @generated
-	 */
-	int UNRESOLVED_TYPE = 27;
-
-	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNRESOLVED_TYPE__TAG = TYPE__TAG;
+	int TYPE_VARIABLE__TAG = TYPE_CONTAINER__TAG;
 
 	/**
 	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
@@ -2249,7 +2281,16 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNRESOLVED_TYPE__OWNED_TAGS = TYPE__OWNED_TAGS;
+	int TYPE_VARIABLE__OWNED_TAGS = TYPE_CONTAINER__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_VARIABLE__CONTAINED_TYPE = TYPE_CONTAINER__CONTAINED_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
@@ -2258,52 +2299,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNRESOLVED_TYPE__TYPE_CONTAINER = TYPE__TYPE_CONTAINER;
-
-	/**
-	 * The feature id for the '<em><b>Type Identifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNRESOLVED_TYPE__TYPE_IDENTIFIER = TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Unresolved Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNRESOLVED_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TAG__TAG = OBJECT__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TAG__OWNED_TAGS = OBJECT__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Object</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TAG__OBJECT = OBJECT_FEATURE_COUNT + 0;
+	int TYPE_VARIABLE__TYPE_CONTAINER = TYPE_CONTAINER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2312,25 +2308,25 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TAG__NAME = OBJECT_FEATURE_COUNT + 1;
+	int TYPE_VARIABLE__NAME = TYPE_CONTAINER_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Supertype</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TAG__VALUE = OBJECT_FEATURE_COUNT + 2;
+	int TYPE_VARIABLE__SUPERTYPE = TYPE_CONTAINER_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Tag</em>' class.
+	 * The number of structural features of the '<em>Type Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TAG_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 3;
+	int TYPE_VARIABLE_FEATURE_COUNT = TYPE_CONTAINER_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -2339,7 +2335,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODELING_UNIT__TAG = OBJECT__TAG;
+	int OBJECT_TYPE_VARIABLE__TAG = TYPE_VARIABLE__TAG;
 
 	/**
 	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
@@ -2348,52 +2344,52 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODELING_UNIT__OWNED_TAGS = OBJECT__OWNED_TAGS;
+	int OBJECT_TYPE_VARIABLE__OWNED_TAGS = TYPE_VARIABLE__OWNED_TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Packages</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODELING_UNIT__PACKAGES = OBJECT_FEATURE_COUNT + 0;
+	int OBJECT_TYPE_VARIABLE__CONTAINED_TYPE = TYPE_VARIABLE__CONTAINED_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Requires</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODELING_UNIT__REQUIRES = OBJECT_FEATURE_COUNT + 1;
+	int OBJECT_TYPE_VARIABLE__TYPE_CONTAINER = TYPE_VARIABLE__TYPE_CONTAINER;
 
 	/**
-	 * The feature id for the '<em><b>Usings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODELING_UNIT__USINGS = OBJECT_FEATURE_COUNT + 2;
+	int OBJECT_TYPE_VARIABLE__NAME = TYPE_VARIABLE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Namespace Prefix</b></em>' attribute.
+	 * The feature id for the '<em><b>Supertype</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODELING_UNIT__NAMESPACE_PREFIX = OBJECT_FEATURE_COUNT + 3;
+	int OBJECT_TYPE_VARIABLE__SUPERTYPE = TYPE_VARIABLE__SUPERTYPE;
 
 	/**
-	 * The number of structural features of the '<em>Modeling Unit</em>' class.
+	 * The number of structural features of the '<em>Object Type Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODELING_UNIT_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 4;
+	int OBJECT_TYPE_VARIABLE_FEATURE_COUNT = TYPE_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -2657,13 +2653,22 @@ public interface StructurePackage extends EPackage {
 	int MODEL_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The number of structural features of the '<em>Abstract Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_OPERATION_FEATURE_COUNT = 0;
+
+	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION__TAG = DATA_TYPE__TAG;
+	int UNRESOLVED_TYPE__TAG = TYPE__TAG;
 
 	/**
 	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
@@ -2672,25 +2677,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION__OWNED_TAGS = DATA_TYPE__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENUMERATION__NAME = DATA_TYPE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Is Aspect</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENUMERATION__IS_ASPECT = DATA_TYPE__IS_ASPECT;
+	int UNRESOLVED_TYPE__OWNED_TAGS = TYPE__OWNED_TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
@@ -2699,25 +2686,70 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION__TYPE_CONTAINER = DATA_TYPE__TYPE_CONTAINER;
+	int UNRESOLVED_TYPE__TYPE_CONTAINER = TYPE__TYPE_CONTAINER;
 
 	/**
-	 * The feature id for the '<em><b>Owned Literal</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Type Identifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION__OWNED_LITERAL = DATA_TYPE_FEATURE_COUNT + 0;
+	int UNRESOLVED_TYPE__TYPE_IDENTIFIER = TYPE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Enumeration</em>' class.
+	 * The number of structural features of the '<em>Unresolved Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION_FEATURE_COUNT = DATA_TYPE_FEATURE_COUNT + 1;
+	int UNRESOLVED_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Unresolved</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNRESOLVED_FEATURE_COUNT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Property Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNRESOLVED_PROPERTY__PROPERTY_IDENTIFIER = ABSTRACT_PROPERTY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Unresolved Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNRESOLVED_PROPERTY_FEATURE_COUNT = ABSTRACT_PROPERTY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Operation Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNRESOLVED_OPERATION__OPERATION_IDENTIFIER = ABSTRACT_OPERATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Unresolved Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNRESOLVED_OPERATION_FEATURE_COUNT = ABSTRACT_OPERATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -2726,7 +2758,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__TAG = MULTIPLICITY_ELEMENT__TAG;
+	int PRODUCT_TYPE__TAG = TYPE_CONTAINER__TAG;
 
 	/**
 	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
@@ -2735,7 +2767,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__OWNED_TAGS = MULTIPLICITY_ELEMENT__OWNED_TAGS;
+	int PRODUCT_TYPE__OWNED_TAGS = TYPE_CONTAINER__OWNED_TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -2744,7 +2776,151 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__CONTAINED_TYPE = MULTIPLICITY_ELEMENT__CONTAINED_TYPE;
+	int PRODUCT_TYPE__CONTAINED_TYPE = TYPE_CONTAINER__CONTAINED_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_TYPE__TYPE_CONTAINER = TYPE_CONTAINER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_TYPE__TYPE = TYPE_CONTAINER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Product Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_TYPE_FEATURE_COUNT = TYPE_CONTAINER_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_TYPE__TAG = TYPE_CONTAINER__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_TYPE__OWNED_TAGS = TYPE_CONTAINER__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_TYPE__CONTAINED_TYPE = TYPE_CONTAINER__CONTAINED_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_TYPE__TYPE_CONTAINER = TYPE_CONTAINER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_TYPE__LEFT = TYPE_CONTAINER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_TYPE__RIGHT = TYPE_CONTAINER_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Function Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_TYPE_FEATURE_COUNT = TYPE_CONTAINER_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOID_TYPE__TAG = TYPE__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOID_TYPE__OWNED_TAGS = TYPE__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Type Container</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOID_TYPE__TYPE_CONTAINER = TYPE__TYPE_CONTAINER;
+
+	/**
+	 * The number of structural features of the '<em>Void Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOID_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEFINITION_CONTAINER__TAG = NAMED_ELEMENT__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEFINITION_CONTAINER__OWNED_TAGS = NAMED_ELEMENT__OWNED_TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2753,70 +2929,25 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__NAME = MULTIPLICITY_ELEMENT__NAME;
+	int TYPE_DEFINITION_CONTAINER__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * The feature id for the '<em><b>Owned Type Definition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__TYPE = MULTIPLICITY_ELEMENT__TYPE;
+	int TYPE_DEFINITION_CONTAINER__OWNED_TYPE_DEFINITION = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Is Ordered</b></em>' attribute.
+	 * The number of structural features of the '<em>Type Definition Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__IS_ORDERED = MULTIPLICITY_ELEMENT__IS_ORDERED;
-
-	/**
-	 * The feature id for the '<em><b>Is Unique</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__IS_UNIQUE = MULTIPLICITY_ELEMENT__IS_UNIQUE;
-
-	/**
-	 * The feature id for the '<em><b>Lower</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__LOWER = MULTIPLICITY_ELEMENT__LOWER;
-
-	/**
-	 * The feature id for the '<em><b>Upper</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__UPPER = MULTIPLICITY_ELEMENT__UPPER;
-
-	/**
-	 * The feature id for the '<em><b>Operation</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__OPERATION = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
+	int TYPE_DEFINITION_CONTAINER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.ConstraintLanguage <em>Constraint Language</em>}' enum.
@@ -2826,7 +2957,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getConstraintLanguage()
 	 * @generated
 	 */
-	int CONSTRAINT_LANGUAGE = 36;
+	int CONSTRAINT_LANGUAGE = 41;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.ConstraintType <em>Constraint Type</em>}' enum.
@@ -2836,7 +2967,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getConstraintType()
 	 * @generated
 	 */
-	int CONSTRAINT_TYPE = 37;
+	int CONSTRAINT_TYPE = 42;
 
 	/**
 	 * The meta object id for the '<em>String</em>' data type.
@@ -2846,7 +2977,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getString()
 	 * @generated
 	 */
-	int STRING = 38;
+	int STRING = 43;
 
 	/**
 	 * The meta object id for the '<em>Boolean</em>' data type.
@@ -2855,7 +2986,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getBoolean()
 	 * @generated
 	 */
-	int BOOLEAN = 39;
+	int BOOLEAN = 44;
 
 	/**
 	 * The meta object id for the '<em>Integer</em>' data type.
@@ -2864,7 +2995,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getInteger()
 	 * @generated
 	 */
-	int INTEGER = 40;
+	int INTEGER = 45;
 
 	/**
 	 * The meta object id for the '<em>Unlimited Natural</em>' data type.
@@ -2873,7 +3004,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnlimitedNatural()
 	 * @generated
 	 */
-	int UNLIMITED_NATURAL = 41;
+	int UNLIMITED_NATURAL = 46;
 
 
 	/**
@@ -2994,6 +3125,17 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getOperation_SuperOperation();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.kermeta.language.structure.Operation#getOwnedUnresolvedOperations <em>Owned Unresolved Operations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Unresolved Operations</em>'.
+	 * @see org.kermeta.language.structure.Operation#getOwnedUnresolvedOperations()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EReference getOperation_OwnedUnresolvedOperations();
 
 	/**
 	 * Returns the meta object for the container reference '{@link org.kermeta.language.structure.Operation#getOwningClass <em>Owning Class</em>}'.
@@ -3136,6 +3278,17 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProperty_IsSetterAbstract();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.kermeta.language.structure.Property#getOwnedUnresolvedProperties <em>Owned Unresolved Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Unresolved Properties</em>'.
+	 * @see org.kermeta.language.structure.Property#getOwnedUnresolvedProperties()
+	 * @see #getProperty()
+	 * @generated
+	 */
+	EReference getProperty_OwnedUnresolvedProperties();
 
 	/**
 	 * Returns the meta object for the container reference '{@link org.kermeta.language.structure.Property#getOwningClass <em>Owning Class</em>}'.
@@ -3585,6 +3738,16 @@ public interface StructurePackage extends EPackage {
 	EReference getTag_Object();
 
 	/**
+	 * Returns the meta object for class '{@link org.kermeta.language.structure.AbstractProperty <em>Abstract Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Property</em>'.
+	 * @see org.kermeta.language.structure.AbstractProperty
+	 * @generated
+	 */
+	EClass getAbstractProperty();
+
+	/**
 	 * Returns the meta object for class '{@link org.kermeta.language.structure.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4023,6 +4186,16 @@ public interface StructurePackage extends EPackage {
 	EReference getModel_Contents();
 
 	/**
+	 * Returns the meta object for class '{@link org.kermeta.language.structure.AbstractOperation <em>Abstract Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Operation</em>'.
+	 * @see org.kermeta.language.structure.AbstractOperation
+	 * @generated
+	 */
+	EClass getAbstractOperation();
+
+	/**
 	 * Returns the meta object for class '{@link org.kermeta.language.structure.ProductType <em>Product Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4126,6 +4299,58 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getUnresolvedType_TypeIdentifier();
+
+	/**
+	 * Returns the meta object for class '{@link org.kermeta.language.structure.Unresolved <em>Unresolved</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unresolved</em>'.
+	 * @see org.kermeta.language.structure.Unresolved
+	 * @generated
+	 */
+	EClass getUnresolved();
+
+	/**
+	 * Returns the meta object for class '{@link org.kermeta.language.structure.UnresolvedProperty <em>Unresolved Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unresolved Property</em>'.
+	 * @see org.kermeta.language.structure.UnresolvedProperty
+	 * @generated
+	 */
+	EClass getUnresolvedProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.UnresolvedProperty#getPropertyIdentifier <em>Property Identifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Property Identifier</em>'.
+	 * @see org.kermeta.language.structure.UnresolvedProperty#getPropertyIdentifier()
+	 * @see #getUnresolvedProperty()
+	 * @generated
+	 */
+	EAttribute getUnresolvedProperty_PropertyIdentifier();
+
+	/**
+	 * Returns the meta object for class '{@link org.kermeta.language.structure.UnresolvedOperation <em>Unresolved Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unresolved Operation</em>'.
+	 * @see org.kermeta.language.structure.UnresolvedOperation
+	 * @generated
+	 */
+	EClass getUnresolvedOperation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.UnresolvedOperation#getOperationIdentifier <em>Operation Identifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operation Identifier</em>'.
+	 * @see org.kermeta.language.structure.UnresolvedOperation#getOperationIdentifier()
+	 * @see #getUnresolvedOperation()
+	 * @generated
+	 */
+	EAttribute getUnresolvedOperation_OperationIdentifier();
 
 	/**
 	 * Returns the meta object for enum '{@link org.kermeta.language.structure.ConstraintLanguage <em>Constraint Language</em>}'.
@@ -4303,6 +4528,14 @@ public interface StructurePackage extends EPackage {
 		EReference OPERATION__SUPER_OPERATION = eINSTANCE.getOperation_SuperOperation();
 
 		/**
+		 * The meta object literal for the '<em><b>Owned Unresolved Operations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__OWNED_UNRESOLVED_OPERATIONS = eINSTANCE.getOperation_OwnedUnresolvedOperations();
+
+		/**
 		 * The meta object literal for the '<em><b>Owning Class</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4407,6 +4640,14 @@ public interface StructurePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROPERTY__IS_SETTER_ABSTRACT = eINSTANCE.getProperty_IsSetterAbstract();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Unresolved Properties</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__OWNED_UNRESOLVED_PROPERTIES = eINSTANCE.getProperty_OwnedUnresolvedProperties();
 
 		/**
 		 * The meta object literal for the '<em><b>Owning Class</b></em>' container reference feature.
@@ -4775,6 +5016,16 @@ public interface StructurePackage extends EPackage {
 		EReference TAG__OBJECT = eINSTANCE.getTag_Object();
 
 		/**
+		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.AbstractPropertyImpl <em>Abstract Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.kermeta.language.structure.impl.AbstractPropertyImpl
+		 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getAbstractProperty()
+		 * @generated
+		 */
+		EClass ABSTRACT_PROPERTY = eINSTANCE.getAbstractProperty();
+
+		/**
 		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.ConstraintImpl <em>Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5129,6 +5380,16 @@ public interface StructurePackage extends EPackage {
 		EReference MODEL__CONTENTS = eINSTANCE.getModel_Contents();
 
 		/**
+		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.AbstractOperationImpl <em>Abstract Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.kermeta.language.structure.impl.AbstractOperationImpl
+		 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getAbstractOperation()
+		 * @generated
+		 */
+		EClass ABSTRACT_OPERATION = eINSTANCE.getAbstractOperation();
+
+		/**
 		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.ProductTypeImpl <em>Product Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5217,6 +5478,52 @@ public interface StructurePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute UNRESOLVED_TYPE__TYPE_IDENTIFIER = eINSTANCE.getUnresolvedType_TypeIdentifier();
+
+		/**
+		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.UnresolvedImpl <em>Unresolved</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.kermeta.language.structure.impl.UnresolvedImpl
+		 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolved()
+		 * @generated
+		 */
+		EClass UNRESOLVED = eINSTANCE.getUnresolved();
+
+		/**
+		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.UnresolvedPropertyImpl <em>Unresolved Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.kermeta.language.structure.impl.UnresolvedPropertyImpl
+		 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolvedProperty()
+		 * @generated
+		 */
+		EClass UNRESOLVED_PROPERTY = eINSTANCE.getUnresolvedProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Property Identifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UNRESOLVED_PROPERTY__PROPERTY_IDENTIFIER = eINSTANCE.getUnresolvedProperty_PropertyIdentifier();
+
+		/**
+		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.UnresolvedOperationImpl <em>Unresolved Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.kermeta.language.structure.impl.UnresolvedOperationImpl
+		 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolvedOperation()
+		 * @generated
+		 */
+		EClass UNRESOLVED_OPERATION = eINSTANCE.getUnresolvedOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation Identifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UNRESOLVED_OPERATION__OPERATION_IDENTIFIER = eINSTANCE.getUnresolvedOperation_OperationIdentifier();
 
 		/**
 		 * The meta object literal for the '{@link org.kermeta.language.structure.ConstraintLanguage <em>Constraint Language</em>}' enum.

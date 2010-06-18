@@ -36,7 +36,7 @@ import org.kermeta.language.structure.TypeVariable;
  *
  * @generated
  */
-public class TypeVariableImpl extends TypeContainerImpl implements TypeVariable {
+public abstract class TypeVariableImpl extends TypeContainerImpl implements TypeVariable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

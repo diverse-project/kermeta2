@@ -5,6 +5,7 @@
  */
 package org.kermeta.language.structure;
 
+import org.eclipse.emf.common.util.EList;
 import org.kermeta.language.behavior.Expression;
 
 /**
@@ -21,17 +22,18 @@ import org.kermeta.language.behavior.Expression;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.Property#getGetterBody <em>Getter Body</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#getSetterBody <em>Setter Body</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#isIsGetterAbstract <em>Is Getter Abstract</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#isIsSetterAbstract <em>Is Setter Abstract</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#getOwningClass <em>Owning Class</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#isIsReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#getDefault <em>Default</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#isIsComposite <em>Is Composite</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#isIsDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#isIsID <em>Is ID</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getGetterBody <em>Getter Body</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getSetterBody <em>Setter Body</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#isIsGetterAbstract <em>Is Getter Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#isIsSetterAbstract <em>Is Setter Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getOwnedUnresolvedProperties <em>Owned Unresolved Properties</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getOwningClass <em>Owning Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,7 +41,7 @@ import org.kermeta.language.behavior.Expression;
  * @model
  * @generated
  */
-public interface Property extends MultiplicityElement {
+public interface Property extends MultiplicityElement, AbstractProperty {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -55,12 +57,12 @@ public interface Property extends MultiplicityElement {
 	 * Opposite Property of the Property, void if the Property has no opposite
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Opposite</em>' reference.
-	 * @see #setOpposite(Property)
+	 * @see #setOpposite(AbstractProperty)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_Opposite()
 	 * @model
 	 * @generated
 	 */
-	Property getOpposite();
+	AbstractProperty getOpposite();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getOpposite <em>Opposite</em>}' reference.
@@ -70,7 +72,7 @@ public interface Property extends MultiplicityElement {
 	 * @see #getOpposite()
 	 * @generated
 	 */
-	void setOpposite(Property value);
+	void setOpposite(AbstractProperty value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Read Only</b></em>' attribute.
@@ -299,6 +301,22 @@ public interface Property extends MultiplicityElement {
 	 * @generated
 	 */
 	void setIsSetterAbstract(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Owned Unresolved Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link org.kermeta.language.structure.UnresolvedProperty}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Unresolved Properties</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Unresolved Properties</em>' containment reference list.
+	 * @see org.kermeta.language.structure.StructurePackage#getProperty_OwnedUnresolvedProperties()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	EList<UnresolvedProperty> getOwnedUnresolvedProperties();
 
 	/**
 	 * Returns the value of the '<em><b>Owning Class</b></em>' container reference.

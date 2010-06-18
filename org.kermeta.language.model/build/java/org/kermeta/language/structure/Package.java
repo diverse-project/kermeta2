@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Package extends TypeDefinitionContainer, NamedElement {
+public interface Package extends NamedElement, TypeDefinitionContainer {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

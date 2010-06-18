@@ -12,7 +12,7 @@ package org.kermeta.language.structure;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Special type reference whic is still unresolved.
+ * Special type reference which is still unresolved.
  * The reference string is used to create a real Type that points to the correct TypeDefinition
  * <!-- end-model-doc -->
  *
@@ -27,7 +27,7 @@ package org.kermeta.language.structure;
  * @model
  * @generated
  */
-public interface UnresolvedType extends Type {
+public interface UnresolvedType extends Type, Unresolved {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -43,6 +43,10 @@ public interface UnresolvedType extends Type {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * String that identifies the Type.
+	 * The container of the UnresolvedType  is considered as the context.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type Identifier</em>' attribute.
 	 * @see #setTypeIdentifier(String)
 	 * @see org.kermeta.language.structure.StructurePackage#getUnresolvedType_TypeIdentifier()

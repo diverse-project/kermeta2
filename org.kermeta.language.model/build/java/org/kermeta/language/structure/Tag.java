@@ -21,9 +21,9 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.Tag#getObject <em>Object</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Tag#getName <em>Name</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Tag#getValue <em>Value</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Tag#getObject <em>Object</em>}</li>
  * </ul>
  * </p>
  *

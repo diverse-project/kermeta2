@@ -5,22 +5,19 @@
  */
 package org.kermeta.language.structure;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Data Type</b></em>'.
+ * A representation of the model object '<em><b>Abstract Property</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * Special type definition for Enumeration, PrimitiveType
- * <!-- end-model-doc -->
  *
- *
- * @see org.kermeta.language.structure.StructurePackage#getDataType()
+ * @see org.kermeta.language.structure.StructurePackage#getAbstractProperty()
  * @model abstract="true"
  * @generated
  */
-public interface DataType extends Type, TypeDefinition {
+public interface AbstractProperty extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28,4 +25,4 @@ public interface DataType extends Type, TypeDefinition {
 	 */
 	String copyright = "IRISA / INRIA / Universite de Rennes 1";
 
-} // DataType
+} // AbstractProperty

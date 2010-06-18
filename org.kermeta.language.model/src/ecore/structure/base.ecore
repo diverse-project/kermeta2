@@ -154,7 +154,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Class representing the property definition. Kermeta&lt;->Ecore equivalence:&#xA; - Property with isComposite == true or with type is a base type (String, Integer, Boolean)  : EAttribute&#xA; - Property with isComposite == false : EReference"/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//structure/Property">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//structure/AbstractProperty">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Opposite Property of the Property, void if the Property has no opposite"/>
         </eAnnotations>
@@ -266,5 +266,6 @@
         <details key="documentation" value="Phantom class : EMF reflexive editors need that any element of a metamodel &#xA;has a direct or indirect containment relationship with the root model element of&#xA;the metamodel. This class resolves this technical requirement."/>
       </eAnnotations>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AbstractProperty" abstract="true"/>
   </eSubpackages>
 </ecore:EPackage>

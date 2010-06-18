@@ -5,21 +5,27 @@
  */
 package org.kermeta.language.structure.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.kermeta.language.behavior.Expression;
 
+import org.kermeta.language.structure.AbstractProperty;
 import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.Property;
 import org.kermeta.language.structure.StructurePackage;
+import org.kermeta.language.structure.UnresolvedProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,17 +34,18 @@ import org.kermeta.language.structure.StructurePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getGetterBody <em>Getter Body</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getSetterBody <em>Setter Body</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsGetterAbstract <em>Is Getter Abstract</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsSetterAbstract <em>Is Setter Abstract</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getOwningClass <em>Owning Class</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsComposite <em>Is Composite</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsID <em>Is ID</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getGetterBody <em>Getter Body</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getSetterBody <em>Setter Body</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsGetterAbstract <em>Is Getter Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#isIsSetterAbstract <em>Is Setter Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getOwnedUnresolvedProperties <em>Owned Unresolved Properties</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.PropertyImpl#getOwningClass <em>Owning Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,66 +60,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	public static final String copyright = "IRISA / INRIA / Universite de Rennes 1";
 
 	/**
-	 * The cached value of the '{@link #getGetterBody() <em>Getter Body</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGetterBody()
-	 * @generated
-	 * @ordered
-	 */
-	protected Expression getterBody;
-
-	/**
-	 * The cached value of the '{@link #getSetterBody() <em>Setter Body</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSetterBody()
-	 * @generated
-	 * @ordered
-	 */
-	protected Expression setterBody;
-
-	/**
-	 * The default value of the '{@link #isIsGetterAbstract() <em>Is Getter Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsGetterAbstract()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_GETTER_ABSTRACT_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIsGetterAbstract() <em>Is Getter Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsGetterAbstract()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isGetterAbstract = IS_GETTER_ABSTRACT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isIsSetterAbstract() <em>Is Setter Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsSetterAbstract()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_SETTER_ABSTRACT_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIsSetterAbstract() <em>Is Setter Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsSetterAbstract()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isSetterAbstract = IS_SETTER_ABSTRACT_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -120,7 +67,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected Property opposite;
+	protected AbstractProperty opposite;
 
 	/**
 	 * The default value of the '{@link #isIsReadOnly() <em>Is Read Only</em>}' attribute.
@@ -223,6 +170,76 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	protected boolean isID = IS_ID_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getGetterBody() <em>Getter Body</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGetterBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression getterBody;
+
+	/**
+	 * The cached value of the '{@link #getSetterBody() <em>Setter Body</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSetterBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression setterBody;
+
+	/**
+	 * The default value of the '{@link #isIsGetterAbstract() <em>Is Getter Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsGetterAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_GETTER_ABSTRACT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsGetterAbstract() <em>Is Getter Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsGetterAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isGetterAbstract = IS_GETTER_ABSTRACT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsSetterAbstract() <em>Is Setter Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsSetterAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_SETTER_ABSTRACT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsSetterAbstract() <em>Is Setter Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsSetterAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isSetterAbstract = IS_SETTER_ABSTRACT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOwnedUnresolvedProperties() <em>Owned Unresolved Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedUnresolvedProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UnresolvedProperty> ownedUnresolvedProperties;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -246,10 +263,10 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getOpposite() {
+	public AbstractProperty getOpposite() {
 		if (opposite != null && opposite.eIsProxy()) {
 			InternalEObject oldOpposite = (InternalEObject)opposite;
-			opposite = (Property)eResolveProxy(oldOpposite);
+			opposite = (AbstractProperty)eResolveProxy(oldOpposite);
 			if (opposite != oldOpposite) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.PROPERTY__OPPOSITE, oldOpposite, opposite));
@@ -263,7 +280,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property basicGetOpposite() {
+	public AbstractProperty basicGetOpposite() {
 		return opposite;
 	}
 
@@ -272,8 +289,8 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOpposite(Property newOpposite) {
-		Property oldOpposite = opposite;
+	public void setOpposite(AbstractProperty newOpposite) {
+		AbstractProperty oldOpposite = opposite;
 		opposite = newOpposite;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.PROPERTY__OPPOSITE, oldOpposite, opposite));
@@ -563,6 +580,18 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<UnresolvedProperty> getOwnedUnresolvedProperties() {
+		if (ownedUnresolvedProperties == null) {
+			ownedUnresolvedProperties = new EObjectContainmentEList.Resolving<UnresolvedProperty>(UnresolvedProperty.class, this, StructurePackage.PROPERTY__OWNED_UNRESOLVED_PROPERTIES);
+		}
+		return ownedUnresolvedProperties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ClassDefinition getOwningClass() {
 		if (eContainerFeatureID() != StructurePackage.PROPERTY__OWNING_CLASS) return null;
 		return (ClassDefinition)eContainer();
@@ -637,6 +666,8 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 				return basicSetGetterBody(null, msgs);
 			case StructurePackage.PROPERTY__SETTER_BODY:
 				return basicSetSetterBody(null, msgs);
+			case StructurePackage.PROPERTY__OWNED_UNRESOLVED_PROPERTIES:
+				return ((InternalEList<?>)getOwnedUnresolvedProperties()).basicRemove(otherEnd, msgs);
 			case StructurePackage.PROPERTY__OWNING_CLASS:
 				return basicSetOwningClass(null, msgs);
 		}
@@ -665,19 +696,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StructurePackage.PROPERTY__GETTER_BODY:
-				if (resolve) return getGetterBody();
-				return basicGetGetterBody();
-			case StructurePackage.PROPERTY__SETTER_BODY:
-				if (resolve) return getSetterBody();
-				return basicGetSetterBody();
-			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
-				return isIsGetterAbstract();
-			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
-				return isIsSetterAbstract();
-			case StructurePackage.PROPERTY__OWNING_CLASS:
-				if (resolve) return getOwningClass();
-				return basicGetOwningClass();
 			case StructurePackage.PROPERTY__OPPOSITE:
 				if (resolve) return getOpposite();
 				return basicGetOpposite();
@@ -691,6 +709,21 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 				return isIsDerived();
 			case StructurePackage.PROPERTY__IS_ID:
 				return isIsID();
+			case StructurePackage.PROPERTY__GETTER_BODY:
+				if (resolve) return getGetterBody();
+				return basicGetGetterBody();
+			case StructurePackage.PROPERTY__SETTER_BODY:
+				if (resolve) return getSetterBody();
+				return basicGetSetterBody();
+			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
+				return isIsGetterAbstract();
+			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
+				return isIsSetterAbstract();
+			case StructurePackage.PROPERTY__OWNED_UNRESOLVED_PROPERTIES:
+				return getOwnedUnresolvedProperties();
+			case StructurePackage.PROPERTY__OWNING_CLASS:
+				if (resolve) return getOwningClass();
+				return basicGetOwningClass();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -700,26 +733,12 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case StructurePackage.PROPERTY__GETTER_BODY:
-				setGetterBody((Expression)newValue);
-				return;
-			case StructurePackage.PROPERTY__SETTER_BODY:
-				setSetterBody((Expression)newValue);
-				return;
-			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
-				setIsGetterAbstract((Boolean)newValue);
-				return;
-			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
-				setIsSetterAbstract((Boolean)newValue);
-				return;
-			case StructurePackage.PROPERTY__OWNING_CLASS:
-				setOwningClass((ClassDefinition)newValue);
-				return;
 			case StructurePackage.PROPERTY__OPPOSITE:
-				setOpposite((Property)newValue);
+				setOpposite((AbstractProperty)newValue);
 				return;
 			case StructurePackage.PROPERTY__IS_READ_ONLY:
 				setIsReadOnly((Boolean)newValue);
@@ -736,6 +755,25 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 			case StructurePackage.PROPERTY__IS_ID:
 				setIsID((Boolean)newValue);
 				return;
+			case StructurePackage.PROPERTY__GETTER_BODY:
+				setGetterBody((Expression)newValue);
+				return;
+			case StructurePackage.PROPERTY__SETTER_BODY:
+				setSetterBody((Expression)newValue);
+				return;
+			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
+				setIsGetterAbstract((Boolean)newValue);
+				return;
+			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
+				setIsSetterAbstract((Boolean)newValue);
+				return;
+			case StructurePackage.PROPERTY__OWNED_UNRESOLVED_PROPERTIES:
+				getOwnedUnresolvedProperties().clear();
+				getOwnedUnresolvedProperties().addAll((Collection<? extends UnresolvedProperty>)newValue);
+				return;
+			case StructurePackage.PROPERTY__OWNING_CLASS:
+				setOwningClass((ClassDefinition)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -748,23 +786,8 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case StructurePackage.PROPERTY__GETTER_BODY:
-				setGetterBody((Expression)null);
-				return;
-			case StructurePackage.PROPERTY__SETTER_BODY:
-				setSetterBody((Expression)null);
-				return;
-			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
-				setIsGetterAbstract(IS_GETTER_ABSTRACT_EDEFAULT);
-				return;
-			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
-				setIsSetterAbstract(IS_SETTER_ABSTRACT_EDEFAULT);
-				return;
-			case StructurePackage.PROPERTY__OWNING_CLASS:
-				setOwningClass((ClassDefinition)null);
-				return;
 			case StructurePackage.PROPERTY__OPPOSITE:
-				setOpposite((Property)null);
+				setOpposite((AbstractProperty)null);
 				return;
 			case StructurePackage.PROPERTY__IS_READ_ONLY:
 				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
@@ -781,6 +804,24 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 			case StructurePackage.PROPERTY__IS_ID:
 				setIsID(IS_ID_EDEFAULT);
 				return;
+			case StructurePackage.PROPERTY__GETTER_BODY:
+				setGetterBody((Expression)null);
+				return;
+			case StructurePackage.PROPERTY__SETTER_BODY:
+				setSetterBody((Expression)null);
+				return;
+			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
+				setIsGetterAbstract(IS_GETTER_ABSTRACT_EDEFAULT);
+				return;
+			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
+				setIsSetterAbstract(IS_SETTER_ABSTRACT_EDEFAULT);
+				return;
+			case StructurePackage.PROPERTY__OWNED_UNRESOLVED_PROPERTIES:
+				getOwnedUnresolvedProperties().clear();
+				return;
+			case StructurePackage.PROPERTY__OWNING_CLASS:
+				setOwningClass((ClassDefinition)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -793,16 +834,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case StructurePackage.PROPERTY__GETTER_BODY:
-				return getterBody != null;
-			case StructurePackage.PROPERTY__SETTER_BODY:
-				return setterBody != null;
-			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
-				return isGetterAbstract != IS_GETTER_ABSTRACT_EDEFAULT;
-			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
-				return isSetterAbstract != IS_SETTER_ABSTRACT_EDEFAULT;
-			case StructurePackage.PROPERTY__OWNING_CLASS:
-				return basicGetOwningClass() != null;
 			case StructurePackage.PROPERTY__OPPOSITE:
 				return opposite != null;
 			case StructurePackage.PROPERTY__IS_READ_ONLY:
@@ -815,6 +846,18 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 				return isDerived != IS_DERIVED_EDEFAULT;
 			case StructurePackage.PROPERTY__IS_ID:
 				return isID != IS_ID_EDEFAULT;
+			case StructurePackage.PROPERTY__GETTER_BODY:
+				return getterBody != null;
+			case StructurePackage.PROPERTY__SETTER_BODY:
+				return setterBody != null;
+			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
+				return isGetterAbstract != IS_GETTER_ABSTRACT_EDEFAULT;
+			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
+				return isSetterAbstract != IS_SETTER_ABSTRACT_EDEFAULT;
+			case StructurePackage.PROPERTY__OWNED_UNRESOLVED_PROPERTIES:
+				return ownedUnresolvedProperties != null && !ownedUnresolvedProperties.isEmpty();
+			case StructurePackage.PROPERTY__OWNING_CLASS:
+				return basicGetOwningClass() != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -829,11 +872,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isGetterAbstract: ");
-		result.append(isGetterAbstract);
-		result.append(", isSetterAbstract: ");
-		result.append(isSetterAbstract);
-		result.append(", isReadOnly: ");
+		result.append(" (isReadOnly: ");
 		result.append(isReadOnly);
 		result.append(", default: ");
 		result.append(default_);
@@ -843,6 +882,10 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 		result.append(isDerived);
 		result.append(", isID: ");
 		result.append(isID);
+		result.append(", isGetterAbstract: ");
+		result.append(isGetterAbstract);
+		result.append(", isSetterAbstract: ");
+		result.append(isSetterAbstract);
 		result.append(')');
 		return result.toString();
 	}
