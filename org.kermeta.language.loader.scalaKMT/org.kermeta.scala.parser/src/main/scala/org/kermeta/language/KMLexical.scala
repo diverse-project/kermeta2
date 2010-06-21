@@ -8,8 +8,6 @@ package org.kermeta.language
 import scala.util.parsing.combinator.lexical.StdLexical
 
 class KMLexical extends StdLexical {
- // this.delimiters = List("package","require","using","class","aspect","abstract","inv","operation","method","is","do","end","var","from","until","loop","if","then","else","init","true","false")
- // def delimiters = List("=",";","::","@","{","}","(",")",":",":=",".",",","+","==","!","-","+")
 
   reserved ++= org.kermeta.language.Lexical.keywords
   delimiters ++= org.kermeta.language.Lexical.delimiters

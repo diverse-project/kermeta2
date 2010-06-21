@@ -5,17 +5,13 @@
 
 package org.kermeta.scala.parser.sub
 
-import scala.util.parsing.combinator.syntactical.StandardTokenParsers
 import fr.irisa.triskell.kermeta.language.structure._
 import fr.irisa.triskell.kermeta.language.behavior._
 import fr.irisa.triskell.kermeta.language.structure.impl._
 import fr.irisa.triskell.kermeta.language.behavior.impl._
-import org.kermeta.language.KMLexical
 import scala.collection.JavaConversions._
 
-trait KLiteralParser extends StandardTokenParsers {
-
-  override val lexical = new KMLexical
+trait KLiteralParser extends KAbstractParser {
 
   def fLiteral : Parser[Expression] = (fVoidLiteral|fStringLiteral|fBooleanLiteral|fNumericLiteral)
   def fBooleanLiteral : Parser[Expression] = ("true" ^^^ {

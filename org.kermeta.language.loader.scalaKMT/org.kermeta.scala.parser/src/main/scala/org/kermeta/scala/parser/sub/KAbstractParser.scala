@@ -13,14 +13,12 @@ import fr.irisa.triskell.kermeta.language.behavior.impl._
 import org.kermeta.language.KMLexical
 import scala.collection.JavaConversions._
 
-trait KQualifiedName extends StandardTokenParsers {
-
+trait KAbstractParser extends StandardTokenParsers {
   override val lexical = new KMLexical
 
-  def packageName : Parser[String] = ident ~ packageQualifiedName ^^ { case id ~ q => id+q  }
-  def packageQualifiedName : Parser[String] =  (( "::" ~ ident )*) ^^ { case lId =>
-      (for(idp <- lId) yield idp match {case _ ~ ident => "::"+ident.toString}).mkString
-  }
-
+  def fStatement : Parser[Expression]
+  def fExpression : Parser[Expression] = fLiteral
+  def fLiteral : Parser[Expression]
+  def packageName : Parser[String]
 
 }
