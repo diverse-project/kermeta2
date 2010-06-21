@@ -44,42 +44,82 @@ object KExpressionParser extends StandardTokenParsers with KLiteralParser with K
       newo
   }
 
-  def fCall : Parser[CallExpression] = (
-    ident ^^ {
-      case e =>
-        var newo = BehaviorFactory.eINSTANCE.createCallVariable
-        newo.setName(e.toString);
-        newo
-    } |||
-    ident ~ "(" ~ (callFeatureParams?) ~ ")" ^^ { case id ~ _ ~ params ~ _ =>
+
+  //def fCall2 : Parser[CallFeature] = (
+
+  def fCall = fCallStart ~ rep( "." ~> fCallParam ) ^^ { case startExpr ~ targetL =>
+      var result : CallFeature  = startExpr
+      targetL.foreach{t=>
+        t.setTarget(result)
+        /*
+         var newo = BehaviorFactory.eINSTANCE.createCallFeature
+         newo.setTarget(result)
+         bexpp match {
+         case "and" ~ e => newo.setName("and");newo.getParameters.add(e)
+         case "or" ~ e => newo.setName("or");newo.getParameters.add(e)
+         }*/
+        result = t
+      }
+      result
+  }
+
+  def fCallStart : Parser[CallFeature] = ( fLiteral | fCallParam ) ^^ {
+    case cf : CallFeature => cf
+    case _ @ e => {
         var newo = BehaviorFactory.eINSTANCE.createCallFeature
-        newo.setName(id)
-        params match {
-          case Some(_ @ par) => for(p <- par) newo.getParameters.add(p)
-          case None =>
-        }
+        newo.setName(e.toString)
         newo
+      }
+  }
 
-    } |||
-    ident ~ callFeatureQualifiedName ^^ {
-      case id1 ~ callF =>
-        var newo = BehaviorFactory.eINSTANCE.createCallFeature;
-        newo.setName(id1.toString)
-        newo.setTarget(callF)
-        newo
-    } |||
-    ident ~ "(" ~ (callFeatureParams?) ~ ")" ~ callFeatureQualifiedName ^^ { case id ~ _ ~ params ~ _ ~ qualName => {
-          var newo = BehaviorFactory.eINSTANCE.createCallFeature
-          newo.setName(id)
-          params match {
-            case Some(_ @ par) => for(p <- par) newo.getParameters.add(p)
-            case None =>
-          }
-          qualName.asInstanceOf[CallFeature].setTarget(newo)
-          newo
-        }
-    })
+  def fCallParam : Parser[CallFeature] = ident ~ (callFeatureParams?) ^^ { case id ~ params =>
+      var newo = BehaviorFactory.eINSTANCE.createCallFeature
+      newo.setName(id)
+      params match {
+        case Some(_ @ par) => for(p <- par) newo.getParameters.add(p)
+        case None =>
+      }
+      newo
+  }
+  /*
+   def fCall : Parser[CallFeature] = (
+   ident ^^ {
+   case e =>
+   var newo = BehaviorFactory.eINSTANCE.createCallFeature
+   newo.setName(e.toString);
+   newo
+   } |||
+   ident ~ "(" ~ (callFeatureParams?) ~ ")" ^^ { case id ~ _ ~ params ~ _ =>
+   var newo = BehaviorFactory.eINSTANCE.createCallFeature
+   newo.setName(id)
+   params match {
+   case Some(_ @ par) => for(p <- par) newo.getParameters.add(p)
+   case None =>
+   }
+   newo
 
+   } |||
+   ident ~ callFeatureQualifiedName ^^ {
+   case id1 ~ callF =>
+   println(id1)
+   println(callF)
+   var newo = BehaviorFactory.eINSTANCE.createCallFeature;
+   newo.setName(id1.toString)
+   callF.setTarget(newo)
+   callF
+   } |||
+   ident ~ "(" ~ (callFeatureParams?) ~ ")" ~ callFeatureQualifiedName ^^ { case id ~ _ ~ params ~ _ ~ qualName => {
+   var newo = BehaviorFactory.eINSTANCE.createCallFeature
+   newo.setName(id)
+   params match {
+   case Some(_ @ par) => for(p <- par) newo.getParameters.add(p)
+   case None =>
+   }
+   qualName.setTarget(newo)
+   qualName
+   }
+   })
+   */
   private def fLoop : Parser[Expression] = "from" ~ fStatement ~ "until" ~ fStatement ~ "loop" ~ fStatement ~ "end" ^^ { case _ ~ init ~ _ ~ stop ~ _ ~ body ~ _ =>
       var newo = BehaviorFactory.eINSTANCE.createLoop
       newo.setInitialization(init)
@@ -111,10 +151,10 @@ object KExpressionParser extends StandardTokenParsers with KLiteralParser with K
   
   def fRescueLst = ident ^^^ {BehaviorFactory.eINSTANCE.createEmptyExpression}
 
-  def callFeatureQualifiedName : Parser[CallExpression] =  "." ~ fCall ^^ {case _ ~ subcall => subcall }
+  def callFeatureQualifiedName : Parser[CallFeature] =  "." ~ fCall ^^ {case _ ~ subcall => subcall }
 
-  private def callFeatureParams = fStatement ~ callFeatureParam ^^ { case stat ~ statL => List(stat)++statL }
-  private def callFeatureParam = (("," ~ fStatement ^^ { case delim ~ stat => stat } )*)
+  private def callFeatureParams = "(" ~> repsep( fStatement,",") <~ ")"  // ^^ { case stat ~ statL => println(statL); List(stat)++statL }
+  //private def callFeatureParam = ("," ~ fStatement ^^ { case delim ~ stat => stat } )*
 
 
 
@@ -135,7 +175,7 @@ object KExpressionParser extends StandardTokenParsers with KLiteralParser with K
               case ":=" ~ t => newo.setValue(t)
             }
             newo
-        }
+          }
         case None => target
       }
   }
@@ -217,27 +257,6 @@ object KExpressionParser extends StandardTokenParsers with KLiteralParser with K
       }
   }
   def fUnaryOp = "!" | "-"
-
-
-
-  /*
-   def fBinaryExpression : Parser[Expression] = fStatement ~ binaryOp ~ fStatement ^^ { case stat1 ~ op ~ stat2 =>
-   var newo = BehaviorFactory.eINSTANCE.createCallFeature
-   newo.setTarget(stat1)
-   newo.getParameters.add(stat2)
-   op match {
-   case "+" => newo.setName("plus")
-   case "-" => newo.setName("minus")
-   case "and" => newo.setName("and")
-   case "or" => newo.setName("or")
-   case "*" => newo.setName("mult")
-   case "/" => newo.setName("div")
-   case "==" => newo.setName("equals")
-   case _ =>
-   }
-   println(newo)
-   newo
-   }*/
 
 
 }

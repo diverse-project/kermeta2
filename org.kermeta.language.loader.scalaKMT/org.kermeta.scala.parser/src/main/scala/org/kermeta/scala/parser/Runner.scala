@@ -12,7 +12,8 @@ object Runner{
 
   def main(args: Array[String]): Unit = {
     //val input = Source.fromFile(new java.io.File("sample.kmt")).getLines("\n").reduceLeft[String](_ + '\n' + _)
-    val input = Source.fromFile(new java.io.File("expressionBloc.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
+   // val input = Source.fromFile(new java.io.File("callExpr.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
+   val input = Source.fromFile(new java.io.File("expressionBloc.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
 
     var result = KExpressionParser.parseExpression(input)
     // var result = org.kermeta.language.POC.test(input)
