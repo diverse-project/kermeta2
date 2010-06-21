@@ -17,9 +17,9 @@ class Parser extends StandardTokenParsers {
   lexical.reserved ++= org.kermeta.language.Lexical.keywords
   lexical.delimiters ++= org.kermeta.language.Lexical.delimiters
   //lexical.reserved += ("package","require","using","class","aspect","abstract","inv","operation","method","is","do","end","var","from","until","loop","if","then","else","init")
-  lexical.delimiters += ("=",";","::","@","{","}","(",")",":",":=",".",",")
+ // lexical.delimiters += ("=",";","::","@","{","}","(",")",":",":=",".",",")
   
-
+/*
   def lex(content : String) = {
    // var tokens : List = List()
     val tokens = new lexical.Scanner(content)
@@ -29,7 +29,7 @@ class Parser extends StandardTokenParsers {
       println(tokensL.first.getClass())
       tokensL = tokensL.rest
     }    
-  }
+  }*/
 
   def parse(content : String) : Option[ModelingUnit] = {
     val tokens = new lexical.Scanner(content)
@@ -42,6 +42,20 @@ class Parser extends StandardTokenParsers {
         }
     }
   }
+/*
+  def parseExpression(content : String) : Option[Expression] = {
+    val tokens = new lexical.Scanner(content)
+    val result = phrase(org.kermeta.scala.parser.sub.KExpressionParser.fLiteral)(tokens)
+    result match {
+      case Success(tree, _) => {Some(tree) }
+      case e: NoSuccess => {
+          println(e)
+          lastNoSucess = Some(e)
+          None
+
+        }
+    }
+  }*/
 
 
   var lastNoSucess : Option[NoSuccess] = None
@@ -225,7 +239,7 @@ class Parser extends StandardTokenParsers {
   }
 
   def fExpressionLst : Parser[List[Expression]] = (fStatement+)
-  def fStatement : Parser[Expression] = (pExpression | fBlock | fVariableDecl | fAssignement | fCall | fLiteral | fLoop | fConditional )// | fConditional | fRaiseException )
+  def fStatement : Parser[Expression] = (pExpression | fBlock | fVariableDecl | fAssignement | fCall | fLiteral | fLoop | fConditional | binaryExpression) // | fConditional | fRaiseException )
 
   def pExpression : Parser[Expression] = "(" ~ fStatement ~ ")" ^^ { case _ ~ statment ~ _ => statment }
 
@@ -304,12 +318,13 @@ class Parser extends StandardTokenParsers {
         case "or" => newo.setName("or")
         case "*" => newo.setName("mult")
         case "/" => newo.setName("div")
+        case "==" => newo.setName("equals")
         case _ =>
       }
       println(newo)
       newo
   }
-  def binaryOp : Parser[String] = ( "+" ) // | "- " | "and" | "or" | "*" | "/" )
+  def binaryOp : Parser[String] = ( "+" | "- " | "and" | "or" | "*" | "/" | "==" )
 
   def fCall : Parser[CallExpression] = (
     ident ^^ {

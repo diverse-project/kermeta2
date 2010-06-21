@@ -6,6 +6,7 @@
 package org.kermeta.scala.parser
 
 import fr.irisa.triskell.kermeta.KmPackage
+import fr.irisa.triskell.kermeta.language.behavior.Expression
 import fr.irisa.triskell.kermeta.language.structure.ModelingUnit
 import java.util.HashMap
 import org.eclipse.emf.common.util.TreeIterator
@@ -34,7 +35,19 @@ object LoadSaveKM {
     r.setURI(uri1);
     r.save(new HashMap());	
   }
+  def saveKmExpression( uri: String, r:Expression ) = {
+    var rs :ResourceSetImpl = new ResourceSetImpl();
+    rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*",new XMIResourceFactoryImpl());
+    rs.getPackageRegistry().put(KmPackage.eNS_URI, KmPackage.eINSTANCE);
+    var uri1:URI   = URI.createURI(uri)
+    var res : Resource = rs.createResource(uri1)
+    //r.getTag.foreach{tag=>res.getContents.add(tag)}
+    res.getContents.add(r)
+    //recursiveAddToResource(r,res)
 
+    res.save(new HashMap());
+
+  }
   def saveKmModelingUnit( uri: String, r:ModelingUnit ) = {
     var rs :ResourceSetImpl = new ResourceSetImpl();
     rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*",new XMIResourceFactoryImpl());

@@ -1,56 +1,256 @@
 <?xml version="1.0" encoding="ASCII"?>
-<kermeta_language_structure:ModelingUnit xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kermeta_language_behavior="http://www.kermeta.org/kermeta/1_2_0//kermeta/language/behavior" xmlns:kermeta_language_structure="http://www.kermeta.org/kermeta/1_2_0//kermeta/language/structure" tag="//@ownedTags.0 //@ownedTags.1">
-  <ownedTags name="mainClass" value="p1::Main" object="/"/>
-  <ownedTags name="mainOperation" value="main" object="/"/>
-  <packages tag="//@packages.0/@ownedTags.0" name="p1">
-    <ownedTags name="drop" value="true" object="//@packages.0"/>
-    <ownedTypeDefinition xsi:type="kermeta_language_structure:ClassDefinition" tag="//@packages.0/Main/@ownedTags.0" name="Main" isAspect="true" isAbstract="true">
-      <ownedTags name="drop" value="true" object="//@packages.0/Main"/>
-      <ownedOperation name="main">
-        <ownedParameter name="v"/>
-        <ownedParameter name="v2"/>
-        <body xsi:type="kermeta_language_behavior:Block">
-          <statement xsi:type="kermeta_language_behavior:VariableDecl" identifier="a">
-            <type name="kermeta::standard::Integer"/>
-          </statement>
-          <statement xsi:type="kermeta_language_behavior:Assignment">
-            <target xsi:type="kermeta_language_behavior:CallVariable" name="a"/>
-            <value xsi:type="kermeta_language_behavior:IntegerLiteral" value="4"/>
-          </statement>
-          <statement xsi:type="kermeta_language_behavior:CallFeature" name="stdio">
-            <target xsi:type="kermeta_language_behavior:CallFeature" name="writeln">
-              <parameters xsi:type="kermeta_language_behavior:StringLiteral" value="Assignment value = "/>
-              <parameters xsi:type="kermeta_language_behavior:StringLiteral" value=""/>
-            </target>
-          </statement>
-          <statement xsi:type="kermeta_language_behavior:Conditional">
-            <thenBody xsi:type="kermeta_language_behavior:CallFeature" name="stdio">
-              <target xsi:type="kermeta_language_behavior:CallFeature" name="writeln">
-                <parameters xsi:type="kermeta_language_behavior:StringLiteral" value="if(true) = success"/>
-              </target>
-            </thenBody>
-            <elseBody xsi:type="kermeta_language_behavior:CallFeature" name="stdio">
-              <target xsi:type="kermeta_language_behavior:CallFeature" name="writeln">
-                <parameters xsi:type="kermeta_language_behavior:StringLiteral" value="if(true) = fail"/>
-              </target>
-            </elseBody>
-            <condition xsi:type="kermeta_language_behavior:CallVariable" name="true"/>
-          </statement>
-          <statement xsi:type="kermeta_language_behavior:Loop">
-            <initialization xsi:type="kermeta_language_behavior:VariableDecl" identifier="i">
-              <initialization xsi:type="kermeta_language_behavior:IntegerLiteral"/>
-              <type name="kermeta::standard::Integer"/>
-            </initialization>
-            <body xsi:type="kermeta_language_behavior:Assignment">
-              <target xsi:type="kermeta_language_behavior:CallVariable" name="v1"/>
-              <value xsi:type="kermeta_language_behavior:CallVariable" name="v1"/>
-            </body>
-            <stopCondition xsi:type="kermeta_language_behavior:IntegerLiteral" value="2"/>
-          </statement>
-          <statement xsi:type="kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-    </ownedTypeDefinition>
-  </packages>
-  <requires uri="kermeta"/>
-</kermeta_language_structure:ModelingUnit>
+<kermeta_language_behavior:Block xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kermeta_language_behavior="http://www.kermeta.org/kermeta/1_2_0//kermeta/language/behavior">
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="buttonPressed">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="button"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="button"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="cbPressed">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="checkbox"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="checkbox"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="spinnerValueChanged">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="spinner"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="spinner"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:CallFeature" name="keysScroll">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="keys">
+      <target xsi:type="kermeta_language_behavior:CallFeature" name="add">
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="key"/>
+      </target>
+    </target>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:CallFeature" name="keysScroll">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="keys">
+      <target xsi:type="kermeta_language_behavior:CallFeature" name="remove">
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="key"/>
+      </target>
+    </target>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:CallFeature" name="equals">
+    <parameters xsi:type="kermeta_language_behavior:IntegerLiteral" value="27"/>
+    <target xsi:type="kermeta_language_behavior:CallVariable" name="key"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:CallFeature" name="dif">
+    <parameters xsi:type="kermeta_language_behavior:IntegerLiteral" value="27"/>
+    <target xsi:type="kermeta_language_behavior:CallVariable" name="key"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:CallFeature" name="equals">
+    <parameters xsi:type="kermeta_language_behavior:IntegerLiteral" value="1"/>
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="keysScroll">
+      <target xsi:type="kermeta_language_behavior:CallFeature" name="keys">
+        <target xsi:type="kermeta_language_behavior:CallVariable" name="size"/>
+      </target>
+    </target>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:CallFeature" name="sup">
+    <parameters xsi:type="kermeta_language_behavior:IntegerLiteral" value="1"/>
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="keysScroll">
+      <target xsi:type="kermeta_language_behavior:CallFeature" name="keys">
+        <target xsi:type="kermeta_language_behavior:CallVariable" name="size"/>
+      </target>
+    </target>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:BooleanLiteral" value="true"/>
+  <statement xsi:type="kermeta_language_behavior:BooleanLiteral"/>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="press">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="press">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="press">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="button"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="button"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="press">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="target"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallFeature" name="press">
+      <target xsi:type="kermeta_language_behavior:CallFeature" name="getPickableAt">
+        <parameters xsi:type="kermeta_language_behavior:CallFeature" name="press">
+          <target xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+        </parameters>
+        <parameters xsi:type="kermeta_language_behavior:CallFeature" name="press">
+          <target xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+        </parameters>
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="source"/>
+      </target>
+    </value>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="scrolling">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="increment"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallFeature" name="plus">
+      <parameters xsi:type="kermeta_language_behavior:Conditional">
+        <thenBody xsi:type="kermeta_language_behavior:CallFeature" name="minus">
+          <target xsi:type="kermeta_language_behavior:CallVariable" name="increment"/>
+        </thenBody>
+        <elseBody xsi:type="kermeta_language_behavior:CallVariable" name="increment"/>
+        <condition xsi:type="kermeta_language_behavior:CallVariable" name="isUp"/>
+      </parameters>
+      <target xsi:type="kermeta_language_behavior:CallFeature" name="scrolling">
+        <target xsi:type="kermeta_language_behavior:CallVariable" name="increment"/>
+      </target>
+    </value>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="scrolling">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="scrolling">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="scrolling">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="target"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallFeature" name="scrolling">
+      <target xsi:type="kermeta_language_behavior:CallFeature" name="getPickableAt">
+        <parameters xsi:type="kermeta_language_behavior:CallFeature" name="scrolling">
+          <target xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+        </parameters>
+        <parameters xsi:type="kermeta_language_behavior:CallFeature" name="scrolling">
+          <target xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+        </parameters>
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="source"/>
+      </target>
+    </value>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="keysScroll">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="keysScroll">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="keysScroll">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="object"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallFeature" name="keysScroll">
+      <target xsi:type="kermeta_language_behavior:CallFeature" name="getPickableAt">
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="source"/>
+      </target>
+    </value>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="keysScroll">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="numberUp"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallFeature" name="plus">
+      <parameters xsi:type="kermeta_language_behavior:Conditional">
+        <thenBody xsi:type="kermeta_language_behavior:IntegerLiteral" value="1"/>
+        <elseBody xsi:type="kermeta_language_behavior:CallFeature" name="minus">
+          <target xsi:type="kermeta_language_behavior:IntegerLiteral" value="1"/>
+        </elseBody>
+        <condition xsi:type="kermeta_language_behavior:CallVariable" name="isUp"/>
+      </parameters>
+      <target xsi:type="kermeta_language_behavior:CallFeature" name="keysScroll">
+        <target xsi:type="kermeta_language_behavior:CallVariable" name="numberUp"/>
+      </target>
+    </value>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="pxEnd"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="pyEnd"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="target"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallFeature" name="getPickableAt">
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="source"/>
+      </target>
+    </value>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="pxStart"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="pyStart"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="pxEnd"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="pyEnd"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="button"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallVariable" name="button"/>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="source"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallFeature" name="getPickableAt">
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="px"/>
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="py"/>
+        <parameters xsi:type="kermeta_language_behavior:CallVariable" name="source"/>
+      </target>
+    </value>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:Assignment">
+    <target xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="target"/>
+    </target>
+    <value xsi:type="kermeta_language_behavior:CallFeature" name="dnd">
+      <target xsi:type="kermeta_language_behavior:CallVariable" name="source"/>
+    </value>
+  </statement>
+  <statement xsi:type="kermeta_language_behavior:EmptyExpression"/>
+</kermeta_language_behavior:Block>
