@@ -72,6 +72,7 @@ public class KpFactoryImpl extends EFactoryImpl implements KpFactory {
 			case KpPackage.EXPRESSION: return createExpression();
 			case KpPackage.STRING_EXPRESSION: return createStringExpression();
 			case KpPackage.MIX_EXPRESSION: return createMixExpression();
+			case KpPackage.KERMETA_PROJECT_REF: return createKermetaProjectRef();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -195,6 +196,16 @@ public class KpFactoryImpl extends EFactoryImpl implements KpFactory {
 	public MixExpression createMixExpression() {
 		MixExpressionImpl mixExpression = new MixExpressionImpl();
 		return mixExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public KermetaProjectRef createKermetaProjectRef() {
+		KermetaProjectRefImpl kermetaProjectRef = new KermetaProjectRefImpl();
+		return kermetaProjectRef;
 	}
 
 	/**

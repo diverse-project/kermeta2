@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.kermeta.kp.KermetaProject#getOptions <em>Options</em>}</li>
  *   <li>{@link org.kermeta.kp.KermetaProject#getVersion <em>Version</em>}</li>
  *   <li>{@link org.kermeta.kp.KermetaProject#getGroup <em>Group</em>}</li>
+ *   <li>{@link org.kermeta.kp.KermetaProject#getRef <em>Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -147,5 +148,21 @@ public interface KermetaProject extends NamedElement {
 	 * @generated
 	 */
 	void setGroup(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ref</b></em>' containment reference list.
+	 * The list contents are of type {@link org.kermeta.kp.KermetaProjectRef}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ref</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ref</em>' containment reference list.
+	 * @see org.kermeta.kp.KpPackage#getKermetaProject_Ref()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<KermetaProjectRef> getRef();
 
 } // KermetaProject

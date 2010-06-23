@@ -7,33 +7,27 @@
 package org.kermeta.kp.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.kermeta.kp.Dependency;
 import org.kermeta.kp.KermetaProjectRef;
-import org.kermeta.kp.KermetaProject;
 import org.kermeta.kp.KpPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Dependency</b></em>'.
+ * An implementation of the model object '<em><b>Kermeta Project Ref</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.kp.impl.DependencyImpl#getGroup <em>Group</em>}</li>
- *   <li>{@link org.kermeta.kp.impl.DependencyImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link org.kermeta.kp.impl.DependencyImpl#getDepRef <em>Dep Ref</em>}</li>
+ *   <li>{@link org.kermeta.kp.impl.KermetaProjectRefImpl#getGroup <em>Group</em>}</li>
+ *   <li>{@link org.kermeta.kp.impl.KermetaProjectRefImpl#getVersion <em>Version</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DependencyImpl extends NamedElementImpl implements Dependency {
+public class KermetaProjectRefImpl extends NamedElementImpl implements KermetaProjectRef {
 	/**
 	 * The default value of the '{@link #getGroup() <em>Group</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -72,20 +66,11 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 	protected String version = VERSION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDepRef() <em>Dep Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDepRef()
-	 * @generated
-	 * @ordered
-	 */
-	protected KermetaProjectRef depRef;
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DependencyImpl() {
+	protected KermetaProjectRefImpl() {
 		super();
 	}
 
@@ -96,7 +81,7 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return KpPackage.Literals.DEPENDENCY;
+		return KpPackage.Literals.KERMETA_PROJECT_REF;
 	}
 
 	/**
@@ -117,7 +102,7 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 		String oldGroup = group;
 		group = newGroup;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.DEPENDENCY__GROUP, oldGroup, group));
+			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.KERMETA_PROJECT_REF__GROUP, oldGroup, group));
 	}
 
 	/**
@@ -138,45 +123,7 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 		String oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.DEPENDENCY__VERSION, oldVersion, version));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public KermetaProjectRef getDepRef() {
-		if (depRef != null && depRef.eIsProxy()) {
-			InternalEObject oldDepRef = (InternalEObject)depRef;
-			depRef = (KermetaProjectRef)eResolveProxy(oldDepRef);
-			if (depRef != oldDepRef) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, KpPackage.DEPENDENCY__DEP_REF, oldDepRef, depRef));
-			}
-		}
-		return depRef;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public KermetaProjectRef basicGetDepRef() {
-		return depRef;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDepRef(KermetaProjectRef newDepRef) {
-		KermetaProjectRef oldDepRef = depRef;
-		depRef = newDepRef;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.DEPENDENCY__DEP_REF, oldDepRef, depRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.KERMETA_PROJECT_REF__VERSION, oldVersion, version));
 	}
 
 	/**
@@ -187,13 +134,10 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case KpPackage.DEPENDENCY__GROUP:
+			case KpPackage.KERMETA_PROJECT_REF__GROUP:
 				return getGroup();
-			case KpPackage.DEPENDENCY__VERSION:
+			case KpPackage.KERMETA_PROJECT_REF__VERSION:
 				return getVersion();
-			case KpPackage.DEPENDENCY__DEP_REF:
-				if (resolve) return getDepRef();
-				return basicGetDepRef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -206,14 +150,11 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case KpPackage.DEPENDENCY__GROUP:
+			case KpPackage.KERMETA_PROJECT_REF__GROUP:
 				setGroup((String)newValue);
 				return;
-			case KpPackage.DEPENDENCY__VERSION:
+			case KpPackage.KERMETA_PROJECT_REF__VERSION:
 				setVersion((String)newValue);
-				return;
-			case KpPackage.DEPENDENCY__DEP_REF:
-				setDepRef((KermetaProjectRef)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -227,14 +168,11 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case KpPackage.DEPENDENCY__GROUP:
+			case KpPackage.KERMETA_PROJECT_REF__GROUP:
 				setGroup(GROUP_EDEFAULT);
 				return;
-			case KpPackage.DEPENDENCY__VERSION:
+			case KpPackage.KERMETA_PROJECT_REF__VERSION:
 				setVersion(VERSION_EDEFAULT);
-				return;
-			case KpPackage.DEPENDENCY__DEP_REF:
-				setDepRef((KermetaProjectRef)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -248,12 +186,10 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case KpPackage.DEPENDENCY__GROUP:
+			case KpPackage.KERMETA_PROJECT_REF__GROUP:
 				return GROUP_EDEFAULT == null ? group != null : !GROUP_EDEFAULT.equals(group);
-			case KpPackage.DEPENDENCY__VERSION:
+			case KpPackage.KERMETA_PROJECT_REF__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-			case KpPackage.DEPENDENCY__DEP_REF:
-				return depRef != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -276,4 +212,4 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 		return result.toString();
 	}
 
-} //DependencyImpl
+} //KermetaProjectRefImpl

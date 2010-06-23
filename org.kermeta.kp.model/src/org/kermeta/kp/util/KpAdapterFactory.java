@@ -128,6 +128,10 @@ public class KpAdapterFactory extends AdapterFactoryImpl {
 				return createMixExpressionAdapter();
 			}
 			@Override
+			public Adapter caseKermetaProjectRef(KermetaProjectRef object) {
+				return createKermetaProjectRefAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -340,6 +344,20 @@ public class KpAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMixExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.kp.KermetaProjectRef <em>Kermeta Project Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.kp.KermetaProjectRef
+	 * @generated
+	 */
+	public Adapter createKermetaProjectRefAdapter() {
 		return null;
 	}
 

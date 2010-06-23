@@ -184,6 +184,13 @@ public class KpSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case KpPackage.KERMETA_PROJECT_REF: {
+				KermetaProjectRef kermetaProjectRef = (KermetaProjectRef)theEObject;
+				T result = caseKermetaProjectRef(kermetaProjectRef);
+				if (result == null) result = caseNamedElement(kermetaProjectRef);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -395,6 +402,21 @@ public class KpSwitch<T> {
 	 * @generated
 	 */
 	public T caseMixExpression(MixExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Kermeta Project Ref</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Kermeta Project Ref</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseKermetaProjectRef(KermetaProjectRef object) {
 		return null;
 	}
 

@@ -134,6 +134,15 @@ public interface KpFactory extends EFactory {
 	MixExpression createMixExpression();
 
 	/**
+	 * Returns a new object of class '<em>Kermeta Project Ref</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Kermeta Project Ref</em>'.
+	 * @generated
+	 */
+	KermetaProjectRef createKermetaProjectRef();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

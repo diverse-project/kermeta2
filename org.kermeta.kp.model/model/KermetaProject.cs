@@ -1,67 +1,83 @@
- SYNTAXDEF kpt
+SYNTAXDEF kpt
 FOR <http://www.kermeta.org/kp/1.0.0>
 START KermetaProject
 OPTIONS { basePackage="org.kermeta.kp.editor"; }
 
 TOKENS{
-	DEFINE COMMENT$'//'(~('\n'|'\r'|'\uffff'))*$;
+	DEFINE SL_COMMENT$'//'(~('\n'|'\r'))*$;
+	DEFINE ML_COMMENT $'/*'.*'*/'$ ;
 	DEFINE INTEGER$('-')?('1'..'9')('0'..'9')*|'0'$;
 	DEFINE FLOAT$('-')?(('1'..'9') ('0'..'9')* | '0') '.' ('0'..'9')+ $;
+	DEFINE MAVEN$'"'('A'..'Z')*'"'$;
+	DEFINE NSURI$('A'..'Z')(('_')?('A'..'Z'))*$;
+	//DEFINE PROJECT$('a'..'z')('a'..'z')*(.)('a'..'z')('a'..'z')*$;
 }
 
 TOKENSTYLES{
-	"KermetaProject" COLOR #7F0055, BOLD;
-	"name" COLOR #7F0055, BOLD;
-	"dependencies" COLOR #7F0055, BOLD;
-	"sources" COLOR #7F0055, BOLD;
-	"weaveDirectives" COLOR #7F0055, BOLD;
-	"options" COLOR #7F0055, BOLD;
-	"version" COLOR #7F0055, BOLD;
-	"group" COLOR #7F0055, BOLD;
-	"Dependency" COLOR #7F0055, BOLD;
-	"project" COLOR #7F0055, BOLD;
-	"SourceFolder" COLOR #7F0055, BOLD;
-	"folderName" COLOR #7F0055, BOLD;
-	"SourceFile" COLOR #7F0055, BOLD;
-	"uri" COLOR #7F0055, BOLD;
-	"SourceNSURI" COLOR #7F0055, BOLD;
-	"from" COLOR #7F0055, BOLD;
-	"SourceQuery" COLOR #7F0055, BOLD;
-	"query" COLOR #7F0055, BOLD;
-	"WeaveDirective" COLOR #7F0055, BOLD;
-	"mix" COLOR #7F0055, BOLD;
-	"target" COLOR #7F0055, BOLD;
-	"Option" COLOR #7F0055, BOLD;
-	"value" COLOR #7F0055, BOLD;
-	"Expression" COLOR #7F0055, BOLD;
-	"StringExpression" COLOR #7F0055, BOLD;
-	"MixExpression" COLOR #7F0055, BOLD;
-	"left" COLOR #7F0055, BOLD;
-	"right" COLOR #7F0055, BOLD;
+	"dependence" COLOR #A22000, BOLD;
+	"weaver-directive" COLOR #007F55, BOLD;
+	"in" COLOR #2554C7, ITALIC;
+	"merger-option" COLOR #CC8000, BOLD;
+	"SL_COMMENT" COLOR #348017;
+	"ML_COMMENT" COLOR #348017;
+	"MAVEN" COLOR #2554C7, BOLD;
+	"NSURI" COLOR #2554C7, BOLD;
 }
 
 RULES{
 	
-	KermetaProject::= "KermetaProject"  "{" ( "name"  ":" name['"','"'] | "dependencies"  ":" dependencies | "sources"  ":" sources | "weaveDirectives"  ":" weaveDirectives | "options"  ":" options | "version"  ":" version['"','"'] | "group"  ":" group['"','"']  )* "}"  ;
+	KermetaProject::= 
+	"KermetaProject" ":" name['"','"'] !1
+	"version" ": " version['"','"'] !1
+	"group"  ":" group['"','"'] !1
+	"{"
+		(dependencies | sources | weaveDirectives | options )*
+	"}"
+	ref 
+	;
 	
-	Dependency::=  ( "dependency" name['"','"'] | "project"  ":" project[]| "group"  ":" group['"','"'] | "version"  ":" version['"','"']  )*  ;
+	SourceFolder::=  
+	"source" "=" folderName['"','"']   
+	;
 	
-	SourceFolder::= "SourceFolder"  "{" ( "folderName"  ":" folderName['"','"']  )* "}"  ;
+	SourceFile::= 
+	"source" "=" uri['"','"'] 
+	;
 	
-	SourceFile::= "SourceFile"  "{" ( "uri"  ":" uri['"','"']  )* "}"  ;
+	SourceNSURI::=  
+	"source" "=" uri[NSURI]  "from" from['"','"']  
+	;
 	
-	SourceNSURI::= "SourceNSURI"  "{" ( "from"  ":" from[]| "uri"  ":" uri['"','"']  )* "}"  ;
+	SourceQuery::=  
+	"source" "=" query['"','"'] "from" from['"','"']  
+	;
 	
-	SourceQuery::= "SourceQuery"  "{" ( "from"  ":" from[]| "query"  ":" query['"','"']  )* "}"  ;
+	Dependency::=  
+	"dependency" name['"','"'] "=" depRef['"','"'] | "dependency" depRef['"','"'] 
+	;
 	
-	WeaveDirective::= "WeaveDirective"  "{" ( "name"  ":" name['"','"'] | "mix"  ":" mix | "target"  ":" target  )* "}"  ;
+	WeaveDirective::= 
+	"weaver-directive" name['"','"']? "="  mix target   
+	;
 	
-	Option::= "Option"  "{" ( "name"  ":" name['"','"'] | "value"  ":" value['"','"']  )* "}"  ;
+	Option::= 
+	"merger-option" name['"','"']? "=" value['"','"'] 
+	;
 	
-	Expression::= "Expression"  "{"  "}"  ;
+	StringExpression::= 
+	value['"','"']
+	;
+	 
+	MixExpression::= 
+	"(" left  right ")" 
+	;
 	
-	StringExpression::= "StringExpression"  "{" ( "value"  ":" value['"','"']  )* "}"  ;
+	NamedElement ::= 
+	name[] 
+	;
 	
-	MixExpression::= "MixExpression"  "{" ( "left"  ":" left | "right"  ":" right  )* "}"  ;
+	KermetaProjectRef ::= 
+	"ref" "{" (group['"','"']  ":" name['"','"'] ("[" version['"','"'] "]")?)* "}" 
+	;
 	
 }

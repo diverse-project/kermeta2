@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.kermeta.kp.Dependency;
 import org.kermeta.kp.KermetaProject;
+import org.kermeta.kp.KermetaProjectRef;
 import org.kermeta.kp.KpPackage;
 import org.kermeta.kp.Option;
 import org.kermeta.kp.Source;
@@ -42,6 +43,7 @@ import org.kermeta.kp.WeaveDirective;
  *   <li>{@link org.kermeta.kp.impl.KermetaProjectImpl#getOptions <em>Options</em>}</li>
  *   <li>{@link org.kermeta.kp.impl.KermetaProjectImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.kermeta.kp.impl.KermetaProjectImpl#getGroup <em>Group</em>}</li>
+ *   <li>{@link org.kermeta.kp.impl.KermetaProjectImpl#getRef <em>Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -127,6 +129,16 @@ public class KermetaProjectImpl extends NamedElementImpl implements KermetaProje
 	 * @ordered
 	 */
 	protected String group = GROUP_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRef()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<KermetaProjectRef> ref;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -242,6 +254,18 @@ public class KermetaProjectImpl extends NamedElementImpl implements KermetaProje
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<KermetaProjectRef> getRef() {
+		if (ref == null) {
+			ref = new EObjectContainmentEList<KermetaProjectRef>(KermetaProjectRef.class, this, KpPackage.KERMETA_PROJECT__REF);
+		}
+		return ref;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -253,6 +277,8 @@ public class KermetaProjectImpl extends NamedElementImpl implements KermetaProje
 				return ((InternalEList<?>)getWeaveDirectives()).basicRemove(otherEnd, msgs);
 			case KpPackage.KERMETA_PROJECT__OPTIONS:
 				return ((InternalEList<?>)getOptions()).basicRemove(otherEnd, msgs);
+			case KpPackage.KERMETA_PROJECT__REF:
+				return ((InternalEList<?>)getRef()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -277,6 +303,8 @@ public class KermetaProjectImpl extends NamedElementImpl implements KermetaProje
 				return getVersion();
 			case KpPackage.KERMETA_PROJECT__GROUP:
 				return getGroup();
+			case KpPackage.KERMETA_PROJECT__REF:
+				return getRef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -312,6 +340,10 @@ public class KermetaProjectImpl extends NamedElementImpl implements KermetaProje
 			case KpPackage.KERMETA_PROJECT__GROUP:
 				setGroup((String)newValue);
 				return;
+			case KpPackage.KERMETA_PROJECT__REF:
+				getRef().clear();
+				getRef().addAll((Collection<? extends KermetaProjectRef>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -342,6 +374,9 @@ public class KermetaProjectImpl extends NamedElementImpl implements KermetaProje
 			case KpPackage.KERMETA_PROJECT__GROUP:
 				setGroup(GROUP_EDEFAULT);
 				return;
+			case KpPackage.KERMETA_PROJECT__REF:
+				getRef().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -366,6 +401,8 @@ public class KermetaProjectImpl extends NamedElementImpl implements KermetaProje
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 			case KpPackage.KERMETA_PROJECT__GROUP:
 				return GROUP_EDEFAULT == null ? group != null : !GROUP_EDEFAULT.equals(group);
+			case KpPackage.KERMETA_PROJECT__REF:
+				return ref != null && !ref.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
