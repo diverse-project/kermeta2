@@ -207,10 +207,10 @@ public class KptLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:23:7: ( 'source' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:23:9: 'source'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:23:7: ( 'ref' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:23:9: 'ref'
             {
-            match("source"); 
+            match("ref"); 
 
 
             }
@@ -228,10 +228,11 @@ public class KptLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:24:7: ( '=' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:24:9: '='
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:24:7: ( 'source' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:24:9: 'source'
             {
-            match('='); 
+            match("source"); 
+
 
             }
 
@@ -248,11 +249,10 @@ public class KptLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:25:7: ( 'from' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:25:9: 'from'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:25:7: ( '=' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:25:9: '='
             {
-            match("from"); 
-
+            match('='); 
 
             }
 
@@ -269,10 +269,10 @@ public class KptLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:26:7: ( 'dependency' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:26:9: 'dependency'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:26:7: ( 'from' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:26:9: 'from'
             {
-            match("dependency"); 
+            match("from"); 
 
 
             }
@@ -290,10 +290,10 @@ public class KptLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:27:7: ( 'weaver-directive' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:27:9: 'weaver-directive'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:27:7: ( 'dependency' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:27:9: 'dependency'
             {
-            match("weaver-directive"); 
+            match("dependency"); 
 
 
             }
@@ -311,10 +311,10 @@ public class KptLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:28:7: ( 'merger-option' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:28:9: 'merger-option'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:28:7: ( 'weaver-directive' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:28:9: 'weaver-directive'
             {
-            match("merger-option"); 
+            match("weaver-directive"); 
 
 
             }
@@ -332,10 +332,11 @@ public class KptLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:29:7: ( '(' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:29:9: '('
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:29:7: ( 'merger-option' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:29:9: 'merger-option'
             {
-            match('('); 
+            match("merger-option"); 
+
 
             }
 
@@ -352,10 +353,10 @@ public class KptLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:30:7: ( ')' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:30:9: ')'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:30:7: ( '(' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:30:9: '('
             {
-            match(')'); 
+            match('('); 
 
             }
 
@@ -372,11 +373,10 @@ public class KptLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:31:7: ( 'ref' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:31:9: 'ref'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:31:7: ( ')' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:31:9: ')'
             {
-            match("ref"); 
-
+            match(')'); 
 
             }
 
@@ -433,12 +433,12 @@ public class KptLexer extends Lexer {
         try {
             int _type = SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2202:11: ( '//' (~ ( '\\n' | '\\r' ) )* )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2203:2: '//' (~ ( '\\n' | '\\r' ) )*
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2204:11: ( '//' (~ ( '\\n' | '\\r' ) )* )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2205:2: '//' (~ ( '\\n' | '\\r' ) )*
             {
             match("//"); 
 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2203:6: (~ ( '\\n' | '\\r' ) )*
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2205:6: (~ ( '\\n' | '\\r' ) )*
             loop1:
             do {
                 int alt1=2;
@@ -451,7 +451,7 @@ public class KptLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2203:7: ~ ( '\\n' | '\\r' )
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2205:7: ~ ( '\\n' | '\\r' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -488,12 +488,12 @@ public class KptLexer extends Lexer {
         try {
             int _type = ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2206:11: ( '/*' ( . )* '*/' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2207:2: '/*' ( . )* '*/'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2208:11: ( '/*' ( . )* '*/' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2209:2: '/*' ( . )* '*/'
             {
             match("/*"); 
 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2207:6: ( . )*
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2209:6: ( . )*
             loop2:
             do {
                 int alt2=2;
@@ -518,7 +518,7 @@ public class KptLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2207:6: .
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2209:6: .
             	    {
             	    matchAny(); 
 
@@ -549,7 +549,7 @@ public class KptLexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2209:8: ( ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2211:8: ( ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -567,9 +567,9 @@ public class KptLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2210:2: ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )*
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2212:2: ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )*
                     {
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2210:2: ( '-' )?
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2212:2: ( '-' )?
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -578,7 +578,7 @@ public class KptLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2210:3: '-'
+                            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2212:3: '-'
                             {
                             match('-'); 
 
@@ -587,14 +587,14 @@ public class KptLexer extends Lexer {
 
                     }
 
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2210:8: ( '1' .. '9' )
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2210:9: '1' .. '9'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2212:8: ( '1' .. '9' )
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2212:9: '1' .. '9'
                     {
                     matchRange('1','9'); 
 
                     }
 
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2210:18: ( '0' .. '9' )*
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2212:18: ( '0' .. '9' )*
                     loop4:
                     do {
                         int alt4=2;
@@ -607,7 +607,7 @@ public class KptLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2210:19: '0' .. '9'
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2212:19: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -623,7 +623,7 @@ public class KptLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2210:30: '0'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2212:30: '0'
                     {
                     match('0'); 
                      _channel = 99; 
@@ -645,10 +645,10 @@ public class KptLexer extends Lexer {
         try {
             int _type = FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2212:6: ( ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+ )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:2: ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2214:6: ( ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+ )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:2: ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+
             {
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:2: ( '-' )?
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:2: ( '-' )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -657,7 +657,7 @@ public class KptLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:3: '-'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:3: '-'
                     {
                     match('-'); 
 
@@ -666,7 +666,7 @@ public class KptLexer extends Lexer {
 
             }
 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:8: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:8: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -684,16 +684,16 @@ public class KptLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:9: ( '1' .. '9' ) ( '0' .. '9' )*
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:9: ( '1' .. '9' ) ( '0' .. '9' )*
                     {
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:9: ( '1' .. '9' )
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:10: '1' .. '9'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:9: ( '1' .. '9' )
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:10: '1' .. '9'
                     {
                     matchRange('1','9'); 
 
                     }
 
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:20: ( '0' .. '9' )*
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:20: ( '0' .. '9' )*
                     loop7:
                     do {
                         int alt7=2;
@@ -706,7 +706,7 @@ public class KptLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:21: '0' .. '9'
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:21: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -722,7 +722,7 @@ public class KptLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:34: '0'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:34: '0'
                     {
                     match('0'); 
 
@@ -732,7 +732,7 @@ public class KptLexer extends Lexer {
             }
 
             match('.'); 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:43: ( '0' .. '9' )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:43: ( '0' .. '9' )+
             int cnt9=0;
             loop9:
             do {
@@ -746,7 +746,7 @@ public class KptLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2213:44: '0' .. '9'
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:44: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -779,11 +779,11 @@ public class KptLexer extends Lexer {
         try {
             int _type = MAVEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2215:6: ( '\"' ( 'A' .. 'Z' )* '\"' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2216:2: '\"' ( 'A' .. 'Z' )* '\"'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2217:6: ( '\"' ( 'A' .. 'Z' )* '\"' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2218:2: '\"' ( 'A' .. 'Z' )* '\"'
             {
             match('\"'); 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2216:5: ( 'A' .. 'Z' )*
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2218:5: ( 'A' .. 'Z' )*
             loop10:
             do {
                 int alt10=2;
@@ -796,7 +796,7 @@ public class KptLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2216:6: 'A' .. 'Z'
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2218:6: 'A' .. 'Z'
             	    {
             	    matchRange('A','Z'); 
 
@@ -826,17 +826,17 @@ public class KptLexer extends Lexer {
         try {
             int _type = NSURI;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2218:6: ( ( 'A' .. 'Z' ) ( ( '_' )? ( 'A' .. 'Z' ) )* )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2219:2: ( 'A' .. 'Z' ) ( ( '_' )? ( 'A' .. 'Z' ) )*
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2220:6: ( ( 'A' .. 'Z' ) ( ( '_' )? ( 'A' .. 'Z' ) )* )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2221:2: ( 'A' .. 'Z' ) ( ( '_' )? ( 'A' .. 'Z' ) )*
             {
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2219:2: ( 'A' .. 'Z' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2219:3: 'A' .. 'Z'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2221:2: ( 'A' .. 'Z' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2221:3: 'A' .. 'Z'
             {
             matchRange('A','Z'); 
 
             }
 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2219:12: ( ( '_' )? ( 'A' .. 'Z' ) )*
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2221:12: ( ( '_' )? ( 'A' .. 'Z' ) )*
             loop12:
             do {
                 int alt12=2;
@@ -849,9 +849,9 @@ public class KptLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2219:13: ( '_' )? ( 'A' .. 'Z' )
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2221:13: ( '_' )? ( 'A' .. 'Z' )
             	    {
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2219:13: ( '_' )?
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2221:13: ( '_' )?
             	    int alt11=2;
             	    int LA11_0 = input.LA(1);
 
@@ -860,7 +860,7 @@ public class KptLexer extends Lexer {
             	    }
             	    switch (alt11) {
             	        case 1 :
-            	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2219:14: '_'
+            	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2221:14: '_'
             	            {
             	            match('_'); 
 
@@ -869,8 +869,8 @@ public class KptLexer extends Lexer {
 
             	    }
 
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2219:19: ( 'A' .. 'Z' )
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2219:20: 'A' .. 'Z'
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2221:19: ( 'A' .. 'Z' )
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2221:20: 'A' .. 'Z'
             	    {
             	    matchRange('A','Z'); 
 
@@ -901,10 +901,10 @@ public class KptLexer extends Lexer {
         try {
             int _type = TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2220:5: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2221:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2222:5: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2223:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
             {
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2221:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2223:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
             int cnt13=0;
             loop13:
             do {
@@ -958,8 +958,8 @@ public class KptLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2222:11: ( ( ' ' | '\\t' | '\\f' ) )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2223:2: ( ' ' | '\\t' | '\\f' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2224:11: ( ( ' ' | '\\t' | '\\f' ) )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2225:2: ( ' ' | '\\t' | '\\f' )
             {
             if ( input.LA(1)=='\t'||input.LA(1)=='\f'||input.LA(1)==' ' ) {
                 input.consume();
@@ -987,10 +987,10 @@ public class KptLexer extends Lexer {
         try {
             int _type = LINEBREAK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2226:10: ( ( '\\r\\n' | '\\r' | '\\n' ) )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2227:2: ( '\\r\\n' | '\\r' | '\\n' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2228:10: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2229:2: ( '\\r\\n' | '\\r' | '\\n' )
             {
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2227:2: ( '\\r\\n' | '\\r' | '\\n' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2229:2: ( '\\r\\n' | '\\r' | '\\n' )
             int alt14=3;
             int LA14_0 = input.LA(1);
 
@@ -1014,7 +1014,7 @@ public class KptLexer extends Lexer {
             }
             switch (alt14) {
                 case 1 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2227:3: '\\r\\n'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2229:3: '\\r\\n'
                     {
                     match("\r\n"); 
 
@@ -1022,14 +1022,14 @@ public class KptLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2227:12: '\\r'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2229:12: '\\r'
                     {
                     match('\r'); 
 
                     }
                     break;
                 case 3 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2227:19: '\\n'
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2229:19: '\\n'
                     {
                     match('\n'); 
 
@@ -1055,17 +1055,17 @@ public class KptLexer extends Lexer {
         try {
             int _type = QUOTED_34_34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2230:13: ( ( '\"' ) (~ ( '\"' ) )* ( '\"' ) )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2231:2: ( '\"' ) (~ ( '\"' ) )* ( '\"' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2232:13: ( ( '\"' ) (~ ( '\"' ) )* ( '\"' ) )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2233:2: ( '\"' ) (~ ( '\"' ) )* ( '\"' )
             {
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2231:2: ( '\"' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2231:3: '\"'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2233:2: ( '\"' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2233:3: '\"'
             {
             match('\"'); 
 
             }
 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2231:7: (~ ( '\"' ) )*
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2233:7: (~ ( '\"' ) )*
             loop15:
             do {
                 int alt15=2;
@@ -1078,7 +1078,7 @@ public class KptLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2231:8: ~ ( '\"' )
+            	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2233:8: ~ ( '\"' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1098,8 +1098,8 @@ public class KptLexer extends Lexer {
                 }
             } while (true);
 
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2231:16: ( '\"' )
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2231:17: '\"'
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2233:16: ( '\"' )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.kp.editor/src-gen/org/kermeta/kp/editor/mopp/Kpt.g:2233:17: '\"'
             {
             match('\"'); 
 
@@ -1325,51 +1325,50 @@ public class KptLexer extends Lexer {
 
     protected DFA16 dfa16 = new DFA16(this);
     static final String DFA16_eotS =
-        "\1\uffff\1\34\1\40\2\30\2\uffff\1\30\1\uffff\4\30\2\uffff\1\30\3"+
-        "\uffff\1\30\2\55\1\uffff\1\34\3\uffff\1\30\1\uffff\1\30\1\34\2\uffff"+
-        "\10\30\2\uffff\1\30\1\55\5\uffff\10\30\1\104\1\uffff\4\30\1\111"+
-        "\3\30\1\uffff\2\30\1\117\1\30\1\uffff\5\30\1\uffff\1\126\4\30\1"+
-        "\133\1\uffff\4\30\1\uffff\10\30\1\150\3\30\1\uffff\7\30\1\163\1"+
-        "\164\1\30\2\uffff\1\30\1\167\1\uffff";
+        "\1\uffff\1\34\1\40\2\30\2\uffff\2\30\1\uffff\4\30\5\uffff\1\30\2"+
+        "\55\1\uffff\1\34\3\uffff\1\30\1\uffff\1\30\1\34\2\uffff\10\30\2"+
+        "\uffff\1\30\1\55\5\uffff\3\30\1\77\5\30\1\uffff\3\30\1\uffff\1\30"+
+        "\1\111\5\30\1\117\1\30\1\uffff\5\30\1\uffff\1\126\4\30\1\133\1\uffff"+
+        "\4\30\1\uffff\10\30\1\150\3\30\1\uffff\7\30\1\163\1\164\1\30\2\uffff"+
+        "\1\30\1\167\1\uffff";
     static final String DFA16_eofS =
         "\170\uffff";
     static final String DFA16_minS =
-        "\1\11\1\55\1\40\1\145\1\162\2\uffff\1\157\1\uffff\1\162\3\145\2"+
-        "\uffff\1\145\2\uffff\1\52\1\60\2\55\1\0\1\55\3\uffff\1\162\1\uffff"+
-        "\1\101\1\55\2\uffff\1\162\1\157\1\165\1\157\1\160\1\141\1\162\1"+
-        "\146\2\uffff\1\56\1\55\2\uffff\1\0\2\uffff\1\155\1\163\1\165\1\162"+
-        "\1\155\1\145\1\166\1\147\1\55\1\uffff\1\145\1\151\1\160\1\143\1"+
-        "\55\1\156\2\145\1\uffff\1\164\1\157\1\55\1\145\1\uffff\1\144\2\162"+
-        "\1\141\1\156\1\uffff\1\55\1\145\2\55\1\120\1\55\1\uffff\1\156\1"+
-        "\144\1\157\1\162\1\uffff\1\143\1\151\1\160\1\157\1\171\1\162\1\164"+
-        "\1\152\1\55\1\145\1\151\1\145\1\uffff\1\143\1\157\1\143\1\164\1"+
-        "\156\1\164\1\151\2\55\1\166\2\uffff\1\145\1\55\1\uffff";
+        "\1\11\1\55\1\40\1\145\1\162\2\uffff\1\145\1\157\1\uffff\1\162\3"+
+        "\145\4\uffff\1\52\1\60\2\55\1\0\1\55\3\uffff\1\162\1\uffff\1\101"+
+        "\1\55\2\uffff\1\162\1\157\1\146\1\165\1\157\1\160\1\141\1\162\2"+
+        "\uffff\1\56\1\55\2\uffff\1\0\2\uffff\1\155\1\163\1\165\1\55\1\162"+
+        "\1\155\1\145\1\166\1\147\1\uffff\1\145\1\151\1\160\1\uffff\1\143"+
+        "\1\55\1\156\2\145\1\164\1\157\1\55\1\145\1\uffff\1\144\2\162\1\141"+
+        "\1\156\1\uffff\1\55\1\145\2\55\1\120\1\55\1\uffff\1\156\1\144\1"+
+        "\157\1\162\1\uffff\1\143\1\151\1\160\1\157\1\171\1\162\1\164\1\152"+
+        "\1\55\1\145\1\151\1\145\1\uffff\1\143\1\157\1\143\1\164\1\156\1"+
+        "\164\1\151\2\55\1\166\2\uffff\1\145\1\55\1\uffff";
     static final String DFA16_maxS =
-        "\1\175\1\172\1\40\1\145\1\162\2\uffff\1\157\1\uffff\1\162\3\145"+
-        "\2\uffff\1\145\2\uffff\1\57\1\71\2\172\1\uffff\1\172\3\uffff\1\162"+
-        "\1\uffff\1\132\1\172\2\uffff\1\162\1\157\1\165\1\157\1\160\1\141"+
-        "\1\162\1\146\2\uffff\1\56\1\172\2\uffff\1\uffff\2\uffff\1\155\1"+
-        "\163\1\165\1\162\1\155\1\145\1\166\1\147\1\172\1\uffff\1\145\1\151"+
-        "\1\160\1\143\1\172\1\156\2\145\1\uffff\1\164\1\157\1\172\1\145\1"+
-        "\uffff\1\144\2\162\1\141\1\156\1\uffff\1\172\1\145\2\55\1\120\1"+
-        "\172\1\uffff\1\156\1\144\1\157\1\162\1\uffff\1\143\1\151\1\160\1"+
-        "\157\1\171\1\162\1\164\1\152\1\172\1\145\1\151\1\145\1\uffff\1\143"+
-        "\1\157\1\143\1\164\1\156\1\164\1\151\2\172\1\166\2\uffff\1\145\1"+
-        "\172\1\uffff";
+        "\1\175\1\172\1\40\1\145\1\162\2\uffff\1\145\1\157\1\uffff\1\162"+
+        "\3\145\4\uffff\1\57\1\71\2\172\1\uffff\1\172\3\uffff\1\162\1\uffff"+
+        "\1\132\1\172\2\uffff\1\162\1\157\1\146\1\165\1\157\1\160\1\141\1"+
+        "\162\2\uffff\1\56\1\172\2\uffff\1\uffff\2\uffff\1\155\1\163\1\165"+
+        "\1\172\1\162\1\155\1\145\1\166\1\147\1\uffff\1\145\1\151\1\160\1"+
+        "\uffff\1\143\1\172\1\156\2\145\1\164\1\157\1\172\1\145\1\uffff\1"+
+        "\144\2\162\1\141\1\156\1\uffff\1\172\1\145\2\55\1\120\1\172\1\uffff"+
+        "\1\156\1\144\1\157\1\162\1\uffff\1\143\1\151\1\160\1\157\1\171\1"+
+        "\162\1\164\1\152\1\172\1\145\1\151\1\145\1\uffff\1\143\1\157\1\143"+
+        "\1\164\1\156\1\164\1\151\2\172\1\166\2\uffff\1\145\1\172\1\uffff";
     static final String DFA16_acceptS =
-        "\5\uffff\1\6\1\7\1\uffff\1\11\4\uffff\1\16\1\17\1\uffff\1\21\1\22"+
-        "\6\uffff\1\31\1\32\1\33\1\uffff\1\30\2\uffff\1\4\1\2\10\uffff\1"+
-        "\23\1\24\2\uffff\1\25\1\26\1\uffff\1\27\1\34\11\uffff\1\27\10\uffff"+
-        "\1\20\4\uffff\1\12\5\uffff\1\5\6\uffff\1\10\4\uffff\1\3\14\uffff"+
-        "\1\13\12\uffff\1\15\1\1\2\uffff\1\14";
+        "\5\uffff\1\6\1\7\2\uffff\1\12\4\uffff\1\17\1\20\1\21\1\22\6\uffff"+
+        "\1\31\1\32\1\33\1\uffff\1\30\2\uffff\1\4\1\2\10\uffff\1\23\1\24"+
+        "\2\uffff\1\25\1\26\1\uffff\1\27\1\34\11\uffff\1\27\3\uffff\1\10"+
+        "\11\uffff\1\13\5\uffff\1\5\6\uffff\1\11\4\uffff\1\3\14\uffff\1\14"+
+        "\12\uffff\1\16\1\1\2\uffff\1\15";
     static final String DFA16_specialS =
         "\26\uffff\1\0\30\uffff\1\1\110\uffff}>";
     static final String[] DFA16_transitionS = {
             "\1\31\1\32\1\uffff\1\31\1\32\22\uffff\1\31\1\uffff\1\26\5\uffff"+
-            "\1\15\1\16\3\uffff\1\23\1\uffff\1\22\1\25\11\24\1\2\2\uffff"+
-            "\1\10\3\uffff\12\27\1\1\17\27\1\20\1\uffff\1\21\1\uffff\1\30"+
-            "\1\uffff\3\30\1\12\1\30\1\11\1\4\5\30\1\14\4\30\1\17\1\7\2\30"+
-            "\1\3\1\13\3\30\1\5\1\uffff\1\6",
+            "\1\16\1\17\3\uffff\1\23\1\uffff\1\22\1\25\11\24\1\2\2\uffff"+
+            "\1\11\3\uffff\12\27\1\1\17\27\1\20\1\uffff\1\21\1\uffff\1\30"+
+            "\1\uffff\3\30\1\13\1\30\1\12\1\4\5\30\1\15\4\30\1\7\1\10\2\30"+
+            "\1\3\1\14\3\30\1\5\1\uffff\1\6",
             "\1\30\2\uffff\12\30\7\uffff\32\36\4\uffff\1\35\1\uffff\4\30"+
             "\1\33\25\30",
             "\1\37",
@@ -1378,14 +1377,14 @@ public class KptLexer extends Lexer {
             "",
             "",
             "\1\43",
-            "",
             "\1\44",
+            "",
             "\1\45",
             "\1\46",
             "\1\47",
-            "",
-            "",
             "\1\50",
+            "",
+            "",
             "",
             "",
             "\1\52\4\uffff\1\51",
@@ -1426,22 +1425,22 @@ public class KptLexer extends Lexer {
             "\1\74",
             "\1\75",
             "\1\76",
-            "\1\77",
+            "\1\30\2\uffff\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
             "\1\100",
             "\1\101",
             "\1\102",
             "\1\103",
-            "\1\30\2\uffff\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
+            "\1\104",
             "",
             "\1\105",
             "\1\106",
             "\1\107",
+            "",
             "\1\110",
             "\1\30\2\uffff\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
             "\1\112",
             "\1\113",
             "\1\114",
-            "",
             "\1\115",
             "\1\116",
             "\1\30\2\uffff\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",

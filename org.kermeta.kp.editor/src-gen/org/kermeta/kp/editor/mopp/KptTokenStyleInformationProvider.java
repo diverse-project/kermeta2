@@ -83,6 +83,9 @@ public class KptTokenStyleInformationProvider {
 		if ("group".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
+		if ("ref".equals(tokenName)) {
+			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
+		}
 		if ("source".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
@@ -90,9 +93,6 @@ public class KptTokenStyleInformationProvider {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
 		if ("dependency".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
-		}
-		if ("ref".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
 		if ("QUOTED_34_34".equals(tokenName)) {

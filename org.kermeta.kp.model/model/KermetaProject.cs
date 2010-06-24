@@ -27,13 +27,13 @@ TOKENSTYLES{
 RULES{
 	
 	KermetaProject::= 
-	"KermetaProject" ":" name['"','"'] !1
-	"version" ": " version['"','"'] !1
-	"group"  ":" group['"','"'] !1
+	"KermetaProject" ":" name['"','"'] !0
+	"version" ": " version['"','"'] !0
+	"group"  ":" group['"','"'] !0
 	"{"
-		(dependencies | sources | weaveDirectives | options )*
-	"}"
-	ref 
+		(!1sources!0 | !1dependencies!0 |  !1options!0 | !1weaveDirectives )*!0
+	"}"!0
+	"ref" "{" (!1ref)*!0 "}" 
 	;
 	
 	SourceFolder::=  
@@ -77,7 +77,7 @@ RULES{
 	;
 	
 	KermetaProjectRef ::= 
-	"ref" "{" (group['"','"']  ":" name['"','"'] ("[" version['"','"'] "]")?)* "}" 
+	group['"','"']  ":" name['"','"'] ("[" version['"','"'] "]")?
 	;
 	
 }
