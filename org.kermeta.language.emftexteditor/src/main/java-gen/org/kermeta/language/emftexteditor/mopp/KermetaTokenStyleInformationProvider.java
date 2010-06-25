@@ -140,6 +140,15 @@ public class KermetaTokenStyleInformationProvider {
 		if ("property".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
+		if ("getter".equals(tokenName)) {
+			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
+		}
+		if ("setter".equals(tokenName)) {
+			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
+		}
+		if ("Void".equals(tokenName)) {
+			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
+		}
 		if ("Object".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
@@ -188,12 +197,6 @@ public class KermetaTokenStyleInformationProvider {
 		if ("TypeDefinition".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
-		if ("PrimitiveType".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
-		}
-		if ("instanceType".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
-		}
 		if ("Tag".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
@@ -239,10 +242,10 @@ public class KermetaTokenStyleInformationProvider {
 		if ("right".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
-		if ("VoidType".equals(tokenName)) {
+		if ("result".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
-		if ("result".equals(tokenName)) {
+		if ("super".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
 		if ("self".equals(tokenName)) {
@@ -251,40 +254,25 @@ public class KermetaTokenStyleInformationProvider {
 		if ("-".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
-		if ("CallValue".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
-		}
-		if ("staticType".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
-		}
-		if ("parameters".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
-		}
-		if ("staticTypeVariableBindings".equals(tokenName)) {
+		if ("extern".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
 		if ("EmptyExpression".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
-		if ("JavaStaticCall".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
-		}
-		if ("jclass".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
-		}
-		if ("jmethod".equals(tokenName)) {
+		if ("staticType".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
 		if ("LambdaExpression".equals(tokenName)) {
+			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
+		}
+		if ("parameters".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
 		if ("body".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
 		if ("LambdaParameter".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
-		}
-		if ("Void".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
 		return null;

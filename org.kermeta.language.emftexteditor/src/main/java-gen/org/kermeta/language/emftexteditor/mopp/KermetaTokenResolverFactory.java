@@ -15,12 +15,13 @@ public class KermetaTokenResolverFactory implements org.kermeta.language.emftext
 	public KermetaTokenResolverFactory() {
 		tokenName2TokenResolver = new java.util.HashMap<java.lang.String, org.kermeta.language.emftexteditor.IKermetaTokenResolver>();
 		featureName2CollectInTokenResolver = new java.util.HashMap<java.lang.String, org.kermeta.language.emftexteditor.IKermetaTokenResolver>();
-		registerTokenResolver("INTEGER", new org.kermeta.language.emftexteditor.analysis.KermetaINTEGERTokenResolver());
-		registerTokenResolver("BOOLEAN", new org.kermeta.language.emftexteditor.analysis.KermetaBOOLEANTokenResolver());
-		registerTokenResolver("STRING_LITERAL", new org.kermeta.language.emftexteditor.analysis.KermetaSTRING_LITERALTokenResolver());
-		registerTokenResolver("STRING", new org.kermeta.language.emftexteditor.analysis.KermetaSTRINGTokenResolver());
-		registerTokenResolver("QUALIFIEDNAME", new org.kermeta.language.emftexteditor.analysis.KermetaQUALIFIEDNAMETokenResolver());
+		registerCollectInTokenResolver("comments", new org.kermeta.language.emftexteditor.analysis.KermetaCOLLECT_commentsTokenResolver());
+		registerCollectInTokenResolver("comments", new org.kermeta.language.emftexteditor.analysis.KermetaCOLLECT_commentsTokenResolver());
 		registerTokenResolver("CASTED", new org.kermeta.language.emftexteditor.analysis.KermetaCASTEDTokenResolver());
+		registerTokenResolver("BOOLEAN", new org.kermeta.language.emftexteditor.analysis.KermetaBOOLEANTokenResolver());
+		registerTokenResolver("PRIMITIVE_TYPE", new org.kermeta.language.emftexteditor.analysis.KermetaPRIMITIVE_TYPETokenResolver());
+		registerTokenResolver("INTEGER", new org.kermeta.language.emftexteditor.analysis.KermetaINTEGERTokenResolver());
+		registerTokenResolver("IDENTIFIER", new org.kermeta.language.emftexteditor.analysis.KermetaIDENTIFIERTokenResolver());
 	}
 	
 	public org.kermeta.language.emftexteditor.IKermetaTokenResolver createTokenResolver(java.lang.String tokenName) {

@@ -6,7 +6,7 @@
  */
 package org.kermeta.language.emftexteditor.analysis;
 
-public class KermetaQUALIFIEDNAMETokenResolver implements org.kermeta.language.emftexteditor.IKermetaTokenResolver {
+public class KermetaPRIMITIVE_TYPETokenResolver implements org.kermeta.language.emftexteditor.IKermetaTokenResolver {
 	
 	private org.kermeta.language.emftexteditor.analysis.KermetaDefaultTokenResolver defaultTokenResolver = new org.kermeta.language.emftexteditor.analysis.KermetaDefaultTokenResolver();
 	

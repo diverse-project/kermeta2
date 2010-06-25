@@ -17,7 +17,6 @@ public class KermetaReferenceResolverSwitch implements org.kermeta.language.emft
 	protected org.kermeta.language.emftexteditor.analysis.ModelTypeIncludedTypeDefinitionReferenceResolver modelTypeIncludedTypeDefinitionReferenceResolver = new org.kermeta.language.emftexteditor.analysis.ModelTypeIncludedTypeDefinitionReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.TypeVariableBindingVariableReferenceResolver typeVariableBindingVariableReferenceResolver = new org.kermeta.language.emftexteditor.analysis.TypeVariableBindingVariableReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.TypeVariableBindingTypeReferenceResolver typeVariableBindingTypeReferenceResolver = new org.kermeta.language.emftexteditor.analysis.TypeVariableBindingTypeReferenceResolver();
-	protected org.kermeta.language.emftexteditor.analysis.PrimitiveTypeInstanceTypeReferenceResolver primitiveTypeInstanceTypeReferenceResolver = new org.kermeta.language.emftexteditor.analysis.PrimitiveTypeInstanceTypeReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.TagObjectReferenceResolver tagObjectReferenceResolver = new org.kermeta.language.emftexteditor.analysis.TagObjectReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.TypeVariableSupertypeReferenceResolver typeVariableSupertypeReferenceResolver = new org.kermeta.language.emftexteditor.analysis.TypeVariableSupertypeReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.VirtualTypeClassDefinitionReferenceResolver virtualTypeClassDefinitionReferenceResolver = new org.kermeta.language.emftexteditor.analysis.VirtualTypeClassDefinitionReferenceResolver();
@@ -29,7 +28,6 @@ public class KermetaReferenceResolverSwitch implements org.kermeta.language.emft
 	protected org.kermeta.language.emftexteditor.analysis.CallFeatureStaticOperationReferenceResolver callFeatureStaticOperationReferenceResolver = new org.kermeta.language.emftexteditor.analysis.CallFeatureStaticOperationReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.CallFeatureStaticEnumLiteralReferenceResolver callFeatureStaticEnumLiteralReferenceResolver = new org.kermeta.language.emftexteditor.analysis.CallFeatureStaticEnumLiteralReferenceResolver();
 	protected org.kermeta.language.emftexteditor.analysis.ExpressionStaticTypeReferenceResolver expressionStaticTypeReferenceResolver = new org.kermeta.language.emftexteditor.analysis.ExpressionStaticTypeReferenceResolver();
-	protected org.kermeta.language.emftexteditor.analysis.CallExpressionStaticTypeVariableBindingsReferenceResolver callExpressionStaticTypeVariableBindingsReferenceResolver = new org.kermeta.language.emftexteditor.analysis.CallExpressionStaticTypeVariableBindingsReferenceResolver();
 	
 	public org.kermeta.language.emftexteditor.analysis.PackageNestingPackageReferenceResolver getPackageNestingPackageReferenceResolver() {
 		return packageNestingPackageReferenceResolver;
@@ -65,10 +63,6 @@ public class KermetaReferenceResolverSwitch implements org.kermeta.language.emft
 	
 	public org.kermeta.language.emftexteditor.analysis.TypeVariableBindingTypeReferenceResolver getTypeVariableBindingTypeReferenceResolver() {
 		return typeVariableBindingTypeReferenceResolver;
-	}
-	
-	public org.kermeta.language.emftexteditor.analysis.PrimitiveTypeInstanceTypeReferenceResolver getPrimitiveTypeInstanceTypeReferenceResolver() {
-		return primitiveTypeInstanceTypeReferenceResolver;
 	}
 	
 	public org.kermeta.language.emftexteditor.analysis.TagObjectReferenceResolver getTagObjectReferenceResolver() {
@@ -115,10 +109,6 @@ public class KermetaReferenceResolverSwitch implements org.kermeta.language.emft
 		return expressionStaticTypeReferenceResolver;
 	}
 	
-	public org.kermeta.language.emftexteditor.analysis.CallExpressionStaticTypeVariableBindingsReferenceResolver getCallExpressionStaticTypeVariableBindingsReferenceResolver() {
-		return callExpressionStaticTypeVariableBindingsReferenceResolver;
-	}
-	
 	public void setOptions(java.util.Map<?, ?> options) {
 		packageNestingPackageReferenceResolver.setOptions(options);
 		classDefinitionSuperTypeReferenceResolver.setOptions(options);
@@ -129,7 +119,6 @@ public class KermetaReferenceResolverSwitch implements org.kermeta.language.emft
 		modelTypeIncludedTypeDefinitionReferenceResolver.setOptions(options);
 		typeVariableBindingVariableReferenceResolver.setOptions(options);
 		typeVariableBindingTypeReferenceResolver.setOptions(options);
-		primitiveTypeInstanceTypeReferenceResolver.setOptions(options);
 		tagObjectReferenceResolver.setOptions(options);
 		typeVariableSupertypeReferenceResolver.setOptions(options);
 		virtualTypeClassDefinitionReferenceResolver.setOptions(options);
@@ -141,7 +130,6 @@ public class KermetaReferenceResolverSwitch implements org.kermeta.language.emft
 		callFeatureStaticOperationReferenceResolver.setOptions(options);
 		callFeatureStaticEnumLiteralReferenceResolver.setOptions(options);
 		expressionStaticTypeReferenceResolver.setOptions(options);
-		callExpressionStaticTypeVariableBindingsReferenceResolver.setOptions(options);
 	}
 	
 	public void resolveFuzzy(java.lang.String identifier, org.eclipse.emf.ecore.EObject container, org.eclipse.emf.ecore.EReference reference, int position, org.kermeta.language.emftexteditor.IKermetaReferenceResolveResult<org.eclipse.emf.ecore.EObject> result) {
@@ -218,14 +206,6 @@ public class KermetaReferenceResolverSwitch implements org.kermeta.language.emft
 			org.eclipse.emf.ecore.EStructuralFeature feature = container.eClass().getEStructuralFeature(referenceName);
 			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("type")) {
 				typeVariableBindingTypeReferenceResolver.resolve(identifier, (org.kermeta.language.structure.TypeVariableBinding) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
-			}
-		}
-		if (org.kermeta.language.structure.StructurePackage.eINSTANCE.getPrimitiveType().isInstance(container)) {
-			KermetaFuzzyResolveResult<org.kermeta.language.structure.Type> frr = new KermetaFuzzyResolveResult<org.kermeta.language.structure.Type>(result);
-			java.lang.String referenceName = reference.getName();
-			org.eclipse.emf.ecore.EStructuralFeature feature = container.eClass().getEStructuralFeature(referenceName);
-			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("instanceType")) {
-				primitiveTypeInstanceTypeReferenceResolver.resolve(identifier, (org.kermeta.language.structure.PrimitiveType) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
 			}
 		}
 		if (org.kermeta.language.structure.StructurePackage.eINSTANCE.getTag().isInstance(container)) {
@@ -314,14 +294,6 @@ public class KermetaReferenceResolverSwitch implements org.kermeta.language.emft
 			org.eclipse.emf.ecore.EStructuralFeature feature = container.eClass().getEStructuralFeature(referenceName);
 			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("staticType")) {
 				expressionStaticTypeReferenceResolver.resolve(identifier, (org.kermeta.language.behavior.Expression) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
-			}
-		}
-		if (org.kermeta.language.behavior.BehaviorPackage.eINSTANCE.getCallExpression().isInstance(container)) {
-			KermetaFuzzyResolveResult<org.kermeta.language.structure.Type> frr = new KermetaFuzzyResolveResult<org.kermeta.language.structure.Type>(result);
-			java.lang.String referenceName = reference.getName();
-			org.eclipse.emf.ecore.EStructuralFeature feature = container.eClass().getEStructuralFeature(referenceName);
-			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("staticTypeVariableBindings")) {
-				callExpressionStaticTypeVariableBindingsReferenceResolver.resolve(identifier, (org.kermeta.language.behavior.CallExpression) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
 			}
 		}
 	}

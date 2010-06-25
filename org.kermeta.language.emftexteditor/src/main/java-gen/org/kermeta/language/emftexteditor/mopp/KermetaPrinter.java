@@ -94,6 +94,18 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			print_org_kermeta_language_structure_Constraint((org.kermeta.language.structure.Constraint) element, globaltab, out);
 			return;
 		}
+		if (element instanceof org.kermeta.language.structure.PrimitiveType) {
+			print_org_kermeta_language_structure_PrimitiveType((org.kermeta.language.structure.PrimitiveType) element, globaltab, out);
+			return;
+		}
+		if (element instanceof org.kermeta.language.structure.UnresolvedType) {
+			print_org_kermeta_language_structure_UnresolvedType((org.kermeta.language.structure.UnresolvedType) element, globaltab, out);
+			return;
+		}
+		if (element instanceof org.kermeta.language.structure.VoidType) {
+			print_org_kermeta_language_structure_VoidType((org.kermeta.language.structure.VoidType) element, globaltab, out);
+			return;
+		}
 		if (element instanceof org.kermeta.language.structure.Model) {
 			print_org_kermeta_language_structure_Model((org.kermeta.language.structure.Model) element, globaltab, out);
 			return;
@@ -106,8 +118,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			print_org_kermeta_language_structure_TypeVariableBinding((org.kermeta.language.structure.TypeVariableBinding) element, globaltab, out);
 			return;
 		}
-		if (element instanceof org.kermeta.language.structure.PrimitiveType) {
-			print_org_kermeta_language_structure_PrimitiveType((org.kermeta.language.structure.PrimitiveType) element, globaltab, out);
+		if (element instanceof org.kermeta.language.structure.TypeDefinition) {
+			print_org_kermeta_language_structure_TypeDefinition((org.kermeta.language.structure.TypeDefinition) element, globaltab, out);
 			return;
 		}
 		if (element instanceof org.kermeta.language.structure.Tag) {
@@ -128,10 +140,6 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		if (element instanceof org.kermeta.language.structure.FunctionType) {
 			print_org_kermeta_language_structure_FunctionType((org.kermeta.language.structure.FunctionType) element, globaltab, out);
-			return;
-		}
-		if (element instanceof org.kermeta.language.structure.VoidType) {
-			print_org_kermeta_language_structure_VoidType((org.kermeta.language.structure.VoidType) element, globaltab, out);
 			return;
 		}
 		if (element instanceof org.kermeta.language.behavior.Block) {
@@ -202,16 +210,20 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			print_org_kermeta_language_behavior_CallFeature((org.kermeta.language.behavior.CallFeature) element, globaltab, out);
 			return;
 		}
+		if (element instanceof org.kermeta.language.behavior.JavaStaticCall) {
+			print_org_kermeta_language_behavior_JavaStaticCall((org.kermeta.language.behavior.JavaStaticCall) element, globaltab, out);
+			return;
+		}
+		if (element instanceof org.kermeta.language.behavior.VoidLiteral) {
+			print_org_kermeta_language_behavior_VoidLiteral((org.kermeta.language.behavior.VoidLiteral) element, globaltab, out);
+			return;
+		}
 		if (element instanceof org.kermeta.language.behavior.CallValue) {
 			print_org_kermeta_language_behavior_CallValue((org.kermeta.language.behavior.CallValue) element, globaltab, out);
 			return;
 		}
 		if (element instanceof org.kermeta.language.behavior.EmptyExpression) {
 			print_org_kermeta_language_behavior_EmptyExpression((org.kermeta.language.behavior.EmptyExpression) element, globaltab, out);
-			return;
-		}
-		if (element instanceof org.kermeta.language.behavior.JavaStaticCall) {
-			print_org_kermeta_language_behavior_JavaStaticCall((org.kermeta.language.behavior.JavaStaticCall) element, globaltab, out);
 			return;
 		}
 		if (element instanceof org.kermeta.language.behavior.LambdaExpression) {
@@ -222,16 +234,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			print_org_kermeta_language_behavior_LambdaParameter((org.kermeta.language.behavior.LambdaParameter) element, globaltab, out);
 			return;
 		}
-		if (element instanceof org.kermeta.language.behavior.VoidLiteral) {
-			print_org_kermeta_language_behavior_VoidLiteral((org.kermeta.language.behavior.VoidLiteral) element, globaltab, out);
-			return;
-		}
 		if (element instanceof org.kermeta.language.structure.MultiplicityElement) {
 			print_org_kermeta_language_structure_MultiplicityElement((org.kermeta.language.structure.MultiplicityElement) element, globaltab, out);
-			return;
-		}
-		if (element instanceof org.kermeta.language.structure.TypeDefinition) {
-			print_org_kermeta_language_structure_TypeDefinition((org.kermeta.language.structure.TypeDefinition) element, globaltab, out);
 			return;
 		}
 		if (element instanceof org.kermeta.language.structure.ObjectTypeVariable) {
@@ -281,20 +285,24 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_ModelingUnit(org.kermeta.language.structure.ModelingUnit element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(6);
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(8);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__OWNED_TAGS));
 		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__OWNED_TYPE_DEFINITION));
+		printCountingMap.put("ownedTypeDefinition", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__PACKAGES));
 		printCountingMap.put("packages", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX));
+		printCountingMap.put("namespacePrefix", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__REQUIRES));
 		printCountingMap.put("requires", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__USINGS));
 		printCountingMap.put("usings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX));
-		printCountingMap.put("namespacePrefix", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
@@ -414,7 +422,6 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_structure_Using(org.kermeta.language.structure.Using element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.lang.String localtab = outertab;
 		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(3);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__TAG));
@@ -427,56 +434,9 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		//////////////DEFINITION PART BEGINS (CsString):
 		out.print("using");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		print_org_kermeta_language_structure_Using_0(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (LineBreak):
-		out.println();
-		out.print(localtab);
-	}
-	public void print_org_kermeta_language_structure_Using_0(org.kermeta.language.structure.Using element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		int count;
-		int alt = -1;
-		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"qualifiedName"		));
-		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"qualifiedName"		));
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("qualifiedName");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__QUALIFIED_NAME));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__QUALIFIED_NAME), element));
-						out.print(" ");
-					}
-					printCountingMap.put("qualifiedName", count - 1);
-				}
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
-			count = printCountingMap.get("qualifiedName");
-			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__QUALIFIED_NAME));
-				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("QUALIFIEDNAME");
-					resolver.setOptions(getOptions());
-					out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__QUALIFIED_NAME), element));
-					out.print(" ");
-				}
-				printCountingMap.put("qualifiedName", count - 1);
-			}
-		}
 	}
 	
 	public void print_org_kermeta_language_structure_Require(org.kermeta.language.structure.Require element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.lang.String localtab = outertab;
 		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(3);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__TAG));
@@ -486,25 +446,9 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__URI));
 		printCountingMap.put("uri", temp == null ? 0 : 1);
 		// print collected hidden tokens
-		int count;
 		//////////////DEFINITION PART BEGINS (CsString):
 		out.print("require");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
-		count = printCountingMap.get("uri");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__URI));
-			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING_LITERAL");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__URI), element));
-				out.print(" ");
-			}
-			printCountingMap.put("uri", count - 1);
-		}
-		//////////////DEFINITION PART BEGINS (LineBreak):
-		out.println();
-		out.print(localtab);
 	}
 	
 	public void print_org_kermeta_language_structure_Package(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out) {
@@ -526,6 +470,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__URI));
 		printCountingMap.put("uri", temp == null ? 0 : 1);
 		// print collected hidden tokens
+		int count;
 		int alt = -1;
 		alt=0;
 		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"name"		));
@@ -537,33 +482,75 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
+				boolean iterate = true;
+				java.io.StringWriter sWriter = null;
+				java.io.PrintWriter out1 = null;
+				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
 				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				print_org_kermeta_language_structure_Package_1(element, localtab, out, printCountingMap);
+				print_org_kermeta_language_structure_Package_2(element, localtab, out, printCountingMap);
+				iterate = true;
+				while (iterate) {
+					sWriter = new java.io.StringWriter();
+					out1 = new java.io.PrintWriter(sWriter);
+					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+					print_org_kermeta_language_structure_Package_2(element, localtab, out1, printCountingMap1);
+					if (printCountingMap.equals(printCountingMap1)) {
+						iterate = false;
+						out1.close();
+					} else {
+						out1.flush();
+						out1.close();
+						out.print(sWriter.toString());
+						printCountingMap.putAll(printCountingMap1);
+					}
+				}
+				//////////////DEFINITION PART BEGINS (LineBreak):
+				out.println();
+				out.print(localtab);
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CompoundDefinition):
-			print_org_kermeta_language_structure_Package_0(element, localtab, out, printCountingMap);
-		}
-	}
-	public void print_org_kermeta_language_structure_Package_0(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("package");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		iterate = true;
-		while (iterate) {
+			default:			boolean iterate = true;
+			java.io.StringWriter sWriter = null;
+			java.io.PrintWriter out1 = null;
+			java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+			//////////////DEFINITION PART BEGINS (CsString):
+			out.print("package");
+			out.print(" ");
+			//////////////DEFINITION PART BEGINS (CompoundDefinition):
+			iterate = true;
+			while (iterate) {
+				sWriter = new java.io.StringWriter();
+				out1 = new java.io.PrintWriter(sWriter);
+				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+				print_org_kermeta_language_structure_Package_0(element, localtab, out1, printCountingMap1);
+				if (printCountingMap.equals(printCountingMap1)) {
+					iterate = false;
+					out1.close();
+				} else {
+					out1.flush();
+					out1.close();
+					out.print(sWriter.toString());
+					printCountingMap.putAll(printCountingMap1);
+				}
+			}
+			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			count = printCountingMap.get("name");
+			if (count > 0) {
+				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NAME));
+				if (o != null) {
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+					resolver.setOptions(getOptions());
+					out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NAME), element));
+					out.print(" ");
+				}
+				printCountingMap.put("name", count - 1);
+			}
+			//////////////DEFINITION PART BEGINS (CompoundDefinition):
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
 			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_structure_Package_0_0(element, localtab, out1, printCountingMap1);
+			print_org_kermeta_language_structure_Package_1(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
 				out1.close();
 			} else {
 				out1.flush();
@@ -571,44 +558,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				out.print(sWriter.toString());
 				printCountingMap.putAll(printCountingMap1);
 			}
+			//////////////DEFINITION PART BEGINS (LineBreak):
+			out.println();
+			out.print(localtab);
 		}
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-		count = printCountingMap.get("name");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NAME));
-			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NAME), element));
-				out.print(" ");
-			}
-			printCountingMap.put("name", count - 1);
-		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		sWriter = new java.io.StringWriter();
-		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-		print_org_kermeta_language_structure_Package_0_1(element, localtab, out1, printCountingMap1);
-		if (printCountingMap.equals(printCountingMap1)) {
-			out1.close();
-		} else {
-			out1.flush();
-			out1.close();
-			out.print(sWriter.toString());
-			printCountingMap.putAll(printCountingMap1);
-		}
-		//////////////DEFINITION PART BEGINS (LineBreak):
-		out.println();
-		out.print(localtab);
 	}
-	public void print_org_kermeta_language_structure_Package_0_0(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_structure_Package_0(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int count;
 		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
 		count = printCountingMap.get("nestingPackage");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPackageNestingPackageReferenceResolver().deResolve((org.kermeta.language.structure.Package) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE), element));
 			}
@@ -616,10 +578,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		//////////////DEFINITION PART BEGINS (WhiteSpaces):
 		//////////////DEFINITION PART BEGINS (CsString):
-		out.print(".");
+		out.print("::");
 		out.print(" ");
 	}
-	public void print_org_kermeta_language_structure_Package_0_1(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_structure_Package_1(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int alt = -1;
 		alt=0;
@@ -645,13 +607,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				out.print("{");
 				out.print(" ");
 				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				print_org_kermeta_language_structure_Package_0_1_1(element, localtab, out, printCountingMap);
+				print_org_kermeta_language_structure_Package_1_1(element, localtab, out, printCountingMap);
 				iterate = true;
 				while (iterate) {
 					sWriter = new java.io.StringWriter();
 					out1 = new java.io.PrintWriter(sWriter);
 					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_structure_Package_0_1_1(element, localtab, out1, printCountingMap1);
+					print_org_kermeta_language_structure_Package_1_1(element, localtab, out1, printCountingMap1);
 					if (printCountingMap.equals(printCountingMap1)) {
 						iterate = false;
 						out1.close();
@@ -684,7 +646,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					sWriter = new java.io.StringWriter();
 					out1 = new java.io.PrintWriter(sWriter);
 					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_structure_Package_0_1_2(element, localtab, out1, printCountingMap1);
+					print_org_kermeta_language_structure_Package_1_2(element, localtab, out1, printCountingMap1);
 					if (printCountingMap.equals(printCountingMap1)) {
 						iterate = false;
 						out1.close();
@@ -708,13 +670,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			java.io.PrintWriter out1 = null;
 			java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
 			//////////////DEFINITION PART BEGINS (CompoundDefinition):
-			print_org_kermeta_language_structure_Package_0_1_0(element, localtab, out, printCountingMap);
+			print_org_kermeta_language_structure_Package_1_0(element, localtab, out, printCountingMap);
 			iterate = true;
 			while (iterate) {
 				sWriter = new java.io.StringWriter();
 				out1 = new java.io.PrintWriter(sWriter);
 				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-				print_org_kermeta_language_structure_Package_0_1_0(element, localtab, out1, printCountingMap1);
+				print_org_kermeta_language_structure_Package_1_0(element, localtab, out1, printCountingMap1);
 				if (printCountingMap.equals(printCountingMap1)) {
 					iterate = false;
 					out1.close();
@@ -730,7 +692,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(localtab);
 		}
 	}
-	public void print_org_kermeta_language_structure_Package_0_1_0(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_structure_Package_1_0(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
 		//////////////DEFINITION PART BEGINS (LineBreak):
@@ -753,7 +715,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			printCountingMap.put("ownedTypeDefinition", count - 1);
 		}
 	}
-	public void print_org_kermeta_language_structure_Package_0_1_1(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_structure_Package_1_1(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
 		//////////////DEFINITION PART BEGINS (LineBreak):
@@ -777,7 +739,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			printCountingMap.put("ownedTypeDefinition", count - 1);
 		}
 	}
-	public void print_org_kermeta_language_structure_Package_0_1_2(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_structure_Package_1_2(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
 		//////////////DEFINITION PART BEGINS (LineBreak):
@@ -801,35 +763,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			printCountingMap.put("nestedPackage", count - 1);
 		}
 	}
-	public void print_org_kermeta_language_structure_Package_1(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		print_org_kermeta_language_structure_Package_1_0(element, localtab, out, printCountingMap);
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_structure_Package_1_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
-		}
-		//////////////DEFINITION PART BEGINS (LineBreak):
-		out.println();
-		out.print(localtab);
-	}
-	public void print_org_kermeta_language_structure_Package_1_0(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_structure_Package_2(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
 		//////////////DEFINITION PART BEGINS (LineBreak):
@@ -861,14 +795,14 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__OWNED_TAGS));
 		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__CONTAINED_TYPE));
-		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__NAME));
 		printCountingMap.put("name", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__IS_ASPECT));
 		printCountingMap.put("isAspect", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__TYPE_PARAMETER));
 		printCountingMap.put("typeParameter", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__CONTAINED_TYPE));
+		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__INV));
 		printCountingMap.put("inv", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__IS_ABSTRACT));
@@ -919,7 +853,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__NAME));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__NAME), element));
 				out.print(" ");
@@ -1041,7 +975,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				o = null;
 			}
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getClassDefinitionSuperTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__SUPER_TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__SUPER_TYPE), element));
 				out.print(" ");
@@ -1083,7 +1017,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				o = null;
 			}
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getClassDefinitionSuperTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__SUPER_TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__SUPER_TYPE), element));
 				out.print(" ");
@@ -1166,7 +1100,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_Property(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(20);
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(21);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -1186,16 +1120,6 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("lower", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__UPPER));
 		printCountingMap.put("upper", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__GETTER_BODY));
-		printCountingMap.put("getterBody", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__SETTER_BODY));
-		printCountingMap.put("setterBody", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__IS_GETTER_ABSTRACT));
-		printCountingMap.put("isGetterAbstract", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__IS_SETTER_ABSTRACT));
-		printCountingMap.put("isSetterAbstract", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__OWNING_CLASS));
-		printCountingMap.put("owningClass", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__OPPOSITE));
 		printCountingMap.put("opposite", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__IS_READ_ONLY));
@@ -1208,20 +1132,25 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("isDerived", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__IS_ID));
 		printCountingMap.put("isID", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__GETTER_BODY));
+		printCountingMap.put("getterBody", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__SETTER_BODY));
+		printCountingMap.put("setterBody", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__IS_GETTER_ABSTRACT));
+		printCountingMap.put("isGetterAbstract", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__IS_SETTER_ABSTRACT));
+		printCountingMap.put("isSetterAbstract", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__OWNED_UNRESOLVED_PROPERTIES));
+		printCountingMap.put("ownedUnresolvedProperties", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__OWNING_CLASS));
+		printCountingMap.put("owningClass", temp == null ? 0 : 1);
 		// print collected hidden tokens
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		print_org_kermeta_language_structure_Property_0(element, localtab, out, printCountingMap);
-	}
-	public void print_org_kermeta_language_structure_Property_0(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
 		int count;
 		int alt = -1;
 		alt=0;
 		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"name"		));
 		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"name"		,
-		"getterBody"		,
-		"setterBody"		));
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"name"		));
 		if (tempMatchCount > matches) {
 			alt = 1;
 			matches = tempMatchCount;
@@ -1239,7 +1168,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__NAME));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__NAME), element));
 						out.print(" ");
@@ -1250,7 +1179,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				sWriter = new java.io.StringWriter();
 				out1 = new java.io.PrintWriter(sWriter);
 				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-				print_org_kermeta_language_structure_Property_0_2(element, localtab, out1, printCountingMap1);
+				print_org_kermeta_language_structure_Property_2(element, localtab, out1, printCountingMap1);
 				if (printCountingMap.equals(printCountingMap1)) {
 					out1.close();
 				} else {
@@ -1259,23 +1188,31 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					out.print(sWriter.toString());
 					printCountingMap.putAll(printCountingMap1);
 				}
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("getterBody");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__GETTER_BODY));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("getterBody", count - 1);
+				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				sWriter = new java.io.StringWriter();
+				out1 = new java.io.PrintWriter(sWriter);
+				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+				print_org_kermeta_language_structure_Property_3(element, localtab, out1, printCountingMap1);
+				if (printCountingMap.equals(printCountingMap1)) {
+					out1.close();
+				} else {
+					out1.flush();
+					out1.close();
+					out.print(sWriter.toString());
+					printCountingMap.putAll(printCountingMap1);
 				}
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("setterBody");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__SETTER_BODY));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("setterBody", count - 1);
+				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				sWriter = new java.io.StringWriter();
+				out1 = new java.io.PrintWriter(sWriter);
+				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+				print_org_kermeta_language_structure_Property_4(element, localtab, out1, printCountingMap1);
+				if (printCountingMap.equals(printCountingMap1)) {
+					out1.close();
+				} else {
+					out1.flush();
+					out1.close();
+					out.print(sWriter.toString());
+					printCountingMap.putAll(printCountingMap1);
 				}
 			}
 			break;
@@ -1283,13 +1220,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			java.io.PrintWriter out1 = null;
 			java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
 			//////////////DEFINITION PART BEGINS (CompoundDefinition):
-			print_org_kermeta_language_structure_Property_0_0(element, localtab, out, printCountingMap);
+			print_org_kermeta_language_structure_Property_0(element, localtab, out, printCountingMap);
 			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
 			count = printCountingMap.get("name");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__NAME));
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__NAME), element));
 					out.print(" ");
@@ -1300,7 +1237,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
 			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_structure_Property_0_1(element, localtab, out1, printCountingMap1);
+			print_org_kermeta_language_structure_Property_1(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				out1.close();
 			} else {
@@ -1311,7 +1248,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 		}
 	}
-	public void print_org_kermeta_language_structure_Property_0_0(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_structure_Property_0(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int alt = -1;
 		alt=0;
 		int matches=		0;
@@ -1333,7 +1270,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(" ");
 		}
 	}
-	public void print_org_kermeta_language_structure_Property_0_1(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_structure_Property_1(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int count;
 		//////////////DEFINITION PART BEGINS (CsString):
 		out.print(":");
@@ -1343,7 +1280,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__TYPE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypedElementTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__TYPE), element));
 				out.print(" ");
@@ -1351,7 +1288,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			printCountingMap.put("type", count - 1);
 		}
 	}
-	public void print_org_kermeta_language_structure_Property_0_2(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_structure_Property_2(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int count;
 		//////////////DEFINITION PART BEGINS (CsString):
 		out.print(":");
@@ -1361,18 +1298,58 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__TYPE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypedElementTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__TYPE), element));
 				out.print(" ");
 			}
 			printCountingMap.put("type", count - 1);
+		}
+	}
+	public void print_org_kermeta_language_structure_Property_3(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		java.lang.String localtab = outertab;
+		int count;
+		//////////////DEFINITION PART BEGINS (LineBreak):
+		localtab += "	";
+		out.println();
+		out.print(localtab);
+		//////////////DEFINITION PART BEGINS (CsString):
+		out.print("getter");
+		out.print(" ");
+		//////////////DEFINITION PART BEGINS (Containment):
+		count = printCountingMap.get("getterBody");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__GETTER_BODY));
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("getterBody", count - 1);
+		}
+	}
+	public void print_org_kermeta_language_structure_Property_4(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		java.lang.String localtab = outertab;
+		int count;
+		//////////////DEFINITION PART BEGINS (LineBreak):
+		localtab += "	";
+		out.println();
+		out.print(localtab);
+		//////////////DEFINITION PART BEGINS (CsString):
+		out.print("setter");
+		out.print(" ");
+		//////////////DEFINITION PART BEGINS (Containment):
+		count = printCountingMap.get("setterBody");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__SETTER_BODY));
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("setterBody", count - 1);
 		}
 	}
 	
 	public void print_org_kermeta_language_structure_Operation(org.kermeta.language.structure.Operation element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(18);
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(19);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -1392,24 +1369,26 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("lower", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__UPPER));
 		printCountingMap.put("upper", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__BODY));
-		printCountingMap.put("body", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__SUPER_OPERATION));
-		printCountingMap.put("superOperation", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__PRE));
-		printCountingMap.put("pre", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__POST));
-		printCountingMap.put("post", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__IS_ABSTRACT));
 		printCountingMap.put("isAbstract", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__OWNING_CLASS));
-		printCountingMap.put("owningClass", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE_PARAMETER));
-		printCountingMap.put("typeParameter", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__RAISED_EXCEPTION));
 		printCountingMap.put("raisedException", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__OWNED_PARAMETER));
 		printCountingMap.put("ownedParameter", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__PRE));
+		printCountingMap.put("pre", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__POST));
+		printCountingMap.put("post", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__BODY));
+		printCountingMap.put("body", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__SUPER_OPERATION));
+		printCountingMap.put("superOperation", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__OWNED_UNRESOLVED_OPERATIONS));
+		printCountingMap.put("ownedUnresolvedOperations", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__OWNING_CLASS));
+		printCountingMap.put("owningClass", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE_PARAMETER));
+		printCountingMap.put("typeParameter", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
 		int count;
 		java.io.StringWriter sWriter = null;
@@ -1453,7 +1432,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__NAME));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__NAME), element));
 				out.print(" ");
@@ -1563,7 +1542,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypedElementTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE), element));
 				out.print(" ");
@@ -1621,7 +1600,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypedElementTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE), element));
 				out.print(" ");
@@ -1640,7 +1619,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypedElementTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE), element));
 				out.print(" ");
@@ -1712,7 +1691,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PARAMETER__NAME));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PARAMETER__NAME), element));
 				out.print(" ");
@@ -1727,7 +1706,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PARAMETER__TYPE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypedElementTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PARAMETER__TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PARAMETER__TYPE), element));
 				out.print(" ");
@@ -1745,12 +1724,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__TYPE_CONTAINER));
 		printCountingMap.put("typeContainer", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__VIRTUAL_TYPE_BINDING));
+		printCountingMap.put("virtualTypeBinding", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__TYPE_PARAM_BINDING));
 		printCountingMap.put("typeParamBinding", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__TYPE_DEFINITION));
 		printCountingMap.put("typeDefinition", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__VIRTUAL_TYPE_BINDING));
-		printCountingMap.put("virtualTypeBinding", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__OWNED_ATTRIBUTE));
 		printCountingMap.put("ownedAttribute", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__OWNED_OPERATION));
@@ -1768,7 +1747,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__TYPE_DEFINITION));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getParameterizedTypeTypeDefinitionReferenceResolver().deResolve((org.kermeta.language.structure.GenericTypeDefinition) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__TYPE_DEFINITION)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__TYPE_DEFINITION), element));
 				out.print(" ");
@@ -1785,12 +1764,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__OWNED_TAGS));
 		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__TYPE_CONTAINER));
+		printCountingMap.put("typeContainer", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__NAME));
 		printCountingMap.put("name", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__IS_ASPECT));
 		printCountingMap.put("isAspect", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__TYPE_CONTAINER));
-		printCountingMap.put("typeContainer", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__OWNED_LITERAL));
 		printCountingMap.put("ownedLiteral", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
@@ -1803,7 +1782,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__NAME));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__NAME), element));
 				out.print(" ");
@@ -1908,7 +1887,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION_LITERAL__NAME));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION_LITERAL__NAME), element));
 				out.print(" ");
@@ -1945,7 +1924,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CONSTRAINT__STEREOTYPE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CONSTRAINT__STEREOTYPE), element));
 				out.print(" ");
@@ -1957,13 +1936,88 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CONSTRAINT__LANGUAGE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CONSTRAINT__LANGUAGE), element));
 				out.print(" ");
 			}
 			printCountingMap.put("language", count - 1);
 		}
+	}
+	
+	public void print_org_kermeta_language_structure_PrimitiveType(org.kermeta.language.structure.PrimitiveType element, java.lang.String outertab, java.io.PrintWriter out) {
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		java.lang.Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__TAG));
+		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__OWNED_TAGS));
+		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER));
+		printCountingMap.put("typeContainer", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__IS_ASPECT));
+		printCountingMap.put("isAspect", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE));
+		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__INSTANCE_TYPE));
+		printCountingMap.put("instanceType", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		int count;
+		//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
+		count = printCountingMap.get("name");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__NAME));
+			if (o != null) {
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("PRIMITIVE_TYPE");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__NAME), element));
+				out.print(" ");
+			}
+			printCountingMap.put("name", count - 1);
+		}
+	}
+	
+	public void print_org_kermeta_language_structure_UnresolvedType(org.kermeta.language.structure.UnresolvedType element, java.lang.String outertab, java.io.PrintWriter out) {
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(4);
+		java.lang.Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.UNRESOLVED_TYPE__TAG));
+		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.UNRESOLVED_TYPE__OWNED_TAGS));
+		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.UNRESOLVED_TYPE__TYPE_CONTAINER));
+		printCountingMap.put("typeContainer", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.UNRESOLVED_TYPE__TYPE_IDENTIFIER));
+		printCountingMap.put("typeIdentifier", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		int count;
+		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		count = printCountingMap.get("typeIdentifier");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.UNRESOLVED_TYPE__TYPE_IDENTIFIER));
+			if (o != null) {
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.UNRESOLVED_TYPE__TYPE_IDENTIFIER), element));
+				out.print(" ");
+			}
+			printCountingMap.put("typeIdentifier", count - 1);
+		}
+	}
+	
+	public void print_org_kermeta_language_structure_VoidType(org.kermeta.language.structure.VoidType element, java.lang.String outertab, java.io.PrintWriter out) {
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(3);
+		java.lang.Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TAG));
+		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__OWNED_TAGS));
+		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TYPE_CONTAINER));
+		printCountingMap.put("typeContainer", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		//////////////DEFINITION PART BEGINS (CsString):
+		out.print("Void");
+		out.print(" ");
 	}
 	
 	public void print_org_kermeta_language_structure_Object(org.kermeta.language.structure.Object element, java.lang.String outertab, java.io.PrintWriter out) {
@@ -2062,7 +2116,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT__TAG), element));
 					out.print(" ");
@@ -2170,7 +2224,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL__TAG), element));
 					out.print(" ");
@@ -2182,7 +2236,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_ModelType(org.kermeta.language.structure.ModelType element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(6);
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2196,6 +2250,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("isAspect", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__INCLUDED_TYPE_DEFINITION));
 		printCountingMap.put("includedTypeDefinition", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__OWNED_PACKAGES));
+		printCountingMap.put("ownedPackages", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
 		int count;
 		boolean iterate = true;
@@ -2207,7 +2263,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__IS_ASPECT));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__IS_ASPECT), element));
 				out.print(" ");
@@ -2306,7 +2362,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__TYPE_CONTAINER));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeTypeContainerReferenceResolver().deResolve((org.kermeta.language.structure.TypeContainer) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__TYPE_CONTAINER)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__TYPE_CONTAINER), element));
 						out.print(" ");
@@ -2327,7 +2383,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__NAME));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__NAME), element));
 						out.print(" ");
@@ -2355,7 +2411,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 						o = null;
 					}
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getModelTypeIncludedTypeDefinitionReferenceResolver().deResolve((org.kermeta.language.structure.TypeDefinition) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__INCLUDED_TYPE_DEFINITION)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__INCLUDED_TYPE_DEFINITION), element));
 						out.print(" ");
@@ -2382,7 +2438,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__TAG), element));
 					out.print(" ");
@@ -2528,7 +2584,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__VARIABLE));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeVariableBindingVariableReferenceResolver().deResolve((org.kermeta.language.structure.TypeVariable) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__VARIABLE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__VARIABLE), element));
 						out.print(" ");
@@ -2549,7 +2605,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__TYPE));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeVariableBindingTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__TYPE), element));
 						out.print(" ");
@@ -2576,7 +2632,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__TAG), element));
 					out.print(" ");
@@ -2619,7 +2675,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__IS_ORDERED));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__IS_ORDERED), element));
 				out.print(" ");
@@ -2631,7 +2687,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__IS_UNIQUE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__IS_UNIQUE), element));
 				out.print(" ");
@@ -2765,7 +2821,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__NAME));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__NAME), element));
 						out.print(" ");
@@ -2786,7 +2842,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__TYPE));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypedElementTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__TYPE), element));
 						out.print(" ");
@@ -2855,7 +2911,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__TAG), element));
 					out.print(" ");
@@ -2888,7 +2944,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_DEFINITION__IS_ASPECT));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_DEFINITION__IS_ASPECT), element));
 				out.print(" ");
@@ -2977,7 +3033,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_DEFINITION__NAME));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_DEFINITION__NAME), element));
 						out.print(" ");
@@ -3004,246 +3060,9 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_DEFINITION__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_DEFINITION__TAG), element));
-					out.print(" ");
-				}
-				printCountingMap.put("tag", count - 1);
-			}
-		}
-	}
-	
-	public void print_org_kermeta_language_structure_PrimitiveType(org.kermeta.language.structure.PrimitiveType element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
-		java.lang.Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__TAG));
-		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__OWNED_TAGS));
-		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE));
-		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__NAME));
-		printCountingMap.put("name", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__IS_ASPECT));
-		printCountingMap.put("isAspect", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER));
-		printCountingMap.put("typeContainer", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__INSTANCE_TYPE));
-		printCountingMap.put("instanceType", temp == null ? 0 : 1);
-		// print collected hidden tokens
-		int count;
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-		count = printCountingMap.get("isAspect");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__IS_ASPECT));
-			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__IS_ASPECT), element));
-				out.print(" ");
-			}
-			printCountingMap.put("isAspect", count - 1);
-		}
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("PrimitiveType");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("{");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_structure_PrimitiveType_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
-		}
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("}");
-		out.print(" ");
-	}
-	public void print_org_kermeta_language_structure_PrimitiveType_0(org.kermeta.language.structure.PrimitiveType element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		int alt = -1;
-		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"tag"		));
-		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTags"		));
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"typeContainer"		));
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"name"		));
-		if (tempMatchCount > matches) {
-			alt = 3;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"containedType"		));
-		if (tempMatchCount > matches) {
-			alt = 4;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"instanceType"		));
-		if (tempMatchCount > matches) {
-			alt = 5;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("ownedTags");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("ownedTags");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__OWNED_TAGS));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("ownedTags", count - 1);
-				}
-			}
-			break;
-			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("typeContainer");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("typeContainer");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeTypeContainerReferenceResolver().deResolve((org.kermeta.language.structure.TypeContainer) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__TYPE_CONTAINER), element));
-						out.print(" ");
-					}
-					printCountingMap.put("typeContainer", count - 1);
-				}
-			}
-			break;
-			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("name");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("name");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__NAME));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__NAME), element));
-						out.print(" ");
-					}
-					printCountingMap.put("name", count - 1);
-				}
-			}
-			break;
-			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("containedType");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("containedType");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__CONTAINED_TYPE));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("containedType", count - 1);
-				}
-			}
-			break;
-			case 5:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("instanceType");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("instanceType");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__INSTANCE_TYPE));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPrimitiveTypeInstanceTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__INSTANCE_TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__INSTANCE_TYPE), element));
-						out.print(" ");
-					}
-					printCountingMap.put("instanceType", count - 1);
-				}
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
-			out.print("tag");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
-			out.print(":");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-			count = printCountingMap.get("tag");
-			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__TAG));
-				java.util.List<?> list = (java.util.List<?>) o;
-				int index = list.size() - count;
-				if (index >= 0) {
-					o = list.get(index);
-				} else {
-					o = null;
-				}
-				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-					resolver.setOptions(getOptions());
-					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__TAG), element));
 					out.print(" ");
 				}
 				printCountingMap.put("tag", count - 1);
@@ -3259,12 +3078,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__OWNED_TAGS));
 		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__OBJECT));
-		printCountingMap.put("object", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__NAME));
 		printCountingMap.put("name", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__VALUE));
 		printCountingMap.put("value", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__OBJECT));
+		printCountingMap.put("object", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
@@ -3362,7 +3181,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__NAME));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__NAME), element));
 						out.print(" ");
@@ -3383,7 +3202,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__VALUE));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__VALUE), element));
 						out.print(" ");
@@ -3411,7 +3230,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 						o = null;
 					}
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTagObjectReferenceResolver().deResolve((org.kermeta.language.structure.Object) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__OBJECT)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__OBJECT), element));
 						out.print(" ");
@@ -3438,7 +3257,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__TAG), element));
 					out.print(" ");
@@ -3591,7 +3410,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__TYPE_CONTAINER));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeTypeContainerReferenceResolver().deResolve((org.kermeta.language.structure.TypeContainer) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__TYPE_CONTAINER)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__TYPE_CONTAINER), element));
 						out.print(" ");
@@ -3612,7 +3431,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__NAME));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__NAME), element));
 						out.print(" ");
@@ -3633,7 +3452,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__SUPERTYPE));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeVariableSupertypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__SUPERTYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__SUPERTYPE), element));
 						out.print(" ");
@@ -3660,7 +3479,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__TAG), element));
 					out.print(" ");
@@ -3820,7 +3639,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__TYPE_CONTAINER));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeTypeContainerReferenceResolver().deResolve((org.kermeta.language.structure.TypeContainer) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__TYPE_CONTAINER)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__TYPE_CONTAINER), element));
 						out.print(" ");
@@ -3841,7 +3660,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__NAME));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__NAME), element));
 						out.print(" ");
@@ -3862,7 +3681,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__SUPERTYPE));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeVariableSupertypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__SUPERTYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__SUPERTYPE), element));
 						out.print(" ");
@@ -3914,7 +3733,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__TAG), element));
 					out.print(" ");
@@ -4088,7 +3907,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__TYPE_CONTAINER));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeTypeContainerReferenceResolver().deResolve((org.kermeta.language.structure.TypeContainer) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__TYPE_CONTAINER)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__TYPE_CONTAINER), element));
 						out.print(" ");
@@ -4109,7 +3928,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__NAME));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__NAME), element));
 						out.print(" ");
@@ -4130,7 +3949,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__SUPERTYPE));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeVariableSupertypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__SUPERTYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__SUPERTYPE), element));
 						out.print(" ");
@@ -4151,7 +3970,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__CLASS_DEFINITION));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getVirtualTypeClassDefinitionReferenceResolver().deResolve((org.kermeta.language.structure.ClassDefinition) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__CLASS_DEFINITION)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__CLASS_DEFINITION), element));
 						out.print(" ");
@@ -4172,7 +3991,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__MODEL_TYPE));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getVirtualTypeModelTypeReferenceResolver().deResolve((org.kermeta.language.structure.ModelTypeVariable) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__MODEL_TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__MODEL_TYPE), element));
 						out.print(" ");
@@ -4224,7 +4043,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__TAG), element));
 					out.print(" ");
@@ -4370,7 +4189,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__TYPE_CONTAINER));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeTypeContainerReferenceResolver().deResolve((org.kermeta.language.structure.TypeContainer) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__TYPE_CONTAINER)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__TYPE_CONTAINER), element));
 						out.print(" ");
@@ -4398,7 +4217,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 						o = null;
 					}
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getProductTypeTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__TYPE), element));
 						out.print(" ");
@@ -4425,7 +4244,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__TAG), element));
 					out.print(" ");
@@ -4578,7 +4397,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__TYPE_CONTAINER));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeTypeContainerReferenceResolver().deResolve((org.kermeta.language.structure.TypeContainer) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__TYPE_CONTAINER)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__TYPE_CONTAINER), element));
 						out.print(" ");
@@ -4599,7 +4418,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__LEFT));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionTypeLeftReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__LEFT)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__LEFT), element));
 						out.print(" ");
@@ -4620,7 +4439,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__RIGHT));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionTypeRightReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__RIGHT)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__RIGHT), element));
 						out.print(" ");
@@ -4647,143 +4466,9 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__TAG), element));
-					out.print(" ");
-				}
-				printCountingMap.put("tag", count - 1);
-			}
-		}
-	}
-	
-	public void print_org_kermeta_language_structure_VoidType(org.kermeta.language.structure.VoidType element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(3);
-		java.lang.Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TAG));
-		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__OWNED_TAGS));
-		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TYPE_CONTAINER));
-		printCountingMap.put("typeContainer", temp == null ? 0 : 1);
-		// print collected hidden tokens
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("VoidType");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("{");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_structure_VoidType_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
-		}
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("}");
-		out.print(" ");
-	}
-	public void print_org_kermeta_language_structure_VoidType_0(org.kermeta.language.structure.VoidType element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		int alt = -1;
-		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"tag"		));
-		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTags"		));
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"typeContainer"		));
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("ownedTags");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("ownedTags");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__OWNED_TAGS));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("ownedTags", count - 1);
-				}
-			}
-			break;
-			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("typeContainer");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("typeContainer");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TYPE_CONTAINER));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypeTypeContainerReferenceResolver().deResolve((org.kermeta.language.structure.TypeContainer) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TYPE_CONTAINER)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TYPE_CONTAINER), element));
-						out.print(" ");
-					}
-					printCountingMap.put("typeContainer", count - 1);
-				}
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
-			out.print("tag");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
-			out.print(":");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-			count = printCountingMap.get("tag");
-			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TAG));
-				java.util.List<?> list = (java.util.List<?>) o;
-				int index = list.size() - count;
-				if (index >= 0) {
-					o = list.get(index);
-				} else {
-					o = null;
-				}
-				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-					resolver.setOptions(getOptions());
-					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TAG), element));
 					out.print(" ");
 				}
 				printCountingMap.put("tag", count - 1);
@@ -4803,10 +4488,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATIC_TYPE));
 		printCountingMap.put("staticType", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__RESCUE_BLOCK));
-		printCountingMap.put("rescueBlock", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
 		printCountingMap.put("statement", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__RESCUE_BLOCK));
+		printCountingMap.put("rescueBlock", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
@@ -5216,7 +4901,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.RESCUE__EXCEPTION_NAME));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.RESCUE__EXCEPTION_NAME), element));
 				out.print(" ");
@@ -5292,7 +4977,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.TYPE_REFERENCE__TYPE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTypedElementTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.TYPE_REFERENCE__TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.TYPE_REFERENCE__TYPE), element));
 				out.print(" ");
@@ -5404,12 +5089,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("value", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
+		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
 		count = printCountingMap.get("value");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.STRING_LITERAL__VALUE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING_LITERAL");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.STRING_LITERAL__VALUE), element));
 				out.print(" ");
@@ -5967,7 +5652,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VARIABLE_DECL__IDENTIFIER));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VARIABLE_DECL__IDENTIFIER), element));
 				out.print(" ");
@@ -6055,12 +5740,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_RESULT__STATIC_TYPE));
 		printCountingMap.put("staticType", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_RESULT__STATIC_TYPE_VARIABLE_BINDINGS));
-		printCountingMap.put("staticTypeVariableBindings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_RESULT__PARAMETERS));
 		printCountingMap.put("parameters", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_RESULT__NAME));
 		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_RESULT__STATIC_TYPE_VARIABLE_BINDINGS));
+		printCountingMap.put("staticTypeVariableBindings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_RESULT__IS_ATPRE));
 		printCountingMap.put("isAtpre", temp == null ? 0 : 1);
 		// print collected hidden tokens
@@ -6081,18 +5766,21 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_SUPER_OPERATION__STATIC_TYPE));
 		printCountingMap.put("staticType", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_SUPER_OPERATION__STATIC_TYPE_VARIABLE_BINDINGS));
-		printCountingMap.put("staticTypeVariableBindings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_SUPER_OPERATION__PARAMETERS));
 		printCountingMap.put("parameters", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_SUPER_OPERATION__NAME));
 		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_SUPER_OPERATION__STATIC_TYPE_VARIABLE_BINDINGS));
+		printCountingMap.put("staticTypeVariableBindings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
 		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
 		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("super(");
+		out.print("super");
+		//////////////DEFINITION PART BEGINS (WhiteSpaces):
+		//////////////DEFINITION PART BEGINS (CsString):
+		out.print("(");
 		out.print(" ");
 		//////////////DEFINITION PART BEGINS (CompoundDefinition):
 		sWriter = new java.io.StringWriter();
@@ -6479,12 +6167,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VARIABLE__STATIC_TYPE));
 		printCountingMap.put("staticType", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VARIABLE__STATIC_TYPE_VARIABLE_BINDINGS));
-		printCountingMap.put("staticTypeVariableBindings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VARIABLE__PARAMETERS));
 		printCountingMap.put("parameters", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VARIABLE__NAME));
 		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VARIABLE__STATIC_TYPE_VARIABLE_BINDINGS));
+		printCountingMap.put("staticTypeVariableBindings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VARIABLE__IS_ATPRE));
 		printCountingMap.put("isAtpre", temp == null ? 0 : 1);
 		// print collected hidden tokens
@@ -6494,7 +6182,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VARIABLE__NAME));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VARIABLE__NAME), element));
 				out.print(" ");
@@ -6532,24 +6220,23 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_TYPE));
 		printCountingMap.put("staticType", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_TYPE_VARIABLE_BINDINGS));
-		printCountingMap.put("staticTypeVariableBindings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
 		printCountingMap.put("parameters", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__NAME));
 		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_TYPE_VARIABLE_BINDINGS));
+		printCountingMap.put("staticTypeVariableBindings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
+		printCountingMap.put("target", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__IS_ATPRE));
+		printCountingMap.put("isAtpre", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY));
 		printCountingMap.put("staticProperty", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
 		printCountingMap.put("staticOperation", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL));
 		printCountingMap.put("staticEnumLiteral", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-		printCountingMap.put("target", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__IS_ATPRE));
-		printCountingMap.put("isAtpre", temp == null ? 0 : 1);
 		// print collected hidden tokens
-		int count;
 		int alt = -1;
 		alt=0;
 		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		,
@@ -6561,16 +6248,6 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			alt = 1;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
-		if (tempMatchCount > matches) {
-			alt = 3;
-			matches = tempMatchCount;
-		}
 		switch(alt) {
 			case 1:			{
 				boolean iterate = true;
@@ -6578,7 +6255,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				java.io.PrintWriter out1 = null;
 				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
 				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				print_org_kermeta_language_behavior_CallFeature_2(element, localtab, out, printCountingMap);
+				print_org_kermeta_language_behavior_CallFeature_3(element, localtab, out, printCountingMap);
 				//////////////DEFINITION PART BEGINS (WhiteSpaces):
 				//////////////DEFINITION PART BEGINS (CompoundDefinition):
 				iterate = true;
@@ -6586,53 +6263,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					sWriter = new java.io.StringWriter();
 					out1 = new java.io.PrintWriter(sWriter);
 					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_behavior_CallFeature_3(element, localtab, out1, printCountingMap1);
-					if (printCountingMap.equals(printCountingMap1)) {
-						iterate = false;
-						out1.close();
-					} else {
-						out1.flush();
-						out1.close();
-						out.print(sWriter.toString());
-						printCountingMap.putAll(printCountingMap1);
-					}
-				}
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("==");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("parameters");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("parameters", count - 1);
-				}
-			}
-			break;
-			case 2:			{
-				boolean iterate = true;
-				java.io.StringWriter sWriter = null;
-				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				print_org_kermeta_language_behavior_CallFeature_4(element, localtab, out, printCountingMap);
-				//////////////DEFINITION PART BEGINS (WhiteSpaces):
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				iterate = true;
-				while (iterate) {
-					sWriter = new java.io.StringWriter();
-					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_behavior_CallFeature_5(element, localtab, out1, printCountingMap1);
+					print_org_kermeta_language_behavior_CallFeature_4(element, localtab, out1, printCountingMap1);
 					if (printCountingMap.equals(printCountingMap1)) {
 						iterate = false;
 						out1.close();
@@ -6644,89 +6275,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					}
 				}
 				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				iterate = true;
-				while (iterate) {
-					sWriter = new java.io.StringWriter();
-					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_behavior_CallFeature_6(element, localtab, out1, printCountingMap1);
-					if (printCountingMap.equals(printCountingMap1)) {
-						iterate = false;
-						out1.close();
-					} else {
-						out1.flush();
-						out1.close();
-						out.print(sWriter.toString());
-						printCountingMap.putAll(printCountingMap1);
-					}
-				}
-			}
-			break;
-			case 3:			{
-				boolean iterate = true;
-				java.io.StringWriter sWriter = null;
-				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("(");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				print_org_kermeta_language_behavior_CallFeature_7(element, localtab, out, printCountingMap);
-				//////////////DEFINITION PART BEGINS (WhiteSpaces):
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				iterate = true;
-				while (iterate) {
-					sWriter = new java.io.StringWriter();
-					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_behavior_CallFeature_8(element, localtab, out1, printCountingMap1);
-					if (printCountingMap.equals(printCountingMap1)) {
-						iterate = false;
-						out1.close();
-					} else {
-						out1.flush();
-						out1.close();
-						out.print(sWriter.toString());
-						printCountingMap.putAll(printCountingMap1);
-					}
-				}
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				iterate = true;
-				while (iterate) {
-					sWriter = new java.io.StringWriter();
-					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_behavior_CallFeature_9(element, localtab, out1, printCountingMap1);
-					if (printCountingMap.equals(printCountingMap1)) {
-						iterate = false;
-						out1.close();
-					} else {
-						out1.flush();
-						out1.close();
-						out.print(sWriter.toString());
-						printCountingMap.putAll(printCountingMap1);
-					}
-				}
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(")");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				iterate = true;
-				while (iterate) {
-					sWriter = new java.io.StringWriter();
-					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_behavior_CallFeature_10(element, localtab, out1, printCountingMap1);
-					if (printCountingMap.equals(printCountingMap1)) {
-						iterate = false;
-						out1.close();
-					} else {
-						out1.flush();
-						out1.close();
-						out.print(sWriter.toString());
-						printCountingMap.putAll(printCountingMap1);
-					}
-				}
+				print_org_kermeta_language_behavior_CallFeature_5(element, localtab, out, printCountingMap);
 			}
 			break;
 			default:			boolean iterate = true;
@@ -6756,28 +6305,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					printCountingMap.putAll(printCountingMap1);
 				}
 			}
-			//////////////DEFINITION PART BEGINS (CsString):
-			out.print("==");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (Containment):
-			count = printCountingMap.get("parameters");
-			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
-				java.util.List<?> list = (java.util.List<?>) o;
-				int index = list.size() - count;
-				if (index >= 0) {
-					o = list.get(index);
-				} else {
-					o = null;
-				}
-				if (o != null) {
-					doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-				}
-				printCountingMap.put("parameters", count - 1);
-			}
-			//////////////DEFINITION PART BEGINS (CsString):
-			out.print(")");
-			out.print(" ");
+			//////////////DEFINITION PART BEGINS (CompoundDefinition):
+			print_org_kermeta_language_behavior_CallFeature_2(element, localtab, out, printCountingMap);
 		}
 	}
 	public void print_org_kermeta_language_behavior_CallFeature_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
@@ -6919,7 +6448,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticOperationReferenceResolver().deResolve((org.kermeta.language.structure.Operation) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION), element));
 						out.print(" ");
@@ -6956,7 +6485,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticEnumLiteralReferenceResolver().deResolve((org.kermeta.language.structure.EnumerationLiteral) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL), element));
 						out.print(" ");
@@ -6974,7 +6503,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticOperationReferenceResolver().deResolve((org.kermeta.language.structure.Operation) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION), element));
 						out.print(" ");
@@ -6991,7 +6520,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY));
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticPropertyReferenceResolver().deResolve((org.kermeta.language.structure.Property) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY), element));
 					out.print(" ");
@@ -7069,103 +6598,212 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		int count;
 		int alt = -1;
 		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"parameters"		));
 		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		tempMatchCount=		0;
 		if (tempMatchCount > matches) {
 			alt = 1;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		switch(alt) {
+			case 1:			{
+				boolean iterate = true;
+				java.io.StringWriter sWriter = null;
+				java.io.PrintWriter out1 = null;
+				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				iterate = true;
+				while (iterate) {
+					sWriter = new java.io.StringWriter();
+					out1 = new java.io.PrintWriter(sWriter);
+					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+					print_org_kermeta_language_behavior_CallFeature_2_0(element, localtab, out1, printCountingMap1);
+					if (printCountingMap.equals(printCountingMap1)) {
+						iterate = false;
+						out1.close();
+					} else {
+						out1.flush();
+						out1.close();
+						out.print(sWriter.toString());
+						printCountingMap.putAll(printCountingMap1);
+					}
+				}
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print(")");
+				out.print(" ");
+				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				iterate = true;
+				while (iterate) {
+					sWriter = new java.io.StringWriter();
+					out1 = new java.io.PrintWriter(sWriter);
+					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+					print_org_kermeta_language_behavior_CallFeature_2_1(element, localtab, out1, printCountingMap1);
+					if (printCountingMap.equals(printCountingMap1)) {
+						iterate = false;
+						out1.close();
+					} else {
+						out1.flush();
+						out1.close();
+						out.print(sWriter.toString());
+						printCountingMap.putAll(printCountingMap1);
+					}
+				}
+			}
+			break;
+			default:			//////////////DEFINITION PART BEGINS (CsString):
+			out.print("==");
+			out.print(" ");
+			//////////////DEFINITION PART BEGINS (Containment):
+			count = printCountingMap.get("parameters");
+			if (count > 0) {
+				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
+				java.util.List<?> list = (java.util.List<?>) o;
+				int index = list.size() - count;
+				if (index >= 0) {
+					o = list.get(index);
+				} else {
+					o = null;
+				}
+				if (o != null) {
+					doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+				}
+				printCountingMap.put("parameters", count - 1);
+			}
+			//////////////DEFINITION PART BEGINS (CsString):
+			out.print(")");
+			out.print(" ");
+		}
+	}
+	public void print_org_kermeta_language_behavior_CallFeature_2_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		java.lang.String localtab = outertab;
+		int count;
+		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		print_org_kermeta_language_behavior_CallFeature_2_0_0(element, localtab, out, printCountingMap);
+		//////////////DEFINITION PART BEGINS (Containment):
+		count = printCountingMap.get("parameters");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
+			java.util.List<?> list = (java.util.List<?>) o;
+			int index = list.size() - count;
+			if (index >= 0) {
+				o = list.get(index);
+			} else {
+				o = null;
+			}
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("parameters", count - 1);
+		}
+	}
+	public void print_org_kermeta_language_behavior_CallFeature_2_0_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		int alt = -1;
+		alt=0;
+		int matches=		0;
+		int tempMatchCount;
+		tempMatchCount=		0;
+		if (tempMatchCount > matches) {
+			alt = 1;
+			matches = tempMatchCount;
+		}
+		tempMatchCount=		0;
 		if (tempMatchCount > matches) {
 			alt = 2;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		tempMatchCount=		0;
 		if (tempMatchCount > matches) {
 			alt = 3;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		switch(alt) {
+			case 1:			{
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print("-");
+				out.print(" ");
+			}
+			break;
+			case 2:			{
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print("/");
+				out.print(" ");
+			}
+			break;
+			case 3:			{
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print("*");
+				out.print(" ");
+			}
+			break;
+			default:			//////////////DEFINITION PART BEGINS (CsString):
+			out.print("+");
+			out.print(" ");
+		}
+	}
+	public void print_org_kermeta_language_behavior_CallFeature_2_1(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		java.lang.String localtab = outertab;
+		int count;
+		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		print_org_kermeta_language_behavior_CallFeature_2_1_0(element, localtab, out, printCountingMap);
+		//////////////DEFINITION PART BEGINS (Containment):
+		count = printCountingMap.get("parameters");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
+			java.util.List<?> list = (java.util.List<?>) o;
+			int index = list.size() - count;
+			if (index >= 0) {
+				o = list.get(index);
+			} else {
+				o = null;
+			}
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("parameters", count - 1);
+		}
+	}
+	public void print_org_kermeta_language_behavior_CallFeature_2_1_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		int alt = -1;
+		alt=0;
+		int matches=		0;
+		int tempMatchCount;
+		tempMatchCount=		0;
 		if (tempMatchCount > matches) {
-			alt = 4;
+			alt = 1;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		tempMatchCount=		0;
 		if (tempMatchCount > matches) {
-			alt = 5;
+			alt = 2;
+			matches = tempMatchCount;
+		}
+		tempMatchCount=		0;
+		if (tempMatchCount > matches) {
+			alt = 3;
 			matches = tempMatchCount;
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print("-");
+				out.print(" ");
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print("/");
+				out.print(" ");
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print("*");
+				out.print(" ");
 			}
 			break;
-			case 4:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
-			}
-			break;
-			case 5:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (Containment):
-			count = printCountingMap.get("target");
-			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-				if (o != null) {
-					doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-				}
-				printCountingMap.put("target", count - 1);
-			}
+			default:			//////////////DEFINITION PART BEGINS (CsString):
+			out.print("+");
+			out.print(" ");
 		}
 	}
 	public void print_org_kermeta_language_behavior_CallFeature_3(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
@@ -7173,179 +6811,103 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		int count;
 		int alt = -1;
 		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticProperty"		));
+		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
 		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticOperation"		));
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
 		if (tempMatchCount > matches) {
 			alt = 1;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticEnumLiteral"		));
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
 		if (tempMatchCount > matches) {
 			alt = 2;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticOperation"		));
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
 		if (tempMatchCount > matches) {
 			alt = 3;
 			matches = tempMatchCount;
 		}
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		if (tempMatchCount > matches) {
+			alt = 4;
+			matches = tempMatchCount;
+		}
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		if (tempMatchCount > matches) {
+			alt = 5;
+			matches = tempMatchCount;
+		}
 		switch(alt) {
 			case 1:			{
-				java.io.StringWriter sWriter = null;
-				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(".");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticOperation");
+				//////////////DEFINITION PART BEGINS (Containment):
+				count = printCountingMap.get("target");
 				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
+					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticOperationReferenceResolver().deResolve((org.kermeta.language.structure.Operation) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION), element));
-						out.print(" ");
+						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 					}
-					printCountingMap.put("staticOperation", count - 1);
+					printCountingMap.put("target", count - 1);
 				}
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("(");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				sWriter = new java.io.StringWriter();
-				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-				print_org_kermeta_language_behavior_CallFeature_3_0(element, localtab, out1, printCountingMap1);
-				if (printCountingMap.equals(printCountingMap1)) {
-					out1.close();
-				} else {
-					out1.flush();
-					out1.close();
-					out.print(sWriter.toString());
-					printCountingMap.putAll(printCountingMap1);
-				}
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(")");
-				out.print(" ");
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(".");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticEnumLiteral");
+				//////////////DEFINITION PART BEGINS (Containment):
+				count = printCountingMap.get("target");
 				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL));
+					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticEnumLiteralReferenceResolver().deResolve((org.kermeta.language.structure.EnumerationLiteral) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL), element));
-						out.print(" ");
+						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 					}
-					printCountingMap.put("staticEnumLiteral", count - 1);
+					printCountingMap.put("target", count - 1);
 				}
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(".");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticOperation");
+				//////////////DEFINITION PART BEGINS (Containment):
+				count = printCountingMap.get("target");
 				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
+					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticOperationReferenceResolver().deResolve((org.kermeta.language.structure.Operation) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION), element));
-						out.print(" ");
+						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 					}
-					printCountingMap.put("staticOperation", count - 1);
+					printCountingMap.put("target", count - 1);
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
-			out.print(".");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-			count = printCountingMap.get("staticProperty");
-			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY));
-				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-					resolver.setOptions(getOptions());
-					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticPropertyReferenceResolver().deResolve((org.kermeta.language.structure.Property) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY), element));
-					out.print(" ");
+			case 4:			{
+				//////////////DEFINITION PART BEGINS (Containment):
+				count = printCountingMap.get("target");
+				if (count > 0) {
+					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
+					if (o != null) {
+						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+					}
+					printCountingMap.put("target", count - 1);
 				}
-				printCountingMap.put("staticProperty", count - 1);
 			}
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_3_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("parameters");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
+			break;
+			case 5:			{
+				//////////////DEFINITION PART BEGINS (Containment):
+				count = printCountingMap.get("target");
+				if (count > 0) {
+					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
+					if (o != null) {
+						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+					}
+					printCountingMap.put("target", count - 1);
+				}
 			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			break;
+			default:			//////////////DEFINITION PART BEGINS (Containment):
+			count = printCountingMap.get("target");
+			if (count > 0) {
+				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
+				if (o != null) {
+					doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+				}
+				printCountingMap.put("target", count - 1);
 			}
-			printCountingMap.put("parameters", count - 1);
-		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_behavior_CallFeature_3_0_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_3_0_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print(",");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("parameters");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("parameters", count - 1);
 		}
 	}
 	public void print_org_kermeta_language_behavior_CallFeature_4(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
@@ -7353,103 +6915,179 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		int count;
 		int alt = -1;
 		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticProperty"		));
 		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticOperation"		));
 		if (tempMatchCount > matches) {
 			alt = 1;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticEnumLiteral"		));
 		if (tempMatchCount > matches) {
 			alt = 2;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticOperation"		));
 		if (tempMatchCount > matches) {
 			alt = 3;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
-		if (tempMatchCount > matches) {
-			alt = 4;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
-		if (tempMatchCount > matches) {
-			alt = 5;
-			matches = tempMatchCount;
-		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
+				java.io.StringWriter sWriter = null;
+				java.io.PrintWriter out1 = null;
+				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print(".");
+				out.print(" ");
+				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				count = printCountingMap.get("staticOperation");
 				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
+					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
 					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+						resolver.setOptions(getOptions());
+						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticOperationReferenceResolver().deResolve((org.kermeta.language.structure.Operation) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION), element));
+						out.print(" ");
 					}
-					printCountingMap.put("target", count - 1);
+					printCountingMap.put("staticOperation", count - 1);
 				}
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print("(");
+				out.print(" ");
+				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				sWriter = new java.io.StringWriter();
+				out1 = new java.io.PrintWriter(sWriter);
+				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+				print_org_kermeta_language_behavior_CallFeature_4_0(element, localtab, out1, printCountingMap1);
+				if (printCountingMap.equals(printCountingMap1)) {
+					out1.close();
+				} else {
+					out1.flush();
+					out1.close();
+					out.print(sWriter.toString());
+					printCountingMap.putAll(printCountingMap1);
+				}
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print(")");
+				out.print(" ");
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print(".");
+				out.print(" ");
+				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				count = printCountingMap.get("staticEnumLiteral");
 				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
+					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL));
 					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+						resolver.setOptions(getOptions());
+						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticEnumLiteralReferenceResolver().deResolve((org.kermeta.language.structure.EnumerationLiteral) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL), element));
+						out.print(" ");
 					}
-					printCountingMap.put("target", count - 1);
+					printCountingMap.put("staticEnumLiteral", count - 1);
 				}
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print(".");
+				out.print(" ");
+				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				count = printCountingMap.get("staticOperation");
 				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
+					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
 					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+						resolver.setOptions(getOptions());
+						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticOperationReferenceResolver().deResolve((org.kermeta.language.structure.Operation) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION), element));
+						out.print(" ");
 					}
-					printCountingMap.put("target", count - 1);
+					printCountingMap.put("staticOperation", count - 1);
 				}
 			}
 			break;
-			case 4:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
-			}
-			break;
-			case 5:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (Containment):
-			count = printCountingMap.get("target");
+			default:			//////////////DEFINITION PART BEGINS (CsString):
+			out.print(".");
+			out.print(" ");
+			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			count = printCountingMap.get("staticProperty");
 			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
+				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY));
 				if (o != null) {
-					doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+					resolver.setOptions(getOptions());
+					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticPropertyReferenceResolver().deResolve((org.kermeta.language.structure.Property) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY), element));
+					out.print(" ");
 				}
-				printCountingMap.put("target", count - 1);
+				printCountingMap.put("staticProperty", count - 1);
 			}
+		}
+	}
+	public void print_org_kermeta_language_behavior_CallFeature_4_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		java.lang.String localtab = outertab;
+		int count;
+		boolean iterate = true;
+		java.io.StringWriter sWriter = null;
+		java.io.PrintWriter out1 = null;
+		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		//////////////DEFINITION PART BEGINS (Containment):
+		count = printCountingMap.get("parameters");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
+			java.util.List<?> list = (java.util.List<?>) o;
+			int index = list.size() - count;
+			if (index >= 0) {
+				o = list.get(index);
+			} else {
+				o = null;
+			}
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("parameters", count - 1);
+		}
+		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		iterate = true;
+		while (iterate) {
+			sWriter = new java.io.StringWriter();
+			out1 = new java.io.PrintWriter(sWriter);
+			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			print_org_kermeta_language_behavior_CallFeature_4_0_0(element, localtab, out1, printCountingMap1);
+			if (printCountingMap.equals(printCountingMap1)) {
+				iterate = false;
+				out1.close();
+			} else {
+				out1.flush();
+				out1.close();
+				out.print(sWriter.toString());
+				printCountingMap.putAll(printCountingMap1);
+			}
+		}
+	}
+	public void print_org_kermeta_language_behavior_CallFeature_4_0_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		java.lang.String localtab = outertab;
+		int count;
+		//////////////DEFINITION PART BEGINS (CsString):
+		out.print(",");
+		out.print(" ");
+		//////////////DEFINITION PART BEGINS (Containment):
+		count = printCountingMap.get("parameters");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
+			java.util.List<?> list = (java.util.List<?>) o;
+			int index = list.size() - count;
+			if (index >= 0) {
+				o = list.get(index);
+			} else {
+				o = null;
+			}
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("parameters", count - 1);
 		}
 	}
 	public void print_org_kermeta_language_behavior_CallFeature_5(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
@@ -7457,124 +7095,64 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		int count;
 		int alt = -1;
 		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticProperty"		));
+		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"parameters"		));
 		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticOperation"		));
+		tempMatchCount=		0;
 		if (tempMatchCount > matches) {
 			alt = 1;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticEnumLiteral"		));
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticOperation"		));
-		if (tempMatchCount > matches) {
-			alt = 3;
-			matches = tempMatchCount;
-		}
 		switch(alt) {
 			case 1:			{
+				boolean iterate = true;
 				java.io.StringWriter sWriter = null;
 				java.io.PrintWriter out1 = null;
 				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(".");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticOperation");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticOperationReferenceResolver().deResolve((org.kermeta.language.structure.Operation) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION), element));
-						out.print(" ");
-					}
-					printCountingMap.put("staticOperation", count - 1);
-				}
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("(");
-				out.print(" ");
 				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				sWriter = new java.io.StringWriter();
-				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-				print_org_kermeta_language_behavior_CallFeature_5_0(element, localtab, out1, printCountingMap1);
-				if (printCountingMap.equals(printCountingMap1)) {
-					out1.close();
-				} else {
-					out1.flush();
-					out1.close();
-					out.print(sWriter.toString());
-					printCountingMap.putAll(printCountingMap1);
-				}
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(")");
-				out.print(" ");
-			}
-			break;
-			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(".");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticEnumLiteral");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticEnumLiteralReferenceResolver().deResolve((org.kermeta.language.structure.EnumerationLiteral) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL), element));
-						out.print(" ");
+				iterate = true;
+				while (iterate) {
+					sWriter = new java.io.StringWriter();
+					out1 = new java.io.PrintWriter(sWriter);
+					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+					print_org_kermeta_language_behavior_CallFeature_5_0(element, localtab, out1, printCountingMap1);
+					if (printCountingMap.equals(printCountingMap1)) {
+						iterate = false;
+						out1.close();
+					} else {
+						out1.flush();
+						out1.close();
+						out.print(sWriter.toString());
+						printCountingMap.putAll(printCountingMap1);
 					}
-					printCountingMap.put("staticEnumLiteral", count - 1);
-				}
-			}
-			break;
-			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(".");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticOperation");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticOperationReferenceResolver().deResolve((org.kermeta.language.structure.Operation) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION), element));
-						out.print(" ");
-					}
-					printCountingMap.put("staticOperation", count - 1);
 				}
 			}
 			break;
 			default:			//////////////DEFINITION PART BEGINS (CsString):
-			out.print(".");
+			out.print("==");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-			count = printCountingMap.get("staticProperty");
+			//////////////DEFINITION PART BEGINS (Containment):
+			count = printCountingMap.get("parameters");
 			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY));
-				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-					resolver.setOptions(getOptions());
-					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticPropertyReferenceResolver().deResolve((org.kermeta.language.structure.Property) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY), element));
-					out.print(" ");
+				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
+				java.util.List<?> list = (java.util.List<?>) o;
+				int index = list.size() - count;
+				if (index >= 0) {
+					o = list.get(index);
+				} else {
+					o = null;
 				}
-				printCountingMap.put("staticProperty", count - 1);
+				if (o != null) {
+					doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+				}
+				printCountingMap.put("parameters", count - 1);
 			}
 		}
 	}
 	public void print_org_kermeta_language_behavior_CallFeature_5_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		print_org_kermeta_language_behavior_CallFeature_5_0_0(element, localtab, out, printCountingMap);
 		//////////////DEFINITION PART BEGINS (Containment):
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
@@ -7590,487 +7168,9 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
 			printCountingMap.put("parameters", count - 1);
-		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_behavior_CallFeature_5_0_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
 		}
 	}
 	public void print_org_kermeta_language_behavior_CallFeature_5_0_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print(",");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("parameters");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("parameters", count - 1);
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_6(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		print_org_kermeta_language_behavior_CallFeature_6_0(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("parameters");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("parameters", count - 1);
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_6_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		int alt = -1;
-		alt=0;
-		int matches=		0;
-		int tempMatchCount;
-		tempMatchCount=		0;
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		0;
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		0;
-		if (tempMatchCount > matches) {
-			alt = 3;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("-");
-				out.print(" ");
-			}
-			break;
-			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("/");
-				out.print(" ");
-			}
-			break;
-			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("*");
-				out.print(" ");
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
-			out.print("+");
-			out.print(" ");
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_7(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		int alt = -1;
-		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
-		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
-		if (tempMatchCount > matches) {
-			alt = 3;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
-		if (tempMatchCount > matches) {
-			alt = 4;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"target"		));
-		if (tempMatchCount > matches) {
-			alt = 5;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
-			}
-			break;
-			case 2:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
-			}
-			break;
-			case 3:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
-			}
-			break;
-			case 4:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
-			}
-			break;
-			case 5:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("target");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("target", count - 1);
-				}
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (Containment):
-			count = printCountingMap.get("target");
-			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
-				if (o != null) {
-					doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-				}
-				printCountingMap.put("target", count - 1);
-			}
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_8(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		int alt = -1;
-		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticProperty"		));
-		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticOperation"		));
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticEnumLiteral"		));
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticOperation"		));
-		if (tempMatchCount > matches) {
-			alt = 3;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				java.io.StringWriter sWriter = null;
-				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(".");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticOperation");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticOperationReferenceResolver().deResolve((org.kermeta.language.structure.Operation) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION), element));
-						out.print(" ");
-					}
-					printCountingMap.put("staticOperation", count - 1);
-				}
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("(");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				sWriter = new java.io.StringWriter();
-				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-				print_org_kermeta_language_behavior_CallFeature_8_0(element, localtab, out1, printCountingMap1);
-				if (printCountingMap.equals(printCountingMap1)) {
-					out1.close();
-				} else {
-					out1.flush();
-					out1.close();
-					out.print(sWriter.toString());
-					printCountingMap.putAll(printCountingMap1);
-				}
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(")");
-				out.print(" ");
-			}
-			break;
-			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(".");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticEnumLiteral");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticEnumLiteralReferenceResolver().deResolve((org.kermeta.language.structure.EnumerationLiteral) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL), element));
-						out.print(" ");
-					}
-					printCountingMap.put("staticEnumLiteral", count - 1);
-				}
-			}
-			break;
-			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(".");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticOperation");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticOperationReferenceResolver().deResolve((org.kermeta.language.structure.Operation) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION), element));
-						out.print(" ");
-					}
-					printCountingMap.put("staticOperation", count - 1);
-				}
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
-			out.print(".");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-			count = printCountingMap.get("staticProperty");
-			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY));
-				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-					resolver.setOptions(getOptions());
-					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallFeatureStaticPropertyReferenceResolver().deResolve((org.kermeta.language.structure.Property) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY), element));
-					out.print(" ");
-				}
-				printCountingMap.put("staticProperty", count - 1);
-			}
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_8_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("parameters");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("parameters", count - 1);
-		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_behavior_CallFeature_8_0_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_8_0_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print(",");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("parameters");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("parameters", count - 1);
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_9(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		print_org_kermeta_language_behavior_CallFeature_9_0(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("parameters");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("parameters", count - 1);
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_9_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		int alt = -1;
-		alt=0;
-		int matches=		0;
-		int tempMatchCount;
-		tempMatchCount=		0;
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		0;
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		0;
-		if (tempMatchCount > matches) {
-			alt = 3;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("-");
-				out.print(" ");
-			}
-			break;
-			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("/");
-				out.print(" ");
-			}
-			break;
-			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("*");
-				out.print(" ");
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
-			out.print("+");
-			out.print(" ");
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_10(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		print_org_kermeta_language_behavior_CallFeature_10_0(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("parameters");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("parameters", count - 1);
-		}
-	}
-	public void print_org_kermeta_language_behavior_CallFeature_10_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int alt = -1;
 		alt=0;
 		int matches=		0;
@@ -8115,42 +7215,109 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 	}
 	
-	public void print_org_kermeta_language_behavior_CallValue(org.kermeta.language.behavior.CallValue element, java.lang.String outertab, java.io.PrintWriter out) {
+	public void print_org_kermeta_language_behavior_JavaStaticCall(org.kermeta.language.behavior.JavaStaticCall element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
 		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__TAG));
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__OWNED_TAGS));
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__OWNED_TAGS));
 		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__CONTAINED_TYPE));
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__CONTAINED_TYPE));
 		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__STATIC_TYPE));
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__STATIC_TYPE));
 		printCountingMap.put("staticType", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__STATIC_TYPE_VARIABLE_BINDINGS));
-		printCountingMap.put("staticTypeVariableBindings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__PARAMETERS));
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__PARAMETERS));
 		printCountingMap.put("parameters", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__NAME));
-		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JCLASS));
+		printCountingMap.put("jclass", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JMETHOD));
+		printCountingMap.put("jmethod", temp == null ? 0 : 1);
 		// print collected hidden tokens
-		boolean iterate = true;
+		int count;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
 		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
 		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("CallValue");
+		out.print("extern");
 		out.print(" ");
+		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		count = printCountingMap.get("jclass");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JCLASS));
+			if (o != null) {
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JCLASS), element));
+			}
+			printCountingMap.put("jclass", count - 1);
+		}
+		//////////////DEFINITION PART BEGINS (WhiteSpaces):
 		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("{");
+		out.print(".");
 		out.print(" ");
+		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		count = printCountingMap.get("jmethod");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JMETHOD));
+			if (o != null) {
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JMETHOD), element));
+			}
+			printCountingMap.put("jmethod", count - 1);
+		}
+		//////////////DEFINITION PART BEGINS (WhiteSpaces):
+		//////////////DEFINITION PART BEGINS (CsString):
+		out.print("(");
+		out.print(" ");
+		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		sWriter = new java.io.StringWriter();
+		out1 = new java.io.PrintWriter(sWriter);
+		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		print_org_kermeta_language_behavior_JavaStaticCall_0(element, localtab, out1, printCountingMap1);
+		if (printCountingMap.equals(printCountingMap1)) {
+			out1.close();
+		} else {
+			out1.flush();
+			out1.close();
+			out.print(sWriter.toString());
+			printCountingMap.putAll(printCountingMap1);
+		}
+		//////////////DEFINITION PART BEGINS (CsString):
+		out.print(")");
+		out.print(" ");
+	}
+	public void print_org_kermeta_language_behavior_JavaStaticCall_0(org.kermeta.language.behavior.JavaStaticCall element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		java.lang.String localtab = outertab;
+		int count;
+		boolean iterate = true;
+		java.io.StringWriter sWriter = null;
+		java.io.PrintWriter out1 = null;
+		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		//////////////DEFINITION PART BEGINS (Containment):
+		count = printCountingMap.get("parameters");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__PARAMETERS));
+			java.util.List<?> list = (java.util.List<?>) o;
+			int index = list.size() - count;
+			if (index >= 0) {
+				o = list.get(index);
+			} else {
+				o = null;
+			}
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("parameters", count - 1);
+		}
 		//////////////DEFINITION PART BEGINS (CompoundDefinition):
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
 			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_behavior_CallValue_0(element, localtab, out1, printCountingMap1);
+			print_org_kermeta_language_behavior_JavaStaticCall_0_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
 				out1.close();
@@ -8161,219 +7328,69 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("}");
-		out.print(" ");
 	}
-	public void print_org_kermeta_language_behavior_CallValue_0(org.kermeta.language.behavior.CallValue element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_behavior_JavaStaticCall_0_0(org.kermeta.language.behavior.JavaStaticCall element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		int alt = -1;
-		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"tag"		));
-		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTags"		));
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"containedType"		));
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticType"		));
-		if (tempMatchCount > matches) {
-			alt = 3;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"parameters"		));
-		if (tempMatchCount > matches) {
-			alt = 4;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"name"		));
-		if (tempMatchCount > matches) {
-			alt = 5;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticTypeVariableBindings"		));
-		if (tempMatchCount > matches) {
-			alt = 6;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("ownedTags");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("ownedTags");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__OWNED_TAGS));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("ownedTags", count - 1);
-				}
+		//////////////DEFINITION PART BEGINS (CsString):
+		out.print(",");
+		out.print(" ");
+		//////////////DEFINITION PART BEGINS (Containment):
+		count = printCountingMap.get("parameters");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__PARAMETERS));
+			java.util.List<?> list = (java.util.List<?>) o;
+			int index = list.size() - count;
+			if (index >= 0) {
+				o = list.get(index);
+			} else {
+				o = null;
 			}
-			break;
-			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("containedType");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("containedType");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__CONTAINED_TYPE));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("containedType", count - 1);
-				}
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			break;
-			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("staticType");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticType");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__STATIC_TYPE));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getExpressionStaticTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__STATIC_TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__STATIC_TYPE), element));
-						out.print(" ");
-					}
-					printCountingMap.put("staticType", count - 1);
-				}
-			}
-			break;
-			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("parameters");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("parameters");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__PARAMETERS));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("parameters", count - 1);
-				}
-			}
-			break;
-			case 5:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("name");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("name");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__NAME));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__NAME), element));
-						out.print(" ");
-					}
-					printCountingMap.put("name", count - 1);
-				}
-			}
-			break;
-			case 6:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("staticTypeVariableBindings");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticTypeVariableBindings");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__STATIC_TYPE_VARIABLE_BINDINGS));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getCallExpressionStaticTypeVariableBindingsReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__STATIC_TYPE_VARIABLE_BINDINGS)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__STATIC_TYPE_VARIABLE_BINDINGS), element));
-						out.print(" ");
-					}
-					printCountingMap.put("staticTypeVariableBindings", count - 1);
-				}
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
-			out.print("tag");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
-			out.print(":");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-			count = printCountingMap.get("tag");
-			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__TAG));
-				java.util.List<?> list = (java.util.List<?>) o;
-				int index = list.size() - count;
-				if (index >= 0) {
-					o = list.get(index);
-				} else {
-					o = null;
-				}
-				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-					resolver.setOptions(getOptions());
-					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__TAG), element));
-					out.print(" ");
-				}
-				printCountingMap.put("tag", count - 1);
-			}
+			printCountingMap.put("parameters", count - 1);
 		}
+	}
+	
+	public void print_org_kermeta_language_behavior_VoidLiteral(org.kermeta.language.behavior.VoidLiteral element, java.lang.String outertab, java.io.PrintWriter out) {
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(4);
+		java.lang.Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VOID_LITERAL__TAG));
+		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VOID_LITERAL__OWNED_TAGS));
+		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VOID_LITERAL__CONTAINED_TYPE));
+		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VOID_LITERAL__STATIC_TYPE));
+		printCountingMap.put("staticType", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		//////////////DEFINITION PART BEGINS (CsString):
+		out.print("Void");
+		out.print(" ");
+	}
+	
+	public void print_org_kermeta_language_behavior_CallValue(org.kermeta.language.behavior.CallValue element, java.lang.String outertab, java.io.PrintWriter out) {
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		java.lang.Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__TAG));
+		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__OWNED_TAGS));
+		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__CONTAINED_TYPE));
+		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__STATIC_TYPE));
+		printCountingMap.put("staticType", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__PARAMETERS));
+		printCountingMap.put("parameters", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__STATIC_TYPE_VARIABLE_BINDINGS));
+		printCountingMap.put("staticTypeVariableBindings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		// print collected hidden tokens
+		//////////////DEFINITION PART BEGINS (CsString):
+		out.print("value");
+		out.print(" ");
 	}
 	
 	public void print_org_kermeta_language_behavior_EmptyExpression(org.kermeta.language.behavior.EmptyExpression element, java.lang.String outertab, java.io.PrintWriter out) {
@@ -8505,7 +7522,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.EMPTY_EXPRESSION__STATIC_TYPE));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getExpressionStaticTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.EMPTY_EXPRESSION__STATIC_TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.EMPTY_EXPRESSION__STATIC_TYPE), element));
 						out.print(" ");
@@ -8532,263 +7549,9 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.EMPTY_EXPRESSION__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.EMPTY_EXPRESSION__TAG), element));
-					out.print(" ");
-				}
-				printCountingMap.put("tag", count - 1);
-			}
-		}
-	}
-	
-	public void print_org_kermeta_language_behavior_JavaStaticCall(org.kermeta.language.behavior.JavaStaticCall element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
-		java.lang.Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__TAG));
-		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__OWNED_TAGS));
-		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__CONTAINED_TYPE));
-		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__STATIC_TYPE));
-		printCountingMap.put("staticType", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__PARAMETERS));
-		printCountingMap.put("parameters", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JCLASS));
-		printCountingMap.put("jclass", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JMETHOD));
-		printCountingMap.put("jmethod", temp == null ? 0 : 1);
-		// print collected hidden tokens
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("JavaStaticCall");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("{");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_behavior_JavaStaticCall_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
-		}
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("}");
-		out.print(" ");
-	}
-	public void print_org_kermeta_language_behavior_JavaStaticCall_0(org.kermeta.language.behavior.JavaStaticCall element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		int alt = -1;
-		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"tag"		));
-		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTags"		));
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"containedType"		));
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"staticType"		));
-		if (tempMatchCount > matches) {
-			alt = 3;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"parameters"		));
-		if (tempMatchCount > matches) {
-			alt = 4;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"jclass"		));
-		if (tempMatchCount > matches) {
-			alt = 5;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"jmethod"		));
-		if (tempMatchCount > matches) {
-			alt = 6;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("ownedTags");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("ownedTags");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__OWNED_TAGS));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("ownedTags", count - 1);
-				}
-			}
-			break;
-			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("containedType");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("containedType");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__CONTAINED_TYPE));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("containedType", count - 1);
-				}
-			}
-			break;
-			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("staticType");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("staticType");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__STATIC_TYPE));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getExpressionStaticTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__STATIC_TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__STATIC_TYPE), element));
-						out.print(" ");
-					}
-					printCountingMap.put("staticType", count - 1);
-				}
-			}
-			break;
-			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("parameters");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("parameters");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__PARAMETERS));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("parameters", count - 1);
-				}
-			}
-			break;
-			case 5:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("jclass");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("jclass");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JCLASS));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JCLASS), element));
-						out.print(" ");
-					}
-					printCountingMap.put("jclass", count - 1);
-				}
-			}
-			break;
-			case 6:			{
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("jmethod");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print(":");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("jmethod");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JMETHOD));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JMETHOD), element));
-						out.print(" ");
-					}
-					printCountingMap.put("jmethod", count - 1);
-				}
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
-			out.print("tag");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
-			out.print(":");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-			count = printCountingMap.get("tag");
-			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__TAG));
-				java.util.List<?> list = (java.util.List<?>) o;
-				int index = list.size() - count;
-				if (index >= 0) {
-					o = list.get(index);
-				} else {
-					o = null;
-				}
-				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
-					resolver.setOptions(getOptions());
-					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__TAG), element));
 					out.print(" ");
 				}
 				printCountingMap.put("tag", count - 1);
@@ -8939,7 +7702,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__STATIC_TYPE));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getExpressionStaticTypeReferenceResolver().deResolve((org.kermeta.language.structure.Type) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__STATIC_TYPE)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__STATIC_TYPE), element));
 						out.print(" ");
@@ -9009,7 +7772,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__TAG), element));
 					out.print(" ");
@@ -9123,7 +7886,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_PARAMETER__NAME));
 					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 						resolver.setOptions(getOptions());
 						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_PARAMETER__NAME), element));
 						out.print(" ");
@@ -9168,7 +7931,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					o = null;
 				}
 				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("STRING");
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
 					resolver.setOptions(getOptions());
 					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getObjectTagReferenceResolver().deResolve((org.kermeta.language.structure.Tag) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_PARAMETER__TAG)), element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_PARAMETER__TAG), element));
 					out.print(" ");
@@ -9176,23 +7939,6 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.put("tag", count - 1);
 			}
 		}
-	}
-	
-	public void print_org_kermeta_language_behavior_VoidLiteral(org.kermeta.language.behavior.VoidLiteral element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(4);
-		java.lang.Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VOID_LITERAL__TAG));
-		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VOID_LITERAL__OWNED_TAGS));
-		printCountingMap.put("ownedTags", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VOID_LITERAL__CONTAINED_TYPE));
-		printCountingMap.put("containedType", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VOID_LITERAL__STATIC_TYPE));
-		printCountingMap.put("staticType", temp == null ? 0 : 1);
-		// print collected hidden tokens
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("Void");
-		out.print(" ");
 	}
 	
 }
