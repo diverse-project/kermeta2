@@ -7,7 +7,7 @@ import org.antlr.runtime.*;
 import java.util.HashMap;
 public class KermetaParser extends KermetaANTLRParserBase {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "IDENTIFIER", "PRIMITIVE_TYPE", "INTEGER", "BOOLEAN", "CASTED", "SL_COMMENT", "ML_COMMENT", "FLOAT", "WHITESPACE", "LINEBREAKS", "'using'", "'require'", "'package'", "'::'", "'{'", "'}'", "'aspect'", "'abstract'", "'class'", "'inherits'", "','", "'attribute'", "'reference'", "':'", "'property'", "'getter'", "'setter'", "'operation'", "'('", "')'", "'is'", "'enumeration'", "';'", "'Void'", "'Object'", "'tag'", "'ownedTags'", "'Model'", "'ModelType'", "'typeContainer'", "'name'", "'includedTypeDefinition'", "'TypeVariableBinding'", "'containedType'", "'variable'", "'type'", "'MultiplicityElement'", "'lower'", "'upper'", "'TypeDefinition'", "'Tag'", "'value'", "'object'", "'ObjectTypeVariable'", "'supertype'", "'ModelTypeVariable'", "'virtualType'", "'VirtualType'", "'classDefinition'", "'modelType'", "'typeParamBinding'", "'ProductType'", "'FunctionType'", "'left'", "'right'", "'do'", "'end'", "'rescue'", "'raise'", "'if'", "'then'", "'else'", "'from'", "'until'", "'loop'", "'var'", "'init'", "'result'", "'super'", "':='", "'='", "'self'", "'.'", "'=='", "'+'", "'-'", "'/'", "'*'", "'extern'", "'EmptyExpression'", "'staticType'", "'LambdaExpression'", "'parameters'", "'body'", "'LambdaParameter'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "QUALIFIEDNAME", "IDENTIFIER", "PRIMITIVE_TYPE", "INTEGER", "BOOLEAN", "CASTED", "SL_COMMENT", "ML_COMMENT", "FLOAT", "WHITESPACE", "LINEBREAKS", "'using'", "'require'", "'package'", "'::'", "'{'", "'}'", "'aspect'", "'abstract'", "'class'", "'inherits'", "','", "'attribute'", "'reference'", "':'", "'property'", "'getter'", "'setter'", "'operation'", "'('", "')'", "'is'", "'enumeration'", "';'", "'Void'", "'Object'", "'tag'", "'ownedTags'", "'Model'", "'ModelType'", "'typeContainer'", "'name'", "'includedTypeDefinition'", "'TypeVariableBinding'", "'containedType'", "'variable'", "'type'", "'MultiplicityElement'", "'lower'", "'upper'", "'TypeDefinition'", "'Tag'", "'value'", "'object'", "'ObjectTypeVariable'", "'supertype'", "'ModelTypeVariable'", "'virtualType'", "'VirtualType'", "'classDefinition'", "'modelType'", "'typeParamBinding'", "'ProductType'", "'FunctionType'", "'left'", "'right'", "'do'", "'end'", "'rescue'", "'raise'", "'if'", "'then'", "'else'", "'from'", "'until'", "'loop'", "'var'", "'init'", "'result'", "'super'", "':='", "'='", "'self'", "'.'", "'=='", "'+'", "'-'", "'/'", "'*'", "'extern'", "'EmptyExpression'", "'staticType'", "'LambdaExpression'", "'parameters'", "'body'", "'LambdaParameter'"
     };
     public static final int T__29=29;
     public static final int T__28=28;
@@ -30,8 +30,8 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final int T__90=90;
     public static final int T__18=18;
     public static final int T__17=17;
-    public static final int T__14=14;
-    public static final int PRIMITIVE_TYPE=5;
+    public static final int PRIMITIVE_TYPE=6;
+    public static final int T__99=99;
     public static final int T__98=98;
     public static final int T__97=97;
     public static final int T__96=96;
@@ -40,7 +40,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final int T__81=81;
     public static final int T__82=82;
     public static final int T__83=83;
-    public static final int WHITESPACE=12;
+    public static final int WHITESPACE=13;
     public static final int T__85=85;
     public static final int T__84=84;
     public static final int T__87=87;
@@ -50,7 +50,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final int T__71=71;
     public static final int T__72=72;
     public static final int T__70=70;
-    public static final int SL_COMMENT=9;
+    public static final int SL_COMMENT=10;
     public static final int T__76=76;
     public static final int T__75=75;
     public static final int T__74=74;
@@ -66,25 +66,26 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final int T__65=65;
     public static final int T__62=62;
     public static final int T__63=63;
-    public static final int FLOAT=11;
+    public static final int QUALIFIEDNAME=4;
+    public static final int FLOAT=12;
     public static final int T__61=61;
-    public static final int LINEBREAKS=13;
+    public static final int LINEBREAKS=14;
     public static final int T__60=60;
     public static final int T__55=55;
-    public static final int ML_COMMENT=10;
+    public static final int ML_COMMENT=11;
     public static final int T__56=56;
     public static final int T__57=57;
     public static final int T__58=58;
-    public static final int BOOLEAN=7;
+    public static final int BOOLEAN=8;
     public static final int T__51=51;
     public static final int T__52=52;
     public static final int T__53=53;
     public static final int T__54=54;
-    public static final int IDENTIFIER=4;
+    public static final int IDENTIFIER=5;
     public static final int T__59=59;
     public static final int T__50=50;
+    public static final int INTEGER=7;
     public static final int T__42=42;
-    public static final int INTEGER=6;
     public static final int T__43=43;
     public static final int T__40=40;
     public static final int T__41=41;
@@ -96,7 +97,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final int T__49=49;
     public static final int T__30=30;
     public static final int T__31=31;
-    public static final int CASTED=8;
+    public static final int CASTED=9;
     public static final int T__32=32;
     public static final int T__33=33;
     public static final int T__34=34;
@@ -774,7 +775,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
     	private final static org.kermeta.language.emftexteditor.IKermetaExpectedElement TERMINAL_20 = new org.kermeta.language.emftexteditor.mopp.KermetaExpectedStructuralFeature(org.kermeta.language.structure.StructurePackage.eINSTANCE.getMultiplicityElement().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__IS_UNIQUE), "IDENTIFIER");
     	private final static org.kermeta.language.emftexteditor.IKermetaExpectedElement TERMINAL_21 = new org.kermeta.language.emftexteditor.mopp.KermetaExpectedCsString("MultiplicityElement");
     	private final static org.kermeta.language.emftexteditor.IKermetaExpectedElement TERMINAL_22 = new org.kermeta.language.emftexteditor.mopp.KermetaExpectedStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.eINSTANCE.getTypeReference().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.TYPE_REFERENCE__TYPE), "IDENTIFIER");
-    	private final static org.kermeta.language.emftexteditor.IKermetaExpectedElement TERMINAL_23 = new org.kermeta.language.emftexteditor.mopp.KermetaExpectedStructuralFeature(org.kermeta.language.structure.StructurePackage.eINSTANCE.getPackage().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE), "IDENTIFIER");
+    	private final static org.kermeta.language.emftexteditor.IKermetaExpectedElement TERMINAL_23 = new org.kermeta.language.emftexteditor.mopp.KermetaExpectedStructuralFeature(org.kermeta.language.structure.StructurePackage.eINSTANCE.getPackage().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE), "QUALIFIEDNAME");
     	private final static org.kermeta.language.emftexteditor.IKermetaExpectedElement TERMINAL_24 = new org.kermeta.language.emftexteditor.mopp.KermetaExpectedStructuralFeature(org.kermeta.language.structure.StructurePackage.eINSTANCE.getPackage().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NAME), "IDENTIFIER");
     	private final static org.kermeta.language.emftexteditor.IKermetaExpectedElement TERMINAL_25 = new org.kermeta.language.emftexteditor.mopp.KermetaExpectedCsString("::");
     	private final static org.kermeta.language.emftexteditor.IKermetaExpectedElement TERMINAL_26 = new org.kermeta.language.emftexteditor.mopp.KermetaExpectedCsString("{");
@@ -4708,7 +4709,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt2=2;
                 int LA2_0 = input.LA(1);
 
-                if ( (LA2_0==15) ) {
+                if ( (LA2_0==16) ) {
                     alt2=1;
                 }
 
@@ -4800,7 +4801,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( (LA3_0==14) ) {
+                if ( (LA3_0==15) ) {
                     alt3=1;
                 }
 
@@ -4890,7 +4891,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( ((LA4_0>=IDENTIFIER && LA4_0<=PRIMITIVE_TYPE)||LA4_0==16||(LA4_0>=20 && LA4_0<=22)||LA4_0==35||LA4_0==42||LA4_0==53) ) {
+                if ( ((LA4_0>=IDENTIFIER && LA4_0<=PRIMITIVE_TYPE)||LA4_0==17||(LA4_0>=21 && LA4_0<=23)||LA4_0==36||LA4_0==43||LA4_0==54) ) {
                     alt4=1;
                 }
 
@@ -5002,7 +5003,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4611:1: (a0= 'using' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4612:2: a0= 'using'
             {
-            a0=(Token)match(input,14,FOLLOW_14_in_parse_org_kermeta_language_structure_Using379); if (state.failed) return element;
+            a0=(Token)match(input,15,FOLLOW_15_in_parse_org_kermeta_language_structure_Using379); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -5058,7 +5059,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4639:1: (a0= 'require' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4640:2: a0= 'require'
             {
-            a0=(Token)match(input,15,FOLLOW_15_in_parse_org_kermeta_language_structure_Require408); if (state.failed) return element;
+            a0=(Token)match(input,16,FOLLOW_16_in_parse_org_kermeta_language_structure_Require408); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -5102,7 +5103,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
 
     // $ANTLR start "parse_org_kermeta_language_structure_Package"
-    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4665:1: parse_org_kermeta_language_structure_Package returns [org.kermeta.language.structure.Package element = null] : (a0= 'package' ( ( (a1= IDENTIFIER ) a2= '::' ) )* (a3= IDENTIFIER ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )? | ( ( (a11_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ );
+    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4665:1: parse_org_kermeta_language_structure_Package returns [org.kermeta.language.structure.Package element = null] : (a0= 'package' ( ( (a1= QUALIFIEDNAME ) a2= '::' ) )* (a3= IDENTIFIER ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )? | ( ( (a11_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ );
     public final org.kermeta.language.structure.Package parse_org_kermeta_language_structure_Package() throws RecognitionException {
         org.kermeta.language.structure.Package element =  null;
         int parse_org_kermeta_language_structure_Package_StartIndex = input.index();
@@ -5127,14 +5128,14 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return element; }
-            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4668:1: (a0= 'package' ( ( (a1= IDENTIFIER ) a2= '::' ) )* (a3= IDENTIFIER ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )? | ( ( (a11_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ )
+            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4668:1: (a0= 'package' ( ( (a1= QUALIFIEDNAME ) a2= '::' ) )* (a3= IDENTIFIER ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )? | ( ( (a11_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
-            if ( (LA12_0==16) ) {
+            if ( (LA12_0==17) ) {
                 alt12=1;
             }
-            else if ( ((LA12_0>=IDENTIFIER && LA12_0<=PRIMITIVE_TYPE)||(LA12_0>=20 && LA12_0<=22)||LA12_0==35||LA12_0==42||LA12_0==53) ) {
+            else if ( ((LA12_0>=IDENTIFIER && LA12_0<=PRIMITIVE_TYPE)||(LA12_0>=21 && LA12_0<=23)||LA12_0==36||LA12_0==43||LA12_0==54) ) {
                 alt12=2;
             }
             else {
@@ -5146,9 +5147,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
             }
             switch (alt12) {
                 case 1 :
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4669:2: a0= 'package' ( ( (a1= IDENTIFIER ) a2= '::' ) )* (a3= IDENTIFIER ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )?
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4669:2: a0= 'package' ( ( (a1= QUALIFIEDNAME ) a2= '::' ) )* (a3= IDENTIFIER ) ( ( ( ( (a4_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ | a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' | a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}' ) )?
                     {
-                    a0=(Token)match(input,16,FOLLOW_16_in_parse_org_kermeta_language_structure_Package437); if (state.failed) return element;
+                    a0=(Token)match(input,17,FOLLOW_17_in_parse_org_kermeta_language_structure_Package437); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -5165,34 +5166,28 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_24, 9));
                       	
                     }
-                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4682:2: ( ( (a1= IDENTIFIER ) a2= '::' ) )*
+                    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4682:2: ( ( (a1= QUALIFIEDNAME ) a2= '::' ) )*
                     loop5:
                     do {
                         int alt5=2;
                         int LA5_0 = input.LA(1);
 
-                        if ( (LA5_0==IDENTIFIER) ) {
-                            int LA5_1 = input.LA(2);
-
-                            if ( (LA5_1==17) ) {
-                                alt5=1;
-                            }
-
-
+                        if ( (LA5_0==QUALIFIEDNAME) ) {
+                            alt5=1;
                         }
 
 
                         switch (alt5) {
                     	case 1 :
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4683:3: ( (a1= IDENTIFIER ) a2= '::' )
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4683:3: ( (a1= QUALIFIEDNAME ) a2= '::' )
                     	    {
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4683:3: ( (a1= IDENTIFIER ) a2= '::' )
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4684:4: (a1= IDENTIFIER ) a2= '::'
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4683:3: ( (a1= QUALIFIEDNAME ) a2= '::' )
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4684:4: (a1= QUALIFIEDNAME ) a2= '::'
                     	    {
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4684:4: (a1= IDENTIFIER )
-                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4685:5: a1= IDENTIFIER
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4684:4: (a1= QUALIFIEDNAME )
+                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4685:5: a1= QUALIFIEDNAME
                     	    {
-                    	    a1=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Package466); if (state.failed) return element;
+                    	    a1=(Token)match(input,QUALIFIEDNAME,FOLLOW_QUALIFIEDNAME_in_parse_org_kermeta_language_structure_Package466); if (state.failed) return element;
                     	    if ( state.backtracking==0 ) {
 
                     	      					if (terminateParsing) {
@@ -5202,7 +5197,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	      						element = org.kermeta.language.structure.StructureFactory.eINSTANCE.createPackage();
                     	      					}
                     	      					if (a1 != null) {
-                    	      						org.kermeta.language.emftexteditor.IKermetaTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+                    	      						org.kermeta.language.emftexteditor.IKermetaTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("QUALIFIEDNAME");
                     	      						tokenResolver.setOptions(getOptions());
                     	      						org.kermeta.language.emftexteditor.IKermetaTokenResolveResult result = getFreshTokenResolveResult();
                     	      						tokenResolver.resolve(a1.getText(), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE), result);
@@ -5233,7 +5228,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	      				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_25, 10));
                     	      			
                     	    }
-                    	    a2=(Token)match(input,17,FOLLOW_17_in_parse_org_kermeta_language_structure_Package499); if (state.failed) return element;
+                    	    a2=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_Package499); if (state.failed) return element;
                     	    if ( state.backtracking==0 ) {
 
                     	      				if (element == null) {
@@ -5431,7 +5426,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                 case 2 :
                                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4841:8: a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}'
                                     {
-                                    a5=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_Package656); if (state.failed) return element;
+                                    a5=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Package656); if (state.failed) return element;
                                     if ( state.backtracking==0 ) {
 
                                       				if (element == null) {
@@ -5462,7 +5457,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                         int alt7=2;
                                         int LA7_0 = input.LA(1);
 
-                                        if ( ((LA7_0>=IDENTIFIER && LA7_0<=PRIMITIVE_TYPE)||(LA7_0>=20 && LA7_0<=22)||LA7_0==35||LA7_0==42||LA7_0==53) ) {
+                                        if ( ((LA7_0>=IDENTIFIER && LA7_0<=PRIMITIVE_TYPE)||(LA7_0>=21 && LA7_0<=23)||LA7_0==36||LA7_0==43||LA7_0==54) ) {
                                             alt7=1;
                                         }
 
@@ -5549,7 +5544,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                       				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_29, 18));
                                       			
                                     }
-                                    a7=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Package758); if (state.failed) return element;
+                                    a7=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_Package758); if (state.failed) return element;
                                     if ( state.backtracking==0 ) {
 
                                       				if (element == null) {
@@ -5581,7 +5576,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                 case 3 :
                                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4933:8: a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}'
                                     {
-                                    a8=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_Package786); if (state.failed) return element;
+                                    a8=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Package786); if (state.failed) return element;
                                     if ( state.backtracking==0 ) {
 
                                       				if (element == null) {
@@ -5613,7 +5608,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                         int alt8=2;
                                         int LA8_0 = input.LA(1);
 
-                                        if ( ((LA8_0>=IDENTIFIER && LA8_0<=PRIMITIVE_TYPE)||LA8_0==16||(LA8_0>=20 && LA8_0<=22)||LA8_0==35||LA8_0==42||LA8_0==53) ) {
+                                        if ( ((LA8_0>=IDENTIFIER && LA8_0<=PRIMITIVE_TYPE)||LA8_0==17||(LA8_0>=21 && LA8_0<=23)||LA8_0==36||LA8_0==43||LA8_0==54) ) {
                                             alt8=1;
                                         }
 
@@ -5697,7 +5692,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                       				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_28, 22));
                                       			
                                     }
-                                    a10=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Package888); if (state.failed) return element;
+                                    a10=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_Package888); if (state.failed) return element;
                                     if ( state.backtracking==0 ) {
 
                                       				if (element == null) {
@@ -5898,7 +5893,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt13=2;
             int LA13_0 = input.LA(1);
 
-            if ( (LA13_0==20) ) {
+            if ( (LA13_0==21) ) {
                 alt13=1;
             }
             switch (alt13) {
@@ -5908,7 +5903,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5104:3: (a0= 'aspect' )
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5105:4: a0= 'aspect'
                     {
-                    a0=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_ClassDefinition1005); if (state.failed) return element;
+                    a0=(Token)match(input,21,FOLLOW_21_in_parse_org_kermeta_language_structure_ClassDefinition1005); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       				if (element == null) {
@@ -5945,7 +5940,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt14=2;
             int LA14_0 = input.LA(1);
 
-            if ( (LA14_0==21) ) {
+            if ( (LA14_0==22) ) {
                 alt14=1;
             }
             switch (alt14) {
@@ -5955,7 +5950,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5127:3: (a1= 'abstract' )
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5128:4: a1= 'abstract'
                     {
-                    a1=(Token)match(input,21,FOLLOW_21_in_parse_org_kermeta_language_structure_ClassDefinition1047); if (state.failed) return element;
+                    a1=(Token)match(input,22,FOLLOW_22_in_parse_org_kermeta_language_structure_ClassDefinition1047); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       				if (element == null) {
@@ -5986,7 +5981,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_5, 30));
               	
             }
-            a2=(Token)match(input,22,FOLLOW_22_in_parse_org_kermeta_language_structure_ClassDefinition1080); if (state.failed) return element;
+            a2=(Token)match(input,23,FOLLOW_23_in_parse_org_kermeta_language_structure_ClassDefinition1080); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -6047,7 +6042,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt16=2;
             int LA16_0 = input.LA(1);
 
-            if ( (LA16_0==23) ) {
+            if ( (LA16_0==24) ) {
                 alt16=1;
             }
             switch (alt16) {
@@ -6057,7 +6052,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5194:3: (a4= 'inherits' (a5= IDENTIFIER ) ( (a6= ',' (a7= IDENTIFIER ) ) )* )
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5195:4: a4= 'inherits' (a5= IDENTIFIER ) ( (a6= ',' (a7= IDENTIFIER ) ) )*
                     {
-                    a4=(Token)match(input,23,FOLLOW_23_in_parse_org_kermeta_language_structure_ClassDefinition1128); if (state.failed) return element;
+                    a4=(Token)match(input,24,FOLLOW_24_in_parse_org_kermeta_language_structure_ClassDefinition1128); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       				if (element == null) {
@@ -6124,7 +6119,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         int alt15=2;
                         int LA15_0 = input.LA(1);
 
-                        if ( (LA15_0==24) ) {
+                        if ( (LA15_0==25) ) {
                             alt15=1;
                         }
 
@@ -6136,7 +6131,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5246:5: (a6= ',' (a7= IDENTIFIER ) )
                     	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5247:6: a6= ',' (a7= IDENTIFIER )
                     	    {
-                    	    a6=(Token)match(input,24,FOLLOW_24_in_parse_org_kermeta_language_structure_ClassDefinition1200); if (state.failed) return element;
+                    	    a6=(Token)match(input,25,FOLLOW_25_in_parse_org_kermeta_language_structure_ClassDefinition1200); if (state.failed) return element;
                     	    if ( state.backtracking==0 ) {
 
                     	      						if (element == null) {
@@ -6231,7 +6226,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_32, 38));
               	
             }
-            a8=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_ClassDefinition1315); if (state.failed) return element;
+            a8=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_ClassDefinition1315); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -6350,7 +6345,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt18=2;
                 int LA18_0 = input.LA(1);
 
-                if ( ((LA18_0>=25 && LA18_0<=26)||LA18_0==28) ) {
+                if ( ((LA18_0>=26 && LA18_0<=27)||LA18_0==29) ) {
                     alt18=1;
                 }
 
@@ -6430,7 +6425,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt19=2;
                 int LA19_0 = input.LA(1);
 
-                if ( (LA19_0==IDENTIFIER||LA19_0==31) ) {
+                if ( (LA19_0==IDENTIFIER||LA19_0==32) ) {
                     alt19=1;
                 }
 
@@ -6498,7 +6493,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_36, 45));
               	
             }
-            a12=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_ClassDefinition1497); if (state.failed) return element;
+            a12=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_ClassDefinition1497); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -6568,10 +6563,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt25=2;
             int LA25_0 = input.LA(1);
 
-            if ( ((LA25_0>=25 && LA25_0<=26)) ) {
+            if ( ((LA25_0>=26 && LA25_0<=27)) ) {
                 alt25=1;
             }
-            else if ( (LA25_0==28) ) {
+            else if ( (LA25_0==29) ) {
                 alt25=2;
             }
             else {
@@ -6589,10 +6584,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     int alt20=2;
                     int LA20_0 = input.LA(1);
 
-                    if ( (LA20_0==25) ) {
+                    if ( (LA20_0==26) ) {
                         alt20=1;
                     }
-                    else if ( (LA20_0==26) ) {
+                    else if ( (LA20_0==27) ) {
                         alt20=2;
                     }
                     else {
@@ -6606,7 +6601,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         case 1 :
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5474:3: a0= 'attribute'
                             {
-                            a0=(Token)match(input,25,FOLLOW_25_in_parse_org_kermeta_language_structure_Property1530); if (state.failed) return element;
+                            a0=(Token)match(input,26,FOLLOW_26_in_parse_org_kermeta_language_structure_Property1530); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               			if (element == null) {
@@ -6628,7 +6623,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         case 2 :
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5487:6: a1= 'reference'
                             {
-                            a1=(Token)match(input,26,FOLLOW_26_in_parse_org_kermeta_language_structure_Property1553); if (state.failed) return element;
+                            a1=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Property1553); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               			if (element == null) {
@@ -6706,7 +6701,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     int alt21=2;
                     int LA21_0 = input.LA(1);
 
-                    if ( (LA21_0==27) ) {
+                    if ( (LA21_0==28) ) {
                         alt21=1;
                     }
                     switch (alt21) {
@@ -6716,7 +6711,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5545:3: (a3= ':' (a4= IDENTIFIER ) )
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5546:4: a3= ':' (a4= IDENTIFIER )
                             {
-                            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Property1611); if (state.failed) return element;
+                            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Property1611); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               				if (element == null) {
@@ -6807,7 +6802,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 case 2 :
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5613:4: a5= 'property' (a6= IDENTIFIER ) ( (a7= ':' (a8= IDENTIFIER ) ) )? ( (a9= 'getter' (a10_0= parse_org_kermeta_language_behavior_Expression ) ) )? ( (a11= 'setter' (a12_0= parse_org_kermeta_language_behavior_Expression ) ) )?
                     {
-                    a5=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Property1687); if (state.failed) return element;
+                    a5=(Token)match(input,29,FOLLOW_29_in_parse_org_kermeta_language_structure_Property1687); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -6875,7 +6870,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     int alt22=2;
                     int LA22_0 = input.LA(1);
 
-                    if ( (LA22_0==27) ) {
+                    if ( (LA22_0==28) ) {
                         alt22=1;
                     }
                     switch (alt22) {
@@ -6885,7 +6880,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5667:3: (a7= ':' (a8= IDENTIFIER ) )
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5668:4: a7= ':' (a8= IDENTIFIER )
                             {
-                            a7=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Property1735); if (state.failed) return element;
+                            a7=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Property1735); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               				if (element == null) {
@@ -6978,7 +6973,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     int alt23=2;
                     int LA23_0 = input.LA(1);
 
-                    if ( (LA23_0==29) ) {
+                    if ( (LA23_0==30) ) {
                         alt23=1;
                     }
                     switch (alt23) {
@@ -6988,7 +6983,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5739:3: (a9= 'getter' (a10_0= parse_org_kermeta_language_behavior_Expression ) )
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5740:4: a9= 'getter' (a10_0= parse_org_kermeta_language_behavior_Expression )
                             {
-                            a9=(Token)match(input,29,FOLLOW_29_in_parse_org_kermeta_language_structure_Property1816); if (state.failed) return element;
+                            a9=(Token)match(input,30,FOLLOW_30_in_parse_org_kermeta_language_structure_Property1816); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               				if (element == null) {
@@ -7087,7 +7082,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     int alt24=2;
                     int LA24_0 = input.LA(1);
 
-                    if ( (LA24_0==30) ) {
+                    if ( (LA24_0==31) ) {
                         alt24=1;
                     }
                     switch (alt24) {
@@ -7097,7 +7092,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5812:3: (a11= 'setter' (a12_0= parse_org_kermeta_language_behavior_Expression ) )
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:5813:4: a11= 'setter' (a12_0= parse_org_kermeta_language_behavior_Expression )
                             {
-                            a11=(Token)match(input,30,FOLLOW_30_in_parse_org_kermeta_language_structure_Property1892); if (state.failed) return element;
+                            a11=(Token)match(input,31,FOLLOW_31_in_parse_org_kermeta_language_structure_Property1892); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               				if (element == null) {
@@ -7374,7 +7369,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_17, 66));
               	
             }
-            a2=(Token)match(input,31,FOLLOW_31_in_parse_org_kermeta_language_structure_Operation2044); if (state.failed) return element;
+            a2=(Token)match(input,32,FOLLOW_32_in_parse_org_kermeta_language_structure_Operation2044); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -7430,7 +7425,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_64, 68));
               	
             }
-            a4=(Token)match(input,32,FOLLOW_32_in_parse_org_kermeta_language_structure_Operation2083); if (state.failed) return element;
+            a4=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_structure_Operation2083); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -7501,7 +7496,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     int alt28=2;
                     int LA28_0 = input.LA(1);
 
-                    if ( (LA28_0==27) ) {
+                    if ( (LA28_0==28) ) {
                         alt28=1;
                     }
                     switch (alt28) {
@@ -7511,7 +7506,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:6023:5: (a6= ':' (a7= IDENTIFIER ) )
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:6024:6: a6= ':' (a7= IDENTIFIER )
                             {
-                            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Operation2153); if (state.failed) return element;
+                            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Operation2153); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               						if (element == null) {
@@ -7594,7 +7589,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         int alt30=2;
                         int LA30_0 = input.LA(1);
 
-                        if ( (LA30_0==24) ) {
+                        if ( (LA30_0==25) ) {
                             alt30=1;
                         }
 
@@ -7606,7 +7601,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:6083:5: (a8= ',' (a9_0= parse_org_kermeta_language_structure_Parameter ) ( (a10= ':' (a11= IDENTIFIER ) ) )? )
                     	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:6084:6: a8= ',' (a9_0= parse_org_kermeta_language_structure_Parameter ) ( (a10= ':' (a11= IDENTIFIER ) ) )?
                     	    {
-                    	    a8=(Token)match(input,24,FOLLOW_24_in_parse_org_kermeta_language_structure_Operation2268); if (state.failed) return element;
+                    	    a8=(Token)match(input,25,FOLLOW_25_in_parse_org_kermeta_language_structure_Operation2268); if (state.failed) return element;
                     	    if ( state.backtracking==0 ) {
 
                     	      						if (element == null) {
@@ -7662,7 +7657,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	    int alt29=2;
                     	    int LA29_0 = input.LA(1);
 
-                    	    if ( (LA29_0==27) ) {
+                    	    if ( (LA29_0==28) ) {
                     	        alt29=1;
                     	    }
                     	    switch (alt29) {
@@ -7672,7 +7667,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:6121:7: (a10= ':' (a11= IDENTIFIER ) )
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:6122:8: a10= ':' (a11= IDENTIFIER )
                     	            {
-                    	            a10=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Operation2357); if (state.failed) return element;
+                    	            a10=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Operation2357); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              								if (element == null) {
@@ -7783,7 +7778,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_65, 80));
               	
             }
-            a12=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_structure_Operation2525); if (state.failed) return element;
+            a12=(Token)match(input,34,FOLLOW_34_in_parse_org_kermeta_language_structure_Operation2525); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -7804,7 +7799,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt32=2;
             int LA32_0 = input.LA(1);
 
-            if ( (LA32_0==27) ) {
+            if ( (LA32_0==28) ) {
                 alt32=1;
             }
             switch (alt32) {
@@ -7814,7 +7809,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:6209:3: (a13= ':' (a14= IDENTIFIER ) )
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:6210:4: a13= ':' (a14= IDENTIFIER )
                     {
-                    a13=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Operation2548); if (state.failed) return element;
+                    a13=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Operation2548); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       				if (element == null) {
@@ -7889,7 +7884,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_72, 84));
               	
             }
-            a15=(Token)match(input,34,FOLLOW_34_in_parse_org_kermeta_language_structure_Operation2620); if (state.failed) return element;
+            a15=(Token)match(input,35,FOLLOW_35_in_parse_org_kermeta_language_structure_Operation2620); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -7910,10 +7905,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt33=2;
             int LA33_0 = input.LA(1);
 
-            if ( (LA33_0==69) ) {
+            if ( (LA33_0==70) ) {
                 alt33=1;
             }
-            else if ( (LA33_0==21) ) {
+            else if ( (LA33_0==22) ) {
                 alt33=2;
             }
             else {
@@ -7969,7 +7964,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 case 2 :
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:6305:6: a17= 'abstract'
                     {
-                    a17=(Token)match(input,21,FOLLOW_21_in_parse_org_kermeta_language_structure_Operation2672); if (state.failed) return element;
+                    a17=(Token)match(input,22,FOLLOW_22_in_parse_org_kermeta_language_structure_Operation2672); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       			if (element == null) {
@@ -8073,7 +8068,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_75, 89));
               	
             }
-            a1=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Parameter2736); if (state.failed) return element;
+            a1=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Parameter2736); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -8311,7 +8306,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:6528:1: (a0= 'enumeration' (a1= IDENTIFIER ) a2= '{' ( (a3_0= parse_org_kermeta_language_structure_EnumerationLiteral ) a4= ';' ( ( (a5_0= parse_org_kermeta_language_structure_EnumerationLiteral ) a6= ';' ) )* ) a7= '}' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:6529:2: a0= 'enumeration' (a1= IDENTIFIER ) a2= '{' ( (a3_0= parse_org_kermeta_language_structure_EnumerationLiteral ) a4= ';' ( ( (a5_0= parse_org_kermeta_language_structure_EnumerationLiteral ) a6= ';' ) )* ) a7= '}'
             {
-            a0=(Token)match(input,35,FOLLOW_35_in_parse_org_kermeta_language_structure_Enumeration2830); if (state.failed) return element;
+            a0=(Token)match(input,36,FOLLOW_36_in_parse_org_kermeta_language_structure_Enumeration2830); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -8367,7 +8362,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_143, 94));
               	
             }
-            a2=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_Enumeration2869); if (state.failed) return element;
+            a2=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Enumeration2869); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -8420,7 +8415,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               			addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_145, 96));
               		
             }
-            a4=(Token)match(input,36,FOLLOW_36_in_parse_org_kermeta_language_structure_Enumeration2915); if (state.failed) return element;
+            a4=(Token)match(input,37,FOLLOW_37_in_parse_org_kermeta_language_structure_Enumeration2915); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               			if (element == null) {
@@ -8489,7 +8484,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	      					addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_147, 98));
             	      				
             	    }
-            	    a6=(Token)match(input,36,FOLLOW_36_in_parse_org_kermeta_language_structure_Enumeration2983); if (state.failed) return element;
+            	    a6=(Token)match(input,37,FOLLOW_37_in_parse_org_kermeta_language_structure_Enumeration2983); if (state.failed) return element;
             	    if ( state.backtracking==0 ) {
 
             	      					if (element == null) {
@@ -8534,7 +8529,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_146, 101));
               	
             }
-            a7=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Enumeration3031); if (state.failed) return element;
+            a7=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_Enumeration3031); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -9115,7 +9110,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7093:1: (a0= 'Void' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7094:2: a0= 'Void'
             {
-            a0=(Token)match(input,37,FOLLOW_37_in_parse_org_kermeta_language_structure_VoidType3245); if (state.failed) return element;
+            a0=(Token)match(input,38,FOLLOW_38_in_parse_org_kermeta_language_structure_VoidType3245); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -9335,7 +9330,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 case 1 :
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7175:2: a0= 'Object' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) ) )* a8= '}'
                     {
-                    a0=(Token)match(input,38,FOLLOW_38_in_parse_org_kermeta_language_structure_Object3274); if (state.failed) return element;
+                    a0=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_Object3274); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -9351,7 +9346,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_152, 109));
                       	
                     }
-                    a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_Object3288); if (state.failed) return element;
+                    a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Object3288); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -9375,7 +9370,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         int alt36=2;
                         int LA36_0 = input.LA(1);
 
-                        if ( ((LA36_0>=39 && LA36_0<=40)) ) {
+                        if ( ((LA36_0>=40 && LA36_0<=41)) ) {
                             alt36=1;
                         }
 
@@ -9388,10 +9383,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	    int alt35=2;
                     	    int LA35_0 = input.LA(1);
 
-                    	    if ( (LA35_0==39) ) {
+                    	    if ( (LA35_0==40) ) {
                     	        alt35=1;
                     	    }
-                    	    else if ( (LA35_0==40) ) {
+                    	    else if ( (LA35_0==41) ) {
                     	        alt35=2;
                     	    }
                     	    else {
@@ -9405,7 +9400,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 1 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7203:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
                     	            {
-                    	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_Object3311); if (state.failed) return element;
+                    	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_Object3311); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -9421,7 +9416,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_156, 111));
                     	              			
                     	            }
-                    	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Object3331); if (state.failed) return element;
+                    	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Object3331); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -9489,7 +9484,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 2 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7267:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
                     	            {
-                    	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_Object3398); if (state.failed) return element;
+                    	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_Object3398); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -9505,7 +9500,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_158, 114));
                     	              			
                     	            }
-                    	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Object3418); if (state.failed) return element;
+                    	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Object3418); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -9580,7 +9575,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_155, 117));
                       	
                     }
-                    a8=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Object3485); if (state.failed) return element;
+                    a8=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_Object3485); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -10322,7 +10317,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7392:1: (a0= 'Model' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) ) )* a8= '}' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7393:2: a0= 'Model' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) ) )* a8= '}'
             {
-            a0=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_Model4009); if (state.failed) return element;
+            a0=(Token)match(input,42,FOLLOW_42_in_parse_org_kermeta_language_structure_Model4009); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -10338,7 +10333,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_160, 119));
               	
             }
-            a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_Model4023); if (state.failed) return element;
+            a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Model4023); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -10362,7 +10357,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt39=2;
                 int LA39_0 = input.LA(1);
 
-                if ( ((LA39_0>=39 && LA39_0<=40)) ) {
+                if ( ((LA39_0>=40 && LA39_0<=41)) ) {
                     alt39=1;
                 }
 
@@ -10375,10 +10370,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	    int alt38=2;
             	    int LA38_0 = input.LA(1);
 
-            	    if ( (LA38_0==39) ) {
+            	    if ( (LA38_0==40) ) {
             	        alt38=1;
             	    }
-            	    else if ( (LA38_0==40) ) {
+            	    else if ( (LA38_0==41) ) {
             	        alt38=2;
             	    }
             	    else {
@@ -10392,7 +10387,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 1 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7421:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
             	            {
-            	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_Model4046); if (state.failed) return element;
+            	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_Model4046); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -10408,7 +10403,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_164, 121));
             	              			
             	            }
-            	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Model4066); if (state.failed) return element;
+            	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Model4066); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -10476,7 +10471,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 2 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7485:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
             	            {
-            	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_Model4133); if (state.failed) return element;
+            	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_Model4133); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -10492,7 +10487,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_166, 124));
             	              			
             	            }
-            	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Model4153); if (state.failed) return element;
+            	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Model4153); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -10567,7 +10562,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_163, 127));
               	
             }
-            a8=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Model4220); if (state.failed) return element;
+            a8=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_Model4220); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -10688,7 +10683,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_9, 129));
               	
             }
-            a1=(Token)match(input,42,FOLLOW_42_in_parse_org_kermeta_language_structure_ModelType4288); if (state.failed) return element;
+            a1=(Token)match(input,43,FOLLOW_43_in_parse_org_kermeta_language_structure_ModelType4288); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -10704,7 +10699,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_167, 130));
               	
             }
-            a2=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_ModelType4302); if (state.failed) return element;
+            a2=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_ModelType4302); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -10731,7 +10726,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt42=2;
                 int LA42_0 = input.LA(1);
 
-                if ( ((LA42_0>=39 && LA42_0<=40)||(LA42_0>=43 && LA42_0<=45)) ) {
+                if ( ((LA42_0>=40 && LA42_0<=41)||(LA42_0>=44 && LA42_0<=46)) ) {
                     alt42=1;
                 }
 
@@ -10743,27 +10738,27 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7624:3: (a3= 'tag' a4= ':' (a5= IDENTIFIER ) | a6= 'ownedTags' a7= ':' (a8_0= parse_org_kermeta_language_structure_Tag ) | a9= 'typeContainer' a10= ':' (a11= IDENTIFIER ) | a12= 'name' a13= ':' (a14= IDENTIFIER ) | a15= 'includedTypeDefinition' a16= ':' (a17= IDENTIFIER ) )
             	    int alt41=5;
             	    switch ( input.LA(1) ) {
-            	    case 39:
+            	    case 40:
             	        {
             	        alt41=1;
             	        }
             	        break;
-            	    case 40:
+            	    case 41:
             	        {
             	        alt41=2;
             	        }
             	        break;
-            	    case 43:
+            	    case 44:
             	        {
             	        alt41=3;
             	        }
             	        break;
-            	    case 44:
+            	    case 45:
             	        {
             	        alt41=4;
             	        }
             	        break;
-            	    case 45:
+            	    case 46:
             	        {
             	        alt41=5;
             	        }
@@ -10780,7 +10775,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 1 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7625:4: a3= 'tag' a4= ':' (a5= IDENTIFIER )
             	            {
-            	            a3=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_ModelType4325); if (state.failed) return element;
+            	            a3=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_ModelType4325); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -10796,7 +10791,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_174, 132));
             	              			
             	            }
-            	            a4=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelType4345); if (state.failed) return element;
+            	            a4=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelType4345); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -10867,7 +10862,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 2 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7692:8: a6= 'ownedTags' a7= ':' (a8_0= parse_org_kermeta_language_structure_Tag )
             	            {
-            	            a6=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_ModelType4412); if (state.failed) return element;
+            	            a6=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_ModelType4412); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -10883,7 +10878,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_176, 135));
             	              			
             	            }
-            	            a7=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelType4432); if (state.failed) return element;
+            	            a7=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelType4432); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -10944,7 +10939,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 3 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7744:8: a9= 'typeContainer' a10= ':' (a11= IDENTIFIER )
             	            {
-            	            a9=(Token)match(input,43,FOLLOW_43_in_parse_org_kermeta_language_structure_ModelType4494); if (state.failed) return element;
+            	            a9=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_ModelType4494); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -10960,7 +10955,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_177, 138));
             	              			
             	            }
-            	            a10=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelType4514); if (state.failed) return element;
+            	            a10=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelType4514); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11031,7 +11026,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 4 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7811:8: a12= 'name' a13= ':' (a14= IDENTIFIER )
             	            {
-            	            a12=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_ModelType4581); if (state.failed) return element;
+            	            a12=(Token)match(input,45,FOLLOW_45_in_parse_org_kermeta_language_structure_ModelType4581); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11047,7 +11042,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_179, 141));
             	              			
             	            }
-            	            a13=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelType4601); if (state.failed) return element;
+            	            a13=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelType4601); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11114,7 +11109,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 5 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:7874:8: a15= 'includedTypeDefinition' a16= ':' (a17= IDENTIFIER )
             	            {
-            	            a15=(Token)match(input,45,FOLLOW_45_in_parse_org_kermeta_language_structure_ModelType4668); if (state.failed) return element;
+            	            a15=(Token)match(input,46,FOLLOW_46_in_parse_org_kermeta_language_structure_ModelType4668); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11130,7 +11125,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_181, 144));
             	              			
             	            }
-            	            a16=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelType4688); if (state.failed) return element;
+            	            a16=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelType4688); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11221,7 +11216,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_173, 147));
               	
             }
-            a18=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_ModelType4760); if (state.failed) return element;
+            a18=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_ModelType4760); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -11359,7 +11354,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8042:1: (a0= 'TypeVariableBinding' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'variable' a12= ':' (a13= IDENTIFIER ) | a14= 'type' a15= ':' (a16= IDENTIFIER ) ) )* a17= '}' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8043:2: a0= 'TypeVariableBinding' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'variable' a12= ':' (a13= IDENTIFIER ) | a14= 'type' a15= ':' (a16= IDENTIFIER ) ) )* a17= '}'
             {
-            a0=(Token)match(input,46,FOLLOW_46_in_parse_org_kermeta_language_structure_TypeVariableBinding4789); if (state.failed) return element;
+            a0=(Token)match(input,47,FOLLOW_47_in_parse_org_kermeta_language_structure_TypeVariableBinding4789); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -11375,7 +11370,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_184, 149));
               	
             }
-            a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_TypeVariableBinding4803); if (state.failed) return element;
+            a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_TypeVariableBinding4803); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -11402,7 +11397,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt44=2;
                 int LA44_0 = input.LA(1);
 
-                if ( ((LA44_0>=39 && LA44_0<=40)||(LA44_0>=47 && LA44_0<=49)) ) {
+                if ( ((LA44_0>=40 && LA44_0<=41)||(LA44_0>=48 && LA44_0<=50)) ) {
                     alt44=1;
                 }
 
@@ -11414,27 +11409,27 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8073:3: (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'variable' a12= ':' (a13= IDENTIFIER ) | a14= 'type' a15= ':' (a16= IDENTIFIER ) )
             	    int alt43=5;
             	    switch ( input.LA(1) ) {
-            	    case 39:
+            	    case 40:
             	        {
             	        alt43=1;
             	        }
             	        break;
-            	    case 40:
+            	    case 41:
             	        {
             	        alt43=2;
             	        }
             	        break;
-            	    case 47:
+            	    case 48:
             	        {
             	        alt43=3;
             	        }
             	        break;
-            	    case 48:
+            	    case 49:
             	        {
             	        alt43=4;
             	        }
             	        break;
-            	    case 49:
+            	    case 50:
             	        {
             	        alt43=5;
             	        }
@@ -11451,7 +11446,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 1 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8074:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
             	            {
-            	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_TypeVariableBinding4826); if (state.failed) return element;
+            	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_TypeVariableBinding4826); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11467,7 +11462,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_185, 151));
             	              			
             	            }
-            	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_TypeVariableBinding4846); if (state.failed) return element;
+            	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_TypeVariableBinding4846); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11538,7 +11533,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 2 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8141:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
             	            {
-            	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_TypeVariableBinding4913); if (state.failed) return element;
+            	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_TypeVariableBinding4913); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11554,7 +11549,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_187, 154));
             	              			
             	            }
-            	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_TypeVariableBinding4933); if (state.failed) return element;
+            	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_TypeVariableBinding4933); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11615,7 +11610,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 3 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8193:8: a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type )
             	            {
-            	            a8=(Token)match(input,47,FOLLOW_47_in_parse_org_kermeta_language_structure_TypeVariableBinding4995); if (state.failed) return element;
+            	            a8=(Token)match(input,48,FOLLOW_48_in_parse_org_kermeta_language_structure_TypeVariableBinding4995); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11631,7 +11626,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_188, 157));
             	              			
             	            }
-            	            a9=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_TypeVariableBinding5015); if (state.failed) return element;
+            	            a9=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_TypeVariableBinding5015); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11703,7 +11698,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 4 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8256:8: a11= 'variable' a12= ':' (a13= IDENTIFIER )
             	            {
-            	            a11=(Token)match(input,48,FOLLOW_48_in_parse_org_kermeta_language_structure_TypeVariableBinding5077); if (state.failed) return element;
+            	            a11=(Token)match(input,49,FOLLOW_49_in_parse_org_kermeta_language_structure_TypeVariableBinding5077); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11719,7 +11714,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_194, 160));
             	              			
             	            }
-            	            a12=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_TypeVariableBinding5097); if (state.failed) return element;
+            	            a12=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_TypeVariableBinding5097); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11790,7 +11785,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 5 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8323:8: a14= 'type' a15= ':' (a16= IDENTIFIER )
             	            {
-            	            a14=(Token)match(input,49,FOLLOW_49_in_parse_org_kermeta_language_structure_TypeVariableBinding5164); if (state.failed) return element;
+            	            a14=(Token)match(input,50,FOLLOW_50_in_parse_org_kermeta_language_structure_TypeVariableBinding5164); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11806,7 +11801,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_196, 163));
             	              			
             	            }
-            	            a15=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_TypeVariableBinding5184); if (state.failed) return element;
+            	            a15=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_TypeVariableBinding5184); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -11897,7 +11892,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_83, 166));
               	
             }
-            a17=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_TypeVariableBinding5256); if (state.failed) return element;
+            a17=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_TypeVariableBinding5256); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -11990,7 +11985,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             case IDENTIFIER:
                 {
                 switch ( input.LA(2) ) {
-                case 50:
+                case 51:
                     {
                     alt49=1;
                     }
@@ -12004,10 +11999,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     {
                     int LA49_6 = input.LA(3);
 
-                    if ( (LA49_6==50) ) {
+                    if ( (LA49_6==51) ) {
                         alt49=1;
                     }
-                    else if ( (LA49_6==IDENTIFIER||LA49_6==31) ) {
+                    else if ( (LA49_6==IDENTIFIER||LA49_6==32) ) {
                         alt49=3;
                     }
                     else {
@@ -12019,7 +12014,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     }
                     }
                     break;
-                case 27:
+                case 28:
                     {
                     alt49=4;
                     }
@@ -12034,19 +12029,19 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
                 }
                 break;
-            case 50:
+            case 51:
                 {
                 alt49=1;
                 }
                 break;
-            case 25:
             case 26:
-            case 28:
+            case 27:
+            case 29:
                 {
                 alt49=2;
                 }
                 break;
-            case 31:
+            case 32:
                 {
                 alt49=3;
                 }
@@ -12182,7 +12177,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_21, 169));
                       	
                     }
-                    a2=(Token)match(input,50,FOLLOW_50_in_parse_org_kermeta_language_structure_MultiplicityElement5363); if (state.failed) return element;
+                    a2=(Token)match(input,51,FOLLOW_51_in_parse_org_kermeta_language_structure_MultiplicityElement5363); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -12198,7 +12193,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_198, 170));
                       	
                     }
-                    a3=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_MultiplicityElement5377); if (state.failed) return element;
+                    a3=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_MultiplicityElement5377); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -12227,7 +12222,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         int alt48=2;
                         int LA48_0 = input.LA(1);
 
-                        if ( ((LA48_0>=39 && LA48_0<=40)||LA48_0==44||LA48_0==47||LA48_0==49||(LA48_0>=51 && LA48_0<=52)) ) {
+                        if ( ((LA48_0>=40 && LA48_0<=41)||LA48_0==45||LA48_0==48||LA48_0==50||(LA48_0>=52 && LA48_0<=53)) ) {
                             alt48=1;
                         }
 
@@ -12239,37 +12234,37 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8531:3: (a4= 'tag' a5= ':' (a6= IDENTIFIER ) | a7= 'ownedTags' a8= ':' (a9_0= parse_org_kermeta_language_structure_Tag ) | a10= 'containedType' a11= ':' (a12_0= parse_org_kermeta_language_structure_Type ) | a13= 'name' a14= ':' (a15= IDENTIFIER ) | a16= 'type' a17= ':' (a18= IDENTIFIER ) | a19= 'lower' a20= ':' (a21= INTEGER ) | a22= 'upper' a23= ':' (a24= INTEGER ) )
                     	    int alt47=7;
                     	    switch ( input.LA(1) ) {
-                    	    case 39:
+                    	    case 40:
                     	        {
                     	        alt47=1;
                     	        }
                     	        break;
-                    	    case 40:
+                    	    case 41:
                     	        {
                     	        alt47=2;
                     	        }
                     	        break;
-                    	    case 47:
+                    	    case 48:
                     	        {
                     	        alt47=3;
                     	        }
                     	        break;
-                    	    case 44:
+                    	    case 45:
                     	        {
                     	        alt47=4;
                     	        }
                     	        break;
-                    	    case 49:
+                    	    case 50:
                     	        {
                     	        alt47=5;
                     	        }
                     	        break;
-                    	    case 51:
+                    	    case 52:
                     	        {
                     	        alt47=6;
                     	        }
                     	        break;
-                    	    case 52:
+                    	    case 53:
                     	        {
                     	        alt47=7;
                     	        }
@@ -12286,7 +12281,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 1 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8532:4: a4= 'tag' a5= ':' (a6= IDENTIFIER )
                     	            {
-                    	            a4=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_MultiplicityElement5400); if (state.failed) return element;
+                    	            a4=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_MultiplicityElement5400); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12302,7 +12297,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_199, 172));
                     	              			
                     	            }
-                    	            a5=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5420); if (state.failed) return element;
+                    	            a5=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5420); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12375,7 +12370,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 2 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8601:8: a7= 'ownedTags' a8= ':' (a9_0= parse_org_kermeta_language_structure_Tag )
                     	            {
-                    	            a7=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_MultiplicityElement5487); if (state.failed) return element;
+                    	            a7=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_MultiplicityElement5487); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12391,7 +12386,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_201, 175));
                     	              			
                     	            }
-                    	            a8=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5507); if (state.failed) return element;
+                    	            a8=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5507); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12454,7 +12449,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 3 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8655:8: a10= 'containedType' a11= ':' (a12_0= parse_org_kermeta_language_structure_Type )
                     	            {
-                    	            a10=(Token)match(input,47,FOLLOW_47_in_parse_org_kermeta_language_structure_MultiplicityElement5569); if (state.failed) return element;
+                    	            a10=(Token)match(input,48,FOLLOW_48_in_parse_org_kermeta_language_structure_MultiplicityElement5569); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12470,7 +12465,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_202, 178));
                     	              			
                     	            }
-                    	            a11=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5589); if (state.failed) return element;
+                    	            a11=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5589); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12544,7 +12539,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 4 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8720:8: a13= 'name' a14= ':' (a15= IDENTIFIER )
                     	            {
-                    	            a13=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_MultiplicityElement5651); if (state.failed) return element;
+                    	            a13=(Token)match(input,45,FOLLOW_45_in_parse_org_kermeta_language_structure_MultiplicityElement5651); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12560,7 +12555,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_203, 181));
                     	              			
                     	            }
-                    	            a14=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5671); if (state.failed) return element;
+                    	            a14=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5671); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12629,7 +12624,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 5 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8785:8: a16= 'type' a17= ':' (a18= IDENTIFIER )
                     	            {
-                    	            a16=(Token)match(input,49,FOLLOW_49_in_parse_org_kermeta_language_structure_MultiplicityElement5738); if (state.failed) return element;
+                    	            a16=(Token)match(input,50,FOLLOW_50_in_parse_org_kermeta_language_structure_MultiplicityElement5738); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12645,7 +12640,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_205, 184));
                     	              			
                     	            }
-                    	            a17=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5758); if (state.failed) return element;
+                    	            a17=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5758); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12718,7 +12713,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 6 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8854:8: a19= 'lower' a20= ':' (a21= INTEGER )
                     	            {
-                    	            a19=(Token)match(input,51,FOLLOW_51_in_parse_org_kermeta_language_structure_MultiplicityElement5825); if (state.failed) return element;
+                    	            a19=(Token)match(input,52,FOLLOW_52_in_parse_org_kermeta_language_structure_MultiplicityElement5825); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12734,7 +12729,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_207, 187));
                     	              			
                     	            }
-                    	            a20=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5845); if (state.failed) return element;
+                    	            a20=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5845); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12803,7 +12798,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 7 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:8919:8: a22= 'upper' a23= ':' (a24= INTEGER )
                     	            {
-                    	            a22=(Token)match(input,52,FOLLOW_52_in_parse_org_kermeta_language_structure_MultiplicityElement5912); if (state.failed) return element;
+                    	            a22=(Token)match(input,53,FOLLOW_53_in_parse_org_kermeta_language_structure_MultiplicityElement5912); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12819,7 +12814,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_209, 190));
                     	              			
                     	            }
-                    	            a23=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5932); if (state.failed) return element;
+                    	            a23=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5932); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -12910,7 +12905,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_91, 193));
                       	
                     }
-                    a25=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_MultiplicityElement6004); if (state.failed) return element;
+                    a25=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_MultiplicityElement6004); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -13038,10 +13033,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 {
                 int LA53_1 = input.LA(2);
 
-                if ( (LA53_1==42) ) {
+                if ( (LA53_1==43) ) {
                     alt53=5;
                 }
-                else if ( (LA53_1==53) ) {
+                else if ( (LA53_1==54) ) {
                     alt53=1;
                 }
                 else {
@@ -13053,19 +13048,19 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 }
                 }
                 break;
-            case 53:
+            case 54:
                 {
                 alt53=1;
                 }
                 break;
-            case 20:
             case 21:
             case 22:
+            case 23:
                 {
                 alt53=2;
                 }
                 break;
-            case 35:
+            case 36:
                 {
                 alt53=3;
                 }
@@ -13075,7 +13070,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 alt53=4;
                 }
                 break;
-            case 42:
+            case 43:
                 {
                 alt53=5;
                 }
@@ -13149,7 +13144,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_11, 195));
                       	
                     }
-                    a1=(Token)match(input,53,FOLLOW_53_in_parse_org_kermeta_language_structure_TypeDefinition6117); if (state.failed) return element;
+                    a1=(Token)match(input,54,FOLLOW_54_in_parse_org_kermeta_language_structure_TypeDefinition6117); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -13165,7 +13160,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_211, 196));
                       	
                     }
-                    a2=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_TypeDefinition6131); if (state.failed) return element;
+                    a2=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_TypeDefinition6131); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -13190,7 +13185,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         int alt52=2;
                         int LA52_0 = input.LA(1);
 
-                        if ( ((LA52_0>=39 && LA52_0<=40)||LA52_0==44) ) {
+                        if ( ((LA52_0>=40 && LA52_0<=41)||LA52_0==45) ) {
                             alt52=1;
                         }
 
@@ -13202,17 +13197,17 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9084:3: (a3= 'tag' a4= ':' (a5= IDENTIFIER ) | a6= 'ownedTags' a7= ':' (a8_0= parse_org_kermeta_language_structure_Tag ) | a9= 'name' a10= ':' (a11= IDENTIFIER ) )
                     	    int alt51=3;
                     	    switch ( input.LA(1) ) {
-                    	    case 39:
+                    	    case 40:
                     	        {
                     	        alt51=1;
                     	        }
                     	        break;
-                    	    case 40:
+                    	    case 41:
                     	        {
                     	        alt51=2;
                     	        }
                     	        break;
-                    	    case 44:
+                    	    case 45:
                     	        {
                     	        alt51=3;
                     	        }
@@ -13229,7 +13224,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 1 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9085:4: a3= 'tag' a4= ':' (a5= IDENTIFIER )
                     	            {
-                    	            a3=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_TypeDefinition6154); if (state.failed) return element;
+                    	            a3=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_TypeDefinition6154); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -13245,7 +13240,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_216, 198));
                     	              			
                     	            }
-                    	            a4=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_TypeDefinition6174); if (state.failed) return element;
+                    	            a4=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_TypeDefinition6174); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -13314,7 +13309,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 2 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9150:8: a6= 'ownedTags' a7= ':' (a8_0= parse_org_kermeta_language_structure_Tag )
                     	            {
-                    	            a6=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_TypeDefinition6241); if (state.failed) return element;
+                    	            a6=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_TypeDefinition6241); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -13330,7 +13325,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_218, 201));
                     	              			
                     	            }
-                    	            a7=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_TypeDefinition6261); if (state.failed) return element;
+                    	            a7=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_TypeDefinition6261); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -13389,7 +13384,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 3 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9200:8: a9= 'name' a10= ':' (a11= IDENTIFIER )
                     	            {
-                    	            a9=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_TypeDefinition6323); if (state.failed) return element;
+                    	            a9=(Token)match(input,45,FOLLOW_45_in_parse_org_kermeta_language_structure_TypeDefinition6323); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -13405,7 +13400,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_219, 204));
                     	              			
                     	            }
-                    	            a10=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_TypeDefinition6343); if (state.failed) return element;
+                    	            a10=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_TypeDefinition6343); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -13488,7 +13483,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_215, 207));
                       	
                     }
-                    a12=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_TypeDefinition6415); if (state.failed) return element;
+                    a12=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_TypeDefinition6415); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -13619,7 +13614,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9303:1: (a0= 'Tag' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'name' a9= ':' (a10= IDENTIFIER ) | a11= 'value' a12= ':' (a13= IDENTIFIER ) | a14= 'object' a15= ':' (a16= IDENTIFIER ) ) )* a17= '}' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9304:2: a0= 'Tag' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'name' a9= ':' (a10= IDENTIFIER ) | a11= 'value' a12= ':' (a13= IDENTIFIER ) | a14= 'object' a15= ':' (a16= IDENTIFIER ) ) )* a17= '}'
             {
-            a0=(Token)match(input,54,FOLLOW_54_in_parse_org_kermeta_language_structure_Tag6489); if (state.failed) return element;
+            a0=(Token)match(input,55,FOLLOW_55_in_parse_org_kermeta_language_structure_Tag6489); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -13635,7 +13630,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_221, 209));
               	
             }
-            a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_Tag6503); if (state.failed) return element;
+            a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Tag6503); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -13662,7 +13657,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt55=2;
                 int LA55_0 = input.LA(1);
 
-                if ( ((LA55_0>=39 && LA55_0<=40)||LA55_0==44||(LA55_0>=55 && LA55_0<=56)) ) {
+                if ( ((LA55_0>=40 && LA55_0<=41)||LA55_0==45||(LA55_0>=56 && LA55_0<=57)) ) {
                     alt55=1;
                 }
 
@@ -13674,27 +13669,27 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9334:3: (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'name' a9= ':' (a10= IDENTIFIER ) | a11= 'value' a12= ':' (a13= IDENTIFIER ) | a14= 'object' a15= ':' (a16= IDENTIFIER ) )
             	    int alt54=5;
             	    switch ( input.LA(1) ) {
-            	    case 39:
+            	    case 40:
             	        {
             	        alt54=1;
             	        }
             	        break;
-            	    case 40:
+            	    case 41:
             	        {
             	        alt54=2;
             	        }
             	        break;
-            	    case 44:
+            	    case 45:
             	        {
             	        alt54=3;
             	        }
             	        break;
-            	    case 55:
+            	    case 56:
             	        {
             	        alt54=4;
             	        }
             	        break;
-            	    case 56:
+            	    case 57:
             	        {
             	        alt54=5;
             	        }
@@ -13711,7 +13706,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 1 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9335:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
             	            {
-            	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_Tag6526); if (state.failed) return element;
+            	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_Tag6526); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -13727,7 +13722,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_228, 211));
             	              			
             	            }
-            	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Tag6546); if (state.failed) return element;
+            	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Tag6546); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -13798,7 +13793,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 2 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9402:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
             	            {
-            	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_Tag6613); if (state.failed) return element;
+            	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_Tag6613); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -13814,7 +13809,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_230, 214));
             	              			
             	            }
-            	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Tag6633); if (state.failed) return element;
+            	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Tag6633); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -13875,7 +13870,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 3 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9454:8: a8= 'name' a9= ':' (a10= IDENTIFIER )
             	            {
-            	            a8=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_Tag6695); if (state.failed) return element;
+            	            a8=(Token)match(input,45,FOLLOW_45_in_parse_org_kermeta_language_structure_Tag6695); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -13891,7 +13886,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_231, 217));
             	              			
             	            }
-            	            a9=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Tag6715); if (state.failed) return element;
+            	            a9=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Tag6715); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -13958,7 +13953,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 4 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9517:8: a11= 'value' a12= ':' (a13= IDENTIFIER )
             	            {
-            	            a11=(Token)match(input,55,FOLLOW_55_in_parse_org_kermeta_language_structure_Tag6782); if (state.failed) return element;
+            	            a11=(Token)match(input,56,FOLLOW_56_in_parse_org_kermeta_language_structure_Tag6782); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -13974,7 +13969,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_233, 220));
             	              			
             	            }
-            	            a12=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Tag6802); if (state.failed) return element;
+            	            a12=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Tag6802); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -14041,7 +14036,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 5 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9580:8: a14= 'object' a15= ':' (a16= IDENTIFIER )
             	            {
-            	            a14=(Token)match(input,56,FOLLOW_56_in_parse_org_kermeta_language_structure_Tag6869); if (state.failed) return element;
+            	            a14=(Token)match(input,57,FOLLOW_57_in_parse_org_kermeta_language_structure_Tag6869); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -14057,7 +14052,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_235, 223));
             	              			
             	            }
-            	            a15=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_Tag6889); if (state.failed) return element;
+            	            a15=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_Tag6889); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -14148,7 +14143,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_227, 226));
               	
             }
-            a17=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_Tag6961); if (state.failed) return element;
+            a17=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_Tag6961); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -14309,10 +14304,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt58=2;
             int LA58_0 = input.LA(1);
 
-            if ( (LA58_0==57) ) {
+            if ( (LA58_0==58) ) {
                 alt58=1;
             }
-            else if ( (LA58_0==61) ) {
+            else if ( (LA58_0==62) ) {
                 alt58=2;
             }
             else {
@@ -14326,7 +14321,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 case 1 :
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9766:2: a0= 'ObjectTypeVariable' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'name' a15= ':' (a16= IDENTIFIER ) | a17= 'supertype' a18= ':' (a19= IDENTIFIER ) ) )* a20= '}'
                     {
-                    a0=(Token)match(input,57,FOLLOW_57_in_parse_org_kermeta_language_structure_ObjectTypeVariable6990); if (state.failed) return element;
+                    a0=(Token)match(input,58,FOLLOW_58_in_parse_org_kermeta_language_structure_ObjectTypeVariable6990); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -14342,7 +14337,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_242, 228));
                       	
                     }
-                    a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_ObjectTypeVariable7004); if (state.failed) return element;
+                    a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_ObjectTypeVariable7004); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -14370,7 +14365,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         int alt57=2;
                         int LA57_0 = input.LA(1);
 
-                        if ( ((LA57_0>=39 && LA57_0<=40)||(LA57_0>=43 && LA57_0<=44)||LA57_0==47||LA57_0==58) ) {
+                        if ( ((LA57_0>=40 && LA57_0<=41)||(LA57_0>=44 && LA57_0<=45)||LA57_0==48||LA57_0==59) ) {
                             alt57=1;
                         }
 
@@ -14382,32 +14377,32 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9797:3: (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'name' a15= ':' (a16= IDENTIFIER ) | a17= 'supertype' a18= ':' (a19= IDENTIFIER ) )
                     	    int alt56=6;
                     	    switch ( input.LA(1) ) {
-                    	    case 39:
+                    	    case 40:
                     	        {
                     	        alt56=1;
                     	        }
                     	        break;
-                    	    case 40:
+                    	    case 41:
                     	        {
                     	        alt56=2;
                     	        }
                     	        break;
-                    	    case 47:
+                    	    case 48:
                     	        {
                     	        alt56=3;
                     	        }
                     	        break;
-                    	    case 43:
+                    	    case 44:
                     	        {
                     	        alt56=4;
                     	        }
                     	        break;
-                    	    case 44:
+                    	    case 45:
                     	        {
                     	        alt56=5;
                     	        }
                     	        break;
-                    	    case 58:
+                    	    case 59:
                     	        {
                     	        alt56=6;
                     	        }
@@ -14424,7 +14419,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 1 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9798:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
                     	            {
-                    	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_ObjectTypeVariable7027); if (state.failed) return element;
+                    	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_ObjectTypeVariable7027); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14440,7 +14435,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_243, 230));
                     	              			
                     	            }
-                    	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7047); if (state.failed) return element;
+                    	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7047); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14512,7 +14507,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 2 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9866:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
                     	            {
-                    	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_ObjectTypeVariable7114); if (state.failed) return element;
+                    	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_ObjectTypeVariable7114); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14528,7 +14523,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_245, 233));
                     	              			
                     	            }
-                    	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7134); if (state.failed) return element;
+                    	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7134); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14590,7 +14585,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 3 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9919:8: a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type )
                     	            {
-                    	            a8=(Token)match(input,47,FOLLOW_47_in_parse_org_kermeta_language_structure_ObjectTypeVariable7196); if (state.failed) return element;
+                    	            a8=(Token)match(input,48,FOLLOW_48_in_parse_org_kermeta_language_structure_ObjectTypeVariable7196); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14606,7 +14601,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_246, 236));
                     	              			
                     	            }
-                    	            a9=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7216); if (state.failed) return element;
+                    	            a9=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7216); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14679,7 +14674,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 4 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:9983:8: a11= 'typeContainer' a12= ':' (a13= IDENTIFIER )
                     	            {
-                    	            a11=(Token)match(input,43,FOLLOW_43_in_parse_org_kermeta_language_structure_ObjectTypeVariable7278); if (state.failed) return element;
+                    	            a11=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_ObjectTypeVariable7278); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14695,7 +14690,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_247, 239));
                     	              			
                     	            }
-                    	            a12=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7298); if (state.failed) return element;
+                    	            a12=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7298); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14767,7 +14762,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 5 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10051:8: a14= 'name' a15= ':' (a16= IDENTIFIER )
                     	            {
-                    	            a14=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_ObjectTypeVariable7365); if (state.failed) return element;
+                    	            a14=(Token)match(input,45,FOLLOW_45_in_parse_org_kermeta_language_structure_ObjectTypeVariable7365); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14783,7 +14778,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_249, 242));
                     	              			
                     	            }
-                    	            a15=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7385); if (state.failed) return element;
+                    	            a15=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7385); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14851,7 +14846,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 6 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10115:8: a17= 'supertype' a18= ':' (a19= IDENTIFIER )
                     	            {
-                    	            a17=(Token)match(input,58,FOLLOW_58_in_parse_org_kermeta_language_structure_ObjectTypeVariable7452); if (state.failed) return element;
+                    	            a17=(Token)match(input,59,FOLLOW_59_in_parse_org_kermeta_language_structure_ObjectTypeVariable7452); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14867,7 +14862,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_251, 245));
                     	              			
                     	            }
-                    	            a18=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7472); if (state.failed) return element;
+                    	            a18=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7472); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -14960,7 +14955,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_98, 248));
                       	
                     }
-                    a20=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_ObjectTypeVariable7544); if (state.failed) return element;
+                    a20=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_ObjectTypeVariable7544); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -15111,7 +15106,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10279:1: (a0= 'ModelTypeVariable' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'name' a15= ':' (a16= IDENTIFIER ) | a17= 'supertype' a18= ':' (a19= IDENTIFIER ) | a20= 'virtualType' a21= ':' (a22_0= parse_org_kermeta_language_structure_VirtualType ) ) )* a23= '}' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10280:2: a0= 'ModelTypeVariable' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'name' a15= ':' (a16= IDENTIFIER ) | a17= 'supertype' a18= ':' (a19= IDENTIFIER ) | a20= 'virtualType' a21= ':' (a22_0= parse_org_kermeta_language_structure_VirtualType ) ) )* a23= '}'
             {
-            a0=(Token)match(input,59,FOLLOW_59_in_parse_org_kermeta_language_structure_ModelTypeVariable7588); if (state.failed) return element;
+            a0=(Token)match(input,60,FOLLOW_60_in_parse_org_kermeta_language_structure_ModelTypeVariable7588); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -15127,7 +15122,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_253, 250));
               	
             }
-            a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_ModelTypeVariable7602); if (state.failed) return element;
+            a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_ModelTypeVariable7602); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -15156,7 +15151,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt60=2;
                 int LA60_0 = input.LA(1);
 
-                if ( ((LA60_0>=39 && LA60_0<=40)||(LA60_0>=43 && LA60_0<=44)||LA60_0==47||LA60_0==58||LA60_0==60) ) {
+                if ( ((LA60_0>=40 && LA60_0<=41)||(LA60_0>=44 && LA60_0<=45)||LA60_0==48||LA60_0==59||LA60_0==61) ) {
                     alt60=1;
                 }
 
@@ -15168,37 +15163,37 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10312:3: (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'name' a15= ':' (a16= IDENTIFIER ) | a17= 'supertype' a18= ':' (a19= IDENTIFIER ) | a20= 'virtualType' a21= ':' (a22_0= parse_org_kermeta_language_structure_VirtualType ) )
             	    int alt59=7;
             	    switch ( input.LA(1) ) {
-            	    case 39:
+            	    case 40:
             	        {
             	        alt59=1;
             	        }
             	        break;
-            	    case 40:
+            	    case 41:
             	        {
             	        alt59=2;
             	        }
             	        break;
-            	    case 47:
+            	    case 48:
             	        {
             	        alt59=3;
             	        }
             	        break;
-            	    case 43:
+            	    case 44:
             	        {
             	        alt59=4;
             	        }
             	        break;
-            	    case 44:
+            	    case 45:
             	        {
             	        alt59=5;
             	        }
             	        break;
-            	    case 58:
+            	    case 59:
             	        {
             	        alt59=6;
             	        }
             	        break;
-            	    case 60:
+            	    case 61:
             	        {
             	        alt59=7;
             	        }
@@ -15215,7 +15210,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 1 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10313:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
             	            {
-            	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_ModelTypeVariable7625); if (state.failed) return element;
+            	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_ModelTypeVariable7625); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15231,7 +15226,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_254, 252));
             	              			
             	            }
-            	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable7645); if (state.failed) return element;
+            	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable7645); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15304,7 +15299,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 2 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10382:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
             	            {
-            	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_ModelTypeVariable7712); if (state.failed) return element;
+            	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_ModelTypeVariable7712); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15320,7 +15315,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_256, 255));
             	              			
             	            }
-            	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable7732); if (state.failed) return element;
+            	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable7732); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15383,7 +15378,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 3 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10436:8: a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type )
             	            {
-            	            a8=(Token)match(input,47,FOLLOW_47_in_parse_org_kermeta_language_structure_ModelTypeVariable7794); if (state.failed) return element;
+            	            a8=(Token)match(input,48,FOLLOW_48_in_parse_org_kermeta_language_structure_ModelTypeVariable7794); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15399,7 +15394,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_257, 258));
             	              			
             	            }
-            	            a9=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable7814); if (state.failed) return element;
+            	            a9=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable7814); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15473,7 +15468,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 4 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10501:8: a11= 'typeContainer' a12= ':' (a13= IDENTIFIER )
             	            {
-            	            a11=(Token)match(input,43,FOLLOW_43_in_parse_org_kermeta_language_structure_ModelTypeVariable7876); if (state.failed) return element;
+            	            a11=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_ModelTypeVariable7876); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15489,7 +15484,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_258, 261));
             	              			
             	            }
-            	            a12=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable7896); if (state.failed) return element;
+            	            a12=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable7896); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15562,7 +15557,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 5 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10570:8: a14= 'name' a15= ':' (a16= IDENTIFIER )
             	            {
-            	            a14=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_ModelTypeVariable7963); if (state.failed) return element;
+            	            a14=(Token)match(input,45,FOLLOW_45_in_parse_org_kermeta_language_structure_ModelTypeVariable7963); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15578,7 +15573,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_260, 264));
             	              			
             	            }
-            	            a15=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable7983); if (state.failed) return element;
+            	            a15=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable7983); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15647,7 +15642,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 6 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10635:8: a17= 'supertype' a18= ':' (a19= IDENTIFIER )
             	            {
-            	            a17=(Token)match(input,58,FOLLOW_58_in_parse_org_kermeta_language_structure_ModelTypeVariable8050); if (state.failed) return element;
+            	            a17=(Token)match(input,59,FOLLOW_59_in_parse_org_kermeta_language_structure_ModelTypeVariable8050); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15663,7 +15658,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_262, 267));
             	              			
             	            }
-            	            a18=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable8070); if (state.failed) return element;
+            	            a18=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable8070); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15736,7 +15731,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 7 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10704:8: a20= 'virtualType' a21= ':' (a22_0= parse_org_kermeta_language_structure_VirtualType )
             	            {
-            	            a20=(Token)match(input,60,FOLLOW_60_in_parse_org_kermeta_language_structure_ModelTypeVariable8137); if (state.failed) return element;
+            	            a20=(Token)match(input,61,FOLLOW_61_in_parse_org_kermeta_language_structure_ModelTypeVariable8137); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15752,7 +15747,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_264, 270));
             	              			
             	            }
-            	            a21=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable8157); if (state.failed) return element;
+            	            a21=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable8157); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -15837,7 +15832,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_106, 273));
               	
             }
-            a23=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_ModelTypeVariable8224); if (state.failed) return element;
+            a23=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_ModelTypeVariable8224); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -15978,7 +15973,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10851:1: (a0= 'VirtualType' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'name' a15= ':' (a16= IDENTIFIER ) | a17= 'supertype' a18= ':' (a19= IDENTIFIER ) | a20= 'classDefinition' a21= ':' (a22= IDENTIFIER ) | a23= 'modelType' a24= ':' (a25= IDENTIFIER ) | a26= 'typeParamBinding' a27= ':' (a28_0= parse_org_kermeta_language_structure_TypeVariableBinding ) ) )* a29= '}' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10852:2: a0= 'VirtualType' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'name' a15= ':' (a16= IDENTIFIER ) | a17= 'supertype' a18= ':' (a19= IDENTIFIER ) | a20= 'classDefinition' a21= ':' (a22= IDENTIFIER ) | a23= 'modelType' a24= ':' (a25= IDENTIFIER ) | a26= 'typeParamBinding' a27= ':' (a28_0= parse_org_kermeta_language_structure_TypeVariableBinding ) ) )* a29= '}'
             {
-            a0=(Token)match(input,61,FOLLOW_61_in_parse_org_kermeta_language_structure_VirtualType8253); if (state.failed) return element;
+            a0=(Token)match(input,62,FOLLOW_62_in_parse_org_kermeta_language_structure_VirtualType8253); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -15994,7 +15989,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_265, 275));
               	
             }
-            a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_VirtualType8267); if (state.failed) return element;
+            a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_VirtualType8267); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -16025,7 +16020,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt62=2;
                 int LA62_0 = input.LA(1);
 
-                if ( ((LA62_0>=39 && LA62_0<=40)||(LA62_0>=43 && LA62_0<=44)||LA62_0==47||LA62_0==58||(LA62_0>=62 && LA62_0<=64)) ) {
+                if ( ((LA62_0>=40 && LA62_0<=41)||(LA62_0>=44 && LA62_0<=45)||LA62_0==48||LA62_0==59||(LA62_0>=63 && LA62_0<=65)) ) {
                     alt62=1;
                 }
 
@@ -16037,47 +16032,47 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10886:3: (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'name' a15= ':' (a16= IDENTIFIER ) | a17= 'supertype' a18= ':' (a19= IDENTIFIER ) | a20= 'classDefinition' a21= ':' (a22= IDENTIFIER ) | a23= 'modelType' a24= ':' (a25= IDENTIFIER ) | a26= 'typeParamBinding' a27= ':' (a28_0= parse_org_kermeta_language_structure_TypeVariableBinding ) )
             	    int alt61=9;
             	    switch ( input.LA(1) ) {
-            	    case 39:
+            	    case 40:
             	        {
             	        alt61=1;
             	        }
             	        break;
-            	    case 40:
+            	    case 41:
             	        {
             	        alt61=2;
             	        }
             	        break;
-            	    case 47:
+            	    case 48:
             	        {
             	        alt61=3;
             	        }
             	        break;
-            	    case 43:
+            	    case 44:
             	        {
             	        alt61=4;
             	        }
             	        break;
-            	    case 44:
+            	    case 45:
             	        {
             	        alt61=5;
             	        }
             	        break;
-            	    case 58:
+            	    case 59:
             	        {
             	        alt61=6;
             	        }
             	        break;
-            	    case 62:
+            	    case 63:
             	        {
             	        alt61=7;
             	        }
             	        break;
-            	    case 63:
+            	    case 64:
             	        {
             	        alt61=8;
             	        }
             	        break;
-            	    case 64:
+            	    case 65:
             	        {
             	        alt61=9;
             	        }
@@ -16094,7 +16089,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 1 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10887:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
             	            {
-            	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_VirtualType8290); if (state.failed) return element;
+            	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_VirtualType8290); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16110,7 +16105,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_266, 277));
             	              			
             	            }
-            	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8310); if (state.failed) return element;
+            	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8310); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16185,7 +16180,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 2 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:10958:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
             	            {
-            	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_VirtualType8377); if (state.failed) return element;
+            	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_VirtualType8377); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16201,7 +16196,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_268, 280));
             	              			
             	            }
-            	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8397); if (state.failed) return element;
+            	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8397); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16266,7 +16261,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 3 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11014:8: a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type )
             	            {
-            	            a8=(Token)match(input,47,FOLLOW_47_in_parse_org_kermeta_language_structure_VirtualType8459); if (state.failed) return element;
+            	            a8=(Token)match(input,48,FOLLOW_48_in_parse_org_kermeta_language_structure_VirtualType8459); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16282,7 +16277,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_269, 283));
             	              			
             	            }
-            	            a9=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8479); if (state.failed) return element;
+            	            a9=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8479); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16358,7 +16353,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 4 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11081:8: a11= 'typeContainer' a12= ':' (a13= IDENTIFIER )
             	            {
-            	            a11=(Token)match(input,43,FOLLOW_43_in_parse_org_kermeta_language_structure_VirtualType8541); if (state.failed) return element;
+            	            a11=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_VirtualType8541); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16374,7 +16369,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_270, 286));
             	              			
             	            }
-            	            a12=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8561); if (state.failed) return element;
+            	            a12=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8561); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16449,7 +16444,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 5 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11152:8: a14= 'name' a15= ':' (a16= IDENTIFIER )
             	            {
-            	            a14=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_VirtualType8628); if (state.failed) return element;
+            	            a14=(Token)match(input,45,FOLLOW_45_in_parse_org_kermeta_language_structure_VirtualType8628); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16465,7 +16460,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_272, 289));
             	              			
             	            }
-            	            a15=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8648); if (state.failed) return element;
+            	            a15=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8648); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16536,7 +16531,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 6 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11219:8: a17= 'supertype' a18= ':' (a19= IDENTIFIER )
             	            {
-            	            a17=(Token)match(input,58,FOLLOW_58_in_parse_org_kermeta_language_structure_VirtualType8715); if (state.failed) return element;
+            	            a17=(Token)match(input,59,FOLLOW_59_in_parse_org_kermeta_language_structure_VirtualType8715); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16552,7 +16547,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_274, 292));
             	              			
             	            }
-            	            a18=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8735); if (state.failed) return element;
+            	            a18=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8735); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16627,7 +16622,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 7 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11290:8: a20= 'classDefinition' a21= ':' (a22= IDENTIFIER )
             	            {
-            	            a20=(Token)match(input,62,FOLLOW_62_in_parse_org_kermeta_language_structure_VirtualType8802); if (state.failed) return element;
+            	            a20=(Token)match(input,63,FOLLOW_63_in_parse_org_kermeta_language_structure_VirtualType8802); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16643,7 +16638,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_276, 295));
             	              			
             	            }
-            	            a21=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8822); if (state.failed) return element;
+            	            a21=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8822); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16718,7 +16713,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 8 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11361:8: a23= 'modelType' a24= ':' (a25= IDENTIFIER )
             	            {
-            	            a23=(Token)match(input,63,FOLLOW_63_in_parse_org_kermeta_language_structure_VirtualType8889); if (state.failed) return element;
+            	            a23=(Token)match(input,64,FOLLOW_64_in_parse_org_kermeta_language_structure_VirtualType8889); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16734,7 +16729,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_278, 298));
             	              			
             	            }
-            	            a24=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8909); if (state.failed) return element;
+            	            a24=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8909); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16809,7 +16804,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 9 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11432:8: a26= 'typeParamBinding' a27= ':' (a28_0= parse_org_kermeta_language_structure_TypeVariableBinding )
             	            {
-            	            a26=(Token)match(input,64,FOLLOW_64_in_parse_org_kermeta_language_structure_VirtualType8976); if (state.failed) return element;
+            	            a26=(Token)match(input,65,FOLLOW_65_in_parse_org_kermeta_language_structure_VirtualType8976); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16825,7 +16820,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_280, 301));
             	              			
             	            }
-            	            a27=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8996); if (state.failed) return element;
+            	            a27=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8996); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -16914,7 +16909,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_116, 304));
               	
             }
-            a29=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_VirtualType9063); if (state.failed) return element;
+            a29=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_VirtualType9063); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -17042,7 +17037,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11583:1: (a0= 'ProductType' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'type' a15= ':' (a16= IDENTIFIER ) ) )* a17= '}' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11584:2: a0= 'ProductType' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'type' a15= ':' (a16= IDENTIFIER ) ) )* a17= '}'
             {
-            a0=(Token)match(input,65,FOLLOW_65_in_parse_org_kermeta_language_structure_ProductType9092); if (state.failed) return element;
+            a0=(Token)match(input,66,FOLLOW_66_in_parse_org_kermeta_language_structure_ProductType9092); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -17058,7 +17053,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_281, 306));
               	
             }
-            a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_ProductType9106); if (state.failed) return element;
+            a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_ProductType9106); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -17085,7 +17080,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt64=2;
                 int LA64_0 = input.LA(1);
 
-                if ( ((LA64_0>=39 && LA64_0<=40)||LA64_0==43||LA64_0==47||LA64_0==49) ) {
+                if ( ((LA64_0>=40 && LA64_0<=41)||LA64_0==44||LA64_0==48||LA64_0==50) ) {
                     alt64=1;
                 }
 
@@ -17097,27 +17092,27 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11614:3: (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'type' a15= ':' (a16= IDENTIFIER ) )
             	    int alt63=5;
             	    switch ( input.LA(1) ) {
-            	    case 39:
+            	    case 40:
             	        {
             	        alt63=1;
             	        }
             	        break;
-            	    case 40:
+            	    case 41:
             	        {
             	        alt63=2;
             	        }
             	        break;
-            	    case 47:
+            	    case 48:
             	        {
             	        alt63=3;
             	        }
             	        break;
-            	    case 43:
+            	    case 44:
             	        {
             	        alt63=4;
             	        }
             	        break;
-            	    case 49:
+            	    case 50:
             	        {
             	        alt63=5;
             	        }
@@ -17134,7 +17129,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 1 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11615:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
             	            {
-            	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_ProductType9129); if (state.failed) return element;
+            	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_ProductType9129); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17150,7 +17145,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_282, 308));
             	              			
             	            }
-            	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ProductType9149); if (state.failed) return element;
+            	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ProductType9149); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17221,7 +17216,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 2 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11682:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
             	            {
-            	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_ProductType9216); if (state.failed) return element;
+            	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_ProductType9216); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17237,7 +17232,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_284, 311));
             	              			
             	            }
-            	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ProductType9236); if (state.failed) return element;
+            	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ProductType9236); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17298,7 +17293,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 3 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11734:8: a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type )
             	            {
-            	            a8=(Token)match(input,47,FOLLOW_47_in_parse_org_kermeta_language_structure_ProductType9298); if (state.failed) return element;
+            	            a8=(Token)match(input,48,FOLLOW_48_in_parse_org_kermeta_language_structure_ProductType9298); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17314,7 +17309,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_285, 314));
             	              			
             	            }
-            	            a9=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ProductType9318); if (state.failed) return element;
+            	            a9=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ProductType9318); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17386,7 +17381,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 4 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11797:8: a11= 'typeContainer' a12= ':' (a13= IDENTIFIER )
             	            {
-            	            a11=(Token)match(input,43,FOLLOW_43_in_parse_org_kermeta_language_structure_ProductType9380); if (state.failed) return element;
+            	            a11=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_ProductType9380); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17402,7 +17397,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_286, 317));
             	              			
             	            }
-            	            a12=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ProductType9400); if (state.failed) return element;
+            	            a12=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ProductType9400); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17473,7 +17468,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 5 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:11864:8: a14= 'type' a15= ':' (a16= IDENTIFIER )
             	            {
-            	            a14=(Token)match(input,49,FOLLOW_49_in_parse_org_kermeta_language_structure_ProductType9467); if (state.failed) return element;
+            	            a14=(Token)match(input,50,FOLLOW_50_in_parse_org_kermeta_language_structure_ProductType9467); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17489,7 +17484,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_288, 320));
             	              			
             	            }
-            	            a15=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_ProductType9487); if (state.failed) return element;
+            	            a15=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_ProductType9487); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17580,7 +17575,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_122, 323));
               	
             }
-            a17=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_ProductType9559); if (state.failed) return element;
+            a17=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_ProductType9559); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -17711,7 +17706,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:12022:1: (a0= 'FunctionType' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'left' a15= ':' (a16= IDENTIFIER ) | a17= 'right' a18= ':' (a19= IDENTIFIER ) ) )* a20= '}' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:12023:2: a0= 'FunctionType' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'left' a15= ':' (a16= IDENTIFIER ) | a17= 'right' a18= ':' (a19= IDENTIFIER ) ) )* a20= '}'
             {
-            a0=(Token)match(input,66,FOLLOW_66_in_parse_org_kermeta_language_structure_FunctionType9588); if (state.failed) return element;
+            a0=(Token)match(input,67,FOLLOW_67_in_parse_org_kermeta_language_structure_FunctionType9588); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -17727,7 +17722,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_290, 325));
               	
             }
-            a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_structure_FunctionType9602); if (state.failed) return element;
+            a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_FunctionType9602); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -17755,7 +17750,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt66=2;
                 int LA66_0 = input.LA(1);
 
-                if ( ((LA66_0>=39 && LA66_0<=40)||LA66_0==43||LA66_0==47||(LA66_0>=67 && LA66_0<=68)) ) {
+                if ( ((LA66_0>=40 && LA66_0<=41)||LA66_0==44||LA66_0==48||(LA66_0>=68 && LA66_0<=69)) ) {
                     alt66=1;
                 }
 
@@ -17767,32 +17762,32 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:12054:3: (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'typeContainer' a12= ':' (a13= IDENTIFIER ) | a14= 'left' a15= ':' (a16= IDENTIFIER ) | a17= 'right' a18= ':' (a19= IDENTIFIER ) )
             	    int alt65=6;
             	    switch ( input.LA(1) ) {
-            	    case 39:
+            	    case 40:
             	        {
             	        alt65=1;
             	        }
             	        break;
-            	    case 40:
+            	    case 41:
             	        {
             	        alt65=2;
             	        }
             	        break;
-            	    case 47:
+            	    case 48:
             	        {
             	        alt65=3;
             	        }
             	        break;
-            	    case 43:
+            	    case 44:
             	        {
             	        alt65=4;
             	        }
             	        break;
-            	    case 67:
+            	    case 68:
             	        {
             	        alt65=5;
             	        }
             	        break;
-            	    case 68:
+            	    case 69:
             	        {
             	        alt65=6;
             	        }
@@ -17809,7 +17804,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 1 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:12055:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
             	            {
-            	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_structure_FunctionType9625); if (state.failed) return element;
+            	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_FunctionType9625); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17825,7 +17820,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_291, 327));
             	              			
             	            }
-            	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType9645); if (state.failed) return element;
+            	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType9645); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17897,7 +17892,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 2 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:12123:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
             	            {
-            	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_structure_FunctionType9712); if (state.failed) return element;
+            	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_structure_FunctionType9712); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17913,7 +17908,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_293, 330));
             	              			
             	            }
-            	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType9732); if (state.failed) return element;
+            	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType9732); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17975,7 +17970,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 3 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:12176:8: a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type )
             	            {
-            	            a8=(Token)match(input,47,FOLLOW_47_in_parse_org_kermeta_language_structure_FunctionType9794); if (state.failed) return element;
+            	            a8=(Token)match(input,48,FOLLOW_48_in_parse_org_kermeta_language_structure_FunctionType9794); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -17991,7 +17986,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_294, 333));
             	              			
             	            }
-            	            a9=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType9814); if (state.failed) return element;
+            	            a9=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType9814); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -18064,7 +18059,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 4 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:12240:8: a11= 'typeContainer' a12= ':' (a13= IDENTIFIER )
             	            {
-            	            a11=(Token)match(input,43,FOLLOW_43_in_parse_org_kermeta_language_structure_FunctionType9876); if (state.failed) return element;
+            	            a11=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_structure_FunctionType9876); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -18080,7 +18075,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_295, 336));
             	              			
             	            }
-            	            a12=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType9896); if (state.failed) return element;
+            	            a12=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType9896); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -18152,7 +18147,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 5 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:12308:8: a14= 'left' a15= ':' (a16= IDENTIFIER )
             	            {
-            	            a14=(Token)match(input,67,FOLLOW_67_in_parse_org_kermeta_language_structure_FunctionType9963); if (state.failed) return element;
+            	            a14=(Token)match(input,68,FOLLOW_68_in_parse_org_kermeta_language_structure_FunctionType9963); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -18168,7 +18163,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_297, 339));
             	              			
             	            }
-            	            a15=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType9983); if (state.failed) return element;
+            	            a15=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType9983); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -18240,7 +18235,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 6 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:12376:8: a17= 'right' a18= ':' (a19= IDENTIFIER )
             	            {
-            	            a17=(Token)match(input,68,FOLLOW_68_in_parse_org_kermeta_language_structure_FunctionType10050); if (state.failed) return element;
+            	            a17=(Token)match(input,69,FOLLOW_69_in_parse_org_kermeta_language_structure_FunctionType10050); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -18256,7 +18251,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_299, 342));
             	              			
             	            }
-            	            a18=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType10070); if (state.failed) return element;
+            	            a18=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType10070); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -18349,7 +18344,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_129, 345));
               	
             }
-            a20=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_structure_FunctionType10142); if (state.failed) return element;
+            a20=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_structure_FunctionType10142); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -18483,7 +18478,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:12536:1: (a0= 'do' ( ( (a1_0= parse_org_kermeta_language_behavior_VariableDecl ) | (a2_0= parse_org_kermeta_language_behavior_Loop ) | (a3_0= parse_org_kermeta_language_behavior_Conditional ) | (a4_0= parse_org_kermeta_language_behavior_Assignment ) | (a5_0= parse_org_kermeta_language_behavior_CallFeature ) | (a6_0= parse_org_kermeta_language_behavior_CallVariable ) | (a7_0= parse_org_kermeta_language_behavior_CallSuperOperation ) | (a8_0= parse_org_kermeta_language_behavior_CallResult ) | (a9_0= parse_org_kermeta_language_behavior_JavaStaticCall ) | (a10_0= parse_org_kermeta_language_behavior_EmptyExpression ) | (a11_0= parse_org_kermeta_language_behavior_Block ) ) )* ( ( (a12_0= parse_org_kermeta_language_behavior_Rescue ) ) )* a13= 'end' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:12537:2: a0= 'do' ( ( (a1_0= parse_org_kermeta_language_behavior_VariableDecl ) | (a2_0= parse_org_kermeta_language_behavior_Loop ) | (a3_0= parse_org_kermeta_language_behavior_Conditional ) | (a4_0= parse_org_kermeta_language_behavior_Assignment ) | (a5_0= parse_org_kermeta_language_behavior_CallFeature ) | (a6_0= parse_org_kermeta_language_behavior_CallVariable ) | (a7_0= parse_org_kermeta_language_behavior_CallSuperOperation ) | (a8_0= parse_org_kermeta_language_behavior_CallResult ) | (a9_0= parse_org_kermeta_language_behavior_JavaStaticCall ) | (a10_0= parse_org_kermeta_language_behavior_EmptyExpression ) | (a11_0= parse_org_kermeta_language_behavior_Block ) ) )* ( ( (a12_0= parse_org_kermeta_language_behavior_Rescue ) ) )* a13= 'end'
             {
-            a0=(Token)match(input,69,FOLLOW_69_in_parse_org_kermeta_language_behavior_Block10171); if (state.failed) return element;
+            a0=(Token)match(input,70,FOLLOW_70_in_parse_org_kermeta_language_behavior_Block10171); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -18520,7 +18515,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt68=2;
                 int LA68_0 = input.LA(1);
 
-                if ( (LA68_0==IDENTIFIER||(LA68_0>=INTEGER && LA68_0<=BOOLEAN)||LA68_0==32||LA68_0==69||LA68_0==73||LA68_0==76||LA68_0==79||(LA68_0>=81 && LA68_0<=82)||LA68_0==85||(LA68_0>=92 && LA68_0<=93)) ) {
+                if ( (LA68_0==IDENTIFIER||(LA68_0>=INTEGER && LA68_0<=BOOLEAN)||LA68_0==33||LA68_0==70||LA68_0==74||LA68_0==77||LA68_0==80||(LA68_0>=82 && LA68_0<=83)||LA68_0==86||(LA68_0>=93 && LA68_0<=94)) ) {
                     alt68=1;
                 }
 
@@ -19177,7 +19172,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt69=2;
                 int LA69_0 = input.LA(1);
 
-                if ( (LA69_0==71) ) {
+                if ( (LA69_0==72) ) {
                     alt69=1;
                 }
 
@@ -19243,7 +19238,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_302, 361));
               	
             }
-            a13=(Token)match(input,70,FOLLOW_70_in_parse_org_kermeta_language_behavior_Block10717); if (state.failed) return element;
+            a13=(Token)match(input,71,FOLLOW_71_in_parse_org_kermeta_language_behavior_Block10717); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -19336,7 +19331,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:13094:1: (a0= 'rescue' ( (a1= '(' (a2= IDENTIFIER ) a3= ':' (a4_0= parse_org_kermeta_language_behavior_TypeReference ) a5= ')' ) )? ( ( (a6_0= parse_org_kermeta_language_behavior_Expression ) ) )? )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:13095:2: a0= 'rescue' ( (a1= '(' (a2= IDENTIFIER ) a3= ':' (a4_0= parse_org_kermeta_language_behavior_TypeReference ) a5= ')' ) )? ( ( (a6_0= parse_org_kermeta_language_behavior_Expression ) ) )?
             {
-            a0=(Token)match(input,71,FOLLOW_71_in_parse_org_kermeta_language_behavior_Rescue10746); if (state.failed) return element;
+            a0=(Token)match(input,72,FOLLOW_72_in_parse_org_kermeta_language_behavior_Rescue10746); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -19377,13 +19372,13 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt70=2;
             int LA70_0 = input.LA(1);
 
-            if ( (LA70_0==32) ) {
+            if ( (LA70_0==33) ) {
                 int LA70_1 = input.LA(2);
 
                 if ( (LA70_1==IDENTIFIER) ) {
                     int LA70_3 = input.LA(3);
 
-                    if ( (LA70_3==27) ) {
+                    if ( (LA70_3==28) ) {
                         alt70=1;
                     }
                 }
@@ -19395,7 +19390,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:13129:3: (a1= '(' (a2= IDENTIFIER ) a3= ':' (a4_0= parse_org_kermeta_language_behavior_TypeReference ) a5= ')' )
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:13130:4: a1= '(' (a2= IDENTIFIER ) a3= ':' (a4_0= parse_org_kermeta_language_behavior_TypeReference ) a5= ')'
                     {
-                    a1=(Token)match(input,32,FOLLOW_32_in_parse_org_kermeta_language_behavior_Rescue10769); if (state.failed) return element;
+                    a1=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_Rescue10769); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       				if (element == null) {
@@ -19451,7 +19446,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_314, 365));
                       			
                     }
-                    a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_Rescue10828); if (state.failed) return element;
+                    a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_Rescue10828); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       				if (element == null) {
@@ -19501,7 +19496,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_315, 367));
                       			
                     }
-                    a5=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_Rescue10882); if (state.failed) return element;
+                    a5=(Token)match(input,34,FOLLOW_34_in_parse_org_kermeta_language_behavior_Rescue10882); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       				if (element == null) {
@@ -19576,7 +19571,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt71=2;
             int LA71_0 = input.LA(1);
 
-            if ( (LA71_0==IDENTIFIER||(LA71_0>=INTEGER && LA71_0<=BOOLEAN)||LA71_0==32||LA71_0==37||LA71_0==55||LA71_0==69||(LA71_0>=72 && LA71_0<=73)||LA71_0==76||LA71_0==79||(LA71_0>=81 && LA71_0<=82)||LA71_0==85||(LA71_0>=92 && LA71_0<=93)||LA71_0==95) ) {
+            if ( (LA71_0==IDENTIFIER||(LA71_0>=INTEGER && LA71_0<=BOOLEAN)||LA71_0==33||LA71_0==38||LA71_0==56||LA71_0==70||(LA71_0>=73 && LA71_0<=74)||LA71_0==77||LA71_0==80||(LA71_0>=82 && LA71_0<=83)||LA71_0==86||(LA71_0>=93 && LA71_0<=94)||LA71_0==96) ) {
                 alt71=1;
             }
             switch (alt71) {
@@ -19789,7 +19784,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:13395:1: (a0= 'raise' (a1_0= parse_org_kermeta_language_behavior_Expression ) )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:13396:2: a0= 'raise' (a1_0= parse_org_kermeta_language_behavior_Expression )
             {
-            a0=(Token)match(input,72,FOLLOW_72_in_parse_org_kermeta_language_behavior_Raise11026); if (state.failed) return element;
+            a0=(Token)match(input,73,FOLLOW_73_in_parse_org_kermeta_language_behavior_Raise11026); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -20284,7 +20279,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:13714:1: (a0= 'if' ( (a1_0= parse_org_kermeta_language_behavior_CallFeature ) | (a2_0= parse_org_kermeta_language_behavior_Conditional ) ) a3= 'then' ( (a4_0= parse_org_kermeta_language_behavior_BooleanLiteral ) | (a5_0= parse_org_kermeta_language_behavior_Block ) | (a6_0= parse_org_kermeta_language_behavior_Assignment ) | (a7_0= parse_org_kermeta_language_behavior_CallFeature ) | (a8_0= parse_org_kermeta_language_behavior_CallSuperOperation ) | (a9_0= parse_org_kermeta_language_behavior_CallResult ) | (a10_0= parse_org_kermeta_language_behavior_CallVariable ) | (a11_0= parse_org_kermeta_language_behavior_CallValue ) | (a12_0= parse_org_kermeta_language_behavior_VariableDecl ) ) ( (a13= 'else' (a14_0= parse_org_kermeta_language_behavior_BooleanLiteral ) | (a15_0= parse_org_kermeta_language_behavior_Block ) | (a16_0= parse_org_kermeta_language_behavior_Assignment ) | (a17_0= parse_org_kermeta_language_behavior_CallFeature ) | (a18_0= parse_org_kermeta_language_behavior_CallSuperOperation ) | (a19_0= parse_org_kermeta_language_behavior_CallResult ) | (a20_0= parse_org_kermeta_language_behavior_VariableDecl ) (a21_0= parse_org_kermeta_language_behavior_CallVariable ) | (a22_0= parse_org_kermeta_language_behavior_CallValue ) ) )? a23= 'end' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:13715:2: a0= 'if' ( (a1_0= parse_org_kermeta_language_behavior_CallFeature ) | (a2_0= parse_org_kermeta_language_behavior_Conditional ) ) a3= 'then' ( (a4_0= parse_org_kermeta_language_behavior_BooleanLiteral ) | (a5_0= parse_org_kermeta_language_behavior_Block ) | (a6_0= parse_org_kermeta_language_behavior_Assignment ) | (a7_0= parse_org_kermeta_language_behavior_CallFeature ) | (a8_0= parse_org_kermeta_language_behavior_CallSuperOperation ) | (a9_0= parse_org_kermeta_language_behavior_CallResult ) | (a10_0= parse_org_kermeta_language_behavior_CallVariable ) | (a11_0= parse_org_kermeta_language_behavior_CallValue ) | (a12_0= parse_org_kermeta_language_behavior_VariableDecl ) ) ( (a13= 'else' (a14_0= parse_org_kermeta_language_behavior_BooleanLiteral ) | (a15_0= parse_org_kermeta_language_behavior_Block ) | (a16_0= parse_org_kermeta_language_behavior_Assignment ) | (a17_0= parse_org_kermeta_language_behavior_CallFeature ) | (a18_0= parse_org_kermeta_language_behavior_CallSuperOperation ) | (a19_0= parse_org_kermeta_language_behavior_CallResult ) | (a20_0= parse_org_kermeta_language_behavior_VariableDecl ) (a21_0= parse_org_kermeta_language_behavior_CallVariable ) | (a22_0= parse_org_kermeta_language_behavior_CallValue ) ) )? a23= 'end'
             {
-            a0=(Token)match(input,73,FOLLOW_73_in_parse_org_kermeta_language_behavior_Conditional11197); if (state.failed) return element;
+            a0=(Token)match(input,74,FOLLOW_74_in_parse_org_kermeta_language_behavior_Conditional11197); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -20312,10 +20307,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt72=2;
             int LA72_0 = input.LA(1);
 
-            if ( (LA72_0==IDENTIFIER||(LA72_0>=INTEGER && LA72_0<=BOOLEAN)||LA72_0==32||LA72_0==81||LA72_0==85||LA72_0==92) ) {
+            if ( (LA72_0==IDENTIFIER||(LA72_0>=INTEGER && LA72_0<=BOOLEAN)||LA72_0==33||LA72_0==82||LA72_0==86||LA72_0==93) ) {
                 alt72=1;
             }
-            else if ( (LA72_0==73) ) {
+            else if ( (LA72_0==74) ) {
                 alt72=2;
             }
             else {
@@ -20415,7 +20410,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_317, 381));
               	
             }
-            a3=(Token)match(input,74,FOLLOW_74_in_parse_org_kermeta_language_behavior_Conditional11284); if (state.failed) return element;
+            a3=(Token)match(input,75,FOLLOW_75_in_parse_org_kermeta_language_behavior_Conditional11284); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -20949,7 +20944,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt75=2;
             int LA75_0 = input.LA(1);
 
-            if ( (LA75_0==IDENTIFIER||(LA75_0>=INTEGER && LA75_0<=BOOLEAN)||LA75_0==32||LA75_0==55||LA75_0==69||LA75_0==75||LA75_0==79||(LA75_0>=81 && LA75_0<=82)||LA75_0==85||LA75_0==92) ) {
+            if ( (LA75_0==IDENTIFIER||(LA75_0>=INTEGER && LA75_0<=BOOLEAN)||LA75_0==33||LA75_0==56||LA75_0==70||LA75_0==76||LA75_0==80||(LA75_0>=82 && LA75_0<=83)||LA75_0==86||LA75_0==93) ) {
                 alt75=1;
             }
             switch (alt75) {
@@ -20963,7 +20958,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         case 1 :
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14155:4: a13= 'else' (a14_0= parse_org_kermeta_language_behavior_BooleanLiteral )
                             {
-                            a13=(Token)match(input,75,FOLLOW_75_in_parse_org_kermeta_language_behavior_Conditional11618); if (state.failed) return element;
+                            a13=(Token)match(input,76,FOLLOW_76_in_parse_org_kermeta_language_behavior_Conditional11618); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               				if (element == null) {
@@ -21346,7 +21341,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_305, 403));
               	
             }
-            a23=(Token)match(input,70,FOLLOW_70_in_parse_org_kermeta_language_behavior_Conditional12013); if (state.failed) return element;
+            a23=(Token)match(input,71,FOLLOW_71_in_parse_org_kermeta_language_behavior_Conditional12013); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -21439,7 +21434,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14436:1: (a0= 'from' ( ( (a1_0= parse_org_kermeta_language_behavior_Expression ) ) )? a2= 'until' (a3_0= parse_org_kermeta_language_behavior_Expression ) ( (a4= 'loop' ( (a5_0= parse_org_kermeta_language_behavior_Expression ) ) ) )? )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14437:2: a0= 'from' ( ( (a1_0= parse_org_kermeta_language_behavior_Expression ) ) )? a2= 'until' (a3_0= parse_org_kermeta_language_behavior_Expression ) ( (a4= 'loop' ( (a5_0= parse_org_kermeta_language_behavior_Expression ) ) ) )?
             {
-            a0=(Token)match(input,76,FOLLOW_76_in_parse_org_kermeta_language_behavior_Loop12042); if (state.failed) return element;
+            a0=(Token)match(input,77,FOLLOW_77_in_parse_org_kermeta_language_behavior_Loop12042); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -21478,7 +21473,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt76=2;
             int LA76_0 = input.LA(1);
 
-            if ( (LA76_0==IDENTIFIER||(LA76_0>=INTEGER && LA76_0<=BOOLEAN)||LA76_0==32||LA76_0==37||LA76_0==55||LA76_0==69||(LA76_0>=72 && LA76_0<=73)||LA76_0==76||LA76_0==79||(LA76_0>=81 && LA76_0<=82)||LA76_0==85||(LA76_0>=92 && LA76_0<=93)||LA76_0==95) ) {
+            if ( (LA76_0==IDENTIFIER||(LA76_0>=INTEGER && LA76_0<=BOOLEAN)||LA76_0==33||LA76_0==38||LA76_0==56||LA76_0==70||(LA76_0>=73 && LA76_0<=74)||LA76_0==77||LA76_0==80||(LA76_0>=82 && LA76_0<=83)||LA76_0==86||(LA76_0>=93 && LA76_0<=94)||LA76_0==96) ) {
                 alt76=1;
             }
             switch (alt76) {
@@ -21537,7 +21532,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_303, 407));
               	
             }
-            a2=(Token)match(input,77,FOLLOW_77_in_parse_org_kermeta_language_behavior_Loop12112); if (state.failed) return element;
+            a2=(Token)match(input,78,FOLLOW_78_in_parse_org_kermeta_language_behavior_Loop12112); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -21649,7 +21644,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt77=2;
             int LA77_0 = input.LA(1);
 
-            if ( (LA77_0==78) ) {
+            if ( (LA77_0==79) ) {
                 int LA77_1 = input.LA(2);
 
                 if ( (synpred197_Kermeta()) ) {
@@ -21663,7 +21658,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14592:3: (a4= 'loop' ( (a5_0= parse_org_kermeta_language_behavior_Expression ) ) )
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14593:4: a4= 'loop' ( (a5_0= parse_org_kermeta_language_behavior_Expression ) )
                     {
-                    a4=(Token)match(input,78,FOLLOW_78_in_parse_org_kermeta_language_behavior_Loop12157); if (state.failed) return element;
+                    a4=(Token)match(input,79,FOLLOW_79_in_parse_org_kermeta_language_behavior_Loop12157); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       				if (element == null) {
@@ -21912,7 +21907,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14781:1: (a0= 'var' (a1= IDENTIFIER ) a2= ':' (a3_0= parse_org_kermeta_language_behavior_TypeReference ) ( (a4= 'init' (a5_0= parse_org_kermeta_language_behavior_Expression ) ) )? )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14782:2: a0= 'var' (a1= IDENTIFIER ) a2= ':' (a3_0= parse_org_kermeta_language_behavior_TypeReference ) ( (a4= 'init' (a5_0= parse_org_kermeta_language_behavior_Expression ) ) )?
             {
-            a0=(Token)match(input,79,FOLLOW_79_in_parse_org_kermeta_language_behavior_VariableDecl12264); if (state.failed) return element;
+            a0=(Token)match(input,80,FOLLOW_80_in_parse_org_kermeta_language_behavior_VariableDecl12264); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -21968,7 +21963,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_320, 415));
               	
             }
-            a2=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_VariableDecl12303); if (state.failed) return element;
+            a2=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_VariableDecl12303); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -22062,7 +22057,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt78=2;
             int LA78_0 = input.LA(1);
 
-            if ( (LA78_0==80) ) {
+            if ( (LA78_0==81) ) {
                 alt78=1;
             }
             switch (alt78) {
@@ -22072,7 +22067,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14902:3: (a4= 'init' (a5_0= parse_org_kermeta_language_behavior_Expression ) )
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14903:4: a4= 'init' (a5_0= parse_org_kermeta_language_behavior_Expression )
                     {
-                    a4=(Token)match(input,80,FOLLOW_80_in_parse_org_kermeta_language_behavior_VariableDecl12348); if (state.failed) return element;
+                    a4=(Token)match(input,81,FOLLOW_81_in_parse_org_kermeta_language_behavior_VariableDecl12348); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       				if (element == null) {
@@ -22364,7 +22359,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:15109:1: (a0= 'result' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:15110:2: a0= 'result'
             {
-            a0=(Token)match(input,81,FOLLOW_81_in_parse_org_kermeta_language_behavior_CallResult12467); if (state.failed) return element;
+            a0=(Token)match(input,82,FOLLOW_82_in_parse_org_kermeta_language_behavior_CallResult12467); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -22458,7 +22453,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:15168:1: (a0= 'super' a1= '(' ( ( (a2_0= parse_org_kermeta_language_behavior_Expression ) ( (a3= ',' (a4_0= parse_org_kermeta_language_behavior_Expression ) ) )* ) )? a5= ')' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:15169:2: a0= 'super' a1= '(' ( ( (a2_0= parse_org_kermeta_language_behavior_Expression ) ( (a3= ',' (a4_0= parse_org_kermeta_language_behavior_Expression ) ) )* ) )? a5= ')'
             {
-            a0=(Token)match(input,82,FOLLOW_82_in_parse_org_kermeta_language_behavior_CallSuperOperation12496); if (state.failed) return element;
+            a0=(Token)match(input,83,FOLLOW_83_in_parse_org_kermeta_language_behavior_CallSuperOperation12496); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -22474,7 +22469,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_323, 423));
               	
             }
-            a1=(Token)match(input,32,FOLLOW_32_in_parse_org_kermeta_language_behavior_CallSuperOperation12510); if (state.failed) return element;
+            a1=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_CallSuperOperation12510); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -22513,7 +22508,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt80=2;
             int LA80_0 = input.LA(1);
 
-            if ( (LA80_0==IDENTIFIER||(LA80_0>=INTEGER && LA80_0<=BOOLEAN)||LA80_0==32||LA80_0==37||LA80_0==55||LA80_0==69||(LA80_0>=72 && LA80_0<=73)||LA80_0==76||LA80_0==79||(LA80_0>=81 && LA80_0<=82)||LA80_0==85||(LA80_0>=92 && LA80_0<=93)||LA80_0==95) ) {
+            if ( (LA80_0==IDENTIFIER||(LA80_0>=INTEGER && LA80_0<=BOOLEAN)||LA80_0==33||LA80_0==38||LA80_0==56||LA80_0==70||(LA80_0>=73 && LA80_0<=74)||LA80_0==77||LA80_0==80||(LA80_0>=82 && LA80_0<=83)||LA80_0==86||(LA80_0>=93 && LA80_0<=94)||LA80_0==96) ) {
                 alt80=1;
             }
             switch (alt80) {
@@ -22564,7 +22559,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         int alt79=2;
                         int LA79_0 = input.LA(1);
 
-                        if ( (LA79_0==24) ) {
+                        if ( (LA79_0==25) ) {
                             alt79=1;
                         }
 
@@ -22576,7 +22571,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:15238:5: (a3= ',' (a4_0= parse_org_kermeta_language_behavior_Expression ) )
                     	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:15239:6: a3= ',' (a4_0= parse_org_kermeta_language_behavior_Expression )
                     	    {
-                    	    a3=(Token)match(input,24,FOLLOW_24_in_parse_org_kermeta_language_behavior_CallSuperOperation12580); if (state.failed) return element;
+                    	    a3=(Token)match(input,25,FOLLOW_25_in_parse_org_kermeta_language_behavior_CallSuperOperation12580); if (state.failed) return element;
                     	    if ( state.backtracking==0 ) {
 
                     	      						if (element == null) {
@@ -22679,7 +22674,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_307, 429));
               	
             }
-            a5=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_CallSuperOperation12688); if (state.failed) return element;
+            a5=(Token)match(input,34,FOLLOW_34_in_parse_org_kermeta_language_behavior_CallSuperOperation12688); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -22800,9 +22795,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
             switch ( input.LA(1) ) {
             case INTEGER:
             case BOOLEAN:
-            case 32:
-            case 85:
-            case 92:
+            case 33:
+            case 86:
+            case 93:
                 {
                 alt81=1;
                 }
@@ -22826,7 +22821,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 }
                 }
                 break;
-            case 81:
+            case 82:
                 {
                 int LA81_3 = input.LA(2);
 
@@ -22994,7 +22989,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt82=2;
             int LA82_0 = input.LA(1);
 
-            if ( (LA82_0==83) ) {
+            if ( (LA82_0==84) ) {
                 alt82=1;
             }
             else if ( (LA82_0==CASTED) ) {
@@ -23011,7 +23006,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 case 1 :
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:15445:4: a3= ':='
                     {
-                    a3=(Token)match(input,83,FOLLOW_83_in_parse_org_kermeta_language_behavior_Assignment12859); if (state.failed) return element;
+                    a3=(Token)match(input,84,FOLLOW_84_in_parse_org_kermeta_language_behavior_Assignment12859); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       				if (element == null) {
@@ -23083,7 +23078,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                       				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_324, 436));
                       			
                     }
-                    a5=(Token)match(input,84,FOLLOW_84_in_parse_org_kermeta_language_behavior_Assignment12926); if (state.failed) return element;
+                    a5=(Token)match(input,85,FOLLOW_85_in_parse_org_kermeta_language_behavior_Assignment12926); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       				if (element == null) {
@@ -24057,7 +24052,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             if ( (LA84_0==IDENTIFIER) ) {
                 alt84=1;
             }
-            else if ( (LA84_0==81) ) {
+            else if ( (LA84_0==82) ) {
                 alt84=2;
             }
             else {
@@ -24198,7 +24193,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16338:1: (a0= 'self' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16339:2: a0= 'self'
             {
-            a0=(Token)match(input,85,FOLLOW_85_in_parse_org_kermeta_language_behavior_SelfExpression13460); if (state.failed) return element;
+            a0=(Token)match(input,86,FOLLOW_86_in_parse_org_kermeta_language_behavior_SelfExpression13460); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -24361,10 +24356,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt103=2;
             int LA103_0 = input.LA(1);
 
-            if ( (LA103_0==32) ) {
+            if ( (LA103_0==33) ) {
                 alt103=1;
             }
-            else if ( (LA103_0==IDENTIFIER||(LA103_0>=INTEGER && LA103_0<=BOOLEAN)||LA103_0==81||LA103_0==85||LA103_0==92) ) {
+            else if ( (LA103_0==IDENTIFIER||(LA103_0>=INTEGER && LA103_0<=BOOLEAN)||LA103_0==82||LA103_0==86||LA103_0==93) ) {
                 alt103=2;
             }
             else {
@@ -24378,7 +24373,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 case 1 :
                     // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16393:2: a0= '(' ( (a1_0= parse_org_kermeta_language_behavior_BooleanLiteral ) | (a2_0= parse_org_kermeta_language_behavior_CallVariable ) | (a3_0= parse_org_kermeta_language_behavior_JavaStaticCall ) | (a4_0= parse_org_kermeta_language_behavior_SelfExpression ) | (a5_0= parse_org_kermeta_language_behavior_StringLiteral ) | (a6_0= parse_org_kermeta_language_behavior_IntegerLiteral ) ) ( (a7= '.' (a8= IDENTIFIER ) | a9= '.' (a10= IDENTIFIER ) a11= '(' ( ( (a12_0= parse_org_kermeta_language_behavior_Expression ) ( (a13= ',' (a14_0= parse_org_kermeta_language_behavior_Expression ) ) )* ) )? a15= ')' | a16= '.' (a17= IDENTIFIER ) | a18= '.' (a19= IDENTIFIER ) ) )* (a20= '==' (a21_0= parse_org_kermeta_language_behavior_Expression ) a22= ')' | ( ( (a23= '+' | a24= '-' | a25= '/' | a26= '*' ) (a27_0= parse_org_kermeta_language_behavior_Expression ) ) )* a28= ')' ( ( (a29= '+' | a30= '-' | a31= '/' | a32= '*' ) (a33_0= parse_org_kermeta_language_behavior_Expression ) ) )* )
                     {
-                    a0=(Token)match(input,32,FOLLOW_32_in_parse_org_kermeta_language_behavior_CallFeature13489); if (state.failed) return element;
+                    a0=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature13489); if (state.failed) return element;
                     if ( state.backtracking==0 ) {
 
                       		if (element == null) {
@@ -24427,17 +24422,17 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         }
                         }
                         break;
-                    case 81:
+                    case 82:
                         {
                         alt85=2;
                         }
                         break;
-                    case 92:
+                    case 93:
                         {
                         alt85=3;
                         }
                         break;
-                    case 85:
+                    case 86:
                         {
                         alt85=4;
                         }
@@ -24774,7 +24769,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         int alt89=2;
                         int LA89_0 = input.LA(1);
 
-                        if ( (LA89_0==86) ) {
+                        if ( (LA89_0==87) ) {
                             alt89=1;
                         }
 
@@ -24787,13 +24782,13 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	    int alt88=4;
                     	    int LA88_0 = input.LA(1);
 
-                    	    if ( (LA88_0==86) ) {
+                    	    if ( (LA88_0==87) ) {
                     	        int LA88_1 = input.LA(2);
 
                     	        if ( (LA88_1==IDENTIFIER) ) {
                     	            int LA88_2 = input.LA(3);
 
-                    	            if ( (LA88_2==32) ) {
+                    	            if ( (LA88_2==33) ) {
                     	                alt88=2;
                     	            }
                     	            else if ( (synpred219_Kermeta()) ) {
@@ -24832,7 +24827,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 1 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16620:4: a7= '.' (a8= IDENTIFIER )
                     	            {
-                    	            a7=(Token)match(input,86,FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature13721); if (state.failed) return element;
+                    	            a7=(Token)match(input,87,FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature13721); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -24907,7 +24902,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 2 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16679:8: a9= '.' (a10= IDENTIFIER ) a11= '(' ( ( (a12_0= parse_org_kermeta_language_behavior_Expression ) ( (a13= ',' (a14_0= parse_org_kermeta_language_behavior_Expression ) ) )* ) )? a15= ')'
                     	            {
-                    	            a9=(Token)match(input,86,FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature13788); if (state.failed) return element;
+                    	            a9=(Token)match(input,87,FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature13788); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -24967,7 +24962,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_337, 464));
                     	              			
                     	            }
-                    	            a11=(Token)match(input,32,FOLLOW_32_in_parse_org_kermeta_language_behavior_CallFeature13847); if (state.failed) return element;
+                    	            a11=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature13847); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -25006,7 +25001,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	            int alt87=2;
                     	            int LA87_0 = input.LA(1);
 
-                    	            if ( (LA87_0==IDENTIFIER||(LA87_0>=INTEGER && LA87_0<=BOOLEAN)||LA87_0==32||LA87_0==37||LA87_0==55||LA87_0==69||(LA87_0>=72 && LA87_0<=73)||LA87_0==76||LA87_0==79||(LA87_0>=81 && LA87_0<=82)||LA87_0==85||(LA87_0>=92 && LA87_0<=93)||LA87_0==95) ) {
+                    	            if ( (LA87_0==IDENTIFIER||(LA87_0>=INTEGER && LA87_0<=BOOLEAN)||LA87_0==33||LA87_0==38||LA87_0==56||LA87_0==70||(LA87_0>=73 && LA87_0<=74)||LA87_0==77||LA87_0==80||(LA87_0>=82 && LA87_0<=83)||LA87_0==86||(LA87_0>=93 && LA87_0<=94)||LA87_0==96) ) {
                     	                alt87=1;
                     	            }
                     	            switch (alt87) {
@@ -25057,7 +25052,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	                        int alt86=2;
                     	                        int LA86_0 = input.LA(1);
 
-                    	                        if ( (LA86_0==24) ) {
+                    	                        if ( (LA86_0==25) ) {
                     	                            alt86=1;
                     	                        }
 
@@ -25069,7 +25064,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16785:7: (a13= ',' (a14_0= parse_org_kermeta_language_behavior_Expression ) )
                     	                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16786:8: a13= ',' (a14_0= parse_org_kermeta_language_behavior_Expression )
                     	                    	    {
-                    	                    	    a13=(Token)match(input,24,FOLLOW_24_in_parse_org_kermeta_language_behavior_CallFeature13943); if (state.failed) return element;
+                    	                    	    a13=(Token)match(input,25,FOLLOW_25_in_parse_org_kermeta_language_behavior_CallFeature13943); if (state.failed) return element;
                     	                    	    if ( state.backtracking==0 ) {
 
                     	                    	      								if (element == null) {
@@ -25172,7 +25167,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_309, 470));
                     	              			
                     	            }
-                    	            a15=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature14089); if (state.failed) return element;
+                    	            a15=(Token)match(input,34,FOLLOW_34_in_parse_org_kermeta_language_behavior_CallFeature14089); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -25203,7 +25198,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 3 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16876:8: a16= '.' (a17= IDENTIFIER )
                     	            {
-                    	            a16=(Token)match(input,86,FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature14117); if (state.failed) return element;
+                    	            a16=(Token)match(input,87,FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature14117); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -25278,7 +25273,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 4 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16935:8: a18= '.' (a19= IDENTIFIER )
                     	            {
-                    	            a18=(Token)match(input,86,FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature14184); if (state.failed) return element;
+                    	            a18=(Token)match(input,87,FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature14184); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -25381,10 +25376,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     int alt94=2;
                     int LA94_0 = input.LA(1);
 
-                    if ( (LA94_0==87) ) {
+                    if ( (LA94_0==88) ) {
                         alt94=1;
                     }
-                    else if ( (LA94_0==33||(LA94_0>=88 && LA94_0<=91)) ) {
+                    else if ( (LA94_0==34||(LA94_0>=89 && LA94_0<=92)) ) {
                         alt94=2;
                     }
                     else {
@@ -25398,7 +25393,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         case 1 :
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17010:3: a20= '==' (a21_0= parse_org_kermeta_language_behavior_Expression ) a22= ')'
                             {
-                            a20=(Token)match(input,87,FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature14260); if (state.failed) return element;
+                            a20=(Token)match(input,88,FOLLOW_88_in_parse_org_kermeta_language_behavior_CallFeature14260); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               			if (element == null) {
@@ -25466,7 +25461,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                               			addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_340, 478));
                               		
                             }
-                            a22=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature14305); if (state.failed) return element;
+                            a22=(Token)match(input,34,FOLLOW_34_in_parse_org_kermeta_language_behavior_CallFeature14305); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               			if (element == null) {
@@ -25535,7 +25530,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                                 int alt91=2;
                                 int LA91_0 = input.LA(1);
 
-                                if ( ((LA91_0>=88 && LA91_0<=91)) ) {
+                                if ( ((LA91_0>=89 && LA91_0<=92)) ) {
                                     alt91=1;
                                 }
 
@@ -25550,22 +25545,22 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17118:5: (a23= '+' | a24= '-' | a25= '/' | a26= '*' )
                             	    int alt90=4;
                             	    switch ( input.LA(1) ) {
-                            	    case 88:
+                            	    case 89:
                             	        {
                             	        alt90=1;
                             	        }
                             	        break;
-                            	    case 89:
+                            	    case 90:
                             	        {
                             	        alt90=2;
                             	        }
                             	        break;
-                            	    case 90:
+                            	    case 91:
                             	        {
                             	        alt90=3;
                             	        }
                             	        break;
-                            	    case 91:
+                            	    case 92:
                             	        {
                             	        alt90=4;
                             	        }
@@ -25582,7 +25577,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 1 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17119:6: a23= '+'
                             	            {
-                            	            a23=(Token)match(input,88,FOLLOW_88_in_parse_org_kermeta_language_behavior_CallFeature14346); if (state.failed) return element;
+                            	            a23=(Token)match(input,89,FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature14346); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -25622,7 +25617,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 2 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17150:12: a24= '-'
                             	            {
-                            	            a24=(Token)match(input,89,FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature14384); if (state.failed) return element;
+                            	            a24=(Token)match(input,90,FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature14384); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -25662,7 +25657,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 3 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17181:12: a25= '/'
                             	            {
-                            	            a25=(Token)match(input,90,FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature14422); if (state.failed) return element;
+                            	            a25=(Token)match(input,91,FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature14422); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -25702,7 +25697,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 4 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17212:12: a26= '*'
                             	            {
-                            	            a26=(Token)match(input,91,FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature14460); if (state.failed) return element;
+                            	            a26=(Token)match(input,92,FOLLOW_92_in_parse_org_kermeta_language_behavior_CallFeature14460); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -25826,7 +25821,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                               			addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_334, 486));
                               		
                             }
-                            a28=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature14560); if (state.failed) return element;
+                            a28=(Token)match(input,34,FOLLOW_34_in_parse_org_kermeta_language_behavior_CallFeature14560); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               			if (element == null) {
@@ -25892,7 +25887,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             do {
                                 int alt93=2;
                                 switch ( input.LA(1) ) {
-                                case 88:
+                                case 89:
                                     {
                                     int LA93_2 = input.LA(2);
 
@@ -25903,7 +25898,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
                                     }
                                     break;
-                                case 89:
+                                case 90:
                                     {
                                     int LA93_3 = input.LA(2);
 
@@ -25914,7 +25909,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
                                     }
                                     break;
-                                case 90:
+                                case 91:
                                     {
                                     int LA93_4 = input.LA(2);
 
@@ -25925,7 +25920,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
                                     }
                                     break;
-                                case 91:
+                                case 92:
                                     {
                                     int LA93_5 = input.LA(2);
 
@@ -25949,22 +25944,22 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17362:5: (a29= '+' | a30= '-' | a31= '/' | a32= '*' )
                             	    int alt92=4;
                             	    switch ( input.LA(1) ) {
-                            	    case 88:
+                            	    case 89:
                             	        {
                             	        alt92=1;
                             	        }
                             	        break;
-                            	    case 89:
+                            	    case 90:
                             	        {
                             	        alt92=2;
                             	        }
                             	        break;
-                            	    case 90:
+                            	    case 91:
                             	        {
                             	        alt92=3;
                             	        }
                             	        break;
-                            	    case 91:
+                            	    case 92:
                             	        {
                             	        alt92=4;
                             	        }
@@ -25981,7 +25976,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 1 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17363:6: a29= '+'
                             	            {
-                            	            a29=(Token)match(input,88,FOLLOW_88_in_parse_org_kermeta_language_behavior_CallFeature14595); if (state.failed) return element;
+                            	            a29=(Token)match(input,89,FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature14595); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -26021,7 +26016,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 2 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17394:12: a30= '-'
                             	            {
-                            	            a30=(Token)match(input,89,FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature14633); if (state.failed) return element;
+                            	            a30=(Token)match(input,90,FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature14633); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -26061,7 +26056,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 3 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17425:12: a31= '/'
                             	            {
-                            	            a31=(Token)match(input,90,FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature14671); if (state.failed) return element;
+                            	            a31=(Token)match(input,91,FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature14671); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -26101,7 +26096,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 4 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17456:12: a32= '*'
                             	            {
-                            	            a32=(Token)match(input,91,FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature14709); if (state.failed) return element;
+                            	            a32=(Token)match(input,92,FOLLOW_92_in_parse_org_kermeta_language_behavior_CallFeature14709); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -26393,17 +26388,17 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         }
                         }
                         break;
-                    case 81:
+                    case 82:
                         {
                         alt95=2;
                         }
                         break;
-                    case 92:
+                    case 93:
                         {
                         alt95=3;
                         }
                         break;
-                    case 85:
+                    case 86:
                         {
                         alt95=4;
                         }
@@ -27027,7 +27022,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         int alt99=2;
                         int LA99_0 = input.LA(1);
 
-                        if ( (LA99_0==86) ) {
+                        if ( (LA99_0==87) ) {
                             alt99=1;
                         }
 
@@ -27040,13 +27035,13 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	    int alt98=4;
                     	    int LA98_0 = input.LA(1);
 
-                    	    if ( (LA98_0==86) ) {
+                    	    if ( (LA98_0==87) ) {
                     	        int LA98_1 = input.LA(2);
 
                     	        if ( (LA98_1==IDENTIFIER) ) {
                     	            int LA98_2 = input.LA(3);
 
-                    	            if ( (LA98_2==32) ) {
+                    	            if ( (LA98_2==33) ) {
                     	                alt98=2;
                     	            }
                     	            else if ( (synpred240_Kermeta()) ) {
@@ -27085,7 +27080,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 1 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18173:4: a40= '.' (a41= IDENTIFIER )
                     	            {
-                    	            a40=(Token)match(input,86,FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature15038); if (state.failed) return element;
+                    	            a40=(Token)match(input,87,FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature15038); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -27201,7 +27196,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 2 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18273:8: a42= '.' (a43= IDENTIFIER ) a44= '(' ( ( (a45_0= parse_org_kermeta_language_behavior_Expression ) ( (a46= ',' (a47_0= parse_org_kermeta_language_behavior_Expression ) ) )* ) )? a48= ')'
                     	            {
-                    	            a42=(Token)match(input,86,FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature15105); if (state.failed) return element;
+                    	            a42=(Token)match(input,87,FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature15105); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -27261,7 +27256,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_356, 506));
                     	              			
                     	            }
-                    	            a44=(Token)match(input,32,FOLLOW_32_in_parse_org_kermeta_language_behavior_CallFeature15164); if (state.failed) return element;
+                    	            a44=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature15164); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -27300,7 +27295,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	            int alt97=2;
                     	            int LA97_0 = input.LA(1);
 
-                    	            if ( (LA97_0==IDENTIFIER||(LA97_0>=INTEGER && LA97_0<=BOOLEAN)||LA97_0==32||LA97_0==37||LA97_0==55||LA97_0==69||(LA97_0>=72 && LA97_0<=73)||LA97_0==76||LA97_0==79||(LA97_0>=81 && LA97_0<=82)||LA97_0==85||(LA97_0>=92 && LA97_0<=93)||LA97_0==95) ) {
+                    	            if ( (LA97_0==IDENTIFIER||(LA97_0>=INTEGER && LA97_0<=BOOLEAN)||LA97_0==33||LA97_0==38||LA97_0==56||LA97_0==70||(LA97_0>=73 && LA97_0<=74)||LA97_0==77||LA97_0==80||(LA97_0>=82 && LA97_0<=83)||LA97_0==86||(LA97_0>=93 && LA97_0<=94)||LA97_0==96) ) {
                     	                alt97=1;
                     	            }
                     	            switch (alt97) {
@@ -27351,7 +27346,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	                        int alt96=2;
                     	                        int LA96_0 = input.LA(1);
 
-                    	                        if ( (LA96_0==24) ) {
+                    	                        if ( (LA96_0==25) ) {
                     	                            alt96=1;
                     	                        }
 
@@ -27363,7 +27358,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18379:7: (a46= ',' (a47_0= parse_org_kermeta_language_behavior_Expression ) )
                     	                    	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18380:8: a46= ',' (a47_0= parse_org_kermeta_language_behavior_Expression )
                     	                    	    {
-                    	                    	    a46=(Token)match(input,24,FOLLOW_24_in_parse_org_kermeta_language_behavior_CallFeature15260); if (state.failed) return element;
+                    	                    	    a46=(Token)match(input,25,FOLLOW_25_in_parse_org_kermeta_language_behavior_CallFeature15260); if (state.failed) return element;
                     	                    	    if ( state.backtracking==0 ) {
 
                     	                    	      								if (element == null) {
@@ -27466,7 +27461,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_357, 512));
                     	              			
                     	            }
-                    	            a48=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature15406); if (state.failed) return element;
+                    	            a48=(Token)match(input,34,FOLLOW_34_in_parse_org_kermeta_language_behavior_CallFeature15406); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -27538,7 +27533,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 3 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18511:8: a49= '.' (a50= IDENTIFIER )
                     	            {
-                    	            a49=(Token)match(input,86,FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature15434); if (state.failed) return element;
+                    	            a49=(Token)match(input,87,FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature15434); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -27654,7 +27649,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	        case 4 :
                     	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18611:8: a51= '.' (a52= IDENTIFIER )
                     	            {
-                    	            a51=(Token)match(input,86,FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature15501); if (state.failed) return element;
+                    	            a51=(Token)match(input,87,FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature15501); if (state.failed) return element;
                     	            if ( state.backtracking==0 ) {
 
                     	              				if (element == null) {
@@ -27839,10 +27834,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     int alt102=2;
                     int LA102_0 = input.LA(1);
 
-                    if ( (LA102_0==87) ) {
+                    if ( (LA102_0==88) ) {
                         alt102=1;
                     }
-                    else if ( (LA102_0==EOF||LA102_0==IDENTIFIER||(LA102_0>=INTEGER && LA102_0<=CASTED)||LA102_0==19||(LA102_0>=24 && LA102_0<=26)||LA102_0==28||(LA102_0>=30 && LA102_0<=33)||(LA102_0>=39 && LA102_0<=40)||LA102_0==47||LA102_0==55||(LA102_0>=69 && LA102_0<=71)||(LA102_0>=73 && LA102_0<=79)||(LA102_0>=81 && LA102_0<=83)||LA102_0==85||(LA102_0>=88 && LA102_0<=94)||(LA102_0>=96 && LA102_0<=97)) ) {
+                    else if ( (LA102_0==EOF||LA102_0==IDENTIFIER||(LA102_0>=INTEGER && LA102_0<=CASTED)||LA102_0==20||(LA102_0>=25 && LA102_0<=27)||LA102_0==29||(LA102_0>=31 && LA102_0<=34)||(LA102_0>=40 && LA102_0<=41)||LA102_0==48||LA102_0==56||(LA102_0>=70 && LA102_0<=72)||(LA102_0>=74 && LA102_0<=80)||(LA102_0>=82 && LA102_0<=84)||LA102_0==86||(LA102_0>=89 && LA102_0<=95)||(LA102_0>=97 && LA102_0<=98)) ) {
                         alt102=2;
                     }
                     else {
@@ -27856,7 +27851,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         case 1 :
                             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18768:3: a53= '==' (a54_0= parse_org_kermeta_language_behavior_Expression )
                             {
-                            a53=(Token)match(input,87,FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature15577); if (state.failed) return element;
+                            a53=(Token)match(input,88,FOLLOW_88_in_parse_org_kermeta_language_behavior_CallFeature15577); if (state.failed) return element;
                             if ( state.backtracking==0 ) {
 
                               			if (element == null) {
@@ -27976,7 +27971,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             do {
                                 int alt101=2;
                                 switch ( input.LA(1) ) {
-                                case 88:
+                                case 89:
                                     {
                                     int LA101_2 = input.LA(2);
 
@@ -27987,7 +27982,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
                                     }
                                     break;
-                                case 89:
+                                case 90:
                                     {
                                     int LA101_3 = input.LA(2);
 
@@ -27998,7 +27993,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
                                     }
                                     break;
-                                case 90:
+                                case 91:
                                     {
                                     int LA101_4 = input.LA(2);
 
@@ -28009,7 +28004,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
 
                                     }
                                     break;
-                                case 91:
+                                case 92:
                                     {
                                     int LA101_5 = input.LA(2);
 
@@ -28033,22 +28028,22 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18864:5: (a55= '+' | a56= '-' | a57= '/' | a58= '*' )
                             	    int alt100=4;
                             	    switch ( input.LA(1) ) {
-                            	    case 88:
+                            	    case 89:
                             	        {
                             	        alt100=1;
                             	        }
                             	        break;
-                            	    case 89:
+                            	    case 90:
                             	        {
                             	        alt100=2;
                             	        }
                             	        break;
-                            	    case 90:
+                            	    case 91:
                             	        {
                             	        alt100=3;
                             	        }
                             	        break;
-                            	    case 91:
+                            	    case 92:
                             	        {
                             	        alt100=4;
                             	        }
@@ -28065,7 +28060,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 1 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18865:6: a55= '+'
                             	            {
-                            	            a55=(Token)match(input,88,FOLLOW_88_in_parse_org_kermeta_language_behavior_CallFeature15646); if (state.failed) return element;
+                            	            a55=(Token)match(input,89,FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature15646); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -28105,7 +28100,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 2 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18896:12: a56= '-'
                             	            {
-                            	            a56=(Token)match(input,89,FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature15684); if (state.failed) return element;
+                            	            a56=(Token)match(input,90,FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature15684); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -28145,7 +28140,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 3 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18927:12: a57= '/'
                             	            {
-                            	            a57=(Token)match(input,90,FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature15722); if (state.failed) return element;
+                            	            a57=(Token)match(input,91,FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature15722); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -28185,7 +28180,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                             	        case 4 :
                             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18958:12: a58= '*'
                             	            {
-                            	            a58=(Token)match(input,91,FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature15760); if (state.failed) return element;
+                            	            a58=(Token)match(input,92,FOLLOW_92_in_parse_org_kermeta_language_behavior_CallFeature15760); if (state.failed) return element;
                             	            if ( state.backtracking==0 ) {
 
                             	              						if (element == null) {
@@ -28486,7 +28481,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19183:1: (a0= 'extern' (a1= IDENTIFIER ) a2= '.' (a3= IDENTIFIER ) a4= '(' ( ( (a5_0= parse_org_kermeta_language_behavior_Expression ) ( (a6= ',' (a7_0= parse_org_kermeta_language_behavior_Expression ) ) )* ) )? a8= ')' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19184:2: a0= 'extern' (a1= IDENTIFIER ) a2= '.' (a3= IDENTIFIER ) a4= '(' ( ( (a5_0= parse_org_kermeta_language_behavior_Expression ) ( (a6= ',' (a7_0= parse_org_kermeta_language_behavior_Expression ) ) )* ) )? a8= ')'
             {
-            a0=(Token)match(input,92,FOLLOW_92_in_parse_org_kermeta_language_behavior_JavaStaticCall15882); if (state.failed) return element;
+            a0=(Token)match(input,93,FOLLOW_93_in_parse_org_kermeta_language_behavior_JavaStaticCall15882); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -28542,7 +28537,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_362, 530));
               	
             }
-            a2=(Token)match(input,86,FOLLOW_86_in_parse_org_kermeta_language_behavior_JavaStaticCall15921); if (state.failed) return element;
+            a2=(Token)match(input,87,FOLLOW_87_in_parse_org_kermeta_language_behavior_JavaStaticCall15921); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -28598,7 +28593,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_364, 532));
               	
             }
-            a4=(Token)match(input,32,FOLLOW_32_in_parse_org_kermeta_language_behavior_JavaStaticCall15960); if (state.failed) return element;
+            a4=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_JavaStaticCall15960); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -28637,7 +28632,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt105=2;
             int LA105_0 = input.LA(1);
 
-            if ( (LA105_0==IDENTIFIER||(LA105_0>=INTEGER && LA105_0<=BOOLEAN)||LA105_0==32||LA105_0==37||LA105_0==55||LA105_0==69||(LA105_0>=72 && LA105_0<=73)||LA105_0==76||LA105_0==79||(LA105_0>=81 && LA105_0<=82)||LA105_0==85||(LA105_0>=92 && LA105_0<=93)||LA105_0==95) ) {
+            if ( (LA105_0==IDENTIFIER||(LA105_0>=INTEGER && LA105_0<=BOOLEAN)||LA105_0==33||LA105_0==38||LA105_0==56||LA105_0==70||(LA105_0>=73 && LA105_0<=74)||LA105_0==77||LA105_0==80||(LA105_0>=82 && LA105_0<=83)||LA105_0==86||(LA105_0>=93 && LA105_0<=94)||LA105_0==96) ) {
                 alt105=1;
             }
             switch (alt105) {
@@ -28688,7 +28683,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                         int alt104=2;
                         int LA104_0 = input.LA(1);
 
-                        if ( (LA104_0==24) ) {
+                        if ( (LA104_0==25) ) {
                             alt104=1;
                         }
 
@@ -28700,7 +28695,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19331:5: (a6= ',' (a7_0= parse_org_kermeta_language_behavior_Expression ) )
                     	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19332:6: a6= ',' (a7_0= parse_org_kermeta_language_behavior_Expression )
                     	    {
-                    	    a6=(Token)match(input,24,FOLLOW_24_in_parse_org_kermeta_language_behavior_JavaStaticCall16030); if (state.failed) return element;
+                    	    a6=(Token)match(input,25,FOLLOW_25_in_parse_org_kermeta_language_behavior_JavaStaticCall16030); if (state.failed) return element;
                     	    if ( state.backtracking==0 ) {
 
                     	      						if (element == null) {
@@ -28803,7 +28798,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_311, 538));
               	
             }
-            a8=(Token)match(input,33,FOLLOW_33_in_parse_org_kermeta_language_behavior_JavaStaticCall16138); if (state.failed) return element;
+            a8=(Token)match(input,34,FOLLOW_34_in_parse_org_kermeta_language_behavior_JavaStaticCall16138); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -28888,7 +28883,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19456:1: (a0= 'Void' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19457:2: a0= 'Void'
             {
-            a0=(Token)match(input,37,FOLLOW_37_in_parse_org_kermeta_language_behavior_VoidLiteral16167); if (state.failed) return element;
+            a0=(Token)match(input,38,FOLLOW_38_in_parse_org_kermeta_language_behavior_VoidLiteral16167); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -28970,7 +28965,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19510:1: (a0= 'value' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19511:2: a0= 'value'
             {
-            a0=(Token)match(input,55,FOLLOW_55_in_parse_org_kermeta_language_behavior_CallValue16196); if (state.failed) return element;
+            a0=(Token)match(input,56,FOLLOW_56_in_parse_org_kermeta_language_behavior_CallValue16196); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -29068,7 +29063,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19564:1: (a0= 'EmptyExpression' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'staticType' a12= ':' (a13= IDENTIFIER ) ) )* a14= '}' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19565:2: a0= 'EmptyExpression' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'staticType' a12= ':' (a13= IDENTIFIER ) ) )* a14= '}'
             {
-            a0=(Token)match(input,93,FOLLOW_93_in_parse_org_kermeta_language_behavior_EmptyExpression16225); if (state.failed) return element;
+            a0=(Token)match(input,94,FOLLOW_94_in_parse_org_kermeta_language_behavior_EmptyExpression16225); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -29084,7 +29079,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_365, 542));
               	
             }
-            a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_behavior_EmptyExpression16239); if (state.failed) return element;
+            a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_behavior_EmptyExpression16239); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -29110,7 +29105,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt107=2;
                 int LA107_0 = input.LA(1);
 
-                if ( ((LA107_0>=39 && LA107_0<=40)||LA107_0==47||LA107_0==94) ) {
+                if ( ((LA107_0>=40 && LA107_0<=41)||LA107_0==48||LA107_0==95) ) {
                     alt107=1;
                 }
 
@@ -29122,22 +29117,22 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19594:3: (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'staticType' a12= ':' (a13= IDENTIFIER ) )
             	    int alt106=4;
             	    switch ( input.LA(1) ) {
-            	    case 39:
+            	    case 40:
             	        {
             	        alt106=1;
             	        }
             	        break;
-            	    case 40:
+            	    case 41:
             	        {
             	        alt106=2;
             	        }
             	        break;
-            	    case 47:
+            	    case 48:
             	        {
             	        alt106=3;
             	        }
             	        break;
-            	    case 94:
+            	    case 95:
             	        {
             	        alt106=4;
             	        }
@@ -29154,7 +29149,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 1 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19595:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
             	            {
-            	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_behavior_EmptyExpression16262); if (state.failed) return element;
+            	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_behavior_EmptyExpression16262); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29170,7 +29165,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_366, 544));
             	              			
             	            }
-            	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_EmptyExpression16282); if (state.failed) return element;
+            	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_EmptyExpression16282); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29240,7 +29235,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 2 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19661:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
             	            {
-            	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_behavior_EmptyExpression16349); if (state.failed) return element;
+            	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_behavior_EmptyExpression16349); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29256,7 +29251,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_368, 547));
             	              			
             	            }
-            	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_EmptyExpression16369); if (state.failed) return element;
+            	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_EmptyExpression16369); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29316,7 +29311,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 3 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19712:8: a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type )
             	            {
-            	            a8=(Token)match(input,47,FOLLOW_47_in_parse_org_kermeta_language_behavior_EmptyExpression16431); if (state.failed) return element;
+            	            a8=(Token)match(input,48,FOLLOW_48_in_parse_org_kermeta_language_behavior_EmptyExpression16431); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29332,7 +29327,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_369, 550));
             	              			
             	            }
-            	            a9=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_EmptyExpression16451); if (state.failed) return element;
+            	            a9=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_EmptyExpression16451); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29403,7 +29398,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 4 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19774:8: a11= 'staticType' a12= ':' (a13= IDENTIFIER )
             	            {
-            	            a11=(Token)match(input,94,FOLLOW_94_in_parse_org_kermeta_language_behavior_EmptyExpression16513); if (state.failed) return element;
+            	            a11=(Token)match(input,95,FOLLOW_95_in_parse_org_kermeta_language_behavior_EmptyExpression16513); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29419,7 +29414,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_370, 553));
             	              			
             	            }
-            	            a12=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_EmptyExpression16533); if (state.failed) return element;
+            	            a12=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_EmptyExpression16533); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29508,7 +29503,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_134, 556));
               	
             }
-            a14=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_behavior_EmptyExpression16605); if (state.failed) return element;
+            a14=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_behavior_EmptyExpression16605); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -29617,7 +29612,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19906:1: (a0= 'LambdaExpression' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'staticType' a12= ':' (a13= IDENTIFIER ) | a14= 'parameters' a15= ':' (a16_0= parse_org_kermeta_language_behavior_LambdaParameter ) | a17= 'body' a18= ':' (a19_0= parse_org_kermeta_language_behavior_Expression ) ) )* a20= '}' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19907:2: a0= 'LambdaExpression' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'staticType' a12= ':' (a13= IDENTIFIER ) | a14= 'parameters' a15= ':' (a16_0= parse_org_kermeta_language_behavior_LambdaParameter ) | a17= 'body' a18= ':' (a19_0= parse_org_kermeta_language_behavior_Expression ) ) )* a20= '}'
             {
-            a0=(Token)match(input,95,FOLLOW_95_in_parse_org_kermeta_language_behavior_LambdaExpression16634); if (state.failed) return element;
+            a0=(Token)match(input,96,FOLLOW_96_in_parse_org_kermeta_language_behavior_LambdaExpression16634); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -29633,7 +29628,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_372, 558));
               	
             }
-            a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_behavior_LambdaExpression16648); if (state.failed) return element;
+            a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_behavior_LambdaExpression16648); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -29661,7 +29656,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt109=2;
                 int LA109_0 = input.LA(1);
 
-                if ( ((LA109_0>=39 && LA109_0<=40)||LA109_0==47||LA109_0==94||(LA109_0>=96 && LA109_0<=97)) ) {
+                if ( ((LA109_0>=40 && LA109_0<=41)||LA109_0==48||LA109_0==95||(LA109_0>=97 && LA109_0<=98)) ) {
                     alt109=1;
                 }
 
@@ -29673,32 +29668,32 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19938:3: (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type ) | a11= 'staticType' a12= ':' (a13= IDENTIFIER ) | a14= 'parameters' a15= ':' (a16_0= parse_org_kermeta_language_behavior_LambdaParameter ) | a17= 'body' a18= ':' (a19_0= parse_org_kermeta_language_behavior_Expression ) )
             	    int alt108=6;
             	    switch ( input.LA(1) ) {
-            	    case 39:
+            	    case 40:
             	        {
             	        alt108=1;
             	        }
             	        break;
-            	    case 40:
+            	    case 41:
             	        {
             	        alt108=2;
             	        }
             	        break;
-            	    case 47:
+            	    case 48:
             	        {
             	        alt108=3;
             	        }
             	        break;
-            	    case 94:
+            	    case 95:
             	        {
             	        alt108=4;
             	        }
             	        break;
-            	    case 96:
+            	    case 97:
             	        {
             	        alt108=5;
             	        }
             	        break;
-            	    case 97:
+            	    case 98:
             	        {
             	        alt108=6;
             	        }
@@ -29715,7 +29710,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 1 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:19939:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
             	            {
-            	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_behavior_LambdaExpression16671); if (state.failed) return element;
+            	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_behavior_LambdaExpression16671); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29731,7 +29726,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_373, 560));
             	              			
             	            }
-            	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression16691); if (state.failed) return element;
+            	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression16691); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29803,7 +29798,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 2 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20007:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
             	            {
-            	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_behavior_LambdaExpression16758); if (state.failed) return element;
+            	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_behavior_LambdaExpression16758); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29819,7 +29814,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_375, 563));
             	              			
             	            }
-            	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression16778); if (state.failed) return element;
+            	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression16778); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29881,7 +29876,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 3 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20060:8: a8= 'containedType' a9= ':' (a10_0= parse_org_kermeta_language_structure_Type )
             	            {
-            	            a8=(Token)match(input,47,FOLLOW_47_in_parse_org_kermeta_language_behavior_LambdaExpression16840); if (state.failed) return element;
+            	            a8=(Token)match(input,48,FOLLOW_48_in_parse_org_kermeta_language_behavior_LambdaExpression16840); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29897,7 +29892,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_376, 566));
             	              			
             	            }
-            	            a9=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression16860); if (state.failed) return element;
+            	            a9=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression16860); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29970,7 +29965,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 4 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20124:8: a11= 'staticType' a12= ':' (a13= IDENTIFIER )
             	            {
-            	            a11=(Token)match(input,94,FOLLOW_94_in_parse_org_kermeta_language_behavior_LambdaExpression16922); if (state.failed) return element;
+            	            a11=(Token)match(input,95,FOLLOW_95_in_parse_org_kermeta_language_behavior_LambdaExpression16922); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -29986,7 +29981,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_377, 569));
             	              			
             	            }
-            	            a12=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression16942); if (state.failed) return element;
+            	            a12=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression16942); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30058,7 +30053,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 5 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20192:8: a14= 'parameters' a15= ':' (a16_0= parse_org_kermeta_language_behavior_LambdaParameter )
             	            {
-            	            a14=(Token)match(input,96,FOLLOW_96_in_parse_org_kermeta_language_behavior_LambdaExpression17009); if (state.failed) return element;
+            	            a14=(Token)match(input,97,FOLLOW_97_in_parse_org_kermeta_language_behavior_LambdaExpression17009); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30074,7 +30069,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_379, 572));
             	              			
             	            }
-            	            a15=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression17029); if (state.failed) return element;
+            	            a15=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression17029); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30136,7 +30131,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 6 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20245:8: a17= 'body' a18= ':' (a19_0= parse_org_kermeta_language_behavior_Expression )
             	            {
-            	            a17=(Token)match(input,97,FOLLOW_97_in_parse_org_kermeta_language_behavior_LambdaExpression17091); if (state.failed) return element;
+            	            a17=(Token)match(input,98,FOLLOW_98_in_parse_org_kermeta_language_behavior_LambdaExpression17091); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30152,7 +30147,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_381, 575));
             	              			
             	            }
-            	            a18=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression17111); if (state.failed) return element;
+            	            a18=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression17111); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30253,7 +30248,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_141, 578));
               	
             }
-            a20=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_behavior_LambdaExpression17178); if (state.failed) return element;
+            a20=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_behavior_LambdaExpression17178); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -30351,7 +30346,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20381:1: (a0= 'LambdaParameter' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'name' a9= ':' (a10= IDENTIFIER ) | a11= 'type' a12= ':' (a13_0= parse_org_kermeta_language_behavior_TypeReference ) ) )* a14= '}' )
             // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20382:2: a0= 'LambdaParameter' a1= '{' ( (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'name' a9= ':' (a10= IDENTIFIER ) | a11= 'type' a12= ':' (a13_0= parse_org_kermeta_language_behavior_TypeReference ) ) )* a14= '}'
             {
-            a0=(Token)match(input,98,FOLLOW_98_in_parse_org_kermeta_language_behavior_LambdaParameter17207); if (state.failed) return element;
+            a0=(Token)match(input,99,FOLLOW_99_in_parse_org_kermeta_language_behavior_LambdaParameter17207); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -30367,7 +30362,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_382, 580));
               	
             }
-            a1=(Token)match(input,18,FOLLOW_18_in_parse_org_kermeta_language_behavior_LambdaParameter17221); if (state.failed) return element;
+            a1=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_behavior_LambdaParameter17221); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -30393,7 +30388,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                 int alt111=2;
                 int LA111_0 = input.LA(1);
 
-                if ( ((LA111_0>=39 && LA111_0<=40)||LA111_0==44||LA111_0==49) ) {
+                if ( ((LA111_0>=40 && LA111_0<=41)||LA111_0==45||LA111_0==50) ) {
                     alt111=1;
                 }
 
@@ -30405,22 +30400,22 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	    // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20411:3: (a2= 'tag' a3= ':' (a4= IDENTIFIER ) | a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag ) | a8= 'name' a9= ':' (a10= IDENTIFIER ) | a11= 'type' a12= ':' (a13_0= parse_org_kermeta_language_behavior_TypeReference ) )
             	    int alt110=4;
             	    switch ( input.LA(1) ) {
-            	    case 39:
+            	    case 40:
             	        {
             	        alt110=1;
             	        }
             	        break;
-            	    case 40:
+            	    case 41:
             	        {
             	        alt110=2;
             	        }
             	        break;
-            	    case 44:
+            	    case 45:
             	        {
             	        alt110=3;
             	        }
             	        break;
-            	    case 49:
+            	    case 50:
             	        {
             	        alt110=4;
             	        }
@@ -30437,7 +30432,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 1 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20412:4: a2= 'tag' a3= ':' (a4= IDENTIFIER )
             	            {
-            	            a2=(Token)match(input,39,FOLLOW_39_in_parse_org_kermeta_language_behavior_LambdaParameter17244); if (state.failed) return element;
+            	            a2=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_behavior_LambdaParameter17244); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30453,7 +30448,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_383, 582));
             	              			
             	            }
-            	            a3=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaParameter17264); if (state.failed) return element;
+            	            a3=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaParameter17264); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30523,7 +30518,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 2 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20478:8: a5= 'ownedTags' a6= ':' (a7_0= parse_org_kermeta_language_structure_Tag )
             	            {
-            	            a5=(Token)match(input,40,FOLLOW_40_in_parse_org_kermeta_language_behavior_LambdaParameter17331); if (state.failed) return element;
+            	            a5=(Token)match(input,41,FOLLOW_41_in_parse_org_kermeta_language_behavior_LambdaParameter17331); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30539,7 +30534,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_385, 585));
             	              			
             	            }
-            	            a6=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaParameter17351); if (state.failed) return element;
+            	            a6=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaParameter17351); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30599,7 +30594,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 3 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20529:8: a8= 'name' a9= ':' (a10= IDENTIFIER )
             	            {
-            	            a8=(Token)match(input,44,FOLLOW_44_in_parse_org_kermeta_language_behavior_LambdaParameter17413); if (state.failed) return element;
+            	            a8=(Token)match(input,45,FOLLOW_45_in_parse_org_kermeta_language_behavior_LambdaParameter17413); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30615,7 +30610,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_386, 588));
             	              			
             	            }
-            	            a9=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaParameter17433); if (state.failed) return element;
+            	            a9=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaParameter17433); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30681,7 +30676,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	        case 4 :
             	            // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:20591:8: a11= 'type' a12= ':' (a13_0= parse_org_kermeta_language_behavior_TypeReference )
             	            {
-            	            a11=(Token)match(input,49,FOLLOW_49_in_parse_org_kermeta_language_behavior_LambdaParameter17500); if (state.failed) return element;
+            	            a11=(Token)match(input,50,FOLLOW_50_in_parse_org_kermeta_language_behavior_LambdaParameter17500); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30697,7 +30692,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             	              				addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_388, 591));
             	              			
             	            }
-            	            a12=(Token)match(input,27,FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaParameter17520); if (state.failed) return element;
+            	            a12=(Token)match(input,28,FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaParameter17520); if (state.failed) return element;
             	            if ( state.backtracking==0 ) {
 
             	              				if (element == null) {
@@ -30776,7 +30771,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
               		addExpectedElement(new org.kermeta.language.emftexteditor.mopp.KermetaExpectedTerminal(TERMINAL_241, 594));
               	
             }
-            a14=(Token)match(input,19,FOLLOW_19_in_parse_org_kermeta_language_behavior_LambdaParameter17587); if (state.failed) return element;
+            a14=(Token)match(input,20,FOLLOW_20_in_parse_org_kermeta_language_behavior_LambdaParameter17587); if (state.failed) return element;
             if ( state.backtracking==0 ) {
 
               		if (element == null) {
@@ -31493,7 +31488,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4841:8: (a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}' )
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4841:8: a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}'
         {
-        a5=(Token)match(input,18,FOLLOW_18_in_synpred14_Kermeta656); if (state.failed) return ;
+        a5=(Token)match(input,19,FOLLOW_19_in_synpred14_Kermeta656); if (state.failed) return ;
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4861:4: ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+
         int cnt115=0;
         loop115:
@@ -31501,7 +31496,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             int alt115=2;
             int LA115_0 = input.LA(1);
 
-            if ( ((LA115_0>=IDENTIFIER && LA115_0<=PRIMITIVE_TYPE)||(LA115_0>=20 && LA115_0<=22)||LA115_0==35||LA115_0==42||LA115_0==53) ) {
+            if ( ((LA115_0>=IDENTIFIER && LA115_0<=PRIMITIVE_TYPE)||(LA115_0>=21 && LA115_0<=23)||LA115_0==36||LA115_0==43||LA115_0==54) ) {
                 alt115=1;
             }
 
@@ -31541,7 +31536,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             cnt115++;
         } while (true);
 
-        a7=(Token)match(input,19,FOLLOW_19_in_synpred14_Kermeta758); if (state.failed) return ;
+        a7=(Token)match(input,20,FOLLOW_20_in_synpred14_Kermeta758); if (state.failed) return ;
 
         }
     }
@@ -31577,7 +31572,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     int alt116=2;
                     int LA116_0 = input.LA(1);
 
-                    if ( ((LA116_0>=IDENTIFIER && LA116_0<=PRIMITIVE_TYPE)||(LA116_0>=20 && LA116_0<=22)||LA116_0==35||LA116_0==42||LA116_0==53) ) {
+                    if ( ((LA116_0>=IDENTIFIER && LA116_0<=PRIMITIVE_TYPE)||(LA116_0>=21 && LA116_0<=23)||LA116_0==36||LA116_0==43||LA116_0==54) ) {
                         alt116=1;
                     }
 
@@ -31623,7 +31618,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
             case 2 :
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4841:8: a5= '{' ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+ a7= '}'
                 {
-                a5=(Token)match(input,18,FOLLOW_18_in_synpred16_Kermeta656); if (state.failed) return ;
+                a5=(Token)match(input,19,FOLLOW_19_in_synpred16_Kermeta656); if (state.failed) return ;
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4861:4: ( ( (a6_0= parse_org_kermeta_language_structure_TypeDefinition ) ) )+
                 int cnt117=0;
                 loop117:
@@ -31631,7 +31626,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     int alt117=2;
                     int LA117_0 = input.LA(1);
 
-                    if ( ((LA117_0>=IDENTIFIER && LA117_0<=PRIMITIVE_TYPE)||(LA117_0>=20 && LA117_0<=22)||LA117_0==35||LA117_0==42||LA117_0==53) ) {
+                    if ( ((LA117_0>=IDENTIFIER && LA117_0<=PRIMITIVE_TYPE)||(LA117_0>=21 && LA117_0<=23)||LA117_0==36||LA117_0==43||LA117_0==54) ) {
                         alt117=1;
                     }
 
@@ -31671,21 +31666,21 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     cnt117++;
                 } while (true);
 
-                a7=(Token)match(input,19,FOLLOW_19_in_synpred16_Kermeta758); if (state.failed) return ;
+                a7=(Token)match(input,20,FOLLOW_20_in_synpred16_Kermeta758); if (state.failed) return ;
 
                 }
                 break;
             case 3 :
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4933:8: a8= '{' ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )* a10= '}'
                 {
-                a8=(Token)match(input,18,FOLLOW_18_in_synpred16_Kermeta786); if (state.failed) return ;
+                a8=(Token)match(input,19,FOLLOW_19_in_synpred16_Kermeta786); if (state.failed) return ;
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:4955:4: ( ( (a9_0= parse_org_kermeta_language_structure_Package ) ) )*
                 loop118:
                 do {
                     int alt118=2;
                     int LA118_0 = input.LA(1);
 
-                    if ( ((LA118_0>=IDENTIFIER && LA118_0<=PRIMITIVE_TYPE)||LA118_0==16||(LA118_0>=20 && LA118_0<=22)||LA118_0==35||LA118_0==42||LA118_0==53) ) {
+                    if ( ((LA118_0>=IDENTIFIER && LA118_0<=PRIMITIVE_TYPE)||LA118_0==17||(LA118_0>=21 && LA118_0<=23)||LA118_0==36||LA118_0==43||LA118_0==54) ) {
                         alt118=1;
                     }
 
@@ -31720,7 +31715,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
                     }
                 } while (true);
 
-                a10=(Token)match(input,19,FOLLOW_19_in_synpred16_Kermeta888); if (state.failed) return ;
+                a10=(Token)match(input,20,FOLLOW_20_in_synpred16_Kermeta888); if (state.failed) return ;
 
                 }
                 break;
@@ -32735,7 +32730,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14592:3: (a4= 'loop' ( (a5_0= parse_org_kermeta_language_behavior_Expression ) ) )
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14593:4: a4= 'loop' ( (a5_0= parse_org_kermeta_language_behavior_Expression ) )
         {
-        a4=(Token)match(input,78,FOLLOW_78_in_synpred197_Kermeta12157); if (state.failed) return ;
+        a4=(Token)match(input,79,FOLLOW_79_in_synpred197_Kermeta12157); if (state.failed) return ;
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14623:4: ( (a5_0= parse_org_kermeta_language_behavior_Expression ) )
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:14624:5: (a5_0= parse_org_kermeta_language_behavior_Expression )
         {
@@ -33009,7 +33004,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16620:4: (a7= '.' (a8= IDENTIFIER ) )
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16620:4: a7= '.' (a8= IDENTIFIER )
         {
-        a7=(Token)match(input,86,FOLLOW_86_in_synpred219_Kermeta13721); if (state.failed) return ;
+        a7=(Token)match(input,87,FOLLOW_87_in_synpred219_Kermeta13721); if (state.failed) return ;
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16632:4: (a8= IDENTIFIER )
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16633:5: a8= IDENTIFIER
         {
@@ -33030,7 +33025,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16876:8: (a16= '.' (a17= IDENTIFIER ) )
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16876:8: a16= '.' (a17= IDENTIFIER )
         {
-        a16=(Token)match(input,86,FOLLOW_86_in_synpred223_Kermeta14117); if (state.failed) return ;
+        a16=(Token)match(input,87,FOLLOW_87_in_synpred223_Kermeta14117); if (state.failed) return ;
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16888:4: (a17= IDENTIFIER )
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:16889:5: a17= IDENTIFIER
         {
@@ -33061,22 +33056,22 @@ public class KermetaParser extends KermetaANTLRParserBase {
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17362:5: (a29= '+' | a30= '-' | a31= '/' | a32= '*' )
         int alt166=4;
         switch ( input.LA(1) ) {
-        case 88:
+        case 89:
             {
             alt166=1;
             }
             break;
-        case 89:
+        case 90:
             {
             alt166=2;
             }
             break;
-        case 90:
+        case 91:
             {
             alt166=3;
             }
             break;
-        case 91:
+        case 92:
             {
             alt166=4;
             }
@@ -33093,28 +33088,28 @@ public class KermetaParser extends KermetaANTLRParserBase {
             case 1 :
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17363:6: a29= '+'
                 {
-                a29=(Token)match(input,88,FOLLOW_88_in_synpred233_Kermeta14595); if (state.failed) return ;
+                a29=(Token)match(input,89,FOLLOW_89_in_synpred233_Kermeta14595); if (state.failed) return ;
 
                 }
                 break;
             case 2 :
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17394:12: a30= '-'
                 {
-                a30=(Token)match(input,89,FOLLOW_89_in_synpred233_Kermeta14633); if (state.failed) return ;
+                a30=(Token)match(input,90,FOLLOW_90_in_synpred233_Kermeta14633); if (state.failed) return ;
 
                 }
                 break;
             case 3 :
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17425:12: a31= '/'
                 {
-                a31=(Token)match(input,90,FOLLOW_90_in_synpred233_Kermeta14671); if (state.failed) return ;
+                a31=(Token)match(input,91,FOLLOW_91_in_synpred233_Kermeta14671); if (state.failed) return ;
 
                 }
                 break;
             case 4 :
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:17456:12: a32= '*'
                 {
-                a32=(Token)match(input,91,FOLLOW_91_in_synpred233_Kermeta14709); if (state.failed) return ;
+                a32=(Token)match(input,92,FOLLOW_92_in_synpred233_Kermeta14709); if (state.failed) return ;
 
                 }
                 break;
@@ -33196,7 +33191,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18173:4: (a40= '.' (a41= IDENTIFIER ) )
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18173:4: a40= '.' (a41= IDENTIFIER )
         {
-        a40=(Token)match(input,86,FOLLOW_86_in_synpred240_Kermeta15038); if (state.failed) return ;
+        a40=(Token)match(input,87,FOLLOW_87_in_synpred240_Kermeta15038); if (state.failed) return ;
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18185:4: (a41= IDENTIFIER )
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18186:5: a41= IDENTIFIER
         {
@@ -33217,7 +33212,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18511:8: (a49= '.' (a50= IDENTIFIER ) )
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18511:8: a49= '.' (a50= IDENTIFIER )
         {
-        a49=(Token)match(input,86,FOLLOW_86_in_synpred244_Kermeta15434); if (state.failed) return ;
+        a49=(Token)match(input,87,FOLLOW_87_in_synpred244_Kermeta15434); if (state.failed) return ;
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18523:4: (a50= IDENTIFIER )
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18524:5: a50= IDENTIFIER
         {
@@ -33248,22 +33243,22 @@ public class KermetaParser extends KermetaANTLRParserBase {
         // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18864:5: (a55= '+' | a56= '-' | a57= '/' | a58= '*' )
         int alt183=4;
         switch ( input.LA(1) ) {
-        case 88:
+        case 89:
             {
             alt183=1;
             }
             break;
-        case 89:
+        case 90:
             {
             alt183=2;
             }
             break;
-        case 90:
+        case 91:
             {
             alt183=3;
             }
             break;
-        case 91:
+        case 92:
             {
             alt183=4;
             }
@@ -33280,28 +33275,28 @@ public class KermetaParser extends KermetaANTLRParserBase {
             case 1 :
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18865:6: a55= '+'
                 {
-                a55=(Token)match(input,88,FOLLOW_88_in_synpred250_Kermeta15646); if (state.failed) return ;
+                a55=(Token)match(input,89,FOLLOW_89_in_synpred250_Kermeta15646); if (state.failed) return ;
 
                 }
                 break;
             case 2 :
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18896:12: a56= '-'
                 {
-                a56=(Token)match(input,89,FOLLOW_89_in_synpred250_Kermeta15684); if (state.failed) return ;
+                a56=(Token)match(input,90,FOLLOW_90_in_synpred250_Kermeta15684); if (state.failed) return ;
 
                 }
                 break;
             case 3 :
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18927:12: a57= '/'
                 {
-                a57=(Token)match(input,90,FOLLOW_90_in_synpred250_Kermeta15722); if (state.failed) return ;
+                a57=(Token)match(input,91,FOLLOW_91_in_synpred250_Kermeta15722); if (state.failed) return ;
 
                 }
                 break;
             case 4 :
                 // /home/hrambelo/application/Eclipse/64/EEmfText/workspace/org.kermeta.language.emftexteditor/src/main/java-gen/org/kermeta/language/emftexteditor/mopp/Kermeta.g:18958:12: a58= '*'
                 {
-                a58=(Token)match(input,91,FOLLOW_91_in_synpred250_Kermeta15760); if (state.failed) return ;
+                a58=(Token)match(input,92,FOLLOW_92_in_synpred250_Kermeta15760); if (state.failed) return ;
 
                 }
                 break;
@@ -34893,9 +34888,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA1_eofS =
         "\1\1\26\uffff";
     static final String DFA1_minS =
-        "\1\4\3\uffff\1\0\11\uffff\4\0\5\uffff";
+        "\1\5\3\uffff\1\0\11\uffff\4\0\5\uffff";
     static final String DFA1_maxS =
-        "\1\65\3\uffff\1\0\11\uffff\4\0\5\uffff";
+        "\1\66\3\uffff\1\0\11\uffff\4\0\5\uffff";
     static final String DFA1_acceptS =
         "\1\uffff\1\1\13\uffff\1\2\4\uffff\1\6\1\4\1\5\1\7\1\3";
     static final String DFA1_specialS =
@@ -35058,9 +35053,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA10_eofS =
         "\1\12\14\uffff";
     static final String DFA10_minS =
-        "\1\4\10\0\4\uffff";
+        "\1\5\10\0\4\uffff";
     static final String DFA10_maxS =
-        "\1\65\10\0\4\uffff";
+        "\1\66\10\0\4\uffff";
     static final String DFA10_acceptS =
         "\11\uffff\1\1\1\2\2\uffff";
     static final String DFA10_specialS =
@@ -35251,9 +35246,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA9_eofS =
         "\14\uffff";
     static final String DFA9_minS =
-        "\1\4\10\uffff\1\0\2\uffff";
+        "\1\5\10\uffff\1\0\2\uffff";
     static final String DFA9_maxS =
-        "\1\65\10\uffff\1\0\2\uffff";
+        "\1\66\10\uffff\1\0\2\uffff";
     static final String DFA9_acceptS =
         "\1\uffff\1\1\10\uffff\1\2\1\3";
     static final String DFA9_specialS =
@@ -35338,9 +35333,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA6_eofS =
         "\1\1\14\uffff";
     static final String DFA6_minS =
-        "\1\4\2\uffff\10\0\2\uffff";
+        "\1\5\2\uffff\10\0\2\uffff";
     static final String DFA6_maxS =
-        "\1\65\2\uffff\10\0\2\uffff";
+        "\1\66\2\uffff\10\0\2\uffff";
     static final String DFA6_acceptS =
         "\1\uffff\1\2\12\uffff\1\1";
     static final String DFA6_specialS =
@@ -35531,9 +35526,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA11_eofS =
         "\1\1\12\uffff";
     static final String DFA11_minS =
-        "\1\4\1\uffff\10\0\1\uffff";
+        "\1\5\1\uffff\10\0\1\uffff";
     static final String DFA11_maxS =
-        "\1\65\1\uffff\10\0\1\uffff";
+        "\1\66\1\uffff\10\0\1\uffff";
     static final String DFA11_acceptS =
         "\1\uffff\1\2\10\uffff\1\1";
     static final String DFA11_specialS =
@@ -35722,10 +35717,10 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA37_eofS =
         "\1\15\111\uffff";
     static final String DFA37_minS =
-        "\1\4\1\uffff\13\0\1\uffff\5\0\5\uffff\1\0\6\uffff\2\0\3\uffff\1"+
+        "\1\5\1\uffff\13\0\1\uffff\5\0\5\uffff\1\0\6\uffff\2\0\3\uffff\1"+
         "\0\1\uffff\3\0\41\uffff";
     static final String DFA37_maxS =
-        "\1\142\1\uffff\13\0\1\uffff\5\0\5\uffff\1\0\6\uffff\2\0\3\uffff"+
+        "\1\143\1\uffff\13\0\1\uffff\5\0\5\uffff\1\0\6\uffff\2\0\3\uffff"+
         "\1\0\1\uffff\3\0\41\uffff";
     static final String DFA37_acceptS =
         "\1\uffff\1\1\13\uffff\1\2\5\uffff\1\21\1\23\1\24\1\26\1\27\1\uffff"+
@@ -36282,9 +36277,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA67_eofS =
         "\23\uffff";
     static final String DFA67_minS =
-        "\1\4\3\uffff\7\0\10\uffff";
+        "\1\5\3\uffff\7\0\10\uffff";
     static final String DFA67_maxS =
-        "\1\135\3\uffff\7\0\10\uffff";
+        "\1\136\3\uffff\7\0\10\uffff";
     static final String DFA67_acceptS =
         "\1\uffff\1\1\1\2\1\3\7\uffff\1\7\1\12\1\13\1\4\1\5\1\6\1\10\1\11";
     static final String DFA67_specialS =
@@ -36475,9 +36470,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA73_eofS =
         "\21\uffff";
     static final String DFA73_minS =
-        "\1\4\1\0\1\uffff\6\0\10\uffff";
+        "\1\5\1\0\1\uffff\6\0\10\uffff";
     static final String DFA73_maxS =
-        "\1\134\1\0\1\uffff\6\0\10\uffff";
+        "\1\135\1\0\1\uffff\6\0\10\uffff";
     static final String DFA73_acceptS =
         "\2\uffff\1\2\6\uffff\1\5\1\10\1\11\1\1\1\3\1\4\1\7\1\6";
     static final String DFA73_specialS =
@@ -36665,9 +36660,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA74_eofS =
         "\20\uffff";
     static final String DFA74_minS =
-        "\1\4\2\uffff\7\0\6\uffff";
+        "\1\5\2\uffff\7\0\6\uffff";
     static final String DFA74_maxS =
-        "\1\134\2\uffff\7\0\6\uffff";
+        "\1\135\2\uffff\7\0\6\uffff";
     static final String DFA74_acceptS =
         "\1\uffff\1\1\1\2\7\uffff\1\5\1\7\1\10\1\3\1\4\1\6";
     static final String DFA74_specialS =
@@ -36849,9 +36844,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA83_eofS =
         "\20\uffff";
     static final String DFA83_minS =
-        "\1\4\1\uffff\5\0\11\uffff";
+        "\1\5\1\uffff\5\0\11\uffff";
     static final String DFA83_maxS =
-        "\1\134\1\uffff\5\0\11\uffff";
+        "\1\135\1\uffff\5\0\11\uffff";
     static final String DFA83_acceptS =
         "\1\uffff\1\1\5\uffff\1\3\1\5\1\7\1\11\1\6\1\12\1\4\1\2\1\10";
     static final String DFA83_specialS =
@@ -37004,9 +36999,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA112_eofS =
         "\34\uffff";
     static final String DFA112_minS =
-        "\1\4\2\uffff\3\0\3\uffff\1\0\1\uffff\3\0\16\uffff";
+        "\1\5\2\uffff\3\0\3\uffff\1\0\1\uffff\3\0\16\uffff";
     static final String DFA112_maxS =
-        "\1\137\2\uffff\3\0\3\uffff\1\0\1\uffff\3\0\16\uffff";
+        "\1\140\2\uffff\3\0\3\uffff\1\0\1\uffff\3\0\16\uffff";
     static final String DFA112_acceptS =
         "\1\uffff\1\1\1\2\3\uffff\1\6\1\7\1\10\1\uffff\1\13\3\uffff\1\21"+
         "\1\22\1\23\1\24\1\3\1\14\1\17\1\4\1\5\1\11\1\15\1\12\1\20\1\16";
@@ -37217,9 +37212,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA113_eofS =
         "\16\uffff";
     static final String DFA113_minS =
-        "\1\4\1\0\5\uffff\1\0\6\uffff";
+        "\1\5\1\0\5\uffff\1\0\6\uffff";
     static final String DFA113_maxS =
-        "\1\102\1\0\5\uffff\1\0\6\uffff";
+        "\1\103\1\0\5\uffff\1\0\6\uffff";
     static final String DFA113_acceptS =
         "\2\uffff\1\2\1\3\1\5\1\6\1\7\1\uffff\1\10\1\12\1\13\1\1\1\4\1\11";
     static final String DFA113_specialS =
@@ -37323,9 +37318,9 @@ public class KermetaParser extends KermetaANTLRParserBase {
     static final String DFA119_eofS =
         "\14\uffff";
     static final String DFA119_minS =
-        "\1\4\10\uffff\1\0\2\uffff";
+        "\1\5\10\uffff\1\0\2\uffff";
     static final String DFA119_maxS =
-        "\1\65\10\uffff\1\0\2\uffff";
+        "\1\66\10\uffff\1\0\2\uffff";
     static final String DFA119_acceptS =
         "\1\uffff\1\1\10\uffff\1\2\1\3";
     static final String DFA119_specialS =
@@ -37415,94 +37410,94 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_MultiplicityElement_in_start152 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_TypeReference_in_start166 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_start173 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Require_in_parse_org_kermeta_language_structure_ModelingUnit211 = new BitSet(new long[]{0x002004080071C032L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Using_in_parse_org_kermeta_language_structure_ModelingUnit267 = new BitSet(new long[]{0x0020040800714032L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Package_in_parse_org_kermeta_language_structure_ModelingUnit323 = new BitSet(new long[]{0x0020040800710032L});
-    public static final BitSet FOLLOW_14_in_parse_org_kermeta_language_structure_Using379 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_parse_org_kermeta_language_structure_Require408 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_parse_org_kermeta_language_structure_Package437 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Package466 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_parse_org_kermeta_language_structure_Package499 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Package536 = new BitSet(new long[]{0x0020040800750032L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package587 = new BitSet(new long[]{0x0020040800710032L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_Package656 = new BitSet(new long[]{0x0020040800710030L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package697 = new BitSet(new long[]{0x0020040800790030L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Package758 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_Package786 = new BitSet(new long[]{0x0020040800790030L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Package_in_parse_org_kermeta_language_structure_Package827 = new BitSet(new long[]{0x0020040800790030L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Package888 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package940 = new BitSet(new long[]{0x0020040800710032L});
-    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_ClassDefinition1005 = new BitSet(new long[]{0x0000000000600000L});
-    public static final BitSet FOLLOW_21_in_parse_org_kermeta_language_structure_ClassDefinition1047 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_22_in_parse_org_kermeta_language_structure_ClassDefinition1080 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ClassDefinition1098 = new BitSet(new long[]{0x0000000000840000L});
-    public static final BitSet FOLLOW_23_in_parse_org_kermeta_language_structure_ClassDefinition1128 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ClassDefinition1154 = new BitSet(new long[]{0x0000000001040000L});
-    public static final BitSet FOLLOW_24_in_parse_org_kermeta_language_structure_ClassDefinition1200 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ClassDefinition1234 = new BitSet(new long[]{0x0000000001040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_ClassDefinition1315 = new BitSet(new long[]{0x0000000096080010L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Constraint_in_parse_org_kermeta_language_structure_ClassDefinition1344 = new BitSet(new long[]{0x0000000096080010L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Property_in_parse_org_kermeta_language_structure_ClassDefinition1400 = new BitSet(new long[]{0x0000000096080010L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Operation_in_parse_org_kermeta_language_structure_ClassDefinition1456 = new BitSet(new long[]{0x0000000080080010L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_ClassDefinition1497 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_parse_org_kermeta_language_structure_Property1530 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_26_in_parse_org_kermeta_language_structure_Property1553 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Property1581 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Property1611 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Require_in_parse_org_kermeta_language_structure_ModelingUnit211 = new BitSet(new long[]{0x0040081000E38062L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Using_in_parse_org_kermeta_language_structure_ModelingUnit267 = new BitSet(new long[]{0x0040081000E28062L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Package_in_parse_org_kermeta_language_structure_ModelingUnit323 = new BitSet(new long[]{0x0040081000E20062L});
+    public static final BitSet FOLLOW_15_in_parse_org_kermeta_language_structure_Using379 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_parse_org_kermeta_language_structure_Require408 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_parse_org_kermeta_language_structure_Package437 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_QUALIFIEDNAME_in_parse_org_kermeta_language_structure_Package466 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_Package499 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Package536 = new BitSet(new long[]{0x0040081000EA0062L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package587 = new BitSet(new long[]{0x0040081000E20062L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Package656 = new BitSet(new long[]{0x0040081000E20060L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package697 = new BitSet(new long[]{0x0040081000F20060L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_Package758 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Package786 = new BitSet(new long[]{0x0040081000F20060L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Package_in_parse_org_kermeta_language_structure_Package827 = new BitSet(new long[]{0x0040081000F20060L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_Package888 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_parse_org_kermeta_language_structure_Package940 = new BitSet(new long[]{0x0040081000E20062L});
+    public static final BitSet FOLLOW_21_in_parse_org_kermeta_language_structure_ClassDefinition1005 = new BitSet(new long[]{0x0000000000C00000L});
+    public static final BitSet FOLLOW_22_in_parse_org_kermeta_language_structure_ClassDefinition1047 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_parse_org_kermeta_language_structure_ClassDefinition1080 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ClassDefinition1098 = new BitSet(new long[]{0x0000000001080000L});
+    public static final BitSet FOLLOW_24_in_parse_org_kermeta_language_structure_ClassDefinition1128 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ClassDefinition1154 = new BitSet(new long[]{0x0000000002080000L});
+    public static final BitSet FOLLOW_25_in_parse_org_kermeta_language_structure_ClassDefinition1200 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ClassDefinition1234 = new BitSet(new long[]{0x0000000002080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_ClassDefinition1315 = new BitSet(new long[]{0x000000012C100020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Constraint_in_parse_org_kermeta_language_structure_ClassDefinition1344 = new BitSet(new long[]{0x000000012C100020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Property_in_parse_org_kermeta_language_structure_ClassDefinition1400 = new BitSet(new long[]{0x000000012C100020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Operation_in_parse_org_kermeta_language_structure_ClassDefinition1456 = new BitSet(new long[]{0x0000000100100020L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_ClassDefinition1497 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_parse_org_kermeta_language_structure_Property1530 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Property1553 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Property1581 = new BitSet(new long[]{0x0000000010000002L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Property1611 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Property1637 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Property1687 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Property1705 = new BitSet(new long[]{0x0000000068000002L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Property1735 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Property1761 = new BitSet(new long[]{0x0000000060000002L});
-    public static final BitSet FOLLOW_29_in_parse_org_kermeta_language_structure_Property1816 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_structure_Property1842 = new BitSet(new long[]{0x0000000040000002L});
-    public static final BitSet FOLLOW_30_in_parse_org_kermeta_language_structure_Property1892 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
+    public static final BitSet FOLLOW_29_in_parse_org_kermeta_language_structure_Property1687 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Property1705 = new BitSet(new long[]{0x00000000D0000002L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Property1735 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Property1761 = new BitSet(new long[]{0x00000000C0000002L});
+    public static final BitSet FOLLOW_30_in_parse_org_kermeta_language_structure_Property1816 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_structure_Property1842 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_31_in_parse_org_kermeta_language_structure_Property1892 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_structure_Property1918 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Constraint_in_parse_org_kermeta_language_structure_Operation1983 = new BitSet(new long[]{0x0000000080000010L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Constraint_in_parse_org_kermeta_language_structure_Operation2018 = new BitSet(new long[]{0x0000000080000010L});
-    public static final BitSet FOLLOW_31_in_parse_org_kermeta_language_structure_Operation2044 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Operation2062 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_parse_org_kermeta_language_structure_Operation2083 = new BitSet(new long[]{0x0000000200000010L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Parameter_in_parse_org_kermeta_language_structure_Operation2112 = new BitSet(new long[]{0x0000000209000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Operation2153 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Operation2187 = new BitSet(new long[]{0x0000000201000000L});
-    public static final BitSet FOLLOW_24_in_parse_org_kermeta_language_structure_Operation2268 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Parameter_in_parse_org_kermeta_language_structure_Operation2302 = new BitSet(new long[]{0x0000000209000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Operation2357 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Operation2399 = new BitSet(new long[]{0x0000000201000000L});
-    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_structure_Operation2525 = new BitSet(new long[]{0x0000000408000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Operation2548 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Operation2574 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_parse_org_kermeta_language_structure_Operation2620 = new BitSet(new long[]{0x0000000000200000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Constraint_in_parse_org_kermeta_language_structure_Operation1983 = new BitSet(new long[]{0x0000000100000020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Constraint_in_parse_org_kermeta_language_structure_Operation2018 = new BitSet(new long[]{0x0000000100000020L});
+    public static final BitSet FOLLOW_32_in_parse_org_kermeta_language_structure_Operation2044 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Operation2062 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_structure_Operation2083 = new BitSet(new long[]{0x0000000400000020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Parameter_in_parse_org_kermeta_language_structure_Operation2112 = new BitSet(new long[]{0x0000000412000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Operation2153 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Operation2187 = new BitSet(new long[]{0x0000000402000000L});
+    public static final BitSet FOLLOW_25_in_parse_org_kermeta_language_structure_Operation2268 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Parameter_in_parse_org_kermeta_language_structure_Operation2302 = new BitSet(new long[]{0x0000000412000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Operation2357 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Operation2399 = new BitSet(new long[]{0x0000000402000000L});
+    public static final BitSet FOLLOW_34_in_parse_org_kermeta_language_structure_Operation2525 = new BitSet(new long[]{0x0000000810000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Operation2548 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Operation2574 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_35_in_parse_org_kermeta_language_structure_Operation2620 = new BitSet(new long[]{0x0000000000400000L,0x0000000000000040L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Block_in_parse_org_kermeta_language_structure_Operation2643 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_parse_org_kermeta_language_structure_Operation2672 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Parameter2715 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Parameter2736 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_22_in_parse_org_kermeta_language_structure_Operation2672 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Parameter2715 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Parameter2736 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Parameter2754 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Class2794 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_parse_org_kermeta_language_structure_Enumeration2830 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Enumeration2848 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_Enumeration2869 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_EnumerationLiteral_in_parse_org_kermeta_language_structure_Enumeration2892 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_parse_org_kermeta_language_structure_Enumeration2915 = new BitSet(new long[]{0x0000000000080010L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_EnumerationLiteral_in_parse_org_kermeta_language_structure_Enumeration2950 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_parse_org_kermeta_language_structure_Enumeration2983 = new BitSet(new long[]{0x0000000000080010L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Enumeration3031 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_parse_org_kermeta_language_structure_Enumeration2830 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Enumeration2848 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Enumeration2869 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_EnumerationLiteral_in_parse_org_kermeta_language_structure_Enumeration2892 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_37_in_parse_org_kermeta_language_structure_Enumeration2915 = new BitSet(new long[]{0x0000000000100020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_EnumerationLiteral_in_parse_org_kermeta_language_structure_Enumeration2950 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_37_in_parse_org_kermeta_language_structure_Enumeration2983 = new BitSet(new long[]{0x0000000000100020L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_Enumeration3031 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_EnumerationLiteral3064 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Constraint3104 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Constraint3104 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Constraint3129 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_PRIMITIVE_TYPE_in_parse_org_kermeta_language_structure_PrimitiveType3169 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_UnresolvedType3209 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_parse_org_kermeta_language_structure_VoidType3245 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_parse_org_kermeta_language_structure_Object3274 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_Object3288 = new BitSet(new long[]{0x0000018000080000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_Object3311 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Object3331 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Object3357 = new BitSet(new long[]{0x0000018000080000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_Object3398 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Object3418 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_Object3444 = new BitSet(new long[]{0x0000018000080000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Object3485 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_parse_org_kermeta_language_structure_VoidType3245 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_Object3274 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Object3288 = new BitSet(new long[]{0x0000030000100000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_Object3311 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Object3331 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Object3357 = new BitSet(new long[]{0x0000030000100000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_Object3398 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Object3418 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_Object3444 = new BitSet(new long[]{0x0000030000100000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_Object3485 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_ModelingUnit_in_parse_org_kermeta_language_structure_Object3504 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Using_in_parse_org_kermeta_language_structure_Object3514 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Require_in_parse_org_kermeta_language_structure_Object3524 = new BitSet(new long[]{0x0000000000000002L});
@@ -37552,309 +37547,309 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_EmptyExpression_in_parse_org_kermeta_language_structure_Object3964 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_LambdaExpression_in_parse_org_kermeta_language_structure_Object3974 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_LambdaParameter_in_parse_org_kermeta_language_structure_Object3984 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_Model4009 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_Model4023 = new BitSet(new long[]{0x0000018000080000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_Model4046 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Model4066 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Model4092 = new BitSet(new long[]{0x0000018000080000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_Model4133 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Model4153 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_Model4179 = new BitSet(new long[]{0x0000018000080000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Model4220 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelType4258 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_42_in_parse_org_kermeta_language_structure_ModelType4288 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_ModelType4302 = new BitSet(new long[]{0x0000398000080000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_ModelType4325 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelType4345 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelType4371 = new BitSet(new long[]{0x0000398000080000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_ModelType4412 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelType4432 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_ModelType4458 = new BitSet(new long[]{0x0000398000080000L});
-    public static final BitSet FOLLOW_43_in_parse_org_kermeta_language_structure_ModelType4494 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelType4514 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelType4540 = new BitSet(new long[]{0x0000398000080000L});
-    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_ModelType4581 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelType4601 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelType4627 = new BitSet(new long[]{0x0000398000080000L});
-    public static final BitSet FOLLOW_45_in_parse_org_kermeta_language_structure_ModelType4668 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelType4688 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelType4714 = new BitSet(new long[]{0x0000398000080000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_ModelType4760 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_46_in_parse_org_kermeta_language_structure_TypeVariableBinding4789 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_TypeVariableBinding4803 = new BitSet(new long[]{0x0003818000080000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_TypeVariableBinding4826 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_TypeVariableBinding4846 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeVariableBinding4872 = new BitSet(new long[]{0x0003818000080000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_TypeVariableBinding4913 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_TypeVariableBinding4933 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_TypeVariableBinding4959 = new BitSet(new long[]{0x0003818000080000L});
-    public static final BitSet FOLLOW_47_in_parse_org_kermeta_language_structure_TypeVariableBinding4995 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_TypeVariableBinding5015 = new BitSet(new long[]{0x2A20042800710030L,0x0000000000000006L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_TypeVariableBinding5041 = new BitSet(new long[]{0x0003818000080000L});
-    public static final BitSet FOLLOW_48_in_parse_org_kermeta_language_structure_TypeVariableBinding5077 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_TypeVariableBinding5097 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeVariableBinding5123 = new BitSet(new long[]{0x0003818000080000L});
-    public static final BitSet FOLLOW_49_in_parse_org_kermeta_language_structure_TypeVariableBinding5164 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_TypeVariableBinding5184 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeVariableBinding5210 = new BitSet(new long[]{0x0003818000080000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_TypeVariableBinding5256 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_MultiplicityElement5294 = new BitSet(new long[]{0x0004000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_MultiplicityElement5333 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_50_in_parse_org_kermeta_language_structure_MultiplicityElement5363 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_MultiplicityElement5377 = new BitSet(new long[]{0x001A918000080000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_MultiplicityElement5400 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5420 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_MultiplicityElement5446 = new BitSet(new long[]{0x001A918000080000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_MultiplicityElement5487 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5507 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_MultiplicityElement5533 = new BitSet(new long[]{0x001A918000080000L});
-    public static final BitSet FOLLOW_47_in_parse_org_kermeta_language_structure_MultiplicityElement5569 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5589 = new BitSet(new long[]{0x2A20042800710030L,0x0000000000000006L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_MultiplicityElement5615 = new BitSet(new long[]{0x001A918000080000L});
-    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_MultiplicityElement5651 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5671 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_MultiplicityElement5697 = new BitSet(new long[]{0x001A918000080000L});
-    public static final BitSet FOLLOW_49_in_parse_org_kermeta_language_structure_MultiplicityElement5738 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5758 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_MultiplicityElement5784 = new BitSet(new long[]{0x001A918000080000L});
-    public static final BitSet FOLLOW_51_in_parse_org_kermeta_language_structure_MultiplicityElement5825 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5845 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_INTEGER_in_parse_org_kermeta_language_structure_MultiplicityElement5871 = new BitSet(new long[]{0x001A918000080000L});
-    public static final BitSet FOLLOW_52_in_parse_org_kermeta_language_structure_MultiplicityElement5912 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_MultiplicityElement5932 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_INTEGER_in_parse_org_kermeta_language_structure_MultiplicityElement5958 = new BitSet(new long[]{0x001A918000080000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_MultiplicityElement6004 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_parse_org_kermeta_language_structure_Model4009 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Model4023 = new BitSet(new long[]{0x0000030000100000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_Model4046 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Model4066 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Model4092 = new BitSet(new long[]{0x0000030000100000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_Model4133 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Model4153 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_Model4179 = new BitSet(new long[]{0x0000030000100000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_Model4220 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelType4258 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_43_in_parse_org_kermeta_language_structure_ModelType4288 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_ModelType4302 = new BitSet(new long[]{0x0000730000100000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_ModelType4325 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelType4345 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelType4371 = new BitSet(new long[]{0x0000730000100000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_ModelType4412 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelType4432 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_ModelType4458 = new BitSet(new long[]{0x0000730000100000L});
+    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_ModelType4494 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelType4514 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelType4540 = new BitSet(new long[]{0x0000730000100000L});
+    public static final BitSet FOLLOW_45_in_parse_org_kermeta_language_structure_ModelType4581 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelType4601 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelType4627 = new BitSet(new long[]{0x0000730000100000L});
+    public static final BitSet FOLLOW_46_in_parse_org_kermeta_language_structure_ModelType4668 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelType4688 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelType4714 = new BitSet(new long[]{0x0000730000100000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_ModelType4760 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_47_in_parse_org_kermeta_language_structure_TypeVariableBinding4789 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_TypeVariableBinding4803 = new BitSet(new long[]{0x0007030000100000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_TypeVariableBinding4826 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_TypeVariableBinding4846 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeVariableBinding4872 = new BitSet(new long[]{0x0007030000100000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_TypeVariableBinding4913 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_TypeVariableBinding4933 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_TypeVariableBinding4959 = new BitSet(new long[]{0x0007030000100000L});
+    public static final BitSet FOLLOW_48_in_parse_org_kermeta_language_structure_TypeVariableBinding4995 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_TypeVariableBinding5015 = new BitSet(new long[]{0x5440085000E20060L,0x000000000000000CL});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_TypeVariableBinding5041 = new BitSet(new long[]{0x0007030000100000L});
+    public static final BitSet FOLLOW_49_in_parse_org_kermeta_language_structure_TypeVariableBinding5077 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_TypeVariableBinding5097 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeVariableBinding5123 = new BitSet(new long[]{0x0007030000100000L});
+    public static final BitSet FOLLOW_50_in_parse_org_kermeta_language_structure_TypeVariableBinding5164 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_TypeVariableBinding5184 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeVariableBinding5210 = new BitSet(new long[]{0x0007030000100000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_TypeVariableBinding5256 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_MultiplicityElement5294 = new BitSet(new long[]{0x0008000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_MultiplicityElement5333 = new BitSet(new long[]{0x0008000000000000L});
+    public static final BitSet FOLLOW_51_in_parse_org_kermeta_language_structure_MultiplicityElement5363 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_MultiplicityElement5377 = new BitSet(new long[]{0x0035230000100000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_MultiplicityElement5400 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5420 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_MultiplicityElement5446 = new BitSet(new long[]{0x0035230000100000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_MultiplicityElement5487 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5507 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_MultiplicityElement5533 = new BitSet(new long[]{0x0035230000100000L});
+    public static final BitSet FOLLOW_48_in_parse_org_kermeta_language_structure_MultiplicityElement5569 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5589 = new BitSet(new long[]{0x5440085000E20060L,0x000000000000000CL});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_MultiplicityElement5615 = new BitSet(new long[]{0x0035230000100000L});
+    public static final BitSet FOLLOW_45_in_parse_org_kermeta_language_structure_MultiplicityElement5651 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5671 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_MultiplicityElement5697 = new BitSet(new long[]{0x0035230000100000L});
+    public static final BitSet FOLLOW_50_in_parse_org_kermeta_language_structure_MultiplicityElement5738 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5758 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_MultiplicityElement5784 = new BitSet(new long[]{0x0035230000100000L});
+    public static final BitSet FOLLOW_52_in_parse_org_kermeta_language_structure_MultiplicityElement5825 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5845 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_INTEGER_in_parse_org_kermeta_language_structure_MultiplicityElement5871 = new BitSet(new long[]{0x0035230000100000L});
+    public static final BitSet FOLLOW_53_in_parse_org_kermeta_language_structure_MultiplicityElement5912 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_MultiplicityElement5932 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_INTEGER_in_parse_org_kermeta_language_structure_MultiplicityElement5958 = new BitSet(new long[]{0x0035230000100000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_MultiplicityElement6004 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Property_in_parse_org_kermeta_language_structure_MultiplicityElement6023 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Operation_in_parse_org_kermeta_language_structure_MultiplicityElement6033 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Parameter_in_parse_org_kermeta_language_structure_MultiplicityElement6043 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_TypeReference_in_parse_org_kermeta_language_structure_MultiplicityElement6053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeDefinition6087 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_parse_org_kermeta_language_structure_TypeDefinition6117 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_TypeDefinition6131 = new BitSet(new long[]{0x0000118000080000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_TypeDefinition6154 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_TypeDefinition6174 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeDefinition6200 = new BitSet(new long[]{0x0000118000080000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_TypeDefinition6241 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_TypeDefinition6261 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_TypeDefinition6287 = new BitSet(new long[]{0x0000118000080000L});
-    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_TypeDefinition6323 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_TypeDefinition6343 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeDefinition6369 = new BitSet(new long[]{0x0000118000080000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_TypeDefinition6415 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeDefinition6087 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_parse_org_kermeta_language_structure_TypeDefinition6117 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_TypeDefinition6131 = new BitSet(new long[]{0x0000230000100000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_TypeDefinition6154 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_TypeDefinition6174 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeDefinition6200 = new BitSet(new long[]{0x0000230000100000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_TypeDefinition6241 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_TypeDefinition6261 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_TypeDefinition6287 = new BitSet(new long[]{0x0000230000100000L});
+    public static final BitSet FOLLOW_45_in_parse_org_kermeta_language_structure_TypeDefinition6323 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_TypeDefinition6343 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_TypeDefinition6369 = new BitSet(new long[]{0x0000230000100000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_TypeDefinition6415 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_ClassDefinition_in_parse_org_kermeta_language_structure_TypeDefinition6434 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Enumeration_in_parse_org_kermeta_language_structure_TypeDefinition6444 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_PrimitiveType_in_parse_org_kermeta_language_structure_TypeDefinition6454 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_ModelType_in_parse_org_kermeta_language_structure_TypeDefinition6464 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_54_in_parse_org_kermeta_language_structure_Tag6489 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_Tag6503 = new BitSet(new long[]{0x0180118000080000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_Tag6526 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Tag6546 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Tag6572 = new BitSet(new long[]{0x0180118000080000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_Tag6613 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Tag6633 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_Tag6659 = new BitSet(new long[]{0x0180118000080000L});
-    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_Tag6695 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Tag6715 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Tag6741 = new BitSet(new long[]{0x0180118000080000L});
-    public static final BitSet FOLLOW_55_in_parse_org_kermeta_language_structure_Tag6782 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Tag6802 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Tag6828 = new BitSet(new long[]{0x0180118000080000L});
-    public static final BitSet FOLLOW_56_in_parse_org_kermeta_language_structure_Tag6869 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_Tag6889 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Tag6915 = new BitSet(new long[]{0x0180118000080000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Tag6961 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_57_in_parse_org_kermeta_language_structure_ObjectTypeVariable6990 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_ObjectTypeVariable7004 = new BitSet(new long[]{0x0400998000080000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_ObjectTypeVariable7027 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7047 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ObjectTypeVariable7073 = new BitSet(new long[]{0x0400998000080000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_ObjectTypeVariable7114 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7134 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_ObjectTypeVariable7160 = new BitSet(new long[]{0x0400998000080000L});
-    public static final BitSet FOLLOW_47_in_parse_org_kermeta_language_structure_ObjectTypeVariable7196 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7216 = new BitSet(new long[]{0x2A20042800710030L,0x0000000000000006L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_ObjectTypeVariable7242 = new BitSet(new long[]{0x0400998000080000L});
-    public static final BitSet FOLLOW_43_in_parse_org_kermeta_language_structure_ObjectTypeVariable7278 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7298 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ObjectTypeVariable7324 = new BitSet(new long[]{0x0400998000080000L});
-    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_ObjectTypeVariable7365 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7385 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ObjectTypeVariable7411 = new BitSet(new long[]{0x0400998000080000L});
-    public static final BitSet FOLLOW_58_in_parse_org_kermeta_language_structure_ObjectTypeVariable7452 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ObjectTypeVariable7472 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ObjectTypeVariable7498 = new BitSet(new long[]{0x0400998000080000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_ObjectTypeVariable7544 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_55_in_parse_org_kermeta_language_structure_Tag6489 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_Tag6503 = new BitSet(new long[]{0x0300230000100000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_Tag6526 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Tag6546 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Tag6572 = new BitSet(new long[]{0x0300230000100000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_Tag6613 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Tag6633 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_Tag6659 = new BitSet(new long[]{0x0300230000100000L});
+    public static final BitSet FOLLOW_45_in_parse_org_kermeta_language_structure_Tag6695 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Tag6715 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Tag6741 = new BitSet(new long[]{0x0300230000100000L});
+    public static final BitSet FOLLOW_56_in_parse_org_kermeta_language_structure_Tag6782 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Tag6802 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Tag6828 = new BitSet(new long[]{0x0300230000100000L});
+    public static final BitSet FOLLOW_57_in_parse_org_kermeta_language_structure_Tag6869 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_Tag6889 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_Tag6915 = new BitSet(new long[]{0x0300230000100000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_Tag6961 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_parse_org_kermeta_language_structure_ObjectTypeVariable6990 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_ObjectTypeVariable7004 = new BitSet(new long[]{0x0801330000100000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_ObjectTypeVariable7027 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7047 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ObjectTypeVariable7073 = new BitSet(new long[]{0x0801330000100000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_ObjectTypeVariable7114 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7134 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_ObjectTypeVariable7160 = new BitSet(new long[]{0x0801330000100000L});
+    public static final BitSet FOLLOW_48_in_parse_org_kermeta_language_structure_ObjectTypeVariable7196 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7216 = new BitSet(new long[]{0x5440085000E20060L,0x000000000000000CL});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_ObjectTypeVariable7242 = new BitSet(new long[]{0x0801330000100000L});
+    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_ObjectTypeVariable7278 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7298 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ObjectTypeVariable7324 = new BitSet(new long[]{0x0801330000100000L});
+    public static final BitSet FOLLOW_45_in_parse_org_kermeta_language_structure_ObjectTypeVariable7365 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7385 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ObjectTypeVariable7411 = new BitSet(new long[]{0x0801330000100000L});
+    public static final BitSet FOLLOW_59_in_parse_org_kermeta_language_structure_ObjectTypeVariable7452 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ObjectTypeVariable7472 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ObjectTypeVariable7498 = new BitSet(new long[]{0x0801330000100000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_ObjectTypeVariable7544 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_VirtualType_in_parse_org_kermeta_language_structure_ObjectTypeVariable7563 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_59_in_parse_org_kermeta_language_structure_ModelTypeVariable7588 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_ModelTypeVariable7602 = new BitSet(new long[]{0x1400998000080000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_ModelTypeVariable7625 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable7645 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelTypeVariable7671 = new BitSet(new long[]{0x1400998000080000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_ModelTypeVariable7712 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable7732 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_ModelTypeVariable7758 = new BitSet(new long[]{0x1400998000080000L});
-    public static final BitSet FOLLOW_47_in_parse_org_kermeta_language_structure_ModelTypeVariable7794 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable7814 = new BitSet(new long[]{0x2A20042800710030L,0x0000000000000006L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_ModelTypeVariable7840 = new BitSet(new long[]{0x1400998000080000L});
-    public static final BitSet FOLLOW_43_in_parse_org_kermeta_language_structure_ModelTypeVariable7876 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable7896 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelTypeVariable7922 = new BitSet(new long[]{0x1400998000080000L});
-    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_ModelTypeVariable7963 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable7983 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelTypeVariable8009 = new BitSet(new long[]{0x1400998000080000L});
-    public static final BitSet FOLLOW_58_in_parse_org_kermeta_language_structure_ModelTypeVariable8050 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable8070 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelTypeVariable8096 = new BitSet(new long[]{0x1400998000080000L});
-    public static final BitSet FOLLOW_60_in_parse_org_kermeta_language_structure_ModelTypeVariable8137 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ModelTypeVariable8157 = new BitSet(new long[]{0x2200000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_VirtualType_in_parse_org_kermeta_language_structure_ModelTypeVariable8183 = new BitSet(new long[]{0x1400998000080000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_ModelTypeVariable8224 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_61_in_parse_org_kermeta_language_structure_VirtualType8253 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_VirtualType8267 = new BitSet(new long[]{0xC400998000080000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_VirtualType8290 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8310 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8336 = new BitSet(new long[]{0xC400998000080000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_VirtualType8377 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8397 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_VirtualType8423 = new BitSet(new long[]{0xC400998000080000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_47_in_parse_org_kermeta_language_structure_VirtualType8459 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8479 = new BitSet(new long[]{0x2A20042800710030L,0x0000000000000006L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_VirtualType8505 = new BitSet(new long[]{0xC400998000080000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_43_in_parse_org_kermeta_language_structure_VirtualType8541 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8561 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8587 = new BitSet(new long[]{0xC400998000080000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_VirtualType8628 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8648 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8674 = new BitSet(new long[]{0xC400998000080000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_58_in_parse_org_kermeta_language_structure_VirtualType8715 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8735 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8761 = new BitSet(new long[]{0xC400998000080000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_62_in_parse_org_kermeta_language_structure_VirtualType8802 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8822 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8848 = new BitSet(new long[]{0xC400998000080000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_63_in_parse_org_kermeta_language_structure_VirtualType8889 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8909 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8935 = new BitSet(new long[]{0xC400998000080000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_64_in_parse_org_kermeta_language_structure_VirtualType8976 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_VirtualType8996 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeVariableBinding_in_parse_org_kermeta_language_structure_VirtualType9022 = new BitSet(new long[]{0xC400998000080000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_VirtualType9063 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_parse_org_kermeta_language_structure_ProductType9092 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_ProductType9106 = new BitSet(new long[]{0x0002898000080000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_ProductType9129 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ProductType9149 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ProductType9175 = new BitSet(new long[]{0x0002898000080000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_ProductType9216 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ProductType9236 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_ProductType9262 = new BitSet(new long[]{0x0002898000080000L});
-    public static final BitSet FOLLOW_47_in_parse_org_kermeta_language_structure_ProductType9298 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ProductType9318 = new BitSet(new long[]{0x2A20042800710030L,0x0000000000000006L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_ProductType9344 = new BitSet(new long[]{0x0002898000080000L});
-    public static final BitSet FOLLOW_43_in_parse_org_kermeta_language_structure_ProductType9380 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ProductType9400 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ProductType9426 = new BitSet(new long[]{0x0002898000080000L});
-    public static final BitSet FOLLOW_49_in_parse_org_kermeta_language_structure_ProductType9467 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_ProductType9487 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ProductType9513 = new BitSet(new long[]{0x0002898000080000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_ProductType9559 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_66_in_parse_org_kermeta_language_structure_FunctionType9588 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_structure_FunctionType9602 = new BitSet(new long[]{0x0000898000080000L,0x0000000000000018L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_structure_FunctionType9625 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType9645 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_FunctionType9671 = new BitSet(new long[]{0x0000898000080000L,0x0000000000000018L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_FunctionType9712 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType9732 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_FunctionType9758 = new BitSet(new long[]{0x0000898000080000L,0x0000000000000018L});
-    public static final BitSet FOLLOW_47_in_parse_org_kermeta_language_structure_FunctionType9794 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType9814 = new BitSet(new long[]{0x2A20042800710030L,0x0000000000000006L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_FunctionType9840 = new BitSet(new long[]{0x0000898000080000L,0x0000000000000018L});
-    public static final BitSet FOLLOW_43_in_parse_org_kermeta_language_structure_FunctionType9876 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType9896 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_FunctionType9922 = new BitSet(new long[]{0x0000898000080000L,0x0000000000000018L});
-    public static final BitSet FOLLOW_67_in_parse_org_kermeta_language_structure_FunctionType9963 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType9983 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_FunctionType10009 = new BitSet(new long[]{0x0000898000080000L,0x0000000000000018L});
-    public static final BitSet FOLLOW_68_in_parse_org_kermeta_language_structure_FunctionType10050 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_structure_FunctionType10070 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_FunctionType10096 = new BitSet(new long[]{0x0000898000080000L,0x0000000000000018L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_FunctionType10142 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_69_in_parse_org_kermeta_language_behavior_Block10171 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_VariableDecl_in_parse_org_kermeta_language_behavior_Block10200 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Loop_in_parse_org_kermeta_language_behavior_Block10242 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Conditional_in_parse_org_kermeta_language_behavior_Block10284 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Assignment_in_parse_org_kermeta_language_behavior_Block10326 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_parse_org_kermeta_language_behavior_Block10368 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_Block10410 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallSuperOperation_in_parse_org_kermeta_language_behavior_Block10452 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallResult_in_parse_org_kermeta_language_behavior_Block10494 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_JavaStaticCall_in_parse_org_kermeta_language_behavior_Block10536 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_EmptyExpression_in_parse_org_kermeta_language_behavior_Block10578 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Block_in_parse_org_kermeta_language_behavior_Block10620 = new BitSet(new long[]{0x00000001000000D0L,0x00000000302692E0L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Rescue_in_parse_org_kermeta_language_behavior_Block10676 = new BitSet(new long[]{0x0000000000000000L,0x00000000000000C0L});
-    public static final BitSet FOLLOW_70_in_parse_org_kermeta_language_behavior_Block10717 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_71_in_parse_org_kermeta_language_behavior_Rescue10746 = new BitSet(new long[]{0x00800021000000D2L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_32_in_parse_org_kermeta_language_behavior_Rescue10769 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_Rescue10795 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_Rescue10828 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_TypeReference_in_parse_org_kermeta_language_behavior_Rescue10854 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_Rescue10882 = new BitSet(new long[]{0x00800021000000D2L,0x00000000B0269320L});
+    public static final BitSet FOLLOW_60_in_parse_org_kermeta_language_structure_ModelTypeVariable7588 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_ModelTypeVariable7602 = new BitSet(new long[]{0x2801330000100000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_ModelTypeVariable7625 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable7645 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelTypeVariable7671 = new BitSet(new long[]{0x2801330000100000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_ModelTypeVariable7712 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable7732 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_ModelTypeVariable7758 = new BitSet(new long[]{0x2801330000100000L});
+    public static final BitSet FOLLOW_48_in_parse_org_kermeta_language_structure_ModelTypeVariable7794 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable7814 = new BitSet(new long[]{0x5440085000E20060L,0x000000000000000CL});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_ModelTypeVariable7840 = new BitSet(new long[]{0x2801330000100000L});
+    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_ModelTypeVariable7876 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable7896 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelTypeVariable7922 = new BitSet(new long[]{0x2801330000100000L});
+    public static final BitSet FOLLOW_45_in_parse_org_kermeta_language_structure_ModelTypeVariable7963 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable7983 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelTypeVariable8009 = new BitSet(new long[]{0x2801330000100000L});
+    public static final BitSet FOLLOW_59_in_parse_org_kermeta_language_structure_ModelTypeVariable8050 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable8070 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ModelTypeVariable8096 = new BitSet(new long[]{0x2801330000100000L});
+    public static final BitSet FOLLOW_61_in_parse_org_kermeta_language_structure_ModelTypeVariable8137 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ModelTypeVariable8157 = new BitSet(new long[]{0x4400000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_VirtualType_in_parse_org_kermeta_language_structure_ModelTypeVariable8183 = new BitSet(new long[]{0x2801330000100000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_ModelTypeVariable8224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_62_in_parse_org_kermeta_language_structure_VirtualType8253 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_VirtualType8267 = new BitSet(new long[]{0x8801330000100000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_VirtualType8290 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8310 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8336 = new BitSet(new long[]{0x8801330000100000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_VirtualType8377 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8397 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_VirtualType8423 = new BitSet(new long[]{0x8801330000100000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_48_in_parse_org_kermeta_language_structure_VirtualType8459 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8479 = new BitSet(new long[]{0x5440085000E20060L,0x000000000000000CL});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_VirtualType8505 = new BitSet(new long[]{0x8801330000100000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_VirtualType8541 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8561 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8587 = new BitSet(new long[]{0x8801330000100000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_45_in_parse_org_kermeta_language_structure_VirtualType8628 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8648 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8674 = new BitSet(new long[]{0x8801330000100000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_59_in_parse_org_kermeta_language_structure_VirtualType8715 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8735 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8761 = new BitSet(new long[]{0x8801330000100000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_63_in_parse_org_kermeta_language_structure_VirtualType8802 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8822 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8848 = new BitSet(new long[]{0x8801330000100000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_64_in_parse_org_kermeta_language_structure_VirtualType8889 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8909 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_VirtualType8935 = new BitSet(new long[]{0x8801330000100000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_65_in_parse_org_kermeta_language_structure_VirtualType8976 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_VirtualType8996 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeVariableBinding_in_parse_org_kermeta_language_structure_VirtualType9022 = new BitSet(new long[]{0x8801330000100000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_VirtualType9063 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_66_in_parse_org_kermeta_language_structure_ProductType9092 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_ProductType9106 = new BitSet(new long[]{0x0005130000100000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_ProductType9129 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ProductType9149 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ProductType9175 = new BitSet(new long[]{0x0005130000100000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_ProductType9216 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ProductType9236 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_ProductType9262 = new BitSet(new long[]{0x0005130000100000L});
+    public static final BitSet FOLLOW_48_in_parse_org_kermeta_language_structure_ProductType9298 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ProductType9318 = new BitSet(new long[]{0x5440085000E20060L,0x000000000000000CL});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_ProductType9344 = new BitSet(new long[]{0x0005130000100000L});
+    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_ProductType9380 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ProductType9400 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ProductType9426 = new BitSet(new long[]{0x0005130000100000L});
+    public static final BitSet FOLLOW_50_in_parse_org_kermeta_language_structure_ProductType9467 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_ProductType9487 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_ProductType9513 = new BitSet(new long[]{0x0005130000100000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_ProductType9559 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_67_in_parse_org_kermeta_language_structure_FunctionType9588 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_structure_FunctionType9602 = new BitSet(new long[]{0x0001130000100000L,0x0000000000000030L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_structure_FunctionType9625 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType9645 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_FunctionType9671 = new BitSet(new long[]{0x0001130000100000L,0x0000000000000030L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_structure_FunctionType9712 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType9732 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_structure_FunctionType9758 = new BitSet(new long[]{0x0001130000100000L,0x0000000000000030L});
+    public static final BitSet FOLLOW_48_in_parse_org_kermeta_language_structure_FunctionType9794 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType9814 = new BitSet(new long[]{0x5440085000E20060L,0x000000000000000CL});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_structure_FunctionType9840 = new BitSet(new long[]{0x0001130000100000L,0x0000000000000030L});
+    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_structure_FunctionType9876 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType9896 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_FunctionType9922 = new BitSet(new long[]{0x0001130000100000L,0x0000000000000030L});
+    public static final BitSet FOLLOW_68_in_parse_org_kermeta_language_structure_FunctionType9963 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType9983 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_FunctionType10009 = new BitSet(new long[]{0x0001130000100000L,0x0000000000000030L});
+    public static final BitSet FOLLOW_69_in_parse_org_kermeta_language_structure_FunctionType10050 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_structure_FunctionType10070 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_structure_FunctionType10096 = new BitSet(new long[]{0x0001130000100000L,0x0000000000000030L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_structure_FunctionType10142 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_70_in_parse_org_kermeta_language_behavior_Block10171 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_VariableDecl_in_parse_org_kermeta_language_behavior_Block10200 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Loop_in_parse_org_kermeta_language_behavior_Block10242 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Conditional_in_parse_org_kermeta_language_behavior_Block10284 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Assignment_in_parse_org_kermeta_language_behavior_Block10326 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_parse_org_kermeta_language_behavior_Block10368 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_Block10410 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallSuperOperation_in_parse_org_kermeta_language_behavior_Block10452 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallResult_in_parse_org_kermeta_language_behavior_Block10494 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_JavaStaticCall_in_parse_org_kermeta_language_behavior_Block10536 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_EmptyExpression_in_parse_org_kermeta_language_behavior_Block10578 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Block_in_parse_org_kermeta_language_behavior_Block10620 = new BitSet(new long[]{0x00000002000001A0L,0x00000000604D25C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Rescue_in_parse_org_kermeta_language_behavior_Block10676 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000180L});
+    public static final BitSet FOLLOW_71_in_parse_org_kermeta_language_behavior_Block10717 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_72_in_parse_org_kermeta_language_behavior_Rescue10746 = new BitSet(new long[]{0x01000042000001A2L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_Rescue10769 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_Rescue10795 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_Rescue10828 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_TypeReference_in_parse_org_kermeta_language_behavior_Rescue10854 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_parse_org_kermeta_language_behavior_Rescue10882 = new BitSet(new long[]{0x01000042000001A2L,0x00000001604D2640L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_Rescue10930 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_TypeReference10990 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_72_in_parse_org_kermeta_language_behavior_Raise11026 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
+    public static final BitSet FOLLOW_73_in_parse_org_kermeta_language_behavior_Raise11026 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_Raise11044 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_BOOLEAN_in_parse_org_kermeta_language_behavior_BooleanLiteral11081 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_INTEGER_in_parse_org_kermeta_language_behavior_IntegerLiteral11121 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_StringLiteral11161 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_parse_org_kermeta_language_behavior_Conditional11197 = new BitSet(new long[]{0x00000001000000D0L,0x0000000010220200L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_parse_org_kermeta_language_behavior_Conditional11220 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Conditional_in_parse_org_kermeta_language_behavior_Conditional11254 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_74_in_parse_org_kermeta_language_behavior_Conditional11284 = new BitSet(new long[]{0x00800001000000D0L,0x0000000010268020L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_BooleanLiteral_in_parse_org_kermeta_language_behavior_Conditional11307 = new BitSet(new long[]{0x00800001000000D0L,0x0000000010268860L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Block_in_parse_org_kermeta_language_behavior_Conditional11341 = new BitSet(new long[]{0x00800001000000D0L,0x0000000010268860L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Assignment_in_parse_org_kermeta_language_behavior_Conditional11375 = new BitSet(new long[]{0x00800001000000D0L,0x0000000010268860L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_parse_org_kermeta_language_behavior_Conditional11409 = new BitSet(new long[]{0x00800001000000D0L,0x0000000010268860L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallSuperOperation_in_parse_org_kermeta_language_behavior_Conditional11443 = new BitSet(new long[]{0x00800001000000D0L,0x0000000010268860L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallResult_in_parse_org_kermeta_language_behavior_Conditional11477 = new BitSet(new long[]{0x00800001000000D0L,0x0000000010268860L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_Conditional11511 = new BitSet(new long[]{0x00800001000000D0L,0x0000000010268860L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallValue_in_parse_org_kermeta_language_behavior_Conditional11545 = new BitSet(new long[]{0x00800001000000D0L,0x0000000010268860L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_VariableDecl_in_parse_org_kermeta_language_behavior_Conditional11579 = new BitSet(new long[]{0x00800001000000D0L,0x0000000010268860L});
-    public static final BitSet FOLLOW_75_in_parse_org_kermeta_language_behavior_Conditional11618 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_BooleanLiteral_in_parse_org_kermeta_language_behavior_Conditional11644 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Block_in_parse_org_kermeta_language_behavior_Conditional11686 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Assignment_in_parse_org_kermeta_language_behavior_Conditional11728 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_parse_org_kermeta_language_behavior_Conditional11770 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallSuperOperation_in_parse_org_kermeta_language_behavior_Conditional11812 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallResult_in_parse_org_kermeta_language_behavior_Conditional11854 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_VariableDecl_in_parse_org_kermeta_language_behavior_Conditional11896 = new BitSet(new long[]{0x0000000000000010L,0x0000000000020000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_Conditional11930 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallValue_in_parse_org_kermeta_language_behavior_Conditional11972 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_70_in_parse_org_kermeta_language_behavior_Conditional12013 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_76_in_parse_org_kermeta_language_behavior_Loop12042 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B026B320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_Loop12071 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_77_in_parse_org_kermeta_language_behavior_Loop12112 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_Loop12130 = new BitSet(new long[]{0x0000000000000002L,0x0000000000004000L});
-    public static final BitSet FOLLOW_78_in_parse_org_kermeta_language_behavior_Loop12157 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
+    public static final BitSet FOLLOW_74_in_parse_org_kermeta_language_behavior_Conditional11197 = new BitSet(new long[]{0x00000002000001A0L,0x0000000020440400L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_parse_org_kermeta_language_behavior_Conditional11220 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Conditional_in_parse_org_kermeta_language_behavior_Conditional11254 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+    public static final BitSet FOLLOW_75_in_parse_org_kermeta_language_behavior_Conditional11284 = new BitSet(new long[]{0x01000002000001A0L,0x00000000204D0040L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_BooleanLiteral_in_parse_org_kermeta_language_behavior_Conditional11307 = new BitSet(new long[]{0x01000002000001A0L,0x00000000204D10C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Block_in_parse_org_kermeta_language_behavior_Conditional11341 = new BitSet(new long[]{0x01000002000001A0L,0x00000000204D10C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Assignment_in_parse_org_kermeta_language_behavior_Conditional11375 = new BitSet(new long[]{0x01000002000001A0L,0x00000000204D10C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_parse_org_kermeta_language_behavior_Conditional11409 = new BitSet(new long[]{0x01000002000001A0L,0x00000000204D10C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallSuperOperation_in_parse_org_kermeta_language_behavior_Conditional11443 = new BitSet(new long[]{0x01000002000001A0L,0x00000000204D10C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallResult_in_parse_org_kermeta_language_behavior_Conditional11477 = new BitSet(new long[]{0x01000002000001A0L,0x00000000204D10C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_Conditional11511 = new BitSet(new long[]{0x01000002000001A0L,0x00000000204D10C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallValue_in_parse_org_kermeta_language_behavior_Conditional11545 = new BitSet(new long[]{0x01000002000001A0L,0x00000000204D10C0L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_VariableDecl_in_parse_org_kermeta_language_behavior_Conditional11579 = new BitSet(new long[]{0x01000002000001A0L,0x00000000204D10C0L});
+    public static final BitSet FOLLOW_76_in_parse_org_kermeta_language_behavior_Conditional11618 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_BooleanLiteral_in_parse_org_kermeta_language_behavior_Conditional11644 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Block_in_parse_org_kermeta_language_behavior_Conditional11686 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Assignment_in_parse_org_kermeta_language_behavior_Conditional11728 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_parse_org_kermeta_language_behavior_Conditional11770 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallSuperOperation_in_parse_org_kermeta_language_behavior_Conditional11812 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallResult_in_parse_org_kermeta_language_behavior_Conditional11854 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_VariableDecl_in_parse_org_kermeta_language_behavior_Conditional11896 = new BitSet(new long[]{0x0000000000000020L,0x0000000000040000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_Conditional11930 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallValue_in_parse_org_kermeta_language_behavior_Conditional11972 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_71_in_parse_org_kermeta_language_behavior_Conditional12013 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_77_in_parse_org_kermeta_language_behavior_Loop12042 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D6640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_Loop12071 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+    public static final BitSet FOLLOW_78_in_parse_org_kermeta_language_behavior_Loop12112 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_Loop12130 = new BitSet(new long[]{0x0000000000000002L,0x0000000000008000L});
+    public static final BitSet FOLLOW_79_in_parse_org_kermeta_language_behavior_Loop12157 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_Loop12190 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_79_in_parse_org_kermeta_language_behavior_VariableDecl12264 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_VariableDecl12282 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_VariableDecl12303 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_TypeReference_in_parse_org_kermeta_language_behavior_VariableDecl12321 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L});
-    public static final BitSet FOLLOW_80_in_parse_org_kermeta_language_behavior_VariableDecl12348 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
+    public static final BitSet FOLLOW_80_in_parse_org_kermeta_language_behavior_VariableDecl12264 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_VariableDecl12282 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_VariableDecl12303 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_TypeReference_in_parse_org_kermeta_language_behavior_VariableDecl12321 = new BitSet(new long[]{0x0000000000000002L,0x0000000000020000L});
+    public static final BitSet FOLLOW_81_in_parse_org_kermeta_language_behavior_VariableDecl12348 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_VariableDecl12374 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_TypeReference_in_parse_org_kermeta_language_behavior_TypeLiteral12434 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_81_in_parse_org_kermeta_language_behavior_CallResult12467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_82_in_parse_org_kermeta_language_behavior_CallSuperOperation12496 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_parse_org_kermeta_language_behavior_CallSuperOperation12510 = new BitSet(new long[]{0x00800023000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallSuperOperation12539 = new BitSet(new long[]{0x0000000201000000L});
-    public static final BitSet FOLLOW_24_in_parse_org_kermeta_language_behavior_CallSuperOperation12580 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallSuperOperation12614 = new BitSet(new long[]{0x0000000201000000L});
-    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_CallSuperOperation12688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_parse_org_kermeta_language_behavior_Assignment12732 = new BitSet(new long[]{0x0000000000000100L,0x0000000000080000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_Assignment12774 = new BitSet(new long[]{0x0000000000000100L,0x0000000000080000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallResult_in_parse_org_kermeta_language_behavior_Assignment12816 = new BitSet(new long[]{0x0000000000000100L,0x0000000000080000L});
-    public static final BitSet FOLLOW_83_in_parse_org_kermeta_language_behavior_Assignment12859 = new BitSet(new long[]{0x00800021000000D0L,0x0000000010260000L});
-    public static final BitSet FOLLOW_CASTED_in_parse_org_kermeta_language_behavior_Assignment12893 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-    public static final BitSet FOLLOW_84_in_parse_org_kermeta_language_behavior_Assignment12926 = new BitSet(new long[]{0x00800021000000D0L,0x0000000010260000L});
+    public static final BitSet FOLLOW_82_in_parse_org_kermeta_language_behavior_CallResult12467 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_83_in_parse_org_kermeta_language_behavior_CallSuperOperation12496 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_CallSuperOperation12510 = new BitSet(new long[]{0x01000046000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallSuperOperation12539 = new BitSet(new long[]{0x0000000402000000L});
+    public static final BitSet FOLLOW_25_in_parse_org_kermeta_language_behavior_CallSuperOperation12580 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallSuperOperation12614 = new BitSet(new long[]{0x0000000402000000L});
+    public static final BitSet FOLLOW_34_in_parse_org_kermeta_language_behavior_CallSuperOperation12688 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_parse_org_kermeta_language_behavior_Assignment12732 = new BitSet(new long[]{0x0000000000000200L,0x0000000000100000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_Assignment12774 = new BitSet(new long[]{0x0000000000000200L,0x0000000000100000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallResult_in_parse_org_kermeta_language_behavior_Assignment12816 = new BitSet(new long[]{0x0000000000000200L,0x0000000000100000L});
+    public static final BitSet FOLLOW_84_in_parse_org_kermeta_language_behavior_Assignment12859 = new BitSet(new long[]{0x01000042000001A0L,0x00000000204C0000L});
+    public static final BitSet FOLLOW_CASTED_in_parse_org_kermeta_language_behavior_Assignment12893 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+    public static final BitSet FOLLOW_85_in_parse_org_kermeta_language_behavior_Assignment12926 = new BitSet(new long[]{0x01000042000001A0L,0x00000000204C0000L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_parse_org_kermeta_language_behavior_Assignment12967 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_SelfExpression_in_parse_org_kermeta_language_behavior_Assignment13009 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallSuperOperation_in_parse_org_kermeta_language_behavior_Assignment13051 = new BitSet(new long[]{0x0000000000000002L});
@@ -37867,129 +37862,129 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_StringLiteral_in_parse_org_kermeta_language_behavior_Assignment13345 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallVariable13409 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallResult_in_parse_org_kermeta_language_behavior_CallVariable13435 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_85_in_parse_org_kermeta_language_behavior_SelfExpression13460 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_parse_org_kermeta_language_behavior_CallFeature13489 = new BitSet(new long[]{0x00000000000000D0L,0x0000000010220000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_BooleanLiteral_in_parse_org_kermeta_language_behavior_CallFeature13512 = new BitSet(new long[]{0x0000000200000000L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_CallFeature13546 = new BitSet(new long[]{0x0000000200000000L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_JavaStaticCall_in_parse_org_kermeta_language_behavior_CallFeature13580 = new BitSet(new long[]{0x0000000200000000L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_SelfExpression_in_parse_org_kermeta_language_behavior_CallFeature13614 = new BitSet(new long[]{0x0000000200000000L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_StringLiteral_in_parse_org_kermeta_language_behavior_CallFeature13648 = new BitSet(new long[]{0x0000000200000000L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_IntegerLiteral_in_parse_org_kermeta_language_behavior_CallFeature13682 = new BitSet(new long[]{0x0000000200000000L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature13721 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature13747 = new BitSet(new long[]{0x0000000200000000L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature13788 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature13814 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_parse_org_kermeta_language_behavior_CallFeature13847 = new BitSet(new long[]{0x00800023000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature13888 = new BitSet(new long[]{0x0000000201000000L});
-    public static final BitSet FOLLOW_24_in_parse_org_kermeta_language_behavior_CallFeature13943 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature13985 = new BitSet(new long[]{0x0000000201000000L});
-    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature14089 = new BitSet(new long[]{0x0000000200000000L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature14117 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature14143 = new BitSet(new long[]{0x0000000200000000L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature14184 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature14210 = new BitSet(new long[]{0x0000000200000000L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature14260 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature14282 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature14305 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_88_in_parse_org_kermeta_language_behavior_CallFeature14346 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature14384 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature14422 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature14460 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature14509 = new BitSet(new long[]{0x0000000200000000L,0x000000000F000000L});
-    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature14560 = new BitSet(new long[]{0x0000000000000002L,0x000000000F000000L});
-    public static final BitSet FOLLOW_88_in_parse_org_kermeta_language_behavior_CallFeature14595 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature14633 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature14671 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature14709 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature14758 = new BitSet(new long[]{0x0000000000000002L,0x000000000F000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_BooleanLiteral_in_parse_org_kermeta_language_behavior_CallFeature14829 = new BitSet(new long[]{0x0000000000000002L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_CallFeature14863 = new BitSet(new long[]{0x0000000000000002L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_JavaStaticCall_in_parse_org_kermeta_language_behavior_CallFeature14897 = new BitSet(new long[]{0x0000000000000002L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_SelfExpression_in_parse_org_kermeta_language_behavior_CallFeature14931 = new BitSet(new long[]{0x0000000000000002L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_StringLiteral_in_parse_org_kermeta_language_behavior_CallFeature14965 = new BitSet(new long[]{0x0000000000000002L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_IntegerLiteral_in_parse_org_kermeta_language_behavior_CallFeature14999 = new BitSet(new long[]{0x0000000000000002L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature15038 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature15064 = new BitSet(new long[]{0x0000000000000002L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature15105 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature15131 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_parse_org_kermeta_language_behavior_CallFeature15164 = new BitSet(new long[]{0x00800023000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature15205 = new BitSet(new long[]{0x0000000201000000L});
-    public static final BitSet FOLLOW_24_in_parse_org_kermeta_language_behavior_CallFeature15260 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature15302 = new BitSet(new long[]{0x0000000201000000L});
-    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature15406 = new BitSet(new long[]{0x0000000000000002L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature15434 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature15460 = new BitSet(new long[]{0x0000000000000002L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_86_in_parse_org_kermeta_language_behavior_CallFeature15501 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature15527 = new BitSet(new long[]{0x0000000000000002L,0x000000000FC00000L});
-    public static final BitSet FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature15577 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
+    public static final BitSet FOLLOW_86_in_parse_org_kermeta_language_behavior_SelfExpression13460 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature13489 = new BitSet(new long[]{0x00000000000001A0L,0x0000000020440000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_BooleanLiteral_in_parse_org_kermeta_language_behavior_CallFeature13512 = new BitSet(new long[]{0x0000000400000000L,0x000000001F800000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_CallFeature13546 = new BitSet(new long[]{0x0000000400000000L,0x000000001F800000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_JavaStaticCall_in_parse_org_kermeta_language_behavior_CallFeature13580 = new BitSet(new long[]{0x0000000400000000L,0x000000001F800000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_SelfExpression_in_parse_org_kermeta_language_behavior_CallFeature13614 = new BitSet(new long[]{0x0000000400000000L,0x000000001F800000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_StringLiteral_in_parse_org_kermeta_language_behavior_CallFeature13648 = new BitSet(new long[]{0x0000000400000000L,0x000000001F800000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_IntegerLiteral_in_parse_org_kermeta_language_behavior_CallFeature13682 = new BitSet(new long[]{0x0000000400000000L,0x000000001F800000L});
+    public static final BitSet FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature13721 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature13747 = new BitSet(new long[]{0x0000000400000000L,0x000000001F800000L});
+    public static final BitSet FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature13788 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature13814 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature13847 = new BitSet(new long[]{0x01000046000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature13888 = new BitSet(new long[]{0x0000000402000000L});
+    public static final BitSet FOLLOW_25_in_parse_org_kermeta_language_behavior_CallFeature13943 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature13985 = new BitSet(new long[]{0x0000000402000000L});
+    public static final BitSet FOLLOW_34_in_parse_org_kermeta_language_behavior_CallFeature14089 = new BitSet(new long[]{0x0000000400000000L,0x000000001F800000L});
+    public static final BitSet FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature14117 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature14143 = new BitSet(new long[]{0x0000000400000000L,0x000000001F800000L});
+    public static final BitSet FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature14184 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature14210 = new BitSet(new long[]{0x0000000400000000L,0x000000001F800000L});
+    public static final BitSet FOLLOW_88_in_parse_org_kermeta_language_behavior_CallFeature14260 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature14282 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_parse_org_kermeta_language_behavior_CallFeature14305 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature14346 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature14384 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature14422 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_92_in_parse_org_kermeta_language_behavior_CallFeature14460 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature14509 = new BitSet(new long[]{0x0000000400000000L,0x000000001E000000L});
+    public static final BitSet FOLLOW_34_in_parse_org_kermeta_language_behavior_CallFeature14560 = new BitSet(new long[]{0x0000000000000002L,0x000000001E000000L});
+    public static final BitSet FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature14595 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature14633 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature14671 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_92_in_parse_org_kermeta_language_behavior_CallFeature14709 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature14758 = new BitSet(new long[]{0x0000000000000002L,0x000000001E000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_BooleanLiteral_in_parse_org_kermeta_language_behavior_CallFeature14829 = new BitSet(new long[]{0x0000000000000002L,0x000000001F800000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_parse_org_kermeta_language_behavior_CallFeature14863 = new BitSet(new long[]{0x0000000000000002L,0x000000001F800000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_JavaStaticCall_in_parse_org_kermeta_language_behavior_CallFeature14897 = new BitSet(new long[]{0x0000000000000002L,0x000000001F800000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_SelfExpression_in_parse_org_kermeta_language_behavior_CallFeature14931 = new BitSet(new long[]{0x0000000000000002L,0x000000001F800000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_StringLiteral_in_parse_org_kermeta_language_behavior_CallFeature14965 = new BitSet(new long[]{0x0000000000000002L,0x000000001F800000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_IntegerLiteral_in_parse_org_kermeta_language_behavior_CallFeature14999 = new BitSet(new long[]{0x0000000000000002L,0x000000001F800000L});
+    public static final BitSet FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature15038 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature15064 = new BitSet(new long[]{0x0000000000000002L,0x000000001F800000L});
+    public static final BitSet FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature15105 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature15131 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_CallFeature15164 = new BitSet(new long[]{0x01000046000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature15205 = new BitSet(new long[]{0x0000000402000000L});
+    public static final BitSet FOLLOW_25_in_parse_org_kermeta_language_behavior_CallFeature15260 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature15302 = new BitSet(new long[]{0x0000000402000000L});
+    public static final BitSet FOLLOW_34_in_parse_org_kermeta_language_behavior_CallFeature15406 = new BitSet(new long[]{0x0000000000000002L,0x000000001F800000L});
+    public static final BitSet FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature15434 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature15460 = new BitSet(new long[]{0x0000000000000002L,0x000000001F800000L});
+    public static final BitSet FOLLOW_87_in_parse_org_kermeta_language_behavior_CallFeature15501 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_CallFeature15527 = new BitSet(new long[]{0x0000000000000002L,0x000000001F800000L});
+    public static final BitSet FOLLOW_88_in_parse_org_kermeta_language_behavior_CallFeature15577 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature15599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_88_in_parse_org_kermeta_language_behavior_CallFeature15646 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature15684 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature15722 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature15760 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature15809 = new BitSet(new long[]{0x0000000000000002L,0x000000000F000000L});
-    public static final BitSet FOLLOW_92_in_parse_org_kermeta_language_behavior_JavaStaticCall15882 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_JavaStaticCall15900 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
-    public static final BitSet FOLLOW_86_in_parse_org_kermeta_language_behavior_JavaStaticCall15921 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_JavaStaticCall15939 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_parse_org_kermeta_language_behavior_JavaStaticCall15960 = new BitSet(new long[]{0x00800023000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_JavaStaticCall15989 = new BitSet(new long[]{0x0000000201000000L});
-    public static final BitSet FOLLOW_24_in_parse_org_kermeta_language_behavior_JavaStaticCall16030 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_JavaStaticCall16064 = new BitSet(new long[]{0x0000000201000000L});
-    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_JavaStaticCall16138 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_parse_org_kermeta_language_behavior_VoidLiteral16167 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_55_in_parse_org_kermeta_language_behavior_CallValue16196 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_93_in_parse_org_kermeta_language_behavior_EmptyExpression16225 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_behavior_EmptyExpression16239 = new BitSet(new long[]{0x0000818000080000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_behavior_EmptyExpression16262 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_EmptyExpression16282 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_EmptyExpression16308 = new BitSet(new long[]{0x0000818000080000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_behavior_EmptyExpression16349 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_EmptyExpression16369 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_behavior_EmptyExpression16395 = new BitSet(new long[]{0x0000818000080000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_47_in_parse_org_kermeta_language_behavior_EmptyExpression16431 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_EmptyExpression16451 = new BitSet(new long[]{0x2A20042800710030L,0x0000000000000006L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_behavior_EmptyExpression16477 = new BitSet(new long[]{0x0000818000080000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_parse_org_kermeta_language_behavior_EmptyExpression16513 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_EmptyExpression16533 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_EmptyExpression16559 = new BitSet(new long[]{0x0000818000080000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_behavior_EmptyExpression16605 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_95_in_parse_org_kermeta_language_behavior_LambdaExpression16634 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_behavior_LambdaExpression16648 = new BitSet(new long[]{0x0000818000080000L,0x0000000340000000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_behavior_LambdaExpression16671 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression16691 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_LambdaExpression16717 = new BitSet(new long[]{0x0000818000080000L,0x0000000340000000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_behavior_LambdaExpression16758 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression16778 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_behavior_LambdaExpression16804 = new BitSet(new long[]{0x0000818000080000L,0x0000000340000000L});
-    public static final BitSet FOLLOW_47_in_parse_org_kermeta_language_behavior_LambdaExpression16840 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression16860 = new BitSet(new long[]{0x2A20042800710030L,0x0000000000000006L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_behavior_LambdaExpression16886 = new BitSet(new long[]{0x0000818000080000L,0x0000000340000000L});
-    public static final BitSet FOLLOW_94_in_parse_org_kermeta_language_behavior_LambdaExpression16922 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression16942 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_LambdaExpression16968 = new BitSet(new long[]{0x0000818000080000L,0x0000000340000000L});
-    public static final BitSet FOLLOW_96_in_parse_org_kermeta_language_behavior_LambdaExpression17009 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression17029 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_LambdaParameter_in_parse_org_kermeta_language_behavior_LambdaExpression17055 = new BitSet(new long[]{0x0000818000080000L,0x0000000340000000L});
-    public static final BitSet FOLLOW_97_in_parse_org_kermeta_language_behavior_LambdaExpression17091 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaExpression17111 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_LambdaExpression17137 = new BitSet(new long[]{0x0000818000080000L,0x0000000340000000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_behavior_LambdaExpression17178 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_98_in_parse_org_kermeta_language_behavior_LambdaParameter17207 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_parse_org_kermeta_language_behavior_LambdaParameter17221 = new BitSet(new long[]{0x0002118000080000L});
-    public static final BitSet FOLLOW_39_in_parse_org_kermeta_language_behavior_LambdaParameter17244 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaParameter17264 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_LambdaParameter17290 = new BitSet(new long[]{0x0002118000080000L});
-    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_behavior_LambdaParameter17331 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaParameter17351 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_behavior_LambdaParameter17377 = new BitSet(new long[]{0x0002118000080000L});
-    public static final BitSet FOLLOW_44_in_parse_org_kermeta_language_behavior_LambdaParameter17413 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaParameter17433 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_LambdaParameter17459 = new BitSet(new long[]{0x0002118000080000L});
-    public static final BitSet FOLLOW_49_in_parse_org_kermeta_language_behavior_LambdaParameter17500 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_parse_org_kermeta_language_behavior_LambdaParameter17520 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_TypeReference_in_parse_org_kermeta_language_behavior_LambdaParameter17546 = new BitSet(new long[]{0x0002118000080000L});
-    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_behavior_LambdaParameter17587 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_89_in_parse_org_kermeta_language_behavior_CallFeature15646 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_90_in_parse_org_kermeta_language_behavior_CallFeature15684 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_91_in_parse_org_kermeta_language_behavior_CallFeature15722 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_92_in_parse_org_kermeta_language_behavior_CallFeature15760 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_CallFeature15809 = new BitSet(new long[]{0x0000000000000002L,0x000000001E000000L});
+    public static final BitSet FOLLOW_93_in_parse_org_kermeta_language_behavior_JavaStaticCall15882 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_JavaStaticCall15900 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+    public static final BitSet FOLLOW_87_in_parse_org_kermeta_language_behavior_JavaStaticCall15921 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_JavaStaticCall15939 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_33_in_parse_org_kermeta_language_behavior_JavaStaticCall15960 = new BitSet(new long[]{0x01000046000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_JavaStaticCall15989 = new BitSet(new long[]{0x0000000402000000L});
+    public static final BitSet FOLLOW_25_in_parse_org_kermeta_language_behavior_JavaStaticCall16030 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_JavaStaticCall16064 = new BitSet(new long[]{0x0000000402000000L});
+    public static final BitSet FOLLOW_34_in_parse_org_kermeta_language_behavior_JavaStaticCall16138 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_parse_org_kermeta_language_behavior_VoidLiteral16167 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_56_in_parse_org_kermeta_language_behavior_CallValue16196 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_94_in_parse_org_kermeta_language_behavior_EmptyExpression16225 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_behavior_EmptyExpression16239 = new BitSet(new long[]{0x0001030000100000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_behavior_EmptyExpression16262 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_EmptyExpression16282 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_EmptyExpression16308 = new BitSet(new long[]{0x0001030000100000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_behavior_EmptyExpression16349 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_EmptyExpression16369 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_behavior_EmptyExpression16395 = new BitSet(new long[]{0x0001030000100000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_48_in_parse_org_kermeta_language_behavior_EmptyExpression16431 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_EmptyExpression16451 = new BitSet(new long[]{0x5440085000E20060L,0x000000000000000CL});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_behavior_EmptyExpression16477 = new BitSet(new long[]{0x0001030000100000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_parse_org_kermeta_language_behavior_EmptyExpression16513 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_EmptyExpression16533 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_EmptyExpression16559 = new BitSet(new long[]{0x0001030000100000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_behavior_EmptyExpression16605 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_96_in_parse_org_kermeta_language_behavior_LambdaExpression16634 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_behavior_LambdaExpression16648 = new BitSet(new long[]{0x0001030000100000L,0x0000000680000000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_behavior_LambdaExpression16671 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression16691 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_LambdaExpression16717 = new BitSet(new long[]{0x0001030000100000L,0x0000000680000000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_behavior_LambdaExpression16758 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression16778 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_behavior_LambdaExpression16804 = new BitSet(new long[]{0x0001030000100000L,0x0000000680000000L});
+    public static final BitSet FOLLOW_48_in_parse_org_kermeta_language_behavior_LambdaExpression16840 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression16860 = new BitSet(new long[]{0x5440085000E20060L,0x000000000000000CL});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Type_in_parse_org_kermeta_language_behavior_LambdaExpression16886 = new BitSet(new long[]{0x0001030000100000L,0x0000000680000000L});
+    public static final BitSet FOLLOW_95_in_parse_org_kermeta_language_behavior_LambdaExpression16922 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression16942 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_LambdaExpression16968 = new BitSet(new long[]{0x0001030000100000L,0x0000000680000000L});
+    public static final BitSet FOLLOW_97_in_parse_org_kermeta_language_behavior_LambdaExpression17009 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression17029 = new BitSet(new long[]{0x0000000000000000L,0x0000000800000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_LambdaParameter_in_parse_org_kermeta_language_behavior_LambdaExpression17055 = new BitSet(new long[]{0x0001030000100000L,0x0000000680000000L});
+    public static final BitSet FOLLOW_98_in_parse_org_kermeta_language_behavior_LambdaExpression17091 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaExpression17111 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_parse_org_kermeta_language_behavior_LambdaExpression17137 = new BitSet(new long[]{0x0001030000100000L,0x0000000680000000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_behavior_LambdaExpression17178 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_99_in_parse_org_kermeta_language_behavior_LambdaParameter17207 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_parse_org_kermeta_language_behavior_LambdaParameter17221 = new BitSet(new long[]{0x0004230000100000L});
+    public static final BitSet FOLLOW_40_in_parse_org_kermeta_language_behavior_LambdaParameter17244 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaParameter17264 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_LambdaParameter17290 = new BitSet(new long[]{0x0004230000100000L});
+    public static final BitSet FOLLOW_41_in_parse_org_kermeta_language_behavior_LambdaParameter17331 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaParameter17351 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Tag_in_parse_org_kermeta_language_behavior_LambdaParameter17377 = new BitSet(new long[]{0x0004230000100000L});
+    public static final BitSet FOLLOW_45_in_parse_org_kermeta_language_behavior_LambdaParameter17413 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaParameter17433 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parse_org_kermeta_language_behavior_LambdaParameter17459 = new BitSet(new long[]{0x0004230000100000L});
+    public static final BitSet FOLLOW_50_in_parse_org_kermeta_language_behavior_LambdaParameter17500 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_parse_org_kermeta_language_behavior_LambdaParameter17520 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_TypeReference_in_parse_org_kermeta_language_behavior_LambdaParameter17546 = new BitSet(new long[]{0x0004230000100000L});
+    public static final BitSet FOLLOW_20_in_parse_org_kermeta_language_behavior_LambdaParameter17587 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Block_in_parse_org_kermeta_language_behavior_Expression17612 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Raise_in_parse_org_kermeta_language_behavior_Expression17622 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_BooleanLiteral_in_parse_org_kermeta_language_behavior_Expression17632 = new BitSet(new long[]{0x0000000000000002L});
@@ -38027,16 +38022,16 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Parameter_in_synpred5_Kermeta138 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_MultiplicityElement_in_synpred6_Kermeta152 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred11_Kermeta587 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_synpred14_Kermeta656 = new BitSet(new long[]{0x0020040800710030L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred14_Kermeta697 = new BitSet(new long[]{0x0020040800790030L});
-    public static final BitSet FOLLOW_19_in_synpred14_Kermeta758 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred16_Kermeta587 = new BitSet(new long[]{0x0020040800710032L});
-    public static final BitSet FOLLOW_18_in_synpred16_Kermeta656 = new BitSet(new long[]{0x0020040800710030L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred16_Kermeta697 = new BitSet(new long[]{0x0020040800790030L});
-    public static final BitSet FOLLOW_19_in_synpred16_Kermeta758 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_synpred16_Kermeta786 = new BitSet(new long[]{0x0020040800790030L});
-    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Package_in_synpred16_Kermeta827 = new BitSet(new long[]{0x0020040800790030L});
-    public static final BitSet FOLLOW_19_in_synpred16_Kermeta888 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_synpred14_Kermeta656 = new BitSet(new long[]{0x0040081000E20060L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred14_Kermeta697 = new BitSet(new long[]{0x0040081000F20060L});
+    public static final BitSet FOLLOW_20_in_synpred14_Kermeta758 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred16_Kermeta587 = new BitSet(new long[]{0x0040081000E20062L});
+    public static final BitSet FOLLOW_19_in_synpred16_Kermeta656 = new BitSet(new long[]{0x0040081000E20060L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred16_Kermeta697 = new BitSet(new long[]{0x0040081000F20060L});
+    public static final BitSet FOLLOW_20_in_synpred16_Kermeta758 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_synpred16_Kermeta786 = new BitSet(new long[]{0x0040081000F20060L});
+    public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Package_in_synpred16_Kermeta827 = new BitSet(new long[]{0x0040081000F20060L});
+    public static final BitSet FOLLOW_20_in_synpred16_Kermeta888 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_TypeDefinition_in_synpred18_Kermeta940 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Constraint_in_synpred23_Kermeta1344 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_structure_Constraint_in_synpred32_Kermeta1983 = new BitSet(new long[]{0x0000000000000002L});
@@ -38086,7 +38081,7 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Assignment_in_synpred190_Kermeta11728 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_synpred191_Kermeta11770 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallResult_in_synpred193_Kermeta11854 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_78_in_synpred197_Kermeta12157 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
+    public static final BitSet FOLLOW_79_in_synpred197_Kermeta12157 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_synpred197_Kermeta12190 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallFeature_in_synpred201_Kermeta12732 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_synpred202_Kermeta12774 = new BitSet(new long[]{0x0000000000000002L});
@@ -38098,25 +38093,25 @@ public class KermetaParser extends KermetaANTLRParserBase {
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_BooleanLiteral_in_synpred212_Kermeta13303 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_synpred215_Kermeta13546 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_StringLiteral_in_synpred218_Kermeta13648 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_86_in_synpred219_Kermeta13721 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_87_in_synpred219_Kermeta13721 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_IDENTIFIER_in_synpred219_Kermeta13747 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_86_in_synpred223_Kermeta14117 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_87_in_synpred223_Kermeta14117 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_IDENTIFIER_in_synpred223_Kermeta14143 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_88_in_synpred233_Kermeta14595 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_89_in_synpred233_Kermeta14633 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_90_in_synpred233_Kermeta14671 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_91_in_synpred233_Kermeta14709 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
+    public static final BitSet FOLLOW_89_in_synpred233_Kermeta14595 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_90_in_synpred233_Kermeta14633 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_91_in_synpred233_Kermeta14671 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_92_in_synpred233_Kermeta14709 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_synpred233_Kermeta14758 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_CallVariable_in_synpred236_Kermeta14863 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_StringLiteral_in_synpred239_Kermeta14965 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_86_in_synpred240_Kermeta15038 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_87_in_synpred240_Kermeta15038 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_IDENTIFIER_in_synpred240_Kermeta15064 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_86_in_synpred244_Kermeta15434 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_87_in_synpred244_Kermeta15434 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_IDENTIFIER_in_synpred244_Kermeta15460 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_88_in_synpred250_Kermeta15646 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_89_in_synpred250_Kermeta15684 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_90_in_synpred250_Kermeta15722 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
-    public static final BitSet FOLLOW_91_in_synpred250_Kermeta15760 = new BitSet(new long[]{0x00800021000000D0L,0x00000000B0269320L});
+    public static final BitSet FOLLOW_89_in_synpred250_Kermeta15646 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_90_in_synpred250_Kermeta15684 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_91_in_synpred250_Kermeta15722 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
+    public static final BitSet FOLLOW_92_in_synpred250_Kermeta15760 = new BitSet(new long[]{0x01000042000001A0L,0x00000001604D2640L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_Expression_in_synpred250_Kermeta15809 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_BooleanLiteral_in_synpred269_Kermeta17632 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_org_kermeta_language_behavior_IntegerLiteral_in_synpred270_Kermeta17642 = new BitSet(new long[]{0x0000000000000002L});

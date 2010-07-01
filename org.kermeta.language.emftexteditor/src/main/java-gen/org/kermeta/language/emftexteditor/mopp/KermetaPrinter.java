@@ -565,12 +565,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	public void print_org_kermeta_language_structure_Package_0(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
 		count = printCountingMap.get("nestingPackage");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE));
 			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("QUALIFIEDNAME");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPackageNestingPackageReferenceResolver().deResolve((org.kermeta.language.structure.Package) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE), element));
 			}
