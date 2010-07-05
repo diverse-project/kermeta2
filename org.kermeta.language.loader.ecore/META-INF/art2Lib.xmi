@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:art2="http://art/2.0">
+  <componentTypes name="EcoreLoaderComponentType" factoryBean="org.kermeta.language.loader.ecore.EcoreLoaderComponentTypeFactory">
+    <required name="errorp" ref="//@portTypes.1"/>
+    <provided name="loader" ref="//@portTypes.0">
+      <mappings beanMethodName="load" serviceMethodName="load"/>
+    </provided>
+  </componentTypes>
+  <dataTypes name="fr.irisa.triskell.kermeta.language.structure.ModelingUnit"/>
+  <dataTypes name="java.lang.String"/>
+  <dataTypes name="org.kermeta.language.api.port.PortResourceLoader.URIType"/>
+  <dataTypes name="void"/>
+  <dataTypes name="org.kermeta.language.api.KermetaError"/>
+  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortResourceLoader">
+    <operations name="load" returnType="//@dataTypes.0">
+      <parameters name="arg0" type="//@dataTypes.1"/>
+      <parameters name="arg1" type="//@dataTypes.2"/>
+    </operations>
+  </portTypes>
+  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortErrorHandler">
+    <operations name="send" returnType="//@dataTypes.3">
+      <parameters name="arg0" type="//@dataTypes.4"/>
+    </operations>
+  </portTypes>
+  <librariy subComponentTypes="//@componentTypes.0"/>
+</art2:ContainerRoot>
