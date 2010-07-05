@@ -5,7 +5,7 @@
 
 package org.kermeta.scala.parser
 
-class ParseException {
+class ParseException extends Throwable {
 
   var line : Int = _
   var colonne : Int = _

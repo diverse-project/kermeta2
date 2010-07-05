@@ -30,6 +30,15 @@ class KParser extends KExpressionParser
     }
   }
 
+  def parseSynch(content : String) : Option[ModelingUnit] = {
+
+    parse(content) match {
+      case Some(e) => Some(e)
+      case None => throw getErrors.get;None
+    }
+
+  }
+
   var lastNoSucess : Option[NoSuccess] = None
 
   def getErrors : Option[ParseException] = {

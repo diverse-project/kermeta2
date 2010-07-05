@@ -13,6 +13,6 @@ import scala.collection.JavaConversions._
 
 trait KLambdaParser extends KAbstractParser {
 
-  def fLambda : Parser[Expression] = "{" ~> fExpression <~ "}"
+  def fLambda : Parser[Expression] = "{" ~> "|" ~> fExpression <~ "}"
 
 }

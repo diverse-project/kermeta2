@@ -31,14 +31,14 @@ trait KModelingUnitParser extends KAbstractParser  {
 
   def kermetaUnit = scompUnit+
 
-  def scompUnit = (/*packageDecl|*/importStmts|usingStmts|topLevelDecl) // TODO ADD ANNOTATION TO ELEM
+  def scompUnit = (packageDecl|importStmts|usingStmts|topLevelDecl) // TODO ADD ANNOTATION TO ELEM
   /* DEPRECATED */
-  /*
-   def packageDecl : Parser[Package] = "package" ~ expr ~ ";" ^^ { case _ ~ p ~ _ => {
+  
+   def packageDecl : Parser[Package] = "package" ~ packageName ~ ";" ^^ { case _ ~ p ~ _ => {
    var newp =StructureFactory.eINSTANCE.createPackage
    newp.setName(p)
    newp
-   }}*/
+   }}
   private def importStmts = importStmt+
   private def importStmt = "require" ~ packageName ^^ { case _ ~ e =>
       var newo =StructureFactory.eINSTANCE.createRequire
