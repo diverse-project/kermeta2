@@ -21,7 +21,6 @@ public class KermetaTokenResolverFactory implements org.kermeta.language.emftext
 		registerTokenResolver("BOOLEAN", new org.kermeta.language.emftexteditor.analysis.KermetaBOOLEANTokenResolver());
 		registerTokenResolver("PRIMITIVE_TYPE", new org.kermeta.language.emftexteditor.analysis.KermetaPRIMITIVE_TYPETokenResolver());
 		registerTokenResolver("INTEGER", new org.kermeta.language.emftexteditor.analysis.KermetaINTEGERTokenResolver());
-		registerTokenResolver("QUALIFIEDNAME", new org.kermeta.language.emftexteditor.analysis.KermetaQUALIFIEDNAMETokenResolver());
 		registerTokenResolver("IDENTIFIER", new org.kermeta.language.emftexteditor.analysis.KermetaIDENTIFIERTokenResolver());
 	}
 	
