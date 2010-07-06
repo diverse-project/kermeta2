@@ -22,6 +22,7 @@ public class KermetaTokenResolverFactory implements org.kermeta.language.emftext
 		registerTokenResolver("PRIMITIVE_TYPE", new org.kermeta.language.emftexteditor.analysis.KermetaPRIMITIVE_TYPETokenResolver());
 		registerTokenResolver("INTEGER", new org.kermeta.language.emftexteditor.analysis.KermetaINTEGERTokenResolver());
 		registerTokenResolver("IDENTIFIER", new org.kermeta.language.emftexteditor.analysis.KermetaIDENTIFIERTokenResolver());
+		registerTokenResolver("QUOTED_34_34", new org.kermeta.language.emftexteditor.analysis.KermetaQUOTED_34_34TokenResolver());
 	}
 	
 	public org.kermeta.language.emftexteditor.IKermetaTokenResolver createTokenResolver(java.lang.String tokenName) {

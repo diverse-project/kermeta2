@@ -275,6 +275,9 @@ public class KermetaTokenStyleInformationProvider {
 		if ("LambdaParameter".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
+		if ("QUOTED_34_34".equals(tokenName)) {
+			return new TokenStyleImpl(new int[] {0x2A, 0x00, 0xFF}, false, false, false, false);
+		}
 		return null;
 	}
 	

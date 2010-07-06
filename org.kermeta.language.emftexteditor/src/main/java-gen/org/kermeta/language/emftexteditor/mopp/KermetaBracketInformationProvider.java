@@ -38,6 +38,7 @@ public class KermetaBracketInformationProvider {
 		java.util.Collection<org.kermeta.language.emftexteditor.IKermetaBracketPair> result = new java.util.ArrayList<org.kermeta.language.emftexteditor.IKermetaBracketPair>();
 		result.add(new BracketPair("{", "}", true));
 		result.add(new BracketPair("(", ")", true));
+		result.add(new BracketPair("\"", "\"", false));
 		return result;
 	}
 	

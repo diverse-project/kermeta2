@@ -81,13 +81,11 @@ RULES{
    ;
    	structure.Require ::= 
    	//"require" uri[STRING_LITERAL] !0;
-   "require";
+   "require" uri['"','"'];
    
    	structure.Package ::=  
-   	//"package" (nestingPackage[QUALIFIEDNAME] #0  "::")* name[]
-//   	"package" (nestingPackage[] #0  "::")* name[]
-   	//("package" name[] | "package" uri[] #0"::"#0 name[])
-   	//"package" (uri[](#0"::"uri[])*#0"::") name[])
+//best rule declaration but netsingPackage seems not to be resolved   
+//   "package" (nestingPackage[] #0  "::")* name[]
 //  	(
 //	   (!0ownedTypeDefinition)+!0 
 //	   |
@@ -101,26 +99,9 @@ RULES{
 //   	)? !0
 //   	| 
 //  	(!0ownedTypeDefinition)+!0 
-   	
-//   	(	name[] ("::" nestedPackage)* | 
-//   	"package" name[] ("::" nestedPackage)*
 
-//   	)
-//   (
-//	   (!0ownedTypeDefinition)+!0 
-//	   |
-//	   "{" 
-//	   		(!1ownedTypeDefinition)+!0
-	   //"}" 
-	   //|
-	   //"{"
-	   //		(!1nestedPackage)*!0
-	   //"}"
-   	//) !0
-   	//| 
-   	//(!0ownedTypeDefinition)+!0 
-   	
-   		name[] ("::" nestedPackage)*  
+//avoid limitation above but has some side effects
+		name[] ("::" nestedPackage)*  
     	(
 	 	   	"{"
 	 	   		(!1nestedPackage)*!0
@@ -129,6 +110,8 @@ RULES{
 	 	   	"{" 
 	 	   		(!1ownedTypeDefinition)+!0
 	 	   	"}" 
+	 	   	|
+	 	   	(!0ownedTypeDefinition)+!0 
     	)? !0
     	|
     	"package" name[]("::" nestedPackage)* 
@@ -139,8 +122,11 @@ RULES{
 	 	   	|
 	 	   	"{" 
 	 	   		(!1ownedTypeDefinition)+!0
-	 	   	"}" 
+	 	   	"}"
+	 	   	|
+	 	   	(!0ownedTypeDefinition)+!0  
     	)? !0
+	
     	
    	;	
    	structure.ClassDefinition ::=  
@@ -223,7 +209,7 @@ RULES{
    		(!1statement:bv.VariableDecl|statement:bv.Loop|statement:bv.Conditional|
    		statement:bv.Assignment|statement:bv.CallFeature|statement:bv.CallVariable|
    		statement:bv.CallSuperOperation|statement:bv.CallResult|statement:bv.JavaStaticCall|statement:bv.EmptyExpression|
-   		statement:bv.Block)*!0 
+   		statement:bv.CallValue|statement:bv.Block)*!0 
    		(!1rescueBlock)*!0
 	"end";
    
@@ -272,7 +258,7 @@ RULES{
    	bv.CallResult ::=
    	//TODO find a way to handle escaped keyword 
    //("~")?"result" ;
-   "result" ;
+   ("~")?"result" ;
    
    	bv.CallSuperOperation ::=  
    	"super" #0 "("(parameters(","parameters)*)?")" ;
