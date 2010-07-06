@@ -7,6 +7,7 @@
 package org.kermeta.language.emftexteditor.analysis;
 
 import org.eclipse.emf.ecore.EObject;
+import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.ModelingUnit;
 import org.kermeta.language.structure.StructureFactory;
 import org.kermeta.language.structure.Package;
@@ -29,6 +30,9 @@ public class PackageNestingPackageReferenceResolver implements org.kermeta.langu
 			}
 			if (!foundPackage) {
 				Package p = StructureFactory.eINSTANCE.createPackage();
+				ClassDefinition c = StructureFactory.eINSTANCE.createClassDefinition();
+				c.setName("Dummy");
+				p.getOwnedTypeDefinition().add(c);
 				p.setName(identifier);
 				m.getPackages().add(p);
 				Package nestingPackage = container.getNestingPackage();
