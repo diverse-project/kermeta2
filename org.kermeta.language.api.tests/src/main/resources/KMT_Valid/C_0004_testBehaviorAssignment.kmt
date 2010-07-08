@@ -1,0 +1,15 @@
+
+require kermeta
+
+package testAssignment
+
+
+class Test_assignment {
+
+    operation operation1()  is do
+        var ~result : Integer
+        ~result := 4
+        result := ~result
+    end
+}
+
