@@ -1,0 +1,25 @@
+require kermeta
+
+
+package testPackage
+
+//pbm package1 package2 are still not subpackages of testPackage
+
+//using metacore::standard
+
+package package1 {
+
+	package package11 {}
+
+	package package12 {
+	
+	}
+
+}
+
+package package2 
+{
+	package package21 { package package211{}}
+}
+
+package package3 {}
