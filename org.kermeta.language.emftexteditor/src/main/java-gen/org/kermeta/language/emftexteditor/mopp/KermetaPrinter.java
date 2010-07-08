@@ -447,20 +447,49 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("uri", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("require");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderInQuotes):
-		count = printCountingMap.get("uri");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__URI));
-			if (o != null) {
-				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("QUOTED_34_34");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__URI), element));
+		int alt = -1;
+		alt=0;
+		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"uri"		));
+		int tempMatchCount;
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"uri"		));
+		if (tempMatchCount > matches) {
+			alt = 1;
+			matches = tempMatchCount;
+		}
+		switch(alt) {
+			case 1:			{
+				//////////////DEFINITION PART BEGINS (CsString):
+				out.print("require");
 				out.print(" ");
+				//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
+				count = printCountingMap.get("uri");
+				if (count > 0) {
+					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__URI));
+					if (o != null) {
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("KERMETA_LITERAL");
+						resolver.setOptions(getOptions());
+						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__URI), element));
+						out.print(" ");
+					}
+					printCountingMap.put("uri", count - 1);
+				}
 			}
-			printCountingMap.put("uri", count - 1);
+			break;
+			default:			//////////////DEFINITION PART BEGINS (CsString):
+			out.print("require");
+			out.print(" ");
+			//////////////DEFINITION PART BEGINS (PlaceholderInQuotes):
+			count = printCountingMap.get("uri");
+			if (count > 0) {
+				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__URI));
+				if (o != null) {
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("QUOTED_34_34");
+					resolver.setOptions(getOptions());
+					out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__URI), element));
+					out.print(" ");
+				}
+				printCountingMap.put("uri", count - 1);
+			}
 		}
 	}
 	
