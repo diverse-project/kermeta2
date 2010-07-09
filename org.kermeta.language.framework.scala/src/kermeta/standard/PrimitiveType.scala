@@ -290,7 +290,7 @@ class RichString(value: java.lang.String)  extends RichValueType with EObjectImp
   def toLowerCase() :java.lang.String={return value.toLowerCase()}
   def substring(startIndex : Int, endIndex : Int) :java.lang.String={return value.substring(startIndex,endIndex)}
   override def toString() :java.lang.String={if (value != null) {return value.toString} else { return null}}
-  def split(delimiter : String) :java.util.List[String]={
+  def ksplit(delimiter : String) :java.util.List[String]={
     var list: java.util.List[String] = new java.util.ArrayList[String]()
     value.split(delimiter).foreach{e=>list.add(e)}
     return list;

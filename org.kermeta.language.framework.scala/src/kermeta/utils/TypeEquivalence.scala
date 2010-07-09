@@ -55,7 +55,13 @@ object TypeEquivalence {
   };
 		
 	def getTypeEquivalence(key:String):String={
-		var res :String = typeEquivelence.get(key)
+
+    
+    
+                var res :String = typeEquivelence.get(key)
+
+
+
 		if (res ==null) 
 			res = key
 		return res 
@@ -87,6 +93,7 @@ object TypeEquivalence {
    		//methodEquivalence
 		var Str : java.util.HashMap[String,String] = new java.util.HashMap[String,String]
 		Str.put("size", "ksize");
+                Str.put("split", "ksplit");
 		methodEquivalence.put("_root_.kermeta.standard.String", Str);
 		methodEquivalence.put("_root_.String", Str);
 		methodEquivalence.put("java.lang.String", Str);
@@ -98,9 +105,13 @@ object TypeEquivalence {
   };
 	 
   def getMethodEquivalence(classN:String,methodName:String):String={
+
+   // println("hello")
+
     var className :String = classN
-    //if (methodName.equals("add"))
-    //   println("getMethodEquivalence " + className + " " + methodName )
+    if (methodName.contains("split")){
+       println("getMethodEquivalence " + className + " " + methodName )
+    }
     var res :String = null
     if (className.contains("["))
       className = className.substring(0,className.indexOf("["))
