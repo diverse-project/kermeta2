@@ -9,10 +9,10 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import java.io.IOException;
 
-import fr.irisa.triskell.eclipse.console.IOConsole;
+//import fr.irisa.triskell.eclipse.console.IOConsole;
 
 public class GenerateKmK {
-	public static void run(String file_uri, IOConsole console, String format) {
+	public static void run(String file_uri,/* IOConsole console,*/ String format) {
 
 		ResourceSet resourceSet = new ResourceSetImpl();
 

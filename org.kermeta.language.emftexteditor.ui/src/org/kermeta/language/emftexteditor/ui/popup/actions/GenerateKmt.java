@@ -15,10 +15,10 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.kermeta.language.emftexteditor.ui.GenerateKmtK;
 
-import fr.irisa.triskell.eclipse.console.EclipseConsole;
+/*import fr.irisa.triskell.eclipse.console.EclipseConsole;
 import fr.irisa.triskell.eclipse.console.IOConsole;
 import fr.irisa.triskell.eclipse.console.messages.InfoMessage;
-import fr.irisa.triskell.eclipse.console.messages.OKMessage;
+import fr.irisa.triskell.eclipse.console.messages.OKMessage;*/
 
 public class GenerateKmt implements IObjectActionDelegate {
 
@@ -44,10 +44,10 @@ public class GenerateKmt implements IObjectActionDelegate {
 	 * @see IActionDelegate#run(IAction)
 	 */
 	public void run(IAction action) {
-		IOConsole console = new EclipseConsole("Kermeta Converter");
-		console.println(new InfoMessage("Launching Kermeta converter on file : " + kermetaFile.getLocation().toOSString() + "..."));
+		/*IOConsole console = new EclipseConsole("Kermeta Converter");
+		console.println(new InfoMessage("Launching Kermeta converter on file : " + kermetaFile.getLocation().toOSString() + "..."));*/
 		String file_uri =  kermetaFile.getLocation().toOSString();
-		GenerateKmtK.run(file_uri, console, "kermeta");
+		GenerateKmtK.run(file_uri,/* console,*/ "kermeta");
 		MessageDialog.openInformation(
 				shell,
 				"EMFText Parser Plugin: kermeta",
@@ -59,7 +59,7 @@ public class GenerateKmt implements IObjectActionDelegate {
 			e.printStackTrace();
 		}
 		//project.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, null);
-		console.println(new OKMessage("Execution terminated successfully."));
+		//console.println(new OKMessage("Execution terminated successfully."));
 	}
 
 	/**

@@ -8,12 +8,12 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import fr.irisa.triskell.eclipse.console.IOConsole;
+//import fr.irisa.triskell.eclipse.console.IOConsole;
 import org.kermeta.language.emftexteditor.mopp.KermetaResourceFactory;
 
 public class GenerateKmtK {
 
-	public static void run(String file_uri, IOConsole console, String format) {
+	public static void run(String file_uri,/* IOConsole console,*/ String format) {
 		
 		//register KermetaResourceFactory for "kmt" file extension 
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap(

@@ -1,8 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
+<?eclipse version="3.2"?>
 <plugin>
-
-   <extension
+	<extension point="org.emftext.access.syntax.ui">
+		<metaInformationProvider class="org.kermeta.language.emftexteditor.ui.KermetaUIMetaInformation" id="org.kermeta.language.emftexteditor.ui.KermetaUIMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors">
+		<editor class="org.kermeta.language.emftexteditor.ui.KermetaEditor" contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor" extensions="kermeta" icon="icons/editor_icon.gif" id="org.kermeta.language.emftexteditor.ui.KermetaEditor" name="EMFText kermeta Editor">
+		</editor>
+	</extension>
+	
+	<extension id="org.kermeta.language.emftexteditor.ui.problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="org.eclipse.core.resources.problemmarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="org.kermeta.language.emftexteditor.ui.KermetaPreferenceInitializer">
+		</initializer>
+	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="Kermeta Text Editor" id="org.kermeta.language.emftexteditor.ui.KermetaPreferencePage" class="org.kermeta.language.emftexteditor.ui.KermetaPreferencePage" category="org.eclipse.ui.preferencePages.GeneralTextEditor">
+		</page>
+		<page name="Syntax Coloring" id="org.kermeta.language.emftexteditor.ui.KermetaSyntaxColoringPreferencePage" class="org.kermeta.language.emftexteditor.ui.KermetaSyntaxColoringPreferencePage" category="org.kermeta.language.emftexteditor.ui.KermetaPreferencePage">
+		</page>
+		<page name="Brackets" id="org.kermeta.language.emftexteditor.ui.KermetaBracketPreferencePage" class="org.kermeta.language.emftexteditor.ui.KermetaBracketPreferencePage" category="org.kermeta.language.emftexteditor.ui.KermetaPreferencePage">
+		</page>
+		<page name="Occurrence" id="org.kermeta.language.emftexteditor.ui.KermetaOccurrencePreferencePage" class="org.kermeta.language.emftexteditor.ui.KermetaOccurrencePreferencePage" category="org.kermeta.language.emftexteditor.ui.KermetaPreferencePage">
+		</page>
+	</extension>
+	
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.emftext.runtime.ui.EMFTextFileCategory" name="EMFText File">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextFileCategory" icon="/icons/default_new_icon.gif" class="org.kermeta.language.emftexteditor.ui.KermetaNewFileWizard" id="org.kermeta.language.emftexteditor.ui.KermetaNewFileWizard" name="EMFText .kermeta file">
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution id="org.kermeta.contributions" objectClass="org.eclipse.core.resources.IFile" nameFilter="*.kermeta">
+			<action class="org.emftext.sdk.ui.actions.ValidateParserPrinterAction" enablesFor="1" id="org.kermeta.validate" label="Validate" menubarPath="org.emftext.sdk.ui.menu1/group1">
+			</action>
+		</objectContribution>
+	</extension>
+	<extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             id="org.kermeta.language.emftexteditor.ui.contribution1"
@@ -45,5 +92,4 @@
          </action>
       </objectContribution>
    </extension>
-
 </plugin>
