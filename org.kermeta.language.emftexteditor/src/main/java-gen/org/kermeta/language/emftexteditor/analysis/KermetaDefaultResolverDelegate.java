@@ -7,25 +7,68 @@
 package org.kermeta.language.emftexteditor.analysis;
 
 public class KermetaDefaultResolverDelegate<ContainerType extends org.eclipse.emf.ecore.EObject, ReferenceType extends org.eclipse.emf.ecore.EObject> {
+	
+	private static class ReferenceCache implements org.kermeta.language.emftexteditor.IKermetaReferenceCache, org.eclipse.emf.common.notify.Adapter {
+		
+		private java.util.Map<java.lang.String, java.lang.Object> cache = new java.util.LinkedHashMap<java.lang.String, java.lang.Object>();
+		private org.eclipse.emf.common.notify.Notifier target;
+		
+		public org.eclipse.emf.common.notify.Notifier getTarget() {
+			return target;
+		}
+		
+		public boolean isAdapterForType(java.lang.Object arg0) {
+			return false;
+		}
+		
+		public void notifyChanged(org.eclipse.emf.common.notify.Notification arg0) {
+		}
+		
+		public void setTarget(org.eclipse.emf.common.notify.Notifier arg0) {
+			target = arg0;
+		}
+		
+		public java.lang.Object get(java.lang.String identifier) {
+			return cache.get(identifier);
+		}
+		
+		public void put(java.lang.String identifier, java.lang.Object newObject) {
+			cache.put(identifier, newObject);
+		}
+		
+	}
+	
 	public final static java.lang.String NAME_FEATURE = "name";
 	
-	// This standard implementation searches the tree for objects of the 
-	// correct type with a name attribute matching the identifier.
+	/**
+	 * This standard implementation searches the tree for objects of the correct type
+	 * with a name attribute matching the identifier.
+	 */
 	protected void resolve(java.lang.String identifier, ContainerType container, org.eclipse.emf.ecore.EReference reference, int position, boolean resolveFuzzy, org.kermeta.language.emftexteditor.IKermetaReferenceResolveResult<ReferenceType> result) {
 		try {
 			org.eclipse.emf.ecore.EClass type = reference.getEReferenceType();
 			org.eclipse.emf.ecore.EObject root = org.kermeta.language.emftexteditor.util.KermetaEObjectUtil.findRootContainer(container);
 			// first check whether the root element matches
-			boolean continueSearch = checkElement(root, type, identifier, resolveFuzzy, result);
+			boolean continueSearch = checkElement(root, type, identifier, resolveFuzzy, true, result);
 			if (!continueSearch) {
 				return;
 			}
 			// then check the contents
 			for (java.util.Iterator<org.eclipse.emf.ecore.EObject> iterator = root.eAllContents(); iterator.hasNext(); ) {
 				org.eclipse.emf.ecore.EObject element = iterator.next();
-				continueSearch = checkElement(element, type, identifier, resolveFuzzy, result);
+				continueSearch = checkElement(element, type, identifier, resolveFuzzy, true, result);
 				if (!continueSearch) {
 					return;
+				}
+			}
+			if (isURI(identifier)) {
+				org.eclipse.emf.ecore.resource.Resource resource = container.eResource();
+				if (resource != null) {
+					org.eclipse.emf.ecore.EObject element = loadResource(container.eResource().getResourceSet(), identifier);
+					if (element == null) {
+						return;
+					}
+					checkElement(element, type, identifier, resolveFuzzy, false, result);
 				}
 			}
 		} catch (java.lang.RuntimeException rte) {
@@ -34,7 +77,7 @@ public class KermetaDefaultResolverDelegate<ContainerType extends org.eclipse.em
 		}
 	}
 	
-	private boolean checkElement(org.eclipse.emf.ecore.EObject element, org.eclipse.emf.ecore.EClass type, java.lang.String identifier, boolean resolveFuzzy, org.kermeta.language.emftexteditor.IKermetaReferenceResolveResult<ReferenceType> result) {
+	private boolean checkElement(org.eclipse.emf.ecore.EObject element, org.eclipse.emf.ecore.EClass type, java.lang.String identifier, boolean resolveFuzzy, boolean checkStringWise, org.kermeta.language.emftexteditor.IKermetaReferenceResolveResult<ReferenceType> result) {
 		if (element.eIsProxy()) {
 			return true;
 		}
@@ -44,15 +87,20 @@ public class KermetaDefaultResolverDelegate<ContainerType extends org.eclipse.em
 			return true;
 		}
 		
-		final java.lang.String match = matches(element, identifier, resolveFuzzy);
+		java.lang.String match;
+		// do not compare string-wise if identifier is a URI
+		if (checkStringWise) {
+			match = matches(element, identifier, resolveFuzzy);
+		} else {
+			match = identifier;
+		}
 		if (match == null) {
 			return true;
 		}
-		// we can safely cast 'element' to 'ReferenceType' here,
-		// because we've checked the type of 'element' against
-		// the type of the reference. unfortunately the compiler
-		// does not know that this is sufficient, so we must call
-		// cast(), which is not type safe by itself.
+		// we can safely cast 'element' to 'ReferenceType' here, because we've checked the
+		// type of 'element' against the type of the reference. unfortunately the compiler
+		// does not know that this is sufficient, so we must call cast(), which is not
+		// type safe by itself.
 		result.addMapping(match, cast(element));
 		if (!resolveFuzzy) {
 			return false;
@@ -60,10 +108,11 @@ public class KermetaDefaultResolverDelegate<ContainerType extends org.eclipse.em
 		return true;
 	}
 	
-	// This method encapsulates an unchecked cast from EObject to
-	// ReferenceType. We can not do this cast strictly type safe,
-	// because type parameters are erased by compilation. Thus, an
-	// instanceof check can not be performed at runtime.
+	/**
+	 * This method encapsulates an unchecked cast from EObject to ReferenceType. We
+	 * cannot do this cast strictly type safe, because type parameters are erased by
+	 * compilation. Thus, an instanceof check cannot be performed at runtime.
+	 */
 	@SuppressWarnings("unchecked")	
 	private ReferenceType cast(org.eclipse.emf.ecore.EObject element) {
 		return (ReferenceType) element;
@@ -100,9 +149,9 @@ public class KermetaDefaultResolverDelegate<ContainerType extends org.eclipse.em
 			java.lang.Object attributeValue = element.eGet(nameAttr);
 			return matches(identifier, attributeValue, matchFuzzy);
 		} else {
-			//try any other string attribute found
+			// try any other string attribute found
 			for (org.eclipse.emf.ecore.EAttribute stringAttribute : element.eClass().getEAllAttributes()) {
-				if (stringAttribute.getEType().getInstanceClassName().equals(java.lang.String.class.getName())) {
+				if (stringAttribute.getEType().getInstanceClassName().equals("java.lang.String")) {
 					java.lang.Object attributeValue = element.eGet(stringAttribute);
 					java.lang.String match = matches(identifier, attributeValue, matchFuzzy);
 					if (match != null) {
@@ -127,11 +176,8 @@ public class KermetaDefaultResolverDelegate<ContainerType extends org.eclipse.em
 	private java.lang.String matches(java.lang.String identifier, java.lang.Object attributeValue, boolean matchFuzzy) {
 		if (attributeValue != null && attributeValue instanceof java.lang.String) {
 			java.lang.String name = (java.lang.String) attributeValue;
-			if (name.startsWith(identifier) && matchFuzzy) {
+			if (name.equals(identifier) || matchFuzzy) {
 				return name;
-			}
-			if (name.equals(identifier)) {
-				return identifier;
 			}
 		}
 		return null;
@@ -150,9 +196,9 @@ public class KermetaDefaultResolverDelegate<ContainerType extends org.eclipse.em
 		else if (nameAttr instanceof org.eclipse.emf.ecore.EAttribute) {
 			return (java.lang.String) element.eGet(nameAttr);
 		} else {
-			//try any other string attribute found
+			// try any other string attribute found
 			for (org.eclipse.emf.ecore.EAttribute strAttribute : element.eClass().getEAllAttributes()) {
-				if (!strAttribute.isMany() &&				strAttribute.getEType().getInstanceClassName().equals(java.lang.String.class.getName())) {
+				if (!strAttribute.isMany() &&				strAttribute.getEType().getInstanceClassName().equals("java.lang.String")) {
 					return (java.lang.String) element.eGet(strAttribute);
 				}
 			}
@@ -170,5 +216,47 @@ public class KermetaDefaultResolverDelegate<ContainerType extends org.eclipse.em
 	
 	private boolean hasCorrectType(org.eclipse.emf.ecore.EObject element, Class<?> expectedTypeClass) {
 		return expectedTypeClass.isInstance(element);
+	}
+	
+	private org.eclipse.emf.ecore.EObject loadResource(org.eclipse.emf.ecore.resource.ResourceSet resourceSet, java.lang.String uriString) {
+		try {
+			org.eclipse.emf.common.util.URI uri = org.eclipse.emf.common.util.URI.createURI(uriString);
+			org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(uri, true);
+			org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> contents = resource.getContents();
+			if (contents.size() > 0) {
+				return contents.get(0);
+			}
+		} catch (java.lang.RuntimeException re) {
+			// do nothing here. if no resource can be loaded the uriString is probably not a
+			// valid resource URI
+		}
+		return null;
+	}
+	
+	private boolean isURI(java.lang.String identifier) {
+		if (identifier == null) {
+			return false;
+		}
+		try {
+			org.eclipse.emf.common.util.URI.createURI(identifier);
+		} catch (java.lang.IllegalArgumentException iae) {
+			// the identifier string is not a valid URI
+			return false;
+		}
+		return true;
+	}
+	
+	protected org.kermeta.language.emftexteditor.IKermetaReferenceCache getCache(org.eclipse.emf.ecore.EObject object) {
+		org.eclipse.emf.ecore.EObject root = org.kermeta.language.emftexteditor.util.KermetaEObjectUtil.findRootContainer(object);
+		java.util.List<org.eclipse.emf.common.notify.Adapter> eAdapters = root.eAdapters();
+		for (org.eclipse.emf.common.notify.Adapter adapter : eAdapters) {
+			if (adapter instanceof ReferenceCache) {
+				ReferenceCache cache = (ReferenceCache) adapter;
+				return cache;
+			}
+		}
+		ReferenceCache cache = new ReferenceCache();
+		root.eAdapters().add(cache);
+		return cache;
 	}
 }

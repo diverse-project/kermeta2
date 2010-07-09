@@ -25,7 +25,7 @@ public class KermetaMetaInformation implements org.kermeta.language.emftextedito
 	}
 	
 	public org.kermeta.language.emftexteditor.IKermetaTextPrinter createPrinter(java.io.OutputStream outputStream, org.kermeta.language.emftexteditor.IKermetaTextResource resource) {
-		return new org.kermeta.language.emftexteditor.mopp.KermetaPrinter(outputStream, resource);
+		return new org.kermeta.language.emftexteditor.mopp.KermetaPrinter2(outputStream, resource);
 	}
 	
 	public org.eclipse.emf.ecore.EClass[] getClassesWithSyntax() {
@@ -64,28 +64,12 @@ public class KermetaMetaInformation implements org.kermeta.language.emftextedito
 		return new org.kermeta.language.emftexteditor.mopp.KermetaFoldingInformationProvider().getFoldableClasses();
 	}
 	
-	public org.kermeta.language.emftexteditor.IKermetaHoverTextProvider getHoverTextProvider() {
-		return new org.kermeta.language.emftexteditor.mopp.KermetaHoverTextProvider();
-	}
-	
-	public org.kermeta.language.emftexteditor.ui.KermetaColorManager createColorManager() {
-		return new org.kermeta.language.emftexteditor.ui.KermetaColorManager();
-	}
-	
-	public org.eclipse.jface.text.rules.ITokenScanner createTokenScanner(org.kermeta.language.emftexteditor.ui.KermetaColorManager colorManager) {
-		return new org.kermeta.language.emftexteditor.ui.KermetaTokenScanner(colorManager);
-	}
-	
 	public org.eclipse.emf.ecore.resource.Resource.Factory createResourceFactory() {
 		return new org.kermeta.language.emftexteditor.mopp.KermetaResourceFactory();
 	}
 	
 	public org.kermeta.language.emftexteditor.mopp.KermetaNewFileContentProvider getNewFileContentProvider() {
 		return new org.kermeta.language.emftexteditor.mopp.KermetaNewFileContentProvider();
-	}
-	
-	public org.kermeta.language.emftexteditor.mopp.KermetaCodeCompletionHelper createCodeCompletionHelper() {
-		return new org.kermeta.language.emftexteditor.mopp.KermetaCodeCompletionHelper();
 	}
 	
 }

@@ -6,32 +6,34 @@
  */
 package org.kermeta.language.emftexteditor.mopp;
 
-// A representation for a range in a document where a keyword (i.e.,
-// a static string) is expected.
+/**
+ * A representation for a range in a document where a keyword (i.e., a static
+ * string) is expected.
+ */
 public class KermetaExpectedCsString extends org.kermeta.language.emftexteditor.mopp.KermetaAbstractExpectedElement {
 	
-	private String value;
+	private org.kermeta.language.emftexteditor.grammar.KermetaKeyword keyword;
 	
-	public KermetaExpectedCsString(String value) {
-		super();
-		this.value = value;
+	public KermetaExpectedCsString(org.kermeta.language.emftexteditor.grammar.KermetaKeyword keyword) {
+		super(keyword.getMetaclass());
+		this.keyword = keyword;
 	}
 	
 	public String getValue() {
-		return value;
+		return keyword.getValue();
 	}
 	
 	public String getTokenName() {
-		return "'" + value + "'";
+		return "'" + getValue() + "'";
 	}
 	
 	public String toString() {
-		return "CsString \"" + value + "\"";
+		return "CsString \"" + getValue() + "\"";
 	}
 	
 	public boolean equals(Object o) {
 		if (o instanceof KermetaExpectedCsString) {
-			return this.value.equals(((KermetaExpectedCsString) o).value);
+			return getValue().equals(((KermetaExpectedCsString) o).getValue());
 		}
 		return false;
 	}

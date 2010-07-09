@@ -53,9 +53,6 @@ public class KermetaTokenStyleInformationProvider {
 		if ("ML_COMMENT".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x34, 0x80, 0x17}, false, false, false, false);
 		}
-		if ("STRING_LITERAL".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x66, 0x98, 0xFF}, false, false, false, false);
-		}
 		if ("package".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x25, 0x54, 0xC7}, true, false, false, false);
 		}
@@ -113,14 +110,14 @@ public class KermetaTokenStyleInformationProvider {
 		if ("attribute".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x25, 0x54, 0xC7}, true, false, false, false);
 		}
-		if ("kermeta".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x00, 0x00, 0x00}, false, false, false, false);
+		if ("KERMETA_LITERAL".equals(tokenName)) {
+			return new TokenStyleImpl(new int[] {0x66, 0x98, 0xFF}, false, false, false, false);
 		}
 		if (":".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x00, 0x00, 0x00}, false, false, false, false);
+			return new TokenStyleImpl(new int[] {0xA2, 0x20, 0x00}, true, false, false, false);
 		}
 		if ("::".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x00, 0x00, 0x00}, false, false, false, false);
+			return new TokenStyleImpl(new int[] {0xA2, 0x20, 0x00}, true, false, false, false);
 		}
 		if ("using".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
@@ -249,9 +246,6 @@ public class KermetaTokenStyleInformationProvider {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
 		if ("self".equals(tokenName)) {
-			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
-		}
-		if ("-".equals(tokenName)) {
 			return new TokenStyleImpl(new int[] {0x80, 0x00, 0x55}, true, false, false, false);
 		}
 		if ("extern".equals(tokenName)) {

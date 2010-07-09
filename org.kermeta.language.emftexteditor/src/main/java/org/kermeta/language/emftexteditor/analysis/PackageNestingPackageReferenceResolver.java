@@ -30,9 +30,9 @@ public class PackageNestingPackageReferenceResolver implements org.kermeta.langu
 			}
 			if (!foundPackage) {
 				Package p = StructureFactory.eINSTANCE.createPackage();
-				ClassDefinition c = StructureFactory.eINSTANCE.createClassDefinition();
-				c.setName("Dummy");
-				p.getOwnedTypeDefinition().add(c);
+				//ClassDefinition c = StructureFactory.eINSTANCE.createClassDefinition();
+				//c.setName("Dummy");
+				//p.getOwnedTypeDefinition().add(c);
 				p.setName(identifier);
 				m.getPackages().add(p);
 				Package nestingPackage = container.getNestingPackage();

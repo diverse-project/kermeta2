@@ -6,8 +6,10 @@
  */
 package org.kermeta.language.emftexteditor.util;
 
-// A utility class that encapsulates some case operations that need to be performed
-// unchecked, because of Java's type erasure.
+/**
+ * A utility class that encapsulates some case operations that need to be
+ * performed unchecked, because of Java's type erasure.
+ */
 public class KermetaListUtil {
 	
 	@SuppressWarnings("unchecked")	

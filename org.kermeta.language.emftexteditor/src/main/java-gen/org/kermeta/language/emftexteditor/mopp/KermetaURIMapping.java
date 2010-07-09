@@ -6,11 +6,14 @@
  */
 package org.kermeta.language.emftexteditor.mopp;
 
-// A basic implementation of the IURIMapping interface that can
-// map identifiers to URIs.
-//
-// @param <ReferenceType> unused type parameter which is needed to implement IURIMapping.
-//
+/**
+ * A basic implementation of the
+ * org.kermeta.language.emftexteditor.IKermetaURIMapping interface that can map
+ * identifiers to URIs.
+ * 
+ * @param <ReferenceType> unused type parameter which is needed to implement
+ * org.kermeta.language.emftexteditor.IKermetaURIMapping.
+ */
 public class KermetaURIMapping<ReferenceType> implements org.kermeta.language.emftexteditor.IKermetaURIMapping<ReferenceType> {
 	
 	private org.eclipse.emf.common.util.URI uri;

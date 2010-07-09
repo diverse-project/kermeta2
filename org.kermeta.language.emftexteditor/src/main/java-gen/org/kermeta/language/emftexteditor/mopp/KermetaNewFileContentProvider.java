@@ -1,3 +1,9 @@
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * 
+ */
 package org.kermeta.language.emftexteditor.mopp;
 
 public class KermetaNewFileContentProvider {
@@ -40,7 +46,7 @@ public class KermetaNewFileContentProvider {
 	}
 	
 	public org.kermeta.language.emftexteditor.IKermetaTextPrinter getPrinter(java.io.OutputStream outputStream) {
-		return new org.kermeta.language.emftexteditor.mopp.KermetaPrinter(outputStream, new org.kermeta.language.emftexteditor.mopp.KermetaResource());
+		return getMetaInformation().createPrinter(outputStream, new org.kermeta.language.emftexteditor.mopp.KermetaResource());
 	}
 	
 }

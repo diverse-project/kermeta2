@@ -6,11 +6,14 @@
  */
 package org.kermeta.language.emftexteditor.mopp;
 
-// A basic implementation of IResolveResult interface
-// that collects mappings in a list.
-//
-// @param <ReferenceType> the type of the references that can be contained in this result
-//
+/**
+ * A basic implementation of the
+ * org.kermeta.language.emftexteditor.IKermetaReferenceResolveResult interface
+ * that collects mappings in a list.
+ * 
+ * @param <ReferenceType> the type of the references that can be contained in this
+ * result
+ */
 public class KermetaReferenceResolveResult<ReferenceType> implements org.kermeta.language.emftexteditor.IKermetaReferenceResolveResult<ReferenceType> {
 	
 	private java.util.Collection<org.kermeta.language.emftexteditor.IKermetaReferenceMapping<ReferenceType>> mappings;

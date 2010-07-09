@@ -6,9 +6,9 @@
  */
 package org.kermeta.language.emftexteditor.util;
 
-// A helper class that is able to create minimal model instances for Ecore
-// models.
-//
+/**
+ * A helper class that is able to create minimal model instances for Ecore models.
+ */
 public class KermetaMinimalModelHelper {
 	
 	private final static org.kermeta.language.emftexteditor.util.KermetaEClassUtil eClassUtil = new org.kermeta.language.emftexteditor.util.KermetaEClassUtil();

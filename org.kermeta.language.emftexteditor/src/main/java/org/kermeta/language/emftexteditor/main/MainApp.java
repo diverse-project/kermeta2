@@ -31,17 +31,31 @@ public class MainApp {
 		System.out.println(resourceA.toString());
 		try {
 			resourceA.load(null);
-			for (EObject o : resourceA.getContents()){
-				System.out.println(o.toString());
-				if (o instanceof ModelingUnit){
-					ModelingUnit mu = (ModelingUnit) o;
-					for (Package p : mu.getPackages()){
-						System.out.println("=>>" + p.getName() );	
+			if (!resourceA.getContents().isEmpty()){
+				for (EObject o : resourceA.getContents()){
+					System.out.println(o.toString());
+					if (o instanceof ModelingUnit){
+						ModelingUnit mu = (ModelingUnit) o;
+						if (!(mu.getPackages().isEmpty() &&
+								mu.getOwnedTypeDefinition().isEmpty() && 
+								mu.getRequires().isEmpty() &&
+								mu.getUsings().isEmpty())){
+							for (Package p : mu.getPackages()){
+								System.out.println("=>>" + p.getName() );	
+							}
+						}
+						else{
+							throw new Exception("Parsing error: Modeling Unit is empty");
+						}
 					}
 				}
 			}
+			else {
+				throw new Exception("Parsing error: Keremta Resource is empty");
+			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		

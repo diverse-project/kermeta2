@@ -8,16 +8,18 @@ package org.kermeta.language.emftexteditor.mopp;
 
 public class KermetaBuilderAdapter extends org.eclipse.core.resources.IncrementalProjectBuilder {
 	
-	// the ID of the default, generated builder
+	/**
+	 * the ID of the default, generated builder
+	 */
 	public final static String BUILDER_ID = "org.kermeta.language.emftexteditor.builder";
 	
 	private org.kermeta.language.emftexteditor.IKermetaBuilder builder = new org.kermeta.language.emftexteditor.mopp.KermetaBuilder();
 	
-	public org.eclipse.core.resources.IProject[] build(int kind, java.util.Map args, final org.eclipse.core.runtime.IProgressMonitor monitor) throws org.eclipse.core.runtime.CoreException {
+	public org.eclipse.core.resources.IProject[] build(int kind, @SuppressWarnings("rawtypes") java.util.Map args, final org.eclipse.core.runtime.IProgressMonitor monitor) throws org.eclipse.core.runtime.CoreException {
 		return build(kind, args, monitor, builder, getProject());
 	}
 	
-	public org.eclipse.core.resources.IProject[] build(int kind, java.util.Map args, final org.eclipse.core.runtime.IProgressMonitor monitor, final org.kermeta.language.emftexteditor.IKermetaBuilder builder, org.eclipse.core.resources.IProject project) throws org.eclipse.core.runtime.CoreException {
+	public org.eclipse.core.resources.IProject[] build(int kind, java.util.Map<?,?> args, final org.eclipse.core.runtime.IProgressMonitor monitor, final org.kermeta.language.emftexteditor.IKermetaBuilder builder, org.eclipse.core.resources.IProject project) throws org.eclipse.core.runtime.CoreException {
 		org.eclipse.core.resources.IResourceDelta delta = getDelta(project);
 		if (delta == null) {
 			return null;

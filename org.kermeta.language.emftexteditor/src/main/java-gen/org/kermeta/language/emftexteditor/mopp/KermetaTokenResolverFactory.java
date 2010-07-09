@@ -13,8 +13,8 @@ public class KermetaTokenResolverFactory implements org.kermeta.language.emftext
 	private static org.kermeta.language.emftexteditor.IKermetaTokenResolver defaultResolver = new org.kermeta.language.emftexteditor.analysis.KermetaDefaultTokenResolver();
 	
 	public KermetaTokenResolverFactory() {
-		tokenName2TokenResolver = new java.util.HashMap<java.lang.String, org.kermeta.language.emftexteditor.IKermetaTokenResolver>();
-		featureName2CollectInTokenResolver = new java.util.HashMap<java.lang.String, org.kermeta.language.emftexteditor.IKermetaTokenResolver>();
+		tokenName2TokenResolver = new java.util.LinkedHashMap<java.lang.String, org.kermeta.language.emftexteditor.IKermetaTokenResolver>();
+		featureName2CollectInTokenResolver = new java.util.LinkedHashMap<java.lang.String, org.kermeta.language.emftexteditor.IKermetaTokenResolver>();
 		registerCollectInTokenResolver("comments", new org.kermeta.language.emftexteditor.analysis.KermetaCOLLECT_commentsTokenResolver());
 		registerCollectInTokenResolver("comments", new org.kermeta.language.emftexteditor.analysis.KermetaCOLLECT_commentsTokenResolver());
 		registerTokenResolver("CASTED", new org.kermeta.language.emftexteditor.analysis.KermetaCASTEDTokenResolver());
@@ -22,6 +22,7 @@ public class KermetaTokenResolverFactory implements org.kermeta.language.emftext
 		registerTokenResolver("PRIMITIVE_TYPE", new org.kermeta.language.emftexteditor.analysis.KermetaPRIMITIVE_TYPETokenResolver());
 		registerTokenResolver("INTEGER", new org.kermeta.language.emftexteditor.analysis.KermetaINTEGERTokenResolver());
 		registerTokenResolver("KERMETA_LITERAL", new org.kermeta.language.emftexteditor.analysis.KermetaKERMETA_LITERALTokenResolver());
+		registerTokenResolver("QUALIFIEDNAME", new org.kermeta.language.emftexteditor.analysis.KermetaQUALIFIEDNAMETokenResolver());
 		registerTokenResolver("IDENTIFIER", new org.kermeta.language.emftexteditor.analysis.KermetaIDENTIFIERTokenResolver());
 		registerTokenResolver("QUOTED_34_34", new org.kermeta.language.emftexteditor.analysis.KermetaQUOTED_34_34TokenResolver());
 	}

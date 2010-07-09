@@ -15,4 +15,5 @@ public class KermetaResourceFactory implements org.eclipse.emf.ecore.resource.Re
 	public org.eclipse.emf.ecore.resource.Resource createResource(org.eclipse.emf.common.util.URI uri) {
 		return new org.kermeta.language.emftexteditor.mopp.KermetaResource(uri);
 	}
+	
 }

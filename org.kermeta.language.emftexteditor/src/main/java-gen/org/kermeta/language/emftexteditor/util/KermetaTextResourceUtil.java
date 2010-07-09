@@ -6,8 +6,10 @@
  */
 package org.kermeta.language.emftexteditor.util;
 
-// Class TextResourceUtil can be used to perform common tasks on text resources,
-// such as loading and saving resources, as well as, checking them for errors.
+/**
+ * Class TextResourceUtil can be used to perform common tasks on text resources,
+ * such as loading and saving resources, as well as, checking them for errors.
+ */
 public class KermetaTextResourceUtil {
 	
 	public static org.kermeta.language.emftexteditor.mopp.KermetaResource getResource(org.eclipse.core.resources.IFile file) {

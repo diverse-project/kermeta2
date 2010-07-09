@@ -6,13 +6,15 @@
  */
 package org.kermeta.language.emftexteditor.mopp;
 
-// A factory for ContextDependentURIFragments. Given a feasible reference resolver,
-// the factory returns a matching fragment that used the resolver to resolver proxy
-// objects.
-//
-// @param <ContainerType> the type of the class containing the reference to be resolved
-// @param <ReferenceType> the type of the reference to be resolved
-//
+/**
+ * A factory for ContextDependentURIFragments. Given a feasible reference
+ * resolver, this factory returns a matching fragment that used the resolver to
+ * resolver proxy objects.
+ * 
+ * @param <ContainerType> the type of the class containing the reference to be
+ * resolved
+ * @param <ReferenceType> the type of the reference to be resolved
+ */
 public class KermetaContextDependentURIFragmentFactory<ContainerType extends org.eclipse.emf.ecore.EObject, ReferenceType extends org.eclipse.emf.ecore.EObject>  implements org.kermeta.language.emftexteditor.IKermetaContextDependentURIFragmentFactory<ContainerType, ReferenceType> {
 	
 	private final org.kermeta.language.emftexteditor.IKermetaReferenceResolver<ContainerType, ReferenceType> resolver;

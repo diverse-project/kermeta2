@@ -6,8 +6,9 @@
  */
 package org.kermeta.language.emftexteditor.mopp;
 
-// A basic implementation of the ITokenResolveResult interface.
-//
+/**
+ * A basic implementation of the ITokenResolveResult interface.
+ */
 public class KermetaTokenResolveResult implements org.kermeta.language.emftexteditor.IKermetaTokenResolveResult {
 	
 	private String errorMessage;
@@ -38,4 +39,5 @@ public class KermetaTokenResolveResult implements org.kermeta.language.emftexted
 		errorMessage = "Can't resolve token.";
 		resolvedToken = null;
 	}
+	
 }

@@ -8,10 +8,12 @@ package org.kermeta.language.emftexteditor.mopp;
 
 public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKermetaTextPrinter {
 	
-	protected final static java.lang.String NEW_LINE = java.lang.System.getProperties().getProperty("line.separator");
 	protected org.kermeta.language.emftexteditor.IKermetaTokenResolverFactory tokenResolverFactory = new org.kermeta.language.emftexteditor.mopp.KermetaTokenResolverFactory();
 	protected java.io.OutputStream outputStream;
-	/** Holds the resource that is associated with this printer. may be null if the printer is used stand alone. */
+	/**
+	 * Holds the resource that is associated with this printer. may be null if the
+	 * printer is used stand alone.
+	 */
 	private org.kermeta.language.emftexteditor.IKermetaTextResource resource;
 	private java.util.Map<?, ?> options;
 	
@@ -247,7 +249,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			return;
 		}
 		
-		addWarningToResource("The cs printer can not handle " + element.eClass().getName() + " elements", element);
+		addWarningToResource("The printer can not handle " + element.eClass().getName() + " elements", element);
 	}
 	
 	protected org.kermeta.language.emftexteditor.mopp.KermetaReferenceResolverSwitch getReferenceResolverSwitch() {
@@ -275,8 +277,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		return resource;
 	}
 	
-	/** Calls {@link #doPrint(EObject, String)} and writes the result to the underlying output stream. */
-	public void print(org.eclipse.emf.ecore.EObject element)  {
+	/**
+	 * Calls {@link #doPrint(EObject, PrintWriter, String)} and writes the result to
+	 * the underlying output stream.
+	 */
+	public void print(org.eclipse.emf.ecore.EObject element) {
 		java.io.PrintWriter out = new java.io.PrintWriter(new java.io.BufferedOutputStream(outputStream));
 		doPrint(element, out, "");
 		out.flush();
@@ -285,7 +290,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_ModelingUnit(org.kermeta.language.structure.ModelingUnit element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(8);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(8);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -307,30 +317,26 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_structure_ModelingUnit_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CompoundDefinition)
+		sWriter = new java.io.StringWriter();
+		out1 = new java.io.PrintWriter(sWriter);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		print_org_kermeta_language_structure_ModelingUnit_0(element, localtab, out1, printCountingMap1);
+		if (printCountingMap.equals(printCountingMap1)) {
+			out1.close();
+		} else {
+			out1.flush();
+			out1.close();
+			out.print(sWriter.toString());
+			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_ModelingUnit_1(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -342,13 +348,30 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_ModelingUnit_2(element, localtab, out1, printCountingMap1);
+			if (printCountingMap.equals(printCountingMap1)) {
+				iterate = false;
+				out1.close();
+			} else {
+				out1.flush();
+				out1.close();
+				out.print(sWriter.toString());
+				printCountingMap.putAll(printCountingMap1);
+			}
+		}
+		// DEFINITION PART BEGINS (CompoundDefinition)
+		iterate = true;
+		while (iterate) {
+			sWriter = new java.io.StringWriter();
+			out1 = new java.io.PrintWriter(sWriter);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			print_org_kermeta_language_structure_ModelingUnit_3(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
 				out1.close();
@@ -363,7 +386,41 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_structure_ModelingUnit_0(org.kermeta.language.structure.ModelingUnit element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (CsString)
+		out.print("package");
+		out.print(" ");
+		// DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken)
+		count = printCountingMap.get("namespacePrefix");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX));
+			if (o != null) {
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("QUALIFIEDNAME");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX), element));
+				out.print(" ");
+			}
+			printCountingMap.put("namespacePrefix", count - 1);
+		}
+		// DEFINITION PART BEGINS (Containment)
+		count = printCountingMap.get("ownedTypeDefinition");
+		if (count > 0) {
+			java.util.List<?> list = (java.util.List<?>)element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__OWNED_TYPE_DEFINITION));
+			int index  = list.size() - count;
+			if (index < 0) {
+				index = 0;
+			}
+			java.util.ListIterator<?> it  = list.listIterator(index);
+			while (it.hasNext()) {
+				java.lang.Object o = it.next();
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("ownedTypeDefinition", 0);
+		}
+	}
+	public void print_org_kermeta_language_structure_ModelingUnit_1(org.kermeta.language.structure.ModelingUnit element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		java.lang.String localtab = outertab;
+		int count;
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("requires");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__REQUIRES));
@@ -380,10 +437,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			printCountingMap.put("requires", count - 1);
 		}
 	}
-	public void print_org_kermeta_language_structure_ModelingUnit_1(org.kermeta.language.structure.ModelingUnit element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_structure_ModelingUnit_2(org.kermeta.language.structure.ModelingUnit element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("usings");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__USINGS));
@@ -400,10 +457,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			printCountingMap.put("usings", count - 1);
 		}
 	}
-	public void print_org_kermeta_language_structure_ModelingUnit_2(org.kermeta.language.structure.ModelingUnit element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+	public void print_org_kermeta_language_structure_ModelingUnit_3(org.kermeta.language.structure.ModelingUnit element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("packages");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODELING_UNIT__PACKAGES));
@@ -422,7 +479,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_structure_Using(org.kermeta.language.structure.Using element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(3);
+		java.lang.String localtab = outertab;
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(3);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -431,13 +494,84 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__QUALIFIED_NAME));
 		printCountingMap.put("qualifiedName", temp == null ? 0 : 1);
 		// print collected hidden tokens
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("using");
 		out.print(" ");
+		// DEFINITION PART BEGINS (CompoundDefinition)
+		print_org_kermeta_language_structure_Using_0(element, localtab, out, printCountingMap);
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
+	}
+	public void print_org_kermeta_language_structure_Using_0(org.kermeta.language.structure.Using element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
+		int count;
+		int alt = -1;
+		alt=0;
+		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"qualifiedName"		));
+		int tempMatchCount;
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"qualifiedName"		));
+		if (tempMatchCount > matches) {
+			alt = 1;
+			matches = tempMatchCount;
+		}
+		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"qualifiedName"		));
+		if (tempMatchCount > matches) {
+			alt = 2;
+			matches = tempMatchCount;
+		}
+		switch(alt) {
+			case 1:			{
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
+				count = printCountingMap.get("qualifiedName");
+				if (count > 0) {
+					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__QUALIFIED_NAME));
+					if (o != null) {
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+						resolver.setOptions(getOptions());
+						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__QUALIFIED_NAME), element));
+						out.print(" ");
+					}
+					printCountingMap.put("qualifiedName", count - 1);
+				}
+			}
+			break;
+			case 2:			{
+				// DEFINITION PART BEGINS (PlaceholderInQuotes)
+				count = printCountingMap.get("qualifiedName");
+				if (count > 0) {
+					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__QUALIFIED_NAME));
+					if (o != null) {
+						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("QUOTED_34_34");
+						resolver.setOptions(getOptions());
+						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__QUALIFIED_NAME), element));
+						out.print(" ");
+					}
+					printCountingMap.put("qualifiedName", count - 1);
+				}
+			}
+			break;
+			default:			// DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken)
+			count = printCountingMap.get("qualifiedName");
+			if (count > 0) {
+				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__QUALIFIED_NAME));
+				if (o != null) {
+					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("QUALIFIEDNAME");
+					resolver.setOptions(getOptions());
+					out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.USING__QUALIFIED_NAME), element));
+					out.print(" ");
+				}
+				printCountingMap.put("qualifiedName", count - 1);
+			}
+		}
 	}
 	
 	public void print_org_kermeta_language_structure_Require(org.kermeta.language.structure.Require element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(3);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(3);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -458,10 +592,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("require");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken)
 				count = printCountingMap.get("uri");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__URI));
@@ -475,10 +609,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("require");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderInQuotes):
+			// DEFINITION PART BEGINS (PlaceholderInQuotes)
 			count = printCountingMap.get("uri");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.REQUIRE__URI));
@@ -495,7 +629,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_Package(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -513,110 +652,22 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("uri", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		int alt = -1;
-		alt=0;
-		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"name"		));
-		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"name"		));
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				boolean iterate = true;
-				java.io.StringWriter sWriter = null;
-				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("package");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-				count = printCountingMap.get("name");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NAME));
-					if (o != null) {
-						org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
-						resolver.setOptions(getOptions());
-						out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NAME), element));
-						out.print(" ");
-					}
-					printCountingMap.put("name", count - 1);
-				}
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				iterate = true;
-				while (iterate) {
-					sWriter = new java.io.StringWriter();
-					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_structure_Package_2(element, localtab, out1, printCountingMap1);
-					if (printCountingMap.equals(printCountingMap1)) {
-						iterate = false;
-						out1.close();
-					} else {
-						out1.flush();
-						out1.close();
-						out.print(sWriter.toString());
-						printCountingMap.putAll(printCountingMap1);
-					}
-				}
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				sWriter = new java.io.StringWriter();
-				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-				print_org_kermeta_language_structure_Package_3(element, localtab, out1, printCountingMap1);
-				if (printCountingMap.equals(printCountingMap1)) {
-					out1.close();
-				} else {
-					out1.flush();
-					out1.close();
-					out.print(sWriter.toString());
-					printCountingMap.putAll(printCountingMap1);
-				}
-				//////////////DEFINITION PART BEGINS (LineBreak):
-				out.println();
-				out.print(localtab);
-			}
-			break;
-			default:			boolean iterate = true;
-			java.io.StringWriter sWriter = null;
-			java.io.PrintWriter out1 = null;
-			java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
-			count = printCountingMap.get("name");
-			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NAME));
-				if (o != null) {
-					org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
-					resolver.setOptions(getOptions());
-					out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NAME), element));
-					out.print(" ");
-				}
-				printCountingMap.put("name", count - 1);
-			}
-			//////////////DEFINITION PART BEGINS (CompoundDefinition):
-			iterate = true;
-			while (iterate) {
-				sWriter = new java.io.StringWriter();
-				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-				print_org_kermeta_language_structure_Package_0(element, localtab, out1, printCountingMap1);
-				if (printCountingMap.equals(printCountingMap1)) {
-					iterate = false;
-					out1.close();
-				} else {
-					out1.flush();
-					out1.close();
-					out.print(sWriter.toString());
-					printCountingMap.putAll(printCountingMap1);
-				}
-			}
-			//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		boolean iterate = true;
+		java.io.StringWriter sWriter = null;
+		java.io.PrintWriter out1 = null;
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
+		out.print("package");
+		out.print(" ");
+		// DEFINITION PART BEGINS (CompoundDefinition)
+		iterate = true;
+		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-			print_org_kermeta_language_structure_Package_1(element, localtab, out1, printCountingMap1);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			print_org_kermeta_language_structure_Package_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
+				iterate = false;
 				out1.close();
 			} else {
 				out1.flush();
@@ -624,48 +675,69 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				out.print(sWriter.toString());
 				printCountingMap.putAll(printCountingMap1);
 			}
-			//////////////DEFINITION PART BEGINS (LineBreak):
-			out.println();
-			out.print(localtab);
 		}
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
+		count = printCountingMap.get("name");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NAME));
+			if (o != null) {
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve((java.lang.Object) o, element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NAME), element));
+				out.print(" ");
+			}
+			printCountingMap.put("name", count - 1);
+		}
+		// DEFINITION PART BEGINS (CsString)
+		out.print("{");
+		out.print(" ");
+		// DEFINITION PART BEGINS (CompoundDefinition)
+		sWriter = new java.io.StringWriter();
+		out1 = new java.io.PrintWriter(sWriter);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		print_org_kermeta_language_structure_Package_1(element, localtab, out1, printCountingMap1);
+		if (printCountingMap.equals(printCountingMap1)) {
+			out1.close();
+		} else {
+			out1.flush();
+			out1.close();
+			out.print(sWriter.toString());
+			printCountingMap.putAll(printCountingMap1);
+		}
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
+		// DEFINITION PART BEGINS (CsString)
+		out.print("}");
+		out.print(" ");
 	}
 	public void print_org_kermeta_language_structure_Package_0(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
+		count = printCountingMap.get("nestingPackage");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE));
+			if (o != null) {
+				org.kermeta.language.emftexteditor.IKermetaTokenResolver resolver = tokenResolverFactory.createTokenResolver("IDENTIFIER");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPackageNestingPackageReferenceResolver().deResolve((org.kermeta.language.structure.Package) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE)), element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTING_PACKAGE), element));
+			}
+			printCountingMap.put("nestingPackage", count - 1);
+		}
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		// DEFINITION PART BEGINS (CsString)
 		out.print("::");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("nestedPackage");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTED_PACKAGE));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("nestedPackage", count - 1);
-		}
 	}
 	public void print_org_kermeta_language_structure_Package_1(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int alt = -1;
 		alt=0;
-		int matches=		0;
+		int matches=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTypeDefinition"		));
 		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTypeDefinition"		));
+		tempMatchCount=		0;
 		if (tempMatchCount > matches) {
 			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTypeDefinition"		));
-		if (tempMatchCount > matches) {
-			alt = 2;
 			matches = tempMatchCount;
 		}
 		switch(alt) {
@@ -673,17 +745,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				boolean iterate = true;
 				java.io.StringWriter sWriter = null;
 				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("{");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				print_org_kermeta_language_structure_Package_1_1(element, localtab, out, printCountingMap);
+				java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				iterate = true;
 				while (iterate) {
 					sWriter = new java.io.StringWriter();
 					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+					printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 					print_org_kermeta_language_structure_Package_1_1(element, localtab, out1, printCountingMap1);
 					if (printCountingMap.equals(printCountingMap1)) {
 						iterate = false;
@@ -695,38 +763,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 						printCountingMap.putAll(printCountingMap1);
 					}
 				}
-				//////////////DEFINITION PART BEGINS (LineBreak):
-				out.println();
-				out.print(localtab);
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("}");
-				out.print(" ");
-			}
-			break;
-			case 2:			{
-				boolean iterate = true;
-				java.io.StringWriter sWriter = null;
-				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				print_org_kermeta_language_structure_Package_1_2(element, localtab, out, printCountingMap);
-				iterate = true;
-				while (iterate) {
-					sWriter = new java.io.StringWriter();
-					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_structure_Package_1_2(element, localtab, out1, printCountingMap1);
-					if (printCountingMap.equals(printCountingMap1)) {
-						iterate = false;
-						out1.close();
-					} else {
-						out1.flush();
-						out1.close();
-						out.print(sWriter.toString());
-						printCountingMap.putAll(printCountingMap1);
-					}
-				}
-				//////////////DEFINITION PART BEGINS (LineBreak):
+				// DEFINITION PART BEGINS (LineBreak)
 				out.println();
 				out.print(localtab);
 			}
@@ -734,16 +771,14 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			default:			boolean iterate = true;
 			java.io.StringWriter sWriter = null;
 			java.io.PrintWriter out1 = null;
-			java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-			//////////////DEFINITION PART BEGINS (CsString):
-			out.print("{");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CompoundDefinition):
+			java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+			// DEFINITION PART BEGINS (CompoundDefinition)
+			print_org_kermeta_language_structure_Package_1_0(element, localtab, out, printCountingMap);
 			iterate = true;
 			while (iterate) {
 				sWriter = new java.io.StringWriter();
 				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+				printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 				print_org_kermeta_language_structure_Package_1_0(element, localtab, out1, printCountingMap1);
 				if (printCountingMap.equals(printCountingMap1)) {
 					iterate = false;
@@ -755,25 +790,21 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					printCountingMap.putAll(printCountingMap1);
 				}
 			}
-			//////////////DEFINITION PART BEGINS (LineBreak):
+			// DEFINITION PART BEGINS (LineBreak)
 			out.println();
 			out.print(localtab);
-			//////////////DEFINITION PART BEGINS (CsString):
-			out.print("}");
-			out.print(" ");
 		}
 	}
 	public void print_org_kermeta_language_structure_Package_1_0(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
-		localtab += "	";
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("nestedPackage");
+		// DEFINITION PART BEGINS (Containment)
+		count = printCountingMap.get("ownedTypeDefinition");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTED_PACKAGE));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION));
 			java.util.List<?> list = (java.util.List<?>) o;
 			int index = list.size() - count;
 			if (index >= 0) {
@@ -784,63 +815,17 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			if (o != null) {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("nestedPackage", count - 1);
+			printCountingMap.put("ownedTypeDefinition", count - 1);
 		}
 	}
 	public void print_org_kermeta_language_structure_Package_1_1(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		localtab += "	";
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("ownedTypeDefinition");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("ownedTypeDefinition", count - 1);
-		}
-	}
-	public void print_org_kermeta_language_structure_Package_1_2(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
-		out.println();
-		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("ownedTypeDefinition");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("ownedTypeDefinition", count - 1);
-		}
-	}
-	public void print_org_kermeta_language_structure_Package_2(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("::");
-		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("nestedPackage");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTED_PACKAGE));
@@ -855,194 +840,17 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
 			printCountingMap.put("nestedPackage", count - 1);
-		}
-	}
-	public void print_org_kermeta_language_structure_Package_3(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int alt = -1;
-		alt=0;
-		int matches=		0;
-		int tempMatchCount;
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTypeDefinition"		));
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"ownedTypeDefinition"		));
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				boolean iterate = true;
-				java.io.StringWriter sWriter = null;
-				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("{");
-				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				print_org_kermeta_language_structure_Package_3_1(element, localtab, out, printCountingMap);
-				iterate = true;
-				while (iterate) {
-					sWriter = new java.io.StringWriter();
-					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_structure_Package_3_1(element, localtab, out1, printCountingMap1);
-					if (printCountingMap.equals(printCountingMap1)) {
-						iterate = false;
-						out1.close();
-					} else {
-						out1.flush();
-						out1.close();
-						out.print(sWriter.toString());
-						printCountingMap.putAll(printCountingMap1);
-					}
-				}
-				//////////////DEFINITION PART BEGINS (LineBreak):
-				out.println();
-				out.print(localtab);
-				//////////////DEFINITION PART BEGINS (CsString):
-				out.print("}");
-				out.print(" ");
-			}
-			break;
-			case 2:			{
-				boolean iterate = true;
-				java.io.StringWriter sWriter = null;
-				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
-				print_org_kermeta_language_structure_Package_3_2(element, localtab, out, printCountingMap);
-				iterate = true;
-				while (iterate) {
-					sWriter = new java.io.StringWriter();
-					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-					print_org_kermeta_language_structure_Package_3_2(element, localtab, out1, printCountingMap1);
-					if (printCountingMap.equals(printCountingMap1)) {
-						iterate = false;
-						out1.close();
-					} else {
-						out1.flush();
-						out1.close();
-						out.print(sWriter.toString());
-						printCountingMap.putAll(printCountingMap1);
-					}
-				}
-				//////////////DEFINITION PART BEGINS (LineBreak):
-				out.println();
-				out.print(localtab);
-			}
-			break;
-			default:			boolean iterate = true;
-			java.io.StringWriter sWriter = null;
-			java.io.PrintWriter out1 = null;
-			java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-			//////////////DEFINITION PART BEGINS (CsString):
-			out.print("{");
-			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CompoundDefinition):
-			iterate = true;
-			while (iterate) {
-				sWriter = new java.io.StringWriter();
-				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-				print_org_kermeta_language_structure_Package_3_0(element, localtab, out1, printCountingMap1);
-				if (printCountingMap.equals(printCountingMap1)) {
-					iterate = false;
-					out1.close();
-				} else {
-					out1.flush();
-					out1.close();
-					out.print(sWriter.toString());
-					printCountingMap.putAll(printCountingMap1);
-				}
-			}
-			//////////////DEFINITION PART BEGINS (LineBreak):
-			out.println();
-			out.print(localtab);
-			//////////////DEFINITION PART BEGINS (CsString):
-			out.print("}");
-			out.print(" ");
-		}
-	}
-	public void print_org_kermeta_language_structure_Package_3_0(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
-		localtab += "	";
-		out.println();
-		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("nestedPackage");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__NESTED_PACKAGE));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("nestedPackage", count - 1);
-		}
-	}
-	public void print_org_kermeta_language_structure_Package_3_1(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
-		localtab += "	";
-		out.println();
-		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("ownedTypeDefinition");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("ownedTypeDefinition", count - 1);
-		}
-	}
-	public void print_org_kermeta_language_structure_Package_3_2(org.kermeta.language.structure.Package element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		java.lang.String localtab = outertab;
-		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
-		out.println();
-		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
-		count = printCountingMap.get("ownedTypeDefinition");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PACKAGE__OWNED_TYPE_DEFINITION));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("ownedTypeDefinition", count - 1);
 		}
 	}
 	
 	public void print_org_kermeta_language_structure_ClassDefinition(org.kermeta.language.structure.ClassDefinition element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(11);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(11);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -1071,11 +879,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_structure_ClassDefinition_0(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -1085,10 +893,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_structure_ClassDefinition_1(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -1098,10 +906,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("class");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("name");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__NAME));
@@ -1113,10 +921,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("name", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_structure_ClassDefinition_2(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -1126,15 +934,15 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_ClassDefinition_3(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -1146,15 +954,15 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_ClassDefinition_4(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -1166,15 +974,15 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_ClassDefinition_5(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -1186,23 +994,23 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
 	}
 	public void print_org_kermeta_language_structure_ClassDefinition_0(org.kermeta.language.structure.ClassDefinition element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("aspect");
 		out.print(" ");
 	}
 	public void print_org_kermeta_language_structure_ClassDefinition_1(org.kermeta.language.structure.ClassDefinition element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("abstract");
 		out.print(" ");
 	}
@@ -1212,11 +1020,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("inherits");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("superType");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__SUPER_TYPE));
@@ -1235,12 +1043,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("superType", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_ClassDefinition_2_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -1255,10 +1063,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	public void print_org_kermeta_language_structure_ClassDefinition_2_0(org.kermeta.language.structure.ClassDefinition element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("superType");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__SUPER_TYPE));
@@ -1281,11 +1089,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_structure_ClassDefinition_3(org.kermeta.language.structure.ClassDefinition element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		localtab += "	";
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("inv");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__INV));
@@ -1305,11 +1113,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_structure_ClassDefinition_4(org.kermeta.language.structure.ClassDefinition element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		localtab += "	";
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("ownedAttribute");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__OWNED_ATTRIBUTE));
@@ -1329,11 +1137,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_structure_ClassDefinition_5(org.kermeta.language.structure.ClassDefinition element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		localtab += "	";
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("ownedOperation");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS_DEFINITION__OWNED_OPERATION));
@@ -1353,7 +1161,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_Property(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(21);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(21);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -1412,11 +1225,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			case 1:			{
 				java.io.StringWriter sWriter = null;
 				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CsString):
+				java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+				// DEFINITION PART BEGINS (CsString)
 				out.print("property");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("name");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__NAME));
@@ -1428,10 +1241,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					}
 					printCountingMap.put("name", count - 1);
 				}
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				sWriter = new java.io.StringWriter();
 				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+				printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 				print_org_kermeta_language_structure_Property_2(element, localtab, out1, printCountingMap1);
 				if (printCountingMap.equals(printCountingMap1)) {
 					out1.close();
@@ -1441,10 +1254,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					out.print(sWriter.toString());
 					printCountingMap.putAll(printCountingMap1);
 				}
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				sWriter = new java.io.StringWriter();
 				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+				printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 				print_org_kermeta_language_structure_Property_3(element, localtab, out1, printCountingMap1);
 				if (printCountingMap.equals(printCountingMap1)) {
 					out1.close();
@@ -1454,10 +1267,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					out.print(sWriter.toString());
 					printCountingMap.putAll(printCountingMap1);
 				}
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				sWriter = new java.io.StringWriter();
 				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+				printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 				print_org_kermeta_language_structure_Property_4(element, localtab, out1, printCountingMap1);
 				if (printCountingMap.equals(printCountingMap1)) {
 					out1.close();
@@ -1471,10 +1284,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			break;
 			default:			java.io.StringWriter sWriter = null;
 			java.io.PrintWriter out1 = null;
-			java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-			//////////////DEFINITION PART BEGINS (CompoundDefinition):
+			java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+			// DEFINITION PART BEGINS (CompoundDefinition)
 			print_org_kermeta_language_structure_Property_0(element, localtab, out, printCountingMap);
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("name");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__NAME));
@@ -1486,10 +1299,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 				printCountingMap.put("name", count - 1);
 			}
-			//////////////DEFINITION PART BEGINS (CompoundDefinition):
+			// DEFINITION PART BEGINS (CompoundDefinition)
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_Property_1(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				out1.close();
@@ -1513,22 +1326,22 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("reference");
 				out.print(" ");
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("attribute");
 			out.print(" ");
 		}
 	}
 	public void print_org_kermeta_language_structure_Property_1(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(":");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("type");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__TYPE));
@@ -1543,10 +1356,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	public void print_org_kermeta_language_structure_Property_2(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(":");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("type");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__TYPE));
@@ -1562,14 +1375,14 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_structure_Property_3(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		localtab += "	";
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("getter");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("getterBody");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__GETTER_BODY));
@@ -1582,14 +1395,14 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_structure_Property_4(org.kermeta.language.structure.Property element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		localtab += "	";
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("setter");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("setterBody");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PROPERTY__SETTER_BODY));
@@ -1602,7 +1415,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_Operation(org.kermeta.language.structure.Operation element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(19);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(19);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -1646,8 +1464,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		int count;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (Containment):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("pre");
 		if (count > 0) {
 			java.util.List<?> list = (java.util.List<?>)element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__PRE));
@@ -1660,9 +1478,9 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				java.lang.Object o = it.next();
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("pre",0);
+			printCountingMap.put("pre", 0);
 		}
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("post");
 		if (count > 0) {
 			java.util.List<?> list = (java.util.List<?>)element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__POST));
@@ -1675,12 +1493,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				java.lang.Object o = it.next();
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("post",0);
+			printCountingMap.put("post", 0);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("operation");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("name");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__NAME));
@@ -1692,13 +1510,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("name", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("(");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_structure_Operation_0(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -1708,13 +1526,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(")");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_structure_Operation_1(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -1724,10 +1542,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("is");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_structure_Operation_2(element, localtab, out, printCountingMap);
 	}
 	public void print_org_kermeta_language_structure_Operation_0(org.kermeta.language.structure.Operation element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
@@ -1736,8 +1554,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (Containment):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("ownedParameter");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__OWNED_PARAMETER));
@@ -1753,10 +1571,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("ownedParameter", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_structure_Operation_0_0(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -1766,12 +1584,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_Operation_0_1(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -1786,11 +1604,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	public void print_org_kermeta_language_structure_Operation_0_0(org.kermeta.language.structure.Operation element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int count;
-		//////////////DEFINITION PART BEGINS (WhiteSpaces):
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		// DEFINITION PART BEGINS (CsString)
 		out.print(":");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("type");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE));
@@ -1808,11 +1626,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		int count;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("ownedParameter");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__OWNED_PARAMETER));
@@ -1828,10 +1646,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("ownedParameter", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_structure_Operation_0_1_0(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -1844,11 +1662,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	public void print_org_kermeta_language_structure_Operation_0_1_0(org.kermeta.language.structure.Operation element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int count;
-		//////////////DEFINITION PART BEGINS (WhiteSpaces):
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		// DEFINITION PART BEGINS (CsString)
 		out.print(":");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("type");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE));
@@ -1863,11 +1681,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	public void print_org_kermeta_language_structure_Operation_1(org.kermeta.language.structure.Operation element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		int count;
-		//////////////DEFINITION PART BEGINS (WhiteSpaces):
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		// DEFINITION PART BEGINS (CsString)
 		out.print(":");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("type");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__TYPE));
@@ -1894,15 +1712,15 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("abstract");
 				out.print(" ");
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (LineBreak):
+			default:			// DEFINITION PART BEGINS (LineBreak)
 			out.println();
 			out.print(localtab);
-			//////////////DEFINITION PART BEGINS (Containment):
+			// DEFINITION PART BEGINS (Containment)
 			count = printCountingMap.get("body");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OPERATION__BODY));
@@ -1915,7 +1733,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_structure_Parameter(org.kermeta.language.structure.Parameter element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(10);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(10);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PARAMETER__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -1939,7 +1762,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("operation", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("name");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PARAMETER__NAME));
@@ -1951,10 +1774,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("name", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(":");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("type");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PARAMETER__TYPE));
@@ -1969,7 +1792,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_structure_Class(org.kermeta.language.structure.Class element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(11);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(11);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -1995,7 +1823,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("name", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("typeDefinition");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CLASS__TYPE_DEFINITION));
@@ -2011,7 +1839,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_Enumeration(org.kermeta.language.structure.Enumeration element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(6);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(6);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2027,10 +1860,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("ownedLiteral", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("enumeration");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("name");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__NAME));
@@ -2042,15 +1875,15 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("name", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_structure_Enumeration_0(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
 	}
@@ -2060,8 +1893,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (Containment):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("ownedLiteral");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__OWNED_LITERAL));
@@ -2077,15 +1910,15 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("ownedLiteral", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(";");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_Enumeration_0_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -2101,7 +1934,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_structure_Enumeration_0_0(org.kermeta.language.structure.Enumeration element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("ownedLiteral");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION__OWNED_LITERAL));
@@ -2117,13 +1950,18 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("ownedLiteral", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(";");
 		out.print(" ");
 	}
 	
 	public void print_org_kermeta_language_structure_EnumerationLiteral(org.kermeta.language.structure.EnumerationLiteral element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(4);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(4);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION_LITERAL__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2135,7 +1973,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("enumeration", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("name");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.ENUMERATION_LITERAL__NAME));
@@ -2150,7 +1988,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_structure_Constraint(org.kermeta.language.structure.Constraint element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(9);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(9);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CONSTRAINT__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2172,7 +2015,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("postOwner", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("stereotype");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CONSTRAINT__STEREOTYPE));
@@ -2184,7 +2027,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("stereotype", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("language");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.CONSTRAINT__LANGUAGE));
@@ -2199,7 +2042,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_structure_PrimitiveType(org.kermeta.language.structure.PrimitiveType element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2217,7 +2065,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("instanceType", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken)
 		count = printCountingMap.get("name");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRIMITIVE_TYPE__NAME));
@@ -2232,7 +2080,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_structure_UnresolvedType(org.kermeta.language.structure.UnresolvedType element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(4);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(4);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.UNRESOLVED_TYPE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2244,7 +2097,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("typeIdentifier", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("typeIdentifier");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.UNRESOLVED_TYPE__TYPE_IDENTIFIER));
@@ -2259,7 +2112,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_structure_VoidType(org.kermeta.language.structure.VoidType element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(3);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(3);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2268,14 +2126,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VOID_TYPE__TYPE_CONTAINER));
 		printCountingMap.put("typeContainer", temp == null ? 0 : 1);
 		// print collected hidden tokens
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("Void");
 		out.print(" ");
 	}
 	
 	public void print_org_kermeta_language_structure_Object(org.kermeta.language.structure.Object element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(2);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(2);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2285,19 +2148,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("Object");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_Object_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -2309,7 +2172,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -2327,13 +2190,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT__OWNED_TAGS));
@@ -2351,13 +2214,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT__TAG));
@@ -2381,7 +2244,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_Model(org.kermeta.language.structure.Model element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(3);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(3);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2393,19 +2261,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("Model");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_Model_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -2417,7 +2285,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -2435,13 +2303,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL__OWNED_TAGS));
@@ -2459,13 +2327,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL__TAG));
@@ -2489,7 +2357,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_ModelType(org.kermeta.language.structure.ModelType element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2510,8 +2383,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("isAspect");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__IS_ASPECT));
@@ -2523,18 +2396,18 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("isAspect", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("ModelType");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_ModelType_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -2546,7 +2419,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -2579,13 +2452,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__OWNED_TAGS));
@@ -2604,13 +2477,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("typeContainer");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("typeContainer");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__TYPE_CONTAINER));
@@ -2625,13 +2498,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("name");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("name");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__NAME));
@@ -2646,13 +2519,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("includedTypeDefinition");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("includedTypeDefinition");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__INCLUDED_TYPE_DEFINITION));
@@ -2673,13 +2546,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE__TAG));
@@ -2703,7 +2576,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_TypeVariableBinding(org.kermeta.language.structure.TypeVariableBinding element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(5);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(5);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2719,19 +2597,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("TypeVariableBinding");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_TypeVariableBinding_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -2743,7 +2621,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -2776,13 +2654,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__OWNED_TAGS));
@@ -2801,13 +2679,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("containedType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("containedType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__CONTAINED_TYPE));
@@ -2826,13 +2704,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("variable");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("variable");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__VARIABLE));
@@ -2847,13 +2725,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("type");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("type");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__TYPE));
@@ -2867,13 +2745,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_VARIABLE_BINDING__TAG));
@@ -2897,7 +2775,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_MultiplicityElement(org.kermeta.language.structure.MultiplicityElement element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(9);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(9);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -2922,8 +2805,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("isOrdered");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__IS_ORDERED));
@@ -2935,7 +2818,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("isOrdered", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("isUnique");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__IS_UNIQUE));
@@ -2947,18 +2830,18 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("isUnique", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("MultiplicityElement");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_MultiplicityElement_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -2970,7 +2853,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -3013,13 +2896,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__OWNED_TAGS));
@@ -3038,13 +2921,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("containedType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("containedType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__CONTAINED_TYPE));
@@ -3063,13 +2946,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("name");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("name");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__NAME));
@@ -3084,13 +2967,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("type");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("type");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__TYPE));
@@ -3105,13 +2988,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("lower");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken)
 				count = printCountingMap.get("lower");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__LOWER));
@@ -3126,13 +3009,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 6:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("upper");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken)
 				count = printCountingMap.get("upper");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__UPPER));
@@ -3146,13 +3029,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MULTIPLICITY_ELEMENT__TAG));
@@ -3176,7 +3059,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_TypeDefinition(org.kermeta.language.structure.TypeDefinition element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(4);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(4);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_DEFINITION__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -3191,8 +3079,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("isAspect");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_DEFINITION__IS_ASPECT));
@@ -3204,18 +3092,18 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("isAspect", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("TypeDefinition");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_TypeDefinition_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -3227,7 +3115,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -3250,13 +3138,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_DEFINITION__OWNED_TAGS));
@@ -3275,13 +3163,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("name");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("name");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_DEFINITION__NAME));
@@ -3295,13 +3183,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TYPE_DEFINITION__TAG));
@@ -3325,7 +3213,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_Tag(org.kermeta.language.structure.Tag element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(5);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(5);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -3341,19 +3234,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("Tag");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_Tag_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -3365,7 +3258,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -3398,13 +3291,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__OWNED_TAGS));
@@ -3423,13 +3316,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("name");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("name");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__NAME));
@@ -3444,13 +3337,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("value");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("value");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__VALUE));
@@ -3465,13 +3358,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("object");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("object");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__OBJECT));
@@ -3492,13 +3385,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.TAG__TAG));
@@ -3522,7 +3415,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_ObjectTypeVariable(org.kermeta.language.structure.ObjectTypeVariable element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(6);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(6);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -3540,19 +3438,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("ObjectTypeVariable");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_ObjectTypeVariable_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -3564,7 +3462,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -3602,13 +3500,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__OWNED_TAGS));
@@ -3627,13 +3525,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("containedType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("containedType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__CONTAINED_TYPE));
@@ -3652,13 +3550,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("typeContainer");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("typeContainer");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__TYPE_CONTAINER));
@@ -3673,13 +3571,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("name");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("name");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__NAME));
@@ -3694,13 +3592,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("supertype");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("supertype");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__SUPERTYPE));
@@ -3714,13 +3612,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.OBJECT_TYPE_VARIABLE__TAG));
@@ -3744,7 +3642,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_ModelTypeVariable(org.kermeta.language.structure.ModelTypeVariable element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -3764,19 +3667,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("ModelTypeVariable");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_ModelTypeVariable_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -3788,7 +3691,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -3831,13 +3734,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__OWNED_TAGS));
@@ -3856,13 +3759,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("containedType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("containedType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__CONTAINED_TYPE));
@@ -3881,13 +3784,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("typeContainer");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("typeContainer");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__TYPE_CONTAINER));
@@ -3902,13 +3805,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("name");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("name");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__NAME));
@@ -3923,13 +3826,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("supertype");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("supertype");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__SUPERTYPE));
@@ -3944,13 +3847,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 6:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("virtualType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("virtualType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__VIRTUAL_TYPE));
@@ -3968,13 +3871,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.MODEL_TYPE_VARIABLE__TAG));
@@ -3998,7 +3901,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_VirtualType(org.kermeta.language.structure.VirtualType element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(9);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(9);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -4022,19 +3930,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("VirtualType");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_VirtualType_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -4046,7 +3954,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -4099,13 +4007,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__OWNED_TAGS));
@@ -4124,13 +4032,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("containedType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("containedType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__CONTAINED_TYPE));
@@ -4149,13 +4057,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("typeContainer");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("typeContainer");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__TYPE_CONTAINER));
@@ -4170,13 +4078,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("name");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("name");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__NAME));
@@ -4191,13 +4099,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("supertype");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("supertype");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__SUPERTYPE));
@@ -4212,13 +4120,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 6:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("classDefinition");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("classDefinition");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__CLASS_DEFINITION));
@@ -4233,13 +4141,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 7:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("modelType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("modelType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__MODEL_TYPE));
@@ -4254,13 +4162,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 8:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("typeParamBinding");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("typeParamBinding");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__TYPE_PARAM_BINDING));
@@ -4278,13 +4186,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.VIRTUAL_TYPE__TAG));
@@ -4308,7 +4216,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_ProductType(org.kermeta.language.structure.ProductType element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(5);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(5);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -4324,19 +4237,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("ProductType");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_ProductType_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -4348,7 +4261,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -4381,13 +4294,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__OWNED_TAGS));
@@ -4406,13 +4319,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("containedType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("containedType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__CONTAINED_TYPE));
@@ -4431,13 +4344,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("typeContainer");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("typeContainer");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__TYPE_CONTAINER));
@@ -4452,13 +4365,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("type");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("type");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__TYPE));
@@ -4479,13 +4392,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.PRODUCT_TYPE__TAG));
@@ -4509,7 +4422,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_structure_FunctionType(org.kermeta.language.structure.FunctionType element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(6);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(6);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -4527,19 +4445,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("FunctionType");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_structure_FunctionType_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -4551,7 +4469,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -4589,13 +4507,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__OWNED_TAGS));
@@ -4614,13 +4532,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("containedType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("containedType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__CONTAINED_TYPE));
@@ -4639,13 +4557,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("typeContainer");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("typeContainer");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__TYPE_CONTAINER));
@@ -4660,13 +4578,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("left");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("left");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__LEFT));
@@ -4681,13 +4599,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("right");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("right");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__RIGHT));
@@ -4701,13 +4619,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.structure.StructurePackage.FUNCTION_TYPE__TAG));
@@ -4731,7 +4649,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_behavior_Block(org.kermeta.language.behavior.Block element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(6);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(6);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -4749,16 +4672,16 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("do");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_behavior_Block_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -4770,15 +4693,15 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_behavior_Block_1(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -4790,10 +4713,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("end");
 		out.print(" ");
 	}
@@ -4861,7 +4784,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("statement");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -4880,7 +4803,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("statement");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -4899,7 +4822,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("statement");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -4918,7 +4841,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("statement");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -4937,7 +4860,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("statement");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -4956,7 +4879,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 6:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("statement");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -4975,7 +4898,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 7:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("statement");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -4994,7 +4917,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 8:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("statement");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -5013,7 +4936,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 9:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("statement");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -5032,7 +4955,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 10:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("statement");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -5051,7 +4974,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 11:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("statement");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -5069,11 +4992,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (LineBreak):
+			default:			// DEFINITION PART BEGINS (LineBreak)
 			localtab += "	";
 			out.println();
 			out.print(localtab);
-			//////////////DEFINITION PART BEGINS (Containment):
+			// DEFINITION PART BEGINS (Containment)
 			count = printCountingMap.get("statement");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__STATEMENT));
@@ -5094,11 +5017,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_behavior_Block_1(org.kermeta.language.behavior.Block element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		localtab += "	";
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("rescueBlock");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BLOCK__RESCUE_BLOCK));
@@ -5118,7 +5041,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_behavior_Rescue(org.kermeta.language.behavior.Rescue element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(5);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(5);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.RESCUE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -5133,14 +5061,14 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		// print collected hidden tokens
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("rescue");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_behavior_Rescue_0(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -5150,10 +5078,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_behavior_Rescue_1(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -5163,17 +5091,17 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
 	}
 	public void print_org_kermeta_language_behavior_Rescue_0(org.kermeta.language.behavior.Rescue element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("(");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("exceptionName");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.RESCUE__EXCEPTION_NAME));
@@ -5185,10 +5113,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("exceptionName", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(":");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("exceptionType");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.RESCUE__EXCEPTION_TYPE));
@@ -5197,18 +5125,18 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("exceptionType", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(")");
 		out.print(" ");
 	}
 	public void print_org_kermeta_language_behavior_Rescue_1(org.kermeta.language.behavior.Rescue element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		localtab += "	";
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("body");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.RESCUE__BODY));
@@ -5227,7 +5155,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_behavior_TypeReference(org.kermeta.language.behavior.TypeReference element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(9);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(9);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.TYPE_REFERENCE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -5249,7 +5182,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("upper", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("type");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.TYPE_REFERENCE__TYPE));
@@ -5265,7 +5198,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_behavior_Raise(org.kermeta.language.behavior.Raise element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(5);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(5);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.RAISE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -5279,10 +5217,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("expression", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("raise");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("expression");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.RAISE__EXPRESSION));
@@ -5294,7 +5232,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_behavior_BooleanLiteral(org.kermeta.language.behavior.BooleanLiteral element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(5);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(5);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BOOLEAN_LITERAL__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -5308,7 +5251,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("value", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken)
 		count = printCountingMap.get("value");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.BOOLEAN_LITERAL__VALUE));
@@ -5323,7 +5266,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_behavior_IntegerLiteral(org.kermeta.language.behavior.IntegerLiteral element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(5);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(5);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.INTEGER_LITERAL__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -5337,7 +5285,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("value", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken)
 		count = printCountingMap.get("value");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.INTEGER_LITERAL__VALUE));
@@ -5352,7 +5300,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_behavior_StringLiteral(org.kermeta.language.behavior.StringLiteral element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(5);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(5);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.STRING_LITERAL__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -5366,7 +5319,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("value", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("value");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.STRING_LITERAL__VALUE));
@@ -5382,7 +5335,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_behavior_Conditional(org.kermeta.language.behavior.Conditional element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -5401,24 +5359,24 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		// print collected hidden tokens
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("if");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_behavior_Conditional_0(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("then");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_behavior_Conditional_1(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_behavior_Conditional_2(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -5428,10 +5386,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("end");
 		out.print(" ");
 	}
@@ -5449,7 +5407,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("condition");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__CONDITION));
@@ -5460,7 +5418,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (Containment):
+			default:			// DEFINITION PART BEGINS (Containment)
 			count = printCountingMap.get("condition");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__CONDITION));
@@ -5513,14 +5471,9 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			alt = 7;
 			matches = tempMatchCount;
 		}
-		tempMatchCount=		matchCount(printCountingMap, java.util.Arrays.asList(		"thenBody"		));
-		if (tempMatchCount > matches) {
-			alt = 8;
-			matches = tempMatchCount;
-		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("thenBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__THEN_BODY));
@@ -5532,7 +5485,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("thenBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__THEN_BODY));
@@ -5544,7 +5497,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("thenBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__THEN_BODY));
@@ -5556,7 +5509,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("thenBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__THEN_BODY));
@@ -5568,7 +5521,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("thenBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__THEN_BODY));
@@ -5580,7 +5533,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 6:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("thenBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__THEN_BODY));
@@ -5592,7 +5545,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 7:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("thenBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__THEN_BODY));
@@ -5603,23 +5556,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			case 8:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("thenBody");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__THEN_BODY));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("thenBody", count - 1);
-				}
-			}
-			break;
-			default:			//////////////DEFINITION PART BEGINS (LineBreak):
+			default:			// DEFINITION PART BEGINS (LineBreak)
 			localtab += "	";
 			out.println();
 			out.print(localtab);
-			//////////////DEFINITION PART BEGINS (Containment):
+			// DEFINITION PART BEGINS (Containment)
 			count = printCountingMap.get("thenBody");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__THEN_BODY));
@@ -5674,7 +5615,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("elseBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__ELSE_BODY));
@@ -5686,7 +5627,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("elseBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__ELSE_BODY));
@@ -5698,7 +5639,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("elseBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__ELSE_BODY));
@@ -5710,7 +5651,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("elseBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__ELSE_BODY));
@@ -5722,7 +5663,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("elseBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__ELSE_BODY));
@@ -5734,16 +5675,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 6:			{
-				//////////////DEFINITION PART BEGINS (Containment):
-				count = printCountingMap.get("elseBody");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__ELSE_BODY));
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("elseBody", count - 1);
-				}
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("elseBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__ELSE_BODY));
@@ -5755,7 +5687,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 7:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("elseBody");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__ELSE_BODY));
@@ -5766,14 +5698,14 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("else");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (LineBreak):
+			// DEFINITION PART BEGINS (LineBreak)
 			localtab += "	";
 			out.println();
 			out.print(localtab);
-			//////////////DEFINITION PART BEGINS (Containment):
+			// DEFINITION PART BEGINS (Containment)
 			count = printCountingMap.get("elseBody");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CONDITIONAL__ELSE_BODY));
@@ -5787,7 +5719,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_behavior_Loop(org.kermeta.language.behavior.Loop element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LOOP__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -5807,14 +5744,14 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		int count;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("from");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_behavior_Loop_0(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -5824,13 +5761,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("until");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("stopCondition");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LOOP__STOP_CONDITION));
@@ -5839,10 +5776,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("stopCondition", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_behavior_Loop_1(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -5856,7 +5793,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_behavior_Loop_0(org.kermeta.language.behavior.Loop element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("initialization");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LOOP__INITIALIZATION));
@@ -5868,26 +5805,26 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	public void print_org_kermeta_language_behavior_Loop_1(org.kermeta.language.behavior.Loop element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("loop");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_behavior_Loop_1_0(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
 	}
 	public void print_org_kermeta_language_behavior_Loop_1_0(org.kermeta.language.behavior.Loop element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (LineBreak):
+		// DEFINITION PART BEGINS (LineBreak)
 		localtab += "	";
 		out.println();
 		out.print(localtab);
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("body");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LOOP__BODY));
@@ -5900,7 +5837,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_behavior_VariableDecl(org.kermeta.language.behavior.VariableDecl element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VARIABLE_DECL__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -5920,11 +5862,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		int count;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("var");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("identifier");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VARIABLE_DECL__IDENTIFIER));
@@ -5936,10 +5878,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("identifier", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(":");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("type");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VARIABLE_DECL__TYPE));
@@ -5948,10 +5890,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("type", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_behavior_VariableDecl_0(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -5965,10 +5907,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_behavior_VariableDecl_0(org.kermeta.language.behavior.VariableDecl element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("init");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("initialization");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VARIABLE_DECL__INITIALIZATION));
@@ -5981,7 +5923,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_behavior_TypeLiteral(org.kermeta.language.behavior.TypeLiteral element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(5);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(5);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.TYPE_LITERAL__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -5995,7 +5942,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("typeref", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("typeref");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.TYPE_LITERAL__TYPEREF));
@@ -6007,8 +5954,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_behavior_CallResult(org.kermeta.language.behavior.CallResult element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(8);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(8);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_RESULT__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -6027,35 +5978,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_RESULT__IS_ATPRE));
 		printCountingMap.put("isAtpre", temp == null ? 0 : 1);
 		// print collected hidden tokens
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
-		sWriter = new java.io.StringWriter();
-		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
-		print_org_kermeta_language_behavior_CallResult_0(element, localtab, out1, printCountingMap1);
-		if (printCountingMap.equals(printCountingMap1)) {
-			out1.close();
-		} else {
-			out1.flush();
-			out1.close();
-			out.print(sWriter.toString());
-			printCountingMap.putAll(printCountingMap1);
-		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("result");
-		out.print(" ");
-	}
-	public void print_org_kermeta_language_behavior_CallResult_0(org.kermeta.language.behavior.CallResult element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
-		//////////////DEFINITION PART BEGINS (CsString):
-		out.print("~");
 		out.print(" ");
 	}
 	
 	public void print_org_kermeta_language_behavior_CallSuperOperation(org.kermeta.language.behavior.CallSuperOperation element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_SUPER_OPERATION__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -6074,17 +6009,17 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		// print collected hidden tokens
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("super");
-		//////////////DEFINITION PART BEGINS (WhiteSpaces):
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		// DEFINITION PART BEGINS (CsString)
 		out.print("(");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_behavior_CallSuperOperation_0(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -6094,7 +6029,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(")");
 		out.print(" ");
 	}
@@ -6104,8 +6039,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (Containment):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_SUPER_OPERATION__PARAMETERS));
@@ -6121,12 +6056,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("parameters", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_behavior_CallSuperOperation_0_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -6142,10 +6077,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_behavior_CallSuperOperation_0_0(org.kermeta.language.behavior.CallSuperOperation element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_SUPER_OPERATION__PARAMETERS));
@@ -6165,7 +6100,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_behavior_Assignment(org.kermeta.language.behavior.Assignment element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -6182,16 +6122,16 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__IS_CAST));
 		printCountingMap.put("isCast", temp == null ? 0 : 1);
 		// print collected hidden tokens
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_behavior_Assignment_0(element, localtab, out, printCountingMap);
 	}
 	public void print_org_kermeta_language_behavior_Assignment_0(org.kermeta.language.behavior.Assignment element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_behavior_Assignment_0_0(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_behavior_Assignment_0_1(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_behavior_Assignment_0_2(element, localtab, out, printCountingMap);
 	}
 	public void print_org_kermeta_language_behavior_Assignment_0_0(org.kermeta.language.behavior.Assignment element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
@@ -6213,7 +6153,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__TARGET));
@@ -6225,7 +6165,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__TARGET));
@@ -6236,7 +6176,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (Containment):
+			default:			// DEFINITION PART BEGINS (Containment)
 			count = printCountingMap.get("target");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__TARGET));
@@ -6260,7 +6200,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken)
 				count = printCountingMap.get("isCast");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__IS_CAST));
@@ -6272,12 +6212,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					}
 					printCountingMap.put("isCast", count - 1);
 				}
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("=");
 				out.print(" ");
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print(":=");
 			out.print(" ");
 		}
@@ -6336,7 +6276,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("value");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__VALUE));
@@ -6348,7 +6288,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("value");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__VALUE));
@@ -6360,7 +6300,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("value");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__VALUE));
@@ -6372,7 +6312,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("value");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__VALUE));
@@ -6384,7 +6324,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("value");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__VALUE));
@@ -6396,7 +6336,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 6:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("value");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__VALUE));
@@ -6408,7 +6348,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 7:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("value");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__VALUE));
@@ -6420,7 +6360,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 8:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("value");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__VALUE));
@@ -6432,7 +6372,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 9:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("value");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__VALUE));
@@ -6443,7 +6383,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (Containment):
+			default:			// DEFINITION PART BEGINS (Containment)
 			count = printCountingMap.get("value");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.ASSIGNMENT__VALUE));
@@ -6456,7 +6396,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_behavior_CallVariable(org.kermeta.language.behavior.CallVariable element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(8);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(8);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VARIABLE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -6476,7 +6421,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		printCountingMap.put("isAtpre", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("name");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VARIABLE__NAME));
@@ -6491,7 +6436,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_behavior_SelfExpression(org.kermeta.language.behavior.SelfExpression element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(4);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(4);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.SELF_EXPRESSION__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -6502,14 +6452,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.SELF_EXPRESSION__STATIC_TYPE));
 		printCountingMap.put("staticType", temp == null ? 0 : 1);
 		// print collected hidden tokens
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("self");
 		out.print(" ");
 	}
 	
 	public void print_org_kermeta_language_behavior_CallFeature(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(12);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(12);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -6552,16 +6507,16 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				boolean iterate = true;
 				java.io.StringWriter sWriter = null;
 				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				print_org_kermeta_language_behavior_CallFeature_3(element, localtab, out, printCountingMap);
-				//////////////DEFINITION PART BEGINS (WhiteSpaces):
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				// DEFINITION PART BEGINS (WhiteSpaces)
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				iterate = true;
 				while (iterate) {
 					sWriter = new java.io.StringWriter();
 					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+					printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 					print_org_kermeta_language_behavior_CallFeature_4(element, localtab, out1, printCountingMap1);
 					if (printCountingMap.equals(printCountingMap1)) {
 						iterate = false;
@@ -6573,26 +6528,26 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 						printCountingMap.putAll(printCountingMap1);
 					}
 				}
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				print_org_kermeta_language_behavior_CallFeature_5(element, localtab, out, printCountingMap);
 			}
 			break;
 			default:			boolean iterate = true;
 			java.io.StringWriter sWriter = null;
 			java.io.PrintWriter out1 = null;
-			java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-			//////////////DEFINITION PART BEGINS (CsString):
+			java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+			// DEFINITION PART BEGINS (CsString)
 			out.print("(");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CompoundDefinition):
+			// DEFINITION PART BEGINS (CompoundDefinition)
 			print_org_kermeta_language_behavior_CallFeature_0(element, localtab, out, printCountingMap);
-			//////////////DEFINITION PART BEGINS (WhiteSpaces):
-			//////////////DEFINITION PART BEGINS (CompoundDefinition):
+			// DEFINITION PART BEGINS (WhiteSpaces)
+			// DEFINITION PART BEGINS (CompoundDefinition)
 			iterate = true;
 			while (iterate) {
 				sWriter = new java.io.StringWriter();
 				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+				printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 				print_org_kermeta_language_behavior_CallFeature_1(element, localtab, out1, printCountingMap1);
 				if (printCountingMap.equals(printCountingMap1)) {
 					iterate = false;
@@ -6604,7 +6559,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					printCountingMap.putAll(printCountingMap1);
 				}
 			}
-			//////////////DEFINITION PART BEGINS (CompoundDefinition):
+			// DEFINITION PART BEGINS (CompoundDefinition)
 			print_org_kermeta_language_behavior_CallFeature_2(element, localtab, out, printCountingMap);
 		}
 	}
@@ -6642,7 +6597,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -6654,7 +6609,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -6666,7 +6621,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -6678,7 +6633,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -6690,7 +6645,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -6701,7 +6656,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (Containment):
+			default:			// DEFINITION PART BEGINS (Containment)
 			count = printCountingMap.get("target");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -6738,11 +6693,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			case 1:			{
 				java.io.StringWriter sWriter = null;
 				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CsString):
+				java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+				// DEFINITION PART BEGINS (CsString)
 				out.print(".");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("staticOperation");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
@@ -6754,13 +6709,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					}
 					printCountingMap.put("staticOperation", count - 1);
 				}
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("(");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				sWriter = new java.io.StringWriter();
 				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+				printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 				print_org_kermeta_language_behavior_CallFeature_1_0(element, localtab, out1, printCountingMap1);
 				if (printCountingMap.equals(printCountingMap1)) {
 					out1.close();
@@ -6770,16 +6725,16 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					out.print(sWriter.toString());
 					printCountingMap.putAll(printCountingMap1);
 				}
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(")");
 				out.print(" ");
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(".");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("staticEnumLiteral");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL));
@@ -6794,10 +6749,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(".");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("staticOperation");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
@@ -6811,10 +6766,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print(".");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("staticProperty");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY));
@@ -6834,8 +6789,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (Containment):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
@@ -6851,12 +6806,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("parameters", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_behavior_CallFeature_1_0_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -6872,10 +6827,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_behavior_CallFeature_1_0_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
@@ -6909,13 +6864,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				boolean iterate = true;
 				java.io.StringWriter sWriter = null;
 				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				iterate = true;
 				while (iterate) {
 					sWriter = new java.io.StringWriter();
 					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+					printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 					print_org_kermeta_language_behavior_CallFeature_2_0(element, localtab, out1, printCountingMap1);
 					if (printCountingMap.equals(printCountingMap1)) {
 						iterate = false;
@@ -6927,15 +6882,15 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 						printCountingMap.putAll(printCountingMap1);
 					}
 				}
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(")");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				iterate = true;
 				while (iterate) {
 					sWriter = new java.io.StringWriter();
 					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+					printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 					print_org_kermeta_language_behavior_CallFeature_2_1(element, localtab, out1, printCountingMap1);
 					if (printCountingMap.equals(printCountingMap1)) {
 						iterate = false;
@@ -6949,10 +6904,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("==");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (Containment):
+			// DEFINITION PART BEGINS (Containment)
 			count = printCountingMap.get("parameters");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
@@ -6968,7 +6923,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 				printCountingMap.put("parameters", count - 1);
 			}
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(")");
 			out.print(" ");
 		}
@@ -6976,9 +6931,9 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_behavior_CallFeature_2_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_behavior_CallFeature_2_0_0(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
@@ -7017,24 +6972,24 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("-");
 				out.print(" ");
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("/");
 				out.print(" ");
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("*");
 				out.print(" ");
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("+");
 			out.print(" ");
 		}
@@ -7042,9 +6997,9 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_behavior_CallFeature_2_1(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_behavior_CallFeature_2_1_0(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
@@ -7083,24 +7038,24 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("-");
 				out.print(" ");
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("/");
 				out.print(" ");
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("*");
 				out.print(" ");
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("+");
 			out.print(" ");
 		}
@@ -7139,7 +7094,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -7151,7 +7106,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -7163,7 +7118,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -7175,7 +7130,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -7187,7 +7142,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("target");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -7198,7 +7153,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (Containment):
+			default:			// DEFINITION PART BEGINS (Containment)
 			count = printCountingMap.get("target");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__TARGET));
@@ -7235,11 +7190,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			case 1:			{
 				java.io.StringWriter sWriter = null;
 				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CsString):
+				java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+				// DEFINITION PART BEGINS (CsString)
 				out.print(".");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("staticOperation");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
@@ -7251,13 +7206,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					}
 					printCountingMap.put("staticOperation", count - 1);
 				}
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("(");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				sWriter = new java.io.StringWriter();
 				out1 = new java.io.PrintWriter(sWriter);
-				printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+				printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 				print_org_kermeta_language_behavior_CallFeature_4_0(element, localtab, out1, printCountingMap1);
 				if (printCountingMap.equals(printCountingMap1)) {
 					out1.close();
@@ -7267,16 +7222,16 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 					out.print(sWriter.toString());
 					printCountingMap.putAll(printCountingMap1);
 				}
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(")");
 				out.print(" ");
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(".");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("staticEnumLiteral");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_ENUM_LITERAL));
@@ -7291,10 +7246,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(".");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("staticOperation");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_OPERATION));
@@ -7308,10 +7263,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print(".");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("staticProperty");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY));
@@ -7331,8 +7286,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (Containment):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
@@ -7348,12 +7303,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("parameters", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_behavior_CallFeature_4_0_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -7369,10 +7324,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_behavior_CallFeature_4_0_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
@@ -7406,13 +7361,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				boolean iterate = true;
 				java.io.StringWriter sWriter = null;
 				java.io.PrintWriter out1 = null;
-				java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-				//////////////DEFINITION PART BEGINS (CompoundDefinition):
+				java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+				// DEFINITION PART BEGINS (CompoundDefinition)
 				iterate = true;
 				while (iterate) {
 					sWriter = new java.io.StringWriter();
 					out1 = new java.io.PrintWriter(sWriter);
-					printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+					printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 					print_org_kermeta_language_behavior_CallFeature_5_0(element, localtab, out1, printCountingMap1);
 					if (printCountingMap.equals(printCountingMap1)) {
 						iterate = false;
@@ -7426,10 +7381,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("==");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (Containment):
+			// DEFINITION PART BEGINS (Containment)
 			count = printCountingMap.get("parameters");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
@@ -7450,9 +7405,9 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_behavior_CallFeature_5_0(org.kermeta.language.behavior.CallFeature element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		print_org_kermeta_language_behavior_CallFeature_5_0_0(element, localtab, out, printCountingMap);
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_FEATURE__PARAMETERS));
@@ -7491,24 +7446,24 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("-");
 				out.print(" ");
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("/");
 				out.print(" ");
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("*");
 				out.print(" ");
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("+");
 			out.print(" ");
 		}
@@ -7516,7 +7471,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_behavior_JavaStaticCall(org.kermeta.language.behavior.JavaStaticCall element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -7536,11 +7496,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		int count;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("extern");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("jclass");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JCLASS));
@@ -7551,11 +7511,11 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("jclass", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (WhiteSpaces):
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("jmethod");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__JMETHOD));
@@ -7566,14 +7526,14 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("jmethod", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (WhiteSpaces):
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		// DEFINITION PART BEGINS (CsString)
 		out.print("(");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		sWriter = new java.io.StringWriter();
 		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+		printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 		print_org_kermeta_language_behavior_JavaStaticCall_0(element, localtab, out1, printCountingMap1);
 		if (printCountingMap.equals(printCountingMap1)) {
 			out1.close();
@@ -7583,7 +7543,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			out.print(sWriter.toString());
 			printCountingMap.putAll(printCountingMap1);
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(")");
 		out.print(" ");
 	}
@@ -7593,8 +7553,8 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (Containment):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__PARAMETERS));
@@ -7610,12 +7570,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			printCountingMap.put("parameters", count - 1);
 		}
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_behavior_JavaStaticCall_0_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -7631,10 +7591,10 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	public void print_org_kermeta_language_behavior_JavaStaticCall_0_0(org.kermeta.language.behavior.JavaStaticCall element, java.lang.String outertab, java.io.PrintWriter out, java.util.Map<java.lang.String, java.lang.Integer> printCountingMap){
 		java.lang.String localtab = outertab;
 		int count;
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (Containment):
+		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("parameters");
 		if (count > 0) {
 			Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.JAVA_STATIC_CALL__PARAMETERS));
@@ -7653,7 +7613,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	}
 	
 	public void print_org_kermeta_language_behavior_VoidLiteral(org.kermeta.language.behavior.VoidLiteral element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(4);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(4);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VOID_LITERAL__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -7664,13 +7629,18 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.VOID_LITERAL__STATIC_TYPE));
 		printCountingMap.put("staticType", temp == null ? 0 : 1);
 		// print collected hidden tokens
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("Void");
 		out.print(" ");
 	}
 	
 	public void print_org_kermeta_language_behavior_CallValue(org.kermeta.language.behavior.CallValue element, java.lang.String outertab, java.io.PrintWriter out) {
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(7);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(7);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -7687,14 +7657,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.CALL_VALUE__STATIC_TYPE_VARIABLE_BINDINGS));
 		printCountingMap.put("staticTypeVariableBindings", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("value");
 		out.print(" ");
 	}
 	
 	public void print_org_kermeta_language_behavior_EmptyExpression(org.kermeta.language.behavior.EmptyExpression element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(4);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(4);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.EMPTY_EXPRESSION__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -7708,19 +7683,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("EmptyExpression");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_behavior_EmptyExpression_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -7732,7 +7707,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -7760,13 +7735,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.EMPTY_EXPRESSION__OWNED_TAGS));
@@ -7785,13 +7760,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("containedType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("containedType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.EMPTY_EXPRESSION__CONTAINED_TYPE));
@@ -7810,13 +7785,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("staticType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("staticType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.EMPTY_EXPRESSION__STATIC_TYPE));
@@ -7830,13 +7805,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.EMPTY_EXPRESSION__TAG));
@@ -7860,7 +7835,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_behavior_LambdaExpression(org.kermeta.language.behavior.LambdaExpression element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(6);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(6);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -7878,19 +7858,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("LambdaExpression");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_behavior_LambdaExpression_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -7902,7 +7882,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -7940,13 +7920,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__OWNED_TAGS));
@@ -7965,13 +7945,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("containedType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("containedType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__CONTAINED_TYPE));
@@ -7990,13 +7970,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("staticType");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("staticType");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__STATIC_TYPE));
@@ -8011,13 +7991,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 4:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("parameters");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("parameters");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__PARAMETERS));
@@ -8036,13 +8016,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 5:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("body");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("body");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__BODY));
@@ -8053,13 +8033,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_EXPRESSION__TAG));
@@ -8083,7 +8063,12 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 	
 	public void print_org_kermeta_language_behavior_LambdaParameter(org.kermeta.language.behavior.LambdaParameter element, java.lang.String outertab, java.io.PrintWriter out) {
 		java.lang.String localtab = outertab;
-		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.HashMap<java.lang.String, java.lang.Integer>(4);
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(4);
 		java.lang.Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_PARAMETER__TAG));
 		printCountingMap.put("tag", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
@@ -8097,19 +8082,19 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		boolean iterate = true;
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
-		java.util.HashMap<java.lang.String, java.lang.Integer> printCountingMap1 = null;
-		//////////////DEFINITION PART BEGINS (CsString):
+		java.util.Map<java.lang.String, java.lang.Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
 		out.print("LambdaParameter");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("{");
 		out.print(" ");
-		//////////////DEFINITION PART BEGINS (CompoundDefinition):
+		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
 		while (iterate) {
 			sWriter = new java.io.StringWriter();
 			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.HashMap<java.lang.String, java.lang.Integer>(printCountingMap);
+			printCountingMap1 = new java.util.LinkedHashMap<java.lang.String, java.lang.Integer>(printCountingMap);
 			print_org_kermeta_language_behavior_LambdaParameter_0(element, localtab, out1, printCountingMap1);
 			if (printCountingMap.equals(printCountingMap1)) {
 				iterate = false;
@@ -8121,7 +8106,7 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				printCountingMap.putAll(printCountingMap1);
 			}
 		}
-		//////////////DEFINITION PART BEGINS (CsString):
+		// DEFINITION PART BEGINS (CsString)
 		out.print("}");
 		out.print(" ");
 	}
@@ -8149,13 +8134,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 		}
 		switch(alt) {
 			case 1:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("ownedTags");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("ownedTags");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_PARAMETER__OWNED_TAGS));
@@ -8174,13 +8159,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 2:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("name");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+				// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 				count = printCountingMap.get("name");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_PARAMETER__NAME));
@@ -8195,13 +8180,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 			}
 			break;
 			case 3:			{
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print("type");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (CsString):
+				// DEFINITION PART BEGINS (CsString)
 				out.print(":");
 				out.print(" ");
-				//////////////DEFINITION PART BEGINS (Containment):
+				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("type");
 				if (count > 0) {
 					Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_PARAMETER__TYPE));
@@ -8212,13 +8197,13 @@ public class KermetaPrinter implements org.kermeta.language.emftexteditor.IKerme
 				}
 			}
 			break;
-			default:			//////////////DEFINITION PART BEGINS (CsString):
+			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("tag");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (CsString):
+			// DEFINITION PART BEGINS (CsString)
 			out.print(":");
 			out.print(" ");
-			//////////////DEFINITION PART BEGINS (PlaceholderUsingDefaultToken):
+			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 			count = printCountingMap.get("tag");
 			if (count > 0) {
 				Object o = element.eGet(element.eClass().getEStructuralFeature(org.kermeta.language.behavior.BehaviorPackage.LAMBDA_PARAMETER__TAG));
