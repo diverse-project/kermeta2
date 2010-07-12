@@ -28,8 +28,11 @@ public class PortResourceLoaderTestSuite extends TestSuite {
 
         TestSuite suite = new TestSuite("PortResourceLoaderTestSuite");
         try {
-            Util.populate(suite, "KMT_Valid", true, loaderClass);
-            Util.populate(suite, "KMT_Invalid", false, loaderClass);
+            Util.populate(suite, "KMTLoader_Valid", true, loaderClass,".kmt");
+            Util.populate(suite, "KMTLoader_Invalid", false, loaderClass,".kmt");
+            Util.populate(suite, "Checker_Valid", true, loaderClass,".kmt");
+            Util.populate(suite, "Checker_Invalid", true, loaderClass,".kmt");
+
         } catch (InstantiationException ex) {
             Logger.getLogger(PortResourceLoaderTestSuite.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {

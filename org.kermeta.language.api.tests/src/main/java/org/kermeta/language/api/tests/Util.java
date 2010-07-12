@@ -9,6 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Random;
@@ -30,12 +31,17 @@ public class Util
     
 
 
-public static void populate(TestSuite ts, String folder, Boolean valid,Class p) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+public static void populate(TestSuite ts, String folder, Boolean valid,Class p,String filter) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         String[] vfiles;
         try {
             vfiles = getResourceListing(PortResourceLoaderTestSuite.class, folder);
+
+
+            Arrays.sort(vfiles);
+            
+
             for (String uri : vfiles) {
-                if (uri.endsWith(".kmt")) {
+                if (uri.endsWith(filter)) {
                     InputStream is = PortResourceLoaderTestSuite.class.getClassLoader().getResourceAsStream(uri);
                     File f = convertStreamToFile(is,uri.substring(uri.lastIndexOf("/")+1));
 
