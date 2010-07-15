@@ -64,6 +64,7 @@ TOKENS {
 			
 TOKENSTYLES {
 	"ML_COMMENT" COLOR #008000, ITALIC;
+	"ML_DOCUMENTATION" COLOR #008000, ITALIC, BOLD;
 	"SL_COMMENT" COLOR #000080, ITALIC;
 	"STRING_LITERAL" COLOR #2A00FF;
 	"IDENTIFIER" COLOR #000000;
@@ -107,38 +108,51 @@ TOKENSTYLES {
 //				org.kermeta.language.structure.Class ::=isAbstract[]? "Class"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "typeContainer"  ":" typeContainer[]| "virtualTypeBinding"  ":" virtualTypeBinding | "typeParamBinding"  ":" typeParamBinding | "typeDefinition"  ":" typeDefinition[]| "ownedAttribute"  ":" ownedAttribute[]| "ownedOperation"  ":" ownedOperation[]| "superClass"  ":" superClass[]| "name"  ":" name[STRING_LITERAL] )* "}"  ;
 				org.kermeta.language.structure.Class ::=isAbstract[]? "Class"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "typeContainer"  ":" typeContainer[]| "virtualTypeBinding"  ":" virtualTypeBinding | "typeParamBinding"  ":" typeParamBinding | "typeDefinition"  ":" typeDefinition[]| "name"  ":" name[STRING_LITERAL] )* "}"  ;
 				org.kermeta.language.structure.Enumeration ::=isAspect[]? "Enumeration"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "typeContainer"  ":" typeContainer[]| "name"  ":" name[STRING_LITERAL] | "ownedLiteral"  ":" ownedLiteral )* "}"  ;
-				org.kermeta.language.structure.Package ::= "Package"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[STRING_LITERAL] | "ownedTypeDefinition"  ":" ownedTypeDefinition | "nestedPackage"  ":" nestedPackage | "nestingPackage"  ":" nestingPackage[]| "uri"  ":" uri[STRING_LITERAL] )* "}"  ;
+				
+				org.kermeta.language.structure.Package ::= 
+					( ownedTags )*
+					"package" name[IDENTIFIER]  "{" 
+						( ownedTypeDefinition 
+							| nestedPackage )* 
+					"}"  ;
 				org.kermeta.language.structure.Parameter ::=isOrdered[]?isUnique[]? "Parameter"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "name"  ":" name[STRING_LITERAL] | "type"  ":" type[]| "lower"  ":" lower[INTEGER_LITERAL]| "upper"  ":" upper[INTEGER_LITERAL]| "operation"  ":" operation[] )* "}"  ;
 				org.kermeta.language.structure.PrimitiveType ::=isAspect[]? "PrimitiveType"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "typeContainer"  ":" typeContainer[]| "name"  ":" name[STRING_LITERAL] | "containedType"  ":" containedType | "instanceType"  ":" instanceType[] )* "}"  ;
 				
-				//org.kermeta.language.structure.Tag ::= "Tag"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[STRING_LITERAL] | "value"  ":" value[STRING_LITERAL] | "object"  ":" object[] )* "}"  ;
 				org.kermeta.language.structure.Tag ::= (
 						("@" (#0 name[IDENTIFIER])   value[STRING_LITERAL])|
 						(value[ML_DOCUMENTATION])  
 					);
 				
-				org.kermeta.language.structure.Constraint ::= "Constraint"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[STRING_LITERAL] | "body"  ":" body | "stereotype"  ":" stereotype[]| "language"  ":" language[]| "invOwner"  ":" invOwner[]| "preOwner"  ":" preOwner[]| "postOwner"  ":" postOwner[] )* "}"  ;
+				org.kermeta.language.structure.Constraint ::=
+					( ownedTags )* 
+					("inv" | "pre" | "post")
+					name[IDENTIFIER]
+					"is" "do"
+					"Constraint"  "{" (  "name"  ":" name[STRING_LITERAL] | "body"  ":" body | "stereotype"  ":" stereotype[]| "language"  ":" language[]| "invOwner"  ":" invOwner[]| "preOwner"  ":" preOwner[]| "postOwner"  ":" postOwner[] )* "}"  
+					;
 				
-				//org.kermeta.language.structure.ClassDefinition ::=isAspect[]?isAbstract[]? "ClassDefinition"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[STRING_LITERAL] | "typeParameter"  ":" typeParameter | "containedType"  ":" containedType | "inv"  ":" inv | "ownedAttribute"  ":" ownedAttribute | "ownedOperation"  ":" ownedOperation | "superType"  ":" superType[] )* "}"  ;
 				org.kermeta.language.structure.ClassDefinition ::=(ownedTags)* isAspect[]?isAbstract[]? "class" name[IDENTIFIER] 
 					("<" #0 typeParameter (#0 "," typeParameter)* #0 ">")?
-					("inherits" superType[] (#0 "," #0 ",")*)? 
-					"{" (  "inv"  ":" inv | "ownedAttribute"  ":" ownedAttribute | "ownedOperation"  ":" ownedOperation  )* 
+					("inherits" superType[] (#0 "," superType[])*)? 
+					"{" (  	inv | 
+							ownedAttribute | 
+							ownedOperation  
+						)* 
 					"}"  ;				
 				org.kermeta.language.structure.ModelingUnit ::= 
 					( ownedTags )*
-					("unit" name[STRING_LITERAL] )? 					
+					("unitname" name[STRING_LITERAL] )? 					
 					("package"  namespacePrefix[IDENTIFIER] ";")?  
 					( requires | 
 					  usings )* 
 					( ownedTypeDefinition | 
 					  packages)*  
 					
-        			("\u001a")?
+        			("\u001a")? // can be the end of file
         			;
-				org.kermeta.language.structure.TypeDefinitionContainer ::= "TypeDefinitionContainer"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[STRING_LITERAL] | "ownedTypeDefinition"  ":" ownedTypeDefinition )* "}"  ;
-				org.kermeta.language.structure.Require ::= "Require"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "uri"  ":" uri[STRING_LITERAL] )* "}"  ;
-				org.kermeta.language.structure.Using ::= "Using"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "qualifiedName"  ":" qualifiedName[STRING_LITERAL] )* "}"  ;
+				//org.kermeta.language.structure.TypeDefinitionContainer ::= "TypeDefinitionContainer"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "name"  ":" name[STRING_LITERAL] | "ownedTypeDefinition"  ":" ownedTypeDefinition )* "}"  ;
+				org.kermeta.language.structure.Require ::= "require" uri[STRING_LITERAL]  ;
+				org.kermeta.language.structure.Using ::= "using"  qualifiedName[IDENTIFIER]   ;
 				org.kermeta.language.structure.ObjectTypeVariable ::= "ObjectTypeVariable"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "typeContainer"  ":" typeContainer[]| "name"  ":" name[STRING_LITERAL] | "supertype"  ":" supertype[] )* "}"  ;
 				org.kermeta.language.structure.ModelType ::=isAspect[]? "ModelType"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "typeContainer"  ":" typeContainer[]| "name"  ":" name[STRING_LITERAL] | "includedTypeDefinition"  ":" includedTypeDefinition[]| "ownedPackages"  ":" ownedPackages )* "}"  ;
 				org.kermeta.language.structure.ModelTypeVariable ::= "ModelTypeVariable"  "{" ( "tag"  ":" tag[]| "ownedTags"  ":" ownedTags | "containedType"  ":" containedType | "typeContainer"  ":" typeContainer[]| "name"  ":" name[STRING_LITERAL] | "supertype"  ":" supertype[]| "virtualType"  ":" virtualType )* "}"  ;
