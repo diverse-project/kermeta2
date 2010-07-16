@@ -6,10 +6,10 @@
 package org.kermeta.scala.parser
 
 import org.kermeta.scala.parser.sub.KAbstractParser
-import fr.irisa.triskell.kermeta.language.structure._
-import fr.irisa.triskell.kermeta.language.behavior._
-import fr.irisa.triskell.kermeta.language.structure.impl._
-import fr.irisa.triskell.kermeta.language.behavior.impl._
+import org.kermeta.language.structure._
+import org.kermeta.language.behavior._
+import org.kermeta.language.structure.impl._
+import org.kermeta.language.behavior.impl._
 import org.kermeta.scala.parser.sub._
 import scala.collection.JavaConversions._
 

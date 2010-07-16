@@ -5,9 +5,9 @@
 
 package org.kermeta.scala.parser
 
-import fr.irisa.triskell.kermeta.KmPackage
-import fr.irisa.triskell.kermeta.language.behavior.Expression
-import fr.irisa.triskell.kermeta.language.structure.ModelingUnit
+import org.kermeta.KmPackage
+import org.kermeta.language.behavior.Expression
+import org.kermeta.language.structure.ModelingUnit
 import java.util.HashMap
 import org.eclipse.emf.common.util.TreeIterator
 import org.eclipse.emf.common.util.URI
@@ -66,7 +66,7 @@ object LoadSaveKM {
     elem.eAllContents.foreach{subelem =>
       //res.getContents.add(subelem)
       recursiveAddToResource(subelem,res)
-      subelem.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object].getTag.foreach{tag => res.getContents.add(tag)}
+      subelem.asInstanceOf[org.kermeta.language.structure.Object].getTag.foreach{tag => res.getContents.add(tag)}
 
     }
   }*/

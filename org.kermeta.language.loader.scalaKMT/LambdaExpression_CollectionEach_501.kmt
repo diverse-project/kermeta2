@@ -9,7 +9,7 @@
 @mainOperation "main"
 
 
-package kmt_testCase;
+package kmt_testCase::foo;
 
 
 require kermeta
@@ -21,6 +21,6 @@ class Main
 	operation main() : Void is do 
 		s.add("hello")
 		s.add("moto")
-		s.each{ s2 | stdio.writeln(s2) }
+		s.each({ s2 , s3 , s4 | stdio.writeln(s2) })
 	end
 }

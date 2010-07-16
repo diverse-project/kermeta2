@@ -6,10 +6,10 @@
 //package org.kermeta.scala.parser.sub
 //
 //import scala.util.parsing.combinator.syntactical.StandardTokenParsers
-//import fr.irisa.triskell.kermeta.language.structure._
-//import fr.irisa.triskell.kermeta.language.behavior._
-//import fr.irisa.triskell.kermeta.language.structure.impl._
-//import fr.irisa.triskell.kermeta.language.behavior.impl._
+//import org.kermeta.language.structure._
+//import org.kermeta.language.behavior._
+//import org.kermeta.language.structure.impl._
+//import org.kermeta.language.behavior.impl._
 //import org.kermeta.language.KMLexical
 //import scala.collection.JavaConversions._
 //

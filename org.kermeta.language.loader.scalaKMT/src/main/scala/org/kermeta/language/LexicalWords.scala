@@ -8,7 +8,7 @@ package org.kermeta.language
 class LexicalWords {
 	
   def keywords = List("package","attribute","require","using","class","aspect","abstract","inv","operation","method","is","do","end","var","from","until","loop","if","then","else","init","true","false")
-  def delimiters = List("=",";","::","@","{","}","(",")",":",":=",".",",","==","!=","-","+","!","*","/","<","<=",">",">=")
+  def delimiters = List("=",";","::","@","{","}","(",")",":",":=",".",",","|","==","!=","-","+","!","*","/","<","<=",">",">=")
 
 }
 

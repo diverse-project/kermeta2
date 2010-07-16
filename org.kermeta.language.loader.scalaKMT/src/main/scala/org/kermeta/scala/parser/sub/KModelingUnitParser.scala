@@ -5,26 +5,32 @@
 
 package org.kermeta.scala.parser.sub
 
-import fr.irisa.triskell.kermeta.language.structure._
-import fr.irisa.triskell.kermeta.language.behavior._
-import fr.irisa.triskell.kermeta.language.structure.impl._
-import fr.irisa.triskell.kermeta.language.behavior.impl._
+import org.kermeta.language.structure._
+import org.kermeta.language.behavior._
+import org.kermeta.language.structure.impl._
+import org.kermeta.language.behavior.impl._
 import scala.collection.JavaConversions._
 
 trait KModelingUnitParser extends KAbstractParser  {
+	
+	case class NameSpacePrefix(name : String)
+	
+	
   /* */
   def classDecl : Parser[ClassDefinition]
 
   def program = kermetaUnit ^^ { case unit =>
       var newp =StructureFactory.eINSTANCE.createModelingUnit
-      unit.foreach{elem => elem match {
+      unit.foreach{elem => elem match {  	  
           case l : List[_] => l.asInstanceOf[List[_]].foreach{listElem => listElem match {
                 case t : Tag => newp.getTag.add(t);newp.getOwnedTags.add(t)
                 case r : Require => newp.getRequires.add(r)
                 case p : Package => newp.getPackages.add(p)
+                case cd : ClassDefinition => newp.getOwnedTypeDefinition.add(cd)
                 case _ @ elem => println("unknow elem" + elem)
               }}
-          case _ => println("TODO modeling unit catch some type sub elem")
+          case np : NameSpacePrefix => newp.setNamespacePrefix(np.name)
+          case _ @ d => println("TODO modeling unit catch some type sub elem="+d)
         }}
       newp
   }
@@ -34,11 +40,7 @@ trait KModelingUnitParser extends KAbstractParser  {
   def scompUnit = (packageDecl|importStmts|usingStmts|topLevelDecl) // TODO ADD ANNOTATION TO ELEM
   /* DEPRECATED */
   
-   def packageDecl : Parser[Package] = "package" ~ packageName ~ ";" ^^ { case _ ~ p ~ _ => {
-   var newp =StructureFactory.eINSTANCE.createPackage
-   newp.setName(p)
-   newp
-   }}
+   def packageDecl : Parser[NameSpacePrefix] = "package" ~> packageName ~ ";" ^^ { case p ~ _ => { NameSpacePrefix(p)}}
   private def importStmts = importStmt+
   private def importStmt = "require" ~ packageName ^^ { case _ ~ e =>
       var newo =StructureFactory.eINSTANCE.createRequire
