@@ -18,8 +18,6 @@ public class ScalaKMTParserTestSuite extends TestSuite {
 
    // @Override
     public static Test suite() {
-        System.out.println("Me first");
-
         PortResourceLoaderTestSuite.loaderClass = Art2ComponentLoader.class;
         return PortResourceLoaderTestSuite.suite();
     }

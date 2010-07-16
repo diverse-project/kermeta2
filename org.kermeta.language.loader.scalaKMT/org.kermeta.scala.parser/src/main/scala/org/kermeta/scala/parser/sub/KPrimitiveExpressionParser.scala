@@ -52,11 +52,11 @@ trait KPrimitiveExpressionParser extends KAbstractParser {
         newo.setTarget(result)
         bexpp match {
           case "==" ~ e => newo.setName("equals");newo.getParameters.add(e)
-          case "!=" ~ e => newo.setName("dif");newo.getParameters.add(e)
-          case "<" ~ e => newo.setName("inf");newo.getParameters.add(e)
-          case ">" ~ e => newo.setName("sup");newo.getParameters.add(e)
-          case "<=" ~ e => newo.setName("infeq");newo.getParameters.add(e)
-          case ">=" ~ e => newo.setName("supeq");newo.getParameters.add(e)
+          case "!=" ~ e => newo.setName("isNotEqual");newo.getParameters.add(e)
+          case "<" ~ e => newo.setName("isLower");newo.getParameters.add(e)
+          case ">" ~ e => newo.setName("isGreater");newo.getParameters.add(e)
+          case "<=" ~ e => newo.setName("isLowerOrEqual");newo.getParameters.add(e)
+          case ">=" ~ e => newo.setName("isGreaterOrEqual");newo.getParameters.add(e)
         }
         result = newo
       }
@@ -99,7 +99,7 @@ trait KPrimitiveExpressionParser extends KAbstractParser {
               newo.setTarget(stat)
               op match {
                 case "!" => newo.setName("not")
-                case "-" => newo.setName("minus")
+                case "-" => newo.setName("uminus")
               }
               newo
             }
