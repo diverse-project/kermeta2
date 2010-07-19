@@ -16,6 +16,9 @@ import org.kermeta.language.structure.impl._
 import org.kermeta.language.behavior.impl._
 import scala.collection.JavaConversions._
 
+/**
+ * Sub parser dedicated to parse ClassDefinition in KMt textual syntax
+ */
 trait KClassDefinitionParser extends KAbstractParser {
 
   def abstractModifier = ("abstract")?

@@ -1,6 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* $Id: KClassDefinitionParser.scala 11789 2010-07-19 09:20:19Z dvojtise $
+ * Project : org.kermeta.language.loader.scalaKMT
+ * License : EPL
+ * Copyright : IRISA / INRIA/ Universite de Rennes 1
+ * ----------------------------------------------------------------------------
+ * Creation date : 2010
+ * Authors : 
+ * 		Francois Fouquet <ffouquet@irisa.fr>
  */
 
 package org.kermeta.scala.parser.sub
@@ -11,7 +16,9 @@ import org.kermeta.language.structure.impl._
 import org.kermeta.language.behavior.impl._
 import scala.collection.JavaConversions._
 
-/**  */
+/**
+ * Sub parser dedicated to parse Conditional expression in KMT textual syntax
+ */
 trait KLambdaParser extends KAbstractParser {
 
   def fLambda : Parser[Expression] = "{" ~ repsep(ident, ",") ~ "|" ~ fExpression ~ "}" ^^ { 
