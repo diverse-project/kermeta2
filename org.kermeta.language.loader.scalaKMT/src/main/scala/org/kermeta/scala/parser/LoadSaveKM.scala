@@ -1,6 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* $Id:  $
+ * Project : org.kermeta.language.loader.scalaKMT
+ * License : EPL
+ * Copyright : IRISA / INRIA/ Universite de Rennes 1
+ * ----------------------------------------------------------------------------
+ * Creation date : 2010
+ * Authors : 
+ * 		Francois Fouquet <ffouquet@irisa.fr>
  */
 
 package org.kermeta.scala.parser
@@ -17,6 +22,9 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import scala.collection.JavaConversions._
 
+/**
+ * Singleton methods used to load and save km model files
+ */
 object LoadSaveKM {
 
   def loadKmModel(uri:String): TreeIterator[EObject] ={

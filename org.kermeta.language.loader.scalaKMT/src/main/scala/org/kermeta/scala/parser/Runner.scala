@@ -1,12 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* $Id:  $
+ * Project : org.kermeta.language.loader.scalaKMT
+ * License : EPL
+ * Copyright : IRISA / INRIA/ Universite de Rennes 1
+ * ----------------------------------------------------------------------------
+ * Creation date : 2010
+ * Authors : 
+ * 		Francois Fouquet <ffouquet@irisa.fr>
  */
 
 package org.kermeta.scala.parser
 
 import scala.io.Source
 
+/**
+ * test operation for loading a kmt, parse and save it in the xmi file 
+ *
+ */
 object Runner{
 
   def main(args: Array[String]): Unit = {

@@ -1,6 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* $Id:  $
+ * Project : org.kermeta.language.loader.scalaKMT
+ * License : EPL
+ * Copyright : IRISA / INRIA/ Universite de Rennes 1
+ * ----------------------------------------------------------------------------
+ * Creation date : 2010
+ * Authors : 
+ * 		Francois Fouquet <ffouquet@irisa.fr>
  */
 
 package org.kermeta.scala.parser
@@ -13,6 +18,10 @@ import org.kermeta.language.behavior.impl._
 import org.kermeta.scala.parser.sub._
 import scala.collection.JavaConversions._
 
+/**
+ * Parser of Kermeta expression in KMT textual syntax
+ *
+ */
 trait KExpressionParser extends KAbstractParser
                            with KStructuralParser
                            with KQualifiedNameParser
@@ -24,6 +33,9 @@ trait KExpressionParser extends KAbstractParser
                            with KPrimitiveExpressionParser
                            with KLambdaParser {
 
+	/**
+	 * extend the fExpression parser with sub parser
+	 */
   override def fExpression : Parser[Expression] = ( fLiteral | fBlock | pExpression | fVariableDecl | fCall | fLoop | fConditional | fLambda )
   override def fStatement : Parser[Expression] = fAssignement
 
