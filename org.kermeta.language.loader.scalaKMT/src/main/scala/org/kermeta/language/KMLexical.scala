@@ -5,12 +5,21 @@
 
 package org.kermeta.language
 
+import scala.util.parsing.combinator.lexical.Scanners
 import scala.util.parsing.combinator.lexical.StdLexical
 
-class KMLexical extends StdLexical {
+class KMLexical extends StdLexical with Scanners {
 
   reserved ++= org.kermeta.language.Lexical.keywords
   delimiters ++= org.kermeta.language.Lexical.delimiters
+
+
+  def lex(content : String) : List[KToken] = {
+    var tokens = new this.Scanner(content)
+    
+    null
+  }
+
 
   override def token: Parser[Token] = floatingToken | super.token
 

@@ -8,7 +8,7 @@ import java.util.Enumeration;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import org.kermeta.language.api.tests.port.PortResourceLoaderTestSuite;
-import org.kermeta.scala.parser.Art2ComponentLoader;
+import org.kermeta.scala.parser.art2.impl.Art2ComponentLoader;
 
 /**
  *
