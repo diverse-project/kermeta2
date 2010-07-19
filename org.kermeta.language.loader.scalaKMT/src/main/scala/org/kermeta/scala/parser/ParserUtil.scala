@@ -1,4 +1,4 @@
-/* $Id:  $
+/* $Id$
  * Project : org.kermeta.language.loader.scalaKMT
  * License : EPL
  * Copyright : IRISA / INRIA/ Universite de Rennes 1
