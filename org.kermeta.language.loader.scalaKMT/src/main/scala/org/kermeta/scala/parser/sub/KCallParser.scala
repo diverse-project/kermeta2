@@ -52,7 +52,7 @@ trait KCallParser extends KAbstractParser {
       newo.setName(id)
       params match {
         case Some(_ @ par) => for(p <- par) newo.getParameters.add(p)
-        case None =>
+        case None => 
       }
       newo
   }

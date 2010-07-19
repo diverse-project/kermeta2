@@ -14,13 +14,6 @@ class KMLexical extends StdLexical with Scanners {
   delimiters ++= org.kermeta.language.Lexical.delimiters
 
 
-  def lex(content : String) : List[KToken] = {
-    var tokens = new this.Scanner(content)
-    
-    null
-  }
-
-
   override def token: Parser[Token] = floatingToken | super.token
 
   def floatingToken: Parser[Token] =

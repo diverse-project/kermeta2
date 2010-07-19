@@ -19,7 +19,6 @@ public class Art2ComponentLoader implements org.kermeta.language.api.port.PortRe
 
         KParser parser = new KParser();
 
-
         parser.parseSynch(ParserUtil.loadFile(uri)).get();
         return null;
 
