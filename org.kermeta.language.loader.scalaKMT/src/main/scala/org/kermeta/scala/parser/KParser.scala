@@ -1,4 +1,4 @@
-/* $Id:  $
+/* $Id$
  * Project : org.kermeta.language.loader.scalaKMT
  * License : EPL
  * Copyright : IRISA / INRIA/ Universite de Rennes 1
@@ -24,7 +24,7 @@ import scala.collection.JavaConversions._
  */
 class KParser extends KExpressionParser
                  with KModelingUnitParser
-                 with KClassParser  {
+                 with KClassDefinitionParser  {
 
   def parse(content : String) : Option[ModelingUnit] = {
     val tokens = new lexical.Scanner(content)

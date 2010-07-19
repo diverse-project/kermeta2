@@ -1,6 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* $Id$
+ * Project : org.kermeta.language.loader.scalaKMT
+ * License : EPL
+ * Copyright : IRISA / INRIA/ Universite de Rennes 1
+ * ----------------------------------------------------------------------------
+ * Creation date : 2010
+ * Authors : 
+ * 		Francois Fouquet <ffouquet@irisa.fr>
  */
 
 package org.kermeta.scala.parser.sub
@@ -11,7 +16,7 @@ import org.kermeta.language.structure.impl._
 import org.kermeta.language.behavior.impl._
 import scala.collection.JavaConversions._
 
-trait KClassParser extends KAbstractParser {
+trait KClassDefinitionParser extends KAbstractParser {
 
   def abstractModifier = ("abstract")?
   def aspectModifier = ("aspect")?
