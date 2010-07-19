@@ -1,4 +1,4 @@
-/* $Id: ParserUtil.scala 11790 2010-07-19 09:21:17Z dvojtise $
+/* $Id$
  * Project : org.kermeta.language.loader.scalaKMT
  * License : EPL
  * Copyright : IRISA / INRIA/ Universite de Rennes 1
