@@ -3,7 +3,9 @@
  * and open the template in the editor.
  */
 
-package org.kermeta.language
+
+/*
+package org.kermeta.language.lexer
 
 class LexicalWords {
 	
@@ -12,6 +14,6 @@ class LexicalWords {
 
 }
 
-object Lexical extends LexicalWords
+object KMLexical extends LexicalWords
 
-
+*/

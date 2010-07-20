@@ -10,23 +10,57 @@
 
 package org.kermeta.scala.parser.sub
 
-import scala.util.parsing.combinator.syntactical.StandardTokenParsers
+import scala.collection.mutable.HashMap
 import org.kermeta.language.structure._
 import org.kermeta.language.behavior._
 import org.kermeta.language.structure.impl._
 import org.kermeta.language.behavior.impl._
-import org.kermeta.language.KMLexical
+import org.kermeta.language.lexer.KMLexical
 import scala.collection.JavaConversions._
+import scala.util.parsing.combinator.syntactical.TokenParsers
 
 /**
  * Common part of all Sub parsers
  */
-trait KAbstractParser extends StandardTokenParsers {
-  override val lexical = new KMLexical
+trait KAbstractParser extends TokenParsers {
+  type Tokens = org.kermeta.language.lexer.KTokens
+  val lexical = new KMLexical
+  import lexical._
 
   def fStatement : Parser[Expression]
   def fExpression : Parser[Expression] = fLiteral
   def fLiteral : Parser[Expression]
   def packageName : Parser[String]
+
+
+
+  protected val keywordCache : HashMap[String, Parser[String]] = HashMap.empty
+  protected val delimCache : HashMap[String, Parser[String]] = HashMap.empty
+
+  /** A parser which matches a single keyword token.
+   *
+   * @param chars    The character string making up the matched keyword.
+   * @return a `Parser' that matches the given string
+   */
+
+  /** A parser which matches a numeric literal */
+  def numericLit: Parser[String] =
+    elem("number", _.isInstanceOf[NumericLit]) ^^ (_.chars)
+
+  /** A parser which matches a string literal */
+  def stringLit: Parser[String] =
+    elem("string literal", _.isInstanceOf[StringLit]) ^^ (_.chars)
+
+  /** A parser which matches an identifier */
+  def ident: Parser[String] =
+    elem("identifier", _.isInstanceOf[Identifier]) ^^ (_.chars)
+  
+
+  //an implicit keyword function that gives a warning when a given word is not in the reserved/delimiters list
+  implicit def keyword(chars : String): Parser[String] =
+    if(lexical.reserved.contains(chars)) keywordCache.getOrElseUpdate(chars, accept(Keyword(chars)) ^^ (_.chars))
+    else if(lexical.delimiters.contains(chars)) delimCache.getOrElseUpdate(chars, accept(Delimiter(chars)) ^^ (_.chars))
+    else failure("You are trying to parse \""+chars+"\", but it is neither contained in the delimiters list, nor in the reserved keyword list of your lexical object")
+
 
 }

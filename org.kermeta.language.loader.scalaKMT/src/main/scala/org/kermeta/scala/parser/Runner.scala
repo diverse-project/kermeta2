@@ -10,6 +10,7 @@
 
 package org.kermeta.scala.parser
 
+import org.kermeta.language.lexer.KMLexer
 import scala.io.Source
 
 /**
@@ -23,6 +24,14 @@ object Runner{
    //val input = Source.fromFile(new java.io.File("callExpr.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
    //val input = Source.fromFile(new java.io.File("expressionBloc.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
 val input = Source.fromFile(new java.io.File("LambdaExpression_CollectionEach_501.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
+
+
+    var lexResult = new KMLexer(input)
+
+    while(!lexResult.atEnd){
+      println(lexResult.nextToken)
+    }
+
 
     var result = new KParser().parse(input)
    // var result = new KParser().parseExpression(input)
