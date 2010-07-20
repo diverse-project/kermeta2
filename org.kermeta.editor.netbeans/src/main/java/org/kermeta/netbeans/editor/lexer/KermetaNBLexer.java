@@ -63,13 +63,13 @@ public class KermetaNBLexer implements Lexer<KmTokenId> {
         for (int i = 0; i < tok.toString().length()- 1; i++) {
             input.read();
         }
-
+/*
         System.out.println(
                 "=" + tok.toString());
         System.out.println(
                 "=" + input.readText());
 
-
+*/
 
 
 
