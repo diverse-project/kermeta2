@@ -5,6 +5,8 @@
 
 package org.kermeta.language.lexer
 
+import scala.util.parsing.combinator.lexical.Scanners
+
 class KMLexer(content : String) extends KMLexical {
 
   var tokens = new this.Scanner(content)

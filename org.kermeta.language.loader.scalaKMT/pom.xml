@@ -5,7 +5,7 @@
     <artifactId>language.parser.scala</artifactId>
     <name>Kermeta :: Loader :: ScalaKMT</name>
     <packaging>jar</packaging>
-    <version>1.0</version>
+    <version>1.2</version>
     <repositories>
         <repository>
             <id>ScalaToolsMaven2Repository</id>

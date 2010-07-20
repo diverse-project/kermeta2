@@ -6,6 +6,7 @@
 package org.kermeta.language.lexer
 
 import scala.collection.mutable.HashSet
+import scala.util.parsing.combinator.Parsers
 import scala.util.parsing.combinator.lexical.Lexical
 import scala.util.parsing.combinator.lexical.Scanners
 import scala.util.parsing.combinator.lexical.StdLexical
@@ -16,12 +17,14 @@ class KMLexical extends Lexical with KTokens {
   val reserved : HashSet[String] = HashSet("package","attribute","require","using","class","aspect","abstract","inv","operation","method","is","do","end","var","from","until","loop","if","then","else","init","true","false")
   val delimiters : HashSet[String] = HashSet("=",";","::","@","{","}","(",")",":",":=",".",",","|","==","!=","-","+","!","*","/","<","<=",">",">=")
 
-  def whitespace: Parser[Any] = rep(
-    whitespaceChar
-    | '/' ~ '*' ~ mlcomment ^^ { case _ ~ _ ~ mlcomment => mlcomment }
+  override def whitespace: Parser[Any] = rep(whitespaceChar)
+
+  def comment : Parser[Token] =
+   ( '/' ~ '*' ~ mlcomment ^^ { case _ ~ _ ~ mlcomment => mlcomment }
     | '/' ~ '/' ~ rep( chrExcept(EofCh, '\n') ) ^^ { case _ ~ _ ~ content => Comment(content.mkString) }
-    | '/' ~ '*' ~ failure("unclosed comment")
-  )
+  //  | '/' ~ '*' ~ failure("unclosed comment") ^^^ {case _ => ERR_MLComment("unclosed comment") }
+   )
+
 
   protected def mlcomment: Parser[MLComment] = (
     '*' ~ '/'  ^^ { case _ => MLComment("")  }
@@ -57,6 +60,7 @@ class KMLexical extends Lexical with KTokens {
 
 // see `token' in `Scanners'
   def token: Parser[Token] =
+    comment |
     ( identChar ~ rep( identChar | digit )              ^^ { case first ~ rest => processIdent(first :: rest mkString "") }
      | digit ~ rep( digit )                              ^^ { case first ~ rest => NumericLit(first :: rest mkString "") }
      | '\'' ~ rep( chrExcept('\'', '\n', EofCh) ) ~ '\'' ^^ { case '\'' ~ chars ~ '\'' => StringLit(chars mkString "") }
@@ -90,6 +94,9 @@ class KMLexical extends Lexical with KTokens {
 
   private def lift[T](f: String => T)(xs: List[Char]): T = f(xs.mkString("", "", ""))
   private def lift2[T](f: String => T)(p: ~[Char, List[Char]]): T = lift(f)(p._1 :: p._2)
+
+
+  
 
 
 

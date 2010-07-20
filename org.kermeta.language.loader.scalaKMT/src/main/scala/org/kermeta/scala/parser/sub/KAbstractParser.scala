@@ -24,7 +24,11 @@ import scala.util.parsing.combinator.syntactical.TokenParsers
  */
 trait KAbstractParser extends TokenParsers {
   type Tokens = org.kermeta.language.lexer.KTokens
-  val lexical = new KMLexical
+  val lexical = new KMLexical {
+
+    override def whitespace: Parser[Any] = rep(whitespaceChar | comment)
+
+  }
   import lexical._
 
   def fStatement : Parser[Expression]

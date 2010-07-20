@@ -7,18 +7,31 @@ package org.kermeta.language.lexer
 
 import scala.util.parsing.combinator.token.Tokens
 
+
 trait KTokens extends Tokens {
+
+
+
+
+  /** The class of comment tokens */
+  case class WHITESPACE extends Token {
+    def chars = ' '.toString
+    override def toString = ' '.toString
+  }
 
   /** The class of comment tokens */
   case class Comment(chars: String) extends Token {
-    override def toString = "/* "+chars+" */"
+    override def toString = "//"+chars
   }
 
   /** The class of comment tokens */
   case class MLComment(chars: String) extends Token {
+    override def toString = "/*"+chars+"*/"
+  }
+  /** The class of comment tokens */
+  case class ERR_MLComment(chars: String) extends Token {
     override def toString = "/* "+chars+" */"
   }
-
   /** The class of delim tokens */
   case class Delimiter(chars: String) extends Token {
     override def toString = chars
@@ -26,7 +39,7 @@ trait KTokens extends Tokens {
 
   /** The class of keyword tokens */
   case class Keyword(chars: String) extends Token {
-    override def toString = "`"+chars+"'"
+    override def toString = chars
   }
 
   /** The class of numeric literal tokens */
@@ -41,7 +54,7 @@ trait KTokens extends Tokens {
 
   /** The class of identifier tokens */
   case class Identifier(chars: String) extends Token {
-    override def toString = "identifier "+chars
+    override def toString = chars
   }
 
 }
