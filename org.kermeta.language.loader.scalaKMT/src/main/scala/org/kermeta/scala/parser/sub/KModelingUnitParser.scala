@@ -15,13 +15,14 @@ import org.kermeta.language.behavior._
 import org.kermeta.language.structure.impl._
 import org.kermeta.language.behavior.impl._
 import scala.collection.JavaConversions._
+import scala.util.parsing.input.Positional
 
 /**
  * Sub parser dedicated to parse ModelingUnit in KMT textual syntax  
  */
 trait KModelingUnitParser extends KAbstractParser  {
 	
-	case class NameSpacePrefix(name : String)
+	case class NameSpacePrefix(name : String) extends Positional
 	
 	
   /* */
@@ -37,7 +38,7 @@ trait KModelingUnitParser extends KAbstractParser  {
                 case cd : ClassDefinition => newp.getOwnedTypeDefinition.add(cd)
                 case _ @ elem => println("unknow elem" + elem)
               }}
-          case np : NameSpacePrefix => newp.setNamespacePrefix(np.name)
+          case np : NameSpacePrefix => newp.setNamespacePrefix(np.name) ; println(np.pos.column+"-"+np.pos.line)
           case _ @ d => println("TODO modeling unit catch some type sub elem="+d)
         }}
       newp
@@ -48,7 +49,7 @@ trait KModelingUnitParser extends KAbstractParser  {
   def scompUnit = (packageDecl|importStmts|usingStmts|topLevelDecl) // TODO ADD ANNOTATION TO ELEM
   /* DEPRECATED */
   
-   def packageDecl : Parser[NameSpacePrefix] = "package" ~> packageName ~ ";" ^^ { case p ~ _ => { NameSpacePrefix(p)}}
+   def packageDecl : Parser[NameSpacePrefix] = positioned("package" ~> packageName <~ ";" ^^ { case p =>  NameSpacePrefix(p)})
   private def importStmts = importStmt+
   private def importStmt = "require" ~ packageName ^^ { case _ ~ e =>
       var newo =StructureFactory.eINSTANCE.createRequire

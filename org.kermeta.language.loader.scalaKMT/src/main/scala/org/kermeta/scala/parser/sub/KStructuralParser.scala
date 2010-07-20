@@ -25,6 +25,7 @@ trait KStructuralParser extends KAbstractParser {
   def pExpression : Parser[Expression] = "(" ~> fStatement <~ ")"
 
   def fBlock : Parser[Expression] = "do" ~> fExpressionLst ~ (fRescueLst?) <~ "end" ^^ { case expL ~ rescueL =>
+
       var newo = BehaviorFactory.eINSTANCE.createBlock
       newo.getStatement.addAll(expL)
       newo.getStatement.add(rescueL getOrElse BehaviorFactory.eINSTANCE.createEmptyExpression)

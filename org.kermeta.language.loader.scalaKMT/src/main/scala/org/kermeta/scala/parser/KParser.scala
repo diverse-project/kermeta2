@@ -28,6 +28,7 @@ class KParser extends KExpressionParser
 
   def parse(content : String) : Option[ModelingUnit] = {
     val tokens = new lexical.Scanner(content)
+
     val result = phrase(program)(tokens)
     result match {
       case Success(tree, _) => {Some(tree) }
