@@ -28,7 +28,7 @@ public class KermetaParser extends Parser {
            // System.out.println("wuill parse");
             //System.out.println(org.kermeta.scala.parser.);
 
-            parser = new org.kermeta.scala.parser.Parser();
+            parser = new org.kermeta.scala.parser.KParser();
             parser.parse(texttoParse);
 
             snapshot = snpsht;
@@ -40,7 +40,7 @@ public class KermetaParser extends Parser {
 
     }
 
-    org.kermeta.scala.parser.Parser parser ;
+    org.kermeta.scala.parser.KParser parser ;
     Snapshot snapshot;
 
     @Override

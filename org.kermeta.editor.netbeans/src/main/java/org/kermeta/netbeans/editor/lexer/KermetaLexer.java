@@ -6,7 +6,6 @@ package org.kermeta.netbeans.editor.lexer;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.kermeta.language.LexicalWords;
 import org.netbeans.api.lexer.Token;
 import org.netbeans.spi.lexer.*;
 import scala.collection.Iterator;
@@ -20,7 +19,7 @@ public final class KermetaLexer implements Lexer<KmTokenId> {
     private static final int EOF = LexerInput.EOF;
     private static final Map<String, KmTokenId> keywords = new HashMap<String, KmTokenId>();
     private static final Map<String, KmTokenId> delimiters = new HashMap<String, KmTokenId>();
-
+/*
     static {
         LexicalWords lexicalWords = new org.kermeta.language.LexicalWords();
 
@@ -36,7 +35,7 @@ public final class KermetaLexer implements Lexer<KmTokenId> {
         }
 
         
-    }
+    }*/
     private LexerInput input;
     private TokenFactory<KmTokenId> tokenFactory;
 
@@ -46,6 +45,10 @@ public final class KermetaLexer implements Lexer<KmTokenId> {
         this.input.readText();
         this.tokenFactory = info.tokenFactory();
         assert (info.state() == null); // passed argument always null
+
+
+        
+
     }
 
     @Override
@@ -82,7 +85,7 @@ public final class KermetaLexer implements Lexer<KmTokenId> {
                             }
                     }
                     input.backup(1);
-                    return token(KmTokenId.SLASH);
+                   // return token(KmTokenId.SLASH);
 
                 case '"': {
                     while (true) {

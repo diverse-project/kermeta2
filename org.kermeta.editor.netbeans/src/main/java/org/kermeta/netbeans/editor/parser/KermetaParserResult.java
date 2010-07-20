@@ -14,10 +14,10 @@ import org.netbeans.modules.parsing.spi.Parser.Result;
  */
 public class KermetaParserResult extends Result {
 
-    private org.kermeta.scala.parser.Parser kmPaser;
+    private org.kermeta.scala.parser.KParser kmPaser;
     private boolean valid = true;
 
-    KermetaParserResult(Snapshot snapshot, org.kermeta.scala.parser.Parser _kmPaser) {
+    KermetaParserResult(Snapshot snapshot, org.kermeta.scala.parser.KParser _kmPaser) {
         super(snapshot);
         this.kmPaser = _kmPaser;
     }
@@ -27,7 +27,7 @@ public class KermetaParserResult extends Result {
         valid = false;
     }
 
-    public org.kermeta.scala.parser.Parser getParser()
+    public org.kermeta.scala.parser.KParser getParser()
             throws ParseException {
         if (!valid) {
             throw new ParseException();

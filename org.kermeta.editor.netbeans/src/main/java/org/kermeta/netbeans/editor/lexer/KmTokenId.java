@@ -26,12 +26,6 @@ public enum KmTokenId implements TokenId {
     IDENTIFIER(null, "identifier"),
     INT_LITERAL(null, "number"),
     FLOAT_LITERAL(null, "number"),
-    PLUS("+", "operator"),
-    MINUS("-", "operator"),
-    STAR("*", "operator"),
-    SLASH("/", "operator"),
-    LPAREN("(", "separator"),
-    RPAREN(")", "separator"),
     ERROR(null, "error"),
     ML_COMMENT_INCOMPLETE(null, "comment"),
     STRING(null,"string");
@@ -62,7 +56,7 @@ public enum KmTokenId implements TokenId {
 
         @Override
         protected Lexer<KmTokenId> createLexer(LexerRestartInfo<KmTokenId> lri) {
-            return new KermetaLexer(lri);
+            return new KermetaNBLexer(lri);
         }
 
         @Override
