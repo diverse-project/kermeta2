@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: IRISA/INRIA
+Bundle-SymbolicName: org.kermeta.language.builder.eclipse; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.kermeta.language.builder.eclipse.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ scala.library
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
