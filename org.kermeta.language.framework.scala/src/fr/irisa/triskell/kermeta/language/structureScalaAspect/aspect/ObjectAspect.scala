@@ -9,7 +9,7 @@ import scala.collection.JavaConversions._
 trait ObjectAspect extends EObject  with Contracted {
 
 
-  def isSuperTypeOf(cl : EClass) = this.getClass.asInstanceOf[EClass].isSuperTypeOf(cl)
+  def isSuperTypeOf(cl : fr.irisa.triskell.kermeta.language.structure.Type) = {true}//this.getClass.asInstanceOf[EClass].isSuperTypeOf(cl)
 
   
 
