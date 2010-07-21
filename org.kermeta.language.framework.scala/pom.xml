@@ -19,12 +19,21 @@
         </repository>
         <repository>
             <id>kermetaPublicSnapshot</id>
-            <url>http://www.kermeta.org/maven2-snapshots</url>
+            <url>http://tipimouss/maven2-snapshots</url>
         </repository>
         <repository>
-            <id>kermetaPublicSnapshot</id>
-            <url>http://www.kermeta.org/maven2</url>
+            <id>kermetaPublic</id>
+            <url>http://tipimouss/maven2</url>
         </repository>
+         <repository>
+            <id>kermetaPrivateSnapshot</id>
+            <url>http://tipimouss/maven2private-snapshots</url>
+        </repository>
+        <repository>
+            <id>kermetaPrivate</id>
+            <url>http://tipimouss/maven2private</url>
+        </repository>
+
     </repositories>
 
     <pluginRepositories>
@@ -41,7 +50,7 @@
         <!-- <testSourceDirectory>src/test/scala</testSourceDirectory> -->
         <plugins>
 
-           <plugin>
+            <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
                 <executions>
