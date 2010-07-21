@@ -23,6 +23,8 @@ trait ObjectAspect extends EObject  with Contracted {
     def typedefinition = this
     def container() = this.eContainer().asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]
     //override def equals(o : Any) : Boolean = o == this /*TODO*/
+      def equals(o : _root_.fr.irisa.triskell.kermeta.language.structure.Object):java.lang.Boolean = o == this
+
     def isNotEqual(o : Any) : Boolean = !equals(o)
     def isKindOf(cl : EClass) : Boolean = this.eClass().equals(cl)
     def get(prop : fr.irisa.triskell.kermeta.language.structure.Property) :fr.irisa.triskell.kermeta.language.structure.Object= {return this.getClass().getMethod("Scala"+prop.getName).invoke(this).asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]}

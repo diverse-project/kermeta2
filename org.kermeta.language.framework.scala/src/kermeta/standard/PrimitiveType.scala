@@ -12,6 +12,7 @@ object PrimitiveConversion{
   implicit def boolean2javaboolean(x: java.lang.Boolean) : Boolean = x.booleanValue()
   implicit def javaboolean2kermeta(x: java.lang.Boolean) = new RichJavaBoolean(x)
   implicit def iterator2kermeta(x: java.util.Iterator[_])= new RichIterator(x)
+  implicit def iteratorEObject2kermeta(x:java.util.Iterator[_<: org.eclipse.emf.ecore.EObject]) :  _root_.java.util.Iterator[_root_.fr.irisa.triskell.kermeta.language.structure.Object] =x.asInstanceOf[_root_.java.util.Iterator[_root_.fr.irisa.triskell.kermeta.language.structure.Object]]
 
   implicit def class2kermetaclass(x: Class[_]) = new RichClass(x)
   implicit def field2kermetaclass(x: java.lang.reflect.Field) = new RichField(x)
