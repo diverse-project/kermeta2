@@ -267,7 +267,7 @@ trait EObjectImplForPrimitive extends fr.irisa.triskell.kermeta.language.structu
   def eNotify( notification:org.eclipse.emf.common.notify.Notification):Unit=null;
   override  def isVoid():Boolean;
   def eInvoke(x1: org.eclipse.emf.ecore.EOperation,x2: org.eclipse.emf.common.util.EList[_]):java.lang.Object = null
-
+  
 }
 
 class RichString(value: java.lang.String)  extends RichValueType with EObjectImplForPrimitive{
