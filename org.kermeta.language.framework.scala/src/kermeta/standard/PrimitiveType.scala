@@ -266,7 +266,7 @@ trait EObjectImplForPrimitive extends fr.irisa.triskell.kermeta.language.structu
   def eSetDeliver(deliver:Boolean):Unit=null;
   def eNotify( notification:org.eclipse.emf.common.notify.Notification):Unit=null;
   override  def isVoid():Boolean;
-	   
+  def eInvoke(x1: org.eclipse.emf.ecore.EOperation,x2: org.eclipse.emf.common.util.EList[_]):java.lang.Object = null
 
 }
 

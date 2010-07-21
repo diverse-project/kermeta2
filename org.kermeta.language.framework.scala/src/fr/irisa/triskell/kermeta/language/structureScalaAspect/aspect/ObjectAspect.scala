@@ -53,7 +53,7 @@ trait ObjectAspect extends EObject  with Contracted {
      }
      */
 	
-	
+
     /* Contracted */
     type Condition = () => Boolean
     def checkParamInvariants(inv : scala.collection.immutable.HashMap[String,Condition]) = {
