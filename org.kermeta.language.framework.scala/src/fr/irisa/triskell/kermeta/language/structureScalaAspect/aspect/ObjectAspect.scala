@@ -3,8 +3,16 @@ package fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect
 import org.eclipse.emf.ecore._
 import org.eclipse.emf.ecore.impl._
 import kermeta.exceptions._
+import scala.collection.JavaConversions._
+
 
 trait ObjectAspect extends EObject  with Contracted {
+
+
+  def isSuperTypeOf(cl : EClass) = this.getClass.asInstanceOf[EClass].isSuperTypeOf(cl)
+
+  
+
 	
 //	 def getOwnedTags():org.eclipse.emf.common.util.EList[fr.irisa.triskell.kermeta.language.structure.Tag]=null;
 //	 def getTag():org.eclipse.emf.common.util.EList[fr.irisa.triskell.kermeta.language.structure.Tag]=null;
@@ -32,7 +40,20 @@ trait ObjectAspect extends EObject  with Contracted {
     def containingResource() : kermeta.persistence.Resource ={null}
 
     def isSet(prop : EStructuralFeature) =  this.eIsSet(prop)
-    def unset(prop : EStructuralFeature) = this.eUnset(prop)
+    def unset(prop : fr.irisa.triskell.kermeta.language.structure.Property) = {
+      var allStructualF = this.eClass.getEAllStructuralFeatures
+      var sf = allStructualF.find({sf=> sf.getName.equals(prop.getName) })
+
+    sf match {
+      case Some(sf) => this.eUnset(sf)
+      case None => println("Reflexivity Error KM FW")
+    }
+
+
+     // var structuralF = this.eClass.getEAllStructuralFeatures.toget(prop)
+       //this.eUnset(structuralF);
+    }
+    def unset(prop : EStructuralFeature) = this.eUnset(prop);
     def oid() : Int = this.hashCode() /*TODO*/
     override def toString : String = super.toString()//"["+this.eClass().getName()+":"+oid.toString()+"]"
     //def isFrozen : Boolean  /*TODO*/

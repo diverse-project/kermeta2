@@ -361,7 +361,9 @@ object JavaConversions {
     override def isVoid() :Boolean= {value == null}
   }
 
-  class RichKermetaSet[A] ( value : ju.Set[A]) {
+  class RichKermetaSet[A] ( value : ju.Set[A]) extends RichKermetaCol[A] ( value )
+
+  class RichKermetaCol[A] ( value : ju.Collection[A]) {
 	  
 	      
 	
@@ -457,7 +459,7 @@ object JavaConversions {
   
   implicit def asBuffer[A](l : ju.List[A]) = new RichKermetaList(l)//l match {
   implicit def asSet[A](l : ju.Set[A]) = new RichKermetaSet(l)//l match {
-
+  implicit def asCol[A](l : ju.Collection[A]) = new RichKermetaCol(l)//l match {
   	
   
   
