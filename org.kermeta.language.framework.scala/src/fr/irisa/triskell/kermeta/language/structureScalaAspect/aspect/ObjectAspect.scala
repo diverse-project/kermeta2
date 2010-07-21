@@ -10,25 +10,24 @@ trait ObjectAspect extends EObject  with Contracted {
 
 
   def isSuperTypeOf(cl : fr.irisa.triskell.kermeta.language.structure.Type):Boolean = {
-      if (!this.isInstanceOf[Class] )
-      return false
-  else
-      {
-          if (!cl .isInstanceOf[Class]){
-              return false
-          }
-        var thisclass : Class =this.asInstanceOf[Class]
-        var clclass : Class = cl.asInstanceOf[Class]
-        var res = clclass.getTypeDefinition.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.ClassDefinition].getSuperType.exists(e=>_root_.utils.UTilScala.getQualifiedNameClass( e.asInstanceOf[Class].getTypeDefinition).equals(_root_.utils.UTilScala.getQualifiedNameClass(thisclass.getTypeDefinition) ))
-        if (res)
-            return true
+        if (!this.isInstanceOf[Class] )
+            return false
         else
-            return clclass.getTypeDefinition.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.ClassDefinition].getSuperType.exists(e=> this.isSuperTypeOf(e))
-        return false
+        {
+            if (!cl .isInstanceOf[Class]){
+                return false
+            }
+            var thisclass : Class =this.asInstanceOf[Class]
+            var clclass : Class = cl.asInstanceOf[Class]
+
+            if (_root_.utils.UTilScala.getQualifiedNameClass( clclass.asInstanceOf[Class].getTypeDefinition).equals(_root_.utils.UTilScala.getQualifiedNameClass(thisclass.getTypeDefinition) ))
+                return true
+            else
+                return clclass.getTypeDefinition.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.ClassDefinition].getSuperType.exists(e=> this.isSuperTypeOf(e))
+            return false
         }
 
-    }//this.getClass.asInstanceOf[EClass].isSuperTypeOf(cl)
-
+    }
   
 
 	
