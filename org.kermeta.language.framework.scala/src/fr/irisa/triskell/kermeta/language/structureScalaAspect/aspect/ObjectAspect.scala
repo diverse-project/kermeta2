@@ -4,12 +4,30 @@ import org.eclipse.emf.ecore._
 import org.eclipse.emf.ecore.impl._
 import kermeta.exceptions._
 import scala.collection.JavaConversions._
-
+import fr.irisa.triskell.kermeta.language.structure._
 
 trait ObjectAspect extends EObject  with Contracted {
 
 
-  def isSuperTypeOf(cl : fr.irisa.triskell.kermeta.language.structure.Type) = {true}//this.getClass.asInstanceOf[EClass].isSuperTypeOf(cl)
+  def isSuperTypeOf(cl : fr.irisa.triskell.kermeta.language.structure.Type):Boolean = {
+      if (!this.isInstanceOf[Class] )
+      return false
+  else
+      {
+          if (!cl .isInstanceOf[Class]){
+              return false
+          }
+        var thisclass : Class =this.asInstanceOf[Class]
+        var clclass : Class = cl.asInstanceOf[Class]
+        var res = clclass.getTypeDefinition.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.ClassDefinition].getSuperType.exists(e=>_root_.utils.UTilScala.getQualifiedNameClass( e.asInstanceOf[Class].getTypeDefinition).equals(_root_.utils.UTilScala.getQualifiedNameClass(thisclass.getTypeDefinition) ))
+        if (res)
+            return true
+        else
+            return clclass.getTypeDefinition.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.ClassDefinition].getSuperType.exists(e=> this.isSuperTypeOf(e))
+        return false
+        }
+
+    }//this.getClass.asInstanceOf[EClass].isSuperTypeOf(cl)
 
   
 
