@@ -22,8 +22,8 @@ object Main {
             if (e.isInstanceOf[ClassDefinition])
                 classdefs .add(e.asInstanceOf[ClassDefinition])
         )
-        var selectedclassdefs = classdefs.filter(e=> qualifiedName(e) .equals("kermeta.language.structure.Class"))
-        var selectedclassdefs1 = classdefs.filter(e=> qualifiedName(e) .equals("kermeta.language.structure.ClassDefinition"))
+        var selectedclassdefs = classdefs.filter(e=> kermeta.utils.ReflexivityLoader.qualifiedName(e) .equals("kermeta.language.structure.Class"))
+        var selectedclassdefs1 = classdefs.filter(e=> kermeta.utils.ReflexivityLoader.qualifiedName(e) .equals("kermeta.language.structure.ClassDefinition"))
         
         var cl = fr.irisa.triskell.kermeta.language.structure.StructureFactory.eINSTANCE.createClass
             if (selectedclassdefs.size>0){
