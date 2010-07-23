@@ -44,7 +44,54 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.kermeta.art2</groupId>
+			<artifactId>art2.framework</artifactId>
+			<version>1.0.2-SNAPSHOT</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
+<repositories>
+	<repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+      <id>Tipimousseprivatesnapshot</id>
+      <name>Tipimousse snaptshots private</name>
+      <url>http://tipimouss.irisa.fr/maven2private-snapshots</url>
+    </repository>
+	<repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+      <id>kermeta</id>
+      <name>Kermeta</name>
+      <url>http://www.kermeta.org/maven2</url>
+    </repository>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>central</id>
+      <name>Maven Repository Switchboard</name>
+      <url>http://repo1.maven.org/maven2</url>
+    </repository>
+  </repositories>
 	<distributionManagement>
 		<repository>
 			<id>tipimouss-local-maven-repository</id>
