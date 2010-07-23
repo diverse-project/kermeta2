@@ -34,9 +34,9 @@
             nameFilter="*"
             id="org.kermeta.language.builder.eclipse.contribution1">
          <action
-               label="Add/Remove Sample Nature"
+               label="Add/Remove Kermeta Nature"
                class="org.kermeta.language.builder.eclipse.ToggleNatureAction"
-               menubarPath="additions"
+               menubarPath="org.eclipse.ui.projectConfigure/additions"
                enablesFor="+"
                id="org.kermeta.language.builder.eclipse.addRemoveNatureAction">
          </action>

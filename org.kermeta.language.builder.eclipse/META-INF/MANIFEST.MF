@@ -7,6 +7,7 @@ Bundle-Activator: org.kermeta.language.builder.eclipse.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
- scala.library
+ scala.library,
+ org.kermeta.language.loader.scalaKMT
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

@@ -12,7 +12,6 @@ package org.kermeta.language.builder.eclipse;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceDelta;
@@ -34,17 +33,21 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 		 */
 		public boolean visit(IResourceDelta delta) throws CoreException {
 			IResource resource = delta.getResource();
+	        //send events to Kernel Kworkflow ie normalisation with ART
+			//send modification events from workspace and send to KWF
+			//definition des evenements
 			switch (delta.getKind()) {
 			case IResourceDelta.ADDED:
 				// handle added resource
 				checkKermeta(resource);
+				//handle 
 				break;
 			case IResourceDelta.REMOVED:
 				// handle removed resource
 				break;
 			case IResourceDelta.CHANGED:
 				// handle changed resource
-				checkKermeta(resource);
+			    checkKermeta(resource);
 				break;
 			}
 			//return true to continue visiting children.
@@ -62,7 +65,7 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 
 	public static final String BUILDER_ID = "org.kermeta.language.builder.eclipse.KermetaBuilder";
 
-	private static final String MARKER_TYPE = "org.kermeta.language.builder.eclipse.xmlProblem";
+	//private static final String MARKER_TYPE = "org.kermeta.language.builder.eclipse.xmlProblem";
 
 	/*
 	 * (non-Javadoc)
@@ -95,16 +98,20 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 				getParser().parse(file.getContents(), reporter);
 			} catch (Exception e1) {
 			}*/
+			System.out.println("call parser");
+			System.out.println(resource.getLocationURI().toString());
 			KParser parser = new KParser();
+			System.out.println("parser created");
 			parser.parse(ParserUtil.loadFile(resource.getLocationURI().toString()));
+			System.out.println("called parser");
 		}
 	}
 
 	private void deleteMarkers(IFile file) {
-		try {
+		/*try {
 			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
 		} catch (CoreException ce) {
-		}
+		}*/
 	}
 
 	protected void fullBuild(final IProgressMonitor monitor)
@@ -114,14 +121,6 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 		} catch (CoreException e) {
 		}
 	}
-
-	/*private SAXParser getParser() throws ParserConfigurationException,
-			SAXException {
-		if (parserFactory == null) {
-			parserFactory = SAXParserFactory.newInstance();
-		}
-		return parserFactory.newSAXParser();
-	}*/
 
 	protected void incrementalBuild(IResourceDelta delta,
 			IProgressMonitor monitor) throws CoreException {
