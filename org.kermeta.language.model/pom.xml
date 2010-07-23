@@ -96,10 +96,26 @@
             </releases>
             <snapshots>
                 <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
+                <updatePolicy>always</updatePolicy>
                 <checksumPolicy>fail</checksumPolicy>
             </snapshots>
             <url>http://www.kermeta.org/maven2-snapshots</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>kermeta</id>
+            <name>Kermeta</name>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+            <url>http://www.kermeta.org/maven2</url>
             <layout>default</layout>
         </repository>
     </repositories>
