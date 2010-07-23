@@ -1,4 +1,4 @@
-/* $Id: FixPackageNSUri.java,v 1.12 2008-03-19 16:34:14 cfaucher Exp $
+/* $Id$
  * Project    : .loader.scalaKMTorg.kermeta.language
  * License    : EPL
  * Copyright  : IRISA / INRIA / Universite de Rennes 1
