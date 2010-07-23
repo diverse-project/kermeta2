@@ -18,7 +18,7 @@
             <url>http://bits.netbeans.org/maven2/</url>
         </repository>
         <repository>
-            <id>scala-tools.org</id>
+            <id>scala-tools.org_snapshots</id>
             <name>Scala-tools Maven2 Repository</name>
             <url>http://scala-tools.org/repo-snapshots</url>
         </repository>
@@ -27,7 +27,7 @@
             <url>http://www.kermeta.org/maven2-snapshots</url>
         </repository>
         <repository>
-            <id>kermetaPublicSnapshot</id>
+            <id>kermetaPublic</id>
             <url>http://www.kermeta.org/maven2</url>
         </repository>
         <repository>
