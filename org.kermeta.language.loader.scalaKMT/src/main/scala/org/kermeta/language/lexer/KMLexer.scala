@@ -1,6 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* $Id: FixPackageNSUri.java,v 1.12 2008-03-19 16:34:14 cfaucher Exp $
+ * Project    : .loader.scalaKMTorg.kermeta.language
+ * License    : EPL
+ * Copyright  : IRISA / INRIA / Universite de Rennes 1
+ * -------------------------------------------------------------------
+ * Creation date : 12 dec. 2004
+ * Authors : 
+ *           Francois Fouquet 
  */
 
 package org.kermeta.language.lexer
