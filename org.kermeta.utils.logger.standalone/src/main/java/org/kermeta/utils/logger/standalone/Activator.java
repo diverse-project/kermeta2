@@ -1,3 +1,13 @@
+/* $Id$
+ * Project    : org.kermeta.utils.logger.standalone
+ * File       : activator.java
+ * License    : EPL
+ * Copyright  : IRISA / INRIA / Universite de Rennes 1
+ * -------------------------------------------------------------------
+ * Creation date : 23 juil. 2010
+ * Authors : 
+ *          Didier Vojtisek  <didier.vojtisek@inria.fr> 
+ */
 package org.kermeta.utils.logger.standalone;
 
 import org.osgi.framework.BundleActivator;
