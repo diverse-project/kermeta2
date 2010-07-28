@@ -7,51 +7,54 @@
 package org.kermeta.kp.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.kermeta.kp.KpPackage;
-import org.kermeta.kp.SourceQuery;
+import org.kermeta.kp.SourceFile;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Source Query</b></em>'.
+ * An implementation of the model object '<em><b>Source File</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.kp.impl.SourceQueryImpl#getQuery <em>Query</em>}</li>
+ *   <li>{@link org.kermeta.kp.impl.SourceFileImpl#getUri <em>Uri</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SourceQueryImpl extends ImportedSourceImpl implements SourceQuery {
+public class SourceFileImpl extends SourceImpl implements SourceFile {
 	/**
-	 * The default value of the '{@link #getQuery() <em>Query</em>}' attribute.
+	 * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getQuery()
+	 * @see #getUri()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String QUERY_EDEFAULT = null;
+	protected static final String URI_EDEFAULT = null;
+
 	/**
-	 * The cached value of the '{@link #getQuery() <em>Query</em>}' attribute.
+	 * The cached value of the '{@link #getUri() <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getQuery()
+	 * @see #getUri()
 	 * @generated
 	 * @ordered
 	 */
-	protected String query = QUERY_EDEFAULT;
+	protected String uri = URI_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SourceQueryImpl() {
+	protected SourceFileImpl() {
 		super();
 	}
 
@@ -62,7 +65,7 @@ public class SourceQueryImpl extends ImportedSourceImpl implements SourceQuery {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return KpPackage.Literals.SOURCE_QUERY;
+		return KpPackage.Literals.SOURCE_FILE;
 	}
 
 	/**
@@ -70,8 +73,8 @@ public class SourceQueryImpl extends ImportedSourceImpl implements SourceQuery {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getQuery() {
-		return query;
+	public String getUri() {
+		return uri;
 	}
 
 	/**
@@ -79,11 +82,11 @@ public class SourceQueryImpl extends ImportedSourceImpl implements SourceQuery {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setQuery(String newQuery) {
-		String oldQuery = query;
-		query = newQuery;
+	public void setUri(String newUri) {
+		String oldUri = uri;
+		uri = newUri;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.SOURCE_QUERY__QUERY, oldQuery, query));
+			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.SOURCE_FILE__URI, oldUri, uri));
 	}
 
 	/**
@@ -94,8 +97,8 @@ public class SourceQueryImpl extends ImportedSourceImpl implements SourceQuery {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case KpPackage.SOURCE_QUERY__QUERY:
-				return getQuery();
+			case KpPackage.SOURCE_FILE__URI:
+				return getUri();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -108,8 +111,8 @@ public class SourceQueryImpl extends ImportedSourceImpl implements SourceQuery {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case KpPackage.SOURCE_QUERY__QUERY:
-				setQuery((String)newValue);
+			case KpPackage.SOURCE_FILE__URI:
+				setUri((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,8 +126,8 @@ public class SourceQueryImpl extends ImportedSourceImpl implements SourceQuery {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case KpPackage.SOURCE_QUERY__QUERY:
-				setQuery(QUERY_EDEFAULT);
+			case KpPackage.SOURCE_FILE__URI:
+				setUri(URI_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -138,8 +141,8 @@ public class SourceQueryImpl extends ImportedSourceImpl implements SourceQuery {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case KpPackage.SOURCE_QUERY__QUERY:
-				return QUERY_EDEFAULT == null ? query != null : !QUERY_EDEFAULT.equals(query);
+			case KpPackage.SOURCE_FILE__URI:
+				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -154,10 +157,10 @@ public class SourceQueryImpl extends ImportedSourceImpl implements SourceQuery {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (query: ");
-		result.append(query);
+		result.append(" (uri: ");
+		result.append(uri);
 		result.append(')');
 		return result.toString();
 	}
 
-} //SourceQueryImpl
+} //SourceFileImpl

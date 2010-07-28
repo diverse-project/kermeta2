@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.kermeta.kp.Dependency;
 import org.kermeta.kp.KermetaProjectRef;
-import org.kermeta.kp.KermetaProject;
 import org.kermeta.kp.KpPackage;
 
 /**
@@ -43,6 +42,7 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 	 * @ordered
 	 */
 	protected static final String GROUP_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getGroup() <em>Group</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -52,6 +52,7 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 	 * @ordered
 	 */
 	protected String group = GROUP_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -61,6 +62,7 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 	 * @ordered
 	 */
 	protected static final String VERSION_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -80,6 +82,7 @@ public class DependencyImpl extends NamedElementImpl implements Dependency {
 	 * @ordered
 	 */
 	protected KermetaProjectRef depRef;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

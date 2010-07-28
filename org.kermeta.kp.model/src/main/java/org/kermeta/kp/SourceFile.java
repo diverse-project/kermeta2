@@ -9,22 +9,21 @@ package org.kermeta.kp;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Source NSURI</b></em>'.
+ * A representation of the model object '<em><b>Source File</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.kermeta.kp.SourceNSURI#getUri <em>Uri</em>}</li>
+ *   <li>{@link org.kermeta.kp.SourceFile#getUri <em>Uri</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.kermeta.kp.KpPackage#getSourceNSURI()
+ * @see org.kermeta.kp.KpPackage#getSourceFile()
  * @model
  * @generated
  */
-public interface SourceNSURI extends ImportedSource {
-
+public interface SourceFile extends Source {
 	/**
 	 * Returns the value of the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -35,14 +34,14 @@ public interface SourceNSURI extends ImportedSource {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Uri</em>' attribute.
 	 * @see #setUri(String)
-	 * @see org.kermeta.kp.KpPackage#getSourceNSURI_Uri()
+	 * @see org.kermeta.kp.KpPackage#getSourceFile_Uri()
 	 * @model
 	 * @generated
 	 */
 	String getUri();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.kp.SourceNSURI#getUri <em>Uri</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.kp.SourceFile#getUri <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Uri</em>' attribute.
@@ -50,4 +49,5 @@ public interface SourceNSURI extends ImportedSource {
 	 * @generated
 	 */
 	void setUri(String value);
-} // SourceNSURI
+
+} // SourceFile

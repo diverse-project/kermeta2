@@ -7,51 +7,54 @@
 package org.kermeta.kp.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.kermeta.kp.KpPackage;
-import org.kermeta.kp.SourceNSURI;
+import org.kermeta.kp.SourceFolder;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Source NSURI</b></em>'.
+ * An implementation of the model object '<em><b>Source Folder</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.kp.impl.SourceNSURIImpl#getUri <em>Uri</em>}</li>
+ *   <li>{@link org.kermeta.kp.impl.SourceFolderImpl#getFolderName <em>Folder Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SourceNSURIImpl extends ImportedSourceImpl implements SourceNSURI {
+public class SourceFolderImpl extends SourceImpl implements SourceFolder {
 	/**
-	 * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
+	 * The default value of the '{@link #getFolderName() <em>Folder Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUri()
+	 * @see #getFolderName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String URI_EDEFAULT = null;
+	protected static final String FOLDER_NAME_EDEFAULT = null;
+
 	/**
-	 * The cached value of the '{@link #getUri() <em>Uri</em>}' attribute.
+	 * The cached value of the '{@link #getFolderName() <em>Folder Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUri()
+	 * @see #getFolderName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String uri = URI_EDEFAULT;
+	protected String folderName = FOLDER_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SourceNSURIImpl() {
+	protected SourceFolderImpl() {
 		super();
 	}
 
@@ -62,7 +65,7 @@ public class SourceNSURIImpl extends ImportedSourceImpl implements SourceNSURI {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return KpPackage.Literals.SOURCE_NSURI;
+		return KpPackage.Literals.SOURCE_FOLDER;
 	}
 
 	/**
@@ -70,8 +73,8 @@ public class SourceNSURIImpl extends ImportedSourceImpl implements SourceNSURI {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getUri() {
-		return uri;
+	public String getFolderName() {
+		return folderName;
 	}
 
 	/**
@@ -79,11 +82,11 @@ public class SourceNSURIImpl extends ImportedSourceImpl implements SourceNSURI {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setUri(String newUri) {
-		String oldUri = uri;
-		uri = newUri;
+	public void setFolderName(String newFolderName) {
+		String oldFolderName = folderName;
+		folderName = newFolderName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.SOURCE_NSURI__URI, oldUri, uri));
+			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.SOURCE_FOLDER__FOLDER_NAME, oldFolderName, folderName));
 	}
 
 	/**
@@ -94,8 +97,8 @@ public class SourceNSURIImpl extends ImportedSourceImpl implements SourceNSURI {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case KpPackage.SOURCE_NSURI__URI:
-				return getUri();
+			case KpPackage.SOURCE_FOLDER__FOLDER_NAME:
+				return getFolderName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -108,8 +111,8 @@ public class SourceNSURIImpl extends ImportedSourceImpl implements SourceNSURI {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case KpPackage.SOURCE_NSURI__URI:
-				setUri((String)newValue);
+			case KpPackage.SOURCE_FOLDER__FOLDER_NAME:
+				setFolderName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,8 +126,8 @@ public class SourceNSURIImpl extends ImportedSourceImpl implements SourceNSURI {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case KpPackage.SOURCE_NSURI__URI:
-				setUri(URI_EDEFAULT);
+			case KpPackage.SOURCE_FOLDER__FOLDER_NAME:
+				setFolderName(FOLDER_NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -138,8 +141,8 @@ public class SourceNSURIImpl extends ImportedSourceImpl implements SourceNSURI {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case KpPackage.SOURCE_NSURI__URI:
-				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
+			case KpPackage.SOURCE_FOLDER__FOLDER_NAME:
+				return FOLDER_NAME_EDEFAULT == null ? folderName != null : !FOLDER_NAME_EDEFAULT.equals(folderName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -154,10 +157,10 @@ public class SourceNSURIImpl extends ImportedSourceImpl implements SourceNSURI {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (uri: ");
-		result.append(uri);
+		result.append(" (folderName: ");
+		result.append(folderName);
 		result.append(')');
 		return result.toString();
 	}
 
-} //SourceNSURIImpl
+} //SourceFolderImpl

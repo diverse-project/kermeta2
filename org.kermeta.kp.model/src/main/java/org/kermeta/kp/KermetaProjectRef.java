@@ -25,7 +25,6 @@ package org.kermeta.kp;
  * @generated
  */
 public interface KermetaProjectRef extends NamedElement {
-
 	/**
 	 * Returns the value of the '<em><b>Group</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -77,4 +76,5 @@ public interface KermetaProjectRef extends NamedElement {
 	 * @generated
 	 */
 	void setVersion(String value);
+
 } // KermetaProjectRef

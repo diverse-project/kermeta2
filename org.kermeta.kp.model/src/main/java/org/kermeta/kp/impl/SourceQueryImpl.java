@@ -7,51 +7,54 @@
 package org.kermeta.kp.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.kermeta.kp.KpPackage;
-import org.kermeta.kp.SourceFolder;
+import org.kermeta.kp.SourceQuery;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Source Folder</b></em>'.
+ * An implementation of the model object '<em><b>Source Query</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.kp.impl.SourceFolderImpl#getFolderName <em>Folder Name</em>}</li>
+ *   <li>{@link org.kermeta.kp.impl.SourceQueryImpl#getQuery <em>Query</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SourceFolderImpl extends SourceImpl implements SourceFolder {
+public class SourceQueryImpl extends ImportedSourceImpl implements SourceQuery {
 	/**
-	 * The default value of the '{@link #getFolderName() <em>Folder Name</em>}' attribute.
+	 * The default value of the '{@link #getQuery() <em>Query</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFolderName()
+	 * @see #getQuery()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String FOLDER_NAME_EDEFAULT = null;
+	protected static final String QUERY_EDEFAULT = null;
+
 	/**
-	 * The cached value of the '{@link #getFolderName() <em>Folder Name</em>}' attribute.
+	 * The cached value of the '{@link #getQuery() <em>Query</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFolderName()
+	 * @see #getQuery()
 	 * @generated
 	 * @ordered
 	 */
-	protected String folderName = FOLDER_NAME_EDEFAULT;
+	protected String query = QUERY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SourceFolderImpl() {
+	protected SourceQueryImpl() {
 		super();
 	}
 
@@ -62,7 +65,7 @@ public class SourceFolderImpl extends SourceImpl implements SourceFolder {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return KpPackage.Literals.SOURCE_FOLDER;
+		return KpPackage.Literals.SOURCE_QUERY;
 	}
 
 	/**
@@ -70,8 +73,8 @@ public class SourceFolderImpl extends SourceImpl implements SourceFolder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getFolderName() {
-		return folderName;
+	public String getQuery() {
+		return query;
 	}
 
 	/**
@@ -79,11 +82,11 @@ public class SourceFolderImpl extends SourceImpl implements SourceFolder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFolderName(String newFolderName) {
-		String oldFolderName = folderName;
-		folderName = newFolderName;
+	public void setQuery(String newQuery) {
+		String oldQuery = query;
+		query = newQuery;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.SOURCE_FOLDER__FOLDER_NAME, oldFolderName, folderName));
+			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.SOURCE_QUERY__QUERY, oldQuery, query));
 	}
 
 	/**
@@ -94,8 +97,8 @@ public class SourceFolderImpl extends SourceImpl implements SourceFolder {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case KpPackage.SOURCE_FOLDER__FOLDER_NAME:
-				return getFolderName();
+			case KpPackage.SOURCE_QUERY__QUERY:
+				return getQuery();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -108,8 +111,8 @@ public class SourceFolderImpl extends SourceImpl implements SourceFolder {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case KpPackage.SOURCE_FOLDER__FOLDER_NAME:
-				setFolderName((String)newValue);
+			case KpPackage.SOURCE_QUERY__QUERY:
+				setQuery((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,8 +126,8 @@ public class SourceFolderImpl extends SourceImpl implements SourceFolder {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case KpPackage.SOURCE_FOLDER__FOLDER_NAME:
-				setFolderName(FOLDER_NAME_EDEFAULT);
+			case KpPackage.SOURCE_QUERY__QUERY:
+				setQuery(QUERY_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -138,8 +141,8 @@ public class SourceFolderImpl extends SourceImpl implements SourceFolder {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case KpPackage.SOURCE_FOLDER__FOLDER_NAME:
-				return FOLDER_NAME_EDEFAULT == null ? folderName != null : !FOLDER_NAME_EDEFAULT.equals(folderName);
+			case KpPackage.SOURCE_QUERY__QUERY:
+				return QUERY_EDEFAULT == null ? query != null : !QUERY_EDEFAULT.equals(query);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -154,10 +157,10 @@ public class SourceFolderImpl extends SourceImpl implements SourceFolder {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (folderName: ");
-		result.append(folderName);
+		result.append(" (query: ");
+		result.append(query);
 		result.append(')');
 		return result.toString();
 	}
 
-} //SourceFolderImpl
+} //SourceQueryImpl

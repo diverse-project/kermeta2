@@ -60,16 +60,6 @@ public interface KpPackage extends EPackage {
 	KpPackage eINSTANCE = org.kermeta.kp.impl.KpPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.kermeta.kp.impl.KermetaProjectImpl <em>Kermeta Project</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.kp.impl.KermetaProjectImpl
-	 * @see org.kermeta.kp.impl.KpPackageImpl#getKermetaProject()
-	 * @generated
-	 */
-	int KERMETA_PROJECT = 0;
-
-	/**
 	 * The meta object id for the '{@link org.kermeta.kp.impl.NamedElementImpl <em>Named Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,6 +86,16 @@ public interface KpPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_ELEMENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.kermeta.kp.impl.KermetaProjectImpl <em>Kermeta Project</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.kermeta.kp.impl.KermetaProjectImpl
+	 * @see org.kermeta.kp.impl.KpPackageImpl#getKermetaProject()
+	 * @generated
+	 */
+	int KERMETA_PROJECT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -576,7 +576,6 @@ public interface KpPackage extends EPackage {
 	 * @ordered
 	 */
 	int MIX_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.kp.impl.KermetaProjectRefImpl <em>Kermeta Project Ref</em>}' class.

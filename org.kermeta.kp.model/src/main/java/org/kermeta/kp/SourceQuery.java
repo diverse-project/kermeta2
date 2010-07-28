@@ -24,7 +24,6 @@ package org.kermeta.kp;
  * @generated
  */
 public interface SourceQuery extends ImportedSource {
-
 	/**
 	 * Returns the value of the '<em><b>Query</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -50,4 +49,5 @@ public interface SourceQuery extends ImportedSource {
 	 * @generated
 	 */
 	void setQuery(String value);
+
 } // SourceQuery

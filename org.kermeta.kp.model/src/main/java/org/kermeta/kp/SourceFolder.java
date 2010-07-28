@@ -24,7 +24,6 @@ package org.kermeta.kp;
  * @generated
  */
 public interface SourceFolder extends Source {
-
 	/**
 	 * Returns the value of the '<em><b>Folder Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -50,4 +49,5 @@ public interface SourceFolder extends Source {
 	 * @generated
 	 */
 	void setFolderName(String value);
+
 } // SourceFolder

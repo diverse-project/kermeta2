@@ -7,9 +7,11 @@
 package org.kermeta.kp.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.kermeta.kp.KermetaProjectRef;
 import org.kermeta.kp.KpPackage;
 
@@ -37,6 +39,7 @@ public class KermetaProjectRefImpl extends NamedElementImpl implements KermetaPr
 	 * @ordered
 	 */
 	protected static final String GROUP_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getGroup() <em>Group</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -46,6 +49,7 @@ public class KermetaProjectRefImpl extends NamedElementImpl implements KermetaPr
 	 * @ordered
 	 */
 	protected String group = GROUP_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -55,6 +59,7 @@ public class KermetaProjectRefImpl extends NamedElementImpl implements KermetaPr
 	 * @ordered
 	 */
 	protected static final String VERSION_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->

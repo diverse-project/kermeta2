@@ -7,26 +7,28 @@
 package org.kermeta.kp.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.kermeta.kp.KpPackage;
-import org.kermeta.kp.SourceFile;
+import org.kermeta.kp.SourceNSURI;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Source File</b></em>'.
+ * An implementation of the model object '<em><b>Source NSURI</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.kp.impl.SourceFileImpl#getUri <em>Uri</em>}</li>
+ *   <li>{@link org.kermeta.kp.impl.SourceNSURIImpl#getUri <em>Uri</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SourceFileImpl extends SourceImpl implements SourceFile {
+public class SourceNSURIImpl extends ImportedSourceImpl implements SourceNSURI {
 	/**
 	 * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -36,6 +38,7 @@ public class SourceFileImpl extends SourceImpl implements SourceFile {
 	 * @ordered
 	 */
 	protected static final String URI_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getUri() <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -51,7 +54,7 @@ public class SourceFileImpl extends SourceImpl implements SourceFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SourceFileImpl() {
+	protected SourceNSURIImpl() {
 		super();
 	}
 
@@ -62,7 +65,7 @@ public class SourceFileImpl extends SourceImpl implements SourceFile {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return KpPackage.Literals.SOURCE_FILE;
+		return KpPackage.Literals.SOURCE_NSURI;
 	}
 
 	/**
@@ -83,7 +86,7 @@ public class SourceFileImpl extends SourceImpl implements SourceFile {
 		String oldUri = uri;
 		uri = newUri;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.SOURCE_FILE__URI, oldUri, uri));
+			eNotify(new ENotificationImpl(this, Notification.SET, KpPackage.SOURCE_NSURI__URI, oldUri, uri));
 	}
 
 	/**
@@ -94,7 +97,7 @@ public class SourceFileImpl extends SourceImpl implements SourceFile {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case KpPackage.SOURCE_FILE__URI:
+			case KpPackage.SOURCE_NSURI__URI:
 				return getUri();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -108,7 +111,7 @@ public class SourceFileImpl extends SourceImpl implements SourceFile {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case KpPackage.SOURCE_FILE__URI:
+			case KpPackage.SOURCE_NSURI__URI:
 				setUri((String)newValue);
 				return;
 		}
@@ -123,7 +126,7 @@ public class SourceFileImpl extends SourceImpl implements SourceFile {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case KpPackage.SOURCE_FILE__URI:
+			case KpPackage.SOURCE_NSURI__URI:
 				setUri(URI_EDEFAULT);
 				return;
 		}
@@ -138,7 +141,7 @@ public class SourceFileImpl extends SourceImpl implements SourceFile {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case KpPackage.SOURCE_FILE__URI:
+			case KpPackage.SOURCE_NSURI__URI:
 				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
 		}
 		return super.eIsSet(featureID);
@@ -160,4 +163,4 @@ public class SourceFileImpl extends SourceImpl implements SourceFile {
 		return result.toString();
 	}
 
-} //SourceFileImpl
+} //SourceNSURIImpl

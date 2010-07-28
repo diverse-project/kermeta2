@@ -1,7 +1,15 @@
+
+
 SYNTAXDEF kpt
 FOR <http://www.kermeta.org/kp/1.0.0>
 START KermetaProject
-OPTIONS { basePackage="org.kermeta.kp.editor"; }
+OPTIONS { 
+	basePackage="org.kermeta.kp.editor"; 
+	uiBasePackage = "org.kermeta.kp.editor.ui";
+	srcFolder = "src/main/java";
+	srcGenFolder = "src/main/java-gen";
+	generateCodeFromGeneratorModel = "true";
+}
 
 TOKENS{
 	DEFINE SL_COMMENT$'//'(~('\n'|'\r'))*$;
@@ -10,7 +18,6 @@ TOKENS{
 	DEFINE FLOAT$('-')?(('1'..'9') ('0'..'9')* | '0') '.' ('0'..'9')+ $;
 	DEFINE MAVEN$'"'('A'..'Z')*'"'$;
 	DEFINE NSURI$('A'..'Z')(('_')?('A'..'Z'))*$;
-	//DEFINE PROJECT$('a'..'z')('a'..'z')*(.)('a'..'z')('a'..'z')*$;
 }
 
 TOKENSTYLES{
