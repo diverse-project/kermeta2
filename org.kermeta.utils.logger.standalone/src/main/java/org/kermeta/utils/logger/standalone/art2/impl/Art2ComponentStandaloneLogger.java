@@ -12,6 +12,7 @@ package org.kermeta.utils.logger.standalone.art2.impl;
 
 import org.kermeta.art2.annotation.ComponentType;
 import org.kermeta.art2.annotation.Port;
+import org.kermeta.art2.annotation.PortType;
 import org.kermeta.art2.annotation.ProvidedPort;
 import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.framework.AbstractComponentType;
