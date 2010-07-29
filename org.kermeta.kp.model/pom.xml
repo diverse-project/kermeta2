@@ -1,3 +1,9 @@
+<!-- $Id: $ -->
+<!-- License    : EPL                                    -->
+<!-- Project    : org.kermeta.kp.model -->
+<!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
+<!-- Authors : Haja Rambelontsalama <hrambelo@irisa.fr> --> 
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -27,22 +33,45 @@
 
 				<configuration>
 					<instructions>
-						<Export-Package>org.kermeta.kp,org.kermeta.kp.*</Export-Package>
+						<Export-Package>org.kermeta.kp,org.kermeta.kp.impl,org.kermeta.kp.util</Export-Package>
 						<Import-Package>
-							org.eclipse.emf.*,
-							org.osgi.framework
+							org.eclipse.emf.*
 						</Import-Package>
 						<Bundle-ClassPath>.</Bundle-ClassPath>
 					</instructions>
 				</configuration>
 			</plugin>
+			<!-- copy generated MANIFEST in the project for eclipse user -->
+             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>truezip-maven-plugin</artifactId>
+                <version>1.0-beta-4</version>
+                <executions>
+                    <execution>
+                        <id>copy-out-files</id>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <phase>install</phase>
+                        <configuration>
+                            <files>
+                                <file>
+                                    <source>${project.build.outputDirectory}/META-INF/MANIFEST.MF</source>
+                                    <outputDirectory>${project.basedir}/META-INF</outputDirectory>
+                                </file>
+                            </files>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.kermeta.emf</groupId>
 			<artifactId>emf.lib</artifactId>
-			<version>2.6.0</version>
+			<version>[2.6.0,)</version>
 		</dependency>
 	</dependencies>
 	<properties>
