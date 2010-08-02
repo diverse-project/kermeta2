@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Private-Package: org.kermeta.kp.editor.ui
+Bundle-ClassPath: .
+Built-By: hrambelo
+Build-Jdk: 1.6.0_20
+Bundle-Version: 2.0.0.SNAPSHOT
+Tool: Bnd-0.0.311
+Bundle-Name: Kermeta :: Kermeta Editor UI
+Bnd-LastModified: 1280742143863
+Created-By: Apache Maven Bundle Plugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.kermeta.kp.editor.ui;singleton:=true
+
