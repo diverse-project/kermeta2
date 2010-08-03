@@ -1,4 +1,4 @@
-/*$Id : KermetaBuilder.java 1.4 20 juil. 2010 17:13:42 hrambelo Exp $
+/*$Id : $
 * Project : org.kermeta.language.builder.eclipse
 * File : 	KermetaBuilder.java
 * License : EPL
@@ -22,6 +22,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.kermeta.scala.parser.KParser;
 import org.kermeta.scala.parser.ParserUtil;
+
+import scala.Option;
 
 public class KermetaBuilder extends IncrementalProjectBuilder {
 
@@ -98,12 +100,18 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 				getParser().parse(file.getContents(), reporter);
 			} catch (Exception e1) {
 			}*/
-			System.out.println("call parser");
-			System.out.println(resource.getLocationURI().toString());
+			//System.out.println("call parser");
 			KParser parser = new KParser();
-			System.out.println("parser created");
-			parser.parse(ParserUtil.loadFile(resource.getLocationURI().toString()));
-			System.out.println("called parser");
+			//System.out.println("parser created");
+			//String s = resource.getLocationURI().toString();
+			String s = resource.getLocation().toString();
+			//System.out.println("url defined >> "+s);
+			String sp = ParserUtil.loadFile(s);
+			//System.out.println("parserUtil loaded");
+			Option o = parser.parseSynch(sp);
+			if (o.isDefined()) System.out.println("parsing succes"); else System.out.println("parsing fail");
+			//if (o.exists(null)) System.out.println("object returned by parser exists"); else System.out.println("object returned by parser DOESNT exist");
+			//if (o.isEmpty()) System.out.println("called parser fail"); else System.out.println("called parser succes");
 		}
 	}
 
