@@ -1,4 +1,4 @@
-/* $Id: $
+/* $Id$
  * Project    : org.kermeta.language.api
  * File       : PortChecker.java
  * License    : EPL
@@ -10,10 +10,13 @@
  */
 package org.kermeta.language.api.port;
 
+import java.util.Collection;
+
+import kermeta.exceptions.ConstraintsDiagnostic;
 import org.kermeta.language.structure.ModelingUnit;
 
 public interface PortChecker {
 
-	public void check(ModelingUnit mu);
+	public Collection<ConstraintsDiagnostic> check(ModelingUnit mu);
 	
 }
