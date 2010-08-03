@@ -39,7 +39,7 @@ public class XMLConfiguration extends SourceViewerConfiguration {
 			scanner.setDefaultReturnToken(
 				new Token(
 					new TextAttribute(
-						colorManager.getColor(IXMLColorConstants.DEFAULT))));
+						colorManager.getColor(IKMTColorConstants.DEFAULT))));
 		}
 		return scanner;
 	}
@@ -49,7 +49,7 @@ public class XMLConfiguration extends SourceViewerConfiguration {
 			tagScanner.setDefaultReturnToken(
 				new Token(
 					new TextAttribute(
-						colorManager.getColor(IXMLColorConstants.TAG))));
+						colorManager.getColor(IKMTColorConstants.TAG))));
 		}
 		return tagScanner;
 	}
@@ -69,7 +69,7 @@ public class XMLConfiguration extends SourceViewerConfiguration {
 		NonRuleBasedDamagerRepairer ndr =
 			new NonRuleBasedDamagerRepairer(
 				new TextAttribute(
-					colorManager.getColor(IXMLColorConstants.XML_COMMENT)));
+					colorManager.getColor(IKMTColorConstants.KMT_COMMENT)));
 		reconciler.setDamager(ndr, XMLPartitionScanner.XML_COMMENT);
 		reconciler.setRepairer(ndr, XMLPartitionScanner.XML_COMMENT);
 

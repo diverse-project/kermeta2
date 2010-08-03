@@ -8,7 +8,7 @@ public class XMLTagScanner extends RuleBasedScanner {
 	public XMLTagScanner(ColorManager manager) {
 		IToken string =
 			new Token(
-				new TextAttribute(manager.getColor(IXMLColorConstants.STRING)));
+				new TextAttribute(manager.getColor(IKMTColorConstants.STRING)));
 
 		IRule[] rules = new IRule[3];
 

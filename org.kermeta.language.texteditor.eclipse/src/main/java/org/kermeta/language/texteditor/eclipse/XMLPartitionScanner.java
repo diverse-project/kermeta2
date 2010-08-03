@@ -13,8 +13,11 @@ public class XMLPartitionScanner extends RuleBasedPartitionScanner {
 
 		IPredicateRule[] rules = new IPredicateRule[2];
 
-		rules[0] = new MultiLineRule("<!--", "-->", xmlComment);
+		rules[0] = new MultiLineRule("/*", "*/", xmlComment);
 		rules[1] = new TagRule(tag);
+		//rules[2] = new SingleLineRule("//", Token.UNDEFINED.toString(), xmlComment);
+		//TODO javadoc-like comment as follow 
+		//rules[3] = new SingleLineRule(startSequence, endSequence, token, escapeCharacter, breaksOnEOF, escapeContinuesLine)
 
 		setPredicateRules(rules);
 	}
