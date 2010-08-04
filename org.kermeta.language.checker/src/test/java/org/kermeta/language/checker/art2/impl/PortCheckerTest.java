@@ -20,7 +20,7 @@ public class PortCheckerTest extends TestCase {
 		
 		CheckerComponentPORTchecker myComp = CheckerComponentFactory.createCheckerComponentPORTchecker();
 		
-		myComp.check(null);
+		//myComp.check(null);
 
                 
 		Assert.assertNotNull(myComp);
