@@ -1,11 +1,16 @@
 Manifest-Version: 1.0
+Export-Package: org.kermeta.language.api;uses:="org.kermeta.traceabili
+ ty",org.kermeta.language.api.port;uses:="org.kermeta.language.api,org
+ .kermeta.language.structure,org.kermeta.traceability"
+Built-By: ffouquet
+Build-Jdk: 1.6.0_20
+Bundle-Version: 2.0.0.SNAPSHOT
+Tool: Bnd-0.0.357
+Bundle-Name: Kermeta :: Core :: Api
+Bnd-LastModified: 1280924698157
+Created-By: Apache Maven Bundle Plugin
 Bundle-ManifestVersion: 2
-Bundle-Name: Kermeta studio API
-Bundle-SymbolicName: org.kermeta.language.api
-Bundle-Version: 1.4.0.qualifier
-Bundle-Vendor: IRISA/INRIA
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.osgi.framework;version="1.3.0"
-Export-Package: 
- org.kermeta.language.api,
- org.kermeta.language.api.port
+Bundle-SymbolicName: org.kermeta.org.kermeta.language.api
+Import-Package: org.kermeta.language.api,org.kermeta.language.api.port
+ ,org.kermeta.language.structure,org.kermeta.traceability
+
