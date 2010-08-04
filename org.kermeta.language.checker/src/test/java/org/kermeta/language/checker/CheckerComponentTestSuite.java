@@ -6,7 +6,7 @@
  * License    : EPL
  * Copyright  : IRISA / INRIA / Universite de Rennes 1
  * -------------------------------------------------------------------
- * Creation date : 3 août 2010
+ * Creation date : 3 aot 2010
  * Authors : 
  *           Jacques Falcou <jacques.falcou@inria.fr> 
  */
@@ -17,6 +17,8 @@ import org.kermeta.language.checker.art2.impl.PortCheckerTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
+
+
 
 
 public class CheckerComponentTestSuite {

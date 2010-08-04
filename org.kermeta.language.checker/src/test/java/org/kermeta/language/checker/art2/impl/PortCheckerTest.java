@@ -4,7 +4,7 @@
  * License    : EPL
  * Copyright  : IRISA / INRIA / Universite de Rennes 1
  * -------------------------------------------------------------------
- * Creation date : 3 août 2010
+ * Creation date : 3 aot 2010
  * Authors : 
  *           Jacques Falcou <jacques.falcou@inria.fr> 
  */
@@ -21,7 +21,8 @@ public class PortCheckerTest extends TestCase {
 		CheckerComponentPORTchecker myComp = CheckerComponentFactory.createCheckerComponentPORTchecker();
 		
 		myComp.check(null);
-		
+
+                
 		Assert.assertNotNull(myComp);
 	}
 }

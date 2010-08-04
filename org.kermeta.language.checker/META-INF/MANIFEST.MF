@@ -1,10 +1,16 @@
 Manifest-Version: 1.0
+Private-Package: org.kermeta.language.checker.art2.impl,org.kermeta.la
+ nguage.checker
+Built-By: ffouquet
+Build-Jdk: 1.6.0_20
+Bundle-Version: 2.0.0.SNAPSHOT
+Tool: Bnd-0.0.311
+Bundle-Name: Kermeta :: Checker
+Bnd-LastModified: 1280933981805
+Created-By: Apache Maven Bundle Plugin
 Bundle-ManifestVersion: 2
-Bundle-Name: Checker
 Bundle-SymbolicName: org.kermeta.language.checker
-Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.kermeta.checker.Activator
-Import-Package: org.osgi.framework;version="1.3.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.kermeta.language.checker
-Require-Bundle: org.junit4
+Import-Package: kermeta.exceptions,org.kermeta.art2.framework,org.kerm
+ eta.language.api.port,org.kermeta.language.structure,scala,scala.coll
+ ection.mutable,scala.reflect
+

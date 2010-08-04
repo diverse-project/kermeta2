@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
 <art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:art2="http://art/2.0">
   <componentTypes name="CheckerComponent" factoryBean="org.kermeta.language.checker.art2.impl.CheckerComponentFactory">
-    <provided name="checker" ref="//@portTypes.0"/>
+    <provided name="checker" ref="//@portTypes.0">
+      <mappings beanMethodName="check" serviceMethodName="check"/>
+    </provided>
   </componentTypes>
-  <dataTypes name="void"/>
+  <dataTypes name="kermeta.exceptions.ConstraintsDiagnostic"/>
   <dataTypes name="org.kermeta.language.structure.ModelingUnit"/>
   <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortChecker">
     <operations name="check" returnType="//@dataTypes.0">
