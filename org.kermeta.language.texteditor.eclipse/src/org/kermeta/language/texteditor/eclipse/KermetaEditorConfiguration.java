@@ -17,18 +17,18 @@ public class KermetaEditorConfiguration extends org.eclipse.jface.text.source.So
 	
 	public org.eclipse.jface.text.presentation.IPresentationReconciler getPresentationReconciler(org.eclipse.jface.text.source.ISourceViewer sourceViewer) {
 		org.eclipse.jface.text.presentation.PresentationReconciler reconciler = new org.eclipse.jface.text.presentation.PresentationReconciler();
-		String fileName = theEditor.getEditorInput().getName();
 		
-		org.eclipse.jface.text.rules.DefaultDamagerRepairer repairer = new org.eclipse.jface.text.rules.DefaultDamagerRepairer(getScanner(fileName));
+		
+		org.eclipse.jface.text.rules.DefaultDamagerRepairer repairer = new org.eclipse.jface.text.rules.DefaultDamagerRepairer(getScanner());
+		
 		reconciler.setDamager(repairer, org.eclipse.jface.text.IDocument.DEFAULT_CONTENT_TYPE);
 		reconciler.setRepairer(repairer, org.eclipse.jface.text.IDocument.DEFAULT_CONTENT_TYPE);
-
 		return reconciler;
 	}
 	
 	// @param fileExtension
 	// @return
-	protected org.eclipse.jface.text.rules.ITokenScanner getScanner(String fileName) {
+	protected org.eclipse.jface.text.rules.ITokenScanner getScanner() {
 		return new org.kermeta.language.texteditor.eclipse.KermetaScanner(colorManager,theEditor);
 	}
 	

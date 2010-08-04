@@ -1,7 +1,9 @@
 package org.kermeta.language.texteditor.eclipse;
 
 import org.eclipse.jface.text.IDocument;
+import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.rules.IToken;
+import org.eclipse.jface.text.rules.Token;
 import org.eclipse.swt.graphics.RGB;
 import org.kermeta.language.lexer.KMLexer;
 
@@ -22,9 +24,10 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 	public void setRange(IDocument document, int offset, int length) {
 		
 		this.offset = offset;
-		System.out.println("offset"+this.offset);
 		try {
-			lexer = new KMLexer(document.get(offset, length));
+			String content = document.get(offset, length);
+			System.out.println("c:"+content);
+			lexer = new KMLexer(content);
 		} catch (org.eclipse.jface.text.BadLocationException e) {
 			//ignore this error. It might occur during editing when locations are outdated quickly.
 		}
@@ -32,8 +35,8 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 
 //	@Override
 	public IToken nextToken() {
-		System.out.println("offset"+this.offset);
 		try{
+			offset = offset + actualToken.toString().length();	
 		actualToken = (org.kermeta.language.lexer.KTokens.KToken) lexer.nextToken();
 		System.out.println(actualToken.getClass().getSimpleName()+"-"+actualToken.toString());
 		} catch (Exception e){
@@ -43,22 +46,36 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 			return org.eclipse.jface.text.rules.Token.EOF;
 		}
 		
-		org.eclipse.jface.text.TextAttribute ta = new org.eclipse.jface.text.TextAttribute(colorManager.getColor(new RGB(128, 0, 0)), null, org.eclipse.jface.text.TextAttribute.STRIKETHROUGH);
+		String tokenName = actualToken.getClass().getSimpleName();
+		RGB color = new RGB(0,0,0);
+		if(tokenName.equals("Identifier")){color=new RGB(128,0,0);}
+		if(tokenName.equals("Keyword")){color=new RGB(0,0,128);}
+		if(tokenName.equals("Delimiter")){color=new RGB(0,128,0);}
+		if(tokenName.equals("Comment")){color=new RGB(128,0,0);}
+		
+		org.eclipse.jface.text.TextAttribute ta = new org.eclipse.jface.text.TextAttribute(colorManager.getColor(color),null,org.eclipse.swt.SWT.BOLD);
 		
 	//	String colorKey = org.kermeta.language.emftexteditor.ui.KermetaSyntaxColoringHelper.getPreferenceKey(languageId, tokenName, org.kermeta.language.emftexteditor.ui.KermetaSyntaxColoringHelper.StyleProperty.COLOR);
 	//	org.eclipse.swt.graphics.Color color = colorManager.getColor(org.eclipse.jface.preference.PreferenceConverter.getColor(store, colorKey));
 
 		
-		return new org.eclipse.jface.text.rules.Token(ta);
+		//return new org.eclipse.jface.text.rules.Token(ta);
+		
+		Token token =  new Token(new TextAttribute(colorManager.getColor(color))) ;
+		
+		
+		return token;
 	}
 
 //	@Override
 	public int getTokenOffset() {
-		return offset+getTokenLength();
+		System.out.println(offset);
+		return offset+actualToken.toString().length();
 	}
 
 //	@Override
 	public int getTokenLength() {
+		System.out.println(actualToken.toString());
 		return actualToken.toString().length();
 	}
 
