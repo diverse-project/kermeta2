@@ -3,7 +3,7 @@
  * License    : EPL
  * Copyright  : IRISA / INRIA / Universite de Rennes 1
  * -------------------------------------------------------------------
- * Creation date : 2 août 2010
+ * Creation date : 2 aout 2010
  * Authors : 
  *           mgouyett <Marie.Gouyette@irisa.fr> 
  */
