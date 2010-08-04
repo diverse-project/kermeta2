@@ -13,5 +13,8 @@
             id="org.kermeta.language.texteditor.eclipse.KMTEditor">
       </editor>
    </extension>
+   <extension
+         point="org.eclipse.ui.editors.documentProviders">
+   </extension>
 
 </plugin>

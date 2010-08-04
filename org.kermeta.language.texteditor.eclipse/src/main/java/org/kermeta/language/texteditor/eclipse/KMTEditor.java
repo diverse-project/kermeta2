@@ -9,8 +9,8 @@ public class KMTEditor extends TextEditor {
 	public KMTEditor() {
 		super();
 		colorManager = new ColorManager();
-		setSourceViewerConfiguration(new XMLConfiguration(colorManager));
-		setDocumentProvider(new XMLDocumentProvider());
+		setSourceViewerConfiguration(new KMTConfiguration(colorManager));
+		setDocumentProvider(new KMTDocumentProvider());
 	}
 	public void dispose() {
 		colorManager.dispose();

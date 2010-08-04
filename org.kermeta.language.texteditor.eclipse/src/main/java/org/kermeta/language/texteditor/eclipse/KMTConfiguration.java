@@ -10,20 +10,20 @@ import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 
-public class XMLConfiguration extends SourceViewerConfiguration {
+public class KMTConfiguration extends SourceViewerConfiguration {
 	private XMLDoubleClickStrategy doubleClickStrategy;
 	private XMLTagScanner tagScanner;
-	private XMLScanner scanner;
+	private KMTScanner scanner;
 	private ColorManager colorManager;
 
-	public XMLConfiguration(ColorManager colorManager) {
+	public KMTConfiguration(ColorManager colorManager) {
 		this.colorManager = colorManager;
 	}
 	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
 		return new String[] {
 			IDocument.DEFAULT_CONTENT_TYPE,
-			XMLPartitionScanner.XML_COMMENT,
-			XMLPartitionScanner.XML_TAG };
+			KMTPartitionScanner.XML_COMMENT,
+			KMTPartitionScanner.XML_TAG };
 	}
 	public ITextDoubleClickStrategy getDoubleClickStrategy(
 		ISourceViewer sourceViewer,
@@ -33,9 +33,9 @@ public class XMLConfiguration extends SourceViewerConfiguration {
 		return doubleClickStrategy;
 	}
 
-	protected XMLScanner getXMLScanner() {
+	protected KMTScanner getXMLScanner() {
 		if (scanner == null) {
-			scanner = new XMLScanner(colorManager);
+			scanner = new KMTScanner(colorManager);
 			scanner.setDefaultReturnToken(
 				new Token(
 					new TextAttribute(
@@ -59,8 +59,8 @@ public class XMLConfiguration extends SourceViewerConfiguration {
 
 		DefaultDamagerRepairer dr =
 			new DefaultDamagerRepairer(getXMLTagScanner());
-		reconciler.setDamager(dr, XMLPartitionScanner.XML_TAG);
-		reconciler.setRepairer(dr, XMLPartitionScanner.XML_TAG);
+		reconciler.setDamager(dr, KMTPartitionScanner.XML_TAG);
+		reconciler.setRepairer(dr, KMTPartitionScanner.XML_TAG);
 
 		dr = new DefaultDamagerRepairer(getXMLScanner());
 		reconciler.setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE);
@@ -70,8 +70,8 @@ public class XMLConfiguration extends SourceViewerConfiguration {
 			new NonRuleBasedDamagerRepairer(
 				new TextAttribute(
 					colorManager.getColor(IKMTColorConstants.KMT_COMMENT)));
-		reconciler.setDamager(ndr, XMLPartitionScanner.XML_COMMENT);
-		reconciler.setRepairer(ndr, XMLPartitionScanner.XML_COMMENT);
+		reconciler.setDamager(ndr, KMTPartitionScanner.XML_COMMENT);
+		reconciler.setRepairer(ndr, KMTPartitionScanner.XML_COMMENT);
 
 		return reconciler;
 	}
