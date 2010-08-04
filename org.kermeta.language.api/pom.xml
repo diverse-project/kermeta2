@@ -2,52 +2,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.kermeta</groupId>
-    <artifactId>org.kermeta.language.api</artifactId>
+    <artifactId>language.api</artifactId>
     <packaging>bundle</packaging>
-    <version>2.0-SNAPSHOT</version>
     <name>Kermeta :: Core :: Api</name>
-    <url>http://maven.apache.org</url>
+
+    <groupId>${parent.groupId}</groupId>
+    <version>${kermeta.version}</version>
 
     <parent>
-        <artifactId>art2.root</artifactId>
-        <groupId>org.kermeta.art2</groupId>
+        <artifactId>language.root</artifactId>
+        <groupId>org.kermeta.language</groupId>
         <version>2</version>
     </parent>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.0.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.kermeta.language</groupId>
+            <groupId>${parent.groupId}</groupId>
             <artifactId>language.model</artifactId>
-            <version>2.0.0-SNAPSHOT</version>
+            <version>${kermeta.version}</version>
         </dependency>
         <dependency>
             <groupId>org.kermeta.traceability</groupId>
@@ -55,65 +28,12 @@
             <version>2.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-    		<groupId>org.kermeta.language</groupId>
-    		<artifactId>language.framework.scala</artifactId>
-    		<version>0.0.5</version>
-    		<type>jar</type>
-    		<scope>compile</scope>
-    	</dependency>
+            <groupId>org.kermeta.language</groupId>
+            <artifactId>language.framework.scala</artifactId>
+            <version>0.0.5</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
-<repositories>
-        <repository>
-            <id>kermetaSnapshots</id>
-            <name>Kermeta Snapshots</name>
-            <releases>
-                <enabled>false</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-            <url>http://www.kermeta.org/maven2-snapshots</url>
-            <layout>default</layout>
-        </repository>
-        <repository>
-            <id>kermeta</id>
-            <name>Kermeta</name>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-            <url>http://www.kermeta.org/maven2</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>tipimouss-local-maven-repository</id>
-            <name>Tipimouss Local release repository</name>
-            <url>file:/var/www/html/maven2</url>
-            <uniqueVersion>false</uniqueVersion>
-        </repository>
-        <snapshotRepository>
-            <id>tipimouss-local-maven-repository</id>
-            <name>Tipimouss Local  snapshot repository</name>
-            <url>file:/var/www/html/maven2-snapshots</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
 
 </project>
