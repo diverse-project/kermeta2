@@ -17,6 +17,6 @@ import org.kermeta.language.structure.ModelingUnit;
 
 public interface PortChecker {
 
-	public Collection<ConstraintsDiagnostic> check(ModelingUnit mu);
+	public ConstraintsDiagnostic check(ModelingUnit mu);
 	
 }
