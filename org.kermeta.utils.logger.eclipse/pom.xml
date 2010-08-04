@@ -24,7 +24,10 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>org.kermeta.utils.logger.eclipse
+                        <Export-Package>
+                        org.kermeta.utils.logger.eclipse,
+                        org.kermeta.utils.logger.eclipse.treatment, 
+                        org.kermeta.utils.logger.eclipse.art2.impl
                         </Export-Package>
                         <Import-Package>
                         org.kermeta.art2,
@@ -32,10 +35,12 @@
 						org.osgi.framework,
 						org.eclipse.jface.resource,
 						org.eclipse.ui.console,
-						org.eclipse.ui.part
+						org.eclipse.ui.part,
+						org.kermeta.language.api.*,
+						org.eclipse.swt.graphics
                         </Import-Package>
                         <Bundle-ClassPath>.</Bundle-ClassPath>
-                        <Bundle-SymbolicName>org.kermeta.utils.logger.standalone;singleton:=true</Bundle-SymbolicName>
+                        <Bundle-SymbolicName>org.kermeta.utils.logger.eclipse;singleton:=true</Bundle-SymbolicName>
                     </instructions>
                 </configuration>
             </plugin>
