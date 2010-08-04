@@ -10,11 +10,15 @@
  */
 package org.kermeta.language.checker.art2.impl;
 
+import kermeta.exceptions.ConstraintsDiagnostic;
+
 import org.kermeta.art2.annotation.ComponentType;
+import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.ProvidedPort;
 import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.framework.AbstractComponentType;
 import org.kermeta.language.api.port.PortChecker;
+import org.kermeta.language.structure.ModelingUnit;
 
 @Provides({
     @ProvidedPort(name="checker",className=PortChecker.class)
@@ -22,4 +26,10 @@ import org.kermeta.language.api.port.PortChecker;
 @ComponentType(libName = "checker")
 public class CheckerComponent extends AbstractComponentType {
 
+	
+    @Port(name="checker",method="check")
+    public ConstraintsDiagnostic check(ModelingUnit mu){
+        return null;
+    }
+	
 }
