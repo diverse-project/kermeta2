@@ -24,5 +24,6 @@ public class PortCheckerTest extends TestCase {
 
                 
 		Assert.assertNotNull(myComp);
+		Assert.assertTrue(true);
 	}
 }
