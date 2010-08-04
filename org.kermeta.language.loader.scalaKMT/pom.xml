@@ -4,61 +4,16 @@
     <groupId>org.kermeta.language</groupId>
     <artifactId>language.parser.scala</artifactId>
     <name>Kermeta :: Loader :: ScalaKMT</name>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <version>1.2</version>
 
-    <repositories>
-        <repository>
-            <id>scala-tools.org</id>
-            <name>Scala-tools Maven2 Repository</name>
-            <url>http://scala-tools.org/repo-releases</url>
-        </repository>
-        <repository>
-            <id>repoNetbeans</id>
-            <url>http://bits.netbeans.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>scala-tools.org_snapshots</id>
-            <name>Scala-tools Maven2 Repository</name>
-            <url>http://scala-tools.org/repo-snapshots</url>
-        </repository>
-        <repository>
-            <id>kermetaPublicSnapshot</id>
-            <url>http://www.kermeta.org/maven2-snapshots</url>
-        </repository>
-        <repository>
-            <id>kermetaPublic</id>
-            <url>http://www.kermeta.org/maven2</url>
-        </repository>
-        <repository>
-            <id>tipimoussSnapshot</id>
-            <url>http://tipimouss/maven2-snapshots</url>
-        </repository>
-        <repository>
-            <id>tipimouss</id>
-            <url>http://tipimouss/maven2</url>
-        </repository>
-        <repository>
-            <id>thirdparty</id>
-            <name>Irisa Tipimouss Nexus ThirdParty</name>
-            <url>http://tipimouss.irisa.fr:8081/nexus/content/repositories/thirdparty</url>
-        </repository>
-    </repositories>
+    <parent>
+        <artifactId>art2.root</artifactId>
+        <groupId>org.kermeta.art2</groupId>
+        <version>2</version>
+    </parent>
+
     <dependencies>
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>2.8.0</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-compiler</artifactId>
-            <version>2.8.0</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>org.kermeta.language</groupId>
             <artifactId>language.model</artifactId>
@@ -84,63 +39,30 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>src/main/scala</sourceDirectory>
+
         <plugins>
             <plugin>
-                <groupId>org.scala-tools</groupId>
-                <artifactId>maven-scala-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>scala-compile-first</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
                 <configuration>
-                    <scalaVersion>${scala.version}</scalaVersion>
-                    <args>
-                        <arg>-target:jvm-1.5</arg>
-                        <arg>-make:transitivenocp</arg>
-                        <arg>-dependencyfile</arg>
-                        <arg>${project.build.directory}/.scala_dependencies</arg>
-                    </args>
-                    <jvmArgs>
-                        <jvmArg>-Xmx1024m</jvmArg>
-                    </jvmArgs>
-                    <launchers>
-                        <launcher>
-                            <id>runner</id>
-                            <mainClass>org.kermeta.scala.parser.Runner</mainClass>
+                    <instructions>
+                        <Export-Package>
+                            org.kermeta.language.lexer,
+                            org.kermeta.scala.parser.art2.impl,
+                            org.kermeta.scala.parser.sub,
+                            org.kermeta.scala.parser
+                        </Export-Package>
+                        <Import-Package>
+						org.eclipse.emf.*,
+						org.osgi.framework,
+                                                scala.*,
+                                                org.kermeta.language.*,org.kermeta
+                        </Import-Package>
 
-                            <jvmArgs>
-                                <jvmArg>-Xmx1024m</jvmArg>
-                            </jvmArgs>
-                        </launcher>
-                    </launchers>
+                    </instructions>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.0.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-
 
 
             <plugin>

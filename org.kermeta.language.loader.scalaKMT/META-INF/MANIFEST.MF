@@ -1,0 +1,42 @@
+Manifest-Version: 1.0
+Export-Package: org.kermeta.language.lexer;uses:="scala.util.parsing.c
+ ombinator.lexical,scala.reflect,scala.util.parsing.combinator.token,s
+ cala,scala.util.parsing.combinator,scala.runtime,scala.collection,sca
+ la.collection.mutable,scala.collection.immutable,scala.util.parsing.i
+ nput,scala.math,scala.util,scala.collection.generic",org.kermeta.scal
+ a.parser.art2.impl;uses:="org.kermeta.scala.parser,org.kermeta.langua
+ ge.structure,scala,org.kermeta.language.api.port",org.kermeta.scala.p
+ arser.sub;uses:="org.kermeta.language.lexer,scala.util.parsing.combin
+ ator,scala.runtime,scala,scala.util.parsing.combinator.token,scala.co
+ llection.mutable,org.kermeta.language.behavior,scala.util.parsing.com
+ binator.syntactical,scala.reflect,scala.collection.immutable,scala.co
+ llection,org.eclipse.emf.common.util,org.kermeta.language.structure,s
+ cala.collection.generic,scala.util.parsing.input",org.kermeta.scala.p
+ arser;uses:="org.kermeta.language.behavior,scala.util.parsing.combina
+ tor,org.kermeta.scala.parser.sub,scala.runtime,org.kermeta.language.l
+ exer,scala.util.parsing.combinator.lexical,scala.util.parsing.input,s
+ cala,scala.reflect,scala.collection.mutable,org.kermeta.language.stru
+ cture,scala.util.parsing.combinator.token,org.eclipse.emf.ecore.xmi.i
+ mpl,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore,org.eclipse.
+ emf.common.util,org.kermeta,org.eclipse.emf.ecore.resource.impl,scala
+ .collection,scala.io"
+Built-By: ffouquet
+Build-Jdk: 1.6.0_20
+Bundle-Version: 1.2
+Tool: Bnd-0.0.357
+Bundle-Name: Kermeta :: Loader :: ScalaKMT
+Bnd-LastModified: 1280925713767
+Created-By: Apache Maven Bundle Plugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.kermeta.language.parser.scala
+Import-Package: org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.
+ eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.ec
+ lipse.emf.ecore.xmi.impl,org.kermeta,org.kermeta.language.api.port,or
+ g.kermeta.language.behavior,org.kermeta.language.lexer,org.kermeta.la
+ nguage.structure,org.osgi.framework;version="1.5",scala,scala.collect
+ ion,scala.collection.generic,scala.collection.immutable,scala.collect
+ ion.mutable,scala.io,scala.math,scala.reflect,scala.runtime,scala.uti
+ l,scala.util.parsing.combinator,scala.util.parsing.combinator.lexical
+ ,scala.util.parsing.combinator.syntactical,scala.util.parsing.combina
+ tor.token,scala.util.parsing.input
+

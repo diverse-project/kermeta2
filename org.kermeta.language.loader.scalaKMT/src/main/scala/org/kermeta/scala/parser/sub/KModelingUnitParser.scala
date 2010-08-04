@@ -15,6 +15,7 @@ import org.kermeta.language.behavior._
 import org.kermeta.language.structure.impl._
 import org.kermeta.language.behavior.impl._
 import scala.collection.JavaConversions._
+import scala.util.parsing.input.OffsetPosition
 import scala.util.parsing.input.Positional
 
 /**
@@ -23,8 +24,16 @@ import scala.util.parsing.input.Positional
 trait KModelingUnitParser extends KAbstractParser  {
 	
 	case class NameSpacePrefix(name : String) extends Positional
+        case class ExpressionWrapper(expr : Expression) extends Positional
+
+        case class PositionalString(value : String ) extends Positional
+
 	
-	
+
+
+
+
+
   /* */
   def classDecl : Parser[ClassDefinition]
 
@@ -38,7 +47,7 @@ trait KModelingUnitParser extends KAbstractParser  {
                 case cd : ClassDefinition => newp.getOwnedTypeDefinition.add(cd)
                 case _ @ elem => println("unknow elem" + elem)
               }}
-          case np : NameSpacePrefix => newp.setNamespacePrefix(np.name) ; println(np.pos.column+"-"+np.pos.line)
+          case np : NameSpacePrefix => newp.setNamespacePrefix(np.name) ; var pos2 = np.pos.asInstanceOf[OffsetPosition] ; println(pos2.productArity+"-"+pos2.source.subSequence(0, pos2.offset.toInt))
           case _ @ d => println("TODO modeling unit catch some type sub elem="+d)
         }}
       newp
@@ -49,7 +58,7 @@ trait KModelingUnitParser extends KAbstractParser  {
   def scompUnit = (packageDecl|importStmts|usingStmts|topLevelDecl) // TODO ADD ANNOTATION TO ELEM
   /* DEPRECATED */
   
-   def packageDecl : Parser[NameSpacePrefix] = positioned("package" ~> packageName <~ ";" ^^ { case p =>  NameSpacePrefix(p)})
+   def packageDecl : Parser[NameSpacePrefix] = "package" ~> packageName <~ ";" ^^ { case p =>  NameSpacePrefix(p)}
   private def importStmts = importStmt+
   private def importStmt = "require" ~ packageName ^^ { case _ ~ e =>
       var newo =StructureFactory.eINSTANCE.createRequire

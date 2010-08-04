@@ -25,9 +25,7 @@ import scala.util.parsing.combinator.syntactical.TokenParsers
 trait KAbstractParser extends TokenParsers {
   type Tokens = org.kermeta.language.lexer.KTokens
   val lexical = new KMLexical {
-
     override def whitespace: Parser[Any] = rep(whitespaceChar | comment)
-
   }
   import lexical._
 
@@ -36,16 +34,11 @@ trait KAbstractParser extends TokenParsers {
   def fLiteral : Parser[Expression]
   def packageName : Parser[String]
 
+  
 
 
   protected val keywordCache : HashMap[String, Parser[String]] = HashMap.empty
   protected val delimCache : HashMap[String, Parser[String]] = HashMap.empty
-
-  /** A parser which matches a single keyword token.
-   *
-   * @param chars    The character string making up the matched keyword.
-   * @return a `Parser' that matches the given string
-   */
 
   /** A parser which matches a numeric literal */
   def numericLit: Parser[String] =
@@ -58,7 +51,10 @@ trait KAbstractParser extends TokenParsers {
   /** A parser which matches an identifier */
   def ident: Parser[String] =
     elem("identifier", _.isInstanceOf[Identifier]) ^^ (_.chars)
+
+
   
+
 
   //an implicit keyword function that gives a warning when a given word is not in the reserved/delimiters list
   implicit def keyword(chars : String): Parser[String] =

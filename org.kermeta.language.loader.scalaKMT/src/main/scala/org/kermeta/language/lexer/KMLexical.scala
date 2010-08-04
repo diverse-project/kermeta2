@@ -11,6 +11,7 @@ import scala.util.parsing.combinator.lexical.Lexical
 import scala.util.parsing.combinator.lexical.Scanners
 import scala.util.parsing.combinator.lexical.StdLexical
 import scala.util.parsing.input.CharArrayReader.EofCh
+import scala.util.parsing.input.Position
 
 class KMLexical extends Lexical with KTokens {
 
@@ -19,16 +20,18 @@ class KMLexical extends Lexical with KTokens {
 
   override def whitespace: Parser[Any] = rep(whitespaceChar)
 
-  def comment : Parser[Token] =
-   ( '/' ~ '*' ~ mlcomment ^^ { case _ ~ _ ~ mlcomment => mlcomment }
-    | '/' ~ '/' ~ rep( chrExcept(EofCh, '\n') ) ^^ { case _ ~ _ ~ content => Comment(content.mkString) }
+  def comment : Parser[KToken] = (
+   positioned('/' ~ '*' ~ mlcomment ^^ { case _ ~ _ ~ mlcomment => mlcomment })
+   |
+   '/' ~> '/' ~> rep( chrExcept(EofCh, '\n') ) ^^ { case content => Comment(content.mkString) }
   //  | '/' ~ '*' ~ failure("unclosed comment") ^^^ {case _ => ERR_MLComment("unclosed comment") }
    )
 
 
   protected def mlcomment: Parser[MLComment] = (
-    '*' ~ '/'  ^^ { case _ => MLComment("")  }
-    | chrExcept(EofCh) ~ mlcomment ^^ { case c ~ rc => MLComment(c+rc.chars)  }
+    positioned('*' ~ '/'  ^^ { case _ => MLComment("")  })
+    | 
+    positioned(chrExcept(EofCh) ~ mlcomment ^^ { case c ~ rc => var ml = MLComment(c+rc.chars) ; ml  })
   )
 
   // legal identifier chars other than digits
@@ -60,11 +63,11 @@ class KMLexical extends Lexical with KTokens {
 
 // see `token' in `Scanners'
   def token: Parser[Token] =
-    comment |
+    comment ^^{ case c => println("COMMENT="+c.pos.longString+"---"); c } |
     ( identChar ~ rep( identChar | digit )              ^^ { case first ~ rest => processIdent(first :: rest mkString "") }
      | digit ~ rep( digit )                              ^^ { case first ~ rest => NumericLit(first :: rest mkString "") }
-     | '\'' ~ rep( chrExcept('\'', '\n', EofCh) ) ~ '\'' ^^ { case '\'' ~ chars ~ '\'' => StringLit(chars mkString "") }
-     | '\"' ~ rep( chrExcept('\"', '\n', EofCh) ) ~ '\"' ^^ { case '\"' ~ chars ~ '\"' => StringLit(chars mkString "") }
+     | positioned('\'' ~ rep( chrExcept('\'', '\n', EofCh) ) ~ '\'' ^^ { case '\'' ~ chars ~ '\'' => StringLit(chars mkString "") })
+     | positioned('\"' ~ rep( chrExcept('\"', '\n', EofCh) ) ~ '\"' ^^ { case '\"' ~ chars ~ '\"' => StringLit(chars mkString "") })
      | EofCh                                             ^^^ EOF
      | '\'' ~> failure("unclosed string literal")
      | '\"' ~> failure("unclosed string literal")
@@ -97,7 +100,5 @@ class KMLexical extends Lexical with KTokens {
 
 
   
-
-
 
 }
