@@ -1,6 +1,8 @@
 package org.kermeta.language.texteditor.eclipse;
 
-public class KermetaEditorConfiguration extends org.eclipse.jface.text.source.SourceViewerConfiguration {
+import org.eclipse.ui.editors.text.TextSourceViewerConfiguration;
+
+public class KermetaEditorConfiguration extends TextSourceViewerConfiguration {
 
 	private org.kermeta.language.texteditor.eclipse.KermetaColorManager colorManager;
 	private org.kermeta.language.texteditor.eclipse.KermetaEditor theEditor;
@@ -20,7 +22,6 @@ public class KermetaEditorConfiguration extends org.eclipse.jface.text.source.So
 		
 		
 		org.eclipse.jface.text.rules.DefaultDamagerRepairer repairer = new org.eclipse.jface.text.rules.DefaultDamagerRepairer(getScanner());
-		
 		reconciler.setDamager(repairer, org.eclipse.jface.text.IDocument.DEFAULT_CONTENT_TYPE);
 		reconciler.setRepairer(repairer, org.eclipse.jface.text.IDocument.DEFAULT_CONTENT_TYPE);
 		return reconciler;

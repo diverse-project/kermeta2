@@ -26,7 +26,6 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 		this.offset = offset;
 		try {
 			String content = document.get(offset, length);
-			System.out.println("c:"+content);
 			lexer = new KMLexer(content);
 		} catch (org.eclipse.jface.text.BadLocationException e) {
 			//ignore this error. It might occur during editing when locations are outdated quickly.
@@ -37,8 +36,8 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 	public IToken nextToken() {
 		try{
 			offset = offset + actualToken.toString().length();	
-		actualToken = (org.kermeta.language.lexer.KTokens.KToken) lexer.nextToken();
-		System.out.println(actualToken.getClass().getSimpleName()+"-"+actualToken.toString());
+			actualToken = (org.kermeta.language.lexer.KTokens.KToken) lexer.nextToken();
+			System.out.println(actualToken.getClass().getSimpleName()+"-"+actualToken.toString());
 		} catch (Exception e){
 			return org.eclipse.jface.text.rules.Token.EOF;
 		}
@@ -53,7 +52,7 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 		if(tokenName.equals("Delimiter")){color=new RGB(0,128,0);}
 		if(tokenName.equals("Comment")){color=new RGB(128,0,0);}
 		
-		org.eclipse.jface.text.TextAttribute ta = new org.eclipse.jface.text.TextAttribute(colorManager.getColor(color),null,org.eclipse.swt.SWT.BOLD);
+		//org.eclipse.jface.text.TextAttribute ta = new org.eclipse.jface.text.TextAttribute(colorManager.getColor(color),null,org.eclipse.swt.SWT.BOLD);
 		
 	//	String colorKey = org.kermeta.language.emftexteditor.ui.KermetaSyntaxColoringHelper.getPreferenceKey(languageId, tokenName, org.kermeta.language.emftexteditor.ui.KermetaSyntaxColoringHelper.StyleProperty.COLOR);
 	//	org.eclipse.swt.graphics.Color color = colorManager.getColor(org.eclipse.jface.preference.PreferenceConverter.getColor(store, colorKey));
@@ -61,21 +60,21 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 		
 		//return new org.eclipse.jface.text.rules.Token(ta);
 		
-		Token token =  new Token(new TextAttribute(colorManager.getColor(color))) ;
+		//Token tok = new Token(Token.OTHER);
 		
+		Token token =  new Token(new TextAttribute(colorManager.getColor(color),null,org.eclipse.swt.SWT.NORMAL)) ;
+		//System.out.println(token);
 		
 		return token;
 	}
 
 //	@Override
 	public int getTokenOffset() {
-		System.out.println(offset);
 		return offset+actualToken.toString().length();
 	}
 
 //	@Override
 	public int getTokenLength() {
-		System.out.println(actualToken.toString());
 		return actualToken.toString().length();
 	}
 

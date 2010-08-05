@@ -11,11 +11,7 @@ public class KermetaEditor extends TextEditor {
 		colorManager = new KermetaColorManager();
 		setDocumentProvider(new org.eclipse.ui.editors.text.TextFileDocumentProvider());
 		
-		//org.eclipse.ui.editors.text.TextFileDocumentProvider
-		
 		setSourceViewerConfiguration(new KermetaEditorConfiguration(this, colorManager));
-		//initializeEditingDomain();
-		//addBackgroundParsingListener(new MarkerUpdateListener());
 	}
 	public void dispose() {
 		colorManager.dispose();
