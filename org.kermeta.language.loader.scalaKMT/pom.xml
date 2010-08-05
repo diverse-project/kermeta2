@@ -1,23 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.kermeta.language</groupId>
-    <artifactId>language.parser.scala</artifactId>
-    <name>Kermeta :: Loader :: ScalaKMT</name>
     <packaging>bundle</packaging>
-    <version>1.2</version>
+    <name>Kermeta :: Loader :: KMT</name>
+    <artifactId>language.loader.scala</artifactId>
+
+    <groupId>${parent.groupId}</groupId>
+    <version>${kermeta.version}</version>
 
     <parent>
-        <artifactId>art2.root</artifactId>
-        <groupId>org.kermeta.art2</groupId>
+        <artifactId>language.root</artifactId>
+        <groupId>org.kermeta.language</groupId>
         <version>2</version>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>org.kermeta.language</groupId>
+            <groupId>${parent.groupId}</groupId>
             <artifactId>language.model</artifactId>
-            <version>2.0.0-SNAPSHOT</version>
+            <version>${kermeta.version}</version>
         </dependency>
         <dependency>
             <groupId>org.kermeta.emf</groupId>
@@ -25,17 +26,23 @@
             <version>2.6.0</version>
         </dependency>
         <dependency>
-            <groupId>org.kermeta.language</groupId>
+            <groupId>${parent.groupId}</groupId>
             <artifactId>language.api.tests</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>test</scope>
             <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>org.kermeta</groupId>
-            <artifactId>org.kermeta.language.api</artifactId>
-            <version>2.0-SNAPSHOT</version>
+            <groupId>${parent.groupId}</groupId>
+            <artifactId>language.api</artifactId>
+            <version>${kermeta.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.kermeta.art2</groupId>
+            <artifactId>art2.framework</artifactId>
+            <version>${art2.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -54,7 +61,8 @@
                             org.kermeta.scala.parser
                         </Export-Package>
                         <Import-Package>
-						org.eclipse.emf.*,
+						org.kermeta.art2.framework,
+                                                org.eclipse.emf.*,
 						org.osgi.framework,
                                                 scala.*,
                                                 org.kermeta.language.*,org.kermeta
@@ -79,24 +87,5 @@
 
         </plugins>
     </build>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
-    <distributionManagement>
-        <repository>
-            <id>tipimouss-local-maven-repository</id>
-            <name>Tipimouss Local release repository</name>
-            <url>file:/var/www/html/maven2</url>
-            <uniqueVersion>false</uniqueVersion>
-        </repository>
-        <snapshotRepository>
-            <id>tipimouss-local-maven-repository</id>
-            <name>Tipimouss Local  snapshot repository</name>
-            <url>file:/var/www/html/maven2-snapshots</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
-
 
 </project>

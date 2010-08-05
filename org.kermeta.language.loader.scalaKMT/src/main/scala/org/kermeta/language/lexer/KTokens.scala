@@ -6,12 +6,15 @@
 package org.kermeta.language.lexer
 
 import scala.util.parsing.combinator.token.Tokens
+import scala.util.parsing.input.OffsetPosition
 import scala.util.parsing.input.Positional
 
 
 trait KTokens extends Tokens {
 
-  abstract case class KToken extends Token with Positional
+  abstract case class KToken extends Token with Positional {
+    def getOffset = this.pos.asInstanceOf[OffsetPosition].offset
+  }
 
   /** The class of comment tokens */
   case class WHITESPACE extends KToken {

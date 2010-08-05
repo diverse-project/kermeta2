@@ -25,15 +25,14 @@ import org.kermeta.scala.parser.ParserUtil;
 )
 
 @ComponentType(libName="KMTloaderComponent")
-public class Art2ComponentLoader extends AbstractComponentType {//implements org.kermeta.language.api.port.PortResourceLoader {
+public class Art2ComponentLoader extends AbstractComponentType implements org.kermeta.language.api.port.PortResourceLoader {
 
     @Port(name="KMTloader", method="load")
-    public ModelingUnit loadResource(String uri, org.kermeta.language.api.port.PortResourceLoader.URIType type) {
+    public ModelingUnit load(String uri, org.kermeta.language.api.port.PortResourceLoader.URIType type) {
 
         KParser parser = new KParser();
 
-        parser.parseSynch(ParserUtil.loadFile(uri)).get();
-        return null;
+        return parser.parseSynch(ParserUtil.loadFile(uri)).get();
 
     }
 }
