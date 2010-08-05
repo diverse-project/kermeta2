@@ -10,25 +10,33 @@
 package org.kermeta.utils.logger.eclipse.treatment;
 
 import java.awt.MultipleGradientPaint.ColorSpaceType;
+import java.io.IOException;
 
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.IConsoleFactory;
 import org.eclipse.ui.console.IConsoleManager;
+import org.eclipse.ui.console.IOConsoleInputStream;
+import org.eclipse.ui.console.IOConsoleOutputStream;
 import org.eclipse.ui.console.MessageConsole;
 import org.kermeta.language.api.KermetaMessage;
 import org.kermeta.language.api.KermetaMessage.Level;
+import org.kermeta.utils.logger.eclipse.logger_console.LoggerConsole;
+import org.kermeta.utils.logger.eclipse.messages.ConsoleMessage;
+import org.kermeta.utils.logger.eclipse.messages.ConsoleMessageFactory;
 
 public class LoggerConsoleFactory implements IConsoleFactory {
 
 	public void openConsole() {
-		ConsoleLogger clogger = new ConsoleLogger();
-		Throwable exception = new Throwable("Exception : define cause of the exception");
-		KermetaMessage message = new KermetaMessage("Test info", "org.kermeta.utils.logger.eclipse",Level.ERROR, exception);
-		IConsole consoleLogger = clogger.displayConsole(message); 
-		IConsoleManager consoleManager =  ConsolePlugin.getDefault().getConsoleManager();
-		//MessageConsole consoleLogger = ConsoleLogger.getInstance().getConsoleLogger();
-		consoleManager.showConsoleView(consoleLogger);
+		
+		LoggerConsole console = new LoggerConsole("Log console" , null);
+		ConsoleMessage message = ConsoleMessageFactory.getInstance().createInfoMessage("info message", "qualifier");
+		ConsoleMessage message2 = ConsoleMessageFactory.getInstance().createDebugMessage("debug message", "qualifier");
+		console.println(message);
+		console.println(message2);
+		console.print("Write:");
+		
 	}
 
 }

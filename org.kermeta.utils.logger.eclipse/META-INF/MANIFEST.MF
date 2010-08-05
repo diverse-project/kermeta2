@@ -4,7 +4,11 @@ Bundle-Name: Eclipse
 Bundle-SymbolicName: org.kermeta.utils.logger.eclipse2;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.kermeta.utils.logger.eclipse.Activator
-Import-Package: org.eclipse.jface.resource,
+Import-Package: org.eclipse.core.runtime,
+ org.eclipse.core.runtime.jobs,
+ org.eclipse.jface.resource,
+ org.eclipse.jface.text,
+ org.eclipse.swt,
  org.eclipse.swt.graphics,
  org.eclipse.ui.console,
  org.eclipse.ui.part,
@@ -13,4 +17,6 @@ Import-Package: org.eclipse.jface.resource,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.kermeta.utils.logger.eclipse,
  org.kermeta.utils.logger.eclipse.art2.impl,
+ org.kermeta.utils.logger.eclipse.logger_console,
+ org.kermeta.utils.logger.eclipse.messages,
  org.kermeta.utils.logger.eclipse.treatment
