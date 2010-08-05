@@ -16,6 +16,8 @@ import org.kermeta.art2.annotation.PortType;
 import org.kermeta.art2.annotation.ProvidedPort;
 import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.framework.AbstractComponentType;
+import org.kermeta.language.api.KermetaMessage;
+import org.kermeta.utils.logger.standalone.treatment.LoggerStandalone;
 //import org.kermeta.art2.framework.MessagePort;
 
 @Provides({
@@ -26,6 +28,8 @@ public class Art2ComponentStandaloneLogger extends AbstractComponentType {
 
 	@Port(name="log",method="process")
     public void processMsg(Object o){
-        System.out.println(o);
+		KermetaMessage kermetaMessage = (KermetaMessage) o;
+        LoggerStandalone logger = new LoggerStandalone();
+        logger.displayMessage(kermetaMessage);
     }
 }
