@@ -136,7 +136,7 @@
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.equinox.common</artifactId>
-			<version>[3.5.1.R35x_v20090807-1100,)</version>
+			<version>3.5.1.R35x_v20090807-1100</version>
 			<type>bundle</type>
 			<scope>compile</scope>
 		</dependency>
