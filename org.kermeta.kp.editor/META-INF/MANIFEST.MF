@@ -29,9 +29,9 @@ Built-By: hrambelo
 Tool: Bnd-0.0.311
 Bundle-Name: Kermeta :: KP Editor
 Created-By: Apache Maven Bundle Plugin
-Build-Jdk: 1.6.0_20
+Build-Jdk: 1.6.0_18
 Bundle-Version: 2.0.0.SNAPSHOT
-Bnd-LastModified: 1280397375325
+Bnd-LastModified: 1281080931539
 Bundle-ManifestVersion: 2
 Import-Package: org.antlr.runtime,org.eclipse.core.resources,org.eclip
  se.core.runtime;registry=split;version="3.4",org.eclipse.emf.common.n
@@ -40,5 +40,5 @@ Import-Package: org.antlr.runtime,org.eclipse.core.resources,org.eclip
  source.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.validation.mod
  el,org.eclipse.emf.validation.service,org.kermeta.kp,org.osgi.framewo
  rk;version="1.5"
-Bundle-SymbolicName: org.kermeta.kp.editor;singleton:=true
+Bundle-SymbolicName: org.kermeta.kp.editor
 
