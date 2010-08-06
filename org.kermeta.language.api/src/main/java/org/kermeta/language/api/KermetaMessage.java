@@ -68,6 +68,14 @@ public class KermetaMessage {
 	public void setException(Throwable exception) {
 		this.exception = exception;
 	}
+	
+	/**
+	 * Determines whether an exception is defined on
+	 * @return
+	 */
+	public boolean existException() {
+		return this.exception == null;
+	}
 
 }
 
