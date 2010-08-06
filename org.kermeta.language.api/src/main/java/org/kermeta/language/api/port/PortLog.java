@@ -3,7 +3,7 @@
  * License    : EPL
  * Copyright  : IRISA / INRIA / Universite de Rennes 1
  * -------------------------------------------------------------------
- * Creation date : 6 août 2010
+ * Creation date : 6 aoï¿½t 2010
  * Authors : 
  *           mgouyett <Marie.Gouyette@irisa.fr> 
  */
@@ -13,7 +13,7 @@ import org.kermeta.language.api.KermetaMessage;
 
 public interface PortLog {
 	
-	public void sendMessage (KermetaMessage message);
+	public void sendMessage (KermetaMessage message); 
 
 }
 
