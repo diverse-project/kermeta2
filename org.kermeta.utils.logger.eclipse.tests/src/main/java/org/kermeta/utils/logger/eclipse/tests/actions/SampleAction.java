@@ -5,9 +5,11 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.kermeta.language.api.KermetaMessage;
+import org.kermeta.language.api.KermetaMessageFactory;
 import org.kermeta.utils.logger.eclipse.logger_console.LoggerConsole;
-import org.kermeta.utils.logger.eclipse.messages.ConsoleMessage;
-import org.kermeta.utils.logger.eclipse.messages.ConsoleMessageFactory;
+import org.kermeta.utils.logger.eclipse.logger_console.SingletonLoggerConsole;
+
 
 /**
  * Our sample action implements workbench action delegate.
@@ -33,15 +35,24 @@ public class SampleAction implements IWorkbenchWindowActionDelegate {
 	 */
 	public void run(IAction action) {
 		
-		LoggerConsole console = new LoggerConsole("Log2 console", null);
-		ConsoleMessage message = ConsoleMessageFactory.getInstance().createInfoMessage("info message 2", "qualifier");
-		ConsoleMessage message2 = ConsoleMessageFactory.getInstance().createDebugMessage("debug message 2", "qualifier");
-		ConsoleMessage message3 = ConsoleMessageFactory.getInstance().createErrorMessage("error", "qualifier");
+		MessageDialog.openInformation(
+				window.getShell(),
+				"Tests",
+				"Hello, Eclipse world"); 
+		LoggerConsole console = SingletonLoggerConsole.getInstanceConsole();
+		//LoggerConsole console = new LoggerConsole("Log2 console", null);
+		System.out.println("def mess");
+		KermetaMessage message = KermetaMessageFactory.getInstance().createInfoMessage("info message 2", "qualifier");
+		System.out.println("message " + message.getMessage());
+		KermetaMessage message2 = KermetaMessageFactory.getInstance().createDebugMessage("debug message 2", "qualifier");
+		KermetaMessage message3 = KermetaMessageFactory.getInstance().createErrorMessage("error 2", "qualifier");
+		System.out.println("Before message");
 		console.println(message);
 		console.println(message2);
 		console.println(message3);
 		console.print("Write:");
-		console.activate();
+		System.out.println("Passes");
+		console.activate(); 
 	}
 
 	/**
