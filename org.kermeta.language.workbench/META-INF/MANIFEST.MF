@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Export-Package: org.kermeta.language.core;uses:="org.osgi.framework,or
+ g.kermeta.art2.framework,org.kermeta.art2,org.kermeta.art2.api.servic
+ e.core.handler"
+Built-By: ffouquet
+Build-Jdk: 1.6.0_20
+Bundle-Version: 2.0.0.SNAPSHOT
+Tool: Bnd-0.0.357
+Bundle-Name: K2 :: Workbench
+Bnd-LastModified: 1281020479731
+Created-By: Apache Maven Bundle Plugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.kermeta.language.workbench
+Import-Package: org.kermeta.art2,org.kermeta.art2.api.service.core.han
+ dler,org.kermeta.art2.framework,org.kermeta.language.core,org.osgi.fr
+ amework;version="1.5"
+
