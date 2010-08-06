@@ -22,7 +22,7 @@ public class KermetaMessage {
 	// Name of the element related to the message
 	private String qualifier;
 	
-	private Throwable exception;
+	private Throwable exception = null;
 	
 	public KermetaMessage(String message, String qualifier, Level level) {
 		this.message =message;
