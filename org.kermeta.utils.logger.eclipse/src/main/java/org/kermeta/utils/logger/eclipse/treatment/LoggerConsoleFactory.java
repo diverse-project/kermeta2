@@ -21,6 +21,7 @@ import org.eclipse.ui.console.IOConsoleInputStream;
 import org.eclipse.ui.console.IOConsoleOutputStream;
 import org.eclipse.ui.console.MessageConsole;
 import org.kermeta.language.api.KermetaMessage;
+import org.kermeta.language.api.KermetaMessageFactory;
 import org.kermeta.language.api.KermetaMessage.Level;
 import org.kermeta.utils.logger.eclipse.logger_console.LoggerConsole;
 import org.kermeta.utils.logger.eclipse.messages.ConsoleMessage;
@@ -31,13 +32,13 @@ public class LoggerConsoleFactory implements IConsoleFactory {
 	public void openConsole() {
 		
 		LoggerConsole console = new LoggerConsole("Log console" , null);
-		ConsoleMessage message = ConsoleMessageFactory.getInstance().createInfoMessage("info message", "qualifier");
-		ConsoleMessage message2 = ConsoleMessageFactory.getInstance().createDebugMessage("debug message", "qualifier");
+		
+		KermetaMessage message = KermetaMessageFactory.getInstance().createInfoMessage("info message", "qualifier");
+		KermetaMessage message2 = KermetaMessageFactory.getInstance().createDebugMessage("debug message", "qualifier");
 		console.println(message);
 		console.println(message2);
-		console.print("Write:");
-		
-	}
+		console.print("Write:");  
+	} 
 
 }
 

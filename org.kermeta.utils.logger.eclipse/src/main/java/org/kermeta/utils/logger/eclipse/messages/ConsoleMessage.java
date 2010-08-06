@@ -26,8 +26,14 @@ public class ConsoleMessage extends KermetaMessage {
 	public static final Color DEBUG = new Color(null, 255,114,0);
 	public static final Color DEFAULT = new Color(null, 0,0,0);
 	
-	// Color of the message
+	/**
+	 * Color of the message
+	 */
 	private Color colorMessage;
+	
+	
+	
+	
 
 	/**
 	 * Constructor inherited from KermetaMessage 
@@ -70,6 +76,8 @@ public class ConsoleMessage extends KermetaMessage {
 	public Color getColorMessage() {
 		return this.colorMessage;
 	}
+	
+	
 
 }
 

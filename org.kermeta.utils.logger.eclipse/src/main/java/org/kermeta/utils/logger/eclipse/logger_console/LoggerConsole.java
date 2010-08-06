@@ -18,9 +18,12 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
+import org.eclipse.ui.console.IOConsoleInputStream;
 import org.eclipse.ui.console.IOConsoleOutputStream;
 import org.eclipse.ui.console.MessageConsole;
+import org.kermeta.language.api.KermetaMessage;
 import org.kermeta.utils.logger.eclipse.messages.ConsoleMessage;
+import org.kermeta.utils.logger.eclipse.messages.ConsoleMessageFactory;
 
 public class LoggerConsole extends MessageConsole {
 	
@@ -109,9 +112,10 @@ public class LoggerConsole extends MessageConsole {
 	 * Display a ConsoleMessage on the console
 	 * @param message : (ConsoleMessage) the message to display
 	 */
-	public void print(ConsoleMessage message) {
-		changeColor(message.getColorMessage());
-		String representation = getMessageRepresentation(message);
+	public void print(KermetaMessage message) {
+		ConsoleMessage consoleMessage = ConsoleMessageFactory.getInstance().createConsoleMessage(message);
+		changeColor(consoleMessage.getColorMessage());
+		String representation = getMessageRepresentation(consoleMessage);
 		String justified = justifyMessage(representation);
 		try {
 			((IOConsoleOutputStream)getOutputStream()).write(justified );
@@ -124,9 +128,10 @@ public class LoggerConsole extends MessageConsole {
 	/** Display a ConsoleMessage on the console and go to a new line after
 	 * @param message : (ConsoleMessage) the message to display
 	 */
-	public void println(ConsoleMessage message) {
-		changeColor(message.getColorMessage());
-		String representation = getMessageRepresentation(message);
+	public void println(KermetaMessage message) {
+		ConsoleMessage consoleMessage = ConsoleMessageFactory.getInstance().createConsoleMessage(message);
+		changeColor(consoleMessage.getColorMessage());
+		String representation = getMessageRepresentation(consoleMessage);
 		String justified = justifyMessage(representation);
 		try {
 			((IOConsoleOutputStream)getOutputStream()).write(justified + "\n" );
@@ -202,6 +207,7 @@ public class LoggerConsole extends MessageConsole {
 		this.activate();
 		String line = "";
 		System.out.println("begin read");
+		IOConsoleInputStream input = this.getInputStream();
 		BufferedReader reader = new BufferedReader( new InputStreamReader( this.getInputStream() ) ) ;
 		try {
 			line = reader.readLine();

@@ -16,6 +16,11 @@ import org.kermeta.art2.annotation.ProvidedPort;
 import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.framework.AbstractComponentType;
 //import org.kermeta.art2.framework.MessagePort;
+import org.kermeta.language.api.KermetaMessage;
+import org.kermeta.utils.logger.eclipse.logger_console.LoggerConsole;
+import org.kermeta.utils.logger.eclipse.messages.ConsoleMessage;
+import org.kermeta.utils.logger.eclipse.messages.ConsoleMessageFactory;
+
 
 @Provides({
     @ProvidedPort(name = "log", type=PortType.MESSAGE)
@@ -25,7 +30,9 @@ public class Art2ComponentEclipseLogger extends AbstractComponentType {
 
 	@Port(name="log",method="process")
     public void processMsg(Object o){
-        //System.out.println(o);
+		KermetaMessage kermetaMessage = (KermetaMessage) o;
+        LoggerConsole logger = new LoggerConsole("LoggerConsole",null);
+        logger.println(kermetaMessage);
     }
 }
 

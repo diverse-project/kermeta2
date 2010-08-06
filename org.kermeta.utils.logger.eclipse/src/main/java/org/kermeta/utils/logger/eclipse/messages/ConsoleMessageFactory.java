@@ -9,6 +9,8 @@
  */
 package org.kermeta.utils.logger.eclipse.messages;
 
+import org.eclipse.swt.graphics.Color;
+import org.kermeta.language.api.KermetaMessage;
 import org.kermeta.language.api.KermetaMessage.Level;
 
 
@@ -30,70 +32,16 @@ public class ConsoleMessageFactory {
 		return instance;
 	}
 	
-	/**
-	 * Create a new info message to display.
-	 * @param message : the message to display
-	 * @param qualifier : the name of the element related to the message
-	 * @return the new ConsoleMessage created
-	 */
-	public ConsoleMessage createInfoMessage(String message, String qualifier) {
-		ConsoleMessage messageInfo = new ConsoleMessage(message, qualifier, Level.INFO, ConsoleMessage.INFO);
-		return messageInfo;
-	}
-	
-	/**
-	 * Create a new debug message to display
-	 * @param message : the message to display
-	 * @param qualifier : the name of the element related to the message
-	 * @return the new ConsoleMessage created
-	 */
-	public ConsoleMessage createDebugMessage (String message, String qualifier){
-		ConsoleMessage messageDebug = new ConsoleMessage(message, qualifier,Level.DEBUG, ConsoleMessage.DEBUG);
-		return messageDebug;
-	}
-	
-	/**
-	 * Create a new warning message to display
-	 * @param message : the message to display
-	 * @param qualifier : the name of the element related to the message
-	 * @return the new ConsoleMessage created
-	 */
-	public ConsoleMessage createWarningMessage (String message, String qualifier) {
-		ConsoleMessage messageWarning = new ConsoleMessage(message, qualifier, Level.WARNING,ConsoleMessage.WARNING);
-		return messageWarning;
-	}
-	
-	/**
-	 * Create a new error message (without exception) to display
-	 * @param message : the message to display
-	 * @param qualifier : the name of the element related to the message
-	 * @return the new ConsoleMessage created
-	 */
-	public ConsoleMessage createErrorMessage (String message, String qualifier) {
-		ConsoleMessage messageError = new ConsoleMessage (message, qualifier, Level.ERROR, ConsoleMessage.ERROR);
-		return messageError;
-	}
-	
-	/**
-	 * Create a new error message (with exception) to display
-	 * @param message : the message to display
-	 * @param qualifier : the name of the element related to the message
-	 * @param exception : the exception caused by the qualifier
-	 * @return the new ConsoleMessage created
-	 */
-	public ConsoleMessage createErrorMessageWithException(String message, String qualifier, Throwable exception ){
-		ConsoleMessage errorException = new ConsoleMessage(message, qualifier, Level.ERROR, exception, ConsoleMessage.ERROR);
-		return errorException;
-	}
-	
-	/**
-	 * Create a message to display an object
-	 * @param object : the object to display
-	 * @return the new ConsoleMessage created
-	 */
-	public ConsoleMessage createMessageToDisplayObject(Object object) {
-		ConsoleMessage displayObject = new ConsoleMessage(object.toString(), "", Level.DEFAULT, ConsoleMessage.DEFAULT);
-		return displayObject;
+	public ConsoleMessage createConsoleMessage(KermetaMessage message) {
+		Color color = MapColorMessage.getInstance().getColor(message.getLevel());
+		ConsoleMessage consoleMessage;
+		if (!message.existException()) {
+		consoleMessage = new ConsoleMessage(message.getMessage(), message.getQualifier(),message.getLevel(), color);
+		}
+		else {
+			 consoleMessage = new ConsoleMessage(message.getMessage(), message.getQualifier(),message.getLevel(),message.getException(), color);
+		}
+		return consoleMessage;
 	}
 	
 	
