@@ -14,12 +14,13 @@ import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.PortType;
 import org.kermeta.art2.annotation.ProvidedPort;
 import org.kermeta.art2.annotation.Provides;
+import org.kermeta.art2.annotation.Start;
+import org.kermeta.art2.annotation.Stop;
 import org.kermeta.art2.framework.AbstractComponentType;
-//import org.kermeta.art2.framework.MessagePort;
 import org.kermeta.language.api.KermetaMessage;
 import org.kermeta.utils.logger.eclipse.logger_console.LoggerConsole;
-import org.kermeta.utils.logger.eclipse.messages.ConsoleMessage;
-import org.kermeta.utils.logger.eclipse.messages.ConsoleMessageFactory;
+
+
 
 
 @Provides({
@@ -27,11 +28,33 @@ import org.kermeta.utils.logger.eclipse.messages.ConsoleMessageFactory;
 })
 @ComponentType(libName = "standaloneLogger")
 public class Art2ComponentEclipseLogger extends AbstractComponentType {
-
-	@Port(name="log",method="sendMessage")
-    public void sendMessage(KermetaMessage kermetaMessage){
-        LoggerConsole logger = new LoggerConsole("LoggerConsole",null);
-        logger.println(kermetaMessage);
+	LoggerConsole logger;
+	
+	@Port(name="log",method="process")
+    public void process(Object o){ 
+		if (o instanceof KermetaMessage) {
+			KermetaMessage kermetaMessage = (KermetaMessage) o;
+			logger.println(kermetaMessage);
+		}
     }
+	
+	@Start
+	public void start(){
+		logger = new LoggerConsole("Logger Console",null);
+	}
+	
+	
+	
+	@Stop
+	public void stop(){
+		//logger.destroy();
+	}
+	
+	public LoggerConsole getLogger() {
+		return logger;
+	}
+	
+	
+	
 }
 

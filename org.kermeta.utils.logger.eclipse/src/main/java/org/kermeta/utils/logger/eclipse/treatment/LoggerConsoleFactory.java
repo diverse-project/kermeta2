@@ -14,13 +14,17 @@ import org.eclipse.ui.console.IConsoleFactory;
 import org.kermeta.language.api.KermetaMessage;
 import org.kermeta.language.api.KermetaMessageFactory;
 import org.kermeta.utils.logger.eclipse.logger_console.LoggerConsole;
+import org.kermeta.utils.logger.eclipse.logger_console.SingletonLoggerConsole;
 
 
 public class LoggerConsoleFactory implements IConsoleFactory {
+	
+	
 
 	public void openConsole() {
 		
-		LoggerConsole console = new LoggerConsole("Log console" , null);
+		//LoggerConsole console = new LoggerConsole("Log console" , null);
+		LoggerConsole console = SingletonLoggerConsole.getInstanceConsole();
 		
 		KermetaMessage message = KermetaMessageFactory.getInstance().createInfoMessage("info message", "qualifier");
 		KermetaMessage message2 = KermetaMessageFactory.getInstance().createDebugMessage("debug message", "qualifier");

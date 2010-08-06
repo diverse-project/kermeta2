@@ -20,3 +20,4 @@ Export-Package: org.kermeta.utils.logger.eclipse,
  org.kermeta.utils.logger.eclipse.logger_console,
  org.kermeta.utils.logger.eclipse.messages,
  org.kermeta.utils.logger.eclipse.treatment
+Require-Bundle: org.kermeta.language.api;bundle-version="2.0.0"
