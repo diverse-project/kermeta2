@@ -12,7 +12,7 @@ package org.kermeta.language.api;
 public class KermetaMessage {
 	
 	// Kind of message
-	public enum Level {ERROR, WARNING, INFO, DEBUG};
+	public enum Level {ERROR, WARNING, INFO, DEBUG,DEFAULT};
 	
 	// Message to transmit
 	private String message;
