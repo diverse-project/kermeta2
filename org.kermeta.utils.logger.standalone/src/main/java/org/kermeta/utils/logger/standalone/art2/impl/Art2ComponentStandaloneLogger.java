@@ -26,9 +26,8 @@ import org.kermeta.utils.logger.standalone.treatment.LoggerStandalone;
 @ComponentType(libName = "standaloneLogger")
 public class Art2ComponentStandaloneLogger extends AbstractComponentType {
 
-	@Port(name="log",method="process")
-    public void processMsg(Object o){
-		KermetaMessage kermetaMessage = (KermetaMessage) o;
+	@Port(name="log",method="sendMessage")
+    public void sendMessage(KermetaMessage kermetaMessage){
         LoggerStandalone logger = new LoggerStandalone();
         logger.displayMessage(kermetaMessage);
     }
