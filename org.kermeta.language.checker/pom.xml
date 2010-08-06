@@ -59,11 +59,6 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>org.kermeta.art2</groupId>
-            <artifactId>art2.framework</artifactId>
-            <version>${art2.version}</version>
-        </dependency>
-        <dependency>
             <groupId>${parent.groupId}</groupId>
             <artifactId>language.api</artifactId>
             <version>${kermeta.version}</version>
