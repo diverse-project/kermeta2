@@ -28,9 +28,8 @@ import org.kermeta.utils.logger.eclipse.messages.ConsoleMessageFactory;
 @ComponentType(libName = "standaloneLogger")
 public class Art2ComponentEclipseLogger extends AbstractComponentType {
 
-	@Port(name="log",method="process")
-    public void processMsg(Object o){
-		KermetaMessage kermetaMessage = (KermetaMessage) o;
+	@Port(name="log",method="sendMessage")
+    public void sendMessage(KermetaMessage kermetaMessage){
         LoggerConsole logger = new LoggerConsole("LoggerConsole",null);
         logger.println(kermetaMessage);
     }
