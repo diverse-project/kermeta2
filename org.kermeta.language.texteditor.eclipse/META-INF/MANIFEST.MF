@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,or
  ch.texteditor
 Build-Jdk: 1.6.0_18
 Bundle-Version: 2.0.0.SNAPSHOT
-Bnd-LastModified: 1281367351621
+Bnd-LastModified: 1281369447564
 Bundle-Activator: org.kermeta.language.texteditor.eclipse.Activator
 Bundle-ManifestVersion: 2
 Import-Package: org.kermeta.language.lexer,org.kermeta.language.texted

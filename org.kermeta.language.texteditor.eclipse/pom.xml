@@ -121,7 +121,7 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <!-- Add resources from the plugin structure -->
         <resources>
 	      	<resource>
