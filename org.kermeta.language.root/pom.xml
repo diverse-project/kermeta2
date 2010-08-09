@@ -19,5 +19,17 @@
         <kermeta.version>2.0.0-SNAPSHOT</kermeta.version>
     </properties>
 
-
+	<dependencies>
+		<!-- all kermeta component will probably need ART2 to compile -->
+        <dependency>
+            <groupId>org.kermeta.art2</groupId>
+            <artifactId>art2.annotation</artifactId>
+            <version>${art2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kermeta.art2</groupId>
+            <artifactId>art2.framework</artifactId>
+            <version>${art2.version}</version>
+        </dependency>
+	</dependencies>
 </project>
