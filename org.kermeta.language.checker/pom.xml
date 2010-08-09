@@ -1,4 +1,7 @@
 <?xml version="1.0"?>
+<!-- $Id: pom.xml 12028 2010-08-04 07:18:21Z francoisfouquet $ -->
+<!-- License    : EPL 									 -->
+<!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 -->
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
@@ -16,6 +19,9 @@
     </parent>
 
     <build>
+    	<resources>
+    		<resource><directory>src/main/resources</directory></resource>
+    	</resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -31,25 +37,14 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.0.0</version>
+                <version>2.1.0</version>
                 <extensions>true</extensions>
-                <!--
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                        <configuration>
-                            <instructions>
-                                <Export-Package>org.kermeta.language.checker</Export-Package>
-                                <Import-Package>org.osgi.framework</Import-Package>
-                                <Bundle-ClassPath>.</Bundle-ClassPath>
-                                <Bundle-SymbolicName>org.kermeta.language.checker;singleton:=true</Bundle-SymbolicName>
-                            </instructions>
-                        </configuration>
-                    </execution>-->
+                <configuration>
+                    <instructions>
+                        <Export-Package>org.kermeta.language.checker.*</Export-Package>
+                        <Bundle-SymbolicName>org.kermeta.language.checker</Bundle-SymbolicName>
+                    </instructions>
+                </configuration>
             </plugin>
 
 
@@ -63,7 +58,6 @@
             <artifactId>language.api</artifactId>
             <version>${kermeta.version}</version>
         </dependency>
-
     </dependencies>
 	
    

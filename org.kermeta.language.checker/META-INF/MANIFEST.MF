@@ -1,16 +1,20 @@
 Manifest-Version: 1.0
-Private-Package: org.kermeta.language.checker.art2.impl,org.kermeta.la
- nguage.checker
-Built-By: ffouquet
-Build-Jdk: 1.6.0_20
+Export-Package: org.kermeta.language.checker.art2.impl;uses:="org.kerm
+ eta.language.api,org.kermeta.language.structure,org.kermeta.art2.fram
+ ework,scala.collection.mutable,scala.reflect,org.kermeta.language.api
+ .port,scala,junit.framework",org.kermeta.language.checker;uses:="org.
+ kermeta.language.checker.art2.impl,junit.framework"
+Built-By: dvojtise
+Build-Jdk: 1.6.0_17
 Bundle-Version: 2.0.0.SNAPSHOT
-Tool: Bnd-0.0.311
+Tool: Bnd-0.0.357
 Bundle-Name: Kermeta :: Checker
-Bnd-LastModified: 1280933981805
+Bnd-LastModified: 1281363887236
 Created-By: Apache Maven Bundle Plugin
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.kermeta.language.checker
-Import-Package: kermeta.exceptions,org.kermeta.art2.framework,org.kerm
- eta.language.api.port,org.kermeta.language.structure,scala,scala.coll
- ection.mutable,scala.reflect
+Import-Package: junit.framework,org.kermeta.art2.framework,org.kermeta
+ .language.api,org.kermeta.language.api.port,org.kermeta.language.chec
+ ker,org.kermeta.language.checker.art2.impl,org.kermeta.language.struc
+ ture,scala,scala.collection.mutable,scala.reflect
 
