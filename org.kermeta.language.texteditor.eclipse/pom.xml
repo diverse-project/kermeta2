@@ -10,8 +10,8 @@
     <version>${art2.version}</version>
 
     <parent>
-        <artifactId>art2.root</artifactId>
-        <groupId>org.kermeta.art2</groupId>
+        <artifactId>language.root</artifactId>
+        <groupId>org.kermeta.language</groupId>
         <version>2</version>
     </parent>
 	
@@ -24,10 +24,10 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.kermeta.language</groupId>
-            <artifactId>language.parser.scala</artifactId>
-            <version>1.2</version>
-            <type>jar</type>
+            <groupId>${parent.groupId}</groupId>
+            <artifactId>language.loader.scala</artifactId>
+            <version>${kermeta.version}</version>
+            <type>bundle</type>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -122,6 +122,20 @@
 
     <build>
         <sourceDirectory>src</sourceDirectory>
+        <!-- Add resources from the plugin structure -->
+        <resources>
+	      	<resource>
+	        	<directory>.</directory>
+	        	<includes>
+	          		<include>plugin.xml</include>
+	          		<include>plugin.properties</include>
+	        	</includes>
+	      	</resource>
+	      	<resource>
+	        	<directory>icons</directory>
+	        	<targetPath>icons</targetPath>
+	      	</resource>
+	    </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.felix</groupId>
@@ -131,7 +145,8 @@
 
                 <configuration>
                     <instructions>
-                        <Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
+                        <Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
+                        <Bundle-Activator>org.kermeta.language.texteditor.eclipse.Activator</Bundle-Activator>
                         <Require-Bundle>
                 org.eclipse.core.runtime,
 		org.eclipse.core.resources,
@@ -156,6 +171,9 @@
                                                         scala.*,
                                                         org.osgi.framework
                         </Import-Package>
+                        <!-- add extra element in the manifest, copy them from this file
+                             ex: Bundle-ActivationPolicy: lazy -->
+                        <_include>resources/META-INF/MANIFEST-part.MF</_include>
                     </instructions>
                 </configuration>
 
