@@ -1,3 +1,8 @@
+<!-- $Id: $ -->
+<!-- License    : EPL                                    -->
+<!-- Project    : org.kermeta.language.texteditor.eclipse -->
+<!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
+<!-- Authors : Haja Rambelontsalama <hrambelo@irisa.fr> --> 
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -111,13 +116,11 @@
 			<artifactId>org.eclipse.text</artifactId>
 			<version>[3.5.0.v20090513-2000,)</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui.workbench.texteditor</artifactId>
 			<version>[3.5.0.v20090513-2000,)</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -180,8 +183,6 @@
 						<_include>resources/META-INF/MANIFEST-part.MF</_include>
 					</instructions>
 				</configuration>
-
-
 			</plugin>
 		</plugins>
 	</build>
