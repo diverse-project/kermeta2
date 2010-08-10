@@ -1,45 +1,110 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.kermeta.language</groupId>
-  <artifactId>builder.eclipse</artifactId>
-  <version>2.0.0-SNAPSHOT</version>
-  <name>Kermeta Builder</name>
-  <build>
-  	<sourceDirectory>src/main/java/</sourceDirectory>
-  	<resources>
-  		<resource>
-  			<directory>src/main/java</directory>
-  		</resource>
-  	</resources>
-  </build>
-  <dependencies>
-  	<dependency>
-  		<groupId>org.kermeta.language</groupId>
-  		<artifactId>language.parser.scala</artifactId>
-  		<version>1.2</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.mod4j.org.eclipse.core</groupId>
-  		<artifactId>resources</artifactId>
-  		<version>3.5.0</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.mod4j.org.eclipse.jface</groupId>
-  		<artifactId>text</artifactId>
-  		<version>3.5.0</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.mod4j.org.eclipse.ui</groupId>
-  		<artifactId>workbench</artifactId>
-  		<version>3.5.0</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
-  </dependencies>
+<!-- $Id: $ -->
+<!-- License    : EPL                                    -->
+<!-- Project    : org.kermeta.language.builder.eclipse -->
+<!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
+<!-- Authors : Haja Rambelontsalama <hrambelo@irisa.fr> --> 
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${parent.groupId}</groupId>
+	<artifactId>language.builder.eclipse</artifactId>
+	<version>${kermeta.version}</version>
+	<name>Kermeta Builder</name>
+	<packaging>bundle</packaging>
+
+	<parent>
+		<artifactId>language.root</artifactId>
+		<groupId>org.kermeta.language</groupId>
+		<version>2</version>
+	</parent>
+
+	<build>
+		<sourceDirectory>src/main/java/</sourceDirectory>
+		<!-- Add resources from the plugin structure -->
+		<resources>
+			<resource>
+				<directory>.</directory>
+				<includes>
+					<include>plugin.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>icons</directory>
+				<targetPath>icons</targetPath>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.1.0</version>
+				<extensions>true</extensions>
+
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
+						<Bundle-Activator>org.kermeta.language.builder.eclipse.Activator</Bundle-Activator>
+						<Require-Bundle>
+							org.eclipse.core.runtime,
+							org.eclipse.core.resources,
+							org.eclipse.ui,
+							org.eclipse.jface,
+							org.eclipse.ui.workbench
+                        </Require-Bundle>
+						<!-- use the ! for avoiding to import some packages that are already 
+							there with the Require-Bundle -->
+						<Import-Package>
+							!org.eclipse.core.*,
+							!org.eclipse.ui.*,
+							!org.eclipse.jface.*,
+							!org.kermeta.*,
+							!scala.*,
+							!org.osgi.framework
+                        </Import-Package>
+						<!-- add extra element in the manifest, copy them from this file ex: 
+							Bundle-ActivationPolicy: lazy -->
+						<_include>resources/META-INF/MANIFEST-part.MF</_include>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>${parent.groupId}</groupId>
+			<artifactId>language.loader.scala</artifactId>
+			<version>${kermeta.version}</version>
+			<type>bundle</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.core.runtime</artifactId>
+			<version>[3.5.0.v20090525,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.core.resources</artifactId>
+			<version>[3.5.2.R35x_v20091203-1235,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.ui</artifactId>
+			<version>[3.5.2.M20100120-0800,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.ui.workbench</artifactId>
+			<version>[3.5.2.M20100113-0800,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.jface</artifactId>
+			<version>[3.5.2.M20100120-0800,)</version>
+		</dependency>
+	</dependencies>
 </project>
