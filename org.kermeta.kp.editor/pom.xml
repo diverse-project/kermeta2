@@ -13,16 +13,32 @@
 	<name>Kermeta :: KP Editor</name>
 	<packaging>bundle</packaging>
 	<build>
-		<sourceDirectory>src/main/</sourceDirectory>
+		<!-- Manage mutli-source java project. Copy the src files inside the targetPath, the unique location for maven compiling
+		Drawback : once compiled the sources are not visible as java packages -->
+		<sourceDirectory>target/filtered-sources</sourceDirectory>
 		<outputDirectory>target/classes/</outputDirectory>
 		<resources>
+            <resource>
+                <targetPath>${basedir}/target/filtered-sources</targetPath>
+                <directory>src/main/java</directory>
+            </resource>
+            <resource>
+                <targetPath>${basedir}/target/filtered-sources</targetPath>
+                <directory>src/main/java-gen</directory>
+            </resource>
 			<resource>
-				<filtering>false</filtering>
-				<directory>src/main/java</directory>
+				<directory>.</directory>
+				<includes>
+					<include>plugin.xml</include>
+				</includes>
 			</resource>
 			<resource>
-				<filtering>false</filtering>
-				<directory>src/main/java-gen</directory>
+				<directory>icons</directory>
+				<targetPath>icons</targetPath>
+			</resource>
+			<resource>
+				<directory>css</directory>
+				<targetPath>css</targetPath>
 			</resource>
 		</resources>
 		<plugins>
@@ -43,6 +59,8 @@
 
 				<configuration>
 					<instructions>
+						<Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
+						<Bundle-Activator>org.kermeta.kp.editor.mopp.KptPlugin</Bundle-Activator>
 						<Export-Package>
 							org.kermeta.kp.editor,
 							org.kermeta.kp.editor.analysis,
@@ -54,13 +72,16 @@
 								".*" to also include sub packages  
 						-->
 						<Import-Package>
-							org.eclipse.emf.*,
-							org.osgi.framework.*,
-							org.antlr.runtime.*,
-							org.eclipse.core.*,
-							org.kermeta.kp
+							!org.eclipse.emf.*,
+							!org.osgi.framework.*,
+							!org.antlr.runtime.*,
+							!org.eclipse.core.*,
+							!org.kermeta.kp
 						</Import-Package>
 						<Bundle-ClassPath>.</Bundle-ClassPath>
+						<!-- add extra element in the manifest, copy them from this file ex: 
+							Bundle-ActivationPolicy: lazy -->
+						<_include>resources/META-INF/MANIFEST-part.MF</_include>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -122,7 +143,7 @@
 		<dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr-runtime</artifactId>
-			<version>[3.2,)</version>
+			<version>3.2</version>
 			<scope>compile</scope>
 			<optional>false</optional>
 		</dependency>
@@ -159,18 +180,4 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
-	<distributionManagement>
-		<repository>
-			<id>tipimouss-local-maven-repository</id>
-			<name>Tipimouss Local release repository</name>
-			<url>file:/var/www/html/maven2</url>
-			<uniqueVersion>false</uniqueVersion>
-		</repository>
-		<snapshotRepository>
-			<id>tipimouss-local-maven-snapshot-repository</id>
-			<name>Tipimouss Local snapshot repository</name>
-			<url>file:/var/www/html/maven2-snapshots</url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
-	</distributionManagement>
 </project>
