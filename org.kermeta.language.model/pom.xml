@@ -9,6 +9,8 @@
     <name>Kermeta :: Model</name>
     <build>
         <resources>
+            <!-- Manage mutli-source java project. Copy the src files inside the targetPath, the unique location for maven compiling
+			Drawback : once compiled the sources are not visible as java packages -->
             <resource>
                 <targetPath>${basedir}/target/filtered-sources</targetPath>
                 <directory>src/java</directory>
