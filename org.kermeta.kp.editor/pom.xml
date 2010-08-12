@@ -61,6 +61,10 @@
 					<instructions>
 						<Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
 						<Bundle-Activator>org.kermeta.kp.editor.mopp.KptPlugin</Bundle-Activator>
+						<Require-Bundle>
+							org.eclipse.core.runtime,
+							org.eclipse.core.resources
+                        </Require-Bundle>
 						<Export-Package>
 							org.kermeta.kp.editor,
 							org.kermeta.kp.editor.analysis,
@@ -69,14 +73,15 @@
 							org.kermeta.kp.editor.util
 						</Export-Package>
 						<!-- 	specify the packages that should be imported to correctly build the bundle (i.e <packaging>bundle<packaging> 
-								".*" to also include sub packages  
-						-->
+								".*" to also include sub packages
+							use the ! for avoiding to import some packages that are already 
+							there with the Require-Bundle -->
 						<Import-Package>
 							!org.eclipse.emf.*,
 							!org.osgi.framework.*,
 							!org.antlr.runtime.*,
-							!org.eclipse.core.*,
-							!org.kermeta.kp
+							org.kermeta.kp,
+							!org.eclipse.core.*
 						</Import-Package>
 						<Bundle-ClassPath>.</Bundle-ClassPath>
 						<!-- add extra element in the manifest, copy them from this file ex: 
@@ -180,4 +185,18 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
+	<distributionManagement>
+		<repository>
+			<id>tipimouss-local-maven-repository</id>
+			<name>Tipimouss Local release repository</name>
+			<url>file:/var/www/html/maven2</url>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>tipimouss-local-maven-snapshot-repository</id>
+			<name>Tipimouss Local snapshot repository</name>
+			<url>file:/var/www/html/maven2-snapshots</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
