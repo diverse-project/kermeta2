@@ -1,6 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* $Id$
+ * Project : org.kermeta.language.loader.scalaKMT
+ * License : EPL
+ * Copyright : IRISA / INRIA/ Universite de Rennes 1
+ * ----------------------------------------------------------------------------
+ * Creation date : 2010
+ * Authors : 
+ * 		Francois Fouquet <ffouquet@irisa.fr>
+ * 		Didier Vojtisek <didier.vojtisek@inria.fr>
  */
 
 package org.kermeta.language.lexer
@@ -23,7 +29,7 @@ class KMLexical extends Lexical with KTokens {
   def comment : Parser[KToken] = (
    positioned('/' ~ '*' ~ mlcomment ^^ { case _ ~ _ ~ mlcomment => mlcomment })
    |
-   '/' ~> '/' ~> rep( chrExcept(EofCh, '\n') ) ^^ { case content => Comment(content.mkString) }
+   positioned('/' ~> '/' ~> rep( chrExcept(EofCh, '\n') ) ^^ { case content => Comment(content.mkString) })
   //  | '/' ~ '*' ~ failure("unclosed comment") ^^^ {case _ => ERR_MLComment("unclosed comment") }
    )
 
@@ -63,9 +69,9 @@ class KMLexical extends Lexical with KTokens {
 
 // see `token' in `Scanners'
   def token: Parser[Token] =
-    comment ^^{ case c => println("COMMENT="+c.pos.longString+"---"); c } |
-    ( identChar ~ rep( identChar | digit )              ^^ { case first ~ rest => processIdent(first :: rest mkString "") }
-     | digit ~ rep( digit )                              ^^ { case first ~ rest => NumericLit(first :: rest mkString "") }
+    positioned(comment ^^{ case c => println("COMMENT="+c.pos.longString+"---"); c }) | 
+    ( positioned(identChar ~ rep( identChar | digit )              ^^ { case first ~ rest => processIdent(first :: rest mkString "") })
+     | positioned(digit ~ rep( digit )                              ^^ { case first ~ rest => NumericLit(first :: rest mkString "") })
      | positioned('\'' ~ rep( chrExcept('\'', '\n', EofCh) ) ~ '\'' ^^ { case '\'' ~ chars ~ '\'' => StringLit(chars mkString "") })
      | positioned('\"' ~ rep( chrExcept('\"', '\n', EofCh) ) ~ '\"' ^^ { case '\"' ~ chars ~ '\"' => StringLit(chars mkString "") })
      | EofCh                                             ^^^ EOF
@@ -86,7 +92,7 @@ class KMLexical extends Lexical with KTokens {
     // construct parser for delimiters by |'ing together the parsers for the individual delimiters,
     // starting with the longest one -- otherwise a delimiter D will never be matched if there is
     // another delimiter that is a prefix of D
-    def parseDelim(s: String): Parser[Token] = accept(s.toList) ^^ { x => Delimiter(s) }
+    def parseDelim(s: String): Parser[Token] = positioned(accept(s.toList) ^^ { x => Delimiter(s) })
 
     val d = new Array[String](delimiters.size)
     delimiters.copyToArray(d, 0)
