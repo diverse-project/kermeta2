@@ -53,7 +53,8 @@
 							org.eclipse.core.resources,
 							org.eclipse.ui,
 							org.eclipse.jface,
-							org.eclipse.ui.workbench
+							org.eclipse.ui.workbench,
+							org.eclipse.ui.ide
                         </Require-Bundle>
 						<!-- use the ! for avoiding to import some packages that are already 
 							there with the Require-Bundle -->
@@ -61,9 +62,10 @@
 							!org.eclipse.core.*,
 							!org.eclipse.ui.*,
 							!org.eclipse.jface.*,
-							!org.kermeta.*,
-							!scala.*,
-							!org.osgi.framework
+							org.kermeta.*,
+							scala.*,
+							!org.osgi.framework.*,
+							org.eclipse.ui.ide
                         </Import-Package>
 						<!-- add extra element in the manifest, copy them from this file ex: 
 							Bundle-ActivationPolicy: lazy -->
@@ -105,6 +107,11 @@
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.jface</artifactId>
 			<version>[3.5.2.M20100120-0800,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.ui.ide</artifactId>
+			<version>3.5.2.M20100113-0800</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -53,5 +53,9 @@
             value="true">
       </persistent>
    </extension>
-
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+	 	<image 
+	 		id="kermetaNature" natureId="org.kermeta.language.builder.eclipse.KermetaNature" icon="icons/projectNature.gif">
+	 	</image>
+	</extension>
 </plugin>

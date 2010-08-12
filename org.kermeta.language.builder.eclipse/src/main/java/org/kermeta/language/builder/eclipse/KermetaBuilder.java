@@ -34,6 +34,7 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 		 * @see org.eclipse.core.resources.IResourceDeltaVisitor#visit(org.eclipse.core.resources.IResourceDelta)
 		 */
 		public boolean visit(IResourceDelta delta) throws CoreException {
+			//System.out.println("in building");
 			IResource resource = delta.getResource();
 	        //send events to Kernel Kworkflow ie normalisation with ART
 			//send modification events from workspace and send to KWF

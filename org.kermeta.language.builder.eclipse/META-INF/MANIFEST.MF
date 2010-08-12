@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
-Export-Package: org.kermeta.language.builder.eclipse
+Export-Package: org.kermeta.language.builder.eclipse;uses:="org.kermet
+ a.scala.parser,scala"
 Ignore-Package: org.eclipse.jface.action,org.eclipse.core.runtime,org.
- kermeta.language.builder.eclipse,org.eclipse.jface.resource,org.kerme
- ta.scala.parser,org.eclipse.ui,org.eclipse.core.resources,org.eclipse
- .jface.viewers,org.eclipse.ui.plugin,org.osgi.framework,scala
+ eclipse.jface.resource,org.eclipse.ui,org.eclipse.core.resources,org.
+ eclipse.jface.viewers,org.eclipse.ui.plugin,org.osgi.framework
 Bundle-ActivationPolicy: lazy
 Built-By: hrambelo
 Tool: Bnd-0.0.357
@@ -11,12 +11,15 @@ Bundle-Name: Kermeta Builder
 Bundle-Localization: plugin
 Created-By: Apache Maven Bundle Plugin
 Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,or
- g.eclipse.ui,org.eclipse.jface,org.eclipse.ui.workbench
+ g.eclipse.ui,org.eclipse.jface,org.eclipse.ui.workbench,org.eclipse.u
+ i.ide
 Build-Jdk: 1.6.0_18
 Bundle-Version: 2.0.0.SNAPSHOT
-Bnd-LastModified: 1281448645027
+Bnd-LastModified: 1281606061982
 Bundle-Activator: org.kermeta.language.builder.eclipse.Activator
 Bundle-ManifestVersion: 2
+Import-Package: org.eclipse.ui.ide,org.kermeta.language.builder.eclips
+ e,org.kermeta.scala.parser,scala
 Bundle-SymbolicName: org.kermeta.language.builder.eclipse;singleton:=t
  rue
 
