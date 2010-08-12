@@ -1,4 +1,4 @@
-/* $Id:  $
+/* $Id$
  * Project    : org.kermeta.utils.logger.standalone
  * File       : Art2ComponentStandaloneLogger.java
  * License    : EPL
