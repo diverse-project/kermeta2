@@ -7,11 +7,11 @@ public class KermetaEditor extends TextEditor {
 	private KermetaColorManager colorManager;
 	
 	public KermetaEditor(){
-
+		super();
 		colorManager = new KermetaColorManager();
-		setDocumentProvider(new org.eclipse.ui.editors.text.TextFileDocumentProvider());
-		
+
 		setSourceViewerConfiguration(new KermetaEditorConfiguration(this, colorManager));
+		setDocumentProvider(new org.eclipse.ui.editors.text.TextFileDocumentProvider());
 	}
 	public void dispose() {
 		colorManager.dispose();
