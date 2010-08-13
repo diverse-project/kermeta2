@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.kermeta.utils.logger.standalone</name>
+	<name>org.kermeta.utils.logger.stdout</name>
 	<comment></comment>
 	<projects>
 	</projects>
