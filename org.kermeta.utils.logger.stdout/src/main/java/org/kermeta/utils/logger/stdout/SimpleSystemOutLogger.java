@@ -44,7 +44,7 @@ public class SimpleSystemOutLogger {
 			switch (uMessage.getUserLevel()) {
 			case DEVELOPPER:
 				level = DEBUG;
-				if(pbMsg.getSeverity().equals(ProblemMessage.Severity.ERROR)){
+				if(pbMsg.getSeverity() == ProblemMessage.Severity.ERROR){
 					adaptedMessage = "ERROR: " + uMessage.getMessage();
 				}
 				else{
@@ -53,7 +53,7 @@ public class SimpleSystemOutLogger {
 				break;
 			case ENDUSER:
 			default:
-				if(pbMsg.getSeverity().equals(ProblemMessage.Severity.ERROR)){
+				if(pbMsg.getSeverity() == ProblemMessage.Severity.ERROR){
 					level = ERROR;
 					adaptedMessage = uMessage.getMessage();
 				}
