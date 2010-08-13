@@ -9,6 +9,8 @@
 */
 package org.kermeta.language.api.messaging;
 
+import org.kermeta.traceability.Reference;
+
 
 /**
  * Message for problem events
@@ -24,7 +26,7 @@ public class ProblemMessage extends UnifiedMessage{
 	 * A message processing component may use this information to enhance the display 
 	 * (marking in the user interface, enhanced message, use of traceability, ...)
 	 */
-	protected Object causeObject=null;
+	protected org.kermeta.traceability.Reference causeObject=null;
 	
 	/**
 	 * severity of the problem
@@ -46,7 +48,7 @@ public class ProblemMessage extends UnifiedMessage{
 			String message, 
 			UserLevel userLevel, 
 			Throwable senderTrace, 
-			Object causeObject
+			Reference causeObject
 			) {
 		super(message, userLevel, messageGroup, senderTrace);
 		this.causeObject = causeObject;
@@ -63,7 +65,7 @@ public class ProblemMessage extends UnifiedMessage{
 	/**
 	 * @param causeObject the causeObject to set
 	 */
-	public void setCauseObject(Object causeObject) {
+	public void setCauseObject(Reference causeObject) {
 		this.causeObject = causeObject;
 	}
 
