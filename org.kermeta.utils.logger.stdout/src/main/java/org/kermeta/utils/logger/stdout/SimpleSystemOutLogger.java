@@ -53,12 +53,13 @@ public class SimpleSystemOutLogger {
 				break;
 			case ENDUSER:
 			default:
-				level = INFO;
 				if(pbMsg.getSeverity().equals(ProblemMessage.Severity.ERROR)){
-					adaptedMessage = "ERROR: " + uMessage.getMessage();
+					level = ERROR;
+					adaptedMessage = uMessage.getMessage();
 				}
 				else{
-					adaptedMessage = "WARNING: " + uMessage.getMessage();
+					level = WARNING;
+					adaptedMessage = uMessage.getMessage();
 				}
 				break;
 			}
