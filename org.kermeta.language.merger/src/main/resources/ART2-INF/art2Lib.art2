@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:art2="http://art/2.0">
+  <componentTypes name="MergerComponent" factoryBean="org.kermeta.language.merger.art2.impl.MergerComponentFactory">
+    <provided name="mergerPort" ref="//@portTypes.0">
+      <mappings beanMethodName="merge" serviceMethodName="merge"/>
+    </provided>
+  </componentTypes>
+  <dataTypes name="org.kermeta.language.structure.ModelingUnit"/>
+  <dataTypes name="java.lang.String"/>
+  <dataTypes name="java.util.Collection" genericTypes="//@dataTypes.1"/>
+  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortKmMerger">
+    <operations name="merge" returnType="//@dataTypes.0">
+      <parameters name="arg0" type="//@dataTypes.0"/>
+      <parameters name="arg1" type="//@dataTypes.0"/>
+      <parameters name="arg2" type="//@dataTypes.2"/>
+    </operations>
+  </portTypes>
+  <librariy name="org.kermeta.language.MergerComponent" groupName="org.kermeta.language" unitName="language.merger" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
+</art2:ContainerRoot>

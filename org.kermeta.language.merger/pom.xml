@@ -1,123 +1,58 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<parent>
-		<artifactId>language.root</artifactId>
-		<groupId>org.kermeta.language</groupId>
-		<version>2</version>
-	</parent>
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.kermeta.language</groupId>
-	<artifactId>language.merger</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
-	<packaging>bundle</packaging>
-	<name>Kermeta :: Merger</name>
-	<build>
-		<sourceDirectory>src/main/java</sourceDirectory>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
-			<plugin>
+
+    <parent>
+        <artifactId>language.root</artifactId>
+        <groupId>org.kermeta.language</groupId>
+        <version>2</version>
+    </parent>
+
+    <groupId>${parent.groupId}</groupId>
+    <version>${kermeta.version}</version>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>language.merger</artifactId>
+    <packaging>bundle</packaging>
+    <name>Kermeta :: Merger</name>
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <plugins>
+            <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <version>2.0.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>org.kermeta.language.merger
-                        </Export-Package>
-                        <Import-Package>
-						org.osgi.framework
-                        </Import-Package>
+                        <Export-Package>org.kermeta.language.merger</Export-Package>
+                        <Import-Package>org.osgi.framework</Import-Package>
                         <Bundle-ClassPath>.</Bundle-ClassPath>
                         <Bundle-SymbolicName>org.kermeta.language.merger;singleton:=true</Bundle-SymbolicName>
                     </instructions>
                 </configuration>
             </plugin>
-		</plugins>
-	</build>
-	<dependencies>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>4.2.0</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.kermeta.art2</groupId>
-			<artifactId>art2.framework</artifactId>
-			<version>1.0.2-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.kermeta.art2</groupId>
+            <artifactId>art2.framework</artifactId>
+            <version>${art2.version}</version>
+        </dependency>
+        <dependency>
             <groupId>${parent.groupId}</groupId>
             <artifactId>language.model</artifactId>
             <version>${kermeta.version}</version>
         </dependency>
         <dependency>
-        	<groupId>org.kermeta.language</groupId>
-        	<artifactId>language.api</artifactId>
-        	<version>2.0.0-SNAPSHOT</version>
+            <groupId>${parent.groupId}</groupId>
+            <artifactId>language.api</artifactId>
+            <version>${kermeta.version}</version>
         </dependency>
-        <dependency>
-			<groupId>org.kermeta.art2</groupId>
-			<artifactId>art2.annotation</artifactId>
-			<version>2.0.0-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
-	<repositories>
-        <repository>
-            <id>kermetaSnapshots</id>
-            <name>Kermeta Snapshots</name>
-            <releases>
-                <enabled>false</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-            <url>http://tipimouss.irisa.fr/maven2private-snapshots</url>
-            <layout>default</layout>
-        </repository>
-        <repository>
-            <id>kermeta</id>
-            <name>Kermeta</name>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-            <url>http://www.kermeta.org/maven2</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
-	<distributionManagement>
-		<repository>
-			<id>tipimouss-local-maven-repository</id>
-			<name>Tipimouss Local release repository</name>
-			<url>file:/var/www/html/maven2</url>
-			<uniqueVersion>false</uniqueVersion>
-		</repository>
-		<snapshotRepository>
-			<id>tipimouss-local-maven-snapshot-repository</id>
-			<name>Tipimouss Local  snapshot repository</name>
-			<url>file:/var/www/html/maven2-snapshots</url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
-	</distributionManagement>
+    </dependencies>
+
+
 </project>
