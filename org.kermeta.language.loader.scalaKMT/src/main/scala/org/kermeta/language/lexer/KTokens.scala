@@ -10,12 +10,14 @@
 
 package org.kermeta.language.lexer
 
+import scala.util.parsing.input._
+import scala.util.parsing.combinator.Parsers
 import scala.util.parsing.combinator.token.Tokens
 import scala.util.parsing.input.OffsetPosition
 import scala.util.parsing.input.Positional
 
 
-trait KTokens extends Tokens {
+trait KTokens extends Tokens with Parsers {
 
   abstract case class KToken extends Token with Positional {
     def getOffset = this.pos.asInstanceOf[OffsetPosition].offset
@@ -64,5 +66,12 @@ trait KTokens extends Tokens {
   case class Identifier(chars: String) extends KToken {
     override def toString = chars
   }
+
+  case class KEOF extends KToken {
+    override def toString = ""
+    override def chars = ' '.toString
+  }
+
+  case class KError(override val msg: String, override val next: Input) extends Failure(msg, next)
 
 }

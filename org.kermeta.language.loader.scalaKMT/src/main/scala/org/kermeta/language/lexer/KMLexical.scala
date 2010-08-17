@@ -21,10 +21,18 @@ import scala.util.parsing.input.Position
 
 class KMLexical extends Lexical with KTokens {
 
+  def kfailure(msg: String) = Parser{ in => KError(msg, in) }
+  //def keof : Parser[KToken] = Parser{in => eof ^^ { case _ => Identifier("") } }
+
+  def eof = elem("eof", ch => ch == EofCh)
+  protected def kident(name: String) : KToken = if (reserved contains name) Keyword(name) else Identifier(name)
+  override def whitespace: Parser[Any] = rep(whitespaceChar)
+
+
   val reserved : HashSet[String] = HashSet("package","attribute","require","using","class","aspect","abstract","inv","operation","method","is","do","end","var","from","until","loop","if","then","else","init","true","false")
   val delimiters : HashSet[String] = HashSet("=",";","::","@","{","}","(",")",":",":=",".",",","|","==","!=","-","+","!","*","/","<","<=",">",">=")
 
-  override def whitespace: Parser[Any] = rep(whitespaceChar)
+  
 
   def comment : Parser[KToken] = (
    positioned('/' ~ '*' ~ mlcomment ^^ { case _ ~ _ ~ mlcomment => mlcomment })
@@ -66,43 +74,36 @@ class KMLexical extends Lexical with KTokens {
    */
 
 
-
 // see `token' in `Scanners'
-  def token: Parser[Token] =
-    positioned(comment ^^{ case c => println("COMMENT="+c.pos.longString+"---"); c }) | 
-    ( positioned(identChar ~ rep( identChar | digit )              ^^ { case first ~ rest => processIdent(first :: rest mkString "") })
+  def token: Parser[KToken] = (
+      positioned( identChar ~ rep( identChar | digit ) ^^ { case first ~ rest => kident(first :: rest mkString "") } )
+     | positioned(comment ^^{ case c => c })
      | positioned(digit ~ rep( digit )                              ^^ { case first ~ rest => NumericLit(first :: rest mkString "") })
      | positioned('\'' ~ rep( chrExcept('\'', '\n', EofCh) ) ~ '\'' ^^ { case '\'' ~ chars ~ '\'' => StringLit(chars mkString "") })
      | positioned('\"' ~ rep( chrExcept('\"', '\n', EofCh) ) ~ '\"' ^^ { case '\"' ~ chars ~ '\"' => StringLit(chars mkString "") })
-     | EofCh                                             ^^^ EOF
-     | '\'' ~> failure("unclosed string literal")
-     | '\"' ~> failure("unclosed string literal")
-     | delim
+     | positioned(eof ^^ {case _ => KEOF() })
+     | positioned('\'' ~> kfailure("unclosed string literal") )
+     | positioned('\"' ~> kfailure("unclosed string literal") )
+     | positioned(delim)
      /* | floatingToken*/
-     | failure("illegal character")
+     |  positioned(kfailure("illegal character"))
     )
 
-
-
-
-  protected def processIdent(name: String) =
-    if (reserved contains name) Keyword(name) else Identifier(name)
-
-  private lazy val _delim: Parser[Token] = {
+  private lazy val _delim: Parser[KToken] = {
     // construct parser for delimiters by |'ing together the parsers for the individual delimiters,
     // starting with the longest one -- otherwise a delimiter D will never be matched if there is
     // another delimiter that is a prefix of D
-    def parseDelim(s: String): Parser[Token] = positioned(accept(s.toList) ^^ { x => Delimiter(s) })
+    def parseDelim(s: String): Parser[KToken] = positioned(accept(s.toList) ^^ { x => Delimiter(s) })
 
     val d = new Array[String](delimiters.size)
     delimiters.copyToArray(d, 0)
     scala.util.Sorting.quickSort(d)
-    (d.toList map parseDelim).foldRight(failure("no matching delimiter"): Parser[Token])((x, y) => y | x)
+    (d.toList map parseDelim).foldRight(kfailure("no matching delimiter"): Parser[KToken])((x, y) => y | x)
   }
-  protected def delim: Parser[Token] = _delim
+  protected def delim: Parser[KToken] = _delim
 
-  private def lift[T](f: String => T)(xs: List[Char]): T = f(xs.mkString("", "", ""))
-  private def lift2[T](f: String => T)(p: ~[Char, List[Char]]): T = lift(f)(p._1 :: p._2)
+ // private def lift[T](f: String => T)(xs: List[Char]): T = f(xs.mkString("", "", ""))
+//  private def lift2[T](f: String => T)(p: ~[Char, List[Char]]): T = lift(f)(p._1 :: p._2)
 
 
   
