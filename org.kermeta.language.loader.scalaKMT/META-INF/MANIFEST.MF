@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Export-Package: org.kermeta.language.lexer;uses:="scala.util.parsing.c
  ombinator.lexical,scala.reflect,scala.util.parsing.combinator.token,s
  cala,scala.util.parsing.combinator,scala.runtime,scala.collection,sca
- la.collection.mutable,scala.collection.immutable,scala.util.parsing.i
- nput,scala.math,scala.util,scala.collection.generic",org.kermeta.scal
+ la.collection.mutable,scala.collection.immutable,scala.math,scala.uti
+ l,scala.collection.generic,scala.util.parsing.input",org.kermeta.scal
  a.parser.art2.impl;uses:="org.kermeta.scala.parser,org.kermeta.langua
  ge.structure,org.kermeta.art2.framework,org.kermeta.language.api.port
  ,scala",org.kermeta.scala.parser.sub;uses:="org.kermeta.language.lexe
@@ -25,7 +25,7 @@ Build-Jdk: 1.6.0_20
 Bundle-Version: 2.0.0.SNAPSHOT
 Tool: Bnd-0.0.357
 Bundle-Name: Kermeta :: Loader :: KMT
-Bnd-LastModified: 1282045472494
+Bnd-LastModified: 1282058350959
 Created-By: Apache Maven Bundle Plugin
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.kermeta.language.loader.scala

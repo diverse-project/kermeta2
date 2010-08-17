@@ -21,7 +21,7 @@ import scala.util.parsing.input.Position
 
 class KMLexical extends Lexical with KTokens {
 
-  def kfailure(msg: String) = Parser{ in => KError(msg, in) }
+  //def kfailure(msg: String) = Parser{ in => KError(msg, in) }
   //def keof : Parser[KToken] = Parser{in => eof ^^ { case _ => Identifier("") } }
 
   def eof = elem("eof", ch => ch == EofCh)
@@ -81,11 +81,11 @@ class KMLexical extends Lexical with KTokens {
      | positioned('\'' ~ rep( chrExcept('\'', '\n', EofCh) ) ~ '\'' ^^ { case '\'' ~ chars ~ '\'' => StringLit(chars mkString "") })
      | positioned('\"' ~ rep( chrExcept('\"', '\n', EofCh) ) ~ '\"' ^^ { case '\"' ~ chars ~ '\"' => StringLit(chars mkString "") })
      | positioned(eof ^^ {case _ => KEOF() })
-     | positioned('\'' ~> kfailure("unclosed string literal") )
-     | positioned('\"' ~> kfailure("unclosed string literal") )
+     | positioned('\'' ~> failure("unclosed string literal") )
+     | positioned('\"' ~> failure("unclosed string literal") )
      | positioned(delim)
      /* | floatingToken*/
-     |  positioned(kfailure("illegal character"))
+     |  positioned(failure("illegal character"))
     )
 
   private lazy val _delim: Parser[KToken] = {
@@ -97,7 +97,7 @@ class KMLexical extends Lexical with KTokens {
     val d = new Array[String](delimiters.size)
     delimiters.copyToArray(d, 0)
     scala.util.Sorting.quickSort(d)
-    (d.toList map parseDelim).foldRight(kfailure("no matching delimiter"): Parser[KToken])((x, y) => y | x)
+    (d.toList map parseDelim).foldRight(failure("no matching delimiter"): Parser[KToken])((x, y) => y | x)
   }
   protected def delim: Parser[KToken] = _delim
 
