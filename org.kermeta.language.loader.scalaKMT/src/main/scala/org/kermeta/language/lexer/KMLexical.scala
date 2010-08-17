@@ -21,6 +21,11 @@ import scala.util.parsing.input.Position
 
 class KMLexical extends Lexical with KTokens {
 
+
+  /** This token is produced by a scanner {@see Scanner} when scanning failed. */
+  override def errorToken(msg: String): KToken = new KError(msg)
+
+
   //def kfailure(msg: String) = Parser{ in => KError(msg, in) }
   //def keof : Parser[KToken] = Parser{in => eof ^^ { case _ => Identifier("") } }
 

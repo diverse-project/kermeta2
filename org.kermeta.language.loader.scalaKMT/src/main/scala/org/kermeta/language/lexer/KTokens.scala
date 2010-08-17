@@ -72,6 +72,6 @@ trait KTokens extends Tokens with Parsers {
     override def chars = ' '.toString
   }
 
- // case class KError(override val msg: String, override val next: Input) extends KToken
+  case class KError(chars: String) extends KToken
 
 }
