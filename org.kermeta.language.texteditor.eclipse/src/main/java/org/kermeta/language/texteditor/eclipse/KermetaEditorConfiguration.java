@@ -1,3 +1,12 @@
+/* $Id: KMLexer.scala 11856 2010-07-23 12:41:04Z dvojtise $
+ * Project    : org.kermeta.language.texteditor.eclipse
+ * License    : EPL
+ * Copyright  : IRISA / INRIA / Universite de Rennes 1
+ * -------------------------------------------------------------------
+ * Creation date : 2010
+ * Authors : 
+ *           Francois Fouquet 
+ */
 package org.kermeta.language.texteditor.eclipse;
 
 import org.eclipse.ui.editors.text.TextSourceViewerConfiguration;
@@ -21,7 +30,7 @@ public class KermetaEditorConfiguration extends TextSourceViewerConfiguration {
 		org.eclipse.jface.text.presentation.PresentationReconciler reconciler = new org.eclipse.jface.text.presentation.PresentationReconciler();
 		
 		
-		org.eclipse.jface.text.rules.DefaultDamagerRepairer repairer = new org.eclipse.jface.text.rules.DefaultDamagerRepairer(getScanner());
+		ScannerBasedDamagerRepairer repairer = new ScannerBasedDamagerRepairer(getScanner());
 		reconciler.setDamager(repairer, org.eclipse.jface.text.IDocument.DEFAULT_CONTENT_TYPE);
 		reconciler.setRepairer(repairer, org.eclipse.jface.text.IDocument.DEFAULT_CONTENT_TYPE);
 		return reconciler;

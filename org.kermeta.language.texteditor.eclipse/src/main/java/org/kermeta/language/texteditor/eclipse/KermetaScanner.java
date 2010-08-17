@@ -1,3 +1,12 @@
+/* $Id: KMLexer.scala 11856 2010-07-23 12:41:04Z dvojtise $
+ * Project    : org.kermeta.language.texteditor.eclipse
+ * License    : EPL
+ * Copyright  : IRISA / INRIA / Universite de Rennes 1
+ * -------------------------------------------------------------------
+ * Creation date : 2010
+ * Authors : 
+ *           Francois Fouquet 
+ */
 package org.kermeta.language.texteditor.eclipse;
 
 import org.eclipse.jface.text.IDocument;
@@ -12,7 +21,7 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 
 	private KermetaColorManager colorManager ;
 	private org.kermeta.language.texteditor.eclipse.KermetaEditor editor;
-	private int estimatedOffset;
+	//private int estimatedOffset;
 	private KMLexer lexer = null;
 	private org.kermeta.language.lexer.KTokens.KToken actualToken = null;
 	
@@ -21,10 +30,11 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 		editor = _editor;
 	}
 	
+	//private int rangeOffset = 0;
+	
 //	@Override
 	public void setRange(IDocument document, int offset, int length) {
-		
-		this.estimatedOffset = offset;
+	
 		try {
 			// Note: do not try to parse only this range, recheck the whole document (more reliable)
 			String content = document.get(0, document.getLength());			
@@ -36,29 +46,17 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 
 //	@Override
 	public IToken nextToken() {
-		try{
-			 if(actualToken != null){
-				 estimatedOffset = estimatedOffset + actualToken.toString().length();
-			}
-			else{
-				estimatedOffset = 0;
-			}
-			actualToken = (org.kermeta.language.lexer.KTokens.KToken) lexer.nextToken();
-			//offset = actualToken.getOffset();
-			System.out.println(actualToken.getClass().getSimpleName()+"-"+actualToken.toString());
-		} catch (Exception e){
-			return org.eclipse.jface.text.rules.Token.EOF;
-		}
-		if (actualToken == null) {
+		actualToken = (org.kermeta.language.lexer.KTokens.KToken) lexer.nextToken();
+		
+		if (actualToken.getClass().getSimpleName().equals("KEOF")) {
 			return org.eclipse.jface.text.rules.Token.EOF;
 		}
 		
 		String tokenName = actualToken.getClass().getSimpleName();
+		
+		
 		RGB color = new RGB(0,0,0);
 		int style = org.eclipse.swt.SWT.NORMAL;
-		if(tokenName.equals("Identifier")){
-			color=new RGB(0,0,0);
-		}
 		if(tokenName.equals("StringLit")){
 			color=new RGB(0,0,255);
 		}
@@ -79,28 +77,19 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 		}
 		
 		
-		
+		System.out.println(tokenName+"\t Offset="+getTokenOffset()+"; Length="+getTokenLength() +"; -> " +actualToken.toString());
 		Token token =  new Token(new TextAttribute(colorManager.getColor(color),null,style)) ;
-		System.out.println("    Offset="+getTokenOffset()+"; Length="+getTokenLength() +"; -> " +actualToken.toString());
 		
 		return token;
 	}
 
-//	@Override
+	//	@Override
 	public int getTokenOffset() {
+		return actualToken.getOffset();
 		
-		if(actualToken.pos() instanceof scala.util.parsing.input.NoPosition$){
-			System.out.println("Warn : use estimitatedOffset for ["+ actualToken.productPrefix()+"]"+actualToken.toString());
-			return estimatedOffset;
-		}
-		else {
-			// reset estimatedOffset to the real one
-			estimatedOffset = actualToken.getOffset();
-			return estimatedOffset;
-		}
 	}
 
-//	@Override
+	//	@Override
 	public int getTokenLength() {
 		return actualToken.toString().length();
 	}
