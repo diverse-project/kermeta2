@@ -38,14 +38,13 @@ class KMLexical extends Lexical with KTokens {
    positioned('/' ~ '*' ~ mlcomment ^^ { case _ ~ _ ~ mlcomment => mlcomment })
    |
    positioned('/' ~> '/' ~> rep( chrExcept(EofCh, '\n') ) ^^ { case content => Comment(content.mkString) })
-  //  | '/' ~ '*' ~ failure("unclosed comment") ^^^ {case _ => ERR_MLComment("unclosed comment") }
    )
 
 
   protected def mlcomment: Parser[MLComment] = (
-    positioned('*' ~ '/'  ^^ { case _ => MLComment("")  })
+    '*' ~ '/'  ^^ { case _ => MLComment("")  }
     | 
-    positioned(chrExcept(EofCh) ~ mlcomment ^^ { case c ~ rc => var ml = MLComment(c+rc.chars) ; ml  })
+    chrExcept(EofCh) ~ mlcomment ^^ { case c ~ rc => var ml = MLComment(c+rc.chars) ; ml  }
   )
 
   // legal identifier chars other than digits
