@@ -25,7 +25,7 @@ import org.kermeta.utils.logger.stdout.SimpleSystemOutLogger;
 @Provides({
     @ProvidedPort(name = "logPort", type=PortType.MESSAGE)
 })
-@ComponentType(libName = "org.kermeta.utils.logger.stdout")
+@ComponentType(libName = "org.kermeta.utils")
 public class Art2ComponentStdOutLogger extends AbstractComponentType {
 	protected SimpleSystemOutLogger logger;
 
