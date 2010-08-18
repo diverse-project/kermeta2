@@ -21,7 +21,7 @@ trait KTokens extends Tokens with Parsers {
 
   abstract case class KToken extends Token with Positional {
     def getOffset = this.pos.asInstanceOf[OffsetPosition].offset
-    def lenght : Int = this.toString.length
+    def getLength : Int = this.toString.length
   }
 
   /** The class of comment tokens */
