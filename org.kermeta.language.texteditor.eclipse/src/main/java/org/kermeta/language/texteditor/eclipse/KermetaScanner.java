@@ -94,7 +94,7 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 
 		if(tokenName.equals("KIncomplet") || tokenName.equals("KError")){
 			
-			color=new RGB(0,128,0);
+			color=new RGB(255,0,0);
 			style = SWT.BOLD;
 			//TODO report error to error system
 		}
