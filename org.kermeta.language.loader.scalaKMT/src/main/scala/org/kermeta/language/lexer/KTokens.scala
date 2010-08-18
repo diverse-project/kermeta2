@@ -73,8 +73,14 @@ trait KTokens extends Tokens with Parsers {
     override def chars = ' '.toString
   }
 
-  case class KIncomplet(chars:String,msg:String) extends KToken
+  case class KIncomplet(chars:String,msg:String) extends KToken {
+    override def toString = chars
+  }
 
-  case class KError(chars: String) extends KToken
+  case class KError(chars: String) extends KToken{
+    override def toString = chars
+    override def getLength = 1
+  }
+
 
 }
