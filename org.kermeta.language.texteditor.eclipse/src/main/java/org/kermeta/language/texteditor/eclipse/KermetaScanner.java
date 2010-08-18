@@ -46,8 +46,24 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 
 //	@Override
 	public IToken nextToken() {
-		actualToken = (org.kermeta.language.lexer.KTokens.KToken) lexer.nextToken();
+		try{
+			Object t = lexer.nextToken();
+			if(t instanceof org.kermeta.language.lexer.KTokens.KToken){
+				actualToken = (org.kermeta.language.lexer.KTokens.KToken) t;
+			}
+			if(t instanceof org.kermeta.language.lexer.KTokens.KError ){
+				org.kermeta.language.lexer.KTokens.KError k = (org.kermeta.language.lexer.KTokens.KError) t;
+			}
+		} catch (Exception e){
+			return org.eclipse.jface.text.rules.Token.EOF;
+		}
 		
+		/*try{
+			actualToken = (org.kermeta.language.lexer.KTokens.KToken) lexer.nextToken();
+		//	KError k;
+		} catch (Exception e){
+			return org.eclipse.jface.text.rules.Token.EOF;
+		}*/
 		if (actualToken.getClass().getSimpleName().equals("KEOF")) {
 			return org.eclipse.jface.text.rules.Token.EOF;
 		}
@@ -75,10 +91,18 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 			color=new RGB(0,128,0);
 			style=SWT.ITALIC;
 		}
+
+		if(tokenName.equals("KIncomplet") || tokenName.equals("KError")){
+			
+			color=new RGB(0,128,0);
+			style = SWT.BOLD;
+			//TODO report error to error system
+		}
 		
 		
 		System.out.println(tokenName+"\t Offset="+getTokenOffset()+"; Length="+getTokenLength() +"; -> " +actualToken.toString());
-		Token token =  new Token(new TextAttribute(colorManager.getColor(color),null,style)) ;
+		TextAttribute ta = new TextAttribute(colorManager.getColor(color),null,style);
+		Token token =  new Token(ta) ;
 		
 		return token;
 	}
@@ -91,7 +115,7 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 
 	//	@Override
 	public int getTokenLength() {
-		return actualToken.toString().length();
+		return actualToken.getLength();
 	}
 
 }
