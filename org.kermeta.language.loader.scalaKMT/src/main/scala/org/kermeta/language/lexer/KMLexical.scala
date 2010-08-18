@@ -86,11 +86,11 @@ class KMLexical extends Lexical with KTokens {
      | positioned('\'' ~ rep( chrExcept('\'', '\n', EofCh) ) ~ '\'' ^^ { case '\'' ~ chars ~ '\'' => StringLit(chars mkString "") })
      | positioned('\"' ~ rep( chrExcept('\"', '\n', EofCh) ) ~ '\"' ^^ { case '\"' ~ chars ~ '\"' => StringLit(chars mkString "") })
      | positioned(eof ^^ {case _ => KEOF() })
-     | positioned('\'' ~> failure("unclosed string literal") )
-     | positioned('\"' ~> failure("unclosed string literal") )
+     | positioned('\'' ^^ {case c =>KIncomplet(c.toString,"unclosed string literal")}) // ~> failure("unclosed string literal") )
+     | positioned('\"' ^^ {case c =>KIncomplet(c.toString,"unclosed string literal")}) //~> failure("unclosed string literal") )
      | positioned(delim)
      /* | floatingToken*/
-     |  positioned(failure("illegal character"))
+     |  positioned( elem("illegal character", p => true ) ^^^KError("illegal character") ) //  failure("illegal character"))
     )
 
   private lazy val _delim: Parser[KToken] = {
