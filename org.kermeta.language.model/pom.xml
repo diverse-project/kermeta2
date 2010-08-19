@@ -34,6 +34,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.1.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -58,13 +59,26 @@
                     </instructions>
                 </configuration>
             </plugin>
+		    <!-- Synch MANIFEST for eclipse user -->
             <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.1.0</version>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <phase>install</phase>
+                        <configuration>
+                            <tasks>
+                                <copy todir="${project.basedir}/META-INF" failonerror="false">
+                                    <fileset dir="${project.build.outputDirectory}/META-INF"/>
+                                </copy>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
-		
     </build>
     <dependencies>
         <dependency>
@@ -87,40 +101,7 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-    <repositories>
-        <repository>
-            <id>kermetaSnapshots</id>
-            <name>Kermeta Snapshots</name>
-            <releases>
-                <enabled>false</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-            <url>http://www.kermeta.org/maven2-snapshots</url>
-            <layout>default</layout>
-        </repository>
-        <repository>
-            <id>kermeta</id>
-            <name>Kermeta</name>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-            <url>http://www.kermeta.org/maven2</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
+    
     <distributionManagement>
         <repository>
             <id>tipimouss-local-maven-repository</id>
