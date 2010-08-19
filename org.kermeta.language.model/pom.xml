@@ -41,10 +41,13 @@
                         <Export-Package>org.kermeta.*,
                         fr.irisa.triskell.kermeta.*
                         </Export-Package>
+                        <Require-Bundle>
+							org.eclipse.core.runtime
+                    	</Require-Bundle>
                         <Import-Package>
+						!org.eclipse.core.runtime,
 						org.eclipse.emf.*,
 						org.osgi.framework,
-						org.eclipse.core.runtime,
 						org.slf4j
                         </Import-Package>
                         <Bundle-ClassPath>.</Bundle-ClassPath>
