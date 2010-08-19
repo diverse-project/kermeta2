@@ -49,6 +49,7 @@ public class BPComponentLanguageWorkbenchEclipse {
     public void init() {
         try {
         	String art2FileLocation = "ART2-INF/kermetaWorkbench4Eclipse.art2";
+            internalLog.debug( "Updating art runtime from " +art2FileLocation +" ...");
             //FOUND XMI IN META-INF
             InputStream model = bundle.getResource(art2FileLocation).openStream();
 
@@ -56,8 +57,8 @@ public class BPComponentLanguageWorkbenchEclipse {
             ContainerRoot root = Art2XmiHelper.loadStream(model);
 
             //INIT ART2 CORE WITH NEW MODEL
-            internalLog.info( "Updating art runtime from " +art2FileLocation);
             art2ModelHandlerService.updateModel(root);
+            internalLog.debug( "Art runtime updated.");
 
 
         } catch (Exception ex) {
