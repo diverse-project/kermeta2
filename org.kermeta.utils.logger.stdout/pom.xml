@@ -53,6 +53,8 @@
                     <includes>
                         <include>**/*TestSuite.java</include>
                     </includes>
+                    <!-- make sure that all these outputs will not perturb normal compile display -->
+                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
                 </configuration>
             </plugin>
 		</plugins>
