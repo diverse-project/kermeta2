@@ -17,43 +17,52 @@ import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.annotation.Start;
 import org.kermeta.art2.annotation.Stop;
 import org.kermeta.art2.framework.AbstractComponentType;
-import org.kermeta.language.api.KermetaMessage;
-import org.kermeta.utils.logger.eclipse.logger_console.LoggerConsole;
+import org.kermeta.language.api.messaging.UnifiedMessage;
+import org.kermeta.utils.logger.eclipse.ConsoleMessageFactory;
+import org.kermeta.utils.logger.eclipse.console.ConsoleIO;
+import org.kermeta.utils.logger.eclipse.console.EclipseConsoleIOFactory;
 
 
-
+/**
+ * Implementation of a Message port dedicated to receive UnifiedMessage
+ * and log them in Eclipse
+ */
 
 @Provides({
     @ProvidedPort(name = "log", type=PortType.MESSAGE)
 })
-@ComponentType(libName = "standaloneLogger")
+@ComponentType(libName = "org.kermeta.utils")
 public class Art2ComponentEclipseLogger extends AbstractComponentType {
-	LoggerConsole logger;
+	ConsoleIO logger;
+	ConsoleMessageFactory consoleMessageFactory = new ConsoleMessageFactory();
+	protected String consoleUId ;
 	
 	@Port(name="log",method="process")
     public void process(Object o){ 
-		if (o instanceof KermetaMessage) {
-			KermetaMessage kermetaMessage = (KermetaMessage) o;
-			logger.println(kermetaMessage);
+		if (o instanceof UnifiedMessage) {
+			// TODO filter DEvelopper message if not required by the UI (preference page, and/or toggle button etc...)
+			
+			UnifiedMessage kermetaMessage = (UnifiedMessage) o;
+			// build consoleMessage from unifiedMessage then print it
+			logger.println(consoleMessageFactory.getConsoleMessage(kermetaMessage));
+			// TODO also log errors and warnings to Eclipse log view
 		}
     }
 	
 	@Start
 	public void start(){
-		logger = new LoggerConsole("Logger Console",null);
+		// TODO find a better way to generate the UId otherwise some consoles may clash
+		consoleUId = ""+this.hashCode();
+		logger = EclipseConsoleIOFactory.getInstance().getConsoleIO(consoleUId, "Logger console");
 	}
 	
 	
 	
 	@Stop
 	public void stop(){
-		//logger.destroy();
+		EclipseConsoleIOFactory.getInstance().removeConsoleIO(consoleUId);
 	}
-	
-	public LoggerConsole getLogger() {
-		return logger;
-	}
-	
+		
 	
 	
 }

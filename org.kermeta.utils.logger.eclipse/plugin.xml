@@ -4,7 +4,7 @@
    <extension
          point="org.eclipse.ui.console.consoleFactories">
       <consoleFactory
-            class="org.kermeta.utils.logger.eclipse.treatment.LoggerConsoleFactory"
+            class="org.kermeta.utils.logger.eclipse.logger_console.LoggerConsoleFactory"
             label="Log Console">
       </consoleFactory>
    </extension>
