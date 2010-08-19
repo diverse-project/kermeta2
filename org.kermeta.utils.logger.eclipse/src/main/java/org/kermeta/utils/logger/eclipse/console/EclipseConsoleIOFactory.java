@@ -13,10 +13,8 @@
 
 package org.kermeta.utils.logger.eclipse.console;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.IOConsole;

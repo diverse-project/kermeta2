@@ -62,6 +62,7 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<!-- Main dependencies -->
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.core</artifactId>
@@ -84,16 +85,38 @@
 			<scope>compile</scope>
 		</dependency>
 		
+		<!-- Eclipse dependencies -->
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.jface</artifactId>
+			<version>[3.5.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.jface.text</artifactId>
+			<version>[3.5.0,)</version>
+		</dependency>
         <dependency>
             <groupId>org.kermeta.eclipse</groupId>
             <artifactId>org.eclipse.swt</artifactId>
-            <version>[3.5.2.v3557f,)</version>
+            <version>[3.5.0,)</version>
         </dependency>
         <dependency>
             <groupId>org.kermeta.eclipse</groupId>
             <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
-            <version>3.5.2.v3557f</version>
+            <version>[3.5.0,)</version>
         </dependency>
+        <dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.ui.console</artifactId>
+			<version>[3.4.0,)</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.ui.workbench</artifactId>
+			<version>[3.5.0,)</version>
+		</dependency>
 	</dependencies>
 
 </project>
