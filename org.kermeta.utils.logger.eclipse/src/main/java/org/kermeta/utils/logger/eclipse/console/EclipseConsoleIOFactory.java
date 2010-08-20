@@ -1,6 +1,6 @@
 
 
-/*$Id: KermetaConsole.java,v 1.1 2007-11-21 14:00:18 ftanguy Exp $
+/*$Id$
 * Project : fr.irisa.triskell.eclipse.util
 * File : 	KermetaConsole.java
 * License : EPL

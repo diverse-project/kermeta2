@@ -1,4 +1,4 @@
-/* $Id:  $
+/* $Id$
  * Project    : org.kermeta.utils.logger.eclipse
  * License    : EPL
  * Copyright  : IRISA / INRIA / Universite de Rennes 1
@@ -21,6 +21,7 @@ import org.kermeta.language.api.messaging.UnifiedMessage;
 import org.kermeta.utils.logger.eclipse.ConsoleMessageFactory;
 import org.kermeta.utils.logger.eclipse.console.ConsoleIO;
 import org.kermeta.utils.logger.eclipse.console.EclipseConsoleIOFactory;
+import org.osgi.framework.Bundle;
 
 
 /**
@@ -40,7 +41,7 @@ public class Art2ComponentEclipseLogger extends AbstractComponentType {
 	@Port(name="log",method="process")
     public void process(Object o){ 
 		if (o instanceof UnifiedMessage) {
-			// TODO filter DEvelopper message if not required by the UI (preference page, and/or toggle button etc...)
+			// TODO filter Developer message if not required by the UI (preference page, and/or toggle button etc...)
 			
 			UnifiedMessage kermetaMessage = (UnifiedMessage) o;
 			// build consoleMessage from unifiedMessage then print it
@@ -51,9 +52,10 @@ public class Art2ComponentEclipseLogger extends AbstractComponentType {
 	
 	@Start
 	public void start(){
-		// TODO find a better way to generate the UId otherwise some consoles may clash
-		consoleUId = ""+this.hashCode();
-		logger = EclipseConsoleIOFactory.getInstance().getConsoleIO(consoleUId, "Logger console");
+		Bundle b = (Bundle)this.getDictionary().get("osgi.bundle");
+		String bundleSymbolicName = b.getHeaders().get("Bundle-SymbolicName").toString();
+		consoleUId = bundleSymbolicName+this.hashCode();
+		logger = EclipseConsoleIOFactory.getInstance().getConsoleIO(consoleUId, bundleSymbolicName + " console");
 	}
 	
 	

@@ -1,6 +1,6 @@
 
 
-/*$Id: EclipseConsole.java,v 1.7 2008-04-29 10:01:30 ftanguy Exp $
+/*$Id$
 * Project : fr.irisa.triskell.eclipse.util
 * File : 	EclipseConsole.java
 * License : EPL

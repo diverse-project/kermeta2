@@ -1,6 +1,6 @@
 
 
-/*$Id: ConsoleMessage.java,v 1.4 2007-11-30 08:05:33 dvojtise Exp $
+/*$Id$
 * Project : fr.irisa.triskell.kermeta.kpm
 * File : 	sdfg.java
 * License : EPL

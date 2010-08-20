@@ -1,6 +1,6 @@
 
 
-/*$Id: IOConsole.java,v 1.9 2008-04-28 11:51:03 ftanguy Exp $
+/*$Id$
 * Project : fr.irisa.triskell.kermeta.kpm
 * File : 	IOConsole.java
 * License : EPL

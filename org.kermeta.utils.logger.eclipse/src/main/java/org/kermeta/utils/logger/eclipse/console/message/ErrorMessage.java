@@ -1,4 +1,4 @@
-/*$Id: ErrorMessage.java,v 1.4 2007-11-30 08:05:33 dvojtise Exp $
+/*$Id$
 * Project : fr.irisa.triskell.eclipse.util
 * File : 	ErrorMessage.java
 * License : EPL
