@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="ASCII"?>
-<art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:art2="http://art/2.0">
-  <componentTypes name="K2Core" factoryBean="org.kermeta.language.core.K2CoreFactory" requiredLibs="//@thirdParties.0"/>
-  <librariy name="K2" groupName="org.kermeta.language" unitName="language.workbench" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
+<art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:art2="http://art/2.0">
+  <nodes name="KermetaEclipseWorkbench">
+    <components name="Art2ComponentEclipseLogger-1208499259" componentType="//@componentTypes.0">
+      <provided portTypeRef="//@componentTypes.0/@provided.0"/>
+    </components>
+  </nodes>
+  <componentTypes name="Art2ComponentEclipseLogger" factoryBean="org.kermeta.utils.logger.eclipse.art2.impl.Art2ComponentEclipseLoggerFactory" startMethod="start" stopMethod="stop">
+    <provided name="log" ref="//@portTypes.0">
+      <mappings beanMethodName="process" serviceMethodName="process"/>
+    </provided>
+  </componentTypes>
+  <portTypes xsi:type="art2:MessagePortType" name="org.kermeta.art2.framework.MessagePort"/>
+  <libraries name="org.kermeta.utils" groupName="org.kermeta.utils" unitName="utils.logger.eclipse" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
   <thirdParties name="language.model" url="mvn:org.kermeta.language/language.model"/>
+  <thirdParties name="kp.model" url="mvn:org.kermeta.kp/kp.model"/>
+  <thirdParties name="traceability.model" url="mvn:org.kermeta.traceability/traceability.model"/>
+  <thirdParties name="language.api" url="mvn:org.kermeta.language/language.api"/>
 </art2:ContainerRoot>
