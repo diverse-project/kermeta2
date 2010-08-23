@@ -54,94 +54,94 @@
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.pde.core</artifactId>
-			<version>[3.5.0,)</version>
+			<version>[3.5.0.0,)</version>
 		</dependency>
 		<!-- Eclipse dependencies (for UI) -->
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.commands</artifactId>
-			<version>[3.5.0.I20090525-2000,)</version>
+			<version>[3.5.0.0,)</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.jobs</artifactId>
-			<version>[3.4.100.v20090429-1800,)</version>
+			<version>[3.4.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.runtime</artifactId>
-			<version>[3.5.0.v20090525,)</version>
+			<version>[3.5.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.resources</artifactId>
-			<version>[3.5.2.R35x_v20091203-1235,)</version>
+			<version>[3.5.2.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.equinox.common</artifactId>
-			<version>[3.5.1.R35x_v20090807-1100,)</version>
+			<version>[3.5.1.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.equinox.registry</artifactId>
-			<version>[3.4.100.v20090520-1800,)</version>
+			<version>[3.4.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui</artifactId>
-			<version>[3.5.2.M20100120-0800,)</version>
+			<version>[3.5.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui.ide</artifactId>
-			<version>[3.5.2.M20100113-0800,)</version>
+			<version>[3.5.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui.views</artifactId>
-			<version>[3.4.1.M20090826-0800,)</version>
+			<version>[3.4.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui.workbench</artifactId>
-			<version>[3.5.2.M20100113-0800,)</version>
+			<version>[3.5.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.swt</artifactId>
-			<version>[3.5.2.v3557f,)</version>
+			<version>[3.5.2.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
-			<version>[3.5.2.v3557f,)</version>
+			<version>[3.5.2.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.jface</artifactId>
-			<version>[3.5.2.M20100120-0800,)</version>
+			<version>[3.5.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.jface.text</artifactId>
-			<version>[3.5.2.M20100120-0800,)</version>
+			<version>[3.5.2.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui.editors</artifactId>
-			<version>[3.5.0.v20090527-2000,)</version>
+			<version>[3.5.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.text</artifactId>
-			<version>[3.5.0.v20090513-2000,)</version>
+			<version>[3.5.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui.workbench.texteditor</artifactId>
-			<version>[3.5.0.v20090513-2000,)</version>
+			<version>[3.5.0.0,)</version>
 		</dependency>
 	</dependencies>
 
