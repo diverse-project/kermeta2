@@ -44,7 +44,7 @@ import org.osgi.framework.Bundle;
 	 * Log port for sending technical messages
 	 */
 	//@RequiredPort(name = "log", type=PortType.MESSAGE)
-	@RequiredPort(name = "log", type=PortType.SERVICE, className=MessagePort.class)
+	@RequiredPort(name = "log", type=PortType.SERVICE, className=PortLog.class)
 })
 /**
  * ART2 component of a Text editor for Kermeta language running in eclipse
@@ -52,43 +52,71 @@ import org.osgi.framework.Bundle;
 @ComponentType(libName = "org.kermeta.language")
 public class Art2ComponentTexteditorEclipse extends AbstractComponentType {
 
-	protected MessagePort logPort=null;
+	protected PortLog logPort=null;
 	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
 	protected String bundleSymbolicName="";
+	protected Bundle bundle;
+	/**
+	 * As it uses UI declaration via plugin.xml, this component is a singleton in Eclipse
+	 */
+	protected static Art2ComponentTexteditorEclipse instance;
+	public static Art2ComponentTexteditorEclipse getDefault(){
+		return instance;
+	}
+	
+	public PortLog getLogPort(){
+		return logPort;
+	}
+	public String getBundleSymbolicName(){
+		return bundleSymbolicName;
+	}
+	public Bundle getBundle(){
+		return bundle;
+	}
 	
 	/**
 	 * method called when an instance of this component is instantiated and started
 	 */
 	@Start
 	public void start(){
-		System.out.println("Art2ComponentTexteditorEclipse.start ...");
+		//System.out.println("Art2ComponentTexteditorEclipse.start ...");
+		// set the singleton instance
+		instance =  this;
 		// store some useful data
-		logPort = getPortByName("log", MessagePort.class);
-		Bundle bundle = (Bundle) this.getDictionary().get("osgi.bundle");
+		logPort = getPortByName("log", PortLog.class);
+	//	System.out.println("Art2ComponentTexteditorEclipse.start logPort="+logPort.toString());
+		
+		bundle = (Bundle) this.getDictionary().get("osgi.bundle");
 		bundleSymbolicName = bundle.getHeaders().get("Bundle-SymbolicName").toString();
 		
 		
 		try{
 			String pluginLocation = "/instance_config/plugin.xml";
-			URL pluginURL = bundle.getEntry(pluginLocation);
+			//this.getClass().getClassLoader().getResourceAsStream(name)
+			//URL pluginURL = bundle.getResource(pluginLocation);
+			URL pluginURL = this.getClass().getClassLoader().getResource(pluginLocation);
 			if(pluginURL!= null){
 				// code inspired from http://www.ibm.com/developerworks/opensource/library/os-ecl-dynext/
 				// TODO add bundle listener to make sure this is call only when the bundle is really started (see AbstractUIPlugin code )
-				InputStream inputStream = pluginURL.openStream();
-				
+				//InputStream inputStream = pluginURL.openStream();
+				InputStream inputStream =  this.getClass().getClassLoader().getResourceAsStream(pluginLocation);
 				IExtensionRegistry registry = RegistryFactory.getRegistry( );
 				Object key = ((ExtensionRegistry) registry).getTemporaryUserToken( );
 		
 				boolean b = registry.addContribution(inputStream, ContributorFactoryOSGi.createContributor(bundle), false, null, null, key);
-				
+			
+				System.out.println("Successfully added editor contribution to UI");
+				logPort.log(mFactory.createDebugMessage("Successfully added editor contribution to UI" + pluginLocation, bundleSymbolicName));
 			}
 			else{
-				logPort.process(mFactory.createErrorMessage("Failed to start Editor due to : Cannot find " + pluginLocation, bundleSymbolicName));
+				System.out.println("Failed to start Editor due to : Cannot find " + pluginLocation);
+				logPort.log(mFactory.createErrorMessage("Failed to start Editor due to : Cannot find " + pluginLocation, bundleSymbolicName));
 			}
-			logPort.process(mFactory.createDebugMessage("Successfully added editor contribution to UI" + pluginLocation, bundleSymbolicName));
+			
 		}
 		catch (Exception e) {
-			logPort.process(mFactory.createErrorMessage("Failed to start Editor", bundleSymbolicName));
+			System.out.println("Failed to start Editor");
+			logPort.log(mFactory.createErrorMessage("Failed to start Editor", bundleSymbolicName));
 		}
 	}
 	

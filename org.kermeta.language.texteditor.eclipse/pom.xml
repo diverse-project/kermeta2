@@ -21,6 +21,7 @@
 	</parent>
 
 	<dependencies>
+		<!-- Main dependencies -->
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
 			<artifactId>language.model</artifactId>
@@ -35,6 +36,27 @@
 			<type>bundle</type>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.kermeta.art2</groupId>
+			<artifactId>art2.framework</artifactId>
+			<version>2.0.0-SNAPSHOT</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.language</groupId>
+			<artifactId>language.api</artifactId>
+			<version>2.0.0-SNAPSHOT</version>
+			<type>bundle</type>
+			<scope>compile</scope>
+		</dependency>
+		<!--  Eclipse Dynamic Plugin provisionning dependencies -->
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.pde.core</artifactId>
+			<version>[3.5.0,)</version>
+		</dependency>
+		<!-- Eclipse dependencies (for UI) -->
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.commands</artifactId>
@@ -94,7 +116,7 @@
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
-			<version>3.5.2.v3557f</version>
+			<version>[3.5.2.v3557f,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
@@ -139,7 +161,11 @@
 				<targetPath>icons</targetPath>
 			</resource>
 			<resource>
-				<directory>src/main/java</directory>
+				<directory>instance_config</directory>
+				<targetPath>instance_config</targetPath>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
 		<plugins>
@@ -152,7 +178,10 @@
 				<configuration>
 					<instructions>
 						<Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
-						<Bundle-Activator>org.kermeta.language.texteditor.eclipse.Activator</Bundle-Activator>
+						<!-- <Bundle-Activator>org.kermeta.language.texteditor.eclipse.Activator</Bundle-Activator> -->
+						<Export-Package>
+                        	org.kermeta.language.texteditor.eclipse.*
+                        </Export-Package>
 						<Require-Bundle>
 							org.eclipse.core.runtime,
 							org.eclipse.core.resources,

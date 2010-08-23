@@ -15,10 +15,13 @@ import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.Token;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.RGB;
+import org.kermeta.language.api.messaging.UnifiedMessageFactory;
 import org.kermeta.language.lexer.KMLexer;
+import org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipse;
 
 public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanner {
 
+	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
 	private KermetaColorManager colorManager ;
 	private org.kermeta.language.texteditor.eclipse.KermetaEditor editor;
 	//private int estimatedOffset;
@@ -97,6 +100,8 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 			color=new RGB(255,0,0);
 			style = SWT.BOLD;
 			//TODO report error to error system
+			Art2ComponentTexteditorEclipse.getDefault().getLogPort().log(
+					mFactory.createErrorMessage("Incomplete token " + actualToken.toString(), Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
 		}
 		
 		
