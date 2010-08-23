@@ -39,7 +39,9 @@
                         	org.eclipse.jface.text,
                     		org.eclipse.ui,
                     		org.eclipse.ui.console,
- 							org.eclipse.core.runtime
+ 							org.eclipse.core.runtime,
+ 							org.eclipse.core.runtime.jobs,
+ 							org.eclipse.core.runtime.preferences
                         </Require-Bundle>
                         <Import-Package>
                         	!org.eclipse.core.runtime,
@@ -88,8 +90,23 @@
 		<!-- Eclipse dependencies -->
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.core.jobs</artifactId>
+			<version>[3.4.0.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.runtime</artifactId>
 			<version>[3.5.0.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.equinox.common</artifactId>
+			<version>[3.2.0.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.equinox.preferences</artifactId>
+			<version>[3.2.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>

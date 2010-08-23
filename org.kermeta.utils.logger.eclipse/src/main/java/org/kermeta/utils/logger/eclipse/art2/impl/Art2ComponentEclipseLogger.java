@@ -17,7 +17,9 @@ import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.annotation.Start;
 import org.kermeta.art2.annotation.Stop;
 import org.kermeta.art2.framework.AbstractComponentType;
+import org.kermeta.art2.framework.MessagePort;
 import org.kermeta.language.api.messaging.UnifiedMessage;
+import org.kermeta.language.api.port.PortLog;
 import org.kermeta.utils.logger.eclipse.ConsoleMessageFactory;
 import org.kermeta.utils.logger.eclipse.console.ConsoleIO;
 import org.kermeta.utils.logger.eclipse.console.EclipseConsoleIOFactory;
@@ -30,7 +32,8 @@ import org.osgi.framework.Bundle;
  */
 
 @Provides({
-    @ProvidedPort(name = "log", type=PortType.MESSAGE)
+    //@ProvidedPort(name = "asynclog", type=PortType.MESSAGE),
+    @ProvidedPort(name = "log", type=PortType.SERVICE, className=PortLog.class)
 })
 @ComponentType(libName = "org.kermeta.utils")
 public class Art2ComponentEclipseLogger extends AbstractComponentType {
@@ -38,8 +41,9 @@ public class Art2ComponentEclipseLogger extends AbstractComponentType {
 	ConsoleMessageFactory consoleMessageFactory = new ConsoleMessageFactory();
 	protected String consoleUId ;
 	
-	@Port(name="log",method="process")
-    public void process(Object o){ 
+	//@port(name="asynclog", method="process")
+	@Port(name="log",method="log")
+    public void log(Object o){ 
 		if (o instanceof UnifiedMessage) {
 			// TODO filter Developer message if not required by the UI (preference page, and/or toggle button etc...)
 			
