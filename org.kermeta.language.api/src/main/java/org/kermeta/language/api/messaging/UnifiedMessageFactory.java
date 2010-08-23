@@ -29,7 +29,7 @@ public class UnifiedMessageFactory {
 	/**
 	 * Instance of the singleton factory
 	 */
-	public static UnifiedMessageFactory instance = new UnifiedMessageFactory();
+	protected static UnifiedMessageFactory instance = new UnifiedMessageFactory();
 	
 	/**
 	 * Retrieve the factory instance
@@ -40,7 +40,7 @@ public class UnifiedMessageFactory {
 	}
 	
 	/**
-	 * Create a simple new info message for EndUser only 
+	 * Create a simple new info message for EndUser and Developer
 	 * current implementation : without trace to the sender code
 	 * @param message : the message
 	 * @param groupId : the name of the element related to the message
@@ -52,7 +52,7 @@ public class UnifiedMessageFactory {
 	}
 	
 	/**
-	 * Create a simple new info message for all users (EndUser and Developper)
+	 * Create a simple new info message for Developers only
 	 * current implementation : without trace to the sender code
 	 * @param message : the message
 	 * @param groupId : the name of the element related to the message
@@ -64,7 +64,7 @@ public class UnifiedMessageFactory {
 	}
 	
 	/**
-	 * Create a simple new warning message for all users (EndUser and Developper)
+	 * Create a simple new warning message for all users (EndUser and Developer)
 	 * current implementation : without trace to the sender code
 	 * @param message : the message 
 	 * @param groupId : the name of the element related to the message
@@ -72,12 +72,12 @@ public class UnifiedMessageFactory {
 	 */
 	public UnifiedMessage createWarningMessage (String message, String groupId) {
 		UnifiedMessage messageWarning = new ProblemMessage(Severity.WARNING, groupId, message, 
-				UserLevel.DEVELOPPER, null, null);
+				UserLevel.ENDUSER, null, null);
 		return messageWarning;
 	}
 	
 	/**
-	 * Create a simple new error message for all users (EndUser and Developper)
+	 * Create a simple new error message for all users (EndUser and Developer)
 	 * current implementation : without trace to the sender code
 	 * @param message : the message 
 	 * @param groupId : the name of the element related to the message
@@ -85,7 +85,19 @@ public class UnifiedMessageFactory {
 	 */
 	public UnifiedMessage createErrorMessage (String message, String groupId) {
 		UnifiedMessage messageWarning = new ProblemMessage(Severity.ERROR, groupId, message, 
-				UserLevel.DEVELOPPER, null, null);
+				UserLevel.ENDUSER, null, null);
+		return messageWarning;
+	}
+	/**
+	 * Create a simple new error message for all users (EndUser and Developer)
+	 * @param message : the message 
+	 * @param groupId : the name of the element related to the message
+	 * @param senderTrace : exception that is either the cause of the message or the sender code 
+	 * @return the new KermetaMessage created
+	 */
+	public UnifiedMessage createErrorMessage (String message, String groupId, Exception senderTrace) {
+		UnifiedMessage messageWarning = new ProblemMessage(Severity.ERROR, groupId, message, 
+				UserLevel.ENDUSER, senderTrace, null);
 		return messageWarning;
 	}
 	
