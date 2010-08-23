@@ -1,19 +1,25 @@
-/* $Id:  $
+/* $Id$
  * Project    : org.kermeta.language.api
  * License    : EPL
  * Copyright  : IRISA / INRIA / Universite de Rennes 1
  * -------------------------------------------------------------------
- * Creation date : 6 ao�t 2010
+ * Creation date : 6 aout 2010
  * Authors : 
  *           mgouyett <Marie.Gouyette@irisa.fr> 
  */
 package org.kermeta.language.api.port;
 
-import org.kermeta.language.api.KermetaMessage;
+import org.kermeta.language.api.messaging.UnifiedMessage;
 
+/**
+ * Definition of the API for sending message to a Logger
+ * Any UnifiedMessage can be logged
+ */
 public interface PortLog {
 	
-	public void sendMessage (KermetaMessage message); 
+	/** process a Message that must be kept in a log
+	 */
+	public void log (UnifiedMessage message); 
 
 }
 
