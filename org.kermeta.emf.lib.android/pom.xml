@@ -5,9 +5,17 @@
     <groupId>org.kermeta.emf</groupId>
     <artifactId>emf.lib.android</artifactId>
     <packaging>jar</packaging>
-    <version>2.6.0</version>
     <name>Kermeta :: Emf :: Lib :: Android</name>
     <url>http://maven.apache.org</url>
+
+    <version>${emf.version}</version>
+
+    <parent>
+        <artifactId>language.root</artifactId>
+        <groupId>org.kermeta.language</groupId>
+        <version>2</version>
+    </parent>
+
 
     <build>
         <plugins>
@@ -28,6 +36,12 @@
                                     <resource>META-INF/MANIFEST.MF</resource>
                                 </transformer>
                             </transformers>
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>junit:junit</exclude>
+                                    <exclude>org.scala-lang:scala-library</exclude>
+                                </excludes>
+                            </artifactSet>
                         </configuration>
                     </execution>
                 </executions>
