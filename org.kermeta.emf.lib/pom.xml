@@ -5,9 +5,16 @@
     <groupId>org.kermeta.emf</groupId>
     <artifactId>emf.lib</artifactId>
     <packaging>jar</packaging>
-    <version>2.6.0</version>
     <name>Kermeta :: Emf :: Lib</name>
     <url>http://maven.apache.org</url>
+
+    <version>${emf.version}</version>
+
+    <parent>
+        <artifactId>language.root</artifactId>
+        <groupId>org.kermeta.language</groupId>
+        <version>2</version>
+    </parent>
 
     <build>
         <plugins>
@@ -78,21 +85,6 @@
             </resource>
         </resources>
     </build>
-  
 
-    <distributionManagement>
-        <repository>
-            <id>tipimouss-local-maven-repository</id>
-            <name>Tipimouss Local release repository</name>
-            <url>file:/var/www/html/maven2</url>
-            <uniqueVersion>false</uniqueVersion>
-        </repository>
-        <snapshotRepository>
-            <id>tipimouss-local-maven-repository</id>
-            <name>Tipimouss Local  snapshot repository</name>
-            <url>file:/var/www/html/maven2-snapshots</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
 
 </project>
