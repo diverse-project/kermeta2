@@ -41,7 +41,7 @@
                     		org.eclipse.ui.console,
  							org.eclipse.core.runtime,
  							org.eclipse.core.jobs,
- 							org.eclipse.core.runtime.preferences
+ 							org.eclipse.equinox.preferences
                         </Require-Bundle>
                         <Import-Package>
                         	!org.eclipse.core.runtime,
