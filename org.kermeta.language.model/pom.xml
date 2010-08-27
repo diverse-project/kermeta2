@@ -8,19 +8,7 @@
     <packaging>bundle</packaging>
     <name>Kermeta :: Model</name>
     <build>
-        <resources>
-            <!-- Manage mutli-source java project. Copy the src files inside the targetPath, the unique location for maven compiling
-			Drawback : once compiled the sources are not visible as java packages -->
-            <resource>
-                <targetPath>${basedir}/target/filtered-sources</targetPath>
-                <directory>src/java</directory>
-            </resource>
-            <resource>
-                <targetPath>${basedir}/target/filtered-sources</targetPath>
-                <directory>build/java</directory>
-            </resource>
-        </resources>
-        <sourceDirectory>target/filtered-sources</sourceDirectory>
+        <sourceDirectory>${basedir}/src/java</sourceDirectory>
         <outputDirectory>target/classes</outputDirectory>
         <plugins>
             <plugin>
@@ -51,6 +39,7 @@
 						org.slf4j
                         </Import-Package>
                         <Bundle-ClassPath>.</Bundle-ClassPath>
+                        <Bundle-Vendor>IRISA/INRIA</Bundle-Vendor>
                         <Bundle-SymbolicName>org.kermeta.language.model;singleton:=true</Bundle-SymbolicName>
                         <!-- additional resources in the bundle -->                        
                         <Include-Resource>{maven-resources},
@@ -62,6 +51,26 @@
                     </instructions>
                 </configuration>
             </plugin>
+             <!-- Manage mutli-source java project. Avoid the drawback : once compiled the sources are not visible as java packages -->
+            <plugin>
+		    	<groupId>org.codehaus.mojo</groupId>
+	        	<artifactId>build-helper-maven-plugin</artifactId>
+	        	<version>1.5</version>
+	        	<executions>
+	          		<execution>
+	            		<id>add-source</id>
+	            		<phase>generate-sources</phase>
+	            		<goals>
+	              			<goal>add-source</goal>
+	           			</goals>
+	            		<configuration>
+	    					<sources>
+	    						<source>${basedir}/build/java</source>
+	    					</sources>
+	    				</configuration>
+	    			</execution>
+		    	</executions>
+		    </plugin>
 		    <!-- Synch MANIFEST for eclipse user -->
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
