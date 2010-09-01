@@ -9,6 +9,7 @@
  */
 package org.kermeta.utils.logger.eclipse.art2.impl;
 
+import org.eclipse.core.runtime.Plugin;
 import org.kermeta.art2.annotation.ComponentType;
 import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.PortType;
@@ -23,6 +24,7 @@ import org.kermeta.language.api.port.PortLog;
 import org.kermeta.utils.logger.eclipse.ConsoleMessageFactory;
 import org.kermeta.utils.logger.eclipse.console.ConsoleIO;
 import org.kermeta.utils.logger.eclipse.console.EclipseConsoleIOFactory;
+import org.kermeta.utils.logger.eclipse.error_log.LoggerEclipsePlugin;
 import org.osgi.framework.Bundle;
 
 
@@ -40,6 +42,7 @@ public class Art2ComponentEclipseLogger extends AbstractComponentType {
 	ConsoleIO logger;
 	ConsoleMessageFactory consoleMessageFactory = new ConsoleMessageFactory();
 	protected String consoleUId ;
+	private LoggerEclipsePlugin errorLog = new LoggerEclipsePlugin();
 	
 	//@port(name="asynclog", method="process")
 	@Port(name="log",method="log")
@@ -50,7 +53,8 @@ public class Art2ComponentEclipseLogger extends AbstractComponentType {
 			UnifiedMessage kermetaMessage = (UnifiedMessage) o;
 			// build consoleMessage from unifiedMessage then print it
 			logger.println(consoleMessageFactory.getConsoleMessage(kermetaMessage));
-			// TODO also log errors and warnings to Eclipse log view
+			//Also log errors and warnings to Eclipse log view
+			errorLog.addToErrorLog(kermetaMessage); // do nothing if the message is not a ProblemMessage of kind WARNING, ERROR, or FATAL
 		}
     }
 	
