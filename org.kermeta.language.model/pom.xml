@@ -1,4 +1,11 @@
-
+<!-- $Id: $ -->
+<!-- License    : EPL                                    -->
+<!-- Project    : org.kermeta.kp.model -->
+<!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
+<!-- Authors : 	Didier Vojtisek <didier.vojtisek@inria.fr>
+				Francois.Fouquet <Francois.fouquet@irisa.fr>
+				Haja Rambelontsalama <hrambelo@irisa.fr> --> 
+				
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -93,18 +100,20 @@
         </plugins>
     </build>
     <dependencies>
+    	<!-- Using emf.lib 2.6.0 version causes Unresolved references to [com.sun.mirror.apt, com.sun.mirror.declaration, com.sun.mirror.type, 
+    	com.sun.mirror.util, scala, scala.collection, scala.collection.generic, scala.collection.immutable, scala.collection.mutable, scala.reflect, scala.runtime] -->
         <dependency>
             <groupId>org.kermeta.emf</groupId>
             <artifactId>emf.lib</artifactId>
             <version>2.5.0</version>
         </dependency>
         <dependency>
-            <groupId>org.mod4j.org.eclipse.core</groupId>
-            <artifactId>runtime</artifactId>
-            <version>3.5.0</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.core.runtime</artifactId>
+			<version>[3.5.0,)</version>
+		</dependency>
+		<!-- Using org.kermeta.utils/utils.slf4j.eclipse v2.0.0-SNAPSHOT causes Unresolved references to [org.apache.log4j, org.apache.log4j.xml, 
+		org.eclipse.core.resources,	org.eclipse.core.runtime.preferences, org.eclipse.jface.preference,	org.eclipse.swt.widgets, org.eclipse.ui, org.eclipse.ui.plugin] --> 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
