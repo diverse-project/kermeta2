@@ -110,7 +110,7 @@
         <dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.runtime</artifactId>
-			<version>[3.5.0,)</version>
+			<version>[3.5.0.v20090525,)</version>
 		</dependency>
 		<!-- Using org.kermeta.utils/utils.slf4j.eclipse v2.0.0-SNAPSHOT causes Unresolved references to [org.apache.log4j, org.apache.log4j.xml, 
 		org.eclipse.core.resources,	org.eclipse.core.runtime.preferences, org.eclipse.jface.preference,	org.eclipse.swt.widgets, org.eclipse.ui, org.eclipse.ui.plugin] --> 
