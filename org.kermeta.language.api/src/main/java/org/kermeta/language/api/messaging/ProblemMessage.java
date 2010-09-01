@@ -19,7 +19,7 @@ public class ProblemMessage extends UnifiedMessage{
 	/**
 	 * Severity levels for ProblemMessage
 	 */
-	public enum Severity {WARNING, ERROR, FATAL};
+	public enum Severity {WARNING, ERROR, FATAL, OK};
 	
 	/**
 	 * Optional object that caused the problem
