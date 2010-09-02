@@ -22,6 +22,6 @@ public interface PortKEvent {
 	 * Treat and associate an action to the given KEvent in parameters.
 	 * @param event : the event to treat
 	 */
-	public void getKEvent(KEvent event);
+	public void processKEvent(KEvent event);
 }
 
