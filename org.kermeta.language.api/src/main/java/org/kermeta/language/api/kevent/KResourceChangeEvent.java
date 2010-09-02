@@ -18,12 +18,6 @@ package org.kermeta.language.api.kevent;
  */
 public class KResourceChangeEvent extends KEvent {
 	
-
-	/**
-	 * URI of the resource that have changed.
-	 */
-	protected String URI;
-	
 	/**
 	 * This enumeration presents the resource modification type.
 	 */
@@ -40,8 +34,7 @@ public class KResourceChangeEvent extends KEvent {
 	 * @param URI : URI of the changed resource
 	 */
 	public KResourceChangeEvent( String URI, ChangeType changeType) {
-		super();
-		this.URI = URI;
+		super(URI);
 		this.type = changeType;
 		// TODO Auto-generated constructor stub
 	}

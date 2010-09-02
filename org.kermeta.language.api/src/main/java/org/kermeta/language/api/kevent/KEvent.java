@@ -11,19 +11,22 @@ package org.kermeta.language.api.kevent;
 
 /**
  * 
- * @author mgouyett
- * KEvent is the common abstract class to represent all events that can be used with Kermeta.
+ * @author mgouyett KEvent is the common abstract class to represent all events
+ *         that can be used with Kermeta.
  */
-public  abstract class KEvent {
-	
-	
-	
+public abstract class KEvent {
+
+	/**
+	 * URI of the resource that have changed.
+	 */
+	protected String URI;
+
 	/**
 	 * Constructor
 	 * 
 	 */
-	public KEvent() {
+	public KEvent(String URI) {
+		this.URI = URI;
 	}
 
 }
-
