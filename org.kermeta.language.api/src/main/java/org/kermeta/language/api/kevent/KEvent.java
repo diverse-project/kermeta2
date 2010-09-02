@@ -16,18 +16,13 @@ package org.kermeta.language.api.kevent;
  */
 public  abstract class KEvent {
 	
-	/**
-	 * Qualified names for elements on which an event appears.
-	 */
-	protected String qualifiedName;
 	
 	
 	/**
 	 * Constructor
-	 * @param qualifiedName : qualifiedName of element on which event appear.
+	 * 
 	 */
-	public KEvent(String qualifiedName) {
-		this.qualifiedName = qualifiedName;
+	public KEvent() {
 	}
 
 }
