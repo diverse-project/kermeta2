@@ -27,16 +27,22 @@ public class KResourceChangeEvent extends KEvent {
 	/**
 	 * This enumeration presents the resource modification type.
 	 */
-	protected enum changeType {ADD, REMOVE, CHANGED};
+	protected enum ChangeType {ADDED, REMOVED, CHANGED};
+	
+	/**
+	 * Type of the change (ADDED, REMOVED or CHANGED)
+	 */
+	protected ChangeType type;
 
 	/**
 	 * Constructor
 	 * @param qualifiedName : qualifiedName of element on which event appear
 	 * @param URI : URI of the changed resource
 	 */
-	public KResourceChangeEvent( String URI) {
+	public KResourceChangeEvent( String URI, ChangeType changeType) {
 		super();
 		this.URI = URI;
+		this.type = changeType;
 		// TODO Auto-generated constructor stub
 	}
 
