@@ -30,7 +30,7 @@ import org.kermeta.language.api.port.PortKEvent;
 
 @Provides({
     //@ProvidedPort(name = "asynclog", type=PortType.MESSAGE),
-    @ProvidedPort(name = "kevent", type=PortType.SERVICE, className=PortKEvent.class)
+    @ProvidedPort(name ="kevent", type=PortType.SERVICE, className=PortKEvent.class)
 })
 
 
@@ -38,7 +38,7 @@ import org.kermeta.language.api.port.PortKEvent;
 public class Art2ComponentKWF extends AbstractComponentType {
 	
 	@Port(name="kevent",method="getKEvent")
-	public void getKEvent(Object o) {
+	public void  processKEvent(Object o) {
 		
 	}
 	
