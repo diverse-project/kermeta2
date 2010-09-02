@@ -16,6 +16,6 @@ import org.kermeta.language.structure.ModelingUnit;
  */
 public interface PortKmWeaver {
 
-    public ModelingUnit weave(Collection<ModelingUnit>  mus, KermetaProject kp);
+    public ModelingUnit weave(Collection<ModelingUnit> mus, KermetaProject kp);
 
 }
