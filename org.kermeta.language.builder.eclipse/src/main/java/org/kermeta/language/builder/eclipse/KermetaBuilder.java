@@ -9,6 +9,8 @@
 */
 package org.kermeta.language.builder.eclipse;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -67,7 +69,7 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 	}
 
 	public static final String BUILDER_ID = "org.kermeta.language.builder.eclipse.KermetaBuilder";
-
+	
 	//private static final String MARKER_TYPE = "org.kermeta.language.builder.eclipse.xmlProblem";
 
 	/*
@@ -93,14 +95,14 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 
 	void checkKermeta(IResource resource) {
 		if (resource instanceof IFile && resource.getName().endsWith(".kmt")) {
-			IFile file = (IFile) resource;
+			/*IFile file = (IFile) resource;
 			deleteMarkers(file);
 			//handle the ErrorLog service here
 			//XMLErrorHandler reporter = new XMLErrorHandler(file);
-			/*try {
+			try {
 				getParser().parse(file.getContents(), reporter);
 			} catch (Exception e1) {
-			}*/
+			}
 			//System.out.println("call parser");
 			KParser parser = new KParser();
 			//System.out.println("parser created");
@@ -113,6 +115,8 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 			if (o.isDefined()) System.out.println("parsing succes"); else System.out.println("parsing fail");
 			//if (o.exists(null)) System.out.println("object returned by parser exists"); else System.out.println("object returned by parser DOESNT exist");
 			//if (o.isEmpty()) System.out.println("called parser fail"); else System.out.println("called parser succes");
+*/		
+			//update(resource.getLocation().toString());
 		}
 	}
 

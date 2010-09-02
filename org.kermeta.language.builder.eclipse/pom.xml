@@ -1,4 +1,4 @@
-<!-- $Id: $ -->
+<!-- $Id$ -->
 <!-- License    : EPL                                    -->
 <!-- Project    : org.kermeta.language.builder.eclipse -->
 <!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
@@ -10,7 +10,7 @@
 	<groupId>${parent.groupId}</groupId>
 	<artifactId>language.builder.eclipse</artifactId>
 	<version>${kermeta.version}</version>
-	<name>Kermeta Builder</name>
+	<name>K2 :: BUILDER :: ECLIPSE</name>
 	<packaging>bundle</packaging>
 
 	<parent>
@@ -36,6 +36,10 @@
 			<resource>
 				<directory>src/main/java</directory>
 			</resource>
+			<resource>
+				<directory>instance_config</directory>
+				<targetPath>instance_config</targetPath>
+			</resource>
 		</resources>
 		<plugins>
 			<plugin>
@@ -47,7 +51,8 @@
 				<configuration>
 					<instructions>
 						<Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
-						<Bundle-Activator>org.kermeta.language.builder.eclipse.Activator</Bundle-Activator>
+						<Bundle-Vendor>IRISA/INRIA</Bundle-Vendor>
+						<!-- <Bundle-Activator>org.kermeta.language.builder.eclipse.Activator</Bundle-Activator> -->
 						<Require-Bundle>
 							org.eclipse.core.runtime,
 							org.eclipse.core.resources,
@@ -64,7 +69,7 @@
 							!org.eclipse.jface.*,
 							org.kermeta.*,
 							scala.*,
-							!org.osgi.framework.*,
+							org.osgi.framework,
 							org.eclipse.ui.ide
                         </Import-Package>
 						<!-- add extra element in the manifest, copy them from this file ex: 
@@ -77,6 +82,13 @@
 	</build>
 	<dependencies>
 		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>4.2.0</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
 			<groupId>${parent.groupId}</groupId>
 			<artifactId>language.loader.scala</artifactId>
 			<version>${kermeta.version}</version>
@@ -86,32 +98,47 @@
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.runtime</artifactId>
-			<version>[3.5.0.v20090525,)</version>
+			<version>[3.5.0.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.equinox.common</artifactId>
+			<version>[3.5.1.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.equinox.registry</artifactId>
+			<version>[3.4.0.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.core.jobs</artifactId>
+			<version>[3.4.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.resources</artifactId>
-			<version>[3.5.2.R35x_v20091203-1235,)</version>
+			<version>[3.5.2.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui</artifactId>
-			<version>[3.5.2.M20100120-0800,)</version>
+			<version>[3.5.2.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui.workbench</artifactId>
-			<version>[3.5.2.M20100113-0800,)</version>
+			<version>[3.5.2.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.jface</artifactId>
-			<version>[3.5.2.M20100120-0800,)</version>
+			<version>[3.5.2.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui.ide</artifactId>
-			<version>3.5.2.M20100113-0800</version>
+			<version>[3.5.2.0,)</version>
 		</dependency>
 	</dependencies>
 </project>

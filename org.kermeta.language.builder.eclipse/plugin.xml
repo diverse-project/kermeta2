@@ -9,7 +9,7 @@
       <builder
             hasNature="true">
          <run
-               class="org.kermeta.language.builder.eclipse.KermetaBuilder">
+               class="org.kermeta.language.builder.eclipse.impl.KermetaBuilder">
          </run>
       </builder>
    </extension>
@@ -19,7 +19,7 @@
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="org.kermeta.language.builder.eclipse.KermetaNature">
+               class="org.kermeta.language.builder.eclipse.impl.KermetaNature">
          </run>
       </runtime>
       <builder
@@ -35,7 +35,7 @@
             id="org.kermeta.language.builder.eclipse.contribution1">
          <action
                label="Add/Remove Kermeta Nature"
-               class="org.kermeta.language.builder.eclipse.ToggleNatureAction"
+               class="org.kermeta.language.builder.eclipse.impl.ToggleNatureAction"
                menubarPath="org.eclipse.ui.projectConfigure/additions"
                enablesFor="+"
                id="org.kermeta.language.builder.eclipse.addRemoveNatureAction">

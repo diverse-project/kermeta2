@@ -8,7 +8,6 @@
 * Authors : Haja Rambelontsalama
 */
 package org.kermeta.language.builder.eclipse;
-
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
