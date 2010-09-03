@@ -37,7 +37,7 @@ import org.kermeta.language.api.port.PortKEvent;
 @ComponentType(libName = "org.kermeta.language")
 public class Art2ComponentKWF extends AbstractComponentType {
 	
-	@Port(name="kevent",method="getKEvent")
+	@Port(name="kevent",method="processKEvent")
 	public void  processKEvent(Object o) {
 		
 	}
