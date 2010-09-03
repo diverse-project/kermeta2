@@ -6,6 +6,7 @@
  * Creation date : 1 sept. 2010
  * Authors : 
  *          Marie Gouyette <marie.gouyette@inria.fr> 
+ *          Haja Rambelontsalama <hajanirina-johary.rambelontsalama@inria.fr>
  */
 package org.kermeta.language.api.port;
 
