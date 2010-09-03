@@ -23,14 +23,14 @@
 	<dependencies>
 		<!-- Main dependencies -->
 		<dependency>
-			<groupId>${parent.groupId}</groupId>
+			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>language.model</artifactId>
 			<version>${kermeta.version}</version>
 			<type>pom</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>${parent.groupId}</groupId>
+			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>language.loader.scala</artifactId>
 			<version>${kermeta.version}</version>
 			<type>bundle</type>
@@ -44,7 +44,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>${parent.groupId}</groupId>
+			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>language.api</artifactId>
 			<version>${kermeta.version}</version>
 			<type>bundle</type>
@@ -207,7 +207,7 @@
 							!org.eclipse.swt.*,
 							org.kermeta.*,
 							scala.*,
-							org.osgi.framework
+							org.osgi.framework;version="[1.5,2)"
                         </Import-Package>
 						<!-- add extra element in the manifest, copy them from this file ex: 
 							Bundle-ActivationPolicy: lazy -->
