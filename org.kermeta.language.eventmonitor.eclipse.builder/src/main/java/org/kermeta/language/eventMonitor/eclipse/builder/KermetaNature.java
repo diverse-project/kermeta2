@@ -1,4 +1,4 @@
-/*$$Id $$
+/*$Id $
 * Project : org.kermeta.language.builder.eclipse
 * File : 	KermetaNature.java
 * License : EPL
