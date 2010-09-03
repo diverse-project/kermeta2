@@ -14,6 +14,11 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
 
+/**
+ * 
+ * @author hrambelo
+ *
+ */
 public class KermetaNature implements IProjectNature {
 
 	/**
