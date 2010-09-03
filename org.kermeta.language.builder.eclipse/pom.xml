@@ -8,9 +8,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>${parent.groupId}</groupId>
-	<artifactId>language.builder.eclipse</artifactId>
+	<artifactId>language.eventmonitor.eclipse.builder</artifactId>
 	<version>${kermeta.version}</version>
-	<name>K2 :: BUILDER :: ECLIPSE</name>
+	<name>K2 :: EVENTMONITOR :: ECLIPSE :: BUILDER</name>
 	<packaging>bundle</packaging>
 
 	<parent>
@@ -39,6 +39,9 @@
 			<resource>
 				<directory>instance_config</directory>
 				<targetPath>instance_config</targetPath>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
 		<plugins>
@@ -69,7 +72,7 @@
 							!org.eclipse.jface.*,
 							org.kermeta.*,
 							scala.*,
-							org.osgi.framework,
+							org.osgi.framework;version="[1.5,2)",		
 							org.eclipse.ui.ide
                         </Import-Package>
 						<!-- add extra element in the manifest, copy them from this file ex: 

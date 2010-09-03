@@ -1,13 +1,13 @@
-/*$Id : $
+/*$$Id : $$
 * Project : org.kermeta.language.builder.eclipse
 * File : 	KermetaBuilder.java
 * License : EPL
 * Copyright : IRISA / INRIA / Universite de Rennes 1 2010
 * ----------------------------------------------------------------------------
 * Creation date : 20 juil. 2010
-* Authors : Haja Rambelontsalama
+* Authors : Haja Rambelontsalama <hajanirina-johary.rambelontsalama@inria.fr>
 */
-package org.kermeta.language.builder.eclipse;
+package org.kermeta.language.eventMonitor.eclipse.builder;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,10 +22,14 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.kermeta.scala.parser.KParser;
-import org.kermeta.scala.parser.ParserUtil;
+import org.kermeta.language.api.kevent.KEvent;
+import org.kermeta.language.api.kevent.KEventFactory;
+import org.kermeta.language.api.messaging.UnifiedMessageFactory;
+import org.kermeta.language.eventMonitor.eclipse.builder.art2.impl.Art2ComponentBuilderEclipse;
+//import org.kermeta.scala.parser.KParser;
+//import org.kermeta.scala.parser.ParserUtil;
 
-import scala.Option;
+//import scala.Option;
 
 public class KermetaBuilder extends IncrementalProjectBuilder {
 
@@ -69,7 +73,8 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 	}
 
 	public static final String BUILDER_ID = "org.kermeta.language.builder.eclipse.KermetaBuilder";
-	
+	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
+	protected KEventFactory evtFactory = KEventFactory.getInstance();
 	//private static final String MARKER_TYPE = "org.kermeta.language.builder.eclipse.xmlProblem";
 
 	/*
@@ -116,7 +121,12 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 			//if (o.exists(null)) System.out.println("object returned by parser exists"); else System.out.println("object returned by parser DOESNT exist");
 			//if (o.isEmpty()) System.out.println("called parser fail"); else System.out.println("called parser succes");
 */		
+			
 			//update(resource.getLocation().toString());
+			Art2ComponentBuilderEclipse.getDefault().getLogPort().log(
+					mFactory.createInfoMessage("Resource File Change on disk at : " + resource.getLocation().toString() + "an event should be triggered" , Art2ComponentBuilderEclipse.getDefault().getBundleSymbolicName()));
+			KEvent e = evtFactory.createSimpleEvent(resource.getLocation().toString());
+			Art2ComponentBuilderEclipse.getDefault().processKEvent(e);
 		}
 	}
 

@@ -1,4 +1,14 @@
-package org.kermeta.language.builder.eclipse.art2.impl;
+/* $$Id: $$
+ * Project    : ${project_name}
+ * License    : EPL
+ * Copyright  : IRISA / INRIA / Universite de Rennes 1
+ * -------------------------------------------------------------------
+ * Creation date : ${date}
+ * Authors : 
+ *            Haja Rambelontsalama <hajanirina-johary.rambelontsalama@inria.fr>
+ */
+
+package org.kermeta.language.eventMonitor.eclipse.builder.art2.impl;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -47,14 +57,14 @@ import org.osgi.framework.Bundle;
 	@RequiredPort(name = "log", type=PortType.SERVICE, className=PortLog.class)
 })
 
-@ComponentType(libName="KermetaBuilderComponent")
+@ComponentType(libName="org.kermeta.language")
 public class Art2ComponentBuilderEclipse extends AbstractComponentType implements org.kermeta.language.api.port.PortKEvent {
 
 	protected String bundleSymbolicName="";
 	protected Bundle bundle;
 	protected PortLog logPort=null;
 	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
-	protected KEventFactory evtFactory = KEventFactory.getInstance();
+	//protected KEventFactory evtFactory = KEventFactory.getInstance();
 	
 	/**
 	 * As it uses UI declaration via plugin.xml, this component is a singleton in Eclipse
@@ -73,8 +83,7 @@ public class Art2ComponentBuilderEclipse extends AbstractComponentType implement
 
 	@Port(name="ResourceChangeEvent", method="processKEvent")
 	public void processKEvent(KEvent e) {
-		//	processEvent(evtFactory.createSimpleEvent(referenceLocation));
-		logPort.log(mFactory.createDebugMessage("File Resource Modification detected at" + e, bundleSymbolicName));
+		logPort.log(mFactory.createInfoMessage("File Resource Modification detected at" + e, bundleSymbolicName));
 	}
 	
 	/**
@@ -128,6 +137,10 @@ public class Art2ComponentBuilderEclipse extends AbstractComponentType implement
 	@Stop
 	public void stop(){
 		
+	}
+
+	public PortLog getLogPort(){
+		return logPort;
 	}
 
 }
