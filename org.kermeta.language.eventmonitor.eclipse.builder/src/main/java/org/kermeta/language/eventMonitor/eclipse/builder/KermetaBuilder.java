@@ -25,7 +25,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.kermeta.language.api.kevent.KEvent;
 import org.kermeta.language.api.kevent.KEventFactory;
 import org.kermeta.language.api.messaging.UnifiedMessageFactory;
-import org.kermeta.language.eventMonitor.eclipse.builder.art2.impl.Art2ComponentBuilderEclipse;
+import org.kermeta.language.eventMonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilder;
 //import org.kermeta.scala.parser.KParser;
 //import org.kermeta.scala.parser.ParserUtil;
 
@@ -123,10 +123,10 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 */		
 			
 			//update(resource.getLocation().toString());
-			Art2ComponentBuilderEclipse.getDefault().getLogPort().log(
-					mFactory.createInfoMessage("Resource File Change on disk at : " + resource.getLocation().toString() + "an event should be triggered" , Art2ComponentBuilderEclipse.getDefault().getBundleSymbolicName()));
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+					mFactory.createInfoMessage("Resource File Change on disk at : " + resource.getLocation().toString() + "an event should be triggered" , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 			KEvent e = evtFactory.createSimpleEvent(resource.getLocation().toString());
-			Art2ComponentBuilderEclipse.getDefault().processKEvent(e);
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().processKEvent(e);
 		}
 	}
 

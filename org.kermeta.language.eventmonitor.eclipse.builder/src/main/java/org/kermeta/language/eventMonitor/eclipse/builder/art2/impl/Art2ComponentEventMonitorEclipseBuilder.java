@@ -58,7 +58,7 @@ import org.osgi.framework.Bundle;
 })
 
 @ComponentType(libName="org.kermeta.language")
-public class Art2ComponentBuilderEclipse extends AbstractComponentType implements org.kermeta.language.api.port.PortKEvent {
+public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentType implements org.kermeta.language.api.port.PortKEvent {
 
 	protected String bundleSymbolicName="";
 	protected Bundle bundle;
@@ -69,8 +69,8 @@ public class Art2ComponentBuilderEclipse extends AbstractComponentType implement
 	/**
 	 * As it uses UI declaration via plugin.xml, this component is a singleton in Eclipse
 	 */
-	protected static Art2ComponentBuilderEclipse instance;
-	public static Art2ComponentBuilderEclipse getDefault(){
+	protected static Art2ComponentEventMonitorEclipseBuilder instance;
+	public static Art2ComponentEventMonitorEclipseBuilder getDefault(){
 		return instance;
 	}
 	
@@ -91,12 +91,12 @@ public class Art2ComponentBuilderEclipse extends AbstractComponentType implement
 	 */
 	@Start
 	public void start(){
-		//System.out.println("Art2ComponentBuilderEclipse.start ...");
+		//System.out.println("Art2ComponentEventMonitorEclipseBuilder.start ...");
 		// set the singleton instance
 		instance =  this;
 		// store some useful data
 		logPort = getPortByName("log", PortLog.class);
-	//	System.out.println("Art2ComponentBuilderEclipse.start logPort="+logPort.toString());
+	//	System.out.println("Art2ComponentEventMonitorEclipseBuilder.start logPort="+logPort.toString());
 		
 		bundle = (Bundle) this.getDictionary().get("osgi.bundle");
 		bundleSymbolicName = bundle.getHeaders().get("Bundle-SymbolicName").toString();

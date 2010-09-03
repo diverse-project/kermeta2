@@ -56,6 +56,9 @@
 						<Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
 						<Bundle-Vendor>IRISA/INRIA</Bundle-Vendor>
 						<!-- <Bundle-Activator>org.kermeta.language.builder.eclipse.Activator</Bundle-Activator> -->
+						<Export-Package>
+                        	org.kermeta.language.eventMonitor.eclipse.builder.*
+                        </Export-Package>
 						<Require-Bundle>
 							org.eclipse.core.runtime,
 							org.eclipse.core.resources,
@@ -72,12 +75,11 @@
 							!org.eclipse.jface.*,
 							org.kermeta.*,
 							scala.*,
-							org.osgi.framework;version="[1.5,2)",		
-							org.eclipse.ui.ide
+							org.osgi.framework;version="[1.5,2)"
                         </Import-Package>
 						<!-- add extra element in the manifest, copy them from this file ex: 
 							Bundle-ActivationPolicy: lazy -->
-						<_include>resources/META-INF/MANIFEST-part.MF</_include>
+						<!-- <_include>resources/META-INF/MANIFEST-part.MF</_include> -->
 					</instructions>
 				</configuration>
 			</plugin>
