@@ -1,6 +1,6 @@
 <!-- $Id: pom.xml 12339 2010-09-03 13:25:51Z hrambelo $ -->
 <!-- License    : EPL                                    -->
-<!-- Project    : org.kermeta.language.builder.eclipse -->
+<!-- Project    : org.kermeta.language.eventmonitor.eclipse.builder -->
 <!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
 <!-- Authors : Haja Rambelontsalama <hrambelo@irisa.fr> --> 
 
@@ -55,7 +55,7 @@
 					<instructions>
 						<Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
 						<Bundle-Vendor>IRISA/INRIA</Bundle-Vendor>
-						<!-- <Bundle-Activator>org.kermeta.language.builder.eclipse.Activator</Bundle-Activator> -->
+						<!-- <Bundle-Activator>org.kermeta.language.eventmonitor.eclipse.builder.Activator</Bundle-Activator> -->
 						<Export-Package>
                         	org.kermeta.language.eventmonitor.eclipse.builder.*
                         </Export-Package>
