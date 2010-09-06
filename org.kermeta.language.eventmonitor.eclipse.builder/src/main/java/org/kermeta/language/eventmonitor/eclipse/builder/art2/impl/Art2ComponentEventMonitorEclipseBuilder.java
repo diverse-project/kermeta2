@@ -8,7 +8,7 @@
  *            Haja Rambelontsalama <hajanirina-johary.rambelontsalama@inria.fr>
  */
 
-package org.kermeta.language.eventMonitor.eclipse.builder.art2.impl;
+package org.kermeta.language.eventmonitor.eclipse.builder.art2.impl;
 
 import java.io.InputStream;
 import java.net.URL;

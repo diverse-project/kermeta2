@@ -7,7 +7,7 @@
 * Creation date : 20 juil. 2010
 * Authors : Haja Rambelontsalama <hajanirina-johary.rambelontsalama@inria.fr>
 */
-package org.kermeta.language.eventMonitor.eclipse.builder;
+package org.kermeta.language.eventmonitor.eclipse.builder;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,9 +25,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.kermeta.language.api.kevent.KEvent;
 import org.kermeta.language.api.kevent.KEventFactory;
 import org.kermeta.language.api.messaging.UnifiedMessageFactory;
-import org.kermeta.language.eventMonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilder;
-//import org.kermeta.scala.parser.KParser;
-//import org.kermeta.scala.parser.ParserUtil;
+import org.kermeta.language.eventmonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilder;
 
 //import scala.Option;
 

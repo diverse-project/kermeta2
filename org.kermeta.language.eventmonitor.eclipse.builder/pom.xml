@@ -57,7 +57,7 @@
 						<Bundle-Vendor>IRISA/INRIA</Bundle-Vendor>
 						<!-- <Bundle-Activator>org.kermeta.language.builder.eclipse.Activator</Bundle-Activator> -->
 						<Export-Package>
-                        	org.kermeta.language.eventMonitor.eclipse.builder.*
+                        	org.kermeta.language.eventmonitor.eclipse.builder.*
                         </Export-Package>
 						<Require-Bundle>
 							org.eclipse.core.runtime,

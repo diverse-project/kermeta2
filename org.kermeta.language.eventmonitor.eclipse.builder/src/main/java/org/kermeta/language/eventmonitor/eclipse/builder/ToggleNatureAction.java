@@ -7,7 +7,7 @@
 * Creation date : 20 juil. 2010
 * Authors :  Haja Rambelontsalama <hajanirina-johary.rambelontsalama@inria.fr>
 */
-package org.kermeta.language.eventMonitor.eclipse.builder;
+package org.kermeta.language.eventmonitor.eclipse.builder;
 
 import java.util.Iterator;
 
