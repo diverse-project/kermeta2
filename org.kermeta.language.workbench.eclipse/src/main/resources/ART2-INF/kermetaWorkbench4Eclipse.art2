@@ -1,58 +1,68 @@
 <?xml version="1.0" encoding="ASCII"?>
 <art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:art2="http://art/2.0">
   <nodes name="KermetaEclipseWorkbench">
-    <components name="Art2ComponentEclipseLogger--130807410" componentType="//@componentTypes.0">
-      <provided portTypeRef="//@componentTypes.0/@provided.0"/>
+    <components name="Art2ComponentEventMonitorEclipseBuilder-1633076639" componentType="//@componentTypes.0">
+      <required portTypeRef="//@componentTypes.0/@required.0"/>
+      <required portTypeRef="//@componentTypes.0/@required.1"/>
     </components>
-    <components name="Art2ComponentEventMonitorEclipseBuilder-11543548" componentType="//@componentTypes.1">
+    <components name="Art2ComponentEclipseLogger-1744638294" componentType="//@componentTypes.1">
       <provided portTypeRef="//@componentTypes.1/@provided.0"/>
-      <required portTypeRef="//@componentTypes.1/@required.0"/>
     </components>
-    <components name="Art2ComponentTexteditorEclipse--93049223" componentType="//@componentTypes.2">
+    <components name="Art2ComponentTexteditorEclipse--1877231444" componentType="//@componentTypes.2">
       <required portTypeRef="//@componentTypes.2/@required.0"/>
     </components>
+    <components name="Art2ComponentKWF--893176357" componentType="//@componentTypes.3">
+      <provided portTypeRef="//@componentTypes.3/@provided.0"/>
+      <required portTypeRef="//@componentTypes.3/@required.0"/>
+    </components>
   </nodes>
+  <componentTypes name="Art2ComponentEventMonitorEclipseBuilder" factoryBean="org.kermeta.language.eventmonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilderFactory" startMethod="start" stopMethod="stop" requiredLibs="//@thirdParties.0 //@thirdParties.1">
+    <required name="kevent" ref="//@portTypes.0"/>
+    <required name="log" ref="//@portTypes.1"/>
+  </componentTypes>
   <componentTypes name="Art2ComponentEclipseLogger" factoryBean="org.kermeta.utils.logger.eclipse.art2.impl.Art2ComponentEclipseLoggerFactory" startMethod="start" stopMethod="stop">
-    <provided name="log" ref="//@portTypes.0">
+    <provided name="log" ref="//@portTypes.1">
       <mappings beanMethodName="log" serviceMethodName="log"/>
     </provided>
   </componentTypes>
-  <componentTypes name="Art2ComponentEventMonitorEclipseBuilder" factoryBean="org.kermeta.language.eventmonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilderFactory" startMethod="start" stopMethod="stop" requiredLibs="//@thirdParties.0 //@thirdParties.1 //@thirdParties.2 //@thirdParties.3 //@thirdParties.4">
-    <required name="log" ref="//@portTypes.0"/>
-    <provided name="ResourceChangeEvent" ref="//@portTypes.1">
+  <componentTypes name="Art2ComponentTexteditorEclipse" factoryBean="org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipseFactory" startMethod="start" stopMethod="stop">
+    <required name="log" ref="//@portTypes.1"/>
+    <requiredLibs href="#//@thirdParties.2"/>
+    <requiredLibs href="#//@thirdParties.3"/>
+    <requiredLibs href="../../../../../../../../tmp/art2loaderLib-7103707731137390772150096938.xmi#//@thirdParties.0"/>
+    <requiredLibs href="../../../../../../../../tmp/art2loaderLib-7103707731137390772150096938.xmi#//@thirdParties.1"/>
+    <requiredLibs href="#//@thirdParties.4"/>
+  </componentTypes>
+  <componentTypes name="Art2ComponentKWF" factoryBean="org.kermeta.language.kwf.art2.impl.Art2ComponentKWFFactory" startMethod="start" stopMethod="stop">
+    <required name="log" ref="//@portTypes.1"/>
+    <provided name="kevent" ref="//@portTypes.0">
       <mappings beanMethodName="processKEvent" serviceMethodName="processKEvent"/>
     </provided>
   </componentTypes>
-  <componentTypes name="Art2ComponentTexteditorEclipse" factoryBean="org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipseFactory" startMethod="start" stopMethod="stop">
-    <required name="log" ref="//@portTypes.0"/>
-    <requiredLibs href="../../../../../../../../tmp/art2loaderLib-9578255195386345507293827825.xmi#//@thirdParties.0"/>
-    <requiredLibs href="../../../../../../../../tmp/art2loaderLib-9578255195386345507293827825.xmi#//@thirdParties.1"/>
-    <requiredLibs href="../../../../../../../../tmp/art2loaderLib-9578255195386345507293827825.xmi#//@thirdParties.2"/>
-    <requiredLibs href="../../../../../../../../tmp/art2loaderLib-9578255195386345507293827825.xmi#//@thirdParties.3"/>
-    <requiredLibs href="../../../../../../../../tmp/art2loaderLib-9578255195386345507293827825.xmi#//@thirdParties.4"/>
-  </componentTypes>
-  <bindings ports="//@nodes.0/@components.1/@required.0 //@nodes.0/@components.0/@provided.0"/>
-  <bindings ports="//@nodes.0/@components.2/@required.0 //@nodes.0/@components.0/@provided.0"/>
-  <dataTypes name="void"/>
-  <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
+  <bindings ports="//@nodes.0/@components.0/@required.1 //@nodes.0/@components.1/@provided.0"/>
+  <bindings ports="//@nodes.0/@components.2/@required.0 //@nodes.0/@components.1/@provided.0"/>
+  <bindings ports="//@nodes.0/@components.3/@required.0 //@nodes.0/@components.1/@provided.0"/>
+  <bindings ports="//@nodes.0/@components.3/@provided.0 //@nodes.0/@components.0/@required.0"/>
   <dataTypes name="Unit"/>
   <dataTypes name="org.kermeta.language.api.kevent.KEvent"/>
-  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortLog">
-    <operations name="log" returnType="//@dataTypes.0">
+  <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
+  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortKEvent">
+    <operations name="processKEvent" returnType="//@dataTypes.0">
       <parameters name="arg0" type="//@dataTypes.1"/>
     </operations>
   </portTypes>
-  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortKEvent">
-    <operations name="processKEvent" returnType="//@dataTypes.2">
-      <parameters name="arg0" type="//@dataTypes.3"/>
+  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortLog">
+    <operations name="log" returnType="//@dataTypes.0">
+      <parameters name="arg0" type="//@dataTypes.2"/>
     </operations>
   </portTypes>
-  <libraries name="org.kermeta.utils" groupName="org.kermeta.utils" unitName="utils.logger.eclipse" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
-  <libraries name="org.kermeta.language1" groupName="org.kermeta.language" unitName="language.eventmonitor.eclipse.builder" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.1"/>
+  <libraries name="org.kermeta.language1" groupName="org.kermeta.language" unitName="language.eventmonitor.eclipse.builder" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
+  <libraries name="org.kermeta.utils" groupName="org.kermeta.utils" unitName="utils.logger.eclipse" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.1"/>
   <libraries name="org.kermeta.language" groupName="org.kermeta.language" unitName="language.texteditor.eclipse" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.2"/>
-  <thirdParties name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
-  <thirdParties name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>
+  <libraries name="org.kermeta.language2" groupName="org.kermeta.language" unitName="language.KWF" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.3"/>
   <thirdParties name="org.kermeta.language.traceability.model" url="mvn:org.kermeta.traceability/traceability.model"/>
   <thirdParties name="org.kermeta.language.api" url="mvn:org.kermeta.language/language.api"/>
+  <thirdParties name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
+  <thirdParties name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>
   <thirdParties name="org.kermeta.language.loader.scala" url="mvn:org.kermeta.language/language.loader.scala"/>
 </art2:ContainerRoot>
