@@ -1,5 +1,5 @@
-/*$$Id $$
-* Project : org.kermeta.language.builder.eclipse
+/*$Id $
+* Project : org.kermeta.language.eventmonitor.eclipse.builder
 * File : 	KermetaNature.java
 * License : EPL
 * Copyright : IRISA / INRIA / Universite de Rennes 1 2010
@@ -24,7 +24,7 @@ public class KermetaNature implements IProjectNature {
 	/**
 	 * ID of this project nature
 	 */
-	public static final String NATURE_ID = "org.kermeta.language.builder.eclipse.KermetaNature";
+	public static final String NATURE_ID = "org.kermeta.language.eventmonitor.eclipse.builder.KermetaNature";
 
 	private IProject project;
 

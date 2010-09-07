@@ -1,5 +1,5 @@
-/*$$Id : $$
-* Project : org.kermeta.language.builder.eclipse
+/*$Id : $
+* Project : org.kermeta.language.eventmonitor.eclipse.builder
 * File : 	KermetaBuilder.java
 * License : EPL
 * Copyright : IRISA / INRIA / Universite de Rennes 1 2010
@@ -38,6 +38,8 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 		 * @see org.eclipse.core.resources.IResourceDeltaVisitor#visit(org.eclipse.core.resources.IResourceDelta)
 		 */
 		public boolean visit(IResourceDelta delta) throws CoreException {
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+					mFactory.createDebugMessage("Visit started for building" , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 			//System.out.println("in building");
 			IResource resource = delta.getResource();
 	        //send events to Kernel Kworkflow ie normalisation with ART
@@ -70,10 +72,10 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
-	public static final String BUILDER_ID = "org.kermeta.language.builder.eclipse.KermetaBuilder";
+	public static final String BUILDER_ID = "org.kermeta.language.eventmonitor.eclipse.builder.KermetaBuilder";
 	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
 	protected KEventFactory evtFactory = KEventFactory.getInstance();
-	//private static final String MARKER_TYPE = "org.kermeta.language.builder.eclipse.xmlProblem";
+	//private static final String MARKER_TYPE = "org.kermeta.language.eventmonitor.eclipse.builder.xmlProblem";
 
 	/*
 	 * (non-Javadoc)
@@ -126,13 +128,6 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 			KEvent e = evtFactory.createSimpleEvent(resource.getLocation().toString());
 			Art2ComponentEventMonitorEclipseBuilder.getDefault().processKEvent(e);
 		}
-	}
-
-	private void deleteMarkers(IFile file) {
-		/*try {
-			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
-		} catch (CoreException ce) {
-		}*/
 	}
 
 	protected void fullBuild(final IProgressMonitor monitor)

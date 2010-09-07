@@ -4,9 +4,9 @@ Export-Package: org.kermeta.language.eventmonitor.eclipse.builder.art2
  .messaging,org.osgi.framework,org.kermeta.art2.framework,org.kermeta.
  language.api.port,scala.collection.mutable,scala.reflect,scala",org.k
  ermeta.language.eventmonitor.eclipse.builder;uses:="org.kermeta.langu
- age.api.kevent,org.kermeta.language.api.messaging,org.kermeta.languag
- e.api.port,org.kermeta.language.eventmonitor.eclipse.builder.art2.imp
- l"
+ age.api.messaging,org.kermeta.language.api.port,org.kermeta.language.
+ eventmonitor.eclipse.builder.art2.impl,org.kermeta.language.api.keven
+ t"
 Ignore-Package: org.eclipse.jface.action,org.eclipse.core.runtime,org.
  eclipse.ui,org.eclipse.core.resources,org.eclipse.jface.viewers,org.e
  clipse.core.internal.registry
@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,or
 Bundle-Vendor: IRISA/INRIA
 Build-Jdk: 1.6.0_18
 Bundle-Version: 2.0.0.SNAPSHOT
-Bnd-LastModified: 1283756702993
+Bnd-LastModified: 1283854655432
 Bundle-ManifestVersion: 2
 Import-Package: org.kermeta.art2.framework,org.kermeta.language.api.ke
  vent,org.kermeta.language.api.messaging,org.kermeta.language.api.port

@@ -1,5 +1,5 @@
-/*$$Id $$
-* Project : org.kermeta.language.builder.eclipse
+/*$Id $
+* Project : org.kermeta.language.eventmonitor.eclipse.builder
 * File : 	ToggleNatureAction.java
 * License : EPL
 * Copyright : IRISA / INRIA / Universite de Rennes 1 2010
@@ -20,17 +20,22 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.kermeta.language.api.messaging.UnifiedMessageFactory;
+import org.kermeta.language.eventmonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilder;
 
 public class ToggleNatureAction implements IObjectActionDelegate {
 
 	private ISelection selection;
-
+	
+	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
 	 */
 	public void run(IAction action) {
+		Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+				mFactory.createDebugMessage("popupMenu Add/Remove nature triggered" , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 		if (selection instanceof IStructuredSelection) {
 			for (Iterator it = ((IStructuredSelection) selection).iterator(); it
 					.hasNext();) {
@@ -78,9 +83,12 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		try {
 			IProjectDescription description = project.getDescription();
 			String[] natures = description.getNatureIds();
-
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+					mFactory.createDebugMessage("Nbr of Natures found on " +project.getDescription() + " : " + natures.length , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 			for (int i = 0; i < natures.length; ++i) {
 				if (KermetaNature.NATURE_ID.equals(natures[i])) {
+					Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+							mFactory.createDebugMessage("Nature add at : " + project.getDescription().toString() + "an event should be triggered" , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 					// Remove the nature
 					String[] newNatures = new String[natures.length - 1];
 					System.arraycopy(natures, 0, newNatures, 0, i);
@@ -99,6 +107,8 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			description.setNatureIds(newNatures);
 			project.setDescription(description, null);
 		} catch (CoreException e) {
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+					mFactory.createErrorMessage("Exception : " + e , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 		}
 	}
 

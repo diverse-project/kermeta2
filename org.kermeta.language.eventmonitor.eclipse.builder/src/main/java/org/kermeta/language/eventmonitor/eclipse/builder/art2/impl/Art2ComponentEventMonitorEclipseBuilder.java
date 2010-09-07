@@ -1,4 +1,4 @@
-/* $$Id: $$
+/* $Id$
  * Project    : ${project_name}
  * License    : EPL
  * Copyright  : IRISA / INRIA / Universite de Rennes 1
@@ -57,7 +57,7 @@ import org.osgi.framework.Bundle;
 	@RequiredPort(name = "log", type=PortType.SERVICE, className=PortLog.class)
 })
 
-@ComponentType(libName="org.kermeta.language")
+@ComponentType(libName="org.kermeta.language1")
 public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentType implements org.kermeta.language.api.port.PortKEvent {
 
 	protected String bundleSymbolicName="";

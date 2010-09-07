@@ -19,7 +19,7 @@
       <parameters name="arg0" type="//@dataTypes.2"/>
     </operations>
   </portTypes>
-  <libraries name="org.kermeta.language" groupName="org.kermeta.language" unitName="language.eventmonitor.eclipse.builder" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
+  <libraries name="org.kermeta.language1" groupName="org.kermeta.language" unitName="language.eventmonitor.eclipse.builder" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
   <thirdParties name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
   <thirdParties name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>
   <thirdParties name="org.kermeta.language.traceability.model" url="mvn:org.kermeta.traceability/traceability.model"/>
