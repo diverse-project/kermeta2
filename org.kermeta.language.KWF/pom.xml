@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.kermeta.language</groupId>
 	<artifactId>language.KWF</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>2.0.0-SNAPSHOT</version>
 	<packaging>bundle</packaging>
-	<name> KWF</name>
+	<name>K2 :: KWF</name>
 	
 	<parent>
         <artifactId>art2.root</artifactId>
@@ -25,44 +25,34 @@
 				</configuration>
 			</plugin>
 			<plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.1.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Export-Package>
-                        org.kermeta.utils.logger.eclipse.*
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.1.0</version>
+				<extensions>true</extensions>
+
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
+						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
+						<Bundle-ClassPath>.</Bundle-ClassPath>
+						<Export-Package>
+                        	org.kermeta.language.kwf.*
                         </Export-Package>
-                        <!-- Use Require-Bundle dependencies only for bundles for we don't have control and that may introduce splitted package issue ex: org.eclipse.core.runtime -->
-                        <Require-Bundle>
-                        	org.eclipse.jface.text,
-                    		org.eclipse.ui,
-                    		org.eclipse.ui.console,
- 							org.eclipse.core.runtime,
- 							org.eclipse.core.jobs,
- 							org.eclipse.equinox.preferences
+						<Require-Bundle>
                         </Require-Bundle>
-                        <Import-Package>
-                        	!org.eclipse.core.runtime,
-							!org.eclipse.core.runtime.jobs, 
-							!org.eclipse.core.runtime.preferences,
-							!org.eclipse.ui.*,
-							!org.eclipse.jface.*,
-							!org.eclipse.swt.*,
-	                        org.kermeta.art2,
-	                        org.kermeta.art2.framework,
-							org.osgi.framework,						
-							org.kermeta.language.api.*,
-							scala.*
+						<!-- use the ! for avoiding to import some packages that are already 
+							there with the Require-Bundle -->
+						<Import-Package>
+							org.kermeta.*,
+							scala.*,
+							org.osgi.framework;version="[1.5,2)"
                         </Import-Package>
-                        <Bundle-ClassPath>.</Bundle-ClassPath>
-                        <_versionpolicy>[${version;==;${@}},${version;+;${@}})</_versionpolicy>
-                        <Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-                        <Bundle-SymbolicName>org.kermeta.language.KWF; singleton:=true</Bundle-SymbolicName>
-                    </instructions>
-                </configuration>
-            </plugin>
+						<!-- add extra element in the manifest, copy them from this file ex: 
+							Bundle-ActivationPolicy: lazy -->
+						<!-- <_include>resources/META-INF/MANIFEST-part.MF</_include> -->
+					</instructions>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -89,7 +79,7 @@
 			<scope>compile</scope>
 		</dependency>
 		
-		<!-- Eclipse dependencies -->
+		<!-- Eclipse dependencies 
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.jobs</artifactId>
@@ -140,7 +130,7 @@
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui.workbench</artifactId>
 			<version>[3.5.0.0,)</version>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 </project>
