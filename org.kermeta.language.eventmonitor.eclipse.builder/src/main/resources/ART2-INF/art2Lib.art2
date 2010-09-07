@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
 <art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:art2="http://art/2.0">
-  <componentTypes name="Art2ComponentEventMonitorEclipseBuilder" factoryBean="org.kermeta.language.eventmonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilderFactory" startMethod="start" stopMethod="stop" requiredLibs="//@thirdParties.0 //@thirdParties.1 //@thirdParties.2 //@thirdParties.3 //@thirdParties.4">
+  <componentTypes name="Art2ComponentEventMonitorEclipseBuilder" factoryBean="org.kermeta.language.eventmonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilderFactory" startMethod="start" stopMethod="stop" requiredLibs="//@thirdParties.0 //@thirdParties.1">
+    <required name="kevent" ref="//@portTypes.0"/>
     <required name="log" ref="//@portTypes.1"/>
-    <provided name="ResourceChangeEvent" ref="//@portTypes.0">
-      <mappings beanMethodName="processKEvent" serviceMethodName="processKEvent"/>
-    </provided>
   </componentTypes>
   <dataTypes name="Unit"/>
   <dataTypes name="org.kermeta.language.api.kevent.KEvent"/>
@@ -20,9 +18,6 @@
     </operations>
   </portTypes>
   <libraries name="org.kermeta.language1" groupName="org.kermeta.language" unitName="language.eventmonitor.eclipse.builder" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
-  <thirdParties name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
-  <thirdParties name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>
   <thirdParties name="org.kermeta.language.traceability.model" url="mvn:org.kermeta.traceability/traceability.model"/>
   <thirdParties name="org.kermeta.language.api" url="mvn:org.kermeta.language/language.api"/>
-  <thirdParties name="org.kermeta.language.loader.scala" url="mvn:org.kermeta.language/language.loader.scala"/>
 </art2:ContainerRoot>

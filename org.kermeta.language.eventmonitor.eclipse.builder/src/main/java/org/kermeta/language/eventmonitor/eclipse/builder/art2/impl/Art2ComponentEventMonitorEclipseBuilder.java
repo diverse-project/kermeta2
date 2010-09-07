@@ -18,7 +18,6 @@ import org.eclipse.core.runtime.ContributorFactoryOSGi;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.RegistryFactory;
 import org.kermeta.art2.annotation.PortType;
-import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.RequiredPort;
 import org.kermeta.art2.annotation.Requires;
 import org.kermeta.art2.annotation.Start;
@@ -26,30 +25,20 @@ import org.kermeta.art2.annotation.Stop;
 import org.kermeta.art2.annotation.ThirdParties;
 import org.kermeta.art2.annotation.ThirdParty;
 import org.kermeta.art2.annotation.ComponentType;
-import org.kermeta.art2.annotation.Provides;
-import org.kermeta.art2.annotation.ProvidedPort;
 import org.kermeta.art2.framework.AbstractComponentType;
 import org.kermeta.language.api.kevent.KEvent;
-import org.kermeta.language.api.kevent.KEventFactory;
 import org.kermeta.language.api.messaging.UnifiedMessageFactory;
 import org.kermeta.language.api.port.PortLog;
 import org.kermeta.language.api.port.PortKEvent;
 import org.osgi.framework.Bundle;
 
 @ThirdParties({
-	@ThirdParty(name="org.kermeta.language.model", url="mvn:org.kermeta.language/language.model"),
-	@ThirdParty(name="org.kermeta.language.kp.model", url="mvn:org.kermeta.kp/kp.model"),
 	@ThirdParty(name="org.kermeta.language.traceability.model", url="mvn:org.kermeta.traceability/traceability.model"),
-	@ThirdParty(name="org.kermeta.language.api", url="mvn:org.kermeta.language/language.api"),
-	@ThirdParty(name="org.kermeta.language.loader.scala", url="mvn:org.kermeta.language/language.loader.scala")
+	@ThirdParty(name="org.kermeta.language.api", url="mvn:org.kermeta.language/language.api")
 })
 
-@Provides({
-	@ProvidedPort(name="ResourceChangeEvent", type=PortType.SERVICE,  className=PortKEvent.class)
-	}		
-)
-
 @Requires({
+	@RequiredPort(name="kevent", type=PortType.SERVICE,  className=PortKEvent.class),
 	/**
 	 * Log port for sending technical messages
 	 */
@@ -58,11 +47,12 @@ import org.osgi.framework.Bundle;
 })
 
 @ComponentType(libName="org.kermeta.language1")
-public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentType implements org.kermeta.language.api.port.PortKEvent {
+public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentType {
 
 	protected String bundleSymbolicName="";
 	protected Bundle bundle;
-	protected PortLog logPort=null;
+	protected PortLog logPort = null;
+	protected PortKEvent keventPort = null;
 	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
 	//protected KEventFactory evtFactory = KEventFactory.getInstance();
 	
@@ -81,8 +71,9 @@ public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentTy
 		return bundle;
 	}
 
-	@Port(name="ResourceChangeEvent", method="processKEvent")
 	public void processKEvent(KEvent e) {
+		//throw the event to KWF
+		keventPort.processKEvent(e);
 		logPort.log(mFactory.createInfoMessage("File Resource Modification detected at" + e, bundleSymbolicName));
 	}
 	
@@ -96,6 +87,7 @@ public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentTy
 		instance =  this;
 		// store some useful data
 		logPort = getPortByName("log", PortLog.class);
+		keventPort = getPortByName("kevent", PortKEvent.class);
 	//	System.out.println("Art2ComponentEventMonitorEclipseBuilder.start logPort="+logPort.toString());
 		
 		bundle = (Bundle) this.getDictionary().get("osgi.bundle");
@@ -142,5 +134,11 @@ public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentTy
 	public PortLog getLogPort(){
 		return logPort;
 	}
+	
+	public PortKEvent getKeventPort() {
+		return keventPort;
+	}
+
+
 
 }

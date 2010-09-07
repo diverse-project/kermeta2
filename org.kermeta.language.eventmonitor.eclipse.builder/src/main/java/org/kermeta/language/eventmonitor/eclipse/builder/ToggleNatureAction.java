@@ -20,6 +20,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.kermeta.language.api.kevent.KEvent;
+import org.kermeta.language.api.kevent.KEventFactory;
 import org.kermeta.language.api.messaging.UnifiedMessageFactory;
 import org.kermeta.language.eventmonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilder;
 
@@ -28,6 +30,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 	private ISelection selection;
 	
 	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
+	protected KEventFactory evtFactory = KEventFactory.getInstance();
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -100,6 +103,10 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				}
 			}
 
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+					mFactory.createInfoMessage("Add Kermeta Nature to project : " + project.getName() + "an event should be triggered" , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
+			KEvent e = evtFactory.createSimpleEvent(project.getName());
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().processKEvent(e);
 			// Add the nature
 			String[] newNatures = new String[natures.length + 1];
 			System.arraycopy(natures, 0, newNatures, 0, natures.length);
