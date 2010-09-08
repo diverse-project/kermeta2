@@ -35,7 +35,7 @@ import org.kermeta.utils.error.report.eclipse.KermetaMarkerFactory;
 import org.osgi.framework.Bundle;
 
 @Provides({
-	@ProvidedPort(name="error", type = PortType.SERVICE, className=PortErrorReport.class)
+    @ProvidedPort(name = "error", type=PortType.SERVICE, className=PortErrorReport.class)
 })
 
 @Requires({
@@ -56,14 +56,16 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType imple
 	 */
 	protected static Art2ComponentEclipseErrorReport instance;
 	
-	@Port(name="error", method="markResource")
+	@Port(name="error",method="markResource")
 	public void markResource(String url) {
 		marker.unMark(url);
+		logPort.log(mFactory.createDebugMessage("A marker should be added to : " +url, bundleSymbolicName));
 	}
 	
-	@Port(name="error", method="unMarkResource")
+	@Port(name="error",method="unMarkResource")
 	public void unMarkResource(String url) {
 		marker.mark(url);
+		logPort.log(mFactory.createDebugMessage("Markers should be removed from : " +url, bundleSymbolicName));
 	}
 	
 	public static Art2ComponentEclipseErrorReport getDefault(){

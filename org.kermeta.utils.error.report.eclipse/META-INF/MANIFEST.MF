@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources
 Bundle-Vendor: IRISA/INRIA
 Build-Jdk: 1.6.0_18
 Bundle-Version: 2.0.0.SNAPSHOT
-Bnd-LastModified: 1283957630788
+Bnd-LastModified: 1283958395577
 Bundle-ManifestVersion: 2
 Import-Package: org.kermeta.art2.framework,org.kermeta.language.api.me
  ssaging,org.kermeta.language.api.port,org.kermeta.utils.error.report.
