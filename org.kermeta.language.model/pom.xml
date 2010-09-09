@@ -124,7 +124,7 @@
 		org.eclipse.core.resources,	org.eclipse.core.runtime.preferences, org.eclipse.jface.preference,	org.eclipse.swt.widgets, org.eclipse.ui, org.eclipse.ui.plugin] --> 
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
+            <artifactId>slf4j-api</artifactId>
             <version>1.5.11</version>
             <type>jar</type>
             <scope>compile</scope>
