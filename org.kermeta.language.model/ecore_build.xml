@@ -6,7 +6,7 @@
 
 	<!-- CLASSPATH AND LIBRARY : Change that to fit your config -->
 	<!--<property name="eclipse_dir" location="/home/apps/eclipse3"/>-->
-	<property name="eclipse.home" location="c:/eclipse3.5_dev2/eclipse"/>
+	<property name="eclipse.home" location="C:\eclipse3.5_base_dev\eclipse"/>
 	
 	<property name="libdir" location="./lib"/>
 	
@@ -18,7 +18,7 @@
 			</fileset>
 			<pathelement location="../EcoreMerge/runtime/"/>
 		    <pathelement path="${classpath}"/>
-			<pathelement path="./build/class/"/>
+			<pathelement path="./target/classes/"/>
 			<fileset dir="${libdir}" includes="**/*.jar"/>
 	</path>
 	
