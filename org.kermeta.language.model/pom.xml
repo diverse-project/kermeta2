@@ -105,12 +105,20 @@
         <dependency>
             <groupId>org.kermeta.emf</groupId>
             <artifactId>emf.lib</artifactId>
-            <version>2.5.0</version>
+            <version>2.6.0</version>
         </dependency>
         <dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.runtime</artifactId>
 			<version>[3.5.0.0,)</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>4.2.0</version>
+			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
 		<!-- Using org.kermeta.utils/utils.slf4j.eclipse v2.0.0-SNAPSHOT causes Unresolved references to [org.apache.log4j, org.apache.log4j.xml, 
 		org.eclipse.core.resources,	org.eclipse.core.runtime.preferences, org.eclipse.jface.preference,	org.eclipse.swt.widgets, org.eclipse.ui, org.eclipse.ui.plugin] --> 
