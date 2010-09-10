@@ -43,7 +43,7 @@ import org.osgi.framework.Bundle;
     @RequiredPort(name = "log", type=PortType.SERVICE, className=PortLog.class)
 })
 @ComponentType(libName = "org.kermeta.utils2")
-public class Art2ComponentEclipseErrorReport extends AbstractComponentType implements PortErrorReport {
+public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 
 	protected PortLog logPort=null;
 	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
@@ -58,13 +58,13 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType imple
 	
 	@Port(name="error",method="markResource")
 	public void markResource(String url) {
-		marker.unMark(url);
+		marker.mark(url);
 		logPort.log(mFactory.createDebugMessage("A marker should be added to : " +url, bundleSymbolicName));
 	}
 	
 	@Port(name="error",method="unMarkResource")
 	public void unMarkResource(String url) {
-		marker.mark(url);
+		marker.unMark(url);
 		logPort.log(mFactory.createDebugMessage("Markers should be removed from : " +url, bundleSymbolicName));
 	}
 	
