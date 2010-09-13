@@ -8,13 +8,7 @@
     <name>Kermeta :: Emf :: Lib</name>
     <url>http://maven.apache.org</url>
 
-    <version>${emf.version}</version>
-
-    <parent>
-        <artifactId>language.root</artifactId>
-        <groupId>org.kermeta.language</groupId>
-        <version>2</version>
-    </parent>
+    <version>2.6.0</version>
 
     <build>
         <plugins>
