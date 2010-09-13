@@ -8,8 +8,8 @@
 	<name>Utils :: Logger eclipse</name>
 	
 	<parent>
-        <artifactId>art2.root</artifactId>
         <groupId>org.kermeta.art2</groupId>
+        <artifactId>art2.artcomponent.root</artifactId>
         <version>2</version>
     </parent>
 	

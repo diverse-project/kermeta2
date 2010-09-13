@@ -89,19 +89,7 @@
             <type>jar</type>
         </dependency>
 	</dependencies>
-<repositories>
-	
-	<repository>
-      <id>Tipimoussesnapshot</id>
-      <name>Tipimousse snaptshots </name>
-      <url>http://tipimouss.irisa.fr/maven2-snapshots</url>
-    </repository>
-	<repository>
-      <id>kermeta</id>
-      <name>Kermeta</name>
-      <url>http://www.kermeta.org/maven2</url>
-    </repository>
-  </repositories>
+
 	<distributionManagement>
 		<repository>
 			<id>tipimouss-local-maven-repository</id>
