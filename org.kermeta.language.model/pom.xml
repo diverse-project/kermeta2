@@ -17,6 +17,19 @@
     <build>
         <sourceDirectory>${basedir}/src/java</sourceDirectory>
         <outputDirectory>target/classes</outputDirectory>
+        <!-- Add resources from the plugin structure -->
+        <resources>
+	      	<resource>
+	        	<directory>.</directory>
+	        	<includes>
+	          		<include>plugin.xml</include>
+	        	</includes>
+	      	</resource>
+	      	<resource>
+	        	<directory>build/ecore</directory>
+	        	<targetPath>build/ecore</targetPath>
+	      	</resource>
+	    </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
