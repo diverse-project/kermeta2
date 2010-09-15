@@ -1,83 +1,85 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.kermeta.language</groupId>
-	<artifactId>language.KWF</artifactId>
-	<version>2.0.0-SNAPSHOT</version>
-	<packaging>bundle</packaging>
-	<name>K2 :: KWF</name>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.kermeta.language</groupId>
+    <artifactId>language.KWF</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <packaging>bundle</packaging>
+    <name>K2 :: KWF</name>
 	
-	<parent>
+    <parent>
         <artifactId>art2.root</artifactId>
         <groupId>org.kermeta.art2</groupId>
         <version>2</version>
     </parent>
 	
-	<build>
-		<sourceDirectory>src/main/java</sourceDirectory>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<version>2.1.0</version>
-				<extensions>true</extensions>
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.1.0</version>
+                <extensions>true</extensions>
 
-				<configuration>
-					<instructions>
-						<Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
-						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-						<Bundle-ClassPath>.</Bundle-ClassPath>
-						<Export-Package>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
+                        <Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
+                        <Bundle-ClassPath>.</Bundle-ClassPath>
+                        <Export-Package>
                         	org.kermeta.language.kwf.*
                         </Export-Package>
-						<Require-Bundle>
+                        <Require-Bundle>
                         </Require-Bundle>
 						<!-- use the ! for avoiding to import some packages that are already 
 							there with the Require-Bundle -->
-						<Import-Package>
-							org.kermeta.*,
+                        <Import-Package>
+							org.slf4j.*,
+                                                        org.kermeta.*,
 							scala.*,
 							org.osgi.framework;version="[1.5,2)"
                         </Import-Package>
 						<!-- add extra element in the manifest, copy them from this file ex: 
 							Bundle-ActivationPolicy: lazy -->
 						<!-- <_include>resources/META-INF/MANIFEST-part.MF</_include> -->
-					</instructions>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-	<dependencies>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
 		<!-- Main dependencies -->
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>4.2.0</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.kermeta.art2</groupId>
-			<artifactId>art2.framework</artifactId>
-			<version>2.0.0-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.api</artifactId>
-			<version>2.0.0-SNAPSHOT</version>
-			<type>bundle</type>
-			<scope>compile</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>4.2.0</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.kermeta.art2</groupId>
+            <artifactId>art2.framework</artifactId>
+            <version>2.0.0-SNAPSHOT</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.kermeta.language</groupId>
+            <artifactId>language.api</artifactId>
+            <version>2.0.0-SNAPSHOT</version>
+            <type>bundle</type>
+            <scope>compile</scope>
+        </dependency>
 		
 		<!-- Eclipse dependencies 
 		<dependency>
@@ -131,6 +133,6 @@
 			<artifactId>org.eclipse.ui.workbench</artifactId>
 			<version>[3.5.0.0,)</version>
 		</dependency>-->
-	</dependencies>
+    </dependencies>
 
 </project>

@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="ASCII"?>
 <art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:art2="http://art/2.0">
-  <componentTypes name="Art2ComponentKWF" factoryBean="org.kermeta.language.kwf.art2.impl.Art2ComponentKWFFactory" startMethod="start" stopMethod="stop">
-    <required name="log" ref="//@portTypes.1"/>
-    <provided name="kevent" ref="//@portTypes.0">
-      <mappings beanMethodName="processKEvent" serviceMethodName="processKEvent"/>
-    </provided>
-  </componentTypes>
-  <dataTypes name="Unit"/>
-  <dataTypes name="org.kermeta.language.api.kevent.KEvent"/>
-  <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
-  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortKEvent">
+  <typeDefinitions xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortKEvent">
     <operations name="processKEvent" returnType="//@dataTypes.0">
       <parameters name="arg0" type="//@dataTypes.1"/>
     </operations>
-  </portTypes>
-  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortLog">
+  </typeDefinitions>
+  <typeDefinitions xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortLog">
     <operations name="log" returnType="//@dataTypes.0">
       <parameters name="arg0" type="//@dataTypes.2"/>
     </operations>
-  </portTypes>
-  <libraries name="org.kermeta.language2" groupName="org.kermeta.language" unitName="language.KWF" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="art2:ComponentType" name="Art2ComponentKWF" deployUnit="//@deployUnits.0" factoryBean="org.kermeta.language.kwf.art2.impl.Art2ComponentKWFFactory" bean="org.kermeta.language.kwf.art2.impl.Art2ComponentKWF" startMethod="start" stopMethod="stop">
+    <required name="log" ref="//@typeDefinitions.1"/>
+    <provided name="kevent" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="processKEvent" serviceMethodName="processKEvent"/>
+    </provided>
+  </typeDefinitions>
+  <dataTypes name="void"/>
+  <dataTypes name="org.kermeta.language.api.kevent.KEvent"/>
+  <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
+  <libraries name="org.kermeta.language2" subTypes="//@typeDefinitions.2"/>
+  <deployUnits groupName="org.kermeta.language" unitName="language.KWF" version="2.0.0-SNAPSHOT"/>
 </art2:ContainerRoot>
