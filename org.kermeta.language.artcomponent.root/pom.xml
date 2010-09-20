@@ -16,7 +16,7 @@
 
 
     <properties>
-        <kermeta.version>2.0.0</kermeta.version>
+        <kermeta.version>2</kermeta.version>
     </properties>
 
 	<dependencies>
