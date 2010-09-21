@@ -71,9 +71,7 @@ import org.eclipse.emf.ecore.ETypeParameter;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.kermeta.language.checker.CheckerPackage;
 
-import org.kermeta.language.checker.impl.CheckerPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -217,10 +215,10 @@ public class UtilsPackageImpl extends EPackageImpl implements UtilsPackage {
 				.getEPackage(EcorePackage.eNS_URI) instanceof EcorePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(EcorePackage.eNS_URI)
 				: EcorePackage.eINSTANCE);
-		CheckerPackageImpl theCheckerPackage = (CheckerPackageImpl) (EPackage.Registry.INSTANCE
+/*		CheckerPackageImpl theCheckerPackage = (CheckerPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(CheckerPackage.eNS_URI) instanceof CheckerPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(CheckerPackage.eNS_URI)
-				: CheckerPackage.eINSTANCE);
+				: CheckerPackage.eINSTANCE);*/
 
 		// Create package meta-data objects
 		theUtilsPackage.createPackageContents();
@@ -236,7 +234,7 @@ public class UtilsPackageImpl extends EPackageImpl implements UtilsPackage {
 		theExceptionsPackage.createPackageContents();
 		theIoPackage.createPackageContents();
 		theEcorePackage.createPackageContents();
-		theCheckerPackage.createPackageContents();
+		//theCheckerPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theUtilsPackage.initializePackageContents();
@@ -252,7 +250,7 @@ public class UtilsPackageImpl extends EPackageImpl implements UtilsPackage {
 		theExceptionsPackage.initializePackageContents();
 		theIoPackage.initializePackageContents();
 		theEcorePackage.initializePackageContents();
-		theCheckerPackage.initializePackageContents();
+		//theCheckerPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theUtilsPackage.freeze();
