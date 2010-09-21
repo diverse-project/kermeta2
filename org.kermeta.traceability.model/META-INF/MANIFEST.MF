@@ -11,13 +11,13 @@ Export-Package: org.kermeta.traceability.util;uses:="org.eclipse.emf.e
 Private-Package: org.kermeta.traceability.util,org.kermeta.traceabilit
  y.impl,org.kermeta.traceability,
 Bundle-ClassPath: .
-Built-By: dvojtise
+Built-By: hrambelo
 Tool: Bnd-0.0.311
 Bundle-Name: Kermeta :: Traceability model
 Created-By: Apache Maven Bundle Plugin
-Bundle-Version: 2.0.0.SNAPSHOT
-Build-Jdk: 1.6.0_20
-Bnd-LastModified: 1276182379645
+Bundle-Version: 2.0.0
+Build-Jdk: 1.6.0_18
+Bnd-LastModified: 1285079208781
 Bundle-ManifestVersion: 2
 Import-Package: org.eclipse.emf.common.notify,org.eclipse.emf.common.n
  otify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.ecli
