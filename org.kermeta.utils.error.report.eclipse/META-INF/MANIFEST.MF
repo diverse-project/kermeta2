@@ -3,9 +3,9 @@ Export-Package: org.kermeta.utils.error.report.eclipse;uses:="org.kerm
  eta.language.api.messaging,org.kermeta.utils.error.report.eclipse.art
  2.impl,org.kermeta.language.api.port",org.kermeta.utils.error.report.
  eclipse.art2.impl;uses:="org.kermeta.utils.error.report.eclipse,org.k
- ermeta.language.api.messaging,org.osgi.framework,org.kermeta.art2.fra
- mework,org.kermeta.language.api.port,scala.collection.mutable,scala.r
- eflect,scala"
+ ermeta.language.api.messaging,org.kermeta.art2.framework,org.osgi.fra
+ mework,org.kermeta.language.api.port,org.kermeta.traceability,scala.c
+ ollection.mutable,scala.reflect,scala"
 Ignore-Package: org.eclipse.core.runtime,org.eclipse.core.resources,or
  g.eclipse.core.internal.registry
 Bundle-ClassPath: .
@@ -17,12 +17,13 @@ Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources
 Bundle-Vendor: IRISA/INRIA
 Build-Jdk: 1.6.0_18
 Bundle-Version: 2.0.0.SNAPSHOT
-Bnd-LastModified: 1284111557457
+Bnd-LastModified: 1284134273992
 Bundle-ManifestVersion: 2
 Import-Package: org.kermeta.art2.framework,org.kermeta.language.api.me
- ssaging,org.kermeta.language.api.port,org.kermeta.utils.error.report.
- eclipse,org.kermeta.utils.error.report.eclipse.art2.impl,org.osgi.fra
- mework;version="[1.5,2)",scala,scala.collection.mutable,scala.reflect
+ ssaging,org.kermeta.language.api.port,org.kermeta.traceability,org.ke
+ rmeta.utils.error.report.eclipse,org.kermeta.utils.error.report.eclip
+ se.art2.impl,org.osgi.framework;version="[1.5,2)",scala,scala.collect
+ ion.mutable,scala.reflect
 Bundle-SymbolicName: org.kermeta.utils.error.report.eclipse;singleton:
  =true
 
