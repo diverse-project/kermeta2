@@ -67,13 +67,13 @@ public class ClassImpl extends ParameterizedTypeImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public kermeta.language.structure.Object deepClone(
-			kermeta.language.structure.Object objectToClone) {
+	public kermeta.language.structure.Object _new() {
 
 		kermeta.language.structure.Object result = null;
 
 		result = org.kermeta.compil.runtime.helper.language.ClassUtil
-				.deepCloneObject(this, objectToClone);
+				.newObject(this.getTypeDefinition().qualifiedName().replace(
+						"::", "."));
 
 		return result;
 
@@ -84,13 +84,13 @@ public class ClassImpl extends ParameterizedTypeImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public kermeta.language.structure.Object _new() {
+	public kermeta.language.structure.Object deepClone(
+			kermeta.language.structure.Object objectToClone) {
 
 		kermeta.language.structure.Object result = null;
 
 		result = org.kermeta.compil.runtime.helper.language.ClassUtil
-				.newObject(this.getTypeDefinition().qualifiedName().replace(
-						"::", "."));
+				.deepCloneObject(this, objectToClone);
 
 		return result;
 
@@ -176,34 +176,34 @@ public class ClassImpl extends ParameterizedTypeImpl implements
 
 		{
 
-			kermeta.standard.Iterator<kermeta.language.structure.Type> it_ft98 = org.kermeta.compil.runtime.helper.basetypes.CollectionUtil
+			kermeta.standard.Iterator<kermeta.language.structure.Type> it_ft87 = org.kermeta.compil.runtime.helper.basetypes.CollectionUtil
 					.<kermeta.language.structure.Type> convertAsOrderedSet(
 							cDef.getSuperType()).iterator();
-			java.lang.Boolean idLoopCond_390 = false;
-			while (!idLoopCond_390) {
-				idLoopCond_390 = it_ft98.isOff();
-				if (idLoopCond_390) {
+			java.lang.Boolean idLoopCond_346 = false;
+			while (!idLoopCond_346) {
+				idLoopCond_346 = it_ft87.isOff();
+				if (idLoopCond_346) {
 				} else {
 
 					//BIle:func
-					kermeta.language.structure.Type elem_lbdExp98 = it_ft98
+					kermeta.language.structure.Type elem_lbdExp87 = it_ft87
 							.next();
 
-					java.lang.Boolean idIfCond_391 = false;
-					idIfCond_391 = org.kermeta.compil.runtime.helper.language.TypeUtil
+					java.lang.Boolean idIfCond_347 = false;
+					idIfCond_347 = org.kermeta.compil.runtime.helper.language.TypeUtil
 							.isInstanceSwitcher(
 									org.kermeta.compil.runtime.ExecutionContext
 											.getInstance()
 											.getMetaClass(
 													"kermeta.language.structure.Class"),
-									elem_lbdExp98);
+									elem_lbdExp87);
 
-					if (idIfCond_391) {
+					if (idIfCond_347) {
 
 						kermeta.language.structure.Class c = null;
 
 						c = (kermeta.language.structure.Class) org.kermeta.compil.runtime.helper.language.ObjectUtil
-								.asTypeOrVoid(elem_lbdExp98,
+								.asTypeOrVoid(elem_lbdExp87,
 										"kermeta.language.structure.Class");
 
 						supertypes.add(c);

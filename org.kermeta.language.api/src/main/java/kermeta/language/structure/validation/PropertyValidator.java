@@ -23,17 +23,17 @@ public interface PropertyValidator {
 
 	boolean validateGetViolatedConstraintsMustDrillDownCache(Boolean value);
 
-	boolean validateIsDerived(Boolean value);
-
 	boolean validateOpposite(Property value);
+
+	boolean validateIsDerived(Boolean value);
 
 	boolean validateGetterBody(Expression value);
 
 	boolean validateSetterBody(Expression value);
 
-	boolean validateIsSetterAbstract(Boolean value);
-
 	boolean validateOwningClass(ClassDefinition value);
+
+	boolean validateIsSetterAbstract(Boolean value);
 
 	boolean validateIsGetterAbstract(Boolean value);
 

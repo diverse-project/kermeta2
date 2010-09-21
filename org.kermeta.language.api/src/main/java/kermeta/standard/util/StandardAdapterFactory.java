@@ -84,16 +84,6 @@ public class StandardAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected StandardSwitch<Adapter> modelSwitch = new StandardSwitch<Adapter>() {
 		@Override
-		public <G> Adapter caseCollection(Collection<G> object) {
-			return createCollectionAdapter();
-		}
-
-		@Override
-		public <G> Adapter caseIterator(Iterator<G> object) {
-			return createIteratorAdapter();
-		}
-
-		@Override
 		public Adapter caseUnknownJavaObject(UnknownJavaObject object) {
 			return createUnknownJavaObjectAdapter();
 		}
@@ -149,6 +139,11 @@ public class StandardAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public <G> Adapter caseCollection(Collection<G> object) {
+			return createCollectionAdapter();
+		}
+
+		@Override
 		public Adapter caseEachContext(EachContext object) {
 			return createEachContextAdapter();
 		}
@@ -179,6 +174,11 @@ public class StandardAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public <G> Adapter caseIterator(Iterator<G> object) {
+			return createIteratorAdapter();
+		}
+
+		@Override
 		public Adapter caseObject(kermeta.language.structure.Object object) {
 			return createObjectAdapter();
 		}
@@ -205,34 +205,6 @@ public class StandardAdapterFactory extends AdapterFactoryImpl {
 	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject) target);
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link kermeta.standard.Collection <em>Collection</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see kermeta.standard.Collection
-	 * @generated
-	 */
-	public Adapter createCollectionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link kermeta.standard.Iterator <em>Iterator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see kermeta.standard.Iterator
-	 * @generated
-	 */
-	public Adapter createIteratorAdapter() {
-		return null;
 	}
 
 	/**
@@ -390,6 +362,20 @@ public class StandardAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link kermeta.standard.Collection <em>Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see kermeta.standard.Collection
+	 * @generated
+	 */
+	public Adapter createCollectionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link kermeta.standard.EachContext <em>Each Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -470,6 +456,20 @@ public class StandardAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSequenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link kermeta.standard.Iterator <em>Iterator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see kermeta.standard.Iterator
+	 * @generated
+	 */
+	public Adapter createIteratorAdapter() {
 		return null;
 	}
 

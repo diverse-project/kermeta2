@@ -21,9 +21,9 @@ import kermeta.language.structure.Property;
 public interface CallFeatureValidator {
 	boolean validate();
 
-	boolean validateIsAtpre(Boolean value);
-
 	boolean validateStaticOperation(Operation value);
+
+	boolean validateIsAtpre(Boolean value);
 
 	boolean validateTarget(Expression value);
 

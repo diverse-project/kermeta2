@@ -70,10 +70,6 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.kermeta.language.checker.CheckerPackage;
-
-import org.kermeta.language.checker.impl.CheckerPackageImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -170,10 +166,10 @@ public class InterpreterPackageImpl extends EPackageImpl implements
 				.getEPackage(XmltypePackage.eNS_URI) instanceof XmltypePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(XmltypePackage.eNS_URI)
 				: XmltypePackage.eINSTANCE);
-		KunitPackageImpl theKunitPackage = (KunitPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(KunitPackage.eNS_URI) instanceof KunitPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(KunitPackage.eNS_URI)
-				: KunitPackage.eINSTANCE);
+		PersistencePackageImpl thePersistencePackage = (PersistencePackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(PersistencePackage.eNS_URI) instanceof PersistencePackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(PersistencePackage.eNS_URI)
+				: PersistencePackage.eINSTANCE);
 		UtilsPackageImpl theUtilsPackage = (UtilsPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(UtilsPackage.eNS_URI) instanceof UtilsPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(UtilsPackage.eNS_URI)
@@ -182,10 +178,6 @@ public class InterpreterPackageImpl extends EPackageImpl implements
 				.getEPackage(StandardPackage.eNS_URI) instanceof StandardPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(StandardPackage.eNS_URI)
 				: StandardPackage.eINSTANCE);
-		PersistencePackageImpl thePersistencePackage = (PersistencePackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(PersistencePackage.eNS_URI) instanceof PersistencePackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(PersistencePackage.eNS_URI)
-				: PersistencePackage.eINSTANCE);
 		LanguagePackageImpl theLanguagePackage = (LanguagePackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(LanguagePackage.eNS_URI) instanceof LanguagePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(LanguagePackage.eNS_URI)
@@ -210,42 +202,40 @@ public class InterpreterPackageImpl extends EPackageImpl implements
 				.getEPackage(EcorePackage.eNS_URI) instanceof EcorePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(EcorePackage.eNS_URI)
 				: EcorePackage.eINSTANCE);
-		CheckerPackageImpl theCheckerPackage = (CheckerPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(CheckerPackage.eNS_URI) instanceof CheckerPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(CheckerPackage.eNS_URI)
-				: CheckerPackage.eINSTANCE);
+		KunitPackageImpl theKunitPackage = (KunitPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(KunitPackage.eNS_URI) instanceof KunitPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(KunitPackage.eNS_URI)
+				: KunitPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theInterpreterPackage.createPackageContents();
 		theKermetaPackage.createPackageContents();
 		theXmltypePackage.createPackageContents();
-		theKunitPackage.createPackageContents();
+		thePersistencePackage.createPackageContents();
 		theUtilsPackage.createPackageContents();
 		theStandardPackage.createPackageContents();
-		thePersistencePackage.createPackageContents();
 		theLanguagePackage.createPackageContents();
 		theStructurePackage.createPackageContents();
 		theBehaviorPackage.createPackageContents();
 		theExceptionsPackage.createPackageContents();
 		theIoPackage.createPackageContents();
 		theEcorePackage.createPackageContents();
-		theCheckerPackage.createPackageContents();
+		theKunitPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theInterpreterPackage.initializePackageContents();
 		theKermetaPackage.initializePackageContents();
 		theXmltypePackage.initializePackageContents();
-		theKunitPackage.initializePackageContents();
+		thePersistencePackage.initializePackageContents();
 		theUtilsPackage.initializePackageContents();
 		theStandardPackage.initializePackageContents();
-		thePersistencePackage.initializePackageContents();
 		theLanguagePackage.initializePackageContents();
 		theStructurePackage.initializePackageContents();
 		theBehaviorPackage.initializePackageContents();
 		theExceptionsPackage.initializePackageContents();
 		theIoPackage.initializePackageContents();
 		theEcorePackage.initializePackageContents();
-		theCheckerPackage.initializePackageContents();
+		theKunitPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theInterpreterPackage.freeze();
@@ -463,9 +453,6 @@ public class InterpreterPackageImpl extends EPackageImpl implements
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(dynamicExpressionEClass, null, "initializeDefaults", 0,
-				1, IS_UNIQUE, !IS_ORDERED);
-
 		EOperation op = addEOperation(dynamicExpressionEClass,
 				theStructurePackage.getObject(), "execute", 0, 1, IS_UNIQUE,
 				IS_ORDERED);
@@ -477,6 +464,9 @@ public class InterpreterPackageImpl extends EPackageImpl implements
 		g2 = createEGenericType(theStructurePackage.getObject());
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "actualParams", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(dynamicExpressionEClass, null, "initializeDefaults", 0,
+				1, IS_UNIQUE, !IS_ORDERED);
 
 		op = addEOperation(dynamicExpressionEClass, theStandardPackage
 				.getJavaBoolean(), "parse", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -541,14 +531,14 @@ public class InterpreterPackageImpl extends EPackageImpl implements
 		addAnnotation(
 				dynamicExpressionEClass.getEOperations().get(0),
 				source,
-				new String[] {
-						"documentation",
-						"/**\n\t * Initializes the formalParameters with an empty set of parameters\n\t * and the self type with void\n\t */" });
+				new String[] { "documentation",
+						"/**\n     * Execute the expression in the given context\n     */" });
 		addAnnotation(
 				dynamicExpressionEClass.getEOperations().get(1),
 				source,
-				new String[] { "documentation",
-						"/**\n     * Execute the expression in the given context\n     */" });
+				new String[] {
+						"documentation",
+						"/**\n\t * Initializes the formalParameters with an empty set of parameters\n\t * and the self type with void\n\t */" });
 		addAnnotation(
 				dynamicExpressionEClass.getEOperations().get(2),
 				source,

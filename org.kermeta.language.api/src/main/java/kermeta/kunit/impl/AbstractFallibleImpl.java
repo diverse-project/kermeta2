@@ -68,30 +68,30 @@ public abstract class AbstractFallibleImpl extends ObjectImpl implements
 		{
 
 			java.lang.Integer i = 0;
-			java.lang.Boolean idLoopCond_55 = false;
-			while (!idLoopCond_55) {
-				idLoopCond_55 = kermeta.standard.helper.IntegerWrapper.equals(
+			java.lang.Boolean idLoopCond_398 = false;
+			while (!idLoopCond_398) {
+				idLoopCond_398 = kermeta.standard.helper.IntegerWrapper.equals(
 						i, kermeta.standard.helper.StringWrapper.size(s));
-				if (idLoopCond_55) {
+				if (idLoopCond_398) {
 				} else {
 
 					java.lang.String c = kermeta.standard.helper.CharacterWrapper
 							.toString(kermeta.standard.helper.StringWrapper
 									.elementAt(s, i));
 
-					java.lang.Boolean idIfCond_56 = false;
-					idIfCond_56 = kermeta.standard.helper.IntegerWrapper
+					java.lang.Boolean idIfCond_399 = false;
+					idIfCond_399 = kermeta.standard.helper.IntegerWrapper
 							.isGreaterOrEqual(
 									kermeta.standard.helper.StringWrapper
 											.indexOf(" \n\t", c), 0);
 
-					if (idIfCond_56) {
+					if (idIfCond_399) {
 
-						java.lang.Boolean idIfCond_57 = false;
-						idIfCond_57 = kermeta.standard.helper.BooleanWrapper
+						java.lang.Boolean idIfCond_400 = false;
+						idIfCond_400 = kermeta.standard.helper.BooleanWrapper
 								.not(white);
 
-						if (idIfCond_57) {
+						if (idIfCond_400) {
 
 							white = true;
 
@@ -104,10 +104,10 @@ public abstract class AbstractFallibleImpl extends ObjectImpl implements
 						result = kermeta.standard.helper.StringWrapper.plus(
 								result, c);
 
-						java.lang.Boolean idIfCond_58 = false;
-						idIfCond_58 = white;
+						java.lang.Boolean idIfCond_401 = false;
+						idIfCond_401 = white;
 
-						if (idIfCond_58) {
+						if (idIfCond_401) {
 
 							white = false;
 						}

@@ -21,7 +21,7 @@ public interface JavaStaticCallValidator {
 
 	boolean validateJmethod(String value);
 
-	boolean validateParameters(EList<Expression> value);
-
 	boolean validateJclass(String value);
+
+	boolean validateParameters(EList<Expression> value);
 }

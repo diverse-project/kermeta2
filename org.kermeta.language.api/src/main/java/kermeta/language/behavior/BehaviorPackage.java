@@ -438,22 +438,22 @@ public interface BehaviorPackage extends EPackage {
 	int CALL_FEATURE__PARAMETERS = CALL_EXPRESSION__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Is Atpre</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_FEATURE__IS_ATPRE = CALL_EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Static Operation</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_FEATURE__STATIC_OPERATION = CALL_EXPRESSION_FEATURE_COUNT + 1;
+	int CALL_FEATURE__STATIC_OPERATION = CALL_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Is Atpre</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_FEATURE__IS_ATPRE = CALL_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -1593,22 +1593,22 @@ public interface BehaviorPackage extends EPackage {
 	int JAVA_STATIC_CALL__JMETHOD = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JAVA_STATIC_CALL__PARAMETERS = EXPRESSION_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Jclass</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JAVA_STATIC_CALL__JCLASS = EXPRESSION_FEATURE_COUNT + 2;
+	int JAVA_STATIC_CALL__JCLASS = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JAVA_STATIC_CALL__PARAMETERS = EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Java Static Call</em>' class.
@@ -2553,17 +2553,6 @@ public interface BehaviorPackage extends EPackage {
 	EClass getCallFeature();
 
 	/**
-	 * Returns the meta object for the attribute '{@link kermeta.language.behavior.CallFeature#getIsAtpre <em>Is Atpre</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Atpre</em>'.
-	 * @see kermeta.language.behavior.CallFeature#getIsAtpre()
-	 * @see #getCallFeature()
-	 * @generated
-	 */
-	EAttribute getCallFeature_IsAtpre();
-
-	/**
 	 * Returns the meta object for the reference '{@link kermeta.language.behavior.CallFeature#getStaticOperation <em>Static Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2573,6 +2562,17 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCallFeature_StaticOperation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link kermeta.language.behavior.CallFeature#getIsAtpre <em>Is Atpre</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Atpre</em>'.
+	 * @see kermeta.language.behavior.CallFeature#getIsAtpre()
+	 * @see #getCallFeature()
+	 * @generated
+	 */
+	EAttribute getCallFeature_IsAtpre();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link kermeta.language.behavior.CallFeature#getTarget <em>Target</em>}'.
@@ -2871,17 +2871,6 @@ public interface BehaviorPackage extends EPackage {
 	EAttribute getJavaStaticCall_Jmethod();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link kermeta.language.behavior.JavaStaticCall#getParameters <em>Parameters</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
-	 * @see kermeta.language.behavior.JavaStaticCall#getParameters()
-	 * @see #getJavaStaticCall()
-	 * @generated
-	 */
-	EReference getJavaStaticCall_Parameters();
-
-	/**
 	 * Returns the meta object for the attribute '{@link kermeta.language.behavior.JavaStaticCall#getJclass <em>Jclass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2891,6 +2880,17 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getJavaStaticCall_Jclass();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link kermeta.language.behavior.JavaStaticCall#getParameters <em>Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
+	 * @see kermeta.language.behavior.JavaStaticCall#getParameters()
+	 * @see #getJavaStaticCall()
+	 * @generated
+	 */
+	EReference getJavaStaticCall_Parameters();
 
 	/**
 	 * Returns the meta object for class '{@link kermeta.language.behavior.LambdaExpression <em>Lambda Expression</em>}'.
@@ -3253,14 +3253,6 @@ public interface BehaviorPackage extends EPackage {
 		EClass CALL_FEATURE = eINSTANCE.getCallFeature();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Atpre</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CALL_FEATURE__IS_ATPRE = eINSTANCE.getCallFeature_IsAtpre();
-
-		/**
 		 * The meta object literal for the '<em><b>Static Operation</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3268,6 +3260,14 @@ public interface BehaviorPackage extends EPackage {
 		 */
 		EReference CALL_FEATURE__STATIC_OPERATION = eINSTANCE
 				.getCallFeature_StaticOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Atpre</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CALL_FEATURE__IS_ATPRE = eINSTANCE.getCallFeature_IsAtpre();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
@@ -3522,15 +3522,6 @@ public interface BehaviorPackage extends EPackage {
 				.getJavaStaticCall_Jmethod();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JAVA_STATIC_CALL__PARAMETERS = eINSTANCE
-				.getJavaStaticCall_Parameters();
-
-		/**
 		 * The meta object literal for the '<em><b>Jclass</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3538,6 +3529,15 @@ public interface BehaviorPackage extends EPackage {
 		 */
 		EAttribute JAVA_STATIC_CALL__JCLASS = eINSTANCE
 				.getJavaStaticCall_Jclass();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JAVA_STATIC_CALL__PARAMETERS = eINSTANCE
+				.getJavaStaticCall_Parameters();
 
 		/**
 		 * The meta object literal for the '{@link kermeta.language.behavior.impl.LambdaExpressionImpl <em>Lambda Expression</em>}' class.

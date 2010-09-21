@@ -97,24 +97,6 @@ public class StandardSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case StandardPackage.COLLECTION: {
-			Collection<?> collection = (Collection<?>) theEObject;
-			T result = caseCollection(collection);
-			if (result == null)
-				result = caseObject(collection);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case StandardPackage.ITERATOR: {
-			Iterator<?> iterator = (Iterator<?>) theEObject;
-			T result = caseIterator(iterator);
-			if (result == null)
-				result = caseObject(iterator);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case StandardPackage.UNKNOWN_JAVA_OBJECT: {
 			UnknownJavaObject unknownJavaObject = (UnknownJavaObject) theEObject;
 			T result = caseUnknownJavaObject(unknownJavaObject);
@@ -226,6 +208,15 @@ public class StandardSwitch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case StandardPackage.COLLECTION: {
+			Collection<?> collection = (Collection<?>) theEObject;
+			T result = caseCollection(collection);
+			if (result == null)
+				result = caseObject(collection);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case StandardPackage.EACH_CONTEXT: {
 			EachContext eachContext = (EachContext) theEObject;
 			T result = caseEachContext(eachContext);
@@ -298,39 +289,18 @@ public class StandardSwitch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case StandardPackage.ITERATOR: {
+			Iterator<?> iterator = (Iterator<?>) theEObject;
+			T result = caseIterator(iterator);
+			if (result == null)
+				result = caseObject(iterator);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Collection</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Collection</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <G> T caseCollection(Collection<G> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Iterator</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Iterator</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <G> T caseIterator(Iterator<G> object) {
-		return null;
 	}
 
 	/**
@@ -499,6 +469,21 @@ public class StandardSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Collection</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Collection</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public <G> T caseCollection(Collection<G> object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Each Context</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -585,6 +570,21 @@ public class StandardSwitch<T> {
 	 * @generated
 	 */
 	public <G> T caseSequence(Sequence<G> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Iterator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Iterator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public <G> T caseIterator(Iterator<G> object) {
 		return null;
 	}
 

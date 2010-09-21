@@ -42,8 +42,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link kermeta.language.structure.impl.OperationImpl#getTypeParameter <em>Type Parameter</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.OperationImpl#getBody <em>Body</em>}</li>
- *   <li>{@link kermeta.language.structure.impl.OperationImpl#getOwnedParameter <em>Owned Parameter</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.OperationImpl#getIsAbstract <em>Is Abstract</em>}</li>
+ *   <li>{@link kermeta.language.structure.impl.OperationImpl#getOwnedParameter <em>Owned Parameter</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.OperationImpl#getPost <em>Post</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.OperationImpl#getRaisedException <em>Raised Exception</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.OperationImpl#getPre <em>Pre</em>}</li>
@@ -76,16 +76,6 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	protected Expression body;
 
 	/**
-	 * The cached value of the '{@link #getOwnedParameter() <em>Owned Parameter</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedParameter()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Parameter> ownedParameter;
-
-	/**
 	 * The default value of the '{@link #getIsAbstract() <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -104,6 +94,16 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	 * @ordered
 	 */
 	protected Boolean isAbstract = IS_ABSTRACT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOwnedParameter() <em>Owned Parameter</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameter()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Parameter> ownedParameter;
 
 	/**
 	 * The cached value of the '{@link #getPost() <em>Post</em>}' containment reference list.
@@ -265,21 +265,6 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Parameter> getOwnedParameter() {
-		if (ownedParameter == null) {
-			ownedParameter = new EObjectContainmentWithInverseEList.Resolving<Parameter>(
-					Parameter.class, this,
-					StructurePackage.OPERATION__OWNED_PARAMETER,
-					StructurePackage.PARAMETER__OPERATION);
-		}
-		return ownedParameter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Boolean getIsAbstract() {
 		return isAbstract;
 	}
@@ -296,6 +281,21 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					StructurePackage.OPERATION__IS_ABSTRACT, oldIsAbstract,
 					isAbstract));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Parameter> getOwnedParameter() {
+		if (ownedParameter == null) {
+			ownedParameter = new EObjectContainmentWithInverseEList.Resolving<Parameter>(
+					Parameter.class, this,
+					StructurePackage.OPERATION__OWNED_PARAMETER,
+					StructurePackage.PARAMETER__OPERATION);
+		}
+		return ownedParameter;
 	}
 
 	/**
@@ -524,10 +524,10 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 			if (resolve)
 				return getBody();
 			return basicGetBody();
-		case StructurePackage.OPERATION__OWNED_PARAMETER:
-			return getOwnedParameter();
 		case StructurePackage.OPERATION__IS_ABSTRACT:
 			return getIsAbstract();
+		case StructurePackage.OPERATION__OWNED_PARAMETER:
+			return getOwnedParameter();
 		case StructurePackage.OPERATION__POST:
 			return getPost();
 		case StructurePackage.OPERATION__RAISED_EXCEPTION:
@@ -563,13 +563,13 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 		case StructurePackage.OPERATION__BODY:
 			setBody((Expression) newValue);
 			return;
+		case StructurePackage.OPERATION__IS_ABSTRACT:
+			setIsAbstract((Boolean) newValue);
+			return;
 		case StructurePackage.OPERATION__OWNED_PARAMETER:
 			getOwnedParameter().clear();
 			getOwnedParameter().addAll(
 					(Collection<? extends Parameter>) newValue);
-			return;
-		case StructurePackage.OPERATION__IS_ABSTRACT:
-			setIsAbstract((Boolean) newValue);
 			return;
 		case StructurePackage.OPERATION__POST:
 			getPost().clear();
@@ -607,11 +607,11 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 		case StructurePackage.OPERATION__BODY:
 			setBody((Expression) null);
 			return;
-		case StructurePackage.OPERATION__OWNED_PARAMETER:
-			getOwnedParameter().clear();
-			return;
 		case StructurePackage.OPERATION__IS_ABSTRACT:
 			setIsAbstract(IS_ABSTRACT_EDEFAULT);
+			return;
+		case StructurePackage.OPERATION__OWNED_PARAMETER:
+			getOwnedParameter().clear();
 			return;
 		case StructurePackage.OPERATION__POST:
 			getPost().clear();
@@ -644,11 +644,11 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 			return typeParameter != null && !typeParameter.isEmpty();
 		case StructurePackage.OPERATION__BODY:
 			return body != null;
-		case StructurePackage.OPERATION__OWNED_PARAMETER:
-			return ownedParameter != null && !ownedParameter.isEmpty();
 		case StructurePackage.OPERATION__IS_ABSTRACT:
 			return IS_ABSTRACT_EDEFAULT == null ? isAbstract != null
 					: !IS_ABSTRACT_EDEFAULT.equals(isAbstract);
+		case StructurePackage.OPERATION__OWNED_PARAMETER:
+			return ownedParameter != null && !ownedParameter.isEmpty();
 		case StructurePackage.OPERATION__POST:
 			return post != null && !post.isEmpty();
 		case StructurePackage.OPERATION__RAISED_EXCEPTION:

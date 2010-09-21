@@ -24,9 +24,9 @@ public interface ModelingUnitValidator {
 
 	boolean validateUsings(EList<Using> value);
 
-	boolean validateIncludeFilters(EList<Filter> value);
-
 	boolean validatePackages(EList<kermeta.language.structure.Package> value);
+
+	boolean validateIncludeFilters(EList<Filter> value);
 
 	boolean validateExcludeFilters(EList<Filter> value);
 

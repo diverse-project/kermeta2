@@ -247,41 +247,41 @@ public class EMFRepositoryImpl extends RepositoryImpl implements EMFRepository {
 
 		//BIft:collect
 
-		kermeta.standard.Sequence<java.lang.String> result_ft78 = null;
+		kermeta.standard.Sequence<java.lang.String> result_ft20 = null;
 
-		result_ft78 = ((kermeta.standard.Sequence<java.lang.String>) org.kermeta.compil.runtime.helper.language.ClassUtil
+		result_ft20 = ((kermeta.standard.Sequence<java.lang.String>) org.kermeta.compil.runtime.helper.language.ClassUtil
 				.newObject(kermeta.standard.StandardPackage.eINSTANCE
 						.getSequence()));
 
 		{
 
-			kermeta.standard.Iterator<kermeta.persistence.Resource> it_ft78 = org.kermeta.compil.runtime.helper.basetypes.CollectionUtil
+			kermeta.standard.Iterator<kermeta.persistence.Resource> it_ft20 = org.kermeta.compil.runtime.helper.basetypes.CollectionUtil
 					.<kermeta.persistence.Resource> convertAsSet(
 							this.getResources()).iterator();
-			java.lang.Boolean idLoopCond_325 = false;
-			while (!idLoopCond_325) {
-				idLoopCond_325 = it_ft78.isOff();
-				if (idLoopCond_325) {
+			java.lang.Boolean idLoopCond_57 = false;
+			while (!idLoopCond_57) {
+				idLoopCond_57 = it_ft20.isOff();
+				if (idLoopCond_57) {
 				} else {
 
-					java.lang.String result_lambda_ft78 = null;
+					java.lang.String result_lambda_ft20 = null;
 					//BIle:collector
-					kermeta.persistence.Resource r_lbdExp78 = it_ft78.next();
+					kermeta.persistence.Resource r_lbdExp20 = it_ft20.next();
 
-					result_lambda_ft78 = r_lbdExp78.getUri();
+					result_lambda_ft20 = r_lbdExp20.getUri();
 					//EIle:collector
 
-					result_ft78.add(result_lambda_ft78);
+					result_ft20.add(result_lambda_ft20);
 				}
 			}
 		}
 
 		//EIft:collect
-		java.lang.Boolean idIfCond_324 = false;
-		idIfCond_324 = kermeta.standard.helper.BooleanWrapper.not(result_ft78
+		java.lang.Boolean idIfCond_56 = false;
+		idIfCond_56 = kermeta.standard.helper.BooleanWrapper.not(result_ft20
 				.contains(uri));
 
-		if (idIfCond_324) {
+		if (idIfCond_56) {
 
 			result = (kermeta.persistence.Resource) org.kermeta.compil.runtime.helper.language.ObjectUtil
 					.asTypeOrVoid(

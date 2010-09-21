@@ -97,8 +97,8 @@ public interface Fallible extends AbstractFallible {
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 *        annotation="kermeta isAbstract='true'"
-	 *        annotation="kermeta documentation='/**\n   * where failures will be put \n   \052/'"
 	 *        annotation="kermeta EMF_renameAs='getLogKermeta'"
+	 *        annotation="kermeta documentation='/**\n   * where failures will be put \n   \052/'"
 	 *        annotation="kermeta.post logDefined=''"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='kermeta.kunit.Log result = null;\n\nreturn result;\n'"
 	 * @generated
@@ -122,7 +122,7 @@ public interface Fallible extends AbstractFallible {
 	 * @model msgDataType="kermeta.standard.JavaString"
 	 *        annotation="kermeta documentation='/**\n   * Log a failure \n   \052/'"
 	 *        annotation="kermeta superOperation='kermeta::kunit::AbstractFallible'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_22 = false;\n\tidIfCond_22 = this.mustStop();\n\n\tif( idIfCond_22 ) {\n\n\tkermeta.kunit.AssertionFailedError exception = ((kermeta.kunit.AssertionFailedError) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.kunit.KunitPackage.eINSTANCE.getAssertionFailedError()));\n\n\texception.setMessage(kermeta.standard.helper.StringWrapper.plus(\"explicit failure: \", msg));\n\n\t\nif (true)\n\tthrow new org.kermeta.compil.runtime.helper.error.KRuntimeError( exception );\n\n}\n else {\n\n\tthis.getLogKermeta().addFailure(this, kermeta.standard.helper.StringWrapper.plus(\"explicit failure: \", msg));\n}\n\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_365 = false;\n\tidIfCond_365 = this.mustStop();\n\n\tif( idIfCond_365 ) {\n\n\tkermeta.kunit.AssertionFailedError exception = ((kermeta.kunit.AssertionFailedError) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.kunit.KunitPackage.eINSTANCE.getAssertionFailedError()));\n\n\texception.setMessage(kermeta.standard.helper.StringWrapper.plus(\"explicit failure: \", msg));\n\n\t\nif (true)\n\tthrow new org.kermeta.compil.runtime.helper.error.KRuntimeError( exception );\n\n}\n else {\n\n\tthis.getLogKermeta().addFailure(this, kermeta.standard.helper.StringWrapper.plus(\"explicit failure: \", msg));\n}\n\n'"
 	 * @generated
 	 */
 	void fail(String msg);
@@ -166,7 +166,7 @@ public interface Fallible extends AbstractFallible {
 	 * @model conditionDataType="kermeta.standard.JavaBoolean"
 	 *        annotation="kermeta documentation='/**\n   * Log a failure if condition is false\n   \052/'"
 	 *        annotation="kermeta superOperation='kermeta::kunit::AbstractFallible'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Integer number = this.number();\n\n\tjava.lang.Boolean idIfCond_23 = false;\n\tidIfCond_23 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_23 ) {\n\n\tjava.lang.String msg = kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(\"assertion number \", kermeta.standard.helper.IntegerWrapper.toString(number)), \" failed\");\n\n\tjava.lang.Boolean idIfCond_24 = false;\n\tidIfCond_24 = this.mustStop();\n\n\tif( idIfCond_24 ) {\n\n\tkermeta.kunit.AssertionFailedError exception = ((kermeta.kunit.AssertionFailedError) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.kunit.KunitPackage.eINSTANCE.getAssertionFailedError()));\n\n\texception.setMessage(msg);\n\n\t\nif (true)\n\tthrow new org.kermeta.compil.runtime.helper.error.KRuntimeError( exception );\n\n}\n else {\n\n\tthis.getLogKermeta().addFailure(this, msg);\n}\n\n}\n\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Integer number = this.number();\n\n\tjava.lang.Boolean idIfCond_366 = false;\n\tidIfCond_366 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_366 ) {\n\n\tjava.lang.String msg = kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(\"assertion number \", kermeta.standard.helper.IntegerWrapper.toString(number)), \" failed\");\n\n\tjava.lang.Boolean idIfCond_367 = false;\n\tidIfCond_367 = this.mustStop();\n\n\tif( idIfCond_367 ) {\n\n\tkermeta.kunit.AssertionFailedError exception = ((kermeta.kunit.AssertionFailedError) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.kunit.KunitPackage.eINSTANCE.getAssertionFailedError()));\n\n\texception.setMessage(msg);\n\n\t\nif (true)\n\tthrow new org.kermeta.compil.runtime.helper.error.KRuntimeError( exception );\n\n}\n else {\n\n\tthis.getLogKermeta().addFailure(this, msg);\n}\n\n}\n\n'"
 	 * @generated
 	 */
 	void _assert(Boolean condition);
@@ -176,7 +176,7 @@ public interface Fallible extends AbstractFallible {
 	 * <!-- end-user-doc -->
 	 * @model dataType="kermeta.standard.JavaInteger"
 	 *        annotation="kermeta documentation='/**\n   * current order position of counter of assertions\n   \052/'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\njava.lang.Integer result = null;\n\n\tjava.lang.Boolean idIfCond_25 = false;\n\tidIfCond_25 = org.kermeta.compil.runtime.helper.language.ObjectUtil.isVoidSwitcher(this.getRank());\n\n\tif( idIfCond_25 ) {\n\n\tthis.setRank(0);\n}\n\n\n\tthis.setRank(kermeta.standard.helper.IntegerWrapper.plus(this.getRank(), 1));\n\n\tresult = this.getRank();\n\nreturn result;\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\njava.lang.Integer result = null;\n\n\tjava.lang.Boolean idIfCond_368 = false;\n\tidIfCond_368 = org.kermeta.compil.runtime.helper.language.ObjectUtil.isVoidSwitcher(this.getRank());\n\n\tif( idIfCond_368 ) {\n\n\tthis.setRank(0);\n}\n\n\n\tthis.setRank(kermeta.standard.helper.IntegerWrapper.plus(this.getRank(), 1));\n\n\tresult = this.getRank();\n\nreturn result;\n'"
 	 * @generated
 	 */
 	Integer number();
@@ -187,7 +187,7 @@ public interface Fallible extends AbstractFallible {
 	 * @model conditionDataType="kermeta.standard.JavaBoolean" msgDataType="kermeta.standard.JavaString"
 	 *        annotation="kermeta documentation='/**\n   * Log a failure if condition is false\n   \052/'"
 	 *        annotation="kermeta superOperation='kermeta::kunit::AbstractFallible'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Integer number = this.number();\n\n\tjava.lang.Boolean idIfCond_26 = false;\n\tidIfCond_26 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_26 ) {\n\n\tjava.lang.String realMsg = kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(\"assertion number \", kermeta.standard.helper.IntegerWrapper.toString(number)), \" failed: \"), msg);\n\n\tjava.lang.Boolean idIfCond_27 = false;\n\tidIfCond_27 = this.mustStop();\n\n\tif( idIfCond_27 ) {\n\n\tkermeta.kunit.AssertionFailedError exception = ((kermeta.kunit.AssertionFailedError) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.kunit.KunitPackage.eINSTANCE.getAssertionFailedError()));\n\n\texception.setMessage(realMsg);\n\n\t\nif (true)\n\tthrow new org.kermeta.compil.runtime.helper.error.KRuntimeError( exception );\n\n}\n else {\n\n\tthis.getLogKermeta().addFailure(this, realMsg);\n}\n\n}\n\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Integer number = this.number();\n\n\tjava.lang.Boolean idIfCond_369 = false;\n\tidIfCond_369 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_369 ) {\n\n\tjava.lang.String realMsg = kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(\"assertion number \", kermeta.standard.helper.IntegerWrapper.toString(number)), \" failed: \"), msg);\n\n\tjava.lang.Boolean idIfCond_370 = false;\n\tidIfCond_370 = this.mustStop();\n\n\tif( idIfCond_370 ) {\n\n\tkermeta.kunit.AssertionFailedError exception = ((kermeta.kunit.AssertionFailedError) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.kunit.KunitPackage.eINSTANCE.getAssertionFailedError()));\n\n\texception.setMessage(realMsg);\n\n\t\nif (true)\n\tthrow new org.kermeta.compil.runtime.helper.error.KRuntimeError( exception );\n\n}\n else {\n\n\tthis.getLogKermeta().addFailure(this, realMsg);\n}\n\n}\n\n'"
 	 * @generated
 	 */
 	void assertWithMsg(Boolean condition, String msg);
@@ -196,7 +196,7 @@ public interface Fallible extends AbstractFallible {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="kermeta.standard.JavaBoolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\njava.lang.Boolean result = null;\n\n\tjava.lang.Boolean idIfCond_28 = false;\n\tidIfCond_28 = org.kermeta.compil.runtime.helper.language.ObjectUtil.isVoidSwitcher(this.getStopOnFailure());\n\n\tif( idIfCond_28 ) {\n\n\tthis.setStopOnFailure(true);\n}\n\n\n\tresult = this.getStopOnFailure();\n\nreturn result;\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\njava.lang.Boolean result = null;\n\n\tjava.lang.Boolean idIfCond_371 = false;\n\tidIfCond_371 = org.kermeta.compil.runtime.helper.language.ObjectUtil.isVoidSwitcher(this.getStopOnFailure());\n\n\tif( idIfCond_371 ) {\n\n\tthis.setStopOnFailure(true);\n}\n\n\n\tresult = this.getStopOnFailure();\n\nreturn result;\n'"
 	 * @generated
 	 */
 	Boolean mustStop();

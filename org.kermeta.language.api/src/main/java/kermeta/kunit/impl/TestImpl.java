@@ -107,12 +107,12 @@ public abstract class TestImpl extends ObjectImpl implements Test {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLogEMF_renameAs(Log log) {
+	public void setLogKermeta(Log log) {
 
 		//PreConditions Checking
 		{
 			if (org.kermeta.compil.runtime.ExecutionContext.getInstance()
-					.mustBeChecked("pre__2524856__paramNotVoid")) {
+					.mustBeChecked("pre__5719628__paramNotVoid")) {
 				java.lang.Boolean result_pre = false;
 
 				result_pre = org.kermeta.compil.runtime.helper.language.ObjectUtil
@@ -130,7 +130,7 @@ public abstract class TestImpl extends ObjectImpl implements Test {
 		//PostConditions Checking
 		{
 			if (org.kermeta.compil.runtime.ExecutionContext.getInstance()
-					.mustBeChecked("post__22460642__logNotVoid")) {
+					.mustBeChecked("post__29905622__logNotVoid")) {
 				java.lang.Boolean result_post = false;
 
 				result_post = org.kermeta.compil.runtime.helper.language.ObjectUtil

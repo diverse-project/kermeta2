@@ -71,10 +71,6 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.kermeta.language.checker.CheckerPackage;
-
-import org.kermeta.language.checker.impl.CheckerPackageImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -178,10 +174,10 @@ public class PersistencePackageImpl extends EPackageImpl implements
 				.getEPackage(XmltypePackage.eNS_URI) instanceof XmltypePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(XmltypePackage.eNS_URI)
 				: XmltypePackage.eINSTANCE);
-		KunitPackageImpl theKunitPackage = (KunitPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(KunitPackage.eNS_URI) instanceof KunitPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(KunitPackage.eNS_URI)
-				: KunitPackage.eINSTANCE);
+		InterpreterPackageImpl theInterpreterPackage = (InterpreterPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(InterpreterPackage.eNS_URI) instanceof InterpreterPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(InterpreterPackage.eNS_URI)
+				: InterpreterPackage.eINSTANCE);
 		UtilsPackageImpl theUtilsPackage = (UtilsPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(UtilsPackage.eNS_URI) instanceof UtilsPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(UtilsPackage.eNS_URI)
@@ -190,10 +186,6 @@ public class PersistencePackageImpl extends EPackageImpl implements
 				.getEPackage(StandardPackage.eNS_URI) instanceof StandardPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(StandardPackage.eNS_URI)
 				: StandardPackage.eINSTANCE);
-		InterpreterPackageImpl theInterpreterPackage = (InterpreterPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(InterpreterPackage.eNS_URI) instanceof InterpreterPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(InterpreterPackage.eNS_URI)
-				: InterpreterPackage.eINSTANCE);
 		LanguagePackageImpl theLanguagePackage = (LanguagePackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(LanguagePackage.eNS_URI) instanceof LanguagePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(LanguagePackage.eNS_URI)
@@ -218,42 +210,40 @@ public class PersistencePackageImpl extends EPackageImpl implements
 				.getEPackage(EcorePackage.eNS_URI) instanceof EcorePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(EcorePackage.eNS_URI)
 				: EcorePackage.eINSTANCE);
-		CheckerPackageImpl theCheckerPackage = (CheckerPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(CheckerPackage.eNS_URI) instanceof CheckerPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(CheckerPackage.eNS_URI)
-				: CheckerPackage.eINSTANCE);
+		KunitPackageImpl theKunitPackage = (KunitPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(KunitPackage.eNS_URI) instanceof KunitPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(KunitPackage.eNS_URI)
+				: KunitPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		thePersistencePackage.createPackageContents();
 		theKermetaPackage.createPackageContents();
 		theXmltypePackage.createPackageContents();
-		theKunitPackage.createPackageContents();
+		theInterpreterPackage.createPackageContents();
 		theUtilsPackage.createPackageContents();
 		theStandardPackage.createPackageContents();
-		theInterpreterPackage.createPackageContents();
 		theLanguagePackage.createPackageContents();
 		theStructurePackage.createPackageContents();
 		theBehaviorPackage.createPackageContents();
 		theExceptionsPackage.createPackageContents();
 		theIoPackage.createPackageContents();
 		theEcorePackage.createPackageContents();
-		theCheckerPackage.createPackageContents();
+		theKunitPackage.createPackageContents();
 
 		// Initialize created meta-data
 		thePersistencePackage.initializePackageContents();
 		theKermetaPackage.initializePackageContents();
 		theXmltypePackage.initializePackageContents();
-		theKunitPackage.initializePackageContents();
+		theInterpreterPackage.initializePackageContents();
 		theUtilsPackage.initializePackageContents();
 		theStandardPackage.initializePackageContents();
-		theInterpreterPackage.initializePackageContents();
 		theLanguagePackage.initializePackageContents();
 		theStructurePackage.initializePackageContents();
 		theBehaviorPackage.initializePackageContents();
 		theExceptionsPackage.initializePackageContents();
 		theIoPackage.initializePackageContents();
 		theEcorePackage.initializePackageContents();
-		theCheckerPackage.initializePackageContents();
+		theKunitPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		thePersistencePackage.freeze();
@@ -287,7 +277,7 @@ public class PersistencePackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getResource_IsReadOnly() {
+	public EAttribute getResource_MetaModelURI() {
 		return (EAttribute) resourceEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -296,7 +286,7 @@ public class PersistencePackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getResource_MetaModelURI() {
+	public EAttribute getResource_IsReadOnly() {
 		return (EAttribute) resourceEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -451,8 +441,8 @@ public class PersistencePackageImpl extends EPackageImpl implements
 		// Create classes and their features
 		resourceEClass = createEClass(RESOURCE);
 		createEReference(resourceEClass, RESOURCE__REPOSITORY);
-		createEAttribute(resourceEClass, RESOURCE__IS_READ_ONLY);
 		createEAttribute(resourceEClass, RESOURCE__META_MODEL_URI);
+		createEAttribute(resourceEClass, RESOURCE__IS_READ_ONLY);
 		createEAttribute(resourceEClass, RESOURCE__URI);
 
 		emfResourceEClass = createEClass(EMF_RESOURCE);
@@ -532,12 +522,12 @@ public class PersistencePackageImpl extends EPackageImpl implements
 				Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResource_IsReadOnly(), theStandardPackage
-				.getJavaBoolean(), "isReadOnly", "false", 0, 1, Resource.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResource_MetaModelURI(), theStandardPackage
 				.getJavaString(), "metaModelURI", null, 0, 1, Resource.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResource_IsReadOnly(), theStandardPackage
+				.getJavaBoolean(), "isReadOnly", "false", 0, 1, Resource.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResource_Uri(), theStandardPackage.getJavaString(),
@@ -579,13 +569,13 @@ public class PersistencePackageImpl extends EPackageImpl implements
 		addEOperation(emfResourceEClass, null, "clean", 0, 1, IS_UNIQUE,
 				!IS_ORDERED);
 
+		addEOperation(emfResourceEClass, null, "save", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
 		op = addEOperation(emfResourceEClass, null, "remove", 0, 1, IS_UNIQUE,
 				IS_ORDERED);
 		addEParameter(op, theStructurePackage.getObject(), "instance", 0, 1,
 				IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(emfResourceEClass, null, "save", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
 
 		op = addEOperation(emfResourceEClass, null, "saveWithNewURI", 0, 1,
 				IS_UNIQUE, IS_ORDERED);
@@ -595,13 +585,13 @@ public class PersistencePackageImpl extends EPackageImpl implements
 		addEOperation(emfResourceEClass, theStandardPackage.getJavaBoolean(),
 				"saveAndValidateWithEMF", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(emfResourceEClass, null, "load", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
 		op = addEOperation(emfResourceEClass, null, "mark", 0, 1, IS_UNIQUE,
 				!IS_ORDERED);
 		addEParameter(op, theStandardPackage.getJavaString(), "message", 0, 1,
 				IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(emfResourceEClass, null, "load", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
 
 		op = addEOperation(emfResourceEClass, null, "add", 0, 1, IS_UNIQUE,
 				IS_ORDERED);
@@ -782,16 +772,16 @@ public class PersistencePackageImpl extends EPackageImpl implements
 						"documentation",
 						"/**\n\t * Repository used to create the Resource\n\t * This feature is supposed read only, otherwise it cannot garantee that an element is contained by only \n\t * one Resource of a given Repository\n\t */" });
 		addAnnotation(
+				getResource_MetaModelURI(),
+				source,
+				new String[] { "documentation",
+						"/**\n\t * Uri of the meta-model of the Resource to load\n\t */" });
+		addAnnotation(
 				getResource_IsReadOnly(),
 				source,
 				new String[] {
 						"documentation",
 						"/**\n\t * Indicates weither this resource will be updated when saving the repository\n\t * This is useful if the repository contains some metamodels that should not be saved.\n\t *\n\t * Note that in the current version, it doesn\'t ensure that you have not modified its content (using the freeze)\n\t * If you modify the elements of such resource, other resource that depend on it will be incorrectly saved \n\t */" });
-		addAnnotation(
-				getResource_MetaModelURI(),
-				source,
-				new String[] { "documentation",
-						"/**\n\t * Uri of the meta-model of the Resource to load\n\t */" });
 		addAnnotation(getResource_Uri(), source,
 				new String[] { "documentation",
 						"/**\n\t * Uri of the Resource to load\n\t */" });
@@ -805,20 +795,20 @@ public class PersistencePackageImpl extends EPackageImpl implements
 				"CompilerIgnore", "true" });
 		addAnnotation(emfResourceEClass, source, new String[] {
 				"CompilerIgnore", "true" });
+		addAnnotation(emfResourceEClass.getEOperations().get(1), source,
+				new String[] { "documentation",
+						"/**\n\t * Overrides Resource.save()\n\t */" });
+		addAnnotation(emfResourceEClass.getEOperations().get(1), source,
+				new String[] { "superOperation",
+						"kermeta::persistence::Resource" });
 		addAnnotation(
-				emfResourceEClass.getEOperations().get(1),
+				emfResourceEClass.getEOperations().get(2),
 				source,
 				new String[] {
 						"documentation",
 						"/**\n\t * Overrides Set<Object>.remove(Object)\n\t * Remove the instance from the Resource\n\t */" });
-		addAnnotation(emfResourceEClass.getEOperations().get(1), source,
+		addAnnotation(emfResourceEClass.getEOperations().get(2), source,
 				new String[] { "superOperation", "kermeta::standard::Set" });
-		addAnnotation(emfResourceEClass.getEOperations().get(2), source,
-				new String[] { "documentation",
-						"/**\n\t * Overrides Resource.save()\n\t */" });
-		addAnnotation(emfResourceEClass.getEOperations().get(2), source,
-				new String[] { "superOperation",
-						"kermeta::persistence::Resource" });
 		addAnnotation(
 				emfResourceEClass.getEOperations().get(3),
 				source,
@@ -834,12 +824,12 @@ public class PersistencePackageImpl extends EPackageImpl implements
 						"documentation",
 						"/**\n\t * Checks the Resource using the EMF validation function, and saves it if\n\t * validation succeeds\n\t * Applies validation to all root objects of the Resource\n\t * Returns true if the validation reports no error, raises exceptions otherwise\n\t */" });
 		addAnnotation(
-				emfResourceEClass.getEOperations().get(6),
+				emfResourceEClass.getEOperations().get(5),
 				source,
 				new String[] {
 						"documentation",
 						"/**\n\t * Overrides Resource.load()\n\t * In case the metamodelURI was not previously set, metamodelURI is filled with\n\t * the nsuri of the root package of the metamodel used to load the Resource after\n\t * a successful load\n\t */" });
-		addAnnotation(emfResourceEClass.getEOperations().get(6), source,
+		addAnnotation(emfResourceEClass.getEOperations().get(5), source,
 				new String[] { "superOperation",
 						"kermeta::persistence::Resource" });
 		addAnnotation(

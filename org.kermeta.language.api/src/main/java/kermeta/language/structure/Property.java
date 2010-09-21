@@ -17,12 +17,12 @@ import kermeta.language.behavior.Expression;
  * The following features are supported:
  * <ul>
  *   <li>{@link kermeta.language.structure.Property#getGetViolatedConstraintsMustDrillDownCache <em>Get Violated Constraints Must Drill Down Cache</em>}</li>
- *   <li>{@link kermeta.language.structure.Property#getIsDerived <em>Is Derived</em>}</li>
  *   <li>{@link kermeta.language.structure.Property#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link kermeta.language.structure.Property#getIsDerived <em>Is Derived</em>}</li>
  *   <li>{@link kermeta.language.structure.Property#getGetterBody <em>Getter Body</em>}</li>
  *   <li>{@link kermeta.language.structure.Property#getSetterBody <em>Setter Body</em>}</li>
- *   <li>{@link kermeta.language.structure.Property#getIsSetterAbstract <em>Is Setter Abstract</em>}</li>
  *   <li>{@link kermeta.language.structure.Property#getOwningClass <em>Owning Class</em>}</li>
+ *   <li>{@link kermeta.language.structure.Property#getIsSetterAbstract <em>Is Setter Abstract</em>}</li>
  *   <li>{@link kermeta.language.structure.Property#getIsGetterAbstract <em>Is Getter Abstract</em>}</li>
  *   <li>{@link kermeta.language.structure.Property#getIsComposite <em>Is Composite</em>}</li>
  *   <li>{@link kermeta.language.structure.Property#get_default <em>default</em>}</li>
@@ -66,6 +66,33 @@ public interface Property extends MultiplicityElement {
 	void setGetViolatedConstraintsMustDrillDownCache(Boolean value);
 
 	/**
+	 * Returns the value of the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Opposite</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Opposite</em>' reference.
+	 * @see #setOpposite(Property)
+	 * @see kermeta.language.structure.StructurePackage#getProperty_Opposite()
+	 * @model annotation="kermeta ecore='true'"
+	 *        annotation="kermeta documentation='Opposite Property of the Property, void if the Property has no opposite'"
+	 * @generated
+	 */
+	Property getOpposite();
+
+	/**
+	 * Sets the value of the '{@link kermeta.language.structure.Property#getOpposite <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Opposite</em>' reference.
+	 * @see #getOpposite()
+	 * @generated
+	 */
+	void setOpposite(Property value);
+
+	/**
 	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
@@ -93,33 +120,6 @@ public interface Property extends MultiplicityElement {
 	 * @generated
 	 */
 	void setIsDerived(Boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Opposite</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Opposite</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Opposite</em>' reference.
-	 * @see #setOpposite(Property)
-	 * @see kermeta.language.structure.StructurePackage#getProperty_Opposite()
-	 * @model annotation="kermeta ecore='true'"
-	 *        annotation="kermeta documentation='Opposite Property of the Property, void if the Property has no opposite'"
-	 * @generated
-	 */
-	Property getOpposite();
-
-	/**
-	 * Sets the value of the '{@link kermeta.language.structure.Property#getOpposite <em>Opposite</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Opposite</em>' reference.
-	 * @see #getOpposite()
-	 * @generated
-	 */
-	void setOpposite(Property value);
 
 	/**
 	 * Returns the value of the '<em><b>Getter Body</b></em>' containment reference.
@@ -178,35 +178,6 @@ public interface Property extends MultiplicityElement {
 	void setSetterBody(Expression value);
 
 	/**
-	 * Returns the value of the '<em><b>Is Setter Abstract</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Is Setter Abstract</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Setter Abstract</em>' attribute.
-	 * @see #setIsSetterAbstract(Boolean)
-	 * @see kermeta.language.structure.StructurePackage#getProperty_IsSetterAbstract()
-	 * @model default="false" dataType="kermeta.standard.JavaBoolean"
-	 *        annotation="kermeta ecore='true'"
-	 *        annotation="kermeta documentation='Boolean stating wether the setter is abstract.'"
-	 * @generated
-	 */
-	Boolean getIsSetterAbstract();
-
-	/**
-	 * Sets the value of the '{@link kermeta.language.structure.Property#getIsSetterAbstract <em>Is Setter Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Setter Abstract</em>' attribute.
-	 * @see #getIsSetterAbstract()
-	 * @generated
-	 */
-	void setIsSetterAbstract(Boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Owning Class</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link kermeta.language.structure.ClassDefinition#getOwnedAttribute <em>Owned Attribute</em>}'.
 	 * <!-- begin-user-doc -->
@@ -235,6 +206,35 @@ public interface Property extends MultiplicityElement {
 	 * @generated
 	 */
 	void setOwningClass(ClassDefinition value);
+
+	/**
+	 * Returns the value of the '<em><b>Is Setter Abstract</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Is Setter Abstract</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Setter Abstract</em>' attribute.
+	 * @see #setIsSetterAbstract(Boolean)
+	 * @see kermeta.language.structure.StructurePackage#getProperty_IsSetterAbstract()
+	 * @model default="false" dataType="kermeta.standard.JavaBoolean"
+	 *        annotation="kermeta ecore='true'"
+	 *        annotation="kermeta documentation='Boolean stating wether the setter is abstract.'"
+	 * @generated
+	 */
+	Boolean getIsSetterAbstract();
+
+	/**
+	 * Sets the value of the '{@link kermeta.language.structure.Property#getIsSetterAbstract <em>Is Setter Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Setter Abstract</em>' attribute.
+	 * @see #getIsSetterAbstract()
+	 * @generated
+	 */
+	void setIsSetterAbstract(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Getter Abstract</b></em>' attribute.
@@ -413,7 +413,7 @@ public interface Property extends MultiplicityElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" dataType="kermeta.standard.JavaBoolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\njava.lang.Boolean result = null;\n\n\tjava.lang.Boolean idIfCond_332 = false;\n\tidIfCond_332 = org.kermeta.compil.runtime.helper.language.ObjectUtil.isVoidSwitcher(this.getGetViolatedConstraintsMustDrillDownCache());\n\n\tif( idIfCond_332 ) {\n\n\tthis.setGetViolatedConstraintsMustDrillDownCache(kermeta.standard.helper.BooleanWrapper.not(org.kermeta.compil.runtime.helper.language.TypeUtil.isSuperTypeOfSwitcher(org.kermeta.compil.runtime.ExecutionContext.getInstance().getMetaClass(\"kermeta.standard.ValueType\"), this.getType())));\n}\n\n\n\tresult = this.getGetViolatedConstraintsMustDrillDownCache();\n\nreturn result;\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\njava.lang.Boolean result = null;\n\n\tjava.lang.Boolean idIfCond_288 = false;\n\tidIfCond_288 = org.kermeta.compil.runtime.helper.language.ObjectUtil.isVoidSwitcher(this.getGetViolatedConstraintsMustDrillDownCache());\n\n\tif( idIfCond_288 ) {\n\n\tthis.setGetViolatedConstraintsMustDrillDownCache(kermeta.standard.helper.BooleanWrapper.not(org.kermeta.compil.runtime.helper.language.TypeUtil.isSuperTypeOfSwitcher(org.kermeta.compil.runtime.ExecutionContext.getInstance().getMetaClass(\"kermeta.standard.ValueType\"), this.getType())));\n}\n\n\n\tresult = this.getGetViolatedConstraintsMustDrillDownCache();\n\nreturn result;\n'"
 	 * @generated
 	 */
 	Boolean getViolatedConstraintsMustDrillDown();

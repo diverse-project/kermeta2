@@ -18,8 +18,8 @@ import kermeta.language.structure.Property;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link kermeta.language.behavior.CallFeature#getIsAtpre <em>Is Atpre</em>}</li>
  *   <li>{@link kermeta.language.behavior.CallFeature#getStaticOperation <em>Static Operation</em>}</li>
+ *   <li>{@link kermeta.language.behavior.CallFeature#getIsAtpre <em>Is Atpre</em>}</li>
  *   <li>{@link kermeta.language.behavior.CallFeature#getTarget <em>Target</em>}</li>
  *   <li>{@link kermeta.language.behavior.CallFeature#getStaticEnumLiteral <em>Static Enum Literal</em>}</li>
  *   <li>{@link kermeta.language.behavior.CallFeature#getStaticProperty <em>Static Property</em>}</li>
@@ -32,6 +32,33 @@ import kermeta.language.structure.Property;
  * @generated
  */
 public interface CallFeature extends CallExpression {
+	/**
+	 * Returns the value of the '<em><b>Static Operation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Static Operation</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Static Operation</em>' reference.
+	 * @see #setStaticOperation(Operation)
+	 * @see kermeta.language.behavior.BehaviorPackage#getCallFeature_StaticOperation()
+	 * @model annotation="kermeta ecore='true'"
+	 *        annotation="kermeta documentation='The method which will be executed (operation case)\nand the result value passed to the caller'"
+	 * @generated
+	 */
+	Operation getStaticOperation();
+
+	/**
+	 * Sets the value of the '{@link kermeta.language.behavior.CallFeature#getStaticOperation <em>Static Operation</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Static Operation</em>' reference.
+	 * @see #getStaticOperation()
+	 * @generated
+	 */
+	void setStaticOperation(Operation value);
+
 	/**
 	 * Returns the value of the '<em><b>Is Atpre</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
@@ -60,33 +87,6 @@ public interface CallFeature extends CallExpression {
 	 * @generated
 	 */
 	void setIsAtpre(Boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Static Operation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Static Operation</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Static Operation</em>' reference.
-	 * @see #setStaticOperation(Operation)
-	 * @see kermeta.language.behavior.BehaviorPackage#getCallFeature_StaticOperation()
-	 * @model annotation="kermeta ecore='true'"
-	 *        annotation="kermeta documentation='The method which will be executed (operation case)\nand the result value passed to the caller'"
-	 * @generated
-	 */
-	Operation getStaticOperation();
-
-	/**
-	 * Sets the value of the '{@link kermeta.language.behavior.CallFeature#getStaticOperation <em>Static Operation</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Static Operation</em>' reference.
-	 * @see #getStaticOperation()
-	 * @generated
-	 */
-	void setStaticOperation(Operation value);
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' containment reference.

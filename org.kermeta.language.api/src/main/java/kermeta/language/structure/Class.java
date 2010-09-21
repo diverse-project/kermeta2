@@ -34,6 +34,16 @@ public interface Class extends ParameterizedType {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model annotation="kermeta documentation='/**\n\t * Instantiates a new occurence for this Class\n\t \052/'"
+	 *        annotation="kermeta CompilerIgnore='true'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.language.structure.Object result = null;\n\n\tresult = org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(this.getTypeDefinition().qualifiedName().replace(\"::\", \".\"));\n\nreturn result;\n'"
+	 * @generated
+	 */
+	kermeta.language.structure.Object _new();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model annotation="kermeta CompilerIgnore='true'"
 	 *        annotation="kermeta superOperation='kermeta::language::structure::Type'"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.language.structure.Object result = null;\n\n\tresult = org.kermeta.compil.runtime.helper.language.ClassUtil.deepCloneObject(this, objectToClone);\n\nreturn result;\n'"
@@ -41,16 +51,6 @@ public interface Class extends ParameterizedType {
 	 */
 	kermeta.language.structure.Object deepClone(
 			kermeta.language.structure.Object objectToClone);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="kermeta documentation='/**\n\t * Instantiates a new occurence for this Class\n\t \052/'"
-	 *        annotation="kermeta CompilerIgnore='true'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.language.structure.Object result = null;\n\n\tresult = org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(this.getTypeDefinition().qualifiedName().replace(\"::\", \".\"));\n\nreturn result;\n'"
-	 * @generated
-	 */
-	kermeta.language.structure.Object _new();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,7 +86,7 @@ public interface Class extends ParameterizedType {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.standard.Set<kermeta.language.structure.Class> result = null;\n\n\tkermeta.language.structure.ClassDefinition cDef = null;\n\n\tcDef = (kermeta.language.structure.ClassDefinition) org.kermeta.compil.runtime.helper.language.ObjectUtil.asTypeOrVoid(this.getTypeDefinition(), \"kermeta.language.structure.ClassDefinition\");\n\n\tkermeta.standard.OrderedSet<kermeta.language.structure.Class> supertypes = ((kermeta.standard.OrderedSet<kermeta.language.structure.Class>) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.standard.StandardPackage.eINSTANCE.getOrderedSet()));\n\n\t//BIft:each\n\n\t\n{\n\n\tkermeta.standard.Iterator<kermeta.language.structure.Type> it_ft98 = org.kermeta.compil.runtime.helper.basetypes.CollectionUtil.<kermeta.language.structure.Type>convertAsOrderedSet(cDef.getSuperType()).iterator();\n\tjava.lang.Boolean idLoopCond_390 = false;\n\twhile( !idLoopCond_390 ) {\n\tidLoopCond_390 = it_ft98.isOff();\n\tif ( idLoopCond_390 ) {\n\t} else {\n\n\t//BIle:func\nkermeta.language.structure.Type elem_lbdExp98 = it_ft98.next();\n\n\tjava.lang.Boolean idIfCond_391 = false;\n\tidIfCond_391 = org.kermeta.compil.runtime.helper.language.TypeUtil.isInstanceSwitcher(org.kermeta.compil.runtime.ExecutionContext.getInstance().getMetaClass(\"kermeta.language.structure.Class\"), elem_lbdExp98);\n\n\tif( idIfCond_391 ) {\n\n\tkermeta.language.structure.Class c = null;\n\n\tc = (kermeta.language.structure.Class) org.kermeta.compil.runtime.helper.language.ObjectUtil.asTypeOrVoid(elem_lbdExp98, \"kermeta.language.structure.Class\");\n\n\tsupertypes.add(c);\n}\n\n//EIle:func\n\n}\n\t}\n}\n\n//EIft:each\n\n\n\tresult = supertypes;\n\nreturn org.kermeta.compil.runtime.helper.basetypes.CollectionUtil.convertAsEList(result);\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.standard.Set<kermeta.language.structure.Class> result = null;\n\n\tkermeta.language.structure.ClassDefinition cDef = null;\n\n\tcDef = (kermeta.language.structure.ClassDefinition) org.kermeta.compil.runtime.helper.language.ObjectUtil.asTypeOrVoid(this.getTypeDefinition(), \"kermeta.language.structure.ClassDefinition\");\n\n\tkermeta.standard.OrderedSet<kermeta.language.structure.Class> supertypes = ((kermeta.standard.OrderedSet<kermeta.language.structure.Class>) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.standard.StandardPackage.eINSTANCE.getOrderedSet()));\n\n\t//BIft:each\n\n\t\n{\n\n\tkermeta.standard.Iterator<kermeta.language.structure.Type> it_ft87 = org.kermeta.compil.runtime.helper.basetypes.CollectionUtil.<kermeta.language.structure.Type>convertAsOrderedSet(cDef.getSuperType()).iterator();\n\tjava.lang.Boolean idLoopCond_346 = false;\n\twhile( !idLoopCond_346 ) {\n\tidLoopCond_346 = it_ft87.isOff();\n\tif ( idLoopCond_346 ) {\n\t} else {\n\n\t//BIle:func\nkermeta.language.structure.Type elem_lbdExp87 = it_ft87.next();\n\n\tjava.lang.Boolean idIfCond_347 = false;\n\tidIfCond_347 = org.kermeta.compil.runtime.helper.language.TypeUtil.isInstanceSwitcher(org.kermeta.compil.runtime.ExecutionContext.getInstance().getMetaClass(\"kermeta.language.structure.Class\"), elem_lbdExp87);\n\n\tif( idIfCond_347 ) {\n\n\tkermeta.language.structure.Class c = null;\n\n\tc = (kermeta.language.structure.Class) org.kermeta.compil.runtime.helper.language.ObjectUtil.asTypeOrVoid(elem_lbdExp87, \"kermeta.language.structure.Class\");\n\n\tsupertypes.add(c);\n}\n\n//EIle:func\n\n}\n\t}\n}\n\n//EIft:each\n\n\n\tresult = supertypes;\n\nreturn org.kermeta.compil.runtime.helper.basetypes.CollectionUtil.convertAsEList(result);\n'"
 	 * @generated
 	 */
 	EList<Class> getterSuperClass();

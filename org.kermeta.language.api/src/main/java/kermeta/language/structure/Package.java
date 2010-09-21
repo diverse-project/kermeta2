@@ -25,7 +25,6 @@ import org.eclipse.emf.common.util.EList;
  * @see kermeta.language.structure.StructurePackage#getPackage()
  * @model annotation="kermeta ecore='true'"
  *        annotation="kermeta documentation='Package in kermeta. Each kermeta model must have a root package. '"
- *        annotation="kermeta.inv no_underscore=''"
  * @generated
  */
 public interface Package extends NamedElement, TypeDefinitionContainer {

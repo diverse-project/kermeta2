@@ -79,10 +79,6 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.kermeta.language.checker.CheckerPackage;
-
-import org.kermeta.language.checker.impl.CheckerPackageImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -90,20 +86,6 @@ import org.kermeta.language.checker.impl.CheckerPackageImpl;
  * @generated
  */
 public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fallibleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass testEClass = null;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,6 +99,13 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 	 * @generated
 	 */
 	private EClass invalidParameterExceptionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fallibleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,6 +127,13 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 	 * @generated
 	 */
 	private EClass errorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -248,14 +244,6 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 				.getEPackage(XmltypePackage.eNS_URI) instanceof XmltypePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(XmltypePackage.eNS_URI)
 				: XmltypePackage.eINSTANCE);
-		UtilsPackageImpl theUtilsPackage = (UtilsPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(UtilsPackage.eNS_URI) instanceof UtilsPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(UtilsPackage.eNS_URI)
-				: UtilsPackage.eINSTANCE);
-		StandardPackageImpl theStandardPackage = (StandardPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(StandardPackage.eNS_URI) instanceof StandardPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(StandardPackage.eNS_URI)
-				: StandardPackage.eINSTANCE);
 		PersistencePackageImpl thePersistencePackage = (PersistencePackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(PersistencePackage.eNS_URI) instanceof PersistencePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(PersistencePackage.eNS_URI)
@@ -264,6 +252,14 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 				.getEPackage(InterpreterPackage.eNS_URI) instanceof InterpreterPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(InterpreterPackage.eNS_URI)
 				: InterpreterPackage.eINSTANCE);
+		UtilsPackageImpl theUtilsPackage = (UtilsPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(UtilsPackage.eNS_URI) instanceof UtilsPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(UtilsPackage.eNS_URI)
+				: UtilsPackage.eINSTANCE);
+		StandardPackageImpl theStandardPackage = (StandardPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(StandardPackage.eNS_URI) instanceof StandardPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(StandardPackage.eNS_URI)
+				: StandardPackage.eINSTANCE);
 		LanguagePackageImpl theLanguagePackage = (LanguagePackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(LanguagePackage.eNS_URI) instanceof LanguagePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(LanguagePackage.eNS_URI)
@@ -288,42 +284,36 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 				.getEPackage(EcorePackage.eNS_URI) instanceof EcorePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(EcorePackage.eNS_URI)
 				: EcorePackage.eINSTANCE);
-		CheckerPackageImpl theCheckerPackage = (CheckerPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(CheckerPackage.eNS_URI) instanceof CheckerPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(CheckerPackage.eNS_URI)
-				: CheckerPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theKunitPackage.createPackageContents();
 		theKermetaPackage.createPackageContents();
 		theXmltypePackage.createPackageContents();
-		theUtilsPackage.createPackageContents();
-		theStandardPackage.createPackageContents();
 		thePersistencePackage.createPackageContents();
 		theInterpreterPackage.createPackageContents();
+		theUtilsPackage.createPackageContents();
+		theStandardPackage.createPackageContents();
 		theLanguagePackage.createPackageContents();
 		theStructurePackage.createPackageContents();
 		theBehaviorPackage.createPackageContents();
 		theExceptionsPackage.createPackageContents();
 		theIoPackage.createPackageContents();
 		theEcorePackage.createPackageContents();
-		theCheckerPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theKunitPackage.initializePackageContents();
 		theKermetaPackage.initializePackageContents();
 		theXmltypePackage.initializePackageContents();
-		theUtilsPackage.initializePackageContents();
-		theStandardPackage.initializePackageContents();
 		thePersistencePackage.initializePackageContents();
 		theInterpreterPackage.initializePackageContents();
+		theUtilsPackage.initializePackageContents();
+		theStandardPackage.initializePackageContents();
 		theLanguagePackage.initializePackageContents();
 		theStructurePackage.initializePackageContents();
 		theBehaviorPackage.initializePackageContents();
 		theExceptionsPackage.initializePackageContents();
 		theIoPackage.initializePackageContents();
 		theEcorePackage.initializePackageContents();
-		theCheckerPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theKunitPackage.freeze();
@@ -331,6 +321,24 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(KunitPackage.eNS_URI, theKunitPackage);
 		return theKunitPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInvalidTestCaseNameException() {
+		return invalidTestCaseNameExceptionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInvalidParameterException() {
+		return invalidParameterExceptionEClass;
 	}
 
 	/**
@@ -358,42 +366,6 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 	 */
 	public EAttribute getFallible_Rank() {
 		return (EAttribute) fallibleEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTest() {
-		return testEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTest_Log() {
-		return (EReference) testEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getInvalidTestCaseNameException() {
-		return invalidTestCaseNameExceptionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getInvalidParameterException() {
-		return invalidParameterExceptionEClass;
 	}
 
 	/**
@@ -502,6 +474,24 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 	 */
 	public EAttribute getError_Kind() {
 		return (EAttribute) errorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTest() {
+		return testEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTest_Log() {
+		return (EReference) testEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -623,16 +613,13 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		fallibleEClass = createEClass(FALLIBLE);
-		createEAttribute(fallibleEClass, FALLIBLE__STOP_ON_FAILURE);
-		createEAttribute(fallibleEClass, FALLIBLE__RANK);
-
-		testEClass = createEClass(TEST);
-		createEReference(testEClass, TEST__LOG);
-
 		invalidTestCaseNameExceptionEClass = createEClass(INVALID_TEST_CASE_NAME_EXCEPTION);
 
 		invalidParameterExceptionEClass = createEClass(INVALID_PARAMETER_EXCEPTION);
+
+		fallibleEClass = createEClass(FALLIBLE);
+		createEAttribute(fallibleEClass, FALLIBLE__STOP_ON_FAILURE);
+		createEAttribute(fallibleEClass, FALLIBLE__RANK);
 
 		logEClass = createEClass(LOG);
 		createEReference(logEClass, LOG__FAILURES);
@@ -648,6 +635,9 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 		createEReference(errorEClass, ERROR__ERROR);
 		createEReference(errorEClass, ERROR__EXCEPTION);
 		createEAttribute(errorEClass, ERROR__KIND);
+
+		testEClass = createEClass(TEST);
+		createEReference(testEClass, TEST__LOG);
 
 		testSuiteEClass = createEClass(TEST_SUITE);
 		createEReference(testSuiteEClass, TEST_SUITE__TESTS);
@@ -693,27 +683,27 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		ExceptionsPackage theExceptionsPackage = (ExceptionsPackage) EPackage.Registry.INSTANCE
+				.getEPackage(ExceptionsPackage.eNS_URI);
 		StandardPackage theStandardPackage = (StandardPackage) EPackage.Registry.INSTANCE
 				.getEPackage(StandardPackage.eNS_URI);
 		StructurePackage theStructurePackage = (StructurePackage) EPackage.Registry.INSTANCE
 				.getEPackage(StructurePackage.eNS_URI);
-		ExceptionsPackage theExceptionsPackage = (ExceptionsPackage) EPackage.Registry.INSTANCE
-				.getEPackage(ExceptionsPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		fallibleEClass.getESuperTypes().add(this.getAbstractFallible());
-		testEClass.getESuperTypes().add(theStructurePackage.getObject());
 		invalidTestCaseNameExceptionEClass.getESuperTypes().add(
 				theExceptionsPackage.getException());
 		invalidParameterExceptionEClass.getESuperTypes().add(
 				theExceptionsPackage.getException());
+		fallibleEClass.getESuperTypes().add(this.getAbstractFallible());
 		logEClass.getESuperTypes().add(theStructurePackage.getObject());
 		failureEClass.getESuperTypes().add(theStructurePackage.getObject());
 		errorEClass.getESuperTypes().add(theStructurePackage.getObject());
+		testEClass.getESuperTypes().add(theStructurePackage.getObject());
 		testSuiteEClass.getESuperTypes().add(this.getTest());
 		testCaseEClass.getESuperTypes().add(this.getTest());
 		testCaseEClass.getESuperTypes().add(this.getFallible());
@@ -725,6 +715,15 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 		assertEClass.getESuperTypes().add(this.getAbstractFallible());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(invalidTestCaseNameExceptionEClass,
+				InvalidTestCaseNameException.class,
+				"InvalidTestCaseNameException", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(invalidParameterExceptionEClass,
+				InvalidParameterException.class, "InvalidParameterException",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(fallibleEClass, Fallible.class, "Fallible", IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFallible_StopOnFailure(), theStandardPackage
@@ -792,31 +791,6 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 
 		addEOperation(fallibleEClass, theStandardPackage.getJavaBoolean(),
 				"mustStop", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(testEClass, Test.class, "Test", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTest_Log(), this.getLog(), null, "log", null, 0, 1,
-				Test.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-
-		op = addEOperation(testEClass, null, "setLogEMF_renameAs", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getLog(), "log", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(testEClass, null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(testEClass, this.getLog(), "initLog", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-
-		initEClass(invalidTestCaseNameExceptionEClass,
-				InvalidTestCaseNameException.class,
-				"InvalidTestCaseNameException", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(invalidParameterExceptionEClass,
-				InvalidParameterException.class, "InvalidParameterException",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(logEClass, Log.class, "Log", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -920,6 +894,22 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 				IS_ORDERED);
 		addEParameter(op, theExceptionsPackage.getException(), "e", 0, 1,
 				IS_UNIQUE, IS_ORDERED);
+
+		initEClass(testEClass, Test.class, "Test", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTest_Log(), this.getLog(), null, "log", null, 0, 1,
+				Test.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		op = addEOperation(testEClass, null, "setLogKermeta", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, this.getLog(), "log", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(testEClass, null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(testEClass, this.getLog(), "initLog", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
 		initEClass(testSuiteEClass, TestSuite.class, "TestSuite", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1151,6 +1141,22 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 						"documentation",
 						"/**\n * main features of the famous Unit test tool for Kermeta language\n * <img src=\"platform:/plugin/fr.irisa.triskell.kermeta.documentation/src/figures/kunit_package.png\"/>\n */" });
 		addAnnotation(
+				invalidTestCaseNameExceptionEClass,
+				source,
+				new String[] {
+						"documentation",
+						"/**\n * This exception is rose if there is a problem on the name of the test method\n */" });
+		addAnnotation(invalidTestCaseNameExceptionEClass, source, new String[] {
+				"CompilerIgnore", "true" });
+		addAnnotation(
+				invalidParameterExceptionEClass,
+				source,
+				new String[] {
+						"documentation",
+						"/**\n * This is for when we try to build a suite from a class that isn\'t a TestCase\n */" });
+		addAnnotation(invalidParameterExceptionEClass, source, new String[] {
+				"CompilerIgnore", "true" });
+		addAnnotation(
 				fallibleEClass,
 				source,
 				new String[] {
@@ -1169,10 +1175,10 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 		addAnnotation(fallibleEClass.getEOperations().get(1), source,
 				new String[] { "isAbstract", "true" });
 		addAnnotation(fallibleEClass.getEOperations().get(1), source,
+				new String[] { "EMF_renameAs", "getLogKermeta" });
+		addAnnotation(fallibleEClass.getEOperations().get(1), source,
 				new String[] { "documentation",
 						"/**\n   * where failures will be put \n   */" });
-		addAnnotation(fallibleEClass.getEOperations().get(1), source,
-				new String[] { "EMF_renameAs", "getLogKermeta" });
 		addAnnotation(fallibleEClass.getEOperations().get(2), source,
 				new String[] { "documentation",
 						"/**\n   * Log a failure if condition is true\n   */" });
@@ -1237,49 +1243,6 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 		addAnnotation(getFallible_Rank(), source, new String[] {
 				"documentation",
 				"/**\n   * counter of assertions in the test method\n   */" });
-		addAnnotation(
-				testEClass,
-				source,
-				new String[] {
-						"documentation",
-						"/**\n * The abstact notion of a test which is runnable and which has a log\n * in which it can keep note of failures\n */" });
-		addAnnotation(testEClass, source, new String[] { "CompilerIgnore",
-				"true" });
-		addAnnotation(
-				testEClass.getEOperations().get(0),
-				source,
-				new String[] { "documentation",
-						"/**\n\t * Initializes the log where failures and errors will be put\n\t */" });
-		addAnnotation(testEClass.getEOperations().get(0), source, new String[] {
-				"EMF_renameAs", "setLogEMF_renameAs" });
-		addAnnotation(testEClass.getEOperations().get(0), source, new String[] {
-				"EMF_renameAs", "setLogKermeta" });
-		addAnnotation(testEClass.getEOperations().get(1), source, new String[] {
-				"isAbstract", "true" });
-		addAnnotation(testEClass.getEOperations().get(1), source, new String[] {
-				"documentation",
-				"/**\n\t * Execute the test and verify its assertions\n\t */" });
-		addAnnotation(testEClass.getEOperations().get(2), source, new String[] {
-				"documentation",
-				"/**\n\t * called when run by the java testrunner\n\t */" });
-		addAnnotation(getTest_Log(), source, new String[] { "documentation",
-				"/**\n     * where failures and errors will be put \n     */" });
-		addAnnotation(
-				invalidTestCaseNameExceptionEClass,
-				source,
-				new String[] {
-						"documentation",
-						"/**\n * This exception is rose if there is a problem on the name of the test method\n */" });
-		addAnnotation(invalidTestCaseNameExceptionEClass, source, new String[] {
-				"CompilerIgnore", "true" });
-		addAnnotation(
-				invalidParameterExceptionEClass,
-				source,
-				new String[] {
-						"documentation",
-						"/**\n * This is for when we try to build a suite from a class that isn\'t a TestCase\n */" });
-		addAnnotation(invalidParameterExceptionEClass, source, new String[] {
-				"CompilerIgnore", "true" });
 		addAnnotation(
 				logEClass,
 				source,
@@ -1393,6 +1356,33 @@ public class KunitPackageImpl extends EPackageImpl implements KunitPackage {
 						"/**\n\t * the Kermeta exception corresponding to the error\n\t */" });
 		addAnnotation(getError_Kind(), source, new String[] { "documentation",
 				"/**\n\t * the nature of the stored error\n\t */" });
+		addAnnotation(
+				testEClass,
+				source,
+				new String[] {
+						"documentation",
+						"/**\n * The abstact notion of a test which is runnable and which has a log\n * in which it can keep note of failures\n */" });
+		addAnnotation(testEClass, source, new String[] { "CompilerIgnore",
+				"true" });
+		addAnnotation(testEClass.getEOperations().get(0), source, new String[] {
+				"EMF_renameAs", "setLogKermeta" });
+		addAnnotation(
+				testEClass.getEOperations().get(0),
+				source,
+				new String[] { "documentation",
+						"/**\n\t * Initializes the log where failures and errors will be put\n\t */" });
+		addAnnotation(testEClass.getEOperations().get(0), source, new String[] {
+				"EMF_renameAs", "setLogEMF_renameAs" });
+		addAnnotation(testEClass.getEOperations().get(1), source, new String[] {
+				"isAbstract", "true" });
+		addAnnotation(testEClass.getEOperations().get(1), source, new String[] {
+				"documentation",
+				"/**\n\t * Execute the test and verify its assertions\n\t */" });
+		addAnnotation(testEClass.getEOperations().get(2), source, new String[] {
+				"documentation",
+				"/**\n\t * called when run by the java testrunner\n\t */" });
+		addAnnotation(getTest_Log(), source, new String[] { "documentation",
+				"/**\n     * where failures and errors will be put \n     */" });
 		addAnnotation(
 				testSuiteEClass,
 				source,

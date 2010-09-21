@@ -88,10 +88,6 @@ import org.eclipse.emf.ecore.ETypeParameter;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.kermeta.language.checker.CheckerPackage;
-
-import org.kermeta.language.checker.impl.CheckerPackageImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -100,20 +96,6 @@ import org.kermeta.language.checker.impl.CheckerPackageImpl;
  */
 public class StandardPackageImpl extends EPackageImpl implements
 		StandardPackage {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass collectionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass iteratorEClass = null;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -196,6 +178,13 @@ public class StandardPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass collectionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass eachContextEClass = null;
 
 	/**
@@ -232,6 +221,13 @@ public class StandardPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass sequenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iteratorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -294,6 +290,13 @@ public class StandardPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EDataType kermetaProperty_ValueType_valueEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType kermetaProperty_Collection_valuesEDataType = null;
 
 	/**
@@ -302,13 +305,6 @@ public class StandardPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EDataType kermetaProperty_Iterator_javaIteratorEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType kermetaProperty_ValueType_valueEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -370,14 +366,6 @@ public class StandardPackageImpl extends EPackageImpl implements
 				.getEPackage(XmltypePackage.eNS_URI) instanceof XmltypePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(XmltypePackage.eNS_URI)
 				: XmltypePackage.eINSTANCE);
-		KunitPackageImpl theKunitPackage = (KunitPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(KunitPackage.eNS_URI) instanceof KunitPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(KunitPackage.eNS_URI)
-				: KunitPackage.eINSTANCE);
-		UtilsPackageImpl theUtilsPackage = (UtilsPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(UtilsPackage.eNS_URI) instanceof UtilsPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(UtilsPackage.eNS_URI)
-				: UtilsPackage.eINSTANCE);
 		PersistencePackageImpl thePersistencePackage = (PersistencePackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(PersistencePackage.eNS_URI) instanceof PersistencePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(PersistencePackage.eNS_URI)
@@ -386,6 +374,10 @@ public class StandardPackageImpl extends EPackageImpl implements
 				.getEPackage(InterpreterPackage.eNS_URI) instanceof InterpreterPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(InterpreterPackage.eNS_URI)
 				: InterpreterPackage.eINSTANCE);
+		UtilsPackageImpl theUtilsPackage = (UtilsPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(UtilsPackage.eNS_URI) instanceof UtilsPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(UtilsPackage.eNS_URI)
+				: UtilsPackage.eINSTANCE);
 		LanguagePackageImpl theLanguagePackage = (LanguagePackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(LanguagePackage.eNS_URI) instanceof LanguagePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(LanguagePackage.eNS_URI)
@@ -410,42 +402,40 @@ public class StandardPackageImpl extends EPackageImpl implements
 				.getEPackage(EcorePackage.eNS_URI) instanceof EcorePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(EcorePackage.eNS_URI)
 				: EcorePackage.eINSTANCE);
-		CheckerPackageImpl theCheckerPackage = (CheckerPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(CheckerPackage.eNS_URI) instanceof CheckerPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(CheckerPackage.eNS_URI)
-				: CheckerPackage.eINSTANCE);
+		KunitPackageImpl theKunitPackage = (KunitPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(KunitPackage.eNS_URI) instanceof KunitPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(KunitPackage.eNS_URI)
+				: KunitPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theStandardPackage.createPackageContents();
 		theKermetaPackage.createPackageContents();
 		theXmltypePackage.createPackageContents();
-		theKunitPackage.createPackageContents();
-		theUtilsPackage.createPackageContents();
 		thePersistencePackage.createPackageContents();
 		theInterpreterPackage.createPackageContents();
+		theUtilsPackage.createPackageContents();
 		theLanguagePackage.createPackageContents();
 		theStructurePackage.createPackageContents();
 		theBehaviorPackage.createPackageContents();
 		theExceptionsPackage.createPackageContents();
 		theIoPackage.createPackageContents();
 		theEcorePackage.createPackageContents();
-		theCheckerPackage.createPackageContents();
+		theKunitPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theStandardPackage.initializePackageContents();
 		theKermetaPackage.initializePackageContents();
 		theXmltypePackage.initializePackageContents();
-		theKunitPackage.initializePackageContents();
-		theUtilsPackage.initializePackageContents();
 		thePersistencePackage.initializePackageContents();
 		theInterpreterPackage.initializePackageContents();
+		theUtilsPackage.initializePackageContents();
 		theLanguagePackage.initializePackageContents();
 		theStructurePackage.initializePackageContents();
 		theBehaviorPackage.initializePackageContents();
 		theExceptionsPackage.initializePackageContents();
 		theIoPackage.initializePackageContents();
 		theEcorePackage.initializePackageContents();
-		theCheckerPackage.initializePackageContents();
+		theKunitPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theStandardPackage.freeze();
@@ -454,51 +444,6 @@ public class StandardPackageImpl extends EPackageImpl implements
 		EPackage.Registry.INSTANCE.put(StandardPackage.eNS_URI,
 				theStandardPackage);
 		return theStandardPackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCollection() {
-		return collectionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCollection_Values() {
-		return (EAttribute) collectionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getIterator() {
-		return iteratorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getIterator_JavaIterator() {
-		return (EAttribute) iteratorEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getIterator_KermetaCollection() {
-		return (EReference) iteratorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -614,6 +559,24 @@ public class StandardPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCollection() {
+		return collectionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCollection_Values() {
+		return (EAttribute) collectionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEachContext() {
 		return eachContextEClass;
 	}
@@ -695,6 +658,33 @@ public class StandardPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIterator() {
+		return iteratorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIterator_JavaIterator() {
+		return (EAttribute) iteratorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIterator_KermetaCollection() {
+		return (EReference) iteratorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getJavaBoolean() {
 		return javaBooleanEDataType;
 	}
@@ -767,6 +757,15 @@ public class StandardPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getKermetaProperty_ValueType_value() {
+		return kermetaProperty_ValueType_valueEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getKermetaProperty_Collection_values() {
 		return kermetaProperty_Collection_valuesEDataType;
 	}
@@ -778,15 +777,6 @@ public class StandardPackageImpl extends EPackageImpl implements
 	 */
 	public EDataType getKermetaProperty_Iterator_javaIterator() {
 		return kermetaProperty_Iterator_javaIteratorEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getKermetaProperty_ValueType_value() {
-		return kermetaProperty_ValueType_valueEDataType;
 	}
 
 	/**
@@ -818,13 +808,6 @@ public class StandardPackageImpl extends EPackageImpl implements
 		isCreated = true;
 
 		// Create classes and their features
-		collectionEClass = createEClass(COLLECTION);
-		createEAttribute(collectionEClass, COLLECTION__VALUES);
-
-		iteratorEClass = createEClass(ITERATOR);
-		createEAttribute(iteratorEClass, ITERATOR__JAVA_ITERATOR);
-		createEReference(iteratorEClass, ITERATOR__KERMETA_COLLECTION);
-
 		unknownJavaObjectEClass = createEClass(UNKNOWN_JAVA_OBJECT);
 
 		voidEClass = createEClass(VOID);
@@ -848,6 +831,9 @@ public class StandardPackageImpl extends EPackageImpl implements
 
 		stringEClass = createEClass(STRING);
 
+		collectionEClass = createEClass(COLLECTION);
+		createEAttribute(collectionEClass, COLLECTION__VALUES);
+
 		eachContextEClass = createEClass(EACH_CONTEXT);
 		createEAttribute(eachContextEClass, EACH_CONTEXT__IS_LAST);
 		createEAttribute(eachContextEClass, EACH_CONTEXT__INDEX);
@@ -863,6 +849,10 @@ public class StandardPackageImpl extends EPackageImpl implements
 
 		sequenceEClass = createEClass(SEQUENCE);
 
+		iteratorEClass = createEClass(ITERATOR);
+		createEAttribute(iteratorEClass, ITERATOR__JAVA_ITERATOR);
+		createEReference(iteratorEClass, ITERATOR__KERMETA_COLLECTION);
+
 		// Create data types
 		javaBooleanEDataType = createEDataType(JAVA_BOOLEAN);
 		javaNumericEDataType = createEDataType(JAVA_NUMERIC);
@@ -872,9 +862,9 @@ public class StandardPackageImpl extends EPackageImpl implements
 		javaStringEDataType = createEDataType(JAVA_STRING);
 		unlimitedNaturalEDataType = createEDataType(UNLIMITED_NATURAL);
 		objectEDataType = createEDataType(OBJECT);
+		kermetaProperty_ValueType_valueEDataType = createEDataType(KERMETA_PROPERTY_VALUE_TYPE_VALUE);
 		kermetaProperty_Collection_valuesEDataType = createEDataType(KERMETA_PROPERTY_COLLECTION_VALUES);
 		kermetaProperty_Iterator_javaIteratorEDataType = createEDataType(KERMETA_PROPERTY_ITERATOR_JAVA_ITERATOR);
-		kermetaProperty_ValueType_valueEDataType = createEDataType(KERMETA_PROPERTY_VALUE_TYPE_VALUE);
 	}
 
 	/**
@@ -908,10 +898,9 @@ public class StandardPackageImpl extends EPackageImpl implements
 				.getEPackage(ExceptionsPackage.eNS_URI);
 
 		// Create type parameters
+		ETypeParameter summableEClass_G = addETypeParameter(summableEClass, "G");
 		ETypeParameter collectionEClass_G = addETypeParameter(collectionEClass,
 				"G");
-		ETypeParameter iteratorEClass_G = addETypeParameter(iteratorEClass, "G");
-		ETypeParameter summableEClass_G = addETypeParameter(summableEClass, "G");
 		ETypeParameter setEClass_G = addETypeParameter(setEClass, "G");
 		ETypeParameter bagEClass_G = addETypeParameter(bagEClass, "G");
 		ETypeParameter orderedCollectionEClass_G = addETypeParameter(
@@ -919,14 +908,13 @@ public class StandardPackageImpl extends EPackageImpl implements
 		ETypeParameter orderedSetEClass_G = addETypeParameter(orderedSetEClass,
 				"G");
 		ETypeParameter sequenceEClass_G = addETypeParameter(sequenceEClass, "G");
+		ETypeParameter iteratorEClass_G = addETypeParameter(iteratorEClass, "G");
 		addETypeParameter(kermetaProperty_Collection_valuesEDataType, "G");
 		addETypeParameter(kermetaProperty_Iterator_javaIteratorEDataType, "G");
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		collectionEClass.getESuperTypes().add(theStructurePackage.getObject());
-		iteratorEClass.getESuperTypes().add(theStructurePackage.getObject());
 		unknownJavaObjectEClass.getESuperTypes().add(
 				theStructurePackage.getObject());
 		voidEClass.getESuperTypes().add(theStructurePackage.getObject());
@@ -940,6 +928,7 @@ public class StandardPackageImpl extends EPackageImpl implements
 		realEClass.getESuperTypes().add(this.getValueType());
 		characterEClass.getESuperTypes().add(this.getValueType());
 		stringEClass.getESuperTypes().add(this.getValueType());
+		collectionEClass.getESuperTypes().add(theStructurePackage.getObject());
 		eachContextEClass.getESuperTypes().add(theStructurePackage.getObject());
 		EGenericType g1 = createEGenericType(this.getCollection());
 		EGenericType g2 = createEGenericType(setEClass_G);
@@ -969,167 +958,9 @@ public class StandardPackageImpl extends EPackageImpl implements
 		g2 = createEGenericType(sequenceEClass_G);
 		g1.getETypeArguments().add(g2);
 		sequenceEClass.getEGenericSuperTypes().add(g1);
+		iteratorEClass.getESuperTypes().add(theStructurePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(collectionEClass, Collection.class, "Collection",
-				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getKermetaProperty_Collection_values());
-		g2 = createEGenericType(collectionEClass_G);
-		g1.getETypeArguments().add(g2);
-		initEAttribute(getCollection_Values(), g1, "values", null, 0, 1,
-				Collection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		EOperation op = addEOperation(collectionEClass, this.getJavaInteger(),
-				"count", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(collectionEClass_G);
-		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(collectionEClass, null, "remove", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(collectionEClass_G);
-		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(collectionEClass, this.getJavaBoolean(), "excludes",
-				0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(collectionEClass_G);
-		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(collectionEClass, null, "one", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(collectionEClass_G);
-		initEOperation(op, g1);
-
-		op = addEOperation(collectionEClass, this.getJavaBoolean(),
-				"containsAll", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCollection());
-		g2 = createEGenericType(collectionEClass_G);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(collectionEClass, null, "sum", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(collectionEClass_G);
-		initEOperation(op, g1);
-
-		op = addEOperation(collectionEClass, this.getJavaBoolean(), "contains",
-				0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(collectionEClass_G);
-		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(collectionEClass, null, "add", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(collectionEClass_G);
-		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(collectionEClass, this.getJavaBoolean(), "includes",
-				0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(collectionEClass_G);
-		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(collectionEClass, null, "asSequence", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getSequence());
-		g2 = createEGenericType(collectionEClass_G);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(collectionEClass, this.getJavaBoolean(),
-				"excludesAll", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCollection());
-		g2 = createEGenericType(collectionEClass_G);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(collectionEClass, null, "clear", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-
-		addEOperation(collectionEClass, this.getJavaBoolean(), "isEmpty", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(collectionEClass, null, "asBag", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(this.getBag());
-		g2 = createEGenericType(collectionEClass_G);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(collectionEClass, null, "any", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(collectionEClass_G);
-		initEOperation(op, g1);
-
-		addEOperation(collectionEClass, this.getJavaBoolean(), "empty", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(collectionEClass, this.getJavaBoolean(), "isNotEmpty", 0,
-				1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(collectionEClass, null, "iterator", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(this.getIterator());
-		g2 = createEGenericType(collectionEClass_G);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(collectionEClass, null, "addAll", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(this.getCollection());
-		g2 = createEGenericType(collectionEClass_G);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(collectionEClass, this.getJavaBoolean(),
-				"includesAll", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCollection());
-		g2 = createEGenericType(collectionEClass_G);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(collectionEClass, this.getJavaInteger(), "size", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(collectionEClass, null, "asOrderedSet", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getOrderedSet());
-		g2 = createEGenericType(collectionEClass_G);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(collectionEClass, null, "asSet", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(this.getSet());
-		g2 = createEGenericType(collectionEClass_G);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		initEClass(iteratorEClass, Iterator.class, "Iterator", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getKermetaProperty_Iterator_javaIterator());
-		g2 = createEGenericType(iteratorEClass_G);
-		g1.getETypeArguments().add(g2);
-		initEAttribute(getIterator_JavaIterator(), g1, "javaIterator", null, 0,
-				1, Iterator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(this.getCollection());
-		g2 = createEGenericType(iteratorEClass_G);
-		g1.getETypeArguments().add(g2);
-		initEReference(getIterator_KermetaCollection(), g1, null,
-				"kermetaCollection", null, 0, 1, Iterator.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(iteratorEClass, this.getJavaBoolean(), "hasNext", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(iteratorEClass, null, "next", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(iteratorEClass_G);
-		initEOperation(op, g1);
-
-		addEOperation(iteratorEClass, this.getJavaBoolean(), "isOff", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
-
 		initEClass(unknownJavaObjectEClass, UnknownJavaObject.class,
 				"UnknownJavaObject", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1143,8 +974,8 @@ public class StandardPackageImpl extends EPackageImpl implements
 		addEOperation(voidEClass, this.getJavaBoolean(), "isVoid", 0, 1,
 				IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(voidEClass, this.getJavaBoolean(), "isInstanceOf",
-				0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(voidEClass, this.getJavaBoolean(),
+				"isInstanceOf", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theStructurePackage.getType(), "type", 0, 1,
 				IS_UNIQUE, IS_ORDERED);
 
@@ -1220,6 +1051,138 @@ public class StandardPackageImpl extends EPackageImpl implements
 		initEClass(stringEClass, kermeta.standard.String.class, "String",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(collectionEClass, Collection.class, "Collection",
+				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(this.getKermetaProperty_Collection_values());
+		g2 = createEGenericType(collectionEClass_G);
+		g1.getETypeArguments().add(g2);
+		initEAttribute(getCollection_Values(), g1, "values", null, 0, 1,
+				Collection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, this.getJavaInteger(), "count", 0,
+				1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(collectionEClass_G);
+		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, null, "remove", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(collectionEClass_G);
+		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, this.getJavaBoolean(), "excludes",
+				0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(collectionEClass_G);
+		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, null, "one", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(collectionEClass_G);
+		initEOperation(op, g1);
+
+		op = addEOperation(collectionEClass, this.getJavaBoolean(),
+				"containsAll", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getCollection());
+		g2 = createEGenericType(collectionEClass_G);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, null, "sum", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(collectionEClass_G);
+		initEOperation(op, g1);
+
+		op = addEOperation(collectionEClass, this.getJavaBoolean(), "contains",
+				0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(collectionEClass_G);
+		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, this.getJavaBoolean(), "includes",
+				0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(collectionEClass_G);
+		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, this.getJavaBoolean(),
+				"excludesAll", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getCollection());
+		g2 = createEGenericType(collectionEClass_G);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, null, "add", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(collectionEClass_G);
+		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, null, "asSequence", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getSequence());
+		g2 = createEGenericType(collectionEClass_G);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		addEOperation(collectionEClass, null, "clear", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		addEOperation(collectionEClass, this.getJavaBoolean(), "isEmpty", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, null, "asBag", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(this.getBag());
+		g2 = createEGenericType(collectionEClass_G);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(collectionEClass, null, "any", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(collectionEClass_G);
+		initEOperation(op, g1);
+
+		addEOperation(collectionEClass, this.getJavaBoolean(), "empty", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(collectionEClass, this.getJavaBoolean(), "isNotEmpty", 0,
+				1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, null, "iterator", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(this.getIterator());
+		g2 = createEGenericType(collectionEClass_G);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(collectionEClass, null, "addAll", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(this.getCollection());
+		g2 = createEGenericType(collectionEClass_G);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, this.getJavaBoolean(),
+				"includesAll", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getCollection());
+		g2 = createEGenericType(collectionEClass_G);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(collectionEClass, this.getJavaInteger(), "size", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(collectionEClass, null, "asOrderedSet", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getOrderedSet());
+		g2 = createEGenericType(collectionEClass_G);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(collectionEClass, null, "asSet", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(this.getSet());
+		g2 = createEGenericType(collectionEClass_G);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		initEClass(eachContextEClass, EachContext.class, "EachContext",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEachContext_IsLast(), this.getJavaBoolean(),
@@ -1279,13 +1242,24 @@ public class StandardPackageImpl extends EPackageImpl implements
 		addEParameter(op, theStructurePackage.getObject(), "element", 0, 1,
 				IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(setEClass, null, "asSequence", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(this.getSequence());
+		g2 = createEGenericType(setEClass_G);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		op = addEOperation(setEClass, null, "add", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(setEClass_G);
 		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(setEClass, null, "asSequence", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(this.getSequence());
+		op = addEOperation(setEClass, null, "symmetricDifference", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getSet());
+		g2 = createEGenericType(setEClass_G);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "s", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getSet());
 		g2 = createEGenericType(setEClass_G);
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
@@ -1305,17 +1279,6 @@ public class StandardPackageImpl extends EPackageImpl implements
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "greater", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getOrderedSet());
-		g2 = createEGenericType(setEClass_G);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(setEClass, null, "symmetricDifference", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getSet());
-		g2 = createEGenericType(setEClass_G);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "s", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getSet());
 		g2 = createEGenericType(setEClass_G);
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
@@ -1424,6 +1387,13 @@ public class StandardPackageImpl extends EPackageImpl implements
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
+		op = addEOperation(bagEClass, null, "flatten", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(this.getBag());
+		g2 = createEGenericType(theStructurePackage.getObject());
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		op = addEOperation(bagEClass, null, "intersectionWithSet", 0, 1,
 				IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getSet());
@@ -1432,13 +1402,6 @@ public class StandardPackageImpl extends EPackageImpl implements
 		addEParameter(op, g1, "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getSet());
 		g2 = createEGenericType(bagEClass_G);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(bagEClass, null, "flatten", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(this.getBag());
-		g2 = createEGenericType(theStructurePackage.getObject());
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
@@ -1548,13 +1511,6 @@ public class StandardPackageImpl extends EPackageImpl implements
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		op = addEOperation(orderedSetEClass, null, "addAt", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		addEParameter(op, this.getJavaInteger(), "index", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
-		g1 = createEGenericType(orderedSetEClass_G);
-		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(orderedSetEClass, null, "insertAt", 0, 1, IS_UNIQUE,
 				IS_ORDERED);
 		addEParameter(op, this.getJavaInteger(), "index", 0, 1, IS_UNIQUE,
@@ -1565,6 +1521,13 @@ public class StandardPackageImpl extends EPackageImpl implements
 		g2 = createEGenericType(orderedSetEClass_G);
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
+
+		op = addEOperation(orderedSetEClass, null, "addAt", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, this.getJavaInteger(), "index", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(orderedSetEClass_G);
+		addEParameter(op, g1, "element", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(orderedSetEClass, null, "preppend", 0, 1, IS_UNIQUE,
 				IS_ORDERED);
@@ -1658,6 +1621,33 @@ public class StandardPackageImpl extends EPackageImpl implements
 		g1 = createEGenericType(sequenceEClass_G);
 		initEOperation(op, g1);
 
+		initEClass(iteratorEClass, Iterator.class, "Iterator", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(this.getKermetaProperty_Iterator_javaIterator());
+		g2 = createEGenericType(iteratorEClass_G);
+		g1.getETypeArguments().add(g2);
+		initEAttribute(getIterator_JavaIterator(), g1, "javaIterator", null, 0,
+				1, Iterator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(this.getCollection());
+		g2 = createEGenericType(iteratorEClass_G);
+		g1.getETypeArguments().add(g2);
+		initEReference(getIterator_KermetaCollection(), g1, null,
+				"kermetaCollection", null, 0, 1, Iterator.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(iteratorEClass, this.getJavaBoolean(), "hasNext", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(iteratorEClass, null, "next", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		g1 = createEGenericType(iteratorEClass_G);
+		initEOperation(op, g1);
+
+		addEOperation(iteratorEClass, this.getJavaBoolean(), "isOff", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+
 		// Initialize data types
 		initEDataType(javaBooleanEDataType, Boolean.class, "JavaBoolean",
 				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -1676,15 +1666,15 @@ public class StandardPackageImpl extends EPackageImpl implements
 				!IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE,
 				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(kermetaProperty_ValueType_valueEDataType, String.class,
+				"KermetaProperty_ValueType_value", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(kermetaProperty_Collection_valuesEDataType, EList.class,
 				"KermetaProperty_Collection_values", IS_SERIALIZABLE,
 				!IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(kermetaProperty_Iterator_javaIteratorEDataType,
 				java.util.Iterator.class,
 				"KermetaProperty_Iterator_javaIterator", IS_SERIALIZABLE,
-				!IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(kermetaProperty_ValueType_valueEDataType, String.class,
-				"KermetaProperty_ValueType_value", IS_SERIALIZABLE,
 				!IS_GENERATED_INSTANCE_CLASS);
 
 		// Create annotations
@@ -1722,9 +1712,134 @@ public class StandardPackageImpl extends EPackageImpl implements
 				new String[] {
 						"documentation",
 						"/**\n * Defines Collection types \n * <img src=\"./figures/collections_view.png\"/>\n */" });
-		addAnnotation(collectionEClass, source, new String[] {
-				"EMF_needProperty",
-				"name=values javaClass=org.eclipse.emf.common.util.EList" });
+		addAnnotation(
+				unknownJavaObjectEClass,
+				source,
+				new String[] {
+						"documentation",
+						"/** \n  * This special object is used to represent java objects that cannot be concretely used with kermeta\n  * <b>the only actions possible on these objects are : assignment and passing them as parameter</b>\n  * <img src=\"platform:/plugin/fr.irisa.triskell.kermeta.documentation/src/figures/java_package.png\"/>\n  */" });
+		addAnnotation(unknownJavaObjectEClass, source, new String[] {
+				"CompilerIgnore", "true" });
+		addAnnotation(unknownJavaObjectEClass.getEOperations().get(0), source,
+				new String[] { "documentation",
+						"/**\n \t * NOT IMPLEMENTED\n \t */" });
+		addAnnotation(unknownJavaObjectEClass.getEOperations().get(0), source,
+				new String[] { "superOperation",
+						"kermeta::language::structure::Object" });
+		addAnnotation(
+				voidEClass,
+				source,
+				new String[] { "documentation",
+						"/**\n * The class Void \n * By convention it is a sub-type of everything\n */" });
+		addAnnotation(voidEClass, source, new String[] { "CompilerIgnore",
+				"true" });
+		addAnnotation(voidEClass.getEOperations().get(0), source, new String[] {
+				"documentation", "/**\n\t * Return true\n\t */" });
+		addAnnotation(voidEClass.getEOperations().get(0), source, new String[] {
+				"superOperation", "kermeta::language::structure::Object" });
+		addAnnotation(voidEClass.getEOperations().get(1), source, new String[] {
+				"documentation", "/**\n\t * Returns true\n\t */" });
+		addAnnotation(voidEClass.getEOperations().get(1), source, new String[] {
+				"superOperation", "kermeta::language::structure::Object" });
+		addAnnotation(voidEClass.getEOperations().get(2), source, new String[] {
+				"documentation",
+				"/**\n\t * Returns the String identifier \'<void>\'\n\t */" });
+		addAnnotation(voidEClass.getEOperations().get(2), source, new String[] {
+				"superOperation", "kermeta::language::structure::Object" });
+		addAnnotation(
+				valueTypeEClass,
+				source,
+				new String[] {
+						"documentation",
+						"/**\n * The abstract class ValueType does not contain any feature.\n * However, any instance of a sub-class of ValueType will be passed by value \n * instead of by reference for any other objects.\n * that means that each time you := such object it will call the clone function associated to it (Not implemented yet except for Integer, String and boolean!!!)\n * \n */" });
+		addAnnotation(valueTypeEClass, source, new String[] { "CompilerIgnore",
+				"true" });
+		addAnnotation(valueTypeEClass, source, new String[] {
+				"EMF_needProperty", "name=value javaClass=java.lang.String" });
+		addAnnotation(
+				valueTypeEClass.getEOperations().get(0),
+				source,
+				new String[] {
+						"documentation",
+						"/** \n     * checking invariants on ValueType is meaningless, so simply override the operation and do nothing\n     */" });
+		addAnnotation(valueTypeEClass.getEOperations().get(0), source,
+				new String[] { "superOperation",
+						"kermeta::language::structure::Object" });
+		addAnnotation(
+				comparableEClass,
+				source,
+				new String[] {
+						"documentation",
+						"/**\n * The abstract class Comparable defines a set of operation\n * to compare instances of a class.\n * Sub-classes only has to implement abstract operation compareTo.\n * All other methods are defined w.r.t. the compareTo operation\n */" });
+		addAnnotation(comparableEClass, source, new String[] {
+				"CompilerIgnore", "true" });
+		addAnnotation(comparableEClass.getEOperations().get(0), source,
+				new String[] { "RecopyInValueTypes", "true" });
+		addAnnotation(comparableEClass.getEOperations().get(0), source,
+				new String[] { "documentation",
+						"/**\n\t * return true if self < other\n\t */" });
+		addAnnotation(comparableEClass.getEOperations().get(1), source,
+				new String[] { "RecopyInValueTypes", "true" });
+		addAnnotation(comparableEClass.getEOperations().get(1), source,
+				new String[] { "documentation",
+						"/**\n\t * return true if self >= other\n\t */" });
+		addAnnotation(comparableEClass.getEOperations().get(2), source,
+				new String[] { "isAbstract", "true" });
+		addAnnotation(
+				comparableEClass.getEOperations().get(2),
+				source,
+				new String[] {
+						"documentation",
+						"/**\n\t * This method should be implemented by any class that inherits\n\t * from Comparable.\n\t * returns 0 if self = other\n\t * returns > 0 if  self > other\n\t * returns < 0 if  self < other\n\t */" });
+		addAnnotation(comparableEClass.getEOperations().get(2), source,
+				new String[] { "RecopyInValueTypes", "true" });
+		addAnnotation(comparableEClass.getEOperations().get(3), source,
+				new String[] { "documentation",
+						"/**\n\t * return true if self <= other\n\t */" });
+		addAnnotation(comparableEClass.getEOperations().get(3), source,
+				new String[] { "RecopyInValueTypes", "true" });
+		addAnnotation(comparableEClass.getEOperations().get(4), source,
+				new String[] { "RecopyInValueTypes", "true" });
+		addAnnotation(comparableEClass.getEOperations().get(4), source,
+				new String[] { "documentation",
+						"/**\n\t * return true if self > other\n\t */" });
+		addAnnotation(
+				summableEClass,
+				source,
+				new String[] {
+						"documentation",
+						"/**\n * The abstract class Summable defines a set of operation\n * to sum instances of a class.\n * Sub-classes only has to implement abstract operation plus.\n  */" });
+		addAnnotation(summableEClass, source, new String[] { "CompilerIgnore",
+				"true" });
+		addAnnotation(summableEClass.getEOperations().get(0), source,
+				new String[] { "isAbstract", "true" });
+		addAnnotation(summableEClass.getEOperations().get(0), source,
+				new String[] { "RecopyInValueTypes", "true" });
+		addAnnotation(
+				summableEClass.getEOperations().get(0),
+				source,
+				new String[] {
+						"documentation",
+						"/**\n\t * Summarization method to be implemented by any summable class.\n\t * The parameter must have the same type (or one of its subtypes)\n\t *  than the current object .\n\t */" });
+		addAnnotation(notComparableExceptionEClass, source, new String[] {
+				"documentation",
+				"/**\n * raised when two objects are not comparable\n */" });
+		addAnnotation(notComparableExceptionEClass, source, new String[] {
+				"CompilerIgnore", "true" });
+		addAnnotation(unlimitedNaturalEDataType, source, new String[] {
+				"alias", "kermeta::standard::Integer" });
+		addAnnotation(
+				unlimitedNaturalEDataType,
+				source,
+				new String[] {
+						"documentation",
+						"/**\n * Unlimited natural is used for reflection.\n * It is mapped to integer.equals().\n * Any negative number is interpreted as \'*\'\n */" });
+		addAnnotation(unlimitedNaturalEDataType, source, new String[] {
+				"CompilerIgnore", "true" });
+		addAnnotation(objectEDataType, source, new String[] { "alias",
+				"kermeta::language::structure::Object" });
+		addAnnotation(objectEDataType, source, new String[] { "deprecated",
+				"please use directly kermeta::language::structure::Object" });
 		addAnnotation(
 				collectionEClass,
 				source,
@@ -1733,6 +1848,9 @@ public class StandardPackageImpl extends EPackageImpl implements
 						"/**\n * Collection is the root abstract class for all kermeta collections\n */" });
 		addAnnotation(collectionEClass, source, new String[] {
 				"CompilerIgnore", "true" });
+		addAnnotation(collectionEClass, source, new String[] {
+				"EMF_needProperty",
+				"name=values javaClass=org.eclipse.emf.common.util.EList" });
 		addAnnotation(
 				collectionEClass.getEOperations().get(0),
 				source,
@@ -1776,27 +1894,27 @@ public class StandardPackageImpl extends EPackageImpl implements
 		addAnnotation(
 				collectionEClass.getEOperations().get(7),
 				source,
-				new String[] { "documentation",
-						"/**\n\t * Adds an element in the Collection (default implementation)\n\t */" });
+				new String[] {
+						"documentation",
+						"/**\n\t * OCL API alignment, doeas the same as contains\n\t * See Collection<G>.contains(Object)\n\t */" });
 		addAnnotation(
 				collectionEClass.getEOperations().get(8),
 				source,
 				new String[] {
 						"documentation",
-						"/**\n\t * OCL API alignment, doeas the same as contains\n\t * See Collection<G>.contains(Object)\n\t */" });
-		addAnnotation(collectionEClass.getEOperations().get(9), source,
-				new String[] { "isAbstract", "true" });
+						"/**\n\t * Returns true if the Collection contains no element of Collection elements\n\t */" });
 		addAnnotation(
 				collectionEClass.getEOperations().get(9),
 				source,
 				new String[] { "documentation",
-						"/**\n\t * Returns a new Sequence built from the Collection\n\t */" });
+						"/**\n\t * Adds an element in the Collection (default implementation)\n\t */" });
+		addAnnotation(collectionEClass.getEOperations().get(10), source,
+				new String[] { "isAbstract", "true" });
 		addAnnotation(
 				collectionEClass.getEOperations().get(10),
 				source,
-				new String[] {
-						"documentation",
-						"/**\n\t * Returns true if the Collection contains no element of Collection elements\n\t */" });
+				new String[] { "documentation",
+						"/**\n\t * Returns a new Sequence built from the Collection\n\t */" });
 		addAnnotation(
 				collectionEClass.getEOperations().get(11),
 				source,
@@ -1868,167 +1986,6 @@ public class StandardPackageImpl extends EPackageImpl implements
 				source,
 				new String[] { "documentation",
 						"/**\n\t * Returns a new Set built from the Collection\n\t */" });
-		addAnnotation(iteratorEClass, source, new String[] {
-				"EMF_needProperty",
-				"name=javaIterator javaClass=java.util.Iterator" });
-		addAnnotation(
-				iteratorEClass,
-				source,
-				new String[] { "EMF_needProperty",
-						"name=kermetaCollection classDefinitionQN=kermeta::standard::Collection" });
-		addAnnotation(
-				iteratorEClass,
-				source,
-				new String[] {
-						"documentation",
-						"/**\n * Iterator to be used with Collection\n * See also Collection<G>.getIterator()\n */" });
-		addAnnotation(iteratorEClass, source, new String[] { "CompilerIgnore",
-				"true" });
-		addAnnotation(
-				iteratorEClass.getEOperations().get(0),
-				source,
-				new String[] { "documentation",
-						"/**\n\t * Returns true if the iterator has a next element\n\t */" });
-		addAnnotation(
-				iteratorEClass.getEOperations().get(1),
-				source,
-				new String[] {
-						"documentation",
-						"/**\n\t * Returns the next element of the iterator\n\t * Raises IteratorIsOff exception in case the iterator is on the last element \n\t */" });
-		addAnnotation(
-				iteratorEClass.getEOperations().get(2),
-				source,
-				new String[] {
-						"documentation",
-						"/**\n\t * Returns true if the iterator is on the last element\n\t * i.e. returns not self.hasNext()\n\t */" });
-		addAnnotation(
-				unknownJavaObjectEClass,
-				source,
-				new String[] {
-						"documentation",
-						"/** \n  * This special object is used to represent java objects that cannot be concretely used with kermeta\n  * <b>the only actions possible on these objects are : assignment and passing them as parameter</b>\n  * <img src=\"platform:/plugin/fr.irisa.triskell.kermeta.documentation/src/figures/java_package.png\"/>\n  */" });
-		addAnnotation(unknownJavaObjectEClass, source, new String[] {
-				"CompilerIgnore", "true" });
-		addAnnotation(unknownJavaObjectEClass.getEOperations().get(0), source,
-				new String[] { "documentation",
-						"/**\n \t * NOT IMPLEMENTED\n \t */" });
-		addAnnotation(unknownJavaObjectEClass.getEOperations().get(0), source,
-				new String[] { "superOperation",
-						"kermeta::language::structure::Object" });
-		addAnnotation(
-				voidEClass,
-				source,
-				new String[] { "documentation",
-						"/**\n * The class Void \n * By convention it is a sub-type of everything\n */" });
-		addAnnotation(voidEClass, source, new String[] { "CompilerIgnore",
-				"true" });
-		addAnnotation(voidEClass.getEOperations().get(0), source, new String[] {
-				"documentation", "/**\n\t * Return true\n\t */" });
-		addAnnotation(voidEClass.getEOperations().get(0), source, new String[] {
-				"superOperation", "kermeta::language::structure::Object" });
-		addAnnotation(voidEClass.getEOperations().get(1), source, new String[] {
-				"documentation", "/**\n\t * Returns true\n\t */" });
-		addAnnotation(voidEClass.getEOperations().get(1), source, new String[] {
-				"superOperation", "kermeta::language::structure::Object" });
-		addAnnotation(voidEClass.getEOperations().get(2), source, new String[] {
-				"documentation",
-				"/**\n\t * Returns the String identifier \'<void>\'\n\t */" });
-		addAnnotation(voidEClass.getEOperations().get(2), source, new String[] {
-				"superOperation", "kermeta::language::structure::Object" });
-		addAnnotation(
-				valueTypeEClass,
-				source,
-				new String[] {
-						"documentation",
-						"/**\n * The abstract class ValueType does not contain any feature.\n * However, any instance of a sub-class of ValueType will be passed by value \n * instead of by reference for any other objects.\n * that means that each time you := such object it will call the clone function associated to it (Not implemented yet except for Integer, String and boolean!!!)\n * \n */" });
-		addAnnotation(valueTypeEClass, source, new String[] { "CompilerIgnore",
-				"true" });
-		addAnnotation(valueTypeEClass, source, new String[] {
-				"EMF_needProperty", "name=value javaClass=java.lang.String" });
-		addAnnotation(
-				valueTypeEClass.getEOperations().get(0),
-				source,
-				new String[] {
-						"documentation",
-						"/** \n     * checking invariants on ValueType is meaningless, so simply override the operation and do nothing\n     */" });
-		addAnnotation(valueTypeEClass.getEOperations().get(0), source,
-				new String[] { "superOperation",
-						"kermeta::language::structure::Object" });
-		addAnnotation(
-				comparableEClass,
-				source,
-				new String[] {
-						"documentation",
-						"/**\n * The abstract class Comparable defines a set of operation\n * to compare instances of a class.\n * Sub-classes only has to implement abstract operation compareTo.\n * All other methods are defined w.r.t. the compareTo operation\n */" });
-		addAnnotation(comparableEClass, source, new String[] {
-				"CompilerIgnore", "true" });
-		addAnnotation(comparableEClass.getEOperations().get(0), source,
-				new String[] { "documentation",
-						"/**\n\t * return true if self < other\n\t */" });
-		addAnnotation(comparableEClass.getEOperations().get(0), source,
-				new String[] { "RecopyInValueTypes", "true" });
-		addAnnotation(comparableEClass.getEOperations().get(1), source,
-				new String[] { "RecopyInValueTypes", "true" });
-		addAnnotation(comparableEClass.getEOperations().get(1), source,
-				new String[] { "documentation",
-						"/**\n\t * return true if self >= other\n\t */" });
-		addAnnotation(comparableEClass.getEOperations().get(2), source,
-				new String[] { "isAbstract", "true" });
-		addAnnotation(comparableEClass.getEOperations().get(2), source,
-				new String[] { "RecopyInValueTypes", "true" });
-		addAnnotation(
-				comparableEClass.getEOperations().get(2),
-				source,
-				new String[] {
-						"documentation",
-						"/**\n\t * This method should be implemented by any class that inherits\n\t * from Comparable.\n\t * returns 0 if self = other\n\t * returns > 0 if  self > other\n\t * returns < 0 if  self < other\n\t */" });
-		addAnnotation(comparableEClass.getEOperations().get(3), source,
-				new String[] { "documentation",
-						"/**\n\t * return true if self <= other\n\t */" });
-		addAnnotation(comparableEClass.getEOperations().get(3), source,
-				new String[] { "RecopyInValueTypes", "true" });
-		addAnnotation(comparableEClass.getEOperations().get(4), source,
-				new String[] { "RecopyInValueTypes", "true" });
-		addAnnotation(comparableEClass.getEOperations().get(4), source,
-				new String[] { "documentation",
-						"/**\n\t * return true if self > other\n\t */" });
-		addAnnotation(
-				summableEClass,
-				source,
-				new String[] {
-						"documentation",
-						"/**\n * The abstract class Summable defines a set of operation\n * to sum instances of a class.\n * Sub-classes only has to implement abstract operation plus.\n  */" });
-		addAnnotation(summableEClass, source, new String[] { "CompilerIgnore",
-				"true" });
-		addAnnotation(summableEClass.getEOperations().get(0), source,
-				new String[] { "isAbstract", "true" });
-		addAnnotation(summableEClass.getEOperations().get(0), source,
-				new String[] { "RecopyInValueTypes", "true" });
-		addAnnotation(
-				summableEClass.getEOperations().get(0),
-				source,
-				new String[] {
-						"documentation",
-						"/**\n\t * Summarization method to be implemented by any summable class.\n\t * The parameter must have the same type (or one of its subtypes)\n\t *  than the current object .\n\t */" });
-		addAnnotation(notComparableExceptionEClass, source, new String[] {
-				"documentation",
-				"/**\n * raised when two objects are not comparable\n */" });
-		addAnnotation(notComparableExceptionEClass, source, new String[] {
-				"CompilerIgnore", "true" });
-		addAnnotation(unlimitedNaturalEDataType, source, new String[] {
-				"alias", "kermeta::standard::Integer" });
-		addAnnotation(
-				unlimitedNaturalEDataType,
-				source,
-				new String[] {
-						"documentation",
-						"/**\n * Unlimited natural is used for reflection.\n * It is mapped to integer.equals().\n * Any negative number is interpreted as \'*\'\n */" });
-		addAnnotation(unlimitedNaturalEDataType, source, new String[] {
-				"CompilerIgnore", "true" });
-		addAnnotation(objectEDataType, source, new String[] { "alias",
-				"kermeta::language::structure::Object" });
-		addAnnotation(objectEDataType, source, new String[] { "deprecated",
-				"please use directly kermeta::language::structure::Object" });
 		addAnnotation(eachContextEClass, source, new String[] {
 				"documentation",
 				"/**\n * context used in the indexedEach of Collection\n */" });
@@ -2075,7 +2032,7 @@ public class StandardPackageImpl extends EPackageImpl implements
 				source,
 				new String[] {
 						"documentation",
-						"/**\n\t * Overrides Collection<G>.add(G)\n\t * Adds elt to the Set if it is not already contained by the\n\t * Set, does nothing otherwise\n\t */" });
+						"/**\n\t * Overrides Collection<G>.asSequence()\n\t * Returns a new Sequence composed of all elements of current Set\n\t */" });
 		addAnnotation(setEClass.getEOperations().get(4), source, new String[] {
 				"superOperation", "kermeta::standard::Collection" });
 		addAnnotation(
@@ -2083,7 +2040,7 @@ public class StandardPackageImpl extends EPackageImpl implements
 				source,
 				new String[] {
 						"documentation",
-						"/**\n\t * Overrides Collection<G>.asSequence()\n\t * Returns a new Sequence composed of all elements of current Set\n\t */" });
+						"/**\n\t * Overrides Collection<G>.add(G)\n\t * Adds elt to the Set if it is not already contained by the\n\t * Set, does nothing otherwise\n\t */" });
 		addAnnotation(setEClass.getEOperations().get(5), source, new String[] {
 				"superOperation", "kermeta::standard::Collection" });
 		addAnnotation(
@@ -2091,25 +2048,25 @@ public class StandardPackageImpl extends EPackageImpl implements
 				source,
 				new String[] {
 						"documentation",
-						"/**\n\t * Returns a ordered set of the bag elements sorted using the given comparator.\n\t * The comparator must return :<ul>\n\t *   <li>+1 if the second <G> element is greater than the first</li> \n\t *   <li>0 if the second <G> element equals the first</li> \n\t *   <li>-1 if the second <G> element is lower than the first</li> \n\t */" });
-		addAnnotation(
-				setEClass.getEOperations().get(6),
-				source,
-				new String[] {
-						"documentation",
-						"/**\n\t * Recursive sort of the given (ordered) set using the given comparator.\n\t * The comparator must return :<ul>\n\t *   <li>+1 if the second <G> element is greater than the first</li> \n\t *   <li>0 if the second <G> element equals the first</li> \n\t *   <li>-1 if the second <G> element is lower than the first</li> \n\t */" });
-		addAnnotation(
-				setEClass.getEOperations().get(6),
-				source,
-				new String[] {
-						"documentation",
-						"/**\n\t * Internal concatenation tool for recursive \'quickSort()\' method\n\t */" });
+						"/**\n\t * Returns a new Set which contents corresponds to the symmetric\n\t * difference between current Set and Set s, ie all elements of\n\t * each Set that do not appear in the other one\n\t */" });
 		addAnnotation(
 				setEClass.getEOperations().get(7),
 				source,
 				new String[] {
 						"documentation",
-						"/**\n\t * Returns a new Set which contents corresponds to the symmetric\n\t * difference between current Set and Set s, ie all elements of\n\t * each Set that do not appear in the other one\n\t */" });
+						"/**\n\t * Returns a ordered set of the bag elements sorted using the given comparator.\n\t * The comparator must return :<ul>\n\t *   <li>+1 if the second <G> element is greater than the first</li> \n\t *   <li>0 if the second <G> element equals the first</li> \n\t *   <li>-1 if the second <G> element is lower than the first</li> \n\t */" });
+		addAnnotation(
+				setEClass.getEOperations().get(7),
+				source,
+				new String[] {
+						"documentation",
+						"/**\n\t * Recursive sort of the given (ordered) set using the given comparator.\n\t * The comparator must return :<ul>\n\t *   <li>+1 if the second <G> element is greater than the first</li> \n\t *   <li>0 if the second <G> element equals the first</li> \n\t *   <li>-1 if the second <G> element is lower than the first</li> \n\t */" });
+		addAnnotation(
+				setEClass.getEOperations().get(7),
+				source,
+				new String[] {
+						"documentation",
+						"/**\n\t * Internal concatenation tool for recursive \'quickSort()\' method\n\t */" });
 		addAnnotation(
 				setEClass.getEOperations().get(8),
 				source,
@@ -2210,13 +2167,13 @@ public class StandardPackageImpl extends EPackageImpl implements
 				source,
 				new String[] {
 						"documentation",
-						"/**\n\t * Returns a new Set corresponding to the intersection of a Set of\n\t * elements and the Bag\n\t */" });
+						"/**\n\t * Returns a new Bag which content includes all non-Collection elements\n\t * of the current Set, and, for each Collection element of the current\n\t * Bag, as many elements as the Collection contains\n\t */" });
 		addAnnotation(
 				bagEClass.getEOperations().get(6),
 				source,
 				new String[] {
 						"documentation",
-						"/**\n\t * Returns a new Bag which content includes all non-Collection elements\n\t * of the current Set, and, for each Collection element of the current\n\t * Bag, as many elements as the Collection contains\n\t */" });
+						"/**\n\t * Returns a new Set corresponding to the intersection of a Set of\n\t * elements and the Bag\n\t */" });
 		addAnnotation(
 				bagEClass.getEOperations().get(7),
 				source,
@@ -2335,16 +2292,16 @@ public class StandardPackageImpl extends EPackageImpl implements
 				source,
 				new String[] {
 						"documentation",
-						"/**\n\t * Overrides OrderedCollection<G>.addAt(Integer, G)\n\t * Adds element in the OrderedSet at rank index if the ordered set does\n\t * not already contain the element, does nothing otherwise\n\t */" });
-		addAnnotation(orderedSetEClass.getEOperations().get(1), source,
-				new String[] { "superOperation",
-						"kermeta::standard::OrderedCollection" });
+						"/**\n\t * Builds and returns a new OrderedSet from current one with element\n\t * inserted at rank index\n\t */" });
 		addAnnotation(
 				orderedSetEClass.getEOperations().get(2),
 				source,
 				new String[] {
 						"documentation",
-						"/**\n\t * Builds and returns a new OrderedSet from current one with element\n\t * inserted at rank index\n\t */" });
+						"/**\n\t * Overrides OrderedCollection<G>.addAt(Integer, G)\n\t * Adds element in the OrderedSet at rank index if the ordered set does\n\t * not already contain the element, does nothing otherwise\n\t */" });
+		addAnnotation(orderedSetEClass.getEOperations().get(2), source,
+				new String[] { "superOperation",
+						"kermeta::standard::OrderedCollection" });
 		addAnnotation(
 				orderedSetEClass.getEOperations().get(3),
 				source,
@@ -2423,6 +2380,39 @@ public class StandardPackageImpl extends EPackageImpl implements
 				new String[] {
 						"documentation",
 						"/**\n\t * Returns element at rank index in the sequence\n\t * Raises IndexOutOfBound exception if provided index is lower than 0 or\n\t * larger than the size of the Sequence\n\t */" });
+		addAnnotation(
+				iteratorEClass,
+				source,
+				new String[] {
+						"documentation",
+						"/**\n * Iterator to be used with Collection\n * See also Collection<G>.getIterator()\n */" });
+		addAnnotation(iteratorEClass, source, new String[] { "CompilerIgnore",
+				"true" });
+		addAnnotation(iteratorEClass, source, new String[] {
+				"EMF_needProperty",
+				"name=javaIterator javaClass=java.util.Iterator" });
+		addAnnotation(
+				iteratorEClass,
+				source,
+				new String[] { "EMF_needProperty",
+						"name=kermetaCollection classDefinitionQN=kermeta::standard::Collection" });
+		addAnnotation(
+				iteratorEClass.getEOperations().get(0),
+				source,
+				new String[] { "documentation",
+						"/**\n\t * Returns true if the iterator has a next element\n\t */" });
+		addAnnotation(
+				iteratorEClass.getEOperations().get(1),
+				source,
+				new String[] {
+						"documentation",
+						"/**\n\t * Returns the next element of the iterator\n\t * Raises IteratorIsOff exception in case the iterator is on the last element \n\t */" });
+		addAnnotation(
+				iteratorEClass.getEOperations().get(2),
+				source,
+				new String[] {
+						"documentation",
+						"/**\n\t * Returns true if the iterator is on the last element\n\t * i.e. returns not self.hasNext()\n\t */" });
 	}
 
 	/**

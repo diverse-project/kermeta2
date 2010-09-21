@@ -812,22 +812,22 @@ public interface StructurePackage extends EPackage {
 	int PROPERTY__GET_VIOLATED_CONSTRAINTS_MUST_DRILL_DOWN_CACHE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__IS_DERIVED = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Opposite</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__OPPOSITE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
+	int PROPERTY__OPPOSITE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__IS_DERIVED = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Getter Body</b></em>' containment reference.
@@ -848,22 +848,22 @@ public interface StructurePackage extends EPackage {
 	int PROPERTY__SETTER_BODY = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Is Setter Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__IS_SETTER_ABSTRACT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
 	 * The feature id for the '<em><b>Owning Class</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__OWNING_CLASS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 6;
+	int PROPERTY__OWNING_CLASS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Is Setter Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__IS_SETTER_ABSTRACT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Is Getter Abstract</b></em>' attribute.
@@ -1365,22 +1365,22 @@ public interface StructurePackage extends EPackage {
 	int OPERATION__BODY = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Owned Parameter</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__OWNED_PARAMETER = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__IS_ABSTRACT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
+	int OPERATION__IS_ABSTRACT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Owned Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__OWNED_PARAMETER = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Post</b></em>' containment reference list.
@@ -3030,22 +3030,22 @@ public interface StructurePackage extends EPackage {
 	int MODELING_UNIT__USINGS = OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Include Filters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODELING_UNIT__INCLUDE_FILTERS = OBJECT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Packages</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODELING_UNIT__PACKAGES = OBJECT_FEATURE_COUNT + 2;
+	int MODELING_UNIT__PACKAGES = OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Include Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELING_UNIT__INCLUDE_FILTERS = OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Exclude Filters</b></em>' containment reference list.
@@ -3698,17 +3698,6 @@ public interface StructurePackage extends EPackage {
 	EAttribute getProperty_GetViolatedConstraintsMustDrillDownCache();
 
 	/**
-	 * Returns the meta object for the attribute '{@link kermeta.language.structure.Property#getIsDerived <em>Is Derived</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Derived</em>'.
-	 * @see kermeta.language.structure.Property#getIsDerived()
-	 * @see #getProperty()
-	 * @generated
-	 */
-	EAttribute getProperty_IsDerived();
-
-	/**
 	 * Returns the meta object for the reference '{@link kermeta.language.structure.Property#getOpposite <em>Opposite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3718,6 +3707,17 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getProperty_Opposite();
+
+	/**
+	 * Returns the meta object for the attribute '{@link kermeta.language.structure.Property#getIsDerived <em>Is Derived</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Derived</em>'.
+	 * @see kermeta.language.structure.Property#getIsDerived()
+	 * @see #getProperty()
+	 * @generated
+	 */
+	EAttribute getProperty_IsDerived();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link kermeta.language.structure.Property#getGetterBody <em>Getter Body</em>}'.
@@ -3742,17 +3742,6 @@ public interface StructurePackage extends EPackage {
 	EReference getProperty_SetterBody();
 
 	/**
-	 * Returns the meta object for the attribute '{@link kermeta.language.structure.Property#getIsSetterAbstract <em>Is Setter Abstract</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Setter Abstract</em>'.
-	 * @see kermeta.language.structure.Property#getIsSetterAbstract()
-	 * @see #getProperty()
-	 * @generated
-	 */
-	EAttribute getProperty_IsSetterAbstract();
-
-	/**
 	 * Returns the meta object for the container reference '{@link kermeta.language.structure.Property#getOwningClass <em>Owning Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3762,6 +3751,17 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getProperty_OwningClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link kermeta.language.structure.Property#getIsSetterAbstract <em>Is Setter Abstract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Setter Abstract</em>'.
+	 * @see kermeta.language.structure.Property#getIsSetterAbstract()
+	 * @see #getProperty()
+	 * @generated
+	 */
+	EAttribute getProperty_IsSetterAbstract();
 
 	/**
 	 * Returns the meta object for the attribute '{@link kermeta.language.structure.Property#getIsGetterAbstract <em>Is Getter Abstract</em>}'.
@@ -4003,17 +4003,6 @@ public interface StructurePackage extends EPackage {
 	EReference getOperation_Body();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link kermeta.language.structure.Operation#getOwnedParameter <em>Owned Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Parameter</em>'.
-	 * @see kermeta.language.structure.Operation#getOwnedParameter()
-	 * @see #getOperation()
-	 * @generated
-	 */
-	EReference getOperation_OwnedParameter();
-
-	/**
 	 * Returns the meta object for the attribute '{@link kermeta.language.structure.Operation#getIsAbstract <em>Is Abstract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4023,6 +4012,17 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOperation_IsAbstract();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link kermeta.language.structure.Operation#getOwnedParameter <em>Owned Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Parameter</em>'.
+	 * @see kermeta.language.structure.Operation#getOwnedParameter()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EReference getOperation_OwnedParameter();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link kermeta.language.structure.Operation#getPost <em>Post</em>}'.
@@ -4759,17 +4759,6 @@ public interface StructurePackage extends EPackage {
 	EReference getModelingUnit_Usings();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link kermeta.language.structure.ModelingUnit#getIncludeFilters <em>Include Filters</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Include Filters</em>'.
-	 * @see kermeta.language.structure.ModelingUnit#getIncludeFilters()
-	 * @see #getModelingUnit()
-	 * @generated
-	 */
-	EReference getModelingUnit_IncludeFilters();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link kermeta.language.structure.ModelingUnit#getPackages <em>Packages</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4779,6 +4768,17 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getModelingUnit_Packages();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link kermeta.language.structure.ModelingUnit#getIncludeFilters <em>Include Filters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Include Filters</em>'.
+	 * @see kermeta.language.structure.ModelingUnit#getIncludeFilters()
+	 * @see #getModelingUnit()
+	 * @generated
+	 */
+	EReference getModelingUnit_IncludeFilters();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link kermeta.language.structure.ModelingUnit#getExcludeFilters <em>Exclude Filters</em>}'.
@@ -5104,20 +5104,20 @@ public interface StructurePackage extends EPackage {
 				.getProperty_GetViolatedConstraintsMustDrillDownCache();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Derived</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PROPERTY__IS_DERIVED = eINSTANCE.getProperty_IsDerived();
-
-		/**
 		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference PROPERTY__OPPOSITE = eINSTANCE.getProperty_Opposite();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Derived</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY__IS_DERIVED = eINSTANCE.getProperty_IsDerived();
 
 		/**
 		 * The meta object literal for the '<em><b>Getter Body</b></em>' containment reference feature.
@@ -5136,6 +5136,14 @@ public interface StructurePackage extends EPackage {
 		EReference PROPERTY__SETTER_BODY = eINSTANCE.getProperty_SetterBody();
 
 		/**
+		 * The meta object literal for the '<em><b>Owning Class</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__OWNING_CLASS = eINSTANCE.getProperty_OwningClass();
+
+		/**
 		 * The meta object literal for the '<em><b>Is Setter Abstract</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5143,14 +5151,6 @@ public interface StructurePackage extends EPackage {
 		 */
 		EAttribute PROPERTY__IS_SETTER_ABSTRACT = eINSTANCE
 				.getProperty_IsSetterAbstract();
-
-		/**
-		 * The meta object literal for the '<em><b>Owning Class</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PROPERTY__OWNING_CLASS = eINSTANCE.getProperty_OwningClass();
 
 		/**
 		 * The meta object literal for the '<em><b>Is Getter Abstract</b></em>' attribute feature.
@@ -5345,6 +5345,14 @@ public interface StructurePackage extends EPackage {
 		EReference OPERATION__BODY = eINSTANCE.getOperation_Body();
 
 		/**
+		 * The meta object literal for the '<em><b>Is Abstract</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERATION__IS_ABSTRACT = eINSTANCE.getOperation_IsAbstract();
+
+		/**
 		 * The meta object literal for the '<em><b>Owned Parameter</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5352,14 +5360,6 @@ public interface StructurePackage extends EPackage {
 		 */
 		EReference OPERATION__OWNED_PARAMETER = eINSTANCE
 				.getOperation_OwnedParameter();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Abstract</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OPERATION__IS_ABSTRACT = eINSTANCE.getOperation_IsAbstract();
 
 		/**
 		 * The meta object literal for the '<em><b>Post</b></em>' containment reference list feature.
@@ -5991,15 +5991,6 @@ public interface StructurePackage extends EPackage {
 		EReference MODELING_UNIT__USINGS = eINSTANCE.getModelingUnit_Usings();
 
 		/**
-		 * The meta object literal for the '<em><b>Include Filters</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODELING_UNIT__INCLUDE_FILTERS = eINSTANCE
-				.getModelingUnit_IncludeFilters();
-
-		/**
 		 * The meta object literal for the '<em><b>Packages</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6007,6 +5998,15 @@ public interface StructurePackage extends EPackage {
 		 */
 		EReference MODELING_UNIT__PACKAGES = eINSTANCE
 				.getModelingUnit_Packages();
+
+		/**
+		 * The meta object literal for the '<em><b>Include Filters</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODELING_UNIT__INCLUDE_FILTERS = eINSTANCE
+				.getModelingUnit_IncludeFilters();
 
 		/**
 		 * The meta object literal for the '<em><b>Exclude Filters</b></em>' containment reference list feature.

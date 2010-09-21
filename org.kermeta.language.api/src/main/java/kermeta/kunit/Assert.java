@@ -23,7 +23,7 @@ public interface Assert extends AbstractFallible {
 	 * @model conditionDataType="kermeta.standard.JavaBoolean"
 	 *        annotation="kermeta documentation='/** will fail if condition is false \052/'"
 	 *        annotation="kermeta superOperation='kermeta::kunit::AbstractFallible'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_59 = false;\n\tidIfCond_59 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_59 ) {\n\n\tthis.fail(\"assertTrue failed\");\n}\n\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_402 = false;\n\tidIfCond_402 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_402 ) {\n\n\tthis.fail(\"assertTrue failed\");\n}\n\n'"
 	 * @generated
 	 */
 	void assertTrue(Boolean condition);
@@ -34,7 +34,7 @@ public interface Assert extends AbstractFallible {
 	 * @model conditionDataType="kermeta.standard.JavaBoolean" msgDataType="kermeta.standard.JavaString"
 	 *        annotation="kermeta documentation='/** will fail if condition is true \052/'"
 	 *        annotation="kermeta superOperation='kermeta::kunit::AbstractFallible'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_60 = false;\n\tidIfCond_60 = condition;\n\n\tif( idIfCond_60 ) {\n\n\tthis.fail(kermeta.standard.helper.StringWrapper.plus(\"assertTrueWithMsg failed : \", msg));\n}\n\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_403 = false;\n\tidIfCond_403 = condition;\n\n\tif( idIfCond_403 ) {\n\n\tthis.fail(kermeta.standard.helper.StringWrapper.plus(\"assertTrueWithMsg failed : \", msg));\n}\n\n'"
 	 * @generated
 	 */
 	void assertFalseWithMsg(Boolean condition, String msg);
@@ -56,7 +56,7 @@ public interface Assert extends AbstractFallible {
 	 * @model expectedDataType="kermeta.standard.JavaString" actualDataType="kermeta.standard.JavaString"
 	 *        annotation="kermeta documentation='/** Will fail if the two strings are not identical \052/'"
 	 *        annotation="kermeta superOperation='kermeta::kunit::AbstractFallible'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_61 = false;\n\tidIfCond_61 = kermeta.standard.helper.BooleanWrapper.not(kermeta.standard.helper.StringWrapper.equals(expected, actual));\n\n\tif( idIfCond_61 ) {\n\n\tthis.fail(kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(\"assertEqual failed\\nexpected\\t:[\", expected), \"] != \\nactual\\t:[\"), actual), \"]\"));\n}\n\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_404 = false;\n\tidIfCond_404 = kermeta.standard.helper.BooleanWrapper.not(kermeta.standard.helper.StringWrapper.equals(expected, actual));\n\n\tif( idIfCond_404 ) {\n\n\tthis.fail(kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(kermeta.standard.helper.StringWrapper.plus(\"assertEqual failed\\nexpected\\t:[\", expected), \"] != \\nactual\\t:[\"), actual), \"]\"));\n}\n\n'"
 	 * @generated
 	 */
 	void assertEqual(String expected, String actual);
@@ -67,7 +67,7 @@ public interface Assert extends AbstractFallible {
 	 * @model conditionDataType="kermeta.standard.JavaBoolean"
 	 *        annotation="kermeta documentation='/** will fail if condition is true \052/'"
 	 *        annotation="kermeta superOperation='kermeta::kunit::AbstractFallible'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_62 = false;\n\tidIfCond_62 = condition;\n\n\tif( idIfCond_62 ) {\n\n\tthis.fail(\"assertTrue number failed\");\n}\n\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_405 = false;\n\tidIfCond_405 = condition;\n\n\tif( idIfCond_405 ) {\n\n\tthis.fail(\"assertTrue number failed\");\n}\n\n'"
 	 * @generated
 	 */
 	void assertFalse(Boolean condition);
@@ -78,7 +78,7 @@ public interface Assert extends AbstractFallible {
 	 * @model conditionDataType="kermeta.standard.JavaBoolean" msgDataType="kermeta.standard.JavaString"
 	 *        annotation="kermeta documentation='/** will fail if condition is false \052/'"
 	 *        annotation="kermeta superOperation='kermeta::kunit::AbstractFallible'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_63 = false;\n\tidIfCond_63 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_63 ) {\n\n\tthis.fail(kermeta.standard.helper.StringWrapper.plus(\"assertTrueWithMsg failed : \", msg));\n}\n\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_406 = false;\n\tidIfCond_406 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_406 ) {\n\n\tthis.fail(kermeta.standard.helper.StringWrapper.plus(\"assertTrueWithMsg failed : \", msg));\n}\n\n'"
 	 * @generated
 	 */
 	void assertTrueWithMsg(Boolean condition, String msg);
@@ -89,7 +89,7 @@ public interface Assert extends AbstractFallible {
 	 * @model conditionDataType="kermeta.standard.JavaBoolean"
 	 *        annotation="kermeta documentation='/** Fails if condition is false \052/'"
 	 *        annotation="kermeta superOperation='kermeta::kunit::AbstractFallible'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_64 = false;\n\tidIfCond_64 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_64 ) {\n\n\tthis.fail(\"assert failed\");\n}\n\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_407 = false;\n\tidIfCond_407 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_407 ) {\n\n\tthis.fail(\"assert failed\");\n}\n\n'"
 	 * @generated
 	 */
 	void _assert(Boolean condition);
@@ -100,7 +100,7 @@ public interface Assert extends AbstractFallible {
 	 * @model conditionDataType="kermeta.standard.JavaBoolean" msgDataType="kermeta.standard.JavaString"
 	 *        annotation="kermeta documentation='/** will fail if condition is false \052/'"
 	 *        annotation="kermeta superOperation='kermeta::kunit::AbstractFallible'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_65 = false;\n\tidIfCond_65 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_65 ) {\n\n\tthis.fail(kermeta.standard.helper.StringWrapper.plus(\"assertTrueWithMsg failed : \", msg));\n}\n\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_408 = false;\n\tidIfCond_408 = kermeta.standard.helper.BooleanWrapper.not(condition);\n\n\tif( idIfCond_408 ) {\n\n\tthis.fail(kermeta.standard.helper.StringWrapper.plus(\"assertTrueWithMsg failed : \", msg));\n}\n\n'"
 	 * @generated
 	 */
 	void assertWithMsg(Boolean condition, String msg);

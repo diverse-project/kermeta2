@@ -20,8 +20,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link kermeta.language.structure.Operation#getTypeParameter <em>Type Parameter</em>}</li>
  *   <li>{@link kermeta.language.structure.Operation#getBody <em>Body</em>}</li>
- *   <li>{@link kermeta.language.structure.Operation#getOwnedParameter <em>Owned Parameter</em>}</li>
  *   <li>{@link kermeta.language.structure.Operation#getIsAbstract <em>Is Abstract</em>}</li>
+ *   <li>{@link kermeta.language.structure.Operation#getOwnedParameter <em>Owned Parameter</em>}</li>
  *   <li>{@link kermeta.language.structure.Operation#getPost <em>Post</em>}</li>
  *   <li>{@link kermeta.language.structure.Operation#getRaisedException <em>Raised Exception</em>}</li>
  *   <li>{@link kermeta.language.structure.Operation#getPre <em>Pre</em>}</li>
@@ -82,26 +82,6 @@ public interface Operation extends MultiplicityElement {
 	void setBody(Expression value);
 
 	/**
-	 * Returns the value of the '<em><b>Owned Parameter</b></em>' containment reference list.
-	 * The list contents are of type {@link kermeta.language.structure.Parameter}.
-	 * It is bidirectional and its opposite is '{@link kermeta.language.structure.Parameter#getOperation <em>Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned Parameter</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
-	 * @see kermeta.language.structure.StructurePackage#getOperation_OwnedParameter()
-	 * @see kermeta.language.structure.Parameter#getOperation
-	 * @model opposite="operation" containment="true" resolveProxies="true"
-	 *        annotation="kermeta ecore='true'"
-	 *        annotation="kermeta documentation='Parameters of the Operation'"
-	 * @generated
-	 */
-	EList<Parameter> getOwnedParameter();
-
-	/**
 	 * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
@@ -129,6 +109,26 @@ public interface Operation extends MultiplicityElement {
 	 * @generated
 	 */
 	void setIsAbstract(Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Owned Parameter</b></em>' containment reference list.
+	 * The list contents are of type {@link kermeta.language.structure.Parameter}.
+	 * It is bidirectional and its opposite is '{@link kermeta.language.structure.Parameter#getOperation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Parameter</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
+	 * @see kermeta.language.structure.StructurePackage#getOperation_OwnedParameter()
+	 * @see kermeta.language.structure.Parameter#getOperation
+	 * @model opposite="operation" containment="true" resolveProxies="true"
+	 *        annotation="kermeta ecore='true'"
+	 *        annotation="kermeta documentation='Parameters of the Operation'"
+	 * @generated
+	 */
+	EList<Parameter> getOwnedParameter();
 
 	/**
 	 * Returns the value of the '<em><b>Post</b></em>' containment reference list.

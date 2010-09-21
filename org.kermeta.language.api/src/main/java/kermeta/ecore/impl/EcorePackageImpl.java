@@ -4,19 +4,19 @@
  *
  * $Id$
  */
-package kermeta.impl;
+package kermeta.ecore.impl;
 
-import kermeta.DummyClass;
-import kermeta.KermetaFactory;
 import kermeta.KermetaPackage;
 
+import kermeta.ecore.EFeatureMapEntry;
+import kermeta.ecore.EcoreFactory;
 import kermeta.ecore.EcorePackage;
-
-import kermeta.ecore.impl.EcorePackageImpl;
 
 import kermeta.exceptions.ExceptionsPackage;
 
 import kermeta.exceptions.impl.ExceptionsPackageImpl;
+
+import kermeta.impl.KermetaPackageImpl;
 
 import kermeta.interpreter.InterpreterPackage;
 
@@ -58,8 +58,10 @@ import kermeta.xmltype.XmltypePackage;
 
 import kermeta.xmltype.impl.XmltypePackageImpl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -69,13 +71,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
+public class EcorePackageImpl extends EPackageImpl implements EcorePackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dummyClassEClass = null;
+	private EClass eFeatureMapEntryEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -88,12 +90,12 @@ public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see kermeta.KermetaPackage#eNS_URI
+	 * @see kermeta.ecore.EcorePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private KermetaPackageImpl() {
-		super(eNS_URI, KermetaFactory.eINSTANCE);
+	private EcorePackageImpl() {
+		super(eNS_URI, EcoreFactory.eINSTANCE);
 	}
 
 	/**
@@ -106,7 +108,7 @@ public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link KermetaPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link EcorePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -115,20 +117,24 @@ public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static KermetaPackage init() {
+	public static EcorePackage init() {
 		if (isInited)
-			return (KermetaPackage) EPackage.Registry.INSTANCE
-					.getEPackage(KermetaPackage.eNS_URI);
+			return (EcorePackage) EPackage.Registry.INSTANCE
+					.getEPackage(EcorePackage.eNS_URI);
 
 		// Obtain or create and register package
-		KermetaPackageImpl theKermetaPackage = (KermetaPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof KermetaPackageImpl ? EPackage.Registry.INSTANCE
+		EcorePackageImpl theEcorePackage = (EcorePackageImpl) (EPackage.Registry.INSTANCE
+				.get(eNS_URI) instanceof EcorePackageImpl ? EPackage.Registry.INSTANCE
 				.get(eNS_URI)
-				: new KermetaPackageImpl());
+				: new EcorePackageImpl());
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
+		KermetaPackageImpl theKermetaPackage = (KermetaPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(KermetaPackage.eNS_URI) instanceof KermetaPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(KermetaPackage.eNS_URI)
+				: KermetaPackage.eINSTANCE);
 		XmltypePackageImpl theXmltypePackage = (XmltypePackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(XmltypePackage.eNS_URI) instanceof XmltypePackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(XmltypePackage.eNS_URI)
@@ -169,16 +175,13 @@ public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 				.getEPackage(IoPackage.eNS_URI) instanceof IoPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(IoPackage.eNS_URI)
 				: IoPackage.eINSTANCE);
-		EcorePackageImpl theEcorePackage = (EcorePackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI) instanceof EcorePackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI)
-				: EcorePackage.eINSTANCE);
 		KunitPackageImpl theKunitPackage = (KunitPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(KunitPackage.eNS_URI) instanceof KunitPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(KunitPackage.eNS_URI)
 				: KunitPackage.eINSTANCE);
 
 		// Create package meta-data objects
+		theEcorePackage.createPackageContents();
 		theKermetaPackage.createPackageContents();
 		theXmltypePackage.createPackageContents();
 		thePersistencePackage.createPackageContents();
@@ -190,10 +193,10 @@ public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 		theBehaviorPackage.createPackageContents();
 		theExceptionsPackage.createPackageContents();
 		theIoPackage.createPackageContents();
-		theEcorePackage.createPackageContents();
 		theKunitPackage.createPackageContents();
 
 		// Initialize created meta-data
+		theEcorePackage.initializePackageContents();
 		theKermetaPackage.initializePackageContents();
 		theXmltypePackage.initializePackageContents();
 		thePersistencePackage.initializePackageContents();
@@ -205,16 +208,14 @@ public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 		theBehaviorPackage.initializePackageContents();
 		theExceptionsPackage.initializePackageContents();
 		theIoPackage.initializePackageContents();
-		theEcorePackage.initializePackageContents();
 		theKunitPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theKermetaPackage.freeze();
+		theEcorePackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(KermetaPackage.eNS_URI,
-				theKermetaPackage);
-		return theKermetaPackage;
+		EPackage.Registry.INSTANCE.put(EcorePackage.eNS_URI, theEcorePackage);
+		return theEcorePackage;
 	}
 
 	/**
@@ -222,8 +223,8 @@ public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDummyClass() {
-		return dummyClassEClass;
+	public EClass getEFeatureMapEntry() {
+		return eFeatureMapEntryEClass;
 	}
 
 	/**
@@ -231,8 +232,28 @@ public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public KermetaFactory getKermetaFactory() {
-		return (KermetaFactory) getEFactoryInstance();
+	public EReference getEFeatureMapEntry_Value() {
+		return (EReference) eFeatureMapEntryEClass.getEStructuralFeatures()
+				.get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEFeatureMapEntry_EStructuralFeatureName() {
+		return (EAttribute) eFeatureMapEntryEClass.getEStructuralFeatures()
+				.get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EcoreFactory getEcoreFactory() {
+		return (EcoreFactory) getEFactoryInstance();
 	}
 
 	/**
@@ -255,7 +276,10 @@ public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		dummyClassEClass = createEClass(DUMMY_CLASS);
+		eFeatureMapEntryEClass = createEClass(EFEATURE_MAP_ENTRY);
+		createEReference(eFeatureMapEntryEClass, EFEATURE_MAP_ENTRY__VALUE);
+		createEAttribute(eFeatureMapEntryEClass,
+				EFEATURE_MAP_ENTRY__ESTRUCTURAL_FEATURE_NAME);
 	}
 
 	/**
@@ -283,54 +307,33 @@ public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XmltypePackage theXmltypePackage = (XmltypePackage) EPackage.Registry.INSTANCE
-				.getEPackage(XmltypePackage.eNS_URI);
-		PersistencePackage thePersistencePackage = (PersistencePackage) EPackage.Registry.INSTANCE
-				.getEPackage(PersistencePackage.eNS_URI);
-		InterpreterPackage theInterpreterPackage = (InterpreterPackage) EPackage.Registry.INSTANCE
-				.getEPackage(InterpreterPackage.eNS_URI);
-		UtilsPackage theUtilsPackage = (UtilsPackage) EPackage.Registry.INSTANCE
-				.getEPackage(UtilsPackage.eNS_URI);
-		StandardPackage theStandardPackage = (StandardPackage) EPackage.Registry.INSTANCE
-				.getEPackage(StandardPackage.eNS_URI);
-		LanguagePackage theLanguagePackage = (LanguagePackage) EPackage.Registry.INSTANCE
-				.getEPackage(LanguagePackage.eNS_URI);
-		ExceptionsPackage theExceptionsPackage = (ExceptionsPackage) EPackage.Registry.INSTANCE
-				.getEPackage(ExceptionsPackage.eNS_URI);
-		IoPackage theIoPackage = (IoPackage) EPackage.Registry.INSTANCE
-				.getEPackage(IoPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
-		KunitPackage theKunitPackage = (KunitPackage) EPackage.Registry.INSTANCE
-				.getEPackage(KunitPackage.eNS_URI);
 		StructurePackage theStructurePackage = (StructurePackage) EPackage.Registry.INSTANCE
 				.getEPackage(StructurePackage.eNS_URI);
-
-		// Add subpackages
-		getESubpackages().add(theXmltypePackage);
-		getESubpackages().add(thePersistencePackage);
-		getESubpackages().add(theInterpreterPackage);
-		getESubpackages().add(theUtilsPackage);
-		getESubpackages().add(theStandardPackage);
-		getESubpackages().add(theLanguagePackage);
-		getESubpackages().add(theExceptionsPackage);
-		getESubpackages().add(theIoPackage);
-		getESubpackages().add(theEcorePackage);
-		getESubpackages().add(theKunitPackage);
+		StandardPackage theStandardPackage = (StandardPackage) EPackage.Registry.INSTANCE
+				.getEPackage(StandardPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		dummyClassEClass.getESuperTypes().add(theStructurePackage.getObject());
+		eFeatureMapEntryEClass.getESuperTypes().add(
+				theStructurePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(dummyClassEClass, DummyClass.class, "DummyClass",
-				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		// Create resource
-		createResource(eNS_URI);
+		initEClass(eFeatureMapEntryEClass, EFeatureMapEntry.class,
+				"EFeatureMapEntry", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEFeatureMapEntry_Value(), theStructurePackage
+				.getObject(), null, "value", null, 0, 1,
+				EFeatureMapEntry.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEFeatureMapEntry_EStructuralFeatureName(),
+				theStandardPackage.getJavaString(), "eStructuralFeatureName",
+				null, 0, 1, EFeatureMapEntry.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		// Create annotations
 		// kermeta
@@ -346,22 +349,21 @@ public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 	protected void createKermetaAnnotations() {
 		String source = "kermeta";
 		addAnnotation(this, source, new String[] { "ecoreUri",
-				"http://www.kermeta.org/kermeta/1_2_0//kermeta" });
+				"http://www.kermeta.org/kermeta/1_2_0//kermeta/ecore" });
 		addAnnotation(
 				this,
 				source,
 				new String[] {
 						"documentation",
-						"/**\n * The root package. See the other packages if you want to browse the classes of Kermeta api.\n * <img src=\"platform:/plugin/fr.irisa.triskell.kermeta.documentation/src/figures/kermeta_packages.png\"/>\n */" });
-		addAnnotation(this, source, new String[] { "ecore", "true" });
-		addAnnotation(dummyClassEClass, source,
-				new String[] { "ecore", "true" });
+						"/** \n * Contains the definition of a Kermeta classes used for compatibility with Ecore \n * <img src=\"platform:/plugin/fr.irisa.triskell.kermeta.documentation/src/figures/ecore_compatibility_package.png\"/>\n */" });
 		addAnnotation(
-				dummyClassEClass,
+				eFeatureMapEntryEClass,
 				source,
 				new String[] {
 						"documentation",
-						"This class is used to workaround an EMF bug, it doesn\'t really belong to Kermeta metamodel" });
+						"/**\n * Kermeta representation of EMF EFeatureMapEntry\n * it contains the name of the required feature and the actual value\n * <img src=\"platform:/plugin/fr.irisa.triskell.kermeta.documentation/src/figures/ecore_compatibility_package.png\"/>\n */" });
+		addAnnotation(eFeatureMapEntryEClass, source, new String[] {
+				"CompilerIgnore", "true" });
 	}
 
-} //KermetaPackageImpl
+} //EcorePackageImpl

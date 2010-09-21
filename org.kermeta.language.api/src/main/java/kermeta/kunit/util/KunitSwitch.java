@@ -96,26 +96,6 @@ public class KunitSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case KunitPackage.FALLIBLE: {
-			Fallible fallible = (Fallible) theEObject;
-			T result = caseFallible(fallible);
-			if (result == null)
-				result = caseAbstractFallible(fallible);
-			if (result == null)
-				result = caseObject(fallible);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case KunitPackage.TEST: {
-			Test test = (Test) theEObject;
-			T result = caseTest(test);
-			if (result == null)
-				result = caseObject(test);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case KunitPackage.INVALID_TEST_CASE_NAME_EXCEPTION: {
 			InvalidTestCaseNameException invalidTestCaseNameException = (InvalidTestCaseNameException) theEObject;
 			T result = caseInvalidTestCaseNameException(invalidTestCaseNameException);
@@ -134,6 +114,17 @@ public class KunitSwitch<T> {
 				result = caseException(invalidParameterException);
 			if (result == null)
 				result = caseObject(invalidParameterException);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case KunitPackage.FALLIBLE: {
+			Fallible fallible = (Fallible) theEObject;
+			T result = caseFallible(fallible);
+			if (result == null)
+				result = caseAbstractFallible(fallible);
+			if (result == null)
+				result = caseObject(fallible);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -161,6 +152,15 @@ public class KunitSwitch<T> {
 			T result = caseError(error);
 			if (result == null)
 				result = caseObject(error);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case KunitPackage.TEST: {
+			Test test = (Test) theEObject;
+			T result = caseTest(test);
+			if (result == null)
+				result = caseObject(test);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -237,36 +237,6 @@ public class KunitSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fallible</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fallible</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFallible(Fallible object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Test</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Test</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTest(Test object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Invalid Test Case Name Exception</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -294,6 +264,21 @@ public class KunitSwitch<T> {
 	 * @generated
 	 */
 	public T caseInvalidParameterException(InvalidParameterException object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Fallible</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Fallible</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFallible(Fallible object) {
 		return null;
 	}
 
@@ -339,6 +324,21 @@ public class KunitSwitch<T> {
 	 * @generated
 	 */
 	public T caseError(kermeta.kunit.Error object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Test</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Test</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTest(Test object) {
 		return null;
 	}
 

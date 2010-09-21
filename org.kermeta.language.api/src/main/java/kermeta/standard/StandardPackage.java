@@ -72,143 +72,6 @@ public interface StandardPackage extends EPackage {
 			.init();
 
 	/**
-	 * The meta object id for the '{@link kermeta.standard.impl.CollectionImpl <em>Collection</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see kermeta.standard.impl.CollectionImpl
-	 * @see kermeta.standard.impl.StandardPackageImpl#getCollection()
-	 * @generated
-	 */
-	int COLLECTION = 0;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLLECTION__TAG = StructurePackage.OBJECT__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLLECTION__OWNED_TAGS = StructurePackage.OBJECT__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Oid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLLECTION__OID = StructurePackage.OBJECT__OID;
-
-	/**
-	 * The feature id for the '<em><b>Internal Containing Resource</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLLECTION__INTERNAL_CONTAINING_RESOURCE = StructurePackage.OBJECT__INTERNAL_CONTAINING_RESOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Values</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLLECTION__VALUES = StructurePackage.OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Collection</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLLECTION_FEATURE_COUNT = StructurePackage.OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link kermeta.standard.impl.IteratorImpl <em>Iterator</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see kermeta.standard.impl.IteratorImpl
-	 * @see kermeta.standard.impl.StandardPackageImpl#getIterator()
-	 * @generated
-	 */
-	int ITERATOR = 1;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ITERATOR__TAG = StructurePackage.OBJECT__TAG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ITERATOR__OWNED_TAGS = StructurePackage.OBJECT__OWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Oid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ITERATOR__OID = StructurePackage.OBJECT__OID;
-
-	/**
-	 * The feature id for the '<em><b>Internal Containing Resource</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ITERATOR__INTERNAL_CONTAINING_RESOURCE = StructurePackage.OBJECT__INTERNAL_CONTAINING_RESOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Java Iterator</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ITERATOR__JAVA_ITERATOR = StructurePackage.OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Kermeta Collection</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ITERATOR__KERMETA_COLLECTION = StructurePackage.OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Iterator</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ITERATOR_FEATURE_COUNT = StructurePackage.OBJECT_FEATURE_COUNT + 2;
-
-	/**
 	 * The meta object id for the '{@link kermeta.standard.impl.UnknownJavaObjectImpl <em>Unknown Java Object</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -216,7 +79,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getUnknownJavaObject()
 	 * @generated
 	 */
-	int UNKNOWN_JAVA_OBJECT = 2;
+	int UNKNOWN_JAVA_OBJECT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -271,7 +134,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getVoid()
 	 * @generated
 	 */
-	int VOID = 3;
+	int VOID = 1;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -326,7 +189,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getValueType()
 	 * @generated
 	 */
-	int VALUE_TYPE = 4;
+	int VALUE_TYPE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -390,7 +253,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getComparable()
 	 * @generated
 	 */
-	int COMPARABLE = 5;
+	int COMPARABLE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -445,7 +308,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getSummable()
 	 * @generated
 	 */
-	int SUMMABLE = 6;
+	int SUMMABLE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -500,7 +363,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getNotComparableException()
 	 * @generated
 	 */
-	int NOT_COMPARABLE_EXCEPTION = 7;
+	int NOT_COMPARABLE_EXCEPTION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -582,7 +445,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getBoolean()
 	 * @generated
 	 */
-	int BOOLEAN = 8;
+	int BOOLEAN = 6;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -646,7 +509,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getInteger()
 	 * @generated
 	 */
-	int INTEGER = 9;
+	int INTEGER = 7;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -710,7 +573,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getReal()
 	 * @generated
 	 */
-	int REAL = 10;
+	int REAL = 8;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -774,7 +637,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getCharacter()
 	 * @generated
 	 */
-	int CHARACTER = 11;
+	int CHARACTER = 9;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -838,7 +701,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getString()
 	 * @generated
 	 */
-	int STRING = 12;
+	int STRING = 10;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -895,6 +758,70 @@ public interface StandardPackage extends EPackage {
 	int STRING_FEATURE_COUNT = VALUE_TYPE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link kermeta.standard.impl.CollectionImpl <em>Collection</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see kermeta.standard.impl.CollectionImpl
+	 * @see kermeta.standard.impl.StandardPackageImpl#getCollection()
+	 * @generated
+	 */
+	int COLLECTION = 11;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION__TAG = StructurePackage.OBJECT__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION__OWNED_TAGS = StructurePackage.OBJECT__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Oid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION__OID = StructurePackage.OBJECT__OID;
+
+	/**
+	 * The feature id for the '<em><b>Internal Containing Resource</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION__INTERNAL_CONTAINING_RESOURCE = StructurePackage.OBJECT__INTERNAL_CONTAINING_RESOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Values</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION__VALUES = StructurePackage.OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_FEATURE_COUNT = StructurePackage.OBJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link kermeta.standard.impl.EachContextImpl <em>Each Context</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -902,7 +829,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getEachContext()
 	 * @generated
 	 */
-	int EACH_CONTEXT = 13;
+	int EACH_CONTEXT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -984,7 +911,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getSet()
 	 * @generated
 	 */
-	int SET = 14;
+	int SET = 13;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -1048,7 +975,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getBag()
 	 * @generated
 	 */
-	int BAG = 15;
+	int BAG = 14;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -1112,7 +1039,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getOrderedCollection()
 	 * @generated
 	 */
-	int ORDERED_COLLECTION = 16;
+	int ORDERED_COLLECTION = 15;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -1176,7 +1103,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getOrderedSet()
 	 * @generated
 	 */
-	int ORDERED_SET = 17;
+	int ORDERED_SET = 16;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -1240,7 +1167,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getSequence()
 	 * @generated
 	 */
-	int SEQUENCE = 18;
+	int SEQUENCE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' reference list.
@@ -1295,6 +1222,79 @@ public interface StandardPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE_FEATURE_COUNT = BAG_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link kermeta.standard.impl.IteratorImpl <em>Iterator</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see kermeta.standard.impl.IteratorImpl
+	 * @see kermeta.standard.impl.StandardPackageImpl#getIterator()
+	 * @generated
+	 */
+	int ITERATOR = 18;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITERATOR__TAG = StructurePackage.OBJECT__TAG;
+
+	/**
+	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITERATOR__OWNED_TAGS = StructurePackage.OBJECT__OWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Oid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITERATOR__OID = StructurePackage.OBJECT__OID;
+
+	/**
+	 * The feature id for the '<em><b>Internal Containing Resource</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITERATOR__INTERNAL_CONTAINING_RESOURCE = StructurePackage.OBJECT__INTERNAL_CONTAINING_RESOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Java Iterator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITERATOR__JAVA_ITERATOR = StructurePackage.OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Kermeta Collection</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITERATOR__KERMETA_COLLECTION = StructurePackage.OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Iterator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITERATOR_FEATURE_COUNT = StructurePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '<em>Java Boolean</em>' data type.
@@ -1377,6 +1377,16 @@ public interface StandardPackage extends EPackage {
 	int OBJECT = 26;
 
 	/**
+	 * The meta object id for the '<em>Kermeta Property Value Type value</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.String
+	 * @see kermeta.standard.impl.StandardPackageImpl#getKermetaProperty_ValueType_value()
+	 * @generated
+	 */
+	int KERMETA_PROPERTY_VALUE_TYPE_VALUE = 27;
+
+	/**
 	 * The meta object id for the '<em>Kermeta Property Collection values</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1384,7 +1394,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getKermetaProperty_Collection_values()
 	 * @generated
 	 */
-	int KERMETA_PROPERTY_COLLECTION_VALUES = 27;
+	int KERMETA_PROPERTY_COLLECTION_VALUES = 28;
 
 	/**
 	 * The meta object id for the '<em>Kermeta Property Iterator java Iterator</em>' data type.
@@ -1394,70 +1404,7 @@ public interface StandardPackage extends EPackage {
 	 * @see kermeta.standard.impl.StandardPackageImpl#getKermetaProperty_Iterator_javaIterator()
 	 * @generated
 	 */
-	int KERMETA_PROPERTY_ITERATOR_JAVA_ITERATOR = 28;
-
-	/**
-	 * The meta object id for the '<em>Kermeta Property Value Type value</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.String
-	 * @see kermeta.standard.impl.StandardPackageImpl#getKermetaProperty_ValueType_value()
-	 * @generated
-	 */
-	int KERMETA_PROPERTY_VALUE_TYPE_VALUE = 29;
-
-	/**
-	 * Returns the meta object for class '{@link kermeta.standard.Collection <em>Collection</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Collection</em>'.
-	 * @see kermeta.standard.Collection
-	 * @generated
-	 */
-	EClass getCollection();
-
-	/**
-	 * Returns the meta object for the attribute '{@link kermeta.standard.Collection#getValues <em>Values</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Values</em>'.
-	 * @see kermeta.standard.Collection#getValues()
-	 * @see #getCollection()
-	 * @generated
-	 */
-	EAttribute getCollection_Values();
-
-	/**
-	 * Returns the meta object for class '{@link kermeta.standard.Iterator <em>Iterator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Iterator</em>'.
-	 * @see kermeta.standard.Iterator
-	 * @generated
-	 */
-	EClass getIterator();
-
-	/**
-	 * Returns the meta object for the attribute '{@link kermeta.standard.Iterator#getJavaIterator <em>Java Iterator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Java Iterator</em>'.
-	 * @see kermeta.standard.Iterator#getJavaIterator()
-	 * @see #getIterator()
-	 * @generated
-	 */
-	EAttribute getIterator_JavaIterator();
-
-	/**
-	 * Returns the meta object for the reference '{@link kermeta.standard.Iterator#getKermetaCollection <em>Kermeta Collection</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Kermeta Collection</em>'.
-	 * @see kermeta.standard.Iterator#getKermetaCollection()
-	 * @see #getIterator()
-	 * @generated
-	 */
-	EReference getIterator_KermetaCollection();
+	int KERMETA_PROPERTY_ITERATOR_JAVA_ITERATOR = 29;
 
 	/**
 	 * Returns the meta object for class '{@link kermeta.standard.UnknownJavaObject <em>Unknown Java Object</em>}'.
@@ -1581,6 +1528,27 @@ public interface StandardPackage extends EPackage {
 	EClass getString();
 
 	/**
+	 * Returns the meta object for class '{@link kermeta.standard.Collection <em>Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Collection</em>'.
+	 * @see kermeta.standard.Collection
+	 * @generated
+	 */
+	EClass getCollection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link kermeta.standard.Collection#getValues <em>Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Values</em>'.
+	 * @see kermeta.standard.Collection#getValues()
+	 * @see #getCollection()
+	 * @generated
+	 */
+	EAttribute getCollection_Values();
+
+	/**
 	 * Returns the meta object for class '{@link kermeta.standard.EachContext <em>Each Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1672,6 +1640,38 @@ public interface StandardPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSequence();
+
+	/**
+	 * Returns the meta object for class '{@link kermeta.standard.Iterator <em>Iterator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Iterator</em>'.
+	 * @see kermeta.standard.Iterator
+	 * @generated
+	 */
+	EClass getIterator();
+
+	/**
+	 * Returns the meta object for the attribute '{@link kermeta.standard.Iterator#getJavaIterator <em>Java Iterator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Java Iterator</em>'.
+	 * @see kermeta.standard.Iterator#getJavaIterator()
+	 * @see #getIterator()
+	 * @generated
+	 */
+	EAttribute getIterator_JavaIterator();
+
+	/**
+	 * Returns the meta object for the reference '{@link kermeta.standard.Iterator#getKermetaCollection <em>Kermeta Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Kermeta Collection</em>'.
+	 * @see kermeta.standard.Iterator#getKermetaCollection()
+	 * @see #getIterator()
+	 * @generated
+	 */
+	EReference getIterator_KermetaCollection();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.Boolean <em>Java Boolean</em>}'.
@@ -1767,6 +1767,17 @@ public interface StandardPackage extends EPackage {
 	EDataType getObject();
 
 	/**
+	 * Returns the meta object for data type '{@link java.lang.String <em>Kermeta Property Value Type value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Kermeta Property Value Type value</em>'.
+	 * @see java.lang.String
+	 * @model instanceClass="java.lang.String"
+	 * @generated
+	 */
+	EDataType getKermetaProperty_ValueType_value();
+
+	/**
 	 * Returns the meta object for data type '{@link org.eclipse.emf.common.util.EList <em>Kermeta Property Collection values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1787,17 +1798,6 @@ public interface StandardPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getKermetaProperty_Iterator_javaIterator();
-
-	/**
-	 * Returns the meta object for data type '{@link java.lang.String <em>Kermeta Property Value Type value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Kermeta Property Value Type value</em>'.
-	 * @see java.lang.String
-	 * @model instanceClass="java.lang.String"
-	 * @generated
-	 */
-	EDataType getKermetaProperty_ValueType_value();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1821,52 +1821,6 @@ public interface StandardPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
-		/**
-		 * The meta object literal for the '{@link kermeta.standard.impl.CollectionImpl <em>Collection</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see kermeta.standard.impl.CollectionImpl
-		 * @see kermeta.standard.impl.StandardPackageImpl#getCollection()
-		 * @generated
-		 */
-		EClass COLLECTION = eINSTANCE.getCollection();
-
-		/**
-		 * The meta object literal for the '<em><b>Values</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COLLECTION__VALUES = eINSTANCE.getCollection_Values();
-
-		/**
-		 * The meta object literal for the '{@link kermeta.standard.impl.IteratorImpl <em>Iterator</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see kermeta.standard.impl.IteratorImpl
-		 * @see kermeta.standard.impl.StandardPackageImpl#getIterator()
-		 * @generated
-		 */
-		EClass ITERATOR = eINSTANCE.getIterator();
-
-		/**
-		 * The meta object literal for the '<em><b>Java Iterator</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ITERATOR__JAVA_ITERATOR = eINSTANCE
-				.getIterator_JavaIterator();
-
-		/**
-		 * The meta object literal for the '<em><b>Kermeta Collection</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ITERATOR__KERMETA_COLLECTION = eINSTANCE
-				.getIterator_KermetaCollection();
-
 		/**
 		 * The meta object literal for the '{@link kermeta.standard.impl.UnknownJavaObjectImpl <em>Unknown Java Object</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1986,6 +1940,24 @@ public interface StandardPackage extends EPackage {
 		EClass STRING = eINSTANCE.getString();
 
 		/**
+		 * The meta object literal for the '{@link kermeta.standard.impl.CollectionImpl <em>Collection</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see kermeta.standard.impl.CollectionImpl
+		 * @see kermeta.standard.impl.StandardPackageImpl#getCollection()
+		 * @generated
+		 */
+		EClass COLLECTION = eINSTANCE.getCollection();
+
+		/**
+		 * The meta object literal for the '<em><b>Values</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COLLECTION__VALUES = eINSTANCE.getCollection_Values();
+
+		/**
 		 * The meta object literal for the '{@link kermeta.standard.impl.EachContextImpl <em>Each Context</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2070,6 +2042,34 @@ public interface StandardPackage extends EPackage {
 		EClass SEQUENCE = eINSTANCE.getSequence();
 
 		/**
+		 * The meta object literal for the '{@link kermeta.standard.impl.IteratorImpl <em>Iterator</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see kermeta.standard.impl.IteratorImpl
+		 * @see kermeta.standard.impl.StandardPackageImpl#getIterator()
+		 * @generated
+		 */
+		EClass ITERATOR = eINSTANCE.getIterator();
+
+		/**
+		 * The meta object literal for the '<em><b>Java Iterator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ITERATOR__JAVA_ITERATOR = eINSTANCE
+				.getIterator_JavaIterator();
+
+		/**
+		 * The meta object literal for the '<em><b>Kermeta Collection</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ITERATOR__KERMETA_COLLECTION = eINSTANCE
+				.getIterator_KermetaCollection();
+
+		/**
 		 * The meta object literal for the '<em>Java Boolean</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2150,6 +2150,17 @@ public interface StandardPackage extends EPackage {
 		EDataType OBJECT = eINSTANCE.getObject();
 
 		/**
+		 * The meta object literal for the '<em>Kermeta Property Value Type value</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see kermeta.standard.impl.StandardPackageImpl#getKermetaProperty_ValueType_value()
+		 * @generated
+		 */
+		EDataType KERMETA_PROPERTY_VALUE_TYPE_VALUE = eINSTANCE
+				.getKermetaProperty_ValueType_value();
+
+		/**
 		 * The meta object literal for the '<em>Kermeta Property Collection values</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2170,17 +2181,6 @@ public interface StandardPackage extends EPackage {
 		 */
 		EDataType KERMETA_PROPERTY_ITERATOR_JAVA_ITERATOR = eINSTANCE
 				.getKermetaProperty_Iterator_javaIterator();
-
-		/**
-		 * The meta object literal for the '<em>Kermeta Property Value Type value</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.lang.String
-		 * @see kermeta.standard.impl.StandardPackageImpl#getKermetaProperty_ValueType_value()
-		 * @generated
-		 */
-		EDataType KERMETA_PROPERTY_VALUE_TYPE_VALUE = eINSTANCE
-				.getKermetaProperty_ValueType_value();
 
 	}
 

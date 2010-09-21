@@ -63,25 +63,25 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 
 		kermeta.standard.Iterator<G> it = this.iterator();
 
-		java.lang.Boolean idLoopCond_246 = false;
-		while (!idLoopCond_246) {
-			idLoopCond_246 = it.isOff();
-			if (idLoopCond_246) {
+		java.lang.Boolean idLoopCond_243 = false;
+		while (!idLoopCond_243) {
+			idLoopCond_243 = it.isOff();
+			if (idLoopCond_243) {
 			} else {
 
 				elem = it.next();
 
-				java.lang.Boolean idIfCond_247 = false;
-				idIfCond_247 = elements.contains(elem);
+				java.lang.Boolean idIfCond_244 = false;
+				idIfCond_244 = elements.contains(elem);
 
-				if (idIfCond_247) {
+				if (idIfCond_244) {
 
-					java.lang.Boolean idIfCond_248 = false;
-					idIfCond_248 = kermeta.standard.helper.IntegerWrapper
+					java.lang.Boolean idIfCond_245 = false;
+					idIfCond_245 = kermeta.standard.helper.IntegerWrapper
 							.isLowerOrEqual(this.count(elem), elements
 									.count(elem));
 
-					if (idIfCond_248) {
+					if (idIfCond_245) {
 
 						result.add(elem);
 					}
@@ -93,24 +93,24 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 
 		it = elements.iterator();
 
-		java.lang.Boolean idLoopCond_249 = false;
-		while (!idLoopCond_249) {
-			idLoopCond_249 = it.isOff();
-			if (idLoopCond_249) {
+		java.lang.Boolean idLoopCond_246 = false;
+		while (!idLoopCond_246) {
+			idLoopCond_246 = it.isOff();
+			if (idLoopCond_246) {
 			} else {
 
 				elem = it.next();
 
-				java.lang.Boolean idIfCond_250 = false;
-				idIfCond_250 = this.contains(elem);
+				java.lang.Boolean idIfCond_247 = false;
+				idIfCond_247 = this.contains(elem);
 
-				if (idIfCond_250) {
+				if (idIfCond_247) {
 
-					java.lang.Boolean idIfCond_251 = false;
-					idIfCond_251 = kermeta.standard.helper.IntegerWrapper
+					java.lang.Boolean idIfCond_248 = false;
+					idIfCond_248 = kermeta.standard.helper.IntegerWrapper
 							.isLower(elements.count(elem), this.count(elem));
 
-					if (idIfCond_251) {
+					if (idIfCond_248) {
 
 						result.add(elem);
 					}
@@ -135,22 +135,22 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 
 		java.lang.Boolean isEqual = false;
 
-		java.lang.Boolean idIfCond_252 = false;
-		idIfCond_252 = kermeta.standard.helper.BooleanWrapper
+		java.lang.Boolean idIfCond_249 = false;
+		idIfCond_249 = kermeta.standard.helper.BooleanWrapper
 				.not(org.kermeta.compil.runtime.helper.language.ObjectUtil
 						.isVoidSwitcher(element));
 
-		if (idIfCond_252) {
+		if (idIfCond_249) {
 
-			java.lang.Boolean idIfCond_253 = false;
-			idIfCond_253 = org.kermeta.compil.runtime.helper.language.TypeUtil
+			java.lang.Boolean idIfCond_250 = false;
+			idIfCond_250 = org.kermeta.compil.runtime.helper.language.TypeUtil
 					.isInstanceSwitcher(
 							org.kermeta.compil.runtime.ExecutionContext
 									.getInstance().getMetaClass(
 											"kermeta.standard.Collection<G>"),
 							element);
 
-			if (idIfCond_253) {
+			if (idIfCond_250) {
 
 				kermeta.standard.Bag<G> collection = null;
 
@@ -242,47 +242,6 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Set<G> intersectionWithSet(Set<G> elements) {
-
-		kermeta.standard.Set<G> result = null;
-
-		result = ((kermeta.standard.Set<G>) org.kermeta.compil.runtime.helper.language.ClassUtil
-				.newObject(kermeta.standard.StandardPackage.eINSTANCE.getSet()));
-
-		G elem = null;
-
-		{
-
-			kermeta.standard.Iterator<G> it = elements.iterator();
-			java.lang.Boolean idLoopCond_254 = false;
-			while (!idLoopCond_254) {
-				idLoopCond_254 = it.isOff();
-				if (idLoopCond_254) {
-				} else {
-
-					elem = it.next();
-
-					java.lang.Boolean idIfCond_255 = false;
-					idIfCond_255 = this.contains(elem);
-
-					if (idIfCond_255) {
-
-						result.add(elem);
-					}
-
-				}
-			}
-		}
-
-		return result;
-
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Bag<kermeta.language.structure.Object> flatten() {
 
 		kermeta.standard.Bag<kermeta.language.structure.Object> result = null;
@@ -290,8 +249,8 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 		kermeta.standard.Bag<kermeta.language.structure.Object> res = ((kermeta.standard.Bag<kermeta.language.structure.Object>) org.kermeta.compil.runtime.helper.language.ClassUtil
 				.newObject(kermeta.standard.StandardPackage.eINSTANCE.getBag()));
 
-		java.lang.Boolean idIfCond_256 = false;
-		idIfCond_256 = org.kermeta.compil.runtime.helper.language.ObjectUtil
+		java.lang.Boolean idIfCond_251 = false;
+		idIfCond_251 = org.kermeta.compil.runtime.helper.language.ObjectUtil
 				.isKindOfSwitcher(
 						org.kermeta.compil.runtime.ExecutionContext
 								.getInstance().getMetaClass("G"),
@@ -300,7 +259,7 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 								.getMetaClass(
 										"kermeta.standard.Collection<kermeta.language.structure.Object>"));
 
-		if (idIfCond_256) {
+		if (idIfCond_251) {
 
 			kermeta.standard.Collection<kermeta.language.structure.Object> col = null;
 
@@ -310,18 +269,18 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 
 			{
 
-				kermeta.standard.Iterator<G> it_ft62 = this.iterator();
-				java.lang.Boolean idLoopCond_257 = false;
-				while (!idLoopCond_257) {
-					idLoopCond_257 = it_ft62.isOff();
-					if (idLoopCond_257) {
+				kermeta.standard.Iterator<G> it_ft65 = this.iterator();
+				java.lang.Boolean idLoopCond_252 = false;
+				while (!idLoopCond_252) {
+					idLoopCond_252 = it_ft65.isOff();
+					if (idLoopCond_252) {
 					} else {
 
 						//BIle:func
-						G e_lbdExp62 = it_ft62.next();
+						G e_lbdExp65 = it_ft65.next();
 
 						col = (kermeta.standard.Collection<kermeta.language.structure.Object>) org.kermeta.compil.runtime.helper.language.ObjectUtil
-								.asTypeOrVoid(e_lbdExp62,
+								.asTypeOrVoid(e_lbdExp65,
 										"kermeta.standard.Collection<kermeta.language.structure.Object>");
 
 						res.addAll(col);
@@ -336,6 +295,47 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 		}
 
 		result = res;
+
+		return result;
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Set<G> intersectionWithSet(Set<G> elements) {
+
+		kermeta.standard.Set<G> result = null;
+
+		result = ((kermeta.standard.Set<G>) org.kermeta.compil.runtime.helper.language.ClassUtil
+				.newObject(kermeta.standard.StandardPackage.eINSTANCE.getSet()));
+
+		G elem = null;
+
+		{
+
+			kermeta.standard.Iterator<G> it = elements.iterator();
+			java.lang.Boolean idLoopCond_253 = false;
+			while (!idLoopCond_253) {
+				idLoopCond_253 = it.isOff();
+				if (idLoopCond_253) {
+				} else {
+
+					elem = it.next();
+
+					java.lang.Boolean idIfCond_254 = false;
+					idIfCond_254 = this.contains(elem);
+
+					if (idIfCond_254) {
+
+						result.add(elem);
+					}
+
+				}
+			}
+		}
 
 		return result;
 
@@ -434,37 +434,37 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 		G elem = null;
 		//BIft:detect
 
-		G result_ft63 = null;
+		G result_ft66 = null;
 
-		G elem_ft63 = null;
+		G elem_ft66 = null;
 
-		result_ft63 = null;
+		result_ft66 = null;
 
 		{
 
-			kermeta.standard.Iterator<G> it_ft63 = this.iterator();
-			java.lang.Boolean idLoopCond_258 = false;
-			while (!idLoopCond_258) {
-				idLoopCond_258 = kermeta.standard.helper.BooleanWrapper.or(
-						it_ft63.isOff(),
+			kermeta.standard.Iterator<G> it_ft66 = this.iterator();
+			java.lang.Boolean idLoopCond_255 = false;
+			while (!idLoopCond_255) {
+				idLoopCond_255 = kermeta.standard.helper.BooleanWrapper.or(
+						it_ft66.isOff(),
 						org.kermeta.compil.runtime.helper.language.ObjectUtil
-								.isNotEqualSwitcher(result_ft63, null));
-				if (idLoopCond_258) {
+								.isNotEqualSwitcher(result_ft66, null));
+				if (idLoopCond_255) {
 				} else {
 
-					elem_ft63 = it_ft63.next();
+					elem_ft66 = it_ft66.next();
 
-					java.lang.Boolean idIfCond_259 = false;
+					java.lang.Boolean idIfCond_256 = false;
 					//BIle:detector
-					G e_lbdExp63 = elem_ft63;
+					G e_lbdExp66 = elem_ft66;
 
-					idIfCond_259 = org.kermeta.compil.runtime.helper.language.ObjectUtil
-							.equalsSwitcher(e_lbdExp63, element);
+					idIfCond_256 = org.kermeta.compil.runtime.helper.language.ObjectUtil
+							.equalsSwitcher(e_lbdExp66, element);
 					//EIle:detector
 
-					if (idIfCond_259) {
+					if (idIfCond_256) {
 
-						result_ft63 = elem_ft63;
+						result_ft66 = elem_ft66;
 					}
 
 				}
@@ -472,15 +472,15 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 		}
 
 		//CE
-		elem = result_ft63;
+		elem = result_ft66;
 		//EIft:detect
 		;
 
-		java.lang.Boolean idIfCond_260 = false;
-		idIfCond_260 = org.kermeta.compil.runtime.helper.language.ObjectUtil
+		java.lang.Boolean idIfCond_257 = false;
+		idIfCond_257 = org.kermeta.compil.runtime.helper.language.ObjectUtil
 				.isNotEqualSwitcher(elem, null);
 
-		if (idIfCond_260) {
+		if (idIfCond_257) {
 
 			org.kermeta.compil.runtime.helper.basetypes.CollectionUtil.remove(
 					this, elem);
@@ -498,40 +498,40 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 		G elem = null;
 		//BIft:detect
 
-		G result_ft64 = null;
+		G result_ft67 = null;
 
-		G elem_ft64 = null;
+		G elem_ft67 = null;
 
-		result_ft64 = null;
+		result_ft67 = null;
 
 		{
 
-			kermeta.standard.Iterator<G> it_ft64 = this.iterator();
-			java.lang.Boolean idLoopCond_261 = false;
-			while (!idLoopCond_261) {
-				idLoopCond_261 = kermeta.standard.helper.BooleanWrapper.or(
-						it_ft64.isOff(),
+			kermeta.standard.Iterator<G> it_ft67 = this.iterator();
+			java.lang.Boolean idLoopCond_258 = false;
+			while (!idLoopCond_258) {
+				idLoopCond_258 = kermeta.standard.helper.BooleanWrapper.or(
+						it_ft67.isOff(),
 						org.kermeta.compil.runtime.helper.language.ObjectUtil
-								.isNotEqualSwitcher(result_ft64, null));
-				if (idLoopCond_261) {
+								.isNotEqualSwitcher(result_ft67, null));
+				if (idLoopCond_258) {
 				} else {
 
-					elem_ft64 = it_ft64.next();
+					elem_ft67 = it_ft67.next();
 
-					java.lang.Boolean idIfCond_262 = false;
+					java.lang.Boolean idIfCond_259 = false;
 					//BIle:detector
-					G e_lbdExp64 = elem_ft64;
+					G e_lbdExp67 = elem_ft67;
 
-					idIfCond_262 = kermeta.standard.helper.IntegerWrapper
+					idIfCond_259 = kermeta.standard.helper.IntegerWrapper
 							.equals(
 									org.kermeta.compil.runtime.helper.language.ObjectUtil
-											.oidSwitcher(e_lbdExp64),
+											.oidSwitcher(e_lbdExp67),
 									elementOid);
 					//EIle:detector
 
-					if (idIfCond_262) {
+					if (idIfCond_259) {
 
-						result_ft64 = elem_ft64;
+						result_ft67 = elem_ft67;
 					}
 
 				}
@@ -539,15 +539,15 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 		}
 
 		//CE
-		elem = result_ft64;
+		elem = result_ft67;
 		//EIft:detect
 		;
 
-		java.lang.Boolean idIfCond_263 = false;
-		idIfCond_263 = org.kermeta.compil.runtime.helper.language.ObjectUtil
+		java.lang.Boolean idIfCond_260 = false;
+		idIfCond_260 = org.kermeta.compil.runtime.helper.language.ObjectUtil
 				.isNotEqualSwitcher(elem, null);
 
-		if (idIfCond_263) {
+		if (idIfCond_260) {
 
 			org.kermeta.compil.runtime.helper.basetypes.CollectionUtil.remove(
 					this, elem);
@@ -557,50 +557,50 @@ public class BagImpl<G> extends CollectionImpl<G> implements Bag<G> {
 		{
 			if (org.kermeta.compil.runtime.ExecutionContext.getInstance()
 					.mustBeChecked(
-							"post__13687095__doesntContainsElementAnymore")) {
+							"post__26128915__doesntContainsElementAnymore")) {
 				java.lang.Boolean result_post = false;
 
 				//BIft:exists
 
-				java.lang.Boolean result_ft65 = null;
+				java.lang.Boolean result_ft68 = null;
 
-				java.lang.Boolean test_ft65 = false;
+				java.lang.Boolean test_ft68 = false;
 
 				{
 
-					kermeta.standard.Iterator<G> it_ft65 = this.iterator();
-					java.lang.Boolean idLoopCond_264 = false;
-					while (!idLoopCond_264) {
-						idLoopCond_264 = kermeta.standard.helper.BooleanWrapper
+					kermeta.standard.Iterator<G> it_ft68 = this.iterator();
+					java.lang.Boolean idLoopCond_261 = false;
+					while (!idLoopCond_261) {
+						idLoopCond_261 = kermeta.standard.helper.BooleanWrapper
 								.or(
-										it_ft65.isOff(),
+										it_ft68.isOff(),
 										org.kermeta.compil.runtime.helper.language.ObjectUtil
-												.isNotEqualSwitcher(test_ft65,
+												.isNotEqualSwitcher(test_ft68,
 														false));
-						if (idLoopCond_264) {
+						if (idLoopCond_261) {
 						} else {
 
-							java.lang.Boolean result_lambda_ft65 = null;
+							java.lang.Boolean result_lambda_ft68 = null;
 							//BIle:func
-							G e_lbdExp65 = it_ft65.next();
+							G e_lbdExp68 = it_ft68.next();
 
-							result_lambda_ft65 = kermeta.standard.helper.IntegerWrapper
+							result_lambda_ft68 = kermeta.standard.helper.IntegerWrapper
 									.equals(
 											org.kermeta.compil.runtime.helper.language.ObjectUtil
-													.oidSwitcher(e_lbdExp65),
+													.oidSwitcher(e_lbdExp68),
 											elementOid);
 							//EIle:func
 
-							test_ft65 = kermeta.standard.helper.BooleanWrapper
-									.or(test_ft65, result_lambda_ft65);
+							test_ft68 = kermeta.standard.helper.BooleanWrapper
+									.or(test_ft68, result_lambda_ft68);
 						}
 					}
 				}
 
-				result_ft65 = test_ft65;
+				result_ft68 = test_ft68;
 				//EIft:exists
 				result_post = kermeta.standard.helper.BooleanWrapper
-						.not(result_ft65);
+						.not(result_ft68);
 				if (!result_post) {
 					kermeta.exceptions.ConstraintViolatedPost exp = kermeta.exceptions.ExceptionsFactory.eINSTANCE
 							.createConstraintViolatedPost();

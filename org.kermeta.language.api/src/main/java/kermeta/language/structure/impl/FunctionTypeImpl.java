@@ -236,6 +236,19 @@ public class FunctionTypeImpl extends TypeContainerImpl implements FunctionType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public kermeta.language.structure.Object deepClone(
+			kermeta.language.structure.Object objectToClone) {
+		kermeta.language.structure.Object result = null;
+
+		return result;
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Boolean isSuperTypeOf(Type object) {
 
 		java.lang.Boolean result = null;
@@ -260,19 +273,6 @@ public class FunctionTypeImpl extends TypeContainerImpl implements FunctionType 
 
 		result = org.kermeta.compil.runtime.helper.language.ObjectUtil
 				.isInstanceOfSwitcher(element, this);
-
-		return result;
-
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public kermeta.language.structure.Object deepClone(
-			kermeta.language.structure.Object objectToClone) {
-		kermeta.language.structure.Object result = null;
 
 		return result;
 

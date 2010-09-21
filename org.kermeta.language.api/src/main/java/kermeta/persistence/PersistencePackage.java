@@ -131,22 +131,22 @@ public interface PersistencePackage extends EPackage {
 	int RESOURCE__REPOSITORY = StandardPackage.SET_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Is Read Only</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE__IS_READ_ONLY = StandardPackage.SET_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Meta Model URI</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__META_MODEL_URI = StandardPackage.SET_FEATURE_COUNT + 2;
+	int RESOURCE__META_MODEL_URI = StandardPackage.SET_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Is Read Only</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__IS_READ_ONLY = StandardPackage.SET_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -231,15 +231,6 @@ public interface PersistencePackage extends EPackage {
 	int EMF_RESOURCE__REPOSITORY = RESOURCE__REPOSITORY;
 
 	/**
-	 * The feature id for the '<em><b>Is Read Only</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EMF_RESOURCE__IS_READ_ONLY = RESOURCE__IS_READ_ONLY;
-
-	/**
 	 * The feature id for the '<em><b>Meta Model URI</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -247,6 +238,15 @@ public interface PersistencePackage extends EPackage {
 	 * @ordered
 	 */
 	int EMF_RESOURCE__META_MODEL_URI = RESOURCE__META_MODEL_URI;
+
+	/**
+	 * The feature id for the '<em><b>Is Read Only</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_RESOURCE__IS_READ_ONLY = RESOURCE__IS_READ_ONLY;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -534,17 +534,6 @@ public interface PersistencePackage extends EPackage {
 	EReference getResource_Repository();
 
 	/**
-	 * Returns the meta object for the attribute '{@link kermeta.persistence.Resource#getIsReadOnly <em>Is Read Only</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Read Only</em>'.
-	 * @see kermeta.persistence.Resource#getIsReadOnly()
-	 * @see #getResource()
-	 * @generated
-	 */
-	EAttribute getResource_IsReadOnly();
-
-	/**
 	 * Returns the meta object for the attribute '{@link kermeta.persistence.Resource#getMetaModelURI <em>Meta Model URI</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -554,6 +543,17 @@ public interface PersistencePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResource_MetaModelURI();
+
+	/**
+	 * Returns the meta object for the attribute '{@link kermeta.persistence.Resource#getIsReadOnly <em>Is Read Only</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Read Only</em>'.
+	 * @see kermeta.persistence.Resource#getIsReadOnly()
+	 * @see #getResource()
+	 * @generated
+	 */
+	EAttribute getResource_IsReadOnly();
 
 	/**
 	 * Returns the meta object for the attribute '{@link kermeta.persistence.Resource#getUri <em>Uri</em>}'.
@@ -735,14 +735,6 @@ public interface PersistencePackage extends EPackage {
 		EReference RESOURCE__REPOSITORY = eINSTANCE.getResource_Repository();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Read Only</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESOURCE__IS_READ_ONLY = eINSTANCE.getResource_IsReadOnly();
-
-		/**
 		 * The meta object literal for the '<em><b>Meta Model URI</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -750,6 +742,14 @@ public interface PersistencePackage extends EPackage {
 		 */
 		EAttribute RESOURCE__META_MODEL_URI = eINSTANCE
 				.getResource_MetaModelURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Read Only</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOURCE__IS_READ_ONLY = eINSTANCE.getResource_IsReadOnly();
 
 		/**
 		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.

@@ -178,31 +178,31 @@ public class ConstraintsDiagnosticImpl extends ObjectImpl implements
 
 		//BIft:collect
 
-		kermeta.standard.Sequence<kermeta.persistence.EMFResource> result_ft102 = null;
+		kermeta.standard.Sequence<kermeta.persistence.EMFResource> result_ft91 = null;
 
-		result_ft102 = ((kermeta.standard.Sequence<kermeta.persistence.EMFResource>) org.kermeta.compil.runtime.helper.language.ClassUtil
+		result_ft91 = ((kermeta.standard.Sequence<kermeta.persistence.EMFResource>) org.kermeta.compil.runtime.helper.language.ClassUtil
 				.newObject(kermeta.standard.StandardPackage.eINSTANCE
 						.getSequence()));
 
 		{
 
-			kermeta.standard.Iterator<kermeta.exceptions.ConstraintViolatedInv> it_ft102 = this
+			kermeta.standard.Iterator<kermeta.exceptions.ConstraintViolatedInv> it_ft91 = this
 					.getSetConstraints().iterator();
-			java.lang.Boolean idLoopCond_396 = false;
-			while (!idLoopCond_396) {
-				idLoopCond_396 = it_ft102.isOff();
-				if (idLoopCond_396) {
+			java.lang.Boolean idLoopCond_352 = false;
+			while (!idLoopCond_352) {
+				idLoopCond_352 = it_ft91.isOff();
+				if (idLoopCond_352) {
 				} else {
 
-					kermeta.persistence.EMFResource result_lambda_ft102 = null;
+					kermeta.persistence.EMFResource result_lambda_ft91 = null;
 					//BIle:collector
-					kermeta.exceptions.ConstraintViolatedInv constraint_lbdExp102 = it_ft102
+					kermeta.exceptions.ConstraintViolatedInv constraint_lbdExp91 = it_ft91
 							.next();
 
-					result_lambda_ft102 = ((kermeta.persistence.EMFResource) org.kermeta.compil.runtime.helper.language.ObjectUtil
+					result_lambda_ft91 = ((kermeta.persistence.EMFResource) org.kermeta.compil.runtime.helper.language.ObjectUtil
 							.asTypeSwitcher(
 									org.kermeta.compil.runtime.helper.language.ObjectUtil
-											.containingResourceSwitcher(constraint_lbdExp102
+											.containingResourceSwitcher(constraint_lbdExp91
 													.getConstraintAppliedTo()),
 									org.kermeta.compil.runtime.ExecutionContext
 											.getInstance()
@@ -210,7 +210,7 @@ public class ConstraintsDiagnosticImpl extends ObjectImpl implements
 													"kermeta.persistence.EMFResource")));
 					//EIle:collector
 
-					result_ft102.add(result_lambda_ft102);
+					result_ft91.add(result_lambda_ft91);
 				}
 			}
 		}
@@ -219,19 +219,19 @@ public class ConstraintsDiagnosticImpl extends ObjectImpl implements
 
 		{
 
-			kermeta.standard.Iterator<kermeta.persistence.EMFResource> it_ft101 = result_ft102
+			kermeta.standard.Iterator<kermeta.persistence.EMFResource> it_ft90 = result_ft91
 					.asSet().iterator();
-			java.lang.Boolean idLoopCond_397 = false;
-			while (!idLoopCond_397) {
-				idLoopCond_397 = it_ft101.isOff();
-				if (idLoopCond_397) {
+			java.lang.Boolean idLoopCond_353 = false;
+			while (!idLoopCond_353) {
+				idLoopCond_353 = it_ft90.isOff();
+				if (idLoopCond_353) {
 				} else {
 
 					//BIle:func
-					kermeta.persistence.EMFResource resource_lbdExp101 = it_ft101
+					kermeta.persistence.EMFResource resource_lbdExp90 = it_ft90
 							.next();
 
-					resource_lbdExp101.clean();
+					resource_lbdExp90.clean();
 					//EIle:func
 
 				}
@@ -244,22 +244,22 @@ public class ConstraintsDiagnosticImpl extends ObjectImpl implements
 
 		{
 
-			kermeta.standard.Iterator<kermeta.exceptions.ConstraintViolatedInv> it_ft103 = this
+			kermeta.standard.Iterator<kermeta.exceptions.ConstraintViolatedInv> it_ft92 = this
 					.getSetConstraints().iterator();
-			java.lang.Boolean idLoopCond_398 = false;
-			while (!idLoopCond_398) {
-				idLoopCond_398 = it_ft103.isOff();
-				if (idLoopCond_398) {
+			java.lang.Boolean idLoopCond_354 = false;
+			while (!idLoopCond_354) {
+				idLoopCond_354 = it_ft92.isOff();
+				if (idLoopCond_354) {
 				} else {
 
 					//BIle:func
-					kermeta.exceptions.ConstraintViolatedInv c_lbdExp103 = it_ft103
+					kermeta.exceptions.ConstraintViolatedInv c_lbdExp92 = it_ft92
 							.next();
 
 					kermeta.persistence.EMFResource resource = ((kermeta.persistence.EMFResource) org.kermeta.compil.runtime.helper.language.ObjectUtil
 							.asTypeSwitcher(
 									org.kermeta.compil.runtime.helper.language.ObjectUtil
-											.containingResourceSwitcher(c_lbdExp103
+											.containingResourceSwitcher(c_lbdExp92
 													.getConstraintAppliedTo()),
 									org.kermeta.compil.runtime.ExecutionContext
 											.getInstance()
@@ -273,12 +273,12 @@ public class ConstraintsDiagnosticImpl extends ObjectImpl implements
 											.plus(
 													kermeta.standard.helper.StringWrapper
 															.plus(
-																	c_lbdExp103
+																	c_lbdExp92
 																			.getMessage(),
 																	" in file "),
 													resource.getUri()));
 
-					resource.mark(c_lbdExp103.getMessage());
+					resource.mark(c_lbdExp92.getMessage());
 					//EIle:func
 
 				}

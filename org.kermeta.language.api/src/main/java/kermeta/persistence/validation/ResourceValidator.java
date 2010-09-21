@@ -19,9 +19,9 @@ public interface ResourceValidator {
 
 	boolean validateRepository(Repository value);
 
-	boolean validateIsReadOnly(Boolean value);
-
 	boolean validateMetaModelURI(String value);
+
+	boolean validateIsReadOnly(Boolean value);
 
 	boolean validateUri(String value);
 }

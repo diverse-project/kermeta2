@@ -33,8 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link kermeta.language.structure.impl.ModelingUnitImpl#getUsings <em>Usings</em>}</li>
- *   <li>{@link kermeta.language.structure.impl.ModelingUnitImpl#getIncludeFilters <em>Include Filters</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.ModelingUnitImpl#getPackages <em>Packages</em>}</li>
+ *   <li>{@link kermeta.language.structure.impl.ModelingUnitImpl#getIncludeFilters <em>Include Filters</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.ModelingUnitImpl#getExcludeFilters <em>Exclude Filters</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.ModelingUnitImpl#getReferencedModelingUnits <em>Referenced Modeling Units</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.ModelingUnitImpl#getRequires <em>Requires</em>}</li>
@@ -55,16 +55,6 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 	protected EList<Using> usings;
 
 	/**
-	 * The cached value of the '{@link #getIncludeFilters() <em>Include Filters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIncludeFilters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Filter> includeFilters;
-
-	/**
 	 * The cached value of the '{@link #getPackages() <em>Packages</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -73,6 +63,16 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 	 * @ordered
 	 */
 	protected EList<kermeta.language.structure.Package> packages;
+
+	/**
+	 * The cached value of the '{@link #getIncludeFilters() <em>Include Filters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIncludeFilters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Filter> includeFilters;
 
 	/**
 	 * The cached value of the '{@link #getExcludeFilters() <em>Exclude Filters</em>}' containment reference list.
@@ -141,20 +141,6 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Filter> getIncludeFilters() {
-		if (includeFilters == null) {
-			includeFilters = new EObjectContainmentEList.Resolving<Filter>(
-					Filter.class, this,
-					StructurePackage.MODELING_UNIT__INCLUDE_FILTERS);
-		}
-		return includeFilters;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<kermeta.language.structure.Package> getPackages() {
 		if (packages == null) {
 			packages = new EObjectContainmentEList.Resolving<kermeta.language.structure.Package>(
@@ -162,6 +148,20 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 					StructurePackage.MODELING_UNIT__PACKAGES);
 		}
 		return packages;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Filter> getIncludeFilters() {
+		if (includeFilters == null) {
+			includeFilters = new EObjectContainmentEList.Resolving<Filter>(
+					Filter.class, this,
+					StructurePackage.MODELING_UNIT__INCLUDE_FILTERS);
+		}
+		return includeFilters;
 	}
 
 	/**
@@ -217,12 +217,12 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 		switch (featureID) {
 		case StructurePackage.MODELING_UNIT__USINGS:
 			return ((InternalEList<?>) getUsings()).basicRemove(otherEnd, msgs);
-		case StructurePackage.MODELING_UNIT__INCLUDE_FILTERS:
-			return ((InternalEList<?>) getIncludeFilters()).basicRemove(
-					otherEnd, msgs);
 		case StructurePackage.MODELING_UNIT__PACKAGES:
 			return ((InternalEList<?>) getPackages()).basicRemove(otherEnd,
 					msgs);
+		case StructurePackage.MODELING_UNIT__INCLUDE_FILTERS:
+			return ((InternalEList<?>) getIncludeFilters()).basicRemove(
+					otherEnd, msgs);
 		case StructurePackage.MODELING_UNIT__EXCLUDE_FILTERS:
 			return ((InternalEList<?>) getExcludeFilters()).basicRemove(
 					otherEnd, msgs);
@@ -243,10 +243,10 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 		switch (featureID) {
 		case StructurePackage.MODELING_UNIT__USINGS:
 			return getUsings();
-		case StructurePackage.MODELING_UNIT__INCLUDE_FILTERS:
-			return getIncludeFilters();
 		case StructurePackage.MODELING_UNIT__PACKAGES:
 			return getPackages();
+		case StructurePackage.MODELING_UNIT__INCLUDE_FILTERS:
+			return getIncludeFilters();
 		case StructurePackage.MODELING_UNIT__EXCLUDE_FILTERS:
 			return getExcludeFilters();
 		case StructurePackage.MODELING_UNIT__REFERENCED_MODELING_UNITS:
@@ -270,15 +270,15 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 			getUsings().clear();
 			getUsings().addAll((Collection<? extends Using>) newValue);
 			return;
-		case StructurePackage.MODELING_UNIT__INCLUDE_FILTERS:
-			getIncludeFilters().clear();
-			getIncludeFilters().addAll((Collection<? extends Filter>) newValue);
-			return;
 		case StructurePackage.MODELING_UNIT__PACKAGES:
 			getPackages().clear();
 			getPackages()
 					.addAll(
 							(Collection<? extends kermeta.language.structure.Package>) newValue);
+			return;
+		case StructurePackage.MODELING_UNIT__INCLUDE_FILTERS:
+			getIncludeFilters().clear();
+			getIncludeFilters().addAll((Collection<? extends Filter>) newValue);
 			return;
 		case StructurePackage.MODELING_UNIT__EXCLUDE_FILTERS:
 			getExcludeFilters().clear();
@@ -308,11 +308,11 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 		case StructurePackage.MODELING_UNIT__USINGS:
 			getUsings().clear();
 			return;
-		case StructurePackage.MODELING_UNIT__INCLUDE_FILTERS:
-			getIncludeFilters().clear();
-			return;
 		case StructurePackage.MODELING_UNIT__PACKAGES:
 			getPackages().clear();
+			return;
+		case StructurePackage.MODELING_UNIT__INCLUDE_FILTERS:
+			getIncludeFilters().clear();
 			return;
 		case StructurePackage.MODELING_UNIT__EXCLUDE_FILTERS:
 			getExcludeFilters().clear();
@@ -337,10 +337,10 @@ public class ModelingUnitImpl extends ObjectImpl implements ModelingUnit {
 		switch (featureID) {
 		case StructurePackage.MODELING_UNIT__USINGS:
 			return usings != null && !usings.isEmpty();
-		case StructurePackage.MODELING_UNIT__INCLUDE_FILTERS:
-			return includeFilters != null && !includeFilters.isEmpty();
 		case StructurePackage.MODELING_UNIT__PACKAGES:
 			return packages != null && !packages.isEmpty();
+		case StructurePackage.MODELING_UNIT__INCLUDE_FILTERS:
+			return includeFilters != null && !includeFilters.isEmpty();
 		case StructurePackage.MODELING_UNIT__EXCLUDE_FILTERS:
 			return excludeFilters != null && !excludeFilters.isEmpty();
 		case StructurePackage.MODELING_UNIT__REFERENCED_MODELING_UNITS:

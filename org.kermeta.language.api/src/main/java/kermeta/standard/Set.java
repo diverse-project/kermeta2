@@ -24,7 +24,7 @@ public interface Set<G> extends Collection<G> {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model annotation="kermeta documentation='/**\n\t * Returns a new Set corresponding to the intersection of the Set elements\n\t * with the current Set\n\t \052/'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.standard.Set<G> result = null;\n\n\tresult = ((kermeta.standard.Set<G>) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.standard.StandardPackage.eINSTANCE.getSet()));\n\n\tG elem = null;\n\n\t\n{\n\n\tkermeta.standard.Iterator<G> it = this.iterator();\n\tjava.lang.Boolean idLoopCond_231 = false;\n\twhile( !idLoopCond_231 ) {\n\tidLoopCond_231 = it.isOff();\n\tif ( idLoopCond_231 ) {\n\t} else {\n\n\telem = it.next();\n\n\tjava.lang.Boolean idIfCond_232 = false;\n\tidIfCond_232 = elements.contains(elem);\n\n\tif( idIfCond_232 ) {\n\n\tresult.add(elem);\n}\n\n}\n\t}\n}\n\n\nreturn result;\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.standard.Set<G> result = null;\n\n\tresult = ((kermeta.standard.Set<G>) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.standard.StandardPackage.eINSTANCE.getSet()));\n\n\tG elem = null;\n\n\t\n{\n\n\tkermeta.standard.Iterator<G> it = this.iterator();\n\tjava.lang.Boolean idLoopCond_228 = false;\n\twhile( !idLoopCond_228 ) {\n\tidLoopCond_228 = it.isOff();\n\tif ( idLoopCond_228 ) {\n\t} else {\n\n\telem = it.next();\n\n\tjava.lang.Boolean idIfCond_229 = false;\n\tidIfCond_229 = elements.contains(elem);\n\n\tif( idIfCond_229 ) {\n\n\tresult.add(elem);\n}\n\n}\n\t}\n}\n\n\nreturn result;\n'"
 	 * @generated
 	 */
 	Set<G> intersection(Collection<G> elements);
@@ -33,7 +33,7 @@ public interface Set<G> extends Collection<G> {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model annotation="kermeta documentation='/**\n\t * Returns a new Set corresponding to the difference between the\n\t * current Set and the Set elements, ie all elements contained by \n\t * the current Set that do not appear in the elements Set \n\t \052/'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.standard.Set<G> result = null;\n\n\tresult = ((kermeta.standard.Set<G>) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.standard.StandardPackage.eINSTANCE.getSet()));\n\n\tG elem = null;\n\n\t\n{\n\n\tkermeta.standard.Iterator<G> it = this.iterator();\n\tjava.lang.Boolean idLoopCond_233 = false;\n\twhile( !idLoopCond_233 ) {\n\tidLoopCond_233 = it.isOff();\n\tif ( idLoopCond_233 ) {\n\t} else {\n\n\telem = it.next();\n\n\tjava.lang.Boolean idIfCond_234 = false;\n\tidIfCond_234 = kermeta.standard.helper.BooleanWrapper.not(elements.contains(elem));\n\n\tif( idIfCond_234 ) {\n\n\tresult.add(elem);\n}\n\n}\n\t}\n}\n\n\nreturn result;\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.standard.Set<G> result = null;\n\n\tresult = ((kermeta.standard.Set<G>) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.standard.StandardPackage.eINSTANCE.getSet()));\n\n\tG elem = null;\n\n\t\n{\n\n\tkermeta.standard.Iterator<G> it = this.iterator();\n\tjava.lang.Boolean idLoopCond_230 = false;\n\twhile( !idLoopCond_230 ) {\n\tidLoopCond_230 = it.isOff();\n\tif ( idLoopCond_230 ) {\n\t} else {\n\n\telem = it.next();\n\n\tjava.lang.Boolean idIfCond_231 = false;\n\tidIfCond_231 = kermeta.standard.helper.BooleanWrapper.not(elements.contains(elem));\n\n\tif( idIfCond_231 ) {\n\n\tresult.add(elem);\n}\n\n}\n\t}\n}\n\n\nreturn result;\n'"
 	 * @generated
 	 */
 	Set<G> minus(Set<G> elements);
@@ -43,7 +43,7 @@ public interface Set<G> extends Collection<G> {
 	 * <!-- end-user-doc -->
 	 * @model annotation="kermeta documentation='/**\n\t * Overrides Collection<G>.remove(G)\n\t * Removes the element from the Set if it is contained by the Set\n\t \052/'"
 	 *        annotation="kermeta superOperation='kermeta::standard::Collection'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tG elem = null;\n//BIft:detect\n\nG result_ft60 = null;\n\n\tG elem_ft60 = null;\n\n\tresult_ft60 = null;\n\n\t\n{\n\n\tkermeta.standard.Iterator<G> it_ft60 = this.iterator();\n\tjava.lang.Boolean idLoopCond_235 = false;\n\twhile( !idLoopCond_235 ) {\n\tidLoopCond_235 = kermeta.standard.helper.BooleanWrapper.or(it_ft60.isOff(), org.kermeta.compil.runtime.helper.language.ObjectUtil.isNotEqualSwitcher(result_ft60, null));\n\tif ( idLoopCond_235 ) {\n\t} else {\n\n\telem_ft60 = it_ft60.next();\n\n\tjava.lang.Boolean idIfCond_236 = false;\n//BIle:detector\nG e_lbdExp60 = elem_ft60;\n\n\tidIfCond_236 = org.kermeta.compil.runtime.helper.language.ObjectUtil.equalsSwitcher(e_lbdExp60, element);\n//EIle:detector\n\n\n\tif( idIfCond_236 ) {\n\n\tresult_ft60 = elem_ft60;\n}\n\n}\n\t}\n}\n\n\n//CE\nelem = result_ft60;\n//EIft:detect\n;\n\n\tjava.lang.Boolean idIfCond_237 = false;\n\tidIfCond_237 = org.kermeta.compil.runtime.helper.language.ObjectUtil.isNotEqualSwitcher(elem, null);\n\n\tif( idIfCond_237 ) {\n\n\torg.kermeta.compil.runtime.helper.basetypes.CollectionUtil.remove(this, elem);\n}\n\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tG elem = null;\n//BIft:detect\n\nG result_ft63 = null;\n\n\tG elem_ft63 = null;\n\n\tresult_ft63 = null;\n\n\t\n{\n\n\tkermeta.standard.Iterator<G> it_ft63 = this.iterator();\n\tjava.lang.Boolean idLoopCond_232 = false;\n\twhile( !idLoopCond_232 ) {\n\tidLoopCond_232 = kermeta.standard.helper.BooleanWrapper.or(it_ft63.isOff(), org.kermeta.compil.runtime.helper.language.ObjectUtil.isNotEqualSwitcher(result_ft63, null));\n\tif ( idLoopCond_232 ) {\n\t} else {\n\n\telem_ft63 = it_ft63.next();\n\n\tjava.lang.Boolean idIfCond_233 = false;\n//BIle:detector\nG e_lbdExp63 = elem_ft63;\n\n\tidIfCond_233 = org.kermeta.compil.runtime.helper.language.ObjectUtil.equalsSwitcher(e_lbdExp63, element);\n//EIle:detector\n\n\n\tif( idIfCond_233 ) {\n\n\tresult_ft63 = elem_ft63;\n}\n\n}\n\t}\n}\n\n\n//CE\nelem = result_ft63;\n//EIft:detect\n;\n\n\tjava.lang.Boolean idIfCond_234 = false;\n\tidIfCond_234 = org.kermeta.compil.runtime.helper.language.ObjectUtil.isNotEqualSwitcher(elem, null);\n\n\tif( idIfCond_234 ) {\n\n\torg.kermeta.compil.runtime.helper.basetypes.CollectionUtil.remove(this, elem);\n}\n\n'"
 	 * @generated
 	 */
 	void remove(G element);
@@ -54,20 +54,10 @@ public interface Set<G> extends Collection<G> {
 	 * @model dataType="kermeta.standard.JavaBoolean"
 	 *        annotation="kermeta documentation='/**\n\t * Overrides Object.equals(Object)\n\t * Returns a Boolean stating whether the provided element is equal to\n\t * current Set\n\t \052/'"
 	 *        annotation="kermeta superOperation='kermeta::language::structure::Object'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\njava.lang.Boolean result = null;\n\n\tjava.lang.Boolean isEqual = false;\n\n\tjava.lang.Boolean idIfCond_238 = false;\n\tidIfCond_238 = kermeta.standard.helper.BooleanWrapper.not(org.kermeta.compil.runtime.helper.language.ObjectUtil.isVoidSwitcher(element));\n\n\tif( idIfCond_238 ) {\n\n\tjava.lang.Boolean idIfCond_239 = false;\n\tidIfCond_239 = org.kermeta.compil.runtime.helper.language.TypeUtil.isInstanceSwitcher(org.kermeta.compil.runtime.ExecutionContext.getInstance().getMetaClass(\"kermeta.standard.Collection<G>\"), element);\n\n\tif( idIfCond_239 ) {\n\n\tkermeta.standard.Collection<G> collection = null;\n\n\tcollection = (kermeta.standard.Collection<G>) org.kermeta.compil.runtime.helper.language.ObjectUtil.asTypeOrVoid(element, \"kermeta.standard.Collection<G>\");\n\n\tjava.lang.Boolean idIfCond_240 = false;\n\tidIfCond_240 = kermeta.standard.helper.IntegerWrapper.equals(this.size(), collection.size());\n\n\tif( idIfCond_240 ) {\n\n\tG elem = null;\n\n\tjava.lang.Boolean ok = true;\n\n\t\n{\n\n\tkermeta.standard.Iterator<G> it = this.iterator();\n\tjava.lang.Boolean idLoopCond_241 = false;\n\twhile( !idLoopCond_241 ) {\n\tidLoopCond_241 = kermeta.standard.helper.BooleanWrapper.or(it.isOff(), kermeta.standard.helper.BooleanWrapper.not(ok));\n\tif ( idLoopCond_241 ) {\n\t} else {\n\n\telem = it.next();\n\n\tjava.lang.Boolean idIfCond_242 = false;\n\tidIfCond_242 = kermeta.standard.helper.BooleanWrapper.not(collection.contains(elem));\n\n\tif( idIfCond_242 ) {\n\n\tok = false;\n}\n\n}\n\t}\n}\n\n\n\tisEqual = ok;\n}\n\n}\n\n}\n\n\n\tresult = isEqual;\n\nreturn result;\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\njava.lang.Boolean result = null;\n\n\tjava.lang.Boolean isEqual = false;\n\n\tjava.lang.Boolean idIfCond_235 = false;\n\tidIfCond_235 = kermeta.standard.helper.BooleanWrapper.not(org.kermeta.compil.runtime.helper.language.ObjectUtil.isVoidSwitcher(element));\n\n\tif( idIfCond_235 ) {\n\n\tjava.lang.Boolean idIfCond_236 = false;\n\tidIfCond_236 = org.kermeta.compil.runtime.helper.language.TypeUtil.isInstanceSwitcher(org.kermeta.compil.runtime.ExecutionContext.getInstance().getMetaClass(\"kermeta.standard.Collection<G>\"), element);\n\n\tif( idIfCond_236 ) {\n\n\tkermeta.standard.Collection<G> collection = null;\n\n\tcollection = (kermeta.standard.Collection<G>) org.kermeta.compil.runtime.helper.language.ObjectUtil.asTypeOrVoid(element, \"kermeta.standard.Collection<G>\");\n\n\tjava.lang.Boolean idIfCond_237 = false;\n\tidIfCond_237 = kermeta.standard.helper.IntegerWrapper.equals(this.size(), collection.size());\n\n\tif( idIfCond_237 ) {\n\n\tG elem = null;\n\n\tjava.lang.Boolean ok = true;\n\n\t\n{\n\n\tkermeta.standard.Iterator<G> it = this.iterator();\n\tjava.lang.Boolean idLoopCond_238 = false;\n\twhile( !idLoopCond_238 ) {\n\tidLoopCond_238 = kermeta.standard.helper.BooleanWrapper.or(it.isOff(), kermeta.standard.helper.BooleanWrapper.not(ok));\n\tif ( idLoopCond_238 ) {\n\t} else {\n\n\telem = it.next();\n\n\tjava.lang.Boolean idIfCond_239 = false;\n\tidIfCond_239 = kermeta.standard.helper.BooleanWrapper.not(collection.contains(elem));\n\n\tif( idIfCond_239 ) {\n\n\tok = false;\n}\n\n}\n\t}\n}\n\n\n\tisEqual = ok;\n}\n\n}\n\n}\n\n\n\tresult = isEqual;\n\nreturn result;\n'"
 	 * @generated
 	 */
 	Boolean equals(kermeta.language.structure.Object element);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="kermeta documentation='/**\n\t * Overrides Collection<G>.add(G)\n\t * Adds elt to the Set if it is not already contained by the\n\t * Set, does nothing otherwise\n\t \052/'"
-	 *        annotation="kermeta superOperation='kermeta::standard::Collection'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_243 = false;\n\tidIfCond_243 = kermeta.standard.helper.BooleanWrapper.not(this.contains(element));\n\n\tif( idIfCond_243 ) {\n\n\tsuper.add(element);\n}\n\n'"
-	 * @generated
-	 */
-	void add(G element);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,6 +68,25 @@ public interface Set<G> extends Collection<G> {
 	 * @generated
 	 */
 	Sequence<G> asSequence();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="kermeta documentation='/**\n\t * Overrides Collection<G>.add(G)\n\t * Adds elt to the Set if it is not already contained by the\n\t * Set, does nothing otherwise\n\t \052/'"
+	 *        annotation="kermeta superOperation='kermeta::standard::Collection'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n\tjava.lang.Boolean idIfCond_240 = false;\n\tidIfCond_240 = kermeta.standard.helper.BooleanWrapper.not(this.contains(element));\n\n\tif( idIfCond_240 ) {\n\n\tsuper.add(element);\n}\n\n'"
+	 * @generated
+	 */
+	void add(G element);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="kermeta documentation='/**\n\t * Returns a new Set which contents corresponds to the symmetric\n\t * difference between current Set and Set s, ie all elements of\n\t * each Set that do not appear in the other one\n\t \052/'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.standard.Set<G> result = null;\n\n\tkermeta.standard.Set<G> res = s.minus(this);\n\n\tresult = this.minus(s);\n\n\tresult.addAll(res);\n\nreturn result;\n'"
+	 * @generated
+	 */
+	Set<G> symmetricDifference(Set<G> s);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,17 +103,8 @@ public interface Set<G> extends Collection<G> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="kermeta documentation='/**\n\t * Returns a new Set which contents corresponds to the symmetric\n\t * difference between current Set and Set s, ie all elements of\n\t * each Set that do not appear in the other one\n\t \052/'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.standard.Set<G> result = null;\n\n\tkermeta.standard.Set<G> res = s.minus(this);\n\n\tresult = this.minus(s);\n\n\tresult.addAll(res);\n\nreturn result;\n'"
-	 * @generated
-	 */
-	Set<G> symmetricDifference(Set<G> s);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model annotation="kermeta documentation='/**\n\t * Returns a new Set which content includes all non-Collection elements\n\t * of the current Set, and, for each Collection element of the current\n\t * Set, as many elements as the Collection contains\n\t * Duplicates are removed\n\t \052/'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.standard.Set<kermeta.language.structure.Object> result = null;\n\n\tkermeta.standard.Set<kermeta.language.structure.Object> res = ((kermeta.standard.Set<kermeta.language.structure.Object>) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.standard.StandardPackage.eINSTANCE.getSet()));\n\n\tjava.lang.Boolean idIfCond_244 = false;\n\tidIfCond_244 = org.kermeta.compil.runtime.helper.language.ObjectUtil.isKindOfSwitcher(org.kermeta.compil.runtime.ExecutionContext.getInstance().getMetaClass(\"G\"), org.kermeta.compil.runtime.ExecutionContext.getInstance().getMetaClass(\"kermeta.standard.Collection<kermeta.language.structure.Object>\"));\n\n\tif( idIfCond_244 ) {\n\n\tkermeta.standard.Collection<kermeta.language.structure.Object> col = null;\n\n\tkermeta.language.structure.Object o = null;\n\n\t//BIft:each\n\n\t\n{\n\n\tkermeta.standard.Iterator<G> it_ft61 = this.iterator();\n\tjava.lang.Boolean idLoopCond_245 = false;\n\twhile( !idLoopCond_245 ) {\n\tidLoopCond_245 = it_ft61.isOff();\n\tif ( idLoopCond_245 ) {\n\t} else {\n\n\t//BIle:func\nG e_lbdExp61 = it_ft61.next();\n\n\tcol = (kermeta.standard.Collection<kermeta.language.structure.Object>) org.kermeta.compil.runtime.helper.language.ObjectUtil.asTypeOrVoid(e_lbdExp61, \"kermeta.standard.Collection<kermeta.language.structure.Object>\");\n\n\tres.addAll(col);\n//EIle:func\n\n}\n\t}\n}\n\n//EIft:each\n\n}\n\n\n\tresult = res;\n\nreturn result;\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\nkermeta.standard.Set<kermeta.language.structure.Object> result = null;\n\n\tkermeta.standard.Set<kermeta.language.structure.Object> res = ((kermeta.standard.Set<kermeta.language.structure.Object>) org.kermeta.compil.runtime.helper.language.ClassUtil.newObject(kermeta.standard.StandardPackage.eINSTANCE.getSet()));\n\n\tjava.lang.Boolean idIfCond_241 = false;\n\tidIfCond_241 = org.kermeta.compil.runtime.helper.language.ObjectUtil.isKindOfSwitcher(org.kermeta.compil.runtime.ExecutionContext.getInstance().getMetaClass(\"G\"), org.kermeta.compil.runtime.ExecutionContext.getInstance().getMetaClass(\"kermeta.standard.Collection<kermeta.language.structure.Object>\"));\n\n\tif( idIfCond_241 ) {\n\n\tkermeta.standard.Collection<kermeta.language.structure.Object> col = null;\n\n\tkermeta.language.structure.Object o = null;\n\n\t//BIft:each\n\n\t\n{\n\n\tkermeta.standard.Iterator<G> it_ft64 = this.iterator();\n\tjava.lang.Boolean idLoopCond_242 = false;\n\twhile( !idLoopCond_242 ) {\n\tidLoopCond_242 = it_ft64.isOff();\n\tif ( idLoopCond_242 ) {\n\t} else {\n\n\t//BIle:func\nG e_lbdExp64 = it_ft64.next();\n\n\tcol = (kermeta.standard.Collection<kermeta.language.structure.Object>) org.kermeta.compil.runtime.helper.language.ObjectUtil.asTypeOrVoid(e_lbdExp64, \"kermeta.standard.Collection<kermeta.language.structure.Object>\");\n\n\tres.addAll(col);\n//EIle:func\n\n}\n\t}\n}\n\n//EIft:each\n\n}\n\n\n\tresult = res;\n\nreturn result;\n'"
 	 * @generated
 	 */
 	Set<kermeta.language.structure.Object> flatten();

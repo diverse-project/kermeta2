@@ -30,9 +30,9 @@ public interface OperationValidator {
 
 	boolean validateBody(Expression value);
 
-	boolean validateOwnedParameter(EList<Parameter> value);
-
 	boolean validateIsAbstract(Boolean value);
+
+	boolean validateOwnedParameter(EList<Parameter> value);
 
 	boolean validatePost(EList<Constraint> value);
 

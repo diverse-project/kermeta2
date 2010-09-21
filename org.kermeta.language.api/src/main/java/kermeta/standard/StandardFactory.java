@@ -27,15 +27,6 @@ public interface StandardFactory extends EFactory {
 			.init();
 
 	/**
-	 * Returns a new object of class '<em>Iterator</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Iterator</em>'.
-	 * @generated
-	 */
-	<G> Iterator<G> createIterator();
-
-	/**
 	 * Returns a new object of class '<em>Unknown Java Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -151,6 +142,15 @@ public interface StandardFactory extends EFactory {
 	 * @generated
 	 */
 	<G> Sequence<G> createSequence();
+
+	/**
+	 * Returns a new object of class '<em>Iterator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Iterator</em>'.
+	 * @generated
+	 */
+	<G> Iterator<G> createIterator();
 
 	/**
 	 * Returns the package supported by this factory.

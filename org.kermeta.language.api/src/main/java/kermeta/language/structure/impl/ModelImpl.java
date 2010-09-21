@@ -126,29 +126,29 @@ public class ModelImpl extends ObjectImpl implements Model {
 
 		{
 
-			kermeta.standard.Iterator<kermeta.language.structure.Object> it_ft99 = objectsToAdd
+			kermeta.standard.Iterator<kermeta.language.structure.Object> it_ft88 = objectsToAdd
 					.iterator();
-			java.lang.Boolean idLoopCond_392 = false;
-			while (!idLoopCond_392) {
-				idLoopCond_392 = it_ft99.isOff();
-				if (idLoopCond_392) {
+			java.lang.Boolean idLoopCond_348 = false;
+			while (!idLoopCond_348) {
+				idLoopCond_348 = it_ft88.isOff();
+				if (idLoopCond_348) {
 				} else {
 
 					//BIle:func
-					kermeta.language.structure.Object obj_lbdExp99 = it_ft99
+					kermeta.language.structure.Object obj_lbdExp88 = it_ft88
 							.next();
 
 					kermeta.language.structure.Object addedObject = this
-							.addCompatible(obj_lbdExp99);
+							.addCompatible(obj_lbdExp88);
 
-					java.lang.Boolean idIfCond_393 = false;
-					idIfCond_393 = kermeta.standard.helper.BooleanWrapper
+					java.lang.Boolean idIfCond_349 = false;
+					idIfCond_349 = kermeta.standard.helper.BooleanWrapper
 							.not(org.kermeta.compil.runtime.helper.language.ObjectUtil
 									.isVoidSwitcher(addedObject));
 
-					if (idIfCond_393) {
+					if (idIfCond_349) {
 
-						result.add(obj_lbdExp99);
+						result.add(obj_lbdExp88);
 					}
 
 					//EIle:func
@@ -189,38 +189,38 @@ public class ModelImpl extends ObjectImpl implements Model {
 
 		//BIft:select
 
-		kermeta.standard.Sequence<kermeta.language.structure.Object> result_ft100 = null;
+		kermeta.standard.Sequence<kermeta.language.structure.Object> result_ft89 = null;
 
-		kermeta.language.structure.Object elem_ft100 = null;
+		kermeta.language.structure.Object elem_ft89 = null;
 
-		result_ft100 = ((kermeta.standard.Sequence<kermeta.language.structure.Object>) org.kermeta.compil.runtime.helper.language.ClassUtil
+		result_ft89 = ((kermeta.standard.Sequence<kermeta.language.structure.Object>) org.kermeta.compil.runtime.helper.language.ClassUtil
 				.newObject(kermeta.standard.StandardPackage.eINSTANCE
 						.getSequence()));
 
 		{
 
-			kermeta.standard.Iterator<kermeta.language.structure.Object> it_ft100 = org.kermeta.compil.runtime.helper.basetypes.CollectionUtil
+			kermeta.standard.Iterator<kermeta.language.structure.Object> it_ft89 = org.kermeta.compil.runtime.helper.basetypes.CollectionUtil
 					.<kermeta.language.structure.Object> convertAsOrderedSet(
 							this.getContents()).iterator();
-			java.lang.Boolean idLoopCond_394 = false;
-			while (!idLoopCond_394) {
-				idLoopCond_394 = it_ft100.isOff();
-				if (idLoopCond_394) {
+			java.lang.Boolean idLoopCond_350 = false;
+			while (!idLoopCond_350) {
+				idLoopCond_350 = it_ft89.isOff();
+				if (idLoopCond_350) {
 				} else {
 
-					elem_ft100 = it_ft100.next();
+					elem_ft89 = it_ft89.next();
 
-					java.lang.Boolean idIfCond_395 = false;
+					java.lang.Boolean idIfCond_351 = false;
 					//BIle:selector
-					kermeta.language.structure.Object o_lbdExp100 = elem_ft100;
+					kermeta.language.structure.Object o_lbdExp89 = elem_ft89;
 
-					idIfCond_395 = org.kermeta.compil.runtime.helper.language.TypeUtil
-							.isInstanceSwitcher(typeName, o_lbdExp100);
+					idIfCond_351 = org.kermeta.compil.runtime.helper.language.TypeUtil
+							.isInstanceSwitcher(typeName, o_lbdExp89);
 					//EIle:selector
 
-					if (idIfCond_395) {
+					if (idIfCond_351) {
 
-						result_ft100.add(elem_ft100);
+						result_ft89.add(elem_ft89);
 					}
 
 				}
@@ -228,7 +228,7 @@ public class ModelImpl extends ObjectImpl implements Model {
 		}
 
 		//EIft:select
-		result = result_ft100.asSet();
+		result = result_ft89.asSet();
 
 		return result;
 

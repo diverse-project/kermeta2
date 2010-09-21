@@ -31,12 +31,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * <ul>
  *   <li>{@link kermeta.language.structure.impl.PropertyImpl#getGetViolatedConstraintsMustDrillDownCache <em>Get Violated Constraints Must Drill Down Cache</em>}</li>
- *   <li>{@link kermeta.language.structure.impl.PropertyImpl#getIsDerived <em>Is Derived</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.PropertyImpl#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link kermeta.language.structure.impl.PropertyImpl#getIsDerived <em>Is Derived</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.PropertyImpl#getGetterBody <em>Getter Body</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.PropertyImpl#getSetterBody <em>Setter Body</em>}</li>
- *   <li>{@link kermeta.language.structure.impl.PropertyImpl#getIsSetterAbstract <em>Is Setter Abstract</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.PropertyImpl#getOwningClass <em>Owning Class</em>}</li>
+ *   <li>{@link kermeta.language.structure.impl.PropertyImpl#getIsSetterAbstract <em>Is Setter Abstract</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.PropertyImpl#getIsGetterAbstract <em>Is Getter Abstract</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.PropertyImpl#getIsComposite <em>Is Composite</em>}</li>
  *   <li>{@link kermeta.language.structure.impl.PropertyImpl#get_default <em>default</em>}</li>
@@ -70,6 +70,16 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	protected Boolean getViolatedConstraintsMustDrillDownCache = GET_VIOLATED_CONSTRAINTS_MUST_DRILL_DOWN_CACHE_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOpposite()
+	 * @generated
+	 * @ordered
+	 */
+	protected Property opposite;
+
+	/**
 	 * The default value of the '{@link #getIsDerived() <em>Is Derived</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -88,16 +98,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @ordered
 	 */
 	protected Boolean isDerived = IS_DERIVED_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOpposite()
-	 * @generated
-	 * @ordered
-	 */
-	protected Property opposite;
 
 	/**
 	 * The cached value of the '{@link #getGetterBody() <em>Getter Body</em>}' containment reference.
@@ -300,29 +300,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Boolean getIsDerived() {
-		return isDerived;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsDerived(Boolean newIsDerived) {
-		Boolean oldIsDerived = isDerived;
-		isDerived = newIsDerived;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					StructurePackage.PROPERTY__IS_DERIVED, oldIsDerived,
-					isDerived));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Property getOpposite() {
 		if (opposite != null && opposite.eIsProxy()) {
 			InternalEObject oldOpposite = (InternalEObject) opposite;
@@ -357,6 +334,29 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					StructurePackage.PROPERTY__OPPOSITE, oldOpposite, opposite));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getIsDerived() {
+		return isDerived;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsDerived(Boolean newIsDerived) {
+		Boolean oldIsDerived = isDerived;
+		isDerived = newIsDerived;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					StructurePackage.PROPERTY__IS_DERIVED, oldIsDerived,
+					isDerived));
 	}
 
 	/**
@@ -542,29 +542,6 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Boolean getIsSetterAbstract() {
-		return isSetterAbstract;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsSetterAbstract(Boolean newIsSetterAbstract) {
-		Boolean oldIsSetterAbstract = isSetterAbstract;
-		isSetterAbstract = newIsSetterAbstract;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					StructurePackage.PROPERTY__IS_SETTER_ABSTRACT,
-					oldIsSetterAbstract, isSetterAbstract));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ClassDefinition getOwningClass() {
 		if (eContainerFeatureID() != StructurePackage.PROPERTY__OWNING_CLASS)
 			return null;
@@ -619,6 +596,29 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					StructurePackage.PROPERTY__OWNING_CLASS, newOwningClass,
 					newOwningClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getIsSetterAbstract() {
+		return isSetterAbstract;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsSetterAbstract(Boolean newIsSetterAbstract) {
+		Boolean oldIsSetterAbstract = isSetterAbstract;
+		isSetterAbstract = newIsSetterAbstract;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					StructurePackage.PROPERTY__IS_SETTER_ABSTRACT,
+					oldIsSetterAbstract, isSetterAbstract));
 	}
 
 	/**
@@ -829,12 +829,12 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 
 		java.lang.Boolean result = null;
 
-		java.lang.Boolean idIfCond_332 = false;
-		idIfCond_332 = org.kermeta.compil.runtime.helper.language.ObjectUtil
+		java.lang.Boolean idIfCond_288 = false;
+		idIfCond_288 = org.kermeta.compil.runtime.helper.language.ObjectUtil
 				.isVoidSwitcher(this
 						.getGetViolatedConstraintsMustDrillDownCache());
 
-		if (idIfCond_332) {
+		if (idIfCond_288) {
 
 			this
 					.setGetViolatedConstraintsMustDrillDownCache(kermeta.standard.helper.BooleanWrapper
@@ -928,12 +928,12 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 		switch (featureID) {
 		case StructurePackage.PROPERTY__GET_VIOLATED_CONSTRAINTS_MUST_DRILL_DOWN_CACHE:
 			return getGetViolatedConstraintsMustDrillDownCache();
-		case StructurePackage.PROPERTY__IS_DERIVED:
-			return getIsDerived();
 		case StructurePackage.PROPERTY__OPPOSITE:
 			if (resolve)
 				return getOpposite();
 			return basicGetOpposite();
+		case StructurePackage.PROPERTY__IS_DERIVED:
+			return getIsDerived();
 		case StructurePackage.PROPERTY__GETTER_BODY:
 			if (resolve)
 				return getGetterBody();
@@ -942,12 +942,12 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 			if (resolve)
 				return getSetterBody();
 			return basicGetSetterBody();
-		case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
-			return getIsSetterAbstract();
 		case StructurePackage.PROPERTY__OWNING_CLASS:
 			if (resolve)
 				return getOwningClass();
 			return basicGetOwningClass();
+		case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
+			return getIsSetterAbstract();
 		case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
 			return getIsGetterAbstract();
 		case StructurePackage.PROPERTY__IS_COMPOSITE:
@@ -977,11 +977,11 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 		case StructurePackage.PROPERTY__GET_VIOLATED_CONSTRAINTS_MUST_DRILL_DOWN_CACHE:
 			setGetViolatedConstraintsMustDrillDownCache((Boolean) newValue);
 			return;
-		case StructurePackage.PROPERTY__IS_DERIVED:
-			setIsDerived((Boolean) newValue);
-			return;
 		case StructurePackage.PROPERTY__OPPOSITE:
 			setOpposite((Property) newValue);
+			return;
+		case StructurePackage.PROPERTY__IS_DERIVED:
+			setIsDerived((Boolean) newValue);
 			return;
 		case StructurePackage.PROPERTY__GETTER_BODY:
 			setGetterBody((Expression) newValue);
@@ -989,11 +989,11 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 		case StructurePackage.PROPERTY__SETTER_BODY:
 			setSetterBody((Expression) newValue);
 			return;
-		case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
-			setIsSetterAbstract((Boolean) newValue);
-			return;
 		case StructurePackage.PROPERTY__OWNING_CLASS:
 			setOwningClass((ClassDefinition) newValue);
+			return;
+		case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
+			setIsSetterAbstract((Boolean) newValue);
 			return;
 		case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
 			setIsGetterAbstract((Boolean) newValue);
@@ -1028,11 +1028,11 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 		case StructurePackage.PROPERTY__GET_VIOLATED_CONSTRAINTS_MUST_DRILL_DOWN_CACHE:
 			setGetViolatedConstraintsMustDrillDownCache(GET_VIOLATED_CONSTRAINTS_MUST_DRILL_DOWN_CACHE_EDEFAULT);
 			return;
-		case StructurePackage.PROPERTY__IS_DERIVED:
-			setIsDerived(IS_DERIVED_EDEFAULT);
-			return;
 		case StructurePackage.PROPERTY__OPPOSITE:
 			setOpposite((Property) null);
+			return;
+		case StructurePackage.PROPERTY__IS_DERIVED:
+			setIsDerived(IS_DERIVED_EDEFAULT);
 			return;
 		case StructurePackage.PROPERTY__GETTER_BODY:
 			setGetterBody((Expression) null);
@@ -1040,11 +1040,11 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 		case StructurePackage.PROPERTY__SETTER_BODY:
 			setSetterBody((Expression) null);
 			return;
-		case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
-			setIsSetterAbstract(IS_SETTER_ABSTRACT_EDEFAULT);
-			return;
 		case StructurePackage.PROPERTY__OWNING_CLASS:
 			setOwningClass((ClassDefinition) null);
+			return;
+		case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
+			setIsSetterAbstract(IS_SETTER_ABSTRACT_EDEFAULT);
 			return;
 		case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
 			setIsGetterAbstract(IS_GETTER_ABSTRACT_EDEFAULT);
@@ -1080,20 +1080,20 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 			return GET_VIOLATED_CONSTRAINTS_MUST_DRILL_DOWN_CACHE_EDEFAULT == null ? getViolatedConstraintsMustDrillDownCache != null
 					: !GET_VIOLATED_CONSTRAINTS_MUST_DRILL_DOWN_CACHE_EDEFAULT
 							.equals(getViolatedConstraintsMustDrillDownCache);
+		case StructurePackage.PROPERTY__OPPOSITE:
+			return opposite != null;
 		case StructurePackage.PROPERTY__IS_DERIVED:
 			return IS_DERIVED_EDEFAULT == null ? isDerived != null
 					: !IS_DERIVED_EDEFAULT.equals(isDerived);
-		case StructurePackage.PROPERTY__OPPOSITE:
-			return opposite != null;
 		case StructurePackage.PROPERTY__GETTER_BODY:
 			return getterBody != null;
 		case StructurePackage.PROPERTY__SETTER_BODY:
 			return setterBody != null;
+		case StructurePackage.PROPERTY__OWNING_CLASS:
+			return basicGetOwningClass() != null;
 		case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
 			return IS_SETTER_ABSTRACT_EDEFAULT == null ? isSetterAbstract != null
 					: !IS_SETTER_ABSTRACT_EDEFAULT.equals(isSetterAbstract);
-		case StructurePackage.PROPERTY__OWNING_CLASS:
-			return basicGetOwningClass() != null;
 		case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
 			return IS_GETTER_ABSTRACT_EDEFAULT == null ? isGetterAbstract != null
 					: !IS_GETTER_ABSTRACT_EDEFAULT.equals(isGetterAbstract);

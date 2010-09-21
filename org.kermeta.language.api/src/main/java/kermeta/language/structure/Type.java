@@ -69,6 +69,17 @@ public interface Type extends kermeta.language.structure.Object {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model annotation="kermeta isAbstract='true'"
+	 *        annotation="kermeta documentation='/**\n\t * Returns a copy of passed Object built by recursively copying values of\n\t * all properties, no matter the property kind\n\t \052/'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='kermeta.language.structure.Object result = null;\n\nreturn result;\n'"
+	 * @generated
+	 */
+	kermeta.language.structure.Object deepClone(
+			kermeta.language.structure.Object objectToClone);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model dataType="kermeta.standard.JavaBoolean"
 	 *        annotation="kermeta documentation='/**\n \t * Implements Type.isSuperTypeOf(Type)\n \t * For technical reason, the current implementation works only with Type that comes from a kermeta declaration (ie. in a require)\n \t * it won\'t work with Type created programmaticaly by the user. If you need that, please ask to the kermeta developpers\n \t * to extend it.\n \t \052/'"
 	 *        annotation="kermeta CompilerIgnore='true'"
@@ -93,21 +104,10 @@ public interface Type extends kermeta.language.structure.Object {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="kermeta isAbstract='true'"
-	 *        annotation="kermeta documentation='/**\n\t * Returns a copy of passed Object built by recursively copying values of\n\t * all properties, no matter the property kind\n\t \052/'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='kermeta.language.structure.Object result = null;\n\nreturn result;\n'"
-	 * @generated
-	 */
-	kermeta.language.structure.Object deepClone(
-			kermeta.language.structure.Object objectToClone);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model dataType="kermeta.standard.JavaBoolean"
+	 *        annotation="kermeta RecopyInValueTypes='true'"
 	 *        annotation="kermeta documentation='/**\n \t * Implements Type.isSubTypeOf(Type)\n \t * For technical reason, the current implementation works only with Type that comes from a kermeta declaration (ie. in a require)\n \t * it won\'t work with Type created programmaticaly by the user. If you need that, please ask to the kermeta developpers\n \t * to extend it.\n \t \052/'"
 	 *        annotation="kermeta CompilerIgnore='true'"
-	 *        annotation="kermeta RecopyInValueTypes='true'"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\njava.lang.Boolean result = null;\n\n\tresult = org.kermeta.compil.runtime.helper.language.TypeUtil.isSuperTypeOfSwitcher(object, this);\n\nreturn result;\n'"
 	 * @generated
 	 */

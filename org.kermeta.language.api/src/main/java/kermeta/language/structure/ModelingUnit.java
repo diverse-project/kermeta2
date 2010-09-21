@@ -17,8 +17,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link kermeta.language.structure.ModelingUnit#getUsings <em>Usings</em>}</li>
- *   <li>{@link kermeta.language.structure.ModelingUnit#getIncludeFilters <em>Include Filters</em>}</li>
  *   <li>{@link kermeta.language.structure.ModelingUnit#getPackages <em>Packages</em>}</li>
+ *   <li>{@link kermeta.language.structure.ModelingUnit#getIncludeFilters <em>Include Filters</em>}</li>
  *   <li>{@link kermeta.language.structure.ModelingUnit#getExcludeFilters <em>Exclude Filters</em>}</li>
  *   <li>{@link kermeta.language.structure.ModelingUnit#getReferencedModelingUnits <em>Referenced Modeling Units</em>}</li>
  *   <li>{@link kermeta.language.structure.ModelingUnit#getRequires <em>Requires</em>}</li>
@@ -50,24 +50,6 @@ public interface ModelingUnit extends kermeta.language.structure.Object {
 	EList<Using> getUsings();
 
 	/**
-	 * Returns the value of the '<em><b>Include Filters</b></em>' containment reference list.
-	 * The list contents are of type {@link kermeta.language.structure.Filter}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Include Filters</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Include Filters</em>' containment reference list.
-	 * @see kermeta.language.structure.StructurePackage#getModelingUnit_IncludeFilters()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="kermeta ecore='true'"
-	 *        annotation="kermeta documentation='list of filters that apply to this modeling unit.\nThis means that if the same unit was loaded without this filters, it would have loaded more content\nonly element whose qualified name begins with one of these filter will be loaded in the unit'"
-	 * @generated
-	 */
-	EList<Filter> getIncludeFilters();
-
-	/**
 	 * Returns the value of the '<em><b>Packages</b></em>' containment reference list.
 	 * The list contents are of type {@link kermeta.language.structure.Package}.
 	 * <!-- begin-user-doc -->
@@ -84,6 +66,24 @@ public interface ModelingUnit extends kermeta.language.structure.Object {
 	 * @generated
 	 */
 	EList<kermeta.language.structure.Package> getPackages();
+
+	/**
+	 * Returns the value of the '<em><b>Include Filters</b></em>' containment reference list.
+	 * The list contents are of type {@link kermeta.language.structure.Filter}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Include Filters</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Include Filters</em>' containment reference list.
+	 * @see kermeta.language.structure.StructurePackage#getModelingUnit_IncludeFilters()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="kermeta ecore='true'"
+	 *        annotation="kermeta documentation='list of filters that apply to this modeling unit.\nThis means that if the same unit was loaded without this filters, it would have loaded more content\nonly element whose qualified name begins with one of these filter will be loaded in the unit'"
+	 * @generated
+	 */
+	EList<Filter> getIncludeFilters();
 
 	/**
 	 * Returns the value of the '<em><b>Exclude Filters</b></em>' containment reference list.

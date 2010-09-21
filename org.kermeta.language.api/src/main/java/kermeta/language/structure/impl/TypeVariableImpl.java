@@ -226,8 +226,8 @@ public abstract class TypeVariableImpl extends TypeContainerImpl implements
 
 		result = this.getName();
 
-		java.lang.Boolean idIfCond_387 = false;
-		idIfCond_387 = org.kermeta.compil.runtime.helper.language.ObjectUtil
+		java.lang.Boolean idIfCond_343 = false;
+		idIfCond_343 = org.kermeta.compil.runtime.helper.language.ObjectUtil
 				.isInstanceOfSwitcher(
 						org.kermeta.compil.runtime.helper.language.ObjectUtil
 								.containerSwitcher(elem),
@@ -236,26 +236,26 @@ public abstract class TypeVariableImpl extends TypeContainerImpl implements
 								.getMetaClass(
 										"kermeta.language.structure.NamedElement"));
 
-		if (idIfCond_387) {
+		if (idIfCond_343) {
 
 			elem = (kermeta.language.structure.NamedElement) org.kermeta.compil.runtime.helper.language.ObjectUtil
 					.asTypeOrVoid(
 							org.kermeta.compil.runtime.helper.language.ObjectUtil
 									.containerSwitcher(elem),
 							"kermeta.language.structure.NamedElement");
-			java.lang.Boolean idLoopCond_388 = false;
-			while (!idLoopCond_388) {
-				idLoopCond_388 = org.kermeta.compil.runtime.helper.language.ObjectUtil
+			java.lang.Boolean idLoopCond_344 = false;
+			while (!idLoopCond_344) {
+				idLoopCond_344 = org.kermeta.compil.runtime.helper.language.ObjectUtil
 						.equalsSwitcher(elem, null);
-				if (idLoopCond_388) {
+				if (idLoopCond_344) {
 				} else {
 
 					result = kermeta.standard.helper.StringWrapper.plus(
 							kermeta.standard.helper.StringWrapper.plus(elem
 									.getName(), "::"), result);
 
-					java.lang.Boolean idIfCond_389 = false;
-					idIfCond_389 = org.kermeta.compil.runtime.helper.language.ObjectUtil
+					java.lang.Boolean idIfCond_345 = false;
+					idIfCond_345 = org.kermeta.compil.runtime.helper.language.ObjectUtil
 							.isInstanceOfSwitcher(
 									org.kermeta.compil.runtime.helper.language.ObjectUtil
 											.containerSwitcher(elem),
@@ -264,7 +264,7 @@ public abstract class TypeVariableImpl extends TypeContainerImpl implements
 											.getMetaClass(
 													"kermeta.language.structure.NamedElement"));
 
-					if (idIfCond_389) {
+					if (idIfCond_345) {
 
 						elem = (kermeta.language.structure.NamedElement) org.kermeta.compil.runtime.helper.language.ObjectUtil
 								.asTypeOrVoid(
@@ -302,6 +302,19 @@ public abstract class TypeVariableImpl extends TypeContainerImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public kermeta.language.structure.Object deepClone(
+			kermeta.language.structure.Object objectToClone) {
+		kermeta.language.structure.Object result = null;
+
+		return result;
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Boolean isSuperTypeOf(Type object) {
 
 		java.lang.Boolean result = null;
@@ -326,19 +339,6 @@ public abstract class TypeVariableImpl extends TypeContainerImpl implements
 
 		result = org.kermeta.compil.runtime.helper.language.ObjectUtil
 				.isInstanceOfSwitcher(element, this);
-
-		return result;
-
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public kermeta.language.structure.Object deepClone(
-			kermeta.language.structure.Object objectToClone) {
-		kermeta.language.structure.Object result = null;
 
 		return result;
 
