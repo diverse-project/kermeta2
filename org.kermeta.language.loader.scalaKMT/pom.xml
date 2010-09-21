@@ -1,91 +1,95 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <modelVersion>4.0.0</modelVersion>
-    <packaging>bundle</packaging>
-    <name>Kermeta :: Loader :: KMT</name>
-    <artifactId>language.loader.scala</artifactId>
+<!-- $Id: $ -->
+<!-- License    : EPL                                    -->
+<!-- Project    : org.kermeta.language.loader.scala -->
+<!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
+<!-- Authors : Haja Rambelontsalama <hrambelo@irisa.fr> --> 
 
-    <groupId>${parent.groupId}</groupId>
-    <version>${kermeta.version}</version>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>bundle</packaging>
+	<name>Kermeta :: Loader :: KMT</name>
+	<artifactId>language.loader.scala</artifactId>
 
-    <parent>
-        <artifactId>language.root</artifactId>
+	 <parent>
         <groupId>org.kermeta.language</groupId>
-        <version>2</version>
+   		<artifactId>language.artcomponent.root</artifactId>
+    	<version>2.0.0</version>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>${parent.groupId}</groupId>
-            <artifactId>language.model</artifactId>
-            <version>${kermeta.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.kermeta.emf</groupId>
-            <artifactId>emf.lib</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>${parent.groupId}</groupId>
-            <artifactId>language.api.tests</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>test</scope>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>${parent.groupId}</groupId>
-            <artifactId>language.api</artifactId>
-            <version>${kermeta.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.kermeta.art2</groupId>
-            <artifactId>art2.framework</artifactId>
-            <version>${art2.version}</version>
-        </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>language.model</artifactId>
+			<version>${kermeta.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.emf</groupId>
+			<artifactId>emf.lib</artifactId>
+			<version>${emf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>language.api.tests</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>test</scope>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>language.api</artifactId>
+			<version>${kermeta.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.art2</groupId>
+			<artifactId>art2.framework</artifactId>
+			<version>${art2.version}</version>
+		</dependency>
 
-    </dependencies>
+	</dependencies>
 
-    <build>
+	<build>
 
-        <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Export-Package>
-                            org.kermeta.language.lexer,
-                            org.kermeta.scala.parser.art2.impl,
-                            org.kermeta.scala.parser.sub,
-                            org.kermeta.scala.parser
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Export-Package>
+							org.kermeta.language.lexer,
+							org.kermeta.scala.parser.art2.impl,
+							org.kermeta.scala.parser.sub,
+							org.kermeta.scala.parser
                         </Export-Package>
-                        <Import-Package>
-						org.kermeta.art2.framework,
-                                                org.eclipse.emf.*,
-						org.osgi.framework,
-                                                scala.*,
-                                                org.kermeta.language.*,org.kermeta
+						<Import-Package>
+							org.kermeta.art2.framework,
+							org.eclipse.emf.*,
+							org.osgi.framework,
+							scala.*,
+							org.kermeta.language.*,org.kermeta
                         </Import-Package>
 
-                    </instructions>
-                </configuration>
-            </plugin>
+					</instructions>
+				</configuration>
+			</plugin>
 
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <includes>
-                        <include>**/*TestSuite.java</include>
-                    </includes>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<includes>
+						<include>**/*TestSuite.java</include>
+					</includes>
+				</configuration>
+			</plugin>
 
-        </plugins>
-    </build>
+		</plugins>
+	</build>
 
 </project>
