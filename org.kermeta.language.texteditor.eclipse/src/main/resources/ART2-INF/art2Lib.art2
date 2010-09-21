@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="ASCII"?>
 <art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:art2="http://art/2.0">
-  <componentTypes name="Art2ComponentTexteditorEclipse" factoryBean="org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipseFactory" startMethod="start" stopMethod="stop" requiredLibs="//@thirdParties.0 //@thirdParties.1 //@thirdParties.2 //@thirdParties.3 //@thirdParties.4">
-    <required name="log" ref="//@portTypes.0"/>
-  </componentTypes>
-  <dataTypes name="Unit"/>
-  <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
-  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortLog">
+  <typeDefinitions xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortLog">
     <operations name="log" returnType="//@dataTypes.0">
       <parameters name="arg0" type="//@dataTypes.1"/>
     </operations>
-  </portTypes>
-  <libraries name="org.kermeta.language" groupName="org.kermeta.language" unitName="language.texteditor.eclipse" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
-  <thirdParties name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
-  <thirdParties name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>
-  <thirdParties name="org.kermeta.language.traceability.model" url="mvn:org.kermeta.traceability/traceability.model"/>
-  <thirdParties name="org.kermeta.language.api" url="mvn:org.kermeta.language/language.api"/>
-  <thirdParties name="org.kermeta.language.loader.scala" url="mvn:org.kermeta.language/language.loader.scala"/>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortErrorReport">
+    <operations name="markResource" returnType="//@dataTypes.0">
+      <parameters name="arg0" type="//@dataTypes.2"/>
+    </operations>
+    <operations name="unMarkResource" returnType="//@dataTypes.0">
+      <parameters name="arg0" type="//@dataTypes.2"/>
+    </operations>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="art2:ComponentType" name="Art2ComponentTexteditorEclipse" deployUnit="//@deployUnits.0" factoryBean="org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipseFactory" bean="org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipse" requiredLibs="//@deployUnits.1 //@deployUnits.2 //@deployUnits.3 //@deployUnits.4 //@deployUnits.5" startMethod="start" stopMethod="stop">
+    <required name="log" ref="//@typeDefinitions.0"/>
+    <required name="error" ref="//@typeDefinitions.1"/>
+  </typeDefinitions>
+  <dataTypes name="void"/>
+  <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
+  <dataTypes name="java.lang.String"/>
+  <libraries name="org.kermeta.language" subTypes="//@typeDefinitions.2"/>
+  <deployUnits groupName="org.kermeta.language" unitName="language.texteditor.eclipse" version="2.0.0"/>
+  <deployUnits name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
+  <deployUnits name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>
+  <deployUnits name="org.kermeta.language.traceability.model" url="mvn:org.kermeta.traceability/traceability.model"/>
+  <deployUnits name="org.kermeta.language.api" url="mvn:org.kermeta.language/language.api"/>
+  <deployUnits name="org.kermeta.language.loader.scala" url="mvn:org.kermeta.language/language.loader.scala"/>
 </art2:ContainerRoot>
