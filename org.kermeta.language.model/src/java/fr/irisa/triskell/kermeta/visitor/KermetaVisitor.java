@@ -12,8 +12,8 @@ import java.lang.reflect.*;
 import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
 import fr.irisa.triskell.kermeta.error.KermetaVisitorError;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 /**
  * @author Franck Fleurey
@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
  */
 public class KermetaVisitor {
 
-	final static public Logger internalLog = LoggerFactory.getLogger("KMT.model");
+	//final static public Logger internalLog = LoggerFactory.getLogger("KMT.model");
 			// This is a generic visit method.
 			public Object genericVisitChildren(EObject node) {
 				Object result = null;
@@ -56,18 +56,18 @@ public class KermetaVisitor {
 		    		if (cause != null)				   
 		        		if (cause.getClass().getName().compareTo("fr.irisa.triskell.kermeta.error.KermetaVisitorError")==0)
 			    		{
-		            		internalLog.error(message, e);
+		            		//internalLog.error(message, e);
 		            		// this Exception was due to a KermetaVisitorError create a new one with the precedent content
 		            		throw new KermetaVisitorError(message, cause.getCause());
 		        		}
 		        		else
 		        		{
-							internalLog.error(message, e);
+							//internalLog.error(message, e);
 							throw	new KermetaVisitorError(e.getClass().getName() + " invoking "+ methodName + " on Class " +cname  ,e);
 						}
 		        	else
 		        	{
-						internalLog.error(message, e);
+						//internalLog.error(message, e);
 						throw	new KermetaVisitorError(e.getClass().getName() + " invoking "+ methodName + " on Class " +cname  ,e);
 					}
 				}

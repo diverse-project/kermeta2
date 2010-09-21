@@ -15,16 +15,16 @@ package fr.irisa.triskell.kermeta.model.plugin;
 //import java.net.URL;
 
 //import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Plugin;
-import org.osgi.framework.BundleContext;
+//import org.eclipse.core.runtime.Plugin;
+//import org.osgi.framework.BundleContext;
 
-public class ModelPlugin extends Plugin {
+public class ModelPlugin /*extends Plugin */{
 
 	public ModelPlugin() {		
 	}
 	
-	public void start(BundleContext context) throws Exception {
-		super.start(context);
+	public void start(/*BundleContext context*/) throws Exception {
+		//super.start(context);
 	/*	try {
 			URL url = getBundle().getEntry("/kermeta_log4j_configuration.xml");		
 			System.setProperty(org.kermeta.log4j.util.LogConfigurationHelper.DefaultKermetaConfigurationFilePropertyName,

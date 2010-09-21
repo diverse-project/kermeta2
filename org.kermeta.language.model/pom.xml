@@ -9,11 +9,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.kermeta.language</groupId>
     <artifactId>language.model</artifactId>
-    <version>2.0.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <name>Kermeta :: Model</name>
+    
+    <parent>
+    	<groupId>org.kermeta.language</groupId>
+    	<artifactId>language.root</artifactId>
+    	<version>2.0.0</version>
+    </parent>
+    
     <build>
         <sourceDirectory>${basedir}/src/java</sourceDirectory>
         <outputDirectory>target/classes</outputDirectory>
@@ -49,14 +54,8 @@
                         <Export-Package>org.kermeta.*,
                         fr.irisa.triskell.kermeta.*
                         </Export-Package>
-                        <Require-Bundle>
-							org.eclipse.core.runtime
-                    	</Require-Bundle>
                         <Import-Package>
-						!org.eclipse.core.runtime,
-						org.eclipse.emf.*,
-						org.osgi.framework,
-						org.slf4j
+						org.eclipse.emf.*
                         </Import-Package>
                         <Bundle-ClassPath>.</Bundle-ClassPath>
                         <Bundle-Vendor>IRISA/INRIA</Bundle-Vendor>
@@ -113,34 +112,10 @@
         </plugins>
     </build>
     <dependencies>
-    	<!-- Using emf.lib 2.6.0 version causes Unresolved references to [com.sun.mirror.apt, com.sun.mirror.declaration, com.sun.mirror.type, 
-    	com.sun.mirror.util, scala, scala.collection, scala.collection.generic, scala.collection.immutable, scala.collection.mutable, scala.reflect, scala.runtime] -->
-        <dependency>
+    	<dependency>
             <groupId>org.kermeta.emf</groupId>
             <artifactId>emf.lib</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-			<groupId>org.kermeta.eclipse</groupId>
-			<artifactId>org.eclipse.core.runtime</artifactId>
-			<version>[3.5.0.0,)</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>4.2.0</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<!-- Using org.kermeta.utils/utils.slf4j.eclipse v2.0.0-SNAPSHOT causes Unresolved references to [org.apache.log4j, org.apache.log4j.xml, 
-		org.eclipse.core.resources,	org.eclipse.core.runtime.preferences, org.eclipse.jface.preference,	org.eclipse.swt.widgets, org.eclipse.ui, org.eclipse.ui.plugin] --> 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.5.11</version>
-            <type>jar</type>
-            <scope>compile</scope>
+            <version>${emf.version}</version>
         </dependency>
     </dependencies>
     

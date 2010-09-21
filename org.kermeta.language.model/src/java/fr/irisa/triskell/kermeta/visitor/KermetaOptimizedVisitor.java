@@ -11,13 +11,13 @@ package fr.irisa.triskell.kermeta.visitor;
 import java.util.Hashtable;
 import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.kermeta.language.structure.NamedElement;
 import org.kermeta.language.behavior.VariableDecl;
 public class KermetaOptimizedVisitor {
-  final static public Logger internalLog = LoggerFactory
-			.getLogger("KMT.model");
+  /*final static public Logger internalLog = LoggerFactory
+			.getLogger("KMT.model");*/
   /** The parent of the node currently visited. */
   protected org.kermeta.language.structure.Object parent;
 	private static Hashtable<String,AcceptCommand> acceptCmds = null;
