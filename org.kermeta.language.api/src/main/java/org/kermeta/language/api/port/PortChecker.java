@@ -10,9 +10,7 @@
  */
 package org.kermeta.language.api.port;
 
-import java.util.Collection;
-
-import kermeta.exceptions.ConstraintsDiagnostic;
+import org.kermeta.language.api.ConstraintsDiagnostic;
 
 import org.kermeta.language.structure.ModelingUnit;
 
