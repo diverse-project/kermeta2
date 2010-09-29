@@ -1,4 +1,4 @@
-<!-- $Id: $ -->
+<!-- $Id$ -->
 <!-- License    : EPL                                    -->
 <!-- Project    : org.kermeta.utils.error.report.eclipse -->
 <!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
@@ -15,7 +15,7 @@
 	<parent>
         <groupId>org.kermeta.language</groupId>
         <artifactId>language.artcomponent.root</artifactId>
-        <version>2.0.0</version>
+        <version>2.0.0-SNAPSHOT</version>
     </parent>
     
 	<build>
@@ -67,17 +67,13 @@
 						<Export-Package>
                         	org.kermeta.utils.error.report.eclipse.*
                         </Export-Package>
-						<Require-Bundle>
-							org.eclipse.core.runtime,
-							org.eclipse.core.resources
-                        </Require-Bundle>
 						<!-- use the ! for avoiding to import some packages that are already 
 							there with the Require-Bundle -->
 						<Import-Package>
 							!org.eclipse.core.*,
 							org.kermeta.*,
 							scala.*,
-							org.slf4j.*,
+							org.slf4j.*;version="${slf4j.version.range}",
 							org.osgi.framework;version="[1.5,2)"
                         </Import-Package>
 						<!-- add extra element in the manifest, copy them from this file ex: 
