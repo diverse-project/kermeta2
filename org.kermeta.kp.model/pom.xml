@@ -1,4 +1,4 @@
-<!-- $Id: $ -->
+<!-- $Id$ -->
 <!-- License    : EPL                                    -->
 <!-- Project    : org.kermeta.kp.model -->
 <!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
@@ -10,8 +10,14 @@
 	<groupId>org.kermeta.kp</groupId>
 	<artifactId>kp.model</artifactId>
 	<name>Kermeta :: KP MODEL</name>
-	<version>2.0.0-SNAPSHOT</version>
 	<packaging>bundle</packaging>
+	
+	<parent>
+		<groupId>org.kermeta.language</groupId>
+		<artifactId>language.root</artifactId>
+		<version>2.0.0-SNAPSHOT</version>
+	</parent>
+	
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
@@ -54,14 +60,14 @@
 				<configuration>
 					<instructions>
 						<Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
-						<Export-Package>org.kermeta.kp,org.kermeta.kp.impl,org.kermeta.kp.util</Export-Package>
+						<Export-Package>org.kermeta.kp.*</Export-Package>
 						<Import-Package>
 							!org.eclipse.emf.*
 						</Import-Package>
 						<Bundle-ClassPath>.</Bundle-ClassPath>
 						<!-- add extra element in the manifest, copy them from this file ex: 
-							Bundle-ActivationPolicy: lazy -->
-						<_include>resources/META-INF/MANIFEST-part.MF</_include>
+							Bundle-ActivationPolicy: lazy
+						<_include>resources/META-INF/MANIFEST-part.MF</_include> -->
 					</instructions>
 				</configuration>
 			</plugin>
@@ -95,24 +101,10 @@
 		<dependency>
 			<groupId>org.kermeta.emf</groupId>
 			<artifactId>emf.lib</artifactId>
-			<version>[2.6.0,)</version>
+			<version>${emf.version}</version>
 		</dependency>
 	</dependencies>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	<distributionManagement>
-		<repository>
-			<id>tipimouss-local-maven-repository</id>
-			<name>Tipimouss Local release repository</name>
-			<url>file:/var/www/html/maven2</url>
-			<uniqueVersion>false</uniqueVersion>
-		</repository>
-		<snapshotRepository>
-			<id>tipimouss-local-maven-snapshot-repository</id>
-			<name>Tipimouss Local  snapshot repository</name>
-			<url>file:/var/www/html/maven2-snapshots</url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
-	</distributionManagement>
 </project>
