@@ -1,4 +1,4 @@
-<!-- $Id: $ -->
+<!-- $Id$ -->
 <!-- License    : EPL                                    -->
 <!-- Project    : org.kermeta.language.api.tests -->
 <!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
@@ -7,12 +7,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.kermeta.language</groupId>
   <artifactId>language.api.tests</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>Kermeta :: Tests</name>
+  <name>K2 :: Core API :: Tests</name>
   <url>http://maven.apache.org</url>
+  
+  <parent>
+  	<groupId>org.kermeta.language</groupId>
+  	<artifactId>language.artcomponent.root</artifactId>
+  	<version>2.0.0-SNAPSHOT</version>
+  </parent>
+  
   <build>
     <plugins>
       <plugin>
@@ -36,31 +41,17 @@
     </plugins>
   </build>
   <dependencies>
-    <dependency>
+ 	 <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.8.1</version>
     </dependency>
     <dependency>
-      <groupId>org.kermeta.language</groupId>
+      <groupId>${project.parent.groupId}</groupId>
       <artifactId>language.api</artifactId>
-      <version>2.0.0</version>
+      <version>${kermeta.version}</version>
     </dependency>
-  </dependencies>
-  <distributionManagement>
-      <repository>
-          <id>tipimouss-local-maven-repository</id>
-          <name>Tipimouss Local release repository</name>
-          <url>file:/var/www/html/maven2</url>
-          <uniqueVersion>false</uniqueVersion>
-      </repository>
-      <snapshotRepository>
-          <id>tipimouss-local-maven-repository</id>
-          <name>Tipimouss Local  snapshot repository</name>
-          <url>file:/var/www/html/maven2-snapshots</url>
-          <uniqueVersion>false</uniqueVersion>
-      </snapshotRepository>
-  </distributionManagement>
+  </dependencies> 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
