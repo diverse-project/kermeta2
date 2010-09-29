@@ -13,5 +13,5 @@
   <dataTypes name="void"/>
   <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
   <libraries name="org.kermeta.utils" subTypes="//@typeDefinitions.1"/>
-  <deployUnits groupName="org.kermeta.utils" unitName="utils.logger.eclipse" version="2.0.0"/>
+  <deployUnits groupName="org.kermeta.utils" unitName="utils.logger.eclipse" version="2.0.0-SNAPSHOT"/>
 </art2:ContainerRoot>
