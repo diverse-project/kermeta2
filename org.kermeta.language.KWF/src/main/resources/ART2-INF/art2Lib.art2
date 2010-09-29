@@ -20,5 +20,5 @@
   <dataTypes name="org.kermeta.language.api.kevent.KEvent"/>
   <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
   <libraries name="org.kermeta.language2" subTypes="//@typeDefinitions.2"/>
-  <deployUnits groupName="org.kermeta.language" unitName="language.KWF" version="2.0.0"/>
+  <deployUnits groupName="org.kermeta.language" unitName="language.KWF" version="2.0.0-SNAPSHOT"/>
 </art2:ContainerRoot>
