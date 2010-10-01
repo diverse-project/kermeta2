@@ -63,5 +63,11 @@
 </node>
 <node CREATED="1285763965193" ID="Freemind_Link_1026670057" MODIFIED="1285839048861" TEXT="Check Ecore model[029]"/>
 </node>
+<node CREATED="1285858990374" ID="Freemind_Link_935312223" MODIFIED="1285859074040" POSITION="left" TEXT="Build a texteditor for the metamodel">
+<node CREATED="1285859021489" ID="Freemind_Link_357804198" MODIFIED="1285859091401" TEXT="Reuse Kermeta texteditor components to build a texteditor for the metamodel[037]"/>
+<node COLOR="#338800" CREATED="1285859107526" ID="Freemind_Link_553033566" MODIFIED="1285859170060" TEXT="Use Eclipse technology for building a texteditor[038]">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
 </node>
 </map>
