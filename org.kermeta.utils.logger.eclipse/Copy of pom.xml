@@ -1,4 +1,4 @@
-<!-- $Id$ -->
+<!-- $Id: pom.xml 12705 2010-09-29 08:13:52Z hrambelo $ -->
 <!-- License    : EPL                                    -->
 <!-- Project    : org.kermeta.utils.logger.eclipse -->
 <!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
@@ -39,22 +39,13 @@
                         <Export-Package>
                         org.kermeta.utils.logger.eclipse.*
                         </Export-Package>
-                        <!-- Use Require-Bundle dependencies only for bundles for we don't have control and that may introduce splitted package issue ex: org.eclipse.core.runtime -->
-                        <Require-Bundle>
-                        	org.eclipse.jface.text,
-                    		org.eclipse.ui,
-                    		org.eclipse.ui.console,
- 							org.eclipse.core.runtime,
- 							org.eclipse.core.jobs,
- 							org.eclipse.equinox.preferences
-                        </Require-Bundle>
                         <Import-Package>
                         	!org.eclipse.core.*,
 							!org.eclipse.ui.*,
 							!org.eclipse.jface.*,
 							!org.eclipse.swt.*,
 	                        org.kermeta.art2.*,
-	                        !org.eclipse.equinox.preferences,
+	                        org.eclipse.equinox.preferences,
 							org.osgi.framework;version="[1.5,2)",						
 							org.kermeta.language.api.*,
 							scala.*
