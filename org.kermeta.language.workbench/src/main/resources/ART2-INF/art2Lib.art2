@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:art2="http://art/2.0">
-  <componentTypes name="K2Core" factoryBean="org.kermeta.language.core.K2CoreFactory" requiredLibs="//@thirdParties.0"/>
-  <librariy name="K2" groupName="org.kermeta.language" unitName="language.workbench" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
-  <thirdParties name="language.model" url="mvn:org.kermeta.language/language.model"/>
-</art2:ContainerRoot>
