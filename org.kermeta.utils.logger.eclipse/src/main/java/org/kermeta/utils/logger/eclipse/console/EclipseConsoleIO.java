@@ -126,7 +126,8 @@ public class EclipseConsoleIO extends ConsoleIO {
 		}
 		else{
 			// normal messages are run in the UI thread
-			ConsolePlugin.getStandardDisplay().syncExec(r);
+			//ConsolePlugin.getStandardDisplay().syncExec(r);			
+			ConsolePlugin.getStandardDisplay().asyncExec(r);
 		}
 	}
 	/** deal with not justified and large string
@@ -188,7 +189,7 @@ public class EclipseConsoleIO extends ConsoleIO {
 	public void println(final ConsoleMessage message) {
 		// use normal print for the message itself
 		print(message);
-		// add the cariage return
+		// add the carriage return
 		Runnable r = new Runnable() {
 			public void run() {
 				changeColor(message.getColor());
@@ -199,7 +200,7 @@ public class EclipseConsoleIO extends ConsoleIO {
 					}
 			}
 		};
-		ConsolePlugin.getStandardDisplay().syncExec(r);
+		ConsolePlugin.getStandardDisplay().asyncExec(r);
 	}
 	
 
