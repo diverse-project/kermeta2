@@ -1,68 +1,42 @@
 <?xml version="1.0" encoding="ASCII"?>
 <art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:art2="http://art/2.0">
   <nodes name="KermetaEclipseWorkbench">
-    <components name="Art2ComponentEventMonitorEclipseBuilder-1633076639" componentType="//@componentTypes.0">
-      <required portTypeRef="//@componentTypes.0/@required.0"/>
-      <required portTypeRef="//@componentTypes.0/@required.1"/>
+    <components name="Art2ComponentEclipseLogger-2039505978" typeDefinition="//@typeDefinitions.0">
+      <provided portTypeRef="//@typeDefinitions.0/@provided.0"/>
     </components>
-    <components name="Art2ComponentEclipseLogger-1744638294" componentType="//@componentTypes.1">
-      <provided portTypeRef="//@componentTypes.1/@provided.0"/>
-    </components>
-    <components name="Art2ComponentTexteditorEclipse--1877231444" componentType="//@componentTypes.2">
-      <required portTypeRef="//@componentTypes.2/@required.0"/>
-    </components>
-    <components name="Art2ComponentKWF--893176357" componentType="//@componentTypes.3">
-      <provided portTypeRef="//@componentTypes.3/@provided.0"/>
-      <required portTypeRef="//@componentTypes.3/@required.0"/>
+    <components name="Art2ComponentTexteditorEclipse-1210882949" typeDefinition="//@typeDefinitions.2">
+      <required portTypeRef="//@typeDefinitions.2/@required.0"/>
     </components>
   </nodes>
-  <componentTypes name="Art2ComponentEventMonitorEclipseBuilder" factoryBean="org.kermeta.language.eventmonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilderFactory" startMethod="start" stopMethod="stop" requiredLibs="//@thirdParties.0 //@thirdParties.1">
-    <required name="kevent" ref="//@portTypes.0"/>
-    <required name="log" ref="//@portTypes.1"/>
-  </componentTypes>
-  <componentTypes name="Art2ComponentEclipseLogger" factoryBean="org.kermeta.utils.logger.eclipse.art2.impl.Art2ComponentEclipseLoggerFactory" startMethod="start" stopMethod="stop">
-    <provided name="log" ref="//@portTypes.1">
+  <typeDefinitions xsi:type="art2:ComponentType" name="Art2ComponentEclipseLogger" deployUnit="//@deployUnits.0" factoryBean="org.kermeta.utils.logger.eclipse.art2.impl.Art2ComponentEclipseLoggerFactory" bean="org.kermeta.utils.logger.eclipse.art2.impl.Art2ComponentEclipseLogger" startMethod="start" stopMethod="stop">
+    <provided name="log" ref="//@typeDefinitions.1">
       <mappings beanMethodName="log" serviceMethodName="log"/>
     </provided>
-  </componentTypes>
-  <componentTypes name="Art2ComponentTexteditorEclipse" factoryBean="org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipseFactory" startMethod="start" stopMethod="stop">
-    <required name="log" ref="//@portTypes.1"/>
-    <requiredLibs href="#//@thirdParties.2"/>
-    <requiredLibs href="#//@thirdParties.3"/>
-    <requiredLibs href="../../../../../../../../tmp/art2loaderLib-7103707731137390772150096938.xmi#//@thirdParties.0"/>
-    <requiredLibs href="../../../../../../../../tmp/art2loaderLib-7103707731137390772150096938.xmi#//@thirdParties.1"/>
-    <requiredLibs href="#//@thirdParties.4"/>
-  </componentTypes>
-  <componentTypes name="Art2ComponentKWF" factoryBean="org.kermeta.language.kwf.art2.impl.Art2ComponentKWFFactory" startMethod="start" stopMethod="stop">
-    <required name="log" ref="//@portTypes.1"/>
-    <provided name="kevent" ref="//@portTypes.0">
-      <mappings beanMethodName="processKEvent" serviceMethodName="processKEvent"/>
-    </provided>
-  </componentTypes>
-  <bindings ports="//@nodes.0/@components.0/@required.1 //@nodes.0/@components.1/@provided.0"/>
-  <bindings ports="//@nodes.0/@components.2/@required.0 //@nodes.0/@components.1/@provided.0"/>
-  <bindings ports="//@nodes.0/@components.3/@required.0 //@nodes.0/@components.1/@provided.0"/>
-  <bindings ports="//@nodes.0/@components.3/@provided.0 //@nodes.0/@components.0/@required.0"/>
-  <dataTypes name="Unit"/>
-  <dataTypes name="org.kermeta.language.api.kevent.KEvent"/>
-  <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
-  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortKEvent">
-    <operations name="processKEvent" returnType="//@dataTypes.0">
+  </typeDefinitions>
+  <typeDefinitions xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortLog">
+    <operations name="log" returnType="//@dataTypes.0">
       <parameters name="arg0" type="//@dataTypes.1"/>
     </operations>
-  </portTypes>
-  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortLog">
-    <operations name="log" returnType="//@dataTypes.0">
-      <parameters name="arg0" type="//@dataTypes.2"/>
-    </operations>
-  </portTypes>
-  <libraries name="org.kermeta.language1" groupName="org.kermeta.language" unitName="language.eventmonitor.eclipse.builder" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
-  <libraries name="org.kermeta.utils" groupName="org.kermeta.utils" unitName="utils.logger.eclipse" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.1"/>
-  <libraries name="org.kermeta.language" groupName="org.kermeta.language" unitName="language.texteditor.eclipse" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.2"/>
-  <libraries name="org.kermeta.language2" groupName="org.kermeta.language" unitName="language.KWF" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.3"/>
-  <thirdParties name="org.kermeta.language.traceability.model" url="mvn:org.kermeta.traceability/traceability.model"/>
-  <thirdParties name="org.kermeta.language.api" url="mvn:org.kermeta.language/language.api"/>
-  <thirdParties name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
-  <thirdParties name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>
-  <thirdParties name="org.kermeta.language.loader.scala" url="mvn:org.kermeta.language/language.loader.scala"/>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="art2:ComponentType" name="Art2ComponentTexteditorEclipse" deployUnit="//@deployUnits.1" factoryBean="org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipseFactory" bean="org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipse" requiredLibs="//@deployUnits.2 //@deployUnits.3 //@deployUnits.4 //@deployUnits.5 //@deployUnits.6" startMethod="start" stopMethod="stop">
+    <required name="log" ref="//@typeDefinitions.1"/>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="art2:ChannelType" name="DefaultServiceChannelType" deployUnit="//@deployUnits.7" factoryBean="org.kermeta.art2.framework.baselib.channeltype.DefaultServiceChannelTypeFactory" bean="org.kermeta.art2.framework.baselib.channeltype.DefaultServiceChannelType"/>
+  <typeDefinitions xsi:type="art2:ChannelType" name="DefaultMessageChannelType" deployUnit="//@deployUnits.7" factoryBean="org.kermeta.art2.framework.baselib.channeltype.DefaultMessageChannelTypeFactory" bean="org.kermeta.art2.framework.baselib.channeltype.DefaultMessageChannelType"/>
+  <dataTypes name="void"/>
+  <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
+  <libraries name="org.kermeta.utils" subTypes="//@typeDefinitions.0"/>
+  <libraries name="org.kermeta.language" subTypes="//@typeDefinitions.2"/>
+  <libraries name="Art2BaseChannelType" subTypes="//@typeDefinitions.3 //@typeDefinitions.4"/>
+  <hubs name="hub-0" typeDefinition="//@typeDefinitions.3"/>
+  <mBindings port="//@nodes.0/@components.0/@provided.0" hub="//@hubs.0"/>
+  <mBindings port="//@nodes.0/@components.1/@required.0" hub="//@hubs.0"/>
+  <deployUnits groupName="org.kermeta.utils" unitName="utils.logger.eclipse" version="2.0.0-SNAPSHOT"/>
+  <deployUnits groupName="org.kermeta.language" unitName="language.texteditor.eclipse" version="2.0.0-SNAPSHOT"/>
+  <deployUnits name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
+  <deployUnits name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>
+  <deployUnits name="org.kermeta.language.traceability.model" url="mvn:org.kermeta.traceability/traceability.model"/>
+  <deployUnits name="org.kermeta.language.api" url="mvn:org.kermeta.language/language.api"/>
+  <deployUnits name="org.kermeta.language.loader.scala" url="mvn:org.kermeta.language/language.loader.scala"/>
+  <deployUnits groupName="org.kermeta.art2" unitName="art2.framework.baseLib" version="2.1.1-SNAPSHOT"/>
 </art2:ContainerRoot>
