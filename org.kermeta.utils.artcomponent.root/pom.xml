@@ -1,0 +1,29 @@
+<!-- $Id:  $ -->
+<!-- License    : EPL                                    -->
+<!-- Project    : org.kermeta.language.artcomponent.root -->
+<!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
+<!-- Authors : Haja Rambelontsalama <hrambelo@irisa.fr> --> 
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.kermeta.utils</groupId>
+    <artifactId>utils.artcomponent.root</artifactId>
+    <packaging>pom</packaging>
+    <version>2.0.0-SNAPSHOT</version>
+    <name>K2 :: UTILS :: Root</name>
+
+    <parent>
+        <groupId>org.kermeta.art2</groupId>
+        <artifactId>art2.artcomponent.root</artifactId>
+        <version>2.1.1</version>
+    </parent>
+
+
+    <properties>
+        <kermeta.version>2.0.0-SNAPSHOT</kermeta.version>
+    </properties>
+
+	<dependencies>
+	</dependencies>
+</project>
