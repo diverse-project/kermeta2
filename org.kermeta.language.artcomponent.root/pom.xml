@@ -11,7 +11,7 @@
     <artifactId>language.artcomponent.root</artifactId>
     <packaging>pom</packaging>
     <version>2.0.0-SNAPSHOT</version>
-    <name>K2 :: Root</name>
+    <name>K2 :: ArtComponent :: Root</name>
 
     <parent>
         <groupId>org.kermeta.art2</groupId>
