@@ -73,7 +73,7 @@
 		</replaceregexp>
 		<replaceregexp>
 			<regexp pattern="${synchronized.property}&gt;(.*)&lt;/${synchronized.property}" />
-			<substitution expression="${synchronized.property}&gt;${next.development.version}&lt;/${synchronized.property}" />
+			<substitution expression="${synchronized.property}&gt;${release.version}&lt;/${synchronized.property}" />
 			<fileset dir="${artcomponent.parent.root}" includes="**/pom.xml" />
 		</replaceregexp>
 	</target>
