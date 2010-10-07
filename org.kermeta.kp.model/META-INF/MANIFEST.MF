@@ -13,8 +13,8 @@ Tool: Bnd-0.0.311
 Bundle-Name: Kermeta :: KP MODEL
 Created-By: Apache Maven Bundle Plugin
 Build-Jdk: 1.6.0_20
-Bundle-Version: 2.0.0
-Bnd-LastModified: 1286466538490
+Bundle-Version: 2.0.1.SNAPSHOT
+Bnd-LastModified: 1286466673551
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.kermeta.kp.model;singleton:=true
 

@@ -11,7 +11,7 @@
   <dataTypes name="void"/>
   <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
   <libraries name="org.kermeta.language" subTypes="//@typeDefinitions.1"/>
-  <deployUnits groupName="org.kermeta.language" unitName="language.texteditor.eclipse" version="2.0.0"/>
+  <deployUnits groupName="org.kermeta.language" unitName="language.texteditor.eclipse" version="2.0.1-SNAPSHOT"/>
   <deployUnits name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
   <deployUnits name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>
   <deployUnits name="org.kermeta.language.traceability.model" url="mvn:org.kermeta.traceability/traceability.model"/>
