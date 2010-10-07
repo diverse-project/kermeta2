@@ -41,7 +41,7 @@
         <module>org.kermeta.language.workbench.eclipse</module>
                 
         <!-- Art2 components -->
-        <module>org.kermeta.language.checker</module> 
+        <!-- <module>org.kermeta.language.checker</module> --> 
         <module>org.kermeta.language.eventmonitor.eclipse.builder</module> 
         <module>org.kermeta.language.texteditor.eclipse</module>        
         <module>org.kermeta.traceability.model</module>
