@@ -119,6 +119,8 @@
 			<arg value="copy" />
 			<arg value="${svn.dev.url}" />
 			<arg value="${svn.tag.url}${release.version}" />
+			<arg value="--username"/>
+			<arg value="kermeta_bot"/>
 			<arg value="-m" />
 			<arg value="&quot;Tagging ${release.version} release version.&quot;" />
 		</exec>
