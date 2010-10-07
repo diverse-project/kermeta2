@@ -6,7 +6,7 @@
 package utils
 
 object UTilScala {
-
+ 
     def isInstanceOf(o:Object, typ:Object):Boolean={
         if (o.getClass.getName.equals(typ.getClass.getName))
             return true
