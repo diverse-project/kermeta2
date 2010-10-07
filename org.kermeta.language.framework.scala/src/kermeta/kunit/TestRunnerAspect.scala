@@ -58,7 +58,7 @@ stdio.writeln("\n---------------------------------------------------------------
  return result 
 }
 
-   def run(testCaseClass : java.lang.Class[_]):Void = {
+   def run(testCaseClass : fr.irisa.triskell.kermeta.language.structure.Class):Void = {
 var result : Void = null.asInstanceOf[Void]; 
 {
 runTest(kermeta.kunit.RichFactory.createTestSuite.addAllTestCasesFrom(testCaseClass))

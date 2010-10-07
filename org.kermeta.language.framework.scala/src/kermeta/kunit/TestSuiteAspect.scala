@@ -12,18 +12,20 @@ def Scalatests_=(arg : java.util.List[kermeta.kunit.Test])={this.getTests().clea
 this.getTests().addAll(arg)
 }
 
-   def addAllTestCasesFrom(testCaseClass : java.lang.Class[_]):kermeta.kunit.TestSuite = {
+   def addAllTestCasesFrom(testCaseClass1 : fr.irisa.triskell.kermeta.language.structure.Class):kermeta.kunit.TestSuite = {
 var result : kermeta.kunit.TestSuite = null.asInstanceOf[kermeta.kunit.TestSuite]; 
 {
+    
+                var testCaseClass : java.lang.Class[_] =null
+                
+            testCaseClass = java.lang.Class.forName(utils.UTilScala.getQualifiedNameClass( testCaseClass1.getTypeDefinition , "."))         
 	//TODO
 	var tear : java.lang.reflect.Method =null
 	//tear = testCaseClass.getDeclaredMethods().filter{e=> e.getName().startsWith("tearDown")}.first
+                  
 	var const : java.lang.reflect.Constructor[_] = testCaseClass.getConstructors().first
 	
 	testCaseClass.getDeclaredMethods().filter{e=> e.getName().startsWith("test")}.foreach{e1 => 
-	
-	
-	
 	
 	var testcase : TestCase = const.newInstance().asInstanceOf[TestCase];
 	//testcase.set__testObject(testcase)
