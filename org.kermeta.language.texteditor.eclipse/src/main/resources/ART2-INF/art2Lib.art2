@@ -5,22 +5,12 @@
       <parameters name="arg0" type="//@dataTypes.1"/>
     </operations>
   </typeDefinitions>
-  <typeDefinitions xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortErrorReport">
-    <operations name="markResource" returnType="//@dataTypes.0">
-      <parameters name="arg0" type="//@dataTypes.2"/>
-    </operations>
-    <operations name="unMarkResource" returnType="//@dataTypes.0">
-      <parameters name="arg0" type="//@dataTypes.2"/>
-    </operations>
-  </typeDefinitions>
   <typeDefinitions xsi:type="art2:ComponentType" name="Art2ComponentTexteditorEclipse" deployUnit="//@deployUnits.0" factoryBean="org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipseFactory" bean="org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipse" requiredLibs="//@deployUnits.1 //@deployUnits.2 //@deployUnits.3 //@deployUnits.4 //@deployUnits.5" startMethod="start" stopMethod="stop">
     <required name="log" ref="//@typeDefinitions.0"/>
-    <required name="error" ref="//@typeDefinitions.1"/>
   </typeDefinitions>
   <dataTypes name="void"/>
   <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
-  <dataTypes name="java.lang.String"/>
-  <libraries name="org.kermeta.language" subTypes="//@typeDefinitions.2"/>
+  <libraries name="org.kermeta.language" subTypes="//@typeDefinitions.1"/>
   <deployUnits groupName="org.kermeta.language" unitName="language.texteditor.eclipse" version="2.0.0"/>
   <deployUnits name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
   <deployUnits name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>

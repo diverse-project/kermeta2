@@ -22,7 +22,7 @@ Ignore-Package: org.eclipse.jface.operation,org.eclipse.swt.custom,org
  rce,org.eclipse.jface.dialogs
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
-Built-By: hrambelo
+Built-By: root
 Tool: Bnd-0.0.311
 Bundle-Localization: plugin
 Bundle-Name: Kermeta :: KP Editor UI
@@ -35,9 +35,9 @@ Require-Bundle: org.eclipse.core.runtime,							org.eclipse.core.resou
  ,							org.eclipse.ui.workbench.texteditor,							org.kermeta.kp.mod
  el,							org.antlr.runtime,							org.eclipse.emf.ecore.resource;vis
  ibility:=reexport
-Build-Jdk: 1.6.0_18
+Build-Jdk: 1.6.0_20
 Bundle-Version: 2.0.0.SNAPSHOT
-Bnd-LastModified: 1281716074131
+Bnd-LastModified: 1286465394720
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.kermeta.kp.editor.ui.KptUIPlugin
 Bundle-SymbolicName: org.kermeta.kp.editor.ui;singleton:=true

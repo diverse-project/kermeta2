@@ -18,7 +18,7 @@
   <dataTypes name="org.kermeta.language.api.kevent.KEvent"/>
   <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
   <libraries name="org.kermeta.language1" subTypes="//@typeDefinitions.2"/>
-  <deployUnits groupName="org.kermeta.language" unitName="language.eventmonitor.eclipse.builder" version="2.0.0-SNAPSHOT"/>
+  <deployUnits groupName="org.kermeta.language" unitName="language.eventmonitor.eclipse.builder" version="2.0.0"/>
   <deployUnits name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
   <deployUnits name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>
   <deployUnits name="org.kermeta.language.traceability.model" url="mvn:org.kermeta.traceability/traceability.model"/>
