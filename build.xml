@@ -99,7 +99,6 @@
 			<arg value="&quot;Creating ${release.version} release version.&quot;" />
 			<arg value="--username"/>
 			<arg value="kermeta_bot"/>
-			<arg value="-v"/>
 		</exec>
 		<!-- <apply executable="svn" 
 			parallel="true" 
