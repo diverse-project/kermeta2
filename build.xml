@@ -92,7 +92,7 @@
 	<target name="tag_release_version">
 		<echo>Committing...</echo>
 		<exec executable="svn"  failonerror="true">
-			<env key="SVN_SSH" path="/usr/bin/ssh -i  /local/kermeta_bot/.ssh/id_rsa" />
+			<env key="SVN_SSH" path="/usr/bin/ssh -l kermeta_bot  -i  /local/kermeta_bot/.ssh/id_rsa" />
 			<arg value="commit" />
 			<arg value="." />
 			<arg value="-m" />
@@ -116,7 +116,7 @@
 		-->
 		<echo>Tagging...</echo>
 		<exec executable="svn"  failonerror="true">
-			<env key="SVN_SSH" path="/usr/bin/ssh -i  /local/kermeta_bot/.ssh/id_rsa" />
+			<env key="SVN_SSH" path="/usr/bin/ssh -l kermeta_bot -i  /local/kermeta_bot/.ssh/id_rsa" />
 			<arg value="copy" />
 			<arg value="${svn.dev.url}" />
 			<arg value="${svn.tag.url}${release.version}" />
@@ -161,7 +161,7 @@
 	<target name="commit_dev_version">
 		<echo>Committing...</echo>
 		<exec executable="svn"  failonerror="true">
-			<env key="SVN_SSH" path="/usr/bin/ssh -i  /local/kermeta_bot/.ssh/id_rsa" />
+			<env key="SVN_SSH" path="/usr/bin/ssh  -l kermeta_bot  -i  /local/kermeta_bot/.ssh/id_rsa" />
 			<arg value="commit" />
 			<arg value="." />
 			<arg value="--username"/>
