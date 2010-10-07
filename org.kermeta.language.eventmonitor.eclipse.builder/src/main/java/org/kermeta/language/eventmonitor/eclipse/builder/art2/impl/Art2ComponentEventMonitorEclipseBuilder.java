@@ -33,8 +33,11 @@ import org.kermeta.language.api.port.PortKEvent;
 import org.osgi.framework.Bundle;
 
 @ThirdParties({
+	@ThirdParty(name="org.kermeta.language.model", url="mvn:org.kermeta.language/language.model"),
+	@ThirdParty(name="org.kermeta.language.kp.model", url="mvn:org.kermeta.kp/kp.model"),
 	@ThirdParty(name="org.kermeta.language.traceability.model", url="mvn:org.kermeta.traceability/traceability.model"),
-	@ThirdParty(name="org.kermeta.language.api", url="mvn:org.kermeta.language/language.api")
+	@ThirdParty(name="org.kermeta.language.api", url="mvn:org.kermeta.language/language.api"),
+	@ThirdParty(name="org.kermeta.language.loader.scala", url="mvn:org.kermeta.language/language.loader.scala")
 })
 
 @Requires({

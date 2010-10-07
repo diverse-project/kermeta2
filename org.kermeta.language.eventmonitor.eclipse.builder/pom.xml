@@ -72,7 +72,8 @@
 							!org.eclipse.core.*,
 							!org.eclipse.ui.*,
 							!org.eclipse.jface.*,
-							org.kermeta.*,
+							org.kermeta.art2.*,
+							org.kermeta.language.api.*,
 							scala.*,
 							org.slf4j.*;version="${slf4j.version.range}",
 							org.osgi.framework;version="[1.5,2)"
