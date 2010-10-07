@@ -36,7 +36,7 @@ Require-Bundle: org.eclipse.core.runtime,							org.eclipse.core.resou
  rces
 Build-Jdk: 1.6.0_20
 Bundle-Version: 2.0.0.SNAPSHOT
-Bnd-LastModified: 1286466234569
+Bnd-LastModified: 1286466574571
 Bundle-Activator: org.kermeta.kp.editor.mopp.KptPlugin
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.kermeta.kp.editor;singleton:=true
