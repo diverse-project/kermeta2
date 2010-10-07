@@ -90,6 +90,8 @@
 			<env key="SVN_SSH" path="/usr/bin/ssh -i  /local/kermeta_bot/.ssh/id_rsa" />
 			<arg value="commit" />
 			<arg value="." />
+			<arg value="--username"/>
+			<arg value="kermeta_bot"/>
 			<arg value="-m" />
 			<arg value="&quot;Creating ${release.version} release version.&quot;" />
 		</exec>
@@ -149,6 +151,8 @@
 			<env key="SVN_SSH" path="/usr/bin/ssh -i  /local/kermeta_bot/.ssh/id_rsa" />
 			<arg value="commit" />
 			<arg value="." />
+			<arg value="--username"/>
+			<arg value="kermeta_bot"/>
 			<arg value="-m" />
 			<arg value="&quot;Creating ${next.development.version} development version.&quot;" />
 		</exec>
