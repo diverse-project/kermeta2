@@ -30,7 +30,7 @@ object TypeEquivalence {
   var typeEquivelence :  java.util.HashMap[String,String] = {typeEquivelence = new java.util.HashMap[String,String]()
                                                              typeEquivelence.put("kermeta.utils.Hashtable", "java.util.HashMap");
                                                              typeEquivelence.put("org.eclipse.emf.ecore.EStringToStringMapEntry","java.util.Map.Entry[String,String]")
-                                                             typeEquivelence.put("kermeta.utils.Stack", " java.util.Stack");
+                                                             typeEquivelence.put("kermeta.utils.Stack", "java.util.Stack");
                                                              typeEquivelence.put("kermeta.utils.StringBuffer", "scala.StringBuilder");
                                                              typeEquivelence.put("kermeta.utils.Hashtable", "java.util.HashMap");
                                                              typeEquivelence.put("kermeta.standard.Iterator", "java.util.Iterator");

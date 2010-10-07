@@ -26,7 +26,7 @@ object ReflexivityLoader {
 
     def getMetaClass(classQualifiedName: String) :  fr.irisa.triskell.kermeta.language.structure.ClassDefinition={
         import scala.collection.JavaConversions._
-
+        var classQualifiedName1 = classQualifiedName.replace("_root_.","")
         if (!isInit){
             this.loadKmModel(this.getClass().getResource("/Reflexivity.km").toURI().toString()).foreach(e=>
                 if (e.isInstanceOf[ClassDefinition])
@@ -35,7 +35,7 @@ object ReflexivityLoader {
             println("init reflexive layer")
             isInit= true
         }
-        var selectedclassdefs = classdefs.filter(e=> qualifiedName(e) .equals(classQualifiedName))
+        var selectedclassdefs = classdefs.filter(e=> qualifiedName(e) .equals(classQualifiedName1))
         
         if (selectedclassdefs.size>0){
             return selectedclassdefs.get(0);

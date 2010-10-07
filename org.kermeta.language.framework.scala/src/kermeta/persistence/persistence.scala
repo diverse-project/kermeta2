@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import fr.irisa.triskell.kermeta.KmPackage;
 import org.eclipse.emf.ecore._;
 import java.lang.String
+import kermeta.standard.JavaConversions._
 
 abstract class Resource  extends java.util.ArrayList[fr.irisa.triskell.kermeta.language.structure.Object]{
     var dependentResources:Resource=_;
@@ -105,15 +106,49 @@ class EMFResource  extends Resource  {
     rs.getPackageRegistry().putAll(EcorePackages.getPacks())
 			
 			
-	    
+
+   
+    def setEResource(arg:EObject, resource:org.eclipse.emf.ecore.resource.Resource){
+        var it = arg.eAllContents
+        while (it.hasNext){
+            var obj :EObject = it.next
+          //  println(obj)
+            
+            resource.getContents.add(obj)
+//            obj.setEResource(this)
+            //this.add(obj.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object])
+        }
+    }
+    
+    
     //override def remove(instance : Object)={super.remove(instance)}
     override  def save()={
-
+        println("uri1 " + uri + " " +         this.size + this.get(0))
+//        println(this.iterator.)
+       
+        
         var uri1 :URI = URI.createURI(uri)//.replace("platform:/resource/",EcorePackages.workspaceURI).replace("platform:/plugin/",EcorePackages.pluginURI ));
         var resource :org.eclipse.emf.ecore.resource.Resource  = rs.createResource(uri1);
+        this.setEResource(this.get(0),resource)
         resource.getContents.addAll(this)
+        var cont = resource.getContents
+        cont.each(obj=>{   
+                var list =        obj.eCrossReferences.select(obj1=> !cont.contains(obj1))
+                
+                if (list.size>0){println("obj = " + obj) 
+                                obj.asInstanceOf[org.eclipse.emf.ecore.EGenericType].setEClassifier(null)
+                                 obj.eClass.getEStructuralFeatures.each(t => println( t+ " " + obj.eGet(t)))
+                                 //obj.eClass.getEAllStructuralFeatures.each(t => println( t+ " " + obj.eGet(t)))
+
+                                 println("crossRef " + list.size)
+                                 list.each(e=> println("e = " + e))
+                }
+                        
+            })
+        
+        
         resource.save(new java.util.HashMap());
-}
+    }
     override def saveWithNewURI(new_uri : String)={ uri = new_uri
                                                    this.save
     }
@@ -127,10 +162,13 @@ class EMFResource  extends Resource  {
         var resource :org.eclipse.emf.ecore.resource.Resource  = rs.getResource(uri1,true);
         //resource.load(new java.util.HashMap)
         if (resource.isLoaded() && resource.getContents().size() > 0) {
-          import kermeta.standard.JavaConversions._
-          resource.getContents.each(elem=>{
-              this.add(elem.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object])
-          })
+          
+            var it =  resource.getAllContents
+            while (it.hasNext){
+                var obj = it.next
+                println("new object " + obj)
+                this.add(obj.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object])
+            }
             
         }
 			

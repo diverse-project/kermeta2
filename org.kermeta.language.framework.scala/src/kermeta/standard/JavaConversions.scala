@@ -48,7 +48,7 @@ object JavaConversions {
   import scala.collection.{ generic, immutable, mutable, Traversable }
   import scala.reflect.ClassManifest
   
-  class RichKermetaList[A] ( value : ju.List[A]) extends  fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation with  EObjectImplForPrimitive with EList[A]{
+  class RichKermetaList[A] ( value : ju.List[A]) extends  fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation with  EObjectImplForPrimitive with EList[A] with fr.irisa.triskell.kermeta.language.structure.Object{
 	  
     def first() = value.get(0)
 
@@ -82,7 +82,13 @@ object JavaConversions {
     }
     //TODO
     def excludes(element : A) :java.lang.Boolean={return true;}
-    def one() :A={value.iterator.next}
+    def one():A ={
+        
+                  if (value.iterator.hasNext)
+                     return  value.iterator.next
+                 else
+                     return null.asInstanceOf[A]
+                  }
     //TODO
     //def containsAll(elts : ju.Collection[_]) :scala.Boolean={ true}
     //TODO
@@ -132,8 +138,10 @@ object JavaConversions {
     //override def size() :Int={return value.length}
     def each(func : A=> Unit):Unit ={
       var clone : ju.List[A] = new ju.ArrayList[A]
-      clone.addAll(value)
-      var i : ju.Iterator[A] = clone.iterator; while (i.hasNext){func(i.next)  }
+      if (value != null){
+          clone.addAll(value)
+          var i : ju.Iterator[A] = clone.iterator; while (i.hasNext){func(i.next)  }
+      }
     }
 
     def collect[B](collector : A=> B) :java.util.List[B]={var res = new ju.ArrayList[B](); this.each(e=> res.add(collector(e)))  ; return res  }
@@ -161,6 +169,7 @@ object JavaConversions {
       return res
     }
     def addUnique(a:A) :Unit = {
+     // println("addUnique " + a + value.size)
       if (!value.contains(a))
         value.add(a)
       //var res : java.util.List[A] = new java.util.ArrayList[A];
@@ -382,7 +391,15 @@ object JavaConversions {
     }
     //TODO
     def excludes(element : A) :java.lang.Boolean={return true;}
-    def one() :A={value.iterator.next}
+    def one() :A={
+
+                  if (value.iterator.hasNext)
+                     return  value.iterator.next
+                 else
+                     return null.asInstanceOf[A]
+        
+
+    }
     //TODO
     def containsAll(elts : ju.Collection[A]) :scala.Boolean={ true}
     //TODO
@@ -427,7 +444,12 @@ object JavaConversions {
 
     }
     //override def size() :Int={return value.length}
-    def each(func : A=> Unit):Unit ={ var i : ju.Iterator[A] = value.iterator; while (i.hasNext){func(i.next)  } }
+    def each(func : A=> Unit):Unit ={       var clone : ju.List[A] = new ju.ArrayList[A]
+      if (value != null){
+          clone.addAll(value)
+          var i : ju.Iterator[A] = clone.iterator; while (i.hasNext){func(i.next)  }
+      }}
+  
     def collect[B](collector : A=> B) :java.util.List[B]={var res = new ju.ArrayList[B](); this.each(e=> res.add(collector(e)))  ; return res  }
     def getMetaClass():String={
       return this.getClass().toString();
