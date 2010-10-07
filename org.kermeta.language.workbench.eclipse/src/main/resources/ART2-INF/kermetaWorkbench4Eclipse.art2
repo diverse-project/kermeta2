@@ -31,12 +31,12 @@
   <hubs name="hub-0" typeDefinition="//@typeDefinitions.3"/>
   <mBindings port="//@nodes.0/@components.0/@provided.0" hub="//@hubs.0"/>
   <mBindings port="//@nodes.0/@components.1/@required.0" hub="//@hubs.0"/>
-  <deployUnits groupName="org.kermeta.utils" unitName="utils.logger.eclipse" version="2.0.0-SNAPSHOT"/>
-  <deployUnits groupName="org.kermeta.language" unitName="language.texteditor.eclipse" version="2.0.0-SNAPSHOT"/>
-  <deployUnits name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
-  <deployUnits name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>
-  <deployUnits name="org.kermeta.language.traceability.model" url="mvn:org.kermeta.traceability/traceability.model"/>
-  <deployUnits name="org.kermeta.language.api" url="mvn:org.kermeta.language/language.api"/>
-  <deployUnits name="org.kermeta.language.loader.scala" url="mvn:org.kermeta.language/language.loader.scala"/>
-  <deployUnits groupName="org.kermeta.art2" unitName="art2.framework.baseLib" version="2.1.1-SNAPSHOT"/>
+  <deployUnits groupName="org.kermeta.utils" unitName="utils.logger.eclipse" version="2.0.0"/>
+  <deployUnits groupName="org.kermeta.language" unitName="language.texteditor.eclipse" version="2.0.0"/>
+  <deployUnits name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model/2.0.0"/>
+  <deployUnits name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model/2.0.0"/>
+  <deployUnits name="org.kermeta.language.traceability.model" url="mvn:org.kermeta.traceability/traceability.model/2.0.0"/>
+  <deployUnits name="org.kermeta.language.api" url="mvn:org.kermeta.language/language.api/2.0.0"/>
+  <deployUnits name="org.kermeta.language.loader.scala" url="mvn:org.kermeta.language/language.loader.scala/2.0.0"/>
+  <deployUnits groupName="org.kermeta.art2" unitName="art2.framework.baseLib" version="2.1.1"/>
 </art2:ContainerRoot>
