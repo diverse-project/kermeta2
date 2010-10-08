@@ -9,7 +9,6 @@
  */
 package org.kermeta.utils.logger.eclipse.art2.impl;
 
-import org.eclipse.core.runtime.Plugin;
 import org.kermeta.art2.annotation.ComponentType;
 import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.PortType;
@@ -18,7 +17,6 @@ import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.annotation.Start;
 import org.kermeta.art2.annotation.Stop;
 import org.kermeta.art2.framework.AbstractComponentType;
-import org.kermeta.art2.framework.MessagePort;
 import org.kermeta.language.api.messaging.UnifiedMessage;
 import org.kermeta.language.api.port.PortLog;
 import org.kermeta.utils.logger.eclipse.ConsoleMessageFactory;
@@ -44,15 +42,16 @@ public class Art2ComponentEclipseLogger extends AbstractComponentType {
 	protected String consoleUId ;
 	private LoggerEclipsePlugin errorLog = new LoggerEclipsePlugin();
 	
+	
 	//@port(name="asynclog", method="process")
 	@Port(name="log",method="log")
-    public void log(Object o){ 
+    public void log(Object o){ 		
 		if (o instanceof UnifiedMessage) {
 			// TODO filter Developer message if not required by the UI (preference page, and/or toggle button etc...)
 			
 			UnifiedMessage kermetaMessage = (UnifiedMessage) o;
 			// build consoleMessage from unifiedMessage then print it
-			logger.println(consoleMessageFactory.getConsoleMessage(kermetaMessage));
+			getLogger().println(consoleMessageFactory.getConsoleMessage(kermetaMessage));
 			//Also log errors and warnings to Eclipse log view
 			errorLog.addToErrorLog(kermetaMessage); // do nothing if the message is not a ProblemMessage of kind WARNING, ERROR, or FATAL
 		}
@@ -72,8 +71,15 @@ public class Art2ComponentEclipseLogger extends AbstractComponentType {
 	public void stop(){
 		EclipseConsoleIOFactory.getInstance().removeConsoleIO(consoleUId);
 	}
-		
 	
+	/* This should be removed when art bug will be fixed*/
+	private ConsoleIO getLogger(){
+		if(logger == null){
+			// create a temporary console because we have been called before being completely started
+			logger = EclipseConsoleIOFactory.getInstance().getConsoleIO(consoleUId, "Dummy console");
+		}
+		return logger;
+	}
 	
 }
 
