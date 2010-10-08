@@ -34,8 +34,13 @@ public class KermetaMarker {
 	 * Marks a file with markers.
 	 * 
 	 * @param url The url of the resource that is the file to mark.
+	 * @param message
+	 * @param severity
+	 * @param LineNumber
+	 * @param charStart
+	 * @param charEnd
 	 */
-	public void mark(String url){
+	public void mark(String url, String message, int severity, int LineNumber, int charStart, int charEnd ){
 		if (url == null) {
 			return;
 		}
@@ -44,7 +49,7 @@ public class KermetaMarker {
 		if (file == null) {
 			return;
 		}
-		createMarker(file, 0, null, -1, null, null);
+		createMarker(file, message, severity, LineNumber, charStart, charEnd);
 	}
 	
 	/**
@@ -74,12 +79,12 @@ public class KermetaMarker {
 	 * @param charStart The starting character to mark
 	 * @param charEnd The ending character to mark
 	 */
-	public void createMarker(IFile file, int markerSeverity, String message, int lineNumber, String charStart, String charEnd){
+	public void createMarker(IFile file, String message, int markerSeverity, int lineNumber, int charStart, int charEnd){
 		try {
 			org.eclipse.core.resources.IMarker marker = file.createMarker(MARKER_TYPE);
 			marker.setAttribute(IMarker.SEVERITY, markerSeverity);
 			marker.setAttribute(IMarker.MESSAGE, message);
-			if(lineNumber != -1 && charStart != null && charEnd!=null){
+			if(lineNumber != -1 && charStart != -1 && charEnd!=-1){
 				marker.setAttribute(org.eclipse.core.resources.IMarker.LINE_NUMBER, lineNumber);
 				marker.setAttribute(org.eclipse.core.resources.IMarker.CHAR_START, charStart);
 				marker.setAttribute(org.eclipse.core.resources.IMarker.CHAR_END, charEnd + 1);
@@ -90,9 +95,13 @@ public class KermetaMarker {
 			}
 		} catch (org.eclipse.core.runtime.CoreException ce) {
 			if (ce.getMessage().matches("Marker.*not found.")) {
-				// ignore
+				// ignore but log
+				Art2ComponentEclipseErrorReport.getDefault().getLogPort().log(mFactory.createErrorMessage("Exception raised : Marker.*not found at : ", 
+						Art2ComponentEclipseErrorReport.getDefault().getBundleSymbolicName(), ce));
 			} else {
 				ce.printStackTrace();
+				Art2ComponentEclipseErrorReport.getDefault().getLogPort().log(mFactory.createErrorMessage("Exception raised : ", 
+						Art2ComponentEclipseErrorReport.getDefault().getBundleSymbolicName(), ce));
 			}
 		}
 	}
