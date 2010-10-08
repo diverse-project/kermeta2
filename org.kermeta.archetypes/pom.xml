@@ -33,7 +33,7 @@
                         </goals>
                         <configuration>
                             <executable>mvn</executable>
-                            <workingDirectory>org.kermeta.language.archetype.art2BundleUIContrib</workingDirectory>
+                            <workingDirectory>${project.build.directory}/../org.kermeta.language.archetype.art2BundleUIContrib</workingDirectory>
                             <arguments>
                                 <argument>clean</argument>
                                 <argument>archetype:create-from-project</argument>
