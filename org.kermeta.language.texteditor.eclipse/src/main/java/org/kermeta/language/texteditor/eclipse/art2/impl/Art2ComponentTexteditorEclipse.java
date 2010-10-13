@@ -44,7 +44,7 @@ import org.osgi.framework.Bundle;
 	 * Log port for sending technical messages
 	 */
 	//@RequiredPort(name = "log", type=PortType.MESSAGE)
-	@RequiredPort(name = "log", type=PortType.SERVICE, className=PortLog.class)
+	@RequiredPort(name = "log", type=PortType.MESSAGE)
 })
 /**
  * ART2 component of a Text editor for Kermeta language running in eclipse
@@ -52,7 +52,7 @@ import org.osgi.framework.Bundle;
 @ComponentType(libName = "org.kermeta.language")
 public class Art2ComponentTexteditorEclipse extends AbstractComponentType {
 
-	protected PortLog logPort=null;
+	protected MessagePort logPort=null;
 	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
 	protected String bundleSymbolicName="";
 	protected Bundle bundle;
@@ -64,7 +64,7 @@ public class Art2ComponentTexteditorEclipse extends AbstractComponentType {
 		return instance;
 	}
 	
-	public PortLog getLogPort(){
+	public MessagePort getLogPort(){
 		return logPort;
 	}
 	public String getBundleSymbolicName(){
@@ -83,7 +83,7 @@ public class Art2ComponentTexteditorEclipse extends AbstractComponentType {
 		// set the singleton instance
 		instance =  this;
 		// store some useful data
-		logPort = getPortByName("log", PortLog.class);
+		logPort = getPortByName("log", MessagePort.class);
 	//	System.out.println("Art2ComponentTexteditorEclipse.start logPort="+logPort.toString());
 		
 		bundle = (Bundle) this.getDictionary().get("osgi.bundle");
@@ -106,17 +106,17 @@ public class Art2ComponentTexteditorEclipse extends AbstractComponentType {
 				boolean b = registry.addContribution(inputStream, ContributorFactoryOSGi.createContributor(bundle), false, null, null, key);
 			
 				System.out.println("Successfully added editor contribution to UI");
-				logPort.log(mFactory.createDebugMessage("Successfully added editor contribution to UI" + pluginLocation, bundleSymbolicName));
+				logPort.process(mFactory.createDebugMessage("Successfully added editor contribution to UI" + pluginLocation, bundleSymbolicName));
 			}
 			else{
 				System.out.println("Failed to start Editor due to : Cannot find " + pluginLocation);
-				logPort.log(mFactory.createErrorMessage("Failed to start Editor due to : Cannot find " + pluginLocation, bundleSymbolicName));
+				logPort.process(mFactory.createErrorMessage("Failed to start Editor due to : Cannot find " + pluginLocation, bundleSymbolicName));
 			}
 			
 		}
 		catch (Exception e) {
 			System.out.println("Failed to start Editor");
-			logPort.log(mFactory.createErrorMessage("Failed to start Editor", bundleSymbolicName));
+			logPort.process(mFactory.createErrorMessage("Failed to start Editor", bundleSymbolicName));
 		}
 	}
 	

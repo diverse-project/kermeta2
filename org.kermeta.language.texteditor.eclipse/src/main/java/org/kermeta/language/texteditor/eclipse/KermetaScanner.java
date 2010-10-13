@@ -9,15 +9,22 @@
  */
 package org.kermeta.language.texteditor.eclipse;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.Token;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.RGB;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.texteditor.ITextEditor;
 import org.kermeta.language.api.messaging.UnifiedMessageFactory;
 import org.kermeta.language.lexer.KMLexer;
 import org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipse;
+import org.kermeta.traceability.TextReference;
+import org.kermeta.traceability.TraceabilityFactory;
 
 public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanner {
 
@@ -100,9 +107,43 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 			color=new RGB(255,0,0);
 			style = SWT.BOLD;
 			//TODO report error to error system
+			ITextEditor textEditor= (ITextEditor) editor;
+			IEditorInput input= textEditor.getEditorInput();
+			IFile file = ((FileEditorInput) input).getFile();
+			IPath path = file.getFullPath(); 
+			String url = path.toOSString();
+			
+			TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
+			textRef.setFileURI(url);
+			/*textRef.setLineBeginAt(value);
+			textRef.setLineEndAt(value);
+			textRef.setCharBeginAt(value);
+			textRef.setCharEndAt(value);*/
+			Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
+					mFactory.createErrorMessage("Incomplete token " + actualToken.toString(), Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName(), null, textRef));
+			Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
+					mFactory.createDebugMessage("Resource at : "+textRef.getFileURI()+ " should be marked", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
+			System.out.println("Resource at : "+textRef.getFileURI()+ " should be marked");
+		}/*else {
+			ITextEditor textEditor= (ITextEditor) editor;
+			IEditorInput input= textEditor.getEditorInput();
+			IFile file = ((FileEditorInput) input).getFile();
+			IPath path = file.getFullPath(); 
+			String url = path.toOSString();
+			
+			TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
+			textRef.setFileURI(url);
+			textRef.setLineBeginAt(value);
+			textRef.setLineEndAt(value);
+			textRef.setCharBeginAt(value);
+			textRef.setCharEndAt(value);
 			Art2ComponentTexteditorEclipse.getDefault().getLogPort().log(
-					mFactory.createErrorMessage("Incomplete token " + actualToken.toString(), Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
-		}
+					mFactory.createOkMessage("Incomplete token " + actualToken.toString(), Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName(), null, textRef));
+			Art2ComponentTexteditorEclipse.getDefault().getLogPort().log(
+					mFactory.createDebugMessage("Resource at : "+textRef.getFileURI()+ " should not be marked", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
+			System.out.println("Resource at : "+textRef.getFileURI()+ " should not be marked");
+		}*/
+		
 		
 		
 		System.out.println(tokenName+"\t Offset="+getTokenOffset()+"; Length="+getTokenLength() +"; -> " +actualToken.toString());
@@ -111,7 +152,25 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 		
 		return token;
 	}
-
+/*
+	private void refreshMarkers(){
+		if (resourceToRefresh == null) {
+			return;
+		}
+		if (display != null) {
+			display.asyncExec(new java.lang.Runnable() {
+				public void run() {
+					try {
+						Art2ComponentTexteditorEclipse.getDefault().getLogPort().log(
+								mFactory.createErrorMessage("Incomplete token " + actualToken.toString(), Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName(), null, textRef));
+					} catch (org.eclipse.core.runtime.CoreException e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+	}*/
+	
 	//	@Override
 	public int getTokenOffset() {
 		return actualToken.getOffset();
