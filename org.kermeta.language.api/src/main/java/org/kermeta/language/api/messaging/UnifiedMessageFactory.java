@@ -14,6 +14,7 @@ import java.util.Random;
 
 import org.kermeta.language.api.messaging.ProblemMessage.Severity;
 import org.kermeta.language.api.messaging.UnifiedMessage.UserLevel;
+import org.kermeta.traceability.Reference;
 
 
 
@@ -98,6 +99,20 @@ public class UnifiedMessageFactory {
 	public UnifiedMessage createErrorMessage (String message, String groupId, Exception senderTrace) {
 		UnifiedMessage messageWarning = new ProblemMessage(Severity.ERROR, groupId, message, 
 				UserLevel.ENDUSER, senderTrace, null);
+		return messageWarning;
+	}
+	
+	/**
+	 * Create a simple new error message for all users (EndUser and Developer)
+	 * @param message : the message 
+	 * @param groupId : the name of the element related to the message
+	 * @param senderTrace : exception that is either the cause of the message or the sender code 
+	 * @param causeObject : the object containing the informations on the error problem (file source, line number ...)
+	 * @return the new KermetaMessage created
+	 */
+	public UnifiedMessage createErrorMessage (String message, String groupId, Exception senderTrace, Reference causeObject ) {
+		UnifiedMessage messageWarning = new ProblemMessage(Severity.ERROR, groupId, message, 
+				UserLevel.ENDUSER, senderTrace, causeObject);
 		return messageWarning;
 	}
 	
