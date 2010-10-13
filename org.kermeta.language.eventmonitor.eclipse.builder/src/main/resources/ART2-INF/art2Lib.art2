@@ -5,19 +5,14 @@
       <parameters name="arg0" type="//@dataTypes.1"/>
     </operations>
   </typeDefinitions>
-  <typeDefinitions xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortLog">
-    <operations name="log" returnType="//@dataTypes.0">
-      <parameters name="arg0" type="//@dataTypes.2"/>
-    </operations>
-  </typeDefinitions>
+  <typeDefinitions xsi:type="art2:MessagePortType" name="org.kermeta.art2.framework.MessagePort"/>
   <typeDefinitions xsi:type="art2:ComponentType" name="Art2ComponentEventMonitorEclipseBuilder" deployUnit="//@deployUnits.0" factoryBean="org.kermeta.language.eventmonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilderFactory" bean="org.kermeta.language.eventmonitor.eclipse.builder.art2.impl.Art2ComponentEventMonitorEclipseBuilder" requiredLibs="//@deployUnits.1 //@deployUnits.2 //@deployUnits.3 //@deployUnits.4 //@deployUnits.5" startMethod="start" stopMethod="stop">
     <required name="kevent" ref="//@typeDefinitions.0"/>
     <required name="log" ref="//@typeDefinitions.1"/>
   </typeDefinitions>
   <dataTypes name="void"/>
   <dataTypes name="org.kermeta.language.api.kevent.KEvent"/>
-  <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
-  <libraries name="org.kermeta.language1" subTypes="//@typeDefinitions.2"/>
+  <libraries name="org.kermeta.language" subTypes="//@typeDefinitions.2"/>
   <deployUnits groupName="org.kermeta.language" unitName="language.eventmonitor.eclipse.builder" version="2.0.1-SNAPSHOT"/>
   <deployUnits name="org.kermeta.language.model" url="mvn:org.kermeta.language/language.model"/>
   <deployUnits name="org.kermeta.language.kp.model" url="mvn:org.kermeta.kp/kp.model"/>

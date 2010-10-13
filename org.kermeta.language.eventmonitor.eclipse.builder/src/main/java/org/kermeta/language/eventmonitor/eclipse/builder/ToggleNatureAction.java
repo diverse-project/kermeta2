@@ -37,7 +37,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 	 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
 	 */
 	public void run(IAction action) {
-		Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+		Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().process(
 				mFactory.createDebugMessage("popupMenu Add/Remove nature triggered" , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 		if (selection instanceof IStructuredSelection) {
 			for (Iterator it = ((IStructuredSelection) selection).iterator(); it
@@ -86,11 +86,11 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		try {
 			IProjectDescription description = project.getDescription();
 			String[] natures = description.getNatureIds();
-			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().process(
 					mFactory.createDebugMessage("Nbr of Natures found on " +project.getDescription() + " : " + natures.length , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 			for (int i = 0; i < natures.length; ++i) {
 				if (KermetaNature.NATURE_ID.equals(natures[i])) {
-					Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+					Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().process(
 							mFactory.createDebugMessage("Nature add at : " + project.getDescription().toString() + "an event should be triggered" , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 					// Remove the nature
 					String[] newNatures = new String[natures.length - 1];
@@ -103,7 +103,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				}
 			}
 
-			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().process(
 					mFactory.createInfoMessage("Add Kermeta Nature to project : " + project.getName() + "an event should be triggered" , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 			KEvent e = evtFactory.createSimpleEvent(project.getName());
 			Art2ComponentEventMonitorEclipseBuilder.getDefault().processKEvent(e);
@@ -114,7 +114,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			description.setNatureIds(newNatures);
 			project.setDescription(description, null);
 		} catch (CoreException e) {
-			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().process(
 					mFactory.createErrorMessage("Exception : " + e , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 		}
 	}

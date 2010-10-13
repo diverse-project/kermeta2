@@ -26,9 +26,9 @@ import org.kermeta.art2.annotation.ThirdParties;
 import org.kermeta.art2.annotation.ThirdParty;
 import org.kermeta.art2.annotation.ComponentType;
 import org.kermeta.art2.framework.AbstractComponentType;
+import org.kermeta.art2.framework.MessagePort;
 import org.kermeta.language.api.kevent.KEvent;
 import org.kermeta.language.api.messaging.UnifiedMessageFactory;
-import org.kermeta.language.api.port.PortLog;
 import org.kermeta.language.api.port.PortKEvent;
 import org.osgi.framework.Bundle;
 
@@ -46,15 +46,15 @@ import org.osgi.framework.Bundle;
 	 * Log port for sending technical messages
 	 */
 	//@RequiredPort(name = "log", type=PortType.MESSAGE)
-	@RequiredPort(name = "log", type=PortType.SERVICE, className=PortLog.class)
+	@RequiredPort(name = "log", type=PortType.MESSAGE)
 })
 
-@ComponentType(libName="org.kermeta.language1")
+@ComponentType(libName="org.kermeta.language")
 public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentType {
 
 	protected String bundleSymbolicName="";
 	protected Bundle bundle;
-	protected PortLog logPort = null;
+	protected MessagePort logPort = null;
 	protected PortKEvent keventPort = null;
 	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
 	//protected KEventFactory evtFactory = KEventFactory.getInstance();
@@ -77,7 +77,7 @@ public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentTy
 	public void processKEvent(KEvent e) {
 		//throw the event to KWF
 		keventPort.processKEvent(e);
-		logPort.log(mFactory.createInfoMessage("File Resource Modification detected at" + e, bundleSymbolicName));
+		logPort.process(mFactory.createInfoMessage("File Resource Modification detected at" + e, bundleSymbolicName));
 	}
 	
 	/**
@@ -89,7 +89,7 @@ public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentTy
 		// set the singleton instance
 		instance =  this;
 		// store some useful data
-		logPort = getPortByName("log", PortLog.class);
+		logPort = getPortByName("log", MessagePort.class);
 		keventPort = getPortByName("kevent", PortKEvent.class);
 	//	System.out.println("Art2ComponentEventMonitorEclipseBuilder.start logPort="+logPort.toString());
 		
@@ -112,17 +112,17 @@ public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentTy
 				boolean b = registry.addContribution(inputStream, ContributorFactoryOSGi.createContributor(bundle), false, null, null, key);
 			
 				System.out.println("Successfully added builder contribution to UI");
-				logPort.log(mFactory.createDebugMessage("Successfully added builder contribution to UI" + pluginLocation, bundleSymbolicName));
+				logPort.process(mFactory.createDebugMessage("Successfully added builder contribution to UI" + pluginLocation, bundleSymbolicName));
 			}
 			else{
 				System.out.println("Failed to start builder due to : Cannot find " + pluginLocation);
-				logPort.log(mFactory.createErrorMessage("Failed to start builder due to : Cannot find " + pluginLocation, bundleSymbolicName));
+				logPort.process(mFactory.createErrorMessage("Failed to start builder due to : Cannot find " + pluginLocation, bundleSymbolicName));
 			}
 			
 		}
 		catch (Exception e) {
 			System.out.println("Failed to start Builder");
-			logPort.log(mFactory.createErrorMessage("Failed to start Builder", bundleSymbolicName));
+			logPort.process(mFactory.createErrorMessage("Failed to start Builder", bundleSymbolicName));
 		}
 	}
 	
@@ -134,7 +134,7 @@ public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentTy
 		
 	}
 
-	public PortLog getLogPort(){
+	public MessagePort getLogPort(){
 		return logPort;
 	}
 	

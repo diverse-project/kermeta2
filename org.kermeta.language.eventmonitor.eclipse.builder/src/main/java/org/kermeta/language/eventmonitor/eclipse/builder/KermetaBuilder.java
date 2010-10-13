@@ -38,7 +38,7 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 		 * @see org.eclipse.core.resources.IResourceDeltaVisitor#visit(org.eclipse.core.resources.IResourceDelta)
 		 */
 		public boolean visit(IResourceDelta delta) throws CoreException {
-			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().process(
 					mFactory.createDebugMessage("Visit started for building" , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 			//System.out.println("in building");
 			IResource resource = delta.getResource();
@@ -123,7 +123,7 @@ public class KermetaBuilder extends IncrementalProjectBuilder {
 */		
 			
 			//update(resource.getLocation().toString());
-			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().log(
+			Art2ComponentEventMonitorEclipseBuilder.getDefault().getLogPort().process(
 					mFactory.createInfoMessage("Resource File Change on disk at : " + resource.getLocation().toString() + "an event should be triggered" , Art2ComponentEventMonitorEclipseBuilder.getDefault().getBundleSymbolicName()));
 			KEvent e = evtFactory.createSimpleEvent(resource.getLocation().toString());
 			Art2ComponentEventMonitorEclipseBuilder.getDefault().processKEvent(e);
