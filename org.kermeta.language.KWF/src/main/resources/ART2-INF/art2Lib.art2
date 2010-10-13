@@ -5,11 +5,7 @@
       <parameters name="arg0" type="//@dataTypes.1"/>
     </operations>
   </typeDefinitions>
-  <typeDefinitions xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortLog">
-    <operations name="log" returnType="//@dataTypes.0">
-      <parameters name="arg0" type="//@dataTypes.2"/>
-    </operations>
-  </typeDefinitions>
+  <typeDefinitions xsi:type="art2:MessagePortType" name="org.kermeta.art2.framework.MessagePort"/>
   <typeDefinitions xsi:type="art2:ComponentType" name="Art2ComponentKWF" deployUnit="//@deployUnits.0" factoryBean="org.kermeta.language.kwf.art2.impl.Art2ComponentKWFFactory" bean="org.kermeta.language.kwf.art2.impl.Art2ComponentKWF" startMethod="start" stopMethod="stop">
     <required name="log" ref="//@typeDefinitions.1"/>
     <provided name="kevent" ref="//@typeDefinitions.0">
@@ -18,7 +14,6 @@
   </typeDefinitions>
   <dataTypes name="void"/>
   <dataTypes name="org.kermeta.language.api.kevent.KEvent"/>
-  <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
-  <libraries name="org.kermeta.language2" subTypes="//@typeDefinitions.2"/>
-  <deployUnits groupName="org.kermeta.language" unitName="language.KWF" version="2.0.0-SNAPSHOT"/>
+  <libraries name="org.kermeta.language" subTypes="//@typeDefinitions.2"/>
+  <deployUnits groupName="org.kermeta.language" unitName="language.KWF" version="2.0.1-SNAPSHOT"/>
 </art2:ContainerRoot>
