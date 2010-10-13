@@ -10,99 +10,124 @@
 
 package org.kermeta.utils.error.report.eclipse;
 
+import java.util.HashMap;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.kermeta.language.api.messaging.UnifiedMessageFactory;
-import org.kermeta.utils.error.report.eclipse.art2.impl.Art2ComponentEclipseErrorReport;
+import org.eclipse.ui.texteditor.MarkerUtilities;
+import org.kermeta.language.api.messaging.ProblemMessage.Severity;
+import org.kermeta.traceability.TextReference;
 
 /**
- * Helper class to add markers to text files 
+ * Helper class to add markers to text files
  */
 public class KermetaMarker {
+	/**
+	 * The marker type : must correspond to the type that is declared in the
+	 * extension "org.eclipse.core.resources.markers" in
+	 * fr.irisa.triskell.kermeta/plugin.xml (super
+	 * type="org.eclipse.core.resources.problemmarker")
+	 */
+	protected static String getMarkerType() {
+		return IMarker.PROBLEM;
+	}
 
-	public static final String MARKER_TYPE = "org.kermeta.utils.error.report.eclipse.kermetaProblem";
-	
-	/**
-	 * Factory used to create message as described in org.kermeta.language.api.messaging
-	 */
-	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
-	
-	/**
-	 * Marks a file with markers.
-	 * 
-	 * @param url The url of the resource that is the file to mark.
-	 * @param message
-	 * @param severity
-	 * @param LineNumber
-	 * @param charStart
-	 * @param charEnd
-	 */
-	public void mark(String url, String message, int severity, int LineNumber, int charStart, int charEnd ){
-		if (url == null) {
-			return;
-		}
-		IFile file = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(url);
+	protected void markError(IFile file, String message) throws CoreException {
+		mark(file, message, IMarker.SEVERITY_ERROR, null, null);
+	}
+
+	protected void markError(IFile file, String message, int charStart,
+			int charStop) throws CoreException {
+		mark(file, message, IMarker.SEVERITY_ERROR, charStart, charStop);
+	}
+
+	protected void markWarning(IFile file, String message) throws CoreException {
+		mark(file, message, IMarker.SEVERITY_WARNING, null, null);
+	}
+
+	protected void markWarning(IFile file, String message, int charStart,
+			int charStop) throws CoreException {
+		mark(file, message, IMarker.SEVERITY_WARNING, charStart, charStop);
+	}
+
+	protected void markInfo(IFile file, String message) throws CoreException {
+		mark(file, message, IMarker.SEVERITY_INFO, null, null);
+	}
+
+	protected void mark(IFile file, String message, int severity,
+			Integer charStart, Integer charStop) throws CoreException {
+		System.out.println("Mark stg" + file.getFullPath().toOSString());
+		HashMap<String, java.lang.Object> datas = new HashMap<String, java.lang.Object>();
+		datas.put(IMarker.MESSAGE, message);
+		datas.put(IMarker.SEVERITY, severity);
+
+		if (charStart != null)
+			datas.put(IMarker.CHAR_START, charStart);
+		else
+			datas.put(IMarker.CHAR_START, 0);
+
+		if (charStop != null)
+			datas.put(IMarker.CHAR_END, charStop);
+		else
+			datas.put(IMarker.CHAR_END, 0);
+
+		MarkerUtilities.createMarker(file, datas, getMarkerType());
+	}
+
+
+	public void treatMarker(TextReference ref, String message, String groupId,
+			Severity severity) {
+		IFile file = (IFile) ResourcesPlugin.getWorkspace().getRoot()
+				.findMember(ref.getFileURI());
 		// URI might not point at a platform file
 		if (file == null) {
+			System.out.println("File at " + ref.getFileURI() + "not found");
 			return;
 		}
-		createMarker(file, message, severity, LineNumber, charStart, charEnd);
-	}
-	
-	/**
-	 * Unmarks a file with markers.
-	 * 
-	 * @param url The url of the resource that is the file to unmark.
-	 */
-	public void unMark(String url){
+		System.out.println("About to mark stg" + ref.getFileURI());
 		try {
-			IFile file = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(url);
-			if (file != null) {
-				file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
+			if (severity == Severity.ERROR) {
+				System.out.println("ERROR MARK");
+				markError(file, message/*
+										 * , ref.getCharBeginAt(),
+										 * ref.getCharEndAt()
+										 */);
+			}
+			if (severity == Severity.FATAL) {
+				markError(file, message, ref.getCharBeginAt(), ref
+						.getCharEndAt());
+			}
+			if (severity == Severity.OK) {
+				System.out.println("OK MARK");
+				clearMarkers(file);
+			}
+			if (severity == Severity.WARNING) {
+				markWarning(file, message, ref.getCharBeginAt(), ref
+						.getCharEndAt());
 			}
 		} catch (CoreException e) {
-			Art2ComponentEclipseErrorReport.getDefault().getLogPort().log(mFactory.createErrorMessage("Exception raised : ", 
-					Art2ComponentEclipseErrorReport.getDefault().getBundleSymbolicName(), e));
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * Create a marker with specific attributes
-	 * @param file The resource file to mark
-	 * @param markerSeverity The severity of the marker
-	 * @param message The custom message to show with the marker
-	 * @param lineNumber The line number to mark
-	 * @param charStart The starting character to mark
-	 * @param charEnd The ending character to mark
+	 * Clear previous marker in the given file; in the texteditor, markers
+	 * display messages/warning/errors icons at begining of lines in the text
+	 * editors and underline elements that are concerned by those messages (for
+	 * example, invalid calls).
 	 */
-	public void createMarker(IFile file, String message, int markerSeverity, int lineNumber, int charStart, int charEnd){
+	protected void clearMarkers(IFile file) {
 		try {
-			org.eclipse.core.resources.IMarker marker = file.createMarker(MARKER_TYPE);
-			marker.setAttribute(IMarker.SEVERITY, markerSeverity);
-			marker.setAttribute(IMarker.MESSAGE, message);
-			if(lineNumber != -1 && charStart != -1 && charEnd!=-1){
-				marker.setAttribute(org.eclipse.core.resources.IMarker.LINE_NUMBER, lineNumber);
-				marker.setAttribute(org.eclipse.core.resources.IMarker.CHAR_START, charStart);
-				marker.setAttribute(org.eclipse.core.resources.IMarker.CHAR_END, charEnd + 1);
-			}
-			else {
-				marker.setAttribute(org.eclipse.core.resources.IMarker.CHAR_START, 0);
-				marker.setAttribute(org.eclipse.core.resources.IMarker.CHAR_END, 1);
-			}
-		} catch (org.eclipse.core.runtime.CoreException ce) {
-			if (ce.getMessage().matches("Marker.*not found.")) {
-				// ignore but log
-				Art2ComponentEclipseErrorReport.getDefault().getLogPort().log(mFactory.createErrorMessage("Exception raised : Marker.*not found at : ", 
-						Art2ComponentEclipseErrorReport.getDefault().getBundleSymbolicName(), ce));
-			} else {
-				ce.printStackTrace();
-				Art2ComponentEclipseErrorReport.getDefault().getLogPort().log(mFactory.createErrorMessage("Exception raised : ", 
-						Art2ComponentEclipseErrorReport.getDefault().getBundleSymbolicName(), ce));
-			}
+			if (file != null)
+				file.deleteMarkers(getMarkerType(), true,
+						IResource.DEPTH_INFINITE);
+		} catch (Exception ex) {
+			// ex.printStackTrace();
 		}
 	}
+
 }

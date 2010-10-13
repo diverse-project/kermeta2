@@ -67,10 +67,16 @@
 						<Export-Package>
                         	org.kermeta.utils.error.report.eclipse.*
                         </Export-Package>
+						<Require-Bundle>
+							org.eclipse.core.runtime,
+							org.eclipse.core.resources,
+							org.eclipse.ui.editors
+                        </Require-Bundle>
 						<!-- use the ! for avoiding to import some packages that are already 
 							there with the Require-Bundle -->
 						<Import-Package>
 							!org.eclipse.core.*,
+							!org.eclipse.ui.*,
 							org.kermeta.*,
 							scala.*,
 							org.slf4j.*;version="${slf4j.version.range}",
@@ -107,6 +113,13 @@
 			<type>bundle</type>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.kermeta.traceability</groupId>
+			<artifactId>traceability.model</artifactId>
+			<version>${kermeta.version}</version>
+			<type>bundle</type>
+			<scope>compile</scope>
+		</dependency>
 		<!-- Eclipse Core runtime -->
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
@@ -134,6 +147,12 @@
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.jobs</artifactId>
 			<version>[3.4.0.0,)</version>
+		</dependency>
+		<!-- Eclipse ui * -->
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.ui.editors</artifactId>
+			<version>[3.5.0.0,)</version>
 		</dependency>
 	</dependencies>
 </project>
