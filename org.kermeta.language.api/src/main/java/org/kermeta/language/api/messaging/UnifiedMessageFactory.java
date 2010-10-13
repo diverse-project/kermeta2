@@ -116,6 +116,20 @@ public class UnifiedMessageFactory {
 		return messageWarning;
 	}
 	
+	/**
+	 * Create a simple ok message for all users (EndUser and Developer) to inform that errors on file are all corrected
+	 * @param message : the message 
+	 * @param groupId : the name of the element related to the message
+	 * @param senderTrace : exception that is either the cause of the message or the sender code 
+	 * @param causeObject : the object containing the informations on the error problem (file source, line number ...)
+	 * @return the new KermetaMessage created
+	 */
+	public UnifiedMessage createOkMessage (String message, String groupId, Exception senderTrace, Reference causeObject ) {
+		UnifiedMessage messageWarning = new ProblemMessage(Severity.OK, groupId, message, 
+				UserLevel.ENDUSER, senderTrace, causeObject);
+		return messageWarning;
+	}
+	
 	
 	protected Random randomGenerator = new Random();
 	protected int baseUId = 0;
