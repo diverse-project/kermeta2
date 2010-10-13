@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
 <art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:art2="http://art/2.0">
-  <typeDefinitions xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortLog">
-    <operations name="log" returnType="//@dataTypes.0">
-      <parameters name="arg0" type="//@dataTypes.1"/>
-    </operations>
-  </typeDefinitions>
+  <typeDefinitions xsi:type="art2:MessagePortType" name="org.kermeta.art2.framework.MessagePort"/>
   <typeDefinitions xsi:type="art2:ComponentType" name="Art2ComponentEclipseLogger" deployUnit="//@deployUnits.0" factoryBean="org.kermeta.utils.logger.eclipse.art2.impl.Art2ComponentEclipseLoggerFactory" bean="org.kermeta.utils.logger.eclipse.art2.impl.Art2ComponentEclipseLogger" startMethod="start" stopMethod="stop">
     <provided name="log" ref="//@typeDefinitions.0">
-      <mappings beanMethodName="log" serviceMethodName="log"/>
+      <mappings beanMethodName="process" serviceMethodName="process"/>
     </provided>
   </typeDefinitions>
-  <dataTypes name="void"/>
-  <dataTypes name="org.kermeta.language.api.messaging.UnifiedMessage"/>
   <libraries name="org.kermeta.utils" subTypes="//@typeDefinitions.1"/>
   <deployUnits groupName="org.kermeta.utils" unitName="utils.logger.eclipse" version="2.0.1-SNAPSHOT"/>
 </art2:ContainerRoot>

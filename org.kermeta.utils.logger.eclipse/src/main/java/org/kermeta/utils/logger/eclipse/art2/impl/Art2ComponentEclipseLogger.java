@@ -33,7 +33,7 @@ import org.osgi.framework.Bundle;
 
 @Provides({
     //@ProvidedPort(name = "asynclog", type=PortType.MESSAGE),
-    @ProvidedPort(name = "log", type=PortType.SERVICE, className=PortLog.class)
+    @ProvidedPort(name = "log", type=PortType.MESSAGE)
 })
 @ComponentType(libName = "org.kermeta.utils")
 public class Art2ComponentEclipseLogger extends AbstractComponentType {
@@ -44,8 +44,8 @@ public class Art2ComponentEclipseLogger extends AbstractComponentType {
 	
 	
 	//@port(name="asynclog", method="process")
-	@Port(name="log",method="log")
-    public void log(Object o){ 		
+	@Port(name="log",method="process")
+    public void process(Object o){ 		
 		if (o instanceof UnifiedMessage) {
 			// TODO filter Developer message if not required by the UI (preference page, and/or toggle button etc...)
 			
