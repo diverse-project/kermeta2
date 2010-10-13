@@ -35,41 +35,40 @@ public class KermetaMarker {
 		return IMarker.PROBLEM;
 	}
 
-	protected void markError(IFile file, String message) throws CoreException {
+	/*protected void markError(IFile file, String message) throws CoreException {
 		mark(file, message, IMarker.SEVERITY_ERROR, null, null);
-	}
+	}*/
 
 	protected void markError(IFile file, String message, int charStart,
 			int charStop) throws CoreException {
 		mark(file, message, IMarker.SEVERITY_ERROR, charStart, charStop);
 	}
 
-	protected void markWarning(IFile file, String message) throws CoreException {
+	/*protected void markWarning(IFile file, String message) throws CoreException {
 		mark(file, message, IMarker.SEVERITY_WARNING, null, null);
-	}
+	}*/
 
 	protected void markWarning(IFile file, String message, int charStart,
 			int charStop) throws CoreException {
 		mark(file, message, IMarker.SEVERITY_WARNING, charStart, charStop);
 	}
 
-	protected void markInfo(IFile file, String message) throws CoreException {
+	/*protected void markInfo(IFile file, String message) throws CoreException {
 		mark(file, message, IMarker.SEVERITY_INFO, null, null);
-	}
+	}*/
 
-	protected void mark(IFile file, String message, int severity,
-			Integer charStart, Integer charStop) throws CoreException {
+	protected void mark(IFile file, String message, int severity, int charStart, int charStop) throws CoreException {
 		System.out.println("Mark stg" + file.getFullPath().toOSString());
 		HashMap<String, java.lang.Object> datas = new HashMap<String, java.lang.Object>();
 		datas.put(IMarker.MESSAGE, message);
 		datas.put(IMarker.SEVERITY, severity);
 
-		if (charStart != null)
+		if (charStart < 0)
 			datas.put(IMarker.CHAR_START, charStart);
 		else
 			datas.put(IMarker.CHAR_START, 0);
 
-		if (charStop != null)
+		if (charStop < 0)
 			datas.put(IMarker.CHAR_END, charStop);
 		else
 			datas.put(IMarker.CHAR_END, 0);
@@ -78,35 +77,35 @@ public class KermetaMarker {
 	}
 
 
-	public void treatMarker(TextReference ref, String message, String groupId,
-			Severity severity) {
-		IFile file = (IFile) ResourcesPlugin.getWorkspace().getRoot()
-				.findMember(ref.getFileURI());
+	public void treatMarker(TextReference ref, String message, String groupId, Severity severity) {
+		IFile file = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(ref.getFileURI());
+		
+		/*IWorkbench wb = PlatformUI.getWorkbench();
+		IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
+		
+*/
 		// URI might not point at a platform file
 		if (file == null) {
 			System.out.println("File at " + ref.getFileURI() + "not found");
 			return;
 		}
 		System.out.println("About to mark stg" + ref.getFileURI());
+		int charStart = (ref.getCharBeginAt()== null)? -1 : ref.getCharBeginAt() ;
+		int charEnd = (ref.getCharEndAt()== null)? -1 : ref.getCharEndAt();
 		try {
 			if (severity == Severity.ERROR) {
 				System.out.println("ERROR MARK");
-				markError(file, message/*
-										 * , ref.getCharBeginAt(),
-										 * ref.getCharEndAt()
-										 */);
+				markError(file, message, charStart , charEnd);
 			}
 			if (severity == Severity.FATAL) {
-				markError(file, message, ref.getCharBeginAt(), ref
-						.getCharEndAt());
+				markError(file, message, charStart , charEnd);
 			}
 			if (severity == Severity.OK) {
 				System.out.println("OK MARK");
 				clearMarkers(file);
 			}
 			if (severity == Severity.WARNING) {
-				markWarning(file, message, ref.getCharBeginAt(), ref
-						.getCharEndAt());
+				markWarning(file, message, charStart , charEnd);
 			}
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block
@@ -123,8 +122,7 @@ public class KermetaMarker {
 	protected void clearMarkers(IFile file) {
 		try {
 			if (file != null)
-				file.deleteMarkers(getMarkerType(), true,
-						IResource.DEPTH_INFINITE);
+				file.deleteMarkers(getMarkerType(), false, IResource.DEPTH_INFINITE);
 		} catch (Exception ex) {
 			// ex.printStackTrace();
 		}

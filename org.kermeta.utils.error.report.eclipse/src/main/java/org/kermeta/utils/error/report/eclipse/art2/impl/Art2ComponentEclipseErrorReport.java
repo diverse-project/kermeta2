@@ -22,7 +22,6 @@ import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.PortType;
 import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.annotation.ProvidedPort;
-import org.kermeta.art2.annotation.Requires;
 import org.kermeta.art2.annotation.Start;
 import org.kermeta.art2.annotation.Stop;
 import org.kermeta.art2.framework.AbstractComponentType;
@@ -36,13 +35,9 @@ import org.kermeta.utils.error.report.eclipse.KermetaMarkerFactory;
 import org.osgi.framework.Bundle;
 
 @Provides({
-    @ProvidedPort(name = "log", type=PortType.SERVICE, className=PortLog.class)
+    @ProvidedPort(name = "log", type=PortType.MESSAGE)
 })
 
-@Requires({
-    //@ProvidedPort(name = "asynclog", type=PortType.MESSAGE),
-    //@RequiredPort(name = "log", type=PortType.SERVICE, className=PortLog.class)
-})
 @ComponentType(libName = "org.kermeta.utils")
 public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 
@@ -57,29 +52,18 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 	 */
 	protected static Art2ComponentEclipseErrorReport instance;
 	
-	@Port(name="log",method="log")
-	public void log(Object o) {
+	@Port(name="log",method="process")
+	public void process(Object o) {
 		System.out.println("Received stg" + o.toString());
 		if (o instanceof ProblemMessage){
 			ProblemMessage pbmMsg = (ProblemMessage) o;
 			treatProblemMsg(pbmMsg);
 		}
-		//logPort.log(mFactory.createDebugMessage("A marker should be added to : " +url, bundleSymbolicName));
 	}
-	
-	/*@Port(name="error",method="unMarkResource")
-	public void unMarkResource(String url) {
-		marker.unMark(url);
-		//logPort.log(mFactory.createDebugMessage("Markers should be removed from : " +url, bundleSymbolicName));
-	}*/
 	
 	public static Art2ComponentEclipseErrorReport getDefault(){
 		return instance;
 	}
-	
-	/*public PortLog getLogPort(){
-		return logPort;
-	}*/
 	
 	public String getBundleSymbolicName(){
 		return bundleSymbolicName;
@@ -95,10 +79,7 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 	public void start(){
 		// set the singleton instance
 		instance =  this;
-		//marker = KermetaMarkerFactory.getInstance().createKermetaMarker();
 		// store some useful data
-		//logPort = getPortByName("log", PortLog.class);
-		
 		bundle = (Bundle) this.getDictionary().get("osgi.bundle");
 		bundleSymbolicName = bundle.getHeaders().get("Bundle-SymbolicName").toString();
 		
@@ -128,7 +109,6 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 		}
 		catch (Exception e) {
 			System.out.println("Failed to start Error Report");
-			//logPort.log(mFactory.createErrorMessage("Failed to start Error Report", bundleSymbolicName));
 		}
 	}
 	
@@ -141,14 +121,10 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 	}
 	
 	private void treatProblemMsg(ProblemMessage pbmMsg){
-		Reference causeObject = (Reference)pbmMsg.getCauseObject();
+		/*Reference causeObject = (Reference)pbmMsg.getCauseObject();
 		if (causeObject instanceof TextReference){
-			TextReference ref = (TextReference) causeObject;
-			System.out.println("Treat stg" + ref.toString());
 			marker = KermetaMarkerFactory.getInstance().createKermetaMarker();
-			marker.treatMarker(ref, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity());
-		}else{
-			System.out.println("Art2ComponentEclipseErrorReport :: treat Problem msg => Reference but not text reference");
-		}
+			marker.treatMarker((TextReference) causeObject, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity());
+		}*/
 	}
 }
