@@ -1,4 +1,4 @@
-/* $Id: $
+ /* $Id: $
  * Project    : org.kermeta.language.checker
  * File       : PortCheckerTest.java
  * License    : EPL
@@ -18,7 +18,8 @@ public class PortCheckerTest extends TestCase {
 	
 	public void testCheck() {
 		
-		CheckerComponentPORTchecker myComp = CheckerComponentFactory.createCheckerComponentPORTchecker();
+		Art2ComponentCheckerPORTchecker myComp = Art2ComponentCheckerFactory.createArt2ComponentCheckerPORTchecker(
+														Art2ComponentCheckerFactory.createArt2ComponentChecker());
 		
 		//myComp.check(null);
 

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="ASCII"?>
 <art2:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:art2="http://art/2.0">
-  <componentTypes name="CheckerComponent" factoryBean="org.kermeta.language.checker.art2.impl.CheckerComponentFactory">
-    <provided name="checker" ref="//@portTypes.0">
-      <mappings beanMethodName="check" serviceMethodName="check"/>
-    </provided>
-  </componentTypes>
-  <dataTypes name="org.kermeta.language.api.ConstraintsDiagnostic"/>
-  <dataTypes name="org.kermeta.language.structure.ModelingUnit"/>
-  <portTypes xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortChecker">
+  <typeDefinitions xsi:type="art2:ServicePortType" name="org.kermeta.language.api.port.PortChecker">
     <operations name="check" returnType="//@dataTypes.0">
       <parameters name="arg0" type="//@dataTypes.1"/>
     </operations>
-  </portTypes>
-  <librariy name="checker" groupName="org.kermeta.language" unitName="language.checker" version="2.0.0-SNAPSHOT" subComponentTypes="//@componentTypes.0"/>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="art2:ComponentType" name="Art2ComponentChecker" deployUnit="//@deployUnits.0" factoryBean="org.kermeta.language.checker.art2.impl.Art2ComponentCheckerFactory" bean="org.kermeta.language.checker.art2.impl.Art2ComponentChecker" startMethod="start" stopMethod="stop">
+    <provided name="checker" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="check" serviceMethodName="check"/>
+    </provided>
+  </typeDefinitions>
+  <dataTypes name="org.kermeta.language.api.Diagnostic"/>
+  <dataTypes name="org.kermeta.language.structure.ModelingUnit"/>
+  <libraries name="org.kermeta.language" subTypes="//@typeDefinitions.1"/>
+  <deployUnits groupName="org.kermeta.language" unitName="test" version="2.0.1-SNAPSHOT"/>
 </art2:ContainerRoot>

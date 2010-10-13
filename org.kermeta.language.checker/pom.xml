@@ -1,64 +1,136 @@
-<?xml version="1.0"?>
-<!-- $Id: pom.xml 12028 2010-08-04 07:18:21Z francoisfouquet $ -->
-<!-- License    : EPL 									 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: $ -->
+<!-- License    : EPL                                    -->
+<!-- Project    : org.kermeta.language.archetype.art2Bundle -->
 <!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 -->
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <modelVersion>4.0.0</modelVersion>
-    <packaging>bundle</packaging>
-    <name>Kermeta :: Checker</name>
-    <artifactId>language.checker</artifactId>
+<!-- Authors : username <usermail@irisa.fr> -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>test</artifactId>
+	<packaging>bundle</packaging>
+	<groupId>org.kermeta.language</groupId>
+	<name>K2 :: Checker</name>
+	
+	<parent>
+		<groupId>org.kermeta.language</groupId>
+		<artifactId>language.artcomponent.root</artifactId>
+		<version>2.0.1-SNAPSHOT</version>
+	</parent>
 
-    <groupId>${parent.groupId}</groupId>
-    <version>${kermeta.version}</version>
+ 	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<!-- Add resources from the plugin structure -->
+		<resources>
+			<resource>
+				<directory>src/main/kermeta</directory>
+			</resource>
+			<resource>
+				<directory>src/main/scala</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<testResources>
+			<testResource>
+				<directory>src/test/java</directory>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.1.0</version>
+				<extensions>true</extensions>
 
-    <parent>
-        <artifactId>language.root</artifactId>
-        <groupId>org.kermeta.language</groupId>
-        <version>2</version>
-    </parent>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
+						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
+						<Bundle-ClassPath>.</Bundle-ClassPath>
+						<Export-Package>
+							org.kermeta.language.archetype.art2Bundle.*
+						</Export-Package>
+						<Require-Bundle>
+							org.eclipse.core.runtime,
+							org.eclipse.core.resources,
+							org.eclipse.emf.codegen.util
+						</Require-Bundle><!-- use the ! for avoiding to import some packages that are already 
+							there with the Require-Bundle -->
+						<Import-Package>
+							!org.eclipse.core.*,
+							!org.eclipse.emf.*,
+							org.kermeta.*,
+							scala.*,
+							org.slf4j.*;version="${slf4j.version.range}",
+							org.osgi.framework;version="[1.5,2)"</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<includes>
+						<include>**/*TestSuite.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-    <build>
-    	<resources>
-    		<resource><directory>src/main/resources</directory></resource>
-    	</resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <includes>
-                        <include>**/*TestSuite.java</include>
-                    </includes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.1.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Export-Package>org.kermeta.language.checker.*</Export-Package>
-                        <Bundle-SymbolicName>org.kermeta.language.checker</Bundle-SymbolicName>
-                    </instructions>
-                </configuration>
-            </plugin>
 
-
-
-        </plugins>
-
-    </build>
-    <dependencies>
+	<dependencies>
+		<!-- Main dependencies -->
+		 <dependency>
+            <groupId>org.kermeta.art2</groupId>
+            <artifactId>art2.framework</artifactId>
+            <version>${art2.version}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
-            <groupId>${parent.groupId}</groupId>
+            <groupId>${project.parent.groupId}</groupId>
             <artifactId>language.api</artifactId>
             <version>${kermeta.version}</version>
-        </dependency>
-    </dependencies>
+            <type>bundle</type>
+            <scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.core.runtime</artifactId>
+			<version>[3.5.0.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.core.resources</artifactId>
+			<version>[3.5.2.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.emf.codegen</artifactId>
+			<version>[2.6.0.0,)</version>
+		</dependency>
+		
+	</dependencies>
 	
    
 </project>
