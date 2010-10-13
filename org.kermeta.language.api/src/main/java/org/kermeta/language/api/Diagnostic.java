@@ -1,5 +1,5 @@
 package org.kermeta.language.api;
 
-public class ConstraintsDiagnostic {
+public interface Diagnostic {
 
 }
