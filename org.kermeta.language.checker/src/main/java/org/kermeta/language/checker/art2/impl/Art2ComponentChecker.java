@@ -10,8 +10,6 @@
  */
 package org.kermeta.language.checker.art2.impl;
 
-import kermeta.exceptions.ConstraintsDiagnostic;
-
 import org.kermeta.art2.annotation.ComponentType;
 import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.PortType;
@@ -20,16 +18,12 @@ import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.annotation.Start;
 import org.kermeta.art2.annotation.Stop;
 import org.kermeta.art2.framework.AbstractComponentType;
-//import org.kermeta.language.api.ConstraintsDiagnostic;
 import org.kermeta.language.api.Diagnostic;
 import org.kermeta.language.api.DiagnosticImpl;
-import org.kermeta.language.api.messaging.UnifiedMessageFactory;
 import org.kermeta.language.api.port.PortChecker;
-import org.kermeta.language.api.port.PortLog;
 import org.kermeta.language.checker.Checker;
-import org.kermeta.language.checker.CheckerFactory;
+import org.kermeta.language.checker.RichFactory;
 import org.kermeta.language.structure.ModelingUnit;
-import org.osgi.framework.Bundle;
 
 @Provides({
     @ProvidedPort(name="checker", type=PortType.SERVICE, className=PortChecker.class)
@@ -58,9 +52,9 @@ public class Art2ComponentChecker extends AbstractComponentType implements PortC
     @Port(name="checker",method="check")
     public Diagnostic /*void */check(ModelingUnit mu){
     	
-    	Checker myChecker = CheckerFactory.eINSTANCE.createChecker();
+    	Checker myChecker =  RichFactory.createChecker();
     	
-    	myChecker.check((kermeta.language.structure.ModelingUnit) mu);
+    	myChecker.check( (fr.irisa.triskell.kermeta.language.structure.ModelingUnit)  mu);
     	
         return new DiagnosticImpl(null);
     }
