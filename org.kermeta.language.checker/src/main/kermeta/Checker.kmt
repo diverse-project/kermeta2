@@ -1,0 +1,32 @@
+/* $Id:$ 
+ * Creation : September 14, 2010
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            jfalcou
+ */
+
+package org::kermeta::language::checker;
+
+require kermeta
+require "platform:/lookup/checkerV2ToBeCompiled/src/kermeta/invariants/Package.kmt"
+
+using kermeta::language::structure
+using kermeta::exceptions
+
+class Checker
+{
+	operation check(mu : ModelingUnit) : Void is do 
+		
+		stdio.writeln(" -> check")
+		
+		var res : ConstraintsDiagnostic init mu.getViolatedConstraints
+
+		stdio.writeln("  number of violated constraints : " + res.setConstraints.size.toString)
+		
+		res.setConstraints.each{ c |
+			stdio.writeln(c.message) 
+		}
+		stdio.writeln(" <- check")
+	end
+}
