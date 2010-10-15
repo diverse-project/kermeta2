@@ -14,9 +14,6 @@ object PrimitiveConversion{
     implicit def iterator2kermeta(x: java.util.Iterator[_])= new RichIterator(x)
     implicit def iteratorEObject2kermeta(x:java.util.Iterator[_<: org.eclipse.emf.ecore.EObject]) :  _root_.java.util.Iterator[_root_.fr.irisa.triskell.kermeta.language.structure.Object] =x.asInstanceOf[_root_.java.util.Iterator[_root_.fr.irisa.triskell.kermeta.language.structure.Object]]
 
-    implicit def class2kermetaclass(x: Class[_]) = new RichClass(x)
-    implicit def field2kermetaclass(x: java.lang.reflect.Field) = new RichField(x)
-    implicit def field2kermetaclass(x: org.eclipse.emf.ecore.EStructuralFeature) = new RichAttribute(x)
 	
     implicit def integer2kermeta(x: Int) = new RichInteger(x)
     implicit def real2kermeta(x: Double) = new RichReal(x)
@@ -63,38 +60,6 @@ object PrimitiveConversion{
 }  
  
 
-class RichClass(e:Class[_]){
-    def ScalaclassDefinition():Class[_]={
-		
-        return e;
-    }
-    def ScalaeAllAttributes():java.util.List[java.lang.reflect.Field]={
-        var v : java.util.List[java.lang.reflect.Field] = new java.util.ArrayList[java.lang.reflect.Field]
-		
-        e.getDeclaredFields.foreach{e=>v.add(e)}
-        return v;
-    }
-}
-
-class RichField(e:java.lang.reflect.Field){
-    def ScalaisDerived():Boolean={
-        return false;
-    }
-    def Scalaname():String={
-        return e.getName;
-    }
-	
-}
-
-class RichAttribute(e:org.eclipse.emf.ecore.EStructuralFeature){
-    def ScalaisDerived():Boolean={
-        return false;
-    }
-    def Scalaname():String={
-        return e.getName;
-    }
-	
-}
 
 
 
@@ -105,6 +70,13 @@ class Void  extends Object with EObjectImplForPrimitive //with fr.irisa.triskell
  
 abstract class RichValueType[G]  extends Object with EObjectImplForPrimitive{
     def getValue():Object 
+    override def equals(o:Any):Boolean = {
+        if (o.isInstanceOf[ RichValueType[G] ]){
+            return getValue() == o.asInstanceOf[ RichValueType[G] ].getValue
+        }
+        return getValue().equals(o)
+        
+    }
     //def isNotEqual(other : Any) :Boolean = {!this.equals(other)}
 }
 
@@ -150,6 +122,9 @@ class RichBoolean (value: Boolean) extends RichValueType[Boolean] {
     def andThen(func : Boolean => Boolean):Boolean ={ if (value) {return func(value) }else return false; }
     def orElse(func : Boolean => Boolean):Boolean ={ if (!value) {return func(value)}else return true; }
     override def getValue():Object = new java.lang.Boolean(value)
+    override def getMetaClass():fr.irisa.triskell.kermeta.language.structure.Class={
+        return createMetaClass("kermeta::standard::Boolean")
+    }
 	
 }
 
@@ -177,8 +152,12 @@ class RichJavaBoolean (value: java.lang.Boolean) extends RichValueType[Boolean] 
     def orElse(func : Boolean => Boolean):Boolean ={ if (!value.booleanValue) {return func(value.booleanValue)}else return true; }
 
     override def getValue():Object = value 	
-}
+    override def getMetaClass():fr.irisa.triskell.kermeta.language.structure.Class={
+        return createMetaClass("kermeta::standard::Boolean")
+    }
+ 
 
+}
 
 abstract class RichNumeric[G]  extends Comparable[G]{}
 
@@ -217,6 +196,9 @@ class RichInteger(value: Int)  extends RichNumeric[Int] with EObjectImplForPrimi
     override def isNotEqual(other : Any) :Boolean = {!this.equals(other)}
     override def getValue():Object = new java.lang.Integer(value)		
     //def isNotEqual(other : Any) :Boolean = this.equals(other)
+    override def getMetaClass():fr.irisa.triskell.kermeta.language.structure.Class={
+        return createMetaClass("kermeta::standard::Integer")
+    }
 	
 }
 
@@ -239,6 +221,9 @@ class RichReal (value: Double) extends RichNumeric[Double] with EObjectImplForPr
     def isGreater(other : Double) :Boolean={ value>other }
     override def isVoid():Boolean = false;
     override def getValue():Object = new java.lang.Double(value)	
+    override def getMetaClass():fr.irisa.triskell.kermeta.language.structure.Class={
+        return createMetaClass("kermeta::standard::Real")
+    }
 
 }
 
@@ -248,9 +233,13 @@ class RichCharacter(value:Char)  extends RichValueType with EObjectImplForPrimit
     override def toString() :java.lang.String={return ""+value}
     override  def isVoid():Boolean = false;
     override def getValue():Object = new java.lang.Character(value)
+    override def getMetaClass():fr.irisa.triskell.kermeta.language.structure.Class={
+        return createMetaClass("kermeta::standard::Char")
+    }
+
 }
 
-trait EObjectImplForPrimitive extends fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect{
+trait EObjectImplForPrimitive extends fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect with  _root_.fr.irisa.triskell.kermeta.language.structure.Object{
     def eUnset(feature: org.eclipse.emf.ecore.EStructuralFeature)={}
     def eIsSet(feature: org.eclipse.emf.ecore.EStructuralFeature):Boolean = true
     def eSet(feature: org.eclipse.emf.ecore.EStructuralFeature,x:Any):Unit={}
@@ -271,7 +260,24 @@ trait EObjectImplForPrimitive extends fr.irisa.triskell.kermeta.language.structu
     def eNotify( notification:org.eclipse.emf.common.notify.Notification):Unit=null;
     override  def isVoid():Boolean;
     def eInvoke(x1: org.eclipse.emf.ecore.EOperation,x2: org.eclipse.emf.common.util.EList[_]):java.lang.Object = null
-  
+
+    def createMetaClass(name:String):fr.irisa.triskell.kermeta.language.structure.Class={
+        var factoryName = "ScalaAspect.fr.irisa.triskell.kermeta.language.structure.RichFactory$"
+        var methodName = "createClass"
+        var methodNameClassDef = "createClassDefinition"
+        val clazz = java.lang.Class.forName(factoryName)
+        val obj = clazz.getField("MODULE$").get(clazz)
+        var meth :java.lang.reflect.Method = clazz.getMethods.filter(m=> m.getName.equals(methodName)).first
+        //println(meth.getName + " " + meth.getParameterTypes.size)
+        val numbers = Array()
+        var mclazz : fr.irisa.triskell.kermeta.language.structure.Class = meth.invoke(obj, numbers: _*).asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class]
+
+        var meth1 :java.lang.reflect.Method = clazz.getMethods.filter(m=> m.getName.equals(methodNameClassDef)).first
+        var mclazzDef : fr.irisa.triskell.kermeta.language.structure.ClassDefinition = meth1.invoke(obj, numbers: _*).asInstanceOf[fr.irisa.triskell.kermeta.language.structure.ClassDefinition]
+        mclazzDef.setName(name)
+        mclazz.setTypeDefinition(mclazzDef)        
+        return mclazz
+    }
 }
 
 class RichString(value: java.lang.String)  extends RichValueType with EObjectImplForPrimitive{
@@ -301,6 +307,21 @@ class RichString(value: java.lang.String)  extends RichValueType with EObjectImp
     }
     override def isVoid():Boolean = value ==null;
     override def getValue():Object = value 		   
+    override def equals(o:Any):Boolean ={
+        if (o.isInstanceOf[String]){
+            return value == o.asInstanceOf[String]
+        }else        if (o.isInstanceOf[RichString]){
+            return value == o.asInstanceOf[RichString].getValue
+        }
+        return value.equals(o)
+
+        
+    }
+    
+    override def getMetaClass():fr.irisa.triskell.kermeta.language.structure.Class={
+        return createMetaClass("kermeta::standard::String")
+    }
+
 } 
 class RichUnknownJavaObject  extends Object {
     override def toString() :java.lang.String={return "toString of  UnknownJavaObject not implemented yet";

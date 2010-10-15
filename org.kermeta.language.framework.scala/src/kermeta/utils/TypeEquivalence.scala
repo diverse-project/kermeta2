@@ -7,6 +7,7 @@ object TypeEquivalence {
   var packageEquivelence :  java.util.HashMap[String,String] ={
     var pack1 : java.util.HashMap[String,String]= new java.util.HashMap[String,String]();
     pack1.put("ecore","org.eclipse.emf.ecore");
+    pack1.put("trace","fr.inria.aoste.trace");
     pack1.put("uml","org.eclipse.uml2.uml");
     //pack1.put("fr.irisa.triskell.kermeta.language.structure","fr.irisa.triskell.kermeta.language.structure")
     pack1.put("kermeta","fr.irisa.triskell.kermeta")
@@ -41,16 +42,19 @@ object TypeEquivalence {
                                                              typeEquivelence.put("kermeta.standard.Bag", "java.util.List");
                                                              typeEquivelence.put("kermeta.standard.String", "java.lang.String");
                                                              //typeEquivelence.put(" fr.irisa.triskell.kermeta.language.structure.String", "java.lang.String");
-                                                             typeEquivelence.put("kermeta.standard.Integer", "Int");
+                                                             typeEquivelence.put("kermeta.standard.Integer", "scala.Int");
                                                              typeEquivelence.put("kermeta.standard.Real", "java.lang.Double");
                                                              typeEquivelence.put("kermeta.standard.Character", "java.lang.Character");
-                                                             typeEquivelence.put("int", "Int");
-                                                             typeEquivelence.put("java.lang.Integer", "Int");
+                                                             typeEquivelence.put("int", "scala.Int");
+                                                             typeEquivelence.put("long", "scala.Long");
+                                                             typeEquivelence.put("java.lang.Integer", "scala.Int");
 
-                                                             typeEquivelence.put("double", "Double");
+                                                             typeEquivelence.put("double", "scala.Double");
                                                              typeEquivelence.put("boolean", "java.lang.Boolean");
                                                              typeEquivelence.put("kermeta.standard.Boolean", "java.lang.Boolean");
                                                              typeEquivelence.put("java.lang.Class","java.lang.Class[_]")
+                                                             typeEquivelence.put("ScalaAspect.fr.irisa.triskell.kermeta.language.ReflectiveSequence", "java.util.List")
+                                                             typeEquivelence.put("fr.irisa.triskell.kermeta.language.ReflectiveSequence", "java.util.List")
                                                              typeEquivelence;
   };
 		

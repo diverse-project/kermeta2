@@ -17,8 +17,8 @@ var result : kermeta.kunit.TestSuite = null.asInstanceOf[kermeta.kunit.TestSuite
 {
     
                 var testCaseClass : java.lang.Class[_] =null
-                
-            testCaseClass = java.lang.Class.forName(utils.UTilScala.getQualifiedNameClass( testCaseClass1.getTypeDefinition , "."))         
+
+                testCaseClass = java.lang.Class.forName(utils.UTilScala.getQualifiedNameClass( testCaseClass1.getTypeDefinition , "."))         
 	//TODO
 	var tear : java.lang.reflect.Method =null
 	//tear = testCaseClass.getDeclaredMethods().filter{e=> e.getName().startsWith("tearDown")}.first

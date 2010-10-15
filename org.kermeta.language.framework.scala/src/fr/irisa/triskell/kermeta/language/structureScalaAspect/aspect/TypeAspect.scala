@@ -9,6 +9,10 @@ trait TypeAspect {
         def deepClone(objectToClone: fr.irisa.triskell.kermeta.language.structure.Object): fr.irisa.triskell.kermeta.language.structure.Object={
 		return null;
 	}
+        
+        def clone(objectToClone: fr.irisa.triskell.kermeta.language.structure.Object): fr.irisa.triskell.kermeta.language.structure.Object={
+		return null;
+	}
 
 
 }

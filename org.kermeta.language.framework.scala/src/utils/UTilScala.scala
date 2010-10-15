@@ -45,13 +45,13 @@ object UTilScala {
   }
 
    def getQualifiedNameClass(pack : fr.irisa.triskell.kermeta.language.structure.GenericTypeDefinition, sep: String):String ={
-      return   getQualifiedNamePackage(pack.eContainer().asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Package],sep) + sep+ pack.getName();
+       return    kermeta.utils.TypeEquivalence.getPackageEquivalence(getQualifiedNamePackage(pack.eContainer().asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Package],sep)) + sep+ pack.getName();
     }
  def getQualifiedNameType(pack : fr.irisa.triskell.kermeta.language.structure.Type, sep: String):String ={
      if (pack.isInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class]){
          return getQualifiedNameClass(pack.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class].getTypeDefinition,sep)
      }else if(pack.isInstanceOf[fr.irisa.triskell.kermeta.language.structure.DataType]){
-      return   getQualifiedNamePackage(pack.eContainer().asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Package],sep) + sep+ pack.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.DataType].getName();
+      return   kermeta.utils.TypeEquivalence.getPackageEquivalence(getQualifiedNamePackage(pack.eContainer().asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Package],sep) )+ sep+ pack.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.DataType].getName();
          
      }else
          return ""

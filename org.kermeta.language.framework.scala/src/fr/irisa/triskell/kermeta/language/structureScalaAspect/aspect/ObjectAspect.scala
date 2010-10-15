@@ -9,7 +9,8 @@ import fr.irisa.triskell.kermeta.language.behavior._
 
 trait ObjectAspect extends EObject  with Contracted {
 
-
+    
+    
   def isSuperTypeOf(cl : fr.irisa.triskell.kermeta.language.structure.Type):Boolean = {
          if (!(this.isInstanceOf[Class]  ))
             return false
