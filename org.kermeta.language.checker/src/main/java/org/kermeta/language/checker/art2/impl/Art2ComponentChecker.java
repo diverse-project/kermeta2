@@ -30,7 +30,7 @@ import org.kermeta.language.structure.ModelingUnit;
 })
 
 
-@ComponentType(libName = "org.kermeta.language")
+@ComponentType(name = "org.kermeta.language")
 public class Art2ComponentChecker extends AbstractComponentType implements PortChecker {
 
 	@Start
