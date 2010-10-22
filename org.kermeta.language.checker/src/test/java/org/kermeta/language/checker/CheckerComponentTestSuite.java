@@ -13,6 +13,7 @@
 
 package org.kermeta.language.checker;
 
+import org.kermeta.language.checker.art2.impl.LoaderTest;
 import org.kermeta.language.checker.art2.impl.PortCheckerTest;
 
 import junit.framework.Test;
@@ -27,6 +28,7 @@ public class CheckerComponentTestSuite {
 		TestSuite suite = new TestSuite("PortCheckerTestSuite");
 		//$JUnit-BEGIN$
 		suite.addTestSuite(PortCheckerTest.class);
+		//suite.addTestSuite(LoaderTest.class);
 		//$JUnit-END$
 		return suite;
 	}
