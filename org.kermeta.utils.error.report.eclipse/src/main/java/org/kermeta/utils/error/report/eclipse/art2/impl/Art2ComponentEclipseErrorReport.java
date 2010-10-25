@@ -26,11 +26,6 @@ import org.kermeta.art2.annotation.Start;
 import org.kermeta.art2.annotation.Stop;
 import org.kermeta.art2.framework.AbstractComponentType;
 import org.kermeta.language.api.messaging.ProblemMessage;
-import org.kermeta.language.api.messaging.UnifiedMessageFactory;
-import org.kermeta.language.api.port.PortLog;
-import org.kermeta.traceability.Reference;
-import org.kermeta.traceability.TextReference;
-import org.kermeta.utils.error.report.eclipse.KermetaMarker;
 import org.kermeta.utils.error.report.eclipse.KermetaMarkerFactory;
 import org.osgi.framework.Bundle;
 
@@ -41,11 +36,8 @@ import org.osgi.framework.Bundle;
 @ComponentType(libName = "org.kermeta.utils")
 public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 
-	//protected PortLog logPort=null;
-	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
 	protected String bundleSymbolicName="";
 	protected Bundle bundle;
-	protected KermetaMarker marker;
 	
 	/**
 	 * As it uses UI declaration via plugin.xml, this component is a singleton in Eclipse
@@ -54,10 +46,8 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 	
 	@Port(name="log",method="process")
 	public void process(Object o) {
-		System.out.println("Received stg" + o.toString());
 		if (o instanceof ProblemMessage){
-			ProblemMessage pbmMsg = (ProblemMessage) o;
-			treatProblemMsg(pbmMsg);
+			KermetaMarkerFactory.getInstance().treatProblemMsg((ProblemMessage) o);
 		}
 	}
 	
@@ -118,13 +108,5 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 	@Stop
 	public void stop(){
 		
-	}
-	
-	private void treatProblemMsg(ProblemMessage pbmMsg){
-		/*Reference causeObject = (Reference)pbmMsg.getCauseObject();
-		if (causeObject instanceof TextReference){
-			marker = KermetaMarkerFactory.getInstance().createKermetaMarker();
-			marker.treatMarker((TextReference) causeObject, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity());
-		}*/
 	}
 }

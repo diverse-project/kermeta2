@@ -70,7 +70,11 @@
 						<Require-Bundle>
 							org.eclipse.core.runtime,
 							org.eclipse.core.resources,
-							org.eclipse.ui.editors
+							org.eclipse.ui.editors,
+							org.eclipse.ui.workbench.texteditor,
+							org.eclipse.swt,
+							org.eclipse.ui.workbench,
+							org.eclipse.jface
                         </Require-Bundle>
 						<!-- use the ! for avoiding to import some packages that are already 
 							there with the Require-Bundle -->
@@ -78,6 +82,7 @@
 							!org.eclipse.core.*,
 							!org.eclipse.ui.*,
 							org.kermeta.*,
+							!org.eclipse.*,
 							scala.*,
 							org.slf4j.*;version="${slf4j.version.range}",
 							org.osgi.framework;version="[1.5,2)"
@@ -152,6 +157,21 @@
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui.editors</artifactId>
+			<version>[3.5.0.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.ui.workbench</artifactId>
+			<version>[3.5.0.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
+			<version>[3.5.0.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kermeta.eclipse</groupId>
+			<artifactId>org.eclipse.jface</artifactId>
 			<version>[3.5.0.0,)</version>
 		</dependency>
 	</dependencies>
