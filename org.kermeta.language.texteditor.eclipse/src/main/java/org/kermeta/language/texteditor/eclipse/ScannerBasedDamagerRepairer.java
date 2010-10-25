@@ -38,12 +38,12 @@ public class ScannerBasedDamagerRepairer implements IPresentationDamager,
 	 * The default text attribute if non is returned as data by the current
 	 * token
 	 */
-	protected ITokenScanner fScanner;
-
+	protected KermetaTokenScanner fScanner;
+	
 	/**
 	 * Constructor for NonRuleBasedDamagerRepairer.
 	 */
-	public ScannerBasedDamagerRepairer(ITokenScanner scanner) {
+	public ScannerBasedDamagerRepairer(KermetaTokenScanner scanner) {
 		fScanner = scanner;
 	}
 
@@ -88,7 +88,7 @@ public class ScannerBasedDamagerRepairer implements IPresentationDamager,
 			boolean documentPartitioningChanged) {
 		if (!documentPartitioningChanged) {
 			try {
-
+				System.out.println("EVENT FROM DAMAGER : " + event.toString());
 				IRegion info = fDocument.getLineInformationOfOffset(event
 						.getOffset());
 				int start = Math.max(partition.getOffset(), info.getOffset());
@@ -123,9 +123,15 @@ public class ScannerBasedDamagerRepairer implements IPresentationDamager,
 			ITypedRegion region) {
 
 		fScanner.setRange(fDocument, 0, fDocument.getLength());
+		fScanner.setFileHasError(false);
 		while (true) {
 			IToken token = fScanner.nextToken();
 			if (token.isEOF()) {
+				if (fScanner.isFileOnError()){
+					fScanner.notifyFileHasError();
+				}else{
+					fScanner.notifyFileClear();
+				}
 				break;
 			}
 			TextAttribute attribute = getTokenTextAttribute(token);

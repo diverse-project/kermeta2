@@ -38,7 +38,7 @@ public class KermetaEditorConfiguration extends TextSourceViewerConfiguration {
 	
 	// @param fileExtension
 	// @return
-	protected org.eclipse.jface.text.rules.ITokenScanner getScanner() {
+	protected org.kermeta.language.texteditor.eclipse.KermetaTokenScanner getScanner() {
 		return new org.kermeta.language.texteditor.eclipse.KermetaScanner(colorManager,theEditor);
 	}
 	

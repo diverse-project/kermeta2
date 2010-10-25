@@ -26,13 +26,14 @@ import org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditor
 import org.kermeta.traceability.TextReference;
 import org.kermeta.traceability.TraceabilityFactory;
 
-public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanner {
+public class KermetaScanner implements KermetaTokenScanner {
 
 	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
 	private KermetaColorManager colorManager ;
 	private org.kermeta.language.texteditor.eclipse.KermetaEditor editor;
 	//private int estimatedOffset;
 	private KMLexer lexer = null;
+	protected boolean fileHasError;
 	private org.kermeta.language.lexer.KTokens.KToken actualToken = null;
 	
 	public KermetaScanner(KermetaColorManager _colorManager,org.kermeta.language.texteditor.eclipse.KermetaEditor _editor){
@@ -54,7 +55,12 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 		}
 	}
 
-//	@Override
+	
+	public void setFileHasError(boolean fileHasError) {
+		this.fileHasError = fileHasError;
+	}
+
+	//	@Override
 	public IToken nextToken() {
 		try{
 			Object t = lexer.nextToken();
@@ -79,7 +85,6 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 		}
 		
 		String tokenName = actualToken.getClass().getSimpleName();
-		
 		
 		RGB color = new RGB(0,0,0);
 		int style = org.eclipse.swt.SWT.NORMAL;
@@ -106,7 +111,7 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 			
 			color=new RGB(255,0,0);
 			style = SWT.BOLD;
-			//TODO report error to error system
+			//report error to error system (marker)
 			ITextEditor textEditor= (ITextEditor) editor;
 			IEditorInput input= textEditor.getEditorInput();
 			IFile file = ((FileEditorInput) input).getFile();
@@ -115,61 +120,23 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 			
 			TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
 			textRef.setFileURI(url);
-			/*textRef.setLineBeginAt(value);
-			textRef.setLineEndAt(value);
-			textRef.setCharBeginAt(value);
-			textRef.setCharEndAt(value);*/
+/*			textRef.setLineBeginAt(value);
+			textRef.setLineEndAt(value);*/
+			textRef.setCharBeginAt(getTokenOffset());
+			textRef.setCharEndAt(getTokenOffset()+getTokenLength());
 			Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
 					mFactory.createErrorMessage("Incomplete token " + actualToken.toString(), Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName(), null, textRef));
 			Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
 					mFactory.createDebugMessage("Resource at : "+textRef.getFileURI()+ " should be marked", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
-			System.out.println("Resource at : "+textRef.getFileURI()+ " should be marked");
-		}/*else {
-			ITextEditor textEditor= (ITextEditor) editor;
-			IEditorInput input= textEditor.getEditorInput();
-			IFile file = ((FileEditorInput) input).getFile();
-			IPath path = file.getFullPath(); 
-			String url = path.toOSString();
-			
-			TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
-			textRef.setFileURI(url);
-			textRef.setLineBeginAt(value);
-			textRef.setLineEndAt(value);
-			textRef.setCharBeginAt(value);
-			textRef.setCharEndAt(value);
-			Art2ComponentTexteditorEclipse.getDefault().getLogPort().log(
-					mFactory.createOkMessage("Incomplete token " + actualToken.toString(), Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName(), null, textRef));
-			Art2ComponentTexteditorEclipse.getDefault().getLogPort().log(
-					mFactory.createDebugMessage("Resource at : "+textRef.getFileURI()+ " should not be marked", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
-			System.out.println("Resource at : "+textRef.getFileURI()+ " should not be marked");
-		}*/
-		
-		
-		
+			//System.out.println("Resource at : "+textRef.getFileURI()+ " should be marked");
+			setFileHasError(true);
+		}
 		System.out.println(tokenName+"\t Offset="+getTokenOffset()+"; Length="+getTokenLength() +"; -> " +actualToken.toString());
 		TextAttribute ta = new TextAttribute(colorManager.getColor(color),null,style);
 		Token token =  new Token(ta) ;
-		
 		return token;
 	}
-/*
-	private void refreshMarkers(){
-		if (resourceToRefresh == null) {
-			return;
-		}
-		if (display != null) {
-			display.asyncExec(new java.lang.Runnable() {
-				public void run() {
-					try {
-						Art2ComponentTexteditorEclipse.getDefault().getLogPort().log(
-								mFactory.createErrorMessage("Incomplete token " + actualToken.toString(), Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName(), null, textRef));
-					} catch (org.eclipse.core.runtime.CoreException e) {
-						e.printStackTrace();
-					}
-				}
-			});
-		}
-	}*/
+
 	
 	//	@Override
 	public int getTokenOffset() {
@@ -182,4 +149,33 @@ public class KermetaScanner implements org.eclipse.jface.text.rules.ITokenScanne
 		return actualToken.getLength();
 	}
 
+	@Override
+	public void notifyFileClear(){
+			ITextEditor textEditor= (ITextEditor) editor;
+			IEditorInput input= textEditor.getEditorInput();
+			IFile file = ((FileEditorInput) input).getFile();
+			IPath path = file.getFullPath(); 
+			String url = path.toOSString();
+			TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
+			textRef.setFileURI(url);
+			textRef.setCharBeginAt(getTokenOffset());
+			textRef.setCharEndAt(getTokenOffset()+getTokenLength());
+			Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
+					mFactory.createOkMessage("File is clear ", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName(), null, textRef));
+			Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
+					mFactory.createDebugMessage("Resource at : "+textRef.getFileURI()+ " should not be marked", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
+			//System.out.println("Resource at : "+textRef.getFileURI()+ " should not be marked");
+			//System.out.println("RESOURCE FINISH LEX SHOULD NOT NOT NOT BE MARK");
+	}
+
+	@Override
+	public void notifyFileHasError() {
+		// Already done by each token on error (see public IToken nextToken() method)
+	}
+
+	@Override
+	public boolean isFileOnError() {
+		return fileHasError;
+	}
+	
 }
