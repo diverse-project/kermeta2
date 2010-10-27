@@ -1,4 +1,4 @@
-/* $Id: KMLexer.scala 11856 2010-07-23 12:41:04Z dvojtise $
+/* $Id$
  * Project    : org.kermeta.language.texteditor.eclipse
  * License    : EPL
  * Copyright  : IRISA / INRIA / Universite de Rennes 1
