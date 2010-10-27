@@ -1,4 +1,4 @@
-/* $Id: $
+/* $Id$
  * Project    : org.kermeta.utils.error.report.eclipse
  * License    : EPL
  * Copyright  : IRISA / INRIA / Universite de Rennes 1
@@ -107,6 +107,6 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 	 */
 	@Stop
 	public void stop(){
-		
+		KermetaMarkerFactory.getInstance().flushGroupStore();
 	}
 }

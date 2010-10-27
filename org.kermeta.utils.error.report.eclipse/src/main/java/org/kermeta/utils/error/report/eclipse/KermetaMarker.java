@@ -1,4 +1,4 @@
-/* $Id: $
+/* $Id$
  * Project    : org.kermeta.utils.error.report.eclipse
  * License    : EPL
  * Copyright  : IRISA / INRIA / Universite de Rennes 1
