@@ -33,10 +33,22 @@ import org.osgi.framework.Bundle;
     @ProvidedPort(name = "log", type=PortType.MESSAGE)
 })
 
+/**
+ * Art2 component in charge of marking file resource for errors.
+ * Provide a log port to process received messages (org.kermeta.language.api.messaging.ProblemMessage).
+ * Filter messages according to sender group and error problem 
+ */
 @ComponentType(libName = "org.kermeta.utils")
 public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 
+	/**
+	 * The art2 bundle symbolic name
+	 */
 	protected String bundleSymbolicName="";
+	
+	/**
+	 * The bundle art2
+	 */
 	protected Bundle bundle;
 	
 	/**
@@ -44,6 +56,10 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 	 */
 	protected static Art2ComponentEclipseErrorReport instance;
 	
+	/**
+	 * Process the messages received on the log port
+	 * @param o the object received on the log port
+	 */
 	@Port(name="log",method="process")
 	public void process(Object o) {
 		if (o instanceof ProblemMessage){
@@ -51,19 +67,32 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 		}
 	}
 	
+	/**
+	 * Retreive the singleton instance of the art2 component
+	 * @return the instance
+	 */
 	public static Art2ComponentEclipseErrorReport getDefault(){
 		return instance;
 	}
 	
+	/**
+	 * Retrieve the osgi component symbolic name
+	 * @return the symbolic name
+	 */
 	public String getBundleSymbolicName(){
 		return bundleSymbolicName;
 	}
+	
+	/**
+	 * Retrieve the osgi component bundle
+	 * @return the bundle
+	 */
 	public Bundle getBundle(){
 		return bundle;
 	}
 
 	/**
-	 * method called when an instance of this component is instantiated and started
+	 * Method called when an instance of this component is instantiated and started
 	 */
 	@Start
 	public void start(){
@@ -103,7 +132,7 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 	}
 	
 	/**
-	 * method called when an instance of this component is stopped
+	 * Method called when an instance of this component is stopped
 	 */
 	@Stop
 	public void stop(){

@@ -15,14 +15,9 @@ import java.util.HashMap;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.IWorkspaceRunnable;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.ui.texteditor.MarkerUtilities;
 import org.kermeta.language.api.messaging.ProblemMessage.Severity;
-import org.kermeta.traceability.TextReference;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -40,34 +35,46 @@ public class KermetaMarker {
 		return IMarker.PROBLEM;
 	}
 
-	/*protected void markError(IFile file, String message) throws CoreException {
-		mark(file, message, IMarker.SEVERITY_ERROR, null, null);
-	}*/
-
-	protected void markError(IFile file, String message, int charStart,
+	/**
+	 * Mark file resource on error
+	 * @param file the file resource to be marked
+	 * @param message the error message
+	 * @param charStart offset to start marking
+	 * @param charStop offset to end marking
+	 * @throws CoreException if something goes wrong, the exception thrown
+	 */
+	private void markError(IFile file, String message, int charStart,
 			int charStop) throws CoreException {
 		mark(file, message, IMarker.SEVERITY_ERROR, charStart, charStop);
 	}
 
-	/*protected void markWarning(IFile file, String message) throws CoreException {
-		mark(file, message, IMarker.SEVERITY_WARNING, null, null);
-	}*/
-
-	protected void markWarning(IFile file, String message, int charStart,
+	/**
+	 * Mark file resource on warning
+	 * @param file the file resource to be marked
+	 * @param message the warning message
+	 * @param charStart offset to start marking
+	 * @param charStop offset to end marking
+	 * @throws CoreException if something goes wrong, the exception thrown
+	 */
+	private void markWarning(IFile file, String message, int charStart,
 			int charStop) throws CoreException {
 		mark(file, message, IMarker.SEVERITY_WARNING, charStart, charStop);
 	}
-
-	/*protected void markInfo(IFile file, String message) throws CoreException {
-		mark(file, message, IMarker.SEVERITY_INFO, null, null);
-	}*/
-
+	
+	/**
+	 * Mark file resource according to error severity
+	 * @param file the file resource to be marked
+	 * @param message the error message
+	 * @param severity the error severity
+	 * @param charStart offset to start marking
+	 * @param charStop offset to end marking
+	 * @throws CoreException if something goes wrong, the exception thrown
+	 */
 	protected void mark(IFile file, String message, int severity, int charStart, int charStop) throws CoreException {
-		System.out.println("MARK :" + file.getFullPath().toOSString());
-		final HashMap<String, java.lang.Object> datas = new HashMap<String, java.lang.Object>();
+		//System.out.println("MARK :" + file.getFullPath().toOSString());
+		HashMap<String, java.lang.Object> datas = new HashMap<String, java.lang.Object>();
 		datas.put(IMarker.MESSAGE, message);
 		datas.put(IMarker.SEVERITY, severity);
-		final IFile f = file;
 		
 		if (charStart < 0)
 			datas.put(IMarker.CHAR_START, charStart);
@@ -81,25 +88,19 @@ public class KermetaMarker {
 		
 		datas.put(IMarker.LINE_NUMBER, 3);
 		
-		/*IWorkspaceRunnable r= new IWorkspaceRunnable() {
-			 @Override
-			 public void run(IProgressMonitor monitor) throws CoreException {
-			              IMarker marker= f.createMarker(getMarkerType());
-			              marker.setAttributes(datas);
-			            }
-
-			};
-			
-		file.getWorkspace().run(r, null,IWorkspace.AVOID_UPDATE, null);*/
-
-		
 		MarkerUtilities.setLineNumber(datas, 3);
 		MarkerUtilities.createMarker(file, datas, getMarkerType());
-		//file.getWorkspace().run(r, null,IWorkspace.AVOID_UPDATE, null);
-		//MarkerUtilities.createMarker(file, datas, IMarker.TEXT);
 
 	}
 
+	/**
+	 * Refresh the markers on file resource
+	 * @param file the file resource to be marked
+	 * @param message the error message
+	 * @param severity the error severity
+	 * @param charStart offset to start marking
+	 * @param charStop offset to end marking
+	 */
 	public void refreshMarkers(IFile file, String message, String groupId, Severity severity, int charStart, int charEnd){
 		final Severity s = severity;
 		final IFile f = file; 
@@ -122,7 +123,6 @@ public class KermetaMarker {
 						markWarning(f, msg, start , end);
 					}
 				} catch (CoreException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -140,7 +140,7 @@ public class KermetaMarker {
 			if (file != null)
 				file.deleteMarkers(getMarkerType(), false, IResource.DEPTH_INFINITE);
 		} catch (Exception ex) {
-			// ex.printStackTrace();
+			ex.printStackTrace();
 		}
 	}
 }

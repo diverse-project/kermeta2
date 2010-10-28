@@ -26,8 +26,10 @@ import org.kermeta.traceability.TextReference;
 import org.kermeta.utils.error.report.eclipse.utils.KermetaMarkerUtils;
 
 /**
- * Factory in charge of handling the creation of markers. 
- * Acts as a filter on ProblemMessage sender group and content   
+ * Factory in charge of handling the creation of markers on resource file. 
+ * Filter the org.kermeta.language.api.messaging.ProblemMessage according to sender group 
+ * and message content to avoid texteditor's forever re-lexing the document each time a marker is added
+ * TODO Correct the texteditor's listener to stop infinite loop (because normally filtering is not the marker's job)
  * @author hrambelo
  *
  */
@@ -38,10 +40,20 @@ public class KermetaMarkerFactory {
 	 */
 	public static KermetaMarkerFactory instance = new KermetaMarkerFactory();
 
+	/**
+	 * Marker used on file resource
+	 */
 	protected KermetaMarker marker;
 	
+	/**
+	 * Hashtable to register the message sender group and its associated files
+	 * <GroupName, FilesHandledByTheGroup>
+	 */
 	protected Hashtable<String, List<String>> groupStore;
 	
+	/**
+	 * Default constructor of the factory
+	 */
 	private KermetaMarkerFactory(){
 		setGroupStore(flushGroupStore());
 	}
@@ -57,7 +69,7 @@ public class KermetaMarkerFactory {
 	/**
 	 * Filter received Problem Message by group to avoid forever re-lexing the document each time a marker is added
 	 * TODO correct the texteditor's listener to stop infinite loop (because normally filtering is not the marker's job)
-	 * @param pbmMsg
+	 * @param pbmMsg the log message received from the log port 
 	 */
 	public void treatProblemMsg(ProblemMessage pbmMsg){
 		Reference causeObject = (Reference)pbmMsg.getCauseObject();
@@ -76,8 +88,8 @@ public class KermetaMarkerFactory {
 	
 	/**
 	 * Register and treat new group
-	 * @param pbmMsg
-	 * @param ref
+	 * @param pbmMsg the log message received from the log port 
+	 * @param ref the file object reference inside the message and provided by org.kermeta.traceability.model to be treated  
 	 */
 	private void treatUnknownGroup(ProblemMessage pbmMsg, TextReference ref) {
 		IFile file = KermetaMarkerUtils.findFileFromLocation(ref.getFileURI());
@@ -97,8 +109,8 @@ public class KermetaMarkerFactory {
 	
 	/**
 	 * Treat Known group
-	 * @param pbmMsg
-	 * @param ref
+	 * @param pbmMsg the log message received from the log port 
+	 * @param ref the file object reference inside the message and provided by org.kermeta.traceability.model to be treated  
 	 */
 	private void treatRegisteredGroup(ProblemMessage pbmMsg, TextReference ref) {
 		List<String> urls = groupStore.get(pbmMsg.getMessageGroup());
@@ -110,7 +122,11 @@ public class KermetaMarkerFactory {
 		}
 	}
 		
-		
+	/**
+	 * Treat new file reference of a group
+	 * @param pbmMsg the log message received from the log port 
+	 * @param ref the file object reference inside the message and provided by org.kermeta.traceability.model to be treated  
+	 */
 	private void treatNewFile(ProblemMessage pbmMsg, TextReference ref) {	
 		//register new file only if it exists
 		IFile file =  KermetaMarkerUtils.findFileFromLocation(ref.getFileURI());
@@ -123,6 +139,11 @@ public class KermetaMarkerFactory {
 		marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginAt(), ref.getCharEndAt());
 	}
 
+	/**
+	 * Treat registered file reference of a group
+	 * @param pbmMsg the log message received from the log port 
+	 * @param ref the file object reference inside the message and provided by org.kermeta.traceability.model to be treated  
+	 */
 	private void treatRegisteredFile(ProblemMessage pbmMsg, TextReference ref) {
 		//ensure file exists before processing
 		IFile file =  KermetaMarkerUtils.findFileFromLocation(ref.getFileURI());
@@ -162,37 +183,33 @@ public class KermetaMarkerFactory {
 		}
 	}
 	
+	/**
+	 * Create a new marker to be used on file resource
+	 * @return
+	 */
 	private KermetaMarker createKermetaMarker(){
 		KermetaMarker marker = new KermetaMarker();
 		return marker;
 	}
 	
+	/**
+	 * Set a new value for the groupStore
+	 * @param groupStore new value
+	 */
+	public void setGroupStore(Hashtable<String, List<String>> groupStore) {
+		this.groupStore = groupStore;
+	}
+	
+	/**
+	 * Flush all the values of the groupStore
+	 * @param groupStore the groupStore to be cleaned
+	 * @return the cleared groupStore
+	 */
 	public Hashtable<String, List<String>> flushGroupStore(){
 		if (groupStore != null){
-			Set<String> groups = groupStore.keySet();
-			//remove all markers on files before clearing Store
-			for (String group : groups){	
-				List<String> uris = groupStore.get(group);
-				for (String uri : uris){
-					IFile file =  KermetaMarkerUtils.findFileFromLocation(uri);
-					if (file != null) {
-						try {
-							file.deleteMarkers(IMarker.PROBLEM, false, IResource.DEPTH_INFINITE);
-						} catch (CoreException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-			groupStore.clear();
-			return groupStore;
+			return KermetaMarkerUtils.clearAllMarkerInGroupStore(groupStore);
 		}else{
 			return KermetaMarkerUtils.initGroupStore();
 		}
-	}
-
-	public void setGroupStore(Hashtable<String, List<String>> groupStore) {
-		this.groupStore = groupStore;
 	}
 }
