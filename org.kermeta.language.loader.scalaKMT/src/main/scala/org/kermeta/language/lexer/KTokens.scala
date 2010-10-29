@@ -11,17 +11,18 @@
 package org.kermeta.language.lexer
 
 import scala.util.parsing.input._
+import org.kermeta.language.api.ktoken.IKToken
 import scala.util.parsing.combinator.Parsers
 import scala.util.parsing.combinator.token.Tokens
 import scala.util.parsing.input.OffsetPosition
 import scala.util.parsing.input.Positional
-
+import scala.collection.JavaConversions._
 
 trait KTokens extends Tokens with Parsers {
 
-  abstract case class KToken extends Token with Positional {
-    def getOffset = this.pos.asInstanceOf[OffsetPosition].offset
-    def getLength : Int = this.toString.length
+  abstract case class KToken extends Token with Positional with IKToken {
+    def getOffset : java.lang.Integer  = this.pos.asInstanceOf[OffsetPosition].offset
+    def getLength : java.lang.Integer = this.toString.length
   }
 
   /** The class of comment tokens */

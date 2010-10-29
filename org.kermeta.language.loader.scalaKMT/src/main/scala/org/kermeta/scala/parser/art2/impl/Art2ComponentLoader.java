@@ -9,6 +9,8 @@
  */
 package org.kermeta.scala.parser.art2.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.kermeta.art2.annotation.ComponentType;
 import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.ProvidedPort;
@@ -50,17 +52,19 @@ public class Art2ComponentLoader extends AbstractComponentType implements org.ke
     }
     
     @Port(name="KMTlexer", method="lex")
-    public IKToken lex(String content) {
+    public List<IKToken> lex(String content) {
+
+        List<IKToken> result = new ArrayList<IKToken>();
+
     	org.kermeta.language.api.ktoken.IKToken actualToken = null;
         KMLexer lexer = new KMLexer(content);
-        try{
-			Object t = lexer.nextToken();
-			if(t instanceof org.kermeta.language.api.ktoken.IKToken){
-				actualToken = ( org.kermeta.language.api.ktoken.IKToken) t;
-			}
-		} catch (Exception e){
-		}
-        return actualToken;
+
+        while(lexer.atEnd()){
+            Object t = lexer.nextToken();
+            result.add((IKToken) t);
+        }
+        
+        return result;
 
     }
 }
