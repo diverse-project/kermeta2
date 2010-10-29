@@ -16,6 +16,7 @@ import org.kermeta.art2.annotation.ProvidedPort;
 import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.annotation.Start;
 import org.kermeta.art2.annotation.Stop;
+import org.kermeta.art2.annotation.Library;
 import org.kermeta.art2.framework.AbstractComponentType;
 import org.kermeta.language.api.messaging.UnifiedMessage;
 import org.kermeta.language.api.port.PortLog;
@@ -35,7 +36,9 @@ import org.osgi.framework.Bundle;
     //@ProvidedPort(name = "asynclog", type=PortType.MESSAGE),
     @ProvidedPort(name = "log", type=PortType.MESSAGE)
 })
-@ComponentType(libName = "org.kermeta.utils")
+
+@Library(name= "org.kermeta.utils")
+@ComponentType
 public class Art2ComponentEclipseLogger extends AbstractComponentType {
 	ConsoleIO logger;
 	ConsoleMessageFactory consoleMessageFactory = new ConsoleMessageFactory();
