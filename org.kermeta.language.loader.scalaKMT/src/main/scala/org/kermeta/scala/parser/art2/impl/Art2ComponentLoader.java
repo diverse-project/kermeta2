@@ -13,6 +13,7 @@ import org.kermeta.art2.annotation.ComponentType;
 import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.ProvidedPort;
 import org.kermeta.art2.annotation.Provides;
+import org.kermeta.art2.annotation.Library;
 import org.kermeta.art2.framework.AbstractComponentType;
 import org.kermeta.language.api.ktoken.IKToken;
 import org.kermeta.language.api.port.PortLexer;
@@ -35,7 +36,8 @@ import scala.util.parsing.combinator.token.Tokens.Token;
 	}		
 )
 
-@ComponentType(libName="KMTloaderComponent")
+@Library(name= "KMTloaderComponent")
+@ComponentType
 public class Art2ComponentLoader extends AbstractComponentType implements org.kermeta.language.api.port.PortResourceLoader {
 	
     @Port(name="KMTloader", method="load")
