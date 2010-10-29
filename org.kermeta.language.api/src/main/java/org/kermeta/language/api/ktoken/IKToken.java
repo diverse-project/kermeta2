@@ -12,7 +12,7 @@ package org.kermeta.language.api.ktoken;
 
 public interface IKToken {
 
-	public int getTokenOffset();
+	public Integer getOffset();
 	
-	public int getTokenLength();
+	public Integer getLength();
 }

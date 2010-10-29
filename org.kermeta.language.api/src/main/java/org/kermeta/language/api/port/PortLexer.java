@@ -14,5 +14,5 @@ import org.kermeta.language.api.ktoken.IKToken;
 
 public interface PortLexer {
 
-	public IKToken lex(String content);
+	public java.util.List<IKToken> lex(String content);
 }
