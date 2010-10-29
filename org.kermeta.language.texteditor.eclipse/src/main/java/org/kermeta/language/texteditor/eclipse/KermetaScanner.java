@@ -21,7 +21,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.texteditor.ITextEditor;
 import org.kermeta.language.api.messaging.UnifiedMessageFactory;
-import org.kermeta.language.lexer.KMLexer;
+//import org.kermeta.language.lexer.KMLexer;
 import org.kermeta.language.texteditor.eclipse.art2.impl.Art2ComponentTexteditorEclipse;
 import org.kermeta.traceability.TextReference;
 import org.kermeta.traceability.TraceabilityFactory;
@@ -32,7 +32,8 @@ public class KermetaScanner implements KermetaTokenScanner {
 	private KermetaColorManager colorManager ;
 	private org.kermeta.language.texteditor.eclipse.KermetaEditor editor;
 	//private int estimatedOffset;
-	private KMLexer lexer = null;
+	//private KMLexer lexer = null;
+	//protected KParser parser = null;
 	protected boolean fileHasError;
 	private org.kermeta.language.lexer.KTokens.KToken actualToken = null;
 	
@@ -49,7 +50,8 @@ public class KermetaScanner implements KermetaTokenScanner {
 		try {
 			// Note: do not try to parse only this range, recheck the whole document (more reliable)
 			String content = document.get(0, document.getLength());			
-			lexer = new KMLexer(content);
+			//lexer = new KMLexer(content);
+			
 		} catch (org.eclipse.jface.text.BadLocationException e) {
 			//ignore this error. It might occur during editing when locations are outdated quickly.
 		}

@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.ContributorFactoryOSGi;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.RegistryFactory;
 import org.kermeta.art2.annotation.ComponentType;
+import org.kermeta.art2.annotation.Library;
 import org.kermeta.art2.annotation.PortType;
 import org.kermeta.art2.annotation.RequiredPort;
 import org.kermeta.art2.annotation.Requires;
@@ -27,8 +28,11 @@ import org.kermeta.art2.annotation.ThirdParty;
 import org.kermeta.art2.framework.AbstractComponentType;
 import org.kermeta.art2.framework.MessagePort;
 import org.kermeta.language.api.messaging.UnifiedMessageFactory;
+import org.kermeta.language.api.port.PortLexer;
 import org.kermeta.language.api.port.PortLog;
+import org.kermeta.language.api.port.PortResourceLoader;
 import org.osgi.framework.Bundle;
+import org.kermeta.language.lexer.KMLexer;
 
 
 @ThirdParties({
@@ -36,7 +40,7 @@ import org.osgi.framework.Bundle;
 	@ThirdParty(name="org.kermeta.language.kp.model", url="mvn:org.kermeta.kp/kp.model"),
 	@ThirdParty(name="org.kermeta.language.traceability.model", url="mvn:org.kermeta.traceability/traceability.model"),
 	@ThirdParty(name="org.kermeta.language.api", url="mvn:org.kermeta.language/language.api"),
-	@ThirdParty(name="org.kermeta.language.loader.scala", url="mvn:org.kermeta.language/language.loader.scala")
+	//@ThirdParty(name="org.kermeta.language.loader.scala", url="mvn:org.kermeta.language/language.loader.scala")
 })
 
 @Requires({
@@ -44,15 +48,20 @@ import org.osgi.framework.Bundle;
 	 * Log port for sending technical messages
 	 */
 	//@RequiredPort(name = "log", type=PortType.MESSAGE)
-	@RequiredPort(name = "log", type=PortType.MESSAGE)
+	@RequiredPort(name = "log", type=PortType.MESSAGE),
+	//@RequiredPort(name = "KMTloader", type=PortType.SERVICE, className=PortResourceLoader.class),
+	@RequiredPort(name = "KMTlexer", type=PortType.SERVICE,className=PortLexer.class)
 })
 /**
  * ART2 component of a Text editor for Kermeta language running in eclipse
  */
-@ComponentType(libName = "org.kermeta.language")
+@Library(name= "org.kermeta.language")
+@ComponentType
 public class Art2ComponentTexteditorEclipse extends AbstractComponentType {
 
 	protected MessagePort logPort=null;
+	protected PortLexer lexer = null;
+	//protected KParser parser = null;
 	protected UnifiedMessageFactory mFactory = UnifiedMessageFactory.getInstance();
 	protected String bundleSymbolicName="";
 	protected Bundle bundle;
@@ -67,6 +76,11 @@ public class Art2ComponentTexteditorEclipse extends AbstractComponentType {
 	public MessagePort getLogPort(){
 		return logPort;
 	}
+	
+	public PortLexer getLexer() {
+		return lexer;
+	}
+
 	public String getBundleSymbolicName(){
 		return bundleSymbolicName;
 	}
@@ -84,6 +98,8 @@ public class Art2ComponentTexteditorEclipse extends AbstractComponentType {
 		instance =  this;
 		// store some useful data
 		logPort = getPortByName("log", MessagePort.class);
+		lexer = getPortByName("KMTlexer", PortLexer.class);
+		//parser = getPortByName("KMTloader", PortResourceLoader.class);
 	//	System.out.println("Art2ComponentTexteditorEclipse.start logPort="+logPort.toString());
 		
 		bundle = (Bundle) this.getDictionary().get("osgi.bundle");
