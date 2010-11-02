@@ -16,6 +16,8 @@ import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.ProvidedPort;
 import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.annotation.Library;
+import org.kermeta.art2.annotation.Start;
+import org.kermeta.art2.annotation.Stop;
 import org.kermeta.art2.framework.AbstractComponentType;
 import org.kermeta.language.api.ktoken.IKToken;
 import org.kermeta.language.api.port.PortLexer;
@@ -25,24 +27,19 @@ import org.kermeta.scala.parser.KParser;
 import org.kermeta.scala.parser.ParserUtil;
 import org.kermeta.language.lexer.KMLexer;
 
-import scala.util.parsing.combinator.token.Tokens.Token;
-
 /**
  *
  * @author ffouquet
  */
-
 @Provides({
-	@ProvidedPort(name="KMTloader", className=PortResourceLoader.class),
-	@ProvidedPort(name="KMTlexer", className=PortLexer.class)
-	}		
-)
-
-@Library(name= "KMTloaderComponent")
+    @ProvidedPort(name = "KMTloader", className = PortResourceLoader.class),
+    @ProvidedPort(name = "KMTlexer", className = PortLexer.class)
+})
+@Library(name = "KMTloaderComponent")
 @ComponentType
 public class Art2ComponentLoader extends AbstractComponentType implements org.kermeta.language.api.port.PortResourceLoader {
-	
-    @Port(name="KMTloader", method="load")
+
+    @Port(name = "KMTloader", method = "load")
     public ModelingUnit load(String uri, org.kermeta.language.api.port.PortResourceLoader.URIType type) {
 
         KParser parser = new KParser();
@@ -50,21 +47,29 @@ public class Art2ComponentLoader extends AbstractComponentType implements org.ke
         return parser.parseSynch(ParserUtil.loadFile(uri)).get();
 
     }
-    
-    @Port(name="KMTlexer", method="lex")
+
+    @Port(name = "KMTlexer", method = "lex")
     public List<IKToken> lex(String content) {
 
         List<IKToken> result = new ArrayList<IKToken>();
 
-    	org.kermeta.language.api.ktoken.IKToken actualToken = null;
+        org.kermeta.language.api.ktoken.IKToken actualToken = null;
         KMLexer lexer = new KMLexer(content);
 
-        while(lexer.atEnd()){
+        while (lexer.atEnd()) {
             Object t = lexer.nextToken();
             result.add((IKToken) t);
         }
-        
+
         return result;
 
+    }
+
+    @Start
+    public void start() {
+    }
+
+    @Stop
+    public void stop() {
     }
 }

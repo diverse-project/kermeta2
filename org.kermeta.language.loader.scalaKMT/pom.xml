@@ -65,7 +65,7 @@
 							org.kermeta.scala.parser
                         </Export-Package>
 						<Import-Package>
-							org.kermeta.art2.framework,
+							org.kermeta.art2.framework.*,
 							org.eclipse.emf.*,
 							org.osgi.framework;version="[1.5,2)",
 							scala.*,
