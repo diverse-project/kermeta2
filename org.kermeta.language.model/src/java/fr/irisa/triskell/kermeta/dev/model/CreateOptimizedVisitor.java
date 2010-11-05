@@ -134,7 +134,8 @@ public class CreateOptimizedVisitor {
 	
 	protected static String getvisitMethodTemplate() {
 		if (visitMethodTemplate == null) {
-			visitMethodTemplate = "	public Object visitXNodeClassNameX(org.XNodeTypeNameX node) {\n";
+			//visitMethodTemplate = "	public Object visitXNodeClassNameX(org.XNodeTypeNameX node) {\n";
+			visitMethodTemplate = "	public Object visitXNodeClassNameX(XNodeTypeNameX node) {\n";
 			visitMethodTemplate += "	return genericVisitChildren(node);\n";
 			visitMethodTemplate += "	}\n";
 		}
@@ -146,7 +147,8 @@ public class CreateOptimizedVisitor {
 			visitCmdClassTemplate = "class XNodeClassNameXAcceptCommand extends AcceptCommand {\n";
 			visitCmdClassTemplate += "	public Object accept(EObject node, XclassNameX visitor) {\n";
 			visitCmdClassTemplate += "		return visitor\n";
-			visitCmdClassTemplate += "				.visitXNodeClassNameX((org.XNodeTypeNameX) node);\n";
+			//visitCmdClassTemplate += "				.visitXNodeClassNameX((org.XNodeTypeNameX) node);\n";
+			visitCmdClassTemplate += "				.visitXNodeClassNameX((XNodeTypeNameX) node);\n";
 			visitCmdClassTemplate += "	}\n";
 			visitCmdClassTemplate += "}\n";
 		}

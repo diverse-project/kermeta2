@@ -98,7 +98,8 @@ public class CreateGenericVisitor {
 	
 	protected static String getvisitMethodTemplate() {
 		if (visitMethodTemplate == null) {
-			visitMethodTemplate = "	public Object visit(org.XtypeNameX node) {\n";
+			//visitMethodTemplate = "	public Object visit(org.XtypeNameX node) {\n";
+			visitMethodTemplate = "	public Object visit(XtypeNameX node) {\n";
 			visitMethodTemplate += "	return genericVisitChildren(node);\n";
 			visitMethodTemplate += "	}\n";
 		}

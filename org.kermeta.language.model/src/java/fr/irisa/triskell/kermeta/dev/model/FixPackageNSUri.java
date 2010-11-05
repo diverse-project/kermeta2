@@ -33,7 +33,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
  */
 public class FixPackageNSUri {
 	
-	public static final String BaseNsURI = "http://www.kermeta.org/kermeta/2_0_0//kermeta";
+	public static final String BaseNsURI = "http://www.kermeta.org/kermeta/2_0_0//";
+	
 	/**
 	 * Loads the ecore model from a xmi 2.0 (*.ecore) file
 	 * @param xmifile Path to the file to load
@@ -73,9 +74,11 @@ public class FixPackageNSUri {
 	
 	/** Set a xpath-like syntax for the NsURI of the given package*/
 	public static String getPackageNsPath(EPackage p) {
+		
 		if (p.eContainer() != null && p.eContainer() instanceof EPackage) {
-			 if (!((EPackage)p.eContainer()).getName().equals("kermeta"))
-				 return getPackageNsPath((EPackage)p.eContainer()) + "/" + p.getName();
+			if (!((EPackage)p.eContainer()).getName().equals("org")) {
+				return getPackageNsPath((EPackage)p.eContainer()) + "/" + p.getName();
+			}
 		}
 		return p.getName();
 	}
@@ -87,7 +90,8 @@ public class FixPackageNSUri {
 	 */
 	public static void processPackage(EPackage p) {
 		String prefix = getPrefix(p);
-		String suffix = p.getName().equals("kermeta")?"":"/"+getPackageNsPath(p);
+		String suffix = p.getName().equals("org")?"":"/org/"+getPackageNsPath(p);
+		
 		System.out.println("Package " + p.getName() + "; nsPrefix = "+ prefix + "; nsURI = " + BaseNsURI+suffix);
 		p.setNsURI(BaseNsURI + suffix);
 		p.setNsPrefix(prefix);
@@ -145,18 +149,26 @@ public class FixPackageNSUri {
 		
 		TreeIterator<EObject> it = ((EPackage)model1.getContents().get(0)).eAllContents();
 		EPackage root = (EPackage)model1.getContents().get(0);
-		root.setName("kermeta");
-		insertPackage(root, "language");
+	
+		root.setName("org");
+		insertPackage(root, "kermeta");
 		processPackage(root);
+		
+		// Retrieve org.kermeta EPackage
+		EPackage kermetaPackage = root.getESubpackages().get(0);
+		insertPackage(kermetaPackage, "language");
+		processPackage(kermetaPackage);
+		
 		while(it.hasNext()) {
 			EObject o = (EObject)it.next();
 			if (o instanceof EPackage) {				
 				EPackage p = (EPackage)o;
-				if(p.getName().compareTo("kermeta")==0) insertPackage(p, "language");
 				processPackage(p);
 			}
 		}
 		
 		cn.store(model1);
+
+
 	}
 }
