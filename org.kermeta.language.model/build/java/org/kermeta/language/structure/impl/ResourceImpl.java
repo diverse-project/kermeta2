@@ -3,25 +3,23 @@
  *
  * $Id$
  */
-package org.kermeta.impl;
+package org.kermeta.language.structure.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.kermeta.DummyClass;
-import org.kermeta.KermetaPackage;
+import org.kermeta.language.structure.Resource;
+import org.kermeta.language.structure.StructurePackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Dummy Class</b></em>'.
+ * An implementation of the model object '<em><b>Resource</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public abstract class DummyClassImpl extends EObjectImpl implements DummyClass {
+public class ResourceImpl extends ObjectImpl implements Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34,7 +32,7 @@ public abstract class DummyClassImpl extends EObjectImpl implements DummyClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DummyClassImpl() {
+	protected ResourceImpl() {
 		super();
 	}
 
@@ -45,7 +43,7 @@ public abstract class DummyClassImpl extends EObjectImpl implements DummyClass {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return KermetaPackage.Literals.DUMMY_CLASS;
+		return StructurePackage.Literals.RESOURCE;
 	}
 
-} //DummyClassImpl
+} //ResourceImpl

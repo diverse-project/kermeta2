@@ -17,21 +17,15 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.Constraint;
-import org.kermeta.language.structure.GenericTypeDefinition;
-import org.kermeta.language.structure.NamedElement;
 import org.kermeta.language.structure.Operation;
 import org.kermeta.language.structure.Property;
 import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.structure.Type;
-import org.kermeta.language.structure.TypeDefinition;
-import org.kermeta.language.structure.TypeVariable;
 import org.kermeta.language.structure.TypeContainer;
 
 /**
@@ -46,7 +40,6 @@ import org.kermeta.language.structure.TypeContainer;
  *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getOwnedAttribute <em>Owned Attribute</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getOwnedOperation <em>Owned Operation</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getSuperType <em>Super Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -119,16 +112,6 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 	 * @ordered
 	 */
 	protected EList<Operation> ownedOperation;
-
-	/**
-	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSuperType()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Type> superType;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -223,18 +206,6 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Type> getSuperType() {
-		if (superType == null) {
-			superType = new EObjectResolvingEList<Type>(Type.class, this, StructurePackage.CLASS_DEFINITION__SUPER_TYPE);
-		}
-		return superType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -289,8 +260,6 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 				return getOwnedAttribute();
 			case StructurePackage.CLASS_DEFINITION__OWNED_OPERATION:
 				return getOwnedOperation();
-			case StructurePackage.CLASS_DEFINITION__SUPER_TYPE:
-				return getSuperType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -323,10 +292,6 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 				getOwnedOperation().clear();
 				getOwnedOperation().addAll((Collection<? extends Operation>)newValue);
 				return;
-			case StructurePackage.CLASS_DEFINITION__SUPER_TYPE:
-				getSuperType().clear();
-				getSuperType().addAll((Collection<? extends Type>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -354,9 +319,6 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 			case StructurePackage.CLASS_DEFINITION__OWNED_OPERATION:
 				getOwnedOperation().clear();
 				return;
-			case StructurePackage.CLASS_DEFINITION__SUPER_TYPE:
-				getSuperType().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -379,8 +341,6 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case StructurePackage.CLASS_DEFINITION__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
-			case StructurePackage.CLASS_DEFINITION__SUPER_TYPE:
-				return superType != null && !superType.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

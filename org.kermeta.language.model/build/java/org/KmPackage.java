@@ -3,7 +3,7 @@
  *
  * $Id$
  */
-package org.kermeta.language;
+package org;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EPackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.kermeta.language.LanguageFactory
+ * @see org.KmFactory
  * @model kind="package"
  * @generated
  */
-public interface LanguagePackage extends EPackage {
+public interface KmPackage extends EPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -37,7 +37,7 @@ public interface LanguagePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "language";
+	String eNAME = "org";
 
 	/**
 	 * The package namespace URI.
@@ -45,7 +45,7 @@ public interface LanguagePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.kermeta.org/kermeta/2_0_0///org/kermeta/language";
+	String eNS_URI = "http://www.kermeta.org/kermeta/2_0_0//";
 
 	/**
 	 * The package namespace name.
@@ -53,7 +53,7 @@ public interface LanguagePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "org_kermeta_language";
+	String eNS_PREFIX = "org";
 
 	/**
 	 * The singleton instance of the package.
@@ -61,14 +61,14 @@ public interface LanguagePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	LanguagePackage eINSTANCE = org.kermeta.language.impl.LanguagePackageImpl.init();
+	KmPackage eINSTANCE = org.impl.KmPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.kermeta.language.impl.DummyClassImpl <em>Dummy Class</em>}' class.
+	 * The meta object id for the '{@link org.impl.DummyClassImpl <em>Dummy Class</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.impl.DummyClassImpl
-	 * @see org.kermeta.language.impl.LanguagePackageImpl#getDummyClass()
+	 * @see org.impl.DummyClassImpl
+	 * @see org.impl.KmPackageImpl#getDummyClass()
 	 * @generated
 	 */
 	int DUMMY_CLASS = 0;
@@ -84,11 +84,11 @@ public interface LanguagePackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.kermeta.language.DummyClass <em>Dummy Class</em>}'.
+	 * Returns the meta object for class '{@link org.DummyClass <em>Dummy Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Dummy Class</em>'.
-	 * @see org.kermeta.language.DummyClass
+	 * @see org.DummyClass
 	 * @generated
 	 */
 	EClass getDummyClass();
@@ -100,7 +100,7 @@ public interface LanguagePackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	LanguageFactory getLanguageFactory();
+	KmFactory getKmFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,15 +116,15 @@ public interface LanguagePackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.kermeta.language.impl.DummyClassImpl <em>Dummy Class</em>}' class.
+		 * The meta object literal for the '{@link org.impl.DummyClassImpl <em>Dummy Class</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.kermeta.language.impl.DummyClassImpl
-		 * @see org.kermeta.language.impl.LanguagePackageImpl#getDummyClass()
+		 * @see org.impl.DummyClassImpl
+		 * @see org.impl.KmPackageImpl#getDummyClass()
 		 * @generated
 		 */
 		EClass DUMMY_CLASS = eINSTANCE.getDummyClass();
 
 	}
 
-} //LanguagePackage
+} //KmPackage

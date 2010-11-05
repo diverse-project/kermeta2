@@ -68,7 +68,7 @@ public class ConstraintImpl extends NamedElementImpl implements Constraint {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ConstraintType STEREOTYPE_EDEFAULT = ConstraintType.INV_LITERAL;
+	protected static final ConstraintType STEREOTYPE_EDEFAULT = ConstraintType.INV;
 
 	/**
 	 * The cached value of the '{@link #getStereotype() <em>Stereotype</em>}' attribute.
@@ -88,7 +88,7 @@ public class ConstraintImpl extends NamedElementImpl implements Constraint {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ConstraintLanguage LANGUAGE_EDEFAULT = ConstraintLanguage.KERMETA_LITERAL;
+	protected static final ConstraintLanguage LANGUAGE_EDEFAULT = ConstraintLanguage.KERMETA;
 
 	/**
 	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute.

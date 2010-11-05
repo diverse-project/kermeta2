@@ -3,7 +3,9 @@
  *
  * $Id$
  */
-package org.kermeta.impl;
+package org.impl;
+
+import org.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -12,8 +14,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.kermeta.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,7 +37,7 @@ public class KmFactoryImpl extends EFactoryImpl implements KmFactory {
 	 */
 	public static KmFactory init() {
 		try {
-			KmFactory theKmFactory = (KmFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.kermeta.org/kermeta/2_0_0//kermeta"); 
+			KmFactory theKmFactory = (KmFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.kermeta.org/kermeta/2_0_0//"); 
 			if (theKmFactory != null) {
 				return theKmFactory;
 			}

@@ -28,31 +28,31 @@ public enum ConstraintType implements Enumerator {
 	 * The '<em><b>Inv</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #INV
+	 * @see #INV_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	INV_LITERAL(0, "inv", "inv"),
+	INV(0, "inv", "inv"),
 
 	/**
 	 * The '<em><b>Pre</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PRE
+	 * @see #PRE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PRE_LITERAL(1, "pre", "pre"),
+	PRE(1, "pre", "pre"),
 
 	/**
 	 * The '<em><b>Post</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #POST
+	 * @see #POST_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	POST_LITERAL(2, "post", "post");
+	POST(2, "post", "post");
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,12 +69,12 @@ public enum ConstraintType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #INV_LITERAL
+	 * @see #INV
 	 * @model name="inv"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int INV = 0;
+	public static final int INV_VALUE = 0;
 
 	/**
 	 * The '<em><b>Pre</b></em>' literal value.
@@ -84,12 +84,12 @@ public enum ConstraintType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PRE_LITERAL
+	 * @see #PRE
 	 * @model name="pre"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PRE = 1;
+	public static final int PRE_VALUE = 1;
 
 	/**
 	 * The '<em><b>Post</b></em>' literal value.
@@ -99,12 +99,12 @@ public enum ConstraintType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #POST_LITERAL
+	 * @see #POST
 	 * @model name="post"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int POST = 2;
+	public static final int POST_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Constraint Type</b></em>' enumerators.
@@ -114,9 +114,9 @@ public enum ConstraintType implements Enumerator {
 	 */
 	private static final ConstraintType[] VALUES_ARRAY =
 		new ConstraintType[] {
-			INV_LITERAL,
-			PRE_LITERAL,
-			POST_LITERAL,
+			INV,
+			PRE,
+			POST,
 		};
 
 	/**
@@ -167,9 +167,9 @@ public enum ConstraintType implements Enumerator {
 	 */
 	public static ConstraintType get(int value) {
 		switch (value) {
-			case INV: return INV_LITERAL;
-			case PRE: return PRE_LITERAL;
-			case POST: return POST_LITERAL;
+			case INV_VALUE: return INV;
+			case PRE_VALUE: return PRE;
+			case POST_VALUE: return POST;
 		}
 		return null;
 	}

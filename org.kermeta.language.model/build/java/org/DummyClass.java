@@ -3,7 +3,7 @@
  *
  * $Id$
  */
-package org.kermeta;
+package org;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-model-doc -->
  *
  *
- * @see org.kermeta.KermetaPackage#getDummyClass()
+ * @see org.KmPackage#getDummyClass()
  * @model abstract="true"
  * @generated
  */

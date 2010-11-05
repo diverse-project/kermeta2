@@ -5,6 +5,7 @@
  */
 package org.kermeta.language.structure;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +22,8 @@ package org.kermeta.language.structure;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.kermeta.language.structure.TypeDefinition#isIsAspect <em>Is Aspect</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.TypeDefinition#getSuperType <em>Super Type</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.TypeDefinition#getTypeMappings <em>Type Mappings</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,5 +64,37 @@ public interface TypeDefinition extends NamedElement {
 	 * @generated
 	 */
 	void setIsAspect(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Super Type</b></em>' reference list.
+	 * The list contents are of type {@link org.kermeta.language.structure.Type}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Classes from which this ClassDefinition inherits.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Super Type</em>' reference list.
+	 * @see org.kermeta.language.structure.StructurePackage#getTypeDefinition_SuperType()
+	 * @model
+	 * @generated
+	 */
+	EList<Type> getSuperType();
+
+	/**
+	 * Returns the value of the '<em><b>Type Mappings</b></em>' containment reference list.
+	 * The list contents are of type {@link org.kermeta.language.structure.TypeMapping}.
+	 * It is bidirectional and its opposite is '{@link org.kermeta.language.structure.TypeMapping#getSourceType <em>Source Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * These mappings define how we can substitute the target Type with this TypeDefinition 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Type Mappings</em>' containment reference list.
+	 * @see org.kermeta.language.structure.StructurePackage#getTypeDefinition_TypeMappings()
+	 * @see org.kermeta.language.structure.TypeMapping#getSourceType
+	 * @model opposite="sourceType" containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	EList<TypeMapping> getTypeMappings();
 
 } // TypeDefinition

@@ -18,7 +18,6 @@ import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.Constraint;
 import org.kermeta.language.structure.ConstraintLanguage;
 import org.kermeta.language.structure.ConstraintType;
-import org.kermeta.language.structure.DataType;
 import org.kermeta.language.structure.Enumeration;
 import org.kermeta.language.structure.EnumerationLiteral;
 import org.kermeta.language.structure.FunctionType;
@@ -27,7 +26,6 @@ import org.kermeta.language.structure.ModelType;
 import org.kermeta.language.structure.ModelTypeVariable;
 import org.kermeta.language.structure.ModelingUnit;
 import org.kermeta.language.structure.MultiplicityElement;
-import org.kermeta.language.structure.NamedElement;
 import org.kermeta.language.structure.ObjectTypeVariable;
 import org.kermeta.language.structure.Operation;
 import org.kermeta.language.structure.Parameter;
@@ -35,17 +33,18 @@ import org.kermeta.language.structure.PrimitiveType;
 import org.kermeta.language.structure.ProductType;
 import org.kermeta.language.structure.Property;
 import org.kermeta.language.structure.Require;
+import org.kermeta.language.structure.Resource;
+import org.kermeta.language.structure.ResourceGroup;
+import org.kermeta.language.structure.SimpleResource;
 import org.kermeta.language.structure.StructureFactory;
 import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.structure.Tag;
-import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.TypeDefinition;
 import org.kermeta.language.structure.TypeDefinitionContainer;
-import org.kermeta.language.structure.TypeVariable;
+import org.kermeta.language.structure.TypeMapping;
 import org.kermeta.language.structure.TypeVariableBinding;
 import org.kermeta.language.structure.UnresolvedOperation;
 import org.kermeta.language.structure.UnresolvedProperty;
-import org.kermeta.language.structure.TypedElement;
 import org.kermeta.language.structure.UnresolvedType;
 import org.kermeta.language.structure.Using;
 import org.kermeta.language.structure.VirtualType;
@@ -73,7 +72,7 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	 */
 	public static StructureFactory init() {
 		try {
-			StructureFactory theStructureFactory = (StructureFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.kermeta.org/kermeta/2_0_0//kermeta/language/structure"); 
+			StructureFactory theStructureFactory = (StructureFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.kermeta.org/kermeta/2_0_0///org/kermeta/language/structure"); 
 			if (theStructureFactory != null) {
 				return theStructureFactory;
 			}
@@ -126,12 +125,16 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 			case StructurePackage.MODEL_TYPE_VARIABLE: return createModelTypeVariable();
 			case StructurePackage.VIRTUAL_TYPE: return createVirtualType();
 			case StructurePackage.MODEL: return createModel();
+			case StructurePackage.RESOURCE: return createResource();
+			case StructurePackage.RESOURCE_GROUP: return createResourceGroup();
+			case StructurePackage.SIMPLE_RESOURCE: return createSimpleResource();
 			case StructurePackage.UNRESOLVED_TYPE: return createUnresolvedType();
 			case StructurePackage.UNRESOLVED_PROPERTY: return createUnresolvedProperty();
 			case StructurePackage.UNRESOLVED_OPERATION: return createUnresolvedOperation();
 			case StructurePackage.PRODUCT_TYPE: return createProductType();
 			case StructurePackage.FUNCTION_TYPE: return createFunctionType();
 			case StructurePackage.VOID_TYPE: return createVoidType();
+			case StructurePackage.TYPE_MAPPING: return createTypeMapping();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -432,9 +435,9 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductType createProductType() {
-		ProductTypeImpl productType = new ProductTypeImpl();
-		return productType;
+	public Resource createResource() {
+		ResourceImpl resource = new ResourceImpl();
+		return resource;
 	}
 
 	/**
@@ -442,9 +445,9 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FunctionType createFunctionType() {
-		FunctionTypeImpl functionType = new FunctionTypeImpl();
-		return functionType;
+	public ResourceGroup createResourceGroup() {
+		ResourceGroupImpl resourceGroup = new ResourceGroupImpl();
+		return resourceGroup;
 	}
 
 	/**
@@ -452,9 +455,9 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VoidType createVoidType() {
-		VoidTypeImpl voidType = new VoidTypeImpl();
-		return voidType;
+	public SimpleResource createSimpleResource() {
+		SimpleResourceImpl simpleResource = new SimpleResourceImpl();
+		return simpleResource;
 	}
 
 	/**
@@ -485,6 +488,46 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	public UnresolvedOperation createUnresolvedOperation() {
 		UnresolvedOperationImpl unresolvedOperation = new UnresolvedOperationImpl();
 		return unresolvedOperation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProductType createProductType() {
+		ProductTypeImpl productType = new ProductTypeImpl();
+		return productType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FunctionType createFunctionType() {
+		FunctionTypeImpl functionType = new FunctionTypeImpl();
+		return functionType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VoidType createVoidType() {
+		VoidTypeImpl voidType = new VoidTypeImpl();
+		return voidType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TypeMapping createTypeMapping() {
+		TypeMappingImpl typeMapping = new TypeMappingImpl();
+		return typeMapping;
 	}
 
 	/**

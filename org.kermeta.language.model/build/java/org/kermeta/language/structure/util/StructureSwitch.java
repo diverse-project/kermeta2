@@ -33,12 +33,16 @@ import org.kermeta.language.structure.PrimitiveType;
 import org.kermeta.language.structure.ProductType;
 import org.kermeta.language.structure.Property;
 import org.kermeta.language.structure.Require;
+import org.kermeta.language.structure.Resource;
+import org.kermeta.language.structure.ResourceGroup;
+import org.kermeta.language.structure.SimpleResource;
 import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.structure.Tag;
 import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.TypeContainer;
 import org.kermeta.language.structure.TypeDefinition;
 import org.kermeta.language.structure.TypeDefinitionContainer;
+import org.kermeta.language.structure.TypeMapping;
 import org.kermeta.language.structure.TypeVariable;
 import org.kermeta.language.structure.TypeVariableBinding;
 import org.kermeta.language.structure.TypedElement;
@@ -393,6 +397,7 @@ public class StructureSwitch<T> {
 				T result = caseModelType(modelType);
 				if (result == null) result = caseType(modelType);
 				if (result == null) result = caseTypeDefinition(modelType);
+				if (result == null) result = caseModel(modelType);
 				if (result == null) result = caseNamedElement(modelType);
 				if (result == null) result = caseObject(modelType);
 				if (result == null) result = defaultCase(theEObject);
@@ -425,6 +430,29 @@ public class StructureSwitch<T> {
 				Model model = (Model)theEObject;
 				T result = caseModel(model);
 				if (result == null) result = caseObject(model);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StructurePackage.RESOURCE: {
+				Resource resource = (Resource)theEObject;
+				T result = caseResource(resource);
+				if (result == null) result = caseObject(resource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StructurePackage.RESOURCE_GROUP: {
+				ResourceGroup resourceGroup = (ResourceGroup)theEObject;
+				T result = caseResourceGroup(resourceGroup);
+				if (result == null) result = caseResource(resourceGroup);
+				if (result == null) result = caseObject(resourceGroup);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StructurePackage.SIMPLE_RESOURCE: {
+				SimpleResource simpleResource = (SimpleResource)theEObject;
+				T result = caseSimpleResource(simpleResource);
+				if (result == null) result = caseResource(simpleResource);
+				if (result == null) result = caseObject(simpleResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -488,6 +516,13 @@ public class StructureSwitch<T> {
 				T result = caseVoidType(voidType);
 				if (result == null) result = caseType(voidType);
 				if (result == null) result = caseObject(voidType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StructurePackage.TYPE_MAPPING: {
+				TypeMapping typeMapping = (TypeMapping)theEObject;
+				T result = caseTypeMapping(typeMapping);
+				if (result == null) result = caseObject(typeMapping);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -826,6 +861,21 @@ public class StructureSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Type Definition Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Type Definition Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTypeDefinitionContainer(TypeDefinitionContainer object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Require</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -976,6 +1026,51 @@ public class StructureSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Resource</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseResource(Resource object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Resource Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Resource Group</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseResourceGroup(ResourceGroup object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Simple Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Simple Resource</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSimpleResource(SimpleResource object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Abstract Operation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -987,66 +1082,6 @@ public class StructureSwitch<T> {
 	 * @generated
 	 */
 	public T caseAbstractOperation(AbstractOperation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Product Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Product Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseProductType(ProductType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Function Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Function Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFunctionType(FunctionType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Void Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Void Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVoidType(VoidType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Type Definition Container</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Type Definition Container</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTypeDefinitionContainer(TypeDefinitionContainer object) {
 		return null;
 	}
 
@@ -1107,6 +1142,66 @@ public class StructureSwitch<T> {
 	 * @generated
 	 */
 	public T caseUnresolvedOperation(UnresolvedOperation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Product Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Product Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProductType(ProductType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Function Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Function Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFunctionType(FunctionType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Void Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Void Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVoidType(VoidType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Type Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Type Mapping</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTypeMapping(TypeMapping object) {
 		return null;
 	}
 

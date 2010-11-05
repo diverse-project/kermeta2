@@ -51,4 +51,26 @@ public interface Model extends org.kermeta.language.structure.Object {
 	 */
 	EList<org.kermeta.language.structure.Object> getContents();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Save this model using this Resource pattern
+	 * <!-- end-model-doc -->
+	 * @model resourceRequired="true"
+	 * @generated
+	 */
+	void save(Resource resource);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Create a SimpleResource and fill it with this model content
+	 * <!-- end-model-doc -->
+	 * @model uriDataType="org.kermeta.language.structure.String"
+	 * @generated
+	 */
+	SimpleResource createSimpleResource(String uri);
+
 } // Model

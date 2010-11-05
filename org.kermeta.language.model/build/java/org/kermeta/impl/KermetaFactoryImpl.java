@@ -3,7 +3,7 @@
  *
  * $Id$
  */
-package org.kermeta.language.impl;
+package org.kermeta.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.kermeta.language.*;
+import org.kermeta.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,7 @@ import org.kermeta.language.*;
  * <!-- end-user-doc -->
  * @generated
  */
-public class LanguageFactoryImpl extends EFactoryImpl implements LanguageFactory {
+public class KermetaFactoryImpl extends EFactoryImpl implements KermetaFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -35,17 +35,17 @@ public class LanguageFactoryImpl extends EFactoryImpl implements LanguageFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static LanguageFactory init() {
+	public static KermetaFactory init() {
 		try {
-			LanguageFactory theLanguageFactory = (LanguageFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.kermeta.org/kermeta/2_0_0///org/kermeta/language"); 
-			if (theLanguageFactory != null) {
-				return theLanguageFactory;
+			KermetaFactory theKermetaFactory = (KermetaFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.kermeta.org/kermeta/2_0_0///org/kermeta"); 
+			if (theKermetaFactory != null) {
+				return theKermetaFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new LanguageFactoryImpl();
+		return new KermetaFactoryImpl();
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class LanguageFactoryImpl extends EFactoryImpl implements LanguageFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LanguageFactoryImpl() {
+	public KermetaFactoryImpl() {
 		super();
 	}
 
@@ -76,8 +76,8 @@ public class LanguageFactoryImpl extends EFactoryImpl implements LanguageFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LanguagePackage getLanguagePackage() {
-		return (LanguagePackage)getEPackage();
+	public KermetaPackage getKermetaPackage() {
+		return (KermetaPackage)getEPackage();
 	}
 
 	/**
@@ -87,8 +87,8 @@ public class LanguageFactoryImpl extends EFactoryImpl implements LanguageFactory
 	 * @generated
 	 */
 	@Deprecated
-	public static LanguagePackage getPackage() {
-		return LanguagePackage.eINSTANCE;
+	public static KermetaPackage getPackage() {
+		return KermetaPackage.eINSTANCE;
 	}
 
-} //LanguageFactoryImpl
+} //KermetaFactoryImpl

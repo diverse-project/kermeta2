@@ -22,10 +22,10 @@ import org.kermeta.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.kermeta.KmPackage
+ * @see org.kermeta.KermetaPackage
  * @generated
  */
-public class KmSwitch<T> {
+public class KermetaSwitch<T> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -39,7 +39,7 @@ public class KmSwitch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static KmPackage modelPackage;
+	protected static KermetaPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -47,9 +47,9 @@ public class KmSwitch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public KmSwitch() {
+	public KermetaSwitch() {
 		if (modelPackage == null) {
-			modelPackage = KmPackage.eINSTANCE;
+			modelPackage = KermetaPackage.eINSTANCE;
 		}
 	}
 
@@ -93,7 +93,7 @@ public class KmSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case KmPackage.DUMMY_CLASS: {
+			case KermetaPackage.DUMMY_CLASS: {
 				DummyClass dummyClass = (DummyClass)theEObject;
 				T result = caseDummyClass(dummyClass);
 				if (result == null) result = defaultCase(theEObject);
@@ -133,4 +133,4 @@ public class KmSwitch<T> {
 		return null;
 	}
 
-} //KmSwitch
+} //KermetaSwitch

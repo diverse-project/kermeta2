@@ -3,14 +3,14 @@
  *
  * $Id$
  */
-package org.kermeta.impl;
+package org.impl;
+
+import org.DummyClass;
+import org.KmPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.kermeta.DummyClass;
-import org.kermeta.KermetaPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,7 +45,7 @@ public abstract class DummyClassImpl extends EObjectImpl implements DummyClass {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return KermetaPackage.Literals.DUMMY_CLASS;
+		return KmPackage.Literals.DUMMY_CLASS;
 	}
 
 } //DummyClassImpl

@@ -35,12 +35,16 @@ import org.kermeta.language.structure.PrimitiveType;
 import org.kermeta.language.structure.ProductType;
 import org.kermeta.language.structure.Property;
 import org.kermeta.language.structure.Require;
+import org.kermeta.language.structure.Resource;
+import org.kermeta.language.structure.ResourceGroup;
+import org.kermeta.language.structure.SimpleResource;
 import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.structure.Tag;
 import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.TypeContainer;
 import org.kermeta.language.structure.TypeDefinition;
 import org.kermeta.language.structure.TypeDefinitionContainer;
+import org.kermeta.language.structure.TypeMapping;
 import org.kermeta.language.structure.TypeVariable;
 import org.kermeta.language.structure.TypeVariableBinding;
 import org.kermeta.language.structure.TypedElement;
@@ -248,6 +252,18 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createModelAdapter();
 			}
 			@Override
+			public Adapter caseResource(Resource object) {
+				return createResourceAdapter();
+			}
+			@Override
+			public Adapter caseResourceGroup(ResourceGroup object) {
+				return createResourceGroupAdapter();
+			}
+			@Override
+			public Adapter caseSimpleResource(SimpleResource object) {
+				return createSimpleResourceAdapter();
+			}
+			@Override
 			public Adapter caseAbstractOperation(AbstractOperation object) {
 				return createAbstractOperationAdapter();
 			}
@@ -278,6 +294,10 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseVoidType(VoidType object) {
 				return createVoidTypeAdapter();
+			}
+			@Override
+			public Adapter caseTypeMapping(TypeMapping object) {
+				return createTypeMappingAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -608,6 +628,20 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.TypeDefinitionContainer <em>Type Definition Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.TypeDefinitionContainer
+	 * @generated
+	 */
+	public Adapter createTypeDefinitionContainerAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.Require <em>Require</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -748,6 +782,48 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.Resource <em>Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.Resource
+	 * @generated
+	 */
+	public Adapter createResourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.ResourceGroup <em>Resource Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.ResourceGroup
+	 * @generated
+	 */
+	public Adapter createResourceGroupAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.SimpleResource <em>Simple Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.SimpleResource
+	 * @generated
+	 */
+	public Adapter createSimpleResourceAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.AbstractOperation <em>Abstract Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -758,62 +834,6 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAbstractOperationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.ProductType <em>Product Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.kermeta.language.structure.ProductType
-	 * @generated
-	 */
-	public Adapter createProductTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.FunctionType <em>Function Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.kermeta.language.structure.FunctionType
-	 * @generated
-	 */
-	public Adapter createFunctionTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.VoidType <em>Void Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.kermeta.language.structure.VoidType
-	 * @generated
-	 */
-	public Adapter createVoidTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.TypeDefinitionContainer <em>Type Definition Container</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.kermeta.language.structure.TypeDefinitionContainer
-	 * @generated
-	 */
-	public Adapter createTypeDefinitionContainerAdapter() {
 		return null;
 	}
 
@@ -870,6 +890,62 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUnresolvedOperationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.ProductType <em>Product Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.ProductType
+	 * @generated
+	 */
+	public Adapter createProductTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.FunctionType <em>Function Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.FunctionType
+	 * @generated
+	 */
+	public Adapter createFunctionTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.VoidType <em>Void Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.VoidType
+	 * @generated
+	 */
+	public Adapter createVoidTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.kermeta.language.structure.TypeMapping <em>Type Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.kermeta.language.structure.TypeMapping
+	 * @generated
+	 */
+	public Adapter createTypeMappingAdapter() {
 		return null;
 	}
 

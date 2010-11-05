@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -134,6 +135,27 @@ public class ModelingUnitImpl extends TypeDefinitionContainerImpl implements Mod
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getNamespacePrefix() {
+		return namespacePrefix;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNamespacePrefix(String newNamespacePrefix) {
+		String oldNamespacePrefix = namespacePrefix;
+		namespacePrefix = newNamespacePrefix;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX, oldNamespacePrefix, namespacePrefix));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Require> getRequires() {
 		if (requires == null) {
 			requires = new EObjectContainmentEList.Resolving<Require>(Require.class, this, StructurePackage.MODELING_UNIT__REQUIRES);
@@ -151,27 +173,6 @@ public class ModelingUnitImpl extends TypeDefinitionContainerImpl implements Mod
 			usings = new EObjectContainmentEList.Resolving<Using>(Using.class, this, StructurePackage.MODELING_UNIT__USINGS);
 		}
 		return usings;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getNamespacePrefix() {
-		return namespacePrefix;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNamespacePrefix(String newNamespacePrefix) {
-		String oldNamespacePrefix = namespacePrefix;
-		namespacePrefix = newNamespacePrefix;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.MODELING_UNIT__NAMESPACE_PREFIX, oldNamespacePrefix, namespacePrefix));
 	}
 
 	/**

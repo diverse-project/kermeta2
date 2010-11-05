@@ -3,7 +3,7 @@
  *
  * $Id$
  */
-package org.kermeta.language.impl;
+package org.kermeta.impl;
 
 import org.KmPackage;
 
@@ -14,17 +14,17 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.impl.KmPackageImpl;
 
+import org.kermeta.DummyClass;
+import org.kermeta.KermetaFactory;
 import org.kermeta.KermetaPackage;
 
-import org.kermeta.impl.KermetaPackageImpl;
-
-import org.kermeta.language.DummyClass;
-import org.kermeta.language.LanguageFactory;
 import org.kermeta.language.LanguagePackage;
 
 import org.kermeta.language.behavior.BehaviorPackage;
 
 import org.kermeta.language.behavior.impl.BehaviorPackageImpl;
+
+import org.kermeta.language.impl.LanguagePackageImpl;
 
 import org.kermeta.language.structure.StructurePackage;
 
@@ -36,7 +36,7 @@ import org.kermeta.language.structure.impl.StructurePackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class LanguagePackageImpl extends EPackageImpl implements LanguagePackage {
+public class KermetaPackageImpl extends EPackageImpl implements KermetaPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,12 +62,12 @@ public class LanguagePackageImpl extends EPackageImpl implements LanguagePackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.kermeta.language.LanguagePackage#eNS_URI
+	 * @see org.kermeta.KermetaPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private LanguagePackageImpl() {
-		super(eNS_URI, LanguageFactory.eINSTANCE);
+	private KermetaPackageImpl() {
+		super(eNS_URI, KermetaFactory.eINSTANCE);
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class LanguagePackageImpl extends EPackageImpl implements LanguagePackage
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link LanguagePackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link KermetaPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -89,41 +89,41 @@ public class LanguagePackageImpl extends EPackageImpl implements LanguagePackage
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static LanguagePackage init() {
-		if (isInited) return (LanguagePackage)EPackage.Registry.INSTANCE.getEPackage(LanguagePackage.eNS_URI);
+	public static KermetaPackage init() {
+		if (isInited) return (KermetaPackage)EPackage.Registry.INSTANCE.getEPackage(KermetaPackage.eNS_URI);
 
 		// Obtain or create and register package
-		LanguagePackageImpl theLanguagePackage = (LanguagePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof LanguagePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new LanguagePackageImpl());
+		KermetaPackageImpl theKermetaPackage = (KermetaPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof KermetaPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new KermetaPackageImpl());
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
 		KmPackageImpl theKmPackage = (KmPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KmPackage.eNS_URI) instanceof KmPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KmPackage.eNS_URI) : KmPackage.eINSTANCE);
-		KermetaPackageImpl theKermetaPackage = (KermetaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KermetaPackage.eNS_URI) instanceof KermetaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KermetaPackage.eNS_URI) : KermetaPackage.eINSTANCE);
+		LanguagePackageImpl theLanguagePackage = (LanguagePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LanguagePackage.eNS_URI) instanceof LanguagePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LanguagePackage.eNS_URI) : LanguagePackage.eINSTANCE);
 		BehaviorPackageImpl theBehaviorPackage = (BehaviorPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(BehaviorPackage.eNS_URI) instanceof BehaviorPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(BehaviorPackage.eNS_URI) : BehaviorPackage.eINSTANCE);
 		StructurePackageImpl theStructurePackage = (StructurePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StructurePackage.eNS_URI) instanceof StructurePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StructurePackage.eNS_URI) : StructurePackage.eINSTANCE);
 
 		// Create package meta-data objects
-		theLanguagePackage.createPackageContents();
-		theKmPackage.createPackageContents();
 		theKermetaPackage.createPackageContents();
+		theKmPackage.createPackageContents();
+		theLanguagePackage.createPackageContents();
 		theBehaviorPackage.createPackageContents();
 		theStructurePackage.createPackageContents();
 
 		// Initialize created meta-data
-		theLanguagePackage.initializePackageContents();
-		theKmPackage.initializePackageContents();
 		theKermetaPackage.initializePackageContents();
+		theKmPackage.initializePackageContents();
+		theLanguagePackage.initializePackageContents();
 		theBehaviorPackage.initializePackageContents();
 		theStructurePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theLanguagePackage.freeze();
+		theKermetaPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(LanguagePackage.eNS_URI, theLanguagePackage);
-		return theLanguagePackage;
+		EPackage.Registry.INSTANCE.put(KermetaPackage.eNS_URI, theKermetaPackage);
+		return theKermetaPackage;
 	}
 
 	/**
@@ -140,8 +140,8 @@ public class LanguagePackageImpl extends EPackageImpl implements LanguagePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LanguageFactory getLanguageFactory() {
-		return (LanguageFactory)getEFactoryInstance();
+	public KermetaFactory getKermetaFactory() {
+		return (KermetaFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -190,12 +190,10 @@ public class LanguagePackageImpl extends EPackageImpl implements LanguagePackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		BehaviorPackage theBehaviorPackage = (BehaviorPackage)EPackage.Registry.INSTANCE.getEPackage(BehaviorPackage.eNS_URI);
-		StructurePackage theStructurePackage = (StructurePackage)EPackage.Registry.INSTANCE.getEPackage(StructurePackage.eNS_URI);
+		LanguagePackage theLanguagePackage = (LanguagePackage)EPackage.Registry.INSTANCE.getEPackage(LanguagePackage.eNS_URI);
 
 		// Add subpackages
-		getESubpackages().add(theBehaviorPackage);
-		getESubpackages().add(theStructurePackage);
+		getESubpackages().add(theLanguagePackage);
 
 		// Create type parameters
 
@@ -207,4 +205,4 @@ public class LanguagePackageImpl extends EPackageImpl implements LanguagePackage
 		initEClass(dummyClassEClass, DummyClass.class, "DummyClass", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}
 
-} //LanguagePackageImpl
+} //KermetaPackageImpl

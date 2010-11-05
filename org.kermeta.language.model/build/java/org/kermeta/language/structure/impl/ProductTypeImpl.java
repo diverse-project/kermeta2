@@ -25,8 +25,6 @@ import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.TypeContainer;
 
-import fr.irisa.triskell.kermeta.util.NonUniqueEObjectResolvingEList;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Product Type</b></em>'.
@@ -132,11 +130,11 @@ public class ProductTypeImpl extends TypeContainerImpl implements ProductType {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EList<Type> getType() {
 		if (type == null) {
-			type = new NonUniqueEObjectResolvingEList(Type.class, this, StructurePackage.PRODUCT_TYPE__TYPE);
+			type = new EObjectResolvingEList<Type>(Type.class, this, StructurePackage.PRODUCT_TYPE__TYPE);
 		}
 		return type;
 	}

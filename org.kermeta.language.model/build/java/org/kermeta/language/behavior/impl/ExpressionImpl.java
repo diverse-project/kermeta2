@@ -25,7 +25,6 @@ import org.kermeta.language.behavior.Expression;
 
 import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.structure.Type;
-import org.kermeta.language.structure.impl.TypeContainerImpl;
 import org.kermeta.language.structure.TypeContainer;
 
 import org.kermeta.language.structure.impl.ObjectImpl;

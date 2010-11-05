@@ -32,7 +32,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.kermeta.language.structure.ClassDefinition#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ClassDefinition#getOwnedAttribute <em>Owned Attribute</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ClassDefinition#getOwnedOperation <em>Owned Operation</em>}</li>
- *   <li>{@link org.kermeta.language.structure.ClassDefinition#getSuperType <em>Super Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -124,20 +123,5 @@ public interface ClassDefinition extends GenericTypeDefinition, TypeContainer {
 	 * @generated
 	 */
 	EList<Operation> getOwnedOperation();
-
-	/**
-	 * Returns the value of the '<em><b>Super Type</b></em>' reference list.
-	 * The list contents are of type {@link org.kermeta.language.structure.Type}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Classes from which this ClassDefinition inherits.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Super Type</em>' reference list.
-	 * @see org.kermeta.language.structure.StructurePackage#getClassDefinition_SuperType()
-	 * @model
-	 * @generated
-	 */
-	EList<Type> getSuperType();
 
 } // ClassDefinition

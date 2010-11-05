@@ -19,10 +19,10 @@ import org.kermeta.*;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.kermeta.KmPackage
+ * @see org.kermeta.KermetaPackage
  * @generated
  */
-public class KmAdapterFactory extends AdapterFactoryImpl {
+public class KermetaAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36,7 +36,7 @@ public class KmAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static KmPackage modelPackage;
+	protected static KermetaPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -44,9 +44,9 @@ public class KmAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public KmAdapterFactory() {
+	public KermetaAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = KmPackage.eINSTANCE;
+			modelPackage = KermetaPackage.eINSTANCE;
 		}
 	}
 
@@ -75,8 +75,8 @@ public class KmAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected KmSwitch<Adapter> modelSwitch =
-		new KmSwitch<Adapter>() {
+	protected KermetaSwitch<Adapter> modelSwitch =
+		new KermetaSwitch<Adapter>() {
 			@Override
 			public Adapter caseDummyClass(DummyClass object) {
 				return createDummyClassAdapter();
@@ -127,4 +127,4 @@ public class KmAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //KmAdapterFactory
+} //KermetaAdapterFactory

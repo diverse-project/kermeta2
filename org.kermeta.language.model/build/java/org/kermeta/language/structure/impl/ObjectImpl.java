@@ -7,6 +7,7 @@ package org.kermeta.language.structure.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -14,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -22,6 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.structure.Tag;
+import org.kermeta.language.structure.Type;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,8 +33,9 @@ import org.kermeta.language.structure.Tag;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.impl.ObjectImpl#getTag <em>Tag</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.ObjectImpl#getOwnedTags <em>Owned Tags</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.ObjectImpl#getKTag <em>KTag</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.ObjectImpl#getKOwnedTags <em>KOwned Tags</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.ObjectImpl#getKType <em>KType</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,24 +50,34 @@ public class ObjectImpl extends EObjectImpl implements org.kermeta.language.stru
 	public static final String copyright = "IRISA / INRIA / Universite de Rennes 1";
 
 	/**
-	 * The cached value of the '{@link #getTag() <em>Tag</em>}' reference list.
+	 * The cached value of the '{@link #getKTag() <em>KTag</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTag()
+	 * @see #getKTag()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Tag> tag;
+	protected EList<Tag> kTag;
 
 	/**
-	 * The cached value of the '{@link #getOwnedTags() <em>Owned Tags</em>}' containment reference list.
+	 * The cached value of the '{@link #getKOwnedTags() <em>KOwned Tags</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedTags()
+	 * @see #getKOwnedTags()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Tag> ownedTags;
+	protected EList<Tag> kOwnedTags;
+
+	/**
+	 * The cached value of the '{@link #getKType() <em>KType</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Type kType;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,11 +103,11 @@ public class ObjectImpl extends EObjectImpl implements org.kermeta.language.stru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Tag> getTag() {
-		if (tag == null) {
-			tag = new EObjectWithInverseResolvingEList.ManyInverse<Tag>(Tag.class, this, StructurePackage.OBJECT__TAG, StructurePackage.TAG__OBJECT);
+	public EList<Tag> getKTag() {
+		if (kTag == null) {
+			kTag = new EObjectWithInverseResolvingEList.ManyInverse<Tag>(Tag.class, this, StructurePackage.OBJECT__KTAG, StructurePackage.TAG__OBJECT);
 		}
-		return tag;
+		return kTag;
 	}
 
 	/**
@@ -101,11 +115,49 @@ public class ObjectImpl extends EObjectImpl implements org.kermeta.language.stru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Tag> getOwnedTags() {
-		if (ownedTags == null) {
-			ownedTags = new EObjectContainmentEList.Resolving<Tag>(Tag.class, this, StructurePackage.OBJECT__OWNED_TAGS);
+	public EList<Tag> getKOwnedTags() {
+		if (kOwnedTags == null) {
+			kOwnedTags = new EObjectContainmentEList.Resolving<Tag>(Tag.class, this, StructurePackage.OBJECT__KOWNED_TAGS);
 		}
-		return ownedTags;
+		return kOwnedTags;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Type getKType() {
+		if (kType != null && kType.eIsProxy()) {
+			InternalEObject oldKType = (InternalEObject)kType;
+			kType = (Type)eResolveProxy(oldKType);
+			if (kType != oldKType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.OBJECT__KTYPE, oldKType, kType));
+			}
+		}
+		return kType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Type basicGetKType() {
+		return kType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setKType(Type newKType) {
+		Type oldKType = kType;
+		kType = newKType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.OBJECT__KTYPE, oldKType, kType));
 	}
 
 	/**
@@ -117,8 +169,8 @@ public class ObjectImpl extends EObjectImpl implements org.kermeta.language.stru
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StructurePackage.OBJECT__TAG:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTag()).basicAdd(otherEnd, msgs);
+			case StructurePackage.OBJECT__KTAG:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getKTag()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -131,10 +183,10 @@ public class ObjectImpl extends EObjectImpl implements org.kermeta.language.stru
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StructurePackage.OBJECT__TAG:
-				return ((InternalEList<?>)getTag()).basicRemove(otherEnd, msgs);
-			case StructurePackage.OBJECT__OWNED_TAGS:
-				return ((InternalEList<?>)getOwnedTags()).basicRemove(otherEnd, msgs);
+			case StructurePackage.OBJECT__KTAG:
+				return ((InternalEList<?>)getKTag()).basicRemove(otherEnd, msgs);
+			case StructurePackage.OBJECT__KOWNED_TAGS:
+				return ((InternalEList<?>)getKOwnedTags()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -147,10 +199,13 @@ public class ObjectImpl extends EObjectImpl implements org.kermeta.language.stru
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StructurePackage.OBJECT__TAG:
-				return getTag();
-			case StructurePackage.OBJECT__OWNED_TAGS:
-				return getOwnedTags();
+			case StructurePackage.OBJECT__KTAG:
+				return getKTag();
+			case StructurePackage.OBJECT__KOWNED_TAGS:
+				return getKOwnedTags();
+			case StructurePackage.OBJECT__KTYPE:
+				if (resolve) return getKType();
+				return basicGetKType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,13 +219,16 @@ public class ObjectImpl extends EObjectImpl implements org.kermeta.language.stru
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case StructurePackage.OBJECT__TAG:
-				getTag().clear();
-				getTag().addAll((Collection<? extends Tag>)newValue);
+			case StructurePackage.OBJECT__KTAG:
+				getKTag().clear();
+				getKTag().addAll((Collection<? extends Tag>)newValue);
 				return;
-			case StructurePackage.OBJECT__OWNED_TAGS:
-				getOwnedTags().clear();
-				getOwnedTags().addAll((Collection<? extends Tag>)newValue);
+			case StructurePackage.OBJECT__KOWNED_TAGS:
+				getKOwnedTags().clear();
+				getKOwnedTags().addAll((Collection<? extends Tag>)newValue);
+				return;
+			case StructurePackage.OBJECT__KTYPE:
+				setKType((Type)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -184,11 +242,14 @@ public class ObjectImpl extends EObjectImpl implements org.kermeta.language.stru
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case StructurePackage.OBJECT__TAG:
-				getTag().clear();
+			case StructurePackage.OBJECT__KTAG:
+				getKTag().clear();
 				return;
-			case StructurePackage.OBJECT__OWNED_TAGS:
-				getOwnedTags().clear();
+			case StructurePackage.OBJECT__KOWNED_TAGS:
+				getKOwnedTags().clear();
+				return;
+			case StructurePackage.OBJECT__KTYPE:
+				setKType((Type)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -202,10 +263,12 @@ public class ObjectImpl extends EObjectImpl implements org.kermeta.language.stru
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case StructurePackage.OBJECT__TAG:
-				return tag != null && !tag.isEmpty();
-			case StructurePackage.OBJECT__OWNED_TAGS:
-				return ownedTags != null && !ownedTags.isEmpty();
+			case StructurePackage.OBJECT__KTAG:
+				return kTag != null && !kTag.isEmpty();
+			case StructurePackage.OBJECT__KOWNED_TAGS:
+				return kOwnedTags != null && !kOwnedTags.isEmpty();
+			case StructurePackage.OBJECT__KTYPE:
+				return kType != null;
 		}
 		return super.eIsSet(featureID);
 	}

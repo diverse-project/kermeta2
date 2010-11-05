@@ -28,21 +28,21 @@ public enum ConstraintLanguage implements Enumerator {
 	 * The '<em><b>Kermeta</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #KERMETA
+	 * @see #KERMETA_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	KERMETA_LITERAL(0, "kermeta", "kermeta"),
+	KERMETA(0, "kermeta", "kermeta"),
 
 	/**
 	 * The '<em><b>Ocl</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #OCL
+	 * @see #OCL_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	OCL_LITERAL(1, "ocl", "ocl");
+	OCL(1, "ocl", "ocl");
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -59,12 +59,12 @@ public enum ConstraintLanguage implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #KERMETA_LITERAL
+	 * @see #KERMETA
 	 * @model name="kermeta"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int KERMETA = 0;
+	public static final int KERMETA_VALUE = 0;
 
 	/**
 	 * The '<em><b>Ocl</b></em>' literal value.
@@ -74,12 +74,12 @@ public enum ConstraintLanguage implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #OCL_LITERAL
+	 * @see #OCL
 	 * @model name="ocl"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int OCL = 1;
+	public static final int OCL_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Constraint Language</b></em>' enumerators.
@@ -89,8 +89,8 @@ public enum ConstraintLanguage implements Enumerator {
 	 */
 	private static final ConstraintLanguage[] VALUES_ARRAY =
 		new ConstraintLanguage[] {
-			KERMETA_LITERAL,
-			OCL_LITERAL,
+			KERMETA,
+			OCL,
 		};
 
 	/**
@@ -141,8 +141,8 @@ public enum ConstraintLanguage implements Enumerator {
 	 */
 	public static ConstraintLanguage get(int value) {
 		switch (value) {
-			case KERMETA: return KERMETA_LITERAL;
-			case OCL: return OCL_LITERAL;
+			case KERMETA_VALUE: return KERMETA;
+			case OCL_VALUE: return OCL;
 		}
 		return null;
 	}

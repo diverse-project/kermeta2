@@ -5,21 +5,28 @@
  */
 package org.kermeta.language.structure.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.kermeta.language.structure.DataType;
 import org.kermeta.language.structure.NamedElement;
 import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.structure.Type;
-import org.kermeta.language.structure.TypeContainer;
 import org.kermeta.language.structure.TypeDefinition;
+import org.kermeta.language.structure.TypeMapping;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +37,8 @@ import org.kermeta.language.structure.TypeDefinition;
  * <ul>
  *   <li>{@link org.kermeta.language.structure.impl.DataTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.DataTypeImpl#isIsAspect <em>Is Aspect</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.DataTypeImpl#getSuperType <em>Super Type</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.DataTypeImpl#getTypeMappings <em>Type Mappings</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,6 +61,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -61,6 +71,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -70,6 +81,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * @ordered
 	 */
 	protected static final boolean IS_ASPECT_EDEFAULT = false;
+
 	/**
 	 * The cached value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -79,6 +91,26 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * @ordered
 	 */
 	protected boolean isAspect = IS_ASPECT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuperType()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Type> superType;
+
+	/**
+	 * The cached value of the '{@link #getTypeMappings() <em>Type Mappings</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypeMappings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TypeMapping> typeMappings;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,6 +178,59 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Type> getSuperType() {
+		if (superType == null) {
+			superType = new EObjectResolvingEList<Type>(Type.class, this, StructurePackage.DATA_TYPE__SUPER_TYPE);
+		}
+		return superType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<TypeMapping> getTypeMappings() {
+		if (typeMappings == null) {
+			typeMappings = new EObjectContainmentWithInverseEList.Resolving<TypeMapping>(TypeMapping.class, this, StructurePackage.DATA_TYPE__TYPE_MAPPINGS, StructurePackage.TYPE_MAPPING__SOURCE_TYPE);
+		}
+		return typeMappings;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case StructurePackage.DATA_TYPE__TYPE_MAPPINGS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTypeMappings()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case StructurePackage.DATA_TYPE__TYPE_MAPPINGS:
+				return ((InternalEList<?>)getTypeMappings()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -153,6 +238,10 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 				return getName();
 			case StructurePackage.DATA_TYPE__IS_ASPECT:
 				return isIsAspect();
+			case StructurePackage.DATA_TYPE__SUPER_TYPE:
+				return getSuperType();
+			case StructurePackage.DATA_TYPE__TYPE_MAPPINGS:
+				return getTypeMappings();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -162,6 +251,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -170,6 +260,14 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 				return;
 			case StructurePackage.DATA_TYPE__IS_ASPECT:
 				setIsAspect((Boolean)newValue);
+				return;
+			case StructurePackage.DATA_TYPE__SUPER_TYPE:
+				getSuperType().clear();
+				getSuperType().addAll((Collection<? extends Type>)newValue);
+				return;
+			case StructurePackage.DATA_TYPE__TYPE_MAPPINGS:
+				getTypeMappings().clear();
+				getTypeMappings().addAll((Collection<? extends TypeMapping>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -189,6 +287,12 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 			case StructurePackage.DATA_TYPE__IS_ASPECT:
 				setIsAspect(IS_ASPECT_EDEFAULT);
 				return;
+			case StructurePackage.DATA_TYPE__SUPER_TYPE:
+				getSuperType().clear();
+				return;
+			case StructurePackage.DATA_TYPE__TYPE_MAPPINGS:
+				getTypeMappings().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -205,6 +309,10 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case StructurePackage.DATA_TYPE__IS_ASPECT:
 				return isAspect != IS_ASPECT_EDEFAULT;
+			case StructurePackage.DATA_TYPE__SUPER_TYPE:
+				return superType != null && !superType.isEmpty();
+			case StructurePackage.DATA_TYPE__TYPE_MAPPINGS:
+				return typeMappings != null && !typeMappings.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -225,6 +333,8 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 		if (baseClass == TypeDefinition.class) {
 			switch (derivedFeatureID) {
 				case StructurePackage.DATA_TYPE__IS_ASPECT: return StructurePackage.TYPE_DEFINITION__IS_ASPECT;
+				case StructurePackage.DATA_TYPE__SUPER_TYPE: return StructurePackage.TYPE_DEFINITION__SUPER_TYPE;
+				case StructurePackage.DATA_TYPE__TYPE_MAPPINGS: return StructurePackage.TYPE_DEFINITION__TYPE_MAPPINGS;
 				default: return -1;
 			}
 		}
@@ -247,6 +357,8 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 		if (baseClass == TypeDefinition.class) {
 			switch (baseFeatureID) {
 				case StructurePackage.TYPE_DEFINITION__IS_ASPECT: return StructurePackage.DATA_TYPE__IS_ASPECT;
+				case StructurePackage.TYPE_DEFINITION__SUPER_TYPE: return StructurePackage.DATA_TYPE__SUPER_TYPE;
+				case StructurePackage.TYPE_DEFINITION__TYPE_MAPPINGS: return StructurePackage.DATA_TYPE__TYPE_MAPPINGS;
 				default: return -1;
 			}
 		}

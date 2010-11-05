@@ -12,10 +12,10 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.kermeta.KmPackage
+ * @see org.kermeta.KermetaPackage
  * @generated
  */
-public interface KmFactory extends EFactory {
+public interface KermetaFactory extends EFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -29,7 +29,7 @@ public interface KmFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	KmFactory eINSTANCE = org.kermeta.impl.KmFactoryImpl.init();
+	KermetaFactory eINSTANCE = org.kermeta.impl.KermetaFactoryImpl.init();
 
 	/**
 	 * Returns the package supported by this factory.
@@ -38,6 +38,6 @@ public interface KmFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	KmPackage getKmPackage();
+	KermetaPackage getKermetaPackage();
 
-} //KmFactory
+} //KermetaFactory

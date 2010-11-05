@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EPackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.kermeta.KmFactory
+ * @see org.kermeta.KermetaFactory
  * @model kind="package"
  * @generated
  */
-public interface KmPackage extends EPackage {
+public interface KermetaPackage extends EPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -45,7 +45,7 @@ public interface KmPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.kermeta.org/kermeta/2_0_0//kermeta";
+	String eNS_URI = "http://www.kermeta.org/kermeta/2_0_0///org/kermeta";
 
 	/**
 	 * The package namespace name.
@@ -53,7 +53,7 @@ public interface KmPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "kermeta";
+	String eNS_PREFIX = "org_kermeta";
 
 	/**
 	 * The singleton instance of the package.
@@ -61,14 +61,14 @@ public interface KmPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	KmPackage eINSTANCE = org.kermeta.impl.KmPackageImpl.init();
+	KermetaPackage eINSTANCE = org.kermeta.impl.KermetaPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.impl.DummyClassImpl <em>Dummy Class</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.kermeta.impl.DummyClassImpl
-	 * @see org.kermeta.impl.KmPackageImpl#getDummyClass()
+	 * @see org.kermeta.impl.KermetaPackageImpl#getDummyClass()
 	 * @generated
 	 */
 	int DUMMY_CLASS = 0;
@@ -100,7 +100,7 @@ public interface KmPackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	KmFactory getKmFactory();
+	KermetaFactory getKermetaFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,11 +120,11 @@ public interface KmPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.kermeta.impl.DummyClassImpl
-		 * @see org.kermeta.impl.KmPackageImpl#getDummyClass()
+		 * @see org.kermeta.impl.KermetaPackageImpl#getDummyClass()
 		 * @generated
 		 */
 		EClass DUMMY_CLASS = eINSTANCE.getDummyClass();
 
 	}
 
-} //KmPackage
+} //KermetaPackage

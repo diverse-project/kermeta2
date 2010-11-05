@@ -248,31 +248,31 @@ public interface StructureFactory extends EFactory {
 	Model createModel();
 
 	/**
-	 * Returns a new object of class '<em>Product Type</em>'.
+	 * Returns a new object of class '<em>Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Product Type</em>'.
+	 * @return a new object of class '<em>Resource</em>'.
 	 * @generated
 	 */
-	ProductType createProductType();
+	Resource createResource();
 
 	/**
-	 * Returns a new object of class '<em>Function Type</em>'.
+	 * Returns a new object of class '<em>Resource Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Function Type</em>'.
+	 * @return a new object of class '<em>Resource Group</em>'.
 	 * @generated
 	 */
-	FunctionType createFunctionType();
+	ResourceGroup createResourceGroup();
 
 	/**
-	 * Returns a new object of class '<em>Void Type</em>'.
+	 * Returns a new object of class '<em>Simple Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Void Type</em>'.
+	 * @return a new object of class '<em>Simple Resource</em>'.
 	 * @generated
 	 */
-	VoidType createVoidType();
+	SimpleResource createSimpleResource();
 
 	/**
 	 * Returns a new object of class '<em>Unresolved Type</em>'.
@@ -300,6 +300,42 @@ public interface StructureFactory extends EFactory {
 	 * @generated
 	 */
 	UnresolvedOperation createUnresolvedOperation();
+
+	/**
+	 * Returns a new object of class '<em>Product Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Product Type</em>'.
+	 * @generated
+	 */
+	ProductType createProductType();
+
+	/**
+	 * Returns a new object of class '<em>Function Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Function Type</em>'.
+	 * @generated
+	 */
+	FunctionType createFunctionType();
+
+	/**
+	 * Returns a new object of class '<em>Void Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Void Type</em>'.
+	 * @generated
+	 */
+	VoidType createVoidType();
+
+	/**
+	 * Returns a new object of class '<em>Type Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Type Mapping</em>'.
+	 * @generated
+	 */
+	TypeMapping createTypeMapping();
 
 	/**
 	 * Returns the package supported by this factory.

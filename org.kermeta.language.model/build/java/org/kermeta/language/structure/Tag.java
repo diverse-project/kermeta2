@@ -92,7 +92,7 @@ public interface Tag extends org.kermeta.language.structure.Object {
 	/**
 	 * Returns the value of the '<em><b>Object</b></em>' reference list.
 	 * The list contents are of type {@link org.kermeta.language.structure.Object}.
-	 * It is bidirectional and its opposite is '{@link org.kermeta.language.structure.Object#getTag <em>Tag</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.kermeta.language.structure.Object#getKTag <em>KTag</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -100,8 +100,8 @@ public interface Tag extends org.kermeta.language.structure.Object {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' reference list.
 	 * @see org.kermeta.language.structure.StructurePackage#getTag_Object()
-	 * @see org.kermeta.language.structure.Object#getTag
-	 * @model opposite="tag" required="true"
+	 * @see org.kermeta.language.structure.Object#getKTag
+	 * @model opposite="kTag" required="true"
 	 * @generated
 	 */
 	EList<org.kermeta.language.structure.Object> getObject();

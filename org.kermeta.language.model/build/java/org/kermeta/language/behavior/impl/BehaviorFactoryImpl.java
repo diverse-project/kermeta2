@@ -37,7 +37,7 @@ public class BehaviorFactoryImpl extends EFactoryImpl implements BehaviorFactory
 	 */
 	public static BehaviorFactory init() {
 		try {
-			BehaviorFactory theBehaviorFactory = (BehaviorFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.kermeta.org/kermeta/2_0_0//kermeta/language/behavior"); 
+			BehaviorFactory theBehaviorFactory = (BehaviorFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.kermeta.org/kermeta/2_0_0///org/kermeta/language/behavior"); 
 			if (theBehaviorFactory != null) {
 				return theBehaviorFactory;
 			}

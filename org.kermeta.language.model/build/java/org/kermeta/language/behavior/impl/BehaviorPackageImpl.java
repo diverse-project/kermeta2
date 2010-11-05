@@ -5,6 +5,8 @@
  */
 package org.kermeta.language.behavior.impl;
 
+import org.KmPackage;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -12,9 +14,11 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.kermeta.KmPackage;
+import org.impl.KmPackageImpl;
 
-import org.kermeta.impl.KmPackageImpl;
+import org.kermeta.KermetaPackage;
+
+import org.kermeta.impl.KermetaPackageImpl;
 
 import org.kermeta.language.LanguagePackage;
 
@@ -297,18 +301,21 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 
 		// Obtain or create and register interdependencies
 		KmPackageImpl theKmPackage = (KmPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KmPackage.eNS_URI) instanceof KmPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KmPackage.eNS_URI) : KmPackage.eINSTANCE);
+		KermetaPackageImpl theKermetaPackage = (KermetaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KermetaPackage.eNS_URI) instanceof KermetaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KermetaPackage.eNS_URI) : KermetaPackage.eINSTANCE);
 		LanguagePackageImpl theLanguagePackage = (LanguagePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LanguagePackage.eNS_URI) instanceof LanguagePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LanguagePackage.eNS_URI) : LanguagePackage.eINSTANCE);
 		StructurePackageImpl theStructurePackage = (StructurePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StructurePackage.eNS_URI) instanceof StructurePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StructurePackage.eNS_URI) : StructurePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theBehaviorPackage.createPackageContents();
 		theKmPackage.createPackageContents();
+		theKermetaPackage.createPackageContents();
 		theLanguagePackage.createPackageContents();
 		theStructurePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theBehaviorPackage.initializePackageContents();
 		theKmPackage.initializePackageContents();
+		theKermetaPackage.initializePackageContents();
 		theLanguagePackage.initializePackageContents();
 		theStructurePackage.initializePackageContents();
 

@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.kermeta.language.structure.Model;
+import org.kermeta.language.structure.Resource;
+import org.kermeta.language.structure.SimpleResource;
 import org.kermeta.language.structure.StructurePackage;
 
 /**
@@ -74,6 +76,28 @@ public class ModelImpl extends ObjectImpl implements Model {
 			contents = new EObjectResolvingEList<org.kermeta.language.structure.Object>(org.kermeta.language.structure.Object.class, this, StructurePackage.MODEL__CONTENTS);
 		}
 		return contents;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void save(Resource resource) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SimpleResource createSimpleResource(String uri) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

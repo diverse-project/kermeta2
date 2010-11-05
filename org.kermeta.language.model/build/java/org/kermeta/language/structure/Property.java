@@ -6,6 +6,7 @@
 package org.kermeta.language.structure;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.kermeta.language.behavior.Expression;
 
 /**

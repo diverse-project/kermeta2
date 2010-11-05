@@ -38,10 +38,6 @@ public interface UnresolvedType extends Type, Unresolved {
 	/**
 	 * Returns the value of the '<em><b>Type Identifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type Identifier</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * String that identifies the Type.

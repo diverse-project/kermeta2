@@ -3,16 +3,20 @@
  *
  * $Id$
  */
-package org.kermeta.impl;
+package org.impl;
+
+import org.DummyClass;
+import org.KmFactory;
+import org.KmPackage;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.kermeta.DummyClass;
-import org.kermeta.KmFactory;
-import org.kermeta.KmPackage;
+import org.kermeta.KermetaPackage;
+
+import org.kermeta.impl.KermetaPackageImpl;
 
 import org.kermeta.language.LanguagePackage;
 
@@ -58,7 +62,7 @@ public class KmPackageImpl extends EPackageImpl implements KmPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.kermeta.KmPackage#eNS_URI
+	 * @see org.KmPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -94,18 +98,21 @@ public class KmPackageImpl extends EPackageImpl implements KmPackage {
 		isInited = true;
 
 		// Obtain or create and register interdependencies
+		KermetaPackageImpl theKermetaPackage = (KermetaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KermetaPackage.eNS_URI) instanceof KermetaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KermetaPackage.eNS_URI) : KermetaPackage.eINSTANCE);
 		LanguagePackageImpl theLanguagePackage = (LanguagePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LanguagePackage.eNS_URI) instanceof LanguagePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LanguagePackage.eNS_URI) : LanguagePackage.eINSTANCE);
 		BehaviorPackageImpl theBehaviorPackage = (BehaviorPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(BehaviorPackage.eNS_URI) instanceof BehaviorPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(BehaviorPackage.eNS_URI) : BehaviorPackage.eINSTANCE);
 		StructurePackageImpl theStructurePackage = (StructurePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StructurePackage.eNS_URI) instanceof StructurePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StructurePackage.eNS_URI) : StructurePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theKmPackage.createPackageContents();
+		theKermetaPackage.createPackageContents();
 		theLanguagePackage.createPackageContents();
 		theBehaviorPackage.createPackageContents();
 		theStructurePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theKmPackage.initializePackageContents();
+		theKermetaPackage.initializePackageContents();
 		theLanguagePackage.initializePackageContents();
 		theBehaviorPackage.initializePackageContents();
 		theStructurePackage.initializePackageContents();
@@ -183,10 +190,10 @@ public class KmPackageImpl extends EPackageImpl implements KmPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		LanguagePackage theLanguagePackage = (LanguagePackage)EPackage.Registry.INSTANCE.getEPackage(LanguagePackage.eNS_URI);
+		KermetaPackage theKermetaPackage = (KermetaPackage)EPackage.Registry.INSTANCE.getEPackage(KermetaPackage.eNS_URI);
 
 		// Add subpackages
-		getESubpackages().add(theLanguagePackage);
+		getESubpackages().add(theKermetaPackage);
 
 		// Create type parameters
 

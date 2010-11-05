@@ -164,7 +164,7 @@ public class TagImpl extends ObjectImpl implements Tag {
 	 */
 	public EList<org.kermeta.language.structure.Object> getObject() {
 		if (object == null) {
-			object = new EObjectWithInverseResolvingEList.ManyInverse<org.kermeta.language.structure.Object>(org.kermeta.language.structure.Object.class, this, StructurePackage.TAG__OBJECT, StructurePackage.OBJECT__TAG);
+			object = new EObjectWithInverseResolvingEList.ManyInverse<org.kermeta.language.structure.Object>(org.kermeta.language.structure.Object.class, this, StructurePackage.TAG__OBJECT, StructurePackage.OBJECT__KTAG);
 		}
 		return object;
 	}

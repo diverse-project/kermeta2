@@ -57,7 +57,7 @@ public interface BehaviorPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.kermeta.org/kermeta/2_0_0//kermeta/language/behavior";
+	String eNS_URI = "http://www.kermeta.org/kermeta/2_0_0///org/kermeta/language/behavior";
 
 	/**
 	 * The package namespace name.
@@ -65,7 +65,7 @@ public interface BehaviorPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "kermeta_language_behavior";
+	String eNS_PREFIX = "org_kermeta_language_behavior";
 
 	/**
 	 * The singleton instance of the package.
@@ -86,22 +86,31 @@ public interface BehaviorPackage extends EPackage {
 	int EXPRESSION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION__TAG = StructurePackage.OBJECT__TAG;
+	int EXPRESSION__KTAG = StructurePackage.OBJECT__KTAG;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION__OWNED_TAGS = StructurePackage.OBJECT__OWNED_TAGS;
+	int EXPRESSION__KOWNED_TAGS = StructurePackage.OBJECT__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION__KTYPE = StructurePackage.OBJECT__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -141,242 +150,31 @@ public interface BehaviorPackage extends EPackage {
 	int ASSIGNMENT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallExpressionImpl <em>Call Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.CallExpressionImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallExpression()
-	 * @generated
-	 */
-	int CALL_EXPRESSION = 2;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.BlockImpl <em>Block</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.BlockImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getBlock()
-	 * @generated
-	 */
-	int BLOCK = 3;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallVariableImpl <em>Call Variable</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.CallVariableImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallVariable()
-	 * @generated
-	 */
-	int CALL_VARIABLE = 4;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallFeatureImpl <em>Call Feature</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.CallFeatureImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallFeature()
-	 * @generated
-	 */
-	int CALL_FEATURE = 5;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallSuperOperationImpl <em>Call Super Operation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.CallSuperOperationImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallSuperOperation()
-	 * @generated
-	 */
-	int CALL_SUPER_OPERATION = 6;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallResultImpl <em>Call Result</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.CallResultImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallResult()
-	 * @generated
-	 */
-	int CALL_RESULT = 7;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallValueImpl <em>Call Value</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.CallValueImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallValue()
-	 * @generated
-	 */
-	int CALL_VALUE = 8;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.ConditionalImpl <em>Conditional</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.ConditionalImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getConditional()
-	 * @generated
-	 */
-	int CONDITIONAL = 9;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.RaiseImpl <em>Raise</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.RaiseImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getRaise()
-	 * @generated
-	 */
-	int RAISE = 10;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.RescueImpl <em>Rescue</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.RescueImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getRescue()
-	 * @generated
-	 */
-	int RESCUE = 11;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.TypeReferenceImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getTypeReference()
-	 * @generated
-	 */
-	int TYPE_REFERENCE = 12;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.LiteralImpl <em>Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.LiteralImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getLiteral()
-	 * @generated
-	 */
-	int LITERAL = 13;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.EmptyExpressionImpl <em>Empty Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.EmptyExpressionImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getEmptyExpression()
-	 * @generated
-	 */
-	int EMPTY_EXPRESSION = 14;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.JavaStaticCallImpl <em>Java Static Call</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.JavaStaticCallImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getJavaStaticCall()
-	 * @generated
-	 */
-	int JAVA_STATIC_CALL = 15;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.LambdaExpressionImpl <em>Lambda Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.LambdaExpressionImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getLambdaExpression()
-	 * @generated
-	 */
-	int LAMBDA_EXPRESSION = 16;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.LambdaParameterImpl <em>Lambda Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.LambdaParameterImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getLambdaParameter()
-	 * @generated
-	 */
-	int LAMBDA_PARAMETER = 17;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.IntegerLiteralImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getIntegerLiteral()
-	 * @generated
-	 */
-	int INTEGER_LITERAL = 18;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.StringLiteralImpl <em>String Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.StringLiteralImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getStringLiteral()
-	 * @generated
-	 */
-	int STRING_LITERAL = 19;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.BooleanLiteralImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getBooleanLiteral()
-	 * @generated
-	 */
-	int BOOLEAN_LITERAL = 20;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.TypeLiteralImpl <em>Type Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.TypeLiteralImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getTypeLiteral()
-	 * @generated
-	 */
-	int TYPE_LITERAL = 21;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.VoidLiteralImpl <em>Void Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.VoidLiteralImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getVoidLiteral()
-	 * @generated
-	 */
-	int VOID_LITERAL = 22;
-
-	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.LoopImpl <em>Loop</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.LoopImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getLoop()
-	 * @generated
-	 */
-	int LOOP = 23;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGNMENT__TAG = EXPRESSION__TAG;
+	int ASSIGNMENT__KTAG = EXPRESSION__KTAG;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGNMENT__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int ASSIGNMENT__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGNMENT__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -433,22 +231,41 @@ public interface BehaviorPackage extends EPackage {
 	int ASSIGNMENT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallExpressionImpl <em>Call Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.CallExpressionImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallExpression()
 	 * @generated
-	 * @ordered
 	 */
-	int CALL_EXPRESSION__TAG = EXPRESSION__TAG;
+	int CALL_EXPRESSION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_EXPRESSION__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int CALL_EXPRESSION__KTAG = EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_EXPRESSION__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_EXPRESSION__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -505,22 +322,41 @@ public interface BehaviorPackage extends EPackage {
 	int CALL_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.BlockImpl <em>Block</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.BlockImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getBlock()
 	 * @generated
-	 * @ordered
 	 */
-	int BLOCK__TAG = EXPRESSION__TAG;
+	int BLOCK = 3;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BLOCK__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int BLOCK__KTAG = EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -568,22 +404,41 @@ public interface BehaviorPackage extends EPackage {
 	int BLOCK_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallVariableImpl <em>Call Variable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.CallVariableImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallVariable()
 	 * @generated
-	 * @ordered
 	 */
-	int CALL_VARIABLE__TAG = CALL_EXPRESSION__TAG;
+	int CALL_VARIABLE = 4;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_VARIABLE__OWNED_TAGS = CALL_EXPRESSION__OWNED_TAGS;
+	int CALL_VARIABLE__KTAG = CALL_EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_VARIABLE__KOWNED_TAGS = CALL_EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_VARIABLE__KTYPE = CALL_EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -649,22 +504,41 @@ public interface BehaviorPackage extends EPackage {
 	int CALL_VARIABLE_FEATURE_COUNT = CALL_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallFeatureImpl <em>Call Feature</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.CallFeatureImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallFeature()
 	 * @generated
-	 * @ordered
 	 */
-	int CALL_FEATURE__TAG = CALL_EXPRESSION__TAG;
+	int CALL_FEATURE = 5;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_FEATURE__OWNED_TAGS = CALL_EXPRESSION__OWNED_TAGS;
+	int CALL_FEATURE__KTAG = CALL_EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_FEATURE__KOWNED_TAGS = CALL_EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_FEATURE__KTYPE = CALL_EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -766,22 +640,41 @@ public interface BehaviorPackage extends EPackage {
 	int CALL_FEATURE_FEATURE_COUNT = CALL_EXPRESSION_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallSuperOperationImpl <em>Call Super Operation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.CallSuperOperationImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallSuperOperation()
 	 * @generated
-	 * @ordered
 	 */
-	int CALL_SUPER_OPERATION__TAG = CALL_EXPRESSION__TAG;
+	int CALL_SUPER_OPERATION = 6;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_SUPER_OPERATION__OWNED_TAGS = CALL_EXPRESSION__OWNED_TAGS;
+	int CALL_SUPER_OPERATION__KTAG = CALL_EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_SUPER_OPERATION__KOWNED_TAGS = CALL_EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_SUPER_OPERATION__KTYPE = CALL_EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -838,22 +731,41 @@ public interface BehaviorPackage extends EPackage {
 	int CALL_SUPER_OPERATION_FEATURE_COUNT = CALL_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallResultImpl <em>Call Result</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.CallResultImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallResult()
 	 * @generated
-	 * @ordered
 	 */
-	int CALL_RESULT__TAG = CALL_VARIABLE__TAG;
+	int CALL_RESULT = 7;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_RESULT__OWNED_TAGS = CALL_VARIABLE__OWNED_TAGS;
+	int CALL_RESULT__KTAG = CALL_VARIABLE__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_RESULT__KOWNED_TAGS = CALL_VARIABLE__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_RESULT__KTYPE = CALL_VARIABLE__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -919,22 +831,41 @@ public interface BehaviorPackage extends EPackage {
 	int CALL_RESULT_FEATURE_COUNT = CALL_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.CallValueImpl <em>Call Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.CallValueImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getCallValue()
 	 * @generated
-	 * @ordered
 	 */
-	int CALL_VALUE__TAG = CALL_EXPRESSION__TAG;
+	int CALL_VALUE = 8;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_VALUE__OWNED_TAGS = CALL_EXPRESSION__OWNED_TAGS;
+	int CALL_VALUE__KTAG = CALL_EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_VALUE__KOWNED_TAGS = CALL_EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_VALUE__KTYPE = CALL_EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -991,22 +922,41 @@ public interface BehaviorPackage extends EPackage {
 	int CALL_VALUE_FEATURE_COUNT = CALL_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.ConditionalImpl <em>Conditional</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.ConditionalImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getConditional()
 	 * @generated
-	 * @ordered
 	 */
-	int CONDITIONAL__TAG = EXPRESSION__TAG;
+	int CONDITIONAL = 9;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONDITIONAL__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int CONDITIONAL__KTAG = EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1063,22 +1013,41 @@ public interface BehaviorPackage extends EPackage {
 	int CONDITIONAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.RaiseImpl <em>Raise</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.RaiseImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getRaise()
 	 * @generated
-	 * @ordered
 	 */
-	int RAISE__TAG = EXPRESSION__TAG;
+	int RAISE = 10;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RAISE__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int RAISE__KTAG = EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RAISE__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RAISE__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1117,22 +1086,41 @@ public interface BehaviorPackage extends EPackage {
 	int RAISE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.RescueImpl <em>Rescue</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.RescueImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getRescue()
 	 * @generated
-	 * @ordered
 	 */
-	int RESCUE__TAG = StructurePackage.OBJECT__TAG;
+	int RESCUE = 11;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESCUE__OWNED_TAGS = StructurePackage.OBJECT__OWNED_TAGS;
+	int RESCUE__KTAG = StructurePackage.OBJECT__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESCUE__KOWNED_TAGS = StructurePackage.OBJECT__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESCUE__KTYPE = StructurePackage.OBJECT__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Body</b></em>' containment reference list.
@@ -1171,22 +1159,41 @@ public interface BehaviorPackage extends EPackage {
 	int RESCUE_FEATURE_COUNT = StructurePackage.OBJECT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.TypeReferenceImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getTypeReference()
 	 * @generated
-	 * @ordered
 	 */
-	int TYPE_REFERENCE__TAG = StructurePackage.MULTIPLICITY_ELEMENT__TAG;
+	int TYPE_REFERENCE = 12;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REFERENCE__OWNED_TAGS = StructurePackage.MULTIPLICITY_ELEMENT__OWNED_TAGS;
+	int TYPE_REFERENCE__KTAG = StructurePackage.MULTIPLICITY_ELEMENT__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REFERENCE__KOWNED_TAGS = StructurePackage.MULTIPLICITY_ELEMENT__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REFERENCE__KTYPE = StructurePackage.MULTIPLICITY_ELEMENT__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1261,22 +1268,41 @@ public interface BehaviorPackage extends EPackage {
 	int TYPE_REFERENCE_FEATURE_COUNT = StructurePackage.MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.LiteralImpl <em>Literal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.LiteralImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getLiteral()
 	 * @generated
-	 * @ordered
 	 */
-	int LITERAL__TAG = EXPRESSION__TAG;
+	int LITERAL = 13;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int LITERAL__KTAG = EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1306,22 +1332,41 @@ public interface BehaviorPackage extends EPackage {
 	int LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.EmptyExpressionImpl <em>Empty Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.EmptyExpressionImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getEmptyExpression()
 	 * @generated
-	 * @ordered
 	 */
-	int EMPTY_EXPRESSION__TAG = EXPRESSION__TAG;
+	int EMPTY_EXPRESSION = 14;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMPTY_EXPRESSION__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int EMPTY_EXPRESSION__KTAG = EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMPTY_EXPRESSION__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMPTY_EXPRESSION__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1351,22 +1396,41 @@ public interface BehaviorPackage extends EPackage {
 	int EMPTY_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.JavaStaticCallImpl <em>Java Static Call</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.JavaStaticCallImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getJavaStaticCall()
 	 * @generated
-	 * @ordered
 	 */
-	int JAVA_STATIC_CALL__TAG = EXPRESSION__TAG;
+	int JAVA_STATIC_CALL = 15;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JAVA_STATIC_CALL__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int JAVA_STATIC_CALL__KTAG = EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JAVA_STATIC_CALL__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JAVA_STATIC_CALL__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1423,22 +1487,41 @@ public interface BehaviorPackage extends EPackage {
 	int JAVA_STATIC_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.LambdaExpressionImpl <em>Lambda Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.LambdaExpressionImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getLambdaExpression()
 	 * @generated
-	 * @ordered
 	 */
-	int LAMBDA_EXPRESSION__TAG = EXPRESSION__TAG;
+	int LAMBDA_EXPRESSION = 16;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LAMBDA_EXPRESSION__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int LAMBDA_EXPRESSION__KTAG = EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAMBDA_EXPRESSION__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAMBDA_EXPRESSION__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1486,22 +1569,41 @@ public interface BehaviorPackage extends EPackage {
 	int LAMBDA_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.LambdaParameterImpl <em>Lambda Parameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.LambdaParameterImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getLambdaParameter()
 	 * @generated
-	 * @ordered
 	 */
-	int LAMBDA_PARAMETER__TAG = StructurePackage.OBJECT__TAG;
+	int LAMBDA_PARAMETER = 17;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LAMBDA_PARAMETER__OWNED_TAGS = StructurePackage.OBJECT__OWNED_TAGS;
+	int LAMBDA_PARAMETER__KTAG = StructurePackage.OBJECT__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAMBDA_PARAMETER__KOWNED_TAGS = StructurePackage.OBJECT__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAMBDA_PARAMETER__KTYPE = StructurePackage.OBJECT__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1531,22 +1633,41 @@ public interface BehaviorPackage extends EPackage {
 	int LAMBDA_PARAMETER_FEATURE_COUNT = StructurePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.IntegerLiteralImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getIntegerLiteral()
 	 * @generated
-	 * @ordered
 	 */
-	int INTEGER_LITERAL__TAG = LITERAL__TAG;
+	int INTEGER_LITERAL = 18;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_LITERAL__OWNED_TAGS = LITERAL__OWNED_TAGS;
+	int INTEGER_LITERAL__KTAG = LITERAL__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL__KOWNED_TAGS = LITERAL__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL__KTYPE = LITERAL__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1585,22 +1706,41 @@ public interface BehaviorPackage extends EPackage {
 	int INTEGER_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.StringLiteralImpl <em>String Literal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.StringLiteralImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getStringLiteral()
 	 * @generated
-	 * @ordered
 	 */
-	int STRING_LITERAL__TAG = LITERAL__TAG;
+	int STRING_LITERAL = 19;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_LITERAL__OWNED_TAGS = LITERAL__OWNED_TAGS;
+	int STRING_LITERAL__KTAG = LITERAL__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL__KOWNED_TAGS = LITERAL__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL__KTYPE = LITERAL__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1639,22 +1779,41 @@ public interface BehaviorPackage extends EPackage {
 	int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.BooleanLiteralImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getBooleanLiteral()
 	 * @generated
-	 * @ordered
 	 */
-	int BOOLEAN_LITERAL__TAG = LITERAL__TAG;
+	int BOOLEAN_LITERAL = 20;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_LITERAL__OWNED_TAGS = LITERAL__OWNED_TAGS;
+	int BOOLEAN_LITERAL__KTAG = LITERAL__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_LITERAL__KOWNED_TAGS = LITERAL__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_LITERAL__KTYPE = LITERAL__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1693,22 +1852,41 @@ public interface BehaviorPackage extends EPackage {
 	int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.TypeLiteralImpl <em>Type Literal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.TypeLiteralImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getTypeLiteral()
 	 * @generated
-	 * @ordered
 	 */
-	int TYPE_LITERAL__TAG = LITERAL__TAG;
+	int TYPE_LITERAL = 21;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_LITERAL__OWNED_TAGS = LITERAL__OWNED_TAGS;
+	int TYPE_LITERAL__KTAG = LITERAL__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_LITERAL__KOWNED_TAGS = LITERAL__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_LITERAL__KTYPE = LITERAL__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1747,22 +1925,41 @@ public interface BehaviorPackage extends EPackage {
 	int TYPE_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.VoidLiteralImpl <em>Void Literal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.VoidLiteralImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getVoidLiteral()
 	 * @generated
-	 * @ordered
 	 */
-	int VOID_LITERAL__TAG = LITERAL__TAG;
+	int VOID_LITERAL = 22;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VOID_LITERAL__OWNED_TAGS = LITERAL__OWNED_TAGS;
+	int VOID_LITERAL__KTAG = LITERAL__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOID_LITERAL__KOWNED_TAGS = LITERAL__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOID_LITERAL__KTYPE = LITERAL__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1792,22 +1989,41 @@ public interface BehaviorPackage extends EPackage {
 	int VOID_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.LoopImpl <em>Loop</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.LoopImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getLoop()
 	 * @generated
-	 * @ordered
 	 */
-	int LOOP__TAG = EXPRESSION__TAG;
+	int LOOP = 23;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOOP__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int LOOP__KTAG = EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1874,32 +2090,31 @@ public interface BehaviorPackage extends EPackage {
 	int SELF_EXPRESSION = 24;
 
 	/**
-	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.VariableDeclImpl <em>Variable Decl</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.kermeta.language.behavior.impl.VariableDeclImpl
-	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getVariableDecl()
-	 * @generated
-	 */
-	int VARIABLE_DECL = 25;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SELF_EXPRESSION__TAG = EXPRESSION__TAG;
+	int SELF_EXPRESSION__KTAG = EXPRESSION__KTAG;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SELF_EXPRESSION__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int SELF_EXPRESSION__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELF_EXPRESSION__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
@@ -1929,22 +2144,41 @@ public interface BehaviorPackage extends EPackage {
 	int SELF_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' reference list.
+	 * The meta object id for the '{@link org.kermeta.language.behavior.impl.VariableDeclImpl <em>Variable Decl</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.kermeta.language.behavior.impl.VariableDeclImpl
+	 * @see org.kermeta.language.behavior.impl.BehaviorPackageImpl#getVariableDecl()
 	 * @generated
-	 * @ordered
 	 */
-	int VARIABLE_DECL__TAG = EXPRESSION__TAG;
+	int VARIABLE_DECL = 25;
 
 	/**
-	 * The feature id for the '<em><b>Owned Tags</b></em>' containment reference list.
+	 * The feature id for the '<em><b>KTag</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_DECL__OWNED_TAGS = EXPRESSION__OWNED_TAGS;
+	int VARIABLE_DECL__KTAG = EXPRESSION__KTAG;
+
+	/**
+	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DECL__KOWNED_TAGS = EXPRESSION__KOWNED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>KType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DECL__KTYPE = EXPRESSION__KTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference list.
