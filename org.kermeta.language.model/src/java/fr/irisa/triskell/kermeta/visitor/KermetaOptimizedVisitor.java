@@ -1,7 +1,7 @@
 //$Id:$
 /*
  * This code has been generated to visit a kermeta model
- * Creation date: Fri Jun 18 17:02:02 CEST 2010
+ * Creation date: Thu Oct 21 15:48:12 CEST 2010
  * Template Created on feb. 2005
  * By Franck FLEUREY (ffleurey@irisa.fr)
  * IRISA / INRIA / University of rennes 1
@@ -11,13 +11,13 @@ package fr.irisa.triskell.kermeta.visitor;
 import java.util.Hashtable;
 import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.kermeta.language.structure.NamedElement;
 import org.kermeta.language.behavior.VariableDecl;
 public class KermetaOptimizedVisitor {
-  /*final static public Logger internalLog = LoggerFactory
-			.getLogger("KMT.model");*/
+  final static public Logger internalLog = LoggerFactory
+			.getLogger("KMT.model");
   /** The parent of the node currently visited. */
   protected org.kermeta.language.structure.Object parent;
 	private static Hashtable<String,AcceptCommand> acceptCmds = null;
@@ -124,6 +124,12 @@ public class KermetaOptimizedVisitor {
 					new VirtualTypeAcceptCommand());
 			acceptCmds.put("Model",
 					new ModelAcceptCommand());
+			acceptCmds.put("Resource",
+					new ResourceAcceptCommand());
+			acceptCmds.put("ResourceGroup",
+					new ResourceGroupAcceptCommand());
+			acceptCmds.put("SimpleResource",
+					new SimpleResourceAcceptCommand());
 			acceptCmds.put("UnresolvedType",
 					new UnresolvedTypeAcceptCommand());
 			acceptCmds.put("UnresolvedProperty",
@@ -136,6 +142,8 @@ public class KermetaOptimizedVisitor {
 					new FunctionTypeAcceptCommand());
 			acceptCmds.put("VoidType",
 					new VoidTypeAcceptCommand());
+			acceptCmds.put("TypeMapping",
+					new TypeMappingAcceptCommand());
 
 		}
 		return acceptCmds.get(node.eClass().getName());
@@ -367,6 +375,18 @@ public class KermetaOptimizedVisitor {
 	return genericVisitChildren(node);
 	}
 
+	public Object visitResource(org.kermeta.language.structure.Resource node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visitResourceGroup(org.kermeta.language.structure.ResourceGroup node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visitSimpleResource(org.kermeta.language.structure.SimpleResource node) {
+	return genericVisitChildren(node);
+	}
+
 	public Object visitUnresolvedType(org.kermeta.language.structure.UnresolvedType node) {
 	return genericVisitChildren(node);
 	}
@@ -388,6 +408,10 @@ public class KermetaOptimizedVisitor {
 	}
 
 	public Object visitVoidType(org.kermeta.language.structure.VoidType node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visitTypeMapping(org.kermeta.language.structure.TypeMapping node) {
 	return genericVisitChildren(node);
 	}
 
@@ -678,6 +702,24 @@ class ModelAcceptCommand extends AcceptCommand {
 				.visitModel((org.kermeta.language.structure.Model) node);
 	}
 }
+class ResourceAcceptCommand extends AcceptCommand {
+	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
+		return visitor
+				.visitResource((org.kermeta.language.structure.Resource) node);
+	}
+}
+class ResourceGroupAcceptCommand extends AcceptCommand {
+	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
+		return visitor
+				.visitResourceGroup((org.kermeta.language.structure.ResourceGroup) node);
+	}
+}
+class SimpleResourceAcceptCommand extends AcceptCommand {
+	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
+		return visitor
+				.visitSimpleResource((org.kermeta.language.structure.SimpleResource) node);
+	}
+}
 class UnresolvedTypeAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
@@ -712,6 +754,12 @@ class VoidTypeAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
 				.visitVoidType((org.kermeta.language.structure.VoidType) node);
+	}
+}
+class TypeMappingAcceptCommand extends AcceptCommand {
+	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
+		return visitor
+				.visitTypeMapping((org.kermeta.language.structure.TypeMapping) node);
 	}
 }
 

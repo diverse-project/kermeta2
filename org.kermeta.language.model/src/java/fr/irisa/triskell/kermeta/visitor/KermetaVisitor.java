@@ -1,6 +1,6 @@
 /*
  * This code has been generated to visit a kermeta model
- * Creation date: Fri Jun 18 17:01:59 CEST 2010
+ * Creation date: Thu Oct 21 15:48:08 CEST 2010
  * Template Created on feb. 2005
  * By Franck FLEUREY (ffleurey@irisa.fr)
  * IRISA / INRIA / University of rennes 1
@@ -12,8 +12,8 @@ import java.lang.reflect.*;
 import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
 import fr.irisa.triskell.kermeta.error.KermetaVisitorError;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Franck Fleurey
@@ -22,7 +22,7 @@ import fr.irisa.triskell.kermeta.error.KermetaVisitorError;
  */
 public class KermetaVisitor {
 
-	//final static public Logger internalLog = LoggerFactory.getLogger("KMT.model");
+	final static public Logger internalLog = LoggerFactory.getLogger("KMT.model");
 			// This is a generic visit method.
 			public Object genericVisitChildren(EObject node) {
 				Object result = null;
@@ -56,18 +56,18 @@ public class KermetaVisitor {
 		    		if (cause != null)				   
 		        		if (cause.getClass().getName().compareTo("fr.irisa.triskell.kermeta.error.KermetaVisitorError")==0)
 			    		{
-		            		//internalLog.error(message, e);
+		            		internalLog.error(message, e);
 		            		// this Exception was due to a KermetaVisitorError create a new one with the precedent content
 		            		throw new KermetaVisitorError(message, cause.getCause());
 		        		}
 		        		else
 		        		{
-							//internalLog.error(message, e);
+							internalLog.error(message, e);
 							throw	new KermetaVisitorError(e.getClass().getName() + " invoking "+ methodName + " on Class " +cname  ,e);
 						}
 		        	else
 		        	{
-						//internalLog.error(message, e);
+						internalLog.error(message, e);
 						throw	new KermetaVisitorError(e.getClass().getName() + " invoking "+ methodName + " on Class " +cname  ,e);
 					}
 				}
@@ -262,6 +262,18 @@ public class KermetaVisitor {
 	return genericVisitChildren(node);
 	}
 
+	public Object visit(org.kermeta.language.structure.Resource node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.ResourceGroup node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.SimpleResource node) {
+	return genericVisitChildren(node);
+	}
+
 	public Object visit(org.kermeta.language.structure.UnresolvedType node) {
 	return genericVisitChildren(node);
 	}
@@ -283,6 +295,10 @@ public class KermetaVisitor {
 	}
 
 	public Object visit(org.kermeta.language.structure.VoidType node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.TypeMapping node) {
 	return genericVisitChildren(node);
 	}
 
