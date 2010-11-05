@@ -56,7 +56,8 @@
                         	fr.irisa.triskell.kermeta.*
                         </Export-Package>
                         <Import-Package>
-							org.eclipse.emf.*
+							org.eclipse.emf.*,
+							org.slf4j.*;version="${slf4j.version.range}"
                         </Import-Package>
                         <Bundle-ClassPath>.</Bundle-ClassPath>
                         <Bundle-Vendor>IRISA/INRIA</Bundle-Vendor>
@@ -118,6 +119,12 @@
             <groupId>org.kermeta.emf</groupId>
             <artifactId>emf.lib</artifactId>
             <version>${emf.version}</version>
+        </dependency>
+        
+        <dependency> <!-- To be moved to org.kermeta.language.root ? -->
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
     </dependencies>
 </project>
