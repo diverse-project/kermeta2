@@ -21,7 +21,7 @@ import org.kermeta.language.structure.Unresolved;
  *
  * @generated
  */
-public abstract class UnresolvedImpl extends EObjectImpl implements Unresolved {
+public abstract class UnresolvedImpl extends ObjectImpl implements Unresolved {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

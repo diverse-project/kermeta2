@@ -711,7 +711,7 @@
             </eAnnotations>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xsi:type="ecore:EClass" name="AbstractProperty" abstract="true"/>
+        <eClassifiers xsi:type="ecore:EClass" name="AbstractProperty" abstract="true" eSuperTypes="//kermeta/language/structure/Object"/>
         <eClassifiers xsi:type="ecore:EClass" name="Constraint" eSuperTypes="//kermeta/language/structure/NamedElement">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="Constraint is part of a contract implementation in a Class definition or an operation.&#xA;Three kinds of constraints are available : pre, post, and inv (invariant constraint)"/>
@@ -948,7 +948,7 @@
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xsi:type="ecore:EClass" name="AbstractOperation" abstract="true"/>
+        <eClassifiers xsi:type="ecore:EClass" name="AbstractOperation" abstract="true" eSuperTypes="//kermeta/language/structure/Object"/>
         <eClassifiers xsi:type="ecore:EClass" name="UnresolvedType" eSuperTypes="//kermeta/language/structure/Type //kermeta/language/structure/Unresolved">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="Special type reference which is still unresolved.&#xD;&#xA;The reference string is used to create a real Type that points to the correct TypeDefinition"/>
@@ -964,7 +964,7 @@
             </eAnnotations>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xsi:type="ecore:EClass" name="Unresolved" abstract="true">
+        <eClassifiers xsi:type="ecore:EClass" name="Unresolved" abstract="true" eSuperTypes="//kermeta/language/structure/Object">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="Definitions that inherits from this are proxies to the real element they should point to.&#xD;&#xA;A Definition that inherit from Unresolved must also inherit from the Definition it is supposed to replace.&#xD;&#xA;Those definitions should be present only in Unresolved models.&#xD;&#xA; In resolved models they should be replaced by their alternative."/>
           </eAnnotations>
@@ -983,7 +983,7 @@
             </eAnnotations>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xsi:type="ecore:EClass" name="Using">
+        <eClassifiers xsi:type="ecore:EClass" name="Using" eSuperTypes="//kermeta/language/structure/Object">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="Using is a part of QualifiedName that can be used to complement the indentifer and resolve a given Unresolved object"/>
           </eAnnotations>

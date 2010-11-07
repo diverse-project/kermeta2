@@ -2087,6 +2087,7 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		typedElementEClass.getESuperTypes().add(this.getTypeContainer());
 		typedElementEClass.getESuperTypes().add(this.getNamedElement());
 		tagEClass.getESuperTypes().add(this.getObject());
+		abstractPropertyEClass.getESuperTypes().add(this.getObject());
 		constraintEClass.getESuperTypes().add(this.getNamedElement());
 		classDefinitionEClass.getESuperTypes().add(this.getGenericTypeDefinition());
 		classDefinitionEClass.getESuperTypes().add(this.getTypeContainer());
@@ -2109,12 +2110,15 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		resourceEClass.getESuperTypes().add(this.getObject());
 		resourceGroupEClass.getESuperTypes().add(this.getResource());
 		simpleResourceEClass.getESuperTypes().add(this.getResource());
+		abstractOperationEClass.getESuperTypes().add(this.getObject());
 		unresolvedTypeEClass.getESuperTypes().add(this.getType());
 		unresolvedTypeEClass.getESuperTypes().add(this.getUnresolved());
+		unresolvedEClass.getESuperTypes().add(this.getObject());
 		unresolvedPropertyEClass.getESuperTypes().add(this.getAbstractProperty());
 		unresolvedPropertyEClass.getESuperTypes().add(this.getUnresolved());
 		unresolvedOperationEClass.getESuperTypes().add(this.getAbstractOperation());
 		unresolvedOperationEClass.getESuperTypes().add(this.getUnresolved());
+		usingEClass.getESuperTypes().add(this.getObject());
 		productTypeEClass.getESuperTypes().add(this.getTypeContainer());
 		productTypeEClass.getESuperTypes().add(this.getType());
 		functionTypeEClass.getESuperTypes().add(this.getTypeContainer());

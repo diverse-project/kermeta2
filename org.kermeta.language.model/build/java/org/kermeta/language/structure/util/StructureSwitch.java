@@ -301,6 +301,7 @@ public class StructureSwitch<T> {
 			case StructurePackage.ABSTRACT_PROPERTY: {
 				AbstractProperty abstractProperty = (AbstractProperty)theEObject;
 				T result = caseAbstractProperty(abstractProperty);
+				if (result == null) result = caseObject(abstractProperty);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -452,6 +453,7 @@ public class StructureSwitch<T> {
 			case StructurePackage.ABSTRACT_OPERATION: {
 				AbstractOperation abstractOperation = (AbstractOperation)theEObject;
 				T result = caseAbstractOperation(abstractOperation);
+				if (result == null) result = caseObject(abstractOperation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -467,6 +469,7 @@ public class StructureSwitch<T> {
 			case StructurePackage.UNRESOLVED: {
 				Unresolved unresolved = (Unresolved)theEObject;
 				T result = caseUnresolved(unresolved);
+				if (result == null) result = caseObject(unresolved);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -475,6 +478,7 @@ public class StructureSwitch<T> {
 				T result = caseUnresolvedProperty(unresolvedProperty);
 				if (result == null) result = caseAbstractProperty(unresolvedProperty);
 				if (result == null) result = caseUnresolved(unresolvedProperty);
+				if (result == null) result = caseObject(unresolvedProperty);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -483,12 +487,14 @@ public class StructureSwitch<T> {
 				T result = caseUnresolvedOperation(unresolvedOperation);
 				if (result == null) result = caseAbstractOperation(unresolvedOperation);
 				if (result == null) result = caseUnresolved(unresolvedOperation);
+				if (result == null) result = caseObject(unresolvedOperation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case StructurePackage.USING: {
 				Using using = (Using)theEObject;
 				T result = caseUsing(using);
+				if (result == null) result = caseObject(using);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

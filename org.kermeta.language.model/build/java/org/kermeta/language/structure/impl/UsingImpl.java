@@ -28,7 +28,7 @@ import org.kermeta.language.structure.Using;
  *
  * @generated
  */
-public class UsingImpl extends EObjectImpl implements Using {
+public class UsingImpl extends ObjectImpl implements Using {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
