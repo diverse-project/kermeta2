@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.structure.Using;
 
@@ -27,7 +28,7 @@ import org.kermeta.language.structure.Using;
  *
  * @generated
  */
-public class UsingImpl extends ObjectImpl implements Using {
+public class UsingImpl extends EObjectImpl implements Using {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

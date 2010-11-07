@@ -347,13 +347,6 @@ public class StructureSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case StructurePackage.USING: {
-				Using using = (Using)theEObject;
-				T result = caseUsing(using);
-				if (result == null) result = caseObject(using);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case StructurePackage.GENERIC_TYPE_DEFINITION: {
 				GenericTypeDefinition genericTypeDefinition = (GenericTypeDefinition)theEObject;
 				T result = caseGenericTypeDefinition(genericTypeDefinition);
@@ -490,6 +483,12 @@ public class StructureSwitch<T> {
 				T result = caseUnresolvedOperation(unresolvedOperation);
 				if (result == null) result = caseAbstractOperation(unresolvedOperation);
 				if (result == null) result = caseUnresolved(unresolvedOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StructurePackage.USING: {
+				Using using = (Using)theEObject;
+				T result = caseUsing(using);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

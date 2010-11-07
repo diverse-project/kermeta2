@@ -1321,15 +1321,6 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModelingUnit_Usings() {
-		return (EReference)modelingUnitEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTypeDefinitionContainer() {
 		return typeDefinitionContainerEClass;
 	}
@@ -1620,6 +1611,15 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 */
 	public EAttribute getUnresolvedType_TypeIdentifier() {
 		return (EAttribute)unresolvedTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnresolvedType_Usings() {
+		return (EReference)unresolvedTypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1948,16 +1948,12 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		createEReference(modelingUnitEClass, MODELING_UNIT__PACKAGES);
 		createEAttribute(modelingUnitEClass, MODELING_UNIT__NAMESPACE_PREFIX);
 		createEReference(modelingUnitEClass, MODELING_UNIT__REQUIRES);
-		createEReference(modelingUnitEClass, MODELING_UNIT__USINGS);
 
 		typeDefinitionContainerEClass = createEClass(TYPE_DEFINITION_CONTAINER);
 		createEReference(typeDefinitionContainerEClass, TYPE_DEFINITION_CONTAINER__OWNED_TYPE_DEFINITION);
 
 		requireEClass = createEClass(REQUIRE);
 		createEAttribute(requireEClass, REQUIRE__URI);
-
-		usingEClass = createEClass(USING);
-		createEAttribute(usingEClass, USING__QUALIFIED_NAME);
 
 		genericTypeDefinitionEClass = createEClass(GENERIC_TYPE_DEFINITION);
 		createEReference(genericTypeDefinitionEClass, GENERIC_TYPE_DEFINITION__TYPE_PARAMETER);
@@ -1998,6 +1994,7 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 
 		unresolvedTypeEClass = createEClass(UNRESOLVED_TYPE);
 		createEAttribute(unresolvedTypeEClass, UNRESOLVED_TYPE__TYPE_IDENTIFIER);
+		createEReference(unresolvedTypeEClass, UNRESOLVED_TYPE__USINGS);
 
 		unresolvedEClass = createEClass(UNRESOLVED);
 
@@ -2006,6 +2003,9 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 
 		unresolvedOperationEClass = createEClass(UNRESOLVED_OPERATION);
 		createEAttribute(unresolvedOperationEClass, UNRESOLVED_OPERATION__OPERATION_IDENTIFIER);
+
+		usingEClass = createEClass(USING);
+		createEAttribute(usingEClass, USING__QUALIFIED_NAME);
 
 		productTypeEClass = createEClass(PRODUCT_TYPE);
 		createEReference(productTypeEClass, PRODUCT_TYPE__TYPE);
@@ -2094,7 +2094,6 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		modelingUnitEClass.getESuperTypes().add(this.getObject());
 		typeDefinitionContainerEClass.getESuperTypes().add(this.getNamedElement());
 		requireEClass.getESuperTypes().add(this.getObject());
-		usingEClass.getESuperTypes().add(this.getObject());
 		genericTypeDefinitionEClass.getESuperTypes().add(this.getTypeDefinition());
 		parameterizedTypeEClass.getESuperTypes().add(this.getType());
 		typeVariableEClass.getESuperTypes().add(this.getTypeContainer());
@@ -2233,16 +2232,12 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		initEReference(getModelingUnit_Packages(), this.getPackage(), null, "packages", null, 0, -1, ModelingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelingUnit_NamespacePrefix(), this.getString(), "namespacePrefix", null, 0, 1, ModelingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelingUnit_Requires(), this.getRequire(), null, "requires", null, 0, -1, ModelingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModelingUnit_Usings(), this.getUsing(), null, "usings", null, 0, -1, ModelingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeDefinitionContainerEClass, TypeDefinitionContainer.class, "TypeDefinitionContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTypeDefinitionContainer_OwnedTypeDefinition(), this.getTypeDefinition(), null, "ownedTypeDefinition", null, 0, -1, TypeDefinitionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(requireEClass, Require.class, "Require", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRequire_Uri(), this.getString(), "uri", null, 0, 1, Require.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(usingEClass, Using.class, "Using", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getUsing_QualifiedName(), this.getString(), "qualifiedName", null, 0, 1, Using.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(genericTypeDefinitionEClass, GenericTypeDefinition.class, "GenericTypeDefinition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGenericTypeDefinition_TypeParameter(), this.getTypeVariable(), null, "typeParameter", null, 0, -1, GenericTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2292,6 +2287,7 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 
 		initEClass(unresolvedTypeEClass, UnresolvedType.class, "UnresolvedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUnresolvedType_TypeIdentifier(), this.getString(), "typeIdentifier", null, 0, 1, UnresolvedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnresolvedType_Usings(), this.getUsing(), null, "usings", null, 0, 1, UnresolvedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unresolvedEClass, Unresolved.class, "Unresolved", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2300,6 +2296,9 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 
 		initEClass(unresolvedOperationEClass, UnresolvedOperation.class, "UnresolvedOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUnresolvedOperation_OperationIdentifier(), this.getString(), "operationIdentifier", null, 0, 1, UnresolvedOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(usingEClass, Using.class, "Using", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUsing_QualifiedName(), this.getString(), "qualifiedName", null, 0, 1, Using.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productTypeEClass, ProductType.class, "ProductType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProductType_Type(), this.getType(), null, "type", null, 0, -1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

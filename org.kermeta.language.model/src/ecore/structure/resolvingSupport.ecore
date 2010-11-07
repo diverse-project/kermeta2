@@ -18,6 +18,12 @@
           <details key="documentation" value="String that identifies the Type.&#xD;&#xA;The container of the UnresolvedType  is considered as the context."/>
         </eAnnotations>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="usings" eType="#//structure/Using"
+          containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="List of Using that can be used to complement the indentifer and resolve this UnresolvedType"/>
+        </eAnnotations>
+      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="java.lang.String"/>
     <eClassifiers xsi:type="ecore:EClass" name="Unresolved" abstract="true">
@@ -49,6 +55,12 @@
     <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="#//structure/AbstractOperation">
       <eStructuralFeatures xsi:type="ecore:EReference" name="ownedUnresolvedOperations"
           upperBound="-1" eType="#//structure/UnresolvedOperation" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Using">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Using is a part of QualifiedName that can be used to complement the indentifer and resolve a given Unresolved object"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifiedName" eType="#//structure/String"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

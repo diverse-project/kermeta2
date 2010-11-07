@@ -119,7 +119,6 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 			case StructurePackage.MODELING_UNIT: return createModelingUnit();
 			case StructurePackage.TYPE_DEFINITION_CONTAINER: return createTypeDefinitionContainer();
 			case StructurePackage.REQUIRE: return createRequire();
-			case StructurePackage.USING: return createUsing();
 			case StructurePackage.OBJECT_TYPE_VARIABLE: return createObjectTypeVariable();
 			case StructurePackage.MODEL_TYPE: return createModelType();
 			case StructurePackage.MODEL_TYPE_VARIABLE: return createModelTypeVariable();
@@ -131,6 +130,7 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 			case StructurePackage.UNRESOLVED_TYPE: return createUnresolvedType();
 			case StructurePackage.UNRESOLVED_PROPERTY: return createUnresolvedProperty();
 			case StructurePackage.UNRESOLVED_OPERATION: return createUnresolvedOperation();
+			case StructurePackage.USING: return createUsing();
 			case StructurePackage.PRODUCT_TYPE: return createProductType();
 			case StructurePackage.FUNCTION_TYPE: return createFunctionType();
 			case StructurePackage.VOID_TYPE: return createVoidType();

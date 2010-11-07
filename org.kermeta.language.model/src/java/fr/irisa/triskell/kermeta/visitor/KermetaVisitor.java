@@ -1,6 +1,6 @@
 /*
  * This code has been generated to visit a kermeta model
- * Creation date: Thu Oct 21 15:48:08 CEST 2010
+ * Creation date: Sun Nov 07 10:31:56 CET 2010
  * Template Created on feb. 2005
  * By Franck FLEUREY (ffleurey@irisa.fr)
  * IRISA / INRIA / University of rennes 1
@@ -238,10 +238,6 @@ public class KermetaVisitor {
 	return genericVisitChildren(node);
 	}
 
-	public Object visit(org.kermeta.language.structure.Using node) {
-	return genericVisitChildren(node);
-	}
-
 	public Object visit(org.kermeta.language.structure.ObjectTypeVariable node) {
 	return genericVisitChildren(node);
 	}
@@ -283,6 +279,10 @@ public class KermetaVisitor {
 	}
 
 	public Object visit(org.kermeta.language.structure.UnresolvedOperation node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visit(org.kermeta.language.structure.Using node) {
 	return genericVisitChildren(node);
 	}
 

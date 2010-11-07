@@ -239,16 +239,12 @@
             <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//kermeta/language/structure/ModelingUnit/packages"/>
             <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kermeta_java.ecore#//kermeta/language/structure/ModelingUnit/namespacePrefix"/>
             <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//kermeta/language/structure/ModelingUnit/requires"/>
-            <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//kermeta/language/structure/ModelingUnit/usings"/>
           </genClasses>
           <genClasses ecoreClass="kermeta_java.ecore#//kermeta/language/structure/TypeDefinitionContainer">
             <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//kermeta/language/structure/TypeDefinitionContainer/ownedTypeDefinition"/>
           </genClasses>
           <genClasses ecoreClass="kermeta_java.ecore#//kermeta/language/structure/Require">
             <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kermeta_java.ecore#//kermeta/language/structure/Require/uri"/>
-          </genClasses>
-          <genClasses ecoreClass="kermeta_java.ecore#//kermeta/language/structure/Using">
-            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kermeta_java.ecore#//kermeta/language/structure/Using/qualifiedName"/>
           </genClasses>
           <genClasses image="false" ecoreClass="kermeta_java.ecore#//kermeta/language/structure/GenericTypeDefinition">
             <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//kermeta/language/structure/GenericTypeDefinition/typeParameter"/>
@@ -300,6 +296,7 @@
           <genClasses image="false" ecoreClass="kermeta_java.ecore#//kermeta/language/structure/AbstractOperation"/>
           <genClasses ecoreClass="kermeta_java.ecore#//kermeta/language/structure/UnresolvedType">
             <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kermeta_java.ecore#//kermeta/language/structure/UnresolvedType/typeIdentifier"/>
+            <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta_java.ecore#//kermeta/language/structure/UnresolvedType/usings"/>
           </genClasses>
           <genClasses image="false" ecoreClass="kermeta_java.ecore#//kermeta/language/structure/Unresolved"/>
           <genClasses ecoreClass="kermeta_java.ecore#//kermeta/language/structure/UnresolvedProperty">
@@ -307,6 +304,9 @@
           </genClasses>
           <genClasses ecoreClass="kermeta_java.ecore#//kermeta/language/structure/UnresolvedOperation">
             <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kermeta_java.ecore#//kermeta/language/structure/UnresolvedOperation/operationIdentifier"/>
+          </genClasses>
+          <genClasses ecoreClass="kermeta_java.ecore#//kermeta/language/structure/Using">
+            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kermeta_java.ecore#//kermeta/language/structure/Using/qualifiedName"/>
           </genClasses>
           <genClasses ecoreClass="kermeta_java.ecore#//kermeta/language/structure/ProductType">
             <genFeatures notify="false" createChild="false" propertySortChoices="true"

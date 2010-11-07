@@ -1109,7 +1109,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getParameterizedType()
 	 * @generated
 	 */
-	int PARAMETERIZED_TYPE = 26;
+	int PARAMETERIZED_TYPE = 25;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -2028,7 +2028,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getGenericTypeDefinition()
 	 * @generated
 	 */
-	int GENERIC_TYPE_DEFINITION = 25;
+	int GENERIC_TYPE_DEFINITION = 24;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -2394,22 +2394,13 @@ public interface StructurePackage extends EPackage {
 	int MODELING_UNIT__REQUIRES = TYPE_DEFINITION_CONTAINER_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Usings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODELING_UNIT__USINGS = TYPE_DEFINITION_CONTAINER_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>Modeling Unit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODELING_UNIT_FEATURE_COUNT = TYPE_DEFINITION_CONTAINER_FEATURE_COUNT + 4;
+	int MODELING_UNIT_FEATURE_COUNT = TYPE_DEFINITION_CONTAINER_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.RequireImpl <em>Require</em>}' class.
@@ -2474,52 +2465,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUsing()
 	 * @generated
 	 */
-	int USING = 24;
-
-	/**
-	 * The feature id for the '<em><b>KTag</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USING__KTAG = OBJECT__KTAG;
-
-	/**
-	 * The feature id for the '<em><b>KOwned Tags</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USING__KOWNED_TAGS = OBJECT__KOWNED_TAGS;
-
-	/**
-	 * The feature id for the '<em><b>KType</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USING__KTYPE = OBJECT__KTYPE;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USING__QUALIFIED_NAME = OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Using</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USING_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 1;
+	int USING = 40;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.TypeVariableImpl <em>Type Variable</em>}' class.
@@ -2529,7 +2475,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getTypeVariable()
 	 * @generated
 	 */
-	int TYPE_VARIABLE = 27;
+	int TYPE_VARIABLE = 26;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -2611,7 +2557,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getObjectTypeVariable()
 	 * @generated
 	 */
-	int OBJECT_TYPE_VARIABLE = 28;
+	int OBJECT_TYPE_VARIABLE = 27;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -2693,7 +2639,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getModelType()
 	 * @generated
 	 */
-	int MODEL_TYPE = 29;
+	int MODEL_TYPE = 28;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -2793,7 +2739,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getModelTypeVariable()
 	 * @generated
 	 */
-	int MODEL_TYPE_VARIABLE = 30;
+	int MODEL_TYPE_VARIABLE = 29;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -2884,7 +2830,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getVirtualType()
 	 * @generated
 	 */
-	int VIRTUAL_TYPE = 31;
+	int VIRTUAL_TYPE = 30;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -2993,7 +2939,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getModel()
 	 * @generated
 	 */
-	int MODEL = 32;
+	int MODEL = 31;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -3048,7 +2994,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getResource()
 	 * @generated
 	 */
-	int RESOURCE = 33;
+	int RESOURCE = 32;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -3094,7 +3040,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getResourceGroup()
 	 * @generated
 	 */
-	int RESOURCE_GROUP = 34;
+	int RESOURCE_GROUP = 33;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -3149,7 +3095,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getSimpleResource()
 	 * @generated
 	 */
-	int SIMPLE_RESOURCE = 35;
+	int SIMPLE_RESOURCE = 34;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -3213,7 +3159,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getAbstractOperation()
 	 * @generated
 	 */
-	int ABSTRACT_OPERATION = 36;
+	int ABSTRACT_OPERATION = 35;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Operation</em>' class.
@@ -3232,7 +3178,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolvedType()
 	 * @generated
 	 */
-	int UNRESOLVED_TYPE = 37;
+	int UNRESOLVED_TYPE = 36;
 
 	/**
 	 * The feature id for the '<em><b>KTag</b></em>' reference list.
@@ -3280,13 +3226,22 @@ public interface StructurePackage extends EPackage {
 	int UNRESOLVED_TYPE__TYPE_IDENTIFIER = TYPE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Usings</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNRESOLVED_TYPE__USINGS = TYPE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Unresolved Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNRESOLVED_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
+	int UNRESOLVED_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.UnresolvedImpl <em>Unresolved</em>}' class.
@@ -3296,7 +3251,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolved()
 	 * @generated
 	 */
-	int UNRESOLVED = 38;
+	int UNRESOLVED = 37;
 
 	/**
 	 * The number of structural features of the '<em>Unresolved</em>' class.
@@ -3315,7 +3270,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolvedProperty()
 	 * @generated
 	 */
-	int UNRESOLVED_PROPERTY = 39;
+	int UNRESOLVED_PROPERTY = 38;
 
 	/**
 	 * The feature id for the '<em><b>Property Identifier</b></em>' attribute.
@@ -3343,7 +3298,7 @@ public interface StructurePackage extends EPackage {
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getUnresolvedOperation()
 	 * @generated
 	 */
-	int UNRESOLVED_OPERATION = 40;
+	int UNRESOLVED_OPERATION = 39;
 
 	/**
 	 * The feature id for the '<em><b>Operation Identifier</b></em>' attribute.
@@ -3362,6 +3317,24 @@ public interface StructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int UNRESOLVED_OPERATION_FEATURE_COUNT = ABSTRACT_OPERATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USING__QUALIFIED_NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Using</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USING_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ProductTypeImpl <em>Product Type</em>}' class.
@@ -4651,17 +4624,6 @@ public interface StructurePackage extends EPackage {
 	EReference getModelingUnit_Requires();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.kermeta.language.structure.ModelingUnit#getUsings <em>Usings</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Usings</em>'.
-	 * @see org.kermeta.language.structure.ModelingUnit#getUsings()
-	 * @see #getModelingUnit()
-	 * @generated
-	 */
-	EReference getModelingUnit_Usings();
-
-	/**
 	 * Returns the meta object for class '{@link org.kermeta.language.structure.TypeDefinitionContainer <em>Type Definition Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5007,6 +4969,17 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getUnresolvedType_TypeIdentifier();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.kermeta.language.structure.UnresolvedType#getUsings <em>Usings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Usings</em>'.
+	 * @see org.kermeta.language.structure.UnresolvedType#getUsings()
+	 * @see #getUnresolvedType()
+	 * @generated
+	 */
+	EReference getUnresolvedType_Usings();
 
 	/**
 	 * Returns the meta object for class '{@link org.kermeta.language.structure.Unresolved <em>Unresolved</em>}'.
@@ -5998,14 +5971,6 @@ public interface StructurePackage extends EPackage {
 		EReference MODELING_UNIT__REQUIRES = eINSTANCE.getModelingUnit_Requires();
 
 		/**
-		 * The meta object literal for the '<em><b>Usings</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODELING_UNIT__USINGS = eINSTANCE.getModelingUnit_Usings();
-
-		/**
 		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.TypeDefinitionContainerImpl <em>Type Definition Container</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6300,6 +6265,14 @@ public interface StructurePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute UNRESOLVED_TYPE__TYPE_IDENTIFIER = eINSTANCE.getUnresolvedType_TypeIdentifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Usings</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNRESOLVED_TYPE__USINGS = eINSTANCE.getUnresolvedType_Usings();
 
 		/**
 		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.UnresolvedImpl <em>Unresolved</em>}' class.

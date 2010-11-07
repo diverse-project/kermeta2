@@ -1,7 +1,7 @@
 //$Id:$
 /*
  * This code has been generated to visit a kermeta model
- * Creation date: Thu Oct 21 15:48:12 CEST 2010
+ * Creation date: Sun Nov 07 10:31:59 CET 2010
  * Template Created on feb. 2005
  * By Franck FLEUREY (ffleurey@irisa.fr)
  * IRISA / INRIA / University of rennes 1
@@ -112,8 +112,6 @@ public class KermetaOptimizedVisitor {
 					new TypeDefinitionContainerAcceptCommand());
 			acceptCmds.put("Require",
 					new RequireAcceptCommand());
-			acceptCmds.put("Using",
-					new UsingAcceptCommand());
 			acceptCmds.put("ObjectTypeVariable",
 					new ObjectTypeVariableAcceptCommand());
 			acceptCmds.put("ModelType",
@@ -136,6 +134,8 @@ public class KermetaOptimizedVisitor {
 					new UnresolvedPropertyAcceptCommand());
 			acceptCmds.put("UnresolvedOperation",
 					new UnresolvedOperationAcceptCommand());
+			acceptCmds.put("Using",
+					new UsingAcceptCommand());
 			acceptCmds.put("ProductType",
 					new ProductTypeAcceptCommand());
 			acceptCmds.put("FunctionType",
@@ -351,10 +351,6 @@ public class KermetaOptimizedVisitor {
 	return genericVisitChildren(node);
 	}
 
-	public Object visitUsing(org.kermeta.language.structure.Using node) {
-	return genericVisitChildren(node);
-	}
-
 	public Object visitObjectTypeVariable(org.kermeta.language.structure.ObjectTypeVariable node) {
 	return genericVisitChildren(node);
 	}
@@ -396,6 +392,10 @@ public class KermetaOptimizedVisitor {
 	}
 
 	public Object visitUnresolvedOperation(org.kermeta.language.structure.UnresolvedOperation node) {
+	return genericVisitChildren(node);
+	}
+
+	public Object visitUsing(org.kermeta.language.structure.Using node) {
 	return genericVisitChildren(node);
 	}
 
@@ -666,12 +666,6 @@ class RequireAcceptCommand extends AcceptCommand {
 				.visitRequire((org.kermeta.language.structure.Require) node);
 	}
 }
-class UsingAcceptCommand extends AcceptCommand {
-	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
-		return visitor
-				.visitUsing((org.kermeta.language.structure.Using) node);
-	}
-}
 class ObjectTypeVariableAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
@@ -736,6 +730,12 @@ class UnresolvedOperationAcceptCommand extends AcceptCommand {
 	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
 		return visitor
 				.visitUnresolvedOperation((org.kermeta.language.structure.UnresolvedOperation) node);
+	}
+}
+class UsingAcceptCommand extends AcceptCommand {
+	public Object accept(EObject node, KermetaOptimizedVisitor visitor) {
+		return visitor
+				.visitUsing((org.kermeta.language.structure.Using) node);
 	}
 }
 class ProductTypeAcceptCommand extends AcceptCommand {

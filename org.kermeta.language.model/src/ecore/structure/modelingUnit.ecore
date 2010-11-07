@@ -20,12 +20,6 @@
           <details key="documentation" value="Set of &quot;require&quot; statements associated with this ModelingUnit. Ie. list of the other&#xA;files required to run this unit"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="usings" upperBound="-1"
-          eType="#//structure/Using" containment="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Set of &quot;using&quot; statement associated with this ModelingUnit. Ie. list of &quot;syntatic shortcut&quot;&#xA;that can be used within this unit."/>
-        </eAnnotations>
-      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Package"/>
     <eClassifiers xsi:type="ecore:EClass" name="Require" eSuperTypes="#//structure/Object">
@@ -33,16 +27,6 @@
         <details key="documentation" value="To be written"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="#//structure/String">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="To be written"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Using" eSuperTypes="#//structure/Object">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="To be written"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifiedName" eType="#//structure/String">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="To be written"/>
         </eAnnotations>

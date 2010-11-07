@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.kermeta.language.structure.ModelingUnit#getPackages <em>Packages</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ModelingUnit#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ModelingUnit#getRequires <em>Requires</em>}</li>
- *   <li>{@link org.kermeta.language.structure.ModelingUnit#getUsings <em>Usings</em>}</li>
  * </ul>
  * </p>
  *
@@ -95,21 +94,5 @@ public interface ModelingUnit extends TypeDefinitionContainer, org.kermeta.langu
 	 * @generated
 	 */
 	EList<Require> getRequires();
-
-	/**
-	 * Returns the value of the '<em><b>Usings</b></em>' containment reference list.
-	 * The list contents are of type {@link org.kermeta.language.structure.Using}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Set of "using" statement associated with this ModelingUnit. Ie. list of "syntatic shortcut"
-	 * that can be used within this unit.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Usings</em>' containment reference list.
-	 * @see org.kermeta.language.structure.StructurePackage#getModelingUnit_Usings()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<Using> getUsings();
 
 } // ModelingUnit

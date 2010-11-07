@@ -5,6 +5,8 @@
  */
 package org.kermeta.language.structure;
 
+import org.eclipse.emf.ecore.EObject;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -12,7 +14,7 @@ package org.kermeta.language.structure;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * To be written
+ * Using is a part of QualifiedName that can be used to complement the indentifer and resolve a given Unresolved object
  * <!-- end-model-doc -->
  *
  * <p>
@@ -26,7 +28,7 @@ package org.kermeta.language.structure;
  * @model
  * @generated
  */
-public interface Using extends org.kermeta.language.structure.Object {
+public interface Using extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -38,9 +40,6 @@ public interface Using extends org.kermeta.language.structure.Object {
 	 * Returns the value of the '<em><b>Qualified Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * To be written
-	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualified Name</em>' attribute.
 	 * @see #setQualifiedName(String)
 	 * @see org.kermeta.language.structure.StructurePackage#getUsing_QualifiedName()

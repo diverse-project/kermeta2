@@ -20,6 +20,7 @@ package org.kermeta.language.structure;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.kermeta.language.structure.UnresolvedType#getTypeIdentifier <em>Type Identifier</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.UnresolvedType#getUsings <em>Usings</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,5 +61,30 @@ public interface UnresolvedType extends Type, Unresolved {
 	 * @generated
 	 */
 	void setTypeIdentifier(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Usings</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * List of Using that can be used to complement the indentifer and resolve this UnresolvedType
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Usings</em>' containment reference.
+	 * @see #setUsings(Using)
+	 * @see org.kermeta.language.structure.StructurePackage#getUnresolvedType_Usings()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	Using getUsings();
+
+	/**
+	 * Sets the value of the '{@link org.kermeta.language.structure.UnresolvedType#getUsings <em>Usings</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Usings</em>' containment reference.
+	 * @see #getUsings()
+	 * @generated
+	 */
+	void setUsings(Using value);
 
 } // UnresolvedType

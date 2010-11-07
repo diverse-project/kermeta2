@@ -35,7 +35,6 @@ import org.kermeta.language.structure.Using;
  *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getPackages <em>Packages</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getRequires <em>Requires</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.ModelingUnitImpl#getUsings <em>Usings</em>}</li>
  * </ul>
  * </p>
  *
@@ -88,16 +87,6 @@ public class ModelingUnitImpl extends TypeDefinitionContainerImpl implements Mod
 	 * @ordered
 	 */
 	protected EList<Require> requires;
-
-	/**
-	 * The cached value of the '{@link #getUsings() <em>Usings</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUsings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Using> usings;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -168,18 +157,6 @@ public class ModelingUnitImpl extends TypeDefinitionContainerImpl implements Mod
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Using> getUsings() {
-		if (usings == null) {
-			usings = new EObjectContainmentEList.Resolving<Using>(Using.class, this, StructurePackage.MODELING_UNIT__USINGS);
-		}
-		return usings;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -187,8 +164,6 @@ public class ModelingUnitImpl extends TypeDefinitionContainerImpl implements Mod
 				return ((InternalEList<?>)getPackages()).basicRemove(otherEnd, msgs);
 			case StructurePackage.MODELING_UNIT__REQUIRES:
 				return ((InternalEList<?>)getRequires()).basicRemove(otherEnd, msgs);
-			case StructurePackage.MODELING_UNIT__USINGS:
-				return ((InternalEList<?>)getUsings()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -207,8 +182,6 @@ public class ModelingUnitImpl extends TypeDefinitionContainerImpl implements Mod
 				return getNamespacePrefix();
 			case StructurePackage.MODELING_UNIT__REQUIRES:
 				return getRequires();
-			case StructurePackage.MODELING_UNIT__USINGS:
-				return getUsings();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -233,10 +206,6 @@ public class ModelingUnitImpl extends TypeDefinitionContainerImpl implements Mod
 				getRequires().clear();
 				getRequires().addAll((Collection<? extends Require>)newValue);
 				return;
-			case StructurePackage.MODELING_UNIT__USINGS:
-				getUsings().clear();
-				getUsings().addAll((Collection<? extends Using>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -258,9 +227,6 @@ public class ModelingUnitImpl extends TypeDefinitionContainerImpl implements Mod
 			case StructurePackage.MODELING_UNIT__REQUIRES:
 				getRequires().clear();
 				return;
-			case StructurePackage.MODELING_UNIT__USINGS:
-				getUsings().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -279,8 +245,6 @@ public class ModelingUnitImpl extends TypeDefinitionContainerImpl implements Mod
 				return NAMESPACE_PREFIX_EDEFAULT == null ? namespacePrefix != null : !NAMESPACE_PREFIX_EDEFAULT.equals(namespacePrefix);
 			case StructurePackage.MODELING_UNIT__REQUIRES:
 				return requires != null && !requires.isEmpty();
-			case StructurePackage.MODELING_UNIT__USINGS:
-				return usings != null && !usings.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -216,10 +216,6 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createRequireAdapter();
 			}
 			@Override
-			public Adapter caseUsing(Using object) {
-				return createUsingAdapter();
-			}
-			@Override
 			public Adapter caseGenericTypeDefinition(GenericTypeDefinition object) {
 				return createGenericTypeDefinitionAdapter();
 			}
@@ -282,6 +278,10 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseUnresolvedOperation(UnresolvedOperation object) {
 				return createUnresolvedOperationAdapter();
+			}
+			@Override
+			public Adapter caseUsing(Using object) {
+				return createUsingAdapter();
 			}
 			@Override
 			public Adapter caseProductType(ProductType object) {
