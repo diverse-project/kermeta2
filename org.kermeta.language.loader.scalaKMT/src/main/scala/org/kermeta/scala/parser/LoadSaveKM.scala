@@ -10,10 +10,10 @@
 
 package org.kermeta.scala.parser
 
-import org.kermeta.KmPackage
 import org.kermeta.language.behavior.Expression
 import org.kermeta.language.structure.ModelingUnit
 import java.util.HashMap
+import org.kermeta.KmPackage
 import org.eclipse.emf.common.util.TreeIterator
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject

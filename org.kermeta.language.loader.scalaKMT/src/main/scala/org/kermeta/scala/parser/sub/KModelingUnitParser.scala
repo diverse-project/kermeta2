@@ -40,7 +40,7 @@ trait KModelingUnitParser extends KAbstractParser with KTagParser  {
       var usings : List[Using] = List()
       unit.foreach{elem => elem match {  	  
           case l : List[_] => l.asInstanceOf[List[_]].foreach{listElem => listElem match {
-                case t : Tag => newp.getTag.add(t);newp.getOwnedTags.add(t)
+                case t : Tag => newp.getKTag.add(t);newp.getKOwnedTags.add(t)
                 case r : Require => newp.getRequires.add(r)
                 case p : Package => newp.getPackages.add(p)
                 case u : Using => usings = usings ++ List(u) //newp.getUsings.add(u)
@@ -104,7 +104,7 @@ trait KModelingUnitParser extends KAbstractParser with KTagParser  {
         elem match {
           case t : Tag => listTempTagToAdd=listTempTagToAdd++List(t)
           case o : Object => {
-              listTempTagToAdd.foreach{tag=>o.getTag.add(tag);o.getOwnedTags.add(tag)}
+              listTempTagToAdd.foreach{tag=>o.getKTag.add(tag);o.getKOwnedTags.add(tag)}
               listAnnotElem = listAnnotElem ++ List(o)
               listTempTagToAdd = Nil
             }

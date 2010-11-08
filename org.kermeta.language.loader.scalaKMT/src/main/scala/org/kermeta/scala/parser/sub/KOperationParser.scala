@@ -53,7 +53,7 @@ trait KOperationParser extends KAbstractParser {
 
   def operationExpressionBody = ( (annotation?) ~ fStatement) ^^ { case a1 ~ exp =>
       a1 match {
-        case Some(_ @ tag) => exp.getTag.add(tag)
+        case Some(_ @ tag) => exp.getKTag.add(tag)
         case None =>
       }
       exp

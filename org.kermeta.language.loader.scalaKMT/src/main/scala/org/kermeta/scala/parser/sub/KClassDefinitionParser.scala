@@ -62,7 +62,7 @@ trait KClassDefinitionParser extends KAbstractParser
   private def classMemberDecls = annotableClassMemberDecl +
   private def annotableClassMemberDecl = (annotation?) ~ classMemberDecl ^^ { case e ~ e1 =>
       e match {
-        case Some(_ @ annotation) => e1.getOwnedTags.add(annotation)
+        case Some(_ @ annotation) => e1.getKOwnedTags.add(annotation)
         case None => //NOTHING TO DO
       }
       e1
