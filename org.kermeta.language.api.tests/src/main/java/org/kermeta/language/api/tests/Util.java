@@ -36,7 +36,6 @@ public static void populate(TestSuite ts, String folder, Boolean valid,Class p,S
         try {
             vfiles = getResourceListing(PortResourceLoaderTestSuite.class, folder);
 
-
             Arrays.sort(vfiles);
             
 
