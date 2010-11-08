@@ -68,7 +68,7 @@ trait KModelingUnitParser extends KAbstractParser with KTagParser  {
   
   def packageDecl : Parser[NameSpacePrefix] = positioned( "package" ~> packageName <~ ";" ^^ { case p =>  NameSpacePrefix(p)} )
   private def importStmts = importStmt+
-  private def importStmt = "require" ~ packageName ^^ { case _ ~ e =>
+  private def importStmt = "require" ~ ( packageName | stringLit ) ^^ { case _ ~ e =>
       var newo =StructureFactory.eINSTANCE.createRequire
       newo.setUri(e.toString)
       newo

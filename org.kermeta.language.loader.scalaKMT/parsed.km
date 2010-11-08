@@ -11,6 +11,21 @@
         <usings qualifiedName="kermeta::standard::*"/>
       </containedType>
     </ownedAttribute>
+    <ownedAttribute name="s2" type="//Main/s2/@containedType.0" upper="1">
+      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String">
+        <usings qualifiedName="kermeta::standard::*"/>
+      </containedType>
+    </ownedAttribute>
+    <ownedAttribute name="s3" type="//Main/s3/@containedType.0" lower="1" upper="1">
+      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String">
+        <usings qualifiedName="kermeta::standard::*"/>
+      </containedType>
+    </ownedAttribute>
+    <ownedAttribute name="s4" type="//Main/s4/@containedType.0" lower="-1" upper="-1">
+      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String">
+        <usings qualifiedName="kermeta::standard::*"/>
+      </containedType>
+    </ownedAttribute>
     <ownedOperation name="main" type="//Main/@containedType.0">
       <body xsi:type="org_kermeta_language_behavior:Block">
         <statement xsi:type="org_kermeta_language_behavior:VariableDecl" identifier="myVar">

@@ -32,9 +32,9 @@ trait KClassDefinitionParser extends KAbstractParser
   def operation : Parser[Operation]
   /* END CONTRACT */
 
-  def abstractModifier = ("abstract")?
-  def aspectModifier = ("aspect")?
-  def classDecl : Parser[ClassDefinition] = aspectModifier ~ abstractModifier ~ "class" ~ ident ~ "{" ~ classMemberDecls ~ "}" ^^ { case aspectM ~ abstractM ~ _ ~ id1 ~ _ ~ members ~ _ =>
+  def abstractModifier = opt("abstract")
+  def aspectModifier = opt("aspect")
+  def classDecl : Parser[ClassDefinition] = aspectModifier ~ abstractModifier ~ "class" ~ ident ~ opt(classGenericParems) ~ opt(classParentDecls) ~ "{" ~ rep(annotableClassMemberDecl) ~ "}" ^^ { case aspectM ~ abstractM ~ _ ~ id1 ~params ~ parents ~ _ ~ members ~ _ =>
       var newo =StructureFactory.eINSTANCE.createClassDefinition
       newo.setName(id1.toString)
       aspectM match {
@@ -45,6 +45,31 @@ trait KClassDefinitionParser extends KAbstractParser
         case Some(_) => newo.setIsAbstract(true)
         case None => newo.setIsAbstract(false)
       }
+      params match {
+        case None =>
+        case Some(paramsI) => {
+            paramsI.foreach{params =>
+              var newParam =StructureFactory.eINSTANCE.createUnresolvedType
+              newParam.setTypeIdentifier(params)
+
+              println("TODO GENERIC TYPE")
+            }
+          }
+      }
+
+      parents match {
+        case None =>
+        case Some(parentI)=> {
+            parentI.foreach{parent=>
+              var newParent =StructureFactory.eINSTANCE.createUnresolvedType
+              newParent.setTypeIdentifier(parent.toString)
+              newo.getSuperType.add(newParent)
+              newo.getContainedType.add(newParent)
+            }
+          }
+      }
+
+
       members.foreach{member => {
           member match {
             case m : Constraint => newo.getInv.add(m)
@@ -59,7 +84,9 @@ trait KClassDefinitionParser extends KAbstractParser
       newo
   }
 
-  private def classMemberDecls = annotableClassMemberDecl +
+  private def classGenericParems = "<" ~ rep1sep(packageName,",") ~ ">" ^^{case _ ~ params ~ _ => params }
+  private def classParentDecls = "inherits" ~ rep1sep(packageName, ",") ^^ { case _ ~ parents => parents }
+  // private def classMemberDecls = annotableClassMemberDecl +
   private def annotableClassMemberDecl = (annotation?) ~ classMemberDecl ^^ { case e ~ e1 =>
       e match {
         case Some(_ @ annotation) => e1.getKOwnedTags.add(annotation)

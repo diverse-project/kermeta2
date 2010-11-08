@@ -18,7 +18,10 @@ using kermeta::standard::*
 
 class Main
 {
-	 attribute s : kermeta::standard::String [0..*] 
+	 attribute s : kermeta::standard::String [0..*]
+         attribute s2 : kermeta::standard::String
+         attribute s3 : kermeta::standard::String [1]
+         attribute s4 : kermeta::standard::String [*]
 
        /*  var myVar : String  */
 
