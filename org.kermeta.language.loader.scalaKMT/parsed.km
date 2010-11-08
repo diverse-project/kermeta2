@@ -4,12 +4,25 @@
   <ownedTags name="mainOperation" value="main" object="/"/>
   <ownedTypeDefinition xsi:type="kermeta_language_structure:ClassDefinition" name="Main">
     <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="Void"/>
+    <ownedAttribute name="s" type="//Main/s/@containedType.0" upper="-1">
+      <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String"/>
+    </ownedAttribute>
     <ownedOperation name="main" type="//Main/@containedType.0">
       <body xsi:type="kermeta_language_behavior:Block">
         <statement xsi:type="kermeta_language_behavior:VariableDecl" identifier="myVar">
           <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
           <initialization xsi:type="kermeta_language_behavior:StringLiteral" value=""/>
           <type name="String" type="//Main/main/@body/@statement.0/@containedType.0"/>
+        </statement>
+        <statement xsi:type="kermeta_language_behavior:VariableDecl" identifier="myBool">
+          <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Boolean"/>
+          <initialization xsi:type="kermeta_language_behavior:BooleanLiteral" value="true"/>
+          <type name="kermeta::standard::Boolean" type="//Main/main/@body/@statement.1/@containedType.0"/>
+        </statement>
+        <statement xsi:type="kermeta_language_behavior:VariableDecl" identifier="myBool2">
+          <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
+          <initialization xsi:type="kermeta_language_behavior:BooleanLiteral" value="true"/>
+          <type name="Boolean" type="//Main/main/@body/@statement.2/@containedType.0"/>
         </statement>
         <statement xsi:type="kermeta_language_behavior:CallFeature" name="add">
           <parameters xsi:type="kermeta_language_behavior:StringLiteral" value="hello"/>

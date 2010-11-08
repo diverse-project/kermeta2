@@ -37,23 +37,14 @@ trait KModelingUnitParser extends KAbstractParser  {
 
   def program = kermetaUnit ^^ { case unit =>
       var newp =StructureFactory.eINSTANCE.createModelingUnit
-      //INIT OPTIONAL MODELING FOR OTHER PARSING FRAGMENT
-      this.setActualModelingUnit(Some(newp))
-
       var usings : List[Using] = List()
-
       unit.foreach{elem => elem match {  	  
           case l : List[_] => l.asInstanceOf[List[_]].foreach{listElem => listElem match {
                 case t : Tag => newp.getTag.add(t);newp.getOwnedTags.add(t)
                 case r : Require => newp.getRequires.add(r)
                 case p : Package => newp.getPackages.add(p)
                 case u : Using => usings = usings ++ List(u) //newp.getUsings.add(u)
-                case cd : ClassDefinition => {
-                    newp.getOwnedTypeDefinition.add(cd)
-                   // cd.getO
-
-                   // newp.getOwnedTypeDefinition.add(x$1)
-                }
+                case cd : ClassDefinition => newp.getOwnedTypeDefinition.add(cd)
                 case _ @ elem => println("unknow elem" + elem)
               }}
           case np : NameSpacePrefix => newp.setNamespacePrefix(np.name) //; var pos2 = np.pos.asInstanceOf[OffsetPosition] ; println(pos2.productArity+"-"+pos2.source.subSequence(0, pos2.offset.toInt))
@@ -61,13 +52,14 @@ trait KModelingUnitParser extends KAbstractParser  {
           case _ @ d => println("TODO modeling unit catch some type sub elem="+d)
         }}
       /* USING POST PROCESS */
-
       //ADD USING CLONE TO ALL UNRESOLVE TYPE
-      
-      
-      
+      newp.eAllContents.filter(p=> p.isInstanceOf[UnresolvedType]).foreach{unresolveType=>
+        var unr = unresolveType.asInstanceOf[UnresolvedType]
+        var localUsings = List() ++ usings.toList //CLONE USING
 
+          //ADD TO USING
 
+      }
 
       newp
   }

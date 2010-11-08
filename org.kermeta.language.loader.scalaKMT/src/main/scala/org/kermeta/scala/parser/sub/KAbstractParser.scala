@@ -35,9 +35,6 @@ trait KAbstractParser extends TokenParsers {
   def fLiteral : Parser[Expression]
   def packageName : Parser[String]
 
-  @BeanProperty
-  var actualModelingUnit : Option[ModelingUnit] = None
-
   protected val keywordCache : HashMap[String, Parser[String]] = HashMap.empty
   protected val delimCache : HashMap[String, Parser[String]] = HashMap.empty
 

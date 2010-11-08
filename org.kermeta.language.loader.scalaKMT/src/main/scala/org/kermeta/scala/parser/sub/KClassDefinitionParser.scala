@@ -39,19 +39,9 @@ trait KClassDefinitionParser extends KAbstractParser {
             case m : Constraint => newo.getInv.add(m)
             case m : Operation => {
                 newo.getOwnedOperation.add(m);
-                /*
-                newo.getContainedType.find(t=> {
-                    if(t.isInstanceOf[UnresolvedType]){
-
-
-                      true
-                    } else {
-                      false
-                    }
-                  })*/
-
                 newo.getContainedType.add(m.getType) // TODO OPTIMISATION
-            }
+              }
+            case m : Property => newo.getOwnedAttribute.add(m)
             case _ => println("class def add new member type")
           }
         }}
@@ -73,7 +63,7 @@ trait KClassDefinitionParser extends KAbstractParser {
       newo
   }
 
-  def classMemberDecl = ( invariant | operation | property ) //attribute | reference | operation ;
+  def classMemberDecl = ( invariant | operation | property | attribute ) //attribute | reference | operation ;
 
   def invariant = ("inv" ~ ident ~ "is" ~ fStatement ) ^^ { case _ ~ ident ~ _ ~ expr =>
       var newo =StructureFactory.eINSTANCE.createConstraint
@@ -89,30 +79,24 @@ trait KClassDefinitionParser extends KAbstractParser {
       }
       newo.setName(opName)
       if(body != null) newo.setBody(body)
-
       params match {
         case Some(_ @ lpara) => for(par <- lpara) newo.getOwnedParameter.add(par)
         case None => // DO NOTHING
       }
-      
       var unresolveType = StructureFactory.eINSTANCE.createUnresolvedType
       unresolveType.setTypeIdentifier(id2)
       newo.setType(unresolveType)
-
-      //ADD TO MODELING UNIT
-
-
-
+      newo.getContainedType.add(unresolveType)
       newo
   }
 
-  //def operationParameters = operationParameters*
   def operationParameter : Parser[Parameter] = ident ~ ":" ~ packageName ^^ { case id ~ _ ~ name =>
       var newo = StructureFactory.eINSTANCE.createParameter
-      newo.setName(id.toString)
-      //TODO SET TYPE
-      //StructureFactory.eINSTANCE.createType.
-      //newo.setType(name.)
+      newo.setName(id)
+      var newtype = StructureFactory.eINSTANCE.createUnresolvedType
+      newo.getContainedType.add(newtype)
+      newtype.setTypeIdentifier(name)
+      newo.setType(newtype)
       newo
   }
   def operationParameterss = (("," ~ operationParameter )*) ^^ { case params => for(par <- params) yield par match {case _ ~ p => p} }
@@ -130,5 +114,25 @@ trait KClassDefinitionParser extends KAbstractParser {
       exp
   }
 
+
+  //ATTRIBUTE
+  def attribute : Parser[Property] = "attribute" ~> ident ~ ":" ~ packageName ~ propertyBounds ^^ { case id ~ _ ~ name ~ bounds =>
+      var newo = StructureFactory.eINSTANCE.createProperty
+      newo.setName(id)
+      newo.setLower(bounds._1)
+      newo.setUpper(bounds._2)
+      var newtype = StructureFactory.eINSTANCE.createUnresolvedType
+      newo.getContainedType.add(newtype)
+      newtype.setTypeIdentifier(name)
+      newo.setType(newtype)
+      newo
+  }
+
+  def propertyBounds : Parser[Tuple2[Int,Int]] = "[" ~> numericLit ~ ".." ~ (numericLit | "*" ) <~ "]" ^^{ case lower ~_ ~upper =>
+      upper match {
+        case "*"=> Tuple2(Integer.parseInt(lower),-1)
+        case upper : String => Tuple2(Integer.parseInt(lower),Integer.parseInt(upper))
+      }
+  }
 
 }
