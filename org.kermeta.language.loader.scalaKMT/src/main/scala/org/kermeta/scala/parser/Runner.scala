@@ -28,9 +28,9 @@ val input = Source.fromFile(new java.io.File("LambdaExpression_CollectionEach_50
 
     var lexResult = new KMLexer(input)
 
-    while(!lexResult.atEnd){
-      println(lexResult.nextToken)
-    }
+//    while(!lexResult.atEnd){
+ //     println(lexResult.nextToken)
+ //   }
 
 
     var result = new KParser().parse(input)

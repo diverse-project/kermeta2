@@ -24,9 +24,15 @@ trait KVarParser extends KAbstractParser {
   def fVariableDecl : Parser[Expression] = "var" ~> ident ~ ":" ~ packageName ~ (("init" ~ fStatement)?) ^^ { case id1 ~ _ ~ name ~ initStat  =>
       var newo = BehaviorFactory.eINSTANCE.createVariableDecl
       newo.setIdentifier(id1)
-      var newtype = BehaviorFactory.eINSTANCE.createTypeReference
-      newtype.setName(name)
-      newo.setType(newtype)
+      //TYPE GESTURE
+      var newtyperef = BehaviorFactory.eINSTANCE.createTypeReference
+      var newtype = StructureFactory.eINSTANCE.createUnresolvedType
+      newo.getContainedType.add(newtype)
+      newtyperef.setName(name)
+      newtype.setTypeIdentifier(name)
+      newtyperef.setType(newtype)
+
+      newo.setType(newtyperef)
       initStat match {
         case None =>
         case Some(elseExp)=> elseExp match { case "init"~statm => newo.setInitialization(statm) }

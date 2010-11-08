@@ -14,13 +14,23 @@ package kmt_testCase::foo;
 
 require kermeta
 
+using kermeta::standard::*
+
 class Main
 {
 	/* attribute s : kermeta::standard::String [0..*] */
-	
-	operation main() : Void is do 
+
+       /*  var myVar : String [0..*] */
+
+	operation main() : Void is do
+
+            var myVar : String init ""
+            //var myBool : kermeta::standard::Boolean init true
+            //var myBool2 : Boolean init true
+
 		s.add("hello")
 		s.add("moto")
 		s.each({ s2 , s3 , s4 | stdio.writeln(s2) })
 	end
 }
+

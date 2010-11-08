@@ -3,8 +3,14 @@
   <ownedTags name="mainClass" value="kmt_testCase::Main" object="/"/>
   <ownedTags name="mainOperation" value="main" object="/"/>
   <ownedTypeDefinition xsi:type="kermeta_language_structure:ClassDefinition" name="Main">
-    <ownedOperation name="main">
+    <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="Void"/>
+    <ownedOperation name="main" type="//Main/@containedType.0">
       <body xsi:type="kermeta_language_behavior:Block">
+        <statement xsi:type="kermeta_language_behavior:VariableDecl" identifier="myVar">
+          <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
+          <initialization xsi:type="kermeta_language_behavior:StringLiteral" value=""/>
+          <type name="String" type="//Main/main/@body/@statement.0/@containedType.0"/>
+        </statement>
         <statement xsi:type="kermeta_language_behavior:CallFeature" name="add">
           <parameters xsi:type="kermeta_language_behavior:StringLiteral" value="hello"/>
           <target xsi:type="kermeta_language_behavior:CallFeature" name="s"/>

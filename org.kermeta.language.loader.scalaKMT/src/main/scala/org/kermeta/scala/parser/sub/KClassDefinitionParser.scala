@@ -37,7 +37,21 @@ trait KClassDefinitionParser extends KAbstractParser {
       members.foreach{member => {
           member match {
             case m : Constraint => newo.getInv.add(m)
-            case m : Operation => newo.getOwnedOperation.add(m)
+            case m : Operation => {
+                newo.getOwnedOperation.add(m);
+                /*
+                newo.getContainedType.find(t=> {
+                    if(t.isInstanceOf[UnresolvedType]){
+
+
+                      true
+                    } else {
+                      false
+                    }
+                  })*/
+
+                newo.getContainedType.add(m.getType) // TODO OPTIMISATION
+            }
             case _ => println("class def add new member type")
           }
         }}
@@ -80,7 +94,15 @@ trait KClassDefinitionParser extends KAbstractParser {
         case Some(_ @ lpara) => for(par <- lpara) newo.getOwnedParameter.add(par)
         case None => // DO NOTHING
       }
-      //TODO INSERT NON RESOLVING TYPE
+      
+      var unresolveType = StructureFactory.eINSTANCE.createUnresolvedType
+      unresolveType.setTypeIdentifier(id2)
+      newo.setType(unresolveType)
+
+      //ADD TO MODELING UNIT
+
+
+
       newo
   }
 

@@ -17,6 +17,7 @@ import org.kermeta.language.structure.impl._
 import org.kermeta.language.behavior.impl._
 import org.kermeta.language.lexer.KMLexical
 import scala.collection.JavaConversions._
+import scala.reflect.BeanProperty
 import scala.util.parsing.combinator.syntactical.TokenParsers
 
 /**
@@ -34,8 +35,8 @@ trait KAbstractParser extends TokenParsers {
   def fLiteral : Parser[Expression]
   def packageName : Parser[String]
 
-  
-
+  @BeanProperty
+  var actualModelingUnit : Option[ModelingUnit] = None
 
   protected val keywordCache : HashMap[String, Parser[String]] = HashMap.empty
   protected val delimCache : HashMap[String, Parser[String]] = HashMap.empty

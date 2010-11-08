@@ -23,11 +23,9 @@ import scala.util.parsing.input.Positional
  */
 trait KModelingUnitParser extends KAbstractParser  {
 	
-	case class NameSpacePrefix(name : String) extends Positional
-        case class ExpressionWrapper(expr : Expression) extends Positional
-
-        case class PositionalString(value : String ) extends Positional
-
+  case class NameSpacePrefix(name : String) extends Positional
+  case class ExpressionWrapper(expr : Expression) extends Positional
+  case class PositionalString(value : String ) extends Positional
 	
 
 
@@ -39,17 +37,38 @@ trait KModelingUnitParser extends KAbstractParser  {
 
   def program = kermetaUnit ^^ { case unit =>
       var newp =StructureFactory.eINSTANCE.createModelingUnit
+      //INIT OPTIONAL MODELING FOR OTHER PARSING FRAGMENT
+      this.setActualModelingUnit(Some(newp))
+
+      var usings : List[Using] = List()
+
       unit.foreach{elem => elem match {  	  
           case l : List[_] => l.asInstanceOf[List[_]].foreach{listElem => listElem match {
                 case t : Tag => newp.getTag.add(t);newp.getOwnedTags.add(t)
                 case r : Require => newp.getRequires.add(r)
                 case p : Package => newp.getPackages.add(p)
-                case cd : ClassDefinition => newp.getOwnedTypeDefinition.add(cd)
+                case u : Using => usings = usings ++ List(u) //newp.getUsings.add(u)
+                case cd : ClassDefinition => {
+                    newp.getOwnedTypeDefinition.add(cd)
+                   // cd.getO
+
+                   // newp.getOwnedTypeDefinition.add(x$1)
+                }
                 case _ @ elem => println("unknow elem" + elem)
               }}
-          case np : NameSpacePrefix => newp.setNamespacePrefix(np.name) ; var pos2 = np.pos.asInstanceOf[OffsetPosition] ; println(pos2.productArity+"-"+pos2.source.subSequence(0, pos2.offset.toInt))
+          case np : NameSpacePrefix => newp.setNamespacePrefix(np.name) //; var pos2 = np.pos.asInstanceOf[OffsetPosition] ; println(pos2.productArity+"-"+pos2.source.subSequence(0, pos2.offset.toInt))
+          case u : Using => usings = usings ++ List(u)
           case _ @ d => println("TODO modeling unit catch some type sub elem="+d)
         }}
+      /* USING POST PROCESS */
+
+      //ADD USING CLONE TO ALL UNRESOLVE TYPE
+      
+      
+      
+
+
+
       newp
   }
 
@@ -58,17 +77,33 @@ trait KModelingUnitParser extends KAbstractParser  {
   def scompUnit = (packageDecl|importStmts|usingStmts|topLevelDecl) // TODO ADD ANNOTATION TO ELEM
   /* DEPRECATED */
   
-   def packageDecl : Parser[NameSpacePrefix] = "package" ~> packageName <~ ";" ^^ { case p =>  NameSpacePrefix(p)}
+  def packageDecl : Parser[NameSpacePrefix] = positioned( "package" ~> packageName <~ ";" ^^ { case p =>  NameSpacePrefix(p)} )
   private def importStmts = importStmt+
   private def importStmt = "require" ~ packageName ^^ { case _ ~ e =>
       var newo =StructureFactory.eINSTANCE.createRequire
       newo.setUri(e.toString)
       newo
   }
-  private def usingStmts = "using" ~ packageName ^^ { case _ ~ name =>
+
+
+  /* PROCESS USING  */
+  def usingStmts : Parser[Using] = "using" ~ ident ~ usingQualifiedName ^^ { case _ ~ id ~ q =>
+      //LocalUsing(id+"::"+q.prefixe,q.typeName)
       var newo =StructureFactory.eINSTANCE.createUsing
-      newo.setQualifiedName(name.toString)
+      newo.setQualifiedName(id+"::"+q)
+      newo
   }
+  def usingQualifiedName : Parser[String] = ( rep(usingIdent) ~opt(usingWildcard) ) ^^{ case lIds ~lWil =>
+      var QName = lIds.mkString
+      lWil match {
+        case Some(w)=> QName = QName + "::" + w
+        case None =>
+      }
+      QName
+  }
+  def usingWildcard : Parser[String] = "::" ~> "*"
+  def usingIdent : Parser[String] = "::" ~> ident
+  /*  END PROCESS USING */
 
   private def topLevelDecl : Parser[List[Object]] = ((annotation | annotableElement)+) ^^ { case elems =>
       var listAnnotElem : List[Object] = List()
