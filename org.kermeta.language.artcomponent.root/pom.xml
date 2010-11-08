@@ -23,7 +23,5 @@
     <properties>
         <kermeta.version>2.0.1-SNAPSHOT</kermeta.version>
     </properties>
-
-	<dependencies/>
 	
 </project>
