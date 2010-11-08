@@ -1,52 +1,62 @@
 <?xml version="1.0" encoding="ASCII"?>
-<kermeta_language_structure:ModelingUnit xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kermeta_language_behavior="http://www.kermeta.org/kermeta/2_0_0//kermeta/language/behavior" xmlns:kermeta_language_structure="http://www.kermeta.org/kermeta/2_0_0//kermeta/language/structure" tag="//@ownedTags.0 //@ownedTags.1" namespacePrefix="kmt_testCase::foo">
-  <ownedTags name="mainClass" value="kmt_testCase::Main" object="/"/>
-  <ownedTags name="mainOperation" value="main" object="/"/>
-  <ownedTypeDefinition xsi:type="kermeta_language_structure:ClassDefinition" name="Main">
-    <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="Void"/>
+<org_kermeta_language_structure:ModelingUnit xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_behavior="http://www.kermeta.org/kermeta/2_0_0//org/kermeta/language/behavior" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_0_0//org/kermeta/language/structure" kTag="//@kOwnedTags.0 //@kOwnedTags.1" namespacePrefix="kmt_testCase::foo">
+  <kOwnedTags name="mainClass" value="kmt_testCase::Main" object="/"/>
+  <kOwnedTags name="mainOperation" value="main" object="/"/>
+  <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" name="Main">
+    <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+      <usings qualifiedName="kermeta::standard::*"/>
+    </containedType>
     <ownedAttribute name="s" type="//Main/s/@containedType.0" upper="-1">
-      <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String"/>
+      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String">
+        <usings qualifiedName="kermeta::standard::*"/>
+      </containedType>
     </ownedAttribute>
     <ownedOperation name="main" type="//Main/@containedType.0">
-      <body xsi:type="kermeta_language_behavior:Block">
-        <statement xsi:type="kermeta_language_behavior:VariableDecl" identifier="myVar">
-          <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-          <initialization xsi:type="kermeta_language_behavior:StringLiteral" value=""/>
+      <body xsi:type="org_kermeta_language_behavior:Block">
+        <statement xsi:type="org_kermeta_language_behavior:VariableDecl" identifier="myVar">
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+            <usings qualifiedName="kermeta::standard::*"/>
+          </containedType>
+          <initialization xsi:type="org_kermeta_language_behavior:StringLiteral" value=""/>
           <type name="String" type="//Main/main/@body/@statement.0/@containedType.0"/>
         </statement>
-        <statement xsi:type="kermeta_language_behavior:VariableDecl" identifier="myBool">
-          <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Boolean"/>
-          <initialization xsi:type="kermeta_language_behavior:BooleanLiteral" value="true"/>
+        <statement xsi:type="org_kermeta_language_behavior:VariableDecl" identifier="myBool">
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Boolean">
+            <usings qualifiedName="kermeta::standard::*"/>
+          </containedType>
+          <initialization xsi:type="org_kermeta_language_behavior:BooleanLiteral" value="true"/>
           <type name="kermeta::standard::Boolean" type="//Main/main/@body/@statement.1/@containedType.0"/>
         </statement>
-        <statement xsi:type="kermeta_language_behavior:VariableDecl" identifier="myBool2">
-          <containedType xsi:type="kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-          <initialization xsi:type="kermeta_language_behavior:BooleanLiteral" value="true"/>
+        <statement xsi:type="org_kermeta_language_behavior:VariableDecl" identifier="myBool2">
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+            <usings qualifiedName="kermeta::standard::*"/>
+          </containedType>
+          <initialization xsi:type="org_kermeta_language_behavior:BooleanLiteral" value="true"/>
           <type name="Boolean" type="//Main/main/@body/@statement.2/@containedType.0"/>
         </statement>
-        <statement xsi:type="kermeta_language_behavior:CallFeature" name="add">
-          <parameters xsi:type="kermeta_language_behavior:StringLiteral" value="hello"/>
-          <target xsi:type="kermeta_language_behavior:CallFeature" name="s"/>
+        <statement xsi:type="org_kermeta_language_behavior:CallFeature" name="add">
+          <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" value="hello"/>
+          <target xsi:type="org_kermeta_language_behavior:CallFeature" name="s"/>
         </statement>
-        <statement xsi:type="kermeta_language_behavior:CallFeature" name="add">
-          <parameters xsi:type="kermeta_language_behavior:StringLiteral" value="moto"/>
-          <target xsi:type="kermeta_language_behavior:CallFeature" name="s"/>
+        <statement xsi:type="org_kermeta_language_behavior:CallFeature" name="add">
+          <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" value="moto"/>
+          <target xsi:type="org_kermeta_language_behavior:CallFeature" name="s"/>
         </statement>
-        <statement xsi:type="kermeta_language_behavior:CallFeature" name="each">
-          <parameters xsi:type="kermeta_language_behavior:LambdaExpression">
+        <statement xsi:type="org_kermeta_language_behavior:CallFeature" name="each">
+          <parameters xsi:type="org_kermeta_language_behavior:LambdaExpression">
             <parameters name="s2"/>
             <parameters name="s3"/>
             <parameters name="s4"/>
-            <body xsi:type="kermeta_language_behavior:CallFeature" name="writeln">
-              <parameters xsi:type="kermeta_language_behavior:CallFeature" name="s2"/>
-              <target xsi:type="kermeta_language_behavior:CallFeature" name="stdio"/>
+            <body xsi:type="org_kermeta_language_behavior:CallFeature" name="writeln">
+              <parameters xsi:type="org_kermeta_language_behavior:CallFeature" name="s2"/>
+              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="stdio"/>
             </body>
           </parameters>
-          <target xsi:type="kermeta_language_behavior:CallFeature" name="s"/>
+          <target xsi:type="org_kermeta_language_behavior:CallFeature" name="s"/>
         </statement>
-        <statement xsi:type="kermeta_language_behavior:EmptyExpression"/>
+        <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
       </body>
     </ownedOperation>
   </ownedTypeDefinition>
   <requires uri="kermeta"/>
-</kermeta_language_structure:ModelingUnit>
+</org_kermeta_language_structure:ModelingUnit>

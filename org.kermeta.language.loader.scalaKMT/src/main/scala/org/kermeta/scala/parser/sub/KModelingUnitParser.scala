@@ -28,10 +28,6 @@ trait KModelingUnitParser extends KAbstractParser with KTagParser  {
   case class PositionalString(value : String ) extends Positional
 	
 
-
-
-
-
   /* */
   def classDecl : Parser[ClassDefinition]
 
@@ -53,14 +49,15 @@ trait KModelingUnitParser extends KAbstractParser with KTagParser  {
         }}
       /* USING POST PROCESS */
       //ADD USING CLONE TO ALL UNRESOLVE TYPE
-      newp.eAllContents.filter(p=> p.isInstanceOf[UnresolvedType]).foreach{unresolveType=>
-        var unr = unresolveType.asInstanceOf[UnresolvedType]
+      newp.eAllContents.filter(p=> p.isInstanceOf[UnresolvedType]).foreach{ut =>
+        var unr = ut.asInstanceOf[UnresolvedType]
         var localUsings = List() ++ usings.toList //CLONE USING
-
-          //ADD TO USING
-
+        localUsings.foreach{lu=>
+          var newo =StructureFactory.eINSTANCE.createUsing
+          newo.setQualifiedName(lu.getQualifiedName)
+          unr.getUsings.add(newo)
+        }
       }
-
       newp
   }
 
@@ -115,12 +112,12 @@ trait KModelingUnitParser extends KAbstractParser with KTagParser  {
   }
 
   /*
-  def annotation : Parser[Tag] = "@" ~> ident ~ stringLit ^^ { case id1 ~ st1 =>
-      var newo =StructureFactory.eINSTANCE.createTag
-      newo.setName(id1.toString)
-      newo.setValue(st1.toString)
-      newo
-  }*/
+   def annotation : Parser[Tag] = "@" ~> ident ~ stringLit ^^ { case id1 ~ st1 =>
+   var newo =StructureFactory.eINSTANCE.createTag
+   newo.setName(id1.toString)
+   newo.setValue(st1.toString)
+   newo
+   }*/
   def annotableElement = (subPackageDecl | classDecl)// | modelTypeDecl | classDecl | enumDecl | dataTypeDecl )
   def subPackageDecl = "package" ~ ident ~ "{" ~ (topLevelDecl?) ~ "}" ^^ { case _ ~ packageName ~ _ ~ decls ~ _ =>
       var newp =StructureFactory.eINSTANCE.createPackage
