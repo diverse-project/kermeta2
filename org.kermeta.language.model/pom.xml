@@ -14,36 +14,79 @@
     <name>Kermeta :: Model</name>
     
     <parent>
-    	<groupId>org.kermeta.language</groupId>
-    	<artifactId>language.root</artifactId>
-    	<version>2.0.1-SNAPSHOT</version>
+        <groupId>org.kermeta.language</groupId>
+        <artifactId>language.root</artifactId>
+        <version>2.0.1-SNAPSHOT</version>
     </parent>
     
     <build>
-        <sourceDirectory>${basedir}/src/java</sourceDirectory>
-        <outputDirectory>target/classes</outputDirectory>
-        <!-- Add resources from the plugin structure -->
-        <resources>
-	      	<resource>
-	        	<directory>.</directory>
-	        	<includes>
-	          		<include>plugin.xml</include>
-	        	</includes>
-	      	</resource>
-	      	<resource>
-	        	<directory>build/ecore</directory>
-	        	<targetPath>build/ecore</targetPath>
-	      	</resource>
-	    </resources>
         <plugins>
+<!--
             <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.0.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.4.3</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/generated-sources/emf</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/generatedNot</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.kermeta.emf</groupId>
+                <artifactId>org.kermeta.emf.genmodel</artifactId>
+                <version>2.6.0</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>gen-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <ecore>src/main/ecore/kermeta.ecore</ecore>
+                            <genmodel>src/main/ecore/kermeta.genmodel</genmodel>
+                            <output>${project.build.directory}/generated-sources/emf</output>
+                            <clearOutput>false</clearOutput>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/emf</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+-->
+
+            <!-- Creation of the bundle jar and its manifest -->
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -51,80 +94,22 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>
-                        	org.kermeta.*,
-                        	fr.irisa.triskell.kermeta.*
-                        </Export-Package>
-                        <Import-Package>
-							org.eclipse.emf.*,
-							org.slf4j.*;version="${slf4j.version.range}"
-                        </Import-Package>
+                        <Export-Package>org.kermeta.language.*</Export-Package>
+                        <Bundle-SymbolicName>org.kermeta.language.model</Bundle-SymbolicName>
+                        <Import-Package>org.eclipse.emf.*,org.osgi.framework</Import-Package>
                         <Bundle-ClassPath>.</Bundle-ClassPath>
-                        <Bundle-Vendor>IRISA/INRIA</Bundle-Vendor>
-                        <Bundle-SymbolicName>org.kermeta.language.model;singleton:=true</Bundle-SymbolicName>
-                        <!-- additional resources in the bundle -->                        
-                        <Include-Resource>
-                        	{maven-resources},
-                        	build/ecore=build/ecore,
-                        	plugin.xml,
-                        	plugin.properties
-                        </Include-Resource>
-                        
                     </instructions>
                 </configuration>
             </plugin>
-             <!-- Manage mutli-source java project. Avoid the drawback : once compiled the sources are not visible as java packages -->
-            <plugin>
-		    	<groupId>org.codehaus.mojo</groupId>
-	        	<artifactId>build-helper-maven-plugin</artifactId>
-	        	<version>1.5</version>
-	        	<executions>
-	          		<execution>
-	            		<id>add-source</id>
-	            		<phase>generate-sources</phase>
-	            		<goals>
-	              			<goal>add-source</goal>
-	           			</goals>
-	            		<configuration>
-	    					<sources>
-	    						<source>${basedir}/build/java</source>
-	    					</sources>
-	    				</configuration>
-	    			</execution>
-		    	</executions>
-		    </plugin>
-		    <!-- Synch MANIFEST for eclipse user -->
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <phase>install</phase>
-                        <configuration>
-                            <tasks>
-                                <copy todir="${project.basedir}/META-INF" failonerror="false">
-                                    <fileset dir="${project.build.outputDirectory}/META-INF"/>
-                                </copy>
-                            </tasks>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
+
     <dependencies>
-    	<dependency>
+        <dependency>
             <groupId>org.kermeta.emf</groupId>
             <artifactId>emf.lib</artifactId>
             <version>${emf.version}</version>
         </dependency>
-        
-        <dependency> <!-- To be moved to org.kermeta.language.root ? -->
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
     </dependencies>
+
 </project>
