@@ -21,7 +21,7 @@ import scala.util.parsing.input.Positional
 /**
  * Sub parser dedicated to parse ModelingUnit in KMT textual syntax  
  */
-trait KModelingUnitParser extends KAbstractParser  {
+trait KModelingUnitParser extends KAbstractParser with KTagParser  {
 	
   case class NameSpacePrefix(name : String) extends Positional
   case class ExpressionWrapper(expr : Expression) extends Positional
@@ -114,12 +114,13 @@ trait KModelingUnitParser extends KAbstractParser  {
       listAnnotElem
   }
 
-  private def annotation : Parser[Tag] = "@" ~> ident ~ stringLit ^^ { case id1 ~ st1 =>
+  /*
+  def annotation : Parser[Tag] = "@" ~> ident ~ stringLit ^^ { case id1 ~ st1 =>
       var newo =StructureFactory.eINSTANCE.createTag
       newo.setName(id1.toString)
       newo.setValue(st1.toString)
       newo
-  }
+  }*/
   def annotableElement = (subPackageDecl | classDecl)// | modelTypeDecl | classDecl | enumDecl | dataTypeDecl )
   def subPackageDecl = "package" ~ ident ~ "{" ~ (topLevelDecl?) ~ "}" ^^ { case _ ~ packageName ~ _ ~ decls ~ _ =>
       var newp =StructureFactory.eINSTANCE.createPackage

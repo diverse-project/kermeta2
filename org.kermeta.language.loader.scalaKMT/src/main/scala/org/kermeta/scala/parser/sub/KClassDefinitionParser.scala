@@ -19,7 +19,18 @@ import scala.collection.JavaConversions._
 /**
  * Sub parser dedicated to parse ClassDefinition in KMt textual syntax
  */
-trait KClassDefinitionParser extends KAbstractParser {
+trait KClassDefinitionParser extends KAbstractParser 
+                                with KInvParser
+                                with KAttributeParser
+                                with KOperationParser
+                                with KTagParser {
+
+  /* SUB PARSER MINIMAL CONTRACT */
+  def invariant : Parser[Constraint]
+  def annotation : Parser[Tag]
+  def attribute : Parser[Property]
+  def operation : Parser[Operation]
+  /* END CONTRACT */
 
   def abstractModifier = ("abstract")?
   def aspectModifier = ("aspect")?
@@ -56,83 +67,12 @@ trait KClassDefinitionParser extends KAbstractParser {
       }
       e1
   }
-  private def annotation : Parser[Tag] = "@" ~> ident ~ stringLit ^^ { case id1 ~ st1 =>
-      var newo =StructureFactory.eINSTANCE.createTag
-      newo.setName(id1.toString)
-      newo.setValue(st1.toString)
-      newo
-  }
 
   def classMemberDecl = ( invariant | operation | property | attribute ) //attribute | reference | operation ;
 
-  def invariant = ("inv" ~ ident ~ "is" ~ fStatement ) ^^ { case _ ~ ident ~ _ ~ expr =>
-      var newo =StructureFactory.eINSTANCE.createConstraint
-      newo.setName(ident)
-      newo.setBody(expr)
-      newo
-  }
-  def operation =  ( operationKind ~ ident ~ "(" ~ (operationParameters?) ~ ")" ~ ":" ~ packageName ~ "is" ~ operationExpressionBody) ^^ { case opkind ~ opName ~ _ ~ params ~ _  ~ _ ~ id2 ~ _ ~ body =>
-      var newo =StructureFactory.eINSTANCE.createOperation
-      opkind match {
-        case "operation" => //NOTHING TO DO
-        case "method" => /* println("method") SET SUPER OPERATION */
-      }
-      newo.setName(opName)
-      if(body != null) newo.setBody(body)
-      params match {
-        case Some(_ @ lpara) => for(par <- lpara) newo.getOwnedParameter.add(par)
-        case None => // DO NOTHING
-      }
-      var unresolveType = StructureFactory.eINSTANCE.createUnresolvedType
-      unresolveType.setTypeIdentifier(id2)
-      newo.setType(unresolveType)
-      newo.getContainedType.add(unresolveType)
-      newo
-  }
-
-  def operationParameter : Parser[Parameter] = ident ~ ":" ~ packageName ^^ { case id ~ _ ~ name =>
-      var newo = StructureFactory.eINSTANCE.createParameter
-      newo.setName(id)
-      var newtype = StructureFactory.eINSTANCE.createUnresolvedType
-      newo.getContainedType.add(newtype)
-      newtype.setTypeIdentifier(name)
-      newo.setType(newtype)
-      newo
-  }
-  def operationParameterss = (("," ~ operationParameter )*) ^^ { case params => for(par <- params) yield par match {case _ ~ p => p} }
-  def operationParameters = operationParameter ~ operationParameterss ^^ { case par ~ params => List(par)++params }
-
-  private def operationKind = ("operation" | "method")
-  def property = "prop" ^^^ StructureFactory.eINSTANCE.createProperty
-
-  private def operationBody = ("abstract" ^^^ {null} | operationExpressionBody)
-  def operationExpressionBody = ( (annotation?) ~ fStatement) ^^ { case a1 ~ exp =>
-      a1 match {
-        case Some(_ @ tag) => exp.getTag.add(tag)
-        case None =>
-      }
-      exp
-  }
 
 
-  //ATTRIBUTE
-  def attribute : Parser[Property] = "attribute" ~> ident ~ ":" ~ packageName ~ propertyBounds ^^ { case id ~ _ ~ name ~ bounds =>
-      var newo = StructureFactory.eINSTANCE.createProperty
-      newo.setName(id)
-      newo.setLower(bounds._1)
-      newo.setUpper(bounds._2)
-      var newtype = StructureFactory.eINSTANCE.createUnresolvedType
-      newo.getContainedType.add(newtype)
-      newtype.setTypeIdentifier(name)
-      newo.setType(newtype)
-      newo
-  }
+  
 
-  def propertyBounds : Parser[Tuple2[Int,Int]] = "[" ~> numericLit ~ ".." ~ (numericLit | "*" ) <~ "]" ^^{ case lower ~_ ~upper =>
-      upper match {
-        case "*"=> Tuple2(Integer.parseInt(lower),-1)
-        case upper : String => Tuple2(Integer.parseInt(lower),Integer.parseInt(upper))
-      }
-  }
 
 }
