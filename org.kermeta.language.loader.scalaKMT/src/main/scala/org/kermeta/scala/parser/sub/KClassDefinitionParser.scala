@@ -51,7 +51,6 @@ trait KClassDefinitionParser extends KAbstractParser
             paramsI.foreach{params =>
               var newParam =StructureFactory.eINSTANCE.createUnresolvedType
               newParam.setTypeIdentifier(params)
-
               println("TODO GENERIC TYPE")
             }
           }
@@ -68,7 +67,6 @@ trait KClassDefinitionParser extends KAbstractParser
             }
           }
       }
-
 
       members.foreach{member => {
           member match {

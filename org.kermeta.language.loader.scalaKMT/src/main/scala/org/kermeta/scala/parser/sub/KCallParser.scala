@@ -47,7 +47,7 @@ trait KCallParser extends KAbstractParser {
       }
   }
 
-  def fCallParam : Parser[CallFeature] = ident ~ (callFeatureParams?) ^^ { case id ~ params =>
+  def fCallParam : Parser[CallFeature] = packageName ~ (callFeatureParams?) ^^ { case id ~ params =>
       var newo = BehaviorFactory.eINSTANCE.createCallFeature
       newo.setName(id)
       params match {
