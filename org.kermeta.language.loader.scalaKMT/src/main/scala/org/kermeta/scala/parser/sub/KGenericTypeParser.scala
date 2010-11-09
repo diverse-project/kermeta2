@@ -6,12 +6,18 @@
 package org.kermeta.scala.parser.sub
 
 import org.kermeta.language.structure.StructureFactory
+import org.kermeta.language.structure.Type
 import org.kermeta.language.structure.UnresolvedType
 import scala.collection.JavaConversions._
 
-trait KGenericTypeParser extends KAbstractParser {
+trait KGenericTypeParser extends KAbstractParser with KLambdaParser {
   /* PUBLIC METHOD */
-  def genericQualifiedType : Parser[UnresolvedType] = packageName ~ opt(genericParams) ^^{case qname ~ optParams =>
+  def genericQualifiedType : Parser[Type] = lambdaType | genericQualifiedTypeObject
+
+
+  
+
+  def genericQualifiedTypeObject : Parser[Type] = packageName ~ opt(genericParams) ^^{case qname ~ optParams =>
       var newType =StructureFactory.eINSTANCE.createUnresolvedType
       newType.setTypeIdentifier(qname)
       optParams match {
@@ -21,6 +27,6 @@ trait KGenericTypeParser extends KAbstractParser {
       newType
   }
 
-  private def genericParams : Parser[List[UnresolvedType]] = "<" ~ rep1sep(genericQualifiedType,",") ~ ">" ^^{case _ ~ params ~ _ => params }
+  private def genericParams : Parser[List[Type]] = "<" ~ rep1sep(genericQualifiedType,",") ~ ">" ^^{case _ ~ params ~ _ => params }
 
 }

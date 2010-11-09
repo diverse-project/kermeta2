@@ -22,21 +22,45 @@ import scala.collection.JavaConversions._
 trait KLambdaParser extends KAbstractParser {
 
   def fLambda : Parser[Expression] = "{" ~ repsep(ident, ",") ~ "|" ~ fExpression ~ "}" ^^ { 
-	  case ob1 ~ params ~ pipe ~ exp ~ cb1 => {
+    case ob1 ~ params ~ pipe ~ exp ~ cb1 => {
 	 	  
-	 	  var newLambdaExp = BehaviorFactory.eINSTANCE.createLambdaExpression
+        var newLambdaExp = BehaviorFactory.eINSTANCE.createLambdaExpression
 	 	  
-	 	  params.foreach{pname=> 
-	 	  		var newLambdaP = BehaviorFactory.eINSTANCE.createLambdaParameter
-	 	  		newLambdaP.setName(pname)
-	 	  		newLambdaExp.getParameters.add(newLambdaP)
-	 	  }
+        params.foreach{pname=>
+          var newLambdaP = BehaviorFactory.eINSTANCE.createLambdaParameter
+          newLambdaP.setName(pname)
+          newLambdaExp.getParameters.add(newLambdaP)
+        }
 	 	  
-	 	  newLambdaExp.setBody(exp)
-		  newLambdaExp
-	  }
+        newLambdaExp.setBody(exp)
+        newLambdaExp
+      }
 	  
   }
+
+  def lambdaType : Parser[Type] = "<" ~ ( lambdaTypeParam | lambdaSingleTypeParam )  ~ "->" ~ packageName ~ ">" ^^ {case _ ~ params ~ _ ~ res ~ _ =>
+      var newType = StructureFactory.eINSTANCE.createProductType
+      var unresolveType = StructureFactory.eINSTANCE.createUnresolvedType
+      unresolveType.setTypeIdentifier(res)
+      newType.setKType(unresolveType)
+      newType.getContainedType.add(unresolveType)
+      newType.getType.addAll(params)
+      newType
+  }
+
+  def lambdaSingleTypeParam : Parser[List[UnresolvedType]] = packageName ^^{ case name =>
+      var newType = StructureFactory.eINSTANCE.createUnresolvedType
+      newType.setTypeIdentifier(name)
+      List(newType)
+  }
+  def lambdaTypeParam : Parser[List[UnresolvedType]] = "[" ~ rep1sep(packageName,",") ~ "]" ^^ { case _ ~ unresolvedType ~ _ =>
+      for(name <- unresolvedType) yield {
+        var newType = StructureFactory.eINSTANCE.createUnresolvedType
+        newType.setTypeIdentifier(name)
+        newType
+      }
+  }
+
   
   
 

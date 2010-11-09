@@ -21,7 +21,7 @@ import scala.collection.JavaConversions._
  */
 trait KStructuralParser extends KAbstractParser {
 
-  def fExpressionLst : Parser[List[Expression]] = (fStatement+)
+  def fExpressionLst : Parser[List[Expression]] = rep(fStatement)
   def pExpression : Parser[Expression] = "(" ~> fStatement <~ ")"
 
   def fBlock : Parser[Expression] = "do" ~> fExpressionLst ~ (fRescueLst?) <~ "end" ^^ { case expL ~ rescueL =>

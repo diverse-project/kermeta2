@@ -8,19 +8,19 @@ package org.kermeta.scala.parser.sub
 import org.kermeta.language.structure.Property
 import org.kermeta.language.structure.StructureFactory
 
-trait KAttributeParser extends KAbstractParser {
+trait KAttributeParser extends KAbstractParser with KGenericTypeParser {
 
-  def attribute : Parser[Property] = "attribute" ~> ident ~ ":" ~ packageName ~ opt(attributeBound|attributeBounds) ^^ { case id ~ _ ~ name ~ bounds =>
+  def attribute : Parser[Property] = "attribute" ~> ident ~ ":" ~ genericQualifiedType ~ opt(attributeBound|attributeBounds) ^^ { case id ~ _ ~ qType ~ bounds =>
       var newo = StructureFactory.eINSTANCE.createProperty
       newo.setName(id)
       bounds match {
         case None => newo.setLower(0);newo.setUpper(1)
         case Some(bb)=> newo.setLower(bb._1);newo.setUpper(bb._2)
       }
-      var newtype = StructureFactory.eINSTANCE.createUnresolvedType
-      newo.getContainedType.add(newtype)
-      newtype.setTypeIdentifier(name)
-      newo.setType(newtype)
+//      var newtype = StructureFactory.eINSTANCE.createUnresolvedType
+      newo.getContainedType.add(qType)
+      //newtype.setTypeIdentifier(name)
+      newo.setType(qType)
       newo
   }
 

@@ -23,7 +23,8 @@ trait KClassDefinitionParser extends KAbstractParser
                                 with KInvParser
                                 with KAttributeParser
                                 with KOperationParser
-                                with KTagParser {
+                                with KTagParser
+                                with KGenericTypeParser{
 
   /* SUB PARSER MINIMAL CONTRACT */
   def invariant : Parser[Constraint]
@@ -49,9 +50,10 @@ trait KClassDefinitionParser extends KAbstractParser
         case None =>
         case Some(paramsI) => {
             paramsI.foreach{params =>
-              var newParam =StructureFactory.eINSTANCE.createUnresolvedType
-              newParam.setTypeIdentifier(params)
-              println("TODO GENERIC TYPE")
+              var ovar =StructureFactory.eINSTANCE.createObjectTypeVariable
+              ovar.setName(params)
+
+              newo.getTypeParameter.add(ovar)
             }
           }
       }
@@ -83,6 +85,9 @@ trait KClassDefinitionParser extends KAbstractParser
   }
 
   private def classGenericParems = "<" ~ rep1sep(packageName,",") ~ ">" ^^{case _ ~ params ~ _ => params }
+
+
+
   private def classParentDecls = "inherits" ~ rep1sep(packageName, ",") ^^ { case _ ~ parents => parents }
   // private def classMemberDecls = annotableClassMemberDecl +
   private def annotableClassMemberDecl = (annotation?) ~ classMemberDecl ^^ { case e ~ e1 =>

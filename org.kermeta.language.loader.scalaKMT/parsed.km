@@ -1,974 +1,210 @@
 <?xml version="1.0" encoding="ASCII"?>
 <org_kermeta_language_structure:ModelingUnit xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_behavior="http://www.kermeta.org/kermeta/2_0_0//org/kermeta/language/behavior" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_0_0//org/kermeta/language/structure">
-  <packages name="GEN">
-    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//GEN/String/@kOwnedTags.0" name="String">
-      <kOwnedTags name="CompilerIgnore" value="true" object="//GEN/String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Character"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Collection">
-        <generics typeIdentifier="String"/>
-      </containedType>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Collection">
-        <generics typeIdentifier="String"/>
-      </containedType>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Collection">
-        <generics typeIdentifier="Character"/>
-      </containedType>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void"/>
-      <ownedOperation name="equals" type="//GEN/String/@containedType.0">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/equals/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="toString" type="//GEN/String/@containedType.1">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="hashCode" type="//GEN/String/@containedType.2">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="compareTo" type="//GEN/String/@containedType.3">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/compareTo/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="compareTo" type="//GEN/String/@containedType.4">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/compareTo.1/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="indexOf" type="//GEN/String/@containedType.5">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/indexOf/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="indexOf" type="//GEN/String/@containedType.6">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/indexOf.1/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/indexOf.1/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="indexOf" type="//GEN/String/@containedType.7">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/indexOf.2/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="indexOf" type="//GEN/String/@containedType.8">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/indexOf.3/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/indexOf.3/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="valueOf" type="//GEN/String/@containedType.9">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/valueOf/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="valueOf" type="//GEN/String/@containedType.10">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/valueOf.1/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Collection">
-            <generics typeIdentifier="Character"/>
-          </containedType>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="valueOf" type="//GEN/String/@containedType.11">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/valueOf.2/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Collection">
-            <generics typeIdentifier="Character"/>
-          </containedType>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/valueOf.2/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg2" type="//GEN/String/valueOf.2/@ownedParameter.2/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="valueOf" type="//GEN/String/@containedType.12">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/valueOf.3/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="valueOf" type="//GEN/String/@containedType.13">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/valueOf.4/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Character"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="valueOf" type="//GEN/String/@containedType.14">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/valueOf.5/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="valueOf" type="//GEN/String/@containedType.15">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/valueOf.6/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Long"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="valueOf" type="//GEN/String/@containedType.16">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/valueOf.7/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Float"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="valueOf" type="//GEN/String/@containedType.17">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/valueOf.8/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Double"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="charAt" type="//GEN/String/@containedType.18">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/charAt/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="codePointAt" type="//GEN/String/@containedType.19">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/codePointAt/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="codePointBefore" type="//GEN/String/@containedType.20">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/codePointBefore/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="codePointCount" type="//GEN/String/@containedType.21">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/codePointCount/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/codePointCount/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="compareToIgnoreCase" type="//GEN/String/@containedType.22">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/compareToIgnoreCase/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="concat" type="//GEN/String/@containedType.23">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/concat/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="contentEquals" type="//GEN/String/@containedType.24">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/contentEquals/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="StringBuffer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="copyValueOf" type="//GEN/String/@containedType.25">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/copyValueOf/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Collection">
-            <generics typeIdentifier="Character"/>
-          </containedType>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/copyValueOf/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg2" type="//GEN/String/copyValueOf/@ownedParameter.2/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="copyValueOf" type="//GEN/String/@containedType.26">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/copyValueOf.1/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Collection">
-            <generics typeIdentifier="Character"/>
-          </containedType>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="endsWith" type="//GEN/String/@containedType.27">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/endsWith/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="equalsIgnoreCase" type="//GEN/String/@containedType.28">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/equalsIgnoreCase/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="format" type="//GEN/String/@containedType.29">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/format/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/format/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Collection">
-            <generics typeIdentifier="Object"/>
-          </containedType>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="getChars" type="//GEN/String/@containedType.30">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/getChars/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/getChars/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg2" type="//GEN/String/getChars/@ownedParameter.2/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Collection">
-            <generics typeIdentifier="Character"/>
-          </containedType>
-        </ownedParameter>
-        <ownedParameter name="arg3" type="//GEN/String/getChars/@ownedParameter.3/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="intern" type="//GEN/String/@containedType.31">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="isEmpty" type="//GEN/String/@containedType.32">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="lastIndexOf" type="//GEN/String/@containedType.33">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/lastIndexOf/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="lastIndexOf" type="//GEN/String/@containedType.34">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/lastIndexOf.1/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/lastIndexOf.1/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="lastIndexOf" type="//GEN/String/@containedType.35">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/lastIndexOf.2/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="lastIndexOf" type="//GEN/String/@containedType.36">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/lastIndexOf.3/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/lastIndexOf.3/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="length" type="//GEN/String/@containedType.37">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="matches" type="//GEN/String/@containedType.38">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/matches/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="offsetByCodePoints" type="//GEN/String/@containedType.39">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/offsetByCodePoints/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/offsetByCodePoints/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="regionMatches" type="//GEN/String/@containedType.40">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/regionMatches/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/regionMatches/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <ownedParameter name="arg2" type="//GEN/String/regionMatches/@ownedParameter.2/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg3" type="//GEN/String/regionMatches/@ownedParameter.3/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="regionMatches" type="//GEN/String/@containedType.41">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/regionMatches.1/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/regionMatches.1/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg2" type="//GEN/String/regionMatches.1/@ownedParameter.2/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <ownedParameter name="arg3" type="//GEN/String/regionMatches.1/@ownedParameter.3/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg4" type="//GEN/String/regionMatches.1/@ownedParameter.4/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="replace" type="//GEN/String/@containedType.42">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/replace/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Character"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/replace/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Character"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="replaceAll" type="//GEN/String/@containedType.43">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/replaceAll/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/replaceAll/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="replaceFirst" type="//GEN/String/@containedType.44">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/replaceFirst/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/replaceFirst/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="split" type="//GEN/String/@containedType.45">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/split/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/split/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="split" type="//GEN/String/@containedType.46">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/split.1/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="startsWith" type="//GEN/String/@containedType.47">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/startsWith/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/startsWith/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="startsWith" type="//GEN/String/@containedType.48">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/startsWith.1/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="substring" type="//GEN/String/@containedType.49">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/substring/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="substring" type="//GEN/String/@containedType.50">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/substring.1/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/substring.1/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="toCharArray" type="//GEN/String/@containedType.51">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="toLowerCase" type="//GEN/String/@containedType.52">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="toUpperCase" type="//GEN/String/@containedType.53">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="trim" type="//GEN/String/@containedType.54">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="wait" type="//GEN/String/@containedType.55">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/wait/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Long"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="wait" type="//GEN/String/@containedType.56">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <ownedParameter name="arg0" type="//GEN/String/wait.1/@ownedParameter.0/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Long"/>
-        </ownedParameter>
-        <ownedParameter name="arg1" type="//GEN/String/wait.1/@ownedParameter.1/@containedType.0">
-          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Integer"/>
-        </ownedParameter>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="wait" type="//GEN/String/@containedType.57">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="notify" type="//GEN/String/@containedType.58">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-      <ownedOperation name="notifyAll" type="//GEN/String/@containedType.59">
-        <kOwnedTags name="CompilerIgnore" value="true"/>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <statement xsi:type="org_kermeta_language_behavior:Raise">
-            <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
-              <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
-            </expression>
-          </statement>
-          <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
-        </body>
-      </ownedOperation>
-    </ownedTypeDefinition>
+  <packages name="kermeta">
+    <nestedPackage name="io">
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//kermeta/io/FileIO/@kOwnedTags.0" name="FileIO">
+        <kOwnedTags name="CompilerIgnore" value="true" object="//kermeta/io/FileIO"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+          <usings qualifiedName="kermeta::standard"/>
+          <usings qualifiedName="kermeta::languagestructure"/>
+          <usings qualifiedName="kermeta::exceptions"/>
+        </containedType>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+          <usings qualifiedName="kermeta::standard"/>
+          <usings qualifiedName="kermeta::languagestructure"/>
+          <usings qualifiedName="kermeta::exceptions"/>
+        </containedType>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+          <usings qualifiedName="kermeta::standard"/>
+          <usings qualifiedName="kermeta::languagestructure"/>
+          <usings qualifiedName="kermeta::exceptions"/>
+        </containedType>
+        <ownedOperation name="writeTextFile" type="//kermeta/io/FileIO/@containedType.0">
+          <ownedParameter name="filename" type="//kermeta/io/FileIO/writeTextFile/@ownedParameter.0/@containedType.0">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings qualifiedName="kermeta::standard"/>
+              <usings qualifiedName="kermeta::languagestructure"/>
+              <usings qualifiedName="kermeta::exceptions"/>
+            </containedType>
+          </ownedParameter>
+          <ownedParameter name="text" type="//kermeta/io/FileIO/writeTextFile/@ownedParameter.1/@containedType.0">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings qualifiedName="kermeta::standard"/>
+              <usings qualifiedName="kermeta::languagestructure"/>
+              <usings qualifiedName="kermeta::exceptions"/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block">
+            <statement xsi:type="org_kermeta_language_behavior:Raise">
+              <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
+                <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
+              </expression>
+            </statement>
+            <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation name="writeTextFileWithEncoding" type="//kermeta/io/FileIO/@containedType.1">
+          <ownedParameter name="filename" type="//kermeta/io/FileIO/writeTextFileWithEncoding/@ownedParameter.0/@containedType.0">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings qualifiedName="kermeta::standard"/>
+              <usings qualifiedName="kermeta::languagestructure"/>
+              <usings qualifiedName="kermeta::exceptions"/>
+            </containedType>
+          </ownedParameter>
+          <ownedParameter name="text" type="//kermeta/io/FileIO/writeTextFileWithEncoding/@ownedParameter.1/@containedType.0">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings qualifiedName="kermeta::standard"/>
+              <usings qualifiedName="kermeta::languagestructure"/>
+              <usings qualifiedName="kermeta::exceptions"/>
+            </containedType>
+          </ownedParameter>
+          <ownedParameter name="encoding" type="//kermeta/io/FileIO/writeTextFileWithEncoding/@ownedParameter.2/@containedType.0">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings qualifiedName="kermeta::standard"/>
+              <usings qualifiedName="kermeta::languagestructure"/>
+              <usings qualifiedName="kermeta::exceptions"/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block">
+            <statement xsi:type="org_kermeta_language_behavior:Raise">
+              <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
+                <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
+              </expression>
+            </statement>
+            <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation name="readTextFile" type="//kermeta/io/FileIO/@containedType.2">
+          <ownedParameter name="filename" type="//kermeta/io/FileIO/readTextFile/@ownedParameter.0/@containedType.0">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings qualifiedName="kermeta::standard"/>
+              <usings qualifiedName="kermeta::languagestructure"/>
+              <usings qualifiedName="kermeta::exceptions"/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block">
+            <statement xsi:type="org_kermeta_language_behavior:Raise">
+              <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
+                <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
+              </expression>
+            </statement>
+            <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
+          </body>
+        </ownedOperation>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//kermeta/io/StdIO/@kOwnedTags.0" name="StdIO">
+        <kOwnedTags name="CompilerIgnore" value="true" object="//kermeta/io/StdIO"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+          <usings qualifiedName="kermeta::standard"/>
+          <usings qualifiedName="kermeta::languagestructure"/>
+          <usings qualifiedName="kermeta::exceptions"/>
+        </containedType>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+          <usings qualifiedName="kermeta::standard"/>
+          <usings qualifiedName="kermeta::languagestructure"/>
+          <usings qualifiedName="kermeta::exceptions"/>
+        </containedType>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+          <usings qualifiedName="kermeta::standard"/>
+          <usings qualifiedName="kermeta::languagestructure"/>
+          <usings qualifiedName="kermeta::exceptions"/>
+        </containedType>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+          <usings qualifiedName="kermeta::standard"/>
+          <usings qualifiedName="kermeta::languagestructure"/>
+          <usings qualifiedName="kermeta::exceptions"/>
+        </containedType>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+          <usings qualifiedName="kermeta::standard"/>
+          <usings qualifiedName="kermeta::languagestructure"/>
+          <usings qualifiedName="kermeta::exceptions"/>
+        </containedType>
+        <ownedOperation name="write" type="//kermeta/io/StdIO/@containedType.0">
+          <ownedParameter name="object" type="//kermeta/io/StdIO/write/@ownedParameter.0/@containedType.0">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings qualifiedName="kermeta::standard"/>
+              <usings qualifiedName="kermeta::languagestructure"/>
+              <usings qualifiedName="kermeta::exceptions"/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block">
+            <statement xsi:type="org_kermeta_language_behavior:Raise">
+              <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
+                <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
+              </expression>
+            </statement>
+            <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation name="errorln" type="//kermeta/io/StdIO/@containedType.1">
+          <ownedParameter name="object" type="//kermeta/io/StdIO/errorln/@ownedParameter.0/@containedType.0">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings qualifiedName="kermeta::standard"/>
+              <usings qualifiedName="kermeta::languagestructure"/>
+              <usings qualifiedName="kermeta::exceptions"/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block">
+            <statement xsi:type="org_kermeta_language_behavior:Raise">
+              <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
+                <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
+              </expression>
+            </statement>
+            <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation name="error" type="//kermeta/io/StdIO/@containedType.2">
+          <ownedParameter name="object" type="//kermeta/io/StdIO/error/@ownedParameter.0/@containedType.0">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings qualifiedName="kermeta::standard"/>
+              <usings qualifiedName="kermeta::languagestructure"/>
+              <usings qualifiedName="kermeta::exceptions"/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block">
+            <statement xsi:type="org_kermeta_language_behavior:Raise">
+              <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
+                <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
+              </expression>
+            </statement>
+            <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation name="writeln" type="//kermeta/io/StdIO/@containedType.3">
+          <ownedParameter name="object" type="//kermeta/io/StdIO/writeln/@ownedParameter.0/@containedType.0">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings qualifiedName="kermeta::standard"/>
+              <usings qualifiedName="kermeta::languagestructure"/>
+              <usings qualifiedName="kermeta::exceptions"/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block">
+            <statement xsi:type="org_kermeta_language_behavior:Raise">
+              <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
+                <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
+              </expression>
+            </statement>
+            <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation name="read" type="//kermeta/io/StdIO/@containedType.4">
+          <ownedParameter name="prompt" type="//kermeta/io/StdIO/read/@ownedParameter.0/@containedType.0">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings qualifiedName="kermeta::standard"/>
+              <usings qualifiedName="kermeta::languagestructure"/>
+              <usings qualifiedName="kermeta::exceptions"/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block">
+            <statement xsi:type="org_kermeta_language_behavior:Raise">
+              <expression xsi:type="org_kermeta_language_behavior:CallFeature" name="new">
+                <target xsi:type="org_kermeta_language_behavior:CallFeature" name="kermeta::exception::NotImplementedException"/>
+              </expression>
+            </statement>
+            <statement xsi:type="org_kermeta_language_behavior:EmptyExpression"/>
+          </body>
+        </ownedOperation>
+      </ownedTypeDefinition>
+    </nestedPackage>
   </packages>
 </org_kermeta_language_structure:ModelingUnit>

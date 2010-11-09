@@ -15,7 +15,7 @@ trait KOperationParser extends KAbstractParser with KGenericTypeParser {
 
   /* END SUB PARSER CONTRACT */
 
-  def operation =  ( operationKind ~ ident ~ "(" ~ repsep(operationParameter,",") ~ ")" ~ ":" ~ genericQualifiedType ~ "is" ~ operationExpressionBody) ^^ { case opkind ~ opName ~ _ ~ params ~ _  ~ _ ~ unresolveType ~ _ ~ body =>
+  def operation =  ( operationKind ~ ident ~ "(" ~ repsep(operationParameter,",") ~ ")" ~ opt(":" ~> genericQualifiedType) ~ "is" ~ operationBody) ^^ { case opkind ~ opName ~ _ ~ params ~ _  ~ unresolveType ~ _ ~ body =>
       var newo =StructureFactory.eINSTANCE.createOperation
       opkind match {
         case "operation" => //NOTHING TO DO
@@ -25,17 +25,28 @@ trait KOperationParser extends KAbstractParser with KGenericTypeParser {
       if(body != null) newo.setBody(body)
       
       /*
-      params match {
-        case Some(_ @ lpara) => for(par <- lpara) newo.getOwnedParameter.add(par)
-        case None => // DO NOTHING
-      }*/
-     params.foreach{par=>
-       newo.getOwnedParameter.add(par)
-     }
+       params match {
+       case Some(_ @ lpara) => for(par <- lpara) newo.getOwnedParameter.add(par)
+       case None => // DO NOTHING
+       }*/
+      params.foreach{par=>
+        newo.getOwnedParameter.add(par)
+      }
+
+      unresolveType match {
+        case None => {
+            var newT = StructureFactory.eINSTANCE.createUnresolvedType
+            newT.setTypeIdentifier("Void")
+            newo.setType(newT)
+            newo.getContainedType.add(newT)
+          }
+        case Some(urt)=> {
+            newo.setType(urt)
+            newo.getContainedType.add(urt)
+          }
+      }
 
 
-      newo.setType(unresolveType)
-      newo.getContainedType.add(unresolveType)
       newo
   }
 
@@ -46,10 +57,10 @@ trait KOperationParser extends KAbstractParser with KGenericTypeParser {
       newo.getContainedType.add(unresolveType)
       newo
   }
-/*
-  def operationParameterss = (("," ~ operationParameter )*) ^^ { case params => for(par <- params) yield par match {case _ ~ p => p} }
-  def operationParameters = operationParameter ~ operationParameterss ^^ { case par ~ params => List(par)++params }
-*/
+  /*
+   def operationParameterss = (("," ~ operationParameter )*) ^^ { case params => for(par <- params) yield par match {case _ ~ p => p} }
+   def operationParameters = operationParameter ~ operationParameterss ^^ { case par ~ params => List(par)++params }
+   */
   private def operationKind = ("operation" | "method")
   def property = "prop" ^^^ StructureFactory.eINSTANCE.createProperty
 
