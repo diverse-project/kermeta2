@@ -75,7 +75,7 @@ public interface UnresolvedType extends Type, Unresolved {
 
 	/**
 	 * Returns the value of the '<em><b>Generics</b></em>' containment reference list.
-	 * The list contents are of type {@link org.kermeta.language.structure.UnresolvedType}.
+	 * The list contents are of type {@link org.kermeta.language.structure.Type}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Generics</em>' containment reference list isn't clear,
@@ -87,6 +87,6 @@ public interface UnresolvedType extends Type, Unresolved {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<UnresolvedType> getGenerics();
+	EList<Type> getGenerics();
 
 } // UnresolvedType

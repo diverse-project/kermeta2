@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.kermeta.language.structure.StructurePackage;
+import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.UnresolvedType;
 import org.kermeta.language.structure.Using;
 
@@ -79,7 +80,7 @@ public class UnresolvedTypeImpl extends TypeImpl implements UnresolvedType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<UnresolvedType> generics;
+	protected EList<Type> generics;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,9 +139,9 @@ public class UnresolvedTypeImpl extends TypeImpl implements UnresolvedType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<UnresolvedType> getGenerics() {
+	public EList<Type> getGenerics() {
 		if (generics == null) {
-			generics = new EObjectContainmentEList<UnresolvedType>(UnresolvedType.class, this, StructurePackage.UNRESOLVED_TYPE__GENERICS);
+			generics = new EObjectContainmentEList<Type>(Type.class, this, StructurePackage.UNRESOLVED_TYPE__GENERICS);
 		}
 		return generics;
 	}
@@ -197,7 +198,7 @@ public class UnresolvedTypeImpl extends TypeImpl implements UnresolvedType {
 				return;
 			case StructurePackage.UNRESOLVED_TYPE__GENERICS:
 				getGenerics().clear();
-				getGenerics().addAll((Collection<? extends UnresolvedType>)newValue);
+				getGenerics().addAll((Collection<? extends Type>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
