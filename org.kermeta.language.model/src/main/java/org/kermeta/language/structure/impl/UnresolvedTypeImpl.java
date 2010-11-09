@@ -34,6 +34,7 @@ import org.kermeta.language.structure.Using;
  * <ul>
  *   <li>{@link org.kermeta.language.structure.impl.UnresolvedTypeImpl#getTypeIdentifier <em>Type Identifier</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.UnresolvedTypeImpl#getUsings <em>Usings</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.UnresolvedTypeImpl#getGenerics <em>Generics</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,6 +70,16 @@ public class UnresolvedTypeImpl extends TypeImpl implements UnresolvedType {
 	 * @ordered
 	 */
 	protected EList<Using> usings;
+
+	/**
+	 * The cached value of the '{@link #getGenerics() <em>Generics</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGenerics()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UnresolvedType> generics;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -127,11 +138,25 @@ public class UnresolvedTypeImpl extends TypeImpl implements UnresolvedType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<UnresolvedType> getGenerics() {
+		if (generics == null) {
+			generics = new EObjectContainmentEList<UnresolvedType>(UnresolvedType.class, this, StructurePackage.UNRESOLVED_TYPE__GENERICS);
+		}
+		return generics;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case StructurePackage.UNRESOLVED_TYPE__USINGS:
 				return ((InternalEList<?>)getUsings()).basicRemove(otherEnd, msgs);
+			case StructurePackage.UNRESOLVED_TYPE__GENERICS:
+				return ((InternalEList<?>)getGenerics()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -148,6 +173,8 @@ public class UnresolvedTypeImpl extends TypeImpl implements UnresolvedType {
 				return getTypeIdentifier();
 			case StructurePackage.UNRESOLVED_TYPE__USINGS:
 				return getUsings();
+			case StructurePackage.UNRESOLVED_TYPE__GENERICS:
+				return getGenerics();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -168,6 +195,10 @@ public class UnresolvedTypeImpl extends TypeImpl implements UnresolvedType {
 				getUsings().clear();
 				getUsings().addAll((Collection<? extends Using>)newValue);
 				return;
+			case StructurePackage.UNRESOLVED_TYPE__GENERICS:
+				getGenerics().clear();
+				getGenerics().addAll((Collection<? extends UnresolvedType>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -186,6 +217,9 @@ public class UnresolvedTypeImpl extends TypeImpl implements UnresolvedType {
 			case StructurePackage.UNRESOLVED_TYPE__USINGS:
 				getUsings().clear();
 				return;
+			case StructurePackage.UNRESOLVED_TYPE__GENERICS:
+				getGenerics().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -202,6 +236,8 @@ public class UnresolvedTypeImpl extends TypeImpl implements UnresolvedType {
 				return TYPE_IDENTIFIER_EDEFAULT == null ? typeIdentifier != null : !TYPE_IDENTIFIER_EDEFAULT.equals(typeIdentifier);
 			case StructurePackage.UNRESOLVED_TYPE__USINGS:
 				return usings != null && !usings.isEmpty();
+			case StructurePackage.UNRESOLVED_TYPE__GENERICS:
+				return generics != null && !generics.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

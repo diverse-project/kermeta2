@@ -2332,5 +2332,17 @@
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_frSmQOtVEd-xwMFi38iCbg" id="(0.24509803921568626,0.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_frSmQetVEd-xwMFi38iCbg" id="(0.7745098039215687,1.0)"/>
     </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_jpHO0evmEd-0oYYPdgvWYA" type="3002" source="_fcD3cOtVEd-xwMFi38iCbg" target="_fcD3cOtVEd-xwMFi38iCbg">
+      <children xmi:type="notation:Node" xmi:id="_jpJEAOvmEd-0oYYPdgvWYA" type="4011">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_jpJEAevmEd-0oYYPdgvWYA" x="26" y="-26"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_jpJrEOvmEd-0oYYPdgvWYA" type="4012">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_jpJrEevmEd-0oYYPdgvWYA" x="-12" y="18"/>
+      </children>
+      <styles xmi:type="notation:ConnectorStyle" xmi:id="_jpHO0uvmEd-0oYYPdgvWYA" lineColor="4210752"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_jpHO0-vmEd-0oYYPdgvWYA" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
+      <element xmi:type="ecore:EReference" href="kermeta.ecore#//kermeta/language/structure/UnresolvedType/generics"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jpHO1OvmEd-0oYYPdgvWYA" points="[66, 1, 66, 1]$[66, 1, 66, 1]"/>
+    </edges>
   </notation:Diagram>
 </xmi:XMI>

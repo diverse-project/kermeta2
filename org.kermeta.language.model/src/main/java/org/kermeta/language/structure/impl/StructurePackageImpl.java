@@ -1601,6 +1601,15 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getUnresolvedType_Generics() {
+		return (EReference)unresolvedTypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUnresolved() {
 		return unresolvedEClass;
 	}
@@ -1987,6 +1996,7 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		unresolvedTypeEClass = createEClass(UNRESOLVED_TYPE);
 		createEAttribute(unresolvedTypeEClass, UNRESOLVED_TYPE__TYPE_IDENTIFIER);
 		createEReference(unresolvedTypeEClass, UNRESOLVED_TYPE__USINGS);
+		createEReference(unresolvedTypeEClass, UNRESOLVED_TYPE__GENERICS);
 
 		unresolvedEClass = createEClass(UNRESOLVED);
 
@@ -2284,6 +2294,7 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		initEClass(unresolvedTypeEClass, UnresolvedType.class, "UnresolvedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUnresolvedType_TypeIdentifier(), this.getString(), "typeIdentifier", null, 0, 1, UnresolvedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnresolvedType_Usings(), this.getUsing(), null, "usings", null, 0, -1, UnresolvedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnresolvedType_Generics(), this.getUnresolvedType(), null, "generics", null, 0, -1, UnresolvedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unresolvedEClass, Unresolved.class, "Unresolved", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

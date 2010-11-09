@@ -3273,13 +3273,22 @@ public interface StructurePackage extends EPackage {
 	int UNRESOLVED_TYPE__USINGS = TYPE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Generics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNRESOLVED_TYPE__GENERICS = TYPE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Unresolved Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNRESOLVED_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
+	int UNRESOLVED_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.UnresolvedImpl <em>Unresolved</em>}' class.
@@ -5117,6 +5126,17 @@ public interface StructurePackage extends EPackage {
 	EReference getUnresolvedType_Usings();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.kermeta.language.structure.UnresolvedType#getGenerics <em>Generics</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Generics</em>'.
+	 * @see org.kermeta.language.structure.UnresolvedType#getGenerics()
+	 * @see #getUnresolvedType()
+	 * @generated
+	 */
+	EReference getUnresolvedType_Generics();
+
+	/**
 	 * Returns the meta object for class '{@link org.kermeta.language.structure.Unresolved <em>Unresolved</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6411,6 +6431,14 @@ public interface StructurePackage extends EPackage {
 		 * @generated
 		 */
 		EReference UNRESOLVED_TYPE__USINGS = eINSTANCE.getUnresolvedType_Usings();
+
+		/**
+		 * The meta object literal for the '<em><b>Generics</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNRESOLVED_TYPE__GENERICS = eINSTANCE.getUnresolvedType_Generics();
 
 		/**
 		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.UnresolvedImpl <em>Unresolved</em>}' class.
