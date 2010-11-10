@@ -44,7 +44,7 @@ class KParser extends KExpressionParser
 
     parse(content) match {
       case Some(e) => Some(e)
-      case None => throw getErrors.get;None
+      case None => None
     }
 
   }

@@ -4,53 +4,80 @@
   <kOwnedTags name="mainOperation" value="main" object="/"/>
   <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" name="Main">
     <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
-      <usings qualifiedName="kermeta::standard::*"/>
+      <usings fromQName="kermeta::standard::*" toName="*"/>
+      <usings fromQName="kermeta::standard::A" toName="A"/>
+      <usings fromQName="kermeta" toName="kermeta"/>
+      <usings fromQName="kermeta::standard::A" toName="MyA"/>
     </containedType>
     <ownedAttribute name="s" type="//Main/s/@containedType.0" upper="-1">
       <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String">
-        <usings qualifiedName="kermeta::standard::*"/>
+        <usings fromQName="kermeta::standard::*" toName="*"/>
+        <usings fromQName="kermeta::standard::A" toName="A"/>
+        <usings fromQName="kermeta" toName="kermeta"/>
+        <usings fromQName="kermeta::standard::A" toName="MyA"/>
       </containedType>
     </ownedAttribute>
     <ownedAttribute name="s2" type="//Main/s2/@containedType.0" upper="1">
       <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String">
-        <usings qualifiedName="kermeta::standard::*"/>
+        <usings fromQName="kermeta::standard::*" toName="*"/>
+        <usings fromQName="kermeta::standard::A" toName="A"/>
+        <usings fromQName="kermeta" toName="kermeta"/>
+        <usings fromQName="kermeta::standard::A" toName="MyA"/>
       </containedType>
     </ownedAttribute>
     <ownedAttribute name="s3" type="//Main/s3/@containedType.0" lower="1" upper="1">
       <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String">
-        <usings qualifiedName="kermeta::standard::*"/>
+        <usings fromQName="kermeta::standard::*" toName="*"/>
+        <usings fromQName="kermeta::standard::A" toName="A"/>
+        <usings fromQName="kermeta" toName="kermeta"/>
+        <usings fromQName="kermeta::standard::A" toName="MyA"/>
       </containedType>
     </ownedAttribute>
     <ownedAttribute name="s4" type="//Main/s4/@containedType.0" lower="-1" upper="-1">
       <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String">
-        <usings qualifiedName="kermeta::standard::*"/>
+        <usings fromQName="kermeta::standard::*" toName="*"/>
+        <usings fromQName="kermeta::standard::A" toName="A"/>
+        <usings fromQName="kermeta" toName="kermeta"/>
+        <usings fromQName="kermeta::standard::A" toName="MyA"/>
       </containedType>
     </ownedAttribute>
     <ownedOperation name="main" type="//Main/@containedType.0">
       <body xsi:type="org_kermeta_language_behavior:Block">
         <statement xsi:type="org_kermeta_language_behavior:VariableDecl" identifier="inherits">
           <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
-            <usings qualifiedName="kermeta::standard::*"/>
+            <usings fromQName="kermeta::standard::*" toName="*"/>
+            <usings fromQName="kermeta::standard::A" toName="A"/>
+            <usings fromQName="kermeta" toName="kermeta"/>
+            <usings fromQName="kermeta::standard::A" toName="MyA"/>
           </containedType>
           <type name="String" type="//Main/main/@body/@statement.0/@containedType.0"/>
         </statement>
         <statement xsi:type="org_kermeta_language_behavior:VariableDecl" identifier="myVar">
           <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
-            <usings qualifiedName="kermeta::standard::*"/>
+            <usings fromQName="kermeta::standard::*" toName="*"/>
+            <usings fromQName="kermeta::standard::A" toName="A"/>
+            <usings fromQName="kermeta" toName="kermeta"/>
+            <usings fromQName="kermeta::standard::A" toName="MyA"/>
           </containedType>
           <initialization xsi:type="org_kermeta_language_behavior:StringLiteral" value=""/>
           <type name="String" type="//Main/main/@body/@statement.1/@containedType.0"/>
         </statement>
         <statement xsi:type="org_kermeta_language_behavior:VariableDecl" identifier="myBool">
           <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Boolean">
-            <usings qualifiedName="kermeta::standard::*"/>
+            <usings fromQName="kermeta::standard::*" toName="*"/>
+            <usings fromQName="kermeta::standard::A" toName="A"/>
+            <usings fromQName="kermeta" toName="kermeta"/>
+            <usings fromQName="kermeta::standard::A" toName="MyA"/>
           </containedType>
           <initialization xsi:type="org_kermeta_language_behavior:BooleanLiteral" value="true"/>
           <type name="kermeta::standard::Boolean" type="//Main/main/@body/@statement.2/@containedType.0"/>
         </statement>
         <statement xsi:type="org_kermeta_language_behavior:VariableDecl" identifier="myBool2">
           <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
-            <usings qualifiedName="kermeta::standard::*"/>
+            <usings fromQName="kermeta::standard::*" toName="*"/>
+            <usings fromQName="kermeta::standard::A" toName="A"/>
+            <usings fromQName="kermeta" toName="kermeta"/>
+            <usings fromQName="kermeta::standard::A" toName="MyA"/>
           </containedType>
           <initialization xsi:type="org_kermeta_language_behavior:BooleanLiteral" value="true"/>
           <type name="Boolean" type="//Main/main/@body/@statement.3/@containedType.0"/>

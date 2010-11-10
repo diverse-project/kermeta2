@@ -21,7 +21,7 @@ import scala.util.parsing.input.Positional
 /**
  * Sub parser dedicated to parse ModelingUnit in KMT textual syntax  
  */
-trait KModelingUnitParser extends KAbstractParser with KTagParser  {
+trait KModelingUnitParser extends KAbstractParser with KTagParser with KUsingParser  {
 	
   case class NameSpacePrefix(name : String) extends Positional
   case class ExpressionWrapper(expr : Expression) extends Positional
@@ -54,7 +54,8 @@ trait KModelingUnitParser extends KAbstractParser with KTagParser  {
         var localUsings = List() ++ usings.toList //CLONE USING
         localUsings.foreach{lu=>
           var newo =StructureFactory.eINSTANCE.createUsing
-          newo.setQualifiedName(lu.getQualifiedName)
+          newo.setFromQName(lu.getFromQName)
+          newo.setToName(lu.getToName)
           unr.getUsings.add(newo)
         }
       }
@@ -75,24 +76,7 @@ trait KModelingUnitParser extends KAbstractParser with KTagParser  {
   }
 
 
-  /* PROCESS USING  */
-  def usingStmts : Parser[Using] = "using" ~ ident ~ usingQualifiedName ^^ { case _ ~ id ~ q =>
-      //LocalUsing(id+"::"+q.prefixe,q.typeName)
-      var newo =StructureFactory.eINSTANCE.createUsing
-      newo.setQualifiedName(id+"::"+q)
-      newo
-  }
-  def usingQualifiedName : Parser[String] = ( rep(usingIdent) ~opt(usingWildcard) ) ^^{ case lIds ~lWil =>
-      var QName = lIds.mkString
-      lWil match {
-        case Some(w)=> QName = QName + "::" + w
-        case None =>
-      }
-      QName
-  }
-  def usingWildcard : Parser[String] = "::" ~> "*"
-  def usingIdent : Parser[String] = "::" ~> ident
-  /*  END PROCESS USING */
+
 
   private def topLevelDecl : Parser[List[Object]] = ((annotation | annotableElement)+) ^^ { case elems =>
       var listAnnotElem : List[Object] = List()

@@ -26,6 +26,7 @@ import org.kermeta.language.structure.ModelingUnit;
 import org.kermeta.scala.parser.KParser;
 import org.kermeta.scala.parser.ParserUtil;
 import org.kermeta.language.lexer.KMLexer;
+import scala.Option;
 
 /**
  *
@@ -44,7 +45,15 @@ public class Art2ComponentLoader extends AbstractComponentType implements org.ke
 
         KParser parser = new KParser();
 
-        return parser.parseSynch(ParserUtil.loadFile(uri)).get();
+        Option result = parser.parseSynch(ParserUtil.loadFile(uri));
+
+        System.out.println("RESULT="+result);
+
+        if(result.isEmpty()){
+            return null;
+        } else {
+            return (ModelingUnit) result.get();
+        }
 
     }
 
