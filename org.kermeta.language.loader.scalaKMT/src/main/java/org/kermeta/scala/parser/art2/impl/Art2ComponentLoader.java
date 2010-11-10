@@ -35,7 +35,7 @@ import org.kermeta.language.lexer.KMLexer;
     @ProvidedPort(name = "KMTloader", className = PortResourceLoader.class),
     @ProvidedPort(name = "KMTlexer", className = PortLexer.class)
 })
-@Library(name = "KMTloaderComponent")
+@Library(name = "org.kermeta.language")
 @ComponentType
 public class Art2ComponentLoader extends AbstractComponentType implements org.kermeta.language.api.port.PortResourceLoader {
 
