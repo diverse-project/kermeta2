@@ -1,5 +1,5 @@
 
-package a 
+package a ;
 class B { 
 
 	operation opB ( ) is 

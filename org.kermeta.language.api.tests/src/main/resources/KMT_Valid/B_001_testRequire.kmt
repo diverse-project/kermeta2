@@ -1,3 +1,0 @@
-require kermeta
-require "http://www.kermeta.org/kmLogo"
-require "../aKermetaFile.kmt"

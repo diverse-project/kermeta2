@@ -1,5 +1,5 @@
 
-package root
+package root;
 
 class B
 {

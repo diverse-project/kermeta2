@@ -1,4 +1,4 @@
-package packageDeclaration 
+package packageDeclaration ;
 
 enumeration Seasons { spring ; summer ; } 
 

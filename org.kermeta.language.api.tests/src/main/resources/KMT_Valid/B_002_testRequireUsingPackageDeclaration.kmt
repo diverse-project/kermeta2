@@ -1,8 +1,0 @@
-require "aa bb"
-using testAssignment::Class1
-package testAssignment
-
-class Class1 {
-
-
-}
