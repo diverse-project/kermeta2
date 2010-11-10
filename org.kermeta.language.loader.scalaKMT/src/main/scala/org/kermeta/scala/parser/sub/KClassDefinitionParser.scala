@@ -52,8 +52,8 @@ trait KClassDefinitionParser extends KAbstractParser
             paramsI.foreach{params =>
               var ovar =StructureFactory.eINSTANCE.createObjectTypeVariable
               ovar.setName(params)
-
               newo.getTypeParameter.add(ovar)
+              newo.getContainedType.add(ovar)
             }
           }
       }
@@ -88,7 +88,7 @@ trait KClassDefinitionParser extends KAbstractParser
 
 
 
-  private def classParentDecls = "inherits" ~ rep1sep(packageName, ",") ^^ { case _ ~ parents => parents }
+  private def classParentDecls = "inherits" ~ rep1sep(genericQualifiedType, ",") ^^ { case _ ~ parents => parents }
   // private def classMemberDecls = annotableClassMemberDecl +
   private def annotableClassMemberDecl = (annotation?) ~ classMemberDecl ^^ { case e ~ e1 =>
       e match {

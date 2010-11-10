@@ -15,14 +15,42 @@ trait KOperationParser extends KAbstractParser with KGenericTypeParser {
 
   /* END SUB PARSER CONTRACT */
 
-  def operation =  ( operationKind ~ ident ~ "(" ~ repsep(operationParameter,",") ~ ")" ~ opt(":" ~> genericQualifiedType) ~ "is" ~ operationBody) ^^ { case opkind ~ opName ~ _ ~ params ~ _  ~ unresolveType ~ _ ~ body =>
+
+  def operationParameters = repsep(operationParameter,",")
+  def operationReturnType = opt(":" ~> genericQualifiedType)
+  def methodFromType = opt("from" ~> ident )
+
+  def operation =  ( operationKind ~ ident ~ opt(operationGenericParems) ~ "(" ~ operationParameters ~ ")" ~ operationReturnType ~ methodFromType ~ "is" ~ operationBody) ^^ { case opkind ~ opName ~ opGParams ~ _ ~ params ~ _  ~ unresolveType ~ fromType ~ _ ~ body =>
       var newo =StructureFactory.eINSTANCE.createOperation
       opkind match {
-        case "operation" => //NOTHING TO DO
-        case "method" => /* println("method") SET SUPER OPERATION */
+        case "operation" => //TODO ERROR IF FROM TYPE
+        case "method" => {
+            fromType match {
+              case None =>
+              case Some(ft)=> {
+                  var newsuperO = StructureFactory.eINSTANCE.createUnresolvedOperation
+                  newsuperO.setOperationIdentifier(ft)
+                  newo.setSuperOperation(newsuperO)
+                  newo.getOwnedUnresolvedOperations.add(newsuperO)
+              }
+            }
+        }
       }
       newo.setName(opName)
       if(body != null) newo.setBody(body)
+
+      opGParams match {
+        case None =>
+        case Some(params) => {
+            params.foreach{param =>
+              var ovar =StructureFactory.eINSTANCE.createObjectTypeVariable
+              ovar.setName(param)
+              newo.getTypeParameter.add(ovar)
+              newo.getContainedType.add(ovar)
+              
+            }
+          }
+      }
       
       /*
        params match {
@@ -45,10 +73,10 @@ trait KOperationParser extends KAbstractParser with KGenericTypeParser {
             newo.getContainedType.add(urt)
           }
       }
-
-
       newo
   }
+
+  private def operationGenericParems = "<" ~ rep1sep(packageName,",") ~ ">" ^^{case _ ~ params ~ _ => params }
 
   def operationParameter : Parser[Parameter] = ident ~ ":" ~ genericQualifiedType ^^ { case id ~ _ ~ unresolveType =>
       var newo = StructureFactory.eINSTANCE.createParameter

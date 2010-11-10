@@ -23,8 +23,8 @@ object Runner{
    // val input = Source.fromFile(new java.io.File("sample.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
    //val input = Source.fromFile(new java.io.File("callExpr.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
    //val input = Source.fromFile(new java.io.File("expressionBloc.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
-//val input = Source.fromFile(new java.io.File("LambdaExpression_CollectionEach_501.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
-val input = Source.fromFile(new java.io.File("collections.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
+val input = Source.fromFile(new java.io.File("LambdaExpression_CollectionEach_501.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
+//val input = Source.fromFile(new java.io.File("io.kmt")).getLines().reduceLeft[String](_ + '\n' + _)
 
 
 

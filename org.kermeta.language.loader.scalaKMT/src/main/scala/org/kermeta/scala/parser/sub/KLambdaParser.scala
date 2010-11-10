@@ -45,6 +45,8 @@ trait KLambdaParser extends KAbstractParser {
       newType.setKType(unresolveType)
       newType.getContainedType.add(unresolveType)
       newType.getType.addAll(params)
+      newType.getContainedType.addAll(params)
+
       newType
   }
 

@@ -24,8 +24,12 @@ class Main
          attribute s4 : kermeta::standard::String [*]
 
        /*  var myVar : String  */
+//inherits
+
 
 	operation main() : Void is do
+
+            var ~inherits : String
 
             var myVar : String init ""
             var myBool : kermeta::standard::Boolean init true

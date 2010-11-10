@@ -14,29 +14,13 @@
  */
 
 using kermeta::exceptions
-
-
-/*
-t=kermeta::exceptions,  key = exceptions
-t=kermeta::language::structure::Object, key = Object
-
-
-import tt.tt.{A => MYA }
-import tt.{tt => toto }
-*/
-
-
-
-using kermeta::language::structure::Object
-
-
+using kermeta::language::structure
 
 
 package kermeta{
 package standard{
 
-
-
+ 
 /**
  * Collection is the root abstract class for all kermeta collections
  */
@@ -69,9 +53,9 @@ abstract class Collection<G>
 	 * (where x and y are 2 elements of the Collection)
 	 * typical use sample : ownedState.forAll{s1,s2| (s1.name==s2.name)implies(s1==s2)}
 	 */
-	operation forAllCpl(f : <[G, G] -> Boolean> ) : Boolean is do
+	operation forAllCpl(f : < [G, G] -> Boolean> ) : Boolean is do
                  throw kermeta::exception::NotImplementedException.new
-	end
+	end 
 
 	/**
 	 * Combinaison of exists on two elements in the collection
@@ -238,7 +222,7 @@ abstract class Collection<G>
 	 * example : 
 	 * aCollection.indexedEach { e, eachContext | \/* do something with each element e of this collection *\/ }
 	 */
-	operation indexedEach(func : {G,EachContext -> Object}) : Void is do
+	operation indexedEach(func : <[G , EachContext] -> Object>) : Void is do
                  throw kermeta::exception::NotImplementedException.new
 	end
 	

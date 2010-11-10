@@ -34,7 +34,7 @@ class KMLexical extends Lexical with KTokens {
   override def whitespace: Parser[Any] = rep(whitespaceChar)
 
 
-  val reserved : HashSet[String] = HashSet("func","throw","inherits","package","attribute","require","using","class","aspect","abstract","inv","operation","method","is","do","end","var","from","until","loop","if","then","else","init","true","false")
+  val reserved : HashSet[String] = HashSet("throw","inherits","package","attribute","require","using","class","aspect","abstract","inv","operation","method","is","do","end","var","from","until","loop","if","then","else","init","true","false")
   val delimiters : HashSet[String] = HashSet("=",";","::","@","{","}","(",")",":",":=",".",",","|","==","!=","-","+","!","*","/","<","<=",">",">=","[","]","..","->")
 
   
@@ -80,7 +80,8 @@ class KMLexical extends Lexical with KTokens {
 
 // see `token' in `Scanners'
   def token: Parser[KToken] = (
-      positioned( identChar ~ rep( identChar | digit ) ^^ { case first ~ rest => kident(first :: rest mkString "") } )
+    positioned( '~' ~ identChar ~ rep( identChar | digit ) ^^ { case _ ~ first ~ rest => Identifier(first :: rest mkString "") } )
+     |positioned( identChar ~ rep( identChar | digit ) ^^ { case first ~ rest => kident(first :: rest mkString "") } )
      | positioned(comment ^^{ case c => c })
      | positioned(digit ~ rep( digit )                              ^^ { case first ~ rest => NumericLit(first :: rest mkString "") })
      | positioned('\'' ~ rep( chrExcept('\'', '\n', EofCh) ) ~ '\'' ^^ { case '\'' ~ chars ~ '\'' => StringLit(chars mkString "") })
