@@ -1,6 +1,6 @@
 require kermeta
 
-using kermeta::standard		// don't need to specify it all the time
+using kermeta::standard::*		// don't need to specify it all the time
 
 class Test {
 

@@ -6,7 +6,7 @@ using testOpPackage
 //from this
 //alias Integer : kermeta::standard::Integer;
 //to this
-using kermeta::standard::Integer -> Integer;
+using kermeta::standard::Integer
 
 //from this
 //alias Test_opcall_renamed : testOpPackage::Test_opcall;
