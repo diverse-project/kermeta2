@@ -21,6 +21,7 @@ import org.kermeta.art2.annotation.RequiredPort;
 import org.kermeta.art2.annotation.Requires;
 import org.kermeta.art2.annotation.Start;
 import org.kermeta.art2.annotation.Stop;
+import org.kermeta.art2.annotation.Library;
 import org.kermeta.language.api.kevent.KEvent;
 import org.kermeta.language.api.messaging.UnifiedMessageFactory;
 import org.kermeta.language.api.port.PortKEvent;
@@ -48,7 +49,8 @@ import org.osgi.framework.Bundle;
 })
 
 
-@ComponentType(libName = "org.kermeta.language")
+@Library(name= "org.kermeta.language")
+@ComponentType
 public class Art2ComponentKWF extends AbstractComponentType  implements org.kermeta.language.api.port.PortKEvent{
 	
 	protected String bundleSymbolicName="";
