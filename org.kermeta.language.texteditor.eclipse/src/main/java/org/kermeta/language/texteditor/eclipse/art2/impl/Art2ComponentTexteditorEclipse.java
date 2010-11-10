@@ -29,17 +29,14 @@ import org.kermeta.art2.framework.AbstractComponentType;
 import org.kermeta.art2.framework.MessagePort;
 import org.kermeta.language.api.messaging.UnifiedMessageFactory;
 import org.kermeta.language.api.port.PortLexer;
-import org.kermeta.language.api.port.PortLog;
-import org.kermeta.language.api.port.PortResourceLoader;
 import org.osgi.framework.Bundle;
-import org.kermeta.language.lexer.KMLexer;
 
 
 @ThirdParties({
 	@ThirdParty(name="org.kermeta.language.model", url="mvn:org.kermeta.language/language.model"),
 	@ThirdParty(name="org.kermeta.language.kp.model", url="mvn:org.kermeta.kp/kp.model"),
 	@ThirdParty(name="org.kermeta.language.traceability.model", url="mvn:org.kermeta.traceability/traceability.model"),
-	@ThirdParty(name="org.kermeta.language.api", url="mvn:org.kermeta.language/language.api"),
+	@ThirdParty(name="org.kermeta.language.api", url="mvn:org.kermeta.language/language.api")
 	//@ThirdParty(name="org.kermeta.language.loader.scala", url="mvn:org.kermeta.language/language.loader.scala")
 })
 
@@ -50,7 +47,7 @@ import org.kermeta.language.lexer.KMLexer;
 	//@RequiredPort(name = "log", type=PortType.MESSAGE)
 	@RequiredPort(name = "log", type=PortType.MESSAGE),
 	//@RequiredPort(name = "KMTloader", type=PortType.SERVICE, className=PortResourceLoader.class),
-	@RequiredPort(name = "KMTlexer", type=PortType.SERVICE,className=PortLexer.class)
+	@RequiredPort(name = "KMTlexer", type=PortType.SERVICE, className=PortLexer.class)
 })
 /**
  * ART2 component of a Text editor for Kermeta language running in eclipse
