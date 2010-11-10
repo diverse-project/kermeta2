@@ -3,8 +3,16 @@ package testInterPackage;
 require "007_testOpPkgCall_002.kmt"
 using testOpPackage
 
-alias Integer : kermeta::standard::Integer;
-alias Test_opcall_renamed : testOpPackage::Test_opcall;
+//from this
+//alias Integer : kermeta::standard::Integer;
+//to this
+using kermeta::standard::Integer -> Integer;
+
+//from this
+//alias Test_opcall_renamed : testOpPackage::Test_opcall;
+//to this
+using testOpPackage::Test_opcall ->  testOpPackage::Test_opcall_renamed;
+
 // operation called in another package
 class Test_intercall {
     operation operation1() : Integer is do

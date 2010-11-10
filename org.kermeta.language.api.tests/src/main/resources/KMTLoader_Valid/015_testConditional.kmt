@@ -24,7 +24,7 @@ class Class1 {
 		
 		var b : Boolean init true
 		
-		if if b then false else true end then
+		if if b then false else true end then true
 		end
 		
 	end

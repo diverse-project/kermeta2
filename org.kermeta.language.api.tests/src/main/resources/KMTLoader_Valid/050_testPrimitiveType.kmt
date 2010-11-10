@@ -2,7 +2,7 @@ package testPrimitiveType;
 
 require kermeta
 
-alias PClass1 : Coucou ;
+using Coucou -> PClass1 ;
 
 class Coucou {
 

@@ -4,8 +4,8 @@ require kermeta
 require "testClass.kmt"
 
 using testClass::package1
-
-alias PClass1 : Coucou ;
+using Coucou  ->  PClass1 ;
+using Class12  -> AType ;
 
 class Coucou {
 
@@ -13,4 +13,4 @@ class Coucou {
 
 }
 
-alias AType : Class12 ;
+

@@ -6,6 +6,7 @@ class String {}
 class Integer {}
 class Boolean {}
 
+class Test {
    /* This is the comment of my class  This is the comment of my class*/
 	operation operation1() is do
 		var v1 : Integer init 3
@@ -18,5 +19,5 @@ class Boolean {}
 		end
 	
 	end
-	
+	}
 }

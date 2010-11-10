@@ -2,10 +2,10 @@ package testPrimitiveTypeDouble;
 
 require kermeta
 
-alias PClass1 : Coucou ;
+using Coucou -> PClass1 ;
 
 // check that we can use double alias
-alias A_PClass1 : PClass1;
+using PClass1 -> A_PClass1 ;
 
 class Coucou {
 
