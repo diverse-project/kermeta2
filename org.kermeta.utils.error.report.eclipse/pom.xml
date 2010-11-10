@@ -40,7 +40,7 @@
 				<targetPath>instance_config</targetPath>
 			</resource>
 			<resource>
-				<directory>src/main/resources</directory>
+				<directory>target/generated-sources/art2</directory>
 			</resource>
 		</resources>
 		<plugins>

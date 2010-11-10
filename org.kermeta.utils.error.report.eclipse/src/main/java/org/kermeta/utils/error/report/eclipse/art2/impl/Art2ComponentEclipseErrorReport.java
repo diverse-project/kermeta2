@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.ContributorFactoryOSGi;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.RegistryFactory;
 import org.kermeta.art2.annotation.ComponentType;
+import org.kermeta.art2.annotation.Library;
 import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.PortType;
 import org.kermeta.art2.annotation.Provides;
@@ -38,7 +39,8 @@ import org.osgi.framework.Bundle;
  * Provide a log port to process received messages (org.kermeta.language.api.messaging.ProblemMessage).
  * Filter messages according to sender group and error problem 
  */
-@ComponentType(libName = "org.kermeta.utils")
+@Library(name= "org.kermeta.utils")
+@ComponentType
 public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 
 	/**
