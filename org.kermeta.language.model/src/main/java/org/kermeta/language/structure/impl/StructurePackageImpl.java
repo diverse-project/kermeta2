@@ -1664,8 +1664,17 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getUsing_QualifiedName() {
+	public EAttribute getUsing_FromQName() {
 		return (EAttribute)usingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUsing_ToName() {
+		return (EAttribute)usingEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2007,7 +2016,8 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		createEAttribute(unresolvedOperationEClass, UNRESOLVED_OPERATION__OPERATION_IDENTIFIER);
 
 		usingEClass = createEClass(USING);
-		createEAttribute(usingEClass, USING__QUALIFIED_NAME);
+		createEAttribute(usingEClass, USING__FROM_QNAME);
+		createEAttribute(usingEClass, USING__TO_NAME);
 
 		productTypeEClass = createEClass(PRODUCT_TYPE);
 		createEReference(productTypeEClass, PRODUCT_TYPE__TYPE);
@@ -2305,7 +2315,8 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		initEAttribute(getUnresolvedOperation_OperationIdentifier(), this.getString(), "operationIdentifier", null, 0, 1, UnresolvedOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(usingEClass, Using.class, "Using", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getUsing_QualifiedName(), this.getString(), "qualifiedName", null, 0, 1, Using.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUsing_FromQName(), this.getString(), "fromQName", null, 1, 1, Using.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUsing_ToName(), this.getString(), "toName", null, 0, 1, Using.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productTypeEClass, ProductType.class, "ProductType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProductType_Type(), this.getType(), null, "type", null, 0, -1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

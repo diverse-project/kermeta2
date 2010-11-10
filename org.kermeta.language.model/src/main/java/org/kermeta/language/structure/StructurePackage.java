@@ -3484,13 +3484,22 @@ public interface StructurePackage extends EPackage {
 	int USING__KTYPE = OBJECT__KTYPE;
 
 	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * The feature id for the '<em><b>From QName</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USING__QUALIFIED_NAME = OBJECT_FEATURE_COUNT + 0;
+	int USING__FROM_QNAME = OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>To Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USING__TO_NAME = OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Using</em>' class.
@@ -3499,7 +3508,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USING_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 1;
+	int USING_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.kermeta.language.structure.impl.ProductTypeImpl <em>Product Type</em>}' class.
@@ -5199,15 +5208,26 @@ public interface StructurePackage extends EPackage {
 	EClass getUsing();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Using#getQualifiedName <em>Qualified Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Using#getFromQName <em>From QName</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Qualified Name</em>'.
-	 * @see org.kermeta.language.structure.Using#getQualifiedName()
+	 * @return the meta object for the attribute '<em>From QName</em>'.
+	 * @see org.kermeta.language.structure.Using#getFromQName()
 	 * @see #getUsing()
 	 * @generated
 	 */
-	EAttribute getUsing_QualifiedName();
+	EAttribute getUsing_FromQName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Using#getToName <em>To Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>To Name</em>'.
+	 * @see org.kermeta.language.structure.Using#getToName()
+	 * @see #getUsing()
+	 * @generated
+	 */
+	EAttribute getUsing_ToName();
 
 	/**
 	 * Returns the meta object for class '{@link org.kermeta.language.structure.ProductType <em>Product Type</em>}'.
@@ -6497,12 +6517,20 @@ public interface StructurePackage extends EPackage {
 		EClass USING = eINSTANCE.getUsing();
 
 		/**
-		 * The meta object literal for the '<em><b>Qualified Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>From QName</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute USING__QUALIFIED_NAME = eINSTANCE.getUsing_QualifiedName();
+		EAttribute USING__FROM_QNAME = eINSTANCE.getUsing_FromQName();
+
+		/**
+		 * The meta object literal for the '<em><b>To Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute USING__TO_NAME = eINSTANCE.getUsing_ToName();
 
 		/**
 		 * The meta object literal for the '{@link org.kermeta.language.structure.impl.ProductTypeImpl <em>Product Type</em>}' class.

@@ -947,8 +947,12 @@
       <children xmi:type="notation:Node" xmi:id="_fcHh0OtVEd-xwMFi38iCbg" type="4001"/>
       <children xmi:type="notation:Node" xmi:id="_fcHh0etVEd-xwMFi38iCbg" type="5001">
         <children xmi:type="notation:Node" xmi:id="_fcHh2etVEd-xwMFi38iCbg" type="2001">
-          <element xmi:type="ecore:EAttribute" href="kermeta.ecore#//kermeta/language/structure/Using/qualifiedName"/>
+          <element xmi:type="ecore:EAttribute" href="kermeta.ecore#//kermeta/language/structure/Using/fromQName"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_fcHh2utVEd-xwMFi38iCbg"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_k7SogezPEd-RVLu5xoRjrg" type="2001">
+          <element xmi:type="ecore:EAttribute" href="kermeta.ecore#//kermeta/language/structure/Using/toName"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_k7SoguzPEd-RVLu5xoRjrg"/>
         </children>
         <styles xmi:type="notation:DrawerStyle" xmi:id="_fcHh0utVEd-xwMFi38iCbg"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_fcHh0-tVEd-xwMFi38iCbg"/>

@@ -22,7 +22,8 @@ import org.kermeta.language.structure.Using;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.impl.UsingImpl#getQualifiedName <em>Qualified Name</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.UsingImpl#getFromQName <em>From QName</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.UsingImpl#getToName <em>To Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,24 +31,44 @@ import org.kermeta.language.structure.Using;
  */
 public class UsingImpl extends ObjectImpl implements Using {
 	/**
-	 * The default value of the '{@link #getQualifiedName() <em>Qualified Name</em>}' attribute.
+	 * The default value of the '{@link #getFromQName() <em>From QName</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getQualifiedName()
+	 * @see #getFromQName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String QUALIFIED_NAME_EDEFAULT = null;
+	protected static final String FROM_QNAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getQualifiedName() <em>Qualified Name</em>}' attribute.
+	 * The cached value of the '{@link #getFromQName() <em>From QName</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getQualifiedName()
+	 * @see #getFromQName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String qualifiedName = QUALIFIED_NAME_EDEFAULT;
+	protected String fromQName = FROM_QNAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getToName() <em>To Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getToName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TO_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getToName() <em>To Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getToName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String toName = TO_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,8 +94,8 @@ public class UsingImpl extends ObjectImpl implements Using {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getQualifiedName() {
-		return qualifiedName;
+	public String getFromQName() {
+		return fromQName;
 	}
 
 	/**
@@ -82,11 +103,32 @@ public class UsingImpl extends ObjectImpl implements Using {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setQualifiedName(String newQualifiedName) {
-		String oldQualifiedName = qualifiedName;
-		qualifiedName = newQualifiedName;
+	public void setFromQName(String newFromQName) {
+		String oldFromQName = fromQName;
+		fromQName = newFromQName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.USING__QUALIFIED_NAME, oldQualifiedName, qualifiedName));
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.USING__FROM_QNAME, oldFromQName, fromQName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getToName() {
+		return toName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setToName(String newToName) {
+		String oldToName = toName;
+		toName = newToName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.USING__TO_NAME, oldToName, toName));
 	}
 
 	/**
@@ -97,8 +139,10 @@ public class UsingImpl extends ObjectImpl implements Using {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StructurePackage.USING__QUALIFIED_NAME:
-				return getQualifiedName();
+			case StructurePackage.USING__FROM_QNAME:
+				return getFromQName();
+			case StructurePackage.USING__TO_NAME:
+				return getToName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -111,8 +155,11 @@ public class UsingImpl extends ObjectImpl implements Using {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case StructurePackage.USING__QUALIFIED_NAME:
-				setQualifiedName((String)newValue);
+			case StructurePackage.USING__FROM_QNAME:
+				setFromQName((String)newValue);
+				return;
+			case StructurePackage.USING__TO_NAME:
+				setToName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,8 +173,11 @@ public class UsingImpl extends ObjectImpl implements Using {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case StructurePackage.USING__QUALIFIED_NAME:
-				setQualifiedName(QUALIFIED_NAME_EDEFAULT);
+			case StructurePackage.USING__FROM_QNAME:
+				setFromQName(FROM_QNAME_EDEFAULT);
+				return;
+			case StructurePackage.USING__TO_NAME:
+				setToName(TO_NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -141,8 +191,10 @@ public class UsingImpl extends ObjectImpl implements Using {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case StructurePackage.USING__QUALIFIED_NAME:
-				return QUALIFIED_NAME_EDEFAULT == null ? qualifiedName != null : !QUALIFIED_NAME_EDEFAULT.equals(qualifiedName);
+			case StructurePackage.USING__FROM_QNAME:
+				return FROM_QNAME_EDEFAULT == null ? fromQName != null : !FROM_QNAME_EDEFAULT.equals(fromQName);
+			case StructurePackage.USING__TO_NAME:
+				return TO_NAME_EDEFAULT == null ? toName != null : !TO_NAME_EDEFAULT.equals(toName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -157,8 +209,10 @@ public class UsingImpl extends ObjectImpl implements Using {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (qualifiedName: ");
-		result.append(qualifiedName);
+		result.append(" (fromQName: ");
+		result.append(fromQName);
+		result.append(", toName: ");
+		result.append(toName);
 		result.append(')');
 		return result.toString();
 	}

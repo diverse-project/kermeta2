@@ -1106,7 +1106,9 @@
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="Using is a part of QualifiedName that can be used to complement the indentifer and resolve a given Unresolved object"/>
           </eAnnotations>
-          <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifiedName" eType="#//kermeta/language/structure/String"/>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="fromQName" lowerBound="1"
+              eType="#//kermeta/language/structure/String"/>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="toName" eType="#//kermeta/language/structure/String"/>
         </eClassifiers>
         <eClassifiers xsi:type="ecore:EClass" name="ProductType" eSuperTypes="#//kermeta/language/structure/TypeContainer #//kermeta/language/structure/Type">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
