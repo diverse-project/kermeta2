@@ -3,7 +3,7 @@ require kermeta
 require "A_011_PackageDepC2.kmt"
 require "A_013_PackageDepD2.kmt"
 
-package testPackDep
+package testPackDep;
 
 
 class B {
