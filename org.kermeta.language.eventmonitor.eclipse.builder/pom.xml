@@ -96,8 +96,8 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>${parent.groupId}</groupId>
-			<artifactId>language.loader.scala</artifactId>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>language.api</artifactId>
 			<version>${kermeta.version}</version>
 			<type>bundle</type>
 			<scope>compile</scope>

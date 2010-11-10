@@ -17,6 +17,7 @@ import org.eclipse.core.internal.registry.ExtensionRegistry;
 import org.eclipse.core.runtime.ContributorFactoryOSGi;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.RegistryFactory;
+import org.kermeta.art2.annotation.Library;
 import org.kermeta.art2.annotation.PortType;
 import org.kermeta.art2.annotation.RequiredPort;
 import org.kermeta.art2.annotation.Requires;
@@ -37,7 +38,7 @@ import org.osgi.framework.Bundle;
 	@ThirdParty(name="org.kermeta.language.kp.model", url="mvn:org.kermeta.kp/kp.model"),
 	@ThirdParty(name="org.kermeta.language.traceability.model", url="mvn:org.kermeta.traceability/traceability.model"),
 	@ThirdParty(name="org.kermeta.language.api", url="mvn:org.kermeta.language/language.api"),
-	@ThirdParty(name="org.kermeta.language.loader.scala", url="mvn:org.kermeta.language/language.loader.scala")
+	//@ThirdParty(name="org.kermeta.language.loader.scala", url="mvn:org.kermeta.language/language.loader.scala")
 })
 
 @Requires({
@@ -49,7 +50,8 @@ import org.osgi.framework.Bundle;
 	@RequiredPort(name = "log", type=PortType.MESSAGE)
 })
 
-@ComponentType(libName="org.kermeta.language")
+@Library(name= "org.kermeta.language")
+@ComponentType
 public class Art2ComponentEventMonitorEclipseBuilder extends AbstractComponentType {
 
 	protected String bundleSymbolicName="";
