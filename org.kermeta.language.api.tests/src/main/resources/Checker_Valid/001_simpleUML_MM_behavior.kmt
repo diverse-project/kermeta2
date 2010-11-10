@@ -6,7 +6,7 @@ require "001_simpleUML_MM.ecore"
 using kermeta
 using kermeta::standard
 
-@aspect "true"
+@~aspect "true"
 class Class
 {
 	// Operational semantic

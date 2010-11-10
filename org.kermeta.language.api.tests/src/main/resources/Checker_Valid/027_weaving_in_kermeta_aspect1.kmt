@@ -12,7 +12,7 @@ package root_package;
 require kermeta
 require "027_weaving_in_kermeta_aspect1/027_weaving_in_kermeta_base.kmt"
 
-@aspect "true"
+@~aspect "true"
 class Main inherits A
 {
 	operation main1() : Void is do 

@@ -15,7 +15,7 @@ require "028_weaving_in_kermeta_aspect9/028_weaving_in_kermeta_base9.kmt"
 
 
 // redefinition of existing property is legal
-@aspect "true"
+@~aspect "true"
 class A 
 {
 	reference aB2 : B	

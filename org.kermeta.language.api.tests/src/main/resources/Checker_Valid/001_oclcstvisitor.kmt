@@ -5,7 +5,7 @@ require "001_super_operations_with_aspects/OCLCST.ecore"
   
 package cst
 {
-	@aspect "true"
+	@~aspect "true"
 	abstract class CSTNode inherits cst::visitors::Visitable
 	{
 
@@ -13,7 +13,7 @@ package cst
 			result := visitor.visitCSTNode(self)
  
 	}
-	@aspect "true"
+	@~aspect "true"
 	class PackageDeclarationCS 
 	{
 
@@ -21,14 +21,14 @@ package cst
 			result := visitor.visitPackageDeclarationCS(self)
 
 	} 
-	@aspect "true"
+	@~aspect "true"
 	abstract class ContextDeclCS
 	{
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::CSTNode is
 			result := visitor.visitContextDeclCS(self)
 
 	}
-	@aspect "true"
+	@~aspect "true"
 	class PropertyContextCS 
 	{
 
@@ -36,7 +36,7 @@ package cst
 			result := visitor.visitPropertyContextCS(self)
 
 	}
-	@aspect "true"
+	@~aspect "true"
 	class ClassifierContextDeclCS
 	{
 
@@ -44,7 +44,7 @@ package cst
 			result := visitor.visitClassifierContextDeclCS(self)
 
 	}
-	@aspect "true"
+	@~aspect "true"
 	class OperationContextDeclCS 
 	{
 
@@ -53,7 +53,7 @@ package cst
 			result := visitor.visitOperationContextDeclCS(self)
 
 	}
-	@aspect "true"
+	@~aspect "true"
 	class PrePostOrBodyDeclCS
 	{
 
@@ -62,7 +62,7 @@ package cst
 
 	}
 
-	@aspect "true"
+	@~aspect "true"
 	class OperationCS 
 	{
 
@@ -71,7 +71,7 @@ package cst
 			result := visitor.visitOperationCS(self)
 
 	}
-	@aspect "true"
+	@~aspect "true"
 	abstract class InitOrDerValueCS
 {
 
@@ -79,21 +79,21 @@ package cst
 			result := visitor.visitInitOrDerValueCS(self)
 
 	}
-	@aspect "true"
+	@~aspect "true"
 	class DerValueCS 
 	{
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::InitOrDerValueCS is
 			result := visitor.visitDerValueCS(self)
 
 	}
-	@aspect "true"
+	@~aspect "true"
 	class InitValueCS
 	{
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::InitOrDerValueCS is
 			result := visitor.visitInitValueCS(self)
 
 	}
-	@aspect "true"
+	@~aspect "true"
 	abstract class InvOrDefCS
 	{
 
@@ -101,7 +101,7 @@ package cst
 			result := visitor.visitInvOrDefCS(self)
 
 	}
-	@aspect "true"
+	@~aspect "true"
 	class InvCS 
 	{
 
@@ -109,7 +109,7 @@ package cst
 			result := visitor.visitInvCS(self)
 
 	}
-	@aspect "true"
+	@~aspect "true"
 	class DefCS 
 	{
 
@@ -118,14 +118,14 @@ package cst
 			result := visitor.visitDefCS(self)
 
 	}
-	@aspect "true" class DefExpressionCS
+	@~aspect "true" class DefExpressionCS
 	{
 
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::CSTNode is
 			result := visitor.visitDefExpressionCS(self)
 
 	}
-	@aspect "true" class PathNameCS
+	@~aspect "true" class PathNameCS
 	{
 	
 
@@ -133,7 +133,7 @@ package cst
 			result := visitor.visitPathNameCS(self)
 
 	}
-	@aspect "true" class VariableExpCS
+	@~aspect "true" class VariableExpCS
 	{
 
 
@@ -141,7 +141,7 @@ package cst
 			result := visitor.visitVariableExpCS(self)
 
 	}
-	@aspect "true" class SimpleNameCS 
+	@~aspect "true" class SimpleNameCS 
 	{
 
 
@@ -150,27 +150,27 @@ package cst
 
 	}
 
-	 @aspect "true"
+	 @~aspect "true"
 	abstract class TypeCS
 	{
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::OCLExpressionCS is
 			result := visitor.visitTypeCS(self)
 
 	}
-	@aspect "true" class PrimitiveTypeCS 
+	@~aspect "true" class PrimitiveTypeCS 
 	{
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::SimpleNameCS is
 			result := visitor.visitPrimitiveTypeCS(self)
 
 	}
-	@aspect "true" class TupleTypeCS 
+	@~aspect "true" class TupleTypeCS 
 	{
 
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::TypeCS is
 			result := visitor.visitTupleTypeCS(self)
 
 	}
-	@aspect "true" class CollectionTypeCS
+	@~aspect "true" class CollectionTypeCS
 	{
 
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::TypeCS is
@@ -178,56 +178,56 @@ package cst
 
 	}
 
-	@aspect "true"
+	@~aspect "true"
 	abstract  class OCLExpressionCS 
 	{
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::CSTNode is
 			result := visitor.visitOCLExpressionCS(self)
 
 	}
-	@aspect "true" class LetExpCS
+	@~aspect "true" class LetExpCS
 	{
 
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::OCLExpressionCS is
 			result := visitor.visitLetExpCS(self)
 
 	}
-	@aspect "true" class IfExpCS 
+	@~aspect "true" class IfExpCS 
 	{
 
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::OCLExpressionCS is
 			result := visitor.visitIfExpCS(self)
 
 	}
-	@aspect "true" class MessageExpCS
+	@~aspect "true" class MessageExpCS
 	{
 
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::OCLExpressionCS is
 			result := visitor.visitMessageExpCS(self)
 
 	}
-	@aspect "true" class OCLMessageArgCS
+	@~aspect "true" class OCLMessageArgCS
 	{
 
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::CSTNode is
 			result := visitor.visitOCLMessageArgCS(self)
 
 	}
-	@aspect "true" class VariableCS
+	@~aspect "true" class VariableCS
 	{
 
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::CSTNode is
 			result := visitor.visitVariableCS(self)
 
 	}
-	@aspect "true"
+	@~aspect "true"
 	abstract  class LiteralExpCS
 	{
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::OCLExpressionCS is
 			result := visitor.visitLiteralExpCS(self)
 
 	} 
-	@aspect "true" class EnumLiteralExpCS 
+	@~aspect "true" class EnumLiteralExpCS 
 	{
 
 
@@ -235,7 +235,7 @@ package cst
 			result := visitor.visitEnumLiteralExpCS(self)
 
 	}
-	@aspect "true" class CollectionLiteralExpCS 
+	@~aspect "true" class CollectionLiteralExpCS 
 	{
 
 
@@ -243,7 +243,7 @@ package cst
 			result := visitor.visitCollectionLiteralExpCS(self)
 
 	}
-	@aspect "true" class TupleLiteralExpCS 
+	@~aspect "true" class TupleLiteralExpCS 
 	{
 
 
@@ -251,7 +251,7 @@ package cst
 			result := visitor.visitTupleLiteralExpCS(self)
 
 	}
-	@aspect "true" class PrimitiveLiteralExpCS
+	@~aspect "true" class PrimitiveLiteralExpCS
 	{
 
 
@@ -259,7 +259,7 @@ package cst
 			result := visitor.visitPrimitiveLiteralExpCS(self)
 
 	}
-	@aspect "true" class IntegerLiteralExpCS
+	@~aspect "true" class IntegerLiteralExpCS
 	{
 
 
@@ -267,7 +267,7 @@ package cst
 			result := visitor.visitIntegerLiteralExpCS(self)
 
 	}
-	@aspect "true" class RealLiteralExpCS
+	@~aspect "true" class RealLiteralExpCS
 	{
 
 
@@ -275,7 +275,7 @@ package cst
 			result := visitor.visitRealLiteralExpCS(self)
 
 	}
-	@aspect "true" class StringLiteralExpCS
+	@~aspect "true" class StringLiteralExpCS
 	{
 
 
@@ -283,7 +283,7 @@ package cst
 			result := visitor.visitStringLiteralExpCS(self)
 
 	}
-	@aspect "true" class BooleanLiteralExpCS
+	@~aspect "true" class BooleanLiteralExpCS
 	{
 
 
@@ -291,7 +291,7 @@ package cst
 			result := visitor.visitBooleanLiteralExpCS(self)
 
 	}
-	@aspect "true" class NullLiteralExpCS
+	@~aspect "true" class NullLiteralExpCS
 	{
 
 
@@ -299,14 +299,14 @@ package cst
 			result := visitor.visitNullLiteralExpCS(self)
 
 	}
-	@aspect "true" class InvalidLiteralExpCS {
+	@~aspect "true" class InvalidLiteralExpCS {
 
 
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::LiteralExpCS is
 			result := visitor.visitInvalidLiteralExpCS(self)
 
 	}
-	@aspect "true" class CollectionLiteralPartCS
+	@~aspect "true" class CollectionLiteralPartCS
 	{
 
 
@@ -314,7 +314,7 @@ package cst
 			result := visitor.visitCollectionLiteralPartCS(self)
 
 	}
-	@aspect "true" class CollectionRangeCS
+	@~aspect "true" class CollectionRangeCS
 	{
 
 
@@ -322,7 +322,7 @@ package cst
 			result := visitor.visitCollectionRangeCS(self)
 
 	}
-	@aspect "true" class CallExpCS
+	@~aspect "true" class CallExpCS
 	{
 
 
@@ -330,7 +330,7 @@ package cst
 			result := visitor.visitCallExpCS(self)
 
 	}
-	@aspect "true" class LoopExpCS
+	@~aspect "true" class LoopExpCS
 	{
 
 
@@ -338,19 +338,19 @@ package cst
 			result := visitor.visitLoopExpCS(self)
 
 	}
-	@aspect "true" class IteratorExpCS
+	@~aspect "true" class IteratorExpCS
 	{
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::LoopExpCS is
 			result := visitor.visitIteratorExpCS(self)
 
 	}
-	@aspect "true" class IterateExpCS
+	@~aspect "true" class IterateExpCS
 	{
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::LoopExpCS is
 			result := visitor.visitIterateExpCS(self)
 
 	}
-	@aspect "true" class FeatureCallExpCS
+	@~aspect "true" class FeatureCallExpCS
 	{
 
 
@@ -359,13 +359,13 @@ package cst
 
 	}
 
-	@aspect "true" class OperationCallExpCS 
+	@~aspect "true" class OperationCallExpCS 
 	{
 		method accept(visitor : cst::visitors::Visitor) : kermeta::standard::~Void from ocl::cst::FeatureCallExpCS is
 			result := visitor.visitOperationCallExpCS(self)
 
 	}
-	@aspect "true" class IsMarkedPreCS 
+	@~aspect "true" class IsMarkedPreCS 
 	{
 
 
@@ -373,7 +373,7 @@ package cst
 			result := visitor.visitIsMarkedPreCS(self)
 
 	}
-	@aspect "true" class StateExpCS 
+	@~aspect "true" class StateExpCS 
 	{
 
 
@@ -384,11 +384,11 @@ package cst
 
 	package visitors
 	{
-	 @aspect "true"
+	 @~aspect "true"
 		abstract class Visitable
 		{
 		}
-		@aspect "true"
+		@~aspect "true"
 		abstract  class Visitor
 		{
 			operation visitCSTNode(visitable : cst::CSTNode) : kermeta::standard::~Void is

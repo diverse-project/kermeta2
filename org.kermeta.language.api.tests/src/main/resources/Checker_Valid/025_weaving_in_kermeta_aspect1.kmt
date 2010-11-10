@@ -11,18 +11,18 @@ require kermeta
 require "025_weaving_in_kermeta_aspect1/025_weaving_in_kermeta_aspect1_baseClass.kmt"
 
 
-@aspect "true"
+@~aspect "true"
 @anothertag "othertagvalue"
 class A {
 	
 
 }
 
-@aspect "true"
+@~aspect "true"
 class B inherits C{}
 
 
-@aspect "true"
+@~aspect "true"
 class C {
 
 	inv myinv is true
@@ -63,7 +63,7 @@ class C {
 
 }
 
-@aspect "false"
+@~aspect "false"
 class D{
 }
 

@@ -15,7 +15,7 @@ require kermeta
 require "026_weaving_in_kermeta_mixed/026_weaving_in_kermeta_mixed_baseClass.kmt"
 require "026_weaving_in_kermeta_mixed/026_weaving_in_kermeta_mixed_aspect.kmt"
 
-@aspect "true"
+@~aspect "true"
 class Main
 {
 	operation main2() : Void is do 
