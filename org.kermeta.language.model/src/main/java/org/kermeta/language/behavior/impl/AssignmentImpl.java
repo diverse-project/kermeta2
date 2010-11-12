@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.behavior.impl;
 
-import java.lang.oolean;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -64,7 +63,7 @@ public class AssignmentImpl extends ExpressionImpl implements Assignment {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_CAST_EDEFAULT = null;
+	protected static final Boolean IS_CAST_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getIsCast() <em>Is Cast</em>}' attribute.
@@ -74,7 +73,7 @@ public class AssignmentImpl extends ExpressionImpl implements Assignment {
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isCast = IS_CAST_EDEFAULT;
+	protected Boolean isCast = IS_CAST_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,7 +185,7 @@ public class AssignmentImpl extends ExpressionImpl implements Assignment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsCast() {
+	public Boolean getIsCast() {
 		return isCast;
 	}
 
@@ -195,8 +194,8 @@ public class AssignmentImpl extends ExpressionImpl implements Assignment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsCast(oolean newIsCast) {
-		oolean oldIsCast = isCast;
+	public void setIsCast(Boolean newIsCast) {
+		Boolean oldIsCast = isCast;
 		isCast = newIsCast;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BehaviorPackage.ASSIGNMENT__IS_CAST, oldIsCast, isCast));
@@ -251,7 +250,7 @@ public class AssignmentImpl extends ExpressionImpl implements Assignment {
 				setValue((Expression)newValue);
 				return;
 			case BehaviorPackage.ASSIGNMENT__IS_CAST:
-				setIsCast((oolean)newValue);
+				setIsCast((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

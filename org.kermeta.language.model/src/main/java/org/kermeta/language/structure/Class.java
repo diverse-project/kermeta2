@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.structure;
 
-import java.lang.oolean;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -94,7 +93,7 @@ public interface Class extends ParameterizedType {
 	 * @model default="false" dataType="org.kermeta.language.structure.Boolean" changeable="false" derived="true"
 	 * @generated
 	 */
-	oolean getIsAbstract();
+	Boolean getIsAbstract();
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

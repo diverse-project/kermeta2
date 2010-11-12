@@ -6,7 +6,7 @@
  */
 package org.kermeta.language.structure;
 
-import java.lang.oolean;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.kermeta.language.behavior.Expression;
@@ -79,12 +79,12 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * Boolean stating whether the Property is read-only
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Read Only</em>' attribute.
-	 * @see #setIsReadOnly(oolean)
+	 * @see #setIsReadOnly(Boolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsReadOnly()
 	 * @model default="false" dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsReadOnly();
+	Boolean getIsReadOnly();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsReadOnly <em>Is Read Only</em>}' attribute.
@@ -94,7 +94,7 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * @see #getIsReadOnly()
 	 * @generated
 	 */
-	void setIsReadOnly(oolean value);
+	void setIsReadOnly(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Default</b></em>' attribute.
@@ -130,12 +130,12 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * Boolean stating whether the Property has a containment role
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Composite</em>' attribute.
-	 * @see #setIsComposite(oolean)
+	 * @see #setIsComposite(Boolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsComposite()
 	 * @model default="false" dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsComposite();
+	Boolean getIsComposite();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsComposite <em>Is Composite</em>}' attribute.
@@ -145,7 +145,7 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * @see #getIsComposite()
 	 * @generated
 	 */
-	void setIsComposite(oolean value);
+	void setIsComposite(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
@@ -156,12 +156,12 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * If True, the value of the property is not stored but computed from other properties
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived</em>' attribute.
-	 * @see #setIsDerived(oolean)
+	 * @see #setIsDerived(Boolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsDerived()
 	 * @model default="false" dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsDerived();
+	Boolean getIsDerived();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsDerived <em>Is Derived</em>}' attribute.
@@ -171,7 +171,7 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * @see #getIsDerived()
 	 * @generated
 	 */
-	void setIsDerived(oolean value);
+	void setIsDerived(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Is ID</b></em>' attribute.
@@ -181,12 +181,12 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * Boolean stating whether the property allows to identify its containing Object
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is ID</em>' attribute.
-	 * @see #setIsID(oolean)
+	 * @see #setIsID(Boolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsID()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsID();
+	Boolean getIsID();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsID <em>Is ID</em>}' attribute.
@@ -196,7 +196,7 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * @see #getIsID()
 	 * @generated
 	 */
-	void setIsID(oolean value);
+	void setIsID(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Getter Body</b></em>' containment reference.
@@ -256,12 +256,12 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * Boolean stating wether the getter is abstract.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Getter Abstract</em>' attribute.
-	 * @see #setIsGetterAbstract(oolean)
+	 * @see #setIsGetterAbstract(Boolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsGetterAbstract()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsGetterAbstract();
+	Boolean getIsGetterAbstract();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsGetterAbstract <em>Is Getter Abstract</em>}' attribute.
@@ -271,7 +271,7 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * @see #getIsGetterAbstract()
 	 * @generated
 	 */
-	void setIsGetterAbstract(oolean value);
+	void setIsGetterAbstract(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Setter Abstract</b></em>' attribute.
@@ -281,12 +281,12 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * Boolean stating wether the setter is abstract.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Setter Abstract</em>' attribute.
-	 * @see #setIsSetterAbstract(oolean)
+	 * @see #setIsSetterAbstract(Boolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsSetterAbstract()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsSetterAbstract();
+	Boolean getIsSetterAbstract();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsSetterAbstract <em>Is Setter Abstract</em>}' attribute.
@@ -296,7 +296,7 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * @see #getIsSetterAbstract()
 	 * @generated
 	 */
-	void setIsSetterAbstract(oolean value);
+	void setIsSetterAbstract(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Unresolved Properties</b></em>' containment reference list.

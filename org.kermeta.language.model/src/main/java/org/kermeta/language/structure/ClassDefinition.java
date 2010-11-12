@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.structure;
 
-import java.lang.oolean;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -68,12 +67,12 @@ public interface ClassDefinition extends GenericTypeDefinition, TypeContainer {
 	 * no instance can be allocated)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
-	 * @see #setIsAbstract(oolean)
+	 * @see #setIsAbstract(Boolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getClassDefinition_IsAbstract()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsAbstract();
+	Boolean getIsAbstract();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.structure.ClassDefinition#getIsAbstract <em>Is Abstract</em>}' attribute.
@@ -83,7 +82,7 @@ public interface ClassDefinition extends GenericTypeDefinition, TypeContainer {
 	 * @see #getIsAbstract()
 	 * @generated
 	 */
-	void setIsAbstract(oolean value);
+	void setIsAbstract(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.

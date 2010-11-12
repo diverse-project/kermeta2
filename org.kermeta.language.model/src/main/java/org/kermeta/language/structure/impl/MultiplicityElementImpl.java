@@ -6,7 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
-import java.lang.oolean;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -42,7 +42,7 @@ public class MultiplicityElementImpl extends TypedElementImpl implements Multipl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_ORDERED_EDEFAULT = (oolean)StructureFactory.eINSTANCE.createFromString(StructurePackage.eINSTANCE.getBoolean(), "false");
+	protected static final Boolean IS_ORDERED_EDEFAULT = Boolean.FALSE;
 
 	/**
 	 * The cached value of the '{@link #getIsOrdered() <em>Is Ordered</em>}' attribute.
@@ -52,7 +52,7 @@ public class MultiplicityElementImpl extends TypedElementImpl implements Multipl
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isOrdered = IS_ORDERED_EDEFAULT;
+	protected Boolean isOrdered = IS_ORDERED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getIsUnique() <em>Is Unique</em>}' attribute.
@@ -62,7 +62,7 @@ public class MultiplicityElementImpl extends TypedElementImpl implements Multipl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_UNIQUE_EDEFAULT = (oolean)StructureFactory.eINSTANCE.createFromString(StructurePackage.eINSTANCE.getBoolean(), "true");
+	protected static final Boolean IS_UNIQUE_EDEFAULT = Boolean.TRUE;
 
 	/**
 	 * The cached value of the '{@link #getIsUnique() <em>Is Unique</em>}' attribute.
@@ -72,7 +72,7 @@ public class MultiplicityElementImpl extends TypedElementImpl implements Multipl
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isUnique = IS_UNIQUE_EDEFAULT;
+	protected Boolean isUnique = IS_UNIQUE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -138,7 +138,7 @@ public class MultiplicityElementImpl extends TypedElementImpl implements Multipl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsOrdered() {
+	public Boolean getIsOrdered() {
 		return isOrdered;
 	}
 
@@ -147,8 +147,8 @@ public class MultiplicityElementImpl extends TypedElementImpl implements Multipl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsOrdered(oolean newIsOrdered) {
-		oolean oldIsOrdered = isOrdered;
+	public void setIsOrdered(Boolean newIsOrdered) {
+		Boolean oldIsOrdered = isOrdered;
 		isOrdered = newIsOrdered;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.MULTIPLICITY_ELEMENT__IS_ORDERED, oldIsOrdered, isOrdered));
@@ -159,7 +159,7 @@ public class MultiplicityElementImpl extends TypedElementImpl implements Multipl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsUnique() {
+	public Boolean getIsUnique() {
 		return isUnique;
 	}
 
@@ -168,8 +168,8 @@ public class MultiplicityElementImpl extends TypedElementImpl implements Multipl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsUnique(oolean newIsUnique) {
-		oolean oldIsUnique = isUnique;
+	public void setIsUnique(Boolean newIsUnique) {
+		Boolean oldIsUnique = isUnique;
 		isUnique = newIsUnique;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.MULTIPLICITY_ELEMENT__IS_UNIQUE, oldIsUnique, isUnique));
@@ -246,10 +246,10 @@ public class MultiplicityElementImpl extends TypedElementImpl implements Multipl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StructurePackage.MULTIPLICITY_ELEMENT__IS_ORDERED:
-				setIsOrdered((oolean)newValue);
+				setIsOrdered((Boolean)newValue);
 				return;
 			case StructurePackage.MULTIPLICITY_ELEMENT__IS_UNIQUE:
-				setIsUnique((oolean)newValue);
+				setIsUnique((Boolean)newValue);
 				return;
 			case StructurePackage.MULTIPLICITY_ELEMENT__LOWER:
 				setLower((Integer)newValue);

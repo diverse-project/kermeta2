@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.behavior.impl;
 
-import java.lang.oolean;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -59,7 +58,7 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_ATPRE_EDEFAULT = null;
+	protected static final Boolean IS_ATPRE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getIsAtpre() <em>Is Atpre</em>}' attribute.
@@ -69,7 +68,7 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isAtpre = IS_ATPRE_EDEFAULT;
+	protected Boolean isAtpre = IS_ATPRE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getStaticProperty() <em>Static Property</em>}' reference.
@@ -168,7 +167,7 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsAtpre() {
+	public Boolean getIsAtpre() {
 		return isAtpre;
 	}
 
@@ -177,8 +176,8 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAtpre(oolean newIsAtpre) {
-		oolean oldIsAtpre = isAtpre;
+	public void setIsAtpre(Boolean newIsAtpre) {
+		Boolean oldIsAtpre = isAtpre;
 		isAtpre = newIsAtpre;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BehaviorPackage.CALL_FEATURE__IS_ATPRE, oldIsAtpre, isAtpre));
@@ -349,7 +348,7 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 				setTarget((Expression)newValue);
 				return;
 			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
-				setIsAtpre((oolean)newValue);
+				setIsAtpre((Boolean)newValue);
 				return;
 			case BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY:
 				setStaticProperty((Property)newValue);

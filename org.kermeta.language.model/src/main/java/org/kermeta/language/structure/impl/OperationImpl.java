@@ -6,7 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
-import java.lang.oolean;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -68,7 +68,7 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_ABSTRACT_EDEFAULT = null;
+	protected static final Boolean IS_ABSTRACT_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getIsAbstract() <em>Is Abstract</em>}' attribute.
@@ -78,7 +78,7 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isAbstract = IS_ABSTRACT_EDEFAULT;
+	protected Boolean isAbstract = IS_ABSTRACT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getRaisedException() <em>Raised Exception</em>}' reference list.
@@ -184,7 +184,7 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsAbstract() {
+	public Boolean getIsAbstract() {
 		return isAbstract;
 	}
 
@@ -193,8 +193,8 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAbstract(oolean newIsAbstract) {
-		oolean oldIsAbstract = isAbstract;
+	public void setIsAbstract(Boolean newIsAbstract) {
+		Boolean oldIsAbstract = isAbstract;
 		isAbstract = newIsAbstract;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.OPERATION__IS_ABSTRACT, oldIsAbstract, isAbstract));
@@ -498,7 +498,7 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StructurePackage.OPERATION__IS_ABSTRACT:
-				setIsAbstract((oolean)newValue);
+				setIsAbstract((Boolean)newValue);
 				return;
 			case StructurePackage.OPERATION__RAISED_EXCEPTION:
 				getRaisedException().clear();

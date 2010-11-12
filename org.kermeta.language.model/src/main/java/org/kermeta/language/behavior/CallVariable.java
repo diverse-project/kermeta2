@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.behavior;
 
-import java.lang.oolean;
 
 
 /**
@@ -39,12 +38,12 @@ public interface CallVariable extends CallExpression {
 	 * Tells whether this CallVariable represents a call to @pre in a postcondition
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Atpre</em>' attribute.
-	 * @see #setIsAtpre(oolean)
+	 * @see #setIsAtpre(Boolean)
 	 * @see org.kermeta.language.behavior.BehaviorPackage#getCallVariable_IsAtpre()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsAtpre();
+	Boolean getIsAtpre();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.behavior.CallVariable#getIsAtpre <em>Is Atpre</em>}' attribute.
@@ -54,6 +53,6 @@ public interface CallVariable extends CallExpression {
 	 * @see #getIsAtpre()
 	 * @generated
 	 */
-	void setIsAtpre(oolean value);
+	void setIsAtpre(Boolean value);
 
 } // CallVariable

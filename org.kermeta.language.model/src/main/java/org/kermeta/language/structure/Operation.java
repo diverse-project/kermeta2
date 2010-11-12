@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.structure;
 
-import java.lang.oolean;
 import org.eclipse.emf.common.util.EList;
 
 import org.kermeta.language.behavior.Expression;
@@ -49,12 +48,12 @@ public interface Operation extends MultiplicityElement, AbstractOperation {
 	 * Boolean stating whether the Operation is abstract
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
-	 * @see #setIsAbstract(oolean)
+	 * @see #setIsAbstract(Boolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getOperation_IsAbstract()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsAbstract();
+	Boolean getIsAbstract();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.structure.Operation#getIsAbstract <em>Is Abstract</em>}' attribute.
@@ -64,7 +63,7 @@ public interface Operation extends MultiplicityElement, AbstractOperation {
 	 * @see #getIsAbstract()
 	 * @generated
 	 */
-	void setIsAbstract(oolean value);
+	void setIsAbstract(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Raised Exception</b></em>' reference list.

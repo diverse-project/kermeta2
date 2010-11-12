@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.behavior;
 
-import java.lang.oolean;
 
 
 /**
@@ -38,12 +37,12 @@ public interface BooleanLiteral extends Literal {
 	 * The concrete value represented by this literal
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(oolean)
+	 * @see #setValue(Boolean)
 	 * @see org.kermeta.language.behavior.BehaviorPackage#getBooleanLiteral_Value()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getValue();
+	Boolean getValue();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.behavior.BooleanLiteral#getValue <em>Value</em>}' attribute.
@@ -53,6 +52,6 @@ public interface BooleanLiteral extends Literal {
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(oolean value);
+	void setValue(Boolean value);
 
 } // BooleanLiteral

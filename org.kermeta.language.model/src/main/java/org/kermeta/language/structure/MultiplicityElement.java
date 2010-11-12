@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.structure;
 
-import java.lang.oolean;
 
 
 /**
@@ -42,12 +41,12 @@ public interface MultiplicityElement extends TypedElement {
 	 * Boolean stating whether the element is ordered
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
-	 * @see #setIsOrdered(oolean)
+	 * @see #setIsOrdered(Boolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getMultiplicityElement_IsOrdered()
 	 * @model default="false" dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsOrdered();
+	Boolean getIsOrdered();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.structure.MultiplicityElement#getIsOrdered <em>Is Ordered</em>}' attribute.
@@ -57,7 +56,7 @@ public interface MultiplicityElement extends TypedElement {
 	 * @see #getIsOrdered()
 	 * @generated
 	 */
-	void setIsOrdered(oolean value);
+	void setIsOrdered(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Unique</b></em>' attribute.
@@ -68,12 +67,12 @@ public interface MultiplicityElement extends TypedElement {
 	 * Boolean stating whether duplicated elements are allowed
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Unique</em>' attribute.
-	 * @see #setIsUnique(oolean)
+	 * @see #setIsUnique(Boolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getMultiplicityElement_IsUnique()
 	 * @model default="true" dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsUnique();
+	Boolean getIsUnique();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.structure.MultiplicityElement#getIsUnique <em>Is Unique</em>}' attribute.
@@ -83,7 +82,7 @@ public interface MultiplicityElement extends TypedElement {
 	 * @see #getIsUnique()
 	 * @generated
 	 */
-	void setIsUnique(oolean value);
+	void setIsUnique(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Lower</b></em>' attribute.

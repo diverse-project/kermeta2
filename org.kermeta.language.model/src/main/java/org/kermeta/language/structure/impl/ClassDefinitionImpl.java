@@ -6,7 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
-import java.lang.oolean;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -76,7 +76,7 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_ABSTRACT_EDEFAULT = null;
+	protected static final Boolean IS_ABSTRACT_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getIsAbstract() <em>Is Abstract</em>}' attribute.
@@ -86,7 +86,7 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isAbstract = IS_ABSTRACT_EDEFAULT;
+	protected Boolean isAbstract = IS_ABSTRACT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOwnedAttribute() <em>Owned Attribute</em>}' containment reference list.
@@ -156,7 +156,7 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsAbstract() {
+	public Boolean getIsAbstract() {
 		return isAbstract;
 	}
 
@@ -165,8 +165,8 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAbstract(oolean newIsAbstract) {
-		oolean oldIsAbstract = isAbstract;
+	public void setIsAbstract(Boolean newIsAbstract) {
+		Boolean oldIsAbstract = isAbstract;
 		isAbstract = newIsAbstract;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.CLASS_DEFINITION__IS_ABSTRACT, oldIsAbstract, isAbstract));
@@ -277,7 +277,7 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 				getInv().addAll((Collection<? extends Constraint>)newValue);
 				return;
 			case StructurePackage.CLASS_DEFINITION__IS_ABSTRACT:
-				setIsAbstract((oolean)newValue);
+				setIsAbstract((Boolean)newValue);
 				return;
 			case StructurePackage.CLASS_DEFINITION__OWNED_ATTRIBUTE:
 				getOwnedAttribute().clear();

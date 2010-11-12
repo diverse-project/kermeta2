@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.behavior;
 
-import java.lang.oolean;
 
 
 /**
@@ -91,12 +90,12 @@ public interface Assignment extends Expression {
 	 * Boolean stating whether current assignment corresponds to a cast operation 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Cast</em>' attribute.
-	 * @see #setIsCast(oolean)
+	 * @see #setIsCast(Boolean)
 	 * @see org.kermeta.language.behavior.BehaviorPackage#getAssignment_IsCast()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsCast();
+	Boolean getIsCast();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.behavior.Assignment#getIsCast <em>Is Cast</em>}' attribute.
@@ -106,6 +105,6 @@ public interface Assignment extends Expression {
 	 * @see #getIsCast()
 	 * @generated
 	 */
-	void setIsCast(oolean value);
+	void setIsCast(Boolean value);
 
 } // Assignment

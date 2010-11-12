@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.behavior.impl;
 
-import java.lang.oolean;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -38,7 +37,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean VALUE_EDEFAULT = null;
+	protected static final Boolean VALUE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -48,7 +47,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean value = VALUE_EDEFAULT;
+	protected Boolean value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,7 +73,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getValue() {
+	public Boolean getValue() {
 		return value;
 	}
 
@@ -83,8 +82,8 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(oolean newValue) {
-		oolean oldValue = value;
+	public void setValue(Boolean newValue) {
+		Boolean oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BehaviorPackage.BOOLEAN_LITERAL__VALUE, oldValue, value));
@@ -113,7 +112,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case BehaviorPackage.BOOLEAN_LITERAL__VALUE:
-				setValue((oolean)newValue);
+				setValue((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -6,7 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
-import java.lang.oolean;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -79,7 +79,7 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_ASPECT_EDEFAULT = null;
+	protected static final Boolean IS_ASPECT_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getIsAspect() <em>Is Aspect</em>}' attribute.
@@ -89,7 +89,7 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isAspect = IS_ASPECT_EDEFAULT;
+	protected Boolean isAspect = IS_ASPECT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference list.
@@ -166,7 +166,7 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsAspect() {
+	public Boolean getIsAspect() {
 		return isAspect;
 	}
 
@@ -175,8 +175,8 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAspect(oolean newIsAspect) {
-		oolean oldIsAspect = isAspect;
+	public void setIsAspect(Boolean newIsAspect) {
+		Boolean oldIsAspect = isAspect;
 		isAspect = newIsAspect;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.MODEL_TYPE__IS_ASPECT, oldIsAspect, isAspect));
@@ -315,7 +315,7 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 				setName((String)newValue);
 				return;
 			case StructurePackage.MODEL_TYPE__IS_ASPECT:
-				setIsAspect((oolean)newValue);
+				setIsAspect((Boolean)newValue);
 				return;
 			case StructurePackage.MODEL_TYPE__SUPER_TYPE:
 				getSuperType().clear();

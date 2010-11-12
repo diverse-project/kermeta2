@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.behavior;
 
-import java.lang.oolean;
 import org.kermeta.language.structure.EnumerationLiteral;
 import org.kermeta.language.structure.Operation;
 import org.kermeta.language.structure.Property;
@@ -71,12 +70,12 @@ public interface CallFeature extends CallExpression {
 	 * Tells whether this CallFeature represents a call to @pre in a postcondition
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Atpre</em>' attribute.
-	 * @see #setIsAtpre(oolean)
+	 * @see #setIsAtpre(Boolean)
 	 * @see org.kermeta.language.behavior.BehaviorPackage#getCallFeature_IsAtpre()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	oolean getIsAtpre();
+	Boolean getIsAtpre();
 
 	/**
 	 * Sets the value of the '{@link org.kermeta.language.behavior.CallFeature#getIsAtpre <em>Is Atpre</em>}' attribute.
@@ -86,7 +85,7 @@ public interface CallFeature extends CallExpression {
 	 * @see #getIsAtpre()
 	 * @generated
 	 */
-	void setIsAtpre(oolean value);
+	void setIsAtpre(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Static Property</b></em>' reference.

@@ -6,7 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
-import java.lang.oolean;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -75,7 +75,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_READ_ONLY_EDEFAULT = (oolean)StructureFactory.eINSTANCE.createFromString(StructurePackage.eINSTANCE.getBoolean(), "false");
+	protected static final Boolean IS_READ_ONLY_EDEFAULT = Boolean.FALSE;
 
 	/**
 	 * The cached value of the '{@link #getIsReadOnly() <em>Is Read Only</em>}' attribute.
@@ -85,7 +85,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isReadOnly = IS_READ_ONLY_EDEFAULT;
+	protected Boolean isReadOnly = IS_READ_ONLY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
@@ -115,7 +115,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_COMPOSITE_EDEFAULT = (oolean)StructureFactory.eINSTANCE.createFromString(StructurePackage.eINSTANCE.getBoolean(), "false");
+	protected static final Boolean IS_COMPOSITE_EDEFAULT = Boolean.FALSE;
 
 	/**
 	 * The cached value of the '{@link #getIsComposite() <em>Is Composite</em>}' attribute.
@@ -125,7 +125,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isComposite = IS_COMPOSITE_EDEFAULT;
+	protected Boolean isComposite = IS_COMPOSITE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getIsDerived() <em>Is Derived</em>}' attribute.
@@ -135,7 +135,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_DERIVED_EDEFAULT = (oolean)StructureFactory.eINSTANCE.createFromString(StructurePackage.eINSTANCE.getBoolean(), "false");
+	protected static final Boolean IS_DERIVED_EDEFAULT = Boolean.FALSE;
 
 	/**
 	 * The cached value of the '{@link #getIsDerived() <em>Is Derived</em>}' attribute.
@@ -145,7 +145,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isDerived = IS_DERIVED_EDEFAULT;
+	protected Boolean isDerived = IS_DERIVED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getIsID() <em>Is ID</em>}' attribute.
@@ -155,7 +155,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_ID_EDEFAULT = null;
+	protected static final Boolean IS_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getIsID() <em>Is ID</em>}' attribute.
@@ -165,7 +165,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isID = IS_ID_EDEFAULT;
+	protected Boolean isID = IS_ID_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getGetterBody() <em>Getter Body</em>}' containment reference.
@@ -195,7 +195,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_GETTER_ABSTRACT_EDEFAULT = null;
+	protected static final Boolean IS_GETTER_ABSTRACT_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getIsGetterAbstract() <em>Is Getter Abstract</em>}' attribute.
@@ -205,7 +205,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isGetterAbstract = IS_GETTER_ABSTRACT_EDEFAULT;
+	protected Boolean isGetterAbstract = IS_GETTER_ABSTRACT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getIsSetterAbstract() <em>Is Setter Abstract</em>}' attribute.
@@ -215,7 +215,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_SETTER_ABSTRACT_EDEFAULT = null;
+	protected static final Boolean IS_SETTER_ABSTRACT_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getIsSetterAbstract() <em>Is Setter Abstract</em>}' attribute.
@@ -225,7 +225,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isSetterAbstract = IS_SETTER_ABSTRACT_EDEFAULT;
+	protected Boolean isSetterAbstract = IS_SETTER_ABSTRACT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOwnedUnresolvedProperties() <em>Owned Unresolved Properties</em>}' containment reference list.
@@ -299,7 +299,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsReadOnly() {
+	public Boolean getIsReadOnly() {
 		return isReadOnly;
 	}
 
@@ -308,8 +308,8 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsReadOnly(oolean newIsReadOnly) {
-		oolean oldIsReadOnly = isReadOnly;
+	public void setIsReadOnly(Boolean newIsReadOnly) {
+		Boolean oldIsReadOnly = isReadOnly;
 		isReadOnly = newIsReadOnly;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.PROPERTY__IS_READ_ONLY, oldIsReadOnly, isReadOnly));
@@ -341,7 +341,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsComposite() {
+	public Boolean getIsComposite() {
 		return isComposite;
 	}
 
@@ -350,8 +350,8 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsComposite(oolean newIsComposite) {
-		oolean oldIsComposite = isComposite;
+	public void setIsComposite(Boolean newIsComposite) {
+		Boolean oldIsComposite = isComposite;
 		isComposite = newIsComposite;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.PROPERTY__IS_COMPOSITE, oldIsComposite, isComposite));
@@ -362,7 +362,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsDerived() {
+	public Boolean getIsDerived() {
 		return isDerived;
 	}
 
@@ -371,8 +371,8 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsDerived(oolean newIsDerived) {
-		oolean oldIsDerived = isDerived;
+	public void setIsDerived(Boolean newIsDerived) {
+		Boolean oldIsDerived = isDerived;
 		isDerived = newIsDerived;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.PROPERTY__IS_DERIVED, oldIsDerived, isDerived));
@@ -383,7 +383,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsID() {
+	public Boolean getIsID() {
 		return isID;
 	}
 
@@ -392,8 +392,8 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsID(oolean newIsID) {
-		oolean oldIsID = isID;
+	public void setIsID(Boolean newIsID) {
+		Boolean oldIsID = isID;
 		isID = newIsID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.PROPERTY__IS_ID, oldIsID, isID));
@@ -490,7 +490,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsGetterAbstract() {
+	public Boolean getIsGetterAbstract() {
 		return isGetterAbstract;
 	}
 
@@ -499,8 +499,8 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsGetterAbstract(oolean newIsGetterAbstract) {
-		oolean oldIsGetterAbstract = isGetterAbstract;
+	public void setIsGetterAbstract(Boolean newIsGetterAbstract) {
+		Boolean oldIsGetterAbstract = isGetterAbstract;
 		isGetterAbstract = newIsGetterAbstract;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.PROPERTY__IS_GETTER_ABSTRACT, oldIsGetterAbstract, isGetterAbstract));
@@ -511,7 +511,7 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsSetterAbstract() {
+	public Boolean getIsSetterAbstract() {
 		return isSetterAbstract;
 	}
 
@@ -520,8 +520,8 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsSetterAbstract(oolean newIsSetterAbstract) {
-		oolean oldIsSetterAbstract = isSetterAbstract;
+	public void setIsSetterAbstract(Boolean newIsSetterAbstract) {
+		Boolean oldIsSetterAbstract = isSetterAbstract;
 		isSetterAbstract = newIsSetterAbstract;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.PROPERTY__IS_SETTER_ABSTRACT, oldIsSetterAbstract, isSetterAbstract));
@@ -680,19 +680,19 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 				setOpposite((AbstractProperty)newValue);
 				return;
 			case StructurePackage.PROPERTY__IS_READ_ONLY:
-				setIsReadOnly((oolean)newValue);
+				setIsReadOnly((Boolean)newValue);
 				return;
 			case StructurePackage.PROPERTY__DEFAULT:
 				setDefault((String)newValue);
 				return;
 			case StructurePackage.PROPERTY__IS_COMPOSITE:
-				setIsComposite((oolean)newValue);
+				setIsComposite((Boolean)newValue);
 				return;
 			case StructurePackage.PROPERTY__IS_DERIVED:
-				setIsDerived((oolean)newValue);
+				setIsDerived((Boolean)newValue);
 				return;
 			case StructurePackage.PROPERTY__IS_ID:
-				setIsID((oolean)newValue);
+				setIsID((Boolean)newValue);
 				return;
 			case StructurePackage.PROPERTY__GETTER_BODY:
 				setGetterBody((Expression)newValue);
@@ -701,10 +701,10 @@ public class PropertyImpl extends MultiplicityElementImpl implements Property {
 				setSetterBody((Expression)newValue);
 				return;
 			case StructurePackage.PROPERTY__IS_GETTER_ABSTRACT:
-				setIsGetterAbstract((oolean)newValue);
+				setIsGetterAbstract((Boolean)newValue);
 				return;
 			case StructurePackage.PROPERTY__IS_SETTER_ABSTRACT:
-				setIsSetterAbstract((oolean)newValue);
+				setIsSetterAbstract((Boolean)newValue);
 				return;
 			case StructurePackage.PROPERTY__OWNED_UNRESOLVED_PROPERTIES:
 				getOwnedUnresolvedProperties().clear();

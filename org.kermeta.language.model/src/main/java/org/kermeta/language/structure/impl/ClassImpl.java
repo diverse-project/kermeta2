@@ -6,7 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
-import java.lang.oolean;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -75,7 +75,7 @@ public class ClassImpl extends ParameterizedTypeImpl implements org.kermeta.lang
 	 * @generated
 	 * @ordered
 	 */
-  protected static final oolean IS_ABSTRACT_EDEFAULT = (oolean)StructureFactory.eINSTANCE.createFromString(StructurePackage.eINSTANCE.getBoolean(), "false");
+  protected static final Boolean IS_ABSTRACT_EDEFAULT = Boolean.FALSE;
 
   /**
 	 * The cached value of the '{@link #getIsAbstract() <em>Is Abstract</em>}' attribute.
@@ -85,7 +85,7 @@ public class ClassImpl extends ParameterizedTypeImpl implements org.kermeta.lang
 	 * @generated
 	 * @ordered
 	 */
-  protected oolean isAbstract = IS_ABSTRACT_EDEFAULT;
+  protected Boolean isAbstract = IS_ABSTRACT_EDEFAULT;
 
   /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -172,7 +172,7 @@ public class ClassImpl extends ParameterizedTypeImpl implements org.kermeta.lang
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsAbstract() {
+	public Boolean getIsAbstract() {
 		return isAbstract;
 	}
 

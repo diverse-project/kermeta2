@@ -6,7 +6,6 @@
  */
 package org.kermeta.language.behavior.impl;
 
-import java.lang.oolean;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -38,7 +37,7 @@ public class CallVariableImpl extends CallExpressionImpl implements CallVariable
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_ATPRE_EDEFAULT = null;
+	protected static final Boolean IS_ATPRE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getIsAtpre() <em>Is Atpre</em>}' attribute.
@@ -48,7 +47,7 @@ public class CallVariableImpl extends CallExpressionImpl implements CallVariable
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isAtpre = IS_ATPRE_EDEFAULT;
+	protected Boolean isAtpre = IS_ATPRE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,7 +73,7 @@ public class CallVariableImpl extends CallExpressionImpl implements CallVariable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsAtpre() {
+	public Boolean getIsAtpre() {
 		return isAtpre;
 	}
 
@@ -83,8 +82,8 @@ public class CallVariableImpl extends CallExpressionImpl implements CallVariable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAtpre(oolean newIsAtpre) {
-		oolean oldIsAtpre = isAtpre;
+	public void setIsAtpre(Boolean newIsAtpre) {
+		Boolean oldIsAtpre = isAtpre;
 		isAtpre = newIsAtpre;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BehaviorPackage.CALL_VARIABLE__IS_ATPRE, oldIsAtpre, isAtpre));
@@ -113,7 +112,7 @@ public class CallVariableImpl extends CallExpressionImpl implements CallVariable
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case BehaviorPackage.CALL_VARIABLE__IS_ATPRE:
-				setIsAtpre((oolean)newValue);
+				setIsAtpre((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

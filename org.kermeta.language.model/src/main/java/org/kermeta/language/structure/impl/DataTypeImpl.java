@@ -6,7 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
-import java.lang.oolean;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -75,7 +75,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final oolean IS_ASPECT_EDEFAULT = null;
+	protected static final Boolean IS_ASPECT_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getIsAspect() <em>Is Aspect</em>}' attribute.
@@ -85,7 +85,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * @generated
 	 * @ordered
 	 */
-	protected oolean isAspect = IS_ASPECT_EDEFAULT;
+	protected Boolean isAspect = IS_ASPECT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference list.
@@ -152,7 +152,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public oolean getIsAspect() {
+	public Boolean getIsAspect() {
 		return isAspect;
 	}
 
@@ -161,8 +161,8 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAspect(oolean newIsAspect) {
-		oolean oldIsAspect = isAspect;
+	public void setIsAspect(Boolean newIsAspect) {
+		Boolean oldIsAspect = isAspect;
 		isAspect = newIsAspect;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.DATA_TYPE__IS_ASPECT, oldIsAspect, isAspect));
@@ -254,7 +254,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 				setName((String)newValue);
 				return;
 			case StructurePackage.DATA_TYPE__IS_ASPECT:
-				setIsAspect((oolean)newValue);
+				setIsAspect((Boolean)newValue);
 				return;
 			case StructurePackage.DATA_TYPE__SUPER_TYPE:
 				getSuperType().clear();
