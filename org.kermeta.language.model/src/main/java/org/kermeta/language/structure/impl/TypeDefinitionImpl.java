@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
+import java.lang.oolean;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -34,7 +35,7 @@ import org.kermeta.language.structure.TypeMapping;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.impl.TypeDefinitionImpl#isIsAspect <em>Is Aspect</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.TypeDefinitionImpl#getIsAspect <em>Is Aspect</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.TypeDefinitionImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.TypeDefinitionImpl#getTypeMappings <em>Type Mappings</em>}</li>
  * </ul>
@@ -44,24 +45,24 @@ import org.kermeta.language.structure.TypeMapping;
  */
 public class TypeDefinitionImpl extends NamedElementImpl implements TypeDefinition {
 	/**
-	 * The default value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
+	 * The default value of the '{@link #getIsAspect() <em>Is Aspect</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAspect()
+	 * @see #getIsAspect()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ASPECT_EDEFAULT = false;
+	protected static final oolean IS_ASPECT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
+	 * The cached value of the '{@link #getIsAspect() <em>Is Aspect</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAspect()
+	 * @see #getIsAspect()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isAspect = IS_ASPECT_EDEFAULT;
+	protected oolean isAspect = IS_ASPECT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference list.
@@ -107,7 +108,7 @@ public class TypeDefinitionImpl extends NamedElementImpl implements TypeDefiniti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsAspect() {
+	public oolean getIsAspect() {
 		return isAspect;
 	}
 
@@ -116,8 +117,8 @@ public class TypeDefinitionImpl extends NamedElementImpl implements TypeDefiniti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAspect(boolean newIsAspect) {
-		boolean oldIsAspect = isAspect;
+	public void setIsAspect(oolean newIsAspect) {
+		oolean oldIsAspect = isAspect;
 		isAspect = newIsAspect;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.TYPE_DEFINITION__IS_ASPECT, oldIsAspect, isAspect));
@@ -185,7 +186,7 @@ public class TypeDefinitionImpl extends NamedElementImpl implements TypeDefiniti
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case StructurePackage.TYPE_DEFINITION__IS_ASPECT:
-				return isIsAspect();
+				return getIsAspect();
 			case StructurePackage.TYPE_DEFINITION__SUPER_TYPE:
 				return getSuperType();
 			case StructurePackage.TYPE_DEFINITION__TYPE_MAPPINGS:
@@ -204,7 +205,7 @@ public class TypeDefinitionImpl extends NamedElementImpl implements TypeDefiniti
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StructurePackage.TYPE_DEFINITION__IS_ASPECT:
-				setIsAspect((Boolean)newValue);
+				setIsAspect((oolean)newValue);
 				return;
 			case StructurePackage.TYPE_DEFINITION__SUPER_TYPE:
 				getSuperType().clear();
@@ -248,7 +249,7 @@ public class TypeDefinitionImpl extends NamedElementImpl implements TypeDefiniti
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case StructurePackage.TYPE_DEFINITION__IS_ASPECT:
-				return isAspect != IS_ASPECT_EDEFAULT;
+				return IS_ASPECT_EDEFAULT == null ? isAspect != null : !IS_ASPECT_EDEFAULT.equals(isAspect);
 			case StructurePackage.TYPE_DEFINITION__SUPER_TYPE:
 				return superType != null && !superType.isEmpty();
 			case StructurePackage.TYPE_DEFINITION__TYPE_MAPPINGS:

@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.behavior.impl;
 
+import java.lang.oolean;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -30,7 +31,7 @@ import org.kermeta.language.structure.Property;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#isIsAtpre <em>Is Atpre</em>}</li>
+ *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#getIsAtpre <em>Is Atpre</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#getStaticProperty <em>Static Property</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#getStaticOperation <em>Static Operation</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.impl.CallFeatureImpl#getStaticEnumLiteral <em>Static Enum Literal</em>}</li>
@@ -51,24 +52,24 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	protected Expression target;
 
 	/**
-	 * The default value of the '{@link #isIsAtpre() <em>Is Atpre</em>}' attribute.
+	 * The default value of the '{@link #getIsAtpre() <em>Is Atpre</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAtpre()
+	 * @see #getIsAtpre()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ATPRE_EDEFAULT = false;
+	protected static final oolean IS_ATPRE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isIsAtpre() <em>Is Atpre</em>}' attribute.
+	 * The cached value of the '{@link #getIsAtpre() <em>Is Atpre</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAtpre()
+	 * @see #getIsAtpre()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isAtpre = IS_ATPRE_EDEFAULT;
+	protected oolean isAtpre = IS_ATPRE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getStaticProperty() <em>Static Property</em>}' reference.
@@ -167,7 +168,7 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsAtpre() {
+	public oolean getIsAtpre() {
 		return isAtpre;
 	}
 
@@ -176,8 +177,8 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAtpre(boolean newIsAtpre) {
-		boolean oldIsAtpre = isAtpre;
+	public void setIsAtpre(oolean newIsAtpre) {
+		oolean oldIsAtpre = isAtpre;
 		isAtpre = newIsAtpre;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BehaviorPackage.CALL_FEATURE__IS_ATPRE, oldIsAtpre, isAtpre));
@@ -322,7 +323,7 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 			case BehaviorPackage.CALL_FEATURE__TARGET:
 				return getTarget();
 			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
-				return isIsAtpre();
+				return getIsAtpre();
 			case BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY:
 				if (resolve) return getStaticProperty();
 				return basicGetStaticProperty();
@@ -348,7 +349,7 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 				setTarget((Expression)newValue);
 				return;
 			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
-				setIsAtpre((Boolean)newValue);
+				setIsAtpre((oolean)newValue);
 				return;
 			case BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY:
 				setStaticProperty((Property)newValue);
@@ -401,7 +402,7 @@ public class CallFeatureImpl extends CallExpressionImpl implements CallFeature {
 			case BehaviorPackage.CALL_FEATURE__TARGET:
 				return target != null;
 			case BehaviorPackage.CALL_FEATURE__IS_ATPRE:
-				return isAtpre != IS_ATPRE_EDEFAULT;
+				return IS_ATPRE_EDEFAULT == null ? isAtpre != null : !IS_ATPRE_EDEFAULT.equals(isAtpre);
 			case BehaviorPackage.CALL_FEATURE__STATIC_PROPERTY:
 				return staticProperty != null;
 			case BehaviorPackage.CALL_FEATURE__STATIC_OPERATION:

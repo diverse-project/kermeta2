@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure;
 
+import java.lang.oolean;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -22,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.TypeDefinition#isIsAspect <em>Is Aspect</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.TypeDefinition#getIsAspect <em>Is Aspect</em>}</li>
  *   <li>{@link org.kermeta.language.structure.TypeDefinition#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.kermeta.language.structure.TypeDefinition#getTypeMappings <em>Type Mappings</em>}</li>
  * </ul>
@@ -42,22 +43,22 @@ public interface TypeDefinition extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Is Aspect</em>' attribute.
-	 * @see #setIsAspect(boolean)
+	 * @see #setIsAspect(oolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getTypeDefinition_IsAspect()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsAspect();
+	oolean getIsAspect();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.structure.TypeDefinition#isIsAspect <em>Is Aspect</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.structure.TypeDefinition#getIsAspect <em>Is Aspect</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Aspect</em>' attribute.
-	 * @see #isIsAspect()
+	 * @see #getIsAspect()
 	 * @generated
 	 */
-	void setIsAspect(boolean value);
+	void setIsAspect(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Super Type</b></em>' reference list.

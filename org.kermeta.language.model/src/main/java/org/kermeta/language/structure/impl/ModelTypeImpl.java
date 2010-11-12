@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
+import java.lang.oolean;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -40,7 +41,7 @@ import org.kermeta.language.structure.TypeMapping;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.kermeta.language.structure.impl.ModelTypeImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.ModelTypeImpl#isIsAspect <em>Is Aspect</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.ModelTypeImpl#getIsAspect <em>Is Aspect</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ModelTypeImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ModelTypeImpl#getTypeMappings <em>Type Mappings</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ModelTypeImpl#getContents <em>Contents</em>}</li>
@@ -71,24 +72,24 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
+	 * The default value of the '{@link #getIsAspect() <em>Is Aspect</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAspect()
+	 * @see #getIsAspect()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ASPECT_EDEFAULT = false;
+	protected static final oolean IS_ASPECT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
+	 * The cached value of the '{@link #getIsAspect() <em>Is Aspect</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAspect()
+	 * @see #getIsAspect()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isAspect = IS_ASPECT_EDEFAULT;
+	protected oolean isAspect = IS_ASPECT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference list.
@@ -165,7 +166,7 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsAspect() {
+	public oolean getIsAspect() {
 		return isAspect;
 	}
 
@@ -174,8 +175,8 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAspect(boolean newIsAspect) {
-		boolean oldIsAspect = isAspect;
+	public void setIsAspect(oolean newIsAspect) {
+		oolean oldIsAspect = isAspect;
 		isAspect = newIsAspect;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.MODEL_TYPE__IS_ASPECT, oldIsAspect, isAspect));
@@ -290,7 +291,7 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 			case StructurePackage.MODEL_TYPE__NAME:
 				return getName();
 			case StructurePackage.MODEL_TYPE__IS_ASPECT:
-				return isIsAspect();
+				return getIsAspect();
 			case StructurePackage.MODEL_TYPE__SUPER_TYPE:
 				return getSuperType();
 			case StructurePackage.MODEL_TYPE__TYPE_MAPPINGS:
@@ -314,7 +315,7 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 				setName((String)newValue);
 				return;
 			case StructurePackage.MODEL_TYPE__IS_ASPECT:
-				setIsAspect((Boolean)newValue);
+				setIsAspect((oolean)newValue);
 				return;
 			case StructurePackage.MODEL_TYPE__SUPER_TYPE:
 				getSuperType().clear();
@@ -363,7 +364,7 @@ public class ModelTypeImpl extends TypeImpl implements ModelType {
 			case StructurePackage.MODEL_TYPE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case StructurePackage.MODEL_TYPE__IS_ASPECT:
-				return isAspect != IS_ASPECT_EDEFAULT;
+				return IS_ASPECT_EDEFAULT == null ? isAspect != null : !IS_ASPECT_EDEFAULT.equals(isAspect);
 			case StructurePackage.MODEL_TYPE__SUPER_TYPE:
 				return superType != null && !superType.isEmpty();
 			case StructurePackage.MODEL_TYPE__TYPE_MAPPINGS:

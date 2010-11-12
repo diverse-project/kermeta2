@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure;
 
+import java.lang.oolean;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -30,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.kermeta.language.structure.ClassDefinition#getInv <em>Inv</em>}</li>
- *   <li>{@link org.kermeta.language.structure.ClassDefinition#isIsAbstract <em>Is Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.ClassDefinition#getIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ClassDefinition#getOwnedAttribute <em>Owned Attribute</em>}</li>
  *   <li>{@link org.kermeta.language.structure.ClassDefinition#getOwnedOperation <em>Owned Operation</em>}</li>
  * </ul>
@@ -67,22 +68,22 @@ public interface ClassDefinition extends GenericTypeDefinition, TypeContainer {
 	 * no instance can be allocated)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
-	 * @see #setIsAbstract(boolean)
+	 * @see #setIsAbstract(oolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getClassDefinition_IsAbstract()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsAbstract();
+	oolean getIsAbstract();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.structure.ClassDefinition#isIsAbstract <em>Is Abstract</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.structure.ClassDefinition#getIsAbstract <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Abstract</em>' attribute.
-	 * @see #isIsAbstract()
+	 * @see #getIsAbstract()
 	 * @generated
 	 */
-	void setIsAbstract(boolean value);
+	void setIsAbstract(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.

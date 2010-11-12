@@ -3827,6 +3827,7 @@ public interface StructurePackage extends EPackage {
 	 * The meta object id for the '<em>Boolean</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see java.lang.oolean
 	 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getBoolean()
 	 * @generated
 	 */
@@ -3905,11 +3906,11 @@ public interface StructurePackage extends EPackage {
 	EClass getOperation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Operation#isIsAbstract <em>Is Abstract</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Operation#getIsAbstract <em>Is Abstract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Abstract</em>'.
-	 * @see org.kermeta.language.structure.Operation#isIsAbstract()
+	 * @see org.kermeta.language.structure.Operation#getIsAbstract()
 	 * @see #getOperation()
 	 * @generated
 	 */
@@ -4036,11 +4037,11 @@ public interface StructurePackage extends EPackage {
 	EReference getProperty_Opposite();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#isIsReadOnly <em>Is Read Only</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#getIsReadOnly <em>Is Read Only</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Read Only</em>'.
-	 * @see org.kermeta.language.structure.Property#isIsReadOnly()
+	 * @see org.kermeta.language.structure.Property#getIsReadOnly()
 	 * @see #getProperty()
 	 * @generated
 	 */
@@ -4058,33 +4059,33 @@ public interface StructurePackage extends EPackage {
 	EAttribute getProperty_Default();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#isIsComposite <em>Is Composite</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#getIsComposite <em>Is Composite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Composite</em>'.
-	 * @see org.kermeta.language.structure.Property#isIsComposite()
+	 * @see org.kermeta.language.structure.Property#getIsComposite()
 	 * @see #getProperty()
 	 * @generated
 	 */
 	EAttribute getProperty_IsComposite();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#isIsDerived <em>Is Derived</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#getIsDerived <em>Is Derived</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Derived</em>'.
-	 * @see org.kermeta.language.structure.Property#isIsDerived()
+	 * @see org.kermeta.language.structure.Property#getIsDerived()
 	 * @see #getProperty()
 	 * @generated
 	 */
 	EAttribute getProperty_IsDerived();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#isIsID <em>Is ID</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#getIsID <em>Is ID</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is ID</em>'.
-	 * @see org.kermeta.language.structure.Property#isIsID()
+	 * @see org.kermeta.language.structure.Property#getIsID()
 	 * @see #getProperty()
 	 * @generated
 	 */
@@ -4113,22 +4114,22 @@ public interface StructurePackage extends EPackage {
 	EReference getProperty_SetterBody();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#isIsGetterAbstract <em>Is Getter Abstract</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#getIsGetterAbstract <em>Is Getter Abstract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Getter Abstract</em>'.
-	 * @see org.kermeta.language.structure.Property#isIsGetterAbstract()
+	 * @see org.kermeta.language.structure.Property#getIsGetterAbstract()
 	 * @see #getProperty()
 	 * @generated
 	 */
 	EAttribute getProperty_IsGetterAbstract();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#isIsSetterAbstract <em>Is Setter Abstract</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Property#getIsSetterAbstract <em>Is Setter Abstract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Setter Abstract</em>'.
-	 * @see org.kermeta.language.structure.Property#isIsSetterAbstract()
+	 * @see org.kermeta.language.structure.Property#getIsSetterAbstract()
 	 * @see #getProperty()
 	 * @generated
 	 */
@@ -4262,22 +4263,22 @@ public interface StructurePackage extends EPackage {
 	EClass getMultiplicityElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.MultiplicityElement#isIsOrdered <em>Is Ordered</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.MultiplicityElement#getIsOrdered <em>Is Ordered</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Ordered</em>'.
-	 * @see org.kermeta.language.structure.MultiplicityElement#isIsOrdered()
+	 * @see org.kermeta.language.structure.MultiplicityElement#getIsOrdered()
 	 * @see #getMultiplicityElement()
 	 * @generated
 	 */
 	EAttribute getMultiplicityElement_IsOrdered();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.MultiplicityElement#isIsUnique <em>Is Unique</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.MultiplicityElement#getIsUnique <em>Is Unique</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Unique</em>'.
-	 * @see org.kermeta.language.structure.MultiplicityElement#isIsUnique()
+	 * @see org.kermeta.language.structure.MultiplicityElement#getIsUnique()
 	 * @see #getMultiplicityElement()
 	 * @generated
 	 */
@@ -4316,11 +4317,11 @@ public interface StructurePackage extends EPackage {
 	EClass getTypeDefinition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.TypeDefinition#isIsAspect <em>Is Aspect</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.TypeDefinition#getIsAspect <em>Is Aspect</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Aspect</em>'.
-	 * @see org.kermeta.language.structure.TypeDefinition#isIsAspect()
+	 * @see org.kermeta.language.structure.TypeDefinition#getIsAspect()
 	 * @see #getTypeDefinition()
 	 * @generated
 	 */
@@ -4392,11 +4393,11 @@ public interface StructurePackage extends EPackage {
 	EReference getClass_SuperClass();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Class#isIsAbstract <em>Is Abstract</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.Class#getIsAbstract <em>Is Abstract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Abstract</em>'.
-	 * @see org.kermeta.language.structure.Class#isIsAbstract()
+	 * @see org.kermeta.language.structure.Class#getIsAbstract()
 	 * @see #getClass_()
 	 * @generated
 	 */
@@ -4722,11 +4723,11 @@ public interface StructurePackage extends EPackage {
 	EReference getClassDefinition_Inv();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.ClassDefinition#isIsAbstract <em>Is Abstract</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.structure.ClassDefinition#getIsAbstract <em>Is Abstract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Abstract</em>'.
-	 * @see org.kermeta.language.structure.ClassDefinition#isIsAbstract()
+	 * @see org.kermeta.language.structure.ClassDefinition#getIsAbstract()
 	 * @see #getClassDefinition()
 	 * @generated
 	 */
@@ -5367,11 +5368,12 @@ public interface StructurePackage extends EPackage {
 	EDataType getString();
 
 	/**
-	 * Returns the meta object for data type '<em>Boolean</em>'.
+	 * Returns the meta object for data type '{@link java.lang.oolean <em>Boolean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Boolean</em>'.
-	 * @model instanceClass="boolean"
+	 * @see java.lang.oolean
+	 * @model instanceClass="java.lang.oolean"
 	 * @generated
 	 */
 	EDataType getBoolean();
@@ -6654,6 +6656,7 @@ public interface StructurePackage extends EPackage {
 		 * The meta object literal for the '<em>Boolean</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see java.lang.oolean
 		 * @see org.kermeta.language.structure.impl.StructurePackageImpl#getBoolean()
 		 * @generated
 		 */

@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.behavior.impl;
 
+import java.lang.oolean;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -22,7 +23,7 @@ import org.kermeta.language.behavior.CallVariable;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.behavior.impl.CallVariableImpl#isIsAtpre <em>Is Atpre</em>}</li>
+ *   <li>{@link org.kermeta.language.behavior.impl.CallVariableImpl#getIsAtpre <em>Is Atpre</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,24 +31,24 @@ import org.kermeta.language.behavior.CallVariable;
  */
 public class CallVariableImpl extends CallExpressionImpl implements CallVariable {
 	/**
-	 * The default value of the '{@link #isIsAtpre() <em>Is Atpre</em>}' attribute.
+	 * The default value of the '{@link #getIsAtpre() <em>Is Atpre</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAtpre()
+	 * @see #getIsAtpre()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ATPRE_EDEFAULT = false;
+	protected static final oolean IS_ATPRE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isIsAtpre() <em>Is Atpre</em>}' attribute.
+	 * The cached value of the '{@link #getIsAtpre() <em>Is Atpre</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAtpre()
+	 * @see #getIsAtpre()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isAtpre = IS_ATPRE_EDEFAULT;
+	protected oolean isAtpre = IS_ATPRE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,7 +74,7 @@ public class CallVariableImpl extends CallExpressionImpl implements CallVariable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsAtpre() {
+	public oolean getIsAtpre() {
 		return isAtpre;
 	}
 
@@ -82,8 +83,8 @@ public class CallVariableImpl extends CallExpressionImpl implements CallVariable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAtpre(boolean newIsAtpre) {
-		boolean oldIsAtpre = isAtpre;
+	public void setIsAtpre(oolean newIsAtpre) {
+		oolean oldIsAtpre = isAtpre;
 		isAtpre = newIsAtpre;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BehaviorPackage.CALL_VARIABLE__IS_ATPRE, oldIsAtpre, isAtpre));
@@ -98,7 +99,7 @@ public class CallVariableImpl extends CallExpressionImpl implements CallVariable
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case BehaviorPackage.CALL_VARIABLE__IS_ATPRE:
-				return isIsAtpre();
+				return getIsAtpre();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,7 +113,7 @@ public class CallVariableImpl extends CallExpressionImpl implements CallVariable
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case BehaviorPackage.CALL_VARIABLE__IS_ATPRE:
-				setIsAtpre((Boolean)newValue);
+				setIsAtpre((oolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -142,7 +143,7 @@ public class CallVariableImpl extends CallExpressionImpl implements CallVariable
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case BehaviorPackage.CALL_VARIABLE__IS_ATPRE:
-				return isAtpre != IS_ATPRE_EDEFAULT;
+				return IS_ATPRE_EDEFAULT == null ? isAtpre != null : !IS_ATPRE_EDEFAULT.equals(isAtpre);
 		}
 		return super.eIsSet(featureID);
 	}

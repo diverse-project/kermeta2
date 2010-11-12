@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure;
 
+import java.lang.oolean;
 import org.eclipse.emf.common.util.EList;
 
 import org.kermeta.language.behavior.Expression;
@@ -25,15 +26,15 @@ import org.kermeta.language.behavior.Expression;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.kermeta.language.structure.Property#getOpposite <em>Opposite</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#isIsReadOnly <em>Is Read Only</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getIsReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#getDefault <em>Default</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#isIsComposite <em>Is Composite</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#isIsDerived <em>Is Derived</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#isIsID <em>Is ID</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getIsComposite <em>Is Composite</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getIsDerived <em>Is Derived</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getIsID <em>Is ID</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#getGetterBody <em>Getter Body</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#getSetterBody <em>Setter Body</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#isIsGetterAbstract <em>Is Getter Abstract</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Property#isIsSetterAbstract <em>Is Setter Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getIsGetterAbstract <em>Is Getter Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Property#getIsSetterAbstract <em>Is Setter Abstract</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#getOwnedUnresolvedProperties <em>Owned Unresolved Properties</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Property#getOwningClass <em>Owning Class</em>}</li>
  * </ul>
@@ -78,22 +79,22 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * Boolean stating whether the Property is read-only
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Read Only</em>' attribute.
-	 * @see #setIsReadOnly(boolean)
+	 * @see #setIsReadOnly(oolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsReadOnly()
 	 * @model default="false" dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsReadOnly();
+	oolean getIsReadOnly();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.structure.Property#isIsReadOnly <em>Is Read Only</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsReadOnly <em>Is Read Only</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Read Only</em>' attribute.
-	 * @see #isIsReadOnly()
+	 * @see #getIsReadOnly()
 	 * @generated
 	 */
-	void setIsReadOnly(boolean value);
+	void setIsReadOnly(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Default</b></em>' attribute.
@@ -129,22 +130,22 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * Boolean stating whether the Property has a containment role
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Composite</em>' attribute.
-	 * @see #setIsComposite(boolean)
+	 * @see #setIsComposite(oolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsComposite()
 	 * @model default="false" dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsComposite();
+	oolean getIsComposite();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.structure.Property#isIsComposite <em>Is Composite</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsComposite <em>Is Composite</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Composite</em>' attribute.
-	 * @see #isIsComposite()
+	 * @see #getIsComposite()
 	 * @generated
 	 */
-	void setIsComposite(boolean value);
+	void setIsComposite(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
@@ -155,22 +156,22 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * If True, the value of the property is not stored but computed from other properties
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived</em>' attribute.
-	 * @see #setIsDerived(boolean)
+	 * @see #setIsDerived(oolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsDerived()
 	 * @model default="false" dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsDerived();
+	oolean getIsDerived();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.structure.Property#isIsDerived <em>Is Derived</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsDerived <em>Is Derived</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Derived</em>' attribute.
-	 * @see #isIsDerived()
+	 * @see #getIsDerived()
 	 * @generated
 	 */
-	void setIsDerived(boolean value);
+	void setIsDerived(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Is ID</b></em>' attribute.
@@ -180,22 +181,22 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * Boolean stating whether the property allows to identify its containing Object
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is ID</em>' attribute.
-	 * @see #setIsID(boolean)
+	 * @see #setIsID(oolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsID()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsID();
+	oolean getIsID();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.structure.Property#isIsID <em>Is ID</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsID <em>Is ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is ID</em>' attribute.
-	 * @see #isIsID()
+	 * @see #getIsID()
 	 * @generated
 	 */
-	void setIsID(boolean value);
+	void setIsID(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Getter Body</b></em>' containment reference.
@@ -255,22 +256,22 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * Boolean stating wether the getter is abstract.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Getter Abstract</em>' attribute.
-	 * @see #setIsGetterAbstract(boolean)
+	 * @see #setIsGetterAbstract(oolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsGetterAbstract()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsGetterAbstract();
+	oolean getIsGetterAbstract();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.structure.Property#isIsGetterAbstract <em>Is Getter Abstract</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsGetterAbstract <em>Is Getter Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Getter Abstract</em>' attribute.
-	 * @see #isIsGetterAbstract()
+	 * @see #getIsGetterAbstract()
 	 * @generated
 	 */
-	void setIsGetterAbstract(boolean value);
+	void setIsGetterAbstract(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Setter Abstract</b></em>' attribute.
@@ -280,22 +281,22 @@ public interface Property extends MultiplicityElement, AbstractProperty {
 	 * Boolean stating wether the setter is abstract.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Setter Abstract</em>' attribute.
-	 * @see #setIsSetterAbstract(boolean)
+	 * @see #setIsSetterAbstract(oolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getProperty_IsSetterAbstract()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsSetterAbstract();
+	oolean getIsSetterAbstract();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.structure.Property#isIsSetterAbstract <em>Is Setter Abstract</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.structure.Property#getIsSetterAbstract <em>Is Setter Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Setter Abstract</em>' attribute.
-	 * @see #isIsSetterAbstract()
+	 * @see #getIsSetterAbstract()
 	 * @generated
 	 */
-	void setIsSetterAbstract(boolean value);
+	void setIsSetterAbstract(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Unresolved Properties</b></em>' containment reference list.

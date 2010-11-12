@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure;
 
+import java.lang.oolean;
 import org.eclipse.emf.common.util.EList;
 
 import org.kermeta.language.behavior.Expression;
@@ -22,7 +23,7 @@ import org.kermeta.language.behavior.Expression;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.Operation#isIsAbstract <em>Is Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Operation#getIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Operation#getRaisedException <em>Raised Exception</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Operation#getOwnedParameter <em>Owned Parameter</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Operation#getPre <em>Pre</em>}</li>
@@ -48,22 +49,22 @@ public interface Operation extends MultiplicityElement, AbstractOperation {
 	 * Boolean stating whether the Operation is abstract
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
-	 * @see #setIsAbstract(boolean)
+	 * @see #setIsAbstract(oolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getOperation_IsAbstract()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsAbstract();
+	oolean getIsAbstract();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.structure.Operation#isIsAbstract <em>Is Abstract</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.structure.Operation#getIsAbstract <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Abstract</em>' attribute.
-	 * @see #isIsAbstract()
+	 * @see #getIsAbstract()
 	 * @generated
 	 */
-	void setIsAbstract(boolean value);
+	void setIsAbstract(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Raised Exception</b></em>' reference list.

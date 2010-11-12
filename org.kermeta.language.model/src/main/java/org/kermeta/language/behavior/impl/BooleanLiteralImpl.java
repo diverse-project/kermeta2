@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.behavior.impl;
 
+import java.lang.oolean;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -22,7 +23,7 @@ import org.kermeta.language.behavior.BooleanLiteral;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.behavior.impl.BooleanLiteralImpl#isValue <em>Value</em>}</li>
+ *   <li>{@link org.kermeta.language.behavior.impl.BooleanLiteralImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,24 +31,24 @@ import org.kermeta.language.behavior.BooleanLiteral;
  */
 public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
 	/**
-	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isValue()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean VALUE_EDEFAULT = false;
+	protected static final oolean VALUE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isValue()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean value = VALUE_EDEFAULT;
+	protected oolean value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,7 +74,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isValue() {
+	public oolean getValue() {
 		return value;
 	}
 
@@ -82,8 +83,8 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(boolean newValue) {
-		boolean oldValue = value;
+	public void setValue(oolean newValue) {
+		oolean oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BehaviorPackage.BOOLEAN_LITERAL__VALUE, oldValue, value));
@@ -98,7 +99,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case BehaviorPackage.BOOLEAN_LITERAL__VALUE:
-				return isValue();
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,7 +113,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case BehaviorPackage.BOOLEAN_LITERAL__VALUE:
-				setValue((Boolean)newValue);
+				setValue((oolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -142,7 +143,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case BehaviorPackage.BOOLEAN_LITERAL__VALUE:
-				return value != VALUE_EDEFAULT;
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}

@@ -6,6 +6,8 @@
  */
 package org.kermeta.language.structure;
 
+import java.lang.oolean;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -19,8 +21,8 @@ package org.kermeta.language.structure;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.MultiplicityElement#isIsOrdered <em>Is Ordered</em>}</li>
- *   <li>{@link org.kermeta.language.structure.MultiplicityElement#isIsUnique <em>Is Unique</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.MultiplicityElement#getIsOrdered <em>Is Ordered</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.MultiplicityElement#getIsUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.kermeta.language.structure.MultiplicityElement#getLower <em>Lower</em>}</li>
  *   <li>{@link org.kermeta.language.structure.MultiplicityElement#getUpper <em>Upper</em>}</li>
  * </ul>
@@ -40,22 +42,22 @@ public interface MultiplicityElement extends TypedElement {
 	 * Boolean stating whether the element is ordered
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
-	 * @see #setIsOrdered(boolean)
+	 * @see #setIsOrdered(oolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getMultiplicityElement_IsOrdered()
 	 * @model default="false" dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsOrdered();
+	oolean getIsOrdered();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.structure.MultiplicityElement#isIsOrdered <em>Is Ordered</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.structure.MultiplicityElement#getIsOrdered <em>Is Ordered</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Ordered</em>' attribute.
-	 * @see #isIsOrdered()
+	 * @see #getIsOrdered()
 	 * @generated
 	 */
-	void setIsOrdered(boolean value);
+	void setIsOrdered(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Unique</b></em>' attribute.
@@ -66,22 +68,22 @@ public interface MultiplicityElement extends TypedElement {
 	 * Boolean stating whether duplicated elements are allowed
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Unique</em>' attribute.
-	 * @see #setIsUnique(boolean)
+	 * @see #setIsUnique(oolean)
 	 * @see org.kermeta.language.structure.StructurePackage#getMultiplicityElement_IsUnique()
 	 * @model default="true" dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsUnique();
+	oolean getIsUnique();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.structure.MultiplicityElement#isIsUnique <em>Is Unique</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.structure.MultiplicityElement#getIsUnique <em>Is Unique</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Unique</em>' attribute.
-	 * @see #isIsUnique()
+	 * @see #getIsUnique()
 	 * @generated
 	 */
-	void setIsUnique(boolean value);
+	void setIsUnique(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Lower</b></em>' attribute.

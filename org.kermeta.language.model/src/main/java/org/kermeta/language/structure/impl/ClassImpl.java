@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
+import java.lang.oolean;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -14,6 +15,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.kermeta.language.structure.Operation;
 import org.kermeta.language.structure.Property;
+import org.kermeta.language.structure.StructureFactory;
 import org.kermeta.language.structure.StructurePackage;
 
 /**
@@ -26,7 +28,7 @@ import org.kermeta.language.structure.StructurePackage;
  *   <li>{@link org.kermeta.language.structure.impl.ClassImpl#getOwnedAttribute <em>Owned Attribute</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ClassImpl#getOwnedOperation <em>Owned Operation</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ClassImpl#getSuperClass <em>Super Class</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.ClassImpl#isIsAbstract <em>Is Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.ClassImpl#getIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ClassImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -66,24 +68,24 @@ public class ClassImpl extends ParameterizedTypeImpl implements org.kermeta.lang
   protected EList<org.kermeta.language.structure.Class> superClass;
 
   /**
-	 * The default value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
+	 * The default value of the '{@link #getIsAbstract() <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #isIsAbstract()
+	 * @see #getIsAbstract()
 	 * @generated
 	 * @ordered
 	 */
-  protected static final boolean IS_ABSTRACT_EDEFAULT = false;
+  protected static final oolean IS_ABSTRACT_EDEFAULT = (oolean)StructureFactory.eINSTANCE.createFromString(StructurePackage.eINSTANCE.getBoolean(), "false");
 
   /**
-	 * The cached value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
+	 * The cached value of the '{@link #getIsAbstract() <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #isIsAbstract()
+	 * @see #getIsAbstract()
 	 * @generated
 	 * @ordered
 	 */
-  protected boolean isAbstract = IS_ABSTRACT_EDEFAULT;
+  protected oolean isAbstract = IS_ABSTRACT_EDEFAULT;
 
   /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -167,15 +169,14 @@ public class ClassImpl extends ParameterizedTypeImpl implements org.kermeta.lang
 
   /**
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public boolean isIsAbstract()
-  {
+	public oolean getIsAbstract() {
 		return isAbstract;
 	}
 
-  /**
+		/**
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
@@ -201,7 +202,7 @@ public class ClassImpl extends ParameterizedTypeImpl implements org.kermeta.lang
 			case StructurePackage.CLASS__SUPER_CLASS:
 				return getSuperClass();
 			case StructurePackage.CLASS__IS_ABSTRACT:
-				return isIsAbstract();
+				return getIsAbstract();
 			case StructurePackage.CLASS__NAME:
 				return getName();
 		}
@@ -224,7 +225,7 @@ public class ClassImpl extends ParameterizedTypeImpl implements org.kermeta.lang
 			case StructurePackage.CLASS__SUPER_CLASS:
 				return superClass != null && !superClass.isEmpty();
 			case StructurePackage.CLASS__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return IS_ABSTRACT_EDEFAULT == null ? isAbstract != null : !IS_ABSTRACT_EDEFAULT.equals(isAbstract);
 			case StructurePackage.CLASS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}

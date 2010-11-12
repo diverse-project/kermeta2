@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
+import java.lang.oolean;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -37,7 +38,7 @@ import org.kermeta.language.structure.TypeMapping;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.kermeta.language.structure.impl.DataTypeImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.DataTypeImpl#isIsAspect <em>Is Aspect</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.DataTypeImpl#getIsAspect <em>Is Aspect</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.DataTypeImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.DataTypeImpl#getTypeMappings <em>Type Mappings</em>}</li>
  * </ul>
@@ -67,24 +68,24 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
+	 * The default value of the '{@link #getIsAspect() <em>Is Aspect</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAspect()
+	 * @see #getIsAspect()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ASPECT_EDEFAULT = false;
+	protected static final oolean IS_ASPECT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isIsAspect() <em>Is Aspect</em>}' attribute.
+	 * The cached value of the '{@link #getIsAspect() <em>Is Aspect</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAspect()
+	 * @see #getIsAspect()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isAspect = IS_ASPECT_EDEFAULT;
+	protected oolean isAspect = IS_ASPECT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference list.
@@ -151,7 +152,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsAspect() {
+	public oolean getIsAspect() {
 		return isAspect;
 	}
 
@@ -160,8 +161,8 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAspect(boolean newIsAspect) {
-		boolean oldIsAspect = isAspect;
+	public void setIsAspect(oolean newIsAspect) {
+		oolean oldIsAspect = isAspect;
 		isAspect = newIsAspect;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.DATA_TYPE__IS_ASPECT, oldIsAspect, isAspect));
@@ -231,7 +232,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 			case StructurePackage.DATA_TYPE__NAME:
 				return getName();
 			case StructurePackage.DATA_TYPE__IS_ASPECT:
-				return isIsAspect();
+				return getIsAspect();
 			case StructurePackage.DATA_TYPE__SUPER_TYPE:
 				return getSuperType();
 			case StructurePackage.DATA_TYPE__TYPE_MAPPINGS:
@@ -253,7 +254,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 				setName((String)newValue);
 				return;
 			case StructurePackage.DATA_TYPE__IS_ASPECT:
-				setIsAspect((Boolean)newValue);
+				setIsAspect((oolean)newValue);
 				return;
 			case StructurePackage.DATA_TYPE__SUPER_TYPE:
 				getSuperType().clear();
@@ -302,7 +303,7 @@ public abstract class DataTypeImpl extends TypeImpl implements DataType {
 			case StructurePackage.DATA_TYPE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case StructurePackage.DATA_TYPE__IS_ASPECT:
-				return isAspect != IS_ASPECT_EDEFAULT;
+				return IS_ASPECT_EDEFAULT == null ? isAspect != null : !IS_ASPECT_EDEFAULT.equals(isAspect);
 			case StructurePackage.DATA_TYPE__SUPER_TYPE:
 				return superType != null && !superType.isEmpty();
 			case StructurePackage.DATA_TYPE__TYPE_MAPPINGS:

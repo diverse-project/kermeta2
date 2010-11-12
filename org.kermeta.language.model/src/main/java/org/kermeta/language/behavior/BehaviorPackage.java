@@ -2262,11 +2262,11 @@ public interface BehaviorPackage extends EPackage {
 	EReference getAssignment_Value();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.behavior.Assignment#isIsCast <em>Is Cast</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.behavior.Assignment#getIsCast <em>Is Cast</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Cast</em>'.
-	 * @see org.kermeta.language.behavior.Assignment#isIsCast()
+	 * @see org.kermeta.language.behavior.Assignment#getIsCast()
 	 * @see #getAssignment()
 	 * @generated
 	 */
@@ -2379,11 +2379,11 @@ public interface BehaviorPackage extends EPackage {
 	EClass getCallVariable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.behavior.CallVariable#isIsAtpre <em>Is Atpre</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.behavior.CallVariable#getIsAtpre <em>Is Atpre</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Atpre</em>'.
-	 * @see org.kermeta.language.behavior.CallVariable#isIsAtpre()
+	 * @see org.kermeta.language.behavior.CallVariable#getIsAtpre()
 	 * @see #getCallVariable()
 	 * @generated
 	 */
@@ -2411,11 +2411,11 @@ public interface BehaviorPackage extends EPackage {
 	EReference getCallFeature_Target();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.behavior.CallFeature#isIsAtpre <em>Is Atpre</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.behavior.CallFeature#getIsAtpre <em>Is Atpre</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Atpre</em>'.
-	 * @see org.kermeta.language.behavior.CallFeature#isIsAtpre()
+	 * @see org.kermeta.language.behavior.CallFeature#getIsAtpre()
 	 * @see #getCallFeature()
 	 * @generated
 	 */
@@ -2781,11 +2781,11 @@ public interface BehaviorPackage extends EPackage {
 	EClass getBooleanLiteral();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.kermeta.language.behavior.BooleanLiteral#isValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.kermeta.language.behavior.BooleanLiteral#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.kermeta.language.behavior.BooleanLiteral#isValue()
+	 * @see org.kermeta.language.behavior.BooleanLiteral#getValue()
 	 * @see #getBooleanLiteral()
 	 * @generated
 	 */

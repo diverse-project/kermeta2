@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
+import java.lang.oolean;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -587,8 +588,8 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Boolean createBooleanFromString(EDataType eDataType, String initialValue) {
-		return (Boolean)super.createFromString(eDataType, initialValue);
+	public oolean createBooleanFromString(EDataType eDataType, String initialValue) {
+		return (oolean)super.createFromString(eDataType, initialValue);
 	}
 
 	/**

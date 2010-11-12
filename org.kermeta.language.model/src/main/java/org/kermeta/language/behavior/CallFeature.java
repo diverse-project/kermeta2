@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.behavior;
 
+import java.lang.oolean;
 import org.kermeta.language.structure.EnumerationLiteral;
 import org.kermeta.language.structure.Operation;
 import org.kermeta.language.structure.Property;
@@ -25,7 +26,7 @@ import org.kermeta.language.structure.Property;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.kermeta.language.behavior.CallFeature#getTarget <em>Target</em>}</li>
- *   <li>{@link org.kermeta.language.behavior.CallFeature#isIsAtpre <em>Is Atpre</em>}</li>
+ *   <li>{@link org.kermeta.language.behavior.CallFeature#getIsAtpre <em>Is Atpre</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.CallFeature#getStaticProperty <em>Static Property</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.CallFeature#getStaticOperation <em>Static Operation</em>}</li>
  *   <li>{@link org.kermeta.language.behavior.CallFeature#getStaticEnumLiteral <em>Static Enum Literal</em>}</li>
@@ -70,22 +71,22 @@ public interface CallFeature extends CallExpression {
 	 * Tells whether this CallFeature represents a call to @pre in a postcondition
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Atpre</em>' attribute.
-	 * @see #setIsAtpre(boolean)
+	 * @see #setIsAtpre(oolean)
 	 * @see org.kermeta.language.behavior.BehaviorPackage#getCallFeature_IsAtpre()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isIsAtpre();
+	oolean getIsAtpre();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.behavior.CallFeature#isIsAtpre <em>Is Atpre</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.behavior.CallFeature#getIsAtpre <em>Is Atpre</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Atpre</em>' attribute.
-	 * @see #isIsAtpre()
+	 * @see #getIsAtpre()
 	 * @generated
 	 */
-	void setIsAtpre(boolean value);
+	void setIsAtpre(oolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Static Property</b></em>' reference.

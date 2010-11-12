@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
+import java.lang.oolean;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -38,7 +39,7 @@ import org.kermeta.language.structure.TypeContainer;
  * <ul>
  *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getContainedType <em>Contained Type</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getInv <em>Inv</em>}</li>
- *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#isIsAbstract <em>Is Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getOwnedAttribute <em>Owned Attribute</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.ClassDefinitionImpl#getOwnedOperation <em>Owned Operation</em>}</li>
  * </ul>
@@ -68,24 +69,24 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 	protected EList<Constraint> inv;
 
 	/**
-	 * The default value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
+	 * The default value of the '{@link #getIsAbstract() <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAbstract()
+	 * @see #getIsAbstract()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ABSTRACT_EDEFAULT = false;
+	protected static final oolean IS_ABSTRACT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
+	 * The cached value of the '{@link #getIsAbstract() <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAbstract()
+	 * @see #getIsAbstract()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isAbstract = IS_ABSTRACT_EDEFAULT;
+	protected oolean isAbstract = IS_ABSTRACT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOwnedAttribute() <em>Owned Attribute</em>}' containment reference list.
@@ -155,7 +156,7 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsAbstract() {
+	public oolean getIsAbstract() {
 		return isAbstract;
 	}
 
@@ -164,8 +165,8 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAbstract(boolean newIsAbstract) {
-		boolean oldIsAbstract = isAbstract;
+	public void setIsAbstract(oolean newIsAbstract) {
+		oolean oldIsAbstract = isAbstract;
 		isAbstract = newIsAbstract;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.CLASS_DEFINITION__IS_ABSTRACT, oldIsAbstract, isAbstract));
@@ -249,7 +250,7 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 			case StructurePackage.CLASS_DEFINITION__INV:
 				return getInv();
 			case StructurePackage.CLASS_DEFINITION__IS_ABSTRACT:
-				return isIsAbstract();
+				return getIsAbstract();
 			case StructurePackage.CLASS_DEFINITION__OWNED_ATTRIBUTE:
 				return getOwnedAttribute();
 			case StructurePackage.CLASS_DEFINITION__OWNED_OPERATION:
@@ -276,7 +277,7 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 				getInv().addAll((Collection<? extends Constraint>)newValue);
 				return;
 			case StructurePackage.CLASS_DEFINITION__IS_ABSTRACT:
-				setIsAbstract((Boolean)newValue);
+				setIsAbstract((oolean)newValue);
 				return;
 			case StructurePackage.CLASS_DEFINITION__OWNED_ATTRIBUTE:
 				getOwnedAttribute().clear();
@@ -330,7 +331,7 @@ public class ClassDefinitionImpl extends GenericTypeDefinitionImpl implements Cl
 			case StructurePackage.CLASS_DEFINITION__INV:
 				return inv != null && !inv.isEmpty();
 			case StructurePackage.CLASS_DEFINITION__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return IS_ABSTRACT_EDEFAULT == null ? isAbstract != null : !IS_ABSTRACT_EDEFAULT.equals(isAbstract);
 			case StructurePackage.CLASS_DEFINITION__OWNED_ATTRIBUTE:
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case StructurePackage.CLASS_DEFINITION__OWNED_OPERATION:

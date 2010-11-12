@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure.impl;
 
+import java.lang.oolean;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -43,7 +44,7 @@ import org.kermeta.language.structure.UnresolvedOperation;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.kermeta.language.structure.impl.OperationImpl#isIsAbstract <em>Is Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.impl.OperationImpl#getIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.OperationImpl#getRaisedException <em>Raised Exception</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.OperationImpl#getOwnedParameter <em>Owned Parameter</em>}</li>
  *   <li>{@link org.kermeta.language.structure.impl.OperationImpl#getPre <em>Pre</em>}</li>
@@ -60,24 +61,24 @@ import org.kermeta.language.structure.UnresolvedOperation;
  */
 public class OperationImpl extends MultiplicityElementImpl implements Operation {
 	/**
-	 * The default value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
+	 * The default value of the '{@link #getIsAbstract() <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAbstract()
+	 * @see #getIsAbstract()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ABSTRACT_EDEFAULT = false;
+	protected static final oolean IS_ABSTRACT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
+	 * The cached value of the '{@link #getIsAbstract() <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAbstract()
+	 * @see #getIsAbstract()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isAbstract = IS_ABSTRACT_EDEFAULT;
+	protected oolean isAbstract = IS_ABSTRACT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getRaisedException() <em>Raised Exception</em>}' reference list.
@@ -183,7 +184,7 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsAbstract() {
+	public oolean getIsAbstract() {
 		return isAbstract;
 	}
 
@@ -192,8 +193,8 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsAbstract(boolean newIsAbstract) {
-		boolean oldIsAbstract = isAbstract;
+	public void setIsAbstract(oolean newIsAbstract) {
+		oolean oldIsAbstract = isAbstract;
 		isAbstract = newIsAbstract;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.OPERATION__IS_ABSTRACT, oldIsAbstract, isAbstract));
@@ -463,7 +464,7 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case StructurePackage.OPERATION__IS_ABSTRACT:
-				return isIsAbstract();
+				return getIsAbstract();
 			case StructurePackage.OPERATION__RAISED_EXCEPTION:
 				return getRaisedException();
 			case StructurePackage.OPERATION__OWNED_PARAMETER:
@@ -497,7 +498,7 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StructurePackage.OPERATION__IS_ABSTRACT:
-				setIsAbstract((Boolean)newValue);
+				setIsAbstract((oolean)newValue);
 				return;
 			case StructurePackage.OPERATION__RAISED_EXCEPTION:
 				getRaisedException().clear();
@@ -587,7 +588,7 @@ public class OperationImpl extends MultiplicityElementImpl implements Operation 
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case StructurePackage.OPERATION__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return IS_ABSTRACT_EDEFAULT == null ? isAbstract != null : !IS_ABSTRACT_EDEFAULT.equals(isAbstract);
 			case StructurePackage.OPERATION__RAISED_EXCEPTION:
 				return raisedException != null && !raisedException.isEmpty();
 			case StructurePackage.OPERATION__OWNED_PARAMETER:

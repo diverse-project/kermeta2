@@ -6,6 +6,8 @@
  */
 package org.kermeta.language.behavior;
 
+import java.lang.oolean;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +21,7 @@ package org.kermeta.language.behavior;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.kermeta.language.behavior.BooleanLiteral#isValue <em>Value</em>}</li>
+ *   <li>{@link org.kermeta.language.behavior.BooleanLiteral#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,21 +38,21 @@ public interface BooleanLiteral extends Literal {
 	 * The concrete value represented by this literal
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(boolean)
+	 * @see #setValue(oolean)
 	 * @see org.kermeta.language.behavior.BehaviorPackage#getBooleanLiteral_Value()
 	 * @model dataType="org.kermeta.language.structure.Boolean"
 	 * @generated
 	 */
-	boolean isValue();
+	oolean getValue();
 
 	/**
-	 * Sets the value of the '{@link org.kermeta.language.behavior.BooleanLiteral#isValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link org.kermeta.language.behavior.BooleanLiteral#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #isValue()
+	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(boolean value);
+	void setValue(oolean value);
 
 } // BooleanLiteral

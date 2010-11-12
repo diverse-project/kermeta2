@@ -6,6 +6,7 @@
  */
 package org.kermeta.language.structure;
 
+import java.lang.oolean;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -24,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.kermeta.language.structure.Class#getOwnedAttribute <em>Owned Attribute</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Class#getOwnedOperation <em>Owned Operation</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Class#getSuperClass <em>Super Class</em>}</li>
- *   <li>{@link org.kermeta.language.structure.Class#isIsAbstract <em>Is Abstract</em>}</li>
+ *   <li>{@link org.kermeta.language.structure.Class#getIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.kermeta.language.structure.Class#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -93,7 +94,7 @@ public interface Class extends ParameterizedType {
 	 * @model default="false" dataType="org.kermeta.language.structure.Boolean" changeable="false" derived="true"
 	 * @generated
 	 */
-	boolean isIsAbstract();
+	oolean getIsAbstract();
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
