@@ -18,6 +18,8 @@ import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.annotation.Library;
 import org.kermeta.art2.annotation.Start;
 import org.kermeta.art2.annotation.Stop;
+import org.kermeta.art2.annotation.ThirdParties;
+import org.kermeta.art2.annotation.ThirdParty;
 import org.kermeta.art2.framework.AbstractComponentType;
 import org.kermeta.language.api.ktoken.IKToken;
 import org.kermeta.language.api.port.PortLexer;
@@ -36,6 +38,14 @@ import scala.Option;
     @ProvidedPort(name = "KMTloader", className = PortResourceLoader.class),
     @ProvidedPort(name = "KMTlexer", className = PortLexer.class)
 })
+
+@ThirdParties({
+	@ThirdParty(name="org.kermeta.language.model", url="mvn:org.kermeta.language/language.model"),
+	@ThirdParty(name="org.kermeta.language.kp.model", url="mvn:org.kermeta.kp/kp.model"),
+	@ThirdParty(name="org.kermeta.language.traceability.model", url="mvn:org.kermeta.traceability/traceability.model"),
+	@ThirdParty(name="org.kermeta.language.api", url="mvn:org.kermeta.language/language.api")
+})
+
 @Library(name = "org.kermeta.language")
 @ComponentType
 public class Art2ComponentLoader extends AbstractComponentType implements org.kermeta.language.api.port.PortResourceLoader {
