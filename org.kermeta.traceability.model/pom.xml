@@ -46,7 +46,7 @@
 							org.osgi.framework;version="[1.5,2)"
                         </Import-Package>
                         <Bundle-ClassPath>.</Bundle-ClassPath>
-                        <Bundle-SymbolicName>org.kermeta.traceability.model;singleton:=true</Bundle-SymbolicName>
+                        <Bundle-SymbolicName>org.kermeta.traceability.model</Bundle-SymbolicName>
                     </instructions>
                 </configuration>
             </plugin>
