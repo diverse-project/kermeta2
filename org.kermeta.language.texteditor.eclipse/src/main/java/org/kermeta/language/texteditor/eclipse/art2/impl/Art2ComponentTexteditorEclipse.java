@@ -90,7 +90,7 @@ public class Art2ComponentTexteditorEclipse extends AbstractComponentType {
 	 */
 	@Start
 	public void start(){
-		//System.out.println("Art2ComponentTexteditorEclipse.start ...");
+		System.out.println("Art2ComponentTexteditorEclipse.start ...");
 		// set the singleton instance
 		instance =  this;
 		// store some useful data
