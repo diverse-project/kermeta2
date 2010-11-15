@@ -8,13 +8,13 @@ Ignore-Package: org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.u
  f.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecor
  e.impl,org.eclipse.emf.common.notify
 Bundle-ClassPath: .
-Built-By: root
+Built-By: hrambelo
 Tool: Bnd-0.0.311
 Bundle-Name: Kermeta :: KP MODEL
 Created-By: Apache Maven Bundle Plugin
 Build-Jdk: 1.6.0_20
 Bundle-Version: 2.0.1.SNAPSHOT
-Bnd-LastModified: 1286466673551
+Bnd-LastModified: 1289381150643
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: org.kermeta.kp.model;singleton:=true
+Bundle-SymbolicName: org.kermeta.kp.model
 
