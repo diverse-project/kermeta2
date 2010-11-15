@@ -16,18 +16,27 @@ import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.ProvidedPort;
 import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.annotation.Library;
+import org.kermeta.art2.annotation.PortType;
+import org.kermeta.art2.annotation.RequiredPort;
+import org.kermeta.art2.annotation.Requires;
 import org.kermeta.art2.annotation.Start;
 import org.kermeta.art2.annotation.Stop;
 import org.kermeta.art2.annotation.ThirdParties;
 import org.kermeta.art2.annotation.ThirdParty;
 import org.kermeta.art2.framework.AbstractComponentType;
+import org.kermeta.art2.framework.MessagePort;
 import org.kermeta.language.api.ktoken.IKToken;
+import org.kermeta.language.api.messaging.UnifiedMessageFactory;
 import org.kermeta.language.api.port.PortLexer;
 import org.kermeta.language.api.port.PortResourceLoader;
 import org.kermeta.language.structure.ModelingUnit;
 import org.kermeta.scala.parser.KParser;
 import org.kermeta.scala.parser.ParserUtil;
 import org.kermeta.language.lexer.KMLexer;
+import org.kermeta.scala.parser.ParseException;
+import org.kermeta.traceability.TextReference;
+import org.kermeta.traceability.TraceabilityFactory;
+import org.osgi.framework.Bundle;
 import scala.Option;
 
 /**
@@ -38,6 +47,9 @@ import scala.Option;
     @ProvidedPort(name = "KMTloader", className = PortResourceLoader.class),
     @ProvidedPort(name = "KMTlexer", className = PortLexer.class)
 })
+@Requires({
+    @RequiredPort(name = "log", type = PortType.MESSAGE)
+})
 @ThirdParties({
     @ThirdParty(name = "org.kermeta.language.model", url = "mvn:org.kermeta.language/language.model"),
     @ThirdParty(name = "org.kermeta.language.kp.model", url = "mvn:org.kermeta.kp/kp.model"),
@@ -47,18 +59,41 @@ import scala.Option;
 })
 @Library(name = "org.kermeta.language")
 @ComponentType
-public class Art2ComponentLoader extends AbstractComponentType implements org.kermeta.language.api.port.PortResourceLoader {
+public class Art2ComponentKMTLoader extends AbstractComponentType implements org.kermeta.language.api.port.PortResourceLoader {
 
     @Port(name = "KMTloader", method = "load")
-    public ModelingUnit load(String uri, org.kermeta.language.api.port.PortResourceLoader.URIType type) {
+    public ModelingUnit load(String uri, org.kermeta.language.api.port.PortResourceLoader.URIType type, String optionalContent) {
 
         KParser parser = new KParser();
 
-        Option result = parser.parseSynch(ParserUtil.loadFile(uri));
+        String content = optionalContent;
+        if (content.equals("")) {
+            content = ParserUtil.loadFile(uri);
+        }
 
+        Option result = parser.parseSynch(content);
         if (result.isEmpty()) {
+
+            //SEND ERROR LOG
+            if (!parser.getErrors().isEmpty()) {
+                ParseException pe = parser.getErrors().get();
+
+                TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
+                textRef.setFileURI(uri);
+                textRef.setLineBeginAt(pe.line());
+                textRef.setLineEndAt(pe.line());//TODO
+                getPortByName("log", MessagePort.class).process(UnifiedMessageFactory.getInstance().createErrorMessage(pe.errMsg(), bundleSymbolicName, null, textRef));
+
+            }
             return null;
         } else {
+
+            TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
+            textRef.setFileURI(uri);
+            textRef.setCharBeginAt(0);
+            textRef.setCharEndAt(content.length());
+            getPortByName("log", MessagePort.class).process(UnifiedMessageFactory.getInstance().createOkMessage("File URI("+uri+") is clear ", bundleSymbolicName, null, textRef));
+
             return (ModelingUnit) result.get();
         }
 
@@ -79,9 +114,11 @@ public class Art2ComponentLoader extends AbstractComponentType implements org.ke
         return result;
 
     }
+    private String bundleSymbolicName = "";
 
     @Start
     public void start() {
+        bundleSymbolicName = ((Bundle) this.getDictionary().get("osgi.bundle")).getHeaders().get("Bundle-SymbolicName").toString();
     }
 
     @Stop

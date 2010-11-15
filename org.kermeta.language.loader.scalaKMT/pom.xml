@@ -67,6 +67,7 @@
 						<Import-Package>
 							org.kermeta.*,
 							org.eclipse.emf.*,
+                                                        org.slf4j.*;version="${slf4j.version.range}",
 							org.osgi.framework;version="[1.5,2)",
 							scala.*
                         </Import-Package>

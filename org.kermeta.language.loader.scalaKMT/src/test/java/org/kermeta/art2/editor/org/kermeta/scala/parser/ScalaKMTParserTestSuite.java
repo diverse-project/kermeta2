@@ -8,7 +8,7 @@ import java.util.Enumeration;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import org.kermeta.language.api.tests.port.PortResourceLoaderTestSuite;
-import org.kermeta.scala.parser.art2.impl.Art2ComponentLoader;
+import org.kermeta.scala.parser.art2.impl.Art2ComponentKMTLoader;
 
 /**
  *
@@ -18,7 +18,7 @@ public class ScalaKMTParserTestSuite extends TestSuite {
 
    // @Override
     public static Test suite() {
-        PortResourceLoaderTestSuite.loaderClass = Art2ComponentLoader.class;
+        PortResourceLoaderTestSuite.loaderClass = Art2ComponentKMTLoader.class;
         return PortResourceLoaderTestSuite.suite();
     }
 
