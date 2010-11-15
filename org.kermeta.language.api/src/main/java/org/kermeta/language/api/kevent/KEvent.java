@@ -17,17 +17,29 @@ package org.kermeta.language.api.kevent;
  */
 public abstract class KEvent {
 
-	/**
-	 * URI of the resource that have changed.
-	 */
-	protected String URI;
+    /**
+     * URI of the resource that have changed.
+     */
+    protected String URI;
 
-	/**
-	 * Constructor
-	 * 
-	 */
-	public KEvent(String URI) {
-		this.URI = URI;
-	}
+    public String getURI() {
+        return URI;
+    }
+
+    public void setURI(String URI) {
+        this.URI = URI;
+    }
+
+    /**
+     * Constructor
+     *
+     */
+
+    /*
+    public KEvent(String URI) {
+        this.URI = URI;
+    }*/
+
+
 
 }

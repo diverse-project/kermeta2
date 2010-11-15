@@ -13,8 +13,8 @@ import org.kermeta.language.structure.ModelingUnit;
  */
 public interface PortResourceLoader {
     
-    public enum URIType {NSURI, FILE};
+    public enum URIType {NSURI, FILE, INMEMORY};
     //MODELING UNIT NON TYPE RESOLVED
-    public ModelingUnit load(String uri, URIType type);
+    public ModelingUnit load(String uri, URIType type, String optionalContent);
 
 }
