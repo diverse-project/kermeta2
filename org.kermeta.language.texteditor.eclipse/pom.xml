@@ -20,7 +20,7 @@
 	<dependencies>
 		<!-- Main dependencies -->
 		<dependency>
-			<groupId>${project.parent.groupId}</groupId>
+			<groupId>org.kermeta.language</groupId>
 			<artifactId>language.model</artifactId>
 			<version>${kermeta.version}</version>
 			<type>pom</type>
@@ -34,10 +34,9 @@
 			<scope>compile</scope>
 		</dependency> -->
 		<dependency>
-			<groupId>${project.parent.groupId}</groupId>
+			<groupId>org.kermeta.language</groupId>
 			<artifactId>language.api</artifactId>
 			<version>${kermeta.version}</version>
-			<type>bundle</type>
 			<scope>compile</scope>
 		</dependency>
 		<!--  Eclipse Dynamic Plugin provisionning dependencies -->
