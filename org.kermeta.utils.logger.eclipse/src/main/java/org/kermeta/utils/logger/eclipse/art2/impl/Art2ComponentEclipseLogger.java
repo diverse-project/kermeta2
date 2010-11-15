@@ -17,6 +17,8 @@ import org.kermeta.art2.annotation.Provides;
 import org.kermeta.art2.annotation.Start;
 import org.kermeta.art2.annotation.Stop;
 import org.kermeta.art2.annotation.Library;
+import org.kermeta.art2.annotation.ThirdParties;
+import org.kermeta.art2.annotation.ThirdParty;
 import org.kermeta.art2.framework.AbstractComponentType;
 import org.kermeta.language.api.messaging.UnifiedMessage;
 import org.kermeta.language.api.port.PortLog;
@@ -31,7 +33,12 @@ import org.osgi.framework.Bundle;
  * Implementation of a Message port dedicated to receive UnifiedMessage
  * and log them in Eclipse
  */
-
+@ThirdParties({
+	@ThirdParty(name="org.kermeta.language.model", url="mvn:org.kermeta.language/language.model"),
+	@ThirdParty(name="org.kermeta.language.kp.model", url="mvn:org.kermeta.kp/kp.model"),
+	@ThirdParty(name="org.kermeta.language.traceability.model", url="mvn:org.kermeta.traceability/traceability.model"),
+	@ThirdParty(name="org.kermeta.language.api", url="mvn:org.kermeta.language/language.api")
+})
 @Provides({
     //@ProvidedPort(name = "asynclog", type=PortType.MESSAGE),
     @ProvidedPort(name = "log", type=PortType.MESSAGE)
@@ -57,7 +64,11 @@ public class Art2ComponentEclipseLogger extends AbstractComponentType {
 			getLogger().println(consoleMessageFactory.getConsoleMessage(kermetaMessage));
 			//Also log errors and warnings to Eclipse log view
 			errorLog.addToErrorLog(kermetaMessage); // do nothing if the message is not a ProblemMessage of kind WARNING, ERROR, or FATAL
-		}
+		} else {
+                    //Best effort Try to display to String message
+                    getLogger().println(o.toString());
+
+                }
     }
 	
 	@Start

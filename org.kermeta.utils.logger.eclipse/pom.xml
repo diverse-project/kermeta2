@@ -93,7 +93,7 @@
 			<groupId>org.kermeta.language</groupId>
 			<artifactId>language.api</artifactId>
 			<version>${kermeta.version}</version>
-			<type>bundle</type>
+			<!--<type>bundle</type>-->
 			<scope>compile</scope>
 		</dependency>
 		
