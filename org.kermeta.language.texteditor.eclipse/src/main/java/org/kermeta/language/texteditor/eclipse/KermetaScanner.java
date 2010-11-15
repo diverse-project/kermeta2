@@ -21,6 +21,7 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.texteditor.ITextEditor;
+import org.kermeta.language.api.kevent.KDocumentUpdate;
 import org.kermeta.language.api.ktoken.IKToken;
 import org.kermeta.language.api.messaging.UnifiedMessageFactory;
 //import org.kermeta.language.lexer.KMLexer;
@@ -58,9 +59,21 @@ public class KermetaScanner implements KermetaTokenScanner {
 
             tokens = Art2ComponentTexteditorEclipse.getDefault().getLexer().lex(content);
 
-            Art2ComponentTexteditorEclipse.getDefault().getLogPort().process("Size"+tokens.size());
+            // Art2ComponentTexteditorEclipse.getDefault().getLogPort().process("Size"+tokens.size());
 
             actualTokenPosition = 0;
+
+
+            KDocumentUpdate event = new KDocumentUpdate();
+            event.setDocument(content);
+            ITextEditor textEditor = (ITextEditor) editor;
+            IEditorInput input = textEditor.getEditorInput();
+            IFile file = ((FileEditorInput) input).getFile();
+            IPath path = file.getFullPath();
+            String url = path.toOSString();
+            event.setURI(url);
+            Art2ComponentTexteditorEclipse.getDefault().getKMEvent().process(event);
+
 
         } catch (org.eclipse.jface.text.BadLocationException e) {
             //ignore this error. It might occur during editing when locations are outdated quickly.
@@ -73,93 +86,93 @@ public class KermetaScanner implements KermetaTokenScanner {
 
     //	@Override
     public IToken nextToken() {
-       // try {
-            if(actualTokenPosition >= (tokens.size()-1)){
-                return org.eclipse.jface.text.rules.Token.EOF;
-            }
-
-            actualToken = tokens.get(actualTokenPosition);
-            actualTokenPosition++;
-            /*
-            if (t instanceof org.kermeta.language.lexer.KTokens.KToken) {
-            actualToken = (org.kermeta.language.lexer.KTokens.KToken) t;
-            }*/
-            /*
-            if (t instanceof org.kermeta.language.lexer.KTokens.KError) {
-            org.kermeta.language.lexer.KTokens.KError k = (org.kermeta.language.lexer.KTokens.KError) t;
-            }*
-            } catch (Exception e) {
+        // try {
+        if (actualTokenPosition >= (tokens.size() - 1)) {
             return org.eclipse.jface.text.rules.Token.EOF;
-            }
-
-            /*try{
-            actualToken = (org.kermeta.language.lexer.KTokens.KToken) lexer.nextToken();
-            //	KError k;
-            } catch (Exception e){
-            return org.eclipse.jface.text.rules.Token.EOF;
-            }*/
-            if (actualToken.getClass().getSimpleName().equals("KEOF")) {
-                return org.eclipse.jface.text.rules.Token.EOF;
-            }
-
-            String tokenName = actualToken.getClass().getSimpleName();
-
-            RGB color = new RGB(0, 0, 0);
-            int style = org.eclipse.swt.SWT.NORMAL;
-            if (tokenName.equals("StringLit")) {
-                color = new RGB(0, 0, 255);
-            }
-            if (tokenName.equals("NumericLit")) {
-                color = new RGB(0, 0, 255);
-            }
-            if (tokenName.equals("Keyword")) {
-                color = new RGB(128, 0, 0);
-                style = SWT.BOLD;
-            }
-            if (tokenName.equals("Delimiter")) {
-                color = new RGB(64, 64, 64);
-                style = SWT.UNDERLINE_SINGLE;
-            }
-            if (tokenName.equals("Comment") || tokenName.equals("MLComment")) {
-                color = new RGB(0, 128, 0);
-                style = SWT.ITALIC;
-            }
-
-            if (tokenName.equals("KIncomplet") || tokenName.equals("KError")) {
-
-                color = new RGB(255, 0, 0);
-                style = SWT.BOLD;
-                //report error to error system (marker)
-                ITextEditor textEditor = (ITextEditor) editor;
-                IEditorInput input = textEditor.getEditorInput();
-                IFile file = ((FileEditorInput) input).getFile();
-                IPath path = file.getFullPath();
-                String url = path.toOSString();
-
-                TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
-                textRef.setFileURI(url);
-                /*			textRef.setLineBeginAt(value);
-                textRef.setLineEndAt(value);*/
-                textRef.setCharBeginAt(getTokenOffset());
-                textRef.setCharEndAt(getTokenOffset() + getTokenLength());
-                Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
-                        mFactory.createErrorMessage("Incomplete token " + actualToken.toString(), Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName(), null, textRef));
-                Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
-                        mFactory.createDebugMessage("Resource at : " + textRef.getFileURI() + " should be marked", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
-                //System.out.println("Resource at : "+textRef.getFileURI()+ " should be marked");
-                setFileHasError(true);
-            }
-            System.out.println(tokenName + "\t Offset=" + getTokenOffset() + "; Length=" + getTokenLength() + "; -> " + actualToken.toString());
-            TextAttribute ta = new TextAttribute(colorManager.getColor(color), null, style);
-            Token token = new Token(ta);
-            return token;
         }
 
-        //	@Override
-    public
+        actualToken = tokens.get(actualTokenPosition);
+        actualTokenPosition++;
+        /*
+        if (t instanceof org.kermeta.language.lexer.KTokens.KToken) {
+        actualToken = (org.kermeta.language.lexer.KTokens.KToken) t;
+        }*/
+        /*
+        if (t instanceof org.kermeta.language.lexer.KTokens.KError) {
+        org.kermeta.language.lexer.KTokens.KError k = (org.kermeta.language.lexer.KTokens.KError) t;
+        }*
+        } catch (Exception e) {
+        return org.eclipse.jface.text.rules.Token.EOF;
+        }
 
-     int getTokenOffset() {
-        if(actualToken == null) return 0;
+        /*try{
+        actualToken = (org.kermeta.language.lexer.KTokens.KToken) lexer.nextToken();
+        //	KError k;
+        } catch (Exception e){
+        return org.eclipse.jface.text.rules.Token.EOF;
+        }*/
+        if (actualToken.getClass().getSimpleName().equals("KEOF")) {
+            return org.eclipse.jface.text.rules.Token.EOF;
+        }
+
+        String tokenName = actualToken.getClass().getSimpleName();
+
+        RGB color = new RGB(0, 0, 0);
+        int style = org.eclipse.swt.SWT.NORMAL;
+        if (tokenName.equals("StringLit")) {
+            color = new RGB(0, 0, 255);
+        }
+        if (tokenName.equals("NumericLit")) {
+            color = new RGB(0, 0, 255);
+        }
+        if (tokenName.equals("Keyword")) {
+            color = new RGB(128, 0, 0);
+            style = SWT.BOLD;
+        }
+        if (tokenName.equals("Delimiter")) {
+            color = new RGB(64, 64, 64);
+            style = SWT.UNDERLINE_SINGLE;
+        }
+        if (tokenName.equals("Comment") || tokenName.equals("MLComment")) {
+            color = new RGB(0, 128, 0);
+            style = SWT.ITALIC;
+        }
+
+        if (tokenName.equals("KIncomplet") || tokenName.equals("KError")) {
+
+            color = new RGB(255, 0, 0);
+            style = SWT.BOLD;
+            //report error to error system (marker)
+            ITextEditor textEditor = (ITextEditor) editor;
+            IEditorInput input = textEditor.getEditorInput();
+            IFile file = ((FileEditorInput) input).getFile();
+            IPath path = file.getFullPath();
+            String url = path.toOSString();
+
+            TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
+            textRef.setFileURI(url);
+            /*			textRef.setLineBeginAt(value);
+            textRef.setLineEndAt(value);*/
+            textRef.setCharBeginAt(getTokenOffset());
+            textRef.setCharEndAt(getTokenOffset() + getTokenLength());
+            Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
+                    mFactory.createErrorMessage("Incomplete token " + actualToken.toString(), Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName(), null, textRef));
+            Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
+                    mFactory.createDebugMessage("Resource at : " + textRef.getFileURI() + " should be marked", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
+            //System.out.println("Resource at : "+textRef.getFileURI()+ " should be marked");
+            setFileHasError(true);
+        }
+        System.out.println(tokenName + "\t Offset=" + getTokenOffset() + "; Length=" + getTokenLength() + "; -> " + actualToken.toString());
+        TextAttribute ta = new TextAttribute(colorManager.getColor(color), null, style);
+        Token token = new Token(ta);
+        return token;
+    }
+
+    //	@Override
+    public int getTokenOffset() {
+        if (actualToken == null) {
+            return 0;
+        }
 
         return actualToken.getOffset();
 
@@ -167,7 +180,9 @@ public class KermetaScanner implements KermetaTokenScanner {
 
     //	@Override
     public int getTokenLength() {
-        if(actualToken == null) return 0;
+        if (actualToken == null) {
+            return 0;
+        }
 
         return actualToken.getLength();
     }
