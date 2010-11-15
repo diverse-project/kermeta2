@@ -71,10 +71,15 @@ public class Art2ComponentLoader extends AbstractComponentType implements org.ke
 
         List<IKToken> result = new ArrayList<IKToken>();
 
-        org.kermeta.language.api.ktoken.IKToken actualToken = null;
+        System.out.println("c="+content);
+
+        //
+        //org.kermeta.language.api.ktoken.IKToken actualToken = null;
         KMLexer lexer = new KMLexer(content);
 
-        while (lexer.atEnd()) {
+        while (!lexer.atEnd()) {
+            System.out.println("LEX="+lexer.atEnd());
+
             Object t = lexer.nextToken();
             result.add((IKToken) t);
         }
