@@ -54,7 +54,12 @@ public class KermetaScanner implements KermetaTokenScanner {
             // Note: do not try to parse only this range, recheck the whole document (more reliable)
             String content = document.get(0, document.getLength());
 
+            //Art2ComponentTexteditorEclipse.getDefault().getLogPort().process("Parser Text = "+content);
+
             tokens = Art2ComponentTexteditorEclipse.getDefault().getLexer().lex(content);
+
+            Art2ComponentTexteditorEclipse.getDefault().getLogPort().process("Size"+tokens.size());
+
             actualTokenPosition = 0;
 
         } catch (org.eclipse.jface.text.BadLocationException e) {
@@ -69,6 +74,9 @@ public class KermetaScanner implements KermetaTokenScanner {
     //	@Override
     public IToken nextToken() {
        // try {
+            if(actualTokenPosition >= (tokens.size()-1)){
+                return org.eclipse.jface.text.rules.Token.EOF;
+            }
 
             actualToken = tokens.get(actualTokenPosition);
             actualTokenPosition++;
@@ -151,12 +159,16 @@ public class KermetaScanner implements KermetaTokenScanner {
     public
 
      int getTokenOffset() {
+        if(actualToken == null) return 0;
+
         return actualToken.getOffset();
 
     }
 
     //	@Override
     public int getTokenLength() {
+        if(actualToken == null) return 0;
+
         return actualToken.getLength();
     }
 
