@@ -56,8 +56,6 @@ public class Art2ComponentLoader extends AbstractComponentType implements org.ke
 
         Option result = parser.parseSynch(ParserUtil.loadFile(uri));
 
-        System.out.println("RESULT=" + result);
-
         if (result.isEmpty()) {
             return null;
         } else {
@@ -71,15 +69,9 @@ public class Art2ComponentLoader extends AbstractComponentType implements org.ke
 
         List<IKToken> result = new ArrayList<IKToken>();
 
-        System.out.println("c="+content);
-
-        //
-        //org.kermeta.language.api.ktoken.IKToken actualToken = null;
         KMLexer lexer = new KMLexer(content);
 
         while (!lexer.atEnd()) {
-            System.out.println("LEX="+lexer.atEnd());
-
             Object t = lexer.nextToken();
             result.add((IKToken) t);
         }
