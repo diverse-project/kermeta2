@@ -38,14 +38,13 @@ import scala.Option;
     @ProvidedPort(name = "KMTloader", className = PortResourceLoader.class),
     @ProvidedPort(name = "KMTlexer", className = PortLexer.class)
 })
-
 @ThirdParties({
-	@ThirdParty(name="org.kermeta.language.model", url="mvn:org.kermeta.language/language.model"),
-	@ThirdParty(name="org.kermeta.language.kp.model", url="mvn:org.kermeta.kp/kp.model"),
-	@ThirdParty(name="org.kermeta.language.traceability.model", url="mvn:org.kermeta.traceability/traceability.model"),
-	@ThirdParty(name="org.kermeta.language.api", url="mvn:org.kermeta.language/language.api")
+    @ThirdParty(name = "org.kermeta.language.model", url = "mvn:org.kermeta.language/language.model"),
+    @ThirdParty(name = "org.kermeta.language.kp.model", url = "mvn:org.kermeta.kp/kp.model"),
+    @ThirdParty(name = "org.kermeta.language.traceability.model", url = "mvn:org.kermeta.traceability/traceability.model"),
+    @ThirdParty(name = "org.kermeta.language.api", url = "mvn:org.kermeta.language/language.api")
+//@ThirdParty(name="org.kermeta.language.loader.scala", url="mvn:org.kermeta.language/language.loader.scala")
 })
-
 @Library(name = "org.kermeta.language")
 @ComponentType
 public class Art2ComponentLoader extends AbstractComponentType implements org.kermeta.language.api.port.PortResourceLoader {
@@ -57,9 +56,9 @@ public class Art2ComponentLoader extends AbstractComponentType implements org.ke
 
         Option result = parser.parseSynch(ParserUtil.loadFile(uri));
 
-        System.out.println("RESULT="+result);
+        System.out.println("RESULT=" + result);
 
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             return null;
         } else {
             return (ModelingUnit) result.get();
