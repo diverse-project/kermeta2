@@ -101,29 +101,21 @@
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.core</artifactId>
 			<version>4.2.0</version>
-			<type>jar</type>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.art2</groupId>
 			<artifactId>art2.framework</artifactId>
 			<version>${art2.version}</version>
-			<type>jar</type>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
 			<artifactId>language.api</artifactId>
 			<version>${kermeta.version}</version>
-			<type>bundle</type>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.traceability</groupId>
 			<artifactId>traceability.model</artifactId>
 			<version>${kermeta.version}</version>
-			<type>bundle</type>
-			<scope>compile</scope>
 		</dependency>
 		<!-- Eclipse Core runtime -->
 		<dependency>
