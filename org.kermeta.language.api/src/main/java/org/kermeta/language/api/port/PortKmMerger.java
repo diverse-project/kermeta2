@@ -17,6 +17,6 @@ import org.kermeta.language.structure.ModelingUnit;
  */
 public interface PortKmMerger {
 
-    public ModelingUnit merge(Collection<ModelingUnit> mus, KermetaProject kp);
+    public ModelingUnit merge(Collection<ModelingUnit> mus);
 
 }
