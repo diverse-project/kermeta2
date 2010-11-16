@@ -1,19 +1,22 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* $Id:$ 
+ * Creation : November, 2010
+ * Licence  : EPL 
+ * Copyright: IRISA/INRIA
+ * Authors  : 
+ *            Didier Vojtisek
  */
-
 package org.kermeta.language.api.port;
 
 import java.util.Collection;
 
+import org.kermeta.kp.KermetaProject;
 import org.kermeta.language.structure.ModelingUnit;
 
 /**
- *
- * @author ffouquet
+ ** This service offers to merge a collection of ModelingUnits into a single one
  */
 public interface PortKmMerger {
 
-    public ModelingUnit merge(ModelingUnit first_mu,ModelingUnit second_mu, Collection<String> directives);
+    public ModelingUnit merge(Collection<ModelingUnit> mus, KermetaProject kp);
+
 }
