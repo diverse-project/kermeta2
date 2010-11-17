@@ -28,7 +28,7 @@ object ReflexivityLoader {
         import scala.collection.JavaConversions._
         var classQualifiedName1 = classQualifiedName.replace("_root_.","")
         if (!isInit){
-            this.loadKmModel(this.getClass().getResource("/Reflexivity.km").toURI().toString()).foreach(e=>
+          this.loadKmModel(this.getClass().getClassLoader.getResource("Reflexivity.km").toURI().toString()).foreach(e=>
                 if (e.isInstanceOf[ClassDefinition])
                     classdefs .add(e.asInstanceOf[ClassDefinition])
             )
