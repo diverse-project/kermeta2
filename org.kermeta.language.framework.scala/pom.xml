@@ -6,7 +6,7 @@
     <artifactId>language.framework.scala</artifactId>
     <packaging>jar</packaging>
     <name>Kermeta :: Framework</name>
-    <version>0.0.7</version>
+    <version>0.0.8</version>
     <repositories>
         <repository>
             <id>scala-tools.org</id>
