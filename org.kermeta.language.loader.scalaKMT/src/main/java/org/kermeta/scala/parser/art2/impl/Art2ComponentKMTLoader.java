@@ -45,7 +45,7 @@ import scala.Option;
  */
 @Provides({
     @ProvidedPort(name = "KMTloader", className = PortResourceLoader.class),
-    @ProvidedPort(name = "KMTlexer", className = PortLexer.class)
+    @ProvidedPort(name = "KMTlexer", type = PortType.SERVICE, className = PortLexer.class)
 })
 @Requires({
     @RequiredPort(name = "log", type = PortType.MESSAGE)
@@ -80,8 +80,11 @@ public class Art2ComponentKMTLoader extends AbstractComponentType implements org
 
                 TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
                 textRef.setFileURI(uri);
-                textRef.setLineBeginAt(pe.line());
-                textRef.setLineEndAt(pe.line());//TODO
+                //textRef.setLineBeginAt(pe.line());
+                //textRef.setLineEndAt(pe.line());//TODO
+                //textRef.setCharBeginOffset(pe.getErrorOffset());
+                //textRef.setCharBeginOffset(pe.line);
+                //textRef.setCharEndOffset(pe.colonne);
                 if (isPortBinded("log")) {
                     getPortByName("log", MessagePort.class).process(UnifiedMessageFactory.getInstance().createErrorMessage(pe.errMsg(), bundleSymbolicName, null, textRef));
                 }
@@ -91,8 +94,8 @@ public class Art2ComponentKMTLoader extends AbstractComponentType implements org
 
             TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
             textRef.setFileURI(uri);
-            textRef.setCharBeginAt(0);
-            textRef.setCharEndAt(content.length());
+            textRef.setCharBeginOffset(0);
+            textRef.setCharEndOffset(content.length());
             if (isPortBinded("log")) {
                 getPortByName("log", MessagePort.class).process(UnifiedMessageFactory.getInstance().createOkMessage("File URI(" + uri + ") is clear ", bundleSymbolicName, null, textRef));
             }
