@@ -80,6 +80,10 @@ public class Art2ComponentKMTLoader extends AbstractComponentType implements org
 
                 TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
                 textRef.setFileURI(uri);
+
+                textRef.setCharBeginOffset(pe.offsetBegin());
+                textRef.setCharEndOffset(pe.offsetEnd());
+
                 //textRef.setLineBeginAt(pe.line());
                 //textRef.setLineEndAt(pe.line());//TODO
                 //textRef.setCharBeginOffset(pe.getErrorOffset());

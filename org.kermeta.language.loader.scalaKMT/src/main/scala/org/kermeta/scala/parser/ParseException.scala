@@ -18,5 +18,6 @@ class ParseException extends Throwable {
   var line : Int = _
   var colonne : Int = _
   var errMsg : String = _
-
+  var offsetBegin : Int = _
+  var offsetEnd : Int = _
 }

@@ -17,6 +17,7 @@ import org.kermeta.language.structure.impl._
 import org.kermeta.language.behavior.impl._
 import org.kermeta.scala.parser.sub._
 import scala.collection.JavaConversions._
+import scala.util.parsing.input.OffsetPosition
 
 /**
  * Parser of Kermeta for the full KMT textual syntax (including Expression, ModelingUnit and ClassDefinition
@@ -55,10 +56,16 @@ class KParser extends KExpressionParser
     lastNoSucess match {
       case Some(err) => {
           val pos = err.next.pos
+          println("pos"+pos.getClass.getName)
           var except = new ParseException
           except.line = pos.line
           except.colonne = pos.column
           except.errMsg = err.msg
+          pos match {
+            case opos : OffsetPosition=> except.offsetBegin_=(opos.offset);except.offsetEnd_=(opos.offset+opos.lineContents.size)
+            case _ => println("Warning Position Not Offset")
+          }
+
           return Some(except)
         }
       case None => None
