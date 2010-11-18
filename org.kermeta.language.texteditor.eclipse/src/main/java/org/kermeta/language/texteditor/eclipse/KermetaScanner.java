@@ -58,8 +58,8 @@ public class KermetaScanner implements KermetaTokenScanner {
             //Art2ComponentTexteditorEclipse.getDefault().getLogPort().process("Parser Text = "+content);
 
             tokens = Art2ComponentTexteditorEclipse.getDefault().getLexer().lex(content);
-
-            // Art2ComponentTexteditorEclipse.getDefault().getLogPort().process("Size"+tokens.size());
+            //System.out.println("LEXER got it => "+tokens.size());
+            //Art2ComponentTexteditorEclipse.getDefault().getLogPort().process("Size"+tokens.size());
 
             actualTokenPosition = 0;
 
@@ -151,15 +151,12 @@ public class KermetaScanner implements KermetaTokenScanner {
 
             TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
             textRef.setFileURI(url);
-            /*			textRef.setLineBeginAt(value);
-            textRef.setLineEndAt(value);*/
-            textRef.setCharBeginAt(getTokenOffset());
-            textRef.setCharEndAt(getTokenOffset() + getTokenLength());
+            textRef.setCharBeginOffset(getTokenOffset());
+            textRef.setCharEndOffset(getTokenOffset() + getTokenLength());
             Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
                     mFactory.createErrorMessage("Incomplete token " + actualToken.toString(), Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName(), null, textRef));
             Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
                     mFactory.createDebugMessage("Resource at : " + textRef.getFileURI() + " should be marked", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
-            //System.out.println("Resource at : "+textRef.getFileURI()+ " should be marked");
             setFileHasError(true);
         }
         System.out.println(tokenName + "\t Offset=" + getTokenOffset() + "; Length=" + getTokenLength() + "; -> " + actualToken.toString());
@@ -196,14 +193,12 @@ public class KermetaScanner implements KermetaTokenScanner {
         String url = path.toOSString();
         TextReference textRef = TraceabilityFactory.eINSTANCE.createTextReference();
         textRef.setFileURI(url);
-        textRef.setCharBeginAt(getTokenOffset());
-        textRef.setCharEndAt(getTokenOffset() + getTokenLength());
+        textRef.setCharBeginOffset(getTokenOffset());
+        textRef.setCharEndOffset(getTokenOffset() + getTokenLength());
         Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
                 mFactory.createOkMessage("File is clear ", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName(), null, textRef));
         Art2ComponentTexteditorEclipse.getDefault().getLogPort().process(
                 mFactory.createDebugMessage("Resource at : " + textRef.getFileURI() + " should not be marked", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
-        //System.out.println("Resource at : "+textRef.getFileURI()+ " should not be marked");
-        //System.out.println("RESOURCE FINISH LEX SHOULD NOT NOT NOT BE MARK");
     }
 
     @Override
