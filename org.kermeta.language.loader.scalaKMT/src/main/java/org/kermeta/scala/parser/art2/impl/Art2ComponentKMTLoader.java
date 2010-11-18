@@ -82,8 +82,9 @@ public class Art2ComponentKMTLoader extends AbstractComponentType implements org
                 textRef.setFileURI(uri);
                 textRef.setLineBeginAt(pe.line());
                 textRef.setLineEndAt(pe.line());//TODO
-                getPortByName("log", MessagePort.class).process(UnifiedMessageFactory.getInstance().createErrorMessage(pe.errMsg(), bundleSymbolicName, null, textRef));
-
+                if (isPortBinded("log")) {
+                    getPortByName("log", MessagePort.class).process(UnifiedMessageFactory.getInstance().createErrorMessage(pe.errMsg(), bundleSymbolicName, null, textRef));
+                }
             }
             return null;
         } else {
@@ -92,7 +93,9 @@ public class Art2ComponentKMTLoader extends AbstractComponentType implements org
             textRef.setFileURI(uri);
             textRef.setCharBeginAt(0);
             textRef.setCharEndAt(content.length());
-            getPortByName("log", MessagePort.class).process(UnifiedMessageFactory.getInstance().createOkMessage("File URI("+uri+") is clear ", bundleSymbolicName, null, textRef));
+            if (isPortBinded("log")) {
+                getPortByName("log", MessagePort.class).process(UnifiedMessageFactory.getInstance().createOkMessage("File URI(" + uri + ") is clear ", bundleSymbolicName, null, textRef));
+            }
 
             return (ModelingUnit) result.get();
         }
