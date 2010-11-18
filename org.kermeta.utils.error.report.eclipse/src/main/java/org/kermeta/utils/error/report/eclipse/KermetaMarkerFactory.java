@@ -104,7 +104,7 @@ public class KermetaMarkerFactory {
 		//groupStore.put(pbmMsg.getMessageGroup(), knownFiles);
 		//treat marker on the new file
 		marker = createKermetaMarker();
-		marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginAt(), ref.getCharEndAt());
+		marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
 	}
 	
 	/**
@@ -136,7 +136,7 @@ public class KermetaMarkerFactory {
 		setGroupStore(KermetaMarkerUtils.addFiletoGroupStore(groupStore, pbmMsg.getMessageGroup(), ref.getFileURI()));
 		//treat marker
 		marker = createKermetaMarker();
-		marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginAt(), ref.getCharEndAt());
+		marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
 	}
 
 	/**
@@ -158,13 +158,13 @@ public class KermetaMarkerFactory {
 			//if there's no marker on the file, add a marker if file has error 
 			if (markers.length <= 0){
 				if (pbmMsg.getSeverity() != Severity.OK){
-					marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginAt(), ref.getCharEndAt());
+					marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
 				}
 			}else{
 				//if there is already error on files
 				//and file was corrected then remove markers and unregister the file
 				if (pbmMsg.getSeverity() == Severity.OK){
-					marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginAt(), ref.getCharEndAt());
+					marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
 					setGroupStore(KermetaMarkerUtils.removeFiletoGroupStore(groupStore, pbmMsg.getMessageGroup(), ref.getFileURI()));
 				}else{
 					//otherwise treat only new error message
@@ -172,7 +172,7 @@ public class KermetaMarkerFactory {
 						String msg = ((String) markers[index].getAttribute(IMarker.MESSAGE));
 						//Refresh only new unregistered messages
 						if (!msg.equals(pbmMsg.getMessage())){
-							marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginAt(), ref.getCharEndAt());
+							marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(),ref.getCharBeginOffset(), ref.getCharEndOffset());
 						}
 			    	}
 				}
