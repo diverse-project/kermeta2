@@ -12,6 +12,7 @@ package org.kermeta.language.archetype.art2Bundle.art2.impl;
 
 import org.kermeta.art2.framework.AbstractComponentType;
 import org.kermeta.art2.annotation.ComponentType;
+import org.kermeta.art2.annotation.Library;
 import org.kermeta.art2.annotation.Port;
 import org.kermeta.art2.annotation.PortType;
 import org.kermeta.art2.annotation.ProvidedPort;
@@ -49,7 +50,8 @@ import org.osgi.framework.Bundle;
 	@RequiredPort(name = "log", type = PortType.SERVICE, className = PortLog.class) 
 	}
 )
-@ComponentType(libName = "org.kermeta.language")
+@Library(name= "org.kermeta.language")
+@ComponentType
 public class Art2ComponentProto extends AbstractComponentType {
 
 	/**
