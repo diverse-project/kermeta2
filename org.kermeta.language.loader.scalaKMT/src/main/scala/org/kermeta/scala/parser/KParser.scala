@@ -56,7 +56,6 @@ class KParser extends KExpressionParser
     lastNoSucess match {
       case Some(err) => {
           val pos = err.next.pos
-          println("pos"+pos.getClass.getName)
           var except = new ParseException
           except.line = pos.line
           except.colonne = pos.column
