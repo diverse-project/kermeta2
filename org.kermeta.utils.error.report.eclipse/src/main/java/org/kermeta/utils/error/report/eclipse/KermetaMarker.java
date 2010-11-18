@@ -18,6 +18,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ui.texteditor.MarkerUtilities;
 import org.kermeta.language.api.messaging.ProblemMessage.Severity;
+import org.kermeta.utils.error.report.eclipse.art2.impl.Art2ComponentEclipseErrorReport;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -76,19 +77,21 @@ public class KermetaMarker {
 		datas.put(IMarker.MESSAGE, message);
 		datas.put(IMarker.SEVERITY, severity);
 		
-		if (charStart < 0)
+		System.out.println("CHAR SHOUD BE MARK AT " + charStart);
+		if (charStart < 0){
 			datas.put(IMarker.CHAR_START, charStart);
-		else
+		}
+		else{
 			datas.put(IMarker.CHAR_START, 0);
+		}
 
-		if (charStop < 0)
+		if (charStop < 0){
 			datas.put(IMarker.CHAR_END, charStop);
-		else
+		}
+		else{
 			datas.put(IMarker.CHAR_END, 0);
+		}
 		
-		datas.put(IMarker.LINE_NUMBER, 3);
-		
-		MarkerUtilities.setLineNumber(datas, 3);
 		MarkerUtilities.createMarker(file, datas, getMarkerType());
 
 	}

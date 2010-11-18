@@ -13,6 +13,7 @@ package org.kermeta.utils.error.report.eclipse.utils;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
@@ -89,7 +90,7 @@ public class KermetaMarkerUtils {
 			groupStore.get(group).remove(fileUri);
 		}
 		if (fileUris.isEmpty()){
-			groupStore = KermetaMarkerUtils.removeGrouptoStore(groupStore, group);
+			return KermetaMarkerUtils.removeGrouptoStore(groupStore, group);
 		}
 		return groupStore;
 	}
@@ -99,8 +100,7 @@ public class KermetaMarkerUtils {
 	 * @return a fresh new empty groupStore
 	 */
 	public static Hashtable<String, List<String>> initGroupStore(){
-		Hashtable<String, List<String>> groupStore = new Hashtable<String, List<String>>();
-		return groupStore;
+		return new Hashtable<String, List<String>>();
 	}
 	
 	/**
@@ -109,21 +109,24 @@ public class KermetaMarkerUtils {
 	 * @return the modified groupStore
 	 */
 	public static Hashtable<String, List<String>> clearAllMarkerInGroupStore(Hashtable<String, List<String>> groupStore) {
-		Set<String> groups = groupStore.keySet();
+		Set<Map.Entry<String,List<String>>> entries = groupStore.entrySet();
 		//remove all markers on files before clearing Store
-		for (String group : groups){	
-			List<String> uris = groupStore.get(group);
-			for (String uri : uris){
-				IFile file =  KermetaMarkerUtils.findFileFromLocation(uri);
-				if (file != null) {
-					try {
-						file.deleteMarkers(IMarker.PROBLEM, false, IResource.DEPTH_INFINITE);
-					} catch (CoreException e) {
-						e.printStackTrace();
+		for (Map.Entry<String,List<String>> entry : entries){	
+			if (entry.getKey().startsWith("km2_")){
+				List<String> uris = entry.getValue();
+				for (String uri : uris){
+					IFile file =  KermetaMarkerUtils.findFileFromLocation(uri);
+					if (file != null) {
+						try {
+							file.deleteMarkers(IMarker.PROBLEM, false, IResource.DEPTH_INFINITE);
+						} catch (CoreException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 			}
 		}
+		
 		groupStore.clear();
 		return groupStore;
 	}

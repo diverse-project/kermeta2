@@ -13,7 +13,6 @@ package org.kermeta.utils.error.report.eclipse;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -33,12 +32,12 @@ import org.kermeta.utils.error.report.eclipse.utils.KermetaMarkerUtils;
  * @author hrambelo
  *
  */
-public class KermetaMarkerFactory {
+public final class KermetaMarkerFactory {
 
 	/**
 	 * Instance of the singleton factory
 	 */
-	public static KermetaMarkerFactory instance = new KermetaMarkerFactory();
+	protected static KermetaMarkerFactory instance = new KermetaMarkerFactory();
 
 	/**
 	 * Marker used on file resource
@@ -73,15 +72,16 @@ public class KermetaMarkerFactory {
 	 */
 	public void treatProblemMsg(ProblemMessage pbmMsg){
 		Reference causeObject = (Reference)pbmMsg.getCauseObject();
+		String group =  "km2_"+pbmMsg.getMessageGroup();
 		//treat only pbm msg that contains TextReference
-		if (causeObject!=null && causeObject instanceof TextReference){
+		if (causeObject instanceof TextReference){
 			TextReference ref = (TextReference) causeObject;
-			if (!groupStore.containsKey(pbmMsg.getMessageGroup())){
+			if (!groupStore.containsKey(group)){
 				//treat an unknown group
-				treatUnknownGroup(pbmMsg, ref);
+				treatUnknownGroup(pbmMsg, ref, group);
 			}else{
 				//treat registered group 
-				treatRegisteredGroup(pbmMsg, ref);
+				treatRegisteredGroup(pbmMsg, ref, group);
 			}
 		}
 	}
@@ -91,7 +91,7 @@ public class KermetaMarkerFactory {
 	 * @param pbmMsg the log message received from the log port 
 	 * @param ref the file object reference inside the message and provided by org.kermeta.traceability.model to be treated  
 	 */
-	private void treatUnknownGroup(ProblemMessage pbmMsg, TextReference ref) {
+	private void treatUnknownGroup(ProblemMessage pbmMsg, TextReference ref, String group) {
 		IFile file = KermetaMarkerUtils.findFileFromLocation(ref.getFileURI());
 		if (file == null) {
 			return;
@@ -99,12 +99,12 @@ public class KermetaMarkerFactory {
 		//register new group and new file
 		List<String> knownFiles = new ArrayList<String>();
 		knownFiles.add(ref.getFileURI());
-		setGroupStore(KermetaMarkerUtils.addGrouptoStore(groupStore, pbmMsg.getMessageGroup()));
-		setGroupStore(KermetaMarkerUtils.addFiletoGroupStore(groupStore, pbmMsg.getMessageGroup(), ref.getFileURI()));
+		setGroupStore(KermetaMarkerUtils.addGrouptoStore(groupStore, group));
+		setGroupStore(KermetaMarkerUtils.addFiletoGroupStore(groupStore, group, ref.getFileURI()));
 		//groupStore.put(pbmMsg.getMessageGroup(), knownFiles);
 		//treat marker on the new file
 		marker = createKermetaMarker();
-		marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
+		marker.refreshMarkers(file, pbmMsg.getMessage(), group, pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
 	}
 	
 	/**
@@ -112,13 +112,13 @@ public class KermetaMarkerFactory {
 	 * @param pbmMsg the log message received from the log port 
 	 * @param ref the file object reference inside the message and provided by org.kermeta.traceability.model to be treated  
 	 */
-	private void treatRegisteredGroup(ProblemMessage pbmMsg, TextReference ref) {
-		List<String> urls = groupStore.get(pbmMsg.getMessageGroup());
+	private void treatRegisteredGroup(ProblemMessage pbmMsg, TextReference ref, String group) {
+		List<String> urls = groupStore.get(group);
 		if (!urls.contains(ref.getFileURI())){
 			//treat a new file of registered group
-			treatNewFile(pbmMsg, ref);
+			treatNewFile(pbmMsg, ref, group);
 		}else{
-			treatRegisteredFile(pbmMsg, ref);
+			treatRegisteredFile(pbmMsg, ref, group);
 		}
 	}
 		
@@ -127,16 +127,16 @@ public class KermetaMarkerFactory {
 	 * @param pbmMsg the log message received from the log port 
 	 * @param ref the file object reference inside the message and provided by org.kermeta.traceability.model to be treated  
 	 */
-	private void treatNewFile(ProblemMessage pbmMsg, TextReference ref) {	
+	private void treatNewFile(ProblemMessage pbmMsg, TextReference ref, String group) {	
 		//register new file only if it exists
 		IFile file =  KermetaMarkerUtils.findFileFromLocation(ref.getFileURI());
 		if (file == null) {
 			return;
 		}
-		setGroupStore(KermetaMarkerUtils.addFiletoGroupStore(groupStore, pbmMsg.getMessageGroup(), ref.getFileURI()));
+		setGroupStore(KermetaMarkerUtils.addFiletoGroupStore(groupStore, group, ref.getFileURI()));
 		//treat marker
 		marker = createKermetaMarker();
-		marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
+		marker.refreshMarkers(file, pbmMsg.getMessage(), group, pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class KermetaMarkerFactory {
 	 * @param pbmMsg the log message received from the log port 
 	 * @param ref the file object reference inside the message and provided by org.kermeta.traceability.model to be treated  
 	 */
-	private void treatRegisteredFile(ProblemMessage pbmMsg, TextReference ref) {
+	private void treatRegisteredFile(ProblemMessage pbmMsg, TextReference ref, String group) {
 		//ensure file exists before processing
 		IFile file =  KermetaMarkerUtils.findFileFromLocation(ref.getFileURI());
 		if (file == null) {
@@ -158,21 +158,21 @@ public class KermetaMarkerFactory {
 			//if there's no marker on the file, add a marker if file has error 
 			if (markers.length <= 0){
 				if (pbmMsg.getSeverity() != Severity.OK){
-					marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
+					marker.refreshMarkers(file, pbmMsg.getMessage(), group, pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
 				}
 			}else{
 				//if there is already error on files
 				//and file was corrected then remove markers and unregister the file
 				if (pbmMsg.getSeverity() == Severity.OK){
-					marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
-					setGroupStore(KermetaMarkerUtils.removeFiletoGroupStore(groupStore, pbmMsg.getMessageGroup(), ref.getFileURI()));
+					marker.refreshMarkers(file, pbmMsg.getMessage(), group, pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
+					setGroupStore(KermetaMarkerUtils.removeFiletoGroupStore(groupStore, group, ref.getFileURI()));
 				}else{
 					//otherwise treat only new error message
 			    	for (int index = 0; index < markers.length; index++ ) {
 						String msg = ((String) markers[index].getAttribute(IMarker.MESSAGE));
 						//Refresh only new unregistered messages
 						if (!msg.equals(pbmMsg.getMessage())){
-							marker.refreshMarkers(file, pbmMsg.getMessage(), pbmMsg.getMessageGroup(), pbmMsg.getSeverity(),ref.getCharBeginOffset(), ref.getCharEndOffset());
+							marker.refreshMarkers(file, pbmMsg.getMessage(), group, pbmMsg.getSeverity(),ref.getCharBeginOffset(), ref.getCharEndOffset());
 						}
 			    	}
 				}
@@ -188,8 +188,7 @@ public class KermetaMarkerFactory {
 	 * @return
 	 */
 	private KermetaMarker createKermetaMarker(){
-		KermetaMarker marker = new KermetaMarker();
-		return marker;
+		return  new KermetaMarker();
 	}
 	
 	/**
