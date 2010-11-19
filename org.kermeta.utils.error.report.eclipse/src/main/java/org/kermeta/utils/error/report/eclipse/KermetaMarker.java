@@ -120,13 +120,13 @@ public class KermetaMarker {
 						markError(f, msg, start , end);
 					}
 					if (s == Severity.OK) {
-						clearMarkers(f);
+						clearMarkers(f, msg);
 					}
 					if (s == Severity.WARNING) {
 						markWarning(f, msg, start , end);
 					}
 				} catch (CoreException e) {
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 			}
 			});
@@ -138,12 +138,22 @@ public class KermetaMarker {
 	 * editors and underline elements that are concerned by those messages (for
 	 * example, invalid calls).
 	 */
-	protected void clearMarkers(IFile file) {
+	protected void clearMarkers(IFile file, String message) {
 		try {
-			if (file != null)
-				file.deleteMarkers(getMarkerType(), false, IResource.DEPTH_INFINITE);
+			if (file != null){
+				//file.deleteMarkers(getMarkerType(), false, IResource.DEPTH_INFINITE);
+				IMarker[] markers;
+				markers = file.findMarkers(IMarker.PROBLEM, false, IResource.DEPTH_ZERO);
+				for (int index = 0; index < markers.length; index++ ) {
+					String msg = ((String) markers[index].getAttribute(IMarker.MESSAGE));
+					//only delete corresponding marker
+					if (msg.equals(message)){
+						file.findMarker(index).delete();
+					}
+		    	}
+			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			//ex.printStackTrace();
 		}
 	}
 }

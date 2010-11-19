@@ -120,7 +120,7 @@ public class KermetaMarkerUtils {
 						try {
 							file.deleteMarkers(IMarker.PROBLEM, false, IResource.DEPTH_INFINITE);
 						} catch (CoreException e) {
-							e.printStackTrace();
+							//e.printStackTrace();
 						}
 					}
 				}

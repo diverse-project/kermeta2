@@ -99,7 +99,7 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 	@Start
 	public void start(){
 		// set the singleton instance
-		Art2ComponentEclipseErrorReport.instance =  this;
+		instance =  this;
 		// store some useful data
 		bundle = (Bundle) this.getDictionary().get("osgi.bundle");
 		bundleSymbolicName = bundle.getHeaders().get("Bundle-SymbolicName").toString();
@@ -122,10 +122,10 @@ public class Art2ComponentEclipseErrorReport extends AbstractComponentType  {
 				//System.out.println("Successfully added Error Report contribution to UI");
 				//logPort.log(mFactory.createDebugMessage("Successfully added Error Report contribution to UI" + pluginLocation, bundleSymbolicName));
 			}
-			else{
+			/*else{
 				//System.out.println("Failed to start Error Report due to : Cannot find " + pluginLocation);
 				//logPort.log(mFactory.createErrorMessage("Failed to start Error Report due to : Cannot find " + pluginLocation, bundleSymbolicName));
-			}
+			}*/
 			
 		}
 		catch (Exception e) {

@@ -37,7 +37,7 @@ public final class KermetaMarkerFactory {
 	/**
 	 * Instance of the singleton factory
 	 */
-	protected static KermetaMarkerFactory instance = new KermetaMarkerFactory();
+	protected final static KermetaMarkerFactory instance = new KermetaMarkerFactory();
 
 	/**
 	 * Marker used on file resource
@@ -54,7 +54,7 @@ public final class KermetaMarkerFactory {
 	 * Default constructor of the factory
 	 */
 	private KermetaMarkerFactory(){
-		setGroupStore(flushGroupStore());
+		groupStore = flushGroupStore();
 	}
 	
 	/**
@@ -99,8 +99,8 @@ public final class KermetaMarkerFactory {
 		//register new group and new file
 		List<String> knownFiles = new ArrayList<String>();
 		knownFiles.add(ref.getFileURI());
-		setGroupStore(KermetaMarkerUtils.addGrouptoStore(groupStore, group));
-		setGroupStore(KermetaMarkerUtils.addFiletoGroupStore(groupStore, group, ref.getFileURI()));
+		groupStore = KermetaMarkerUtils.addGrouptoStore(groupStore, group);
+		groupStore = KermetaMarkerUtils.addFiletoGroupStore(groupStore, group, ref.getFileURI());
 		//groupStore.put(pbmMsg.getMessageGroup(), knownFiles);
 		//treat marker on the new file
 		marker = createKermetaMarker();
@@ -133,7 +133,7 @@ public final class KermetaMarkerFactory {
 		if (file == null) {
 			return;
 		}
-		setGroupStore(KermetaMarkerUtils.addFiletoGroupStore(groupStore, group, ref.getFileURI()));
+		groupStore = KermetaMarkerUtils.addFiletoGroupStore(groupStore, group, ref.getFileURI());
 		//treat marker
 		marker = createKermetaMarker();
 		marker.refreshMarkers(file, pbmMsg.getMessage(), group, pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
@@ -165,21 +165,26 @@ public final class KermetaMarkerFactory {
 				//and file was corrected then remove markers and unregister the file
 				if (pbmMsg.getSeverity() == Severity.OK){
 					marker.refreshMarkers(file, pbmMsg.getMessage(), group, pbmMsg.getSeverity(), ref.getCharBeginOffset(), ref.getCharEndOffset());
-					setGroupStore(KermetaMarkerUtils.removeFiletoGroupStore(groupStore, group, ref.getFileURI()));
+					groupStore = KermetaMarkerUtils.removeFiletoGroupStore(groupStore, group, ref.getFileURI());
 				}else{
 					//otherwise treat only new error message
+					boolean found = false ;
 			    	for (int index = 0; index < markers.length; index++ ) {
 						String msg = ((String) markers[index].getAttribute(IMarker.MESSAGE));
 						//Refresh only new unregistered messages
-						if (!msg.equals(pbmMsg.getMessage())){
-							marker.refreshMarkers(file, pbmMsg.getMessage(), group, pbmMsg.getSeverity(),ref.getCharBeginOffset(), ref.getCharEndOffset());
+						if (msg.equals(pbmMsg.getMessage())){
+							found = true;
 						}
 			    	}
+			    	if (!found){
+						marker.refreshMarkers(file, pbmMsg.getMessage(), group, pbmMsg.getSeverity(),ref.getCharBeginOffset(), ref.getCharEndOffset());
+					}
+			    	
 				}
 			}
 		} catch (CoreException e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			//e1.printStackTrace();
 		}
 	}
 	
@@ -189,14 +194,6 @@ public final class KermetaMarkerFactory {
 	 */
 	private KermetaMarker createKermetaMarker(){
 		return  new KermetaMarker();
-	}
-	
-	/**
-	 * Set a new value for the groupStore
-	 * @param groupStore new value
-	 */
-	public void setGroupStore(Hashtable<String, List<String>> groupStore) {
-		this.groupStore = groupStore;
 	}
 	
 	/**
