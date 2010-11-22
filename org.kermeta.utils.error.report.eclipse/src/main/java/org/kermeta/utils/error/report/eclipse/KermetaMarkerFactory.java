@@ -11,8 +11,8 @@
 package org.kermeta.utils.error.report.eclipse;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -32,12 +32,12 @@ import org.kermeta.utils.error.report.eclipse.utils.KermetaMarkerUtils;
  * @author hrambelo
  *
  */
-public final class KermetaMarkerFactory {
+public class KermetaMarkerFactory {
 
 	/**
 	 * Instance of the singleton factory
 	 */
-	protected final static KermetaMarkerFactory instance = new KermetaMarkerFactory();
+	protected static final KermetaMarkerFactory instance = new KermetaMarkerFactory();
 
 	/**
 	 * Marker used on file resource
@@ -48,7 +48,7 @@ public final class KermetaMarkerFactory {
 	 * Hashtable to register the message sender group and its associated files
 	 * <GroupName, FilesHandledByTheGroup>
 	 */
-	protected Hashtable<String, List<String>> groupStore;
+	protected Map<String, List<String>> groupStore;
 	
 	/**
 	 * Default constructor of the factory
@@ -201,7 +201,7 @@ public final class KermetaMarkerFactory {
 	 * @param groupStore the groupStore to be cleaned
 	 * @return the cleared groupStore
 	 */
-	public Hashtable<String, List<String>> flushGroupStore(){
+	public Map<String, List<String>> flushGroupStore(){
 		if (groupStore != null){
 			return KermetaMarkerUtils.clearAllMarkerInGroupStore(groupStore);
 		}else{

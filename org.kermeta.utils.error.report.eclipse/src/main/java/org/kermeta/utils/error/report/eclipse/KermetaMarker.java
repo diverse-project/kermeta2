@@ -77,18 +77,22 @@ public class KermetaMarker {
 		datas.put(IMarker.MESSAGE, message);
 		datas.put(IMarker.SEVERITY, severity);
 		
-		System.out.println("CHAR SHOUD BE MARK AT " + charStart);
+		
 		if (charStart < 0){
+			System.out.println("CHAR SHOUD BE MARK AT < 0 " + charStart);
 			datas.put(IMarker.CHAR_START, charStart);
 		}
 		else{
+			System.out.println("CHAR SHOUD BE MARK AT " + charStart);
 			datas.put(IMarker.CHAR_START, 0);
 		}
 
 		if (charStop < 0){
+			System.out.println("CHAR SHOUD BE MARK TILL < 0 " + charStart);
 			datas.put(IMarker.CHAR_END, charStop);
 		}
 		else{
+			System.out.println("CHAR SHOUD BE MARK AT " + charStart);
 			datas.put(IMarker.CHAR_END, 0);
 		}
 		
@@ -110,6 +114,7 @@ public class KermetaMarker {
 		final String msg =message;
 		final int start = charStart;
 		final int end = charEnd;
+		final String group = groupId;
 		PlatformUI.getWorkbench().getDisplay().asyncExec(new java.lang.Runnable() {
 			public void run() {
 				try {
@@ -120,7 +125,7 @@ public class KermetaMarker {
 						markError(f, msg, start , end);
 					}
 					if (s == Severity.OK) {
-						clearMarkers(f, msg);
+						clearMarkers(f, msg, group);
 					}
 					if (s == Severity.WARNING) {
 						markWarning(f, msg, start , end);
@@ -138,19 +143,23 @@ public class KermetaMarker {
 	 * editors and underline elements that are concerned by those messages (for
 	 * example, invalid calls).
 	 */
-	protected void clearMarkers(IFile file, String message) {
+	protected void clearMarkers(IFile file, String message, String groupId) {
 		try {
-			if (file != null){
-				//file.deleteMarkers(getMarkerType(), false, IResource.DEPTH_INFINITE);
-				IMarker[] markers;
-				markers = file.findMarkers(IMarker.PROBLEM, false, IResource.DEPTH_ZERO);
-				for (int index = 0; index < markers.length; index++ ) {
-					String msg = ((String) markers[index].getAttribute(IMarker.MESSAGE));
-					//only delete corresponding marker
-					if (msg.equals(message)){
-						file.findMarker(index).delete();
-					}
-		    	}
+			if (file == null){
+				return;
+			}
+			if (groupId.contains("loader")||groupId.contains("Loader")){
+				file.deleteMarkers(getMarkerType(), false, IResource.DEPTH_INFINITE);
+				return;
+			}
+			IMarker[] markers;
+			markers = file.findMarkers(IMarker.PROBLEM, false, IResource.DEPTH_ZERO);
+			for (IMarker marker : markers) {
+				String msg = (String) marker.getAttribute(IMarker.MESSAGE);
+				if (msg.equals(message)){
+				//if (groupId.contains("loader")||groupId.contains("Loader")){
+					marker.delete();
+				}
 			}
 		} catch (Exception ex) {
 			//ex.printStackTrace();

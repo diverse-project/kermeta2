@@ -11,6 +11,7 @@
 package org.kermeta.utils.error.report.eclipse.utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +47,7 @@ public class KermetaMarkerUtils {
 	 * @param group the new group
 	 * @return the modified groupStore
 	 */
-	public static Hashtable<String, List<String>> addGrouptoStore(Hashtable<String, List<String>> groupStore, String group){
+	public static Map<String, List<String>> addGrouptoStore(Map<String, List<String>> groupStore, String group){
 		groupStore.put(group, new ArrayList<String>());
 		return groupStore;
 	}
@@ -57,7 +58,7 @@ public class KermetaMarkerUtils {
 	 * @param group the group to be removed
 	 * @return the modified groupStore
 	 */
-	public static Hashtable<String, List<String>> removeGrouptoStore(Hashtable<String, List<String>> groupStore, String group){
+	public static Map<String, List<String>> removeGrouptoStore(Map<String, List<String>> groupStore, String group){
 		groupStore.remove(group);
 		return groupStore;
 	}
@@ -69,7 +70,7 @@ public class KermetaMarkerUtils {
 	 * @param fileUri the file reference uri to be added
 	 * @return the modified groupStore
 	 */
-	public static Hashtable<String, List<String>> addFiletoGroupStore(Hashtable<String, List<String>> groupStore, String group, String fileUri){
+	public static Map<String, List<String>> addFiletoGroupStore(Map<String, List<String>> groupStore, String group, String fileUri){
 		List<String> fileUris = groupStore.get(group);
 		if (!fileUris.contains(fileUri)){
 			groupStore.get(group).add(fileUri);
@@ -84,7 +85,7 @@ public class KermetaMarkerUtils {
 	 * @param fileUri the file reference uri to be removed
 	 * @return the modified groupStore
 	 */
-	public static Hashtable<String, List<String>> removeFiletoGroupStore(Hashtable<String, List<String>> groupStore, String group, String fileUri){
+	public static Map<String, List<String>> removeFiletoGroupStore(Map<String, List<String>> groupStore, String group, String fileUri){
 		List<String> fileUris = groupStore.get(group);
 		if (fileUris.contains(fileUri)){
 			groupStore.get(group).remove(fileUri);
@@ -99,8 +100,8 @@ public class KermetaMarkerUtils {
 	 * Init the groupStore
 	 * @return a fresh new empty groupStore
 	 */
-	public static Hashtable<String, List<String>> initGroupStore(){
-		return new Hashtable<String, List<String>>();
+	public static Map<String, List<String>> initGroupStore(){
+		return new HashMap<String, List<String>>();
 	}
 	
 	/**
@@ -108,7 +109,7 @@ public class KermetaMarkerUtils {
 	 * @param groupStore the groupStore
 	 * @return the modified groupStore
 	 */
-	public static Hashtable<String, List<String>> clearAllMarkerInGroupStore(Hashtable<String, List<String>> groupStore) {
+	public static Map<String, List<String>> clearAllMarkerInGroupStore(Map<String, List<String>> groupStore) {
 		Set<Map.Entry<String,List<String>>> entries = groupStore.entrySet();
 		//remove all markers on files before clearing Store
 		for (Map.Entry<String,List<String>> entry : entries){	
