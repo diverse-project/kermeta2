@@ -15,8 +15,15 @@ package org.kermeta.language.api.messaging;
  */
 public class DoneProgressMessage extends ProgressMessage {
 
-	public DoneProgressMessage(String message, UserLevel userLevel,
-			String messageGroup, Throwable senderTrace, String progressGroupId) {
+	/**
+	 * Constructor
+	 * @param message the content of the message
+	 * @param userLevel the userlevel adressed by the message
+	 * @param messageGroup the sender group of the message
+	 * @param senderTrace the sender trance
+	 * @param progressGroupId the id of the processGroup
+	 */
+	public DoneProgressMessage(String message, UserLevel userLevel,	String messageGroup, Throwable senderTrace, String progressGroupId) {
 		super(message, userLevel, messageGroup, senderTrace, progressGroupId);
 	}
 

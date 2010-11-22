@@ -31,11 +31,14 @@ public abstract class ProgressMessage extends InfoMessage {
 	protected String progressGroupId="";
 
 	/**
-	 * @param message
-	 * @param userLevel
-	 * @param messageGroup
-	 * @param senderTrace
-	 * @param progressGroupId
+	 * Constructor
+	 * @param message the message content
+	 * @param userLevel the userlevel adressed by the message
+	 * @param messageGroup the sender group of the message
+	 * @param senderTrace the sender trace
+	 * @param causeObject the object (resource) that cause the problem message
+	 * @param severity the severity of the problem represented by the problemMessage
+	 * @param progressGroupId unique Id to be used as progressGroupId (useful when using ProgressMessage in recursive methods for example)
 	 */
 	public ProgressMessage(String message, UserLevel userLevel,
 			String messageGroup, Throwable senderTrace, String progressGroupId) {

@@ -32,11 +32,11 @@ public class KResourceChangeEvent extends KEvent {
     /**
      * Constructor
      * @param qualifiedName : qualifiedName of element on which event appear
-     * @param URI : URI of the changed resource
+     * @param id : id of the changed resource
      */
-    public KResourceChangeEvent(String URI, ChangeType changeType) {
+    public KResourceChangeEvent(String id, ChangeType changeType) {
         //super(URI);
-        setURI(URI);
+        setURI(id);
 
         this.type = changeType;
         // TODO Auto-generated constructor stub

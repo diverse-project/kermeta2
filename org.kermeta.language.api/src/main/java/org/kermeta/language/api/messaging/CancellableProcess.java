@@ -14,6 +14,10 @@ package org.kermeta.language.api.messaging;
  * must implement this interface.
  */
 public interface CancellableProcess {
+	
+	/**
+	 * Cancel the given process via a ProgressMessage system
+	 */
 	public void cancel();
 
 }

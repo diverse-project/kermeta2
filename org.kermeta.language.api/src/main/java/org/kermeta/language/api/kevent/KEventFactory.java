@@ -39,8 +39,7 @@ public class KEventFactory {
 		 * @return a KEvent associated to the change of the resource
 		 */
 		public KEvent createSimpleEvent(String url) {
-			KEvent evt = new KResourceChangeEvent(url, KResourceChangeEvent.ChangeType.CHANGED);
-			return evt;
+			return new KResourceChangeEvent(url, KResourceChangeEvent.ChangeType.CHANGED);
 		}
 		
 		/**
@@ -49,8 +48,7 @@ public class KEventFactory {
 		 * @return a KEvent associated to the change of the resource
 		 */
 		public KEvent createSimpleAddEvent(String url) {
-			KEvent evt = new KResourceChangeEvent(url, KResourceChangeEvent.ChangeType.ADDED);
-			return evt;
+			return new KResourceChangeEvent(url, KResourceChangeEvent.ChangeType.ADDED);
 		}
 		
 		/**
@@ -59,7 +57,6 @@ public class KEventFactory {
 		 * @return a KEvent associated to the change of the resource
 		 */
 		public KEvent createSimpleRemoveEvent(String url) {
-			KEvent evt = new KResourceChangeEvent(url, KResourceChangeEvent.ChangeType.REMOVED);
-			return evt;
+			return new KResourceChangeEvent(url, KResourceChangeEvent.ChangeType.REMOVED);
 		}
 }

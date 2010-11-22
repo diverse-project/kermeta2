@@ -47,11 +47,12 @@ public abstract class UnifiedMessage {
 	
 	
 	/**
-	 * @param message
-	 * @param userLevel
-	 * @param messageGroup
-	 * @param senderTrace
-	 */
+	 * Constructor
+	 * @param message the message content
+	 * @param userLevel the userlevel adressed by the message
+	 * @param messageGroup the sender group of the message
+	 * @param senderTrace the sender trace
+	 **/
 	public UnifiedMessage(String message, UserLevel userLevel,
 			String messageGroup, Throwable senderTrace) {
 		super();

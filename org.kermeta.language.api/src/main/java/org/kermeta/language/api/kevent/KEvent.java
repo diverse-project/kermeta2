@@ -18,16 +18,24 @@ package org.kermeta.language.api.kevent;
 public abstract class KEvent {
 
     /**
-     * URI of the resource that have changed.
+     * Id of the resource that have changed.
      */
-    protected String URI;
+    protected String id;
 
+    /**
+     * getter
+     * @return the Id of the resource
+     */
     public String getURI() {
-        return URI;
+        return id;
     }
 
-    public void setURI(String URI) {
-        this.URI = URI;
+    /**
+     * Setter
+     * @param id the new value for the id
+     */
+    public void setURI(String id) {
+        this.id = id;
     }
 
     /**

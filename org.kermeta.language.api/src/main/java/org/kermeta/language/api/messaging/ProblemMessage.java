@@ -36,12 +36,13 @@ public class ProblemMessage extends UnifiedMessage{
 	
 	
 	/**
-	 * @param message
-	 * @param userLevel
-	 * @param messageGroup
-	 * @param senderTrace
-	 * @param causeObject
-	 * @param severity
+	 * Constructor
+	 * @param message the message content
+	 * @param userLevel the userlevel adressed by the message
+	 * @param messageGroup the sender group of the message
+	 * @param senderTrace the sender trace
+	 * @param causeObject the object (resource) that cause the problem message
+	 * @param severity the severity of the problem represented by the problemMessage
 	 */
 	public ProblemMessage(Severity severity, 
 			String messageGroup,

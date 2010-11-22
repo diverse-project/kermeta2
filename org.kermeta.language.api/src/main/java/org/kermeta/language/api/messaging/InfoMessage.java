@@ -16,8 +16,14 @@ package org.kermeta.language.api.messaging;
  */
 public class InfoMessage extends UnifiedMessage {
 
-	public InfoMessage(String message, UserLevel userLevel,
-			String messageGroup, Throwable senderTrace) {
+	/**
+	 * Constructor
+	 * @param message content of the message
+	 * @param userLevel the userlevel adressed by the message
+	 * @param messageGroup the sender group of the message
+	 * @param senderTrace the sender trace 
+	 */
+	public InfoMessage(String message, UserLevel userLevel,	String messageGroup, Throwable senderTrace) {
 		super(message, userLevel, messageGroup, senderTrace);
 	}
 
