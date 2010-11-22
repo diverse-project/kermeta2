@@ -56,8 +56,9 @@ public class EclipseConsoleIO extends ConsoleIO {
 	 * @return
 	 */
 	public OutputStream getOutputStream() {
-		if ( outputStream == null )
+		if ( outputStream == null ){
 			outputStream = console.newOutputStream();
+		}
 		return outputStream;
 	}
 	
@@ -66,8 +67,9 @@ public class EclipseConsoleIO extends ConsoleIO {
 	 * @return
 	 */
 	public BufferedReader getReader() {
-		if ( reader == null )
+		if ( reader == null ){
 			reader = new BufferedReader( new InputStreamReader( console.getInputStream() ) );
+		}
 		return reader;
 	}
 	
@@ -99,12 +101,12 @@ public class EclipseConsoleIO extends ConsoleIO {
 			public void run() {
 				changeColor(message.getColor());
 				String justifiedMsg = justifyMessage(message.getMessage());
-				if(!((IOConsoleOutputStream)getOutputStream()).isClosed())
+				if(!((IOConsoleOutputStream)getOutputStream()).isClosed()){
 					try {
 						((IOConsoleOutputStream)getOutputStream()).write(justifiedMsg);
 					} catch (IOException e) {
 					}
-				
+				}
 			}
 		};
 		// support for large string !
@@ -180,8 +182,9 @@ public class EclipseConsoleIO extends ConsoleIO {
 	 */
 	public void changeStream(){
 		try {
-			if(outputStream != null)
+			if(outputStream != null){
 				outputStream.close();
+			}
 		} catch (IOException e) {
 		}
 		outputStream = null;
@@ -193,11 +196,12 @@ public class EclipseConsoleIO extends ConsoleIO {
 		Runnable r = new Runnable() {
 			public void run() {
 				changeColor(message.getColor());
-				if(!((IOConsoleOutputStream)getOutputStream()).isClosed())
+				if(!((IOConsoleOutputStream)getOutputStream()).isClosed()){
 					try {
 						((IOConsoleOutputStream)getOutputStream()).write("\n");
 					} catch (IOException e) {
 					}
+				}
 			}
 		};
 		ConsolePlugin.getStandardDisplay().asyncExec(r);
@@ -222,8 +226,9 @@ public class EclipseConsoleIO extends ConsoleIO {
 					lastNLIndex=lastNLIndex+CONSOLE_MAX_WIDTH;
 					// normally , since we have inserted a char we should fall on the same newline char again
 				}
-				else
+				else{
 					lastNLIndex=index;
+				}
 			}
 			index++;
 		}

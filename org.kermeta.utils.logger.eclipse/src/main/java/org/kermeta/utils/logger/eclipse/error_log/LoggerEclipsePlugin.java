@@ -44,9 +44,9 @@ public class LoggerEclipsePlugin extends Plugin{
 			default     : break;						
 			}
 		}
-		else {
+		/*else {
 			//This message not need to be on the error log view
-		}
+		}*/
 	}
 
 }

@@ -47,8 +47,8 @@ import org.osgi.framework.Bundle;
 @Library(name= "org.kermeta.utils")
 @ComponentType
 public class Art2ComponentEclipseLogger extends AbstractComponentType {
-	ConsoleIO logger;
-	ConsoleMessageFactory consoleMessageFactory = new ConsoleMessageFactory();
+	private ConsoleIO logger;
+	private ConsoleMessageFactory consoleMessageFactory = new ConsoleMessageFactory();
 	protected String consoleUId ;
 	private LoggerEclipsePlugin errorLog = new LoggerEclipsePlugin();
 	

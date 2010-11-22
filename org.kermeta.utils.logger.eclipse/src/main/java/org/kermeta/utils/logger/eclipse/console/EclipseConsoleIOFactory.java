@@ -14,6 +14,7 @@
 package org.kermeta.utils.logger.eclipse.console;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
@@ -23,7 +24,7 @@ public class EclipseConsoleIOFactory  {
 
     protected static EclipseConsoleIOFactory instance = new EclipseConsoleIOFactory();
     
-    protected HashMap<String,EclipseConsoleIO> consoleIOMap = new HashMap<String,EclipseConsoleIO>();
+    protected Map<String,EclipseConsoleIO> consoleIOMap = new HashMap<String,EclipseConsoleIO>();
     /**
      * retrieve or create a ConsoleIO with the given UId
      * the name is used only if the console is created

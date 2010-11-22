@@ -96,13 +96,15 @@ abstract public class ConsoleIO {
 	// Any object can be printed for the moment it declares a toString method.			 //
 	///////////////////////////////////////////////////////////////////////////////////////
 	public void print(Object o) {
-		if ( o != null )
+		if ( o != null ) {
 			print( new InfoMessage(o.toString()) );
+		}
 	}
 	
 	public void println(Object o) {
-		if ( o != null )
+		if ( o != null ){
 			println( new InfoMessage(o.toString()) );
+		}
 	}
 	
 	abstract public void print(ConsoleMessage message);
@@ -133,8 +135,9 @@ abstract public class ConsoleIO {
 		BufferedReader reader = getReader();
 		try {
 			line = reader.readLine();
-			if ( line == null )
+			if ( line == null ){
 				line = "";
+			}
 		} catch (IOException exception) {
 			exception.printStackTrace();
 		}
@@ -158,11 +161,13 @@ abstract public class ConsoleIO {
 	
 	public void dispose() {
 		try {
-			if ( outputStream != null )
+			if ( outputStream != null ){
 				outputStream.close();
-			if ( reader != null )
+			}
+			if ( reader != null ){
 				reader.close();
 			//ConsolePlugin.getDefault().getConsoleManager().removeConsoles( new IConsole[]{console} );
+			}
 		} catch (IOException exception) {
 			exception.printStackTrace();
 		}
@@ -170,8 +175,9 @@ abstract public class ConsoleIO {
 	
 	public void finalize() throws Throwable {
 		super.finalize();
-		if ( (outputStream != null) && ! ((IOConsoleOutputStream) getOutputStream()).isClosed() )
+		if ( (outputStream != null) && ! ((IOConsoleOutputStream) getOutputStream()).isClosed() ){
 			outputStream.close();
+		}
 	}
 	
 	
