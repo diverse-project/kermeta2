@@ -68,8 +68,9 @@ public class ScannerBasedDamagerRepairer implements IPresentationDamager,
 	protected int endOfLineOf(int offset) throws BadLocationException {
 
 		IRegion info = fDocument.getLineInformationOfOffset(offset);
-		if (offset <= info.getOffset() + info.getLength())
+		if (offset <= info.getOffset() + info.getLength()){
 			return info.getOffset() + info.getLength();
+		}
 
 		int line = fDocument.getLineOfOffset(offset);
 		try {
@@ -88,7 +89,7 @@ public class ScannerBasedDamagerRepairer implements IPresentationDamager,
 			boolean documentPartitioningChanged) {
 		if (!documentPartitioningChanged) {
 			try {
-				System.out.println("EVENT FROM DAMAGER : " + event.toString());
+				//System.out.println("EVENT FROM DAMAGER : " + event.toString());
 				IRegion info = fDocument.getLineInformationOfOffset(event
 						.getOffset());
 				int start = Math.max(partition.getOffset(), info.getOffset());
@@ -101,8 +102,9 @@ public class ScannerBasedDamagerRepairer implements IPresentationDamager,
 						&& end <= info.getOffset() + info.getLength()) {
 					// optimize the case of the same line
 					end = info.getOffset() + info.getLength();
-				} else
+				} else {
 					end = endOfLineOf(end);
+				}
 
 				end = Math.min(partition.getOffset() + partition.getLength(),
 						end);
@@ -167,8 +169,9 @@ public class ScannerBasedDamagerRepairer implements IPresentationDamager,
 	 */
 	protected void addRange(TextPresentation presentation, int offset,
 			int length, TextAttribute attr) {
-		if (attr != null)
+		if (attr != null){
 			presentation.addStyleRange(new StyleRange(offset, length, attr
 					.getForeground(), attr.getBackground(), attr.getStyle()));
+		}
 	}
 }

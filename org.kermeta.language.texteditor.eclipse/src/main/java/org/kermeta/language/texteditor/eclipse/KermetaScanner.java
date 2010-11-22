@@ -159,10 +159,9 @@ public class KermetaScanner implements KermetaTokenScanner {
                     mFactory.createDebugMessage("Resource at : " + textRef.getFileURI() + " should be marked", Art2ComponentTexteditorEclipse.getDefault().getBundleSymbolicName()));
             setFileHasError(true);
         }
-        System.out.println(tokenName + "\t Offset=" + getTokenOffset() + "; Length=" + getTokenLength() + "; -> " + actualToken.toString());
+        //System.out.println(tokenName + "\t Offset=" + getTokenOffset() + "; Length=" + getTokenLength() + "; -> " + actualToken.toString());
         TextAttribute ta = new TextAttribute(colorManager.getColor(color), null, style);
-        Token token = new Token(ta);
-        return token;
+        return new Token(ta);
     }
 
     //	@Override

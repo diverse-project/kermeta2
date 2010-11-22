@@ -14,8 +14,9 @@ public class KermetaColorManager {
 
 	public void dispose() {
 		Iterator e = fColorTable.values().iterator();
-		while (e.hasNext())
+		while (e.hasNext()){
 			 ((Color) e.next()).dispose();
+		}
 	}
 	public Color getColor(RGB rgb) {
 		Color color = (Color) fColorTable.get(rgb);

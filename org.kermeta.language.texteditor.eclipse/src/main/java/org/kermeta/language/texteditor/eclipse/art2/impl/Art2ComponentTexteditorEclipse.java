@@ -123,15 +123,15 @@ public class Art2ComponentTexteditorEclipse extends AbstractComponentType {
 
                 boolean b = registry.addContribution(inputStream, ContributorFactoryOSGi.createContributor(bundle), false, null, null, key);
 
-                System.out.println("Successfully added editor contribution to UI");
+                //System.out.println("Successfully added editor contribution to UI");
                 logPort.process(mFactory.createDebugMessage("Successfully added editor contribution to UI" + pluginLocation, bundleSymbolicName));
             } else {
-                System.out.println("Failed to start Editor due to : Cannot find " + pluginLocation);
+                //System.out.println("Failed to start Editor due to : Cannot find " + pluginLocation);
                 logPort.process(mFactory.createErrorMessage("Failed to start Editor due to : Cannot find " + pluginLocation, bundleSymbolicName));
             }
 
         } catch (Exception e) {
-            System.out.println("Failed to start Editor");
+            //System.out.println("Failed to start Editor");
             logPort.process(mFactory.createErrorMessage("Failed to start Editor", bundleSymbolicName));
         }
     }
