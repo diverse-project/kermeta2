@@ -46,7 +46,28 @@ public class KermetaMarker {
 	 */
 	private void markError(IFile file, String message, int charStart,
 			int charStop) throws CoreException {
-		mark(file, message, IMarker.SEVERITY_ERROR, charStart, charStop);
+
+		if (file == null){
+			return;
+		}
+		IMarker[] markers;
+		markers = file.findMarkers(IMarker.PROBLEM, false, IResource.DEPTH_ZERO);
+		boolean found = false ;
+		//if a marker already exists at this position with the begining of the error message then just complete the message
+		for (IMarker marker : markers) {
+			String msg = (String) marker.getAttribute(IMarker.MESSAGE);
+			int start = (Integer) marker.getAttribute(IMarker.CHAR_START); 
+			//TODO better solution is to clear all loader marker before parsing
+			if(message.contains(msg) && start == charStart ){
+				marker.setAttribute(IMarker.MESSAGE, message);
+				found = true;
+				break;
+			}
+		}
+		//if no marker similar to the text already exists then mark
+		if(!found){
+			mark(file, message, IMarker.SEVERITY_ERROR, charStart, charStop);
+		}
 	}
 
 	/**
@@ -59,6 +80,9 @@ public class KermetaMarker {
 	 */
 	private void markWarning(IFile file, String message, int charStart,
 			int charStop) throws CoreException {
+		if (file == null){
+			return;
+		}
 		mark(file, message, IMarker.SEVERITY_WARNING, charStart, charStop);
 	}
 	
@@ -73,7 +97,7 @@ public class KermetaMarker {
 	 */
 	protected void mark(IFile file, String message, int severity, int charStart, int charStop) throws CoreException {
 		//System.out.println("MARK :" + file.getFullPath().toOSString());
-		HashMap<String, java.lang.Object> datas = new HashMap<String, java.lang.Object>();
+		/*HashMap<String, java.lang.Object> datas = new HashMap<String, java.lang.Object>();
 		datas.put(IMarker.MESSAGE, message);
 		datas.put(IMarker.SEVERITY, severity);
 		
@@ -96,8 +120,23 @@ public class KermetaMarker {
 			datas.put(IMarker.CHAR_END, 0);
 		}
 		
-		MarkerUtilities.createMarker(file, datas, getMarkerType());
-
+		MarkerUtilities.createMarker(file, datas, getMarkerType());*/
+		org.eclipse.core.resources.IMarker marker = file.createMarker(getMarkerType());
+		marker.setAttribute(org.eclipse.core.resources.IMarker.SEVERITY, severity);
+		marker.setAttribute(org.eclipse.core.resources.IMarker.MESSAGE, message);
+		//marker.setAttribute(org.eclipse.core.resources.IMarker.LINE_NUMBER, 2);
+		
+		if(charStart < 0 ){
+			marker.setAttribute(org.eclipse.core.resources.IMarker.CHAR_START, 0);
+		}else {
+			marker.setAttribute(org.eclipse.core.resources.IMarker.CHAR_START, charStart);
+		}
+		
+		if (charStop < 0) {
+			marker.setAttribute(org.eclipse.core.resources.IMarker.CHAR_END, 1);
+		}else {
+			marker.setAttribute(org.eclipse.core.resources.IMarker.CHAR_END, charStop);
+		}
 	}
 
 	/**
@@ -157,7 +196,6 @@ public class KermetaMarker {
 			for (IMarker marker : markers) {
 				String msg = (String) marker.getAttribute(IMarker.MESSAGE);
 				if (msg.equals(message)){
-				//if (groupId.contains("loader")||groupId.contains("Loader")){
 					marker.delete();
 				}
 			}
