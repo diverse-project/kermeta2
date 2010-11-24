@@ -1,9 +1,0 @@
-
-package typeVariablesBadlyNamed;
-
-
-require kermeta
-
-class A{}
-
-class B<A>{}

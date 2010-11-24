@@ -1,6 +1,0 @@
-require kermeta
-
-using kermeta::standard::*
-
-using kermeta::standard::Integer
-
