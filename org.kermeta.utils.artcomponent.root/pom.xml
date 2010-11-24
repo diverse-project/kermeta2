@@ -16,14 +16,31 @@
     <parent>
         <groupId>org.kermeta.art2</groupId>
         <artifactId>art2.artcomponent.root</artifactId>
-        <version>2.1.1</version>
+        <version>2.2.1-beta1</version>
     </parent>
 
 
     <properties>
         <kermeta.version>2.0.1-SNAPSHOT</kermeta.version>
     </properties>
+	<profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- EXAMPLE FOR MYSQL -->
+                <sonar.jdbc.url>
+                   jdbc:derby://localhost:1507/sonar;create=true
+                </sonar.jdbc.url>
+                <sonar.jdbc.driver>org.apache.derby.jdbc.ClientDriver</sonar.jdbc.driver>
+                <sonar.jdbc.username>sonar</sonar.jdbc.username>
+                <sonar.jdbc.password>sonar</sonar.jdbc.password>
 
-	<dependencies>
-	</dependencies>
+                <!-- SERVER ON A REMOTE HOST -->
+                <sonar.host.url>http://tipimouss.irisa.fr:9000</sonar.host.url>
+            </properties>
+        </profile>
+    </profiles>
 </project>
