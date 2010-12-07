@@ -139,6 +139,7 @@ trait ObjectAspect extends EObject  with Contracted {
  //
 
   def ScalaownedTags : java.util.List[fr.irisa.triskell.kermeta.language.structure.Tag]
+  def Scalatag : java.util.List[fr.irisa.triskell.kermeta.language.structure.Tag]
 
 
   /* Contracted */
