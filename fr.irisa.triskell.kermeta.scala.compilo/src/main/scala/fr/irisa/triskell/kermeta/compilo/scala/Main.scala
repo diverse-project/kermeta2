@@ -62,8 +62,8 @@ object Main extends LogAspect {
   /*additionalClassPath = List("/home/barais/compilo/julien/fr.inria.aoste.annotation_1.0.1.jar") ++ additionalClassPath
   additionalClassPath = List("/home/barais/compilo/julien/fr.inria.aoste.marte.ccslmodel_1.1.0.013262.jar") ++ additionalClassPath
   additionalClassPath = List("/home/barais/compilo/julien/fr.inria.aoste.trace_1.0.0.jar") ++ additionalClassPath
-  additionalClassPath = List("/home/barais/compilo/julien/jars.jar") ++ additionalClassPath
-  additionalClassPath = List("/home/barais/compilo/julien/jars2.jar") ++ additionalClassPath*/
+  additionalClassPath = List("/home/barais/compilo/julien/jars.jar") ++ additionalClassPath*/
+//  additionalClassPath = List("/home/barais/.m2/repository/org/kermeta/art/model/1.1.1-SNAPSHOT/model-1.1.1-SNAPSHOT.jar") ++ additionalClassPath
   
 
     var inputFile : String = ""
@@ -110,7 +110,8 @@ object Main extends LogAspect {
    //   inputFile = "/home/barais/workspaces/movida/fr.inria.featureDiagramEditor.derivation.fdext.ui/src/kermeta/Derivation/TextualDerivation.km"
     //  inputFile = "/home/barais/workspaces/movida/TestCompilo/src/kermeta/010ValueTypeReflexion.km"
   //      inputFile = "/home/barais/compilo/julien/Launcher.km"
-   if(inputFile != ""){
+//   inputFile = "/home/barais/workspaces/compiloV2/smart@adaptor/src/main/kermeta/ArtCleaner.km"
+        if(inputFile != ""){
       log.info("KM compilation begin on "+inputFile)
       compilo.compile(inputFile)
     } else {
