@@ -6,14 +6,13 @@ import scala.collection.JavaConversions._
 import fr.irisa.triskell.kermeta.language._
 import fr.irisa.triskell.kermeta.language.structure._
 import fr.irisa.triskell.kermeta.language.behavior._
-import fr.irisa.triskell.kermeta.compilo.scala.loader._
 import fr.irisa.triskell.kermeta.compilo.scala.visitor._
 import fr.irisa.triskell.kermeta.compilo.scala.visitor.impl.VisitorAsyncUtility
 import fr.irisa.triskell.kermeta.compilo.scala.visitor.impl._
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.Executors
 import java.io.File
-import java.util.concurrent.ExecutorService
+import fr.irisa.triskell.kermeta.compilo.scala.loader.LoadModelHelper
 import fr.irisa.triskell.kermeta.compilo.scala.rich.RichAspectImplicit._
 
 class Compiler extends LogAspect {
@@ -62,7 +61,7 @@ class Compiler extends LogAspect {
         /* End step */
         var endTime= System.currentTimeMillis() - startTime
         log.info("Compilation step complete in "+(endTime)+" millisecondes ")
-        CopyEcoreFile.copyEcorefiles(GlobalConfiguration.outputFolder)
+        //CopyEcoreFile.copyEcorefiles(GlobalConfiguration.outputFolder)
 
     }
 

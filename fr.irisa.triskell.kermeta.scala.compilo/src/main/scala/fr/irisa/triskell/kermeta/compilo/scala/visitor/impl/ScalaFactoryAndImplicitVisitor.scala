@@ -142,11 +142,14 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
 		
     res.append("}\n def main(args : Array[String]) : Unit = {\n")
     if (packages.exists(pac=> "ecore".equals(pac.getName))){
-      res.append("\t org.eclipse.emf.ecore.EcoreFactory.eINSTANCE.asInstanceOf[org.eclipse.emf.ecore.EcoreFactoryWrapper].setWrap(ScalaAspect.org.eclipse.emf.ecore.RichFactory) \n \t init() \n\t" )
+      res.append("\t org.eclipse.emf.ecore.EcoreFactory.eINSTANCE.asInstanceOf[org.eclipse.emf.ecore.EcoreFactoryWrapper].setWrap(ScalaAspect.org.eclipse.emf.ecore.RichFactory) \n \t" )
+      CopyEcoreFile.copyEcorefiles(GlobalConfiguration.outputFolder)
     }
+    res.append("\t init() \n\t" )
     if (packages.filter{e=>  e.getQualifiedName().equals(packageName)}.size==1)
     {
       res.append(GlobalConfiguration.scalaAspectPrefix+".")
+
     }
     res.append(kermeta.utils.TypeEquivalence.getPackageEquivalence(packageName))
 		

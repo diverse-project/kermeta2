@@ -113,7 +113,6 @@ object Main extends LogAspect {
    if(inputFile != ""){
       log.info("KM compilation begin on "+inputFile)
       compilo.compile(inputFile)
-      CopyEcoreFile.copyEcorefiles(GlobalConfiguration.outputFolder)
     } else {
       log.warn("No Input File Found ! ")
     }
