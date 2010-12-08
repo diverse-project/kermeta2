@@ -287,12 +287,7 @@ object JavaConversions {
 
 
         def remove( o:Object):Boolean= {
-            var index =  value.indexOf(o);
-            if (index >=0){
-                return value.remove(index);
-            }else{
-                return false;
-            }
+                return value.remove(o);
         }
 
 

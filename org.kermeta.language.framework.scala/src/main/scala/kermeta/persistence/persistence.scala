@@ -171,7 +171,8 @@ class EMFResource  extends Resource  {
         this.rs=rs1
     }
     
-    override def saveWithNewURI(new_uri : String)={ this.Scalauri_=( new_uri)
+    override def saveWithNewURI(new_uri : String)={ 
+        this.Scalauri_=( new_uri)
                                                    this.save
     }
 
