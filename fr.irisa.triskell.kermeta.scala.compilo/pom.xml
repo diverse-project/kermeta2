@@ -41,6 +41,17 @@
                     <jvmArgs>
                         <jvmArg>-Xmx1024m</jvmArg>
                     </jvmArgs>
+                                           <launchers>
+                        <launcher>
+                            <id>runner</id>
+                            <mainClass>fr.irisa.triskell.kermeta.compilo.scala.Main</mainClass>
+
+                            <jvmArgs>
+                                <jvmArg>-Xmx1024m</jvmArg>
+                            </jvmArgs>
+                        </launcher>
+                    </launchers>
+
                 </configuration>
             </plugin>
 
