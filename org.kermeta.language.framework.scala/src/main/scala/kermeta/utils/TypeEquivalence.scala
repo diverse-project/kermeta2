@@ -55,7 +55,8 @@ object TypeEquivalence {
                                                              typeEquivelence.put("java.lang.Class","java.lang.Class[_]")
                                                              typeEquivelence.put("ScalaAspect.fr.irisa.triskell.kermeta.language.ReflectiveSequence", "java.util.List")
                                                              typeEquivelence.put("fr.irisa.triskell.kermeta.language.ReflectiveSequence", "java.util.List")
-                                                             typeEquivelence;
+//                                                             typeEquivelence.put("fr.irisa.triskell.kermeta.language.structure.Object","java.lang.Object")
+                                                               typeEquivelence;
   };
 		
 	def getTypeEquivalence(key:String):String={

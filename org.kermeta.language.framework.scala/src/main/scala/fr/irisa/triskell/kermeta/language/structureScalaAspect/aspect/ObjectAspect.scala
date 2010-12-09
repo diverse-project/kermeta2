@@ -46,7 +46,7 @@ trait ObjectAspect extends EObject  with Contracted {
 
   def isNotEqual(o : Any) : Boolean = !equals(o)
   def isKindOf(cl : EClass) : Boolean = this.eClass().equals(cl)
-  def get(prop : fr.irisa.triskell.kermeta.language.structure.Property) :fr.irisa.triskell.kermeta.language.structure.Object= {
+  def get(prop : fr.irisa.triskell.kermeta.language.structure.Property) :java.lang.Object= {
     if (prop == null){
       println ("prop est null aie")
       return null
@@ -58,7 +58,8 @@ trait ObjectAspect extends EObject  with Contracted {
       println ("meth is null " + prop.getName + "  " + this + " " + this.getClass)
     }
     var o =  meth.invoke(this)
-    if (o != null && o.isInstanceOf[java.lang.String]){
+        return o;
+/*    if (o != null && o.isInstanceOf[java.lang.String]){
       return new kermeta.standard.RichString(o.asInstanceOf[java.lang.String])
     }
     else if (o != null && o.isInstanceOf[java.lang.Boolean]){
@@ -74,7 +75,7 @@ trait ObjectAspect extends EObject  with Contracted {
     {println("cannot convert " + o.getClass + " for property " + prop.getName)
      null.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]}
     else
-      null.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]
+      null.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]*/
   }
     
   def set(prop : fr.irisa.triskell.kermeta.language.structure.Property,o : java.lang.Object) = {
