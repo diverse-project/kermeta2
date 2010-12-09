@@ -69,6 +69,8 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
     implicitDef = new StringBuilder
     implicitDef append "package "+GlobalConfiguration.frameworkGeneratedPackageName+"\n"
     implicitDef append "object "+GlobalConfiguration.implicitConvTraitName+" {\n"
+    implicitDef.append(" implicit def richAspect(v : _root_.java.lang.Object) = v.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
+
     factoryDefClass = new StringBuilder
   }
   var packages : java.util.List[Package] = _

@@ -105,7 +105,7 @@ trait CallFeatureAspect extends CallExpressionAspect with LogAspect {
         if (Util.hasEcoreTag(this.getStaticEnumLiteral.getEnumeration)){
             var res1 : StringBuilder = new StringBuilder
             generateName(res1)
-            res.append(res1.toString.toUpperCase())
+            res.append(".getByName(\""+res1.toString+"\")")
         }else{
             generateName(res)
         }

@@ -11,7 +11,7 @@ import fr.irisa.triskell.kermeta.compilo.scala.rich.RichAspectImplicit._
 
 trait EnumerationLiteralAspect extends ObjectAspect {
 	
-	override def generateScalaCode(res : StringBuilder) : Unit = {
-		res.append(this.getName())
-	} 
+    override def generateScalaCode(res : StringBuilder) : Unit = {
+        res.append(this.getName())
+    } 
 }

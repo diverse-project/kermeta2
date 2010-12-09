@@ -19,8 +19,9 @@ trait ClassAspect extends TypeAspect with ObjectAspect with LogAspect {
          //				res.append(this.getTypeDefinition().asInstanceOf[ClassDefinition].getName )
          //		else
          res.append(kermeta.utils.TypeEquivalence.getTypeEquivalence(s))*/
-
-        res.append(this.getQualifiedNameCompilo())
+//                                                             typeEquivelence.put("fr.irisa.triskell.kermeta.language.structure.Object","java.lang.Object")
+  
+        res.append(this.getQualifiedNameCompilo().replace("fr.irisa.triskell.kermeta.language.structure.Object","java.lang.Object"))
         /* Check Generique Param */
 			
         if (this.getTypeParamBinding.size()>0){
@@ -33,7 +34,8 @@ trait ClassAspect extends TypeAspect with ObjectAspect with LogAspect {
                     var res1: StringBuilder = new StringBuilder
                     e.generateScalaCode(res1)
                      if (false && res1.toString.contains(classOf[fr.irisa.triskell.kermeta.language.structure.Object].getCanonicalName))
-                        res.append("_ <: _root_.org.eclipse.emf.ecore.EObject")
+//                        res.append("_ <: _root_.org.eclipse.emf.ecore.EObject")
+                          res.append("_ <: _root_.java.lang.Object")
                     else
                         res.append(res1.toString)
                     if (i< this.getTypeParamBinding.size()){

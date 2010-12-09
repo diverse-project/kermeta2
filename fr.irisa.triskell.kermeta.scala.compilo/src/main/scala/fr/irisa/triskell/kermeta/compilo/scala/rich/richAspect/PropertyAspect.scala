@@ -102,12 +102,9 @@ trait PropertyAspect extends ObjectAspect with LogAspect {
         if ("uml".equals(this.eContainer.eContainer.asInstanceOf[NamedElement].getName)&&(s.toString.equals("Boolean") || s.toString.equals("java.lang.Boolean") || s.toString.equals("kermeta.standard.Boolean"))){
             return
         }
-		
-		
-		
         res.append("def "+GlobalConfiguration.scalaPrefix)
 //        res.append(this.getName+"")
-          res.append(this.getName+"")
+        res.append(this.getName+"")
         res.append(" : ")
         getListorType(res)
         res.append("={")
@@ -144,7 +141,7 @@ trait PropertyAspect extends ObjectAspect with LogAspect {
             }
 		
             res.append( currentname.substring(0,1).toUpperCase() + currentname.substring(1,currentname.length) + "()")
-                  // For reflexivity
+            // For reflexivity
             if (this.getUpper>1 ||this.getUpper == -1){
                 res.append(")")
             }
@@ -207,13 +204,15 @@ trait PropertyAspect extends ObjectAspect with LogAspect {
             if (("uml".equals(this.eContainer.eContainer.asInstanceOf[NamedElement].getName))&&("class".equals(currentname))){
                 currentname=currentname+"_"
             }/*else if ("class_".equals(currentname)){
-                currentname = "class"
-            }*/
+              currentname = "class"
+              }*/
             //println(this.getName)
             res.append("def "+GlobalConfiguration.scalaPrefix)
             res.append(this.getName+"_=(")
             res.append("value : ")
-            getListorType(res)
+            var listType = new StringBuilder
+            getListorType(listType)
+            res.append(listType.toString)
             res.append(")={")
             if (this.getGetterBody == null  && this.getSetterBody==null){
                 //res.append(")={this.set" + this.getName.substring(0,1).toUpperCase + this.getName.substring(1,this.getName.size) + "(arg)" + "}")
@@ -223,15 +222,18 @@ trait PropertyAspect extends ObjectAspect with LogAspect {
                         currentname =getUmlExtension
                     }
                     res.append("this."+prefix+"get" + currentname.substring(0,1).toUpperCase + currentname.substring(1,currentname.size) + "().clear\n")
-                    res.append("this."+prefix+"get" + currentname.substring(0,1).toUpperCase + currentname.substring(1,currentname.size) + "().addAll(value)\n")
+                    if (listType.toString.equals("java.util.List[_root_.java.lang.Object]") && Util.hasEcoreTag(this))
+                        res.append("value.each(e=> this.get"+currentname.substring(0,1).toUpperCase + currentname.substring(1,currentname.size) +"().add(e.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]))\n")
+                    else
+                        res.append("this."+prefix+"get" + currentname.substring(0,1).toUpperCase + currentname.substring(1,currentname.size) + "().addAll(value)\n")
                 }else{
                     res.append( "this."+prefix+"set" + currentname.substring(0,1).toUpperCase + currentname.substring(1,currentname.size) + "(value)")
                 }
             }else{
-        if(this.getSetterBody != null){
+                if(this.getSetterBody != null){
 
-                this.getSetterBody.generateScalaCode(res)
-        }
+                    this.getSetterBody.generateScalaCode(res)
+                }
 
             }
             res.append("}\n")
