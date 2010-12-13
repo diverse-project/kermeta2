@@ -69,8 +69,33 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
     implicitDef = new StringBuilder
     implicitDef append "package "+GlobalConfiguration.frameworkGeneratedPackageName+"\n"
     implicitDef append "object "+GlobalConfiguration.implicitConvTraitName+" {\n"
-    implicitDef.append(" implicit def richAspect(v : _root_.java.lang.Object) = v.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
+    implicitDef.append(" implicit def richAspect(v : _root_.java.lang.Object) :fr.irisa.triskell.kermeta.language.structure.Object = v.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
+//    implicitDef.append(" implicit def richAspect1(v : _root_.java.lang.Object) : ScalaAspect.fr.irisa.triskell.kermeta.language.structure.ObjectAspect = v.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
 
+    implicitDef.append("      implicit def richAspect1(o : _root_.java.lang.Object) : fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect = {\n")
+     
+implicitDef.append("     if (o != null && o.isInstanceOf[java.lang.String]){\n")
+implicitDef.append("       return new kermeta.standard.RichString(o.asInstanceOf[java.lang.String])\n")
+implicitDef.append("     }\n")
+implicitDef.append("     else if (o != null && o.isInstanceOf[java.lang.Boolean]){\n")
+implicitDef.append("       return new kermeta.standard.RichJavaBoolean(o.asInstanceOf[java.lang.Boolean])\n")
+implicitDef.append("     }\n")
+implicitDef.append("     else if (o != null && o.isInstanceOf[java.lang.Integer]){\n")
+implicitDef.append("       return new kermeta.standard.RichInteger(o.asInstanceOf[java.lang.Integer].intValue)\n")
+implicitDef.append("     }\n")
+implicitDef.append("     else if (o != null && o.isInstanceOf[java.util.List[_]]){\n")
+implicitDef.append("       return new kermeta.standard.JavaConversions.RichKermetaList(o.asInstanceOf[java.util.List[_]])\n")
+implicitDef.append("     }\n")
+        
+implicitDef.append("     if ( o.isInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object])\n")
+implicitDef.append("       return o.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
+implicitDef.append("     else if (o!=null)\n")
+implicitDef.append("     {\n")
+implicitDef.append("      return new kermeta.standard.RichEnum(o)\n}\n")
+implicitDef.append("     else\n")
+implicitDef.append("       null.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
+implicitDef.append("   }\n")
+        
     factoryDefClass = new StringBuilder
   }
   var packages : java.util.List[Package] = _

@@ -111,6 +111,7 @@ object Main extends LogAspect {
     //  inputFile = "/home/barais/workspaces/movida/TestCompilo/src/kermeta/010ValueTypeReflexion.km"
   //      inputFile = "/home/barais/compilo/julien/Launcher.km"
 //   inputFile = "/home/barais/workspaces/compiloV2/smart@adaptor/src/main/kermeta/ArtCleaner.km"
+        inputFile="/home/barais/workspaces/compiloV2/TestCompilo/src/kermeta/testReflexivity001.km"
         if(inputFile != ""){
       log.info("KM compilation begin on "+inputFile)
       compilo.compile(inputFile)
