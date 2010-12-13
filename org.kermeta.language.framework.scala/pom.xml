@@ -4,7 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.kermeta.language</groupId>
     <artifactId>language.framework.scala</artifactId>
-    <packaging>bundle</packaging>
     <name>Kermeta :: Framework</name>
     <version>0.0.9</version>
 
@@ -49,7 +48,10 @@
                 <version>2.1.0</version>
                 <configuration>
                     <instructions>
-                        <Export-Package>fr.irisa.triskell.kermeta.language.structureScalaAspect.*,kermeta.*</Export-Package>
+                        <Export-Package>
+                        	fr.irisa.triskell.kermeta.*, 
+                        	fr.irisa.triskell.scala.*,
+                        	kermeta.*</Export-Package>
                         <Private-Package>utils</Private-Package>
                         <Import-Package>scala.collection, 
                         	scala.collection.immutable, 
