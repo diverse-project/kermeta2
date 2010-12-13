@@ -229,7 +229,8 @@ class RichReal (value: Double) extends RichNumeric[Double] with EObjectImplForPr
 
 class RichCharacter(value:Char)  extends RichValueType with EObjectImplForPrimitive{
     //TODO
-    def compareTo(other : Object) :Int={0}
+    def compareTo(other : Object) :Int={//TODO
+        0}
     override def toString() :java.lang.String={return ""+value}
     override  def isVoid():Boolean = false;
     override def getValue():Object = new java.lang.Character(value)
@@ -238,6 +239,17 @@ class RichCharacter(value:Char)  extends RichValueType with EObjectImplForPrimit
     }
 
 }
+
+
+class RichEnum(value:java.lang.Object)  extends  EObjectImplForPrimitive{
+    override  def isVoid():Boolean = value==null;
+    def getValue():java.lang.Object = value
+    override def getMetaClass():fr.irisa.triskell.kermeta.language.structure.Class={
+        return createMetaClass("kermeta::language::structure::Enumeration")
+    }
+
+}
+
 
 trait EObjectImplForPrimitive extends fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect with  _root_.fr.irisa.triskell.kermeta.language.structure.Object{
     def eUnset(feature: org.eclipse.emf.ecore.EStructuralFeature)={}
