@@ -72,7 +72,7 @@ class EMFRepository  extends Repository  {
         var res : EMFResource = new EMFResource()
         res.setResourceSet(rs)
        // var uri1 :URI = URI.createURI(uri);
-        res.scalauri = uri
+        res.Scalauri = uri
 //        res.getEMFResource.setURI(uri1)
         return res
     }
