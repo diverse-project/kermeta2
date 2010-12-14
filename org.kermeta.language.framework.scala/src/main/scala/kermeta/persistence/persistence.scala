@@ -68,11 +68,12 @@ class EMFRepository  extends Repository  {
      
     def registerEcoreFile(mm_uri : String)={mm_uri}
     def getResource(uri : String) :Resource={
-      println("GetRessource URI="+uri)
+    //  println("GetRessource URI="+uri)
         var res : EMFResource = new EMFResource()
         res.setResourceSet(rs)
-        var uri1 :URI = URI.createURI(uri);
-        res.getEMFResource.setURI(uri1)
+       // var uri1 :URI = URI.createURI(uri);
+        res.scalauri = uri
+//        res.getEMFResource.setURI(uri1)
         return res
     }
     
