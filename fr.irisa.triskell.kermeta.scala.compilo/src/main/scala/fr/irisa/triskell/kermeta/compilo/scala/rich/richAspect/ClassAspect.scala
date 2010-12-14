@@ -21,7 +21,12 @@ trait ClassAspect extends TypeAspect with ObjectAspect with LogAspect {
          res.append(kermeta.utils.TypeEquivalence.getTypeEquivalence(s))*/
 //                                                             typeEquivelence.put("fr.irisa.triskell.kermeta.language.structure.Object","java.lang.Object")
   
-        res.append(this.getQualifiedNameCompilo().replace("fr.irisa.triskell.kermeta.language.structure.Object","java.lang.Object"))
+       var qualifiedName = this.getQualifiedNameCompilo()
+       if (qualifiedName.contains( "fr.irisa.triskell.kermeta.language.structure.Object") && !qualifiedName.contains("ObjectTypeVariable") ){
+           res.append(qualifiedName.replace("fr.irisa.triskell.kermeta.language.structure.Object","java.lang.Object"))
+       }else{
+           res.append(qualifiedName)
+       }
         /* Check Generique Param */
 			
         if (this.getTypeParamBinding.size()>0){
