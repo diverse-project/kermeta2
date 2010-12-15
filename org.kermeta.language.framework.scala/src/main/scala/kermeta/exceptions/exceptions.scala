@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore._
 import kermeta.standard.JavaConversions._
 import kermeta.standard.PrimitiveConversion._
  
-trait Exception extends ExceptionAspect{}
+trait Exception extends ExceptionAspect with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation{}
 trait ExceptionAspect extends java.lang.Throwable with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect{
 var message:String=null;
 var nestedException:Exception=null; 
