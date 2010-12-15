@@ -211,8 +211,8 @@ object JavaConversions {
         def addAt(arg:Int,elem : A){
             value.add(arg, elem)
         }
-        def removeAt(arg:Int){
-            value.remove(arg)
+        def removeAt(index:Int){
+            value.removeAt(index)
         }
 
         def add(e:A) :Boolean= {
@@ -280,9 +280,11 @@ object JavaConversions {
         }
 
 
-        def remove(index:Int):A= {
-
-            return value.remove(index);
+        def remove(obj:Int):A= {
+            this.remove(new java.lang.Integer(obj));
+            if(obj.isInstanceOf[A])
+            	return obj.asInstanceOf[A];
+            return null.asInstanceOf[A];
         }
 
 
