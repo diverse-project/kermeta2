@@ -212,7 +212,7 @@ object JavaConversions {
             value.add(arg, elem)
         }
         def removeAt(index:Int){
-            value.removeAt(index)
+            value.remove(index)
         }
 
         def add(e:A) :Boolean= {
