@@ -49,6 +49,9 @@
                 <version>2.1.0</version>
                 <configuration>
                     <instructions>
+			            <Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${project.name}</Bundle-Name>
+                        <Bundle-Vendor>IRISA/INRIA</Bundle-Vendor>
                         <Export-Package>
                         	fr.irisa.triskell.kermeta.*, 
                         	fr.irisa.triskell.scala.*,
