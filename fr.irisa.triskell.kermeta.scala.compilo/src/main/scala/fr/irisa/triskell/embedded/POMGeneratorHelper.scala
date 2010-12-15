@@ -200,15 +200,15 @@ object POMGeneratorHelper {
         mavendepsExecution.addGoal("copy-dependencies")
         var conf  = new Xpp3Dom("configuration");
         mavendepsExecution.setConfiguration(conf)
-        var includeGroupIds  = new Xpp3Dom("includeGroupIds");
-        conf.addChild(includeGroupIds)
-        includeGroupIds.setValue("org.kermeta.art2,org.kermeta.emf,org.ops4j.pax.url,org.apache.felix,com.weiglewilczek.scala-lang-osgi,ch.qos.logback,org.slf4j")
-        var excludeArtifactIds  = new Xpp3Dom("excludeArtifactIds");
-        conf.addChild(excludeArtifactIds)
-        excludeArtifactIds.setValue("art2.annotation");
+//        var includeGroupIds  = new Xpp3Dom("includeGroupIds");
+//        conf.addChild(includeGroupIds)
+ //       includeGroupIds.setValue("org.kermeta.art2,org.kermeta.emf,org.ops4j.pax.url,org.apache.felix,com.weiglewilczek.scala-lang-osgi,ch.qos.logback,org.slf4j")
+//        var excludeArtifactIds  = new Xpp3Dom("excludeArtifactIds");
+//        conf.addChild(excludeArtifactIds)
+//        excludeArtifactIds.setValue("art2.annotation");
         var outputDirectory  = new Xpp3Dom("outputDirectory");
         conf.addChild(outputDirectory)
-        outputDirectory.setValue("${project.build.directory}/art2Bundles");
+        outputDirectory.setValue("${project.build.directory}/K2dependencies");
     
 
         /* INIT TRUEZIP PLUGIN */
