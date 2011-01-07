@@ -197,15 +197,18 @@ object JavaConversions {
         }
 
         def addAllUnique(a: ju.Collection[A]) :Unit = {
-            var i : ju.Iterator[A] = a.iterator
+            
+           
+            // create a temporary collection for safe iteration
+            var tempColl : java.util.List[A] = new java.util.ArrayList[A];
+            tempColl.addAll(a)
+            var i : ju.Iterator[A] = tempColl.iterator
             while (i.hasNext){
                 var element:A  = i.next
                 if (!value.contains(element))
                     value.add(element)
             }
-            //var res : java.util.List[A] = new java.util.ArrayList[A];
-            //this.each{e=> res.add(e)}
-            //return res
+            
         }
 
         def addAt(arg:Int,elem : A){
