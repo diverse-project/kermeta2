@@ -10,7 +10,6 @@ class StdIOClass {
             Console.print(obj)
         }else
             _console.write(obj.toString)
-                                    
     }
 	
     def errorln(obj : AnyRef) : Unit = {
