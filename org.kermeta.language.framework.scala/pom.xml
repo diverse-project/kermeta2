@@ -53,6 +53,7 @@
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Vendor>IRISA/INRIA</Bundle-Vendor>
                         <Export-Package>
+                                    org.kermeta.*,
                         	fr.irisa.triskell.kermeta.*, 
                         	fr.irisa.triskell.scala.*,
                         	kermeta.*</Export-Package>
