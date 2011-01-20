@@ -30,6 +30,18 @@ object Util extends LogAspect {
     def hasEcoreTag(obj : Object) : Boolean = {
         obj.getOwnedTags.exists(e=> "ecore".equals(e.asInstanceOf[Tag].getName()))
     }
+
+    /**
+     * Check if a model element has an EcoreFromAPI Tag
+     * @param obj model element to test
+     * @return true if ecore tag is found
+     */
+
+    def hasEcoreFromAPITag(obj : Object) : Boolean = {
+        obj.getOwnedTags.exists(e=> "ecorefromAPI".equals(e.asInstanceOf[Tag].getName()))
+    }
+    
+    
     /**
      * Check if a model element has an
      * @param obj model element to test
