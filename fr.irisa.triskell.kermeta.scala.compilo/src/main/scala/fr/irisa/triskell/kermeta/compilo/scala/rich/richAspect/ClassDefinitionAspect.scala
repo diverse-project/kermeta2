@@ -68,8 +68,13 @@ trait ClassDefinitionAspect extends ObjectAspect with IVisitable {
                 res append " with "+ fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.FrameworkAspectUtil.getDefaultAspect(this.getQualifiedNameCompilo())
 //                res append " with "+GlobalConfiguration.frameworkGeneratedPackageName + "."+GlobalConfiguration.implicitConvTraitName
             }
-            res append " with "+Util.protectScalaKeyword("_root_."+Util.getQualifiedNamedBase(this))
-	    res.append("{\n")
+            
+            if (!Util.hasEcoreFromAPITag(this))
+                res append " with "+Util.protectScalaKeyword("_root_."+Util.getQualifiedNamedBase(this))
+            else
+                res.append(" with "+Util.protectScalaKeyword("_root_."+this.eContainer.asInstanceOf[ObjectAspect].getQualifiedNameCompilo) + ".itf."+ this.getName() +"Itf" )
+	    
+            res.append("{\n")
     //  res.append("{this:"+Util.protectScalaKeyword(Util.getQualifiedNamedBase(this))+"=>\n")
 				
 				

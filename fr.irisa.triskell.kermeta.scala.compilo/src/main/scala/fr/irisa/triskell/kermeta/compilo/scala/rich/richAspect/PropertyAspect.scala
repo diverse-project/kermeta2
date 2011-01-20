@@ -90,30 +90,14 @@ trait PropertyAspect extends ObjectAspect with LogAspect {
     }
 
 	
-	
-    def generateScalGet(res : StringBuilder,prefix:String) : Unit ={
-        var s: StringBuilder = new StringBuilder
-        this.getType().asInstanceOf[ObjectAspect].generateScalaCode(s)
-        var currentname : String = this.getName
-        if ("class".equals(currentname)  &&Util.hasEcoreTag(this) ){
-            currentname = currentname + "_"
-        }
-		
-        if ("uml".equals(this.eContainer.eContainer.asInstanceOf[NamedElement].getName)&&(s.toString.equals("Boolean") || s.toString.equals("java.lang.Boolean") || s.toString.equals("kermeta.standard.Boolean"))){
-            return
-        }
-        res.append("def "+GlobalConfiguration.scalaPrefix)
-//        res.append(this.getName+"")
-        res.append(this.getName+"")
-        res.append(" : ")
-        getListorType(res)
-        res.append("={")
-        if (this.getGetterBody == null){
-            // For reflexivity
-            if (this.getUpper>1 ||this.getUpper == -1){
-                res.append("new RichKermetaList(")
+    
+    def getGetter(s:StringBuilder,res : StringBuilder,prefix:String)={
+                var currentname : String = this.getName
+            if ("class".equals(currentname)  &&Util.hasEcoreTag(this) ){
+                currentname = currentname + "_"
             }
-            res.append("this.")
+
+                    res.append("this.")
             if (s.toString.equals("Boolean") || s.toString.equals("java.lang.Boolean") || s.toString.equals("kermeta.standard.Boolean")){
                 if (this.getType().isInstanceOf[PrimitiveType]
                     && !(
@@ -141,6 +125,44 @@ trait PropertyAspect extends ObjectAspect with LogAspect {
             }
 		
             res.append( currentname.substring(0,1).toUpperCase() + currentname.substring(1,currentname.length) + "()")
+
+        
+    }
+	
+    def generateScalGet(res : StringBuilder,prefix:String) : Unit ={
+        var s: StringBuilder = new StringBuilder
+        this.getType().asInstanceOf[ObjectAspect].generateScalaCode(s)
+		
+        if ("uml".equals(this.eContainer.eContainer.asInstanceOf[NamedElement].getName)&&(s.toString.equals("Boolean") || s.toString.equals("java.lang.Boolean") || s.toString.equals("kermeta.standard.Boolean"))){
+            return
+        }
+        res.append("def "+GlobalConfiguration.scalaPrefix)
+//        res.append(this.getName+"")
+        res.append(this.getName+"")
+        res.append(" : ")
+        getListorType(res)
+        res.append("={")
+        if (this.getGetterBody == null){
+            // For reflexivity
+ x           
+            
+            if (this.getUpper>1 ||this.getUpper == -1){
+                
+                //if (this.getEmployees()==null) this.setEmployees(new java.util.ArrayList[_root_.system.corporate.Employee]);
+                if (Util.hasEcoreFromAPITag(this.eContainer.asInstanceOf[Object])){
+                    res.append(" if (")
+                    var res1 = new StringBuilder
+                    this.getGetter(s,res1,prefix)
+                    res.append(res1.toString)
+                    res.append(" == null ) ")
+                    res.append(res1.toString.replace("this.get","this.set" ).replace("()","("))
+                    res.append("new _root_.java.util.ArrayList[" + s.toString+"]);")
+                }
+                
+                res.append("new RichKermetaList(")
+            }
+            
+            this.getGetter(s,res,prefix)
             // For reflexivity
             if (this.getUpper>1 ||this.getUpper == -1){
                 res.append(")")
