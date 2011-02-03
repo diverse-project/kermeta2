@@ -34,6 +34,19 @@ abstract class Resource  extends java.util.List[fr.irisa.triskell.kermeta.langua
 	
 } 
  
+object Repository{
+    var cps:java.util.List[ResourceSetCreateCallBack]  =_
+    def addResourceSetCreateCallBack(cb:ResourceSetCreateCallBack)={
+        if (cps==null)
+            cps=new java.util.ArrayList[ResourceSetCreateCallBack]()
+        cps.add(cb)        
+    }
+    def getResourceSetCreateCallBack():java.util.List[ResourceSetCreateCallBack]= {
+         if (cps==null)
+            cps=new java.util.ArrayList[ResourceSetCreateCallBack]()
+        return cps
+    }
+}
 
 abstract class Repository {
     def createResource(uri : String, mm_uri : String) :Resource
@@ -53,6 +66,7 @@ class EMFRepository  extends Repository  {
     m.put("ecore",new EcoreResourceFactoryImpl());
     m.put("*",new XMIResourceFactoryImpl());
     rs.getPackageRegistry().putAll(EcorePackages.getPacks())
+    Repository.getResourceSetCreateCallBack.each(cp=> cp.init(rs))
 
     def ScalaignoreLoadErrorUnknownMetaclass_=(arg : java.lang.Boolean):Unit={}
     

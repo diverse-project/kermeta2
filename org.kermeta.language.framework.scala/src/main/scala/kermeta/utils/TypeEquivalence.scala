@@ -16,6 +16,7 @@ object TypeEquivalence {
     pack1.put("kermeta.language.structure","fr.irisa.triskell.kermeta.language.structure")
     //pack1.put("language.structure","fr.irisa.triskell.kermeta.language.structure")
     pack1.put("kermeta.language.behavior", "fr.irisa.triskell.kermeta.language.behavior")
+    pack1.put("flow", "fr.obeo.dsl.designer.sample.flow")
     //pack1.put("kermeta.kunit","junit.framework")
     pack1;
   }

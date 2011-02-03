@@ -252,8 +252,10 @@ object JavaConversions {
 
 
         def contains( o:Object) :Boolean = {
-
-            return value.contains(o);
+            if (value == null)
+                return false
+            else
+                return value.contains(o);
         }
 
 
