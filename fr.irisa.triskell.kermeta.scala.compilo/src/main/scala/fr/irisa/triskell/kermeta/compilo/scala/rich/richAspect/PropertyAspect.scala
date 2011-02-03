@@ -133,9 +133,6 @@ trait PropertyAspect extends ObjectAspect with LogAspect {
         var s: StringBuilder = new StringBuilder
         this.getType().asInstanceOf[ObjectAspect].generateScalaCode(s)
 		
-        if ("uml".equals(this.eContainer.eContainer.asInstanceOf[NamedElement].getName)&&(s.toString.equals("Boolean") || s.toString.equals("java.lang.Boolean") || s.toString.equals("kermeta.standard.Boolean"))){
-            return
-        }
         res.append("def "+GlobalConfiguration.scalaPrefix)
 //        res.append(this.getName+"")
         res.append(this.getName+"")
@@ -144,7 +141,6 @@ trait PropertyAspect extends ObjectAspect with LogAspect {
         res.append("={")
         if (this.getGetterBody == null){
             // For reflexivity
- x           
             
             if (this.getUpper>1 ||this.getUpper == -1){
                 
@@ -162,8 +158,20 @@ trait PropertyAspect extends ObjectAspect with LogAspect {
                 res.append("new RichKermetaList(")
             }
             
+            if ("uml".equals(this.eContainer.eContainer.asInstanceOf[NamedElement].getName)&&(s.toString.equals("Boolean") || s.toString.equals("java.lang.Boolean") || s.toString.equals("kermeta.standard.Boolean"))){
+                if (this.getName.startsWith("is"))
+                        res.append("this."+this.getName+"()")                
+                    else if (this.getUpper>1 ||this.getUpper == -1){
+                        res.append("this.get")
+                        res.append( this.getName.substring(0,1).toUpperCase() + this.getName.substring(1,this.getName.length) + "s()")
+                    }else{
+                        res.append("this.is")
+                        res.append( this.getName.substring(0,1).toUpperCase() + this.getName.substring(1,this.getName.length) + "()")
+                    }
+            
+        }else{
             this.getGetter(s,res,prefix)
-            // For reflexivity
+        }// For reflexivity
             if (this.getUpper>1 ||this.getUpper == -1){
                 res.append(")")
             }
