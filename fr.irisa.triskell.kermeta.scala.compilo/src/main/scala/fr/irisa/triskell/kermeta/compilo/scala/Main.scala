@@ -58,9 +58,19 @@ object Main extends LogAspect {
 //additionalClassPath = List("/home/barais/NetBeansProjects/fr.irisa.triskell.kermeta.scala.compilo.test/src/test/resources/MIK/core.jar") ++ additionalClassPath
 //additionalClassPath = List("/home/barais/NetBeansProjects/fr.irisa.triskell.kermeta.scala.compilo.test/src/test/resources/MIK/directives.jar") ++ additionalClassPath
   //additionalClassPath = List("/home/barais/malai.jar") ++ additionalClassPath
-//  additionalClassPath = List("/home/barais/workspaces/movida/fr.inria.featureDiagramEditor.derivation.fdext.ui/libForCompilo/featureadresolution.jar") ++ additionalClassPath
- //   additionalClassPath = List("/home/barais/workspaces/movida/lib/flow.jar") ++ additionalClassPath
-//    additionalClassPath = List("/home/barais/workspaces/movida/lib/fr.inria.featureDiagramEditor.emf-0.0.1-SNAPSHOT.jar") ++ additionalClassPath
+  /*additionalClassPath = List("/home/barais/workspaces/movida/fr.inria.featureDiagramEditor.derivation.fdext.ui/libForCompilo/featureadresolution.jar") ++ additionalClassPath
+    additionalClassPath = List("/home/barais/workspaces/movida/lib/flow.jar") ++ additionalClassPath  
+    additionalClassPath = List("/home/barais/workspaces/movida/lib/fr.inria.featureDiagramEditor.emf-0.0.1-SNAPSHOT.jar") ++ additionalClassPath
+
+          additionalClassPath = List("/home/barais/workspaces/movida2/TestUMLLoadJava/lib/org.eclipse.emf.mapping.ecore2xml_2.5.0.v200906151043.jar") ++ additionalClassPath
+          additionalClassPath = List("/home/barais/workspaces/movida2/TestUMLLoadJava/lib/org.eclipse.uml2.common_1.5.0.v200905041045.jar") ++ additionalClassPath
+          additionalClassPath = List("/home/barais/workspaces/movida2/TestUMLLoadJava/lib/org.eclipse.uml2.uml_3.0.1.v200908281330.jar") ++ additionalClassPath
+          additionalClassPath = List("/home/barais/workspaces/movida2/TestUMLLoadJava/lib/org.eclipse.uml2.uml.resources_3.0.0.v200906011111.jar") ++ additionalClassPath
+*///          additionalClassPath = List("/home/barais/workspaces/movida2/TestUMLLoadJava/lib/") ++ additionalClassPath
+//          additionalClassPath = List("/home/barais/workspaces/movida2/TestUMLLoadJava/lib/") ++ additionalClassPath
+          
+
+        
 //      additionalClassPath = List("/home/barais/workspaces/mopcom-i/TestCompiloV2ModMap/adapter_lab_corporate_apis.jar") ++ additionalClassPath
   
         /*additionalClassPath = List("/home/barais/compilo/julien/fr.inria.aoste.annotation_1.0.1.jar") ++ additionalClassPath
@@ -68,7 +78,6 @@ object Main extends LogAspect {
   additionalClassPath = List("/home/barais/compilo/julien/fr.inria.aoste.trace_1.0.0.jar") ++ additionalClassPath
   additionalClassPath = List("/home/barais/compilo/julien/jars.jar") ++ additionalClassPath*/
 //  additionalClassPath = List("/home/barais/.m2/repository/org/kermeta/art/model/1.1.1-SNAPSHOT/model-1.1.1-SNAPSHOT.jar") ++ additionalClassPath
-  
 
     var inputFile : String = ""
     var runnerParams = List[String]()
@@ -118,8 +127,8 @@ object Main extends LogAspect {
   //      inputFile="/home/barais/workspaces/compiloV2/TestCompilo/src/kermeta/testReflexivity001.km"
   //      
 //  inputFile = "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/main/CallDerivation.km"
- // inputFile =   "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/Derivation/DerivationEngine.km"
-  //inputFile =   "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/Selection/SelectionEngine.km"
+//  inputFile =   "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/Derivation/DerivationEngine.km"
+ // inputFile =   "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/Selection/SelectionEngine.km"
  //inputFile ="/home/barais/workspaces/mopcom-i/TestCompiloV2ModMap/adapter.km"
         if(inputFile != ""){
       log.info("KM compilation begin on "+inputFile)
