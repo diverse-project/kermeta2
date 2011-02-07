@@ -51,27 +51,27 @@ object POMGeneratorHelper {
 
 
         /* INIT Project Repository */
-        var triskellNexus = new Repository
-        triskellNexus.setId("triskellNexus")
-        triskellNexus.setUrl("http://tipimouss.irisa.fr:8081/nexus/content/groups/public/")
+//        var triskellNexus = new Repository
+//        triskellNexus.setId("triskellNexus")
+//        triskellNexus.setUrl("http://tipimouss.irisa.fr:8081/nexus/content/groups/public/")
     
     
-        var triskellInternal2 = new Repository
-        triskellInternal2.setId("triskellInternal")
-        triskellInternal2.setUrl("http://tipimouss.irisa.fr/maven2private/")
+  //      var triskellInternal2 = new Repository
+  //      triskellInternal2.setId("triskellInternal1")
+  //      triskellInternal2.setUrl("http://kermeta.org/maven2private/")
         
-        var triskellInternal2S = new Repository
-        triskellInternal2S.setId("triskellInternal")
-        triskellInternal2S.setUrl("http://tipimouss.irisa.fr/maven2private-snapshots/")
+//        var triskellInternal2S = new Repository
+//        triskellInternal2S.setId("triskellInternal2")
+//        triskellInternal2S.setUrl("http://kermeta.org/maven2private-snapshots/")
     
     
-        var triskellInternal = new Repository
-        triskellInternal.setId("triskellInternal")
-        triskellInternal.setUrl("http://tipimouss.irisa.fr/maven2/")
+  //      var triskellInternal = new Repository
+  //      triskellInternal.setId("triskellInternal3")
+  //      triskellInternal.setUrl("http://kermeta.org/maven2/")
 
-        var triskellInternalSnapshot = new Repository
-        triskellInternalSnapshot.setId("triskellInternalSnapshot")
-        triskellInternalSnapshot.setUrl("http://tipimouss.irisa.fr/maven2-snapshots/")
+  //      var triskellInternalSnapshot = new Repository
+  //      triskellInternalSnapshot.setId("triskellInternalSnapshot")
+  //      triskellInternalSnapshot.setUrl("http://tipimouss.irisa.fr/maven2-snapshots/")
 
         var triskellPublic = new Repository
         triskellPublic.setId("triskellPublic")
@@ -92,15 +92,15 @@ object POMGeneratorHelper {
         //project.getModel().getPluginRepositories().add(scalaPluginRepo)
 
         project.getModel.setPluginRepositories(project.getModel().getPluginRepositories()++List(scalaPluginRepo))
-        project.getModel.setRepositories(project.getModel.getRepositories++List(triskellInternal))
-        project.getModel.setRepositories(project.getModel.getRepositories++List(triskellInternalSnapshot))
+//        project.getModel.setRepositories(project.getModel.getRepositories++List(triskellInternal))
+//        project.getModel.setRepositories(project.getModel.getRepositories++List(triskellInternalSnapshot))
         project.getModel.setRepositories(project.getModel.getRepositories++List(triskellPublic))
         project.getModel.setRepositories(project.getModel.getRepositories++List(triskellPublicSnapshot))
         project.getModel.setRepositories(project.getModel.getRepositories++List(scalaRepo))
     
-        project.getModel.setRepositories(project.getModel.getRepositories++List(triskellInternal2))
-        project.getModel.setRepositories(project.getModel.getRepositories++List(triskellInternal2S))
-        project.getModel.setRepositories(project.getModel.getRepositories++List(triskellNexus))
+//        project.getModel.setRepositories(project.getModel.getRepositories++List(triskellInternal2))
+ //       project.getModel.setRepositories(project.getModel.getRepositories++List(triskellInternal2S))
+//        project.getModel.setRepositories(project.getModel.getRepositories++List(triskellNexus))
     
 
         /* INIT PROJECT BUILD */
