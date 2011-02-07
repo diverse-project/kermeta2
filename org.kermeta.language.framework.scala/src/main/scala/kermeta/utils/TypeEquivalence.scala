@@ -16,8 +16,37 @@ object TypeEquivalence {
     pack1.put("kermeta.language.structure","fr.irisa.triskell.kermeta.language.structure")
     //pack1.put("language.structure","fr.irisa.triskell.kermeta.language.structure")
     pack1.put("kermeta.language.behavior", "fr.irisa.triskell.kermeta.language.behavior")
+
+    //ObeoFlow    
     pack1.put("flow", "fr.obeo.dsl.designer.sample.flow")
-    //pack1.put("kermeta.kunit","junit.framework")
+    //Thales M2
+    pack1.put("emde", "com.thalesgroup.mde.emde")
+    pack1.put("cs", "com.thalesgroup.mde.melody.data.cs")
+    pack1.put("ctx", "com.thalesgroup.mde.melody.data.ctx")
+    pack1.put("epbs", "com.thalesgroup.mde.melody.data.epbs")
+    pack1.put("fa", "com.thalesgroup.mde.melody.data.fa")
+    pack1.put("information", "com.thalesgroup.mde.melody.data.information")
+    pack1.put("information.communication", "com.thalesgroup.mde.melody.data.information.communication")
+    pack1.put("information.datatype", "com.thalesgroup.mde.melody.data.information.datatype")
+    pack1.put("information.datavalue", "com.thalesgroup.mde.melody.data.information.datavalue")
+    pack1.put("interaction", "com.thalesgroup.mde.melody.data.interaction")
+    pack1.put("la", "com.thalesgroup.mde.melody.data.la")
+    pack1.put("melodycommon", "com.thalesgroup.mde.melody.data.melodycommon")
+    pack1.put("melodycore", "com.thalesgroup.mde.melody.data.melodycore")
+    pack1.put("melodymodeller", "com.thalesgroup.mde.melody.data.melodymodeller")
+    pack1.put("oa", "com.thalesgroup.mde.melody.data.oa")
+    pack1.put("pa", "com.thalesgroup.mde.melody.data.pa")
+    pack1.put("pa.deployment", "com.thalesgroup.mde.melody.data.pa.deployment")
+    pack1.put("requirement", "com.thalesgroup.mde.melody.data.requirement")
+    pack1.put("sharedmodel", "com.thalesgroup.mde.melody.data.sharedmodel")
+    pack1.put("activity", "com.thalesgroup.mde.shared.data.activity")
+    pack1.put("behavior", "com.thalesgroup.mde.shared.data.behavior")
+    pack1.put("modellingcore", "com.thalesgroup.mde.shared.data.modellingcore")
+    pack1.put("statemachine", "com.thalesgroup.mde.shared.data.statemachine")
+    pack1.put("patterns", "com.thalesgroup.mde.shared.patterns.gen.patterns")
+
+        
+//pack1.put("kermeta.kunit","junit.framework")
     pack1;
   }
 	
@@ -51,6 +80,7 @@ object TypeEquivalence {
                                                              typeEquivelence.put("java.lang.Integer", "java.lang.Integer");
 
                                                              typeEquivelence.put("double", "java.lang.Double");
+                                                             typeEquivelence.put("float", "scala.Float");
                                                              typeEquivelence.put("boolean", "java.lang.Boolean");
                                                              typeEquivelence.put("kermeta.standard.Boolean", "java.lang.Boolean");
                                                              typeEquivelence.put("java.lang.Class","java.lang.Class[_]")
