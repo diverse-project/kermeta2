@@ -4,10 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.kermeta.language</groupId>
     <artifactId>language.framework.scala</artifactId>
-    <packaging>bundle</packaging>
+    <packaging>jar</packaging>
     <name>Kermeta :: Framework</name>
-    <version>0.0.10-SNAPSHOT</version>
-
+    <version>0.11.0-BETA</version>
     <pluginRepositories>
         <pluginRepository>
             <id>scala-tools.org</id>
@@ -59,8 +58,7 @@
                         	kermeta.*</Export-Package>
                         <Private-Package>utils</Private-Package>
                         <Import-Package>
-                        	!org.eclipse.core.runtime,
-							!org.slf4j,
+                        	!org.eclipse.core.runtime,!org.slf4j,
                         	scala.collection, 
                         	scala.collection.immutable, 
                         	scala.collection.mutable,
