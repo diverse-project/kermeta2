@@ -210,7 +210,7 @@ class RichReal (value: Double) extends RichNumeric[Double] with EObjectImplForPr
     def toInteger() :Int={var v : Int = value.intValue
                           return v}
     def uminus() :Double={return -1 * value}
-    def div(other : Double) :Double={return value+other.toDouble}
+    def div(other : Double) :Double={return value / other.toDouble}
     //TODO
     override def compareTo(other : Double) :Int={return 0}
     override def toString() :java.lang.String={return ""+value}
