@@ -6,7 +6,7 @@
     <artifactId>language.framework.scala</artifactId>
     <packaging>bundle</packaging>
     <name>Kermeta :: Framework</name>
-    <version>0.11.0-BETA</version>
+    <version>0.11.1-SNAPSHOT</version>
     <pluginRepositories>
         <pluginRepository>
             <id>scala-tools.org</id>
