@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.kermeta.language</groupId>
     <artifactId>language.framework.scala</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>Kermeta :: Framework</name>
     <version>0.11.0-BETA</version>
     <pluginRepositories>
