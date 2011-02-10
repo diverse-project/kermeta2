@@ -69,10 +69,13 @@ trait ClassDefinitionAspect extends ObjectAspect with IVisitable {
 //                res append " with "+GlobalConfiguration.frameworkGeneratedPackageName + "."+GlobalConfiguration.implicitConvTraitName
             }
             
-            if (!Util.hasEcoreFromAPITag(this))
-                res append " with "+Util.protectScalaKeyword("_root_."+Util.getQualifiedNamedBase(this))
+            var param : StringBuilder = new  StringBuilder
+            this.generateParamerterClass(param)
+            if (!Util.hasEcoreFromAPITag(this)){                
+                res append " with "+Util.protectScalaKeyword("_root_."+Util.getQualifiedNamedBase(this) + param.toString)                
+            }
             else
-                res.append(" with "+Util.protectScalaKeyword("_root_."+this.eContainer.asInstanceOf[ObjectAspect].getQualifiedNameCompilo) + ".itf."+ this.getName() +"Itf" )
+                res.append(" with "+Util.protectScalaKeyword("_root_."+this.eContainer.asInstanceOf[ObjectAspect].getQualifiedNameCompilo) + ".itf."+ this.getName() +"Itf" + param.toString)
 	    
             res.append("{\n")
     //  res.append("{this:"+Util.protectScalaKeyword(Util.getQualifiedNamedBase(this))+"=>\n")
