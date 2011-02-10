@@ -52,8 +52,12 @@ object TypeEquivalence {
 	
   def getPackageEquivalence(key:String):String={
     var res :String = packageEquivelence.get(key)
-    if (res ==null)
+    
+    if (res ==null){
       res = key
+    }
+    if (key.startsWith("CHESS"))
+        res=res.replace("CHESS","chess.CHESS")
     return res
   }
 	
