@@ -215,7 +215,7 @@ object JavaConversions {
             value.add(arg, elem)
         }
         def removeAt(index:Int){
-            value.remove(index)
+            value.remove(value.get(index))
         }
 
         def add(e:A) :Boolean= {
