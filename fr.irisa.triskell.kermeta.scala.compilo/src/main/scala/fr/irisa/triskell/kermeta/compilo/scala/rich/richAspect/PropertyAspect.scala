@@ -99,7 +99,6 @@ trait PropertyAspect extends ObjectAspect with LogAspect {
 
                     res.append("this.")
             if (s.toString.equals("Boolean") || s.toString.equals("java.lang.Boolean") || s.toString.equals("kermeta.standard.Boolean")){
-                println(this.getName + " "+s + " "+ this.getType.asInstanceOf[PrimitiveType].whichBoolean)
                 if (this.getType().isInstanceOf[PrimitiveType]
                     && !("MARTE_Library.MARTE_PrimitivesTypes.Boolean".equals(this.getType().asInstanceOf[PrimitiveType].whichBoolean) ||
                         "fr.irisa.triskell.kermeta.language.structure.Boolean".equals(this.getType().asInstanceOf[PrimitiveType].whichBoolean) ||

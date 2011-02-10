@@ -19,6 +19,7 @@ object CopyEcoreFile {
           println("copy ecore to " + destFolder)
         CopyEcoreFile.copy("org/eclipse/emf/ecore/EcoreFactory.java", destFolder)
         CopyEcoreFile.copy("org/eclipse/emf/ecore/EcoreFactoryWrapper.java", destFolder)
+        CopyEcoreFile.copy("org/eclipse/emf/ecore/impl/EcorePackageImpl.java", destFolder)
         
       }
     
@@ -33,7 +34,7 @@ object CopyEcoreFile {
     // So we copy the file, a buffer of bytes at a time.
     var to : java.io.FileOutputStream  = null; // Stream to write to destination
     try {
-      var file1 :File =  new File(destFolder + File.separator +"org" + File.separator+ "eclipse"+ File.separator + "emf" + File.separator+ "ecore" )
+      var file1 :File =  new File(destFolder + File.separator +"org" + File.separator+ "eclipse"+ File.separator + "emf" + File.separator+ "ecore" + File.separator+ "impl" )
       file1.mkdirs
       to = new FileOutputStream(destFolder + File.separator +file); // Create output stream
       var buffer = new Array[Byte](4096); // To hold file contents

@@ -54,9 +54,12 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         packName= kermeta.utils.TypeEquivalence.getPackageEquivalence(packName)
         var impName = packName+ Util.getImplPackageSuffix(packName)+Util.getPackagePrefix(packNameUpper)+"PackageImpl"
        if (packName.equals("org.eclipse.emf.ecore")){
-            res.append("\n{\n\tvar c : java.lang.reflect.Constructor[_] = classOf["+impName+"].getDeclaredConstructors.first\n")
-            res.append("\tc.setAccessible(true);\n")
-            res.append("\tvar pack : "+ impName + " =  c.newInstance().asInstanceOf["+ impName + "]\n")
+            //res.append("\n{\n\tvar c : java.lang.reflect.Constructor[_] = classOf["+impName+"].getDeclaredConstructors.first\n")
+            //res.append("\tc.setAccessible(true);\n")
+            res.append("\n{\n\tvar pack : org.eclipse.emf.ecore.impl.EcorePackageImpl =  new org.eclipse.emf.ecore.impl.EcorePackageImpl with ScalaAspect.org.eclipse.emf.ecore.EPackageAspect with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation\n")
+            res.append("\torg.eclipse.emf.ecore.EPackage.Registry.INSTANCE.put(org.eclipse.emf.ecore.EcorePackage.eNS_URI,pack)\n")
+                  
+//            res.append("\tvar pack : "+ impName + " =  c.newInstance().asInstanceOf["+ impName + "]\n")
             res.append("\tpack.setEFactoryInstance(" +GlobalConfiguration.scalaAspectPrefix+"."+ packName + ".RichFactory)\n " )
             res.append("\tvar f : java.lang.reflect.Field = classOf[org.eclipse.emf.ecore.impl.EPackageImpl].getDeclaredField(\"ecoreFactory\")\n")
             res.append("\tf.setAccessible(true)\n")
@@ -383,6 +386,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
                       || classOf[fr.irisa.triskell.kermeta.language.structure.Constraint].getCanonicalName.equals(superClassName)) ){
                     viewDefTemp.append(" with " + "fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation")
                 }else{
+                    
                     //println(cd.eContainer().asInstanceOf[ObjectAspect].getQualifiedNameCompilo + "."+ cd.getName)
                 }
                 viewDefTemp.append(" \n")

@@ -149,7 +149,40 @@ object POMGeneratorHelper {
         pluginScalaConfiguration.addChild(pluginScalaConfigurationJVMArgs);
         pluginScala.setConfiguration(pluginScalaConfiguration);
 
-
+        
+        /* INIT java compile PLUGIN */
+        /*
+    
+               <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <version>2.3.2</version>
+               <configuration>
+                   <source>1.6</source>
+                   <target>1.6</target>
+                   <encoding>${project.build.sourceEncoding}</encoding>
+               </configuration>
+           </plugin>
+      <plugin>
+         **/
+        var pluginJava = new Plugin();
+        pluginJava.setGroupId("org.apache.maven.plugins");
+        pluginJava.setArtifactId("maven-compiler-plugin");
+        pluginJava.setVersion("2.3.2")
+        var pluginJavaConfiguration = new Xpp3Dom("configuration");
+        var pluginJavaSource = new Xpp3Dom("source");
+        pluginJavaSource.setValue("1.6")
+                                  
+        var pluginJavaTarget = new Xpp3Dom("target");
+        pluginJavaTarget.setValue("1.6")
+        pluginJavaConfiguration.addChild(pluginJavaSource)
+        pluginJavaConfiguration.addChild(pluginJavaTarget)
+        pluginJava.setConfiguration(pluginJavaConfiguration)
+        
+        
+        
+        
+        
         /* INIT FELIX OSGI PLUGIN */
         var pluginFelix = new Plugin();
         pluginFelix.setGroupId("org.apache.felix");
@@ -246,6 +279,8 @@ object POMGeneratorHelper {
 
         pluginTruezip.addExecution(pluginTrueZipExecution)
         build.addPlugin(pluginScala)
+        build.addPlugin(pluginJava)
+        
         build.addPlugin(pluginFelix)
         build.addPlugin(mavendeps)
 
