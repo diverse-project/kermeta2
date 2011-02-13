@@ -88,7 +88,7 @@ object TypeEquivalence {
                                                              typeEquivelence.put("boolean", "java.lang.Boolean");
                                                              typeEquivelence.put("kermeta.standard.Boolean", "java.lang.Boolean");
                                                              typeEquivelence.put("java.lang.Class","java.lang.Class[_]")
-                                                             typeEquivelence.put("ScalaAspect.fr.irisa.triskell.kermeta.language.ReflectiveSequence", "java.util.List")
+                                                             typeEquivelence.put(utils.UTilScala.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.ReflectiveSequence", "java.util.List")
                                                              typeEquivelence.put("fr.irisa.triskell.kermeta.language.ReflectiveSequence", "java.util.List")
 //                                                             typeEquivelence.put("fr.irisa.triskell.kermeta.language.structure.Object","java.lang.Object")
                                                                typeEquivelence;

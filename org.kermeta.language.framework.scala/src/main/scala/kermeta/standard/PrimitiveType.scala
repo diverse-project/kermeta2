@@ -274,7 +274,7 @@ trait EObjectImplForPrimitive extends fr.irisa.triskell.kermeta.language.structu
     def eInvoke(x1: org.eclipse.emf.ecore.EOperation,x2: org.eclipse.emf.common.util.EList[_]):java.lang.Object = null
 
     def createMetaClass(name:String):fr.irisa.triskell.kermeta.language.structure.Class={
-        var factoryName = "ScalaAspect.fr.irisa.triskell.kermeta.language.structure.RichFactory$"
+        var factoryName = utils.UTilScala.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.structure.RichFactory$"
         var methodName = "createClass"
         var methodNameClassDef = "createClassDefinition"
         val clazz = java.lang.Class.forName(factoryName)
