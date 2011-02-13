@@ -59,7 +59,6 @@ class ScalaAspectPackageVisitorRunnable extends IVisitor with LogAspect  {
       //og.error("AspectVisitor ClassDef Gen | {} | {}",genpackageName.toString,par.eContainer.asInstanceOf[PackageAspect].getQualifiedNameNoRoot)
 			
       if (Util.hasEcoreTag(par.eContainer().asInstanceOf[Package])){
-        //genpackageName.append("ScalaAspect")
         genpackageName.insert(0, GlobalConfiguration.scalaAspectPrefix+".")
       }
       //packageName.append(genpackageName.toString)

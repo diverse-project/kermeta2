@@ -128,7 +128,7 @@ object Util extends LogAspect {
      */
 	
     def getImplPackageSuffix(packName:String):String={
-        if ("org.eclipse.uml2.uml".equals(packName) || "ScalaAspect.org.eclipse.uml2.uml".equals(packName) || "uml".equals(packName.toString) || ("ScalaAspect.org.eclipse.uml2.uml"+GlobalConfiguration.scalaAspectPrefix).equals(packName.toString))
+        if ("org.eclipse.uml2.uml".equals(packName) || (GlobalConfiguration.scalaAspectPrefix+ ".org.eclipse.uml2.uml").equals(packName) || "uml".equals(packName.toString) )
             return ".internal.impl."
         else
         {	//println("toto "+ packName)
@@ -137,10 +137,10 @@ object Util extends LogAspect {
     }
 
     def getPackagePrefix(packName:String):String={
-        if ("Kermeta".equals(packName) || "uml".equals(packName.toString) || ("ScalaAspect.org.eclipse.uml2.uml"+GlobalConfiguration.scalaAspectPrefix).equals(packName.toString))
+        if ("Kermeta".equals(packName) )
         {
             return "Km"
-        }else if ("Uml".equals(packName) || "Uml".equals(packName.toString) || ("ScalaAspect.org.eclipse.uml2.uml"+GlobalConfiguration.scalaAspectPrefix).equals(packName.toString) || ("org.eclipse.uml2.uml"+GlobalConfiguration.scalaAspectPrefix).equals(packName.toString))
+        }else if ("Uml".equals(packName) || "Uml".equals(packName.toString))
         {
             return "UML"
         }else

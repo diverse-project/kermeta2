@@ -56,7 +56,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
        if (packName.equals("org.eclipse.emf.ecore")){
             //res.append("\n{\n\tvar c : java.lang.reflect.Constructor[_] = classOf["+impName+"].getDeclaredConstructors.first\n")
             //res.append("\tc.setAccessible(true);\n")
-            res.append("\n{\n\tvar pack : org.eclipse.emf.ecore.impl.EcorePackageImpl =  new org.eclipse.emf.ecore.impl.EcorePackageImpl with ScalaAspect.org.eclipse.emf.ecore.EPackageAspect with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation\n")
+            res.append("\n{\n\tvar pack : org.eclipse.emf.ecore.impl.EcorePackageImpl =  new org.eclipse.emf.ecore.impl.EcorePackageImpl with "+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".org.eclipse.emf.ecore.EPackageAspect with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation\n")
             res.append("\torg.eclipse.emf.ecore.EPackage.Registry.INSTANCE.put(org.eclipse.emf.ecore.EcorePackage.eNS_URI,pack)\n")
                   
 //            res.append("\tvar pack : "+ impName + " =  c.newInstance().asInstanceOf["+ impName + "]\n")
@@ -194,7 +194,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         //TODO gérer le cas des package venant d'ecore
         var res :StringBuilder= new StringBuilder
         var resinitEclipse :StringBuilder= new StringBuilder
-        res.append("package runner \n")
+        res.append("package "+GlobalConfiguration.scalaAspectPrefix+"runner \n")
         res.append("import java.io.PrintStream\n")
         res.append("import "+ GlobalConfiguration.frameworkGeneratedPackageName + "."+GlobalConfiguration.implicitConvTraitName +"._\n")
 
@@ -249,7 +249,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
 
         res.append("def main(args : Array[String]) : Unit = {\n")
         if (packages.exists(pac=> "ecore".equals(pac.getName))){
-            res.append("\t org.eclipse.emf.ecore.EcoreFactory.eINSTANCE.asInstanceOf[org.eclipse.emf.ecore.EcoreFactoryWrapper].setWrap(ScalaAspect.org.eclipse.emf.ecore.RichFactory) \n \t" )
+            res.append("\t org.eclipse.emf.ecore.EcoreFactory.eINSTANCE.asInstanceOf[org.eclipse.emf.ecore.EcoreFactoryWrapper].setWrap("+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".org.eclipse.emf.ecore.RichFactory) \n \t" )
             CopyEcoreFile.copyEcorefiles(GlobalConfiguration.outputFolder)
         }
         res.append("\t init() \n\t"+"_root_." )
@@ -272,7 +272,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
 		
         res.append("\n}\n}")
 		
-        Util.generateFile("runner", "MainRunner", res.toString())
+        Util.generateFile(GlobalConfiguration.scalaAspectPrefix + "runner", "MainRunner", res.toString())
         this.genetateUtilObject
 		
         par.getPackages().foreach(p => p.accept(this) )
@@ -364,7 +364,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
                 if("EObject".equals(par.getName)){
                     implicitDef append " implicit def richAspect"+ param.toString+"(v : "+ Util.protectScalaKeyword(kermeta.utils.TypeEquivalence.getTypeEquivalence(genpackageName.toString+par.getName()))+ param.toString+") = v.asInstanceOf[fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect]\n"
                 } else {
-                    implicitDef append " implicit def richAspect"+ param.toString+"(v : "+ Util.protectScalaKeyword(kermeta.utils.TypeEquivalence.getTypeEquivalence(genpackageName.toString+par.getName()))+ param.toString+") = v.asInstanceOf["+ (Util.protectScalaKeyword(packageName.toString)+"."+ par.getName+"Aspect").replace("ScalaAspect.fr.irisa.triskell.kermeta.language.structure.ObjectAspect", "fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect"+ param.toString)+ param.toString+"]\n"
+                    implicitDef append " implicit def richAspect"+ param.toString+"(v : "+ Util.protectScalaKeyword(kermeta.utils.TypeEquivalence.getTypeEquivalence(genpackageName.toString+par.getName()))+ param.toString+") = v.asInstanceOf["+ (Util.protectScalaKeyword(packageName.toString)+"."+ par.getName+"Aspect").replace(GlobalConfiguration.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.structure.ObjectAspect", "fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect"+ param.toString)+ param.toString+"]\n"
                 }
                 if (Util.hasEcoreFromAPITag(par) || par.isIsAbstract)
                     implicitDef append " implicit def richAspect"+ param.toString+"(v : "+ Util.protectScalaKeyword(packageName.toString+"."+par.getName()+"Aspect") + param.toString+") = v.asInstanceOf["+ Util.protectScalaKeyword(par.eContainer().asInstanceOf[ObjectAspect].getQualifiedNameCompilo+ "." + par.getName)+ param.toString+"]\n"                    
@@ -476,7 +476,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         var template = new StringTemplate("package scalaUtil\n object Util {\n    def getMetaClass(t:String):fr.irisa.triskell.kermeta.language.structure.Class={\n "+
                                           "var cd : fr.irisa.triskell.kermeta.language.structure.ClassDefinition =   _root_.kermeta.utils.ReflexivityLoader.getMetaClass(t);\n"+
                                           "if (cd !=null){\n"+
-                                          "            var cl = ScalaAspect.fr.irisa.triskell.kermeta.language.structure. RichFactory.createClass\n"+
+                                          "            var cl = "+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".fr.irisa.triskell.kermeta.language.structure. RichFactory.createClass\n"+
                                           "            cl.setTypeDefinition(cd)\n"+
                                           "          return cl\n"+
                                           "        }else\n"+

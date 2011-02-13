@@ -74,6 +74,7 @@ object GlobalConfiguration extends LogAspect{
                 log.info("No output folder specified, temp created : "+result)
                 result
             }
+            scalaAspectPrefix = props.getString("project.artefact.id").replace(".", "")
             outputFolder = outputProject+"/src"
             outputBinFolder = outputProject+"/bin"
             workspaceURI = if(props.containsKey("workspace.platform.uri")) { props.getString("workspace.platform.uri") } else { null }
@@ -122,7 +123,8 @@ object GlobalConfiguration extends LogAspect{
     var outputFolder : String = null
     var outputBinFolder : String = null
     var scalaPrefix : String = "Scala"
-    var scalaAspectPrefix : String = "ScalaAspect"
+       @scala.reflect.BeanProperty
+    var scalaAspectPrefix : String = utils.UTilScala.scalaAspectPrefix
     var workspaceURI : String = null
     var pluginURI : String = null
     var withRich : Boolean = true
