@@ -13,18 +13,18 @@ import kermeta.standard.JavaConversions._
 import kermeta.standard.PrimitiveConversion._
  
 trait Exception extends ExceptionAspect with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation{}
-trait ExceptionAspect extends java.lang.Throwable with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect{
+trait ExceptionAspect extends _root_.java.lang.Throwable with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect{
 var message:String=null;
 var nestedException:Exception=null; 
 var stackTrace:String=null;
-def Scalamessage : java.lang.String={return this.message}
-def Scalamessage_=(arg : java.lang.String)={message  = arg}
+def Scalamessage : _root_.java.lang.String={return this.message}
+def Scalamessage_=(arg : _root_.java.lang.String)={message  = arg}
 def ScalanestedException : Exception={return this.nestedException }
 def ScalanestedException_=(arg : Exception)={nestedException = arg}
-def ScalastackTrace : java.lang.String={return this.stackTrace }
-def ScalastackTrace_=(arg : java.lang.String)={stackTrace  = arg}
-	
-	
+def ScalastackTrace : _root_.java.lang.String={return this.stackTrace }
+def ScalastackTrace_=(arg : _root_.java.lang.String)={stackTrace  = arg}
+
+
    def eClass():EClass =null
    def eResource():Resource =null
    def eContainer():EObject =null
@@ -43,11 +43,12 @@ def ScalastackTrace_=(arg : java.lang.String)={stackTrace  = arg}
    def eDeliver():Boolean =true;
    def eSetDeliver(deliver:Boolean):Unit=null;
    def eNotify( notification:org.eclipse.emf.common.notify.Notification):Unit=null;
-  def eInvoke(x1: org.eclipse.emf.ecore.EOperation,x2: org.eclipse.emf.common.util.EList[_]):java.lang.Object = null
+  def eInvoke(x1: org.eclipse.emf.ecore.EOperation,x2: org.eclipse.emf.common.util.EList[_]):_root_.java.lang.Object = null
    
 }  
 trait RuntimeErrorAspect extends Exception{
 var expression:Expression=null;
+
 }
 trait RuntimeError extends RuntimeErrorAspect{
 }
@@ -235,13 +236,13 @@ trait DynamicExpressionException extends DynamicExpressionExceptionAspect{
 
 trait ConstraintsDiagnosticAspect extends Exception{
     
-    var setConstraints : java.util.List[ConstraintViolatedInv] = new java.util.ArrayList[ConstraintViolatedInv] 
-    def ScalasetConstraints : java.util.List[ConstraintViolatedInv]={return this.setConstraints}
-    def ScalasetConstraints_=(arg : java.util.List[ConstraintViolatedInv])={this.setConstraints.clear; this.setConstraints.addAll(arg)}
+    var setConstraints : _root_.java.util.List[ConstraintViolatedInv] = new _root_.java.util.ArrayList[ConstraintViolatedInv]
+    def ScalasetConstraints : _root_.java.util.List[ConstraintViolatedInv]={return this.setConstraints}
+    def ScalasetConstraints_=(arg : _root_.java.util.List[ConstraintViolatedInv])={this.setConstraints.clear; this.setConstraints.addAll(arg)}
 	
 	/* Initialize */
 	def initialize() : ConstraintsDiagnostic={
-            setConstraints = new java.util.ArrayList[ConstraintViolatedInv]
+            setConstraints = new _root_.java.util.ArrayList[ConstraintViolatedInv]
 		return this.asInstanceOf[ConstraintsDiagnostic];
         }
 	
