@@ -30,7 +30,9 @@ abstract class Resource  extends java.util.List[fr.irisa.triskell.kermeta.langua
     def Scalacontents={this}
     def     Scalauri :String
     def Scalauri_=(arg :String)
-    
+    def     ScalametaModelURI :String
+    def ScalametaModelURI_=(arg :String)
+
 	
 } 
  
@@ -134,6 +136,11 @@ class EMFResource  extends Resource  {
 
          resource.setURI(uri1);
     }
+
+    var mmuri : String=""
+    override  def     ScalametaModelURI :String = mmuri
+   override def ScalametaModelURI_=(arg :String) = {mmuri = arg}
+
 
    
     def setEResource(arg:EObject, resource:org.eclipse.emf.ecore.resource.Resource){
