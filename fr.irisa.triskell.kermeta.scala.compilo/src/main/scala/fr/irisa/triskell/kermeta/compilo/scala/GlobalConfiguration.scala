@@ -40,6 +40,10 @@ object GlobalConfiguration extends LogAspect{
             workspaceURI = if(_props.containsKey("workspace.platform.uri")) { _props.getProperty("workspace.platform.uri") } else { null }
             pluginURI = if(_props.containsKey("workspace.plugin.uri")) { _props.getProperty("workspace.plugin.uri") } else { null }
             this.init = true
+            log.info("Properties loaded")
+        }
+        else{
+          log.info("Ignored properties because some are missing")
         }
         return loadResult
     }
