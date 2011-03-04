@@ -201,11 +201,11 @@ trait CallFeatureAspect extends CallExpressionAspect with LogAspect {
                     case "asType" => {generateTarget(res);res.append(".asInstanceOf");generateInstanceOf(res, this.getParameters.get(0))}
       
                     case "asKindOf" => {generateTarget(res);res.append(".asInstanceOf");generateInstanceOf(res, this.getParameters.get(0))}
-                        //case "isInstanceOf" => {generateTarget(res);res.append(".isInstanceOf");generateInstanceOf(res, this.getParameters.get(0))}
+                    //case "isInstanceOf" => {generateTarget(res);res.append(".isInstanceOf");generateInstanceOf(res, this.getParameters.get(0))}
                     case "isInstance" => {generateParam(res,"","") ;res.append(".isInstanceOf");generateInstanceOf(res, this.getTarget)}
       
-                    case "isKindOf" => generateIsInstanceOf(res,this.getParameters.get(0) )
-                    //case "isInstanceOf" => generateIsInstanceOf(res,this.getParameters.get(0) )
+                    //case "isKindOf" => generateIsInstanceOf(res,this.getParameters.get(0) )
+                    case "isInstanceOf" => generateIsInstanceOf(res,this.getParameters.get(0) )
         
       
                     case "isVoid" => { res.append("_root_.kermeta.standard.RichFactory.isVoid("); generateTarget(res);res.append(")");}
