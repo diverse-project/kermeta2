@@ -1,8 +1,8 @@
 package kermeta.exceptions;
-import fr.irisa.triskell.kermeta.language.structure._ 
-import fr.irisa.triskell.kermeta._
-import fr.irisa.triskell.kermeta.language._
-import fr.irisa.triskell.kermeta.language.behavior._
+import org.kermeta.language.structure._
+import org.kermeta._
+import org.kermeta.language._
+import org.kermeta.language.behavior._
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore._
 import kermeta.standard.JavaConversions._
 import kermeta.standard.PrimitiveConversion._
  
-trait Exception extends ExceptionAspect with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation{}
-trait ExceptionAspect extends _root_.java.lang.Throwable with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect{
+trait Exception extends ExceptionAspect with kermeta.standard.DefaultObjectImplementation{}
+trait ExceptionAspect extends _root_.java.lang.Throwable with kermeta.standard.ObjectAspect{
 var message:String=null;
 var nestedException:Exception=null; 
 var stackTrace:String=null;
