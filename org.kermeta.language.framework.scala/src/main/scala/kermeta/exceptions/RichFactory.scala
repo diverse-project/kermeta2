@@ -1,5 +1,5 @@
 package kermeta.exceptions
-import kermeta.standard.DefaultObjectImplementation
+import fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation
 
 object RichFactory {
  def createException : Exception = { new Throwable with Exception }
