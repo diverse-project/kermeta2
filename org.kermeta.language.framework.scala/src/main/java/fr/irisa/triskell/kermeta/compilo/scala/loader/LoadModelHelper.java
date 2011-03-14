@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
-import fr.irisa.triskell.kermeta.KmPackage;
-import fr.irisa.triskell.kermeta.language.behavior.BehaviorPackage;
-import fr.irisa.triskell.kermeta.language.structure.ModelingUnit;
-import fr.irisa.triskell.kermeta.language.structure.StructurePackage;
+import org.kermeta.KmPackage;
+import org.kermeta.language.behavior.BehaviorPackage;
+import org.kermeta.language.structure.ModelingUnit;
+import org.kermeta.language.structure.StructurePackage;
 
 public class LoadModelHelper {
 
@@ -30,7 +30,8 @@ public class LoadModelHelper {
 
 
 		ResourceSet rs = new ResourceSetImpl();
-		Resource.Factory.Registry f = rs.getResourceFactoryRegistry();
+
+        Resource.Factory.Registry f = rs.getResourceFactoryRegistry();
 		Map<String,Object> m = f.getExtensionToFactoryMap();
 		m.put("km",new XMIResourceFactoryImpl());
 		rs.getPackageRegistry().put(KmPackage.eNS_URI, KmPackage.eINSTANCE);
