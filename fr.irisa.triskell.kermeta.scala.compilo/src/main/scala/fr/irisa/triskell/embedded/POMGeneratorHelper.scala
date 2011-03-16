@@ -135,7 +135,7 @@ object POMGeneratorHelper {
         var pluginScalaConfigurationId = new Xpp3Dom("id");
         pluginScalaConfigurationId.setValue("runner.MainRunner");
         var pluginScalaConfigurationMain = new Xpp3Dom("mainClass");
-        pluginScalaConfigurationMain.setValue("runner.MainRunner");
+        pluginScalaConfigurationMain.setValue(GlobalConfiguration.scalaAspectPrefix + "runner.MainRunner");
         pluginScalaConfigurationLauncher.addChild(pluginScalaConfigurationId);
         pluginScalaConfigurationLauncher.addChild(pluginScalaConfigurationMain);
         pluginScalaConfigurationLaunchers.addChild(pluginScalaConfigurationLauncher);

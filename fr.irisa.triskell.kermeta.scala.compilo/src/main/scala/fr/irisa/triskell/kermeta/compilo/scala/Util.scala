@@ -38,7 +38,7 @@ object Util extends LogAspect {
      */
 
     def hasEcoreFromAPITag(obj : Object) : Boolean = {
-        obj.getOwnedTags.exists(e=> "ecorefromAPI".equals(e.asInstanceOf[Tag].getName()))
+        obj.getOwnedTags.exists(e=> "ecoreFromAPI".equals(e.asInstanceOf[Tag].getName()))
     }
     
     

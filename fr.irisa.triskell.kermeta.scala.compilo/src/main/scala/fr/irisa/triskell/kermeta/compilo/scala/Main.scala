@@ -95,14 +95,19 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/melody-data/ecl
 additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/melody-data/eclipse/plugins/com.thalesgroup.mde.shared.data.statemachine.gen_1.5.0.201101041151.jar") ++ additionalClassPath
 additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/eclipse/plugins/com.thalesgroup.mde.shared.patterns_1.5.0.201101041151.jar") ++ additionalClassPath 
 */     
-//      additionalClassPath = List("/home/barais/workspaces/mopcom-i/TestCompiloV2ModMap/adapter_lab_corporate_apis.jar") ++ additionalClassPath
-  
+//      additionalClassPath = List("/home/barais/workspaces/mopcom-i/TestCompiloV2ModMap/adapter_lab_corporate_apis2.jar") ++ additionalClassPath
+
         /*additionalClassPath = List("/home/barais/compilo/julien/fr.inria.aoste.annotation_1.0.1.jar") ++ additionalClassPath
   additionalClassPath = List("/home/barais/compilo/julien/fr.inria.aoste.marte.ccslmodel_1.1.0.013262.jar") ++ additionalClassPath
   additionalClassPath = List("/home/barais/compilo/julien/fr.inria.aoste.trace_1.0.0.jar") ++ additionalClassPath
   additionalClassPath = List("/home/barais/compilo/julien/jars.jar") ++ additionalClassPath*/
 //  additionalClassPath = List("/home/barais/.m2/repository/org/kermeta/art/model/1.1.1-SNAPSHOT/model-1.1.1-SNAPSHOT.jar") ++ additionalClassPath
   //  additionalClassPath = List("/home/barais/workspaces/movida2/org.kermeta.language.mdk/dist/language.model-2.0.1-SNAPSHOT.jar") ++ additionalClassPath
+
+  /*  additionalClassPath = List("/home/barais/Desktop/CVL/plugins/ari_editor_1.0.0.jar") ++ additionalClassPath
+    additionalClassPath = List("/home/barais/Desktop/CVL/plugins/CVLResolutionEditor_1.0.0.jar") ++ additionalClassPath
+    additionalClassPath = List("/home/barais/Desktop/CVL/plugins/CVLVariabilityEditor_1.0.0.jar") ++ additionalClassPath
+*/
         var inputFile : String = ""
     var runnerParams = List[String]()
     var useFSC = false
@@ -154,12 +159,13 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/ecli
 //  inputFile =   "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/Derivation/DerivationEngine.km"
 //        inputFile = "/home/barais/workspaces/movida2/TestUMLLoadJava/model/new_file.km"
 //  inputFile =   "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/Selection/SelectionEngine.km"
- //inputFile ="/home/barais/workspaces/mopcom-i/TestCompiloV2ModMap/adapter.km"
+// inputFile ="/home/barais/workspaces/mopcom-i/TestCompiloV2ModMap/adapter2.km"
 //inputFile ="/home/barais/workspaces/movida2/TestUMLLoadJava/model/marth/chessLoad.km"
  //   inputFile ="/home/barais/workspaces/movida2/org.kermeta.language.ecore2km/src/main/kermeta/Ecore2km.km"
   //  inputFile ="/home/barais/workspaces/movida2/org.kermeta.language.merger.binarymerger/src/main/kmt/org/kermeta/language/merger/binarymerger/km_BinaryMerger.km"
  //   inputFile ="/home/barais/workspaces/movida2/org.kermeta.language.resolver/src/main/kermeta/org/kermeta/language/resolver/Resolver.km" 
 //  inputFile = "/home/barais/workspaces/movida2/org.kermeta.language.resolver/src/main/kermeta/org/kermeta/language/resolver/FullStaticResolver.km"
+  //  inputFile = "/home/barais/workspaces/Projets24_02_11/fr.inria.cvl_product_derivation_engine/src/kermeta/Derivation/DerivationEngine2.km"
         if(inputFile != ""){
       log.info("KM compilation begin on "+inputFile)
       compilo.compile(inputFile)
