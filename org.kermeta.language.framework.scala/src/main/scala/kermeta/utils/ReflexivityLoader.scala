@@ -23,15 +23,18 @@ object ReflexivityLoader {
 
     var classdefs :java.util.List[ClassDefinition]=new java.util.ArrayList[ClassDefinition]()
     
+    var prefix : String = ""
+    def pref_=(arg: String) = {prefix = arg}
+    	
 
     def getMetaClass(classQualifiedName: String) :  fr.irisa.triskell.kermeta.language.structure.ClassDefinition={
         import scala.collection.JavaConversions._
         var classQualifiedName1 = classQualifiedName.replace("_root_.","")
         if (!isInit){
-          if(this.getClass().getClassLoader.getResource("Reflexivity.km") == null){
+          if(this.getClass().getClassLoader.getResource(prefix + "Reflexivity.km") == null){
             println("Failed to load Reflexivity.km")
           }
-          this.loadKmModel(this.getClass().getClassLoader.getResource("Reflexivity.km").toURI().toString()).foreach(e=>
+          this.loadKmModel(this.getClass().getClassLoader.getResource(prefix +"Reflexivity.km").toURI().toString()).foreach(e=>
                 if (e.isInstanceOf[ClassDefinition])
                     classdefs .add(e.asInstanceOf[ClassDefinition])
             )
