@@ -34,7 +34,7 @@ class Compiler extends LogAspect {
         var fi  = new File(url);
         var fo =  new File(GlobalConfiguration.outputFolder +File.separator+".."+File.separator + "resources").getCanonicalFile
         fo.mkdirs
-        fo = new File(GlobalConfiguration.outputFolder  +File.separator+".."+File.separator + "resources"+File.separator +"Reflexivity.km" ).getCanonicalFile
+        fo = new File(GlobalConfiguration.outputFolder  +File.separator+".."+File.separator + "resources"+File.separator + GlobalConfiguration.scalaAspectPrefix + "Reflexivity.km" ).getCanonicalFile
         if (fo.exists)
             fo.delete
        
