@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 
 object ReflexivityLoader {
     
-    var isInit:Boolean = false;
-
-     def isInit_=(value: Boolean ) = isInit = value;
+    var _isInit:Boolean = false;
+    def isInit :Boolean = _isInit
+     def isInit_=(value: Boolean ) = {_isInit = value};
 
 
     var classdefs :java.util.List[ClassDefinition]=new java.util.ArrayList[ClassDefinition]()
