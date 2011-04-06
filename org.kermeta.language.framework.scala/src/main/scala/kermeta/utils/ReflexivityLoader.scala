@@ -29,6 +29,8 @@ object ReflexivityLoader {
     var prefix : String = ""
     def pref_=(arg: String){prefix = arg;isInit=false}
    
+  def pref(arg: String)={prefix = arg;isInit=false}
+
 
     def getMetaClass(classQualifiedName: String) :  fr.irisa.triskell.kermeta.language.structure.ClassDefinition={
         import scala.collection.JavaConversions._
