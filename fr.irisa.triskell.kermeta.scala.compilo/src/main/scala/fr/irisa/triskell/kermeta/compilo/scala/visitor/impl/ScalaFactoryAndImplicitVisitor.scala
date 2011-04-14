@@ -36,7 +36,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
        
     res.append(Util.protectScalaKeyword(impName +".init()"))        
  res.append(".setEFactoryInstance(")
-            res.append(Util.protectScalaKeyword(GlobalConfiguration.scalaAspectPrefix+"."+packName+".RichFactory"))
+            res.append(Util.protectScalaKeyword(GlobalConfiguration.scalaAspectPrefix+"."+packName+"."+GlobalConfiguration.factoryName+""))
             res.append(")")
             res.append("\n")        
         return res.toString()
@@ -60,11 +60,11 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
             res.append("\torg.eclipse.emf.ecore.EPackage.Registry.INSTANCE.put(org.eclipse.emf.ecore.EcorePackage.eNS_URI,pack)\n")
                   
 //            res.append("\tvar pack : "+ impName + " =  c.newInstance().asInstanceOf["+ impName + "]\n")
-            res.append("\tpack.setEFactoryInstance(" +GlobalConfiguration.scalaAspectPrefix+"."+ packName + ".RichFactory)\n " )
+            res.append("\tpack.setEFactoryInstance(" +GlobalConfiguration.scalaAspectPrefix+"."+ packName + "."+GlobalConfiguration.factoryName+")\n " )
             res.append("\tvar f : java.lang.reflect.Field = classOf[org.eclipse.emf.ecore.impl.EPackageImpl].getDeclaredField(\"ecoreFactory\")\n")
             res.append("\tf.setAccessible(true)\n")
             if(packName.equals("org.eclipse.emf.ecore")){
-                res.append("\tf.set(pack, "+ GlobalConfiguration.scalaAspectPrefix+"."+ packName + ".RichFactory)\n")
+                res.append("\tf.set(pack, "+ GlobalConfiguration.scalaAspectPrefix+"."+ packName + "."+GlobalConfiguration.factoryName+")\n")
             }
             res.append("\torg.eclipse.emf.ecore.EPackage.Registry.INSTANCE.put("+Util.protectScalaKeyword(packName) + "."+ packNameUpper+"Package.eNS_URI, pack)\n")
             res.append("\tkermeta.persistence.EcorePackages.getPacks().put("+Util.protectScalaKeyword(packName) + "."+ packNameUpper+"Package.eNS_URI, pack)\n")
@@ -77,7 +77,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
             res.append("\torg.eclipse.emf.ecore.EPackage.Registry.INSTANCE.put("+Util.protectScalaKeyword(packName + "."+ Util.getPackagePrefix( packNameUpper)+"Package.eNS_URI")+", pack)\n")
             res.append("\tkermeta.persistence.EcorePackages.getPacks().put("+Util.protectScalaKeyword(packName + "."+ Util.getPackagePrefix( packNameUpper)+"Package.eNS_URI")+", pack)\n")
             res.append("\tpack.setEFactoryInstance(")
-            res.append(Util.protectScalaKeyword(GlobalConfiguration.scalaAspectPrefix+"."+packName+".RichFactory"))
+            res.append(Util.protectScalaKeyword(GlobalConfiguration.scalaAspectPrefix+"."+packName+"."+GlobalConfiguration.factoryName+""))
             res.append(")")
             res.append("\n}\n\n")
             return res.toString
@@ -161,6 +161,9 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         implicitDef.append("     else\n")
         implicitDef.append("       null.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
         implicitDef.append("   }\n")
+        implicitDef.append("   implicit def richAspect2(o : _root_.java.lang.Object) : " + fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.structure.ObjectAspect ={\n")
+        implicitDef.append("   o.asInstanceOf["+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".fr.irisa.triskell.kermeta.language.structure.ObjectAspect] \n \t } \n ")
+
         
         factoryDefClass = new StringBuilder
     }
@@ -251,7 +254,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
 
         res.append("def main(args : Array[String]) : Unit = {\n")
         if (packages.exists(pac=> "ecore".equals(pac.getName))){
-            res.append("\t org.eclipse.emf.ecore.EcoreFactory.eINSTANCE.asInstanceOf[org.eclipse.emf.ecore.EcoreFactoryWrapper].setWrap("+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".org.eclipse.emf.ecore.RichFactory) \n \t" )
+            res.append("\t org.eclipse.emf.ecore.EcoreFactory.eINSTANCE.asInstanceOf[org.eclipse.emf.ecore.EcoreFactoryWrapper].setWrap("+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".org.eclipse.emf.ecore."+GlobalConfiguration.factoryName+") \n \t" )
             CopyEcoreFile.copyEcorefiles(GlobalConfiguration.outputFolder)
         }
         res.append("\t init() \n\t"+"_root_." )
@@ -263,7 +266,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         res.append(kermeta.utils.TypeEquivalence.getPackageEquivalence(packageName))
 		
 
-        res.append(".RichFactory.create"+ className+"."+mainOperation )
+        res.append("."+GlobalConfiguration.factoryName+".create"+ className+"."+mainOperation )
 		
         res.append("(")
         for(i <- 0 until mainOperationSize){
@@ -478,7 +481,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         var template = new StringTemplate("package scalaUtil\n object Util {\n    def getMetaClass(t:String):fr.irisa.triskell.kermeta.language.structure.Class={\n "+
                                           "var cd : fr.irisa.triskell.kermeta.language.structure.ClassDefinition =   _root_.kermeta.utils.ReflexivityLoader.getMetaClass(t);\n"+
                                           "if (cd !=null){\n"+
-                                          "            var cl = "+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".fr.irisa.triskell.kermeta.language.structure. RichFactory.createClass\n"+
+                                          "            var cl = "+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".fr.irisa.triskell.kermeta.language.structure. "+GlobalConfiguration.factoryName+".createClass\n"+
                                           "            cl.setTypeDefinition(cd)\n"+
                                           "          return cl\n"+
                                           "        }else\n"+

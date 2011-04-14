@@ -24,7 +24,7 @@ trait CallFeatureAspect extends CallExpressionAspect with LogAspect {
                         res.append(GlobalConfiguration.scalaAspectPrefix+".")
                     }
                     res.append(kermeta.utils.TypeEquivalence.getPackageEquivalence(ty.eContainer.asInstanceOf[Package].getQualifiedNameCompilo))
-                    res.append(".RichFactory.create")
+                    res.append("."+GlobalConfiguration.factoryName+".create")
                     res.append(ty.getName())
                     var ty1 : ParameterizedType = this.getTarget.asInstanceOf[TypeLiteral].getTyperef().getType().asInstanceOf[ParameterizedType]
                     //var i = 0;
@@ -208,7 +208,7 @@ trait CallFeatureAspect extends CallExpressionAspect with LogAspect {
                     case "isInstanceOf" => generateIsInstanceOf(res,this.getParameters.get(0) )
         
       
-                    case "isVoid" => { res.append("_root_.kermeta.standard.RichFactory.isVoid("); generateTarget(res);res.append(")");}
+                    case "isVoid" => { res.append("_root_.kermeta.standard."+GlobalConfiguration.factoryName+".isVoid("); generateTarget(res);res.append(")");}
                     case "add"
                         if (this.getTarget != null && this.getTarget.getStaticType != null && this.getTarget.getStaticType.isInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class]
                             && (this.getTarget.getStaticType.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class].getTypeDefinition.getName.equals("OrderedSet")

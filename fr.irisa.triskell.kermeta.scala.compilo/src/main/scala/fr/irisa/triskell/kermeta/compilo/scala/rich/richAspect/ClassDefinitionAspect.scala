@@ -156,7 +156,7 @@ trait ClassDefinitionAspect extends ObjectAspect with IVisitable {
 
     def generategetQualifiedName(res:StringBuilder) = {
         var qualifiedName = ReflexivityLoader.qualifiedName(this)
-        var template = new StringTemplate("override def getMetaClass():fr.irisa.triskell.kermeta.language.structure.Class={\n var cd : fr.irisa.triskell.kermeta.language.structure.ClassDefinition =   _root_.kermeta.utils.ReflexivityLoader.getMetaClass(\"$ClassName$\"); \n         if (cd !=null){ \n var cl = "+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".fr.irisa.triskell.kermeta.language.structure.RichFactory.createClass \n cl.setTypeDefinition(cd) \n return cl \n }else \n return null; \n }\n")
+        var template = new StringTemplate("override def getMetaClass():fr.irisa.triskell.kermeta.language.structure.Class={\n var cd : fr.irisa.triskell.kermeta.language.structure.ClassDefinition =   _root_.kermeta.utils.ReflexivityLoader.getMetaClass(\"$ClassName$\"); \n         if (cd !=null){ \n var cl = "+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".fr.irisa.triskell.kermeta.language.structure."+GlobalConfiguration.factoryName+".createClass \n cl.setTypeDefinition(cd) \n return cl \n }else \n return null; \n }\n")
         template.setAttribute("ClassName", qualifiedName)
         res.append(template.toString)
     }

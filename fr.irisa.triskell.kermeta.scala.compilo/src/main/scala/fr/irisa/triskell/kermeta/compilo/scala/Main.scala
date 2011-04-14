@@ -68,10 +68,10 @@ object Main extends LogAspect {
 
 //Derivation
 
-//       additionalClassPath = List("/home/barais/workspaces/movida/fr.inria.featureDiagramEditor.derivation.fdext.ui/libForCompilo/featureadresolution.jar") ++ additionalClassPath
+     /*  additionalClassPath = List("/home/barais/workspaces/movida/fr.inria.featureDiagramEditor.derivation.fdext.ui/libForCompilo/featureadresolution.jar") ++ additionalClassPath
  //   additionalClassPath = List("/home/barais/workspaces/movida/lib/flow.jar") ++ additionalClassPath  
-//    additionalClassPath = List("/home/barais/workspaces/movida/lib/fr.inria.featureDiagramEditor.emf-0.0.1-SNAPSHOT.jar") ++ additionalClassPath
-//UML
+   additionalClassPath = List("/home/barais/workspaces/movida/lib/fr.inria.featureDiagramEditor.emf-0.0.1-SNAPSHOT.jar") ++ additionalClassPath
+*///UML
  /*         additionalClassPath = List("/home/barais/workspaces/movida2/TestUMLLoadJava/lib/org.eclipse.uml2.uml.resources_3.1.1.v201008191505.jar") ++ additionalClassPath
           additionalClassPath = List("/home/barais/workspaces/movida2/TestUMLLoadJava/lib/org.eclipse.uml2.uml_3.1.1.v201008191505.jar") ++ additionalClassPath
           additionalClassPath = List("/home/barais/workspaces/movida2/TestUMLLoadJava/lib/org.eclipse.uml2.common_1.5.0.v201005031530.jar") ++ additionalClassPath
@@ -84,7 +84,7 @@ object Main extends LogAspect {
 
 
 //Thales          
-/*    additionalClassPath = List("/home/barais/workspaces/movida/lib/fr.inria.featureDiagramEditor.emf-0.0.1-SNAPSHOT.jar") ++ additionalClassPath
+   /* additionalClassPath = List("/home/barais/workspaces/movida/lib/fr.inria.featureDiagramEditor.emf-0.0.1-SNAPSHOT.jar") ++ additionalClassPath
         additionalClassPath = List("/home/barais/workspaces/movida/fr.inria.featureDiagramEditor.derivation.fdext.ui/libForCompilo/featureadresolution.jar") ++ additionalClassPath
 additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/EMDE-ext/eclipse/plugins/com.thalesgroup.mde.emde_1.2.1.201012061534.jar") ++ additionalClassPath
 
@@ -93,8 +93,8 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/melody-data/ecl
 additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/melody-data/eclipse/plugins/com.thalesgroup.mde.shared.data.activity.gen_1.5.0.201101041151.jar") ++ additionalClassPath
 additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/melody-data/eclipse/plugins/com.thalesgroup.mde.melody.data.gen_1.5.0.201101041151.jar") ++ additionalClassPath
 additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/melody-data/eclipse/plugins/com.thalesgroup.mde.shared.data.statemachine.gen_1.5.0.201101041151.jar") ++ additionalClassPath
-additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/eclipse/plugins/com.thalesgroup.mde.shared.patterns_1.5.0.201101041151.jar") ++ additionalClassPath 
-*/     
+additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/eclipse/plugins/com.thalesgroup.mde.shared.patterns_1.5.0.201101041151.jar") ++ additionalClassPath */
+
 //      additionalClassPath = List("/home/barais/workspaces/mopcom-i/TestCompiloV2ModMap/adapter_lab_corporate_apis2.jar") ++ additionalClassPath
 
         /*additionalClassPath = List("/home/barais/compilo/julien/fr.inria.aoste.annotation_1.0.1.jar") ++ additionalClassPath
@@ -106,8 +106,15 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/ecli
 
   /*  additionalClassPath = List("/home/barais/Desktop/CVL/plugins/ari_editor_1.0.0.jar") ++ additionalClassPath
     additionalClassPath = List("/home/barais/Desktop/CVL/plugins/CVLResolutionEditor_1.0.0.jar") ++ additionalClassPath
-    additionalClassPath = List("/home/barais/Desktop/CVL/plugins/CVLVariabilityEditor_1.0.0.jar") ++ additionalClassPath
+  additionalClassPath = List("/home/barais/Desktop/CVL/plugins/CVLVariabilityEditor_1.0.0.jar") ++ additionalClassPath
 */
+
+  /*  additionalClassPath = List("/home/barais/mopcom-i/modmap_gmf_api.jar") ++ additionalClassPath
+    additionalClassPath = List("/home/barais/mopcom-i/modmap_api.jar") ++ additionalClassPath
+    additionalClassPath = List("/home/barais/mopcom-i/kompose.jar") ++ additionalClassPath
+*/
+
+
         var inputFile : String = ""
     var runnerParams = List[String]()
     var useFSC = false
@@ -156,7 +163,9 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/ecli
   //      inputFile="/home/barais/workspaces/compiloV2/TestCompilo/src/kermeta/testReflexivity001.km"
   //      
 //  inputFile = "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/main/CallDerivation.km"
-//  inputFile =   "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/Derivation/DerivationEngine.km"
+  //inputFile =   "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/Derivation/DerivationEngine.km"
+
+//  inputFile =   "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/Selection/SelectionEngine.km"
 //        inputFile = "/home/barais/workspaces/movida2/TestUMLLoadJava/model/new_file.km"
 //  inputFile =   "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/Selection/SelectionEngine.km"
 // inputFile ="/home/barais/workspaces/mopcom-i/TestCompiloV2ModMap/adapter2.km"
@@ -166,7 +175,12 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/ecli
  //   inputFile ="/home/barais/workspaces/movida2/org.kermeta.language.resolver/src/main/kermeta/org/kermeta/language/resolver/Resolver.km" 
 //  inputFile = "/home/barais/workspaces/movida2/org.kermeta.language.resolver/src/main/kermeta/org/kermeta/language/resolver/FullStaticResolver.km"
   //  inputFile = "/home/barais/workspaces/Projets24_02_11/fr.inria.cvl_product_derivation_engine/src/kermeta/Derivation/DerivationEngine2.km"
-        if(inputFile != ""){
+    
+//  inputFile ="/home/barais/mopcom-i/GMF2Mapper.km"
+  //inputFile ="/home/barais/mopcom-i/mapper2km.km"
+
+    inputFile = "/home/barais/workspaces/mopcom-i/org.kermeta.pramana.kermeta2alloy/src/kermeta/metamodel2AlloyModel.km"
+          if(inputFile != ""){
       log.info("KM compilation begin on "+inputFile)
       compilo.compile(inputFile)
     } else {

@@ -122,7 +122,7 @@ object GlobalConfiguration extends LogAspect{
     var frameworkGeneratedPackageName : String = null
     var implicitConvTraitName : String = "ImplicitConversion"
     var viewDefTraitName : String = "ViewType"
-    var factoryName : String = "RichFactory"
+    var factoryName : String = "KerRichFactory"
     var outputProject : String = null
     var outputFolder : String = null
     var outputBinFolder : String = null
