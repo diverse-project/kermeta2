@@ -34,7 +34,7 @@ this.getHarnessErrors().addAll(arg)
    def addSetUpError(test : kermeta.kunit.Fallible, e : kermeta.exceptions.Exception):Void = {
 var result : Void = null.asInstanceOf[Void]; 
 {
-harnessErrors.add(kermeta.kunit.RichFactory.createError.initFrom(test, e).makeSetUp())
+harnessErrors.add(kermeta.kunit.KerRichFactory.createError.initFrom(test, e).makeSetUp())
 }
  return result
 }
@@ -42,7 +42,7 @@ harnessErrors.add(kermeta.kunit.RichFactory.createError.initFrom(test, e).makeSe
    def addTestError(test : kermeta.kunit.Fallible, e : kermeta.exceptions.Exception):Void = {
 var result : Void = null.asInstanceOf[Void]; 
 {
-errors.add(kermeta.kunit.RichFactory.createError.initFrom(test, e))
+errors.add(kermeta.kunit.KerRichFactory.createError.initFrom(test, e))
 }
  return result
 }
@@ -50,7 +50,7 @@ errors.add(kermeta.kunit.RichFactory.createError.initFrom(test, e))
    def addFailure(test : kermeta.kunit.Fallible, msg : java.lang.String):Void = {
 var result : Void = null.asInstanceOf[Void]; 
 {
-failures.add(kermeta.kunit.RichFactory.createFailure.initFrom(test, msg))
+failures.add(kermeta.kunit.KerRichFactory.createFailure.initFrom(test, msg))
 }
  return result
 }
@@ -58,7 +58,7 @@ failures.add(kermeta.kunit.RichFactory.createFailure.initFrom(test, msg))
    def addTearDownError(test : kermeta.kunit.Fallible, e : kermeta.exceptions.Exception):Void = {
 var result : Void = null.asInstanceOf[Void]; 
 {
-harnessErrors.add(kermeta.kunit.RichFactory.createError.initFrom(test, e).makeTearDown())
+harnessErrors.add(kermeta.kunit.KerRichFactory.createError.initFrom(test, e).makeTearDown())
 }
  return result
 }

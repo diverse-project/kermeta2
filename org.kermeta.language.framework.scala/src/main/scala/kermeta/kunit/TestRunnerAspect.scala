@@ -13,7 +13,7 @@ def Scalalog_=(arg : kermeta.kunit.Log)={this.setLog(arg)}
    def runTest(test : kermeta.kunit.Test):Void = {
 var result : Void = null.asInstanceOf[Void]; 
 {
-log = kermeta.kunit.RichFactory.createLog
+log = kermeta.kunit.KerRichFactory.createLog
 test.setLog(log)
 test.run()
 }
@@ -61,7 +61,7 @@ stdio.writeln("\n---------------------------------------------------------------
    def run(testCaseClass : fr.irisa.triskell.kermeta.language.structure.Class):Void = {
 var result : Void = null.asInstanceOf[Void]; 
 {
-runTest(kermeta.kunit.RichFactory.createTestSuite.addAllTestCasesFrom(testCaseClass))
+runTest(kermeta.kunit.KerRichFactory.createTestSuite.addAllTestCasesFrom(testCaseClass))
 }
  return result
 }

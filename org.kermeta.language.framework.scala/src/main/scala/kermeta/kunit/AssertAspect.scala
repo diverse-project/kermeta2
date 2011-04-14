@@ -30,7 +30,7 @@ fail("assertTrueWithMsg failed : ".plus(msg))
    def fail(msg : java.lang.String):Void = {
 var result : Void = null.asInstanceOf[Void]; 
 {
-var exception : kermeta.kunit.AssertionFailedError = kermeta.kunit.RichFactory.createAssertionFailedError
+var exception : kermeta.kunit.AssertionFailedError = kermeta.kunit.KerRichFactory.createAssertionFailedError
 exception.message = msg
 throw exception
 }

@@ -1,5 +1,5 @@
 package kermeta.io
 
-object RichFactory {
+object KerRichFactory {
 def createFileIO : kermeta.io.FileIO = { new kermeta.io.FileIO }
 }

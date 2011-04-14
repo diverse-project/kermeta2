@@ -23,7 +23,7 @@ object UTilScala {
     def newInstance(o:fr.irisa.triskell.kermeta.language.structure.Class): fr.irisa.triskell.kermeta.language.structure.Object ={
        // println("newInstance " + o + " " +o.getName)
         var name: String = getQualifiedNamePackage(o.getTypeDefinition.eContainer.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Package],".")
-        var factoryName = scalaAspectPrefix +"." + kermeta.utils.TypeEquivalence.getPackageEquivalence(name) + ".RichFactory$"
+        var factoryName = scalaAspectPrefix +"." + kermeta.utils.TypeEquivalence.getPackageEquivalence(name) + ".KerRichFactory$"
         var methodName = "create" + o.getTypeDefinition.getName
           val clazz = java.lang.Class.forName(factoryName)
         val obj = clazz.getField("MODULE$").get(clazz)

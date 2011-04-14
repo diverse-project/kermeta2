@@ -1,7 +1,7 @@
 package kermeta.kunit
 import fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation
 
-object RichFactory extends  KunitImplicitConversion{
+object KerRichFactory extends  KunitImplicitConversion{
 // def createMain : kermeta.kunit.Main = { new kermeta.kunit.RichMain }
  def createInvalidTestCaseNameException : kermeta.kunit.InvalidTestCaseNameException = { new kermeta.kunit.RichInvalidTestCaseNameException with DefaultObjectImplementation }
  def createInvalidParameterException : kermeta.kunit.InvalidParameterException = { new kermeta.kunit.RichInvalidParameterException with DefaultObjectImplementation}

@@ -341,6 +341,10 @@ object JavaConversions {
             return value.listIterator(arg0);
         }
 
+      def subSequence(arg0:Int, arg1:Int) : ju.List[A] = {
+
+          return value.subList(arg0, arg1);
+      }
 
         def subList(arg0:Int, arg1:Int) : ju.List[A] = {
 

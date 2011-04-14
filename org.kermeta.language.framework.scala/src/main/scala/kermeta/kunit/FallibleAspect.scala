@@ -36,7 +36,7 @@ assertWithMsg(condition.not(), message)
 var result : Void = null.asInstanceOf[Void]; 
 {
 if (mustStop()){
-var exception : kermeta.kunit.AssertionFailedError = kermeta.kunit.RichFactory.createAssertionFailedError
+var exception : kermeta.kunit.AssertionFailedError = kermeta.kunit.KerRichFactory.createAssertionFailedError
 exception.message = "explicit failure: ".plus(msg)
 throw exception
 }
@@ -79,7 +79,7 @@ var number : Int = this.number()
 if (condition.not()){
 var msg : java.lang.String = "assertion number ".plus(number.toString()).plus(" failed")
 if (mustStop()){
-var exception : kermeta.kunit.AssertionFailedError = kermeta.kunit.RichFactory.createAssertionFailedError
+var exception : kermeta.kunit.AssertionFailedError = kermeta.kunit.KerRichFactory.createAssertionFailedError
 exception.message = msg
 throw exception
 }
@@ -113,7 +113,7 @@ var number : Int = this.number()
 if (condition.not()){
 var realMsg : java.lang.String = "assertion number ".plus(number.toString()).plus(" failed: ").plus(msg)
 if (mustStop()){
-var exception : kermeta.kunit.AssertionFailedError = kermeta.kunit.RichFactory.createAssertionFailedError
+var exception : kermeta.kunit.AssertionFailedError = kermeta.kunit.KerRichFactory.createAssertionFailedError
 exception.message = realMsg
 throw exception
 }

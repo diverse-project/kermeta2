@@ -22,7 +22,7 @@ this.log = log
    def initLog():kermeta.kunit.Log = {
 var result : kermeta.kunit.Log = null.asInstanceOf[kermeta.kunit.Log]; 
 {
-this.log = kermeta.kunit.RichFactory.createLog
+this.log = kermeta.kunit.KerRichFactory.createLog
 result = this.log
 }
  return result 

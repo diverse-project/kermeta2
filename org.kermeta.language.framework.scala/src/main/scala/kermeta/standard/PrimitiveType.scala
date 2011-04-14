@@ -274,7 +274,7 @@ trait EObjectImplForPrimitive extends fr.irisa.triskell.kermeta.language.structu
     def eInvoke(x1: org.eclipse.emf.ecore.EOperation,x2: org.eclipse.emf.common.util.EList[_]):java.lang.Object = null
 
     def createMetaClass(name:String):fr.irisa.triskell.kermeta.language.structure.Class={
-        var factoryName = utils.UTilScala.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.structure.RichFactory$"
+        var factoryName = utils.UTilScala.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.structure.KerRichFactory$"
         var methodName = "createClass"
         var methodNameClassDef = "createClassDefinition"
         val clazz = java.lang.Class.forName(factoryName)
@@ -283,7 +283,7 @@ trait EObjectImplForPrimitive extends fr.irisa.triskell.kermeta.language.structu
         //println(meth.getName + " " + meth.getParameterTypes.size)
         val numbers = Array()
         var mclazz : fr.irisa.triskell.kermeta.language.structure.Class = meth.invoke(obj, numbers: _*).asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class]
-
+  
         var meth1 :java.lang.reflect.Method = clazz.getMethods.filter(m=> m.getName.equals(methodNameClassDef)).first
         var mclazzDef : fr.irisa.triskell.kermeta.language.structure.ClassDefinition = meth1.invoke(obj, numbers: _*).asInstanceOf[fr.irisa.triskell.kermeta.language.structure.ClassDefinition]
         mclazzDef.setName(name)

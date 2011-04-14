@@ -33,7 +33,7 @@ log.failures.each({f=>{
 msg = msg.plus("\n   ").plus(f.toString())
 }
 })
-var exception : kermeta.kunit.AssertionFailedError = kermeta.kunit.RichFactory.createAssertionFailedError
+var exception : kermeta.kunit.AssertionFailedError = kermeta.kunit.KerRichFactory.createAssertionFailedError
 exception.message = msg
 throw exception
 }
@@ -42,7 +42,7 @@ if (log.errors.empty().not()){
 log.errors.each({f=>{
 msg = "Errors: "
 msg = msg.plus("\n   ").plus(f.toString())
-var exception : kermeta.exceptions.Exception = kermeta.exceptions.RichFactory.createException
+var exception : kermeta.exceptions.Exception = kermeta.exceptions.KerRichFactory.createException
 exception.message = msg
 throw exception
 }

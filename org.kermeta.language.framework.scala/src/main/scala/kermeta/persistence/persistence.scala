@@ -55,6 +55,7 @@ abstract class Repository {
     def normalizeUri(uri : String) :String={return uri}
     def findDanglingModelElements() :Set[Object]={return null}
     def getResource(uri : String) :Resource
+
 }
 
 class EMFRepository  extends Repository  {
