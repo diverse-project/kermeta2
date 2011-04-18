@@ -128,6 +128,12 @@
             <groupId>fr.irisa.triskell.kermeta</groupId>
             <artifactId>kermeta.model</artifactId>
             <version>1.4.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.kermeta.eclipse</groupId>
+					<artifactId>org.eclipse.core.runtime</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!--
         <dependency>
