@@ -157,8 +157,8 @@ trait FileNotFoundException extends FileNotFoundExceptionAspect{
 
 
 trait ConstraintViolatedExceptionAspect extends Exception{
-var constraintAppliedTo:org.eclipse.emf.ecore.EObject = None.get;
-var failedConstraint:Constraint= None.get;
+var constraintAppliedTo:org.eclipse.emf.ecore.EObject = _;
+var failedConstraint:Constraint= _;
 def ScalaconstraintAppliedTo:org.eclipse.emf.ecore.EObject = constraintAppliedTo
 def ScalaconstraintAppliedTo_=(arg:org.eclipse.emf.ecore.EObject) = {constraintAppliedTo = arg}
 def ScalafailedConstraint:Constraint = failedConstraint
@@ -199,7 +199,7 @@ trait ResourceLoadException extends ResourceLoadExceptionAspect{
 
 
 trait ResourceSaveExceptionAspect extends Exception{
-var failedWhileSaving:Object= None.get; 
+var failedWhileSaving:Object= _;
 }
 trait ResourceSaveException extends ResourceSaveExceptionAspect{
 }
