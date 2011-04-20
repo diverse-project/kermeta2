@@ -102,7 +102,7 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/ecli
   additionalClassPath = List("/home/barais/compilo/julien/fr.inria.aoste.trace_1.0.0.jar") ++ additionalClassPath
   additionalClassPath = List("/home/barais/compilo/julien/jars.jar") ++ additionalClassPath*/
 //  additionalClassPath = List("/home/barais/.m2/repository/org/kermeta/art/model/1.1.1-SNAPSHOT/model-1.1.1-SNAPSHOT.jar") ++ additionalClassPath
-  //  additionalClassPath = List("/home/barais/workspaces/movida2/org.kermeta.language.mdk/dist/language.model-2.0.1-SNAPSHOT.jar") ++ additionalClassPath
+    //additionalClassPath = List("/home/barais/workspaces/movida2/org.kermeta.language.mdk/dist/language.model-2.0.1-SNAPSHOT.jar") ++ additionalClassPath
 
   /*  additionalClassPath = List("/home/barais/Desktop/CVL/plugins/ari_editor_1.0.0.jar") ++ additionalClassPath
     additionalClassPath = List("/home/barais/Desktop/CVL/plugins/CVLResolutionEditor_1.0.0.jar") ++ additionalClassPath
@@ -170,7 +170,7 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/ecli
 //  inputFile =   "/home/barais/workspaces/movida/fr.inria.product_derivation_engine/src/kermeta/Selection/SelectionEngine.km"
 // inputFile ="/home/barais/workspaces/mopcom-i/TestCompiloV2ModMap/adapter2.km"
 //inputFile ="/home/barais/workspaces/movida2/TestUMLLoadJava/model/marth/chessLoad.km"
- //   inputFile ="/home/barais/workspaces/movida2/org.kermeta.language.ecore2km/src/main/kermeta/Ecore2km.km"
+  //  inputFile ="/home/barais/workspaces/movida2/org.kermeta.language.ecore2km/src/main/kermeta/Ecore2km.km"
   //  inputFile ="/home/barais/workspaces/movida2/org.kermeta.language.merger.binarymerger/src/main/kmt/org/kermeta/language/merger/binarymerger/km_BinaryMerger.km"
  //   inputFile ="/home/barais/workspaces/movida2/org.kermeta.language.resolver/src/main/kermeta/org/kermeta/language/resolver/Resolver.km" 
 //  inputFile = "/home/barais/workspaces/movida2/org.kermeta.language.resolver/src/main/kermeta/org/kermeta/language/resolver/FullStaticResolver.km"
@@ -179,7 +179,9 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/ecli
 //  inputFile ="/home/barais/mopcom-i/GMF2Mapper.km"
   //inputFile ="/home/barais/mopcom-i/mapper2km.km"
 
-    inputFile = "/home/barais/workspaces/mopcom-i/org.kermeta.pramana.kermeta2alloy/src/kermeta/metamodel2AlloyModel.km"
+   // inputFile = "/home/barais/workspaces/mopcom-i/org.kermeta.pramana.kermeta2alloy/src/kermeta/metamodel2AlloyModel.km"
+  //  inputFile = "/tmp/ClassA.km"
+    
           if(inputFile != ""){
       log.info("KM compilation begin on "+inputFile)
       compilo.compile(inputFile)
