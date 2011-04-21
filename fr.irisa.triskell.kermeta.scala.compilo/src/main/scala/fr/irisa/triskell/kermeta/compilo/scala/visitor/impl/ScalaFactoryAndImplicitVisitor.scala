@@ -138,7 +138,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         implicitDef.append(" implicit def richAspect(v : _root_.java.lang.Object) :fr.irisa.triskell.kermeta.language.structure.Object = v.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
 //    implicitDef.append(" implicit def richAspect1(v : _root_.java.lang.Object) : ScalaAspect.fr.irisa.triskell.kermeta.language.structure.ObjectAspect = v.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
 
-        implicitDef.append("      implicit def richAspect1(o : _root_.java.lang.Object) : fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect = {\n")
+        implicitDef.append("      implicit def richAspect1(o : _root_.java.lang.Object) : kermeta.standard.EObjectImplForPrimitive = {\n")
      
         implicitDef.append("     if (o != null && o.isInstanceOf[java.lang.String]){\n")
         implicitDef.append("       return new kermeta.standard.RichString(o.asInstanceOf[java.lang.String])\n")
@@ -159,7 +159,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         implicitDef.append("     {\n")
         implicitDef.append("      return new kermeta.standard.RichEnum(o)\n}\n")
         implicitDef.append("     else\n")
-        implicitDef.append("       null.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
+        implicitDef.append("       null.asInstanceOf[kermeta.standard.EObjectImplForPrimitive]\n")
         implicitDef.append("   }\n")
         implicitDef.append("   implicit def richAspect2(o : _root_.java.lang.Object) : " + fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.structure.ObjectAspect ={\n")
         implicitDef.append("   o.asInstanceOf["+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".fr.irisa.triskell.kermeta.language.structure.ObjectAspect] \n \t } \n ")
