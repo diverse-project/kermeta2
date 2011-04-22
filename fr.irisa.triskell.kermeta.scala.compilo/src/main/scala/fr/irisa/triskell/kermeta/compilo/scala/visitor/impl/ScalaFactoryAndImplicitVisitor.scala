@@ -135,7 +135,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         implicitDef = new StringBuilder
         implicitDef append "package "+GlobalConfiguration.frameworkGeneratedPackageName+"\n"
         implicitDef append "object "+GlobalConfiguration.implicitConvTraitName+" {\n"
-        implicitDef.append(" implicit def richAspect(v : _root_.java.lang.Object) :fr.irisa.triskell.kermeta.language.structure.Object = v.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
+/*        implicitDef.append(" implicit def richAspect(v : _root_.java.lang.Object) :fr.irisa.triskell.kermeta.language.structure.Object = v.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
 //    implicitDef.append(" implicit def richAspect1(v : _root_.java.lang.Object) : ScalaAspect.fr.irisa.triskell.kermeta.language.structure.ObjectAspect = v.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]\n")
 
         implicitDef.append("      implicit def richAspect1(o : _root_.java.lang.Object) : kermeta.standard.EObjectImplForPrimitive = {\n")
@@ -163,6 +163,19 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         implicitDef.append("   }\n")
         implicitDef.append("   implicit def richAspect2(o : _root_.java.lang.Object) : " + fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.structure.ObjectAspect ={\n")
         implicitDef.append("   o.asInstanceOf["+fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix+".fr.irisa.triskell.kermeta.language.structure.ObjectAspect] \n \t } \n ")
+*/
+      implicitDef.append("implicit def richAspect(o : _root_.java.lang.Object)  =  o match {\n")
+      implicitDef.append("  case s:String => new kermeta.standard.RichString(s)\n")
+      implicitDef.append("   case s : java.lang.Boolean => new kermeta.standard.RichJavaBoolean(s)\n")
+      implicitDef.append("   case s : java.lang.Integer =>\n")
+      implicitDef.append(" new kermeta.standard.RichInteger(s.intValue)\n")
+      implicitDef.append("   case s : java.util.List[_] => new kermeta.standard.JavaConversions.RichKermetaList(s)\n")
+      implicitDef.append("   case s:  "+ fr.irisa.triskell.kermeta.compilo.scala.GlobalConfiguration.scalaAspectPrefix +".fr.irisa.triskell.kermeta.language.structure.ObjectAspect => s\n")
+      implicitDef.append("   case _ =>  if (o!=null)\n")
+      implicitDef.append("     new kermeta.standard.RichEnum(o)\n")
+      implicitDef.append("    else\n")
+      implicitDef.append("       null.asInstanceOf[kermeta.standard.EObjectImplForPrimitive]\n")
+      implicitDef.append(" }\n")
 
         
         factoryDefClass = new StringBuilder
