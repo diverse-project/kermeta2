@@ -5,8 +5,8 @@
     <groupId>org.kermeta.language</groupId>
     <artifactId>language.framework.scala</artifactId>
     <packaging>bundle</packaging>
-    <name>Kermeta :: Framework</name>
-    <version>0.12.7-SNAPSHOT</version>
+    <name>language.framework.scala :: language.framework.scala</name>
+    <version>0.12.7</version>
     <pluginRepositories>
         <pluginRepository>
             <id>scala-tools.org</id>
@@ -15,7 +15,7 @@
         </pluginRepository>
     </pluginRepositories>
     
-    <description>Kermeta :: Framework</description>
+    <description>Scala language.framework.scala</description>
 
     <build>
         <plugins>
