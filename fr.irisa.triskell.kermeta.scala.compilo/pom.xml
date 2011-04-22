@@ -6,7 +6,7 @@
     <artifactId>kermeta.compilo.scala</artifactId>
     <name>fr.irisa.triskell.kermeta.compilo.scala</name>
     <version>0.0.2-BETA14-SNAPSHOT</version>
-    <description>Kermeta Compiler V2</description>
+    <description>Kermeta Compiler V2 for Kermeta 1</description>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
