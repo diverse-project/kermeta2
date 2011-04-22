@@ -229,7 +229,7 @@
         <dependency>
             <groupId>org.kermeta.language</groupId>
             <artifactId>language.framework.scala</artifactId>
-            <version>0.12.4</version>
+            <version>0.12.7-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.external</groupId>
