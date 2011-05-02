@@ -17,4 +17,5 @@ trait ConstraintAspect extends ObjectAspect with LogAspect {
 		res.append("}\n")
 	}
 
+
 }

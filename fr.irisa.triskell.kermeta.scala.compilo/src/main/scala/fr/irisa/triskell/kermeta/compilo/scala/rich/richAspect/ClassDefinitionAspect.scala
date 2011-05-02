@@ -11,6 +11,7 @@ import fr.irisa.triskell.kermeta.language.structure._
 import fr.irisa.triskell.kermeta.language.behavior._
 import fr.irisa.triskell.kermeta.compilo.scala.visitor._
 import fr.irisa.triskell.kermeta.compilo.scala.rich.RichAspectImplicit._
+import java.util.ArrayList
 
 trait ClassDefinitionAspect extends ObjectAspect with IVisitable {
 	
@@ -25,11 +26,10 @@ trait ClassDefinitionAspect extends ObjectAspect with IVisitable {
             res.append(this.getName())
             res.append("Aspect")
             this.generateParamerterClass(res)
-            if (this.getSuperType.size == 0){//1 && "Object".equals(this.getSuperType.first.asInstanceOf[ParameterizedType].getTypeDefinition.asInstanceOf[ClassDefinition].getName) ){
-                res append " extends "
+            if (this.getSuperType.size == 0){
+              res append " extends "
                 res append Util.protectScalaKeyword(fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.FrameworkAspectUtil.getDefaultAspect(this.getQualifiedNameCompilo()))
-                // res.append(" with ScalaAspect.org.eclipse.emf.ecore.EObjectAspect")
-//                res append " with "+GlobalConfiguration.frameworkGeneratedPackageName + "."+GlobalConfiguration.implicitConvTraitName
+                
             } else {
                 var i = 0;
                 this.getSuperType.foreach(superC => {
@@ -41,32 +41,12 @@ trait ClassDefinitionAspect extends ObjectAspect with IVisitable {
 					
                         var ty : GenericTypeDefinition = superC.asInstanceOf[Class].getTypeDefinition
 						
-			/*
-                        var packName = kermeta.utils.TypeEquivalence.getPackageEquivalence(ty.eContainer.asInstanceOf[Package].getQualifiedName)
-                        if (Util.hasEcoreTag(ty.eContainer.asInstanceOf[Package]) ){
-                            packName = GlobalConfiguration.scalaAspectPrefix+"."+packName
-                        }
-                        res.append(Util.protectScalaKeyword(packName))
-						
-						
-                        res.append(".")
-                        res.append(superC.asInstanceOf[Class].getTypeDefinition.getName)
-                        res.append("Aspect")
-                        */
                        res.append(Util.protectScalaKeyword(Util.getQualifiedNamedAspect(superC.asInstanceOf[Class].getTypeDefinition)))
                         generateBindingParamerterClass(superC.asInstanceOf[Class],res)
-                        /*}else{
-                         res.append(" with ")
-                         var ty : GenericTypeDefinition = superC.asInstanceOf[Class].getTypeDefinition
-                         res.append(Util.protectScalaKeyword(kermeta.utils.TypeEquivalence.getPackageEquivalence(ty.eContainer.asInstanceOf[Package].getQualifiedName)))
-                         res.append(".")
-                         res.append(Util.protectScalaKeyword(superC.asInstanceOf[Class].getTypeDefinition.getName))
-                         }*/
                         i=i+1
                     })
 				
                 res append " with "+ fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.FrameworkAspectUtil.getDefaultAspect(this.getQualifiedNameCompilo())
-//                res append " with "+GlobalConfiguration.frameworkGeneratedPackageName + "."+GlobalConfiguration.implicitConvTraitName
             }
             
             var param : StringBuilder = new  StringBuilder
@@ -78,8 +58,7 @@ trait ClassDefinitionAspect extends ObjectAspect with IVisitable {
                 res.append(" with "+Util.protectScalaKeyword("_root_."+this.eContainer.asInstanceOf[ObjectAspect].getQualifiedNameCompilo) + ".itf."+ this.getName() +"Itf" + param.toString)
 	    
             res.append("{\n")
-    //  res.append("{this:"+Util.protectScalaKeyword(Util.getQualifiedNamedBase(this))+"=>\n")
-				
+
 				
 				
             this.getOwnedAttribute foreach(a=> a.generateScalaCode(res))
@@ -95,10 +74,8 @@ trait ClassDefinitionAspect extends ObjectAspect with IVisitable {
             this.generateParamerterClass(res)
 
             if (this.getSuperType.size == 0){
-                //res.append(" extends "+Util.traitname)
                 //TODO extends a superClassAspect
             }else{
-                //res.append(" extends org.eclipse.emf.ecore.impl.EObjectImpl ")
                 res.append(" ")
 				
                 var i = 0;
@@ -108,37 +85,14 @@ trait ClassDefinitionAspect extends ObjectAspect with IVisitable {
                         } else {
                             res.append(" with ")
                         }
-                        /*						res.append(" extends ")
-                         var ty : GenericTypeDefinition = superC.asInstanceOf[Class].getTypeDefinition
-                         res.append(kermeta.utils.TypeEquivalence.getPackageEquivalence(ty.eContainer.asInstanceOf[Package].getQualifiedName))
-                         res.append(".")
-                         res.append(superC.asInstanceOf[Class].getTypeDefinition.getName)
-                         *///					}else{
-                        //res.append(" with ")
-                        //var ty : GenericTypeDefinition = superC.asInstanceOf[Class].getTypeDefinition
-                        //if (Util.hasEcoreTag(ty) ){
-                        //    res.append(GlobalConfiguration.scalaAspectPrefix+".")
-                        //}
-                        //res.append(kermeta.utils.TypeEquivalence.getPackageEquivalence(ty.eContainer.asInstanceOf[Package].getQualifiedName))
-            
-								
-                        //res.append(".")
-
-            //println(superC.asInstanceOf[Class].getTypeDefinition.getQualifiedNameCompilo)
 
             res.append("_root_."+Util.getQualifiedNamedAspect(superC.asInstanceOf[Class].getTypeDefinition))
-            //res.append(superC.asInstanceOf[Class].getTypeDefinition.getQualifiedNameCompilo)
-                        //res.append("Aspect")
                         generateBindingParamerterClass(superC.asInstanceOf[Class],res)
-                        //returnedString =returnedString + ", " +superC.getName;
-                        //					}
                         i=i+1
                     })
-  //              res append " with "+GlobalConfiguration.frameworkGeneratedPackageName + "."+GlobalConfiguration.implicitConvTraitName
             }
             res append " with "+Util.protectScalaKeyword("_root_."+Util.getQualifiedNamedBase(this))
             res.append("{\n")
-            //res.append("{this:"+Util.protectScalaKeyword(Util.protectScalaKeyword(Util.getQualifiedNamedBase(this)))+"=>\n")
 
             this.getOwnedAttribute foreach(a=> a.generateScalaCode(res))
             this.getOwnedOperation filter(op=> !Util.hasEcoreTag(op)) foreach(op=> op.generateScalaCode(res))
@@ -163,7 +117,8 @@ trait ClassDefinitionAspect extends ObjectAspect with IVisitable {
 
     def generateInvariants(res1:StringBuilder) = {
         var listInv = this.getAllInvariants
-        if(this.getInv().size() > 0){
+
+        if(listInv.size() > 0){
             res1.append("override def checkInvariants(){\n")
             res1.append("val invariants : scala.collection.immutable.HashMap[String,Condition] = scala.collection.immutable.HashMap( ")
             var i = 0
@@ -236,19 +191,15 @@ trait ClassDefinitionAspect extends ObjectAspect with IVisitable {
         }
     }
 
-    def getAllInvariants() : EList[Constraint] =  {
-        var result = this.getInv
+    def getAllInvariants() : java.util.List[Constraint] =  {
+        var result = new ArrayList[Constraint]()
+      result.addAll(this.getInv)
         this.getSuperType.foreach{st =>
             st match {
                 case cd:Class => {
-
-                        //TODO OPTIMISE WITH FLATTEN
-                        if(result.forall({inv => { true }})){
                             result.addAll(cd.asInstanceOf[ParameterizedType].getTypeDefinition.asInstanceOf[ClassDefinition].getAllInvariants)
-                        }
-            
                     }
-                case _ => println(st)
+                case _ => println("TOTO " + st)
             }
         }
         return result

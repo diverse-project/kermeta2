@@ -259,11 +259,15 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         )
 		
         res.append("\n\t kermeta.utils.ReflexivityLoader.pref(\"" + GlobalConfiguration.scalaAspectPrefix + "\")\n")
+      res.append("\n\t utils.UTilScala.setScalaAspectPrefix(\"" + GlobalConfiguration.scalaAspectPrefix + "\")\n")
+            
         res.append("}\n")
         res.append("def init4eclipse() : Unit = {\n\t" )
         res.append(resinitEclipse.toString)
         res.append("\n\t kermeta.utils.ReflexivityLoader.pref(\"" + GlobalConfiguration.scalaAspectPrefix + "\")\n")
-        res.append("}\n")
+      res.append("\n\t utils.UTilScala.setScalaAspectPrefix(\"" + GlobalConfiguration.scalaAspectPrefix + "\")\n")
+              res.append("}\n")
+
 
         res.append("def main(args : Array[String]) : Unit = {\n")
         if (packages.exists(pac=> "ecore".equals(pac.getName))){
