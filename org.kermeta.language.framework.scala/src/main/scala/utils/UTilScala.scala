@@ -5,6 +5,8 @@
 
 package utils
 
+import org.eclipse.emf.ecore._
+
 object UTilScala {
  
     def isInstanceOf(o:Object, typ:Object):Boolean={
@@ -59,3 +61,101 @@ object UTilScala {
     }
 
 }
+
+object ConvertGenericType{
+  def convert(r : EGenericType):EGenericType ={
+      var result =  org.eclipse.emf.ecore.impl.EcorePackageImpl.init.getEcoreFactory.createEGenericType;
+
+    if (r.getEClassifier.isInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object])
+      result.setEClassifier(r.getEClassifier)
+    else{
+      if (r.getEClassifier.isInstanceOf[EClass])
+        result.setEClassifier(ConvertEClass.convert(r.getEClassifier.asInstanceOf[EClass]))
+      else
+        result.setEClassifier(ConvertDataType.convert(r.getEClassifier.asInstanceOf[EDataType]))
+    }
+    result.setELowerBound(r.getELowerBound)
+    result.setETypeParameter(r.getETypeParameter)
+    result.setEUpperBound(r.getEUpperBound)
+    result.getETypeArguments.clear
+    result.getETypeArguments.addAll(r.getETypeArguments)
+   
+    if (r.eContainer.isInstanceOf[EClass]){
+      var c = r.eContainer.asInstanceOf[EClass]
+      c.getEGenericSuperTypes.remove(r)
+      c.getEGenericSuperTypes.add(result)
+    }else if (r.eContainer.isInstanceOf[EStructuralFeature]){
+      var c = r.eContainer.asInstanceOf[EStructuralFeature]
+      c.setEGenericType(result)
+    }else if (r.eContainer.isInstanceOf[EGenericType]){
+      var c = r.eContainer.asInstanceOf[EGenericType]
+      if (r == c.getELowerBound)
+        c.setELowerBound(result)
+      else if (r == c.getEUpperBound)
+        c.setEUpperBound(result)
+    }else if (r.eContainer.isInstanceOf[ETypeParameter]){
+      var c = r.eContainer.asInstanceOf[ETypeParameter]
+            c.getEBounds.remove(r)
+            c.getEBounds.add(result)
+    }
+    return result
+
+  }
+}
+
+  object ConvertDataType{
+  def convert(r : EDataType):EDataType ={
+    println("TOTO" + r)
+      var result =  org.eclipse.emf.ecore.impl.EcorePackageImpl.init.getEcoreFactory.createEDataType;
+
+    result.setInstanceClass(r.getInstanceClass);
+    result.setName(r.getName);
+    result.setInstanceClassName(r.getInstanceClassName);
+    result.setInstanceTypeName(r.getInstanceTypeName);
+    result.setSerializable(r.isSerializable)
+    result.getEAnnotations.clear
+    result.getEAnnotations.addAll(r.getEAnnotations)
+
+    if (r.eContainer.isInstanceOf[EPackage]){
+      var c = r.eContainer.asInstanceOf[EPackage]
+      c.getEClassifiers.remove(r)
+      c.getEClassifiers.add(result)
+    }
+    return result
+
+  }
+
+}
+
+object ConvertEClass{
+def convert(r : EClass):EClass ={
+   var result =  org.eclipse.emf.ecore.impl.EcorePackageImpl.init.getEcoreFactory.createEClass;
+  result.setInstanceClass(r.getInstanceClass);
+  result.setName(r.getName);
+  result.setInstanceClassName(r.getInstanceClassName);
+  result.setInstanceTypeName(r.getInstanceTypeName);
+  result.setInterface(r.isInterface)
+  result.setAbstract(r.isAbstract)
+  result.getEStructuralFeatures.clear
+  result.getEStructuralFeatures.addAll(r.getEStructuralFeatures)
+  result.getEGenericSuperTypes.clear
+  result.getEGenericSuperTypes.addAll(r.getEGenericSuperTypes)
+  result.getEOperations.clear
+  result.getEOperations.addAll(r.getEOperations)
+  result.getESuperTypes.clear
+  result.getESuperTypes.addAll(r.getESuperTypes)
+  result.getEAnnotations.clear
+  result.getEAnnotations.addAll(r.getEAnnotations)
+
+
+  if (r.eContainer.isInstanceOf[EPackage]){
+    var c = r.eContainer.asInstanceOf[EPackage]
+    c.getEClassifiers.remove(r)
+    c.getEClassifiers.add(result)
+  }
+  return result
+
+}
+
+}
+
