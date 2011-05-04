@@ -276,7 +276,16 @@ def add (x$1: fr.irisa.triskell.kermeta.language.structure.Object):Boolean ={res
           var it = resource.getAllContents
           var res = new java.util.ArrayList[fr.irisa.triskell.kermeta.language.structure.Object]
           while (it.hasNext)
-              res.add(it.next.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]);
+          {
+            var obj = it.next;
+            if (obj.isInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object])
+              res.add(obj.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]);
+            else if (obj.isInstanceOf[EGenericType]){
+              res.add(utils.ConvertGenericType.convert(obj.asInstanceOf[EGenericType]).asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object])
+            }else{
+              println(obj)
+            }
+          }
            return res
       }
                   

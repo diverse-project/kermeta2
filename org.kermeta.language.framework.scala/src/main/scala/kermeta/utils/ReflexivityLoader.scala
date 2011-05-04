@@ -33,15 +33,15 @@ object ReflexivityLoader {
   def pref(arg: String)={prefix = arg;isInit=false}
 
     var bundleContext : BundleContext = _
-    def bundleContext_=(arg: BundleContext){bundleContext = arg}
+    def bundleCtx_=(arg: BundleContext){bundleContext = arg}
 
-  def bundleContext(arg: BundleContext)={bundleContext = arg}
+  def bundleCtx_(arg: BundleContext)={bundleContext = arg}
     def getMetaClass(classQualifiedName: String) :  fr.irisa.triskell.kermeta.language.structure.ClassDefinition={
         import scala.collection.JavaConversions._
         var classQualifiedName1 = classQualifiedName.replace("_root_.","")
         if (!isInit){
           classdefs.clear();
-          var c: java.lang.Class[_] = _
+          var c: java.lang.Class[_] = null
           if (bundleContext== null)
             c= this.getClass()
           else
