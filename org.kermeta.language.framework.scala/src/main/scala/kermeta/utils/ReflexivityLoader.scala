@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
+import org.osgi.framework.BundleContext
 
 object ReflexivityLoader {
     
@@ -31,16 +32,25 @@ object ReflexivityLoader {
    
   def pref(arg: String)={prefix = arg;isInit=false}
 
+    var bundleContext : BundleContext = _
+    def bundleContext_=(arg: BundleContext){bundleContext = arg}
 
+  def bundleContext(arg: BundleContext)={bundleContext = arg}
     def getMetaClass(classQualifiedName: String) :  fr.irisa.triskell.kermeta.language.structure.ClassDefinition={
         import scala.collection.JavaConversions._
         var classQualifiedName1 = classQualifiedName.replace("_root_.","")
         if (!isInit){
           classdefs.clear();
-          if(this.getClass().getClassLoader.getResource(prefix + "Reflexivity.km") == null){
+          var c: java.lang.Class[_] = _
+          if (bundleContext== null)
+            c= this.getClass()
+          else
+             c= bundleContext.getBundle.loadClass(prefix+"runner.MainRunner")
+
+          if(c.getClassLoader.getResource(prefix + "Reflexivity.km") == null){
             println("Failed to load Reflexivity.km")
           }
-          this.loadKmModel(this.getClass().getClassLoader.getResource(prefix +"Reflexivity.km").toURI().toString()).foreach(e=>
+          this.loadKmModel(c.getClassLoader.getResource(prefix +"Reflexivity.km").toURI().toString()).foreach(e=>
                 if (e.isInstanceOf[ClassDefinition])
                     classdefs .add(e.asInstanceOf[ClassDefinition])
             )
