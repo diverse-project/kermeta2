@@ -45,7 +45,10 @@ trait ObjectAspect extends EObject  with Contracted {
   def equals(o : _root_.fr.irisa.triskell.kermeta.language.structure.Object):java.lang.Boolean = o == this
 
   def isNotEqual(o : Any) : Boolean = !equals(o)
-  def isKindOf(cl : EClass) : Boolean = this.eClass().equals(cl)
+
+  def isKindOf(cl : fr.irisa.triskell.kermeta.language.structure.Class) : Boolean = this.getMetaClass.eq(cl)
+
+
   def get(prop : fr.irisa.triskell.kermeta.language.structure.Property) :java.lang.Object= {
     if (prop == null){
       println ("prop est null aie")
