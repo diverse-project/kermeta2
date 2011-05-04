@@ -79,7 +79,7 @@ object POMGeneratorHelper {
 
         var triskellPublicSnapshot = new Repository
         triskellPublicSnapshot.setId("triskellPublicSnapshot")
-        triskellPublicSnapshot.setUrl("http://www.kermeta.org/maven2-snapshots/")
+        triskellPublicSnapshot.setUrl("http://maven.irisa.fr/artifactory/public-snapshot/")
 
         var scalaRepo = new Repository()
         scalaRepo.setId("Scala-tools Maven2 Repository")
@@ -88,7 +88,7 @@ object POMGeneratorHelper {
         /* INIT PLUGIN REPOSITORY */
         var scalaPluginRepo = new Repository()
         scalaPluginRepo.setId("scala-tools.org")
-        scalaPluginRepo.setUrl("http://scala-tools.org/repo-releases")
+        scalaPluginRepo.setUrl("http://maven.irisa.fr/artifactory/public-release/")
         //project.getModel().getPluginRepositories().add(scalaPluginRepo)
 
         project.getModel.setPluginRepositories(project.getModel().getPluginRepositories()++List(scalaPluginRepo))
@@ -293,7 +293,7 @@ object POMGeneratorHelper {
         dependencies.add(this.createDependency("org.scala-lang", "scala-library", "2.8.1"))
         dependencies.add(createDependency("org.kermeta", "kermeta.model", "1.3.0"));
         dependencies.add(createDependency("org.kermeta.emf", "emf.lib", "2.6.0"));
-        dependencies.add(createDependency("org.kermeta.language", "language.framework.scala", "0.12.8-SNAPSHOT"));
+        dependencies.add(createDependency("org.kermeta.language", "language.framework.scala", "0.12.8"));
         /* INIT LOCAL VARIABLE DEPENDENCY */
 
         var i = 0
