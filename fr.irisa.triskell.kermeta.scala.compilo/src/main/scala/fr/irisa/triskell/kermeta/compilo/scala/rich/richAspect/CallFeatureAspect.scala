@@ -204,7 +204,7 @@ trait CallFeatureAspect extends CallExpressionAspect with LogAspect {
                     //case "isInstanceOf" => {generateTarget(res);res.append(".isInstanceOf");generateInstanceOf(res, this.getParameters.get(0))}
                     case "isInstance" => {generateParam(res,"","") ;res.append(".isInstanceOf");generateInstanceOf(res, this.getTarget)}
       
-                    //case "isKindOf" => generateIsInstanceOf(res,this.getParameters.get(0) )
+                    case "isKindOf" => generateTarget(res);res.append(".Kermeta");generateOperationCall(res);generateParam(res,"(",")")
                     case "isInstanceOf" => generateIsInstanceOf(res,this.getParameters.get(0) )
         
       

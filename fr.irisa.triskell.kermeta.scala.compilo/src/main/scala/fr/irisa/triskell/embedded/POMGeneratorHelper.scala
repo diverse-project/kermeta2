@@ -293,7 +293,7 @@ object POMGeneratorHelper {
         dependencies.add(this.createDependency("org.scala-lang", "scala-library", "2.8.1"))
         dependencies.add(createDependency("org.kermeta", "kermeta.model", "1.3.0"));
         dependencies.add(createDependency("org.kermeta.emf", "emf.lib", "2.6.0"));
-        dependencies.add(createDependency("org.kermeta.language", "language.framework.scala", "0.12.8"));
+        dependencies.add(createDependency("org.kermeta.language", "language.framework.scala", "0.12.9"));
         /* INIT LOCAL VARIABLE DEPENDENCY */
 
         var i = 0
@@ -305,7 +305,7 @@ object POMGeneratorHelper {
         }
     
     
-        //dependencies.add(createDependency("org.kermeta.art2", "art2.model", "1.1.0-SNAPSHOT"));
+        //dependencies.add(creaxteDependency("org.kermeta.art2", "art2.model", "1.1.0-SNAPSHOT"));
 
 
 

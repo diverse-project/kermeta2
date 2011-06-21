@@ -1,33 +1,23 @@
-# ok : Rajouter le cas manquant pour scala upper
-
-#1 .Classe supplémentaire dont la super classe est une classe ecore doit dans le ViewType ne pas surcharget ObjectImpl
-#ok : 2. Supprimer les view et factory quand que des classes qui ont l'annotation @CompilerIgnore
-#ok 3. Refaire le runner avec les bon paramètre,
-#ok 4. Rajouter dans le runner la gestion du suffixe.
-
-# ok 5. trait LoadKmAspect  extends fr.irisa.triskell.kermeta.language.structure.ObjectAspect should extends fr.irisa.triskell.kermeta.language.structureScalaAspect.ObjectAspect
-	/home/barais/workspaces/kermetaCompilerRuntime2/fr.irisa.triskell.kermeta.scala.compilo.output/src/fr/irisa/triskell/kermeta/language/structureScalaAspect/PropertyConstraintAspect.scala:7: error: type ConstraintAspect is not a member of package fr.irisa.triskell.kermeta.language.structure
-	[INFO] trait PropertyConstraintAspect  extends fr.irisa.triskell.kermeta.language.structure.ConstraintAspect with fr.irisa.triskell.scala.generated.fw.ImplicitConversion{
-[ERROR] /home/barais/workspaces/kermetaCompilerRuntime2/fr.irisa.triskell.kermeta.scala.compilo.output/src/fr/irisa/triskell/kermeta/language/structureScalaAspect/PropertyAspect.scala:33: error: type PropertyConstraint is not a member of package fr.irisa.triskell.kermeta.language.structure
-[INFO] var propertyConstraint : fr.irisa.triskell.kermeta.language.structure.PropertyConstraint= _
-
-	
-#ok 6. /home/barais/workspaces/kermetaCompilerRuntime2/fr.irisa.triskell.kermeta.scala.compilo.output/src/runner/MainRunner.scala:49: error: type mismatch;
-[INFO]  found   : fr.irisa.triskell.kermetaScalaAspect.RichFactory.type (with underlying type object fr.irisa.triskell.kermetaScalaAspect.RichFactory)
-[INFO]  required: org.eclipse.emf.ecore.EFactory
-[INFO] 	pack.setEFactoryInstance(fr.irisa.triskell.kermetaScalaAspect.RichFactory)
-	
-
-#ok 7. 	 fr.irisa.triskell.kermeta.language.structure.ConstraintType.ConstraintType =>  fr.irisa.triskell.kermeta.language.structure.ConstraintType
+ implicit def richAspect(v : ScalaAspect.system.corporate.EmployeeAspect) = v.asInstanceOf[system.corporate.impl.EmployeeImpl]
+=>  implicit def richAspect(v : ScalaAspect.system.corporate.EmployeeAspect) = v.asInstanceOf[system.corporate.Employee]
 
 
-NameRefAspect pas de root ni de scalaAspect  :  and((scalaUtil.Util.getMetaClass("kompose.Mergeable")).isSuperTypeOf((p).Scalatype))}
-
-file:/home/barais/NetBeansProjects/fr.irisa.triskell.kermeta.scala.compilo.output/shipshop.kompose
-
-Passe pas
-ReflexiveSequence (conversion vers List)
-_root_ pour le qualifiedName des enums
-_root les news
+trait PersonAspect extends ScalaAspect.fr.irisa.triskell.kermeta.language.structure.ObjectAspect with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect with `_root_`.system.lab.Person
+=> with `_root_`.system.corporate.itf.CorporateItf
 
 
+object RichFactory {
+  def createPerson : system.lab.Person = { new ScalaAspect.system.lab.RichPerson }
+  def createPublication : system.lab.Publication = { new ScalaAspect.system.lab.RichPublication }
+  def createLab : system.lab.Lab = { new ScalaAspect.system.lab.RichLab }
+  def createTool : system.lab.Tool = { new ScalaAspect.system.lab.RichTool }
+  def createPaper : system.lab.Paper = { new ScalaAspect.system.lab.RichPaper }
+}
+
+ class RichPerson extends system.lab.impl.PersonImpl with ScalaAspect.system.lab.PersonAspect with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation 
+=> class RichPerson extends system.lab.Person with ScalaAspect.system.lab.PersonAspect with fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation with kermeta.standard.EObjectImplForPrimitive
+
+def Scalaemployees : java.util.List[_root_.system.corporate.Employee]={new RichKermetaList(this.getEmployees())}.asInstanceOf[java.util.List[_root_.system.corporate.Employee]]
+=> def Scalaemployees : java.util.List[_root_.system.corporate.Employee]={if (this.getEmployees()==null) this.setEmployees(new java.util.ArrayList[_root_.system.corporate.Employee]); new RichKermetaList(this.getEmployees())}.asInstanceOf[java.util.List[_root_.system.corporate.Employee]]
+
++ génération Itf

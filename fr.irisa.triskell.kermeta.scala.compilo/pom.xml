@@ -5,7 +5,7 @@
     <groupId>fr.irisa.triskell</groupId>
     <artifactId>kermeta.compilo.scala</artifactId>
     <name>fr.irisa.triskell.kermeta.compilo.scala</name>
-    <version>0.0.2-BETA15</version>
+    <version>0.0.2-BETA16-SNAPSHOT</version>
     <description>Kermeta Compiler V2 for Kermeta 1</description>
     <packaging>jar</packaging>
     <properties>
@@ -94,7 +94,20 @@
                     </instructions>
                 </configuration>
             </plugin>
-           
+          <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>install</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/K2dependencies</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>truezip-maven-plugin</artifactId>
@@ -229,7 +242,7 @@
         <dependency>
             <groupId>org.kermeta.language</groupId>
             <artifactId>language.framework.scala</artifactId>
-            <version>0.12.8</version>
+            <version>0.12.8-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.external</groupId>
