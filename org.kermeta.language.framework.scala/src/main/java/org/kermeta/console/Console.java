@@ -16,7 +16,5 @@ public interface Console {
     public void errorln(String message);
     public String readln();
     public void changeColor(java.awt.Color c);
-    
-    
 
 }
