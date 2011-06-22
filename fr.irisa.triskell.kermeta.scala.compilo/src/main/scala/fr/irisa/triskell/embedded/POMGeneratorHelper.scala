@@ -75,7 +75,7 @@ object POMGeneratorHelper {
 
         var triskellPublic = new Repository
         triskellPublic.setId("triskellPublic")
-        triskellPublic.setUrl("http://www.kermeta.org/maven2/")
+        triskellPublic.setUrl("http://maven.irisa.fr/artifactory/public-release/")
 
         var triskellPublicSnapshot = new Repository
         triskellPublicSnapshot.setId("triskellPublicSnapshot")
