@@ -22,7 +22,7 @@ trait ObjectAspect extends EObject  with Contracted {
       var thisclass : Class =this.asInstanceOf[Class]
       var clclass : Class = cl.asInstanceOf[Class]
 
-      if (_root_.utils.UTilScala.getQualifiedNameClass( clclass.asInstanceOf[Class].getTypeDefinition,"::").equals(_root_.utils.UTilScala.getQualifiedNameClass(thisclass.getTypeDefinition,"::") ))
+      if (_root_.utils.UTilScala.getQualifiedNameClassKermeta( clclass.asInstanceOf[Class].getTypeDefinition,"::").equals(_root_.utils.UTilScala.getQualifiedNameClassKermeta(thisclass.getTypeDefinition,"::") ))
         return true
       else
         return clclass.getTypeDefinition.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.ClassDefinition].getSuperType.exists(e=> this.isSuperTypeOf(e))

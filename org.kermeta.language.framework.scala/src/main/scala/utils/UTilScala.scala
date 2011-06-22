@@ -47,15 +47,30 @@ object UTilScala {
     return res
   }
 
-   def getQualifiedNameClass(pack : fr.irisa.triskell.kermeta.language.structure.GenericTypeDefinition, sep: String):String ={
+   def getQualifiedNameClassJava(pack : fr.irisa.triskell.kermeta.language.structure.GenericTypeDefinition, sep: String):String ={
        return    kermeta.utils.TypeEquivalence.getPackageEquivalence(getQualifiedNamePackage(pack.eContainer().asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Package],sep)) + sep+ pack.getName();
     }
- def getQualifiedNameType(pack : fr.irisa.triskell.kermeta.language.structure.Type, sep: String):String ={
+ def getQualifiedNameTypeJava(pack : fr.irisa.triskell.kermeta.language.structure.Type, sep: String):String ={
      if (pack.isInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class]){
-         return getQualifiedNameClass(pack.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class].getTypeDefinition,sep)
+         return getQualifiedNameClassJava(pack.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class].getTypeDefinition,sep)
      }else if(pack.isInstanceOf[fr.irisa.triskell.kermeta.language.structure.DataType]){
       return   kermeta.utils.TypeEquivalence.getPackageEquivalence(getQualifiedNamePackage(pack.eContainer().asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Package],sep) )+ sep+ pack.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.DataType].getName();
          
+     }else
+         return ""
+    }
+
+
+
+   def getQualifiedNameClassKermeta(pack : fr.irisa.triskell.kermeta.language.structure.GenericTypeDefinition, sep: String):String ={
+       return    getQualifiedNamePackage(pack.eContainer().asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Package],sep) + sep+ pack.getName();
+    }
+ def getQualifiedNameTypeKermeta(pack : fr.irisa.triskell.kermeta.language.structure.Type, sep: String):String ={
+     if (pack.isInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class]){
+         return getQualifiedNameClassKermeta(pack.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class].getTypeDefinition,sep)
+     }else if(pack.isInstanceOf[fr.irisa.triskell.kermeta.language.structure.DataType]){
+      return   getQualifiedNamePackage(pack.eContainer().asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Package],sep) + sep+ pack.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.DataType].getName();
+
      }else
          return ""
     }

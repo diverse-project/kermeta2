@@ -36,7 +36,8 @@ object ReflexivityLoader {
     def bundleCtx_=(arg: BundleContext){bundleContext = arg}
 
   def bundleCtx_(arg: BundleContext)={bundleContext = arg}
-    def getMetaClass(classQualifiedName: String) :  fr.irisa.triskell.kermeta.language.structure.ClassDefinition={
+
+  def getMetaClass(classQualifiedName: String) :  fr.irisa.triskell.kermeta.language.structure.ClassDefinition={
         import scala.collection.JavaConversions._
         var classQualifiedName1 = classQualifiedName.replace("_root_.","")
         if (!isInit){
