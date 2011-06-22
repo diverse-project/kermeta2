@@ -51,11 +51,16 @@
 			            <Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Vendor>IRISA/INRIA</Bundle-Vendor>
-                        <Export-Package>
-                                    org.kermeta.*,
-                        	fr.irisa.triskell.kermeta.*, 
-                        	fr.irisa.triskell.scala.*,
-                        	kermeta.*</Export-Package>
+                        <Export-Package>kermeta.exceptions.*,
+                            kermeta.io.*,
+                            kermeta.kunit.*,
+                            kermeta.persistence.*,
+                            kermeta.standard.*,
+                            kermeta.utils.*,
+                            utils.*,
+                        	fr.irisa.triskell.kermeta.*,
+                        	fr.irisa.triskell.scala.*
+                        </Export-Package>
                         <Private-Package>utils</Private-Package>
                         <Import-Package>
                         	!org.eclipse.core.runtime,!org.slf4j,
