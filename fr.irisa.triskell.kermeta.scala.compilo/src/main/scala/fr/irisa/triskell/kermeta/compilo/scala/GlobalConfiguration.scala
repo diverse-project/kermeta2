@@ -39,7 +39,7 @@ object GlobalConfiguration extends LogAspect{
             outputBinFolder = outputProject + java.io.File.separator+"bin"
             workspaceURI = if(_props.containsKey("workspace.platform.uri")) { _props.getProperty("workspace.platform.uri") } else { null }
             pluginURI = if(_props.containsKey("workspace.plugin.uri")) { _props.getProperty("workspace.plugin.uri") } else { null }
-             scalaAspectPrefix = props.getString("project.artefact.id").replace(".", "")
+             scalaAspectPrefix = _props.getProperty("project.artefact.id").replace(".", "")
             this.init = true
 
             log.info("Properties loaded")

@@ -174,7 +174,7 @@ trait CallFeatureAspect extends CallExpressionAspect with LogAspect {
             if (this.getTarget.isInstanceOf[TypeLiteral]){
                 res.append(".asInstanceOf[")
                // if (this.getTarget.asInstanceOf[TypeLiteral].getTyperef().getType.isInstanceOf[Class]){
-                    res.append("_root_." +kermeta.utils.TypeEquivalence.getTypeEquivalence(_root_.utils.UTilScala.getQualifiedNameType(this.getTarget.asInstanceOf[TypeLiteral].getTyperef().getType, ".")))
+                    res.append("_root_." +kermeta.utils.TypeEquivalence.getTypeEquivalence(_root_.utils.UTilScala.getQualifiedNameTypeJava(this.getTarget.asInstanceOf[TypeLiteral].getTyperef().getType, ".")))
                     res.append("]")
                 //}else{
                  //   res.append("_root_." + _root_.utils.UTilScala.getQualifiedNameType(this.getTyperef().getType, "."))
