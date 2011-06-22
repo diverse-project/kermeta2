@@ -59,9 +59,9 @@
                             kermeta.utils.*,
                             utils.*,
                         	fr.irisa.triskell.kermeta.*,
-                        	fr.irisa.triskell.scala.*
+                        	fr.irisa.triskell.scala.*,
+                            kermeta.*
                         </Export-Package>
-                        <Private-Package>utils</Private-Package>
                         <Import-Package>
                         	!org.eclipse.core.runtime,!org.slf4j,
                         	scala.collection, 
