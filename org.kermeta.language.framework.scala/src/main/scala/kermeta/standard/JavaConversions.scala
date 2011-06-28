@@ -41,6 +41,9 @@ package kermeta.standard;
  *  @since  2.8
  */
 import org.eclipse.emf.common.util.EList
+import actors.remote.JavaSerializer
+import fr.irisa.triskell.kermeta.language.behavior.VariableDecl
+
 
 object JavaConversions {
     import java.{ lang => jl, util => ju }
@@ -49,9 +52,11 @@ object JavaConversions {
     import scala.reflect.ClassManifest
   
     class RichKermetaList[A] ( value : ju.List[A]) extends  fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.DefaultObjectImplementation with  EObjectImplForPrimitive with EList[A] with fr.irisa.triskell.kermeta.language.structure.Object{
-	
-        
+
      
+
+     
+
         def first():A = {
             if (value.size>0)  
                 return value.get(0)
@@ -195,12 +200,16 @@ object JavaConversions {
             var res : java.util.List[A] = new java.util.ArrayList[A];
             this.each{e=> res.add(e)}
             return res
+          }
+        override def toString:java.lang.String = {
+          return value.toString
         }
+
         def addUnique(a:A) :Unit = {
-            // println("addUnique " + a + value.size)
+            //println("addUnique "+ value.getClass)
             if (!value.contains(a))
                 value.add(a)
-            //var res : java.util.List[A] = new java.util.ArrayList[A];
+                        //var res : java.util.List[A] = new java.util.ArrayList[A];
             //this.each{e=> res.add(e)}
             //return res
         }
@@ -318,8 +327,9 @@ object JavaConversions {
         }
 
 
-        def size() :Int = {
 
+        def size() :Int = {
+          //println("size " + value + " " +value.getClass + " " + value.size() )
             return value.size();
         }
 
@@ -367,8 +377,10 @@ object JavaConversions {
 
 
         override def hashCode() :Int= {
-
+            if (value != null)
             return value.hashCode();
+          else
+              return 0;
         }
 
 
@@ -517,12 +529,42 @@ object JavaConversions {
     }
 
   
-    implicit def asBuffer[A](l : ju.List[A]) = new RichKermetaList(l)//l match {
+    implicit def asBuffer[A](l : ju.List[A]) : RichKermetaList[A] = {
+      var it = TagsCache._asBuffer.iterator
+     var i=0
+     var j = -1
+      while (it.hasNext)
+      {
+        var s1 = it.next
+        if (s1._1.eq(l))
+        {
+
+          j=i;
+        }
+         i=i+1
+      }
+      if (l== null){
+        return null.asInstanceOf[RichKermetaList[A]]
+      }
+      else if ( j != -1){
+        return TagsCache._asBuffer.get(j)._2.asInstanceOf[RichKermetaList[A]]
+      }else{
+        var res =  new RichKermetaList(l)
+        TagsCache._asBuffer.add((l,res))
+        return res
+      }
+    }
     implicit def asSet[A](l : ju.Set[A]) = new RichKermetaSet(l)//l match {
     implicit def asCol[A](l : ju.Collection[A]) = new RichKermetaCol(l)//l match {
-  	
-  
-  
+
+  object TagsCache{
+    var _asBuffer :  java.util.List[scala.Tuple2[ju.List[_],RichKermetaList[_]]] = new java.util.ArrayList[scala.Tuple2[ju.List[_],RichKermetaList[_]]]
+    var _asSet :  java.util.HashMap[ju.List[_],RichKermetaList[_]] = new java.util.HashMap[ju.List[_],RichKermetaList[_]]();
+    var _asCol :  java.util.HashMap[ju.List[_],RichKermetaList[_]] = new java.util.HashMap[ju.List[_],RichKermetaList[_]]();
+
+  }
+
+
 }
 
 
