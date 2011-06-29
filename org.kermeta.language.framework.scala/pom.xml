@@ -109,7 +109,7 @@
         <dependency>
             <groupId>fr.irisa.triskell.kermeta</groupId>
             <artifactId>kermeta.model</artifactId>
-            <version>1.4.0</version>
+            <version>${kermeta.model.version}</version>
         </dependency>
         <dependency>
             <groupId>org.kermeta.emf</groupId>
@@ -126,9 +126,7 @@
            <artifactId>org.osgi.core</artifactId>
            <version>${osgi.version}</version>
        </dependency>
-                
     </dependencies>
-
 
     <distributionManagement>
         <repository>
@@ -148,3 +146,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>
+
