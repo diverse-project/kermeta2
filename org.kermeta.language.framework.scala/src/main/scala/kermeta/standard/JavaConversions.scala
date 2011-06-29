@@ -533,7 +533,7 @@ object JavaConversions {
       var it = TagsCache._asBuffer.iterator
      var i=0
      var j = -1
-      while (it.hasNext)
+      while (it.hasNext && j == -1)
       {
         var s1 = it.next
         if (s1._1.eq(l))

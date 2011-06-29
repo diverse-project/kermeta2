@@ -9,8 +9,8 @@ import scala._
 object PrimitiveConversion{
     implicit def string2kermeta(x: String) = new RichString(x)
     implicit def boolean2kermeta(x: Boolean) = new RichBoolean(x)
-    implicit def boolean2javaboolean(x: java.lang.Boolean) : Boolean = {if (x== null) return false else return x.booleanValue()}
-    implicit def javaboolean2kermeta(x: java.lang.Boolean) = new RichJavaBoolean(x)
+    //implicit def boolean2javaboolean(x: java.lang.Boolean) : Boolean = {if (x== null) return false else return x.booleanValue()}
+    implicit def javaboolean2kermeta(x: java.lang.Boolean) : RichJavaBoolean = new RichJavaBoolean(x)
     implicit def iterator2kermeta(x: java.util.Iterator[_])= new RichIterator(x)
     implicit def iteratorEObject2kermeta(x:java.util.Iterator[_<: org.eclipse.emf.ecore.EObject]) :  _root_.java.util.Iterator[_root_.fr.irisa.triskell.kermeta.language.structure.Object] =x.asInstanceOf[_root_.java.util.Iterator[_root_.fr.irisa.triskell.kermeta.language.structure.Object]]
 
@@ -20,8 +20,8 @@ object PrimitiveConversion{
     implicit def character2kermeta(x: Char) = new RichCharacter(x)
     //implicit def listToEList[G](l : java.util.List[G]) = l.asInstanceOf[org.eclipse.emf.common.util.EList[G]]
 	
-    implicit def toInt2(in:java.lang.Integer) : Int = in.intValue
-    implicit def toReal2(in:java.lang.Double) : Double = in.doubleValue
+    //implicit def toInt2(in:java.lang.Integer) : Int = in.intValue
+    //implicit def toReal2(in:java.lang.Double) : Double = in.doubleValue
     implicit def toInt(in:java.lang.Integer) : RichInteger = new RichInteger(in.intValue)
     implicit def toReal(in:java.lang.Double) : RichReal = new RichReal(in.doubleValue)
 
