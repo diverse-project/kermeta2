@@ -5,13 +5,13 @@
     <groupId>fr.irisa.triskell</groupId>
     <artifactId>kermeta.compilo.scala</artifactId>
     <name>fr.irisa.triskell.kermeta.compilo.scala</name>
-    <version>0.0.2-BETA16</version>
+    <version>0.0.2-BETA17-SNAPSHOT</version>
     <description>Kermeta Compiler V2 for Kermeta 1</description>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <scala.version>2.8.1</scala.version>
+    <scala.version>2.9.0-1</scala.version>
     </properties>
 
     <build>
