@@ -198,7 +198,7 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/ecli
     //inputFile = "/home/barais/workspaces/mopcom-i/org.kermeta.pramana.kermeta2alloy/src/kermeta/metamodel2AlloyModel.km"
 //    inputFile = "/tmp/D.km"
      // inputFile = "/home/barais/workspaces/ram/RAM/src/kermeta/weaver.km"
-        inputFile = "/home/barais/toto/Téléchargements/new_file.km"
+     //   inputFile = "/home/barais/toto/Téléchargements/new_file.km"
 
           if(inputFile != ""){
       log.info("KM compilation begin on "+inputFile)
