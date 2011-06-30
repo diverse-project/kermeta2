@@ -530,7 +530,7 @@ object JavaConversions {
 
   
     implicit def asBuffer[A](l : ju.List[A]) : RichKermetaList[A] = {
-      var it = TagsCache._asBuffer.iterator
+/*      var it = TagsCache._asBuffer.iterator
      var i=0
      var j = -1
       while (it.hasNext && j == -1)
@@ -542,15 +542,15 @@ object JavaConversions {
           j=i;
         }
          i=i+1
-      }
+      }*/
       if (l== null){
         return null.asInstanceOf[RichKermetaList[A]]
       }
-      else if ( j != -1){
-        return TagsCache._asBuffer.get(j)._2.asInstanceOf[RichKermetaList[A]]
+      else if (TagsCache._asBuffer.get(l) != null){
+        return TagsCache._asBuffer.get(l).asInstanceOf[RichKermetaList[A]]
       }else{
         var res =  new RichKermetaList(l)
-        TagsCache._asBuffer.add((l,res))
+        TagsCache._asBuffer.put(l,res)
         return res
       }
     }
@@ -558,7 +558,7 @@ object JavaConversions {
     implicit def asCol[A](l : ju.Collection[A]) = new RichKermetaCol(l)//l match {
 
   object TagsCache{
-    var _asBuffer :  java.util.List[scala.Tuple2[ju.List[_],RichKermetaList[_]]] = new java.util.ArrayList[scala.Tuple2[ju.List[_],RichKermetaList[_]]]
+    var _asBuffer :  java.util.IdentityHashMap[ju.List[_],RichKermetaList[_]] = new java.util.IdentityHashMap[ju.List[_],RichKermetaList[_]]
     var _asSet :  java.util.HashMap[ju.List[_],RichKermetaList[_]] = new java.util.HashMap[ju.List[_],RichKermetaList[_]]();
     var _asCol :  java.util.HashMap[ju.List[_],RichKermetaList[_]] = new java.util.HashMap[ju.List[_],RichKermetaList[_]]();
 

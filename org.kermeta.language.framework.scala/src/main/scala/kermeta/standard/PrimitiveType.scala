@@ -14,7 +14,7 @@ object PrimitiveConversion{
     implicit def iterator2kermeta(x: java.util.Iterator[_])= new RichIterator(x)
     implicit def iteratorEObject2kermeta(x:java.util.Iterator[_<: org.eclipse.emf.ecore.EObject]) :  _root_.java.util.Iterator[_root_.fr.irisa.triskell.kermeta.language.structure.Object] =x.asInstanceOf[_root_.java.util.Iterator[_root_.fr.irisa.triskell.kermeta.language.structure.Object]]
 
-	
+
     implicit def integer2kermeta(x: Int) = new RichInteger(x)
     implicit def real2kermeta(x: Double) = new RichReal(x)
     implicit def character2kermeta(x: Char) = new RichCharacter(x)
