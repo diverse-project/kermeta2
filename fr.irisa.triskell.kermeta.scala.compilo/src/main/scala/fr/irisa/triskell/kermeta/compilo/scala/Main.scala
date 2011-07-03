@@ -213,7 +213,7 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/ecli
 
 
     if (scalacompile){
-      if (false && GlobalConfiguration.exec && !GlobalConfiguration.createPackage ){
+      if (!GlobalConfiguration.createPackage ){
         var classpath =EmbettedScalaCompiler.getActualClasspath
         
         if (additionalClassPath != null)
@@ -232,9 +232,9 @@ additionalClassPath = List("/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/ecli
 
         
         //Scala runner
-        if(compilationResult == 0){
+        if(compilationResult == 0 && GlobalConfiguration.exec){
 
-          EmbettedScalaRunner.run(classpath+File.pathSeparator+GlobalConfiguration.outputBinFolder, "runner.MainRunner", runnerParams)
+          EmbettedScalaRunner.run(classpath.mkString(File.pathSeparator)+File.pathSeparator+GlobalConfiguration.outputBinFolder, GlobalConfiguration.scalaAspectPrefix+ "runner.MainRunner", runnerParams)
         }
         if (outputStream != null){
           System.setOut(new PrintStream(oldOut))
