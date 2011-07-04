@@ -67,17 +67,15 @@
                         	fr.irisa.triskell.scala.*,
                             kermeta.*
                         </Export-Package>
+                        <Require-Bundle>
+                            org.kermeta.scala.scala-library
+                        </Require-Bundle>
                         <Import-Package>
                         	!org.eclipse.core.runtime,!org.slf4j,
-                        	scala.collection, 
-                        	scala.collection.immutable, 
-                        	scala.collection.mutable,
                         	fr.irisa.triskell.kermeta,
                         	fr.irisa.triskell.kermeta.language.structure.*,
                         	fr.irisa.triskell.kermeta.language.behavior.*,
                         	org.osgi.framework, 
-                        	scala.*, 
-                        	scala.runtime,
                         	org.eclipse.emf.*                        	
                         	</Import-Package>
                             <DynamicImport-Package>*</DynamicImport-Package>
