@@ -101,16 +101,16 @@ object Main extends LogAspect {
       case _ =>
     }
 	  
-    if (!(property && input)){
-    	if (!help)
-    		println("Usage: scala Main [-help|-input INPUTFILE|-property PROPERTYFILE|-runp param1,param2|-fsc]")    	  
-      return
-      
-    }
     
     //STEP 0 - LOAD PROPERTIES FILE
     if (!GlobalConfiguration.init )
     {
+      if (!(property && input)){
+    	if (!help)
+    		println("Usage: scala Main [-help|-input INPUTFILE|-property PROPERTYFILE|-runp param1,param2|-fsc]")    	  
+      return      
+    }
+      
       if (property){
     	  var v = new Properties
     	  v.load(new FileInputStream(new File(propertyfile)))
