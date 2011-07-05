@@ -10,7 +10,7 @@ object EmbettedScalaRunner extends LogAspect {
 		log.info("Scala Running step begin")
 		
 		var params = Array("-savecompiled","-classpath",classpath,mainRunner) ++ _params
-    println(params.mkString, " ")
+		//println(params.mkString, " ")
 		scala.tools.nsc.MainGenericRunner.main(params)
 		
 		var endTime= System.currentTimeMillis() - startTime

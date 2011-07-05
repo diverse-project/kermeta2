@@ -23,9 +23,6 @@ object GlobalConfiguration extends LogAspect{
         //props = new ResourceBundle
         _props
         //FIRST STEP CHECK VALUES
-        loadResult = loadResult && _props.containsKey("use.default.aspect.uml")
-        loadResult = loadResult && _props.containsKey("use.default.aspect.ecore")
-        loadResult = loadResult && _props.containsKey("use.default.aspect.km")
         loadResult = loadResult && _props.containsKey("project.group.id")
         loadResult = loadResult && _props.containsKey("project.artefact.id")
         if(loadResult){
@@ -39,7 +36,8 @@ object GlobalConfiguration extends LogAspect{
             outputBinFolder = outputProject + java.io.File.separator+"bin"
             workspaceURI = if(_props.containsKey("workspace.platform.uri")) { _props.getProperty("workspace.platform.uri") } else { null }
             pluginURI = if(_props.containsKey("workspace.plugin.uri")) { _props.getProperty("workspace.plugin.uri") } else { null }
-             scalaAspectPrefix = _props.getProperty("project.artefact.id").replace(".", "")
+            additionalClassPath = if(_props.containsKey("user.additional.classpath")) { List.fromString(props.getProperty("user.additional.classpath"),',')} else { null }
+            scalaAspectPrefix = _props.getProperty("project.artefact.id").replace(".", "")
             this.init = true
 
             log.info("Properties loaded")
@@ -65,12 +63,6 @@ object GlobalConfiguration extends LogAspect{
 
         var loadResult = true
         this.props = this.convertResourceBundleToProperties(props)
-        //props = _props
-        //FIRST STEP CHECK VALUES
-        //
-        loadResult = loadResult && props.containsKey("use.default.aspect.uml")
-        loadResult = loadResult && props.containsKey("use.default.aspect.ecore")
-        loadResult = loadResult && props.containsKey("use.default.aspect.km")
         loadResult = loadResult && props.containsKey("project.group.id")
         loadResult = loadResult && props.containsKey("project.artefact.id")
         if(loadResult){
@@ -83,6 +75,7 @@ object GlobalConfiguration extends LogAspect{
             scalaAspectPrefix = props.getString("project.artefact.id").replace(".", "")
             outputFolder = outputProject+"/src"
             outputBinFolder = outputProject+"/bin"
+            additionalClassPath = if(props.containsKey("user.additional.classpath")) { List.fromString(props.getString("user.additional.classpath"),',')} else { null }
             workspaceURI = if(props.containsKey("workspace.platform.uri")) { props.getString("workspace.platform.uri") } else { null }
             pluginURI = if(props.containsKey("workspace.plugin.uri")) { props.getString("workspace.plugin.uri") } else { null }
             this.init = true
@@ -116,10 +109,17 @@ object GlobalConfiguration extends LogAspect{
                             else
                                 return true
     }
+    def useMaven() : Boolean = {var  exec = props.getProperty("use.maven.to.compile")
+                            if ("true".equals(exec))
+                                return true
+                            else
+                                return false
+    }
 
 
     //var props : ResourceBundle = null
     var props : Properties = null
+    var additionalClassPath : List[String] = null
 
     var frameworkGeneratedPackageName : String = null
     var implicitConvTraitName : String = "ImplicitConversion"

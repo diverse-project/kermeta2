@@ -20,6 +20,8 @@ class Compiler extends LogAspect {
     def compile(url : java.lang.String){
         log.debug("Cleaning Output Step")
         Util.cleanFolder(GlobalConfiguration.outputFolder)
+        Util.cleanFolder(GlobalConfiguration.outputBinFolder)
+        Util.cleanFolder(GlobalConfiguration.outputProject + File.separator + "target")
         /* Init Factory Step */
         var t: LoadModelHelper = new LoadModelHelper()
         BehaviorPackage.eINSTANCE.setEFactoryInstance(new RichBehaviorFactoryImpl())

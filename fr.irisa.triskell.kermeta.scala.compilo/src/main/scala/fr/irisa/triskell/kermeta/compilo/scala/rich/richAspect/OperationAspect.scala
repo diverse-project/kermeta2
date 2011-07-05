@@ -106,7 +106,11 @@ trait OperationAspect extends ObjectAspect with LogAspect {
 				
         this.getBody().asInstanceOf[ObjectAspect].generateScalaCode(res)
       }
-        res append " return result\n}\n"
+      if ("_root_.kermeta.standard.Void".equals(res1.toString)){
+        res append " \n}\n"
+      } 
+      else
+          res append " return result\n}\n"
         //this.getType.generateScalaCode(res)
         //res append "]\n}\n"
         //res.append("}/*End_"+this.getName()+"*/\n")
