@@ -72,13 +72,16 @@ object Util extends LogAspect {
     }
    
     def cleanFolder(repName : String){
+      if (repName != null){
         var f : java.io.File = new java.io.File(repName)
         if (f != null) {
           cleanFolder(f)
         } else {
           log.debug("Cleaning : folder : {} ,not exist",repName)
         }        
+      }
     }
+    
     def cleanFolder(f : java.io.File){
         if(f.exists()){
             var children  = f.list
