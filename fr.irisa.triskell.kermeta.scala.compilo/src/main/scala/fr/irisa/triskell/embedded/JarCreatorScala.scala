@@ -50,7 +50,7 @@ object JarCreatorScala {
 	    }
 
 	    var entry = new JarEntry(source.getPath().replace(dir.getPath() + File.separator ,"").replace("\\", "/"));
-	    entry.setTime(source.lastModified());
+	    entry.setTime(source.lastModified()); 
 	    target.putNextEntry(entry);
 	    in = new BufferedInputStream(new FileInputStream(source));
 

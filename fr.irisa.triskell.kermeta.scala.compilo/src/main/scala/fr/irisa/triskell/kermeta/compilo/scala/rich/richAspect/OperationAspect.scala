@@ -101,11 +101,21 @@ trait OperationAspect extends ObjectAspect with LogAspect {
         res.append(" = null.asInstanceOf[")
         this.getListorType(res)
         //this.getType.generateScalaCode(res)
-        res.append("]; \n")
+        res.append("]; \n try { \n")
       if (this.getBody!= null){
 				
         this.getBody().asInstanceOf[ObjectAspect].generateScalaCode(res)
       }
+res append "        }\n"
+res append "catch {\n"
+res append "case e :_root_.kermeta.exceptions.Exception => {throw e}\n"
+res append "  case e => {\n"
+res append "    val tutu18 = kermeta.exceptions.KerRichFactory.createException;\n"
+res append "  	tutu18.message = \"error in kermeta code on operation " + this.eContainer.asInstanceOf[ClassDefinitionAspect].getQualifiedNameCompilo +"."+this.getName +"\"\n"
+res append "  	  tutu18.setStackTrace(e.getStackTrace)\n"
+res append "  	  throw tutu18\n"
+res append "  }\n}\n"
+        
       if ("_root_.kermeta.standard.Void".equals(res1.toString)){
         res append " \n}\n"
       } 
