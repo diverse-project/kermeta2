@@ -14,8 +14,8 @@ Tool: Bnd-0.0.311
 Bundle-Name: kp.model :: KP MODEL
 Created-By: Apache Maven Bundle Plugin
 Build-Jdk: 1.6.0_17
-Bundle-Version: 2.0.1.SNAPSHOT
-Bnd-LastModified: 1302266565641
+Bundle-Version: 2.0.1.BETA1
+Bnd-LastModified: 1316079644157
 Bundle-ManifestVersion: 2
 Import-Package: org.eclipse.emf.common.notify,org.eclipse.emf.common.n
  otify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.ecli
