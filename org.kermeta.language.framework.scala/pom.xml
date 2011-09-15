@@ -50,7 +50,7 @@
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <extensions>true</extensions>
-                <version>2.1.0</version>
+                <version>2.3.5</version>
                 <configuration>
                     <instructions>
 			            <Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName>
@@ -64,17 +64,16 @@
                             kermeta.utils.*,
                             utils.*,
                         	fr.irisa.triskell.kermeta.*,
-                        	fr.irisa.triskell.scala.*,
-                            kermeta.*
+                        	fr.irisa.triskell.scala.*
                         </Export-Package>
                         <Require-Bundle>
                             org.kermeta.scala.scala-library
                         </Require-Bundle>
                         <Import-Package>
-                        	!org.eclipse.core.runtime,!org.slf4j,
+                        	!org.eclipse.core.runtime,
+                        	!org.slf4j,
                         	fr.irisa.triskell.kermeta,
-                        	fr.irisa.triskell.kermeta.language.structure.*,
-                        	fr.irisa.triskell.kermeta.language.behavior.*,
+                        	fr.irisa.triskell.kermeta.language.*,
                         	org.osgi.framework, 
                         	org.eclipse.emf.*                        	
                         	</Import-Package>
