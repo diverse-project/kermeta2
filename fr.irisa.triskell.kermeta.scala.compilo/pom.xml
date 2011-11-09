@@ -5,7 +5,7 @@
     <groupId>fr.irisa.triskell</groupId>
     <artifactId>kermeta.compilo.scala</artifactId>
     <name>fr.irisa.triskell.kermeta.compilo.scala</name>
-    <version>1.4.3-SNAPSHOT</version>
+    <version>1.4.4-SNAPSHOT</version>
     <description>Kermeta Compiler V2 for Kermeta 1</description>
     <packaging>jar</packaging>
     <properties>
@@ -45,7 +45,13 @@
                         <launcher>
                             <id>runner</id>
                             <mainClass>fr.irisa.triskell.kermeta.compilo.scala.Main</mainClass>
-
+                            <args>
+                                <arg>-i</arg>
+                                <arg>/home/barais/workspaces/movidaForMelody/fr.inria.product_derivation_engine/src/kermeta/Derivation/DerivationEngine.km</arg>
+<!--                                <arg>/home/barais/workspaces/ram/RAM/src/kermeta/weaver.km</arg>-->
+                                <arg>-p</arg>
+                                <arg>/home/barais/workspaces/compiloV2/fr.irisa.triskell.kermeta.scala.compilo/src/main/resources/kermetaCompiler.properties</arg>
+                            </args>
                             <jvmArgs>
                                 <jvmArg>-Xmx1024m</jvmArg>
                             </jvmArgs>
@@ -244,7 +250,7 @@
         <dependency>
             <groupId>org.kermeta.language</groupId>
             <artifactId>language.framework.scala</artifactId>
-            <version>1.4.3-BETA1</version>
+            <version>1.4.4-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.external</groupId>
