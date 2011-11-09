@@ -83,6 +83,8 @@ object TypeEquivalence {
                                                              typeEquivelence.put("kermeta.standard.Character", "java.lang.Character");
                                                              typeEquivelence.put("int", "java.lang.Integer");
                                                              typeEquivelence.put("long", "java.lang.Long");
+                                                             typeEquivelence.put("kermeta.standard.Short", "java.lang.Short");
+                                                             typeEquivelence.put("kermeta.standard.Byte", "java.lang.Byte");
                                                              typeEquivelence.put("java.lang.Integer", "java.lang.Integer");
 
                                                              typeEquivelence.put("double", "java.lang.Double");
@@ -151,9 +153,7 @@ object TypeEquivalence {
    // println("hello")
 
     var className :String = classN
-    if (methodName.contains("split")){
-       println("getMethodEquivalence " + className + " " + methodName )
-    }
+
     var res :String = null
     if (className.contains("["))
       className = className.substring(0,className.indexOf("["))

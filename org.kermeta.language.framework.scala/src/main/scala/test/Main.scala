@@ -27,16 +27,16 @@ object Main {
         
         var cl = fr.irisa.triskell.kermeta.language.structure.StructureFactory.eINSTANCE.createClass
             if (selectedclassdefs.size>0){
-                println(selectedclassdefs.size)
+                //println(selectedclassdefs.size)
             cl.setTypeDefinition(selectedclassdefs.get(0));
         }
         var cl1 = fr.irisa.triskell.kermeta.language.structure.StructureFactory.eINSTANCE.createClass
 
         if (selectedclassdefs1.size>0){
-                println(selectedclassdefs1.size)
+                //println(selectedclassdefs1.size)
             cl1.setTypeDefinition(selectedclassdefs1.get(0));
         }
-        println(""+this.isSuperTypeOf(cl,cl1))
+        //println(""+this.isSuperTypeOf(cl,cl1))
     }
 
     def isSuperTypeOf(this1 : fr.irisa.triskell.kermeta.language.structure.Type,cl : fr.irisa.triskell.kermeta.language.structure.Type):Boolean = {
