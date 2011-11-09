@@ -7,29 +7,29 @@ import fr.irisa.triskell.kermeta.language._
 import fr.irisa.triskell.kermeta.language.structure._ 
 import fr.irisa.triskell.kermeta.language.behavior._
 
-trait OperationAspect extends ObjectAspect with LogAspect {
+trait OperationAspect extends ObjectVisitor with LogAspect {
 	
-  implicit def rich (xs : OperationAspect) = xs.asInstanceOf[Operation]
+ 
 
-  def generateSignature(res : StringBuilder) : Unit = {
-    if (!Util.hasCompilerIgnoreTag(this)){
-      log.debug("Operation={}",this.getName)
+  def generateSignature(thi:Operation,res : StringBuilder) : Unit = {
+    if (!Util.hasCompilerIgnoreTag(thi)){
+      log.debug("Operation={}",thi.getName)
       res.append("\n   ")
       //TODO in fact it should limit this case to operation that come from Kermeta Object
-      if (this.getSuperOperation()!=null   && !Util.hasEcoreTag( this.getSuperOperation().getOwningClass )      ){
+      if (thi.getSuperOperation()!=null   && !Util.hasEcoreTag( thi.getSuperOperation().getOwningClass )      ){
                res.append(" override")
       }
       res.append(" def ")
       //if (this.getOwnedTags.exists(e=> "EMF_renameAs".equals(e.asInstanceOf[Tag].getName()))){
       //  res.append(Util.protectScalaKeyword(this.getOwnedTags.filter( e => "EMF_renameAs".equals(e.asInstanceOf[Tag].getName())).get(0).getValue))
       //}else{
-        res.append(Util.protectScalaKeyword(Util.getEcoreRenameOperation(this)))
+        res.append(Util.protectScalaKeyword(Util.getEcoreRenameOperation(thi)))
       //}
-      this.generateParamerterOp( res)
+      generateParamerterOp(thi, res)
       /* Default constructor declaration */
       res.append("(")
       var i = 0;
-      this.getOwnedParameter.foreach(par => {
+      thi.getOwnedParameter.foreach(par => {
           if (i==0) {
             res.append(Util.protectScalaKeyword(par.getName()))
             res.append(" : ")
@@ -44,7 +44,7 @@ trait OperationAspect extends ObjectAspect with LogAspect {
         })
       res.append(") : ")
       var res1 = new StringBuilder
-      this.getListorType(res1)
+      this.getListorType(thi,res1)
       if ("_root_.kermeta.standard.Void".equals(res1.toString)){
         res.append("Unit")
       }else{
@@ -53,24 +53,24 @@ trait OperationAspect extends ObjectAspect with LogAspect {
     }
   }
 	
-  override def generateScalaCode(res : StringBuilder) : Unit = {
-    if (!Util.hasCompilerIgnoreTag(this)){
-      log.debug("Operation={}",this.getName)
+  def visitOperation(thi:Operation,res : StringBuilder) : Unit = {
+    if (!Util.hasCompilerIgnoreTag(thi)){
+      log.debug("Operation={}",thi.getName)
       res.append("\n   ")
-      if (this.getSuperOperation()!=null          ){
+      if (thi.getSuperOperation()!=null          ){
         res.append(" override")
       }
       res.append(" def ")
       //if (this.getOwnedTags.exists(e=> "EMF_renameAs".equals(e.asInstanceOf[Tag].getName()))){
       //  res.append(Util.protectScalaKeyword(this.getOwnedTags.filter( e => "EMF_renameAs".equals(e.asInstanceOf[Tag].getName())).get(0).getValue))
       //}else{
-        res.append(Util.protectScalaKeyword(Util.getEcoreRenameOperation(this)))
+        res.append(Util.protectScalaKeyword(Util.getEcoreRenameOperation(thi)))
       //}
-      this.generateParamerterOp( res)
+      generateParamerterOp(thi, res)
       /* Default constructor declaration */
       res.append("(")
       var i = 0;
-      this.getOwnedParameter.foreach(par => {
+      thi.getOwnedParameter.foreach(par => {
           if (i==0) {
             res.append(Util.protectScalaKeyword(par.getName()))
             res.append(" : ")
@@ -86,41 +86,45 @@ trait OperationAspect extends ObjectAspect with LogAspect {
       res.append("):")
       /* Return Type Declaration */
      var res1 = new StringBuilder
-      this.getListorType(res1)
+      this.getListorType(thi,res1)
       if ("_root_.kermeta.standard.Void".equals(res1.toString)){
         res.append("Unit")
+        
       }else{
         res.append(res1)
       }
       //this.getType.generateScalaCode(res)
         res.append(" = {\n")
         res.append("var result : ")
-        this.getListorType(res)
+        this.getListorType(thi,res)
         //   this.getType.generateScalaCode(res)
         //res append "Any"
         res.append(" = null.asInstanceOf[")
-        this.getListorType(res)
+        this.getListorType(thi,res)
         //this.getType.generateScalaCode(res)
         res.append("]; \n try { \n")
-      if (this.getBody!= null){
+      if (thi.getBody!= null){
 				
-        this.getBody().asInstanceOf[ObjectAspect].generateScalaCode(res)
+        visit(thi.getBody(),res)
       }
 res append "        }\n"
 res append "catch {\n"
 res append "case e :_root_.kermeta.exceptions.Exception => {throw e}\n"
 res append "  case e => {\n"
 res append "    val tutu18 = _root_.kermeta.exceptions.KerRichFactory.createException;\n"
-res append "  	tutu18.message = \"error in kermeta code on operation " + this.eContainer.asInstanceOf[ClassDefinitionAspect].getQualifiedNameCompilo +"."+this.getName +"\"\n"
+res append "  	tutu18.message = \"error in kermeta code on operation " + getQualifiedNameCompilo(thi.eContainer) +"."+thi.getName +"\"\n"
 res append "  	  tutu18.setStackTrace(e.getStackTrace)\n"
 res append "  	  throw tutu18\n"
 res append "  }\n}\n"
         
-      if ("_root_.kermeta.standard.Void".equals(res1.toString)){
+      if ("Unit".equals(res1.toString) || "_root_.kermeta.standard.Void".equals(res1.toString)){
         res append " \n}\n"
       } 
-      else
+      else{
+             //   println(res1.toString())
+
           res append " return result\n}\n"
+      }
         //this.getType.generateScalaCode(res)
         //res append "]\n}\n"
         //res.append("}/*End_"+this.getName()+"*/\n")
@@ -129,39 +133,39 @@ res append "  }\n}\n"
       //}
     }
   }
-  def generateParamerterOp(res1:StringBuilder) = {
-    if (this.getTypeParameter().size()>0){  res1.append("[")
+  def generateParamerterOp(thi:Operation,res1:StringBuilder) = {
+    if (thi.getTypeParameter().size()>0){  res1.append("[")
                                           var ii = 0;
-                                          this.getTypeParameter.foreach{param=>
+                                          thi.getTypeParameter.foreach{param=>
         if (ii>0) {res1.append(",")}
-        res1.append(param.asInstanceOf[ObjectAspect].getQualifiedNameCompilo())
+        res1.append(getQualifiedNameCompilo(param))
         ii= ii+1
       }
                                           res1.append("]")
     }
   }
 
-  def getListorType(res:StringBuilder)={
+  def getListorType(thi:Operation,res:StringBuilder)={
 
     var res1 : StringBuilder = new StringBuilder
 
-    if (this.getUpper>1 ||this.getUpper == -1){
-      if (this.isIsOrdered){
+    if (thi.getUpper>1 ||thi.getUpper == -1){
+      if (thi.isIsOrdered){
         res.append("org.eclipse.emf.common.util.EList[")
       }else{
         //TODO gestion des SETs
         res.append("org.eclipse.emf.common.util.EList[")
       }
 
-      this.getType().asInstanceOf[ObjectAspect].generateScalaCode(res1)
+      visit(thi.getType(),res1)
       res.append(getLocalTypeEquivalence(res1.toString))
       res.append("]")
 
     } else {
 
 
-      this.getType().asInstanceOf[ObjectAspect].generateScalaCode(res1)
-      res.append(getLocalTypeEquivalence(res1.toString))
+    	visit(thi.getType(),res1)
+    	res.append(getLocalTypeEquivalence(res1.toString))
 
     }
 
@@ -177,11 +181,11 @@ res append "  }\n}\n"
         //TODO gestion des SETs
         res.append("org.eclipse.emf.common.util.EList[")
       }
-      param.getType().asInstanceOf[ObjectAspect].generateScalaCode(res1)
+      visit(param.getType(),res1)
       res.append(getLocalTypeEquivalence(res1.toString))
       res.append("]")
     } else {
-      param.getType().asInstanceOf[ObjectAspect].generateScalaCode(res1)
+      visit(param.getType(),res1)
       res.append(getLocalTypeEquivalence(res1.toString))
     }
 
