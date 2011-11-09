@@ -17,7 +17,6 @@ import java.util._
 import scala.collection.JavaConversions._
 import java.util.concurrent.Executors
 import java.util.concurrent.ExecutorService
-import fr.irisa.triskell.kermeta.compilo.scala.rich.RichAspectImplicit._
 import fr.irisa.triskell.kermeta.compilo.scala.rich._
 import fr.irisa.triskell.kermeta.compilo.scala.rich.richAspect._
 
@@ -163,7 +162,7 @@ object Util extends LogAspect {
     var threadExecutor : ExecutorService = null
    
    
-    def generateScalaCodeEach[A <: Object](res : StringBuilder,list : Iterable[A],sep : String )={
+ /*   def generateScalaCodeEach[A <: Object](res : StringBuilder,list : Iterable[A],sep : String )={
         implicit def rich (xs : Iterable[A]) = new RichIterable(list)
         list.foreachCtx((e,ctx) => {
                 if(!ctx.isFirst) {res.append(sep) }
@@ -186,7 +185,7 @@ object Util extends LogAspect {
          if(i != 0) {res.append(sep) }
          list.get(i).generateScalaCode(res)
          }*/
-    }
+    }*/
 
     def createTempDirectory : File = {
         val temp = File.createTempFile("temp", System.nanoTime.toString )
@@ -215,31 +214,6 @@ object Util extends LogAspect {
         return hasToGenerate
     }
 
-
-    def getQualifiedNamedAspect(typD : GenericTypeDefinition) : String = {
-        var baseName = typD.asInstanceOf[ObjectAspect].getQualifiedNameCompilo
-
-        //if(baseName.equals("org.eclipse.emf.ecore.ENamedElementAspect")){
-        log.debug(baseName+" - "+Util.hasEcoreTag(typD)+" - "+Util.hasEcoreTag(typD.eContainer().asInstanceOf[Object]))
-        //}
-
-        baseName = baseName match {
-            //case _ if(!Util.hasEcoreTag(this) && Util.hasEcoreTag(this.eContainer().asInstanceOf[Object])) => { "ScalaAspect."+baseName }
-            //case _ if(Util.hasEcoreTag(typD) && Util.hasEcoreTag(typD.eContainer().asInstanceOf[Object])) => baseName
-            case _ if(!Util.hasEcoreTag(typD) && !Util.hasEcoreTag(typD.eContainer().asInstanceOf[Object])) => baseName
-            case _ => { GlobalConfiguration.scalaAspectPrefix+"."+baseName }
-        }
-        return baseName+"Aspect"
-    }
-
-    def getQualifiedNamedBase(typD : GenericTypeDefinition) : String = {
-        var baseName = typD.asInstanceOf[ObjectAspect].getQualifiedNameCompilo
-        baseName = baseName match {
-            case _ if(!Util.hasEcoreTag(typD) && Util.hasEcoreTag(typD.eContainer().asInstanceOf[Object]) && !baseName.equals("java.util.List") ) => { GlobalConfiguration.scalaAspectPrefix+"."+baseName }
-            case _ => { baseName }
-        }
-        return baseName
-    }
    
     def getEcoreRenameOperation(op1 : Operation): String={
         if(   (Util.hasEcoreTag(op1) && op1.getBody !=null)||

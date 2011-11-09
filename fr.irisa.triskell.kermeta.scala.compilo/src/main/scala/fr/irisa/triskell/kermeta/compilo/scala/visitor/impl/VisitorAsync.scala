@@ -4,6 +4,9 @@ import fr.irisa.triskell.kermeta.compilo.scala.visitor._
 import fr.irisa.triskell.kermeta.compilo.scala._
 import java.util.concurrent.Future
 
+
+
+
 class VisitorAsync extends IVisitorAsync {
 
   

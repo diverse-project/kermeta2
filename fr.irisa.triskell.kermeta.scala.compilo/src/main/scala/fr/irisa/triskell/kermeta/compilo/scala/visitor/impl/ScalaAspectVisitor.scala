@@ -8,20 +8,21 @@ import fr.irisa.triskell.kermeta.compilo.scala.rich.richAspect._
 import fr.irisa.triskell.kermeta.compilo.scala._
 import fr.irisa.triskell.kermeta.compilo.scala.visitor._
 import scala.collection.JavaConversions._
-import fr.irisa.triskell.kermeta.compilo.scala.rich.RichAspectImplicit._
 
 class ScalaAspectVisitor extends IVisitor with LogAspect {
 	
   def visit(par : ModelingUnit){
-    par.getPackages().foreach(p => p.accept(this))
+    par.getPackages().foreach(p => (this.visit(p)))
   }
 
   def visit(par : Package){
-    var actualPackage = par.getQualifiedName
+    var util = new PackageVisitor
+    
+    var actualPackage = util.getQualifiedName(par)
     if (Util.doesGeneratePackage(actualPackage)){
       var subTask = new ScalaAspectPackageVisitorRunnable
-      VisitorAsyncUtility.runAfter(par,subTask)
-      par.getNestedPackage.foreach(p=> {p.accept(this)})
+      VisitorAsyncUtility.runAfter(new AcceptablePackage(par),subTask)
+      par.getNestedPackage.foreach(p=> {new AcceptablePackage(p).accept(this)})
     }
   }
  
@@ -33,17 +34,21 @@ class ScalaAspectVisitor extends IVisitor with LogAspect {
 	
 }
 
+
+
 class ScalaAspectPackageVisitorRunnable extends IVisitor with LogAspect  {
 
   def visit(par : ModelingUnit){Console.println("multithread error")}
 	
   var actualPackage : String = ""
 	
+  var visitor : PackageVisitor = new PackageVisitor
+    
   def visit(par : Package){
-    actualPackage = par.getQualifiedName
+    actualPackage = visitor.getQualifiedName(par)
 		
-    par.getOwnedTypeDefinition filter(p => p.isInstanceOf[ClassDefinition]) foreach(p=> p.asInstanceOf[ClassDefinition].accept(this))
-    par.getOwnedTypeDefinition filter(p => p.isInstanceOf[Enumeration]) foreach(p=> p.asInstanceOf[EnumerationAspect].generateEnum())
+    par.getOwnedTypeDefinition filter(p => p.isInstanceOf[ClassDefinition]) foreach(p=> new AcceptableClassDef(p.asInstanceOf[ClassDefinition]).accept(this))
+    par.getOwnedTypeDefinition filter(p => p.isInstanceOf[Enumeration]) foreach(p=> visitor.generateEnum(p.asInstanceOf[Enumeration]))
   }
 	
   def visit(par : ClassDefinition){
@@ -54,7 +59,7 @@ class ScalaAspectPackageVisitorRunnable extends IVisitor with LogAspect  {
 
      // println(par.eContainer.asInstanceOf[PackageAspect].getQualifiedNameCompilo)
 
-      genpackageName.append(kermeta.utils.TypeEquivalence.getPackageEquivalence(par.eContainer.asInstanceOf[PackageAspect].getQualifiedNameCompilo))
+      genpackageName.append(kermeta.utils.TypeEquivalence.getPackageEquivalence(visitor.getQualifiedNameCompilo(par.eContainer)))
 	
       //og.error("AspectVisitor ClassDef Gen | {} | {}",genpackageName.toString,par.eContainer.asInstanceOf[PackageAspect].getQualifiedNameNoRoot)
 			
@@ -70,8 +75,8 @@ class ScalaAspectPackageVisitorRunnable extends IVisitor with LogAspect  {
       res.append("import _root_.kermeta.standard._\n")
       res.append("import _root_.kermeta.standard.JavaConversions._\n")
       res.append("import _root_.kermeta.standard.PrimitiveConversion._\n")
-      res.append("import _root_.kermeta.kunit.KunitConversions._\n")
-      par.generateScalaCode(res)
+//      res.append("import _root_.kermeta.kunit.KunitConversions._\n")
+      visitor.visit(par,res)
       Util.generateFile(genpackageName.toString, par.getName+"Aspect", res.toString())
       if (!Util.hasEcoreTag(par)){
         var res1 : StringBuilder = new StringBuilder
@@ -80,15 +85,15 @@ class ScalaAspectPackageVisitorRunnable extends IVisitor with LogAspect  {
         res1.append("trait ")
         res1.append(par.getName())
 				
-        par.generateParamerterClass(res1);
-        if(!par.getSuperType().first.asInstanceOf[Class].getTypeDefinition.getQualifiedNameCompilo.equals("kermeta.language.structure.Object")){
+        visitor.generateParamerterClass(par,res1);
+        if(!visitor.getQualifiedNameCompilo(par.getSuperType().first.asInstanceOf[Class].getTypeDefinition).equals("kermeta.language.structure.Object")){
           //log.debug("SuperTypefound="+ par.getSuperType().first.asInstanceOf[Class].getTypeDefinition.getQualifiedNameCompilo)
           var listSuperTypes = par.getSuperType()
           var i = 0
           for(a <- listSuperTypes){
             if(i == 0) { res1.append(" extends ") } else { res1.append(" with ") }
-            res1.append(Util.protectScalaKeyword("_root_."+Util.getQualifiedNamedBase(a.asInstanceOf[Class].getTypeDefinition)))
-            par.generateBindingParamerterClass(a.asInstanceOf[Class],res1)
+            res1.append(Util.protectScalaKeyword("_root_."+visitor.getQualifiedNamedBase(a.asInstanceOf[Class].getTypeDefinition)))
+            visitor.generateBindingParamerterClass(par,a.asInstanceOf[Class],res1)
             i = i + 1
           }
         }
@@ -96,7 +101,7 @@ class ScalaAspectPackageVisitorRunnable extends IVisitor with LogAspect  {
         //GENERATE METHOD SIGNATURE
         res1.append("{\n")
         par.getOwnedOperation.foreach{op : Operation =>
-          op.generateSignature(res1)
+          visitor.generateSignature(op,res1)
         }
         res1.append("}\n")
         /*

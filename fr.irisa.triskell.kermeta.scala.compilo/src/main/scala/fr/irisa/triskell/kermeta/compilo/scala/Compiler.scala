@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.Executors
 import java.io.File
 import fr.irisa.triskell.kermeta.compilo.scala.loader.LoadModelHelper
-import fr.irisa.triskell.kermeta.compilo.scala.rich.RichAspectImplicit._
+
 
 class Compiler extends LogAspect {
 
@@ -24,13 +24,13 @@ class Compiler extends LogAspect {
         Util.cleanFolder(GlobalConfiguration.outputProject + File.separator + "target")
         /* Init Factory Step */
         var t: LoadModelHelper = new LoadModelHelper()
-        BehaviorPackage.eINSTANCE.setEFactoryInstance(new RichBehaviorFactoryImpl())
-        StructurePackage.eINSTANCE.setEFactoryInstance(new RichStructureFactoryImpl())
+//        BehaviorPackage.eINSTANCE.setEFactoryInstance(new RichBehaviorFactoryImpl())
+//        StructurePackage.eINSTANCE.setEFactoryInstance(new RichStructureFactoryImpl())
         Util.threadExecutor = Executors.newCachedThreadPool() /* Init new Thread Pool */
 
         /* Loading Model KM Step */
         var startTime = System.currentTimeMillis
-        var v : IVisitable = t.loadKM(url).asInstanceOf[IVisitable] /* Load KM Model */
+        var v : IVisitable = new AcceptableModelingUnit(t.loadKM(url).asInstanceOf[ModelingUnit]) /* Load KM Model */
 
         //println(GlobalConfiguration.outputFolder)
         var fi  = new File(url);
@@ -46,6 +46,7 @@ class Compiler extends LogAspect {
         ReflexivityLoader.copyFile(fi, fo);
         var midTime= System.currentTimeMillis() - startTime
         log.info("Loading KM model step complete in "+(midTime)+" millisecondes ")
+        println("Loading KM model step complete in "+(midTime)+" millisecondes ")
         startTime = System.currentTimeMillis
         /* Target Model Aspect Generation */
         var visitorAspect = new ScalaAspectVisitor
@@ -63,6 +64,7 @@ class Compiler extends LogAspect {
         /* End step */
         var endTime= System.currentTimeMillis() - startTime
         log.info("Compilation step complete in "+(endTime)+" millisecondes ")
+        println("Compilation step complete in "+(endTime)+" millisecondes ")
         //CopyEcoreFile.copyEcorefiles(GlobalConfiguration.outputFolder)
 
     }
