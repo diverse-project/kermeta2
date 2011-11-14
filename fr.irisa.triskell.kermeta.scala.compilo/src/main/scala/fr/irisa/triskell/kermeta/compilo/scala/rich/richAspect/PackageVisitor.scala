@@ -183,6 +183,14 @@ class PackageVisitor extends ObjectVisitor with CallFeatureAspect with ClassDefi
     {
       res append ".toInt"
     }
+    if ("_root_.java.lang.String".equals(rightClass.toString()) && "_root_.java.lang.Short".equals(targetClass.toString()))
+    {
+    	res append ".toShort"
+    }
+    else if ("_root_.java.lang.String".equals(targetClass.toString()) && "_root_.java.lang.Short".equals(rightClass.toString()))
+    {
+    	res append ".toString"
+    }
     
     
     
