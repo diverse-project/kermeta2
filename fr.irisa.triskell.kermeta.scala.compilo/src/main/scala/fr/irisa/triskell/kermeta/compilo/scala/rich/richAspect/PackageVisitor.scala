@@ -165,7 +165,7 @@ class PackageVisitor extends ObjectVisitor with CallFeatureAspect with ClassDefi
     //if(thi.getValue().isInstanceOf[VoidLiteral]){
      visit(thi.getValue.getStaticType, rightClass)
     
-    
+    	
     //println("left " + rightClass + "\n right " + targetClass)
     if ("_root_.java.lang.Integer".equals(rightClass.toString()) && "_root_.java.lang.Short".equals(targetClass.toString()))
     {
@@ -419,17 +419,16 @@ class PackageVisitor extends ObjectVisitor with CallFeatureAspect with ClassDefi
   }
 
   def visitTypeLiteral(thi: TypeLiteral, res: StringBuilder): Unit = {
-    if (thi.getTyperef().getType.isInstanceOf[Class]) {
+    //if (thi.getTyperef().getType.isInstanceOf[Class]) {
       res.append("scalaUtil.Util.getMetaClass(\"")
       res.append(_root_.utils.UTilScala.getQualifiedNameTypeKermeta(thi.getTyperef().getType, "."))
-
-    } else {
-      res.append("_root_." + _root_.utils.UTilScala.getQualifiedNameTypeKermeta(thi.getTyperef().getType, "."))
-    }
+    //}// else {
+    //  res.append("_root_." + _root_.utils.UTilScala.getQualifiedNameTypeKermeta(thi.getTyperef().getType, "."))
+    //}
     //this.getTyperef().getType.generateScalaCode(res)
-    if (thi.getTyperef().getType.isInstanceOf[Class]) {
+    //if (thi.getTyperef().getType.isInstanceOf[Class]) {
       res.append("\")")
-    }
+    //}
   }
 
   def generateScalaCodeForInstanceOf(thi: TypeLiteral, res: StringBuilder): Unit = {

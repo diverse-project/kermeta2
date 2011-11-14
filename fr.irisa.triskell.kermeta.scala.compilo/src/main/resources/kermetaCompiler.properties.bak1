@@ -1,0 +1,14 @@
+user.additional.classpath=/home/barais/ram/plugins/RAMStructural_1.0.0.jar
+project.group.id=org.ram
+project.artefact.id=ramweaver
+#use a specified file as output stream, default is System.out
+output.target.default.output=
+#specified output project output, by default a temporary directory will be created
+output.target.folder=/tmp/fr.irisa.triskell.kermeta.scala.compilo.output
+#workspace loader mapping
+workspace.plugin.uri=
+workspace.platform.uri=
+createPackage = true
+clean = true
+exec = true
+use.maven.to.compile = true
