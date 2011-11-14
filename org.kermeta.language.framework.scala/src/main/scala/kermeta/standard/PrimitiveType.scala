@@ -280,7 +280,7 @@ trait EObjectImplForPrimitive extends fr.irisa.triskell.kermeta.language.structu
     def eInvoke(x1: org.eclipse.emf.ecore.EOperation,x2: org.eclipse.emf.common.util.EList[_]):java.lang.Object = null
 
     def createMetaClass(name:String):fr.irisa.triskell.kermeta.language.structure.Class={
-        var factoryName = utils.UTilScala.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.structure.KerRichFactory$"
+/*      var factoryName = utils.UTilScala.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.structure.KerRichFactory$"
         var methodName = "createClass"
         var methodNameClassDef = "createClassDefinition"
         val clazz = java.lang.Class.forName(factoryName)
@@ -294,8 +294,25 @@ trait EObjectImplForPrimitive extends fr.irisa.triskell.kermeta.language.structu
         var mclazzDef : fr.irisa.triskell.kermeta.language.structure.ClassDefinition = meth1.invoke(obj, numbers: _*).asInstanceOf[fr.irisa.triskell.kermeta.language.structure.ClassDefinition]
         mclazzDef.setName(name)
         mclazz.setTypeDefinition(mclazzDef)        
-        return mclazz
-    }
+        return mclazz*/
+    	var cd : _root_.fr.irisa.triskell.kermeta.language.structure.ClassDefinition =   _root_.kermeta.utils.ReflexivityLoader.getMetaClass(name);
+    	if (cd !=null){
+    		var factoryName = utils.UTilScala.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.structure.KerRichFactory$"
+    		var methodName = "createClass"
+    		//var methodNameClassDef = "createClassDefinition"
+    		val clazz = java.lang.Class.forName(factoryName)
+    		val obj = clazz.getField("MODULE$").get(clazz)
+    		var meth :java.lang.reflect.Method = clazz.getMethods.filter(m=> m.getName.equals(methodName)).first
+        //println(meth.getName + " " + meth.getParameterTypes.size)
+    		val numbers = Array()
+    		var cl : fr.irisa.triskell.kermeta.language.structure.Class = meth.invoke(obj, numbers: _*).asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Class]
+            cl.setTypeDefinition(cd)
+          return cl
+        }else
+            return null;
+}
+
+   
 }
 
 class RichString(value: java.lang.String)  extends RichValueType with EObjectImplForPrimitive{
