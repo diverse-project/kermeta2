@@ -427,16 +427,16 @@ class PackageVisitor extends ObjectVisitor with CallFeatureAspect with ClassDefi
   }
 
   def visitTypeLiteral(thi: TypeLiteral, res: StringBuilder): Unit = {
-    //if (thi.getTyperef().getType.isInstanceOf[Class]) {
+    if (thi.getTyperef().getType.isInstanceOf[Class]) {
       res.append("scalaUtil.Util.getMetaClass(\"")
       res.append(_root_.utils.UTilScala.getQualifiedNameTypeKermeta(thi.getTyperef().getType, "."))
-    //}// else {
-    //  res.append("_root_." + _root_.utils.UTilScala.getQualifiedNameTypeKermeta(thi.getTyperef().getType, "."))
-    //}
+    } else {
+    	res.append("_root_." + _root_.utils.UTilScala.getQualifiedNameTypeJava(thi.getTyperef().getType, "."))
+    }
     //this.getTyperef().getType.generateScalaCode(res)
-    //if (thi.getTyperef().getType.isInstanceOf[Class]) {
+    if (thi.getTyperef().getType.isInstanceOf[Class]) {
       res.append("\")")
-    //}
+    }
   }
 
   def generateScalaCodeForInstanceOf(thi: TypeLiteral, res: StringBuilder): Unit = {
@@ -671,7 +671,7 @@ class PackageVisitor extends ObjectVisitor with CallFeatureAspect with ClassDefi
       case c: Class => {
         var res = new StringBuilder
         var typename = Util.protectScalaKeyword(getQualifiedNamedBase(c.getTypeDefinition))
-        if (typename.contains(".")) res.append("_root_.")
+        if (typename.contains(".")) res.append("_root_.")        
         res.append(typename)
 
         /*if (this.getTypeParamBinding.size>0){
@@ -685,6 +685,8 @@ class PackageVisitor extends ObjectVisitor with CallFeatureAspect with ClassDefi
 	         res.append("]")
 	
 	         }*/
+
+        
         return res.toString
 
       }
@@ -697,7 +699,11 @@ class PackageVisitor extends ObjectVisitor with CallFeatureAspect with ClassDefi
         return getQualifiedNameCompilo(c.eContainer()) + "." + c.getName();
       }
       case c: ClassDefinition => {
-        return kermeta.utils.TypeEquivalence.getTypeEquivalence(getQualifiedNameCompilo(c.eContainer()) + "." + c.getName())
+    	  var res = new StringBuilder	
+    	  if (Util.isAMapEntry(c))
+            res.append(GlobalConfiguration.scalaAspectPrefix + "." )
+          res.append(kermeta.utils.TypeEquivalence.getTypeEquivalence(getQualifiedNameCompilo(c.eContainer()) + "." + c.getName()))  
+        return res.toString()
       }
     }
   }
@@ -749,6 +755,8 @@ class PackageVisitor extends ObjectVisitor with CallFeatureAspect with ClassDefi
     return baseName + "Aspect"
   }
 
+
+  
   def getQualifiedNamedBase(typD: GenericTypeDefinition): String = {
     var baseName = getQualifiedNameCompilo(typD)
     baseName = baseName match {
