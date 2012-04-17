@@ -350,7 +350,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
             var packageName : StringBuilder= new StringBuilder
             var viewDefTemp : StringBuilder= new StringBuilder
 				
-            genpackageName.append(kermeta.utils.TypeEquivalence.getPackageEquivalence(visitor.getQualifiedName(par.eContainer)))
+            genpackageName.append(visitor.getQualifiedNameCompilo(par.eContainer))
             packageName.append(genpackageName.toString)
             if (Util.hasEcoreTag(par.eContainer().asInstanceOf[Package])){
                 packageName.insert(0,GlobalConfiguration.scalaAspectPrefix+".")
@@ -366,7 +366,8 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
             visitor.generateParamerterClass(par,param);
             
             if (Util.hasEcoreTag(par) ){
-                var  implName:String = Util.getImplPackageSuffix(packageName.toString)
+                if (!Util.isAMapEntry(par)){
+            	var  implName:String = Util.getImplPackageSuffix(packageName.toString)
                 viewDefTemp.append(" class Rich"+par.getName() + param.toString)
                 if (Util.hasEcoreFromAPITag(par))
                     viewDefTemp.append(" extends "+ Util.protectScalaKeyword(kermeta.utils.TypeEquivalence.getTypeEquivalence(genpackageName.toString + par.getName()))+ param.toString)
@@ -382,7 +383,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
                         viewDefTemp.append(" with kermeta.standard.EObjectImplForPrimitive")
                 }
                 viewDefTemp.append("\n")
-
+                }
 
                 if("EObject".equals(par.getName)){
                     implicitDef append " implicit def richAspect"+ param.toString+"(v : "+ Util.protectScalaKeyword(kermeta.utils.TypeEquivalence.getTypeEquivalence(genpackageName.toString+par.getName()))+ param.toString+") = v.asInstanceOf[fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect]\n"
@@ -395,14 +396,30 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
              implicitDef.append("  }\n")
 
                 }
+                else if(Util.isAMapEntry(par)){
+                	// implicit def richAspect(v : ramweaver.p1.AEntry) = v.wrappedvalue
+                  implicitDef append " implicit def richAspect(v : "
+                  implicitDef append  Util.protectScalaKeyword(visitor.getQualifiedNameCompilo(par))
+                  implicitDef append  Util.protectScalaKeyword(") = v.wrappedvalue\n")
+                }
                 else {
+                
                     implicitDef append " implicit def richAspect"+ param.toString+"(v : "+ Util.protectScalaKeyword(kermeta.utils.TypeEquivalence.getTypeEquivalence(genpackageName.toString+par.getName()))+ param.toString+") = v.asInstanceOf["+ (Util.protectScalaKeyword(packageName.toString)+"."+ par.getName+"Aspect").replace(GlobalConfiguration.scalaAspectPrefix + ".fr.irisa.triskell.kermeta.language.structure.ObjectAspect", "fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.ObjectAspect"+ param.toString)+ param.toString+"]\n"
-               
+                    
 
                 }
                 if (Util.hasEcoreFromAPITag(par) || par.isIsAbstract){
                     implicitDef append " implicit def richAspect"+ param.toString+"(v : "+ Util.protectScalaKeyword(packageName.toString+"."+par.getName()+"Aspect") + param.toString+") = v.asInstanceOf["+ Util.protectScalaKeyword(visitor.getQualifiedNameCompilo(par.eContainer())+ "." + par.getName)+ param.toString+"]\n"
                 }
+                else if(Util.isAMapEntry(par)){
+                  
+                           implicitDef append " implicit def richAspect(v : "
+                           implicitDef append Util.getQualifiedNameForMapEntry(par,visitor,true)
+                           implicitDef append ") = new "
+                           implicitDef.append(visitor.getQualifiedNameCompilo(par))
+                           implicitDef.append(" ( v )\n")
+                }
+
                 else
                     implicitDef append " implicit def richAspect"+ param.toString+"(v : "+ Util.protectScalaKeyword(packageName.toString+"."+par.getName()+"Aspect") + param.toString+") = v.asInstanceOf["+ Util.protectScalaKeyword(visitor.getQualifiedNameCompilo(par.eContainer())+ Util.getImplPackageSuffix(packageName.toString) + par.getName+"Impl")+ param.toString+"]\n"
             }else{
@@ -433,10 +450,12 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
 				
             if (!par.isIsAbstract()){
                 viewDef.append(viewDefTemp.toString)
-                if (Util.hasEcoreTag(par)){
+                if (Util.hasEcoreTag(par) ){
+                  if (!Util.isAMapEntry(par)){
                     if (!Util.hasEcoreFromAPITag(par))
                         factoryDefClass append " override"
                     factoryDefClass append " def create"+par.getName()+ param.toString +"() : "+ Util.protectScalaKeyword(kermeta.utils.TypeEquivalence.getTypeEquivalence(genpackageName.toString+par.getName())+param.toString)+" = { new "+ Util.protectScalaKeyword(packageName.toString)+".Rich"+par.getName + param.toString +" }\n"
+                  }
                 }
                 else{
                     factoryDefClass append " def create"+par.getName()+ param.toString +"() : "+ Util.protectScalaKeyword(kermeta.utils.TypeEquivalence.getTypeEquivalence(packageName.toString+"."+par.getName())+param.toString)+" = { new "+ Util.protectScalaKeyword(packageName.toString)+".Rich"+par.getName+ param.toString +" }\n"
@@ -465,6 +484,8 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
     }
 
 
+    
+    
 
     def IsObjectClassChildren(c:ClassDefinition):Boolean={
         c.getSuperType.foreach(e=>
@@ -485,7 +506,7 @@ class ScalaFactoryAndImplicitVisitor extends IVisitor with LogAspect {
         return false;
     }
 
-
+ 
     def IsAnExceptionChildren(c:ClassDefinition):Boolean={
         c.getSuperType.foreach(e=>
             {

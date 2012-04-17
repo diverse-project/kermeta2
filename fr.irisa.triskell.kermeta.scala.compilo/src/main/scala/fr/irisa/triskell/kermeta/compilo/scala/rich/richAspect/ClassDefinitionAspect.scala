@@ -12,6 +12,7 @@ import fr.irisa.triskell.kermeta.language.behavior._
 import fr.irisa.triskell.kermeta.compilo.scala.visitor._
 import java.util.ArrayList
 
+
 trait ClassDefinitionAspect extends ObjectVisitor{
 	
 
@@ -34,7 +35,7 @@ trait ClassDefinitionAspect extends ObjectVisitor{
     
      def visitClassDefinition(thi: ClassDefinition,res : StringBuilder) : Unit = {
         res.append("import "+ "_root_."+ GlobalConfiguration.frameworkGeneratedPackageName + "."+GlobalConfiguration.implicitConvTraitName +"._\n")
-        if (Util.hasEcoreTag(thi)){
+        if (Util.hasEcoreTag(thi)&& !Util.isAMapEntry(thi)){
             res.append("trait ")
             res.append(thi.getName())
             res.append("Aspect")
@@ -80,7 +81,11 @@ trait ClassDefinitionAspect extends ObjectVisitor{
             this.generategetQualifiedName(thi,res)
             res.append("}\n")
 
-        }else{
+        }
+        else if(Util.hasEcoreTag(thi)){
+          this.generateMapEntryWrapper(thi,res)
+        }
+        else{
             res.append("trait ")
             res.append(thi.getName())
             res.append("Aspect")
@@ -244,4 +249,31 @@ trait ClassDefinitionAspect extends ObjectVisitor{
                                                    res1.append("]")
         }
     }
+    
+    def generateMapEntryWrapper(thi: ClassDefinition,res : StringBuilder)={
+                  res.append("class ")
+            res.append(thi.getName())
+            res.append("( self : ")
+
+            res.append(Util.getQualifiedNameForMapEntry(thi,this.asInstanceOf[PackageVisitor],true))
+//            _root_.org.eclipse.emf.ecore.EObject,_root_.p1.A]            
+            res append ") extends "
+            res append Util.protectScalaKeyword(fr.irisa.triskell.kermeta.language.structureScalaAspect.aspect.FrameworkAspectUtil.getDefaultAspect(getQualifiedNameCompilo(thi)))                
+            var param : StringBuilder = new  StringBuilder
+            res append " with kermeta.standard.EObjectImplForPrimitive "                
+	    
+            res.append("{\n")
+            res.append("\tvar wrappedvalue = self\n")
+            
+				
+				
+            thi.getOwnedAttribute foreach(a=> visit(a,res))
+            thi.getOwnedOperation filter(op=> !Util.hasEcoreTag(op) || op.getBody !=null) foreach(op=> visit(op,res))
+            this.generateInvariants(thi,res)
+            this.generategetQualifiedName(thi,res)
+            res.append("}\n")
+
+        }
+    
+    
 }

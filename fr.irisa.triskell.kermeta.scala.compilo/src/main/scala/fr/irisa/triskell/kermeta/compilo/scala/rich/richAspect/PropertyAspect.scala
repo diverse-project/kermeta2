@@ -88,7 +88,11 @@ trait PropertyAspect extends ObjectVisitor with LogAspect {
       currentname = currentname + "_"
     }
 
-    res.append("this.")
+    if (Util.isAMapEntry(thi.getOwningClass()))
+      res.append("wrappedvalue.")
+    else
+      res.append("this.")
+    
     if (s.toString.equals("Boolean") || s.toString.equals("java.lang.Boolean") || s.toString.equals("kermeta.standard.Boolean")) {
       if (thi.getType().isInstanceOf[PrimitiveType]
         && !("MARTE_Library.MARTE_PrimitivesTypes.Boolean".equals(whichBoolean(thi.getType().asInstanceOf[PrimitiveType])) ||
@@ -235,10 +239,67 @@ trait PropertyAspect extends ObjectVisitor with LogAspect {
           res.append("this." + prefix + "get" + currentname.substring(0, 1).toUpperCase + currentname.substring(1, currentname.size) + "().clear\n")
           if (listType.toString.equals("java.util.List[_root_.java.lang.Object]") && Util.hasEcoreTag(thi))
             res.append("value.each(e=> this.get" + currentname.substring(0, 1).toUpperCase + currentname.substring(1, currentname.size) + "().add(e.asInstanceOf[fr.irisa.triskell.kermeta.language.structure.Object]))\n")
-          else
+          else if(Util.isAMapEntry(thi.getType())){
+        	  	if (Util.isAMapEntry( thi.getType().asInstanceOf[Class].getTypeDefinition().asInstanceOf[ClassDefinition].getOwnedAttribute().filter(e => e.getName.equals("value")).get(0).getType) && ( thi.getType().asInstanceOf[Class].getTypeDefinition().asInstanceOf[ClassDefinition].getOwnedAttribute().filter(e => e.getName.equals("value")).get(0).getUpper().equals(-1)))
+        	  	{
+        	  	  res.append("value.each(e=>  {" )
+        	  	  res.append("var v : org.eclipse.emf.common.util.EMap[")
+        	  	  var target : ClassDefinition =thi.getType().asInstanceOf[Class].getTypeDefinition().asInstanceOf[ClassDefinition].getOwnedAttribute().filter(e => e.getName.equals("value")).get(0).getType.asInstanceOf[Class].getTypeDefinition().asInstanceOf[ClassDefinition]
+        	  	  
+        	  	  var res1 = new StringBuilder
+        	  	  
+        	  	  res1.append(this.getQualifiedNameCompilo(target.getOwnedAttribute().filter(e => e.getName.equals("key")).get(0).getType))
+        	  	  res1.append(",")
+        	  	  res1.append(this.getQualifiedNameCompilo(target.getOwnedAttribute().filter(e => e.getName.equals("value")).get(0).getType))
+        	  	  res.append(res1.toString())
+        	  	  res.append("] =  new org.eclipse.emf.common.util.BasicEMap[")
+        	  	  res.append(res1.toString())
+        	  	  res.append("]\n v.putAll(e.wrappedvalue.getValue())\n")
+        	  	  res.append("this.get"+ currentname.substring(0, 1).toUpperCase + currentname.substring(1, currentname.size) + "().put(e.wrappedvalue.getKey(),v)})")
+        	  	}
+        	  	
+        	    else
+        	  	  res.append("value.each(e=>  this.get"+ currentname.substring(0, 1).toUpperCase + currentname.substring(1, currentname.size) + "().put(e.wrappedvalue.getKey(),e.wrappedvalue.getValue()))")
+          }
+         else
             res.append("this." + prefix + "get" + currentname.substring(0, 1).toUpperCase + currentname.substring(1, currentname.size) + "().addAll(value)\n")
         } else {
-          res.append("this." + prefix + "set" + currentname.substring(0, 1).toUpperCase + currentname.substring(1, currentname.size) + "(value)")
+//        		def Scalakey_=(value : _root_.org.eclipse.emf.ecore.EObject)={ wrappedvalue = new _root_.java.util.AbstractMap.SimpleEntry[_root_.org.eclipse.emf.ecore.EObject,_root_.p1.A](value, wrappedvalue.getValue())}
+        	if (Util.isAMapEntry(thi.getOwningClass()) && thi.getName().equals("key")){
+            	  res.append("wrappedvalue = new _root_.java.util.AbstractMap.SimpleEntry[")
+            	      var typekey = thi.getOwningClass().getOwnedAttribute().filter(e => e.getName.equals("key")).get(0).getType
+            	      var typevalue = thi.getOwningClass().getOwnedAttribute().filter(e => e.getName.equals("value")).get(0).getType
+            	      var typekeystring :String= null
+            	      var typevaluestring :String= null
+					  if (Util.isAMapEntry(typekey)) {
+					      typekeystring = Util.getQualifiedNameForMapEntry(typekey.asInstanceOf[Class].getTypeDefinition().asInstanceOf[ClassDefinition], this,true)
+					  }else
+					  {
+					  	typekeystring = this.getQualifiedNameCompilo(typekey)
+					  }
+					  if (Util.isAMapEntry(typevalue)) {
+					    if (thi.getOwningClass().getOwnedAttribute().filter(e => e.getName.equals("value")).get(0).getUpper().equals(1))
+					      typevaluestring = Util.getQualifiedNameForMapEntry(typevalue.asInstanceOf[Class].getTypeDefinition().asInstanceOf[ClassDefinition],this,true)
+					    else
+					      typevaluestring = Util.getQualifiedNameForMapEntry(typevalue.asInstanceOf[Class].getTypeDefinition().asInstanceOf[ClassDefinition],this,false)
+					    
+					  }else
+					  {
+					  	typevaluestring = this.getQualifiedNameCompilo(typevalue)
+					  }
+
+            	  
+            	   res.append(typekeystring)
+            	  res.append(",")
+            	   res.append(typevaluestring)
+            	  res.append("](value, wrappedvalue.getValue())")       	  
+        	}else{
+              if (Util.isAMapEntry(thi.getOwningClass()))
+            	  res.append("wrappedvalue.")
+              else
+            	  res.append("this.")
+          res.append(prefix + "set" + currentname.substring(0, 1).toUpperCase + currentname.substring(1, currentname.size) + "(value)")
+        }
         }
       } else {
         if (thi.getSetterBody != null) {
@@ -260,7 +321,10 @@ trait PropertyAspect extends ObjectVisitor with LogAspect {
         //TODO gestion des SETs
         res.append("java.util.List[")
       }
-      visit(thi.getType(),res)
+      if (Util.isAMapEntry(thi.getType()))
+    	res.append(Util.getQualifiedNameForMapEntry(thi.getType().asInstanceOf[Class].getTypeDefinition().asInstanceOf[ClassDefinition],this,true))  
+      else
+        visit(thi.getType(),res)
       res.append("]")
     } else {
       visit(thi.getType(),res)

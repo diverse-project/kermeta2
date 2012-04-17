@@ -39,7 +39,9 @@ object EmbettedScalaCompiler extends LogAspect {
       classpath.append(path+File.pathSeparator)
     }
 		
-    var compilParams = List("-nowarn","-encoding","UTF8","-g:none","-optimise","-d",outputPATH,"-classpath",classpath.toString) ++ listSrcFiles
+    var compilParams = List("-nowarn","-encoding","UTF8","-g:none","-optimise","-Xgenerate-phase-graph","/tmp/toto.dot","-verbose","-d",outputPATH,"-classpath",classpath.toString) ++ listSrcFiles
+//   var compilParams = List("-nowarn","-encoding","UTF8","-g:none","-Yskip:typer","-d",outputPATH,"-classpath",classpath.toString) ++ listSrcFiles
+//    var compilParams = List("-nowarn","-encoding","UTF8","-g:none","-Ypresentation-verbose","-d",outputPATH,"-classpath",classpath.toString) ++ listSrcFiles
 
     //println(compilParams)
     /* Compilation step */

@@ -1,0 +1,15 @@
+user.additional.classpath=/home/barais/workspaces/movida2/TestUMLLoadJava/lib/org.eclipse.uml2.uml.resources_3.1.1.v201008191505.jar,/home/barais/workspaces/movida2/TestUMLLoadJava/lib/org.eclipse.uml2.uml_3.1.1.v201008191505.jar,/home/barais/workspaces/movida2/TestUMLLoadJava/lib/org.eclipse.uml2.common_1.5.0.v201005031530.jar,/home/barais/workspaces/movida2/TestUMLLoadJava/lib/org.eclipse.uml2_3.0.0.v201005031530.jar,/home/barais/app/IRISA-TRT-MOVIDA/M2/EMDE-ext/eclipse/plugins/com.thalesgroup.mde.emde_1.2.1.201012061534.jar,/home/barais/app/IRISA-TRT-MOVIDA/M2/melody-data/eclipse/plugins/com.thalesgroup.mde.shared.data.behavior.gen_1.5.0.201101041151.jar,/home/barais/app/IRISA-TRT-MOVIDA/M2/melody-data/eclipse/plugins/com.thalesgroup.mde.shared.data.core.gen_1.5.0.201101041151.jar,/home/barais/app/IRISA-TRT-MOVIDA/M2/melody-data/eclipse/plugins/com.thalesgroup.mde.shared.data.activity.gen_1.5.0.201101041151.jar,/home/barais/app/IRISA-TRT-MOVIDA/M2/melody-data/eclipse/plugins/com.thalesgroup.mde.melody.data.gen_1.5.0.201101041151.jar,/home/barais/app/IRISA-TRT-MOVIDA/M2/melody-data/eclipse/plugins/com.thalesgroup.mde.shared.data.statemachine.gen_1.5.0.201101041151.jar,/home/barais/app/IRISA-TRT-MOVIDA/M2/Shared-ext/eclipse/plugins/com.thalesgroup.mde.shared.patterns_1.5.0.201101041151.jar,/opt/obeoDesigner5.0/eclipse/dropins/fr.obeo.dsl.designer.sample.flow_1.0.0.jar,/opt/obeoDesigner5.0/eclipse/dropins/fr.inria.featureDiagramEditor.emf_1.0.1.jar,/opt/obeoDesigner5.0/eclipse/dropins/fr.inria.featureDiagramEditor.resolutionmodel_1.0.0.jar,/home/barais/workspaces/MovidaTuto/libs/movidaTuto.jar,/home/barais/workspaces/movidaForMelody/SemanticRemoveMelody/dist/semanticRemove.jar
+
+project.group.id=org.inria
+project.artefact.id=org.fuml.inria
+#use a specified file as output stream, default is System.out
+output.target.default.output=
+#specified output project output, by default a temporary directory will be created
+output.target.folder=/tmp/fr.irisa.triskell.kermeta.scala.compilo.output
+#workspace loader mapping
+workspace.plugin.uri=
+workspace.platform.uri=
+createPackage = false
+clean = true
+exec = false
+use.maven.to.compile = false
