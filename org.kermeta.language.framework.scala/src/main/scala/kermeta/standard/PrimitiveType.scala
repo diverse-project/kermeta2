@@ -93,7 +93,7 @@ abstract class Comparable[G]  extends RichValueType[G] {
     def isLowerOrEqual(other : G) :Boolean
     def isGreater(other : G) :Boolean
 }
-abstract class Summable[G]  extends Object {
+trait Summable[G]  extends Object {
     def plus(other : G) :G
     //def isNotEqual(other : Any) :Boolean = {!this.equals(other) }
 }
@@ -165,7 +165,7 @@ class RichJavaBoolean (value: java.lang.Boolean) extends RichValueType[Boolean] 
 
 }
 
-abstract class RichNumeric[G]  extends Comparable[G]{}
+abstract class RichNumeric[G]  extends Comparable[G] with Summable[G]{}
 
 class RichInteger(value: Int)  extends RichNumeric[Int] with EObjectImplForPrimitive{
     override  def isVoid():Boolean = false;

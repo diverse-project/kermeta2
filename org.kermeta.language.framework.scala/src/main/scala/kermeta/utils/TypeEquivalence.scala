@@ -46,6 +46,7 @@ object TypeEquivalence {
     pack1.put("patterns", "com.thalesgroup.mde.shared.patterns.gen.patterns")
     pack1.put("CVLVariability", "CVLMetamodelMaster.CVLVariability")
     pack1.put("mapper", "org.kermeta.mapper")
+    pack1.put("ram", "ca.mcgill.cs.sel.ram")
 
         
 //pack1.put("kermeta.kunit","junit.framework")
