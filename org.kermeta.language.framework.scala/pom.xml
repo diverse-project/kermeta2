@@ -67,7 +67,7 @@
                         	fr.irisa.triskell.scala.*
                         </Export-Package>
                         <Require-Bundle>
-                            org.kermeta.scala.scala-library
+                            org.scala-ide.scala.library
                         </Require-Bundle>
                         <Import-Package>
                         	!org.eclipse.core.runtime,
