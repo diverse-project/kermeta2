@@ -9,7 +9,7 @@
    	<parent>
 		<groupId>org.kermeta.language</groupId>
 		<artifactId>language.root</artifactId>
-		<version>2.0.2</version>
+		<version>2.0.3-SNAPSHOT</version>
 	</parent>
     <version>1.4.4-SNAPSHOT</version>
     <pluginRepositories>
@@ -85,7 +85,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.0.2</version>
+                <version>2.0.3-SNAPSHOT</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <source>1.6</source>
