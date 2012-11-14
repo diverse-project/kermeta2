@@ -6,6 +6,7 @@ import kermeta.exceptions._
 import scala.collection.JavaConversions._
 import fr.irisa.triskell.kermeta.language.structure._
 import fr.irisa.triskell.kermeta.language.behavior._
+import kermeta.persistence.EMFResource
 
 trait ObjectAspect extends EObject  with Contracted {
 
@@ -108,7 +109,14 @@ trait ObjectAspect extends EObject  with Contracted {
 
   }
 
-  def containingResource() : kermeta.persistence.Resource ={null}
+  def containingResource() : kermeta.persistence.Resource ={
+    // implementation isn't perfect, but better than nothing
+    var res : EMFResource = new EMFResource()
+    res.setEMFResource(this.eResource())
+    
+    res
+    
+  }
 
   def isSet(prop : EStructuralFeature) =  this.eIsSet(prop)
   def unset(prop : fr.irisa.triskell.kermeta.language.structure.Property) = {
