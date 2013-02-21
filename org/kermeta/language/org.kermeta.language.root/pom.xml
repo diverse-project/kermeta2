@@ -1,26 +1,26 @@
 <!-- $Id$ -->
-<!-- License    : EPL                                    -->
-<!-- Project    : org.kermeta.language.root -->
-<!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
-<!-- Authors : Haja Rambelontsalama <hrambelo@irisa.fr> --> 
+<!-- License : EPL -->
+<!-- Project : org.kermeta.language.root -->
+<!-- Copyright : IRISA / INRIA / Universite de Rennes 1 -->
+<!-- Authors : Haja Rambelontsalama <hrambelo@irisa.fr> -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
 	<parent>
 		<artifactId>org.kermeta.root</artifactId>
 		<groupId>org.kermeta</groupId>
 		<version>2.0.99-SNAPSHOT</version>
 		<relativePath>../../org.kermeta.root/pom.xml</relativePath>
 	</parent>
-	
+
 	<modelVersion>4.0.0</modelVersion>
-    <groupId>org.kermeta.language</groupId>
-    <artifactId>org.kermeta.language.root</artifactId>
-    <packaging>pom</packaging>
-    <version>${kermeta.version}</version>
-    <name>language.root :: Root for kermeta language</name>
-	
+	<groupId>org.kermeta.language</groupId>
+	<artifactId>org.kermeta.language.root</artifactId>
+	<packaging>pom</packaging>
+	<version>${kermeta.version}</version>
+	<name>language.root :: Root for kermeta language</name>
+
 	<modules>
 		<module>../org.kermeta.language.model</module>
 		<module>../org.kermeta.language.loader.kmt.scala.api</module>
@@ -44,4 +44,73 @@
 		<module>../org.kermeta.language.texteditor.eclipse</module>
 		<module>../org.kermeta.language.documentation</module>
 	</modules>
+
+	<repositories>
+		<repository>
+			<id>maven-inria-release</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-release</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>maven-inria-snapshot</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-snapshot</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven-inria-release</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-release</url>
+			<layout>default</layout>
+		</pluginRepository>
+		<pluginRepository>
+			<id>maven-inria-snapshot</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-snapshot</url>
+			<layout>default</layout>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
