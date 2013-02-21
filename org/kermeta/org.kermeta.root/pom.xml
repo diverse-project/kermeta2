@@ -8,7 +8,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.kermeta</groupId>
-	<artifactId>kermeta.root</artifactId>
+	<artifactId>org.kermeta.root</artifactId>
 	<packaging>pom</packaging>
 	<version>2.0.99-SNAPSHOT</version>
 	<name>kermeta.root :: Root for the projects dedicated to kermeta 2</name>
