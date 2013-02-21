@@ -8,7 +8,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.kermeta</groupId>
-	<artifactId>kermeta.root</artifactId>
+	<artifactId>org.kermeta.root</artifactId>
 	<packaging>pom</packaging>
 	<version>2.0.99-SNAPSHOT</version>
 	<name>kermeta.root :: Root for the projects dedicated to kermeta 2</name>
@@ -27,10 +27,10 @@
 		<osgi.version>4.2.0</osgi.version>
 		<slf4j.version>1.6.1</slf4j.version>
 		<bundle.vendor>IRISA/INRIA</bundle.vendor>
-    	<tycho.version>0.11.0</tycho.version>
-    	<eclipse.repository.version>indigo</eclipse.repository.version>
-    	<maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
-    	<buildNumber>${maven.build.timestamp}</buildNumber>
+		<tycho.version>0.11.0</tycho.version>
+		<eclipse.repository.version>indigo</eclipse.repository.version>
+		<maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
+		<buildNumber>${maven.build.timestamp}</buildNumber>
 	</properties>
 
 	<dependencies>
@@ -67,9 +67,9 @@
 									scalaVersionNoSuffix = "${scala.version}".substring(0,index)
 								project.properties.setProperty('scala.version.nosuffix', scalaVersionNoSuffix)
 								println("scala.version.nosuffix="+scalaVersionNoSuffix)
-								String bundleVersion = "${project.version}"
+								String	bundleVersion = "${project.version}"
 								// workaround jenkins bug https://issues.jenkins-ci.org/browse/JENKINS-9693?page=com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel
-								String timestamp = "${maven.build.timestamp}".replaceAll("-","_") 
+								String timestamp = "${maven.build.timestamp}".replaceAll("-","_")
 								bundleVersion = bundleVersion.replaceAll("-SNAPSHOT", "-SNAPSHOT_"+timestamp)
 								bundleVersion = bundleVersion.replaceAll("-",".")
 								project.properties.setProperty('bundle.version',bundleVersion)
@@ -78,7 +78,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>			
+			</plugin>
 
 			<!-- Java compiler plugin -->
 			<plugin>
@@ -137,17 +137,13 @@
 			</plugin>
 
 			<!-- enable tycho build extension -->
-			<!-- <plugin>
-				<groupId>org.sonatype.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho.version}</version>
-				<extensions>true</extensions>
-			</plugin>
-			-->
+			<!-- <plugin> <groupId>org.sonatype.tycho</groupId> <artifactId>tycho-maven-plugin</artifactId> 
+				<version>${tycho.version}</version> <extensions>true</extensions> </plugin> -->
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -223,13 +219,73 @@
 		</pluginManagement>
 	</build>
 	<repositories>
-		<!-- configure p2 repository to resolve against -->
-		<!-- <repository>
-			<id>${eclipse.repository.version}</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/${eclipse.repository.version}/</url>
-		</repository>-->
+		<repository>
+			<id>maven-inria-release</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-release</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>maven-inria-snapshot</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-snapshot</url>
+			<layout>default</layout>
+		</repository>
 	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven-inria-release</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-release</url>
+			<layout>default</layout>
+		</pluginRepository>
+		<pluginRepository>
+			<id>maven-inria-snapshot</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-snapshot</url>
+			<layout>default</layout>
+		</pluginRepository>
+	</pluginRepositories>
 	<distributionManagement>
 		<repository>
 			<id>kermeta-public-release</id>
@@ -245,24 +301,12 @@
 		</snapshotRepository>
 	</distributionManagement>
 	<profiles>
-	<!-- 	<profile>
-			<id>sonar</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-		-->		<!-- EXAMPLE FOR MYSQL -->
-		<!-- 		<sonar.jdbc.url>
-					jdbc:derby://localhost:1507/sonar;create=true
-				</sonar.jdbc.url>
-				<sonar.jdbc.driver>org.apache.derby.jdbc.ClientDriver</sonar.jdbc.driver>
-				<sonar.jdbc.username>sonar</sonar.jdbc.username>
-				<sonar.jdbc.password>sonar</sonar.jdbc.password>
-
-			-->	<!-- SERVER ON A REMOTE HOST -->
-			<!-- 	<sonar.host.url>http://tipimouss.irisa.fr:9000</sonar.host.url>
-			</properties>
-		</profile>
-		-->
+		<!-- <profile> <id>sonar</id> <activation> <activeByDefault>true</activeByDefault> 
+			</activation> <properties> -->		<!-- EXAMPLE FOR MYSQL -->
+		<!-- <sonar.jdbc.url> jdbc:derby://localhost:1507/sonar;create=true </sonar.jdbc.url> 
+			<sonar.jdbc.driver>org.apache.derby.jdbc.ClientDriver</sonar.jdbc.driver> 
+			<sonar.jdbc.username>sonar</sonar.jdbc.username> <sonar.jdbc.password>sonar</sonar.jdbc.password> -->	<!-- SERVER ON A REMOTE HOST -->
+		<!-- <sonar.host.url>http://tipimouss.irisa.fr:9000</sonar.host.url> </properties> 
+			</profile> -->
 	</profiles>
 </project>
