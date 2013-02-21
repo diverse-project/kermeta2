@@ -2,14 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>language.library.core</artifactId>
+    <groupId>org.kermeta.language</groupId>
+    <artifactId>org.kermeta.language.library.core</artifactId>
     <packaging>jar</packaging>
     <name>Kermeta :: Library :: Core</name>
 
     <parent>
-        <groupId>org.kermeta.language</groupId>
-        <artifactId>language.root</artifactId>
+        <groupId>org.kermeta</groupId>
+        <artifactId>org.kermeta.root</artifactId>
         <version>2.0.99-SNAPSHOT</version>
+        <relativePath>../../org.kermeta.root/pom.xml</relativePath>
     </parent>
 
     <build>
@@ -142,8 +144,8 @@
 
     <dependencies>
     	<dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>language.model</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>org.kermeta.language.model</artifactId>
             <version>${kermeta.version}</version>
         </dependency>
         <dependency>

@@ -1,0 +1,47 @@
+<!-- $Id$ -->
+<!-- License : EPL -->
+<!-- Project : org.kermeta.language.root -->
+<!-- Copyright : IRISA / INRIA / Universite de Rennes 1 -->
+<!-- Authors : didier Vojtisek didier.vojtisek@inria.fr -->
+<!-- list of modules to be built as part of org.kermeta.language group -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.kermeta.language</groupId>
+	<artifactId>org.kermeta.language.core_master</artifactId>
+	<packaging>pom</packaging>
+	<version>${kermeta.version}</version>
+	<name>language.core_master :: core modules for kermeta language</name>
+
+	<parent>
+		<artifactId>org.kermeta.root</artifactId>
+		<groupId>org.kermeta</groupId>
+		<version>2.0.99-SNAPSHOT</version>
+		<relativePath>../../org.kermeta.root/pom.xml</relativePath>
+	</parent>
+
+	<modules>
+		<module>../org.kermeta.language.root</module>
+		<module>../org.kermeta.language.model</module>
+		<module>../org.kermeta.language.model.edit</module>
+		<module>../org.kermeta.language.model.editor</module>
+		<module>../org.kermeta.language.loader.kmt.scala.api</module>
+		<module>../org.kermeta.language.loader.kmt.scala</module>
+		<module>../org.kermeta.language.merger.binarymerger.api</module>
+		<module>../org.kermeta.language.merger.binarymerger</module>
+		<module>../org.kermeta.language.resolver.api</module>
+		<module>../org.kermeta.language.resolver</module>
+		<module>../org.kermeta.language.checker.api</module>
+		<module>../org.kermeta.language.checker</module>
+		<module>../org.kermeta.language.ecore2km.api</module>
+		<module>../org.kermeta.language.ecore2km</module>
+		<module>../org.kermeta.language.library.core</module>
+		<module>../org.kermeta.language.km2bytecode</module>
+		<module>../org.kermeta.language.umlprofile2ecore.api</module>
+		<module>../org.kermeta.language.umlprofile2ecore</module>
+	</modules>
+
+
+</project>

@@ -9,13 +9,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>language.model</artifactId>
+    <artifactId>org.kermeta.language.model</artifactId>
     <packaging>bundle</packaging>
     <name>language.model :: Kermeta2 model</name>
     
     <parent>
-        <groupId>org.kermeta.language</groupId>
-        <artifactId>language.root</artifactId>
+        <groupId>org.kermeta</groupId>
+        <artifactId>org.kermeta.root</artifactId>
         <version>2.0.99-SNAPSHOT</version>
     </parent>
     
@@ -190,4 +190,5 @@
             <version>${emf.version}</version>
         </dependency>
     </dependencies>
+    <groupId>org.kermeta.language</groupId>
 </project>
