@@ -5,7 +5,7 @@
     <groupId>org.kermeta.language</groupId>
     <artifactId>org.kermeta.language.library.standard</artifactId>
     <packaging>jar</packaging>
-    <name>Kermeta :: Library :: Standard</name>
+    <name>${project.artifactId}</name>
 
     <parent>
         <groupId>org.kermeta</groupId>
@@ -27,7 +27,7 @@
            <!-- Kermeta Compiler plugin -->
            <plugin>
                 <groupId>org.kermeta.kp</groupId>
-                <artifactId>kp.compiler.mavenplugin</artifactId>
+                <artifactId>org.kermeta.kp.compiler.mavenplugin</artifactId>
                 <version>2.0.99-SNAPSHOT</version>
                 <extensions>true</extensions>
                 <executions>
@@ -37,7 +37,9 @@
                         </goals>
                         <configuration>
                             <kp>project.kp</kp>
-                            <resourceOutputDirectory>${project.build.directory}/resources</resourceOutputDirectory>
+                            <resourceOutputDirectory>${basedir}/target/resources</resourceOutputDirectory>
+                            <!-- <sourceOutputDirectory>${basedir}/target/generated-sources/kermeta</sourceOutputDirectory>
+                            <targetDirectory>${basedir}/target</targetDirectory>-->
                             <targetGroupId>${project.groupId}</targetGroupId>
                             <targetArtifactId>${project.artifactId}</targetArtifactId>
                             <stopAfterPhase>GENERATE_SCALA</stopAfterPhase>
