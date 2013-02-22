@@ -6,14 +6,15 @@
         <version>2.0.99-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>language.gendoc.km2html</artifactId>
+    <groupId>org.kermeta.language.gendoc</groupId>
+    <artifactId>org.kermeta.language.gendoc.km2html</artifactId>
     <packaging>bundle</packaging>
-    <name>language.gendoc.km2html :: a little doc printer for k2</name>
+    <name>org.kermeta.language.gendoc.km2html</name>
 
     <dependencies>   
     	 <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>language.model</artifactId>
+            <artifactId>org.kermeta.language.model</artifactId>
             <version>${kermeta.version}</version>
         </dependency>
         
@@ -24,7 +25,7 @@
         </dependency>   
     	 <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>language.library.core</artifactId>
+            <artifactId>org.kermeta.language.library.core</artifactId>
             <version>${kermeta.version}</version>
         </dependency>
     </dependencies>
@@ -39,7 +40,7 @@
             <!-- Kermeta Compiler plugin -->
             <plugin>
                 <groupId>org.kermeta.kp</groupId>
-                <artifactId>kp.compiler.mavenplugin</artifactId>
+                <artifactId>org.kermeta.kp.compiler.mavenplugin</artifactId>
                 <version>2.0.99-SNAPSHOT</version>
                 <extensions>true</extensions>
                 <executions>
@@ -49,7 +50,7 @@
                         </goals>
                         <configuration>
                             <kp>project.kp</kp>
-                            <resourceOutputDirectory>${project.build.directory}/resources</resourceOutputDirectory>
+                            <resourceOutputDirectory>${basedir}/target/resources</resourceOutputDirectory>
                             <targetGroupId>${project.groupId}</targetGroupId>
                             <targetArtifactId>${project.artifactId}</targetArtifactId>
                             <checkingEnabled>true</checkingEnabled>
@@ -213,6 +214,5 @@
         	</plugins>
         </pluginManagement>
     </build>
-    <groupId>org.kermeta.language.gendoc</groupId>
 </project>
 

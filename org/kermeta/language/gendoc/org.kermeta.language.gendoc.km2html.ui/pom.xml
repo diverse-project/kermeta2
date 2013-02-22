@@ -7,13 +7,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>language.gendoc.km2html.ui</artifactId>
+	<artifactId>org.kermeta.language.gendoc.km2html.ui</artifactId>
 	<groupId>org.kermeta.language.gendoc</groupId>
 	<packaging>bundle</packaging>
-	<name>UI for kermeta 2 Html generator</name>
+	<name>org.kermeta.language.gendoc</name>
 
     <parent>
-        <artifactId>language.root</artifactId>
+        <artifactId>org.kermeta.language.root</artifactId>
         <groupId>org.kermeta.language</groupId>
         <version>2.0.99-SNAPSHOT</version>
     </parent>
@@ -21,7 +21,7 @@
 		
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>language.gendoc.km2html</artifactId>
+			<artifactId>org.kermeta.language.gendoc.km2html</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<dependency>
