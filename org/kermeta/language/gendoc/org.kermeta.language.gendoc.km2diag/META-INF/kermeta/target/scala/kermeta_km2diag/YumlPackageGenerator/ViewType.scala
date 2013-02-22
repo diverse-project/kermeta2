@@ -1,0 +1,4 @@
+package `kermeta_km2diag`.YumlPackageGenerator
+ class RichYumlPackageVisitor extends kermeta_km2diag.YumlPackageGenerator.YumlPackageVisitor with kermeta_km2diag.YumlPackageGenerator.YumlPackageVisitorAspect with _root_.k2.standard.KermetaObject with k2.standard.EObjectImplForPrimitive 
+ class RichYumlPackageTransform extends kermeta_km2diag.YumlPackageGenerator.YumlPackageTransform with kermeta_km2diag.YumlPackageGenerator.YumlPackageTransformAspect with _root_.k2.standard.KermetaObject with k2.standard.EObjectImplForPrimitive 
+

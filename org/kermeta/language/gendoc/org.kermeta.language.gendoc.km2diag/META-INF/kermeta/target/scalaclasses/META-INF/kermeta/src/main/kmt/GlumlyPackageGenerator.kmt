@@ -1,0 +1,95 @@
+using kermeta::standard::*
+using kermeta::io::StdIO => stdio
+using ^org::kermeta::language::structure::*
+using transform::*
+
+/*
+ * Generates Glumly code source for each Package.
+ */
+package GlumlyPackageGenerator{
+
+	class GlumlyPackageVisitor inherits Abstract_PackageVisitor{
+	
+		attribute fileContent : StringBuffer
+		attribute outputFolderUrl : String
+		
+		operation setOutputfolder(ofp : String) : Void is do
+			self.outputFolderUrl := ofp
+		end
+
+		operation visitPackage (p: Package ): Void is do
+		
+			fileContent := StringBuffer.new
+			
+			p.ownedTypeDefinition.each{ otd | otd.accept(self) }	
+			
+			kermeta::io::FileIO.writeTextFile(("file:"+outputFolderUrl+"/"+p.getQualifiedName()+".txt").toURI(), fileContent.toString())
+							
+			p.nestedPackage.each { subPack | subPack.accept(self) }		
+			
+		end
+	
+		operation visitTypeDefinition (td: TypeDefinition ): Void is do
+			//Nothing
+		end
+		
+		operation visitClassDefinition (cd: ClassDefinition ): Void is do
+		
+			fileContent.append("CO\t" + cd.name + "\torange\n")
+		
+			//Inheritance
+			cd.superType.each{e| 
+						fileContent.append("H\t" + cd.name + "\t" + e.getTypeDef() + "\n") 
+					}
+					
+			//Properties
+			//cd.ownedAttribute.each{oa |
+			//			oa.accept(self)
+			//			}
+		end
+		
+		operation visitProperty (p: Property ): Void is do
+			//We want assocation with classes only. Enumeration types for example will not appear.
+			if(p.type.isInstanceOf(org::kermeta::language::structure::Class)) then
+				if(p.isComposite) then
+					fileContent.append("C\t" + p.owningClass.name + "\t" + p.type.getTypeDef() + "\n")
+				else
+					fileContent.append("S\t" + p.owningClass.name + "\t" + p.type.getTypeDef() + "\n")
+				end
+			end			
+			
+		end
+		
+		operation visitType (t: Type ): Void is do
+			//Nothing
+		end
+		
+		operation visitClass (c: Class ): Void is do
+			//Nothing
+		end
+
+	}
+	
+	/*
+	 * Entry point
+	 */
+	class GlumlyPackageTransform inherits Abstract_Transformation{
+	
+		attribute outputFolderUrl : String
+	
+		operation setOutputfolder(ofp : String) : Void is do
+			self.outputFolderUrl := ofp
+		end
+	
+		operation transform ( input : Abstract_VisitableElement ) : Object is do
+		
+			var visitor : GlumlyPackageVisitor := GlumlyPackageVisitor.new
+			visitor.setOutputfolder(self.outputFolderUrl)
+			input.accept(visitor)
+			result := ""
+		
+		end
+	
+	}
+	
+}

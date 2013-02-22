@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org_kermeta_language_structure:Metamodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_behavior="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/behavior" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/structure">
+  <packages kTag="//@packages.0/@kOwnedTags.0" name="mainPackage">
+    <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;260;2011" object="//@packages.0"/>
+    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@ownedTypeDefinition.0/@kOwnedTags.0" name="DiagGenerator">
+      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;282;2009" object="//@packages.0/@ownedTypeDefinition.0"/>
+      <ownedOperation kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@kOwnedTags.1" name="createDiag" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@containedType.0" isOrdered="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;319;2007" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0"/>
+        <kOwnedTags name="main" value="" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+          <usings fromQName="kermeta::standard::*" toName=""/>
+          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+          <usings fromQName="YumlClassGenerator::*" toName=""/>
+        </containedType>
+        <ownedParameter name="inputModel" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@ownedParameter.0/@containedType.0" isOrdered="true">
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+            <usings fromQName="kermeta::standard::*" toName=""/>
+            <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+            <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+            <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+            <usings fromQName="YumlPackageGenerator::*" toName=""/>
+            <usings fromQName="YumlClassGenerator::*" toName=""/>
+          </containedType>
+        </ownedParameter>
+        <ownedParameter name="outputFolder" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@ownedParameter.1/@containedType.0" isOrdered="true">
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+            <usings fromQName="kermeta::standard::*" toName=""/>
+            <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+            <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+            <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+            <usings fromQName="YumlPackageGenerator::*" toName=""/>
+            <usings fromQName="YumlClassGenerator::*" toName=""/>
+          </containedType>
+        </ownedParameter>
+        <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@kOwnedTags.0">
+          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;394;2007" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body"/>
+          <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@kOwnedTags.0" identifier="repository">
+            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;647;700" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0"/>
+            <initialization xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@initialization/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@initialization/@kOwnedTags.1" name="new">
+              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;692;700" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@initialization"/>
+              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;681;700" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@initialization"/>
+              <usings fromQName="kermeta::standard::*" toName=""/>
+              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+              <usings fromQName="YumlClassGenerator::*" toName=""/>
+              <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@initialization/@target/@kOwnedTags.0" name="ResourceSet">
+                <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;681;692" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@initialization/@target"/>
+                <usings fromQName="kermeta::standard::*" toName=""/>
+                <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                <usings fromQName="YumlClassGenerator::*" toName=""/>
+              </target>
+            </initialization>
+            <type name="ResourceSet" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@type/@containedType.0" isOrdered="true">
+              <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="ResourceSet">
+                <usings fromQName="kermeta::standard::*" toName=""/>
+                <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                <usings fromQName="YumlClassGenerator::*" toName=""/>
+              </containedType>
+            </type>
+          </statement>
+          <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@kOwnedTags.0" identifier="resource">
+            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;700;770" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1"/>
+            <initialization xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@initialization/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@initialization/@kOwnedTags.1" name="createResource" isCalledWithParenthesis="true">
+              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;739;770" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@initialization"/>
+              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;729;770" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@initialization"/>
+              <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@initialization/@parameters.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@initialization/@parameters.0/@kOwnedTags.1" name="inputModel">
+                <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;755;765" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@initialization/@parameters.0"/>
+                <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;755;765" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@initialization/@parameters.0"/>
+                <usings fromQName="kermeta::standard::*" toName=""/>
+                <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                <usings fromQName="YumlClassGenerator::*" toName=""/>
+              </parameters>
+              <usings fromQName="kermeta::standard::*" toName=""/>
+              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+              <usings fromQName="YumlClassGenerator::*" toName=""/>
+              <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@initialization/@target/@kOwnedTags.0" name="repository">
+                <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;729;739" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@initialization/@target"/>
+                <usings fromQName="kermeta::standard::*" toName=""/>
+                <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                <usings fromQName="YumlClassGenerator::*" toName=""/>
+              </target>
+            </initialization>
+            <type name="Resource" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@type/@containedType.0" isOrdered="true">
+              <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Resource">
+                <usings fromQName="kermeta::standard::*" toName=""/>
+                <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                <usings fromQName="YumlClassGenerator::*" toName=""/>
+              </containedType>
+            </type>
+          </statement>
+          <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@kOwnedTags.1" name="load" isCalledWithParenthesis="true">
+            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;778;824" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2"/>
+            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;770;824" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2"/>
+            <parameters xsi:type="org_kermeta_language_behavior:VoidLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@parameters.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@parameters.0/@kOwnedTags.1">
+              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;784;788" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@parameters.0"/>
+              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;784;788" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@parameters.0"/>
+            </parameters>
+            <usings fromQName="kermeta::standard::*" toName=""/>
+            <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+            <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+            <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+            <usings fromQName="YumlPackageGenerator::*" toName=""/>
+            <usings fromQName="YumlClassGenerator::*" toName=""/>
+            <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@target/@kOwnedTags.0" name="resource">
+              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;770;778" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@target"/>
+              <usings fromQName="kermeta::standard::*" toName=""/>
+              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+              <usings fromQName="YumlClassGenerator::*" toName=""/>
+            </target>
+          </statement>
+          <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@kOwnedTags.1" name="each" isCalledWithParenthesis="true">
+            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;844;1972" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3"/>
+            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;824;1972" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3"/>
+            <parameters xsi:type="org_kermeta_language_behavior:LambdaExpression">
+              <parameters name="elem">
+                <type type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@parameters.0/@type/@containedType.0">
+                  <containedType xsi:type="org_kermeta_language_structure:UnresolvedInferredType"/>
+                </type>
+              </parameters>
+              <body xsi:type="org_kermeta_language_behavior:Block">
+                <statement xsi:type="org_kermeta_language_behavior:Conditional" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@kOwnedTags.1">
+                  <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;863;1963" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0"/>
+                  <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;863;1963" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0"/>
+                  <thenBody xsi:type="org_kermeta_language_behavior:Block">
+                    <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@kOwnedTags.0" identifier="mm">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;961;1102" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0"/>
+                      <initialization xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@initialization/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@initialization/@kOwnedTags.1" name="asType" isCalledWithParenthesis="true">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;987;1102" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@initialization"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;983;1102" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@initialization"/>
+                        <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@initialization/@parameters.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@initialization/@parameters.0/@kOwnedTags.1" name="org::kermeta::language::structure::Metamodel">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;995;1039" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@initialization/@parameters.0"/>
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;995;1039" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@initialization/@parameters.0"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </parameters>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@initialization/@target/@kOwnedTags.0" name="elem">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;983;987" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@initialization/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </target>
+                      </initialization>
+                      <type name="Metamodel" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.0/@type/@containedType.0" isOrdered="true">
+                        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Metamodel">
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </containedType>
+                      </type>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.1/@kOwnedTags.0" identifier="t1">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1102;1169" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.1"/>
+                      <initialization xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.1/@initialization/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.1/@initialization/@kOwnedTags.1" name="new">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1159;1169" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.1/@initialization"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1137;1169" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.1/@initialization"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.1/@initialization/@target/@kOwnedTags.0" name="GlumlyPackageTransform">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1137;1159" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.1/@initialization/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </target>
+                      </initialization>
+                      <type name="GlumlyPackageTransform" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.1/@type/@containedType.0" isOrdered="true">
+                        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="GlumlyPackageTransform">
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </containedType>
+                      </type>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2/@kOwnedTags.1" name="setOutputfolder" isCalledWithParenthesis="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1171;1307" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1169;1307" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2"/>
+                      <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2/@parameters.0/@kOwnedTags.0" name="plus">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1188;1228" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2/@parameters.0"/>
+                        <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2/@parameters.0/@parameters.0/@kOwnedTags.0" value="images/glumly/packages/">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1203;1228" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2/@parameters.0/@parameters.0"/>
+                        </parameters>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2/@parameters.0/@target/@kOwnedTags.0" name="outputFolder">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1188;1201" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2/@parameters.0/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </target>
+                      </parameters>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                      <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                      <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                      <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                      <usings fromQName="YumlClassGenerator::*" toName=""/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2/@target/@kOwnedTags.0" name="t1">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1169;1171" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.2/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                      </target>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.3/@kOwnedTags.0" identifier="t3">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1307;1370" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.3"/>
+                      <initialization xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.3/@initialization/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.3/@initialization/@kOwnedTags.1" name="new">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1360;1370" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.3/@initialization"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1340;1370" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.3/@initialization"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.3/@initialization/@target/@kOwnedTags.0" name="GlumlyClassTransform">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1340;1360" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.3/@initialization/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </target>
+                      </initialization>
+                      <type name="GlumlyClassTransform" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.3/@type/@containedType.0" isOrdered="true">
+                        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="GlumlyClassTransform">
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </containedType>
+                      </type>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4/@kOwnedTags.1" name="setOutputfolder" isCalledWithParenthesis="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1372;1490" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1370;1490" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4"/>
+                      <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4/@parameters.0/@kOwnedTags.0" name="plus">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1389;1428" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4/@parameters.0"/>
+                        <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4/@parameters.0/@parameters.0/@kOwnedTags.0" value="images/glumly/classes/">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1404;1428" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4/@parameters.0/@parameters.0"/>
+                        </parameters>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4/@parameters.0/@target/@kOwnedTags.0" name="outputFolder">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1389;1402" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4/@parameters.0/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </target>
+                      </parameters>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                      <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                      <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                      <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                      <usings fromQName="YumlClassGenerator::*" toName=""/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4/@target/@kOwnedTags.0" name="t3">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1370;1372" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.4/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                      </target>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.5/@kOwnedTags.0" identifier="t2">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1490;1553" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.5"/>
+                      <initialization xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.5/@initialization/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.5/@initialization/@kOwnedTags.1" name="new">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1543;1553" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.5/@initialization"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1523;1553" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.5/@initialization"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.5/@initialization/@target/@kOwnedTags.0" name="YumlPackageTransform">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1523;1543" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.5/@initialization/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </target>
+                      </initialization>
+                      <type name="YumlPackageTransform" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.5/@type/@containedType.0" isOrdered="true">
+                        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="YumlPackageTransform">
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </containedType>
+                      </type>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6/@kOwnedTags.1" name="setOutputfolder" isCalledWithParenthesis="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1555;1686" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1553;1686" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6"/>
+                      <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6/@parameters.0/@kOwnedTags.0" name="plus">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1572;1609" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6/@parameters.0"/>
+                        <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6/@parameters.0/@parameters.0/@kOwnedTags.0" value="images/yuml/packages">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1587;1609" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6/@parameters.0/@parameters.0"/>
+                        </parameters>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6/@parameters.0/@target/@kOwnedTags.0" name="outputFolder">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1572;1585" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6/@parameters.0/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </target>
+                      </parameters>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                      <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                      <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                      <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                      <usings fromQName="YumlClassGenerator::*" toName=""/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6/@target/@kOwnedTags.0" name="t2">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1553;1555" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.6/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                      </target>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.7/@kOwnedTags.0" identifier="t4">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1686;1745" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.7"/>
+                      <initialization xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.7/@initialization/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.7/@initialization/@kOwnedTags.1" name="new">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1735;1745" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.7/@initialization"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1717;1745" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.7/@initialization"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.7/@initialization/@target/@kOwnedTags.0" name="YumlClassTransform">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1717;1735" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.7/@initialization/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </target>
+                      </initialization>
+                      <type name="YumlClassTransform" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.7/@type/@containedType.0" isOrdered="true">
+                        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="YumlClassTransform">
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </containedType>
+                      </type>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8/@kOwnedTags.1" name="setOutputfolder" isCalledWithParenthesis="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1747;1814" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1745;1814" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8"/>
+                      <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8/@parameters.0/@kOwnedTags.0" name="plus">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1764;1801" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8/@parameters.0"/>
+                        <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8/@parameters.0/@parameters.0/@kOwnedTags.0" value="images/yuml/classes/">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1779;1801" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8/@parameters.0/@parameters.0"/>
+                        </parameters>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8/@parameters.0/@target/@kOwnedTags.0" name="outputFolder">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1764;1777" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8/@parameters.0/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </target>
+                      </parameters>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                      <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                      <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                      <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                      <usings fromQName="YumlClassGenerator::*" toName=""/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8/@target/@kOwnedTags.0" name="t4">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1745;1747" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.8/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                      </target>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@kOwnedTags.1" name="each" isCalledWithParenthesis="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1825;1956" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1814;1956" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9"/>
+                      <parameters xsi:type="org_kermeta_language_behavior:LambdaExpression">
+                        <parameters name="pack">
+                          <type type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@parameters.0/@type/@containedType.0">
+                            <containedType xsi:type="org_kermeta_language_structure:UnresolvedInferredType"/>
+                          </type>
+                        </parameters>
+                        <body xsi:type="org_kermeta_language_behavior:Block">
+                          <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.0/@kOwnedTags.1" name="transform" isCalledWithParenthesis="true">
+                            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1846;1869" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.0"/>
+                            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1844;1869" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.0"/>
+                            <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.0/@parameters.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.0/@parameters.0/@kOwnedTags.1" name="pack">
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1857;1861" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.0/@parameters.0"/>
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1857;1861" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.0/@parameters.0"/>
+                              <usings fromQName="kermeta::standard::*" toName=""/>
+                              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                              <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            </parameters>
+                            <usings fromQName="kermeta::standard::*" toName=""/>
+                            <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                            <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                            <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                            <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                            <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                            <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.0/@target/@kOwnedTags.0" name="t1">
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1844;1846" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.0/@target"/>
+                              <usings fromQName="kermeta::standard::*" toName=""/>
+                              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                              <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            </target>
+                          </statement>
+                          <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.1/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.1/@kOwnedTags.1" name="transform" isCalledWithParenthesis="true">
+                            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1871;1894" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.1"/>
+                            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1869;1894" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.1"/>
+                            <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.1/@parameters.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.1/@parameters.0/@kOwnedTags.1" name="pack">
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1882;1886" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.1/@parameters.0"/>
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1882;1886" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.1/@parameters.0"/>
+                              <usings fromQName="kermeta::standard::*" toName=""/>
+                              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                              <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            </parameters>
+                            <usings fromQName="kermeta::standard::*" toName=""/>
+                            <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                            <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                            <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                            <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                            <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                            <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.1/@target/@kOwnedTags.0" name="t3">
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1869;1871" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.1/@target"/>
+                              <usings fromQName="kermeta::standard::*" toName=""/>
+                              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                              <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            </target>
+                          </statement>
+                          <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.2/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.2/@kOwnedTags.1" name="transform" isCalledWithParenthesis="true">
+                            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1896;1919" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.2"/>
+                            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1894;1919" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.2"/>
+                            <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.2/@parameters.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.2/@parameters.0/@kOwnedTags.1" name="pack">
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1907;1911" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.2/@parameters.0"/>
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1907;1911" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.2/@parameters.0"/>
+                              <usings fromQName="kermeta::standard::*" toName=""/>
+                              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                              <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            </parameters>
+                            <usings fromQName="kermeta::standard::*" toName=""/>
+                            <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                            <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                            <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                            <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                            <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                            <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.2/@target/@kOwnedTags.0" name="t2">
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1894;1896" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.2/@target"/>
+                              <usings fromQName="kermeta::standard::*" toName=""/>
+                              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                              <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            </target>
+                          </statement>
+                          <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.3/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.3/@kOwnedTags.1" name="transform" isCalledWithParenthesis="true">
+                            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1921;1944" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.3"/>
+                            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1919;1944" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.3"/>
+                            <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.3/@parameters.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.3/@parameters.0/@kOwnedTags.1" name="pack">
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1932;1936" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.3/@parameters.0"/>
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1932;1936" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.3/@parameters.0"/>
+                              <usings fromQName="kermeta::standard::*" toName=""/>
+                              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                              <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            </parameters>
+                            <usings fromQName="kermeta::standard::*" toName=""/>
+                            <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                            <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                            <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                            <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                            <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                            <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.3/@target/@kOwnedTags.0" name="t4">
+                              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1919;1921" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@parameters.0/@body/@statement.3/@target"/>
+                              <usings fromQName="kermeta::standard::*" toName=""/>
+                              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                              <usings fromQName="YumlClassGenerator::*" toName=""/>
+                            </target>
+                          </statement>
+                        </body>
+                      </parameters>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                      <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                      <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                      <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                      <usings fromQName="YumlClassGenerator::*" toName=""/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@target/@kOwnedTags.0" name="packages">
+                        <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1816;1825" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                        <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                        <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                        <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                        <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@target/@target/@kOwnedTags.0" name="mm">
+                          <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1814;1816" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@thenBody/@statement.9/@target/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                          <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                          <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                          <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                          <usings fromQName="YumlClassGenerator::*" toName=""/>
+                        </target>
+                      </target>
+                    </statement>
+                  </thenBody>
+                  <condition xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@condition/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@condition/@kOwnedTags.1" name="isInstanceOf" isCalledWithParenthesis="true">
+                    <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;870;930" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@condition"/>
+                    <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;866;930" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@condition"/>
+                    <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@condition/@parameters.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@condition/@parameters.0/@kOwnedTags.1" name="org::kermeta::language::structure::Metamodel">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;884;928" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@condition/@parameters.0"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;884;928" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@condition/@parameters.0"/>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                      <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                      <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                      <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                      <usings fromQName="YumlClassGenerator::*" toName=""/>
+                    </parameters>
+                    <usings fromQName="kermeta::standard::*" toName=""/>
+                    <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                    <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                    <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                    <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                    <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                    <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                    <usings fromQName="YumlClassGenerator::*" toName=""/>
+                    <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@condition/@target/@kOwnedTags.0" name="elem">
+                      <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;866;870" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@parameters.0/@body/@statement.0/@condition/@target"/>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                      <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                      <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                      <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                      <usings fromQName="YumlClassGenerator::*" toName=""/>
+                    </target>
+                  </condition>
+                </statement>
+              </body>
+            </parameters>
+            <usings fromQName="kermeta::standard::*" toName=""/>
+            <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+            <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+            <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+            <usings fromQName="YumlPackageGenerator::*" toName=""/>
+            <usings fromQName="YumlClassGenerator::*" toName=""/>
+            <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@target/@kOwnedTags.0" name="getContents">
+              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;832;844" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@target"/>
+              <usings fromQName="kermeta::standard::*" toName=""/>
+              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+              <usings fromQName="YumlClassGenerator::*" toName=""/>
+              <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@target/@target/@kOwnedTags.0" name="resource">
+                <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;824;832" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@target/@target"/>
+                <usings fromQName="kermeta::standard::*" toName=""/>
+                <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+                <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+                <usings fromQName="YumlPackageGenerator::*" toName=""/>
+                <usings fromQName="YumlClassGenerator::*" toName=""/>
+              </target>
+            </target>
+          </statement>
+          <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@kOwnedTags.1" name="writeln" isCalledWithParenthesis="true">
+            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1977;2002" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4"/>
+            <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1972;2002" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4"/>
+            <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@parameters.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@parameters.0/@kOwnedTags.1" value="Finish">
+              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1986;1994" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@parameters.0"/>
+              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1986;1994" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@parameters.0"/>
+            </parameters>
+            <usings fromQName="kermeta::standard::*" toName=""/>
+            <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+            <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+            <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+            <usings fromQName="YumlPackageGenerator::*" toName=""/>
+            <usings fromQName="YumlClassGenerator::*" toName=""/>
+            <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@target/@kOwnedTags.0" name="stdio">
+              <kOwnedTags name="traceability_text_reference" value="file:/udd/fcoulon/kermetaWS/org.kermeta.language.gendoc.km2diag/META-INF/kermeta/src/main/kmt/DiagGenerator.kmt;1972;1977" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@target"/>
+              <usings fromQName="kermeta::standard::*" toName=""/>
+              <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+              <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="GlumlyPackageGenerator::*" toName=""/>
+              <usings fromQName="GlumlyClassGenerator::*" toName=""/>
+              <usings fromQName="YumlPackageGenerator::*" toName=""/>
+              <usings fromQName="YumlClassGenerator::*" toName=""/>
+            </target>
+          </statement>
+        </body>
+      </ownedOperation>
+    </ownedTypeDefinition>
+  </packages>
+</org_kermeta_language_structure:Metamodel>

@@ -78,7 +78,7 @@ aspect class ClassDefinition{
 	contents.append("]")
 	end
 	
-	contents.append("<FONT SIZE = 4 color = bleu> inherited from  </FONT>")
+	contents.append("<FONT SIZE = 4 color = blue> inherited from  </FONT>")
 	self.superType.indexedEach{e, eachContext| 
 								if eachContext.isLast then
 									//contents.append(e.getClassname)
@@ -89,18 +89,26 @@ aspect class ClassDefinition{
 									
 								end
 								}
+	contents.append("</H2>\n")
 	//contents.append(self.superType.typeDefinition.name)
 	contents.append("<HR>\n")
+	
+	//Diagram image
+	var packPath : String := packageName.replaceAll("::","/")
+	contents.append("<p><img src=\"" + baseFolder + "images/classes/" + packPath + "/" + self.name + ".png\"></p>")
 	
 		//specification of classes, get tag properties
 	
 		
 	self.kTag.each{tag | 
 		if tag.name == "documentation" then
-			contents.append(tag.~value + "\n")
-		else 
-			contents.append("@")
-			contents.append(tag.name)
+			contents.append("<p>"+tag.~value + "<p>\n")
+		end
+	}
+	self.kTag.each{tag | 
+		if tag.name != "documentation" then
+			contents.append("<b>@")
+			contents.append(tag.name+"</b>")
 			self.superType.each{e| contents.append(e.getname)}
 			contents.append(" \"")
 			contents.append(tag.~value)
@@ -110,7 +118,7 @@ aspect class ClassDefinition{
 	
 	// Method Summury
 	if ownedOperation.size != 0 then
-		contents.append("<A NAME=method_summary><!-- --></A>\n")
+		contents.append("<p><A NAME=method_summary><!-- --></A>\n")
 		contents.append("<TABLE BORDER=1 WIDTH=100% CELLPADDING=3 CELLSPACING=0 SUMMARY=>\n")
 		contents.append("<TR BGCOLOR=#CCCCFF>\n")
 		contents.append("<TH ALIGN=left COLSPAN=2><FONT SIZE=+2>\n")
@@ -118,13 +126,13 @@ aspect class ClassDefinition{
 		contents.append("</TR>\n")
 		// list of operations
 		ownedOperation.each{oa | contents.append(oa.createCodeHtml(self.name))}
-		contents.append("</TABLE>\n")
+		contents.append("</TABLE></p>\n")
 		
 	end
 	            
 // Field Summury
 	if ownedAttribute.size != 0 then
-	contents.append("<A NAME=field_summary><!-- --></A>\n")
+	contents.append("<p><A NAME=field_summary><!-- --></A>\n")
 	contents.append("<TABLE BORDER=1 WIDTH=100% CELLPADDING=3 CELLSPACING=0 SUMMARY=>\n")
 	contents.append("<TR BGCOLOR=#CCCCFF>\n")
 	contents.append("<TH ALIGN=left COLSPAN=2><FONT SIZE=+2>\n")
@@ -133,7 +141,7 @@ aspect class ClassDefinition{
 	// list of properties
 	ownedAttribute.each{oa | contents.append(oa.createCodeHtml(self.name))}
 	//end of Field Summury
-	contents.append("</TABLE>\n")
+	contents.append("</TABLE></p>\n")
 	end
 			
 	if ownedOperation.size !=0 then
@@ -489,12 +497,28 @@ aspect class Enumeration{
 }
 
 aspect class Package{
+
+	/** Create html package page*/
+	operation generatePackageHtml (baseFolder : String) : Void is do
+		var contents : StringBuffer init StringBuffer.new
+		var path : String init baseFolder + "/" + self.getQualifiedName() + ".html"
+		
+		contents.append("<html>")
+		contents.append("<head><title>" + self.getQualifiedName() + "</title></head>")
+		contents.append("<body>")
+		contents.append("<h1>" + self.getQualifiedName() + "</h1><br>")
+		contents.append("<img src=\"" + baseFolder + "/" + "images/packages/" + self.getQualifiedName() +".png\"><br>")
+		contents.append("</body></html>")
+		
+		FileIO.writeTextFile(path.toURI(), contents.toString)
+	end
 		
 	/** Create html code */
 	operation createClassesHtml (baseFolder:String, excludePackages : String) : String is do
 		var html : StringBuffer init StringBuffer.new	
 		
-		html.append("<h4>"+self.getQualifiedName()+ "</h4>")
+		html.append("<a href=\"" + baseFolder + "/" + self.getQualifiedName() + ".html\" target = Content ><h4>"+self.getQualifiedName()+ "</h4></a>")
+		generatePackageHtml(baseFolder)
 		ownedTypeDefinition.each{otd | html.append(otd.createClassesHtml(baseFolder, excludePackages))
 									otd.generateClassesHtml(baseFolder,self.getQualifiedName())
 									

@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org_kermeta_language_structure:Metamodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_behavior="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/behavior" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/structure">
+  <packages kTag="//@packages.0/@kOwnedTags.0" name="kermeta">
+    <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;130;4329" object="//@packages.0"/>
+    <nestedPackage kTag="//@packages.0/@nestedPackage.0/@kOwnedTags.0" name="emfpersistence">
+      <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;148;4327" object="//@packages.0/@nestedPackage.0"/>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@kOwnedTags.1 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@kOwnedTags.2" name="Resource">
+        <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;245;2919" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0"/>
+        <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0"/>
+        <kOwnedTags name="ScalaCompilerName" value="k2.persistence.Resource" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0"/>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@kOwnedTags.1" name="load" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;304;382" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@ownedParameter.0/@containedType.0/@containedType.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@ownedParameter.0/@containedType.0/@containedType.1" typeIdentifier="Map">
+              <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+                <usings fromQName="^kermeta::standard::*" toName=""/>
+                <usings fromQName="^kermeta::utils::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="^kermeta::exceptions::*" toName=""/>
+              </containedType>
+              <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+                <usings fromQName="^kermeta::standard::*" toName=""/>
+                <usings fromQName="^kermeta::utils::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="^kermeta::exceptions::*" toName=""/>
+              </containedType>
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;354;382" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@kOwnedTags.1 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@kOwnedTags.2" name="save" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;726;802" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1"/>
+          <kOwnedTags name="documentation" value=" Saves the resource using the specified options.&#xA; save is &quot;safe&quot; in the sense that unlike the original EMF version, if the user creates dangling in it, the save will automatically try to patch the resulting xmi file by adding the dangling element at the root of the resource" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@ownedParameter.0/@containedType.0/@containedType.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@ownedParameter.0/@containedType.0/@containedType.1" typeIdentifier="Map">
+              <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+                <usings fromQName="^kermeta::standard::*" toName=""/>
+                <usings fromQName="^kermeta::utils::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="^kermeta::exceptions::*" toName=""/>
+              </containedType>
+              <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+                <usings fromQName="^kermeta::standard::*" toName=""/>
+                <usings fromQName="^kermeta::utils::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="^kermeta::exceptions::*" toName=""/>
+              </containedType>
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;776;802" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@kOwnedTags.1" name="delete" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;834;912" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@ownedParameter.0/@containedType.0/@containedType.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@ownedParameter.0/@containedType.0/@containedType.1" typeIdentifier="Map">
+              <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+                <usings fromQName="^kermeta::standard::*" toName=""/>
+                <usings fromQName="^kermeta::utils::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="^kermeta::exceptions::*" toName=""/>
+              </containedType>
+              <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+                <usings fromQName="^kermeta::standard::*" toName=""/>
+                <usings fromQName="^kermeta::utils::*" toName=""/>
+                <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+                <usings fromQName="^kermeta::exceptions::*" toName=""/>
+              </containedType>
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;886;912" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@kOwnedTags.1" name="unload" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;944;999" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;973;999" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.4/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.4/@kOwnedTags.1" name="getURI" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.4/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1031;1085" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.4"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.4"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="URI">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.4/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1059;1085" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.4/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.5/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.5/@kOwnedTags.1" name="isLoaded" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.5/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1117;1177" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.5"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.5"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.5/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1151;1177" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.5/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.6/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.6/@kOwnedTags.1" name="getAllContents" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.6/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1209;1284" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.6"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.6"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.6/@containedType.0/@containedType.0" typeIdentifier="Iterator">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.6/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1258;1284" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.6/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.7/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.7/@kOwnedTags.1" name="getContents" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.7/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1316;1390" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.7"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.7"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.7/@containedType.0/@containedType.0" typeIdentifier="OrderedSet">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.7/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1364;1390" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.7/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.8/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.8/@kOwnedTags.1" name="getEObject" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.8/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1422;1494" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.8"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.8"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.8/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.8/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1468;1494" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.8/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.9/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.9/@kOwnedTags.1" name="getErrors" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.9/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1526;1598" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.9"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.9"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.9/@containedType.0/@containedType.0" typeIdentifier="OrderedSet">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.9/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1572;1598" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.9/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.10/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.10/@kOwnedTags.1" name="getResourceSet" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.10/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1630;1700" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.10"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.10"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="ResourceSet">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.10/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1674;1700" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.10/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.11/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.11/@kOwnedTags.1" name="getTimeStamp" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.11/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1732;1793" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.11"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.11"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Long">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.11/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1767;1793" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.11/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.12/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.12/@kOwnedTags.1" name="getURIFragment" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.12/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1825;1901" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.12"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.12"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.12/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.12/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1875;1901" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.12/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.13/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.13/@kOwnedTags.1" name="getWarnings" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.13/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1933;2007" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.13"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.13"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.13/@containedType.0/@containedType.0" typeIdentifier="OrderedSet">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.13/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;1981;2007" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.13/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.14/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.14/@kOwnedTags.1" name="isModified" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.14/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2039;2101" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.14"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.14"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.14/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2075;2101" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.14/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.15/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.15/@kOwnedTags.1" name="isTrackingModification" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.15/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2133;2207" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.15"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.15"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.15/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2181;2207" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.15/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.16/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.16/@kOwnedTags.1" name="setModified" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.16/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2239;2311" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.16"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.16"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.16/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.16/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2285;2311" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.16/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.17/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.17/@kOwnedTags.1" name="setTimeStamp" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.17/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2343;2413" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.17"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.17"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.17/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Long">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.17/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2387;2413" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.17/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.18/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.18/@kOwnedTags.1" name="setTrackingModification" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.18/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2445;2529" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.18"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.18"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.18/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.18/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2503;2529" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.18/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.19/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.19/@kOwnedTags.1" name="setURI" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.19/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2561;2623" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.19"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.19"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="uri" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.19/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="URI">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.19/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2597;2623" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.19/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.20/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.20/@kOwnedTags.1" name="eAdapters" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.20/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2655;2727" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.20"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.20"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.20/@containedType.0/@containedType.0" typeIdentifier="OrderedSet">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.20/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2701;2727" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.20/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.21/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.21/@kOwnedTags.1" name="eDeliver" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.21/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2759;2819" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.21"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.21"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.21/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2793;2819" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.21/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.22/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.22/@kOwnedTags.1" name="eSetDeliver" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.22/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2851;2916" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.22"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.22"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.22/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.22/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2897;2916" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.22/@body"/>
+          </body>
+        </ownedOperation>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@kOwnedTags.1 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@kOwnedTags.2" name="ResourceSet">
+        <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;2992;4324" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1"/>
+        <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1"/>
+        <kOwnedTags name="ScalaCompilerName" value="k2.persistence.ResourceSet" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1"/>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.0/@kOwnedTags.1" name="getResource" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.0/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3054;3142" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.0"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Resource">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.0/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <ownedParameter name="arg1" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.0/@ownedParameter.1/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.0/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3116;3142" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.0/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.1/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.1/@kOwnedTags.1" name="getResources" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.1/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3174;3251" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.1"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.1"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.1/@containedType.0/@containedType.0" typeIdentifier="OrderedSet">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Resource">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.1/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3225;3251" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.1/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.2/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.2/@kOwnedTags.1" name="getAllContents" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.2/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3283;3358" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.2"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.2"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.2/@containedType.0/@containedType.0" typeIdentifier="Iterator">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.2/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3332;3358" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.2/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.3/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.3/@kOwnedTags.1" name="getEObject" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.3/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3390;3475" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.3"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.3"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.3/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <ownedParameter name="arg1" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.3/@ownedParameter.1/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.3/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3449;3475" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.3/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.4/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.4/@kOwnedTags.1" name="createResource" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.4/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3507;3585" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.4"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.4"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Resource">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.4/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.4/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3559;3585" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.4/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.5/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.5/@kOwnedTags.1" name="createResource" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.5/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3617;3707" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.5"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.5"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Resource">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.5/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <ownedParameter name="arg1" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.5/@ownedParameter.1/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.5/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3681;3707" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.5/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.6/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.6/@kOwnedTags.1" name="getAdapterFactories" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.6/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3739;3821" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.6"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.6"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.6/@containedType.0/@containedType.0" typeIdentifier="OrderedSet">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.6/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3795;3821" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.6/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.7/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.7/@kOwnedTags.1" name="getLoadOptions" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.7/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3853;3930" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.7"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.7"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.7/@containedType.0/@containedType.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.7/@containedType.0/@containedType.1" typeIdentifier="Map">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.7/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3904;3930" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.7/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.8/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.8/@kOwnedTags.1" name="eAdapters" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.8/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;3962;4034" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.8"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.8"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" generics="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.8/@containedType.0/@containedType.0" typeIdentifier="OrderedSet">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Object">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.8/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;4008;4034" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.8/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.9/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.9/@kOwnedTags.1" name="eDeliver" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.9/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;4066;4126" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.9"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.9"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.9/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;4100;4126" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.9/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.10/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.10/@kOwnedTags.1" name="eSetDeliver" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.10/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;4158;4230" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.10"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.10"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <ownedParameter name="arg0" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.10/@ownedParameter.0/@containedType.0" isOrdered="true">
+            <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean">
+              <usings fromQName="^kermeta::standard::*" toName=""/>
+              <usings fromQName="^kermeta::utils::*" toName=""/>
+              <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+              <usings fromQName="^kermeta::exceptions::*" toName=""/>
+            </containedType>
+          </ownedParameter>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.10/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;4204;4230" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.10/@body"/>
+          </body>
+        </ownedOperation>
+        <ownedOperation kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.11/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.11/@kOwnedTags.1" name="resolveAllProxies" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.11/@containedType.0" isOrdered="true">
+          <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;4262;4321" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.11"/>
+          <kOwnedTags name="CompilerIgnore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.11"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+            <usings fromQName="^kermeta::standard::*" toName=""/>
+            <usings fromQName="^kermeta::utils::*" toName=""/>
+            <usings fromQName="^org::kermeta::language::structure::*" toName=""/>
+            <usings fromQName="^kermeta::exceptions::*" toName=""/>
+          </containedType>
+          <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.11/@body/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="jar:file:/udd/fcoulon/.m2/repository/org/kermeta/language/language.library.standard/2.0.99-SNAPSHOT/language.library.standard-2.0.99-SNAPSHOT.jar!/META-INF/kermeta/src/main/kmt/kermeta/emfpersistence/emfpersistence.kmt;4302;4321" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@ownedOperation.11/@body"/>
+          </body>
+        </ownedOperation>
+      </ownedTypeDefinition>
+    </nestedPackage>
+  </packages>
+</org_kermeta_language_structure:Metamodel>

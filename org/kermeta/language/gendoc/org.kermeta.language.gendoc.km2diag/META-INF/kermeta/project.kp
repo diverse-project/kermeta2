@@ -1,0 +1,13 @@
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/language.library.standard/2.0.99-SNAPSHOT"
+//importProject library_standard
+project kermeta_km2diag extends library_standard{
+	mainClass "kermeta_km2diag^mainPackage::DiagGenerator"
+	mainOperation "createDiag"
+
+	import "${project.baseUri}/src/main/kmt/DiagGenerator.kmt"
+	import "${project.baseUri}/src/main/kmt/VisitablePackage.kmt"
+	import "${project.baseUri}/src/main/kmt/GlumlyPackageGenerator.kmt"
+	import "${project.baseUri}/src/main/kmt/GlumlyClassGenerator.kmt"
+	import "${project.baseUri}/src/main/kmt/YumlPackageGenerator.kmt"
+	import "${project.baseUri}/src/main/kmt/YumlClassGenerator.kmt"
+}

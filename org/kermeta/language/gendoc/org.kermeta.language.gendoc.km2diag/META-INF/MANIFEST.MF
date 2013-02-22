@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1361467662900
+Build-Jdk: 1.6.0_24
+Built-By: fcoulon
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-ManifestVersion: 2
+Bundle-Name: org.kermeta.language.gendoc.km2diag
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-SymbolicName: org.kermeta.language.gendoc.km2diag
+Bundle-Vendor: IRISA/INRIA
+Bundle-Version: 2.0.99.SNAPSHOT_20130221_1826
+Created-By: Apache Maven Bundle Plugin
+Import-Package: k2.exceptions,k2.io,k2.persistence,k2.standard,k2.utils,
+ org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.e
+ mf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.resource,org.
+ kermeta.language.behavior;version="[2.0,3)",org.kermeta.language.behavi
+ or.impl;version="[2.0,3)",org.kermeta.language.structure;version="[2.0,
+ 3)",org.kermeta.language.structure.impl;version="[2.0,3)",org.kermeta.u
+ tils.helpers.emf,org.osgi.framework;version="[1.5,2)",scala,scala.colle
+ ction.immutable,scala.reflect,scala.runtime
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources
+Tool: Bnd-1.50.0

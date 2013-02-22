@@ -1,0 +1,159 @@
+using kermeta::standard::*
+using kermeta::io::StdIO => stdio
+using ^org::kermeta::language::structure::*
+using transform::*
+
+package GlumlyClassGenerator{
+	class GlumlyClassVisitor inherits Abstract_PackageVisitor	{
+	
+		attribute classContext : Set<String>
+		attribute fileContent : StringBuffer
+		attribute path : String
+		attribute outputFolderUrl : String
+	
+		operation setOutputfolder(ofp : String) : Void is do
+			self.outputFolderUrl := ofp
+		end
+
+
+		operation visitPackage (p: Package ): Void is do
+		
+			path := p.getQualifiedName().replaceAll("::","/")
+			
+			p.ownedTypeDefinition.each{ otd | 
+					otd.accept(self) 
+					}					
+			p.nestedPackage.each { subPack | subPack.accept(self) }		
+			
+		end
+	
+		operation visitTypeDefinition (td: TypeDefinition ): Void is do
+			//Nothing
+		end
+
+		operation visitClassDefinition (cd: ClassDefinition ): Void is do
+		
+			//neighbours classes
+			classContext := Set<String>.new
+		
+			fileContent := StringBuffer.new
+			fileContent.append("CO\t" + cd.name + "\torange\n")
+		
+			/*
+			 * First get all links with neighbours
+			 */
+			
+			classContext.add(cd.name)
+			 
+			//Inheritance
+			cd.superType.each{e| 
+						fileContent.append("H\t" + cd.name + "\t" + e.getTypeDef() + "\n") 
+						classContext.add(e.getTypeDef())
+					}
+					
+			//Properties
+			cd.ownedAttribute.each{oa |
+						oa.accept(self)
+						}
+						
+			/*
+			 * Then get all links between neighbours
+			 */
+			 
+			 var visitedElem : Set<String> := Set<String>.new
+			 visitedElem.add(cd.name)
+			 
+			 //Inheritance
+			cd.superType.each{e| 
+						if( e.isInstanceOf(org::kermeta::language::structure::Class)) then
+							var cl : Class := e.asType(org::kermeta::language::structure::Class) 
+							visitClass(cl)
+							visitedElem.add(cl.name)
+						end
+					}
+					
+			//Properties
+			cd.ownedAttribute.each{oa |
+						if( oa.type.isInstanceOf(org::kermeta::language::structure::Class)) then
+							var cl : Class := oa.type.asType(org::kermeta::language::structure::Class) 
+							//Do not 
+							if(not visitedElem.exists{elemName | elemName.equals(cl.name)}) then
+								visitClass(cl)
+								visitedElem.add(cl.name)
+							end
+						end
+					}
+					
+			/*
+			 * Store the result
+			 */
+			kermeta::io::FileIO.writeTextFile(("file:"+outputFolderUrl+"/"+path+"/"+cd.name+".txt").toURI(), fileContent.toString())
+		end
+		
+		operation visitProperty (p: Property ): Void is do
+			//We want assocation with classes only. Enumeration types for example will not appear.
+			if(p.type.isInstanceOf(org::kermeta::language::structure::Class)) then
+				
+				if(p.isComposite) then
+					fileContent.append("C\t" + p.owningClass.name + "\t" + p.type.getTypeDef() + "\n")
+				else
+					fileContent.append("S\t" + p.owningClass.name + "\t" + p.type.getTypeDef() + "\n")
+				end
+				
+				classContext.add(p.type.getTypeDef())
+			end			
+			
+		end
+		
+		operation visitType (t: Type ): Void is do
+			//Nothing
+		end
+		
+		/*
+		 * Get all links between the Class and the classContext
+		 */
+		operation visitClass (c: Class ): Void is do
+			classContext.each{cc |
+					//Inheritance
+					c.superClass.each{e| 
+								if( e.getTypeDef() == cc) then
+									fileContent.append("H\t" + c.name + "\t" + e.getTypeDef() + "\n") 
+								end
+							}
+							
+					//Properties
+					c.ownedAttribute.each{oa |
+								if(oa.type.getTypeDef() == cc) then
+									if(oa.isComposite) then
+										fileContent.append("C\t" + c.name + "\t" + oa.type.getTypeDef() + "\n")
+									else
+										fileContent.append("S\t" + c.name + "\t" + oa.type.getTypeDef() + "\n")
+									end
+								end
+							}
+					
+					}
+		end
+	}
+	
+	/*
+	 * Entry point
+	 */
+	class GlumlyClassTransform inherits Abstract_Transformation{
+	
+		attribute outputFolderUrl : String
+	
+		operation setOutputfolder(ofp : String) : Void is do
+			self.outputFolderUrl := ofp
+		end
+	
+		operation transform ( input : Abstract_VisitableElement ) : Object is do
+			var visitor : GlumlyClassVisitor := GlumlyClassVisitor.new
+			visitor.setOutputfolder(outputFolderUrl)
+			input.accept(visitor)
+			result := ""
+		
+		end
+	
+	}
+}
