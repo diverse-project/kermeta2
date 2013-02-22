@@ -7,7 +7,7 @@
         <version>2.0.99-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>language.gendoc.km2diag</artifactId>
+    <artifactId>org.kermeta.language.gendoc.km2diag</artifactId>
     <groupId>org.kermeta.language.gendoc</groupId>
     <packaging>bundle</packaging>
     <name>org.kermeta.language.gendoc.km2diag</name>
@@ -31,7 +31,7 @@
            <!-- Kermeta Compiler plugin -->
            <plugin>
                 <groupId>org.kermeta.kp</groupId>
-                <artifactId>kp.compiler.mavenplugin</artifactId>
+                <artifactId>org.kermeta.kp.compiler.mavenplugin</artifactId>
                 <version>${kermeta.version}</version>
                 <extensions>true</extensions>
                 <executions>
@@ -41,7 +41,7 @@
                         </goals>
                         <configuration>
                             <kp>project.kp</kp>
-                            <resourceOutputDirectory>${project.build.directory}/resources</resourceOutputDirectory>
+                            <resourceOutputDirectory>${basedir}/target/resources</resourceOutputDirectory>
                             <targetGroupId>${project.groupId}</targetGroupId>
                             <targetArtifactId>${project.artifactId}</targetArtifactId>
                             <stopAfterPhase>GENERATE_SCALA</stopAfterPhase>
@@ -228,12 +228,12 @@
     <dependencies>
     	<dependency>
             <groupId>org.kermeta.language</groupId>
-            <artifactId>language.model</artifactId>
+            <artifactId>org.kermeta.language.model</artifactId>
             <version>${kermeta.version}</version>
         </dependency>
     	<dependency>
     		<groupId>org.kermeta.language</groupId>
-    		<artifactId>language.library.core</artifactId>
+    		<artifactId>org.kermeta.language.library.core</artifactId>
     		<version>${kermeta.version}</version>
     	</dependency>
     	<!-- Add more dependencies here -->

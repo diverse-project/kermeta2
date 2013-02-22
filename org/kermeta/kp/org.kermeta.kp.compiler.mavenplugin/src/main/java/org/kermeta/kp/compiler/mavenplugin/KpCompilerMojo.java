@@ -95,7 +95,7 @@ public class KpCompilerMojo extends AbstractMojo {
     * The directory to place processor and generated resources files. 
     * for apt.
     *
-    * @parameter default-value="${project.build.directory}/generated-resources/kermeta"
+    * @parameter default-value="${basedir}/target/generated-resources/kermeta"
     */
    private File resourceOutputDirectory;
 
@@ -103,14 +103,14 @@ public class KpCompilerMojo extends AbstractMojo {
     * The directory root under which generated source files will be placed; files are placed in
     * subdirectories based on package namespace. 
     *
-    * @parameter default-value="${project.build.directory}/generated-sources/kermeta"
+    * @parameter default-value="${basedir}/target/generated-sources/kermeta"
     */
    private File sourceOutputDirectory;
    
    /**
     * The directory root under which generated class files will be placed;  
     *
-    * @parameter default-value="${project.build.directory}"
+    * @parameter default-value="${basedir}/target"
     */
    private File targetDirectory;
 
@@ -205,7 +205,7 @@ public class KpCompilerMojo extends AbstractMojo {
 	        
 	        String pluginVersion = "2.0.98";
 	        for( org.apache.maven.model.Plugin plugin : project.getBuildPlugins()){
-	        	if(plugin.getArtifactId().equals("kp.compiler.mavenplugin")){
+	        	if(plugin.getArtifactId().equals("org.kermeta.kp.compiler.mavenplugin")){
 	        		pluginVersion = plugin.getVersion();	        	
 	        	}
 	        }
@@ -217,15 +217,15 @@ public class KpCompilerMojo extends AbstractMojo {
 	        File compilerJarFile;
 	        try{
 		        compilerJarFile = aetherUtil.resolveMavenArtifact4J("org.kermeta.kp", 
-		        		"kp.compiler.commandline.standalone", 
+		        		"org.kermeta.kp.compiler.commandline.standalone", 
 		        		pluginVersion, 
 		        		repositoryList);
 	        }
 	        catch (Exception e){
-	        	this.getLog().info("kp.compiler.commandline.standalone not found using same version trying previous one." + e);
+	        	this.getLog().info("org.kermeta.kp.compiler.commandline.standalone not found using same version ("+pluginVersion+"). trying previous one." + e);
 	        	compilerJarFile = aetherUtil.resolveMavenArtifact4J("org.kermeta.kp", 
-		        		"kp.compiler.commandline.standalone", 
-		        		"2.0.6", 
+		        		"org.kermeta.kp.compiler.commandline.standalone", 
+		        		"2.0.98", 
 		        		repositoryList);
 	        }
 	        KevoreeJarClassLoader kjcl = new KevoreeJarClassLoader();
@@ -276,6 +276,8 @@ public class KpCompilerMojo extends AbstractMojo {
 	            paramsArray.add(stopAfterPhase);
 	            if(intermediateFilesRequired) paramsArray.add("-intermediate");
 	            if(!checkingEnabled) paramsArray.add("-ignoreCheck");
+	            paramsArray.add("-target");
+	            paramsArray.add(targetDirectory.getCanonicalPath());
 	            if(useDefaultClasspath){
 	            	paramsArray.add("-cp");
 	            	paramsArray.add(compilerJarFile.getAbsolutePath());

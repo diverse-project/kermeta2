@@ -83,7 +83,7 @@ public class KermetaCompilerCLI {
 		
 	public boolean run() throws IOException {
 		
-		String outputFolderPath = new File(DEFAULT_TARGET_FOLDER).getCanonicalPath();
+		String outputFolderPath = new File(outputFolder).getCanonicalPath();
 		compiler = new KermetaCompiler( true, new StdioSimpleMessagingSystem(), new SimpleLocalFileConverter(), false);
 		compiler.initializeTargetFolders(outputFolderPath, outputFolderPath, outputFolderPath+"/scala/", outputFolderPath+"/scalaclasses/", outputFolderPath+"/genmodel/", outputFolderPath+"/java/", outputFolderPath+"/emfclasses/", outputFolderPath+"/resources/");
 		ArrayList<String> classpath = new java.util.ArrayList<String>();

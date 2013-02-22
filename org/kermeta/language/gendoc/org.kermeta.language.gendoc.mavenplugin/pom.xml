@@ -8,7 +8,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
     <groupId>org.kermeta.language.gendoc</groupId>
-    <artifactId>language.gendoc.mavenplugin</artifactId>
+    <artifactId>org.kermeta.language.gendoc.mavenplugin</artifactId>
 	<version>2.0.99-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
     <name>language.gendoc.mavenplugin</name>
@@ -31,7 +31,7 @@
         </dependency>
         <dependency>
             <groupId>org.kermeta.language.gendoc</groupId>
-            <artifactId>language.gendoc.km2html</artifactId>
+            <artifactId>org.kermeta.language.gendoc.km2html</artifactId>
             <version>${project.version}</version>
             <!--<exclusions>
                 <exclusion>
@@ -69,8 +69,8 @@
         </dependency>
 		<dependency>
 			<groupId>org.kermeta.language.gendoc</groupId>
-			<artifactId>language.gendoc.km2diag</artifactId>
-			<version>2.0.99-SNAPSHOT</version>
+			<artifactId>org.kermeta.language.gendoc.km2diag</artifactId>
+			<version>${project.version}</version>
 			<type>bundle</type>
 		</dependency>
     </dependencies>

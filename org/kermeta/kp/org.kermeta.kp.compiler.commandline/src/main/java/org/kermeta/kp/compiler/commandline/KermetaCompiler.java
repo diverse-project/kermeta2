@@ -306,6 +306,14 @@ public class KermetaCompiler {
 		this.targetGeneratedEMFSourceFolder = targetGeneratedEMFSourceFolder;
 		this.targetEMFBinaryFolder = targetEMFBinaryFolder;
 		this.targetGeneratedResourcesFolder = targetGeneratedResourcesFolder;
+		logger.log(MessagingSystem.Kind.UserINFO, "targetRootFolder="+targetRootFolder , LOG_MESSAGE_GROUP);
+		logger.log(MessagingSystem.Kind.UserINFO, "targetIntermediateFolder="+targetIntermediateFolder , LOG_MESSAGE_GROUP);
+		logger.log(MessagingSystem.Kind.UserINFO, "targetGeneratedScalaSourceFolder="+targetGeneratedScalaSourceFolder , LOG_MESSAGE_GROUP);
+		logger.log(MessagingSystem.Kind.UserINFO, "targetScalaBinaryFolder="+targetScalaBinaryFolder , LOG_MESSAGE_GROUP);
+		logger.log(MessagingSystem.Kind.UserINFO, "targetGeneratedGenmodelFolder="+targetGeneratedGenmodelFolder , LOG_MESSAGE_GROUP);
+		logger.log(MessagingSystem.Kind.UserINFO, "targetGeneratedEMFSourceFolder="+targetGeneratedEMFSourceFolder , LOG_MESSAGE_GROUP);
+		logger.log(MessagingSystem.Kind.UserINFO, "targetEMFBinaryFolder="+targetEMFBinaryFolder , LOG_MESSAGE_GROUP);
+		logger.log(MessagingSystem.Kind.UserINFO, "targetGeneratedResourcesFolder="+targetGeneratedResourcesFolder , LOG_MESSAGE_GROUP);
 		
 	}
 
