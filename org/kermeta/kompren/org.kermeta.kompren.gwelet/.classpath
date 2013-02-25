@@ -19,5 +19,6 @@
 	<classpathentry kind="var" path="M2_REPO/org/malai/malai.core/0.2-SNAPSHOT/malai.core-0.2-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="/home/ablouin/.m2/repository/org/kermeta/kompren/kompren.diagram/2.0.9-SNAPSHOT/kompren.diagram-2.0.9-SNAPSHOT.jar" sourcepath="/org.kermeta.kompren.diagram"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="M2_REPO/org/malai/malai.swing/0.2-SNAPSHOT/malai.swing-0.2-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

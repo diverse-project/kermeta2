@@ -3,8 +3,8 @@ package org.kermeta.kompren.gwelet.instruments;
 import javax.swing.ImageIcon;
 
 import org.kermeta.kompren.gwelet.ui.MPieMenuButton;
-import org.malai.instrument.library.UndoRedoManager;
-import org.malai.ui.UIComposer;
+import org.malai.swing.instrument.library.UndoRedoManager;
+import org.malai.swing.ui.UIComposer;
 
 public class UndoRedoManagerGwelet extends UndoRedoManager {
 

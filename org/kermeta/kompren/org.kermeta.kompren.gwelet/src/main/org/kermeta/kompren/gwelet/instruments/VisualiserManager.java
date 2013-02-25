@@ -8,11 +8,11 @@ import org.kermeta.kompren.gwelet.actions.SetVisibleComponent;
 import org.kermeta.kompren.gwelet.ui.MPieMenu;
 import org.kermeta.kompren.gwelet.view.MetamodelView;
 import org.malai.instrument.Link;
-import org.malai.instrument.WidgetInstrument;
 import org.malai.interaction.library.Press;
-import org.malai.ui.UIComposer;
-import org.malai.widget.MLayeredPane;
-import org.malai.widget.MScrollPane;
+import org.malai.swing.instrument.WidgetInstrument;
+import org.malai.swing.ui.UIComposer;
+import org.malai.swing.widget.MLayeredPane;
+import org.malai.swing.widget.MScrollPane;
 
 public class VisualiserManager extends WidgetInstrument {
 	protected MPieMenu menu;

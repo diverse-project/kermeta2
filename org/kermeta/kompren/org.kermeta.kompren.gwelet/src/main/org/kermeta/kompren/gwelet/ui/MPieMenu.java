@@ -17,7 +17,7 @@ import javax.swing.AbstractButton;
 import javax.swing.JComponent;
 import javax.swing.border.Border;
 
-import org.malai.widget.MPanel;
+import org.malai.swing.widget.MPanel;
 
 public class MPieMenu extends MPanel {
 	private static final long serialVersionUID = 1L;

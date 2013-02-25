@@ -18,17 +18,17 @@ import org.kermeta.kompren.gwelet.model.Model;
 import org.kermeta.kompren.gwelet.view.ClassModelBasicStrategy;
 import org.kermeta.kompren.gwelet.view.MetamodelView;
 import org.kermeta.kompren.gwelet.view.ModelViewMapper;
-import org.malai.action.library.MoveCamera;
 import org.malai.instrument.Instrument;
-import org.malai.instrument.library.BasicZoomer;
-import org.malai.instrument.library.Scroller;
-import org.malai.instrument.library.UndoRedoManager;
 import org.malai.mapping.MappingRegistry;
 import org.malai.presentation.Presentation;
-import org.malai.ui.UI;
-import org.malai.ui.UIManager;
-import org.malai.widget.MLayeredPane;
-import org.malai.widget.MToolBar;
+import org.malai.swing.action.library.MoveCamera;
+import org.malai.swing.instrument.library.BasicZoomer;
+import org.malai.swing.instrument.library.Scroller;
+import org.malai.swing.instrument.library.UndoRedoManager;
+import org.malai.swing.ui.UI;
+import org.malai.swing.ui.UIManager;
+import org.malai.swing.widget.MLayeredPane;
+import org.malai.swing.widget.MToolBar;
 
 public class GweletFrame extends UI {
 	private static final long serialVersionUID = 1L;

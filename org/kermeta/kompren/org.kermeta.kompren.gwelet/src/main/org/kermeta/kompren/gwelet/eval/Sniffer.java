@@ -11,8 +11,8 @@ import org.kermeta.kompren.gwelet.view.MetamodelView;
 import org.malai.action.Action;
 import org.malai.action.ActionHandler;
 import org.malai.action.ActionsRegistry;
-import org.malai.action.library.Scroll;
 import org.malai.action.library.Zoom;
+import org.malai.swing.action.library.Scroll;
 import org.malai.undo.Undoable;
 
 public class Sniffer implements ActionHandler {

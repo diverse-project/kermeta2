@@ -4,9 +4,9 @@ import org.kermeta.kompren.gwelet.actions.ReinitView;
 import org.kermeta.kompren.gwelet.ui.MPieMenuButton;
 import org.kermeta.kompren.gwelet.view.MetamodelView;
 import org.malai.instrument.Link;
-import org.malai.instrument.WidgetInstrument;
-import org.malai.interaction.library.ButtonPressed;
-import org.malai.ui.UIComposer;
+import org.malai.swing.instrument.WidgetInstrument;
+import org.malai.swing.interaction.library.ButtonPressed;
+import org.malai.swing.ui.UIComposer;
 
 public class ViewReiniter extends WidgetInstrument {
 	protected MPieMenuButton reinit;
