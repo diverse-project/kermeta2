@@ -2,6 +2,7 @@ package org.kermeta.kompren.gwelet.instruments;
 
 import java.awt.Dimension;
 
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -154,7 +155,8 @@ public class Visualiser extends WidgetInstrument {
 
 		@Override
 		public boolean isConditionRespected() {
-			return interaction.getButton()==instrument.pruning;
+			final AbstractButton but = interaction.getButton();
+			return but==instrument.pruning || but==instrument.superClasses || but==instrument.lowerClasses || but==instrument.flat;
 		}
 	}
 
