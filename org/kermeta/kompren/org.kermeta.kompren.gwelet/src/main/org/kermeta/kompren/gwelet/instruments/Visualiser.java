@@ -2,6 +2,7 @@ package org.kermeta.kompren.gwelet.instruments;
 
 import java.awt.Dimension;
 
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -17,10 +18,10 @@ import org.kermeta.kompren.gwelet.view.ClassView;
 import org.kermeta.kompren.gwelet.view.ModelViewMapper;
 import org.kermeta.kompren.gwelet.visualisation.GweletSlicer;
 import org.malai.instrument.Link;
-import org.malai.instrument.WidgetInstrument;
-import org.malai.interaction.library.ButtonPressed;
-import org.malai.ui.UIComposer;
-import org.malai.widget.MSpinner;
+import org.malai.swing.instrument.WidgetInstrument;
+import org.malai.swing.interaction.library.ButtonPressed;
+import org.malai.swing.ui.UIComposer;
+import org.malai.swing.widget.MSpinner;
 
 public class Visualiser extends WidgetInstrument {
 
@@ -154,7 +155,8 @@ public class Visualiser extends WidgetInstrument {
 
 		@Override
 		public boolean isConditionRespected() {
-			return interaction.getButton()==instrument.pruning;
+			final AbstractButton but = interaction.getButton();
+			return but==instrument.pruning || but==instrument.superClasses || but==instrument.lowerClasses || but==instrument.flat;
 		}
 	}
 

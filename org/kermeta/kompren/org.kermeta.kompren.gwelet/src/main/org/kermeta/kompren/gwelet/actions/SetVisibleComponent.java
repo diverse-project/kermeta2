@@ -1,6 +1,6 @@
 package org.kermeta.kompren.gwelet.actions;
 
-import org.malai.action.library.SetWidgetPosition;
+import org.malai.swing.action.library.SetWidgetPosition;
 
 public class SetVisibleComponent extends SetWidgetPosition {
 	protected boolean visible;

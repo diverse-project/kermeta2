@@ -74,5 +74,10 @@
             <artifactId>malai.core</artifactId>
             <version>0.2-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.malai</groupId>
+            <artifactId>malai.swing</artifactId>
+            <version>0.2-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

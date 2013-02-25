@@ -25,7 +25,7 @@ import org.malai.mapping.ActiveArrayList;
 import org.malai.mapping.IActiveList;
 import org.malai.picking.Pickable;
 import org.malai.picking.Picker;
-import org.malai.widget.MPanel;
+import org.malai.swing.widget.MPanel;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

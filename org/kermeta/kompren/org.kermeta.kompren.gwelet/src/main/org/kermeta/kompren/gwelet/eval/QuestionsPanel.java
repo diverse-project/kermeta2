@@ -25,7 +25,7 @@ import javax.swing.SwingUtilities;
 
 import org.kermeta.kompren.gwelet.actions.ReinitView;
 import org.kermeta.kompren.gwelet.ui.GweletFrame;
-import org.malai.widget.MToolBar;
+import org.malai.swing.widget.MToolBar;
 
 public class QuestionsPanel extends JPanel {
 	public static final TypeEval TYPE_EVAL = TypeEval.WITH_VISU_TOOLS;

@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.swing.KeyStroke;
 
-import org.malai.widget.MMenuItem;
-import org.malai.widget.MPopupMenu;
-import org.malai.widget.MTextField;
+import org.malai.swing.widget.MMenuItem;
+import org.malai.swing.widget.MPopupMenu;
+import org.malai.swing.widget.MTextField;
 
 public class TextFieldCompletion extends MTextField {
 	private static final long serialVersionUID = 1L;

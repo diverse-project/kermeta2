@@ -10,11 +10,11 @@ import org.kermeta.kompren.diagram.action.MoveElement;
 import org.kermeta.kompren.diagram.action.SelectElement;
 import org.kermeta.kompren.diagram.view.interfaces.IModelView;
 import org.kermeta.kompren.diagram.view.interfaces.Selectable;
-import org.malai.action.library.MoveCamera;
 import org.malai.instrument.Instrument;
 import org.malai.instrument.Link;
 import org.malai.interaction.library.DnD;
 import org.malai.interaction.library.Press;
+import org.malai.swing.action.library.MoveCamera;
 
 public class Hand extends Instrument {
 	protected IModelView canvas;

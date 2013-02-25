@@ -25,17 +25,17 @@ import org.kermeta.kompren.gwelet.view.ClassView;
 import org.kermeta.kompren.gwelet.view.MetamodelView;
 import org.kermeta.kompren.gwelet.view.ModelViewMapper;
 import org.kermeta.language.structure.ClassDefinition;
-import org.malai.action.library.MoveCamera;
 import org.malai.instrument.Link;
-import org.malai.instrument.WidgetInstrument;
-import org.malai.instrument.library.BasicZoomer;
 import org.malai.interaction.Interaction;
 import org.malai.interaction.library.KeyPressure;
-import org.malai.interaction.library.MenuItemPressed;
 import org.malai.interaction.library.Press;
-import org.malai.interaction.library.TextChanged;
-import org.malai.ui.UIComposer;
-import org.malai.widget.MPopupMenu;
+import org.malai.swing.action.library.MoveCamera;
+import org.malai.swing.instrument.WidgetInstrument;
+import org.malai.swing.instrument.library.BasicZoomer;
+import org.malai.swing.interaction.library.MenuItemPressed;
+import org.malai.swing.interaction.library.TextChanged;
+import org.malai.swing.ui.UIComposer;
+import org.malai.swing.widget.MPopupMenu;
 
 public class Completioner extends WidgetInstrument {
 	protected TextFieldCompletion textField;
