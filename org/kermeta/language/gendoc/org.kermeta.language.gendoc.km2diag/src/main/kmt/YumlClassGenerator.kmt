@@ -94,9 +94,9 @@ package YumlClassGenerator{
 			if(p.type.isInstanceOf(org::kermeta::language::structure::Class)) then
 				
 				if(p.isComposite) then
-					fileContent.append("[" + p.owningClass.name + "]" + "++->[" + p.type.getTypeDef() + "],")
+					fileContent.append("[" + p.owningClass.name + "]" + "++-"+p.name+">[" + p.type.getTypeDef() + "],")
 				else
-					fileContent.append("[" + p.owningClass.name + "]" + "->[" + p.type.getTypeDef() + "],")
+					fileContent.append("[" + p.owningClass.name + "]" + "-"+p.name+">[" + p.type.getTypeDef() + "],")
 				end
 				
 				classContext.add(p.type.getTypeDef())
