@@ -12,7 +12,7 @@
 	<artifactId>org.kermeta.language.test.master</artifactId>
 	<packaging>pom</packaging>
 	<version>${kermeta.version}</version>
-	<name>org.kermeta.language.test._test_master :: test modules for kermeta language</name>
+	<name>org.kermeta.language.test.test_master :: tested modules for kermeta language</name>
 
 	<parent>
 		<artifactId>org.kermeta.language.root</artifactId>
