@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
-		<artifactId>language.root</artifactId>
+		<artifactId>org.kermeta.language.root</artifactId>
 		<groupId>org.kermeta.language</groupId>
 		<version>2.0.99-SNAPSHOT</version>
 	</parent>
@@ -10,14 +10,14 @@
 		<properties> <kermeta.version>2.0.99-SNAPSHOT</kermeta.version> <art2.version>2.2.1-beta2</art2.version> 
 		</properties> -->
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>language.merger.binarymerger</artifactId>
+	<artifactId>org.kermeta.language.merger.binarymerger</artifactId>
 	<packaging>jar</packaging>
-	<name>language.merger.binarymerger :: binary merger for Kermeta 2</name>
+	<name>org.kermeta.language.merger.binarymerger :: binary merger for Kermeta 2</name>
 
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>language.model</artifactId>
+			<artifactId>org.kermeta.language.model</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<dependency>
@@ -52,7 +52,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.merger.binarymerger.api</artifactId>
+			<artifactId>org.kermeta.language.merger.binarymerger.api</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<!-- <dependency> <groupId>org.kermeta.language</groupId> <artifactId>language.api.tests</artifactId> 
@@ -63,12 +63,6 @@
 		
 		
 		
-		<dependency>
-			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.helper.tests</artifactId>
-			<version>${kermeta.version}</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -88,7 +82,7 @@
 						<configuration>
 							<model>src/generated/km/km_BinaryMerger.km</model>
 							<targetGroupId>${project.groupId}</targetGroupId>
-							<targetArtifactId>${project.artifactId}</targetArtifactId>
+							<targetArtifactId>language.merger.binarymerger</targetArtifactId>
 						</configuration>
 					</execution>
 				</executions>
@@ -143,7 +137,7 @@
 					<archive>
 						<!-- <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile> -->
 						<manifestEntries>
-							<Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName>
+							<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 							<Bundle-Name>${project.name}</Bundle-Name>
 							<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
 							<Bundle-Version>${bundle.version}</Bundle-Version>

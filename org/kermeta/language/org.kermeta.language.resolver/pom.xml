@@ -1,19 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <artifactId>language.root</artifactId>
+        <artifactId>org.kermeta.language.root</artifactId>
         <groupId>org.kermeta.language</groupId>
         <version>2.0.99-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>language.resolver</artifactId>
+    <artifactId>org.kermeta.language.resolver</artifactId>
     <packaging>jar</packaging>
-    <name>language.resolver :: resolving and static setting</name>
+    <name>org.kermeta.language.resolver :: resolving and static setting</name>
 
     <dependencies>    
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>language.model</artifactId>
+            <artifactId>org.kermeta.language.model</artifactId>
             <version>${kermeta.version}</version>
         </dependency>
         <dependency>
@@ -34,7 +34,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>language.resolver.api</artifactId>
+            <artifactId>org.kermeta.language.resolver.api</artifactId>
             <version>${kermeta.version}</version>
         </dependency> 
 		<dependency>
@@ -74,7 +74,7 @@
                         <configuration>
                             <model>src/generated/km/NewStaticResolver.km</model>
                             <targetGroupId>${project.groupId}</targetGroupId>
-                            <targetArtifactId>${project.artifactId}</targetArtifactId>
+                            <targetArtifactId>language.resolver</targetArtifactId>
                         </configuration>
                     </execution>
                 </executions>
@@ -118,7 +118,7 @@
 		        <configuration>
 		          <archive>
 		            <manifestEntries>
-			            <Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName>
+			            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
 						<Bundle-Version>${bundle.version}</Bundle-Version>

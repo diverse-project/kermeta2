@@ -9,7 +9,7 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-    <name>language.loader.kmt.scala :: Lexer and KMT files loader</name>
+    <name>org.kermeta.language.loader.kmt.scala :: Lexer and KMT files loader</name>
     <artifactId>org.kermeta.language.loader.kmt.scala</artifactId>
 
     <parent>
@@ -63,8 +63,8 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
-                            <Bundle-Name>org.kermeta.${project.artifactId}</Bundle-Name>
+                            <Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
+                            <Bundle-Name>${project.artifactId}</Bundle-Name>
 		                    <Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
 							<Bundle-Version>${bundle.version}</Bundle-Version>
                             <Manifest-Version>1.0</Manifest-Version>
@@ -113,7 +113,7 @@
 			    <configuration>
 			      <downloadSources>true</downloadSources>
 			      <downloadJavadocs>true</downloadJavadocs>
-			      <projectNameTemplate>org.kermeta.[artifactId]</projectNameTemplate>
+			      <projectNameTemplate>[artifactId]</projectNameTemplate>
 			      <projectnatures>
 			        <projectnature>org.scala-ide.sdt.core.scalanature</projectnature>
 			        <projectnature>org.eclipse.jdt.core.javanature</projectnature>

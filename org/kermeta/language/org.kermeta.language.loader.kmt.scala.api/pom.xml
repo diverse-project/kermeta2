@@ -21,7 +21,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.parent.groupId}</groupId>
-			<artifactId>language.model</artifactId>
+			<artifactId>org.kermeta.language.model</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<dependency>
@@ -41,8 +41,8 @@
 				<configuration>
 		          <archive>
 		            <manifestEntries>
-						<Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Name>org.kermeta.${project.artifactId}</Bundle-Name>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
 						<Bundle-Version>${bundle.version}</Bundle-Version>
 						<Manifest-Version>1.0</Manifest-Version>

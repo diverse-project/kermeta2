@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
-		<artifactId>language.root</artifactId>
+		<artifactId>org.kermeta.language.root</artifactId>
 		<groupId>org.kermeta.language</groupId>
 		<version>2.0.99-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>language.ecore2km</artifactId>
+	<artifactId>org.kermeta.language.ecore2km</artifactId>
 	<packaging>jar</packaging>
-	<name>language.ecore2km :: Ecore to Kermeta 2 converter</name>
+	<name>org.kermeta.language.ecore2km :: Ecore to Kermeta 2 converter</name>
 
 	<dependencies>
 		<dependency>
@@ -19,7 +19,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>language.model</artifactId>
+			<artifactId>org.kermeta.language.model</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<dependency>
@@ -47,7 +47,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>language.ecore2km.api</artifactId>
+			<artifactId>org.kermeta.language.ecore2km.api</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<dependency>
@@ -130,7 +130,7 @@
 							<manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
 						-->
 						<manifestEntries>
-							<Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName>
+							<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 							<Bundle-Name>${project.name}</Bundle-Name>
 							<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
 							<Bundle-Version>${bundle.version}</Bundle-Version>

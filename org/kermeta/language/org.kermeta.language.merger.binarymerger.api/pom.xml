@@ -8,11 +8,11 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>jar</packaging>
-	<name>language.merger.binarymerger.api :: API for KM binary merger</name>
-	<artifactId>language.merger.binarymerger.api</artifactId>
+	<name>org.kermeta.language.merger.binarymerger.api :: API for KM binary merger</name>
+	<artifactId>org.kermeta.language.merger.binarymerger.api</artifactId>
 
     <parent>
-        <artifactId>language.root</artifactId>
+        <artifactId>org.kermeta.language.root</artifactId>
         <groupId>org.kermeta.language</groupId>
         <version>2.0.99-SNAPSHOT</version>
     </parent>
@@ -20,7 +20,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.parent.groupId}</groupId>
-			<artifactId>language.model</artifactId>
+			<artifactId>org.kermeta.language.model</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<dependency>
@@ -40,8 +40,8 @@
 				<configuration>
 		          <archive>
 		            <manifestEntries>
-						<Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Name>org.kermeta.${project.artifactId}</Bundle-Name>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Name>${project.artifactId}</Bundle-Name>
 						<Bundle-Version>${bundle.version}</Bundle-Version>
 						<Manifest-Version>1.0</Manifest-Version>
 						<Bundle-ManifestVersion>2</Bundle-ManifestVersion>

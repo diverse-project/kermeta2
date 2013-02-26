@@ -38,7 +38,7 @@
 				<configuration>
 		          <archive>
 		            <manifestEntries>
-						<Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Name>org.kermeta.${project.artifactId}</Bundle-Name>
 						<Bundle-Version>${bundle.version}</Bundle-Version>
 						<Manifest-Version>1.0</Manifest-Version>

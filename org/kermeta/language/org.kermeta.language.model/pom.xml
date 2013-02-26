@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.kermeta.language.model</artifactId>
     <packaging>bundle</packaging>
-    <name>language.model :: Kermeta2 model</name>
+    <name>org.kermeta.language.model :: Kermeta2 model</name>
     
     <parent>
         <groupId>org.kermeta</groupId>
