@@ -471,17 +471,20 @@ public class ModelView extends MPanel implements IModelView {
 		final double y2 = y/zoom;
 		Pickable pk = null;
 		IEntityView ent;
+		IRelationView rel;
 
-		for(int i=0, size=entities.size(); i<size && pk==null; i++) {
-			ent = entities.get(i);
-			if(ent.isSelectable() && ent.contains(x2, y2))
-				pk = ent;
+		for(int i=relations.size()-1; i>=0 && pk==null; i--) {
+			rel = relations.get(i);
+			if(rel.isVisible() && !rel.isOptimHidden() && rel.contains(x2, y2))
+				pk = relations.get(i);
 		}
-
+		
 		if(pk==null)
-			for(int i=0, size=relations.size(); i<size && pk==null; i++)
-				if(relations.get(i).isVisible() && relations.get(i).contains(x2, y2))
-					pk = relations.get(i);
+			for(int i=entities.size()-1; i>=0 && pk==null; i--) {
+				ent = entities.get(i);
+				if(ent.isSelectable() && ent.contains(x2, y2))
+					pk = ent;
+			}
 
 		return pk;
 	}
