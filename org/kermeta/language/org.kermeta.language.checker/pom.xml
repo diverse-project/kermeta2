@@ -2,8 +2,8 @@
 
   	<modelVersion>4.0.0</modelVersion>
   	<packaging>jar</packaging>
-  	<name>language.checker :: K2 Checker</name>
-  	<artifactId>language.checker</artifactId>
+  	<name>org.kermeta.language.checker :: K2 Checker</name>
+  	<artifactId>org.kermeta.language.checker</artifactId>
 
     <parent>
         <artifactId>language.root</artifactId>
@@ -14,7 +14,7 @@
     <dependencies>
     	<dependency>
 			<groupId>${project.parent.groupId}</groupId>
-			<artifactId>language.checker.api</artifactId>
+			<artifactId>org.kermeta.language.checker.api</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<dependency>
@@ -76,7 +76,7 @@
 						<configuration>
 							<model>src/generated/km/MainChecker.km</model>
 							<targetGroupId>${project.groupId}</targetGroupId>
-							<targetArtifactId>${project.artifactId}</targetArtifactId>
+							<targetArtifactId>language.checker</targetArtifactId>
 						</configuration>
 					</execution>
 				</executions>

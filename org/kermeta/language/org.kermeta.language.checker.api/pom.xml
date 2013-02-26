@@ -2,7 +2,7 @@
   	<modelVersion>4.0.0</modelVersion>
   	<packaging>jar</packaging>
   	<name>language.checker.api :: API for K2 Checker</name>
-  	<artifactId>language.checker.api</artifactId>
+  	<artifactId>org.kermeta.language.checker.api</artifactId>
 
     <parent>
         <artifactId>language.root</artifactId>
