@@ -9,7 +9,7 @@
     <artifactId>org.kermeta.language.km2bytecode</artifactId>
     <version>2.0.99-SNAPSHOT</version>
     <packaging>bundle</packaging>
-    <name>org.kermeta.language.km2bytecode :: compilo v2</name>
+    <name>language.km2bytecode :: compilo v2</name>
     
     <dependencies>
         <dependency>

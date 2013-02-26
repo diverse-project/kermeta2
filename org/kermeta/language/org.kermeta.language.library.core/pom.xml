@@ -5,7 +5,7 @@
     <groupId>org.kermeta.language</groupId>
     <artifactId>org.kermeta.language.library.core</artifactId>
     <packaging>jar</packaging>
-    <name>Kermeta :: Library :: Core</name>
+    <name>language.library.core</name>
 
     <parent>
         <groupId>org.kermeta</groupId>

@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.kermeta.language.model.edit</artifactId>
     <packaging>bundle</packaging>
-    <name>org.kermeta.language.model.edit :: Kermeta2 model edit</name>
+    <name>language.model.edit :: Kermeta2 model edit</name>
     
     <parent>
         <groupId>org.kermeta.language</groupId>
