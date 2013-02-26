@@ -151,8 +151,10 @@ public abstract class EntityView extends ComponentView implements IEntityView {
 			return closestAnch;
 
 		// Cannot create an anchor if we do not have two anchors.
-		if(anchors.size()<2)
+		if(anchors.size()<2) {
+			System.err.println("Less than 2 anchors: " + this);
 			return null;
+		}
 
 		// Creating a new free anchor.
 		IAnchor secondAnchor = posClosestAnchor<nbAnchors-1 ? anchors.get(posClosestAnchor+1) : null;

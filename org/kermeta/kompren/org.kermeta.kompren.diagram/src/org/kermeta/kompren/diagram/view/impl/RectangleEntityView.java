@@ -7,30 +7,12 @@ import java.awt.geom.Rectangle2D;
 import org.kermeta.kompren.diagram.view.interfaces.IAnchor;
 
 public abstract class RectangleEntityView extends EntityView {
-
+	/** The min gap between two side by side anchors. */
+	public static final int GAP_MIN_ANCHOR = 35;
+	
+	
 	public RectangleEntityView(final String name) {
 		super(name);
-	}
-
-
-	protected void updateAnchorsPosition(final Rectangle2D oldBorders) {
-		final Rectangle2D borders = path.getBounds2D();
-		Point2D pos;
-		final double minX = borders.getMinX();
-		final double minY = borders.getMinY();
-		final double tx = minX-oldBorders.getMinX();
-		final double ty = minY-oldBorders.getMinY();
-		final double sx = borders.getWidth()/oldBorders.getWidth();
-		final double sy = borders.getHeight()/oldBorders.getHeight();
-
-		for(final IAnchor anchor : anchors) {
-			// Moving the anchors to the new position of the borders.
-			anchor.translate(tx, ty);
-			// Scaling the position of the anchor in function of the difference of dimensions between the former border
-			// and the new border.
-			pos = anchor.getPosition();
-			pos.setLocation(minX + (pos.getX()-minX)*sx, minY + (pos.getY()-minY)*sy);
-		}
 	}
 
 
@@ -70,12 +52,37 @@ public abstract class RectangleEntityView extends EntityView {
 		IAnchor anchor;
 		final Point2D pos1 = firstAnchor.getPosition();
 		final Point2D pos2 = secondAnchor.getPosition();
+		double value;
+		double diff;
+		
+		if(Number.NUMBER.equals(pos1.getY(), pos2.getY())) {
+			value = (pos1.getX()+pos2.getX())/2.;
+			anchor = new Anchor(value, pos1.getY());
+			diff = Math.abs(value-pos1.getX());
+			
+			if(diff<GAP_MIN_ANCHOR) {
+				double dec = GAP_MIN_ANCHOR-diff;
+				for(IAnchor anc : anchors)
+					if(anc.getPosition().getX()<value)
+						 anc.translate(-dec, 0.);
+					else anc.translate(dec, 0.);
+			}
+		}
+		else {
+			value = (pos1.getY()+pos2.getY())/2.;
+			anchor = new Anchor(pos1.getX(), value);
+			diff = Math.abs(value-pos1.getY());
+			
+			if(diff<GAP_MIN_ANCHOR) {
+				double dec = GAP_MIN_ANCHOR-diff;
+				for(IAnchor anc : anchors)
+					if(anc.getPosition().getY()<value)
+						 anc.translate(0., -dec);
+					else anc.translate(0., dec);
+			}
+		}
 
-		if(Number.NUMBER.equals(pos1.getY(), pos2.getY()))
-			anchor = new Anchor((pos1.getX()+pos2.getX())/2., pos1.getY());
-		else
-			anchor = new Anchor(pos1.getX(), (pos1.getY()+pos2.getY())/2.);
-
+		// Inserting the new anchor.
 		int index = anchors.indexOf(firstAnchor);
 
 		if(index==anchors.size()-1)

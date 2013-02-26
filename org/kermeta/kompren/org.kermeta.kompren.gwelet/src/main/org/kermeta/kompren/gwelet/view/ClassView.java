@@ -10,11 +10,14 @@ import java.awt.Stroke;
 import java.awt.font.TextLayout;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.kermeta.kompren.diagram.view.impl.Number;
 import org.kermeta.kompren.diagram.view.impl.RectangleEntityView;
+import org.kermeta.kompren.diagram.view.interfaces.IAnchor;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 import org.malai.picking.Picker;
@@ -187,9 +190,46 @@ public class ClassView extends RectangleEntityView {
 
 				dim.height += op.getHeight()+HEIGHT_GAP;
 			}
-
-		dim.width  = (int) (Math.max(dim.width, 30)*scale) ;//+ sizeSupp;
-		dim.height = (int) (Math.max(dim.height, 20)*scale) ;//+ sizeSupp;
+		
+		double minx = Double.MAX_VALUE;
+		double maxx = Double.MIN_VALUE;
+		double miny = Double.MAX_VALUE;
+		double maxy = Double.MIN_VALUE;
+		Point2D pt;
+		
+		for(IAnchor anchor : anchors) {
+			pt = anchor.getPosition();
+			if(pt.getX()<minx) 	minx = pt.getX();
+			if(pt.getX()>maxx)	maxx = pt.getX();
+			if(pt.getY()<miny) 	miny = pt.getY();
+			if(pt.getY()>maxy)	maxy = pt.getY();
+		}
+		
+		if(maxx-minx>=dim.width*scale)
+			dim.width = (int) ((maxx-minx)/scale);
+		else
+			// If the bowing box of the anchors is smaller than the real boxing box of the class, 
+			// the anchors must be moved to the border of the class.
+			for(IAnchor anchor : anchors) {
+				pt = anchor.getPosition();
+				if(Number.NUMBER.equals(pt.getX(), minx))
+						pt.setLocation(centre.x-dim.width/2., pt.getY());
+				else if(Number.NUMBER.equals(pt.getX(), maxx))
+					pt.setLocation(centre.x+dim.width/2., pt.getY());
+			}
+		if(maxy-miny>=dim.height*scale)
+			dim.height = (int) ((maxy-miny)/scale);
+		else
+			for(IAnchor anchor : anchors) {
+				pt = anchor.getPosition();
+				if(Number.NUMBER.equals(pt.getY(), miny))
+					pt.setLocation(pt.getX(), centre.y-dim.height/2.);
+				else if(Number.NUMBER.equals(pt.getY(), maxy))
+					pt.setLocation(pt.getX(), centre.y+dim.height/2.);
+			}
+		
+		dim.width  = (int) (Math.max(dim.width, 30)*scale);
+		dim.height = (int) (Math.max(dim.height, 20)*scale);
 
 		return dim;
 	}
@@ -218,6 +258,7 @@ public class ClassView extends RectangleEntityView {
 	}
 
 
+
 	@Override
 	public void paint(final Graphics2D g, final Rectangle visibleScene) {
 		if(!isVisible()) return ;
@@ -235,23 +276,23 @@ public class ClassView extends RectangleEntityView {
 			g.draw(path);
 			g.setStroke(BASIC_STROKE);
 			g.setColor(Color.BLACK);
-			g.setFont(getTitleFont());
+			g.setFont(getTitleFont());//FIXME: use of getPreferredSize, performance
 			g.drawString(name, (float)centre.x-textWidth/2, (float)centre.y-getPreferredSize().height/2+textHeight+(textHeaderHeight-textHeight)/2);
 			g.setFont(getFont());
 
+			if(propertiesVisible)
+				for(AttributeView attr : attributes)
+					attr.paint(g, visibleScene);
+
+			if(operationsVisible)
+				for(OperationView op : operations)
+					op.paint(g, visibleScene);
+
+//			for(IAnchor anchor : anchors)
+//				anchor.paint(g);
+			
 			isOptimHidden = false;
 		} else isOptimHidden = true;
-
-		if(propertiesVisible)
-			for(AttributeView attr : attributes)
-				attr.paint(g, visibleScene);
-
-		if(operationsVisible)
-			for(OperationView op : operations)
-				op.paint(g, visibleScene);
-
-//		for(IAnchor anchor : anchors)
-//			anchor.paint(g);
 	}
 
 
@@ -272,7 +313,6 @@ public class ClassView extends RectangleEntityView {
 
 	@Override
 	public void update() {
-		final Rectangle2D oldBorders	= path.getBounds2D();
 		final Dimension dim    			= getPreferredSize();
 		final Rectangle2D titleBounds 	= getTitleBounds();
 		int textHeight  				= (int) titleBounds.getHeight();
@@ -311,10 +351,8 @@ public class ClassView extends RectangleEntityView {
 			}
 		}
 
-		updateAnchorsPosition(oldBorders);
 		bound = path.getBounds();
 	}
-
 
 
 	private static void updateBoundPath(final GeneralPath path, final double width, final double height, final double cx, final double cy) {

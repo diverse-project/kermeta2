@@ -2,8 +2,10 @@ package org.kermeta.kompren.gwelet.view;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+import org.kermeta.kompren.diagram.view.impl.Line;
 import org.kermeta.kompren.diagram.view.impl.RelationView;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.kermeta.kompren.gwelet.view.RoleView.Cardinality;
@@ -46,6 +48,33 @@ public class RelationClassView extends RelationView {
 
 		if(targetRole!=null && targetRole.length()>0 && targetCard!=null)
 			roleTar = new RoleView(targetRole, targetCard, this, true, isComposition && compositionAtStart);
+	}
+	
+	
+	
+	protected void getRecursiveRelationPoints(final Point2D pt1, final Point2D pt2) {//FIXME only works with rectangle entities. Code clean-up.
+		final Rectangle2D rec  = entitySrc.getBorders();
+		final double heightArrow = rec.getHeight()>20. ? 15. : rec.getHeight()/2. - 2.;
+		
+//		if(entitySrc.getName().equals("Class"))
+//			System.out.println(rec + " " + heightArrow + " " + entitySrc.getX() + " " + entitySrc.getY());
+		
+		final Line l1 = new Line(new Point2D.Double(entitySrc.getX()-300, entitySrc.getY()-heightArrow),
+							new Point2D.Double(entitySrc.getX(), entitySrc.getY()-heightArrow));
+		final Line l2 = new Line(new Point2D.Double(entitySrc.getX()-300, entitySrc.getY()+heightArrow),
+							new Point2D.Double(entitySrc.getX(), entitySrc.getY()+heightArrow));
+
+		pt1.setLocation(l1.intersectionPoint(entitySrc.getPath(), new Point2D.Double(entitySrc.getX()-300, entitySrc.getY()-heightArrow)));
+		pt2.setLocation(l2.intersectionPoint(entitySrc.getPath(), new Point2D.Double(entitySrc.getX()-300, entitySrc.getY()+heightArrow)));
+//		final Rectangle2D rec  = entitySrc.getBorders();
+//		final double heightArrow = rec.getHeight()>20. ? 15. : rec.getHeight()/2. - 2.;
+//		final Line l1 = new Line(new Point2D.Double(entitySrc.getX()-300, entitySrc.getY()-heightArrow),
+//							new Point2D.Double(entitySrc.getX(), entitySrc.getY()-heightArrow));
+//		final Line l2 = new Line(new Point2D.Double(entitySrc.getX()-300, entitySrc.getY()+heightArrow),
+//							new Point2D.Double(entitySrc.getX(), entitySrc.getY()+heightArrow));
+//
+//		pt1.setLocation(l1.intersectionPoint(rec));
+//		pt2.setLocation(l2.intersectionPoint(rec));
 	}
 
 
