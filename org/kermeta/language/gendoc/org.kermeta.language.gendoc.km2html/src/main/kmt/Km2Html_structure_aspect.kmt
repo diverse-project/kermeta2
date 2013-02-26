@@ -105,7 +105,7 @@ aspect class ClassDefinition{
 		end
 	}
 	self.kTag.each{tag | 
-		if tag.name != "documentation" then
+		if (tag.name != "documentation" and tag.name != "traceability_text_reference") then
 			contents.append("<b>@")
 			contents.append(tag.name+"</b>")
 			self.superType.each{e| contents.append(e.getname)}
@@ -319,7 +319,7 @@ aspect class Property{
 		html.append("</CODE></FONT></TD>\n")
 		
 		
-		html.append("<TD><CODE><B><A HREF=" + className +".html target = Content>" + self.name + "</a>" + "<br>")
+		html.append("<TD><CODE><B><A HREF=" + className +".html#" + self.name +" target = Content>" + self.name + "</a>" + "<br>")
 		html.append("<FONT COLOR=RED> attribute</FONT> ")
 		if isReadOnly == true then
 			html.append("<FONT COLOR=RED>readonly</FONT> ")
@@ -355,14 +355,15 @@ aspect class Property{
 		html.append(self.name +"</H3><br>\n")
 		html.append("<PRE>\n")
 		html.append(typeString + "<B> "+ self.name + "</B></PRE><br>\n")
-		html.append(typeString + "<B> " + "isReadOnly </B>: " + self.isReadOnly.toString() + "</PRE><br>\n")
-		html.append("<B> " + "default : </B>" + self.default.toString()+ "</PRE><br>\n")
-		html.append("<B> " + "isComposite: </B>" + self.isComposite.toString()+ "</PRE><br>\n")
-		html.append("<B> " + "isDerived : </B>" + self.isDerived.toString()+ "</PRE><br>\n")
-		html.append("<B> " + "isID : </B>" + self.isID.toString()+ "</PRE><br>\n")
-		html.append("<B> " + "isGetterAbstract :</B>" + self.isGetterAbstract.toString()+ "</PRE><br>\n")
-		html.append("<B> " + "isSetterAbstract :</B>" + self.isSetterAbstract.toString()+ "</PRE><br>\n")
-		html.append("<HR>")
+		html.append("<ul>")
+		html.append("<li>"+typeString + "<B> " + "isReadOnly</B> : " + self.isReadOnly.toString() + "</PRE></li>\n")
+		html.append("<li><B> " + "default</B> : " + self.default.toString()+ "</PRE></li>\n")
+		html.append("<li><B> " + "isComposite</B> : " + self.isComposite.toString()+ "</PRE></li>\n")
+		html.append("<li><B> " + "isDerived</B> : " + self.isDerived.toString()+ "</PRE></li>\n")
+		html.append("<li><B> " + "isID</B> : " + self.isID.toString()+ "</PRE></li>\n")
+		html.append("<li><B> " + "isGetterAbstract</B> : " + self.isGetterAbstract.toString()+ "</PRE></li>\n")
+		html.append("<li><B> " + "isSetterAbstract</B> : " + self.isSetterAbstract.toString()+ "</PRE></li>\n")
+		html.append("</ul><HR>")
 		result:= html.toString
 	end	
 }
