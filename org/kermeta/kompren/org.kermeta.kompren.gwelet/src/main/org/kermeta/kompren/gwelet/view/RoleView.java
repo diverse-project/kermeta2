@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.malai.picking.Pickable;
 import org.malai.picking.Picker;
 
@@ -84,17 +85,23 @@ public class RoleView implements Pickable {
 		if(rv==null) return false;
 		return card==rv.getCardinality() && name.getText().equals(rv.getName());
 	}
+	
+	
+	public IEntityView getEntity() {
+		return source ? view.getEntitySrc() : view.getEntityTar();
+	}
 
 
 	protected void initNamePosition(final FloatingText text, final boolean onLeft) {
 		if(text==null || text.text.length()==0)
 			return ;
 
+		text.checkBorder();
 		double tx;
 		double ty;
 		final double GAP = 5.;
 		Rectangle2D border = text.getBorders();
-		Rectangle2D entityBorder = source ? view.getEntitySrc().getBorders() : view.getEntityTar().getBorders();
+		Rectangle2D entityBorder = getEntity().getBorders();
 		Point2D ptRelation = source ? view.getPointSource() : view.getPointTarget();
 
 		if(org.kermeta.kompren.diagram.view.impl.Number.NUMBER.equals(ptRelation.getX(), entityBorder.getMinX(), 4)) {

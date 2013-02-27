@@ -33,13 +33,17 @@ public class FloatingText implements Selectable {
 	}
 
 
-
-	public void paint(final Graphics2D g, final Rectangle visibleScene) {
+	public void checkBorder() {
 		if(bound.width<0) {
-			final Rectangle2D bounds = new TextLayout(text, g.getFont(), EntityView.FONT_RENDER_CONT).getBounds();
+			final Rectangle2D bounds = new TextLayout(text, role.getEntity().getFont(), EntityView.FONT_RENDER_CONT).getBounds();
 			bound.width = (int) bounds.getWidth();
 			bound.height = (int) bounds.getHeight();
 		}
+	}
+	
+
+	public void paint(final Graphics2D g, final Rectangle visibleScene) {
+		checkBorder();
 
 		Point2D position = getPosition();
 		bound.x =(int) position.getX();

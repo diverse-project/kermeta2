@@ -457,15 +457,7 @@ public class RelationView extends ComponentView implements IRelationView, Handle
 
 
 	@Override
-	public Point2D getRelativePoint(final double x, final double y, final Object o) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
 	public boolean contains(final Object obj) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
