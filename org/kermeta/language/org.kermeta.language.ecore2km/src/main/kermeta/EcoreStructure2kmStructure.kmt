@@ -64,6 +64,20 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 		end
 	end
 	
+	operation convertDocumentationAnnotation(kObject : KermetaModelElement, eObject : EModelElement) : Void is do
+		if(not kObject.isVoid) then
+			if(not eObject.isVoid) then
+				eObject.eAnnotations.select{annot| annot.source == "http://www.eclipse.org/emf/2002/GenModel"}.each{annot2|
+					annot2.details.select{s2sEntry| s2sEntry.key == "documentation"}.each{s2sEntry2 |
+						var kmTag : Tag init Tag.new.initialize("documentation", s2sEntry2.~value, kObject)
+						kObject.kTag.add(kmTag)
+						kObject.kOwnedTags.add(kmTag)
+					}
+				}
+			end
+		end
+	end
+	
 	
 	method visitEPackage(pkg : EPackage) : Void is do
 		// Creation of the kermeta package.
@@ -111,6 +125,7 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 			
 			// Each ecore class must be associated a tag.
 			addEcoreTag(kmOp)
+			convertDocumentationAnnotation(kmOp, op)
 			
 			if op.eContainingClass.isIncompatibleWithOtherFeature(op) then
 				// fix name and add tag if this operation conflicting according to Kermeta 2 resolver rules
@@ -145,6 +160,8 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 				prop.kTag.add(kmTag)
 				prop.kOwnedTags.add(kmTag)												 
 			end
+			
+			convertDocumentationAnnotation(prop, eAttr)
 			// Adding the created Kermeta property to its class definition.
 			eAttr.eContainingClass.targetKermetaObject.asType(ClassDefinition).ownedAttribute.add(prop)
 			// Linking the created Kermeta property to the Ecore attribute.
@@ -322,6 +339,8 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 				prop.kTag.add(kmTag)
 				prop.kOwnedTags.add(kmTag)												 
 			end												 
+			
+			convertDocumentationAnnotation(prop, ref)
 												 
 			var classDef : ClassDefinition init ref.eContainingClass.targetKermetaObject.asType(ClassDefinition)
 			
@@ -379,6 +398,8 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 
 			// Each ecore class must be associated a tag.
 			addEcoreTag(kmClassDef)
+			convertDocumentationAnnotation(kmClassDef, eclass)
+		
 		
 			// A unresolved type is created for each super type.
 			if eclass.eSuperTypes.size == eclass.eGenericSuperTypes.size then
