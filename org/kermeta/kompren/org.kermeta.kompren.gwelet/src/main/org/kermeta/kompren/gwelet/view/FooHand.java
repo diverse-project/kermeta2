@@ -209,25 +209,52 @@ public class FooHand implements MouseListener, MouseMotionListener {
 		final double x = e.getX()/zoom;
 		final double y = e.getY()/zoom;
 		boolean mustRefresh = !visibleHandlers.isEmpty();
-		IRelationView relation;
+		IRelationView relation=null;
 
+		((MetamodelView)diagram).setToolTipText(null);
+		
 		for(final IRelationView rel : visibleHandlers)
 			rel.setHandlersVisible(false);
 
 		visibleHandlers.clear();
-		boolean again = true;
 
-		for(int i=0, size=diagram.getNbRelations(); i<size  && again; i++) {
+		for(int i=0, size=diagram.getNbRelations(); i<size  && relation==null; i++) {
 			relation = diagram.getRelationAt(i);
 
-			if(!relation.isOptimHidden() && relation.contains(x, y)) {
+			if(!relation.isOptimHidden() && relation.isVisible() && relation.contains(x, y)) {
 				relation.setHandlersVisible(true);
 				visibleHandlers.add(diagram.getRelationAt(i));
 				mustRefresh = true;
-				again = false;
-			}
+			}else relation = null;
 		}
 
+		if(relation!=null) {
+			ClassView oppClass = null;
+			RoleView role = null;
+			
+			if(relation.getEntitySrc().isOptimHidden()) {
+				oppClass = (ClassView) relation.getEntitySrc();
+				if(relation instanceof RelationClassView)
+					role = ((RelationClassView)relation).getRoleTar();
+			}
+			else
+				if(relation.getEntityTar().isOptimHidden()) {
+					oppClass = (ClassView) relation.getEntityTar();
+					if(relation instanceof RelationClassView)
+						role = ((RelationClassView)relation).getRoleSrc();
+				}
+			
+			if(oppClass!=null) {
+				String txt = "<html>Opposite Class: <b>"+oppClass.getName()+"</b><br>";
+				if(role!=null) {
+					txt += "Opposite role: <b>"+role.getName()+"</b><br>Opposite cardinality: <b>"+role.getCardText()+"</b>";
+				}
+				
+				txt += "</html>";
+				((MetamodelView)diagram).setToolTipText(txt);
+			}
+		}
+		
 		if(mustRefresh)
 			diagram.refresh();
 	}
