@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Frame;
 
 import org.kermeta.kompren.gwelet.view.MetamodelView;
-import org.malai.swing.interaction.SwingEventManager;
 import org.malai.swing.ui.UIComposer;
 import org.malai.swing.widget.MProgressBar;
 
@@ -60,7 +59,7 @@ public class GweletUIBuilder extends UIComposer<GweletFrame> {
 		widget.toolbar.add(field);
 		widget.toolbar.add(widget.visualiser.getRadius().getLabel());
 		widget.toolbar.add(widget.visualiser.getRadius());
-		field.removeActionListener((SwingEventManager)widget.toolbar.getEventManager());
+		field.removeActionListener(widget.toolbar.getEventManager());
 		widget.setMinimumSize(new Dimension(800, 600));
 
 		Container pane = widget.getContentPane();
