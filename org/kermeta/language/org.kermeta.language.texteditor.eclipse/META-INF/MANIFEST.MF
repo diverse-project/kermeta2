@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1361461616226
+Bnd-LastModified: 1361971980988
 Build-Jdk: 1.6.0_17
 Built-By: dvojtise
 Bundle-ActivationPolicy: lazy
@@ -8,10 +8,10 @@ Bundle-Activator: org.kermeta.language.texteditor.eclipse.internal.Activ
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Bundle-ManifestVersion: 2
-Bundle-Name: org.kermeta.language.texteditor.eclipse
-Bundle-SymbolicName: org.kermeta.language.texteditor.eclipse;singleton:=
- true
-Bundle-Version: 2.0.99.SNAPSHOT_20130221_1646
+Bundle-Name: org.kermeta.org.kermeta.language.texteditor.eclipse
+Bundle-SymbolicName: org.kermeta.org.kermeta.language.texteditor.eclipse
+ ;singleton:=true
+Bundle-Version: 2.0.99.SNAPSHOT_20130227_1432
 Created-By: Apache Maven Bundle Plugin
 Import-Package: org.eclipse.core.resources,org.eclipse.core.runtime;vers
  ion="[3.4,4)",org.eclipse.core.runtime.jobs,org.eclipse.debug.core.sour
@@ -42,8 +42,8 @@ Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,org.
  anguage.model,org.kermeta.language.loader.kmt.scala,org.kermeta.languag
  e.loader.kmt.scala.api,org.kermeta.utils.systemservices.api,org.kermeta
  .utils.systemservices.eclipse,fr.irisa.triskell.cache.utilities,org.ker
- meta.language.builder.api,org.kermeta.language.builder.eclipse,org.kerm
- eta.language.model,org.kermeta.language.autocompletion.api,org.kermeta.
- language.autocompletion,org.kermeta.language.texteditor.eclipse.nature,
- org.eclipse.emf.ecore,org.kermeta.utils.helpers
+ meta.kp.builder.api,org.kermeta.kp.builder.eclipse,org.kermeta.language
+ .model,org.kermeta.language.autocompletion.api,org.kermeta.language.aut
+ ocompletion,org.kermeta.language.texteditor.eclipse.nature,org.eclipse.
+ emf.ecore,org.kermeta.utils.helpers
 Tool: Bnd-1.50.0

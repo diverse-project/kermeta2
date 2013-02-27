@@ -41,6 +41,7 @@
 		<module>../org.kermeta.language.km2bytecode</module>
 		<module>../org.kermeta.language.umlprofile2ecore.api</module>
 		<module>../org.kermeta.language.umlprofile2ecore</module>
+		<module>../org.kermeta.language.texteditor.eclipse.nature</module>
 	</modules>
 
 

@@ -12,7 +12,7 @@
     <groupId>org.kermeta.kp</groupId>
     <artifactId>org.kermeta.kp.compiler.mavenplugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <name>${artifactId} :: Kermeta2 project compiler maven plugin</name>
+    <name>kp.compiler.mavenplugin :: K2 compiler maven plugin</name>
 
 	<properties>
 		<scala.version>2.10.0-M2</scala.version>

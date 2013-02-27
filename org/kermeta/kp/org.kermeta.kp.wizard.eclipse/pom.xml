@@ -9,13 +9,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>kp.wizard.eclipse</artifactId>
+    <artifactId>org.kermeta.kp.wizard.eclipse</artifactId>
     <groupId>org.kermeta.kp</groupId>
     <packaging>bundle</packaging>
     
     <parent>
         <groupId>org.kermeta</groupId>
-        <artifactId>kermeta.root</artifactId>
+        <artifactId>org.kermeta.root</artifactId>
         <version>2.0.99-SNAPSHOT</version>
     </parent>
     
@@ -260,7 +260,7 @@
 		</dependency>
         <dependency>
         	<groupId>org.kermeta.language</groupId>
-        	<artifactId>language.texteditor.eclipse.nature</artifactId>
+        	<artifactId>org.kermeta.language.texteditor.eclipse.nature</artifactId>
         	<version>${kermeta.version}</version>
         </dependency>
         <dependency>
@@ -270,13 +270,13 @@
         </dependency>
         <dependency>
         	<groupId>org.kermeta.kp</groupId>
-        	<artifactId>kp.loader.kp</artifactId>
+        	<artifactId>org.kermeta.kp.loader.kp</artifactId>
         	<version>${kermeta.version}</version>
         </dependency>
         
         <dependency>
-        	<groupId>org.kermeta.language</groupId>
-        	<artifactId>language.builder.eclipse</artifactId>
+        	<groupId>org.kermeta.kp</groupId>
+        	<artifactId>org.kermeta.kp.builder.eclipse</artifactId>
         	<version>${kermeta.version}</version>
         </dependency>
         <dependency>
@@ -285,4 +285,5 @@
         	<version>${utils.version}</version>
         </dependency>
     </dependencies>
+    <name>kp.wizard.eclipse</name>
 </project>

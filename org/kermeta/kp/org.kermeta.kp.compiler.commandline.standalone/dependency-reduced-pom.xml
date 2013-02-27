@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.kermeta.kp</groupId>
   <artifactId>org.kermeta.kp.compiler.commandline.standalone</artifactId>
-  <name>org.kermeta.kp.compiler.commandline.standalone :: Standalone commandLine interface for Kermeta 2 bytecode</name>
+  <name>kp.compiler.commandline.standalone :: Standalone commandLine interface for K2</name>
   <version>2.0.99-SNAPSHOT</version>
   <build>
     <plugins>

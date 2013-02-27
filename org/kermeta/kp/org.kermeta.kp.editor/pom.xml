@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.kermeta.kp</groupId>
 	<artifactId>org.kermeta.kp.editor.multimodule</artifactId>
-	<name>kp.editor.multimodule :: KP Editor and parser for kermeta 2</name>
+	<name>kp.editor.multimodule :: KP Editor and parser for K2</name>
 	<packaging>pom</packaging>
 	
   <parent>

@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.kermeta.kp</groupId>
   <artifactId>org.kermeta.kp.parser.standalone</artifactId>
-  <name>kp.parser.standalone :: KP standalone parser for Kermeta 2</name>
+  <name>kp.parser.standalone :: KP standalone parser for K2</name>
   <packaging>bundle</packaging>
 
   <parent>
