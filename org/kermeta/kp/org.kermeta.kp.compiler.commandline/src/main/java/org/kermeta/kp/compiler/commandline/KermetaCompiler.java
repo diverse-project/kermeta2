@@ -1251,10 +1251,12 @@ public class KermetaCompiler {
 				InputStream stream = jarFile.toURI().toURL().openStream();
 				JarInputStream jarStream = new JarInputStream(stream);
 				Manifest mf = jarStream.getManifest();
-				Attributes mainAttribs = mf.getMainAttributes();
-				bundleName = mainAttribs.getValue("Bundle-SymbolicName");
-				if(bundleName != null && bundleName.contains(";")){
-					bundleName = bundleName.substring(0, bundleName.indexOf(";"));
+				if(mf != null){
+					Attributes mainAttribs = mf.getMainAttributes();
+					bundleName = mainAttribs.getValue("Bundle-SymbolicName");
+					if(bundleName != null && bundleName.contains(";")){
+						bundleName = bundleName.substring(0, bundleName.indexOf(";"));
+					}
 				}
 				jarStream.close();
 				stream.close();
