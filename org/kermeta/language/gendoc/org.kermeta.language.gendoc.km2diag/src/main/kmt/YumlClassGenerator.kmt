@@ -36,7 +36,8 @@ package YumlClassGenerator{
 			classContext := Set<String>.new
 		
 			fileContent := StringBuffer.new
-			fileContent.append("[" + cd.name + "{bg:orange}],")
+			//fileContent.append("[" + cd.name + "{bg:orange}],")
+			fileContent.append(printClassDef(cd,true))
 		
 			/*
 			 * First get all links with neighbours
@@ -46,15 +47,28 @@ package YumlClassGenerator{
 			 
 			//Inheritance
 			cd.superType.each{e| 
+						if( e.isInstanceOf(org::kermeta::language::structure::Class)) then
+							var cl : Class := e.asType(org::kermeta::language::structure::Class) 
+							fileContent.append(printClass(cl,false))
+						end
+						
 						fileContent.append("[" + cd.name + "]" + "-^[" + e.getTypeDef() + "],") 
 						classContext.add(e.getTypeDef())
 					}
 					
 			//Properties
 			cd.ownedAttribute.each{oa |
-						oa.accept(self)
-						}
+						if(not isSimpleType( oa.type.getTypeDef() )) then
 						
+							if( oa.type.isInstanceOf(org::kermeta::language::structure::Class)) then
+								var cl : Class := oa.type.asType(org::kermeta::language::structure::Class) 
+								fileContent.append(printClass(cl,false))
+							end
+			
+							oa.accept(self)
+						end
+						}
+
 			/*
 			 * Then get all links between neighbours
 			 */
@@ -73,9 +87,10 @@ package YumlClassGenerator{
 					
 			//Properties
 			cd.ownedAttribute.each{oa |
-						if( oa.type.isInstanceOf(org::kermeta::language::structure::Class)) then
+						if((not isSimpleType( oa.type.getTypeDef() )) and
+						 oa.type.isInstanceOf(org::kermeta::language::structure::Class)) then
 							var cl : Class := oa.type.asType(org::kermeta::language::structure::Class) 
-							//Do not follow links with itself
+							//Only once visit for a class
 							if(not visitedElem.exists{elemName | elemName.equals(cl.name)}) then
 								visitClass(cl)
 								visitedElem.add(cl.name)
@@ -102,6 +117,79 @@ package YumlClassGenerator{
 				classContext.add(p.type.getTypeDef())
 			end			
 			
+		end
+		
+		operation isSimpleType (className:String): Boolean is do
+		
+			result := false
+			
+			if(className == "Float") then result := true end
+			if(className == "Double") then result := true end
+			if(className == "Long") then result := true end
+			if(className == "Short") then result := true end
+			if(className == "Integer") then result := true end
+			if(className == "Character") then result := true end
+			if(className == "Boolean") then result := true end
+			if(className == "String") then result := true end
+			if(className == "Void") then result := true end
+
+		end
+		
+		/*
+		 * Get Yuml code of a class with his nested simple type
+		 * @c the class drew
+		 * @color ask for draw a colored class
+		 */
+		operation printClassDef(cd:ClassDefinition, color:Boolean):String is do
+			var res : StringBuffer := StringBuffer.new
+			res.append("[" + cd.name)
+			
+			//simple type properties
+			var simpleTypes : Bag<String> := Bag<String>.new 
+			
+			cd.ownedAttribute.each{oa |
+						if(isSimpleType( oa.type.getTypeDef() )) then
+							simpleTypes.add(oa.name+":"+oa.type.getTypeDef())
+						end
+						}
+			if(simpleTypes.size() > 0) then res.append("|") end
+			simpleTypes.indexedEach{prop, eachContext| 
+						if eachContext.isLast then
+							res.append(prop)
+						else
+							res.append(prop + ";")
+						end
+						}
+			if(color) then res.append("{bg:orange}") end
+			res.append("],")
+			
+			result := res.toString()
+		end
+		
+		operation printClass(cl:Class, color:Boolean):String is do
+			var res : StringBuffer := StringBuffer.new
+			res.append("[" + cl.name)
+			
+			//simple type properties
+			var simpleTypes : Bag<String> := Bag<String>.new 
+			
+			cl.ownedAttribute.each{oa |
+						if(isSimpleType( oa.type.getTypeDef() )) then
+							simpleTypes.add(oa.name+":"+oa.type.getTypeDef())
+						end
+						}
+			if(simpleTypes.size() > 0) then res.append("|") end
+			simpleTypes.indexedEach{prop, eachContext| 
+						if eachContext.isLast then
+							res.append(prop)
+						else
+							res.append(prop + ";")
+						end
+						}
+			if(color) then res.append("{bg:orange}") end
+			res.append("],")
+			
+			result := res.toString()
 		end
 		
 		operation visitType (t: Type ): Void is do

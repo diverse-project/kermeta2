@@ -101,7 +101,7 @@ aspect class ClassDefinition{
 		
 	self.kTag.each{tag | 
 		if tag.name == "documentation" then
-			contents.append("<p>"+tag.~value + "<p>\n")
+			contents.append("<p>"+tag.~value.replaceAll("\n","<br>") + "<p>\n")
 		end
 	}
 	self.kTag.each{tag | 
@@ -328,8 +328,11 @@ aspect class Property{
 		html.append("<br>")
 		self.kTag.each{tag | 
 			if tag.name == "documentation" then
-				html.append(tag.~value + "<BR>\n")
-			else 
+				html.append("<p>" + tag.~value.replaceAll("\n","<br>") + "</p>\n")
+			end
+		}
+		self.kTag.each{tag | 
+			if tag.name != "documentation" then
 				html.append("@")
 				html.append(tag.name)
 				html.append(" \"")
@@ -426,7 +429,7 @@ aspect class Operation {
 		self.kTag.each{tag | 
 			// print doc only, other annotations are left for the detailled entry
 			if tag.name == "documentation" then
-				html.append(tag.~value + "\n")
+				html.append("<p>"+tag.~value.replaceAll("\n","<br>") + "</p>")
 			end
 		}	
 		html.append("<BR>\n")
@@ -486,8 +489,11 @@ aspect class Operation {
 		html.append( ")"+ "</B><BR>\n")
 		self.kTag.each{tag | 
 			if tag.name == "documentation" then
-				html.append(tag.~value + "<BR>\n")
-			else 
+				html.append("<p>"+tag.~value.replaceAll("\n","</br>") + "</p>\n")
+			end
+		}
+		self.kTag.each{tag | 
+			if tag.name != "documentation" then
 				html.append("@")
 				html.append(tag.name)
 				html.append(" \"")
@@ -568,8 +574,13 @@ aspect class Package{
 		contents.append("<head><title>" + self.getQualifiedName() + "</title></head>")
 		contents.append("<body>")
 		contents.append("<h1>" + self.getQualifiedName() + "</h1><br>")
-		contents.append("<img src=\"./images/packages/" + self.getQualifiedName() +".png\"><br>")
+		contents.append("<p><img src=\"./images/packages/" + self.getQualifiedName() +".png\"><p>")
 		//contents.append("<img src=\"" + baseFolder + "/" + "images/packages/" + self.getQualifiedName() +".png\"><br>")
+		self.kTag.each{tag | 
+			if tag.name == "documentation" then
+				contents.append("<p>"+tag.~value.replaceAll("\n","</br>") + "</p>\n")
+			end
+		}
 		contents.append("</body></html>")
 		
 		FileIO.writeTextFile(path.toURI(), contents.toString)
