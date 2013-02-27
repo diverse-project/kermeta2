@@ -241,6 +241,14 @@ public class ClassView extends RectangleEntityView {
 		fillingColor = new Color(198,218,218, opacity);
 	}
 
+//	
+//	protected int titleFontSizeAdd = 0;
+//	
+//	public void highlightTitle(boolean highlight) {
+//		if(highlight) titleFontSizeAdd = 5;
+//		else titleFontSizeAdd = 0;
+//	}
+	
 
 	/**
 	 * @return The font used to display the title of the class.
@@ -268,7 +276,8 @@ public class ClassView extends RectangleEntityView {
 			final int textWidth  		= (int) titleBounds.getWidth();
 			final int textHeight  		= (int) titleBounds.getHeight();
 			final int textHeaderHeight 	= (int) (textHeight + HEIGHT_HEADER_GAP);
-
+			final Font formerFont 		= g.getFont();
+			
 			g.setColor(fillingColor);
 			g.fill(path);
 			g.setColor(lineColor);
@@ -291,6 +300,7 @@ public class ClassView extends RectangleEntityView {
 //			for(IAnchor anchor : anchors)
 //				anchor.paint(g);
 			
+			g.setFont(formerFont);
 			isOptimHidden = false;
 		} else isOptimHidden = true;
 	}

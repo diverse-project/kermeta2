@@ -1,19 +1,17 @@
 package org.kermeta.kompren.gwelet.view;
 
 import org.kermeta.kompren.diagram.view.impl.RelationView;
-import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 
 /**
  * Defines a inheritance relation established between two classes.
  * @author Arnaud Blouin
  */
-public class InheritanceView extends RelationView {
+public class InheritanceView extends RelationView<ClassView,ClassView> {
 	/**
 	 * @see RelationView
 	 */
-	public InheritanceView(final IEntityView src, final IEntityView target) {
+	public InheritanceView(final ClassView src, final ClassView target) {
 		super(src, target);
-
 		setTargetDecoration(new InheritanceDecorationView(this, getLastSegment(), false));
 	}
 }

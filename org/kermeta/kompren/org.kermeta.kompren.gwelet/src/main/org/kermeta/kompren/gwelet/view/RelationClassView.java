@@ -1,5 +1,7 @@
 package org.kermeta.kompren.gwelet.view;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
@@ -7,7 +9,6 @@ import java.awt.geom.Rectangle2D;
 
 import org.kermeta.kompren.diagram.view.impl.Line;
 import org.kermeta.kompren.diagram.view.impl.RelationView;
-import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.kermeta.kompren.gwelet.view.RoleView.Cardinality;
 import org.malai.picking.Pickable;
 
@@ -15,7 +16,7 @@ import org.malai.picking.Pickable;
  * Defines a relation established between two classes.
  * @author Arnaud Blouin
  */
-public class RelationClassView extends RelationView {
+public class RelationClassView extends RelationView<ClassView, ClassView> {
 	/** The role of the beginning of the relation. */
 	protected RoleView roleSrc;
 
@@ -23,12 +24,14 @@ public class RelationClassView extends RelationView {
 	protected RoleView roleTar;
 
 	protected boolean isComposition;
+	
+	protected Font font;
 
 
 	/**
 	 * @see RelationView
 	 */
-	public RelationClassView(final IEntityView src, final IEntityView target, final boolean isComposition, final boolean compositionAtStart,
+	public RelationClassView(final ClassView src, final ClassView target, final boolean isComposition, final boolean compositionAtStart,
 							final String srcRole, final String targetRole, final Cardinality srcCard, final Cardinality targetCard) {
 		super(src, target);
 
@@ -48,6 +51,8 @@ public class RelationClassView extends RelationView {
 
 		if(targetRole!=null && targetRole.length()>0 && targetCard!=null)
 			roleTar = new RoleView(targetRole, targetCard, this, true, isComposition && compositionAtStart);
+		
+		font = src.getFont();
 	}
 	
 	
@@ -152,19 +157,43 @@ public class RelationClassView extends RelationView {
 
 		return pickable;
 	}
+	
+	
+	public void setHandlersVisible(final boolean visible) {
+		super.setHandlersVisible(visible);
+		if(visible) {
+			font = new Font(font.getName(), font.getStyle()+Font.BOLD, font.getSize()+5);
+//			entitySrc.highlightTitle(true);
+//			entityTar.highlightTitle(true);
+		}
+		else {
+			font = entitySrc.getFont();
+//			entitySrc.highlightTitle(false);
+//			entityTar.highlightTitle(false);
+		}
+	}
 
 
 	@Override
 	public void paint(final Graphics2D g, final Rectangle visibleScene) {
 		super.paint(g, visibleScene);
 
-		g.setColor(getLineColor());
-
-		if(roleSrc!=null)
-			roleSrc.paint(g, visibleScene);
-
-		if(roleTar!=null)
-			roleTar.paint(g, visibleScene);
+		if(!isOptimHidden) {
+			Color formerCol = g.getColor();
+			Font formerFont = g.getFont();
+			
+			g.setColor(getLineColor());
+			g.setFont(font);
+	
+			if(roleSrc!=null)
+				roleSrc.paint(g, visibleScene);
+	
+			if(roleTar!=null)
+				roleTar.paint(g, visibleScene);
+			
+			g.setColor(formerCol);
+			g.setFont(formerFont);
+		}
 	}
 
 

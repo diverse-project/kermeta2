@@ -152,7 +152,6 @@ public class RoleView implements Pickable {
 
 	public void paint(final Graphics2D g, final Rectangle visibleScene) {
 		if(view.isVisible() && name!=null && cardText!=null && (name.text.length()>0 || cardText.text.length()>0)) {
-			g.setFont(view.getEntitySrc().getFont());
 			name.paint(g, visibleScene);
 			cardText.paint(g, visibleScene);
 		}

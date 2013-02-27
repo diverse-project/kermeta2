@@ -215,14 +215,16 @@ public class FooHand implements MouseListener, MouseMotionListener {
 			rel.setHandlersVisible(false);
 
 		visibleHandlers.clear();
+		boolean again = true;
 
-		for(int i=0, size=diagram.getNbRelations(); i<size ; i++) {
+		for(int i=0, size=diagram.getNbRelations(); i<size  && again; i++) {
 			relation = diagram.getRelationAt(i);
 
-			if(relation.contains(x, y)) {
+			if(!relation.isOptimHidden() && relation.contains(x, y)) {
 				relation.setHandlersVisible(true);
 				visibleHandlers.add(diagram.getRelationAt(i));
 				mustRefresh = true;
+				again = false;
 			}
 		}
 

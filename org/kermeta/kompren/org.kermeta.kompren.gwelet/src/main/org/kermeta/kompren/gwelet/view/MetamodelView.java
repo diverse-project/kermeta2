@@ -103,7 +103,7 @@ public class MetamodelView extends ModelView {
 	}
 
 
-	public InheritanceView addInheritanceView(final IEntityView src, final IEntityView tar) {
+	public InheritanceView addInheritanceView(final ClassView src, final ClassView tar) {
 		final InheritanceView view = new InheritanceView(src, tar);
 		addRelation(view);
 		return view;
@@ -112,7 +112,7 @@ public class MetamodelView extends ModelView {
 
 
 
-	public IRelationView addRelation(final IEntityView srcClass, final IEntityView tarClass, final boolean isComposition, final boolean isCompoAtSrc,
+	public IRelationView addRelation(final ClassView srcClass, final ClassView tarClass, final boolean isComposition, final boolean isCompoAtSrc,
 						final String srcRole, final String targetRole, final String srcCard, final String targetCard) {
 		if(targetRole!=null) {
 			//checking if the target relation has been already added by its opposite.
@@ -131,7 +131,6 @@ public class MetamodelView extends ModelView {
 					if(role!=null && role.name.text.equals(srcRole) && role.cardText.text.equals(srcCard))
 						again = false;
 				}
-
 				i++;
 			}
 
@@ -165,7 +164,7 @@ public class MetamodelView extends ModelView {
 			}
 
 			if(view==null)
-				System.err.println("ERROR KI: aspect added but not its reference class");
+				System.err.println("ERROR: aspect added but not its reference class");
 
 			return view;
 		}

@@ -21,12 +21,12 @@ import org.malai.picking.Picker;
  * A relation view can be established between two entities.
  * @author Arnaud Blouin
  */
-public class RelationView extends ComponentView implements IRelationView, HandlerHandler {
+public class RelationView<S extends IEntityView, T extends IEntityView> extends ComponentView implements IRelationView, HandlerHandler {
 	/** The source entity. */
-	protected IEntityView entitySrc;
+	protected S entitySrc;
 
 	/** The target entity. */
-	protected IEntityView entityTar;
+	protected T entityTar;
 
 	/** The decoration located at the source position of the relation. */
 	protected IDecorationView sourceDecoration;
@@ -47,7 +47,7 @@ public class RelationView extends ComponentView implements IRelationView, Handle
 	 * @param target The target entity.
 	 * @throws IllegalArgumentException If one of the given entity is null.
 	 */
-	public RelationView(final IEntityView src, final IEntityView target) {
+	public RelationView(final S src, final T target) {
 		super();
 
 		if(src==null || target==null)
@@ -98,12 +98,12 @@ public class RelationView extends ComponentView implements IRelationView, Handle
 	}
 
 	@Override
-	public IEntityView getEntitySrc() {
+	public S getEntitySrc() {
 		return entitySrc;
 	}
 
 	@Override
-	public IEntityView getEntityTar() {
+	public T getEntityTar() {
 		return entityTar;
 	}
 
@@ -468,12 +468,12 @@ public class RelationView extends ComponentView implements IRelationView, Handle
 	}
 
 
-	public void setEntitySrc(final IEntityView entitySrc) {
+	public void setEntitySrc(final S entitySrc) {
 		this.entitySrc = entitySrc;
 	}
 
 
-	public void setEntityTar(final IEntityView entityTar) {
+	public void setEntityTar(final T entityTar) {
 		this.entityTar = entityTar;
 	}
 
