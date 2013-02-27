@@ -10,10 +10,10 @@
 	<packaging>jar</packaging>
 	<name>kp.loader.kp.api :: API for KP loader</name>
 	<groupId>org.kermeta.kp</groupId>
-	<artifactId>kp.loader.kp.api</artifactId>
+	<artifactId>org.kermeta.kp.loader.kp.api</artifactId>
 
     <parent>
-        <artifactId>language.root</artifactId>
+        <artifactId>org.kermeta.language.root</artifactId>
         <groupId>org.kermeta.language</groupId>
         <version>2.0.99-SNAPSHOT</version>
     </parent>
@@ -21,7 +21,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>kp.model</artifactId>
+			<artifactId>org.kermeta.kp.model</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<dependency>

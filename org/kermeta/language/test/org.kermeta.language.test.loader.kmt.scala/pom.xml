@@ -9,7 +9,7 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-    <name>org.kermeta.language.test.loader.kmt.scala :: Lexer and KMT files loader</name>
+    <name>language.test.loader.kmt.scala :: test for KMT parser</name>
     <artifactId>org.kermeta.language.test.loader.kmt.scala</artifactId>
 
     <parent>

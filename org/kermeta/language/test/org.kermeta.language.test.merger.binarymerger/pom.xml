@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.kermeta.language.merger.binarymerger</artifactId>
 	<packaging>jar</packaging>
-	<name>org.kermeta.language.merger.binarymerger :: test fort K2 binary merger</name>
+	<name>language.test.merger.binarymerger :: test fort K2 binary merger</name>
 
 	<dependencies>
 		<dependency>

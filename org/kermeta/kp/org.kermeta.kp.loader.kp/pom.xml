@@ -2,13 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.kermeta.kp</groupId>
-	<artifactId>kp.loader.kp</artifactId>
+	<artifactId>org.kermeta.kp.loader.kp</artifactId>
 	<name>kp.loader.kp :: Kp loader for Kermeta 2</name>
 	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>org.kermeta.language</groupId>
-		<artifactId>language.root</artifactId>
+		<artifactId>org.kermeta.language.root</artifactId>
 		<version>2.0.99-SNAPSHOT</version>
 	</parent>
 
@@ -63,17 +63,17 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.kp</groupId>
-			<artifactId>kp.model</artifactId>
+			<artifactId>org.kermeta.kp.model</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.kp</groupId>
-			<artifactId>kp.loader.kp.api</artifactId>
+			<artifactId>org.kermeta.kp.loader.kp.api</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.kp</groupId>
-			<artifactId>kp.parser.standalone</artifactId>
+			<artifactId>org.kermeta.kp.parser.standalone</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
 		<dependency>

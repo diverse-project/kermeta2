@@ -26,6 +26,8 @@
 		<module>../org.kermeta.kp.model</module>
 		<module>../org.kermeta.kp.editor</module>
 		<module>../org.kermeta.kp.editor.ui</module>
+		<module>../org.kermeta.kp.loader.kp.api</module>
+		<module>../org.kermeta.kp.loader.kp</module>
 		<module>../org.kermeta.kp.compiler.commandline</module>
 		<module>../org.kermeta.kp.compiler.commandline.standalone</module>
 		<module>../org.kermeta.kp.compiler.mavenplugin</module>

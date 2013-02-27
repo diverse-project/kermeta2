@@ -2,7 +2,7 @@
 
   	<modelVersion>4.0.0</modelVersion>
   	<packaging>jar</packaging>
-  	<name>org.kermeta.language.test.checker :: Tests of K2 Checker</name>
+  	<name>language.test.checker :: Tests of K2 Checker</name>
   	<artifactId>org.kermeta.language.test.checker</artifactId>
 
     <parent>
