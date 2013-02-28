@@ -245,7 +245,8 @@ public class FooHand implements MouseListener, MouseMotionListener {
 				}
 			
 			if(oppClass!=null) {
-				String txt = "<html>Opposite Class: <b>"+oppClass.getName()+"</b><br>";
+				String qname = oppClass.getQname();
+				String txt = "<html>Opposite Class: <b><a href=\""+qname+"\">"+qname+"</a></b><br>";
 				if(role!=null) {
 					txt += "Opposite role: <b>"+role.getName()+"</b><br>Opposite cardinality: <b>"+role.getCardText()+"</b>";
 				}

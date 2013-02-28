@@ -1,11 +1,16 @@
 package org.kermeta.kompren.gwelet.view;
 
+import java.awt.Point;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JToolTip;
 
 import org.kermeta.kompren.diagram.view.impl.ModelView;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
+import org.kermeta.kompren.gwelet.ui.ClickableToolTip;
 import org.kermeta.kompren.gwelet.view.RoleView.Cardinality;
 
 public class MetamodelView extends ModelView {
@@ -21,12 +26,25 @@ public class MetamodelView extends ModelView {
 
 		operationsVisible = true;
 		propertiesVisible = true;
-		FooHand foo = new FooHand(this);
+		FooHand foo = new FooHand(this);//FIXME
 		addMouseListener(foo);
 		addMouseMotionListener(foo);
+		
+		
 	}
 
+	public JToolTip createToolTip() {
+		JToolTip tip = new ClickableToolTip(this);
+		tip.setComponent(this);
+		return tip;
+	}
 
+	// Set tooltip location
+	public Point getToolTipLocation(MouseEvent event) {
+		if(getToolTipText()!=null && getToolTipText().length()>0)
+			return new Point(event.getX(), event.getY());
+		return null;
+	}
 
 	@Override
 	public List<IEntityView> getRootEntities() {
@@ -146,7 +164,7 @@ public class MetamodelView extends ModelView {
 	}
 
 
-	public IEntityView addEntity(final String name, final int position, final boolean isAspect) {
+	public IEntityView addEntity(final String name, final String qname, final int position, final boolean isAspect) {
 		IEntityView view = null;
 		double xMax = -Double.MAX_VALUE;
 		double x;
@@ -157,7 +175,7 @@ public class MetamodelView extends ModelView {
 			final int size = entities.size();
 
 			while(view==null && i<size) {
-				if(entities.get(i).getName().equals(name))
+				if(((ClassView)entities.get(i)).getQname().equals(qname))
 					view = entities.get(i);
 				else
 					i++;
@@ -169,7 +187,7 @@ public class MetamodelView extends ModelView {
 			return view;
 		}
 
-		view = new ClassView(name);
+		view = new ClassView(name, qname);
 
 		// entities must not located at the same position. Otherwise it may have problem
 		// during the anchoring of relations.

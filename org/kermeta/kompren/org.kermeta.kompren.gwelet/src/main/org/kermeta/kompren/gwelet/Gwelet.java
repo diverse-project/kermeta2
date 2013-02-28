@@ -1,5 +1,6 @@
 package org.kermeta.kompren.gwelet;
 
+import javax.swing.ToolTipManager;
 import javax.swing.UIManager;
 
 import org.kermeta.kompren.gwelet.ui.GweletFrame;
@@ -21,6 +22,7 @@ public class Gwelet {
 		GweletFrame frame = new GweletFrame();
 		frame.getComposer().compose(null);
 		frame.setVisible(true);
+		ToolTipManager.sharedInstance().setInitialDelay(10);
 		frame.open("src/resources/examples/UML.km");
 		frame.getCanvas().requestFocusInWindow();
 //		((GweletUIBuilder)frame.getComposer()).formular.setVisible(true);// EVAL
