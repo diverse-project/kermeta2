@@ -8,7 +8,9 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.kermeta.kompren.diagram.view.impl.Line;
+import org.kermeta.kompren.diagram.view.impl.Number;
 import org.kermeta.kompren.diagram.view.impl.RelationView;
+import org.kermeta.kompren.diagram.view.interfaces.ISegmentView;
 import org.kermeta.kompren.gwelet.view.RoleView.Cardinality;
 import org.malai.picking.Pickable;
 
@@ -82,6 +84,30 @@ public class RelationClassView extends RelationView<ClassView, ClassView> {
 //		pt2.setLocation(l2.intersectionPoint(rec));
 	}
 
+	
+	
+	@Override
+	public void update() {
+		if(entitySrc==entityTar) {
+			ISegmentView seg;
+			Point2D centre = entitySrc.getCentre();
+			Point2D newPt;
+			Point2D tmp;
+			
+			for(int i=0, size=segments.size()-1; i<size; i++) {
+				seg = segments.get(i);
+				if(entitySrc.getBoundPath().contains(seg.getPointTarget())) {
+					tmp = new Point2D.Double((centre.getX()+seg.getPointSource().getX())/2., (centre.getY()+seg.getPointSource().getY())/2.);
+					newPt = Number.NUMBER.rotatePoint(centre, seg.getPointSource(), Math.PI);
+					newPt.setLocation((newPt.getX()+tmp.getX())/2., (newPt.getY()+tmp.getY())/2.);
+					seg.getPointTarget().setLocation(newPt);
+				}
+			}
+		}
+		super.update();
+	}
+	
+	
 
 	public boolean equalsValue(final RelationClassView rcv) {
 		if(rcv==null) return false;

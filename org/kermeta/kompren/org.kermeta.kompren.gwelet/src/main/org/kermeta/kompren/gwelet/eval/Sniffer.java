@@ -216,4 +216,10 @@ public class Sniffer implements ActionHandler {
 				currentQuestion.nbScrolls++;
 		}
 	}
+
+
+	@Override
+	public void onUndoableCleared() {
+		//
+	}
 }
