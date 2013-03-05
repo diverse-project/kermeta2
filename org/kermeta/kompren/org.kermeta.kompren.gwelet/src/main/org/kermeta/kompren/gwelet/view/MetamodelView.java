@@ -29,8 +29,6 @@ public class MetamodelView extends ModelView {
 		FooHand foo = new FooHand(this);//FIXME
 		addMouseListener(foo);
 		addMouseMotionListener(foo);
-		
-		
 	}
 
 	public JToolTip createToolTip() {

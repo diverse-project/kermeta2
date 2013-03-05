@@ -16,7 +16,6 @@ import javax.swing.BoundedRangeModel;
 import javax.swing.JScrollBar;
 
 import org.kermeta.kompren.diagram.layout.ILayoutStrategy;
-import org.kermeta.kompren.diagram.view.interfaces.IAnchor;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.kermeta.kompren.diagram.view.interfaces.IModelView;
 import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
@@ -219,6 +218,7 @@ public class ModelView extends MPanel implements IModelView {
 
 	@Override
 	public void refresh() {
+		updatePreferredSize();
 		revalidate();
 		repaint();
 	}
@@ -251,7 +251,6 @@ public class ModelView extends MPanel implements IModelView {
 	@Override
 	public void update() {
 		updateModelElements();
-		updatePreferredSize();
 		refresh();
 	}
 
@@ -454,13 +453,13 @@ public class ModelView extends MPanel implements IModelView {
 	@Override
 	public void relayoutRelations() {
 		for(final IEntityView entity : entities)
-			for(final IAnchor anchor : entity.getAnchors())
-				anchor.setFree(true);
+			entity.reinitAnchors();
 
-		for(final IRelationView relation : relations) {
-			anchorRelation(relation);
-			relation.update();
-		}
+		for(final IRelationView relation : relations)
+			if(relation.isVisible()) {
+				anchorRelation(relation);
+				relation.update();
+			}
 	}
 
 

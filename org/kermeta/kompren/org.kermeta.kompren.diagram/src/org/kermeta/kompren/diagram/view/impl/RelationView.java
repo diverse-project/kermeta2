@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.kermeta.kompren.diagram.view.interfaces.HandlerHandler;
+import org.kermeta.kompren.diagram.view.interfaces.IAnchor;
 import org.kermeta.kompren.diagram.view.interfaces.IDecorationView;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.kermeta.kompren.diagram.view.interfaces.IHandler;
@@ -37,6 +38,10 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 	protected List<ISegmentView> segments;
 
 	protected List<IHandler> handlers;
+	
+	protected IAnchor srcAnchor;
+	
+	protected IAnchor targetAnchor;
 
 	protected boolean handlersVisible;
 
@@ -53,6 +58,8 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 		if(src==null || target==null)
 			throw new IllegalArgumentException();
 
+		srcAnchor			= null;
+		targetAnchor		= null;
 		handlers			= new ArrayList<IHandler>();
 		segments 			= new ArrayList<ISegmentView>();
 		entitySrc 			= src;
@@ -186,10 +193,7 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 			getMinMaxValues(mins, maxs, rec.getMaxX(), rec.getMaxY());
 		}
 
-		bound.x = (int) mins[0];
-		bound.y = (int) mins[1];
-		bound.width = (int) (maxs[0]-mins[0]);
-		bound.height = (int) (maxs[1]-mins[1]);
+		bound.setRect(mins[0], mins[1], maxs[0]-mins[0], maxs[1]-mins[1]);
 	}
 
 
@@ -284,7 +288,7 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 
 	@Override
 	public Rectangle2D getBorders() {
-		return new Rectangle2D.Double(bound.x, bound.y, bound.width, bound.height);
+		return bound;
 	}
 
 

@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import org.kermeta.kompren.gwelet.actions.Flat;
-import org.kermeta.kompren.gwelet.actions.Prune;
+import org.kermeta.kompren.gwelet.actions.Slice;
 import org.kermeta.kompren.gwelet.actions.ShowHierarchy;
 import org.kermeta.kompren.gwelet.eval.QuestionsPanel;
 import org.kermeta.kompren.gwelet.eval.QuestionsPanel.TypeEval;
@@ -72,7 +72,7 @@ public class Visualiser extends WidgetInstrument {
 	protected void initialiseLinks() {
 		try {
 			addLink(new Button2ShowHierarchy(this));
-			addLink(new Button2Prune(this));
+			addLink(new Button2Slice(this));
 			addLink(new Button2FocusOnClass(this));
 			addLink(new Button2Flat(this));
 		} catch (InstantiationException e) {
@@ -162,9 +162,9 @@ public class Visualiser extends WidgetInstrument {
 	}
 
 
-	private class Button2Prune extends Link<Prune, ButtonPressed, Visualiser> {
-		public Button2Prune(final Visualiser ins) throws InstantiationException, IllegalAccessException {
-			super(ins, false, Prune.class, ButtonPressed.class);
+	private class Button2Slice extends Link<Slice, ButtonPressed, Visualiser> {
+		public Button2Slice(final Visualiser ins) throws InstantiationException, IllegalAccessException {
+			super(ins, false, Slice.class, ButtonPressed.class);
 		}
 
 		@Override

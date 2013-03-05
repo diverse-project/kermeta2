@@ -6,13 +6,13 @@ import org.kermeta.kompren.gwelet.view.ModelViewMapper;
 import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.ModelingUnit;
 
-public class Prune extends SelectionBasedVisuAction {
+public class Slice extends SelectionBasedVisuAction {
 	protected int radius;
 
 	protected boolean considerComposition;//TODO
 
 
-	public Prune() {
+	public Slice() {
 		super();
 		radius = 0;
 		considerComposition = true;
@@ -37,7 +37,6 @@ public class Prune extends SelectionBasedVisuAction {
 
 		slicer.initialise(cds, new BasicEList<ModelingUnit>(), radius, true, true, true);
 		slicer.launch();
-		canvas.update();
 		done();
 	}
 

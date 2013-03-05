@@ -32,14 +32,14 @@ public abstract class RectangleEntityView extends EntityView {
 	protected void initAnchors() {
 		final Rectangle2D rec = getBorders();
 
-		anchors.add(new Anchor(rec.getMinX(), rec.getMinY()));
-		anchors.add(new Anchor(rec.getCenterX(), rec.getMinY()));
-		anchors.add(new Anchor(rec.getMaxX(), rec.getMinY()));
-		anchors.add(new Anchor(rec.getMaxX(), rec.getCenterY()));
-		anchors.add(new Anchor(rec.getMaxX(), rec.getMaxY()));
-		anchors.add(new Anchor(rec.getCenterX(), rec.getMaxY()));
-		anchors.add(new Anchor(rec.getMinX(), rec.getMaxY()));
-		anchors.add(new Anchor(rec.getMinX(), rec.getCenterY()));
+		anchors.add(new Anchor(rec.getMinX(), rec.getMinY(), this));
+		anchors.add(new Anchor(rec.getCenterX(), rec.getMinY(), this));
+		anchors.add(new Anchor(rec.getMaxX(), rec.getMinY(), this));
+		anchors.add(new Anchor(rec.getMaxX(), rec.getCenterY(), this));
+		anchors.add(new Anchor(rec.getMaxX(), rec.getMaxY(), this));
+		anchors.add(new Anchor(rec.getCenterX(), rec.getMaxY(), this));
+		anchors.add(new Anchor(rec.getMinX(), rec.getMaxY(), this));
+		anchors.add(new Anchor(rec.getMinX(), rec.getCenterY(), this));
 	}
 
 
@@ -57,7 +57,7 @@ public abstract class RectangleEntityView extends EntityView {
 		
 		if(Number.NUMBER.equals(pos1.getY(), pos2.getY())) {
 			value = (pos1.getX()+pos2.getX())/2.;
-			anchor = new Anchor(value, pos1.getY());
+			anchor = new Anchor(value, pos1.getY(), this);
 			diff = Math.abs(value-pos1.getX());
 			
 			if(diff<GAP_MIN_ANCHOR) {
@@ -70,7 +70,7 @@ public abstract class RectangleEntityView extends EntityView {
 		}
 		else {
 			value = (pos1.getY()+pos2.getY())/2.;
-			anchor = new Anchor(pos1.getX(), value);
+			anchor = new Anchor(pos1.getX(), value, this);
 			diff = Math.abs(value-pos1.getY());
 			
 			if(diff<GAP_MIN_ANCHOR) {

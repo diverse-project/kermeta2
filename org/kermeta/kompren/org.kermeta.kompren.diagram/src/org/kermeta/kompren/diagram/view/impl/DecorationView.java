@@ -109,8 +109,7 @@ public abstract class DecorationView extends View implements IDecorationView {
 	public void paint(final Graphics2D g, final Rectangle visibleScene) {
 		Point2D position = getPosition();
 
-		bound.x = (int) position.getX();
-		bound.y = (int) position.getY();
+		bound.setFrame(position.getX(), position.getY(), bound.getWidth(), bound.getHeight());
 
 		if(visibleScene==null || visibleScene.contains(bound) || visibleScene.intersects(bound)) {
 			g.translate(position.getX(), position.getY());

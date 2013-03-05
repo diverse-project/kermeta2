@@ -12,6 +12,7 @@ public class MoveNoDrag extends Move {
 	}
 
 
+	@SuppressWarnings("unused")
 	@Override
 	protected void initStateMachine() {
 		TerminalState end = new TerminalState("moved");

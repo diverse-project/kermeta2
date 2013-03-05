@@ -185,7 +185,7 @@ public class FooHand implements MouseListener, MouseMotionListener {
 		} else
 			if(draggedShape!=null) {
 				draggedShape.move(gapX, gapY);
-				diagram.update();
+				diagram.refresh();
 
 				for(IRelationView relation : diagram.getRelations())
 					if(relation.getEntitySrc()==draggedShape || relation.getEntityTar()==draggedShape)

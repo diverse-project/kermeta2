@@ -35,8 +35,11 @@ public class ClassModelBasicStrategy implements ILayoutStrategy {
 		List<List<IEntityView>> levels;
 
 		for(IEntityView entity : diagram.getEntities())
-			if(entity.isVisible())
+			if(entity.isVisible()) {
+				entity.reinitAnchors();
+				entity.update();
 				hashMap.put(entity, entity);
+			}
 
 		List<IEntityView> roots = diagram.getRootEntities();
 
@@ -53,8 +56,7 @@ public class ClassModelBasicStrategy implements ILayoutStrategy {
 		setMetamodelPosition(forest);
 		diagram.recentre();
 		diagram.relayoutRelations();
-		diagram.updatePreferredSize();
-		diagram.refresh();
+		diagram.update();
 	}
 
 
