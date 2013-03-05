@@ -1,0 +1,36 @@
+<!-- $Id$ -->
+<!-- License : EPL -->
+<!-- Project : org.kermeta.language.root -->
+<!-- Copyright : IRISA / INRIA / Universite de Rennes 1 -->
+<!-- Authors : didier Vojtisek didier.vojtisek@inria.fr -->
+<!-- list of modules to be built as part of org.kermeta.kp group -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.kermeta.utils</groupId>
+	<artifactId>org.kermeta.utils.master</artifactId>
+	<packaging>pom</packaging>
+	<version>${kermeta.version}</version>
+	<name>utils.master :: utils modules </name>
+
+	<parent>
+		<artifactId>org.kermeta.root</artifactId>
+		<groupId>org.kermeta</groupId>
+		<version>2.0.99-SNAPSHOT</version>
+		<relativePath>../../org.kermeta.root/pom.xml</relativePath>
+	</parent>
+
+	<modules>		
+		<module>../org.kermeta.utils.root</module>
+		<module>../org.kermeta.utils.helpers</module>
+		<module>../org.kermeta.utils.helpers.eclipse</module>
+		<module>../org.kermeta.utils.systemservices.api</module>
+		<module>../org.kermeta.utils.systemservices.eclipse</module>
+		<module>../org.kermeta.utils.aether</module>
+	</modules>
+
+	
+
+</project>

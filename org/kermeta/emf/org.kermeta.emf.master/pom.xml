@@ -1,0 +1,30 @@
+<!-- $Id$ -->
+<!-- License : EPL -->
+<!-- Project : org.kermeta.language.root -->
+<!-- Copyright : IRISA / INRIA / Universite de Rennes 1 -->
+<!-- Authors : didier Vojtisek didier.vojtisek@inria.fr -->
+<!-- list of UI modules to be built as part of org.kermeta.language group -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.kermeta.emf</groupId>
+	<artifactId>org.kermeta.emf.master</artifactId>
+	<packaging>pom</packaging>
+	<version>${kermeta.version}</version>
+	<name>emf.master :: EMF modules</name>
+
+	<parent>
+		<artifactId>org.kermeta.root</artifactId>
+		<groupId>org.kermeta</groupId>
+		<version>2.0.99-SNAPSHOT</version>
+		<relativePath>../../org.kermeta.root/pom.xml</relativePath>
+	</parent>
+
+	<modules>
+		<module>../org.kermeta.emf.genmodel</module>
+	</modules>
+
+
+</project>
