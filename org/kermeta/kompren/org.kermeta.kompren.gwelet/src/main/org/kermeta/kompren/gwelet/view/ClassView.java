@@ -19,6 +19,7 @@ import org.kermeta.kompren.diagram.view.impl.Number;
 import org.kermeta.kompren.diagram.view.impl.RectangleEntityView;
 import org.kermeta.kompren.diagram.view.interfaces.IAnchor;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
+import org.kermeta.kompren.diagram.view.interfaces.IPaintCtx;
 import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 import org.malai.picking.Picker;
 
@@ -59,6 +60,8 @@ public class ClassView extends RectangleEntityView {
 	protected Color textColor;
 	
 	protected String qname;
+	
+	protected MetamodelView mmView;
 
 
 
@@ -68,10 +71,11 @@ public class ClassView extends RectangleEntityView {
 	 * @param qname The qualified name of the class.
 	 * @throws IllegalArgumentException If the given name is null.
 	 */
-	public ClassView(final String name, final String qname) {
+	public ClassView(final String name, final String qname, final MetamodelView mmView) {
 		super(name);
 
 		this.qname			= qname;
+		this.mmView			= mmView;
 		boundPath			= new GeneralPath();
 		operationsVisible 	= true;
 		propertiesVisible	= true;
@@ -166,7 +170,7 @@ public class ClassView extends RectangleEntityView {
 
 	
 	public Double[] updateBoundingBox() {
-		final Rectangle2D titleBounds = getTitleBounds();
+		final Rectangle2D titleBounds = getTitleBounds(1);
 		Double[] dim = new Double[2];
 		double width;
 
@@ -263,26 +267,29 @@ public class ClassView extends RectangleEntityView {
 	/**
 	 * @return The font used to display the title of the class.
 	 */
-	public Font getTitleFont() {
-		return new Font(getFontName(), fontStyle+Font.BOLD, (int)fontSize);
+	public Font getTitleFont(double zoom) {
+		double factor = Math.max(1., (2-zoom));
+		return new Font(getFontName(), fontStyle+Font.BOLD, (int)(factor*factor*fontSize));
 	}
 
 
 	/**
 	 * @return The rectangle that bounds the displayed title of the class.
 	 */
-	protected Rectangle2D getTitleBounds() {
-		return new TextLayout(name, getTitleFont(), FONT_RENDER_CONT).getBounds();
+	protected Rectangle2D getTitleBounds(double zoom) {
+		return new TextLayout(name, getTitleFont(zoom), FONT_RENDER_CONT).getBounds();
 	}
 
 
 
 	@Override
-	public void paint(final Graphics2D g, final Rectangle visibleScene) {
+	public void paint(final Graphics2D g, final IPaintCtx paintCtx) {
 		if(!isVisible()) return ;
+		Rectangle visibleScene = paintCtx.getVisibleScene();
 
 		if(visibleScene==null || visibleScene.contains(bound) || visibleScene.intersects(bound)) {
-			final Rectangle2D titleBounds = getTitleBounds();
+			final double zoom = paintCtx.getZoomLevel();
+			final Rectangle2D titleBounds = getTitleBounds(zoom);
 			final int textWidth  		= (int) titleBounds.getWidth();
 			final int textHeight  		= (int) titleBounds.getHeight();
 			final int textHeaderHeight 	= (int) (textHeight + HEIGHT_HEADER_GAP);
@@ -295,17 +302,17 @@ public class ClassView extends RectangleEntityView {
 			g.draw(path);
 			g.setStroke(BASIC_STROKE);
 			g.setColor(Color.BLACK);
-			g.setFont(getTitleFont());
+			g.setFont(getTitleFont(zoom));
 			g.drawString(name, (float)centre.x-textWidth/2, (float)centre.y-getPreferredSize().height/2+textHeight+(textHeaderHeight-textHeight)/2);
 			g.setFont(getFont());
 
-			if(propertiesVisible)
+			if(propertiesVisible  && zoom>=0.55)
 				for(AttributeView attr : attributes)
-					attr.paint(g, visibleScene);
+					attr.paint(g, paintCtx);
 
-			if(operationsVisible)
+			if(operationsVisible  && zoom>=0.55)
 				for(OperationView op : operations)
-					op.paint(g, visibleScene);
+					op.paint(g, paintCtx);
 
 //			for(IAnchor anchor : anchors)
 //				if(!anchor.isFree())
@@ -335,7 +342,7 @@ public class ClassView extends RectangleEntityView {
 	@Override
 	public void update() {
 		final Double[] dim				= updateBoundingBox();
-		final Rectangle2D titleBounds 	= getTitleBounds();
+		final Rectangle2D titleBounds 	= getTitleBounds(1.);//FIXME
 		int textHeight  				= (int) titleBounds.getHeight();
 		final int textHeaderHeight   	= (int) (textHeight + HEIGHT_HEADER_GAP);
 		final float halfWidth  = (float) (dim[0]/2f);

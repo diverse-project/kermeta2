@@ -92,6 +92,7 @@ public abstract class EntityView extends ComponentView implements IEntityView {
 	}
 	
 	
+	@Override
 	public void reinitAnchors() {
 		for(final IAnchor anchor : getAnchors()) {
 			anchor.setRelation(null, true);

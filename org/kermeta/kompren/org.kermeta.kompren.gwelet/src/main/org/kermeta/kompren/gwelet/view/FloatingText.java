@@ -7,6 +7,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.kermeta.kompren.diagram.view.impl.EntityView;
+import org.kermeta.kompren.diagram.view.interfaces.IPaintCtx;
 import org.kermeta.kompren.diagram.view.interfaces.Selectable;
 import org.malai.picking.Picker;
 
@@ -42,10 +43,11 @@ public class FloatingText implements Selectable {
 	}
 	
 
-	public void paint(final Graphics2D g, final Rectangle visibleScene) {
+	public void paint(final Graphics2D g, final IPaintCtx paintCtx) {
 		checkBorder();
 
 		Point2D position = getPosition();
+		Rectangle visibleScene = paintCtx.getVisibleScene();
 		bound.x =(int) position.getX();
 		bound.y =(int) position.getY()-bound.height;
 

@@ -31,6 +31,7 @@ public class ClickableToolTip extends JToolTip {
 		theEditorPane.setEditable(false);
 
 		theEditorPane.addHyperlinkListener(new HyperlinkListener() {
+			@Override
 			public void hyperlinkUpdate(HyperlinkEvent e) {
 				if(e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
 					MoveCamera action = new MoveCamera();
@@ -46,10 +47,12 @@ public class ClickableToolTip extends JToolTip {
 	}
 	
 	
+	@Override
 	public void setTipText(String tipText) {
 		theEditorPane.setText(tipText);
 	}
 
+	@Override
 	public void updateUI() {
 		setUI(new ToolTipUI() {});
 	}

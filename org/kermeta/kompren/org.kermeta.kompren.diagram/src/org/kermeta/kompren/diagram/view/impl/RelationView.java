@@ -13,6 +13,7 @@ import org.kermeta.kompren.diagram.view.interfaces.IAnchor;
 import org.kermeta.kompren.diagram.view.interfaces.IDecorationView;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.kermeta.kompren.diagram.view.interfaces.IHandler;
+import org.kermeta.kompren.diagram.view.interfaces.IPaintCtx;
 import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 import org.kermeta.kompren.diagram.view.interfaces.ISegmentView;
 import org.malai.picking.Pickable;
@@ -117,8 +118,10 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 
 
 	@Override
-	public void paint(final Graphics2D g, final Rectangle visibleScene) {
+	public void paint(final Graphics2D g, final IPaintCtx paintCtx) {
 		if(!isVisible()) return;
+		
+		Rectangle visibleScene = paintCtx.getVisibleScene();
 
 		if(visibleScene==null ||
 				visibleScene.contains(segments.get(0).getPointSource()) || visibleScene.contains(segments.get(segments.size()-1).getPointTarget())){
@@ -128,10 +131,10 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 				view.paint(g);
 
 			if(sourceDecoration!=null)
-				sourceDecoration.paint(g, visibleScene);
+				sourceDecoration.paint(g, paintCtx);
 
 			if(targetDecoration!=null)
-				targetDecoration.paint(g, visibleScene);
+				targetDecoration.paint(g, paintCtx);
 
 			if(handlersVisible)
 				for(final IHandler handler : handlers)
