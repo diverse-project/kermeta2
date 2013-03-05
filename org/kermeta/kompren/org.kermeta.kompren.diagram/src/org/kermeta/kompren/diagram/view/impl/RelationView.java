@@ -295,11 +295,11 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 
 	@Override
 	public boolean removePoint(final Point2D pt) {
-		boolean possible = entitySrc!=entityTar || handlers.size()>1;
+		boolean possible = entitySrc!=entityTar || handlers.size()>2;
 		boolean again = true;
 
 		if(possible) {
-			for(int i=0, size=handlers.size(); i<size && again; i++)// Removing the handlers if possible.
+			for(int i=1, size=handlers.size()-1; i<size && again; i++)// Removing the handlers if possible.
 				if(handlers.get(i).getPoint().equals(pt)) {
 					handlers.remove(i);
 					again = false;
