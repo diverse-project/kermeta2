@@ -26,9 +26,12 @@
 		<module>../org.kermeta.utils.root</module>
 		<module>../org.kermeta.utils.helpers</module>
 		<module>../org.kermeta.utils.helpers.eclipse</module>
+		<module>../org.kermeta.utils.helpers.eclipse.jface</module>
 		<module>../org.kermeta.utils.systemservices.api</module>
 		<module>../org.kermeta.utils.systemservices.eclipse</module>
 		<module>../org.kermeta.utils.aether</module>
+		<module>../org.kermeta.utils.provisionner4eclipse</module>
+		<module>../org.kermeta.utils.feature</module>
 	</modules>
 
 	

@@ -45,6 +45,14 @@ class AetherUtil(val messagingSystem: MessagingSystem, val baseMsgGroup: String)
 
   def this() = this(new StdioSimpleMessagingSystem(), "")
   
+  /**
+   * setOffline mode if this is a maven repository system
+   */
+  def setOffline(b : Boolean ) = {
+    if(getRepositorySystemSession.isInstanceOf[MavenRepositorySystemSession]){
+      getRepositorySystemSession.asInstanceOf[MavenRepositorySystemSession].setOffline(b)
+    }
+  }
 
   def resolveMavenArtifact(mavenurl: String, repositoriesUrl: List[String]): File = {
 
