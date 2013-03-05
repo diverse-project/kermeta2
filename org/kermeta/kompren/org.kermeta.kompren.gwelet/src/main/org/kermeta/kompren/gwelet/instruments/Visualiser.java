@@ -11,6 +11,7 @@ import org.kermeta.kompren.gwelet.actions.Prune;
 import org.kermeta.kompren.gwelet.actions.ShowHierarchy;
 import org.kermeta.kompren.gwelet.eval.QuestionsPanel;
 import org.kermeta.kompren.gwelet.eval.QuestionsPanel.TypeEval;
+import org.kermeta.kompren.gwelet.instruments.Completioner.Interaction2MoveCamera;
 import org.kermeta.kompren.gwelet.model.ModelUtils;
 import org.kermeta.kompren.gwelet.ui.GweletFrame;
 import org.kermeta.kompren.gwelet.ui.MPieMenuButton;
@@ -149,7 +150,7 @@ public class Visualiser extends WidgetInstrument {
 				instrument.frame.getCanvas().getSelection().get(0) instanceof ClassView) {
 				ClassView cv = (ClassView) instrument.frame.getCanvas().getSelection().get(0);
 				String qname = ModelUtils.INSTANCE.getQualifiedName(ModelViewMapper.getMapper().getClassDefinition(cv));
-				setAction(qname);
+				setAction(qname, instrument.frame.getCanvas(), action);
 			}
 		}
 

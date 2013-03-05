@@ -57,21 +57,21 @@ public class ClassView extends RectangleEntityView {
 	protected boolean selected;
 
 	protected Color textColor;
-
-//	public static final int SUPP_SIZE = 6;
-//
-//	protected int sizeSupp = 0;
+	
+	protected String qname;
 
 
 
 	/**
 	 * Initialises a class.
 	 * @param name The name of the class.
+	 * @param qname The qualified name of the class.
 	 * @throws IllegalArgumentException If the given name is null.
 	 */
-	public ClassView(final String name) {
+	public ClassView(final String name, final String qname) {
 		super(name);
 
+		this.qname			= qname;
 		boundPath			= new GeneralPath();
 		operationsVisible 	= true;
 		propertiesVisible	= true;
@@ -85,6 +85,11 @@ public class ClassView extends RectangleEntityView {
 		initAnchors();
 	}
 
+	
+	public String getQname() {
+		return qname;
+	}
+	
 
 	@Override
 	public void anchorRelation(final IRelationView relation, final IEntityView opposite, final boolean atEnd) {
