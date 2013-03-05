@@ -806,8 +806,11 @@ public class KermetaCompiler {
 			
 			return resolvedUnit;
 		} finally {
+			
 			getSingleThreadExector().shutdown();
+			singleThreadExector = null;
 			getThreadExector().shutdown();
+			threadExector = null;
 			logger.doneProgress(getMainProgressGroup()+".kp2bytecode", "End of compilation for " +kpFileURL , LOG_MESSAGE_GROUP);
 			// workaround cache problem in compiler
 			kermeta.standard.JavaConversions.cleanCache();
