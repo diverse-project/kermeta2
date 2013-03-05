@@ -111,6 +111,7 @@ public class KermetaCompiler {
 	public boolean runInEclipse = false;
 	public boolean runResultInSeparateVM = true;
 	public Boolean saveIntermediateFiles = false;
+	public Boolean generateEcoreGenmodel = true;
 	public String targetIntermediateFolder;
 	public MessagingSystem logger;
 	public LocalFileConverter fileSystemConverter;
@@ -742,31 +743,33 @@ public class KermetaCompiler {
 
 			List<String> fullBinaryDependencyClassPath = getImportProjetClasspath(kp, varExpander);
 			fullBinaryDependencyClassPath.addAll(additionalClassPath);
-			// generating 
-			ArrayList<URL> ecoreForGenerationURLs = getEcoreNeedingGeneration(kp, varExpander );
-			Ecore2Bytecode ecore2Bytecode = new Ecore2Bytecode(logger, getMainProgressGroup(), kp, ecoreForGenerationURLs, targetRootFolder ,targetGeneratedGenmodelFolder, targetGeneratedEMFSourceFolder, targetEMFBinaryFolder, additionalClassPath, runInEclipse);
-			Future<Boolean> genmodelFuture = ecore2Bytecode.ecore2java(getSingleThreadExector());
-			if(phaseRank(stopAfterPhase) <= phaseRank(PHASE_GENERATE_LEGACY_SOURCE)){
-				// manually join the previously launched ecore2java() (this is normally done by ecorejava2bytecode)
-				try {
-					/*Boolean res =*/ genmodelFuture.get();
-					 
-				} catch (InterruptedException e) {
-					logger.error("Generation of java code from ecore interrupted", KermetaCompiler.LOG_MESSAGE_GROUP, e);
-				} catch (ExecutionException e) {
-					logger.error("Generation of java code from ecore failed "+ e, KermetaCompiler.LOG_MESSAGE_GROUP, e);
+			// ----------------- generating ecore genmodel ---------------
+			if(generateEcoreGenmodel){
+				ArrayList<URL> ecoreForGenerationURLs = getEcoreNeedingGeneration(kp, varExpander );
+				Ecore2Bytecode ecore2Bytecode = new Ecore2Bytecode(logger, getMainProgressGroup(), kp, ecoreForGenerationURLs, targetRootFolder ,targetGeneratedGenmodelFolder, targetGeneratedEMFSourceFolder, targetEMFBinaryFolder, additionalClassPath, runInEclipse);
+				Future<Boolean> genmodelFuture = ecore2Bytecode.ecore2java(getSingleThreadExector());
+				if(phaseRank(stopAfterPhase) <= phaseRank(PHASE_GENERATE_LEGACY_SOURCE)){
+					// manually join the previously launched ecore2java() (this is normally done by ecorejava2bytecode)
+					try {
+						/*Boolean res =*/ genmodelFuture.get();
+						 
+					} catch (InterruptedException e) {
+						logger.error("Generation of java code from ecore interrupted", KermetaCompiler.LOG_MESSAGE_GROUP, e);
+					} catch (ExecutionException e) {
+						logger.error("Generation of java code from ecore failed "+ e, KermetaCompiler.LOG_MESSAGE_GROUP, e);
+					}
+					logger.debug("stopping after phase "+PHASE_GENERATE_LEGACY_SOURCE, LOG_MESSAGE_GROUP);
+					return resolvedUnit;
 				}
-				logger.debug("stopping after phase "+PHASE_GENERATE_LEGACY_SOURCE, LOG_MESSAGE_GROUP);
-				return resolvedUnit;
+				Future<Boolean> ecorejava2bytecode = ecore2Bytecode.ecorejava2bytecode(genmodelFuture, getThreadExector());
+				// process java diagnostic and ensure this thread is finished
+				ecore2Bytecode.processDiagnostic(ecorejava2bytecode);
+
 			}
-			Future<Boolean> ecorejava2bytecode = ecore2Bytecode.ecorejava2bytecode(genmodelFuture, getThreadExector());
-			// process java diagnostic and ensure this thread is finished
-			ecore2Bytecode.processDiagnostic(ecorejava2bytecode);
 			if(phaseRank(stopAfterPhase) <= phaseRank(PHASE_GENERATE_LEGACY_SOURCE_BYTECODE)){
 				logger.debug("stopping after phase "+PHASE_GENERATE_LEGACY_SOURCE_BYTECODE, LOG_MESSAGE_GROUP);
 				return resolvedUnit;
 			}
-			
 			// deal with km to scala
 			// compiler require a file location not an URL
 			logger.progress(getMainProgressGroup()+".kp2bytecode", "Generating scala...", LOG_MESSAGE_GROUP, 1);

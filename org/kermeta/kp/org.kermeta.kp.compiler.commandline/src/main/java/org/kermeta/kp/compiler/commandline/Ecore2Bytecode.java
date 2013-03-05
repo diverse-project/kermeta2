@@ -28,6 +28,7 @@ import javax.tools.ToolProvider;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.kermeta.kp.KermetaProject;
 import org.kermeta.kp.compiler.commandline.callable.CallableGenmodelGenerator;
 import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
@@ -54,6 +55,7 @@ public class Ecore2Bytecode {
 	protected DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
 	protected JavaCompiler compiler;
     protected StandardJavaFileManager fileManager;
+    protected Boolean runInEclipse = true;
 	
 	
 	public Ecore2Bytecode(MessagingSystem logger, String baseProgressGroup,
@@ -69,7 +71,7 @@ public class Ecore2Bytecode {
 		this.additionalClassPath = additionalClassPath;
 		this.targetGeneratedJavaFolder = targetGeneratedJavaFolder.replaceAll("\\\\", "/");
 		this.targetClassesFolder = targetClassesFolder.replaceAll("\\\\", "/");
-		
+		this.runInEclipse = runInEclipse;
 		compiler = ToolProvider.getSystemJavaCompiler();
 		if(compiler == null){
 			// TODO eclipse run using a JRE instead of JDK, cannot compile generated emf java code
@@ -77,10 +79,17 @@ public class Ecore2Bytecode {
 		else{
 			fileManager = compiler.getStandardFileManager(diagnostics, null, null);
 		}
-		if(!runInEclipse){
+		if(!this.runInEclipse){
 			logger.debug("runInEclipse = false", KermetaCompiler.LOG_MESSAGE_GROUP);
 			logger.debug("EcorePlugin.getPlatformResourceMap().put(\""+getEclipseName(kp)+"\", URI.createURI(\"file:///"+rootFolder.replaceAll("\\\\", "/")+"\"));", KermetaCompiler.LOG_MESSAGE_GROUP);
 			EcorePlugin.getPlatformResourceMap().put(getEclipseName(kp), URI.createURI("file:///"+rootFolder.replaceAll("\\\\", "/")));
+			EcorePlugin.getPlatformResourceMap().put("org.eclipse.emf.codegen.ecore", URI.createURI("jar\\:file\\:/C:/Users/dvojtise/git/kermeta2/org/kermeta/kp/org.kermeta.kp.compiler.commandline.standalone/target/org.kermeta.kp.compiler.commandline.standalone-2.0.99-SNAPSHOT.jar\\!/"));
+			logger.debug("ExtensibleURIConverterImpl.URI_MAP.put(platform\\:/plugin/org.eclipse.emf.codegen.ecore/ jar\\:file\\:/C:/Users/dvojtise/git/kermeta2/org/kermeta/kp/org.kermeta.kp.compiler.commandline.standalone/target/org.kermeta.kp.compiler.commandline.standalone-2.0.99-SNAPSHOT.jar\\!/", KermetaCompiler.LOG_MESSAGE_GROUP);
+			
+			ExtensibleURIConverterImpl.URI_MAP.put(URI.createURI("platform\\:/plugin/org.eclipse.emf.codegen.ecore/"),
+					URI.createURI("jar\\:file\\:/C:/Users/dvojtise/git/kermeta2/org/kermeta/kp/org.kermeta.kp.compiler.commandline.standalone/target/org.kermeta.kp.compiler.commandline.standalone-2.0.99-SNAPSHOT.jar\\!/"));
+			//platform\:/plugin/org.eclipse.emf.codegen.ecore/=jar\:file\:/C\:/eclipse_modeling_4.2/eclipse-modeling-juno-k2.0.7-snapshot/eclipse/plugins/org.eclipse.emf.codegen.ecore_2.8.1.v20120917-0436.jar\!/
+			
 			
 			logger.debug("org.eclipse.core.runtime.Platform.isRunning() = "+org.eclipse.core.runtime.Platform.isRunning(), KermetaCompiler.LOG_MESSAGE_GROUP);
 		}

@@ -160,6 +160,12 @@ public class KpCompilerMojo extends AbstractMojo {
      */
     private Boolean buildAsLibrary;
     
+    /**
+     * generateEcoreGenmodel : if true this will generate the genmodel, the java code and will compile the java code for the ecore file of the kp.
+     * There is no effect if no ecore are part of this project.
+     * @parameter default-value="false"
+     */
+    private Boolean generateEcoreGenmodel;
     
     /**
      * useDefaultClasspath : if true, the final bytecode (phase GENERATE_SCALA_BYTECODE) will be compiled using the embedded scala library and kermeta dependencies
@@ -272,6 +278,7 @@ public class KpCompilerMojo extends AbstractMojo {
 
 	            if(continueOnError) paramsArray.add("-continueOnError");
 	            if(buildAsLibrary) paramsArray.add("-buildAsLibrary");
+	            if(generateEcoreGenmodel) paramsArray.add("-generateEcoreGenmodel");
 	            paramsArray.add("-stopAfter");
 	            paramsArray.add(stopAfterPhase);
 	            if(intermediateFilesRequired) paramsArray.add("-intermediate");
