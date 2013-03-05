@@ -307,9 +307,9 @@ public class ClassView extends RectangleEntityView {
 				for(OperationView op : operations)
 					op.paint(g, visibleScene);
 
-			for(IAnchor anchor : anchors)
-				if(!anchor.isFree())
-					anchor.paint(g);
+//			for(IAnchor anchor : anchors)
+//				if(!anchor.isFree())
+//					anchor.paint(g);
 			
 			g.setFont(formerFont);
 			isOptimHidden = false;
