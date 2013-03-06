@@ -171,6 +171,7 @@ public class FooHand implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseMoved(final MouseEvent e) {
+		((MetamodelView)diagram).setToolTipText(null);
 		final double zoom = diagram.getZoom();
 		if(zoom<0.5) return;
 		final double x = e.getX()/zoom;
@@ -178,8 +179,6 @@ public class FooHand implements MouseListener, MouseMotionListener {
 		boolean mustRefresh = !visibleHandlers.isEmpty();
 		IRelationView relation=null;
 
-		((MetamodelView)diagram).setToolTipText(null);
-		
 		for(final IRelationView rel : visibleHandlers)
 			rel.setHandlersVisible(false);
 

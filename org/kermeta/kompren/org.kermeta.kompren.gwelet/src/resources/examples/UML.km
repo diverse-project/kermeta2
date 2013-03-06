@@ -3751,12 +3751,6 @@
         <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="#//uml/Property"/>
       </ownedOperation>
     </ownedTypeDefinition>
-    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" name="UMLCMSlicer" superType="#//uml/UMLCMSlicer/@containedType.0">
-      <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="#//kermeta/standard/Object"/>
-      <ownedOperation name="launch" type="#//uml/UMLCMSlicer/launch/@containedType.0">
-        <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="#//kermeta/standard/Void"/>
-      </ownedOperation>
-    </ownedTypeDefinition>
   </packages>
   <packages name="kermeta">
     <nestedPackage name="standard">

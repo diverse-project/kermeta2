@@ -66,7 +66,7 @@ public class ClassModelBasicStrategy implements ILayoutStrategy {
 
 		for(List<List<IEntityView>> subForest : forest)
 			if(!subForest.isEmpty())
-				setPositions(subForest, 0, pointMax.getX()+110, pointMax);
+				setPositions(subForest, 0, pointMax.getX()+160, pointMax);
 	}
 
 
@@ -77,7 +77,7 @@ public class ClassModelBasicStrategy implements ILayoutStrategy {
 		if(subForest.size()>level+1) {
 			Rectangle2D rec = setPositions(subForest, level+1, x, pointMax);
 			final double gapX = rec.getCenterX()-bounds.getCenterX();
-			final double gapY = bounds.getMinY() - rec.getMinY() + bounds.getHeight() + 150;
+			final double gapY = bounds.getMinY() - rec.getMinY() + bounds.getHeight() + 200;
 
 			for(IEntityView entity : subForest.get(level))
 				entity.translate(gapX, -gapY);
@@ -103,7 +103,7 @@ public class ClassModelBasicStrategy implements ILayoutStrategy {
 		Dimension entityDim;
 		IEntityView entity;
 		double x2 = x;
-		final double gapClass = 150;
+		final double gapClass = 200;
 
 		while(i<size) {
 			entity    = level.get(i);
