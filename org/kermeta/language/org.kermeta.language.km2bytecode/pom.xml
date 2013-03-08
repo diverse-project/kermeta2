@@ -50,7 +50,7 @@
             </exclusions>
         </dependency>
         
-        <dependency>
+        <!-- <dependency>
             <groupId>com.github.joel1di1</groupId>
             <artifactId>maven-classpath-plugin</artifactId>
             <version>1.2.4</version>
@@ -60,7 +60,17 @@
             	<groupId>org.slf4j</groupId>
             </exclusion>
             </exclusions>
-        </dependency>        
+        </dependency> -->
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-embedder</artifactId>
+            <version>${embeddedmaven.version}</version><exclusions>
+            <exclusion>
+            	<artifactId>slf4j-jdk14</artifactId>
+            	<groupId>org.slf4j</groupId>
+            </exclusion>
+            </exclusions>
+        </dependency>    
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-compiler</artifactId>
@@ -137,14 +147,16 @@
 							org.kermeta.compilo.scala.*,
 							org.kermeta.language.km2bytecode.*
 						</Export-Package>
+						<!-- use the maven deployed by utils.aether -->
 						<Require-Bundle>
 							org.scala-ide.scala.library,
 							org.scala-ide.scala.compiler,
-							org.kermeta.language.library.core
+							org.kermeta.language.library.core,
+							org.kermeta.utils.aether
 						</Require-Bundle>
 						<!-- due to the workaround of reflexivity.loader used by gendoc and pretty printer, library.core classes are exported by several componet
 						we need to use Require-Bundle instead of Import-Package for the packages of the framework -->
-						<Import-Package>
+						<Import-Package>							
 							!org.apache.maven.*,
 							!org.codehaus.plexus.*,
 							!scala.*,

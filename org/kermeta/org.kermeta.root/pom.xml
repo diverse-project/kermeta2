@@ -16,6 +16,7 @@
 	<properties>
 		<kermeta.version>2.0.99-SNAPSHOT</kermeta.version>
 		<utils.version>2.0.99-SNAPSHOT</utils.version>
+		<embeddedmaven.version>3.0.4</embeddedmaven.version>
 		<traceability.version>2.0.99-SNAPSHOT</traceability.version>
 		<emf.ecoretools.version>0.1.0</emf.ecoretools.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

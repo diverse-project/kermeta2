@@ -114,7 +114,7 @@ object POMGeneratorHelper {
         res.add(re)
         build.setResources(res)
         //build.setOutputDirectory("target");
-        build.setModelEncoding("UTF8");
+        project.getModel.setModelEncoding("UTF8")
 
         /* INIT SCALA PLUGIN */
         var pluginScala = new Plugin();
