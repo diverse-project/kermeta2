@@ -15,10 +15,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.ITextViewer;
@@ -26,7 +22,6 @@ import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.jface.text.contentassist.IContextInformationValidator;
-import org.eclipse.swt.graphics.Image;
 import org.kermeta.language.autocompletion.AutocompletionImpl;
 import org.kermeta.language.autocompletion.api.Autocompletion;
 import org.kermeta.language.behavior.CallExpression;
@@ -35,10 +30,13 @@ import org.kermeta.language.loader.kmt.scala.Lexer;
 import org.kermeta.language.loader.kmt.scala.api.IKToken;
 import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.KermetaModelElement;
-import org.kermeta.language.structure.Tag;
+import org.kermeta.language.structure.Operation;
+import org.kermeta.language.structure.Property;
+import org.kermeta.language.structure.TypeDefinition;
 import org.kermeta.language.texteditor.eclipse.internal.Activator;
 import org.kermeta.language.texteditor.eclipse.internal.ClosestElementFinder;
 import org.kermeta.language.texteditor.eclipse.internal.KermetaEditor;
+import org.kermeta.language.texteditor.eclipse.internal.KermetaModelAccessor;
 import org.kermeta.language.util.ModelingUnit;
 
 public class KermetaContentAssistProcessor implements IContentAssistProcessor {
@@ -48,6 +46,8 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 	private Autocompletion myAutocompletion = null;
 	private IDocument doc = null;
 	private StringBuffer identation = new StringBuffer();
+	
+	private KermetaModelAccessor myAccess;
 
 	public KermetaContentAssistProcessor(KermetaEditor editor) {
 		this.editor = editor;
@@ -216,11 +216,11 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 		List<String> theClassDefinition = null;
 		List<String> thePackages = null;
 		
-
+		ModelingUnit theCurrentMU = null;
 		if (editor.getFile() != null) {	   
 			String kpIdentifier = KermetaBuilder.getDefault().findKPidentifierFromKMT(editor.getFile());
 
-			ModelingUnit theCurrentMU = KermetaBuilder.getDefault().getKpLastModelingunit(kpIdentifier); 
+			theCurrentMU = KermetaBuilder.getDefault().getKpLastModelingunit(kpIdentifier); 
 			
 			if (theCurrentMU != null) {				
 				myAutocompletion = new AutocompletionImpl(Activator.getDefault().getMessaggingSystem(),KermetaBuilder.getDefault().getKpLastModelingunit(kpIdentifier));
@@ -261,7 +261,45 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			proposePackages(qualifier, documentOffset, propList, qlen, thePackages);
 			proposeClassDefinition(qualifier, documentOffset, propList, qlen, theClassDefinition);
 		} else if (getDelimiter(qualifier).equals(".")) {
-			proposeCallExpression(qualifier, documentOffset, propList, qlen);
+//*********** TEST ***********
+//			propList.add(new KermetaCompletionProposal("test1", documentOffset, 0, 5));
+//			propList.add(new KermetaCompletionProposal("test2", documentOffset, 0, 5));
+//			propList.add(new KermetaCompletionProposal("test3", documentOffset, 0, 5));
+			
+//			List<String> myVars = myAutocompletion.getAllPackages();
+//			for(String str : myVars){
+//				propList.add(new KermetaCompletionProposal(str, documentOffset, 0, str.length()));
+//			}
+			
+//			KParser parser = new KParser();
+//			ModelingUnit mu = parser.parse(doc.get()).get();
+			
+			if(theCurrentMU != null){
+				if(myAccess == null)
+					myAccess = new KermetaModelAccessor(theCurrentMU,doc);
+//				Package p = mysAcces.currentOffsetPackage(editor.getFile().getLocationURI().toString(), documentOffset);
+//				propList.add(new KermetaCompletionProposal(">"+p.getName(), documentOffset, 0, p.getName().length()));
+				
+				TypeDefinition t = myAccess.getCallType(editor.getFile().getLocationURI().toString(), documentOffset, qualifier);
+				if(t instanceof ClassDefinition){
+					String lastQualifier = getLastIdentifier(qualifier);
+					
+					//List attr and methods for current class
+					for(Property prop : ((ClassDefinition)t).getOwnedAttribute()){
+						if(prop.getName().startsWith(lastQualifier))
+							propList.add(new KermetaCompletionProposal(prop.getName(), documentOffset-lastQualifier.length(), lastQualifier.length(), prop.getName().length()));
+					}
+					for(Operation op : ((ClassDefinition)t).getOwnedOperation()){
+						if(op.getName().startsWith(lastQualifier))
+							propList.add(new KermetaCompletionProposal(op.getName()+"()", documentOffset-lastQualifier.length(), lastQualifier.length(), op.getName().length()+2));
+					}
+					
+					//TODO: Then list for parents classes to
+				}
+				//propList.add(new KermetaCompletionProposal("*"+t.getName(), documentOffset, 0, t.getName().length()));
+			}
+//****************************
+			//proposeCallExpression(qualifier, documentOffset, propList, qlen);
 		} else if (! isTerminatedbyKeyword(qualifier)) {
 			//Proposal of Keywords and Variables
 			proposeVariable(qualifier, documentOffset, propList, qlen, theVariables);
