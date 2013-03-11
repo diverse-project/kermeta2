@@ -23,6 +23,7 @@ public class Gwelet {
 		frame.getComposer().compose(null);
 		frame.setVisible(true);
 		ToolTipManager.sharedInstance().setInitialDelay(10);
+		ToolTipManager.sharedInstance().setDismissDelay(100000);
 		frame.open("src/resources/examples/UML.km");
 		frame.getCanvas().requestFocusInWindow();
 //		((GweletUIBuilder)frame.getComposer()).formular.setVisible(true);// EVAL

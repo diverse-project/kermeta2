@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 
 import org.kermeta.kompren.diagram.view.interfaces.IDecorationView;
+import org.kermeta.kompren.diagram.view.interfaces.IPaintCtx;
 import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 import org.kermeta.kompren.diagram.view.interfaces.ISegmentView;
 
@@ -106,11 +107,11 @@ public abstract class DecorationView extends View implements IDecorationView {
 
 
 	@Override
-	public void paint(final Graphics2D g, final Rectangle visibleScene) {
+	public void paint(final Graphics2D g, final IPaintCtx ctx) {
 		Point2D position = getPosition();
+		Rectangle visibleScene = ctx.getVisibleScene();
 
-		bound.x = (int) position.getX();
-		bound.y = (int) position.getY();
+		bound.setFrame(position.getX(), position.getY(), bound.getWidth(), bound.getHeight());
 
 		if(visibleScene==null || visibleScene.contains(bound) || visibleScene.intersects(bound)) {
 			g.translate(position.getX(), position.getY());

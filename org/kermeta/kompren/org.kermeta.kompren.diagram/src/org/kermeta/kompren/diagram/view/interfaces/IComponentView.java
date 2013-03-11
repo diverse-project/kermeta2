@@ -36,7 +36,6 @@ public interface IComponentView extends IView {
 	 */
 	void update();
 
-
 	/**
 	 * Updates the colour of the lines.
 	 * @param opacity The opacity The opacity to apply on the colour.

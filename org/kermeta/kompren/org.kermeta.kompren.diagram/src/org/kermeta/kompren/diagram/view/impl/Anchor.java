@@ -5,28 +5,33 @@ import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 
 import org.kermeta.kompren.diagram.view.interfaces.IAnchor;
+import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
+import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 
 public class Anchor implements IAnchor {
 
 	protected Point2D position;
 
-	protected boolean free;
+	protected IEntityView entity;
+
+	protected IRelationView relation;
 
 
-
-	public Anchor(final double x, final double y) {
+	public Anchor(final double x, final double y, IEntityView entity) {
 		super();
 
+		relation = null;
+		this.entity = entity;
 		position = new Point2D.Double(x, y);
-		free	 = true;
 	}
 
 
 
 	@Override
 	public void paint(final Graphics2D g) {
-		g.setColor(Color.GREEN);
 		final double width = 6.;
+		
+		g.setColor(Color.RED);
 		g.drawOval((int)(position.getX()-width/2.), (int)(position.getY()-width/2.), (int)width, (int)width);
 		g.fillOval((int)(position.getX()-width/2.), (int)(position.getY()-width/2.), (int)width, (int)width);
 	}
@@ -34,17 +39,22 @@ public class Anchor implements IAnchor {
 
 	@Override
 	public boolean isFree() {
-		return free;
+		return relation==null;
 	}
 
 
 	@Override
-	public void setFree(final boolean free) {
-		this.free = free;
-
+	public void setRelation(final IRelationView rel, final boolean atEnd) {
+		relation = rel;
+		
 		// The anchor position must not be linked to a segment anymore.
-		if(free)
+		if(isFree())
 			this.position = new Point2D.Double(position.getX(), position.getY());
+		else {
+			Point2D pt = atEnd ? relation.getLastSegment().getPointTarget() : relation.getFirstSegment().getPointSource();
+			pt.setLocation(position);
+			setPosition(pt);
+		}
 	}
 
 

@@ -19,6 +19,7 @@ import org.kermeta.kompren.diagram.view.impl.Number;
 import org.kermeta.kompren.diagram.view.impl.RectangleEntityView;
 import org.kermeta.kompren.diagram.view.interfaces.IAnchor;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
+import org.kermeta.kompren.diagram.view.interfaces.IPaintCtx;
 import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 import org.malai.picking.Picker;
 
@@ -28,13 +29,13 @@ import org.malai.picking.Picker;
  */
 public class ClassView extends RectangleEntityView {
 	/** The gap is used to add spaces add the left and the right of the class. */
-	public static final float WIDTH_GAP = 2f;
+	public static final double WIDTH_GAP = 2.;
 
 	/** The gap is used to add spaces between the title and the top line, the last operation and the bottom line, etc. */
-	public static final float HEIGHT_GAP = 4f;
+	public static final double HEIGHT_GAP = 4.;
 
 	/** Used to add spaces around the name of the class. */
-	public static final float HEIGHT_HEADER_GAP = 10f;
+	public static final double HEIGHT_HEADER_GAP = 10.;
 
 	private static final Stroke BASIC_STROKE = new BasicStroke(1f);
 
@@ -59,6 +60,8 @@ public class ClassView extends RectangleEntityView {
 	protected Color textColor;
 	
 	protected String qname;
+	
+	protected MetamodelView mmView;
 
 
 
@@ -68,10 +71,11 @@ public class ClassView extends RectangleEntityView {
 	 * @param qname The qualified name of the class.
 	 * @throws IllegalArgumentException If the given name is null.
 	 */
-	public ClassView(final String name, final String qname) {
+	public ClassView(final String name, final String qname, final MetamodelView mmView) {
 		super(name);
 
 		this.qname			= qname;
+		this.mmView			= mmView;
 		boundPath			= new GeneralPath();
 		operationsVisible 	= true;
 		propertiesVisible	= true;
@@ -99,7 +103,6 @@ public class ClassView extends RectangleEntityView {
 			((RelationClassView)relation).reinitRoles();
 			if(!atEnd)
 				relations.add((RelationClassView)relation);
-//			sizeSupp += SUPP_SIZE;
 		}
 	}
 
@@ -165,35 +168,33 @@ public class ClassView extends RectangleEntityView {
 			update();
 	}
 
+	
+	public Double[] updateBoundingBox() {
+		final Rectangle2D titleBounds = getTitleBounds(1);
+		Double[] dim = new Double[2];
+		double width;
 
-
-	@Override
-	public Dimension getPreferredSize() {
-		final Rectangle2D titleBounds 	= getTitleBounds();
-		Dimension dim 					= new Dimension();
-		int width;
-
-		dim.height = (int) (titleBounds.getHeight() + HEIGHT_HEADER_GAP*2);
-		dim.width  = (int) (titleBounds.getWidth() + 2*WIDTH_GAP);
+		dim[1] = titleBounds.getHeight() + HEIGHT_HEADER_GAP*2.;
+		dim[0]  = titleBounds.getWidth() + 2.*WIDTH_GAP;
 
 		if(propertiesVisible)
 			for(AttributeView attr : attributes) {
-				width = (int) attr.getWidth();
+				width = attr.getWidth();
 
-				if(dim.width<width+WIDTH_GAP*2f)
-					dim.width = (int) (2*WIDTH_GAP+width);
+				if(dim[0]<width+WIDTH_GAP*2.)
+					dim[0] = 2.*WIDTH_GAP+width;
 
-				dim.height += attr.getHeight()+HEIGHT_GAP;
+				dim[1] += attr.getHeight()+HEIGHT_GAP;
 			}
 
 		if(operationsVisible)
 			for(OperationView op : operations) {
-				width = (int) op.getWidth();
+				width = op.getWidth();
 
-				if(dim.width<width+WIDTH_GAP*2f)
-					dim.width = (int) (2*WIDTH_GAP+width);
+				if(dim[0]<width+WIDTH_GAP*2.)
+					dim[0] = 2.*WIDTH_GAP+width;
 
-				dim.height += op.getHeight()+HEIGHT_GAP;
+				dim[1] += op.getHeight()+HEIGHT_GAP;
 			}
 		
 		double minx = Double.MAX_VALUE;
@@ -204,39 +205,47 @@ public class ClassView extends RectangleEntityView {
 		
 		for(IAnchor anchor : anchors) {
 			pt = anchor.getPosition();
-			if(pt.getX()<minx) 	minx = pt.getX();
-			if(pt.getX()>maxx)	maxx = pt.getX();
-			if(pt.getY()<miny) 	miny = pt.getY();
-			if(pt.getY()>maxy)	maxy = pt.getY();
+//			if(!anchor.isFree()) {
+				if(pt.getX()<minx) 	minx = pt.getX();
+				if(pt.getX()>maxx)	maxx = pt.getX();
+				if(pt.getY()<miny) 	miny = pt.getY();
+				if(pt.getY()>maxy)	maxy = pt.getY();
+//			}
 		}
 		
-		if(maxx-minx>=dim.width*scale)
-			dim.width = (int) ((maxx-minx)/scale);
+		if(maxx-minx>=dim[0]*scale)
+			dim[0] = (maxx-minx)/scale;
 		else
 			// If the bowing box of the anchors is smaller than the real boxing box of the class, 
 			// the anchors must be moved to the border of the class.
 			for(IAnchor anchor : anchors) {
 				pt = anchor.getPosition();
 				if(Number.NUMBER.equals(pt.getX(), minx))
-						pt.setLocation(centre.x-dim.width/2., pt.getY());
+						pt.setLocation(centre.x-dim[0]/2., pt.getY());
 				else if(Number.NUMBER.equals(pt.getX(), maxx))
-					pt.setLocation(centre.x+dim.width/2., pt.getY());
+					pt.setLocation(centre.x+dim[0]/2., pt.getY());
 			}
-		if(maxy-miny>=dim.height*scale)
-			dim.height = (int) ((maxy-miny)/scale);
+		if(maxy-miny>=dim[1]*scale)
+			dim[1] = (maxy-miny)/scale;
 		else
 			for(IAnchor anchor : anchors) {
 				pt = anchor.getPosition();
 				if(Number.NUMBER.equals(pt.getY(), miny))
-					pt.setLocation(pt.getX(), centre.y-dim.height/2.);
+					pt.setLocation(pt.getX(), centre.y-dim[1]/2.);
 				else if(Number.NUMBER.equals(pt.getY(), maxy))
-					pt.setLocation(pt.getX(), centre.y+dim.height/2.);
+					pt.setLocation(pt.getX(), centre.y+dim[1]/2.);
 			}
 		
-		dim.width  = (int) (Math.max(dim.width, 30)*scale);
-		dim.height = (int) (Math.max(dim.height, 20)*scale);
-
+		dim[0]  = Math.max(dim[0], 40.)*scale;
+		dim[1] = Math.max(dim[1], 30.)*scale;
+		
 		return dim;
+	}
+
+
+	@Override
+	public Dimension getPreferredSize() {
+		return new Dimension((int)bound.getWidth(), (int)bound.getHeight());
 	}
 
 
@@ -258,26 +267,29 @@ public class ClassView extends RectangleEntityView {
 	/**
 	 * @return The font used to display the title of the class.
 	 */
-	public Font getTitleFont() {
-		return new Font(getFontName(), fontStyle+Font.BOLD, (int)fontSize);
+	public Font getTitleFont(double zoom) {
+		double factor = Math.max(1., (2-zoom));
+		return new Font(getFontName(), fontStyle+Font.BOLD, (int)(factor*factor*fontSize));
 	}
 
 
 	/**
 	 * @return The rectangle that bounds the displayed title of the class.
 	 */
-	protected Rectangle2D getTitleBounds() {
-		return new TextLayout(name, getTitleFont(), FONT_RENDER_CONT).getBounds();
+	protected Rectangle2D getTitleBounds(double zoom) {
+		return new TextLayout(name, getTitleFont(zoom), FONT_RENDER_CONT).getBounds();
 	}
 
 
 
 	@Override
-	public void paint(final Graphics2D g, final Rectangle visibleScene) {
+	public void paint(final Graphics2D g, final IPaintCtx paintCtx) {
 		if(!isVisible()) return ;
+		Rectangle visibleScene = paintCtx.getVisibleScene();
 
 		if(visibleScene==null || visibleScene.contains(bound) || visibleScene.intersects(bound)) {
-			final Rectangle2D titleBounds = getTitleBounds();
+			final double zoom = paintCtx.getZoomLevel();
+			final Rectangle2D titleBounds = getTitleBounds(zoom);
 			final int textWidth  		= (int) titleBounds.getWidth();
 			final int textHeight  		= (int) titleBounds.getHeight();
 			final int textHeaderHeight 	= (int) (textHeight + HEIGHT_HEADER_GAP);
@@ -290,20 +302,21 @@ public class ClassView extends RectangleEntityView {
 			g.draw(path);
 			g.setStroke(BASIC_STROKE);
 			g.setColor(Color.BLACK);
-			g.setFont(getTitleFont());//FIXME: use of getPreferredSize, performance
+			g.setFont(getTitleFont(zoom));
 			g.drawString(name, (float)centre.x-textWidth/2, (float)centre.y-getPreferredSize().height/2+textHeight+(textHeaderHeight-textHeight)/2);
 			g.setFont(getFont());
 
-			if(propertiesVisible)
+			if(propertiesVisible  && zoom>=0.55)
 				for(AttributeView attr : attributes)
-					attr.paint(g, visibleScene);
+					attr.paint(g, paintCtx);
 
-			if(operationsVisible)
+			if(operationsVisible  && zoom>=0.55)
 				for(OperationView op : operations)
-					op.paint(g, visibleScene);
+					op.paint(g, paintCtx);
 
 //			for(IAnchor anchor : anchors)
-//				anchor.paint(g);
+//				if(!anchor.isFree())
+//					anchor.paint(g);
 			
 			g.setFont(formerFont);
 			isOptimHidden = false;
@@ -328,19 +341,19 @@ public class ClassView extends RectangleEntityView {
 
 	@Override
 	public void update() {
-		final Dimension dim    			= getPreferredSize();
-		final Rectangle2D titleBounds 	= getTitleBounds();
+		final Double[] dim				= updateBoundingBox();
+		final Rectangle2D titleBounds 	= getTitleBounds(1.);//FIXME
 		int textHeight  				= (int) titleBounds.getHeight();
 		final int textHeaderHeight   	= (int) (textHeight + HEIGHT_HEADER_GAP);
-		final float halfWidth  = dim.width/2f;
-		final float halfHeight = dim.height/2f;
+		final float halfWidth  = (float) (dim[0]/2f);
+		final float halfHeight = (float) (dim[1]/2f);
 		final float cx 		   = (float) centre.x;
 		final float cy 		   = (float) centre.y;
-		final float xAttr 	   = cx-halfWidth + WIDTH_GAP;
-		float yAttr 		   = cy-halfHeight + textHeaderHeight + HEIGHT_GAP;
+		final float xAttr 	   = (float) (cx-halfWidth + WIDTH_GAP);
+		float yAttr 		   = (float) (cy-halfHeight + textHeaderHeight + HEIGHT_GAP);
 
-		updateBoundPath(path, dim.width, dim.height, cx, cy);
-		updateBoundPath(boundPath, dim.width, dim.height, cx, cy);
+		updateBoundPath(path, dim[0], dim[1], cx, cy);
+		updateBoundPath(boundPath, dim[0], dim[1], cx, cy);
 		path.moveTo(cx-halfWidth, cy-halfHeight+textHeaderHeight);
 		path.lineTo(cx+halfWidth, cy-halfHeight+textHeaderHeight);
 
@@ -386,11 +399,10 @@ public class ClassView extends RectangleEntityView {
 
 	@Override
 	public void updateLineColor(final int opacity) {
-		if(selected) {
+		if(selected)
 			lineColor = new Color(100, 100, 100, 75);
-		}else {
+		else
 			lineColor = new Color(0, 0, 0, opacity);
-		}
 
 		textColor = new Color(0, 0, 0, opacity);
 	}
@@ -457,7 +469,6 @@ public class ClassView extends RectangleEntityView {
 
 	@Override
 	public Picker getPicker() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

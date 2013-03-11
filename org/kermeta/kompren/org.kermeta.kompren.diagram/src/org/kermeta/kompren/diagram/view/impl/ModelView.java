@@ -16,9 +16,9 @@ import javax.swing.BoundedRangeModel;
 import javax.swing.JScrollBar;
 
 import org.kermeta.kompren.diagram.layout.ILayoutStrategy;
-import org.kermeta.kompren.diagram.view.interfaces.IAnchor;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.kermeta.kompren.diagram.view.interfaces.IModelView;
+import org.kermeta.kompren.diagram.view.interfaces.IPaintCtx;
 import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 import org.kermeta.kompren.diagram.view.interfaces.Selectable;
 import org.malai.mapping.ActiveArrayList;
@@ -54,12 +54,15 @@ public class ModelView extends MPanel implements IModelView {
 	/** The strategy used to layout the diagram. */
 	protected ILayoutStrategy strategy;
 
+	protected IPaintCtx paintCtx;
+	
 
 	/**
 	 * Initialises the diagram.
 	 */
 	public ModelView(final boolean withScrollPane) {
 		super(withScrollPane, true);
+		paintCtx		= new PaintCtx();
 		zoom 			= 1.;
 		entities 		= new ActiveArrayList<IEntityView>();
 		relations		= new ActiveArrayList<IRelationView>();
@@ -174,15 +177,18 @@ public class ModelView extends MPanel implements IModelView {
 				scene.x /= zoom;
 				scene.y /= zoom;
 			}
+			
+			paintCtx.setVisibleScene(scene);
+			paintCtx.setZoom(zoom);
 
 			synchronized(entities) {
 				for(IEntityView entity : entities)
-					entity.paint(g2, scene);
+					entity.paint(g2, paintCtx);
 			}
 
 			synchronized(relations) {
 				for(IRelationView relation : relations)
-					relation.paint(g2, scene);
+					relation.paint(g2, paintCtx);
 			}
 
 			g2.scale(1./zoom, 1./zoom);
@@ -219,6 +225,7 @@ public class ModelView extends MPanel implements IModelView {
 
 	@Override
 	public void refresh() {
+		updatePreferredSize();
 		revalidate();
 		repaint();
 	}
@@ -251,7 +258,6 @@ public class ModelView extends MPanel implements IModelView {
 	@Override
 	public void update() {
 		updateModelElements();
-		updatePreferredSize();
 		refresh();
 	}
 
@@ -454,13 +460,13 @@ public class ModelView extends MPanel implements IModelView {
 	@Override
 	public void relayoutRelations() {
 		for(final IEntityView entity : entities)
-			for(final IAnchor anchor : entity.getAnchors())
-				anchor.setFree(true);
+			entity.reinitAnchors();
 
-		for(final IRelationView relation : relations) {
-			anchorRelation(relation);
-			relation.update();
-		}
+		for(final IRelationView relation : relations)
+			if(relation.isVisible()) {
+				anchorRelation(relation);
+				relation.update();
+			}
 	}
 
 

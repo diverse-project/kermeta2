@@ -39,6 +39,7 @@ public class KermetaCompilerCLI {
 	private static final String IGNORECHECK_OPTION = "ignoreCheck";
 	private static final String CONTINUEONERROR_OPTION = "continueOnError";
 	private static final String BUILDASLIBRARY_OPTION = "buildAsLibrary";
+	private static final String GENERATE_ECORE_GENMODEL_OPTION = "generateEcoreGenmodel";
 	private static final String CLASSPATH_OPTION = "cp";
 	private static final String EXTENSION_POINT_OPTION = "E";
 
@@ -51,6 +52,7 @@ public class KermetaCompilerCLI {
 	private Boolean intermediateFilesRequired = false;
 	private Boolean ignoreCheck = false;
 	private Boolean continueOnError = false;
+	private Boolean generateEcoreGenmodel = false;
 	private Boolean buildAsLibrary = false;
 	private String stopAfterPhase = "GENERATE_SCALA_BYTECODE";
 	private String additionalClasspath = "";
@@ -85,7 +87,7 @@ public class KermetaCompilerCLI {
 		
 		String outputFolderPath = new File(outputFolder).getCanonicalPath();
 		compiler = new KermetaCompiler( true, new StdioSimpleMessagingSystem(), new SimpleLocalFileConverter(), false);
-		compiler.initializeTargetFolders(outputFolderPath, outputFolderPath, outputFolderPath+"/scala/", outputFolderPath+"/scalaclasses/", outputFolderPath+"/genmodel/", outputFolderPath+"/java/", outputFolderPath+"/emfclasses/", outputFolderPath+"/resources/");
+		compiler.initializeTargetFolders(outputFolderPath, outputFolderPath, outputFolderPath+"/scala/", outputFolderPath+"/scalaclasses/", outputFolderPath+"/genmodel/", outputFolderPath+"/emfjava/", outputFolderPath+"/emfclasses/", outputFolderPath+"/resources/");
 		ArrayList<String> classpath = new java.util.ArrayList<String>();
 		if(!additionalClasspath.isEmpty()){
 			if(additionalClasspath.contains(File.pathSeparator)){
@@ -116,6 +118,7 @@ public class KermetaCompilerCLI {
 		compiler.stopOnError = !continueOnError;
 		compiler.checkingEnabled = !ignoreCheck;
 		compiler.saveIntermediateFiles = intermediateFilesRequired;
+		compiler.generateEcoreGenmodel = generateEcoreGenmodel;
 		compiler.setModelingUnitLoaders(muLoaders);
 		if(!buildAsLibrary){
 			compiler.kp2bytecode(kpFile, classpath, stopAfterPhase);
@@ -140,6 +143,7 @@ public class KermetaCompilerCLI {
 		options.addOption(CONTINUEONERROR_OPTION, false, "try to continue regardless of previous errors.");
 		options.addOption(TARGET_LOCATION_OPTION, true, "Output folder. " + DEFAULT_TARGET_FOLDER + " by default ");
 		options.addOption(CLASSPATH_OPTION, true, "addtional classpath.");
+		options.addOption(GENERATE_ECORE_GENMODEL_OPTION, true, "generate genmodel and java code for ecore sources.");
 		options.addOption(
 					OptionBuilder
 					.withArgName("fileExtension,factory")
@@ -190,6 +194,9 @@ public class KermetaCompilerCLI {
 		}
 		if (cmd.hasOption(CONTINUEONERROR_OPTION)){
 			this.continueOnError = true;			
+		}
+		if (cmd.hasOption(GENERATE_ECORE_GENMODEL_OPTION)){
+			this.generateEcoreGenmodel = true;			
 		}
 		
 		setMuLoaders(cmd.getOptionProperties(EXTENSION_POINT_OPTION));

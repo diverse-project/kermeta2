@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: kompren.diagram
-Bundle-SymbolicName: org.kermeta.ki.diagram
+Bundle-SymbolicName: org.kermeta.kompren.diagram
 Bundle-Version: 1.0.0
 Export-Package: org.kermeta.kompren.diagram.layout,
  org.kermeta.kompren.diagram.view.impl,

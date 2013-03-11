@@ -14,6 +14,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.kermeta.kompren.diagram.view.interfaces.IAnchor;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
@@ -88,6 +89,18 @@ public abstract class EntityView extends ComponentView implements IEntityView {
 		updateFillingColor(DEFAUT_OPACITY);
 		updateLineColor(255);
 		setScale(1.);
+	}
+	
+	
+	@Override
+	public void reinitAnchors() {
+		for(final IAnchor anchor : getAnchors()) {
+			anchor.setRelation(null, true);
+			anchor.setRelation(null, false);
+		}
+		anchors.clear();
+		update();
+		initAnchors();
 	}
 
 
@@ -186,19 +199,13 @@ public abstract class EntityView extends ComponentView implements IEntityView {
 	public void anchorRelation(final IRelationView relation, final IEntityView opposite, final boolean atEnd) {
 		IAnchor anchor;
 
-		if(opposite==this) {
-			Point2D pt = anchors.get(0).getPosition();
-			anchor = getClosestFreeAnchor(new Point2D.Double(pt.getX(), pt.getY()), true);
-		}
+		if(opposite==this)
+			anchor = getClosestFreeAnchor(new Point2D.Double(centre.getX()+new Random().nextInt(20)-10, centre.getY()+new Random().nextInt(20)-10), true);
 		else
 			anchor = getClosestFreeAnchor(new Line(centre, opposite.getCentre()).intersectionPoint(path, opposite.getCentre()), true);
 
-		if(anchor!=null) {
-			Point2D pt = atEnd ? relation.getLastSegment().getPointTarget() : relation.getFirstSegment().getPointSource();
-			pt.setLocation(anchor.getPosition());
-			anchor.setPosition(pt);
-			anchor.setFree(false);
-		}
+		if(anchor!=null)
+			anchor.setRelation(relation, atEnd);
 
 		if(!atEnd && !outputRelations.contains(relation))
 			outputRelations.add(relation);

@@ -358,6 +358,7 @@ public class KPBuilder {
 				
 				compiler.stopOnError = !Activator.getDefault().getPreferenceStore().getBoolean(PreferenceConstants.P_IGNORE_BUILD_ERROR_BOOLEAN);
 				compiler.checkingEnabled = true;
+				compiler.generateEcoreGenmodel = true;
 				result = compiler.kp2bytecode(kpFileURL,new HashMap<URL, ModelingUnit>(),additionalClassPath,KermetaCompiler.PHASE_GENERATE_SCALA_BYTECODE);
 				if(result != null){
 					kp_last_modelingunit = result;
