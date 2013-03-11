@@ -466,7 +466,7 @@ public class KermetaModelAccessor {
 				if(callChain.get(i).toString().equals(")")){
 					int count = 1; //Number of opened parentheses
 					i--;
-					while(count > 1 && i > 0){
+					while(count > 0 && i > 0){
 						if(callChain.get(i).toString().equals(")")) count++;
 						else if(callChain.get(i).toString().equals("(")) count--;
 						i--;

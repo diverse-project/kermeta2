@@ -29,9 +29,12 @@ import org.kermeta.language.builder.eclipse.KermetaBuilder;
 import org.kermeta.language.loader.kmt.scala.Lexer;
 import org.kermeta.language.loader.kmt.scala.api.IKToken;
 import org.kermeta.language.structure.ClassDefinition;
+import org.kermeta.language.structure.Class;
 import org.kermeta.language.structure.KermetaModelElement;
 import org.kermeta.language.structure.Operation;
+import org.kermeta.language.structure.Parameter;
 import org.kermeta.language.structure.Property;
+import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.TypeDefinition;
 import org.kermeta.language.texteditor.eclipse.internal.Activator;
 import org.kermeta.language.texteditor.eclipse.internal.ClosestElementFinder;
@@ -262,14 +265,6 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			proposeClassDefinition(qualifier, documentOffset, propList, qlen, theClassDefinition);
 		} else if (getDelimiter(qualifier).equals(".")) {
 //*********** TEST ***********
-//			propList.add(new KermetaCompletionProposal("test1", documentOffset, 0, 5));
-//			propList.add(new KermetaCompletionProposal("test2", documentOffset, 0, 5));
-//			propList.add(new KermetaCompletionProposal("test3", documentOffset, 0, 5));
-			
-//			List<String> myVars = myAutocompletion.getAllPackages();
-//			for(String str : myVars){
-//				propList.add(new KermetaCompletionProposal(str, documentOffset, 0, str.length()));
-//			}
 			
 //			KParser parser = new KParser();
 //			ModelingUnit mu = parser.parse(doc.get()).get();
@@ -277,26 +272,12 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			if(theCurrentMU != null){
 				if(myAccess == null)
 					myAccess = new KermetaModelAccessor(theCurrentMU,doc);
-//				Package p = mysAcces.currentOffsetPackage(editor.getFile().getLocationURI().toString(), documentOffset);
-//				propList.add(new KermetaCompletionProposal(">"+p.getName(), documentOffset, 0, p.getName().length()));
 				
 				TypeDefinition t = myAccess.getCallType(editor.getFile().getLocationURI().toString(), documentOffset, qualifier);
 				if(t instanceof ClassDefinition){
 					String lastQualifier = getLastIdentifier(qualifier);
-					
-					//List attr and methods for current class
-					for(Property prop : ((ClassDefinition)t).getOwnedAttribute()){
-						if(prop.getName().startsWith(lastQualifier))
-							propList.add(new KermetaCompletionProposal(prop.getName(), documentOffset-lastQualifier.length(), lastQualifier.length(), prop.getName().length()));
-					}
-					for(Operation op : ((ClassDefinition)t).getOwnedOperation()){
-						if(op.getName().startsWith(lastQualifier))
-							propList.add(new KermetaCompletionProposal(op.getName()+"()", documentOffset-lastQualifier.length(), lastQualifier.length(), op.getName().length()+2));
-					}
-					
-					//TODO: Then list for parents classes to
+					classDefHierarchyProposals(lastQualifier, documentOffset, propList, (ClassDefinition)t);
 				}
-				//propList.add(new KermetaCompletionProposal("*"+t.getName(), documentOffset, 0, t.getName().length()));
 			}
 //****************************
 			//proposeCallExpression(qualifier, documentOffset, propList, qlen);
@@ -310,6 +291,92 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			proposePackages(qualifier, documentOffset, propList, qlen, thePackages);
 			proposeClassDefinition(qualifier, documentOffset, propList, qlen, theClassDefinition);
 			proposeVariable(qualifier, documentOffset, propList, qlen, theVariables);
+		}
+	}
+	
+	private void classDefHierarchyProposals(String lastQualifier, 
+			int documentOffset, List<KermetaCompletionProposal> propList,
+			ClassDefinition cd){
+		
+		computeClassDefProposals(lastQualifier, documentOffset, propList, cd);
+		
+		for(Type t : cd.getSuperType()){
+			if(t instanceof Class){
+				classDefHierarchyProposals(lastQualifier, documentOffset, propList, ((ClassDefinition)((Class) t).getTypeDefinition()));
+			}
+		}
+	}
+
+	/*
+	 * Get all properties and operations of the given class definition which start with lastQualifier
+	 */
+	private void computeClassDefProposals(String lastQualifier,
+			int documentOffset, List<KermetaCompletionProposal> propList,
+			ClassDefinition cd) {
+		
+		String containerClass = cd.getName();
+		
+		//List attr and methods for current class
+		for(Property prop : cd.getOwnedAttribute()){
+			if(prop.getName().startsWith(lastQualifier)){
+				String type = "";							
+				
+				if((prop.getType()) instanceof Class) type = ((Class)(prop.getType())).getName();
+				propList.add(
+					new KermetaCompletionProposal(	prop.getName(),
+													documentOffset-lastQualifier.length(),
+													lastQualifier.length(),
+													prop.getName().length(),
+													null,
+													prop.getName()+" : "+type+" - "+containerClass,
+													null,
+													null)
+				);
+			}
+		}
+		for(Operation op : cd.getOwnedOperation()){
+			if(op.getName().startsWith(lastQualifier)){
+				StringBuffer showedText = new StringBuffer();
+				StringBuffer printedText = new StringBuffer();
+				String type = "";
+				
+				showedText.append(op.getName());
+				printedText.append(op.getName());
+				
+				//Show parameters
+				showedText.append("(");
+				printedText.append("(");
+				List<Parameter> params = op.getOwnedParameter();
+				for(int i = 0; i < params.size(); i++){
+					Parameter p = params.get(i);
+					if(p.getType() instanceof Class)
+						showedText.append(((Class)p.getType()).getName()+" ");
+					showedText.append(p.getName());
+					printedText.append(p.getName());
+					if(i < params.size() - 1){
+						showedText.append(",");
+						printedText.append(",");
+					}
+				}
+				showedText.append(")");
+				printedText.append(")");
+				
+				if((op.getType()) instanceof Class) type = ((Class)(op.getType())).getName();
+				showedText.append(" : "+type);
+				
+				showedText.append(" - "+containerClass);
+
+				propList.add(
+						new KermetaCompletionProposal(	printedText.toString(),
+														documentOffset-lastQualifier.length(),
+														lastQualifier.length(),
+														printedText.toString().length(),
+														null,
+														showedText.toString(),
+														null,
+														null)
+					);
+			}
 		}
 	}
 
