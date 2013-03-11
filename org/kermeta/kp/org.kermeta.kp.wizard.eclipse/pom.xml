@@ -123,15 +123,19 @@
                         	org.kermeta.kp.wizard.eclipse.*
                         </Export-Package>
                         <Require-Bundle>
-	                         org.eclipse.ui,
-							 org.eclipse.core.runtime,
-							 org.eclipse.core.resources,
-							 org.eclipse.ui.ide
+	                        org.eclipse.ui,
+							org.eclipse.core.runtime,
+							org.eclipse.core.resources,
+							org.eclipse.ui.ide,
+							org.kermeta.kp.compiler.commandline,
+							org.kermeta.utils.maven.runtime
 						</Require-Bundle>
                         <Import-Package>
+                        	!org.apache.maven.*,
                         	!org.eclipse.core.resources,
                         	!org.eclipse.core.runtime,
                         	!org.eclipse.ui.*, 
+                        	!org.kermeta.kp.compiler.commandline,
                         	org.osgi.framework;version="[1.5,2)",
                         	*
                         </Import-Package>
@@ -284,6 +288,11 @@
         	<artifactId>utils.systemservices.eclipse</artifactId>
         	<version>${utils.version}</version>
         </dependency>
+        <!-- <dependency>
+        	<groupId>org.kermeta.utils</groupId>
+        	<artifactId>utils.aether</artifactId>
+        	<version>${utils.version}</version>
+        </dependency>-->
     </dependencies>
     <name>kp.wizard.eclipse</name>
 </project>

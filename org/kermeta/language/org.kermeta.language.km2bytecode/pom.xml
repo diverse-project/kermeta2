@@ -62,9 +62,9 @@
             </exclusions>
         </dependency> -->
         <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-embedder</artifactId>
-            <version>${embeddedmaven.version}</version><exclusions>
+            <groupId>org.kermeta.utils</groupId>
+            <artifactId>org.kermeta.utils.maven.runtime</artifactId>
+            <version>${kermeta.version}</version><exclusions>
             <exclusion>
             	<artifactId>slf4j-jdk14</artifactId>
             	<groupId>org.slf4j</groupId>
@@ -152,7 +152,8 @@
 							org.scala-ide.scala.library,
 							org.scala-ide.scala.compiler,
 							org.kermeta.language.library.core,
-							org.kermeta.utils.aether
+							org.kermeta.utils.aether,
+							org.kermeta.utils.maven.runtime
 						</Require-Bundle>
 						<!-- due to the workaround of reflexivity.loader used by gendoc and pretty printer, library.core classes are exported by several componet
 						we need to use Require-Bundle instead of Import-Package for the packages of the framework -->

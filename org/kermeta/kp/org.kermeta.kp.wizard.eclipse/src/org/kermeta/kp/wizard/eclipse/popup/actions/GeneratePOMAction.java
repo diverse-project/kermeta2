@@ -2,6 +2,7 @@ package org.kermeta.kp.wizard.eclipse.popup.actions;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -17,7 +18,12 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.kermeta.kp.KermetaProject;
+import org.kermeta.kp.editor.analysis.helper.KpVariableExpander;
+import org.kermeta.kp.loader.kp.KpLoaderImpl;
 import org.kermeta.kp.wizard.eclipse.Activator;
+import org.kermeta.kp.wizard.eclipse.helper.PomGenerator4KP;
+import org.kermeta.utils.helpers.eclipse.LocalFileConverterForEclipse;
 
 public class GeneratePOMAction implements IObjectActionDelegate {
 
@@ -50,26 +56,26 @@ public class GeneratePOMAction implements IObjectActionDelegate {
 			String groupId = artefactId.contains(".") ? artefactId.substring(0, artefactId.lastIndexOf(".")) : artefactId;
 			
 			String version = Activator.getDefault().getBundle().getVersion().toString().replace(".qualifier", "-SNAPSHOT");
+			KpLoaderImpl ldr = new KpLoaderImpl(
+					org.kermeta.utils.systemservices.eclipse.Activator.getDefault().getMessaggingSystem());
+			KermetaProject kp = ldr.loadKp(kpfile.getLocationURI().toString());
+			KpVariableExpander varExpander = new KpVariableExpander(kpfile.getLocationURI().toString(), kp, new LocalFileConverterForEclipse(), org.kermeta.utils.systemservices.eclipse.Activator.getDefault().getMessaggingSystem() );
+			PomGenerator4KP pomGenerator = new PomGenerator4KP(kp, varExpander, org.kermeta.utils.systemservices.eclipse.Activator.getDefault().getMessaggingSystem());
 			
-			InputStream is= new ByteArrayInputStream(
-					generatePOMContent(artefactId, 
-							groupId, 
-							kpfile.getName(), 
-							version).getBytes());
+			
+			
+			
 			IFile pomFile = kpfile.getProject().getFile("pom.xml");
-			try {
-				if(pomFile.exists()){
-					if(MessageDialog.openConfirm(shell, "overiding pom.xml", "a pom.xml file already exists. Are you sure you wish to overide it ?")){
-						pomFile.setContents(is, IResource.KEEP_HISTORY & IResource.FORCE, null);
-					}
-				} else {
-					pomFile.create(is, true, null);
+			if(pomFile.exists()){
+				if(MessageDialog.openConfirm(shell, "overiding pom.xml", "a pom.xml file already exists. Are you sure you wish to overide it ?")){
+					pomGenerator.saveToFile(pomGenerator.createProject(groupId, artefactId, version), pomFile.getLocation().toFile());
 				}
-			} catch (CoreException e) {
-				Activator.logErrorMessage("failed to save pom.xml", e);
+			} else {
+				pomGenerator.saveToFile(pomGenerator.createProject(groupId, artefactId, version), pomFile.getLocation().toFile());
 			}
 		}
 	}
+	
 
 	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
@@ -78,27 +84,4 @@ public class GeneratePOMAction implements IObjectActionDelegate {
 		this.selection = selection;
 	}
 	
-	protected String generatePOMContent(String artefactId, String groupId, String kpFileName, String kermetaVersion){
-		StringBuilder sb = new StringBuilder();
-		
-		InputStream is = this.getClass().getResourceAsStream("/templates/pom.xml");
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));	    
-	    String line = null;
-	    try {
-		    while ((line = reader.readLine()) != null) {
-		      sb.append(line + "\n");
-		    }	    
-			is.close();
-		} catch (IOException e) {
-			Activator.logErrorMessage("failed to load pom.xml template", e);
-		}
-	    
-	    
-	    
-		return sb.toString().replaceAll(Pattern.quote("@artefactId@"), artefactId)
-				.replaceAll(Pattern.quote("@groupId@"), groupId)
-				.replaceAll(Pattern.quote("@kp.filename@"), kpFileName)
-				.replaceAll(Pattern.quote("@kermeta.version@"), kermetaVersion);
-	}
-
 }
