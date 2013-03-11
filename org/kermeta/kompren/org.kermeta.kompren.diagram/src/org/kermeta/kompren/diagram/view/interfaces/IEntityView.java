@@ -44,6 +44,9 @@ public interface IEntityView extends IComponentView, Selectable {
 	@Override
 	boolean contains(final double x, final double y);
 
+	
+	void reinitAnchors();
+	
 	/**
 	 * @return The centre of the entity.
 	 */

@@ -16,8 +16,6 @@ import org.malai.picking.Pickable;
 public class FooHand implements MouseListener, MouseMotionListener {
 	protected IModelView diagram;
 
-	protected IEntityView draggedShape;
-
 	protected IHandler draggedHandler;
 
 	protected FloatingText draggedRole;
@@ -40,7 +38,6 @@ public class FooHand implements MouseListener, MouseMotionListener {
 
 
 	protected void reinit() {
-		draggedShape 	= null;
 		draggedHandler 	= null;
 		draggedRole 	= null;
 		startX 			= 0.;
@@ -87,6 +84,7 @@ public class FooHand implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mousePressed(final MouseEvent e) {
+		if(diagram.getZoom()<0.5) return;
 		if(e.getButton()==MouseEvent.BUTTON1) {
 			final int nbRel = diagram.getNbRelations();
 			int i;
@@ -101,26 +99,7 @@ public class FooHand implements MouseListener, MouseMotionListener {
 				if(rel.isVisible() && !rel.isOptimHidden() && rel.isHandlersVisible())
 					draggedHandler = rel.getHandlersAt(px, py);
 			}
-//
-//			if(draggedHandler==null) {
-//				IEntityView entity;
-//				draggedShape = null;
-//				i = diagram.getNbEntities()-1;
-//
-//				while(draggedShape==null && i>=0) {
-//					entity = diagram.getEntityAt(i);
-//
-//					if(entity.isVisible() && entity.getBorders().contains(px, py))
-//						draggedShape = entity;
-//					else
-//						i--;
-//				}
-//
-//				diagram.setSelection(draggedShape);
-//				diagram.refresh();
-//			}
 
-//			if(draggedShape==null && draggedHandler==null)
 			if(diagram.getSelection().isEmpty() && draggedHandler==null) {
 				for(i=0; i<nbRel && draggedHandler==null; i++) {
 					rel = diagram.getRelationAt(i);
@@ -155,6 +134,7 @@ public class FooHand implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseDragged(final MouseEvent e) {
 		final double zoom = diagram.getZoom();
+		if(zoom<0.5) return;
 		final double gapX = e.getX()/zoom - startX;
 		final double gapY = e.getY()/zoom - startY;
 
@@ -182,21 +162,7 @@ public class FooHand implements MouseListener, MouseMotionListener {
 
 			diagram.updatePreferredSize();
 			diagram.refresh();
-		} else
-			if(draggedShape!=null) {
-				draggedShape.move(gapX, gapY);
-				diagram.update();
-
-				for(IRelationView relation : diagram.getRelations())
-					if(relation.getEntitySrc()==draggedShape || relation.getEntityTar()==draggedShape)
-						relation.update();
-
-				diagram.updatePreferredSize();
-				diagram.refresh();
-			}else if(draggedRole!=null) {
-				draggedRole.translate(gapX, gapY);
-				diagram.refresh();
-			}
+		} 
 
 		startX = e.getX()/zoom;
 		startY = e.getY()/zoom;
@@ -205,14 +171,14 @@ public class FooHand implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseMoved(final MouseEvent e) {
+		((MetamodelView)diagram).setToolTipText(null);
 		final double zoom = diagram.getZoom();
+		if(zoom<0.5) return;
 		final double x = e.getX()/zoom;
 		final double y = e.getY()/zoom;
 		boolean mustRefresh = !visibleHandlers.isEmpty();
 		IRelationView relation=null;
 
-		((MetamodelView)diagram).setToolTipText(null);
-		
 		for(final IRelationView rel : visibleHandlers)
 			rel.setHandlersVisible(false);
 

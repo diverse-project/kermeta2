@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.kermeta.kompren.diagram.view.interfaces.HandlerHandler;
+import org.kermeta.kompren.diagram.view.interfaces.IAnchor;
 import org.kermeta.kompren.diagram.view.interfaces.IDecorationView;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.kermeta.kompren.diagram.view.interfaces.IHandler;
+import org.kermeta.kompren.diagram.view.interfaces.IPaintCtx;
 import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 import org.kermeta.kompren.diagram.view.interfaces.ISegmentView;
 import org.malai.picking.Pickable;
@@ -37,6 +39,10 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 	protected List<ISegmentView> segments;
 
 	protected List<IHandler> handlers;
+	
+	protected IAnchor srcAnchor;
+	
+	protected IAnchor targetAnchor;
 
 	protected boolean handlersVisible;
 
@@ -53,6 +59,8 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 		if(src==null || target==null)
 			throw new IllegalArgumentException();
 
+		srcAnchor			= null;
+		targetAnchor		= null;
 		handlers			= new ArrayList<IHandler>();
 		segments 			= new ArrayList<ISegmentView>();
 		entitySrc 			= src;
@@ -110,8 +118,10 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 
 
 	@Override
-	public void paint(final Graphics2D g, final Rectangle visibleScene) {
+	public void paint(final Graphics2D g, final IPaintCtx paintCtx) {
 		if(!isVisible()) return;
+		
+		Rectangle visibleScene = paintCtx.getVisibleScene();
 
 		if(visibleScene==null ||
 				visibleScene.contains(segments.get(0).getPointSource()) || visibleScene.contains(segments.get(segments.size()-1).getPointTarget())){
@@ -121,10 +131,10 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 				view.paint(g);
 
 			if(sourceDecoration!=null)
-				sourceDecoration.paint(g, visibleScene);
+				sourceDecoration.paint(g, paintCtx);
 
 			if(targetDecoration!=null)
-				targetDecoration.paint(g, visibleScene);
+				targetDecoration.paint(g, paintCtx);
 
 			if(handlersVisible)
 				for(final IHandler handler : handlers)
@@ -186,10 +196,7 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 			getMinMaxValues(mins, maxs, rec.getMaxX(), rec.getMaxY());
 		}
 
-		bound.x = (int) mins[0];
-		bound.y = (int) mins[1];
-		bound.width = (int) (maxs[0]-mins[0]);
-		bound.height = (int) (maxs[1]-mins[1]);
+		bound.setRect(mins[0], mins[1], maxs[0]-mins[0], maxs[1]-mins[1]);
 	}
 
 
@@ -284,18 +291,18 @@ public class RelationView<S extends IEntityView, T extends IEntityView> extends 
 
 	@Override
 	public Rectangle2D getBorders() {
-		return new Rectangle2D.Double(bound.x, bound.y, bound.width, bound.height);
+		return bound;
 	}
 
 
 
 	@Override
 	public boolean removePoint(final Point2D pt) {
-		boolean possible = entitySrc!=entityTar || handlers.size()>1;
+		boolean possible = entitySrc!=entityTar || handlers.size()>2;
 		boolean again = true;
 
 		if(possible) {
-			for(int i=0, size=handlers.size(); i<size && again; i++)// Removing the handlers if possible.
+			for(int i=1, size=handlers.size()-1; i<size && again; i++)// Removing the handlers if possible.
 				if(handlers.get(i).getPoint().equals(pt)) {
 					handlers.remove(i);
 					again = false;

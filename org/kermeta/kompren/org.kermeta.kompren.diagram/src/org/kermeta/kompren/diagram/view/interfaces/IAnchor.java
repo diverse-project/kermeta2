@@ -8,7 +8,7 @@ public interface IAnchor {
 	
 	boolean isFree();
 	
-	void setFree(final boolean free);
+	void setRelation(final IRelationView relation, final boolean atEnd);
 	
 	Point2D getPosition();
 	

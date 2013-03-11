@@ -1,7 +1,6 @@
 package org.kermeta.kompren.diagram.view.interfaces;
 
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.geom.GeneralPath;
 
 public interface IView {
@@ -16,5 +15,5 @@ public interface IView {
 	 * Paints the component.
 	 * @param g The graphics.
 	 */
-	void paint(final Graphics2D g, final Rectangle visibleScene);
+	void paint(final Graphics2D g, final IPaintCtx ctx);
 }

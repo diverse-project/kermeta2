@@ -29,10 +29,9 @@ public class MetamodelView extends ModelView {
 		FooHand foo = new FooHand(this);//FIXME
 		addMouseListener(foo);
 		addMouseMotionListener(foo);
-		
-		
 	}
 
+	@Override
 	public JToolTip createToolTip() {
 		JToolTip tip = new ClickableToolTip(this);
 		tip.setComponent(this);
@@ -40,6 +39,7 @@ public class MetamodelView extends ModelView {
 	}
 
 	// Set tooltip location
+	@Override
 	public Point getToolTipLocation(MouseEvent event) {
 		if(getToolTipText()!=null && getToolTipText().length()>0)
 			return new Point(event.getX(), event.getY());
@@ -187,7 +187,7 @@ public class MetamodelView extends ModelView {
 			return view;
 		}
 
-		view = new ClassView(name, qname);
+		view = new ClassView(name, qname, this);
 
 		// entities must not located at the same position. Otherwise it may have problem
 		// during the anchoring of relations.

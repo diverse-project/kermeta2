@@ -13,6 +13,7 @@ public class Move extends PointInteraction {
 	}
 
 
+	@SuppressWarnings("unused")
 	@Override
 	protected void initStateMachine() {
 		TerminalState end = new TerminalState("moved");

@@ -237,7 +237,7 @@ public final class ModelViewMapper {
 
 		if(cdFirst==null) {
 			List<ClassDefinition> cds = new ArrayList<ClassDefinition>();
-			cv = new ClassView(cd.getName(), qname);
+			cv = new ClassView(cd.getName(), qname, view);
 			cds.add(cd);
 
 			addAttributes(cd, cv);
