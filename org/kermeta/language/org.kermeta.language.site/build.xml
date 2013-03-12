@@ -45,6 +45,7 @@
 	</target>
 	
 	<target name="publish_features_and_bundles" > 
+		<echo>workdirectory=${workdirectory}</echo>
 		<java jar="${eclipse.bin.home}/plugins/${equinox.jar.filename}"
 				           fork="true"
 				           failonerror="true"
