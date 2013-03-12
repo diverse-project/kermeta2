@@ -1,4 +1,4 @@
-<project name="full_kermeta_studio_updatesite" default="all">
+<project name="full_kermeta_studio_updatesite" default="publish_jars">
 	<!-- configuration properties -->		
 	<!-- project configuration -->
 	<property environment="env"/>
