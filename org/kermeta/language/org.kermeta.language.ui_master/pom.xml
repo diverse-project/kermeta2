@@ -26,6 +26,8 @@
 		<module>../org.kermeta.language.autocompletion.api</module>
 		<module>../org.kermeta.language.autocompletion</module>
 		<module>../org.kermeta.language.texteditor.eclipse</module>
+		<module>../org.kermeta.language.prettyprinter</module>
+		<module>../org.kermeta.language.prettyprinter.ui</module>
 	</modules>
 
 
