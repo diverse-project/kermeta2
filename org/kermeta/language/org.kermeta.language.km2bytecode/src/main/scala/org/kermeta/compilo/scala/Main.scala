@@ -28,10 +28,7 @@ import java.io.FileWriter
 //import org.apache.maven.embedder.DefaultConfiguration
 import java.io.OutputStream
 import java.io.PrintStream
-import org.apache.maven.artifact.repository.metadata.DefaultRepositoryMetadataManager
-import org.apache.maven.embedder.DefaultConfiguration
-import org.apache.maven.embedder.MavenEmbedder
-import org.apache.maven.embedder.MavenEmbedderConsoleLogger
+//import org.apache.maven.artifact.repository.metadata.DefaultRepositoryMetadataManager
 import org.apache.maven.execution.DefaultMavenExecutionRequest
 import org.apache.maven.execution.MavenExecutionRequest
 import scala.collection.JavaConversions._

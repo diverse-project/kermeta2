@@ -8,7 +8,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.kermeta.language</groupId>
-	<artifactId>language.site</artifactId>
+	<artifactId>org.kermeta.language.site</artifactId>
 	<version>2.0.99-SNAPSHOT</version>
 	<name>Kermeta 2 site builder</name>
 
@@ -49,6 +49,7 @@
 						<id>gen-site-publish-feature-and-bundles</id>
 						<phase>process-sources</phase>
 						<configuration>
+							<property name="workdirectory">${basedir}</property>
 							<tasks>
 								<ant antfile="build.xml" target="publish_jars" /> 
 							</tasks>							
@@ -61,6 +62,7 @@
 						<id>gen-site-deploy</id>
 						<phase>compile</phase>
 						<configuration>
+							<property name="workdirectory">${basedir}</property>
 							<tasks>
 								<ant antfile="build.xml" target="deploy" /> 
 							</tasks>							
@@ -128,7 +130,7 @@
 			              <artifactItems>
 			              	<artifactItem>
 			                  <groupId>org.kermeta.language</groupId>
-			                  <artifactId>language.feature</artifactId>
+			                  <artifactId>org.kermeta.language.feature</artifactId>
 			                  <version>${kermeta.version}</version>
 			                  <outputDirectory>${project.build.directory}/features_and_bundles/features</outputDirectory>
 			                </artifactItem>
@@ -229,10 +231,62 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	
+	<repositories>
+		<repository>
+			<id>kevoree-snapshot</id>
+			<name>kevoree-snapshot</name>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.kevoree.org/snapshots</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>maven-inria-release</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-release</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>maven-inria-snapshot</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-snapshot</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.kermeta.kp</groupId>
-			<artifactId>kp.compiler.commandline</artifactId>
+			<artifactId>org.kermeta.kp.compiler.commandline</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions>
 				<exclusion>
@@ -291,7 +345,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.kp</groupId>
-			<artifactId>kp.editor.ui</artifactId>
+			<artifactId>org.kermeta.kp.editor.ui</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions>
 				<exclusion>
@@ -310,7 +364,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.kp</groupId>
-			<artifactId>kp.wizard.eclipse</artifactId>
+			<artifactId>org.kermeta.kp.wizard.eclipse</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions>
 				<exclusion>
@@ -320,7 +374,7 @@
 			</exclusions>
 		</dependency><dependency>
 			<groupId>org.kermeta.kp</groupId>
-			<artifactId>kp.launcher.eclipse</artifactId>
+			<artifactId>org.kermeta.kp.launcher.eclipse</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions>
 				<exclusion>
@@ -330,7 +384,7 @@
 			</exclusions>
 		</dependency><dependency>
 			<groupId>org.kermeta.kp</groupId>
-			<artifactId>kp.migrateRequireV1ToKp.eclipse.ui</artifactId>
+			<artifactId>org.kermeta.kp.migrateRequireV1ToKp.eclipse.ui</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions>
 				<exclusion>
@@ -340,8 +394,8 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.builder.eclipse</artifactId>
+			<groupId>org.kermeta.kp</groupId>
+			<artifactId>org.kermeta.kp.builder.eclipse</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions>
 				<exclusion>
@@ -364,7 +418,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.texteditor.eclipse</artifactId>
+			<artifactId>org.kermeta.language.texteditor.eclipse</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions><exclusion>
 				<groupId>*</groupId><artifactId>*</artifactId>
@@ -373,7 +427,7 @@
 		
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.model.edit</artifactId>
+			<artifactId>org.kermeta.language.model.edit</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions><exclusion>
 				<groupId>*</groupId><artifactId>*</artifactId>
@@ -381,7 +435,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.model.editor</artifactId>
+			<artifactId>org.kermeta.language.model.editor</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions><exclusion>
 				<groupId>*</groupId><artifactId>*</artifactId>
@@ -389,7 +443,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.prettyprinter</artifactId>
+			<artifactId>org.kermeta.language.prettyprinter</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions><exclusion>
 				<groupId>*</groupId><artifactId>*</artifactId>
@@ -397,7 +451,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.prettyprinter.ui</artifactId>
+			<artifactId>org.kermeta.language.prettyprinter.ui</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions><exclusion>
 				<groupId>*</groupId><artifactId>*</artifactId>
@@ -406,7 +460,7 @@
 		
 		<dependency>
 			<groupId>org.kermeta.language.gendoc</groupId>
-			<artifactId>language.gendoc.km2html</artifactId>
+			<artifactId>org.kermeta.language.gendoc.km2html</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions><exclusion>
 				<groupId>*</groupId><artifactId>*</artifactId>
@@ -414,7 +468,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.language.gendoc</groupId>
-			<artifactId>language.gendoc.km2html.ui</artifactId>
+			<artifactId>org.kermeta.language.gendoc.km2html.ui</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions><exclusion>
 				<groupId>*</groupId><artifactId>*</artifactId>
@@ -422,7 +476,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.autocompletion</artifactId>
+			<artifactId>org.kermeta.language.autocompletion</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions>
 				<exclusion>
@@ -433,7 +487,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.autocompletion.api</artifactId>
+			<artifactId>org.kermeta.language.autocompletion.api</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions>
 				<exclusion>
@@ -444,7 +498,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.documentation</artifactId>
+			<artifactId>org.kermeta.language.documentation</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions>
 				<exclusion>
@@ -454,7 +508,7 @@
 			</exclusions>
 		</dependency><dependency>
 			<groupId>org.kermeta.language.sample</groupId>
-			<artifactId>language.sample.deployer</artifactId>
+			<artifactId>org.kermeta.language.sample.deployer</artifactId>
 			<version>${kermeta.version}</version>
 			<exclusions><exclusion>
 				<groupId>*</groupId><artifactId>*</artifactId>

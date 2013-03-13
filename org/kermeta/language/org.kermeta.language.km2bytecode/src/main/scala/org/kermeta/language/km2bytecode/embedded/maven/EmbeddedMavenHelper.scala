@@ -10,10 +10,12 @@ import java.io.FileWriter
 //import org.apache.maven.embedder.DefaultConfiguration
 import java.io.OutputStream
 import java.io.PrintStream
+/* Disabled due to incompatibility with maven 3.0.4
 import org.apache.maven.artifact.repository.metadata.DefaultRepositoryMetadataManager
 import org.apache.maven.embedder.DefaultConfiguration
 import org.apache.maven.embedder.MavenEmbedder
 import org.apache.maven.embedder.MavenEmbedderConsoleLogger
+*/
 import org.apache.maven.execution.DefaultMavenExecutionRequest
 import org.apache.maven.execution.MavenExecutionRequest
 import scala.collection.JavaConversions._
@@ -49,7 +51,9 @@ object EmbeddedMavenHelper {
         } catch  {
             case e:Exception=> e.printStackTrace()
         }
+        /*
         var rep:DefaultRepositoryMetadataManager= null
+         Disabled due to incompatibility with maven 3.0.4
         var maven : MavenEmbedder = null;
         try {
             var configuration = new DefaultConfiguration().setClassLoader(Thread.currentThread().getContextClassLoader());
@@ -76,11 +80,14 @@ object EmbeddedMavenHelper {
 //      var request = new DefaultMavenExecutionRequest(localRepository,settings,eventDispatcher,goals,GlobalConfiguration.outputProject,globalProfileManager,executionProperties,true)//.setBaseDirectory(rootDirectory)//.setGoals(goals)
             var request = new DefaultMavenExecutionRequest().setBaseDirectory(rootDirectory).setGoals(goals)
             request.setLoggingLevel(MavenExecutionRequest.LOGGING_LEVEL_ERROR);
-            request.setProperty("once", "true");
+            var properties = request.getUserProperties();
+            properties.put("once", "true")
+            request.setUserProperties(properties);
 //            request.setProperty("maven.test.skip", "true");
  //           request.setOffline(false)
             
-            
+           */
+       
             /*MavenProject project,
              List goals,
              EventMonitor eventMonitor,
@@ -94,7 +101,8 @@ object EmbeddedMavenHelper {
             // maven.setClassLoader(Thread.currentThread().getContextClassLoader())
             //  maven.start
             //var result = maven.execute(project, goals, null,null ,executionProperties,rootDirectory);
-            var result :org.apache.maven.execution.MavenExecutionResult  = maven.execute(request)
+        		/* Disabled due to incompatibility with maven 3.0.4
+        	var result :org.apache.maven.execution.MavenExecutionResult  = maven.execute(request)
             
             if (outputstream != null){
                 System.setOut(new PrintStream(oldOut))
@@ -115,6 +123,7 @@ object EmbeddedMavenHelper {
                 }
             }
         }
+        */
         return -1;
     }
 

@@ -19,13 +19,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
+import org.apache.maven.model.Dependency;
 import org.kermeta.kp.ImportFile;
 import org.kermeta.kp.ImportProject;
 import org.kermeta.kp.ImportProjectSources;
 import org.kermeta.kp.KermetaProject;
+import org.kermeta.kp.ReusableResource;
 import org.kermeta.kp.editor.analysis.helper.KermetaProjectHelper;
 import org.kermeta.kp.editor.analysis.helper.KpResourceHelper;
 import org.kermeta.kp.editor.analysis.helper.KpVariableExpander;
+import org.kermeta.language.km2bytecode.embedded.maven.POMGeneratorHelper;
 
 /**
  * Useful methods related to KP dependencies (including calculation of classpath)
@@ -92,6 +95,63 @@ public class KpDependenciesHelper {
 		return result;
 	}
 	
+	/**
+	 * return a list of available maven artefact corresponding to the kp dependencies that must be part of the maven dependencies
+	 * @param kp
+	 * @param varExpander
+	 * @return
+	 * @throws IOException
+	 */
+	static public LinkedHashSet<Dependency> getDependentProjetsMavenArtefacts(KermetaProject kp, KpVariableExpander varExpander) throws IOException {
+		LinkedHashSet<Dependency> result = new LinkedHashSet<Dependency>();
+		// deal with importProjects
+		for(ImportProject dep : kp.getImportedProjects()){
+			Dependency mavenDep = getMavenDependencyForReusableResource(dep.getProjectResource());
+			if(mavenDep != null) result.add(mavenDep);
+		}
+		// deal with extends
+		for(ImportProjectSources dep : kp.getImportedProjectSources()){
+			// this is kermeta project, add its DependentProjectsClassPath but not the project itself
+			String containerUrl = varExpander.getSelectedUrl4ReusableResource(dep.getProjectResource());
+						
+			// if it is a kermeta project, add its DependentProjectsClassPath
+			String kpFileURL = containerUrl.endsWith(".jar") || containerUrl.endsWith("bundlefile")?	"jar:"+containerUrl+"!"+KermetaProjectHelper.DEFAULT_KP_LOCATION_IN_JAR : containerUrl+KermetaProjectHelper.DEFAULT_KP_LOCATION_IN_FOLDER; 
+			KermetaProject foundProject = KpResourceHelper.findKermetaProject( kpFileURL, kp.eResource());
+			if(foundProject != null){
+				KpVariableExpander innerVarExpander = new KpVariableExpander(kpFileURL, foundProject, varExpander.getFileSystemConverter(), varExpander.getLogger());				
+				result.addAll(getDependentProjetsMavenArtefacts(foundProject, innerVarExpander));
+			}
+			
+		}
+		
+		// deal with EMFBytecode
+		for(ImportFile importedFile : kp.getImportedFiles()){
+			if (importedFile.getBytecodeFrom() != null){
+				Dependency mavenDep = getMavenDependencyForReusableResource(importedFile.getBytecodeFrom());
+				if(mavenDep != null) result.add(mavenDep);
+			}
+		}
+		return result;
+	}
+	
+	
+	static public Dependency getMavenDependencyForReusableResource(ReusableResource res){
+		String url = res.getUrl();
+		for(String s : res.allUrls()){
+			if(s.startsWith("mvn:")){
+				url = s;
+				break;
+			}
+		}
+		if(url.startsWith("mvn:")){
+			url = url.substring(4);
+			String[] part = url.split("/");
+			if(part.length>2){
+				return POMGeneratorHelper.createDependency(part[0], part[1], part[2]);
+			}
+		}
+		return null;
+	}
 	
 	static public String convertUrlToclassPath(String urlString){
 		try {

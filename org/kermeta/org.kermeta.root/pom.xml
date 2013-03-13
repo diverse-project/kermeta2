@@ -16,6 +16,7 @@
 	<properties>
 		<kermeta.version>2.0.99-SNAPSHOT</kermeta.version>
 		<utils.version>2.0.99-SNAPSHOT</utils.version>
+		<embeddedmaven.version>3.0.4</embeddedmaven.version>
 		<traceability.version>2.0.99-SNAPSHOT</traceability.version>
 		<emf.ecoretools.version>0.1.0</emf.ecoretools.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -67,7 +68,7 @@
 									scalaVersionNoSuffix = "${scala.version}".substring(0,index)
 								project.properties.setProperty('scala.version.nosuffix', scalaVersionNoSuffix)
 								println("scala.version.nosuffix="+scalaVersionNoSuffix)
-								String	bundleVersion = "${project.version}"
+								String bundleVersion = "${project.version}"
 								// workaround jenkins bug https://issues.jenkins-ci.org/browse/JENKINS-9693?page=com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel
 								String timestamp = "${maven.build.timestamp}".replaceAll("-","_")
 								bundleVersion = bundleVersion.replaceAll("-SNAPSHOT", "-SNAPSHOT_"+timestamp)
@@ -217,7 +218,91 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-	</build>	
+	</build>
+	<repositories>
+		<repository>
+			<id>kevoree-snapshot</id>
+			<name>kevoree-snapshot</name>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.kevoree.org/snapshots</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>maven-inria-release</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-release</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>maven-inria-snapshot</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-snapshot</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven-inria-release</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-release</url>
+			<layout>default</layout>
+		</pluginRepository>
+		<pluginRepository>
+			<id>maven-inria-snapshot</id>
+			<name>maven.inria.fr</name>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<url>http://maven.inria.fr/artifactory/public-snapshot</url>
+			<layout>default</layout>
+		</pluginRepository>
+	</pluginRepositories>
 	<distributionManagement>
 		<repository>
 			<id>kermeta-public-release</id>
