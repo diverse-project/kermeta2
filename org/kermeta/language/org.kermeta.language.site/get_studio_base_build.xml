@@ -66,6 +66,11 @@
         			<include name="*.tar"/>
 			</fileset>
 		</untar>
+		<delete>
+			<fileset dir="${studio.base.download.folder}">
+				<include name="*.tar"/>
+			</fileset>
+		</delete>
 	</target>
 	<target name="expand.zip">
 		<unzip dest="${studio.base.dir}"
