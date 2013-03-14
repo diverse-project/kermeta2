@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <?eclipse version="3.0"?>
-<plugin name="Kermeta 2 documentation" id="org.kermeta.${project.artifactId}" version="${bundle.version}" provider-name="IRISA/INRIA">
+<plugin name="Kermeta 2 documentation" id="${project.artifactId}" version="${bundle.version}" provider-name="IRISA/INRIA">
    <requires>
       <import plugin="org.eclipse.help"/>
    </requires>
