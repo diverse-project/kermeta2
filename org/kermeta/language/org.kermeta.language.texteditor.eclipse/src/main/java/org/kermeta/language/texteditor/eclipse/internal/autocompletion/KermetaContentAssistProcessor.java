@@ -272,6 +272,9 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			if(theCurrentMU != null){
 				if(myAccess == null)
 					myAccess = new KermetaModelAccessor(theCurrentMU,doc);
+				else
+					myAccess.setSourceModelingUnit(theCurrentMU, doc);
+				//TODO: update just last modified file
 				
 				TypeDefinition t = myAccess.getCallType(editor.getFile().getLocationURI().toString(), documentOffset, qualifier);
 				if(t instanceof ClassDefinition){
@@ -291,6 +294,9 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			proposePackages(qualifier, documentOffset, propList, qlen, thePackages);
 			proposeClassDefinition(qualifier, documentOffset, propList, qlen, theClassDefinition);
 			proposeVariable(qualifier, documentOffset, propList, qlen, theVariables);
+		}
+		else if(isTerminatedbyKeyword(qualifier)){
+			proposeStructure(getLastKeyword(qualifier), documentOffset, propList, getLastKeyword(qualifier).length());
 		}
 	}
 	

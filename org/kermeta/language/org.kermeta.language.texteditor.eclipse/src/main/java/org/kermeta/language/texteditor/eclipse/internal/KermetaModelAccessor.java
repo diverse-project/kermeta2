@@ -39,10 +39,29 @@ public class KermetaModelAccessor {
 	
 	public KermetaModelAccessor(ModelingUnit aModelingUnit, IDocument doc) {
 		
-		currentModelingUnit = aModelingUnit;
+		setSourceModelingUnit(aModelingUnit, doc);
 		
-		if(mappingElemPos == null){
-			doc.addPositionCategory("KermetaModel");
+	}
+
+	/*
+	 * Generate positions markers from traceability_text_reference tags of the ModelingUnit
+	 */
+	public void setSourceModelingUnit(ModelingUnit aModelingUnit, IDocument doc) {
+		if(currentModelingUnit != aModelingUnit){
+				
+			currentModelingUnit = aModelingUnit;
+			
+			if(mappingElemPos == null){
+				doc.addPositionCategory("KermetaModel");
+			}
+			else{
+				try {
+					doc.removePositionCategory("KermetaModel"); //delete all Positions
+					doc.addPositionCategory("KermetaModel");
+				} 
+				catch (BadPositionCategoryException e) {e.printStackTrace();}
+			}
+			
 			mappingElemPos = new HashMap<KermetaModelElement, Position>();
 			List<EObject> content = currentModelingUnit.getAllMetamodelsContents();
 			for(EObject obj : content){
@@ -64,7 +83,6 @@ public class KermetaModelAccessor {
 								} catch (BadLocationException e) {
 									e.printStackTrace();
 								} catch (BadPositionCategoryException e) {
-									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}
 							}
@@ -77,7 +95,6 @@ public class KermetaModelAccessor {
 			positionUpdater = new DefaultPositionUpdater("KermetaModel");
 			doc.addPositionUpdater(positionUpdater);
 		}
-		
 	}
 	
 	//-------------------------------------------------------------------------------------------------------
