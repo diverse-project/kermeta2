@@ -142,7 +142,7 @@
 			                </artifactItem>
 			              	<artifactItem>
 			                  <groupId>org.eclipse.emf.ecoretools</groupId>
-			                  <artifactId>ecoretools.registration.feature</artifactId>
+			                  <artifactId>org.eclipse.emf.ecoretools.registration.feature</artifactId>
 			                  <version>${emf.ecoretools.version}</version>
 			                  <outputDirectory>${project.build.directory}/features_and_bundles/features</outputDirectory>
 			                </artifactItem>
@@ -551,7 +551,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf.ecoretools</groupId>
-			<artifactId>ecoretools.registration</artifactId>
+			<artifactId>org.eclipse.emf.ecoretools.registration</artifactId>
 			<version>${emf.ecoretools.version}</version>
 			<exclusions>
 				<exclusion>
@@ -562,7 +562,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf.ecoretools</groupId>
-			<artifactId>ecoretools.registration.ui</artifactId>
+			<artifactId>org.eclipse.emf.ecoretools.registration.ui</artifactId>
 			<version>${emf.ecoretools.version}</version>
 			<exclusions>
 				<exclusion>
