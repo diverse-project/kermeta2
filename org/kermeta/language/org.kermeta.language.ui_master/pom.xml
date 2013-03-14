@@ -29,6 +29,7 @@
 		<module>../org.kermeta.language.prettyprinter</module>
 		<module>../org.kermeta.language.prettyprinter.ui</module>
 		<module>../org.kermeta.language.feature</module>
+		<module>../org.kermeta.language.dev.feature</module>
 	</modules>
 
 
