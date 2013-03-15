@@ -12,6 +12,8 @@ package org.kermeta.language.ecore2km;
 
 import java.util.ArrayList;
 
+import kermeta.standard.JavaConversions;
+
 import org.eclipse.emf.ecore.EPackage;
 import org.kermeta.language.ecore2km.internal.Activator;
 import org.kermeta.language.structure.Metamodel;
@@ -40,7 +42,8 @@ public class Ecore2KMImpl4Eclipse  implements org.kermeta.language.ecore2km.api.
         }
         ModelingUnit mu = new ModelingUnit(muName,new ArrayList<Metamodel>());
         mu.getMetamodels().addAll(converter.convert(rootPackage, namespacePrefix));
-        
+        // make sure to clean the memory
+		JavaConversions.cleanCache();
         return mu;
     }
     
