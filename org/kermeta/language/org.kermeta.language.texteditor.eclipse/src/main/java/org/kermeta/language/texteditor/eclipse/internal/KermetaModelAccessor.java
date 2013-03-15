@@ -3,12 +3,19 @@ package org.kermeta.language.texteditor.eclipse.internal;
 import java.util.HashMap;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.BadPositionCategoryException;
 import org.eclipse.jface.text.DefaultPositionUpdater;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.Position;
+import org.kermeta.language.behavior.Block;
+import org.kermeta.language.behavior.Conditional;
+import org.kermeta.language.behavior.LambdaExpression;
+import org.kermeta.language.behavior.LambdaParameter;
+import org.kermeta.language.behavior.Loop;
+import org.kermeta.language.behavior.VariableDecl;
 import org.kermeta.language.loader.kmt.scala.api.IKToken;
 import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.Class;
@@ -22,6 +29,8 @@ import org.kermeta.language.structure.Tag;
 import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.TypeDefinition;
 import org.kermeta.language.util.ModelingUnit;
+
+import org.kermeta.language.behavior.Expression;
 
 public class KermetaModelAccessor {
 	
@@ -288,6 +297,8 @@ public class KermetaModelAccessor {
 			Operation operation = getClosestOperation(fileUrl, documentOffset, classDef);
 			
 			//TODO:Search in variable declaration of the body
+			TypeDefinition td = lookingExpr(fileUrl, documentOffset, name, operation.getBody());
+			if(td != null) return td;
 			
 			//Search in operation parameters
 			if(operation != null){
@@ -316,6 +327,134 @@ public class KermetaModelAccessor {
 			}
 			
 			//TODO:Search for a singleton class
+			
+			return null;
+		}
+		
+		/*
+		 * Search for a variable declaration in an expression typed Block
+		 * 
+		 * @fileUrl Name of the current edited file
+		 * @documentOffset Position of the cursor in the file
+		 * @name The name of the variable wanted
+		 */
+		private TypeDefinition lookingBlock(String fileUrl, int documentOffset, String name, Block currentBlock){
+			
+			EList<Expression> statments = currentBlock.getStatement();
+			
+			for(Expression currentExpr : statments){
+				
+				if(!containsThisOffset( fileUrl, documentOffset, currentExpr )){
+					
+					if(currentExpr instanceof VariableDecl){
+						
+						VariableDecl varDecl = (VariableDecl)currentExpr;
+						if( varDecl.getIdentifier().equals(name) ){
+							
+							Type typeVarDecl = varDecl.getType().getType();
+							if(typeVarDecl instanceof Class){
+								
+								return ((Class)typeVarDecl).getTypeDefinition();
+								
+							}
+						}
+					}
+				}
+				else{
+					return lookingExpr(fileUrl, documentOffset, name, currentExpr);
+				}
+			}
+			
+			return null;
+		}
+		
+		/*
+		 * Search for a variable declaration in an expression typed Conditional
+		 * 
+		 * @fileUrl Name of the current edited file
+		 * @documentOffset Position of the cursor in the file
+		 * @name The name of the variable wanted
+		 */
+		private TypeDefinition lookingIf(String fileUrl, int documentOffset, String name, Conditional currentConditional){
+			
+			if( containsThisOffset(fileUrl, documentOffset, currentConditional.getThenBody())){
+				return lookingExpr(fileUrl, documentOffset, name, currentConditional.getThenBody());
+			}
+			else  if( containsThisOffset(fileUrl, documentOffset, currentConditional.getElseBody())){
+				return lookingExpr(fileUrl, documentOffset, name, currentConditional.getElseBody());
+			}
+			else if(containsThisOffset(fileUrl, documentOffset, currentConditional.getCondition())){
+				return lookingExpr(fileUrl, documentOffset, name, currentConditional.getCondition());
+			}
+
+			return null;
+		}
+		
+		/*
+		 * Search for a variable declaration in an expression typed LamdaExpression
+		 * 
+		 * @fileUrl Name of the current edited file
+		 * @documentOffset Position of the cursor in the file
+		 * @name The name of the variable wanted
+		 */
+		private TypeDefinition lookingLamdaExpr(String fileUrl, int documentOffset, String name, LambdaExpression currentLambdaExpr){
+			
+			EList<LambdaParameter> params = currentLambdaExpr.getParameters();
+			for(LambdaParameter p : params){
+				if(p.getName().equals(name)){
+					
+					Type ty = p.getType().getType();
+					if(ty instanceof Class)
+						return ((Class)ty).getTypeDefinition();
+					
+				}
+			}
+			
+			if( containsThisOffset(fileUrl, documentOffset, currentLambdaExpr.getBody())){
+				
+				return lookingExpr(fileUrl, documentOffset, name, currentLambdaExpr.getBody());
+				
+			}
+
+			return null;
+		}
+		
+		/*
+		 * Search for a variable declaration in an expression typed Loop
+		 * 
+		 * @fileUrl Name of the current edited file
+		 * @documentOffset Position of the cursor in the file
+		 * @name The name of the variable wanted
+		 */
+		private TypeDefinition lookingLoop(String fileUrl, int documentOffset, String name, Loop currentLoop){
+			
+			if( containsThisOffset(fileUrl, documentOffset, currentLoop.getInitialization())){
+				return lookingExpr(fileUrl, documentOffset, name, currentLoop.getInitialization());
+			}
+			else  if( containsThisOffset(fileUrl, documentOffset, currentLoop.getBody())){
+				return lookingExpr(fileUrl, documentOffset, name, currentLoop.getBody());
+			}
+			else if(containsThisOffset(fileUrl, documentOffset, currentLoop.getStopCondition())){	
+				return lookingExpr(fileUrl, documentOffset, name, currentLoop.getStopCondition());		
+			}
+
+			return null;
+		}
+		
+		private TypeDefinition lookingExpr(String fileUrl, int documentOffset, String name, Expression currentExpr){
+			
+			if(currentExpr instanceof Block){
+				return lookingBlock(fileUrl, documentOffset, name, (Block)currentExpr);
+			}
+			else if(currentExpr instanceof Loop){
+				return lookingLoop(fileUrl, documentOffset, name, (Loop)currentExpr);
+			}
+			else if(currentExpr instanceof Conditional){
+				return lookingIf(fileUrl, documentOffset, name, (Conditional)currentExpr);
+			}
+			else if(currentExpr instanceof LambdaExpression){
+				return lookingLamdaExpr(fileUrl, documentOffset, name, (LambdaExpression)currentExpr);
+			}
 			
 			return null;
 		}

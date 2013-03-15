@@ -281,6 +281,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 					String lastQualifier = getLastIdentifier(qualifier);
 					classDefHierarchyProposals(lastQualifier, documentOffset, propList, (ClassDefinition)t);
 				}
+				//TODO: sort proposals for expected type
 			}
 //****************************
 			//proposeCallExpression(qualifier, documentOffset, propList, qlen);
@@ -555,10 +556,10 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			result = true;
 		}
 		if (qualifier.equals("if")) {
-			proposition = "if () then\n"+this.identation+"end";
+			proposition = "if () then\n"+this.identation+"\t\n"+this.identation+"end";
 			cursor = 4;
 			propList.add(new KermetaCompletionProposal(proposition, documentOffset - qlen, qlen, cursor,KermetaImage.getImage("/icons/specific/Conditional.gif"),"if...then...end",null,null));
-			proposition = "if () then\n"+this.identation+"else\n"+this.identation+"end";
+			proposition = "if () then\n"+this.identation+"\t\n"+this.identation+"else\n"+this.identation+"\t\n"+this.identation+"end";
 			propList.add(new KermetaCompletionProposal(proposition, documentOffset - qlen, qlen, cursor,KermetaImage.getImage("/icons/specific/Conditional.gif"),"if...then...else...end",null,null));
 			result = true;
 		}
@@ -569,7 +570,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			result = true;
 		}
 		if (qualifier.equals("from")) {
-			proposition = "from \n"+this.identation+"loop\n"+this.identation+"end";
+			proposition = "from until\n"+this.identation+"loop\n"+this.identation+"\t\n"+this.identation+"end";
 			cursor = 5 ;
 			propList.add(new KermetaCompletionProposal(proposition, documentOffset - qlen, qlen, cursor,KermetaImage.getImage("/icons/specific/Loop.gif"),"from...loop...end",null,null));
 			result = true;
