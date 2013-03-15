@@ -2,6 +2,8 @@ package org.kermeta.language.checker;
 
 import java.util.ArrayList;
 
+import kermeta.standard.JavaConversions;
+
 import org.kermeta.diagnostic.DiagnosticModel;
 import org.kermeta.language.checker.api.Checker;
 import org.kermeta.language.checker.api.CheckerScope;
@@ -24,7 +26,8 @@ public class CheckerImpl4Eclipse implements Checker {
 		ArrayList<Object> mms = new ArrayList<Object>();
 		mms.addAll(mu.getMetamodels());
 		DiagnosticModel result = checker.checkCollection(mms, scope.toString());
-		
+		// make sure to clean the memory
+		JavaConversions.cleanCache();
 		
 		return result;
 	}

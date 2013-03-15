@@ -9,6 +9,8 @@
 */
 package org.kermeta.language.resolver;
 
+import kermeta.standard.JavaConversions;
+
 import org.kermeta.language.resolver.api.KmResolver;
 import org.kermeta.language.resolver.internal.KmResolverOperations;
 import org.kermeta.language.util.ModelingUnit;
@@ -31,16 +33,25 @@ public class KmResolverImpl implements KmResolver {
 	
 	@Override
 	public ErrorProneResult<ModelingUnit> doResolving(ModelingUnit mu) {	  	
-    	return operations.doResolving(mu);
+		ErrorProneResult<ModelingUnit> result = operations.doResolving(mu);
+    	// make sure to clean the memory
+		JavaConversions.cleanCache();
+        return result;
 	}
 
 	@Override
 	public ErrorProneResult<ModelingUnit> doStaticSetting(ModelingUnit mu) {		
-    	return operations.doStaticSetting(mu);
+		ErrorProneResult<ModelingUnit> result = operations.doStaticSetting(mu);
+    	// make sure to clean the memory
+		JavaConversions.cleanCache();
+        return result;
 	}
 
 	@Override
 	public ErrorProneResult<ModelingUnit> resolve(ModelingUnit mu) {    	
-    	return operations.resolve(mu);
+		ErrorProneResult<ModelingUnit> result = operations.resolve(mu);
+    	// make sure to clean the memory
+		JavaConversions.cleanCache();
+        return result;
 	}
 }

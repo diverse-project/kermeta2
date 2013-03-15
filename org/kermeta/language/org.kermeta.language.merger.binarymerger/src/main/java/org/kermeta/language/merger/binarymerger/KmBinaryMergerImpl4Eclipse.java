@@ -11,6 +11,8 @@
  */
 package org.kermeta.language.merger.binarymerger;
 
+import kermeta.standard.JavaConversions;
+
 import org.kermeta.language.merger.BinaryMerger;
 import org.kermeta.language.merger.binarymerger.internal.Activator;
 import org.kermeta.language.merger.binarymerger.internal.KmBinaryMergerOperations;
@@ -32,11 +34,16 @@ public class KmBinaryMergerImpl4Eclipse implements org.kermeta.language.merger.b
 	@Override
 	public ErrorProneResult<ModelingUnit> merge(ModelingUnit first_mu, ModelingUnit second_mu) {
 	
-        return operations.merge(first_mu, second_mu);
+		ErrorProneResult<ModelingUnit> result = operations.merge(first_mu, second_mu);
+		// make sure to clean the memory
+		JavaConversions.cleanCache();
+        return result;
 	}
 	@Override
 	public ErrorProneResult<ModelingUnit> genericMerge(ModelingUnit first_mu, ModelingUnit second_mu) {
-	
-        return operations.genericMerge(first_mu, second_mu);
+		ErrorProneResult<ModelingUnit> result = operations.genericMerge(first_mu, second_mu);
+		// make sure to clean the memory
+		JavaConversions.cleanCache();
+        return result;
 	}
 }
