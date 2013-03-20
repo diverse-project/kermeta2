@@ -21,24 +21,30 @@ import org.kermeta.language.behavior.Expression
 trait KConditionalParser extends KAbstractParser {
 
 
-  def fConditional : Parser[Expression] = "if"~fStatement~"then"~fExpressionLst~( opt("else"~fExpressionLst ))~"end" ^^ { case _~cond~_~thenBody~elseBody~_=>
+  def fConditional : Parser[Expression] = "if"~fStatement~"then"~opt(optionalBlock)~lastBlock ^^ { case _~cond~_~optBody~lastBody=>
       var newo = BehaviorFactory.eINSTANCE.createConditional
       newo.setCondition(cond)
 
-      var newThenBlock = BehaviorFactory.eINSTANCE.createBlock
-      newThenBlock.getStatement.addAll(thenBody)
-      newo.setThenBody(newThenBlock)
-      elseBody match {
-        case None => //NOTHING TO DO
-        case Some(_ @ parser) => parser match {
-            case "else"~elseBody =>{
-                var newElseBlock = BehaviorFactory.eINSTANCE.createBlock
-                newElseBlock.getStatement.addAll(elseBody)
-                newo.setElseBody(newElseBlock)
-              }
-          }
-      }
+		optBody match{		
+			case None => newo.setThenBody(lastBody)
+			case Some(_ @ thenBody) =>{
+				newo.setThenBody(thenBody)
+				newo.setElseBody(lastBody)
+			}
+		}
       newo
   }
 
+  def lastBlock : Parser[Expression] = fExpressionLst<~"end" ^^{
+    case list =>
+ 		var newThenBlock = BehaviorFactory.eINSTANCE.createBlock
+      newThenBlock.getStatement.addAll(list)
+		newThenBlock
+  }
+  def optionalBlock : Parser[Expression] = fExpressionLst<~"else" ^^{
+    case list =>
+ 		var newThenBlock = BehaviorFactory.eINSTANCE.createBlock
+      newThenBlock.getStatement.addAll(list)
+		newThenBlock
+  }
 }
