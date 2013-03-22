@@ -29,9 +29,9 @@ public class KmLoaderImpl implements KmLoader {
     }
     
     protected void enforceInitPackage(){
-    	org.OrgPackage p1 = org.OrgPackage.eINSTANCE;
-    	org.kermeta.KmPackage p2 = org.kermeta.KmPackage.eINSTANCE;
-    	org.kermeta.language.LanguagePackage p3 = org.kermeta.language.LanguagePackage.eINSTANCE;
+    	//org.OrgPackage p1 = org.OrgPackage.eINSTANCE;
+    	//org.kermeta.KmPackage p2 = org.kermeta.KmPackage.eINSTANCE;
+    	//org.kermeta.language.LanguagePackage p3 = org.kermeta.language.LanguagePackage.eINSTANCE;
     	org.kermeta.language.behavior.BehaviorPackage p4 = org.kermeta.language.behavior.BehaviorPackage.eINSTANCE;
     	org.kermeta.language.structure.StructurePackage p5 = org.kermeta.language.structure.StructurePackage.eINSTANCE;
     }
