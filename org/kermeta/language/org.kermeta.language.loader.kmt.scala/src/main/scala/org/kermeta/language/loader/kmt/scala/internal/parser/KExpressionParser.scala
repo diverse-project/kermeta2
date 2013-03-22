@@ -42,6 +42,8 @@ trait KExpressionParser extends KAbstractParser
   override def optionalBlock : Parser[Expression] = kpositioned(super.optionalBlock)
   override def lastBlock : Parser[Expression] = kpositioned(super.lastBlock)
   
+  override def loopBody : Parser[Expression] = kpositioned(super.loopBody)
+  
   override def fRescueRescue : Parser[Rescue] = kpositioned(super.fRescueRescue)
   override def fRescueEnd : Parser[Rescue] = kpositioned(super.fRescueEnd)
 

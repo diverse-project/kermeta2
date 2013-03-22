@@ -464,14 +464,21 @@ public class KermetaModelAccessor {
 		 */
 		private TypeDefinition lookingLoop(String fileUrl, int documentOffset, String name, Loop currentLoop){
 			
-			if( containsThisOffset(fileUrl, documentOffset, currentLoop.getInitialization())){
-				return lookingExpr(fileUrl, documentOffset, name, currentLoop.getInitialization());
+			if( currentLoop.getInitialization() instanceof VariableDecl){
+				VariableDecl varDecl = (VariableDecl)currentLoop.getInitialization();
+				if( varDecl.getIdentifier().equals(name) ){
+					
+					Type typeVarDecl = varDecl.getType().getType();
+					if(typeVarDecl instanceof Class){
+						
+						return ((Class)typeVarDecl).getTypeDefinition();
+						
+					}
+				}
 			}
-			else  if( containsThisOffset(fileUrl, documentOffset, currentLoop.getBody())){
+			
+			if( containsThisOffset(fileUrl, documentOffset, currentLoop.getBody())){
 				return lookingExpr(fileUrl, documentOffset, name, currentLoop.getBody());
-			}
-			else if(containsThisOffset(fileUrl, documentOffset, currentLoop.getStopCondition())){	
-				return lookingExpr(fileUrl, documentOffset, name, currentLoop.getStopCondition());		
 			}
 
 			return null;

@@ -20,18 +20,23 @@ import org.kermeta.language.behavior.Expression
  */
 trait KLoopParser extends KAbstractParser {
 
-  def fLoop : Parser[Expression] = "from" ~ /*fExpressionLst*/fStatement ~ "until" ~ fStatement ~ "loop" ~ fExpressionLst ~ "end" ^^ { case _ ~ init ~ _ ~ stop ~ _ ~ body ~ _ =>
+  def fLoop : Parser[Expression] = "from" ~ /*fExpressionLst*/fStatement ~ "until" ~ fStatement ~ "loop" ~ loopBody^^ { case _ ~ init ~ _ ~ stop ~ _ ~ body =>
 
       var newo = BehaviorFactory.eINSTANCE.createLoop
       
       //newBlock.getStatement.addAll(init)
       newo.setInitialization(init)
       newo.setStopCondition(stop)
-      var newBlock = BehaviorFactory.eINSTANCE.createBlock
-      newBlock = BehaviorFactory.eINSTANCE.createBlock
-      newBlock.getStatement.addAll(body)
-      newo.setBody(newBlock)
+      newo.setBody(body)
       newo
+  }
+  
+  def loopBody : Parser[Expression] = fExpressionLst <~ "end" ^^{
+    case body =>{
+      var newBlock = BehaviorFactory.eINSTANCE.createBlock
+      newBlock.getStatement.addAll(body)
+      newBlock
+    }
   }
 
 }
