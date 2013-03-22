@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.egit.core.GitProvider"/>
+<workingSets editPageId="org.eclipse.ui.resourceWorkingSetPage" id="1363016964757_18" label="ecoretools.master" name="ecoretools.master">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.emf.ecoretools.master" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.emf.ecoretools.registration" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.emf.ecoretools.registration.feature" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.emf.ecoretools.registration.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.emf.ecoretools.root" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.ui.resourceWorkingSetPage" id="1361456089473_5" label="kp.master" name="kp.master">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.compiler.commandline" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.launcher.eclipse" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.wizard.eclipse" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.master" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.compiler.commandline.standalone" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.compiler.mavenplugin" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.editor.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.loader.kp" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.editor" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.model" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.loader.kp.api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.builder.eclipse" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.builder.api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.kp.migrateRequireV1ToKp.eclipse.ui" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.ui.resourceWorkingSetPage" id="1361455865973_1" label="language.core_master" name="language.core_master">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.loader.kmt.scala.api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.resolver.api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.checker" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.ecore2km" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.root" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.checker.api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.umlprofile2ecore.api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.library.core" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.model" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.merger.binarymerger.api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.loader.kmt.scala" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.km2bytecode" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.texteditor.eclipse.nature" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.core_master" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.model.edit" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.resolver" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.model.editor" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.merger.binarymerger" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.ecore2km.api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.umlprofile2ecore" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.ui.resourceWorkingSetPage" id="1361790046725_8" label="language.core_tests" name="language.core_tests">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.test.basehelper" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.test.helper" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.test.checker" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.test.resolver" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.test.merger.binarymerger" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.test.test_master" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.test.loader.kmt.scala" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.test.helper_master" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.ui.resourceWorkingSetPage" id="1361549983720_7" label="language.gendoc.master" name="language.gendoc.master">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.gendoc.km2html" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.gendoc.mavenplugin" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.gendoc.km2diag" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.gendoc.km2html.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.gendoc.master" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.ui.resourceWorkingSetPage" id="1361456056903_4" label="language.library_master" name="language.library_master">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.documentation" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.library.standard" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.library_master" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.ui.resourceWorkingSetPage" id="1361456960997_6" label="language.ui_master" name="language.ui_master">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.ui_master" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.prettyprinter" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.feature" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.autocompletion.api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.autocompletion" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.prettyprinter.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.texteditor.eclipse" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.dev.feature" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.ui.resourceWorkingSetPage" id="1363939353788_21" label="releng" name="releng">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.dev.feature" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.feature" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.language.site" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.utils.feature" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1363267784811_19" label="sample_deployer" name="sample_deployer">
+<item elementID="=org.kermeta.language.sample.deployer" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1362474726191_13" label="utils.master" name="utils.master">
+<item elementID="=org.kermeta.utils.aether" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.utils.aether" type="4"/>
+<item elementID="=org.kermeta.utils.error.report.api" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.kermeta.utils.logger.stdout" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.kermeta.utils.console.eclipse.tests" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.kermeta.utils.logger.eclipse.tests" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.utils.maven.runtime" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.utils.feature" type="4"/>
+<item elementID="=org.kermeta.utils.helpers.eclipse" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.kermeta.utils.systemservices.eclipse" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.kermeta.utils.helpers.eclipse.jface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.kermeta.utils.error.report.eclipse" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.kermeta.utils.root" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.kermeta.utils.console.eclipse" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.kermeta.utils.logger.eclipse" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.kermeta.utils.helpers" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.kermeta.utils.master" type="4"/>
+<item elementID="=org.kermeta.utils.systemservices.api" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.kermeta.utils.provisionner4eclipse" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+</psf>
