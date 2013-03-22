@@ -21,7 +21,7 @@ import org.kermeta.language.behavior.Expression
 trait KConditionalParser extends KAbstractParser {
 
 
-  def fConditional : Parser[Expression] = "if"~fStatement~"then"~opt(optionalBlock)~lastBlock ^^ { case _~cond~_~optBody~lastBody=>
+  /*def fConditional : Parser[Expression] = "if"~fStatement~"then"~opt(optionalBlock)~lastBlock ^^ { case _~cond~_~optBody~lastBody=>
       var newo = BehaviorFactory.eINSTANCE.createConditional
       newo.setCondition(cond)
 
@@ -33,6 +33,23 @@ trait KConditionalParser extends KAbstractParser {
 			}
 		}
       newo
+  }*/
+
+  def fConditional : Parser[Expression] = fElseConditional | fSimpleConditional
+
+  def fSimpleConditional : Parser[Expression] = "if"~fStatement~"then"~lastBlock ^^ { case _~cond~_~lastBody=>
+      var newo = BehaviorFactory.eINSTANCE.createConditional
+      newo.setCondition(cond)
+		newo.setThenBody(lastBody)
+      newo
+  }
+
+  def fElseConditional : Parser[Expression] = "if"~fStatement~"then"~optionalBlock~lastBlock ^^ { case _~cond~_~optionalBlock~lastBody=>
+      var newo = BehaviorFactory.eINSTANCE.createConditional
+      newo.setCondition(cond)
+		newo.setThenBody(optionalBlock)
+		newo.setElseBody(lastBody)
+      newo
   }
 
   def lastBlock : Parser[Expression] = fExpressionLst<~"end" ^^{
@@ -41,8 +58,8 @@ trait KConditionalParser extends KAbstractParser {
       newThenBlock.getStatement.addAll(list)
 		newThenBlock
   }
-  def optionalBlock : Parser[Expression] = fExpressionLst<~"else" ^^{
-    case list =>
+  def optionalBlock : Parser[Expression] = fExpressionLst~"else" ^^{
+    case list~"else" =>
  		var newThenBlock = BehaviorFactory.eINSTANCE.createBlock
       newThenBlock.getStatement.addAll(list)
 		newThenBlock

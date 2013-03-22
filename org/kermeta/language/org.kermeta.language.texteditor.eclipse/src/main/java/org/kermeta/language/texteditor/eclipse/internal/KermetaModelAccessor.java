@@ -43,14 +43,6 @@ public class KermetaModelAccessor {
 	 * Association of model elements with their bounds in the current edited kmt file.
 	 */
 	HashMap<KermetaModelElement, Position> mappingElemPos;
-	
-	DefaultPositionUpdater positionUpdater;
-	
-	public KermetaModelAccessor(ModelingUnit aModelingUnit, IDocument doc) {
-		
-		setSourceModelingUnit(aModelingUnit, doc);
-		
-	}
 
 	/*
 	 * Generate positions markers from traceability_text_reference tags of the ModelingUnit
@@ -62,6 +54,7 @@ public class KermetaModelAccessor {
 			
 			if(mappingElemPos == null){
 				doc.addPositionCategory("KermetaModel");
+				doc.addPositionUpdater(new DefaultPositionUpdater("KermetaModel"));
 			}
 			else{
 				try {
@@ -87,6 +80,10 @@ public class KermetaModelAccessor {
 								Position pos = new Position(begin, end-begin+1);
 								mappingElemPos.put(elem, pos);
 								
+								if(elem instanceof Conditional){
+									System.out.println("debug");
+								}
+								
 								try {
 									doc.addPosition("KermetaModel",pos);
 								} catch (BadLocationException e) {
@@ -99,10 +96,6 @@ public class KermetaModelAccessor {
 					}
 				}
 			}
-		}
-		if(positionUpdater == null){
-			positionUpdater = new DefaultPositionUpdater("KermetaModel");
-			doc.addPositionUpdater(positionUpdater);
 		}
 	}
 	
@@ -341,6 +334,7 @@ public class KermetaModelAccessor {
 		private TypeDefinition lookingBlock(String fileUrl, int documentOffset, String name, Block currentBlock){
 			
 			EList<Expression> statments = currentBlock.getStatement();
+			//TODO: Statements are in the right order ?
 			
 			for(Expression currentExpr : statments){
 				

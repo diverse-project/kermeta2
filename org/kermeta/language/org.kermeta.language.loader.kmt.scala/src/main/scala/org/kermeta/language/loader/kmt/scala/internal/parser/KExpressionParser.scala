@@ -38,8 +38,8 @@ trait KExpressionParser extends KAbstractParser
   def positionedfExpression : Parser[Expression] = kpositioned ( fExtern | fRaise | pExpression  | fLoop | fConditional | fLambda |  fCall | fLiteral )
   override def fStatement : Parser[Expression] = kpositioned (fAssignement)
 
-  override def lastBlock : Parser[Expression] = kpositioned(super.lastBlock)
   override def optionalBlock : Parser[Expression] = kpositioned(super.optionalBlock)
+  override def lastBlock : Parser[Expression] = kpositioned(super.lastBlock)
 
   def parseExpression(content : String) : Option[Expression] = {
     val tokens = new lexical.Scanner(content)

@@ -20,6 +20,7 @@ public class KermetaEditor extends TextEditor implements  KermetaBuilderEventLis
 	private KermetaColorManager colorManager;
 	private BracketInserter fBracketInserter= null;
 	private KermetaOutline outline;
+	public KermetaModelAccessor myAccess;
 	
 	public KermetaEditor(){
 		super();
@@ -27,6 +28,7 @@ public class KermetaEditor extends TextEditor implements  KermetaBuilderEventLis
 
 		setSourceViewerConfiguration(new KermetaEditorConfiguration(this, colorManager));
 		setDocumentProvider(new org.eclipse.ui.editors.text.TextFileDocumentProvider());
+		myAccess = new KermetaModelAccessor();
 		
 	}
 	// Added by Suresh for the Outline
@@ -86,6 +88,7 @@ public class KermetaEditor extends TextEditor implements  KermetaBuilderEventLis
 		// Check if file belongs to project that update
 		// TODO the file may still be visible from another eclipse project via the kp require statement
 		if(getFile().getProject().getName().equals(project.getName())){
+			myAccess.setSourceModelingUnit(lastCompiledKm,getDocumentProvider().getDocument(getEditorInput()));
 			outline.update(lastCompiledKm);
 		}		
 	}

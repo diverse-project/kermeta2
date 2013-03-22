@@ -49,8 +49,6 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 	private Autocompletion myAutocompletion = null;
 	private IDocument doc = null;
 	private StringBuffer identation = new StringBuffer();
-	
-	private KermetaModelAccessor myAccess;
 
 	public KermetaContentAssistProcessor(KermetaEditor editor) {
 		this.editor = editor;
@@ -268,21 +266,16 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			
 //			KParser parser = new KParser();
 //			ModelingUnit mu = parser.parse(doc.get()).get();
+
+			//TODO: update just last modified file
 			
-			if(theCurrentMU != null){
-				if(myAccess == null)
-					myAccess = new KermetaModelAccessor(theCurrentMU,doc);
-				else
-					myAccess.setSourceModelingUnit(theCurrentMU, doc);
-				//TODO: update just last modified file
-				
-				TypeDefinition t = myAccess.getCallType(editor.getFile().getLocationURI().toString(), documentOffset, qualifier);
-				if(t instanceof ClassDefinition){
-					String lastQualifier = getLastIdentifier(qualifier);
-					classDefHierarchyProposals(lastQualifier, documentOffset, propList, (ClassDefinition)t);
-				}
-				//TODO: sort proposals for expected type
+			TypeDefinition t = editor.myAccess.getCallType(editor.getFile().getLocationURI().toString(), documentOffset, qualifier);
+			if(t instanceof ClassDefinition){
+				String lastQualifier = getLastIdentifier(qualifier);
+				classDefHierarchyProposals(lastQualifier, documentOffset, propList, (ClassDefinition)t);
 			}
+			//TODO: sort proposals for expected type
+			
 //****************************
 			//proposeCallExpression(qualifier, documentOffset, propList, qlen);
 		} else if (! isTerminatedbyKeyword(qualifier)) {
@@ -570,7 +563,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			result = true;
 		}
 		if (qualifier.equals("from")) {
-			proposition = "from until\n"+this.identation+"loop\n"+this.identation+"\t\n"+this.identation+"end";
+			proposition = "from init \n"+this.identation+"until\n"+this.identation+"loop\n"+this.identation+"\t\n"+this.identation+"end";
 			cursor = 5 ;
 			propList.add(new KermetaCompletionProposal(proposition, documentOffset - qlen, qlen, cursor,KermetaImage.getImage("/icons/specific/Loop.gif"),"from...loop...end",null,null));
 			result = true;
