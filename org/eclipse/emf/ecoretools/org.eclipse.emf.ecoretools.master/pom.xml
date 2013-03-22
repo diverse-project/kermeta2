@@ -12,7 +12,7 @@
 	<groupId>org.eclipse.emf.ecoretools</groupId>
 	<artifactId>org.eclipse.emf.ecoretools.master</artifactId>
 	<packaging>pom</packaging>
-	<version>${emf.ecoretools.version}</version>
+	<version>0.1.1</version>
 	<name>${project.artifactId}</name>
 
 	<parent>
@@ -24,6 +24,9 @@
 
 	<modules>
 		<module>../org.eclipse.emf.ecoretools.root</module>
+		<module>../org.eclipse.emf.ecoretools.registration</module>
+		<module>../org.eclipse.emf.ecoretools.registration.ui</module>
+		<module>../org.eclipse.emf.ecoretools.registration.feature</module>
 	</modules>
 
 

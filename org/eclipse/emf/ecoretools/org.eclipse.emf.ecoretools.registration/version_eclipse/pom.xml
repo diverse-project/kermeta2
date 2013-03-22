@@ -13,7 +13,7 @@
 
   <parent>
     <groupId>org.eclipse.emf.ecoretools</groupId>
-    <artifactId>ecoretools.registration.multimodule</artifactId>
+    <artifactId>org.eclipse.emf.ecoretools.registration.multimodule</artifactId>
     <version>0.1.1</version>
   </parent>
 
