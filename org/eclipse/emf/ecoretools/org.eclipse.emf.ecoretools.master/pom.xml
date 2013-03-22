@@ -24,9 +24,6 @@
 
 	<modules>
 		<module>../org.eclipse.emf.ecoretools.root</module>
-		<module>../org.eclipse.emf.ecoretools.registration</module>
-		<module>../org.eclipse.emf.ecoretools.registration.ui</module>
-		<module>../org.eclipse.emf.ecoretools.registration.feature</module>
 	</modules>
 
 

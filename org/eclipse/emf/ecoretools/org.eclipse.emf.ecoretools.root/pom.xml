@@ -20,4 +20,9 @@
     <version>0.1.1</version>
     <name>emf.ecoretools.root :: Root for emf.ecoretools</name>
 	
+	<modules>
+		<module>../org.eclipse.emf.ecoretools.registration</module>
+		<module>../org.eclipse.emf.ecoretools.registration.ui</module>
+		<module>../org.eclipse.emf.ecoretools.registration.feature</module>
+	</modules>
 </project>
