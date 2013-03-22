@@ -46,6 +46,9 @@ trait KExpressionParser extends KAbstractParser
   
   override def fRescueRescue : Parser[Rescue] = kpositioned(super.fRescueRescue)
   override def fRescueEnd : Parser[Rescue] = kpositioned(super.fRescueEnd)
+  
+  override def fLambda : Parser[Expression] = kpositioned(super.fLambda)
+  override def lambdaBody : Parser[Expression] = kpositioned(super.lambdaBody)
 
   def parseExpression(content : String) : Option[Expression] = {
     val tokens = new lexical.Scanner(content)
