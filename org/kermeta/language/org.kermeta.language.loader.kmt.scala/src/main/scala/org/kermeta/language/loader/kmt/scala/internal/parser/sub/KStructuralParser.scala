@@ -202,7 +202,17 @@ trait KStructuralParser extends KAbstractParser {
 
   def pExpression: Parser[Expression] = "(" ~> fStatement <~ ")"
 
-  def fBlock: Parser[Expression] = "do" ~> fExpressionLst ~ rep(fRescue) <~ "end" ^^ {
+  def fBlock: Parser[Expression] = fSimpleBlock | fRescueBlock
+  
+  def fSimpleBlock: Parser[Expression] = "do" ~> fExpressionLst <~ "end" ^^ {
+    case expL  =>
+
+      var newo = BehaviorFactory.eINSTANCE.createBlock
+      newo.getStatement.addAll(expL)
+      newo
+  }
+  
+  def fRescueBlock: Parser[Expression] = "do" ~> fExpressionLst ~ fRepRescue ^^ {
     case expL ~ rescueL =>
 
       var newo = BehaviorFactory.eINSTANCE.createBlock
@@ -211,7 +221,49 @@ trait KStructuralParser extends KAbstractParser {
       newo
   }
 
-  def fRescue: Parser[Rescue] = "rescue" ~ "(" ~> ident ~ ":" ~ packageName ~ ")" ~ fExpressionLst ^^ {
+  def fRepRescue: Parser[List[Rescue]] = "rescue" ~> rep(fRescueRescue) ~ fRescueEnd ^^ {
+    case resLst ~ endElem => {
+      resLst match{
+        case Nil => List(endElem)
+        case _  => resLst :+ endElem
+      }
+    }
+  }
+  /*def fRescue: Parser[Rescue] = "rescue" ~ "(" ~> ident ~ ":" ~ packageName ~ ")" ~ fExpressionLst ^^ {
+    case rIdent ~ _ ~ rPname ~ _ ~ rescueL =>
+
+      var newo = BehaviorFactory.eINSTANCE.createRescue
+      newo.setExceptionName(rIdent)
+      var newtyperef = BehaviorFactory.eINSTANCE.createTypeReference
+      var newtype = StructureFactory.eINSTANCE.createUnresolvedType
+      newtype.setTypeIdentifier(rPname)
+      newtyperef.setName(rPname)
+      newtyperef.setType(newtype)
+      newtyperef.getContainedType.add(newtype)
+      newo.setExceptionType(newtyperef)
+      newo.getBody.addAll(rescueL)
+
+      newo
+  }*/
+  
+  def fRescueRescue: Parser[Rescue] = "(" ~> ident ~ ":" ~ packageName ~ ")" ~ fExpressionLst <~ "rescue" ^^ {
+    case rIdent ~ _ ~ rPname ~ _ ~ rescueL =>
+
+      var newo = BehaviorFactory.eINSTANCE.createRescue
+      newo.setExceptionName(rIdent)
+      var newtyperef = BehaviorFactory.eINSTANCE.createTypeReference
+      var newtype = StructureFactory.eINSTANCE.createUnresolvedType
+      newtype.setTypeIdentifier(rPname)
+      newtyperef.setName(rPname)
+      newtyperef.setType(newtype)
+      newtyperef.getContainedType.add(newtype)
+      newo.setExceptionType(newtyperef)
+      newo.getBody.addAll(rescueL)
+
+      newo
+  }
+  
+  def fRescueEnd: Parser[Rescue] = "(" ~> ident ~ ":" ~ packageName ~ ")" ~ fExpressionLst <~ "end"^^ {
     case rIdent ~ _ ~ rPname ~ _ ~ rescueL =>
 
       var newo = BehaviorFactory.eINSTANCE.createRescue

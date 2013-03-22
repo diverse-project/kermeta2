@@ -12,6 +12,7 @@ package org.kermeta.language.loader.kmt.scala.internal.parser
 
 import org.kermeta.language.behavior.Expression
 import org.kermeta.language.loader.kmt.scala.internal.parser.sub._
+import org.kermeta.language.behavior.Rescue
 
 /**
  * Parser of Kermeta expression in KMT textual syntax
@@ -40,6 +41,9 @@ trait KExpressionParser extends KAbstractParser
 
   override def optionalBlock : Parser[Expression] = kpositioned(super.optionalBlock)
   override def lastBlock : Parser[Expression] = kpositioned(super.lastBlock)
+  
+  override def fRescueRescue : Parser[Rescue] = kpositioned(super.fRescueRescue)
+  override def fRescueEnd : Parser[Rescue] = kpositioned(super.fRescueEnd)
 
   def parseExpression(content : String) : Option[Expression] = {
     val tokens = new lexical.Scanner(content)

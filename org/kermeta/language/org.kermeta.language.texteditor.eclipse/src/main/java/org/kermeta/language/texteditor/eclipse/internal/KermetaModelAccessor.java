@@ -32,6 +32,8 @@ import org.kermeta.language.util.ModelingUnit;
 
 import org.kermeta.language.behavior.Expression;
 
+import org.kermeta.language.behavior.Rescue;
+
 public class KermetaModelAccessor {
 	
 	/*
@@ -356,6 +358,46 @@ public class KermetaModelAccessor {
 				}
 				else{
 					return lookingExpr(fileUrl, documentOffset, name, currentExpr);
+				}
+			}
+			
+			for(Rescue currentRescue : currentBlock.getRescueBlock()){
+				if(containsThisOffset(fileUrl, documentOffset, currentRescue)) 
+					return lookingRescue(fileUrl, documentOffset, name, currentRescue);
+			}
+			
+			return null;
+		}
+		
+		private TypeDefinition lookingRescue(String fileUrl, int documentOffset, String name, Rescue currentRescue){
+			
+			if(currentRescue.getExceptionName().equals(name)){
+				Type ty = currentRescue.getExceptionType().getType();
+				if(ty instanceof Class)
+					return ((Class)ty).getTypeDefinition();
+			}
+			else{
+				for(Expression currentExpr : currentRescue.getBody()){
+					
+					if(!containsThisOffset( fileUrl, documentOffset, currentExpr )){
+						
+						if(currentExpr instanceof VariableDecl){
+							
+							VariableDecl varDecl = (VariableDecl)currentExpr;
+							if( varDecl.getIdentifier().equals(name) ){
+								
+								Type typeVarDecl = varDecl.getType().getType();
+								if(typeVarDecl instanceof Class){
+									
+									return ((Class)typeVarDecl).getTypeDefinition();
+									
+								}
+							}
+						}
+					}
+					else{
+						return lookingExpr(fileUrl, documentOffset, name, currentExpr);
+					}
 				}
 			}
 			
