@@ -484,6 +484,24 @@ public class KermetaModelAccessor {
 			return null;
 		}
 		
+		/*
+		 * Search for a variable declaration in the right part of a variable declaration expression
+		 * 
+		 * @fileUrl Name of the current edited file
+		 * @documentOffset Position of the cursor in the file
+		 * @name The name of the variable wanted
+		 */
+		private TypeDefinition lookingVarDecl(String fileUrl, int documentOffset, String name, VariableDecl currentVarDecl){
+			
+			if(containsThisOffset(fileUrl, documentOffset, currentVarDecl.getInitialization())){
+				
+				return lookingExpr(fileUrl, documentOffset, name, currentVarDecl.getInitialization());
+				
+			}
+			
+			return null;
+		}
+		
 		private TypeDefinition lookingExpr(String fileUrl, int documentOffset, String name, Expression currentExpr){
 			
 			if(currentExpr instanceof Block){
@@ -497,6 +515,9 @@ public class KermetaModelAccessor {
 			}
 			else if(currentExpr instanceof LambdaExpression){
 				return lookingLamdaExpr(fileUrl, documentOffset, name, (LambdaExpression)currentExpr);
+			}
+			else if(currentExpr instanceof VariableDecl){
+				return lookingVarDecl(fileUrl, documentOffset, name, (VariableDecl)currentExpr);
 			}
 			
 			return null;
