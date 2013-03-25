@@ -10,6 +10,7 @@ import org.eclipse.jface.text.BadPositionCategoryException;
 import org.eclipse.jface.text.DefaultPositionUpdater;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.Position;
+import org.kermeta.language.behavior.Assignment;
 import org.kermeta.language.behavior.Block;
 import org.kermeta.language.behavior.Conditional;
 import org.kermeta.language.behavior.LambdaExpression;
@@ -502,6 +503,24 @@ public class KermetaModelAccessor {
 			return null;
 		}
 		
+		/*
+		 * Search for a variable declaration in the right part of an assignment expression
+		 * 
+		 * @fileUrl Name of the current edited file
+		 * @documentOffset Position of the cursor in the file
+		 * @name The name of the variable wanted
+		 */
+		private TypeDefinition lookingAssignment(String fileUrl, int documentOffset, String name, Assignment currentAssign){
+			
+			if(containsThisOffset(fileUrl, documentOffset, currentAssign.getValue() )){
+				
+				return lookingExpr(fileUrl, documentOffset, name, currentAssign.getValue());
+				
+			}
+			
+			return null;
+		}
+		
 		private TypeDefinition lookingExpr(String fileUrl, int documentOffset, String name, Expression currentExpr){
 			
 			if(currentExpr instanceof Block){
@@ -518,6 +537,9 @@ public class KermetaModelAccessor {
 			}
 			else if(currentExpr instanceof VariableDecl){
 				return lookingVarDecl(fileUrl, documentOffset, name, (VariableDecl)currentExpr);
+			}
+			else if(currentExpr instanceof Assignment){
+				return lookingAssignment(fileUrl, documentOffset, name, (Assignment)currentExpr);
 			}
 			
 			return null;
