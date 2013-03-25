@@ -12,6 +12,7 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.Position;
 import org.kermeta.language.behavior.Assignment;
 import org.kermeta.language.behavior.Block;
+import org.kermeta.language.behavior.CallOperation;
 import org.kermeta.language.behavior.Conditional;
 import org.kermeta.language.behavior.LambdaExpression;
 import org.kermeta.language.behavior.LambdaParameter;
@@ -521,6 +522,19 @@ public class KermetaModelAccessor {
 			return null;
 		}
 		
+		private TypeDefinition lookingCallOperation(String fileUrl, int documentOffset, String name, CallOperation currentCallOp){
+			
+			for(Expression currentExpr : currentCallOp.getParameters()){
+				
+				if(containsThisOffset(fileUrl, documentOffset, currentExpr)){
+					
+					return lookingExpr(fileUrl, documentOffset, name, currentExpr);
+				}
+			}
+			
+			return null;
+		}
+
 		private TypeDefinition lookingExpr(String fileUrl, int documentOffset, String name, Expression currentExpr){
 			
 			if(currentExpr instanceof Block){
@@ -540,6 +554,9 @@ public class KermetaModelAccessor {
 			}
 			else if(currentExpr instanceof Assignment){
 				return lookingAssignment(fileUrl, documentOffset, name, (Assignment)currentExpr);
+			}
+			else if(currentExpr instanceof CallOperation){
+				return lookingCallOperation(fileUrl, documentOffset, name, (CallOperation)currentExpr);
 			}
 			
 			return null;
