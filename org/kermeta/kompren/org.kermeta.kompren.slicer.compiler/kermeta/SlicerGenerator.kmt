@@ -291,11 +291,12 @@ class SlicerGenerator {
 	operation generateCodeKP(modelAspectFileName : String, slicerFileName : String, requiredAspectFileNames : Bag<String>) : String is do
 		var metamodelName : String := slicerModel.uriMetamodel.split("/").last
 		var pkgName : String := getPackageFromClasses(aspectisedClasses).replaceAll(";\n", "::" + shortNameSlicer).replaceAll("package ", "")
-	
+		var projectNameForKP : String := slicerModel.name.replaceAll("\\.", "_")
+
 		result := "resource library_standard =\"platform:/plugin/org.kermeta.language.library.standard\" alternative \"mvn:org.kermeta.language/language.library.standard/2.0.99-SNAPSHOT\"\nimportProject library_standard\nproject "
-		result := result + slicerModel.name.replaceAll("\\.", "_") + "{\n"
+		result := result + projectNameForKP + "{\n"
 		result := result + 
-					"\tmainClass \""+slicerModel.name+"^" + pkgName + "\"\n\tmainOperation \"launch\"\n\timport \"${project.baseUri}/" + 
+					"\tmainClass \""+projectNameForKP+"^" + pkgName + "\"\n\tmainOperation \"launch\"\n\timport \"${project.baseUri}/" + 
 					metamodelName + "\"\n\timport \"${project.baseUri}/" + modelAspectFileName + 
 					"\"\n\timport \"${project.baseUri}/" + slicerFileName + "\"\n"
 		requiredAspectFileNames.each{name | result := result + "\timport \"${project.baseUri}/" + name + "\"\n" }
