@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Kermeta 2 branding
+Bundle-SymbolicName: org.kermeta.studio.branding;singleton:=true
+Bundle-Version: 2.0.99.qualifier
+Bundle-Vendor: IRISA/INRIA
