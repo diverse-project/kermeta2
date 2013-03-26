@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2008 Sonatype, Inc.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.kermeta.utils</groupId>
+    <artifactId>utils.root</artifactId>
+    <version>2.0.99-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>org.kermeta.utils.maven.runtime</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Embedded Maven Runtime Bundle</name>
+
+  <properties>
+    <!-- maven core version -->
+    <maven.version>3.0.4</maven.version>
+
+    <!-- the following MUST match <maven.version/> above. I wish I could make scope=import do this for me -->
+    <sisu-guice.version>3.1.0</sisu-guice.version>
+    <sisu.version>2.3.0</sisu.version>
+    <aether.version>1.13.1</aether.version>
+
+    <guava.version>10.0.1</guava.version>
+
+    <!-- below are kermeta-utils-specific addons -->
+    <plexus-build-api.version>0.0.7</plexus-build-api.version>
+    <wagon-ahc.version>1.2.1</wagon-ahc.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-core</artifactId>
+      <version>${maven.version}</version>
+      <exclusions>
+        <exclusion>
+          <!-- exclude aggregate OSGi bundle -->
+          <artifactId>sisu-inject-plexus</artifactId>
+          <groupId>org.sonatype.sisu</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-model</artifactId>
+      <version>${maven.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-embedder</artifactId>
+      <version>${maven.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>sisu-inject-plexus</artifactId>
+          <groupId>org.sonatype.sisu</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-compat</artifactId>
+      <version>${maven.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>sisu-inject-plexus</artifactId>
+          <groupId>org.sonatype.sisu</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.sonatype.sisu.inject</groupId>
+      <artifactId>guice-plexus-shim</artifactId>
+      <version>${sisu.version}</version>
+      <optional>true</optional>
+      <exclusions>
+        <exclusion>
+          <groupId>org.sonatype.sisu</groupId>
+          <artifactId>sisu-guice</artifactId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jsr250-api</artifactId>
+          <groupId>javax.annotation</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>cdi-api</artifactId>
+          <groupId>javax.enterprise</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.sonatype.sisu</groupId>
+      <artifactId>sisu-guice</artifactId>
+      <version>${sisu-guice.version}</version>
+      <classifier>no_aop</classifier>
+      <optional>true</optional>
+      <exclusions>
+        <exclusion>
+          <artifactId>sisu-guava</artifactId>
+          <groupId>org.sonatype.sisu</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.sonatype.plexus</groupId>
+      <artifactId>plexus-build-api</artifactId>
+      <version>${plexus-build-api.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.sonatype.aether</groupId>
+      <artifactId>aether-connector-wagon</artifactId>
+      <version>${aether.version}</version>
+      <exclusions>
+        <!--<exclusion>
+          <groupId>org.codehaus.plexus</groupId>
+          <artifactId>plexus-container-default</artifactId>
+        </exclusion>
+        <exclusion>
+          <artifactId>sisu-inject-plexus</artifactId>
+          <groupId>org.sonatype.sisu</groupId>
+        </exclusion>-->
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.sonatype.aether</groupId>
+      <artifactId>aether-impl</artifactId>
+      <version>${aether.version}</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.sonatype.aether</groupId>
+      <artifactId>aether-connector-asynchttpclient</artifactId>
+      <version>${aether.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.ning</groupId>
+          <artifactId>async-http-client</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>org.sonatype.aether</groupId>
+        <artifactId>aether-connector-file</artifactId>
+        <version>${aether.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.sonatype.maven</groupId>
+      <artifactId>wagon-ahc</artifactId>
+      <version>${wagon-ahc.version}</version>
+      <optional>true</optional>
+    </dependency>
+
+   <dependency>
+     <groupId>org.apache.maven.wagon</groupId>
+     <artifactId>wagon-file</artifactId>
+   </dependency>
+   
+   <dependency>
+   	<groupId>org.slf4j</groupId>
+   	<artifactId>slf4j-api</artifactId>
+   	<version>1.6.2</version>
+   </dependency>
+  </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.maven</groupId>
+        <artifactId>maven</artifactId>
+        <version>${maven.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <configuration>
+          <instructions>
+          	<Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
+            <Bundle-Version>${bundle.version}</Bundle-Version> 
+            <Embed-Dependency>
+              *;scope=compile|runtime;artifactId=!slf4j-api
+            </Embed-Dependency>
+            <Embed-Transitive>true</Embed-Transitive>              
+            <Embed-Directory>jars</Embed-Directory>
+
+            <_exportcontents>
+              META-INF.plexus;-noimport:=true,
+              org.apache.maven.*,
+              org.codehaus.plexus.*,
+              org.sonatype.plexus.*,
+              org.sonatype.aether.*,
+              com.google.inject.*,
+              org.sonatype.maven.wagon.*,
+            </_exportcontents>
+	
+            <Import-Package>
+              !*
+            </Import-Package>
+            <Require-Bundle>
+              org.slf4j.api;bundle-version="1.6.2"
+            </Require-Bundle>
+
+            <Bundle-ClassPath>.,{maven-dependencies}</Bundle-ClassPath>
+            <_failok>true</_failok>
+            <_nouses>true</_nouses>
+            <_nodefaultversion>true</_nodefaultversion>
+          </instructions>
+        </configuration>
+      </plugin>
+      <!-- <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-plugin</artifactId>
+      </plugin>-->
+    </plugins>
+  </build>
+
+
+  <groupId>org.kermeta.utils</groupId>
+</project>

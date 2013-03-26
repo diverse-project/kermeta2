@@ -36,7 +36,6 @@ object POMGeneratorHelper {
 
     def initProject(standalone : Boolean,additionalClasspath : List[String]) : MavenProject =  {
         var project : MavenProject  = new MavenProject()
-
         project.setGroupId(GlobalConfiguration.props.getProperty("project.group.id"))
         project.setArtifactId(GlobalConfiguration.props.getProperty("project.artefact.id"))
         project.setVersion("0.0.1-SNAPSHOT")
@@ -114,7 +113,7 @@ object POMGeneratorHelper {
         res.add(re)
         build.setResources(res)
         //build.setOutputDirectory("target");
-        build.setModelEncoding("UTF8");
+        project.getModel.setModelEncoding("UTF8")
 
         /* INIT SCALA PLUGIN */
         var pluginScala = new Plugin();

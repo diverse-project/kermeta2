@@ -10,9 +10,10 @@
 	
 	<!-- other initialization -->
 	<property name="env.WORKSPACE" location="C:/Temp/kermeta_hudson/workspace/studio_compile_studio"/>
-	<property name="studio.base.dir" location="${env.WORKSPACE}/target/studiobase/"/>	
+	<property name="workdirectory" location="${env.WORKSPACE}"/>
+	<property name="studio.base.dir" location="${workdirectory}/target/studiobase/"/>	
 	<property name="archive.extension" value="tar.gz"/>
-	<property name="studio.base.download.folder" location="${env.WORKSPACE}/target/studiobase.tmp"/>
+	<property name="studio.base.download.folder" location="${workdirectory}/target/studiobase.tmp"/>
 	<property name="studio.base.downloaded.zip" location="${studio.base.download.folder}/StudioBase.${archive.extension}"/>
 	<property name="studio.base.url" value="http://studio.gforge.inria.fr/bundle/latest_build/studioBase.${archive.extension}"/>
 	
@@ -65,6 +66,11 @@
         			<include name="*.tar"/>
 			</fileset>
 		</untar>
+		<delete>
+			<fileset dir="${studio.base.download.folder}">
+				<include name="*.tar"/>
+			</fileset>
+		</delete>
 	</target>
 	<target name="expand.zip">
 		<unzip dest="${studio.base.dir}"

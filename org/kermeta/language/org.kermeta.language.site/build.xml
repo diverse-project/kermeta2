@@ -1,17 +1,18 @@
-<project name="full_kermeta_studio_updatesite" default="all">
+<project name="full_kermeta_studio_updatesite" default="publish_jars">
 	<!-- configuration properties -->		
 	<!-- project configuration -->
 	<property environment="env"/>
 
 	<property name="env.WORKSPACE" location="."/>
-	
-	<property name="updatesite.repository" location="${env.WORKSPACE}/target/updatesite"/>
+
+	<property name="workdirectory" location="${env.WORKSPACE}"/>
+	<property name="updatesite.repository" location="${workdirectory}/target/updatesite"/>
 	<property name="category.definition" location="./target/classes/site.xml"/>
-	<property name="source.features.and.bundles" location="${env.WORKSPACE}/target/features_and_bundles"/>	
+	<property name="source.features.and.bundles" location="${workdirectory}/target/features_and_bundles"/>	
 	<property name="source.features" location="${source.features.and.bundles}/features"/>
 	<property name="source.bundles" location="${source.features.and.bundles}/plugins"/>
 	
-	<property name="studio.base.dir" location="${env.WORKSPACE}/target/studiobase/"/>
+	<property name="studio.base.dir" location="${workdirectory}/target/studiobase/"/>
 	<property name="studio.archive.extension" value="tar.gz"/>
 	<property name="studio.eclipse.code.name" value="indigo"/>
 	<property name="studio.os.variant" value="linux_x86_64"/>
@@ -44,6 +45,7 @@
 	</target>
 	
 	<target name="publish_features_and_bundles" > 
+		<echo>workdirectory=${workdirectory}</echo>
 		<java jar="${eclipse.bin.home}/plugins/${equinox.jar.filename}"
 				           fork="true"
 				           failonerror="true"
@@ -83,7 +85,7 @@
 	</target>
 	<target name="get_site_template">
 		<copy todir="${updatesite.repository}">
-			<fileset dir="${env.WORKSPACE}/target/classes" includes="**" >
+			<fileset dir="${workdirectory}/target/classes" includes="**" >
 				<!--<exclude name="readme.txt"/>
 				<exclude name="*_build.xml"/>-->
 			</fileset>	

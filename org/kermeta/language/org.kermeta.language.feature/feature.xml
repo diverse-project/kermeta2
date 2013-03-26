@@ -71,6 +71,20 @@ Copyright (c) 2003-2007, Terence Parr. All rights reserved.
          unpack="false"/>
 
    <plugin
+         id="org.kermeta.kp.builder.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.kermeta.kp.builder.eclipse"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
          id="org.kermeta.kp.compiler.commandline"
          download-size="0"
          install-size="0"
@@ -148,20 +162,6 @@ Copyright (c) 2003-2007, Terence Parr. All rights reserved.
          unpack="false"/>
 
    <plugin
-         id="org.kermeta.language.builder.api"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.kermeta.language.builder.eclipse"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.kermeta.language.checker"
          download-size="0"
          install-size="0"
@@ -216,7 +216,14 @@ Copyright (c) 2003-2007, Terence Parr. All rights reserved.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
+         
+	<plugin
+         id="org.kermeta.language.library.standard"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
    <plugin
          id="org.kermeta.language.loader.kmt.scala"
          download-size="0"

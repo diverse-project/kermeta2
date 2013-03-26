@@ -7,14 +7,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>ecoretools.registration</artifactId>
+  <artifactId>org.eclipse.emf.ecoretools.registration</artifactId>
   <name>ecoretools.registration :: Ecore Package registration</name>
   <packaging>bundle</packaging>
 
   <parent>
     <groupId>org.eclipse.emf.ecoretools</groupId>
-    <artifactId>ecoretools.registration.multimodule</artifactId>
-    <version>0.1.0</version>
+    <artifactId>org.eclipse.emf.ecoretools.registration.multimodule</artifactId>
+    <version>0.1.1</version>
   </parent>
 
   <build>
@@ -76,10 +76,12 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Bundle-SymbolicName>org.eclipse.emf.${project.artifactId};singleton:=true</Bundle-SymbolicName>
+            <Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
             <Bundle-Name>${project.name}</Bundle-Name>
             <Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
             <Bundle-Version>${bundle.version}</Bundle-Version>
+			<Bundle-Activator>org.eclipse.emf.ecoretools.registration.RegistrationPlugin</Bundle-Activator>
+            <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
             <Bundle-ClassPath>.</Bundle-ClassPath>
              <!-- Dependency used for compiling all the bundle (with dependecy to org.eclipse.core.* -->
              

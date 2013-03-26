@@ -20,7 +20,7 @@
 
     <dependencies>
     
-        <dependency>
+        <!-- <dependency>
             <groupId>org.sonatype.aether</groupId>
             <artifactId>aether-connector-file</artifactId>
             <version>1.13.1</version>
@@ -36,17 +36,31 @@
             <groupId>org.sonatype.aether</groupId>
             <artifactId>aether-connector-asynchttpclient</artifactId>
             <version>1.13.1</version>
+            -->
             <!-- <exclusions>
                 <exclusion>
                     <artifactId>netty</artifactId>
                     <groupId>org.jboss.netty</groupId>
                 </exclusion>
             </exclusions>-->
+		<!--            
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-aether-provider</artifactId>
-            <version>3.0.4</version>
+            <version>${embeddedmaven.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-embedder</artifactId>
+            <version>${embeddedmaven.version}</version>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>org.kermeta.utils</groupId>
+            <artifactId>org.kermeta.utils.maven.runtime</artifactId>
+            <version>${kermeta.version}</version>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
@@ -81,25 +95,16 @@
                         <Bundle-SymbolicName>org.kermeta.${project.artifactId};singleton:=true</Bundle-SymbolicName>
                         <Bundle-Version>${bundle.version}</Bundle-Version>                        
                         <Export-Package>
-                        	org.kermeta.utils.aether.*,
-                            org.sonatype.*,
-                            org.apache.maven.repository.*,
-                            org.apache.maven.model.*,
-                            org.apache.maven.http.*,
-                            org.apache.maven.artifact.*,
-                            com.ning.*,
-                            org.codehaus.plexus.interpolation.*,
-                            org.codehaus.plexus.util.*,
-                            org.apache.maven.wagon.*
-                        </Export-Package>                        
+                        	org.kermeta.utils.aether.*
+                        </Export-Package>             
+                        <Require-Bundle>
+			              org.kermeta.utils.maven.runtime
+			            </Require-Bundle>          
                         <Import-Package>
-                        	!org.codehaus.*,
-                        	!org.apache.commons.*,
-                        	!javax.servlet.*,
-                        	!com.google.protobuf.*,
-                        	!org.kermeta.utils.aether.*,
-                        	*;resolution:=optional
-                        </Import-Package>                        
+                        	!org.apache.maven.*,
+                        	!org.sonatype.*,
+                        	*
+                        </Import-Package>                       
                     </instructions>
                 </configuration>
             </plugin>           

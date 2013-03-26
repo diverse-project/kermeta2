@@ -6,11 +6,9 @@
       provider-name="IRISA/INRIA">
 
    <description>
-      This set of plugins offers to dynamically register EPackages
-from ecore files. This allows to be able to load conforming models
-without having to physically generate the bytecode and deploy
-it in another eclipse runtime.
-It propose a view showing all registerer EPackages and ther origin.
+      This set of plugins offers to dynamically register EPackages from ecore files. This allows to be able to load conforming models
+without having to physically generate the bytecode and deploy it in another eclipse runtime.
+It also proposes a view showing all registered EPackages and their origin.
    </description>
 
    <copyright>
@@ -22,8 +20,7 @@ It propose a view showing all registerer EPackages and ther origin.
  
  All rights reserved. This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0 
- which accompanies this distribution, and is available at
- http://www.eclipse.org/legal/epl-v10.html
+ which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
  
  Contributors:
    INRIA

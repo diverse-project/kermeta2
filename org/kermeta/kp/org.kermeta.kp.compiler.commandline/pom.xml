@@ -98,11 +98,13 @@
 							org.kermeta.kp.compiler.commandline.*
 						</Export-Package>
 						<Require-Bundle>
+							org.kermeta.utils.maven.runtime
 						</Require-Bundle>
 						<Import-Package>
 							!javax.*,
 							!org.kermeta.language.language.ecore2km.org.eclipse.emf.ecore,
-							!org.apache.commons.cli;version="[0,)",
+							!org.apache.commons.cli;version="[0,)",						
+							!org.apache.maven.*,
 							*
 						</Import-Package>
 						<Private-Package>
