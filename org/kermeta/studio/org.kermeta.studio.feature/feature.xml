@@ -2,7 +2,7 @@
 <feature
       id="org.kermeta.studio.feature"
       label="Feature for the Gemoc branding"
-      version="1.0.0.qualifier"
+      version="2.0.99.qualifier"
       plugin="org.kermeta.studio.branding">
 
    <description url="http://www.kermeta/org">
