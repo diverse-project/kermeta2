@@ -270,7 +270,7 @@ class SlicerGenerator {
 
 				if(not packagesName.contains(name)) then
 					packagesName.add(name)
-					result := result + "using " + name + "\n"
+					result := result + "using " + name + "::*\n"
 				end
 				i := i - 1
 			end
