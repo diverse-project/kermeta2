@@ -1,0 +1,10 @@
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/language.library.standard/2.0.99-SNAPSHOT"
+importProject library_standard
+project examples_lowerTypesSlicer{
+	mainClass "examples.lowerTypesSlicer^ex::classModel::Test"
+	mainOperation "main"
+	import "${project.baseUri}/ClassModel.ecore"
+	import "${project.baseUri}/lowerTypesSlicerAspect.kmt"
+	import "${project.baseUri}/lowerTypesSlicer.kmt"
+	import "${project.baseUri}/TestClassModelSlicer.kmt"
+}
