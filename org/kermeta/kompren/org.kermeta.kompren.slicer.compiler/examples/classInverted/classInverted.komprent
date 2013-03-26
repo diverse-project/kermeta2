@@ -1,4 +1,4 @@
-slicer InvertedClassModelSlicer{
+slicer examples.lowerTypesSlicer{
 	domain: "platform:/resource/org.kermeta.kompren.slicer.compiler/examples/clazz/ClassModel.ecore"
 	input: ex.classModel.Clazz
 	slicedClass: ex.classModel.Clazz clazz [[stdio.writeln("class: " + clazz.name)]]
