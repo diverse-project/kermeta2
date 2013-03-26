@@ -1,15 +1,9 @@
 resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/language.library.standard/2.0.99-SNAPSHOT"
-resource library_core ="platform:/plugin/org.kermeta.language.library.core" alternative "mvn:org.kermeta.language/language.library.core/2.0.99-SNAPSHOT"
-resource kermeta_model = "platform:/plugin/org.kermeta.language.model" alternative "mvn:org.kermeta.language/language.model/2.0.99-SNAPSHOT"
 
-importProject library_standard
-importProject library_core
-
-project example_UnusedVarDetector{
+project example_UnusedVarDetector extends library_standard{
 	mainClass "example_UnusedVarDetector^org::kermeta::language::behavior::UnusedVarDetector"
 	mainOperation "launch"
 	import "${project.baseUri}/UnusedVarDetectorAspect.kmt"
 	import "${project.baseUri}/UnusedVarDetector.kmt"
 	import "${project.baseUri}/structureSlicingAspect.kmt"
-	import "${kermeta_model.baseUri}/src/main/ecore/kermeta.ecore" using EMFBytecode(kermeta_model)
 }

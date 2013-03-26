@@ -7,8 +7,6 @@
 package ex::classModel;
 
 using kermeta::standard::*
-using org::kermeta::language::structure::*
-using kermeta::emfpersistence::*
 using kermeta::io::StdIO => stdio
 
 class Test {
@@ -18,31 +16,9 @@ class Test {
 		var cm : ClassModel := createClassModel(requiredClazzs) //loadModel
 		var clazz : Clazz := cm.classes.one
 		
-		stdio.writeln(cm.getMetaClass.name + " " + cm.getMetaClass.typeDefinition.container.asType(Package).name +
-				" " + cm.getMetaClass.typeDefinition.container.asType(Package).container.asType(Package).name)
-
 		var slicer : superTypesSlicer := superTypesSlicer.new.initialise(requiredClazzs)
-
 		slicer.launch
 	end
-	
-	operation loadModel() : ClassModel is do
-   		var repository : ResourceSet init ResourceSet.new
-   		var resource : Resource init repository.createResource("platform:/resource/examples.clazz/ClassModel.xmi", "platform:/resource/examples.clazz/ClassModel.ecore")
-       	resource.load(void)
-       	
-       	result := void
-
-		from var it : Iterator<Object> init resource.getContents.iterator
-		until it.isOff
-		loop
-			var next : Object init it.next
-			if(next.isInstanceOf(ClassModel)) then                 
-				result ?= next
-			end
-		end
-	end
-	
 	
 	operation createClassModel(requiredClazzs : Bag<Clazz>) : ClassModel is do
 		result := ClassModel.new
