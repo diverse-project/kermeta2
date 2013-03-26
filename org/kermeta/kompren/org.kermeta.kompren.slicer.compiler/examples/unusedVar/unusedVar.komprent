@@ -1,5 +1,5 @@
-slicer UnusedVarDetector{
-	domain: "./kermeta.ecore"
+slicer example.UnusedVarDetector{
+	domain: "platform:/resource/org.kermeta.kompren.slicer.compiler/examples/unusedVar/kermeta.ecore"
 	input: org.kermeta.language.structure.Operation
 	slicedClass: org.kermeta.language.behavior.VariableDecl varDecl [[		varDecls.add(varDecl)]]
 	slicedClass: org.kermeta.language.behavior.CallVariable callVar [[		if(not callVar.staticType.isVoid) then
