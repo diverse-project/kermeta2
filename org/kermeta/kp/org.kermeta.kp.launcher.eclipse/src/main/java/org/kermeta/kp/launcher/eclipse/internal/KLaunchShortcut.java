@@ -122,9 +122,14 @@ abstract public class KLaunchShortcut implements ILaunchShortcut {
 			// FIXME : wrong path (not file system path)
 			String fileName = ifile.getFullPath().makeAbsolute().toOSString();
 			String projectName = ifile.getProject().getName();
+			
 
 			List<ILaunchConfiguration> launchConfigurations = findLaunchConfigurations(projectName, fileName.replace("\\", "/"));
 			
+			String mainClass = KermetaBuilder.getDefault().getDefaultMainClass(ifile).replaceAll("\\.", "_").replaceAll("\\^", "_").replaceAll("::", "-");
+			String mainOperation = KermetaBuilder.getDefault().getDefaultMainOperation(ifile);
+			String searchedConfigurationId = projectName+ " "+mainClass+ " "+mainOperation;
+					
 			
 
 			ILaunchConfiguration launchConfiguration = null;
@@ -139,8 +144,13 @@ abstract public class KLaunchShortcut implements ILaunchShortcut {
 				
 				break;
 			case 1:
-				// If one launch configuration found, let us use it.
+				// If one launch configuration found, if it has the correct name then let us use it.
+				
 				launchConfiguration = launchConfigurations.get(0);
+				if(!launchConfiguration.getName().equals(searchedConfigurationId)){
+					launchConfiguration = createConfiguration(projectName, fileName.replace("\\", "/"), ifile);
+				}
+				// other wise create a new one to be used
 				launchConfiguration(mode, launchConfiguration);
 				break;
 			default:
@@ -150,9 +160,14 @@ abstract public class KLaunchShortcut implements ILaunchShortcut {
 				// as a group identifier.
 				// Here we use "org.eclipse.debug.ui.launchGroup.run" because
 				// ID_GROUP = "KermetaLaunchGroup" does not work.
+				// preselect one with the same name or the first one in the list
+				launchConfiguration = launchConfigurations.get(0);
+				for(ILaunchConfiguration possibleLaunchConfiguration : launchConfigurations){
+					launchConfiguration = possibleLaunchConfiguration;
+				}
 				DebugUITools.openLaunchConfigurationDialogOnGroup(
 						new Shell(), new StructuredSelection(
-								launchConfigurations.get(0)),
+								launchConfiguration),
 						"org.eclipse.debug.ui.launchGroup.run");
 				break;
 			}
@@ -207,7 +222,11 @@ abstract public class KLaunchShortcut implements ILaunchShortcut {
 			int index = fileName.lastIndexOf("/");
 			String defaultPath = fileName.substring(0, index);
 			String realFileName = fileName.replace(defaultPath + "/", "");
-			String configIdentifier = projectName;
+			
+			String mainClass = KermetaBuilder.getDefault().getDefaultMainClass(kpFile).replaceAll("\\.", "_").replaceAll("\\^", "_").replaceAll("::", "-");
+			String mainOperation = KermetaBuilder.getDefault().getDefaultMainOperation(kpFile);
+			
+			String configIdentifier = projectName+" "+mainClass+" "+mainOperation;
 			
 			configIdentifier = configIdentifier.replaceAll(":","__");  // replace the : that are not correctly handled by Eclipse generateUniqueLaunchConfigurationNameFrom
 			ILaunchConfigurationWorkingCopy wc = _configurationType.newInstance(
