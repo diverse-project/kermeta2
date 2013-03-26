@@ -1,0 +1,43 @@
+package org::kermeta::language::structure;
+using kermeta::standard::*
+using org::kermeta::language::behavior::*
+
+aspect class Operation inherits SlicerVisitor {
+	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
+		checkInitialisation(theUnusedVarDetector.idPass)
+		if(not self.visitedPass) then
+			super[SlicerVisitor](theUnusedVarDetector)
+			self.visitedPass := true
+			self.ownedParameter.each{theParameter | theParameter.visitToAddClasses(theUnusedVarDetector)}
+			if(not self.body.isVoid) then self.body.visitToAddClasses(theUnusedVarDetector) end
+		end
+	end
+	method visitToAddRelations(theUnusedVarDetector : UnusedVarDetector) is do
+		if(not self.visitedForRelations) then
+			super[SlicerVisitor](theUnusedVarDetector)
+			self.visitedForRelations := true
+			self.ownedParameter.each{theParameter | theParameter.visitToAddRelations(theUnusedVarDetector)}
+			if(not self.body.isVoid) then self.body.visitToAddRelations(theUnusedVarDetector) end
+		end
+	end
+}
+
+aspect class Parameter inherits SlicerVisitor {
+	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
+		checkInitialisation(theUnusedVarDetector.idPass)
+		if(not self.visitedPass) then
+			super[SlicerVisitor](theUnusedVarDetector)
+			if(not self.sliced) then
+				theUnusedVarDetector.addedParameters.add(self)
+				self.sliced := true
+			end
+		end
+	end
+	method visitToAddRelations(theUnusedVarDetector : UnusedVarDetector) is do
+		if(not self.visitedForRelations) then
+			super[SlicerVisitor](theUnusedVarDetector)
+			self.visitedForRelations := true
+		end
+	end
+}
+
