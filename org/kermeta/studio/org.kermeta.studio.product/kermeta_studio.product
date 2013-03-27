@@ -18,7 +18,6 @@
 
    <windowImages/>
 
-
    <launcher>
       <solaris/>
       <win useIco="false">
@@ -34,6 +33,7 @@
    </plugins>
 
    <features>
+      <feature id="org.kermeta.studio.feature"/>
       <feature id="org.eclipse.team.svn.mylyn"/>
       <feature id="org.eclipse.team.svn.resource.ignore.rules.jdt"/>
       <feature id="org.eclipse.team.svn"/>
