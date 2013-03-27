@@ -1,8 +1,8 @@
 instructions.configure=\
-addRepository(type:0,location:http${#58}//www.obeo.fr/download/release/designer/6.1/latest/juno3/update,name:Obeo Designer 6.1);\
-addRepository(type:1,location:http${#58}//www.obeo.fr/download/release/designer/6.1/latest/juno3/update,name:Obeo Designer 6.1);\
-addRepository(type:0,location:http${#58}//www.obeo.fr/download/eclipse/juno-3.8,name:Juno 3.8);\
-addRepository(type:1,location:http${#58}//www.obeo.fr/download/eclipse/juno-3.8,name:Juno 3.8);\
+addRepository(type:0,location:http${#58}//download.eclipse.org/eclipse/updates/4.2,name:The Eclipse project update);\
+addRepository(type:1,location:http${#58}//download.eclipse.org/eclipse/updates/4.2,name:The Eclipse project update);\
+addRepository(type:0,location:http${#58}//download.eclipse.org/releases/juno,name:Juno);\
+addRepository(type:1,location:http${#58}//download.eclipse.org/releases/juno,name:Juno);\
 addRepository(type:0,location:http${#58}//www.kermeta.org/integration_build/kermeta2_snapshot/update/,name:Kermeta 2 Snapshot);\
 addRepository(type:1,location:http${#58}//www.kermeta.org/integration_build/kermeta2_snapshot/update/,name:Kermeta 2 Snapshot);\
 addRepository(type:0,location:http${#58}//download.scala-ide.org/sdk/e38/scala29/stable/site,name:Scala-IDE for scala 2.9);\
