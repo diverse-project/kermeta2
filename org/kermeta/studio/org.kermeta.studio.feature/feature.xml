@@ -27,8 +27,6 @@
          version="0.0.0"/>
 
   <!-- updatable third party tools -->
-  
-         
    <includes
          id="org.eclipse.xtext.sdk"
          version="0.0.0"/>
@@ -36,7 +34,19 @@
    <includes
          id="org.eclipse.ocl.all.sdk"
          version="0.0.0"/>
-  
+   <includes
+         id="org.eclipse.emf.ecoretools.sdk"
+         version="0.0.0"/>
+   <includes
+         id="org.eclipse.emf.sdk"
+         version="0.0.0"/> 
+   <includes
+         id="org.eclipse.epp.mpc"
+         version="0.0.0"/>   
+    <!-- Eclipse Modeling Discovery UI --><includes
+         id="org.eclipse.amalgam.discovery"
+         version="0.0.0"/>
+   <!-- plugins -->
    <plugin
          id="org.kermeta.studio.branding"
          download-size="0"
