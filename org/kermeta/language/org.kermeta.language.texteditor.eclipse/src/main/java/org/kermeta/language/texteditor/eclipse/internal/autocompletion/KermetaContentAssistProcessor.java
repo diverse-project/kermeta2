@@ -11,25 +11,31 @@
 package org.kermeta.language.texteditor.eclipse.internal.autocompletion;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.ITextViewer;
+import org.eclipse.jface.text.Region;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.jface.text.contentassist.IContextInformationValidator;
+import org.eclipse.jface.text.templates.DocumentTemplateContext;
+import org.eclipse.jface.text.templates.GlobalTemplateVariables;
+import org.eclipse.jface.text.templates.Template;
+import org.eclipse.jface.text.templates.TemplateContextType;
+import org.eclipse.jface.text.templates.TemplateProposal;
+import org.eclipse.swt.graphics.Image;
 import org.kermeta.language.autocompletion.AutocompletionImpl;
 import org.kermeta.language.autocompletion.api.Autocompletion;
 import org.kermeta.language.behavior.CallExpression;
 import org.kermeta.language.builder.eclipse.KermetaBuilder;
 import org.kermeta.language.loader.kmt.scala.Lexer;
 import org.kermeta.language.loader.kmt.scala.api.IKToken;
-import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.Class;
+import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.KermetaModelElement;
 import org.kermeta.language.structure.Operation;
 import org.kermeta.language.structure.Parameter;
@@ -39,7 +45,6 @@ import org.kermeta.language.structure.TypeDefinition;
 import org.kermeta.language.texteditor.eclipse.internal.Activator;
 import org.kermeta.language.texteditor.eclipse.internal.ClosestElementFinder;
 import org.kermeta.language.texteditor.eclipse.internal.KermetaEditor;
-import org.kermeta.language.texteditor.eclipse.internal.KermetaModelAccessor;
 import org.kermeta.language.util.ModelingUnit;
 
 public class KermetaContentAssistProcessor implements IContentAssistProcessor {
@@ -48,7 +53,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 	private org.kermeta.language.loader.kmt.scala.api.Lexer theLexer = new Lexer();
 	private Autocompletion myAutocompletion = null;
 	private IDocument doc = null;
-	private StringBuffer identation = new StringBuffer();
+	private StringBuffer indentation = new StringBuffer();
 
 	public KermetaContentAssistProcessor(KermetaEditor editor) {
 		this.editor = editor;
@@ -59,7 +64,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 		// Retrieve current document
 		doc = viewer.getDocument();
 
-		ArrayList<KermetaCompletionProposal> propList = new ArrayList<KermetaCompletionProposal>();
+		ArrayList<ICompletionProposal> propList = new ArrayList<ICompletionProposal>();
 
 		// Retrieve qualifier
 		List<IKToken> qualifier = getQualifier(doc, documentOffset);
@@ -69,8 +74,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			computeProposals(qualifier, documentOffset, propList);
 		}
 
-		//Sort propList
-		Collections.sort(propList);
+		//Collections.sort(propList);
 		
 		// Create completion proposal array
 		ICompletionProposal[] proposals = new ICompletionProposal[propList.size()];
@@ -83,10 +87,10 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 	}
 
 	private void initializeIdentation(String line) {
-		this.identation = new StringBuffer();
+		this.indentation = new StringBuffer();
 		for (int i=0;i<line.length();i++) {
 			if (line.charAt(i) == '\u0020' || line.charAt(i) == '\t') {
-				this.identation.append(line.charAt(i));
+				this.indentation.append(line.charAt(i));
 			} else {
 				return;
 			}
@@ -208,7 +212,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 		return result.toString();
 	}
 
-	private void computeProposals(List<IKToken> qualifier, int documentOffset, List<KermetaCompletionProposal> propList) { 
+	private void computeProposals(List<IKToken> qualifier, int documentOffset, List<ICompletionProposal> propList) { 
 
 		int qlen = getLastIdentifier(qualifier).length();
 
@@ -264,38 +268,35 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 		} else if (getDelimiter(qualifier).equals(".")) {
 //*********** TEST ***********
 			
-//			KParser parser = new KParser();
-//			ModelingUnit mu = parser.parse(doc.get()).get();
-
-			//TODO: update just last modified file
-			
 			TypeDefinition t = editor.myAccess.getCallType(editor.getFile().getLocationURI().toString(), documentOffset, qualifier);
 			if(t instanceof ClassDefinition){
 				String lastQualifier = getLastIdentifier(qualifier);
 				classDefHierarchyProposals(lastQualifier, documentOffset, propList, (ClassDefinition)t);
 			}
-			//TODO: sort proposals for expected type
 			
 //****************************
 			//proposeCallExpression(qualifier, documentOffset, propList, qlen);
 		} else if (! isTerminatedbyKeyword(qualifier)) {
 			//Proposal of Keywords and Variables
-			proposeVariable(qualifier, documentOffset, propList, qlen, theVariables);
-			proposePackages(qualifier, documentOffset, propList, qlen, thePackages);
-			proposeKeywords(qualifier, documentOffset, propList, qlen, reserved);
+			proposeVariable(qualifier, documentOffset, propList, qlen);
+			//proposePackages(qualifier, documentOffset, propList, qlen, thePackages);
+			//proposeKeywords(qualifier, documentOffset, propList, qlen, reserved);
 		} else  if (getLastKeyword(qualifier).equals("init")) {
 			//Proposal of ClassDef
 			proposePackages(qualifier, documentOffset, propList, qlen, thePackages);
 			proposeClassDefinition(qualifier, documentOffset, propList, qlen, theClassDefinition);
-			proposeVariable(qualifier, documentOffset, propList, qlen, theVariables);
+			proposeVariable(qualifier, documentOffset, propList, qlen);
 		}
 		else if(isTerminatedbyKeyword(qualifier)){
 			proposeStructure(getLastKeyword(qualifier), documentOffset, propList, getLastKeyword(qualifier).length());
 		}
 	}
 	
+	/*
+	 * Get proposals from the classDefinition and from his parents classDefinition
+	 */
 	private void classDefHierarchyProposals(String lastQualifier, 
-			int documentOffset, List<KermetaCompletionProposal> propList,
+			int documentOffset, List<ICompletionProposal> propList,
 			ClassDefinition cd){
 		
 		computeClassDefProposals(lastQualifier, documentOffset, propList, cd);
@@ -311,7 +312,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 	 * Get all properties and operations of the given class definition which start with lastQualifier
 	 */
 	private void computeClassDefProposals(String lastQualifier,
-			int documentOffset, List<KermetaCompletionProposal> propList,
+			int documentOffset, List<ICompletionProposal> propList,
 			ClassDefinition cd) {
 		
 		String containerClass = cd.getName();
@@ -352,7 +353,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 					if(p.getType() instanceof Class)
 						showedText.append(((Class)p.getType()).getName()+" ");
 					showedText.append(p.getName());
-					printedText.append(p.getName());
+					printedText.append("${"+p.getName()+"}");
 					if(i < params.size() - 1){
 						showedText.append(",");
 						printedText.append(",");
@@ -364,29 +365,29 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 				if((op.getType()) instanceof Class) type = ((Class)(op.getType())).getName();
 				showedText.append(" : "+type);
 				
-				showedText.append(" - "+containerClass);
-
 				propList.add(
-						new KermetaCompletionProposal(	printedText.toString(),
-														documentOffset-lastQualifier.length(),
-														lastQualifier.length(),
-														printedText.toString().length(),
-														null,
-														showedText.toString(),
-														null,
-														null)
+						createTemplateProp(showedText.toString(),containerClass,printedText.toString(), documentOffset, null)
 					);
 			}
 		}
 	}
+	
+	private TemplateProposal createTemplateProp(String name, String description, String pattern, int docOffset, Image img){
+		Template templ = new Template(name, description, "kermeta.context", pattern, true);
+		TemplateContextType templType = new TemplateContextType("kermeta.context");
+		templType.addResolver(new GlobalTemplateVariables.Cursor());
+		DocumentTemplateContext context = new DocumentTemplateContext(templType, doc, docOffset, 0);
+		
+		return new TemplateProposal(templ, context, new Region(docOffset,0), img);
+	}
 
 	
 	private void proposeRenaming(List<IKToken> qualifier, int documentOffset,
-		List<KermetaCompletionProposal> propList, int qlen) {
+		List<ICompletionProposal> propList, int qlen) {
 		// TODO propose a smart new name based on using
 	}
 
-	private void proposeKeywords(List<IKToken> qualifier, int documentOffset, List<KermetaCompletionProposal> propList, int qlen, List<String> reserved) {
+	private void proposeKeywords(List<IKToken> qualifier, int documentOffset, List<ICompletionProposal> propList, int qlen, List<String> reserved) {
 		String lastQualifier = getLastIdentifier(qualifier);
 		
 		for (String oneWord : reserved) {
@@ -405,28 +406,51 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 		}
 	}
 
-	private void proposeVariable(List<IKToken> qualifier, int documentOffset, List<KermetaCompletionProposal> propList, int qlen, List<String> theVariables) {
+	private void proposeVariable(List<IKToken> qualifier, int documentOffset, List<ICompletionProposal> propList, int qlen) {
+		
+		//FIXME: documentOffset == lastQualiferOffset + lastQualiferLength
 		String lastQualifier = getLastIdentifier(qualifier);
-
-		if (myAutocompletion != null) {
-			theVariables = myAutocompletion.getAllVariableDecl();
-		}
+		
+		List<String> theVariables = editor.myAccess.getAccessibleVariable(editor.getFile().getLocationURI().toString(), documentOffset);	
 		
 		if (theVariables != null) {
 			for (String aVariable : theVariables) {
-				int cursor = aVariable.length();
+				String[] myVar = aVariable.split(":");
+				int cursor = myVar[0].length();
 				if (lastQualifier.length() > 0) {
 					if (aVariable.startsWith(lastQualifier)) {
-						propList.add(new KermetaCompletionProposal(aVariable, documentOffset - qlen, qlen, cursor, KermetaImage.getImage("/icons/specific/VariableDecl.gif")));
+//						propList.add(new KermetaCompletionProposal(aVariable, documentOffset - qlen, qlen, cursor, KermetaImage.getImage("/icons/specific/VariableDecl.gif")));
+						propList.add(
+								new KermetaCompletionProposal(	myVar[0],
+																documentOffset-lastQualifier.length(),
+																lastQualifier.length(),
+																cursor,
+																KermetaImage.getImage("/icons/specific/VariableDecl.gif"),
+																myVar.length==2?myVar[0]+" : "+myVar[1]:myVar[0],
+																null,
+																null)
+							);
 					}
 				} else {
-					propList.add(new KermetaCompletionProposal(aVariable, documentOffset - qlen, qlen, cursor, KermetaImage.getImage("/icons/specific/VariableDecl.gif")));
+//					propList.add(new KermetaCompletionProposal(aVariable, documentOffset - qlen, qlen, cursor, KermetaImage.getImage("/icons/specific/VariableDecl.gif")));
+					propList.add(
+							new KermetaCompletionProposal(	myVar[0],
+															documentOffset-qlen,
+															qlen,
+															cursor,
+															KermetaImage.getImage("/icons/specific/VariableDecl.gif"),
+															myVar.length==2?myVar[0]+" : "+myVar[1]:myVar[0],
+															null,
+															null)
+						);
 				}
 			}
 		}
+		
+		
 	}
 
-	private void proposeClassDefinition(List<IKToken> qualifier, int documentOffset, List<KermetaCompletionProposal> propList, int qlen, List<String> theClassDefinition) {
+	private void proposeClassDefinition(List<IKToken> qualifier, int documentOffset, List<ICompletionProposal> propList, int qlen, List<String> theClassDefinition) {
 		String lastQualifier = getLastIdentifier(qualifier);
 		String thePackageToUse = getLastCompletePackageChain(qualifier,true);
 
@@ -449,7 +473,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 		}
 	}
 	
-	private void proposePackages(List<IKToken> qualifier, int documentOffset, List<KermetaCompletionProposal> propList, int qlen, List<String> thePackages) {
+	private void proposePackages(List<IKToken> qualifier, int documentOffset, List<ICompletionProposal> propList, int qlen, List<String> thePackages) {
 		String lastQualifier = getLastIdentifier(qualifier);
 		String thePackageToUse = getLastCompletePackageChain(qualifier,true);
 		
@@ -497,7 +521,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 		
 	}
 	
-	private void proposeCallExpression(List<IKToken> qualifier, int documentOffset, List<KermetaCompletionProposal> propList, int qlen) {
+	private void proposeCallExpression(List<IKToken> qualifier, int documentOffset, List<ICompletionProposal> propList, int qlen) {
 		HashMap<String,ArrayList<String>> theCallExpression = null;
 		//if (myAutocompletion != null) {
 			// disabled until we get a proper way to deal with it
@@ -538,34 +562,32 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 		}*/
 	}
 
-	private boolean proposeStructure(String qualifier, int documentOffset, List<KermetaCompletionProposal> propList, int qlen) {
+	/*
+	 * Propose a template structure which match the qualifier
+	 */
+	private boolean proposeStructure(String qualifier, int documentOffset, List<ICompletionProposal> propList, int qlen) {
 		boolean result = false;
-		int cursor = 0;
 		String proposition = "";
 		if (qualifier.equals("do")) {
-			proposition = "do\n"+this.identation+"\t\n"+this.identation+"end";
-			cursor = 3 + this.identation.length() + 1;
-			propList.add(new KermetaCompletionProposal(proposition, documentOffset - qlen, qlen, cursor,KermetaImage.getImage("/icons/specific/Block.gif"),"do...end",null,null));
+			proposition = "do\n"+this.indentation+"\t${cursor}\n"+this.indentation+"end";
+			propList.add(createTemplateProp("Block","do...end",proposition, documentOffset - qlen,KermetaImage.getImage("/icons/specific/Block.gif")));
 			result = true;
 		}
 		if (qualifier.equals("if")) {
-			proposition = "if () then\n"+this.identation+"\t\n"+this.identation+"end";
-			cursor = 4;
-			propList.add(new KermetaCompletionProposal(proposition, documentOffset - qlen, qlen, cursor,KermetaImage.getImage("/icons/specific/Conditional.gif"),"if...then...end",null,null));
-			proposition = "if () then\n"+this.identation+"\t\n"+this.identation+"else\n"+this.identation+"\t\n"+this.identation+"end";
-			propList.add(new KermetaCompletionProposal(proposition, documentOffset - qlen, qlen, cursor,KermetaImage.getImage("/icons/specific/Conditional.gif"),"if...then...else...end",null,null));
+			proposition = "if (${condition}) then\n"+this.indentation+"\t${cursor}\n"+this.indentation+"end";
+			propList.add(createTemplateProp("Conditional","if...then...end",proposition, documentOffset - qlen,KermetaImage.getImage("/icons/specific/Conditional.gif")));
+			proposition = "if (${condition}) then\n"+this.indentation+"\t${cursor}\n"+this.indentation+"else\n"+this.indentation+"\t\n"+this.indentation+"end";
+			propList.add(createTemplateProp("Conditional","if...then...else...end",proposition, documentOffset - qlen,KermetaImage.getImage("/icons/specific/Conditional.gif")));
 			result = true;
 		}
 		if (qualifier.equals("loop")) {
-			proposition = "loop\n"+this.identation+"\t\n"+this.identation+"end";
-			cursor = 5 + this.identation.length() + 1;
-			propList.add(new KermetaCompletionProposal(proposition, documentOffset - qlen, qlen, cursor,KermetaImage.getImage("/icons/specific/Loop.gif"),"loop...end",null,null));
+			proposition = "loop\n"+this.indentation+"\t${cursor}\n"+this.indentation+"end";
+			propList.add(createTemplateProp("Loop","loop...end",proposition, documentOffset - qlen,KermetaImage.getImage("/icons/specific/Loop.gif")));
 			result = true;
 		}
 		if (qualifier.equals("from")) {
-			proposition = "from init \n"+this.identation+"until\n"+this.identation+"loop\n"+this.identation+"\t\n"+this.identation+"end";
-			cursor = 5 ;
-			propList.add(new KermetaCompletionProposal(proposition, documentOffset - qlen, qlen, cursor,KermetaImage.getImage("/icons/specific/Loop.gif"),"from...loop...end",null,null));
+			proposition = "from ${initialization} \n"+this.indentation+"until ${condition}\n"+this.indentation+"loop\n"+this.indentation+"\t${cursor}\n"+this.indentation+"end";
+			propList.add(createTemplateProp("Loop","from...loop...end",proposition, documentOffset - qlen,KermetaImage.getImage("/icons/specific/Loop.gif")));
 			result = true;
 		}
 		return result;

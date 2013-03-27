@@ -1,5 +1,6 @@
 package org.kermeta.language.texteditor.eclipse.internal;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -204,7 +205,8 @@ public class KermetaModelAccessor {
 		/*
 		 * Look at the traceability tag of the package
 		 */
-		public boolean containsThisOffset(String fileUrl, int documentOffset, KermetaModelElement elem){			
+		public boolean containsThisOffset(String fileUrl, int documentOffset, KermetaModelElement elem){		
+			//TODO: remove looking to traceability tag
 			for(Tag tag : elem.getKOwnedTags()){
 				if(tag.getName().equals("traceability_text_reference")){
 					String[] val = tag.getValue().split(";");
@@ -221,6 +223,14 @@ public class KermetaModelAccessor {
 				}
 			}
 			return false;
+		}
+		
+		public int getBeginOffset(KermetaModelElement elem){
+			
+			Position pos = mappingElemPos.get(elem);
+			if(pos != null) return pos.offset;
+			
+			return 0;
 		}
 		
 		/*
@@ -766,5 +776,188 @@ public class KermetaModelAccessor {
 			
 			if(count != 0) return -1;
 			return pos;
-		}		
+		}	
+		
+		
+		//-------------------------------------------------------------------------------------------------------
+		// PROPOSALS FOR LOCAL VARIABLES
+		//-------------------------------------------------------------------------------------------------------
+		
+		/*
+		 * Get class attributes, operation parameters and local variables declarations
+		 * Format result is "variableName:variableType"
+		 */
+		public List<String> getAccessibleVariable(String fileUrl, int documentOffset){
+			List<String> result = new ArrayList<String>();
+			
+			Package currentPack = currentOffsetPackage(fileUrl, documentOffset);
+			ClassDefinition currentClass = getClosestClass(fileUrl, documentOffset, currentPack);
+			Operation operation = getClosestOperation(fileUrl, documentOffset, currentClass);
+			
+			for(Property prop : currentClass.getOwnedAttribute()){
+				String propType = "";
+				Type type = prop.getType();
+				if(type instanceof Class)
+					propType = ((Class)type).getTypeDefinition().getName();
+				result.add(prop.getName()+":"+propType);
+			}
+			
+			for(Parameter param : operation.getOwnedParameter()){
+				String paramType = "";
+				Type type = param.getType();
+				if(type instanceof Class)
+					paramType = ((Class)type).getTypeDefinition().getName();
+				result.add(param.getName()+":"+paramType);
+			}
+			
+			getLocalVariables(fileUrl, documentOffset, operation.getBody(), result);
+			
+			return result;
+		}
+
+		
+		private void getLocalVariables(String fileUrl, int documentOffset, Expression currentExpr, List<String> result) {
+			if(currentExpr instanceof Block){
+				localVarBlock(fileUrl, documentOffset, (Block)currentExpr, result);
+			}
+			else if(currentExpr instanceof Loop){
+				localVarLoop(fileUrl, documentOffset, (Loop)currentExpr, result);
+			}
+			else if(currentExpr instanceof Conditional){
+				localVarIf(fileUrl, documentOffset, (Conditional)currentExpr, result);
+			}
+			else if(currentExpr instanceof LambdaExpression){
+				localVarLamdaExpr(fileUrl, documentOffset, (LambdaExpression)currentExpr, result);
+			}
+			else if(currentExpr instanceof VariableDecl){
+				VariableDecl decl = (VariableDecl)currentExpr;
+				if(containsThisOffset(fileUrl, documentOffset, decl.getInitialization()))
+					getLocalVariables(fileUrl, documentOffset, decl.getInitialization(), result);
+			}
+			else if(currentExpr instanceof Assignment){
+				Assignment assign = (Assignment)currentExpr;
+				if(containsThisOffset(fileUrl, documentOffset, assign.getValue()))
+					getLocalVariables(fileUrl, documentOffset, assign.getValue(), result);
+			}
+			else if(currentExpr instanceof CallOperation){
+				CallOperation callop = (CallOperation)currentExpr;
+				for(Expression param : callop.getParameters()){
+					if(containsThisOffset(fileUrl, documentOffset, param))
+						getLocalVariables(fileUrl, documentOffset, param, result);
+				}
+			}
+		}
+
+		private void localVarLamdaExpr(String fileUrl, int documentOffset, LambdaExpression currentLambdaExpr, List<String> result) {
+			
+			EList<LambdaParameter> params = currentLambdaExpr.getParameters();
+			for(LambdaParameter p : params){
+				String paramType = "";
+				Type type = p.getType().getType();
+				if(type instanceof Class)
+					paramType = ((Class)type).getTypeDefinition().getName();
+				result.add(p.getName()+":"+paramType);
+			}
+			
+			if( containsThisOffset(fileUrl, documentOffset, currentLambdaExpr.getBody())){
+				
+				getLocalVariables(fileUrl, documentOffset, currentLambdaExpr.getBody(), result);
+				
+			}
+			
+		}
+
+		private void localVarIf(String fileUrl, int documentOffset, Conditional currentConditional, List<String> result) {
+			
+			if( containsThisOffset(fileUrl, documentOffset, currentConditional.getThenBody())){
+				getLocalVariables(fileUrl, documentOffset, currentConditional.getThenBody(), result);
+			}
+			else  if( containsThisOffset(fileUrl, documentOffset, currentConditional.getElseBody())){
+				getLocalVariables(fileUrl, documentOffset, currentConditional.getElseBody(), result);
+			}
+			else if(containsThisOffset(fileUrl, documentOffset, currentConditional.getCondition())){
+				getLocalVariables(fileUrl, documentOffset, currentConditional.getCondition(), result);
+			}		
+		}
+
+		private void localVarLoop(String fileUrl, int documentOffset, Loop currentLoop, List<String> result) {
+			
+			if( currentLoop.getInitialization() instanceof VariableDecl){
+				VariableDecl varDecl = (VariableDecl)currentLoop.getInitialization();
+				String varType = "";
+				Type type = varDecl.getType().getType();
+				if(type instanceof Class)
+					varType = ((Class)type).getTypeDefinition().getName();
+				result.add(varDecl.getIdentifier()+":"+varType);
+			}
+			
+			if( containsThisOffset(fileUrl, documentOffset, currentLoop.getBody())){
+				getLocalVariables(fileUrl, documentOffset, currentLoop.getBody(), result);
+			}			
+		}
+
+		private void localVarBlock(String fileUrl, int documentOffset, Block currentBlock, List<String> result) {
+			EList<Expression> statments = currentBlock.getStatement();
+			//TODO: Statements are in the right order ?
+			
+			for(Expression currentExpr : statments){
+				
+				if(documentOffset < getBeginOffset(currentExpr)){
+					return; //we are looking too far in the block 
+				}
+				else if(!containsThisOffset( fileUrl, documentOffset, currentExpr )){
+					
+					if(currentExpr instanceof VariableDecl){
+						
+						VariableDecl varDecl = (VariableDecl)currentExpr;
+						String varType = "";
+						Type type = varDecl.getType().getType();
+						if(type instanceof Class)
+							varType = ((Class)type).getTypeDefinition().getName();
+						result.add(varDecl.getIdentifier()+":"+varType);
+
+					}
+				}
+				else{
+					getLocalVariables(fileUrl, documentOffset, currentExpr, result);
+					return;
+				}
+			}
+			
+			for(Rescue currentRescue : currentBlock.getRescueBlock()){
+				
+				if(containsThisOffset(fileUrl, documentOffset, currentRescue)) {
+					
+					String varType = "";
+					Type type = currentRescue.getExceptionType().getType();
+					if(type instanceof Class)
+						varType = ((Class)type).getTypeDefinition().getName();
+					result.add(currentRescue.getExceptionName()+":"+varType);
+					
+					for(Expression currentExpr : currentRescue.getBody()){
+						
+						if(documentOffset < getBeginOffset(currentExpr)){
+							return; //we are looking too far in the block 
+						}
+						else if(!containsThisOffset( fileUrl, documentOffset, currentExpr )){
+							
+							if(currentExpr instanceof VariableDecl){
+								
+								VariableDecl varDecl = (VariableDecl)currentExpr;
+								varType = "";
+								type = varDecl.getType().getType();
+								if(type instanceof Class)
+									varType = ((Class)type).getTypeDefinition().getName();
+								result.add(varDecl.getIdentifier()+":"+varType);
+
+							}
+						}
+						else{
+							getLocalVariables(fileUrl, documentOffset, currentExpr, result);
+							return;
+						}
+					}
+				}
+			}
+		}
 }
