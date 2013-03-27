@@ -16,7 +16,7 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages/>
+   <windowImages i16="/org.kermeta.studio.branding/images/kermeta_icon_16.png" i32="/org.kermeta.studio.branding/images/kermeta_icon_32.png" i64="/org.kermeta.studio.branding/images/kermeta_icon_64.png" i128="/org.kermeta.studio.branding/images/kermeta_icon_128.png"/>
 
    <launcher>
       <solaris/>
@@ -33,7 +33,6 @@
    </plugins>
 
    <features>
-      <feature id="org.kermeta.studio.feature"/>
       <feature id="org.eclipse.team.svn.mylyn"/>
       <feature id="org.eclipse.team.svn.resource.ignore.rules.jdt"/>
       <feature id="org.eclipse.team.svn"/>
@@ -54,6 +53,7 @@
       <feature id="org.scala-ide.sdt.feature"/>
       <feature id="org.scala-ide.sdt.dev.feature"/>
       <feature id="org.scala-ide.sdt.source.feature"/>
+      <feature id="org.kermeta.studio.feature" version="2.0.99.qualifier"/>
    </features>
 
    <configurations>
