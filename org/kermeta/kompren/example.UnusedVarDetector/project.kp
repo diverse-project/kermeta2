@@ -1,9 +1,10 @@
 resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/language.library.standard/2.0.99-SNAPSHOT"
 
 project example_UnusedVarDetector extends library_standard{
-	mainClass "example_UnusedVarDetector^org::kermeta::language::behavior::UnusedVarDetector"
-	mainOperation "launch"
+	mainClass "example_UnusedVarDetector^ex::kermeta::kompren::unusedVar::Test"
+	mainOperation "main"
 	import "${project.baseUri}/UnusedVarDetectorAspect.kmt"
 	import "${project.baseUri}/UnusedVarDetector.kmt"
 	import "${project.baseUri}/structureSlicingAspect.kmt"
+	import "${project.baseUri}/TestUnusedVar.kmt"
 }

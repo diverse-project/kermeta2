@@ -35,7 +35,7 @@ class SlicerVisitor {
 	end
 }
 
-aspect class Block {
+aspect class Block inherits SlicerVisitor {
 	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
 		checkInitialisation(theUnusedVarDetector.idPass)
 		if(not self.visitedPass) then
@@ -56,7 +56,7 @@ aspect class Block {
 aspect class Expression inherits SlicerVisitor {
 }
 
-aspect class Conditional {
+aspect class Conditional inherits SlicerVisitor {
 	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
 		checkInitialisation(theUnusedVarDetector.idPass)
 		if(not self.visitedPass) then
@@ -76,7 +76,7 @@ aspect class Conditional {
 	end
 }
 
-aspect class Raise {
+aspect class Raise inherits SlicerVisitor {
 	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
 		checkInitialisation(theUnusedVarDetector.idPass)
 		if(not self.visitedPass) then
@@ -94,7 +94,7 @@ aspect class Raise {
 	end
 }
 
-aspect class Loop {
+aspect class Loop inherits SlicerVisitor {
 	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
 		checkInitialisation(theUnusedVarDetector.idPass)
 		if(not self.visitedPass) then
@@ -114,7 +114,7 @@ aspect class Loop {
 	end
 }
 
-aspect class LambdaExpression {
+aspect class LambdaExpression inherits SlicerVisitor {
 	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
 		checkInitialisation(theUnusedVarDetector.idPass)
 		if(not self.visitedPass) then
@@ -150,7 +150,7 @@ aspect class Rescue inherits SlicerVisitor {
 	end
 }
 
-aspect class CallExpression {
+aspect class CallExpression inherits SlicerVisitor {
 	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
 		checkInitialisation(theUnusedVarDetector.idPass)
 		if(not self.visitedPass) then
@@ -168,7 +168,7 @@ aspect class CallExpression {
 	end
 }
 
-aspect class Assignment {
+aspect class Assignment inherits SlicerVisitor {
 	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
 		checkInitialisation(theUnusedVarDetector.idPass)
 		if(not self.visitedPass) then
@@ -205,7 +205,7 @@ aspect class CallResult {
 	end
 }
 
-aspect class VariableDecl {
+aspect class VariableDecl inherits SlicerVisitor {
 	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
 		checkInitialisation(theUnusedVarDetector.idPass)
 		if(not self.visitedPass) then
@@ -224,7 +224,7 @@ aspect class VariableDecl {
 	end
 }
 
-aspect class CallVariable {
+aspect class CallVariable inherits SlicerVisitor {
 	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
 		checkInitialisation(theUnusedVarDetector.idPass)
 		if(not self.visitedPass) then

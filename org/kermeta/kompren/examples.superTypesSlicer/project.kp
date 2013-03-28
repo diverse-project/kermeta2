@@ -1,0 +1,10 @@
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/language.library.standard/2.0.99-SNAPSHOT"
+importProject library_standard
+project examples_superTypesSlicer{
+	mainClass "examples_superTypesSlicer^ex::classModel::Test"
+	mainOperation "main"
+	import "${project.baseUri}/ClassModel.ecore"
+	import "${project.baseUri}/superTypesSlicerAspect.kmt"
+	import "${project.baseUri}/superTypesSlicer.kmt"
+	import "${project.baseUri}/TestClassModelSlicer.kmt"
+}

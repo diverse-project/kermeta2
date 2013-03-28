@@ -13,6 +13,7 @@ using org::kermeta::language::structure::*
 using org::kermeta::language::behavior::*
 
 class Test {
+	@main ""
 	operation main() : Void is do
 		var op : Operation init Operation.new
 		var block : Block init Block.new
@@ -32,7 +33,7 @@ class Test {
 		param.name := "param"
 		param.~operation := op
 		param.type := typeParam
-		op.ownedParameter.add(param)
+//		op.ownedParameter.add(param)
 		 
 		var1def.identifier := "v1"
 		var2def.identifier := "v2"
@@ -52,7 +53,7 @@ class Test {
 		var requiredOps : Bag<Operation> init Bag<Operation>.new
 		requiredOps.add(op)
 		var slicer : UnusedVarDetector init UnusedVarDetector.new.initialise(requiredOps)
-		slicer.launch()
+		slicer.launch
 	end
 }
 
