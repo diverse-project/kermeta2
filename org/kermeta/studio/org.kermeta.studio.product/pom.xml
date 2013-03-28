@@ -52,6 +52,28 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- copy the images to a place where eclipse expects it so it doesn't raise error -->
+			  <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.4.3</version>
+                <executions>
+                    <execution>
+                        <id>copy-images_for_product</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/products/org.kermeta.studio/org.kermeta.studio.product/images</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>images</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project> 

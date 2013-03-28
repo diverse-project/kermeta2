@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.kermeta.studio"
+            name="Kermeta 2 Studio">
+         <property
+               name="windowImages"
+               value="images/kermeta_icon_16.png,images/kermeta_logo_32.gif">
+         </property>
+      </product>
+   </extension>
 </plugin>
