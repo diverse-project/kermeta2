@@ -2,13 +2,22 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         id="kermeta_studio"
          point="org.eclipse.core.runtime.products">
       <product
-            application="org.kermeta.studio"
-            name="Kermeta 2 Studio">
+            application="brandingTest.application"
+            name="Kermeta 2 studio">
          <property
                name="windowImages"
-               value="images/kermeta_icon_16.png,images/kermeta_logo_32.gif">
+               value="/images/kermeta_icon_16.png,/images/kermeta_icon_32.png,/images/kermeta_icon_48.png,/images/kermeta_icon_64.png,/images/kermeta_icon_128.png">
+         </property>
+         <property
+               name="aboutText"
+               value="Kermeta 2 Studio">
+         </property>
+         <property
+               name="aboutImage"
+               value="/images/kermeta_icon_128.png">
          </property>
       </product>
    </extension>

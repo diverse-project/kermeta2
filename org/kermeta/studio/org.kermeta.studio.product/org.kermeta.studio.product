@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Kermeta 2 studio" uid="org.kermeta.studio" application="org.eclipse.ui.ide.workbench" version="2.0.99.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Kermeta 2 studio" uid="org.kermeta.studio" id="org.kermeta.studio.branding.kermeta_studio" application="brandingTest.application" version="2.0.99.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/org.kermeta.studio.branding/images/kermeta_icon_128.png"/>
+      <image path="/images/kermeta_icon_128.png"/>
       <text>
          Kermeta 2 Studio
       </text>
@@ -22,28 +22,26 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/org.kermeta.studio.branding/images/kermeta_icon_16.png" i32="/org.kermeta.studio.branding/images/kermeta_icon_32.png" i48="/org.kermeta.studio.branding/images/kermeta_icon_48.png" i64="/org.kermeta.studio.branding/images/kermeta_icon_64.png" i128="/org.kermeta.studio.branding/images/kermeta_icon_128.png"/>
-
+   <windowImages i16="/images/kermeta_icon_16.png" i32="/images/kermeta_icon_32.png" i48="/images/kermeta_icon_48.png" i64="/images/kermeta_icon_64.png" i128="/images/kermeta_icon_128.png"/>
 
    <launcher>
-      <linux icon="/org.kermeta.studio.product/images/kermeta_icon_128.xpm"/>
+      <linux icon="/images/kermeta_icon_128.xpm"/>
       <solaris/>
       <win useIco="false">
          <bmp
-            winSmallHigh="/org.kermeta.studio.product/images/kermeta_icon_16.bmp"
-            winSmallLow="/org.kermeta.studio.product/images/kermeta_icon_16_8b.bmp"
-            winMediumHigh="/org.kermeta.studio.product/images/kermeta_icon_32.bmp"
-            winMediumLow="/org.kermeta.studio.product/images/kermeta_icon_32_8b.bmp"
-            winLargeHigh="/org.kermeta.studio.product/images/kermeta_icon_48.bmp"
-            winLargeLow="/org.kermeta.studio.product/images/kermeta_icon_48_8b.bmp"
-            winExtraLargeHigh="/org.kermeta.studio.product/images/kermeta_icon_256.bmp"/>
+            winSmallHigh="/images/kermeta_icon_16.bmp"
+            winSmallLow="/images/kermeta_icon_16_8b.bmp"
+            winMediumHigh="/images/kermeta_icon_32.bmp"
+            winMediumLow="/images/kermeta_icon_32_8b.bmp"
+            winLargeHigh="/images/kermeta_icon_48.bmp"
+            winLargeLow="/images/kermeta_icon_48_8b.bmp"
+            winExtraLargeHigh="/images/kermeta_icon_256.bmp"/>
       </win>
    </launcher>
 
 
    <vm>
    </vm>
-
 
    <plugins>
    </plugins>

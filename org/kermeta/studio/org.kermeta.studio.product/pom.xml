@@ -53,7 +53,7 @@
                 </executions>
             </plugin>
             <!-- copy the images to a place where eclipse expects it so it doesn't raise error -->
-			  <plugin>
+			<plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.4.3</version>
                 <executions>
@@ -64,7 +64,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/products/org.kermeta.studio/org.kermeta.studio.product/images</outputDirectory>
+                            <outputDirectory>${project.build.directory}/products/org.kermeta.studio/images</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>images</directory>
