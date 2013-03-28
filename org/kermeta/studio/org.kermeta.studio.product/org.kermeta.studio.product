@@ -18,7 +18,8 @@
 256m</programArgs>
       <vmArgs>-Xms256m
 -Xmx1024m
--XX:MaxPermSize=256m</vmArgs>
+-XX:MaxPermSize=256m
+-Xss1m</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 

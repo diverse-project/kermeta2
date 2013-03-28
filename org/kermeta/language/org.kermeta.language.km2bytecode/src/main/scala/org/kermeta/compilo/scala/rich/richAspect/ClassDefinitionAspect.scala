@@ -297,7 +297,7 @@ trait ClassDefinitionAspect extends ObjectVisitor {
       thi.getOwnedAttribute().foreach(att =>
         if (att.getIsComposite()) {
           if (att.getUpper() > 1 || att.getUpper() == -1)
-            res1.append(att.getName() + ".each(e=>\n  if(e!=null)\n    e.checkAllInvariants(stopOnError))\n")
+            res1.append(GlobalConfiguration.scalaPrefix + att.getName() + ".each(e=>\n  if(e!=null)\n    e.checkAllInvariants(stopOnError))\n")
           else
             res1.append("if(" + att.getName() + "!=null)\n  "
               + att.getName() + ".checkAllInvariants(stopOnError)\n")
