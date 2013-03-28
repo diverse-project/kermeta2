@@ -317,9 +317,8 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 		//List attr and methods for current class
 		for(Property prop : cd.getOwnedAttribute()){
 			if(prop.getName().startsWith(lastQualifier)){
-				String type = "";							
+				String type = editor.myAccess.extractTypeName(prop.getType());							
 				
-				if((prop.getType()) instanceof Class) type = ((Class)(prop.getType())).getName();
 				propList.add(
 					new KermetaCompletionProposal(	prop.getName(),
 													documentOffset-lastQualifier.length(),
@@ -336,7 +335,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			if(op.getName().startsWith(lastQualifier)){
 				StringBuffer showedText = new StringBuffer();
 				StringBuffer printedText = new StringBuffer();
-				String type = "";
+				String type = editor.myAccess.extractTypeName(op.getType());
 				
 				showedText.append(op.getName());
 				printedText.append(op.getName());
@@ -347,8 +346,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 				List<Parameter> params = op.getOwnedParameter();
 				for(int i = 0; i < params.size(); i++){
 					Parameter p = params.get(i);
-					if(p.getType() instanceof Class)
-						showedText.append(((Class)p.getType()).getName()+" ");
+					showedText.append(editor.myAccess.extractTypeName(p.getType())+" ");
 					showedText.append(p.getName());
 					printedText.append("${"+p.getName()+"}");
 					if(i < params.size() - 1){
@@ -359,7 +357,6 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 				showedText.append(")");
 				printedText.append(")");
 				
-				if((op.getType()) instanceof Class) type = ((Class)(op.getType())).getName();
 				showedText.append(" : "+type);
 				
 				propList.add(

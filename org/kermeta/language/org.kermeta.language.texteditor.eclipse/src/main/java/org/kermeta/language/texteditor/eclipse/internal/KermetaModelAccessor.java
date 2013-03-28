@@ -22,15 +22,20 @@ import org.kermeta.language.behavior.VariableDecl;
 import org.kermeta.language.loader.kmt.scala.api.IKToken;
 import org.kermeta.language.structure.ClassDefinition;
 import org.kermeta.language.structure.Class;
+import org.kermeta.language.structure.DataType;
+import org.kermeta.language.structure.FunctionType;
 import org.kermeta.language.structure.KermetaModelElement;
 import org.kermeta.language.structure.Metamodel;
 import org.kermeta.language.structure.Operation;
 import org.kermeta.language.structure.Package;
 import org.kermeta.language.structure.Parameter;
+import org.kermeta.language.structure.ProductType;
 import org.kermeta.language.structure.Property;
 import org.kermeta.language.structure.Tag;
 import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.TypeDefinition;
+import org.kermeta.language.structure.TypeVariable;
+import org.kermeta.language.structure.TypeVariableBinding;
 import org.kermeta.language.util.ModelingUnit;
 
 import org.kermeta.language.behavior.Expression;
@@ -795,18 +800,14 @@ public class KermetaModelAccessor {
 			Operation operation = getClosestOperation(fileUrl, documentOffset, currentClass);
 			
 			for(Property prop : currentClass.getOwnedAttribute()){
-				String propType = "";
 				Type type = prop.getType();
-				if(type instanceof Class)
-					propType = ((Class)type).getTypeDefinition().getName();
+				String propType = extractTypeName(type);
 				result.add(prop.getName()+":"+propType);
 			}
 			
 			for(Parameter param : operation.getOwnedParameter()){
-				String paramType = "";
 				Type type = param.getType();
-				if(type instanceof Class)
-					paramType = ((Class)type).getTypeDefinition().getName();
+				String paramType = extractTypeName(type);
 				result.add(param.getName()+":"+paramType);
 			}
 			
@@ -852,10 +853,8 @@ public class KermetaModelAccessor {
 			
 			EList<LambdaParameter> params = currentLambdaExpr.getParameters();
 			for(LambdaParameter p : params){
-				String paramType = "";
 				Type type = p.getType().getType();
-				if(type instanceof Class)
-					paramType = ((Class)type).getTypeDefinition().getName();
+				String paramType = extractTypeName(type);
 				result.add(p.getName()+":"+paramType);
 			}
 			
@@ -884,10 +883,8 @@ public class KermetaModelAccessor {
 			
 			if( currentLoop.getInitialization() instanceof VariableDecl){
 				VariableDecl varDecl = (VariableDecl)currentLoop.getInitialization();
-				String varType = "";
 				Type type = varDecl.getType().getType();
-				if(type instanceof Class)
-					varType = ((Class)type).getTypeDefinition().getName();
+				String varType = extractTypeName(type);
 				result.add(varDecl.getIdentifier()+":"+varType);
 			}
 			
@@ -910,10 +907,9 @@ public class KermetaModelAccessor {
 					if(currentExpr instanceof VariableDecl){
 						
 						VariableDecl varDecl = (VariableDecl)currentExpr;
-						String varType = "";
 						Type type = varDecl.getType().getType();
-						if(type instanceof Class)
-							varType = ((Class)type).getTypeDefinition().getName();
+						
+						String varType = extractTypeName(type);
 						result.add(varDecl.getIdentifier()+":"+varType);
 
 					}
@@ -944,10 +940,8 @@ public class KermetaModelAccessor {
 							if(currentExpr instanceof VariableDecl){
 								
 								VariableDecl varDecl = (VariableDecl)currentExpr;
-								varType = "";
 								type = varDecl.getType().getType();
-								if(type instanceof Class)
-									varType = ((Class)type).getTypeDefinition().getName();
+								varType = extractTypeName(type);
 								result.add(varDecl.getIdentifier()+":"+varType);
 
 							}
@@ -959,5 +953,56 @@ public class KermetaModelAccessor {
 					}
 				}
 			}
+		}
+		
+		public String extractTypeName(Type type){
+			String res = "";
+			
+			if(type instanceof Class){
+				Class cl = (Class)type;
+				StringBuffer tpsRes = new StringBuffer();
+				tpsRes.append(cl.getTypeDefinition().getName());
+				
+				EList<TypeVariableBinding> params = cl.getTypeParamBinding();
+				if(params != null && params.size() != 0){
+					tpsRes.append("<");
+					for(int i = 0; i < params.size(); i++){
+						String typeName = extractTypeName(params.get(i).getType());
+						tpsRes.append(typeName);
+						
+						if(i != params.size()-1)tpsRes.append(",");
+					}
+					tpsRes.append(">");
+				}
+				return tpsRes.toString();
+			}
+			else if (type instanceof FunctionType){
+				FunctionType func = (FunctionType)type;
+				return "<" + extractTypeName(func.getLeft()) + "->" + extractTypeName(func.getRight()) + ">";
+			}
+			else if (type instanceof ProductType){
+				StringBuffer tpsRes = new StringBuffer();
+				tpsRes.append("[");
+				
+				ProductType params = (ProductType)type;
+				EList<Type> list = params.getType();
+				for(int i = 0; i < list.size(); i++){
+					tpsRes.append(extractTypeName(list.get(i)));
+					if(i != list.size()-1) tpsRes.append(",");
+				}
+				
+				tpsRes.append("]");
+				return tpsRes.toString();
+			}
+			else if (type instanceof DataType){
+				DataType dataT = (DataType)type;
+				return dataT.getName();
+			}
+			else if(type instanceof TypeVariable){
+				TypeVariable tyVar = (TypeVariable)type;
+				return tyVar.getName();
+			}
+			
+			return res;
 		}
 }
