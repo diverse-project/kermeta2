@@ -266,7 +266,6 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			proposePackages(qualifier, documentOffset, propList, qlen, thePackages);
 			proposeClassDefinition(qualifier, documentOffset, propList, qlen, theClassDefinition);
 		} else if (getDelimiter(qualifier).equals(".")) {
-//*********** TEST ***********
 			
 			TypeDefinition t = editor.myAccess.getCallType(editor.getFile().getLocationURI().toString(), documentOffset, qualifier);
 			if(t instanceof ClassDefinition){
@@ -274,8 +273,6 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 				classDefHierarchyProposals(lastQualifier, documentOffset, propList, (ClassDefinition)t);
 			}
 			
-//****************************
-			//proposeCallExpression(qualifier, documentOffset, propList, qlen);
 		} else if (! isTerminatedbyKeyword(qualifier)) {
 			//Proposal of Keywords and Variables
 			proposeVariable(qualifier, documentOffset, propList, qlen);
@@ -408,8 +405,19 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 
 	private void proposeVariable(List<IKToken> qualifier, int documentOffset, List<ICompletionProposal> propList, int qlen) {
 		
-		//FIXME: documentOffset == lastQualiferOffset + lastQualiferLength
 		String lastQualifier = getLastIdentifier(qualifier);
+		
+		try {
+			//Ensure offset is at the end of lastQualifier (ie: no whitespace)
+			for(int i= 0; i < lastQualifier.length(); i++){
+				if(lastQualifier.charAt(lastQualifier.length()-1 - i) != doc.getChar(documentOffset-1 - i)){
+					lastQualifier = "";
+					break;
+				}				
+			}
+		} catch (BadLocationException e) {
+			e.printStackTrace();
+		}
 		
 		List<String> theVariables = editor.myAccess.getAccessibleVariable(editor.getFile().getLocationURI().toString(), documentOffset);	
 		
@@ -419,7 +427,6 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 				int cursor = myVar[0].length();
 				if (lastQualifier.length() > 0) {
 					if (aVariable.startsWith(lastQualifier)) {
-//						propList.add(new KermetaCompletionProposal(aVariable, documentOffset - qlen, qlen, cursor, KermetaImage.getImage("/icons/specific/VariableDecl.gif")));
 						propList.add(
 								new KermetaCompletionProposal(	myVar[0],
 																documentOffset-lastQualifier.length(),
@@ -432,7 +439,6 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 							);
 					}
 				} else {
-//					propList.add(new KermetaCompletionProposal(aVariable, documentOffset - qlen, qlen, cursor, KermetaImage.getImage("/icons/specific/VariableDecl.gif")));
 					propList.add(
 							new KermetaCompletionProposal(	myVar[0],
 															documentOffset-qlen,
