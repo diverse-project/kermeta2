@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Kermeta 2 studio" uid="kermeta2_studio" application="org.eclipse.ui.ide.workbench" version="2.0.99.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Kermeta 2 studio" uid="org.kermeta.studio.product" application="org.eclipse.ui.ide.workbench" version="2.0.99.qualifier" useFeatures="true" includeLaunchers="true">
 
+   <aboutInfo>
+      <image path="/org.kermeta.studio.product/images/kermeta_icon_128.png"/>
+      <text>
+         Kermeta 2 Studio
+      </text>
+   </aboutInfo>
 
    <configIni use="default">
    </configIni>
@@ -16,12 +22,16 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/org.kermeta.studio.branding/images/kermeta_icon_16.png" i32="/org.kermeta.studio.branding/images/kermeta_icon_32.png" i64="/org.kermeta.studio.branding/images/kermeta_icon_64.png" i128="/org.kermeta.studio.branding/images/kermeta_icon_128.png"/>
+   <windowImages i16="/org.kermeta.studio.product/images/kermeta_icon_16.png" i32="/org.kermeta.studio.product/images/kermeta_icon_32.png" i48="/org.kermeta.studio.product/images/kermeta_icon_48.png" i64="/org.kermeta.studio.product/images/kermeta_icon_64.png" i128="/org.kermeta.studio.product/images/kermeta_icon_128.png"/>
 
    <launcher>
+      <linux icon="/org.kermeta.studio.product/images/kermeta_icon_128.xpm"/>
       <solaris/>
       <win useIco="false">
-         <bmp/>
+         <bmp
+            winSmallHigh="/org.kermeta.studio.product/images/kermeta_icon_16.bmp"
+            winMediumHigh="/org.kermeta.studio.product/images/kermeta_icon_32.bmp"
+            winLargeHigh="/org.kermeta.studio.product/images/kermeta_icon_48.bmp"/>
       </win>
    </launcher>
 
