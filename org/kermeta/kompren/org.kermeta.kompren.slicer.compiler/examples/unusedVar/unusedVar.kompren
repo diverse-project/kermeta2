@@ -12,7 +12,7 @@
     </ctx>
     <domain href="kermeta.ecore#//kermeta/language/behavior/CallVariable"/>
   </slicedElements>
-  <slicedElements xsi:type="org.kermeta.kompren.slicer:SlicedClass" expression="&#x9;&#x9;if(param.~operation.superOperation.isVoid) then&#xA;&#x9;&#x9;&#x9;params.add(param)&#xA;&#x9;&#x9;end">
+  <slicedElements xsi:type="org.kermeta.kompren.slicer:SlicedClass" expression="params.add(param)">
     <ctx varName="param">
       <type href="kermeta.ecore#//kermeta/language/structure/Parameter"/>
     </ctx>
