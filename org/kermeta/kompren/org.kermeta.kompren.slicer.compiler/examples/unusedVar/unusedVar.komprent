@@ -16,9 +16,7 @@ slicer example.UnusedVarDetector{
 				varDecls.remove(varDecl)
 			end
 		end]]
-	slicedClass: org.kermeta.language.structure.Parameter param [[		if(param.~operation.superOperation.isVoid) then
-			params.add(param)
-		end]]
+	slicedClass: org.kermeta.language.structure.Parameter param [[params.add(param)]]
 	slicedProperty: org.kermeta.language.behavior.Block.statement
 	slicedProperty: org.kermeta.language.behavior.Conditional.elseBody
 	slicedProperty: org.kermeta.language.behavior.Conditional.thenBody

@@ -60,9 +60,7 @@ class UnusedVarDetector {
 		end
 	end
 	operation onParameterAdded(param : Parameter) is do
-	/*	if(param.~operation.superOperation.isVoid) then
-			params.add(param)
-		end*/
+params.add(param)
 	end
 	operation onEnd() is do
 		varDecls.each{varD | stdio.writeln("Variable unused: " + varD.identifier) }
