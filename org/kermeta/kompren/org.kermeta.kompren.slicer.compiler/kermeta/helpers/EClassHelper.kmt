@@ -11,12 +11,16 @@ using kermeta::io::StdIO => stdio
 
 
 aspect class ENamedElement {
-	operation getQualifiedName() : String is do
+	operation getQualifiedName(sep:String) : String is do
 		result := name
 		
 		if((not container.isVoid).andThen{b | container.isInstanceOf(ENamedElement)}) then
-			result := container.asType(ENamedElement).getQualifiedName() + "::" + name 
+			result := container.asType(ENamedElement).getQualifiedName(sep) + sep + name 
 		end
+	end
+	
+	operation getQualifiedName() : String is do
+		result := getQualifiedName("::")
 	end
 }
 

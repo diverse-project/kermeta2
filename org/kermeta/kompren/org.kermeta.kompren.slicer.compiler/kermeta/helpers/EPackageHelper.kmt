@@ -12,7 +12,24 @@ using kermeta::standard::*
 aspect class EPackage {
 	operation getAllClasses() : Bag<EClass> is do
 		result := Bag<EClass>.new
-		eClassifiers.each{classifier | if(classifier.isInstanceOf(EClass)) then result.add(classifier.asType(EClass)) end }
-		eSubpackages.each{pkg | result.addAll(pkg.getAllClasses()) }
+		eClassifiers.each{classifier | if classifier.isInstanceOf(EClass) then result.add(classifier.asType(EClass)) end }
+		eSubpackages.each{pkg | result.addAll(pkg.getAllClasses) }
 	end
+	
+	
+	operation getAllReferences() : Bag<EReference> is do
+		var eclass : EClass
+		result := Bag<EReference>.new
+		
+		eClassifiers.each{classifier | 
+			if classifier.isInstanceOf(EClass) then
+				classifier.asType(EClass).eStructuralFeatures.each{feat |
+					if not feat.derived and feat.isInstanceOf(EReference) then
+						result.add(feat.asType(EReference))
+					end
+				}
+			end
+		}
+		eSubpackages.each{pkg | result.addAll(pkg.getAllReferences) }
+	end 
 }
