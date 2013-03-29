@@ -292,7 +292,7 @@
           <genClasses image="false" ecoreClass="kermeta.ecore#//kermeta/language/structure/AbstractOperation"/>
           <genClasses ecoreClass="kermeta.ecore#//kermeta/language/structure/UnresolvedType">
             <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta.ecore#//kermeta/language/structure/UnresolvedType/usings"/>
-            <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kermeta.ecore#//kermeta/language/structure/UnresolvedType/generics"/>
+            <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference kermeta.ecore#//kermeta/language/structure/UnresolvedType/generics"/>
             <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kermeta.ecore#//kermeta/language/structure/UnresolvedType/typeIdentifier"/>
           </genClasses>
           <genClasses image="false" ecoreClass="kermeta.ecore#//kermeta/language/structure/UnresolvedReference"/>

@@ -102,7 +102,6 @@ public class UnresolvedTypeItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(StructurePackage.Literals.TYPE_CONTAINER__CONTAINED_TYPE);
 			childrenFeatures.add(StructurePackage.Literals.UNRESOLVED_TYPE__USINGS);
-			childrenFeatures.add(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS);
 		}
 		return childrenFeatures;
 	}
@@ -162,7 +161,6 @@ public class UnresolvedTypeItemProvider
 				return;
 			case StructurePackage.UNRESOLVED_TYPE__CONTAINED_TYPE:
 			case StructurePackage.UNRESOLVED_TYPE__USINGS:
-			case StructurePackage.UNRESOLVED_TYPE__GENERICS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -249,94 +247,6 @@ public class UnresolvedTypeItemProvider
 			(createChildParameter
 				(StructurePackage.Literals.UNRESOLVED_TYPE__USINGS,
 				 StructureFactory.eINSTANCE.createUsing()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createEnumeration()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createPrimitiveType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createObjectTypeVariable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createModelTypeVariable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createVirtualType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createUnresolvedType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createProductType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createFunctionType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createVoidType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createUnresolvedInferredType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createUnresolvedTypeVariable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS,
-				 StructureFactory.eINSTANCE.createModelType()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == StructurePackage.Literals.TYPE_CONTAINER__CONTAINED_TYPE ||
-			childFeature == StructurePackage.Literals.UNRESOLVED_TYPE__GENERICS;
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }
