@@ -192,7 +192,7 @@ class SlicerAspectGenerator inherits Generator {
 */
 		buffer.append("aspect class ").append(eclass.name)
 
-		if(considerSlicerVisitor.andThen{b| not slicerGenerator.aspectisedClasses.exists{eclass2 | eclass2.isSuperTypeOfBis(eclass) }}) then
+		if considerSlicerVisitor then
 			buffer.append(" inherits SlicerVisitor")
 			if(slicerGenerator.hasOpposite) then buffer.append(", Feedable") end
 		else

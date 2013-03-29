@@ -186,7 +186,7 @@ aspect class Assignment inherits SlicerVisitor {
 	end
 }
 
-aspect class CallResult {
+aspect class CallResult inherits SlicerVisitor {
 	method visitToAddClasses(theUnusedVarDetector : UnusedVarDetector) is do
 		checkInitialisation(theUnusedVarDetector.idPass)
 		if(not self.visitedPass) then
