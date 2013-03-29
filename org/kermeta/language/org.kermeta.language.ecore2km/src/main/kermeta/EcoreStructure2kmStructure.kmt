@@ -114,12 +114,17 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 			// Getting the type of the operation.
 			stdio.writeln("getUnresolvedType 1 from visitEOperation")
 			var returnType : UnresolvedType init getUnresolvedType(op.eGenericType, op.eType)
+			
+			// Creation of the ouput Kermeta operation.
+			var kmOp : Operation 
 			if(returnType.isVoid) then
 				// make sure to have a returntype even if not specified (helps other transformations like the checker or resolver)
 				returnType := UnresolvedType.new.initialize("kermeta::standard::Void")
+				kmOp := Operation.new.initialize(op.name, returnType, void)
+			else
+				// we have a retrun type but this will be done in the super
+				kmOp := Operation.new.initialize(op.name, void, void)
 			end
-			// Creation of the ouput Kermeta operation.
-			var kmOp : Operation init Operation.new.initialize(op.name, returnType, void)
 			kmOp.isOrdered := op.ordered
 			kmOp.isUnique  := op.unique
 			
@@ -143,9 +148,31 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 			// Linking the Kermeta operation to the Ecore operation.
 			op.targetKermetaObject := kmOp
 			traceRegistry.addTraceFromObjects(op, kmOp, void)
+			super(op)
+			// avoid creating twice the same unresolvedType for return type because it might have been created b y the super too
+			var t : UnresolvedType 
+			t ?= kmOp.containedType.select{t | 
+				if(t.isKindOf(UnresolvedType)) then
+					t.asType(UnresolvedType).typeIdentifier == returnType.typeIdentifier
+				else
+					false
+				end
+			}.one
+			if(kmOp.type.isVoid) then
+				if ( not t.isVoid) then
+					kmOp.type := t
+				else
+					kmOp.type := getUnresolvedType(op.eGenericType, op.eType)
+					kmOp.containedType.add(kmOp.type)
+				end
+			end
+		else
+		
+			super(op)
 		end
 		
-		super(op)
+		
+		
 	end
 	
 	
@@ -571,5 +598,8 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 	
 		super(eEnum)
 	end
+	
+	
+	
 }
 
