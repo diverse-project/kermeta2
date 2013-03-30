@@ -4,18 +4,26 @@
   <classpathentry kind="src" path="." including="plugin.properties|plugin.xml" excluding="**/*.java"/>
   <classpathentry kind="src" path="icons" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
-  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/emf/emf.lib/2.7.0/emf.lib-2.7.0.jar"/>
-  <classpathentry kind="src" path="/kompren.slicer.edit"/>
-  <classpathentry kind="src" path="/org.kermeta.kompren.slicer.compiler"/>
-  <classpathentry kind="src" path="/org.kermeta.kompren.slicer.model"/>
-  <classpathentry kind="var" path="M2_REPO/org/scala-lang/scala-library/2.9.0-1/scala-library-2.9.0-1.jar"/>
-  <classpathentry kind="src" path="/org.kermeta.language.library.core"/>
-  <classpathentry kind="src" path="/org.kermeta.language.model"/>
-  <classpathentry kind="src" path="/org.kermeta.utils.systemservices.api"/>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.helpers/2.0.1-SNAPSHOT/utils.helpers-2.0.1-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/kompren/kompren.slicer.edit/2.0.9-SNAPSHOT/kompren.slicer.edit-2.0.9-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/kompren/kompren.slicer.model/2.0.9-SNAPSHOT/kompren.slicer.model-2.0.9-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/kompren/kompren.slicer.parser/2.0.9-SNAPSHOT/kompren.slicer.parser-2.0.9-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/scala-lang/scala-library/2.9.1/scala-library-2.9.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/kompren/kompren.slicer.compiler/2.0.9-SNAPSHOT/kompren.slicer.compiler-2.0.9-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/language.library.core/2.0.6/language.library.core-2.0.6.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/language.model/2.0.6/language.model-2.0.6.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.systemservices.api/2.0.6/utils.systemservices.api-2.0.6.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.helpers/2.0.6/utils.helpers-2.0.6.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/osgi/org.osgi.core/4.2.0/org.osgi.core-4.2.0.jar"/>
-  <classpathentry kind="src" path="/org.kermeta.kompren.slicer.parser"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/core/runtime/3.8.0-v20120521-2346/runtime-3.8.0-v20120521-2346.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/osgi/3.8.1-v20120830-144521/osgi-3.8.1-v20120830-144521.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/equinox/common/3.6.100-v20120522-1841/common-3.6.100-v20120522-1841.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/core/jobs/3.5.300-v20120622-204750/jobs-3.5.300-v20120622-204750.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/equinox/registry/3.5.200-v20120522-1841/registry-3.5.200-v20120522-1841.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/equinox/preferences/3.5.0-v20120522-1841/preferences-3.5.0-v20120522-1841.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/core/contenttype/3.4.200-v20120523-2004/contenttype-3.4.200-v20120523-2004.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/equinox/app/1.3.100-v20120522-1841/app-1.3.100-v20120522-1841.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.core.jobs/3.5.1.R36x_v20100824/org.eclipse.core.jobs-3.5.1.R36x_v20100824.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.emf.ecore.xmi/2.5.0.v20100521-1846/org.eclipse.emf.ecore.xmi-2.5.0.v20100521-1846.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.emf.edit/2.6.0.v20100914-1218/org.eclipse.emf.edit-2.6.0.v20100914-1218.jar"/>

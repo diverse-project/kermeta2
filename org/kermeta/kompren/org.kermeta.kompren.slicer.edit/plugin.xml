@@ -19,44 +19,106 @@
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            id="kompren.slicer.edit.contribution1"
-            objectClass="org.eclipse.core.resources.IFile">
-         <menu
-               id="kompren.slicer.edit.menu1"
-               label="Kompren"
-               path="additions">
-            <separator
-                  name="group1">
-            </separator>
-         </menu>
-         <action
-               class="kompren.slicer.edit.popup.actions.CreateKomprentFilesAction"
-               enablesFor="+"
-               id="kompren.slicer.edit.convertAsTextAction"
-               label="Create komprent file"
-               menubarPath="kompren.slicer.edit.menu1/group1"
-               tooltip="Creates Kompren textual models from the selected kompren models.">
-         </action>
-         <action
-               class="kompren.slicer.edit.popup.actions.CreateKomprenModelsAction"
-               enablesFor="+"
-               id="kompren.slicer.edit.convertAsModelAction"
-               label="Create kompren model"
-               menubarPath="kompren.slicer.edit.menu1/group1"
-               tooltip="Creates Kompren models from the selected komprent files.">
-         </action>
-         <action
-               class="kompren.slicer.edit.popup.actions.CreateMSFAction"
-               enablesFor="+"
-               id="kompren.slicer.edit.createMSFAction"
-               label="Create model slicer function"
-               menubarPath="kompren.slicer.edit.menu1/group1"
-               tooltip="Compiles the selected Kompren models into model slicer functions.">
-         </action>
-      </objectContribution>
+   <extension point="org.eclipse.ui.commands">
+   		<command
+           id="kompren.slicer.edit.command.convertAsTextAction.id"
+           description="Creates Kompren textual models from the selected kompren models."
+           name="Create komprent file">
+   		</command>
+   		<command
+           id="kompren.slicer.edit.command.convertAsModelAction.id"
+           description="Creates Kompren models from the selected komprent files."
+           name="Create kompren model">
+   		</command>
+   		<command
+           id="kompren.slicer.edit.command.createMSFAction.id"
+           description="Compiles the selected Kompren models into model slicer functions."
+           name="Create model slicer function">
+   		</command>
    </extension>
-
+   
+	<extension point="org.eclipse.ui.handlers">
+	  <handler
+	        class="kompren.slicer.edit.contribution.ConvertAsTextActionHandler"
+	        commandId="kompren.slicer.edit.command.convertAsTextAction.id">
+	  </handler>
+	  <handler
+	        class="kompren.slicer.edit.contribution.ConvertAsModelActionHandler"
+	        commandId="kompren.slicer.edit.command.convertAsModelAction.id">
+	  </handler>
+	  <handler
+	        class="kompren.slicer.edit.contribution.CreateMSFActionHandler"
+	        commandId="kompren.slicer.edit.command.createMSFAction.id">
+	  </handler>
+	</extension>
+	
+	<extension point="org.eclipse.core.expressions.definitions">
+	   <definition id="org.kermeta.kompren.testExtension.kompren">
+	      <adapt type="org.eclipse.core.resources.IResource">
+             <test property="org.eclipse.core.resources.extension" value="kompren"/>
+	      </adapt>
+	   </definition>
+	   <definition id="org.kermeta.kompren.testExtension.komprent">
+	      <adapt type="org.eclipse.core.resources.IResource">
+             <test property="org.eclipse.core.resources.extension" value="komprent"/>
+	      </adapt>
+	   </definition>
+	   <definition id="org.kermeta.kompren.testExtension.komprentOrkompren">
+	      <adapt type="org.eclipse.core.resources.IResource">
+	      	<or>
+	      		<test property="org.eclipse.core.resources.extension" value="komprent"/>
+	      		<test property="org.eclipse.core.resources.extension" value="kompren"/>
+	      	</or>
+	      </adapt>
+	   </definition>
+	</extension>
+	
+	<extension point="org.eclipse.ui.menus">
+	  <menuContribution
+	        locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+	     <menu
+	           id="org.kermeta.kompren.menu"
+	           label="Kompren">
+	        <visibleWhen>
+		      <with variable="selection">
+		         <iterate ifEmpty="false">
+		           <reference definitionId="org.kermeta.kompren.testExtension.komprentOrkompren"/>
+		         </iterate>
+		      </with>
+	        </visibleWhen>
+	     </menu>
+	  </menuContribution>
+  
+	  <menuContribution locationURI="popup:org.kermeta.kompren.menu?after=additions">
+	     <command commandId="kompren.slicer.edit.command.convertAsModelAction.id" style="push">
+	        <visibleWhen>
+		      <with variable="selection">
+		         <iterate ifEmpty="false">
+		           <reference definitionId="org.kermeta.kompren.testExtension.komprent"/>
+		         </iterate>
+		      </with>
+	        </visibleWhen>
+	     </command>
+	     
+	     <command commandId="kompren.slicer.edit.command.convertAsTextAction.id" style="push">
+	        <visibleWhen>
+		      <with variable="selection">
+		         <iterate ifEmpty="false">
+		           <reference definitionId="org.kermeta.kompren.testExtension.kompren"/>
+		         </iterate>
+		      </with>
+	        </visibleWhen>
+	     </command>
+	     
+	     <command commandId="kompren.slicer.edit.command.createMSFAction.id" style="push">
+	        <visibleWhen>
+		      <with variable="selection">
+		         <iterate ifEmpty="false">
+		           <reference definitionId="org.kermeta.kompren.testExtension.komprentOrkompren"/>
+		         </iterate>
+		      </with>
+	        </visibleWhen>
+	     </command>
+	  </menuContribution>
+	</extension>
 </plugin>

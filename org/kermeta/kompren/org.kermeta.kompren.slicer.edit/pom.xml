@@ -62,6 +62,7 @@
                         	org.eclipse.swt;visibility:=reexport,
                         	org.eclipse.emf.edit;visibility:=reexport,
                         	org.eclipse.ui.ide;visibility:=reexport,
+                        	org.eclipse.core.commands;visibility:=reexport,
                         	org.kermeta.kompren.slicer.compiler;visibility:=reexport,
                         	org.kermeta.kompren.slicer.model;visibility:=reexport,
                         	org.kermeta.kompren.slicer.parser;visibility:=reexport

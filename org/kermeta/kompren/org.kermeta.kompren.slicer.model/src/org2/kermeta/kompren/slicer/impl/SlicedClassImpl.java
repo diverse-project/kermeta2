@@ -30,6 +30,13 @@ import org2.kermeta.kompren.slicer.util.EcoreUtils;
  */
 public class SlicedClassImpl extends SlicedElementImpl implements SlicedClass {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "INRIA/IRISA\nTriskell Team";
+
+	/**
 	 * The cached value of the '{@link #getCtx() <em>Ctx</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
