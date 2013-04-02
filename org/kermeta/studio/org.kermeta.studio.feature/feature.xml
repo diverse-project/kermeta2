@@ -22,6 +22,10 @@
          version="0.0.0"/>
 
    <includes
+         id="org.kermeta.utils.feature"
+         version="0.0.0"/>
+         
+   <includes
          id="org.eclipse.emf.ecoretools.registration.feature"
          version="0.0.0"/>
 
