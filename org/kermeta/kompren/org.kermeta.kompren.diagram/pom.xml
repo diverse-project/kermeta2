@@ -53,4 +53,16 @@
             <version>0.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
+<distributionManagement>
+    <repository>
+        <id>http://maven.inria.fr</id>
+        <name>http://maven.inria.fr-releases</name>
+        <url>http://maven.inria.fr/artifactory/malai-public-release</url>
+    </repository>
+    <snapshotRepository>
+        <id>http://maven.inria.fr</id>
+        <name>http://maven.inria.fr-snapshots</name>
+        <url>http://maven.inria.fr/artifactory/malai-public-snapshot</url>
+    </snapshotRepository>
+</distributionManagement>
 </project>
