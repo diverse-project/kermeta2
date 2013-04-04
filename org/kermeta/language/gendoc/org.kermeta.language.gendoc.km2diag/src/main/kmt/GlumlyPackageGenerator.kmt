@@ -22,7 +22,8 @@ package GlumlyPackageGenerator{
 			fileContent := StringBuffer.new
 			
 			p.ownedTypeDefinition.each{ otd | otd.accept(self) }	
-			kermeta::io::FileIO.writeTextFile((outputFolderUrl+"/"+p.getQualifiedName()+".txt").toURI(), fileContent.toString())
+			stdio.writeln("writing to "+outputFolderUrl+"/"+p.getQualifiedName4File()+".txt")
+			kermeta::io::FileIO.writeTextFile((outputFolderUrl+"/"+p.getQualifiedName4File()+".txt").toURI(), fileContent.toString())
 							
 			p.nestedPackage.each { subPack | subPack.accept(self) }		
 			

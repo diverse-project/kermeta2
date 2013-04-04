@@ -39,6 +39,7 @@ aspect class ClassDefinition{
 	operation generateClassesHtml (baseFolder:String, packageName : String) : String is do
 	
 	var path : String init baseFolder + "/" + self.name + ".html"
+	path := path.replaceAll("::","_")
 	var contents : StringBuffer init StringBuffer.new
 	contents.append("<html><head><title>" + self.name  + "</title></head>\n")
 	contents.append("<body BGCOLOR = white>")
@@ -568,13 +569,13 @@ aspect class Package{
 	/** Create html package page*/
 	operation generatePackageHtml (baseFolder : String) : Void is do
 		var contents : StringBuffer init StringBuffer.new
-		var path : String init baseFolder + "/" + self.getQualifiedName() + ".html"
+		var path : String init baseFolder + "/" + self.getQualifiedName4File() + ".html"
 		
 		contents.append("<html>")
 		contents.append("<head><title>" + self.getQualifiedName() + "</title></head>")
 		contents.append("<body>")
 		contents.append("<h1>" + self.getQualifiedName() + "</h1><br>")
-		contents.append("<p><img src=\"./images/packages/" + self.getQualifiedName() +".png\"><p>")
+		contents.append("<p><img src=\"./images/packages/" + self.getQualifiedName4File() +".png\"><p>")
 		//contents.append("<img src=\"" + baseFolder + "/" + "images/packages/" + self.getQualifiedName() +".png\"><br>")
 		self.kTag.each{tag | 
 			if tag.name == "documentation" then
@@ -625,6 +626,16 @@ aspect class Package{
 		if(not container.isVoid) then
 			if(container.isInstanceOf(Package)) then
 				parent := container.asType(Package).getQualifiedName() + "::"
+			end
+		end
+		result := parent + name
+	end
+	
+	operation getQualifiedName4File() : String is do
+		var parent : String := ""
+		if(not container.isVoid) then
+			if(container.isInstanceOf(Package)) then
+				parent := container.asType(Package).getQualifiedName() + "_"
 			end
 		end
 		result := parent + name

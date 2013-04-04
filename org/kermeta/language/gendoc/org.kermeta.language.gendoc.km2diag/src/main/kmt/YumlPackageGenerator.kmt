@@ -23,7 +23,7 @@ package YumlPackageGenerator{
 			
 			p.ownedTypeDefinition.each{ otd | otd.accept(self) }	
 			
-			kermeta::io::FileIO.writeTextFile((outputFolderUrl+"/"+p.getQualifiedName()+".yuml").toURI(), fileContent.toString())
+			kermeta::io::FileIO.writeTextFile((outputFolderUrl+"/"+p.getQualifiedName4File()+".yuml").toURI(), fileContent.toString())
 						
 			p.nestedPackage.each { subPack | subPack.accept(self) }		
 			

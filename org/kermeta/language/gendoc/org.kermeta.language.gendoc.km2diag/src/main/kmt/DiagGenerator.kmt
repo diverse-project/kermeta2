@@ -17,7 +17,7 @@ package mainPackage{
 			//Param
 			//var inputModel : String := "file:/udd/fcoulon/kermetaWS/org.kermeta.language.library.standard/target/beforeCheckingforScopeRESOLVED.km"
 			//var outputFolder : String := "/udd/fcoulon/kermetaWS/sortie/"
-		
+				
 			//Load kermeta model
 			var repository : ResourceSet init ResourceSet.new
 			var resource : Resource init repository.createResource(inputModel)

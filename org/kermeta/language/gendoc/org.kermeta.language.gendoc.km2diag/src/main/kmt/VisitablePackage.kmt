@@ -19,6 +19,16 @@ package org::kermeta::language::structure {
 			end
 			result := parent + name
 		end
+		
+		operation getQualifiedName4File() : String is do
+			var parent : String := ""
+			if(not container.isVoid) then
+				if(container.isInstanceOf(Package)) then
+					parent := container.asType(Package).getQualifiedName4File() + "_"
+				end
+			end
+			result := parent + name
+		end
 	}
 	
 	aspect class TypeDefinition inherits Abstract_VisitableElement{

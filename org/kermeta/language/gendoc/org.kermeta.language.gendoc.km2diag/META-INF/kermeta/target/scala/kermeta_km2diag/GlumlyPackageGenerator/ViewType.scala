@@ -1,4 +1,0 @@
-package `kermeta_km2diag`.GlumlyPackageGenerator
- class RichGlumlyPackageVisitor extends kermeta_km2diag.GlumlyPackageGenerator.GlumlyPackageVisitor with kermeta_km2diag.GlumlyPackageGenerator.GlumlyPackageVisitorAspect with _root_.k2.standard.KermetaObject with k2.standard.EObjectImplForPrimitive 
- class RichGlumlyPackageTransform extends kermeta_km2diag.GlumlyPackageGenerator.GlumlyPackageTransform with kermeta_km2diag.GlumlyPackageGenerator.GlumlyPackageTransformAspect with _root_.k2.standard.KermetaObject with k2.standard.EObjectImplForPrimitive 
-

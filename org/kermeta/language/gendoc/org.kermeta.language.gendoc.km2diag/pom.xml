@@ -236,6 +236,12 @@
     		<artifactId>org.kermeta.language.library.core</artifactId>
     		<version>${kermeta.version}</version>
     	</dependency>
+    	
+    	<dependency>
+    		<groupId>org.kermeta.language</groupId>
+    		<artifactId>org.kermeta.language.library.standard</artifactId>
+    		<version>${kermeta.version}</version>
+    	</dependency>
     	<!-- Add more dependencies here -->
     	<dependency>
     		<groupId>org.scala-lang</groupId>
