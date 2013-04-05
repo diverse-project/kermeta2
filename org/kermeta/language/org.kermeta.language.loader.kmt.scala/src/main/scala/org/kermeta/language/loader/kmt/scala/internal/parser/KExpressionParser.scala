@@ -12,6 +12,7 @@ package org.kermeta.language.loader.kmt.scala.internal.parser
 
 import org.kermeta.language.behavior.Expression
 import org.kermeta.language.loader.kmt.scala.internal.parser.sub._
+import org.kermeta.language.behavior.Rescue
 
 /**
  * Parser of Kermeta expression in KMT textual syntax
@@ -35,8 +36,19 @@ trait KExpressionParser extends KAbstractParser
    * extend the fExpression parser with sub parser
    */
   override def fExpression : Parser[Expression] =  positionedfExpression | fBlock |   fVariableDecl
-  def positionedfExpression : Parser[Expression] = kpositioned ( fExtern | fRaise | pExpression  | fLoop | fConditional | fLambda |  fCall | fLiteral)
+  def positionedfExpression : Parser[Expression] = kpositioned ( fExtern | fRaise | pExpression  | fLoop | fConditional | fLambda |  fCall | fLiteral )
   override def fStatement : Parser[Expression] = kpositioned (fAssignement)
+
+  override def optionalBlock : Parser[Expression] = kpositioned(super.optionalBlock)
+  override def lastBlock : Parser[Expression] = kpositioned(super.lastBlock)
+  
+  override def loopBody : Parser[Expression] = kpositioned(super.loopBody)
+  
+  override def fRescueRescue : Parser[Rescue] = kpositioned(super.fRescueRescue)
+  override def fRescueEnd : Parser[Rescue] = kpositioned(super.fRescueEnd)
+  
+  override def fLambda : Parser[Expression] = kpositioned(super.fLambda)
+  override def lambdaBody : Parser[Expression] = kpositioned(super.lambdaBody)
 
   def parseExpression(content : String) : Option[Expression] = {
     val tokens = new lexical.Scanner(content)

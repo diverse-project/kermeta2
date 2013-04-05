@@ -24,8 +24,8 @@ import org.kermeta.language.structure.UnresolvedType
  */
 trait KLambdaParser extends KAbstractParser {
 
-  def fLambda : Parser[Expression] = "{" ~ repsep(lambdaProperty, ",") ~ "|" ~ fExpressionLst ~ "}" ^^ {
-    case _ ~ params ~ _ ~ exps ~ _ => {
+  def fLambda : Parser[Expression] = "{" ~ repsep(lambdaProperty, ",") ~ "|" ~ lambdaBody ^^ {
+    case _ ~ params ~ _ ~ body  => {
 
         var newLambdaExp = BehaviorFactory.eINSTANCE.createLambdaExpression
 
@@ -33,12 +33,18 @@ trait KLambdaParser extends KAbstractParser {
           newLambdaExp.getParameters.add(prop)
         }
 
-	      var newBlock = BehaviorFactory.eINSTANCE.createBlock
-        newBlock.getStatement.addAll(exps)
-        newLambdaExp.setBody(newBlock)
+        newLambdaExp.setBody(body)
         newLambdaExp
       }
 
+  }
+  
+  def lambdaBody : Parser[Expression] = fExpressionLst <~ "}" ^^{
+    case body =>{
+      var newBlock = BehaviorFactory.eINSTANCE.createBlock
+      newBlock.getStatement.addAll(body)
+      newBlock
+    }
   }
 
 
