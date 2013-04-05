@@ -360,7 +360,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 				showedText.append(" : "+type);
 				
 				propList.add(
-						createTemplateProp(showedText.toString(),containerClass,printedText.toString(), documentOffset, null)
+						createTemplateProp(showedText.toString(),containerClass,printedText.toString(), documentOffset-lastQualifier.length(), null)
 					);
 			}
 		}

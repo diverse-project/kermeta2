@@ -269,31 +269,6 @@ public class KermetaModelAccessor {
 	//-------------------------------------------------------------------------------------------------------
 	// TYPE OF THE FIRST ELEMENT
 	//-------------------------------------------------------------------------------------------------------	
-		/*
-		 * The first element of the call is an operation.
-		 * Find in which class the call is and find the operation in this.
-		 * 
-		 * @fileUrl Name of the current edited file
-		 * @documentOffset Position of the cursor in the file
-		 * @name The name of the operation wanted
-		 */
-		private TypeDefinition getReturnType(String fileUrl, int documentOffset, String name){
-			
-			Package pack = currentOffsetPackage(fileUrl, documentOffset);
-			ClassDefinition classDef = getClosestClass(fileUrl, documentOffset, pack);
-			
-			List<Operation> operations = classDef.getOwnedOperation();
-			for(Operation op : operations){
-				
-				if(op.getName().equals(name)){
-					
-					if(op.getType() instanceof Class) return ((Class)(op.getType())).getTypeDefinition();
-				}
-				
-			}
-			
-			return null;
-		}
 		
 		/*
 		 * The first element of the call is a variable, an operation parameter or a class attribute 
@@ -609,9 +584,10 @@ public class KermetaModelAccessor {
 		 * Search for an operation in currentType and get his return type
 		 * 
 		 * @currentType The class watched
-		 * @opName The name of the operation wanted
+		 * @opName The name of the wanted operation
+		 * @nbArgs Number of arguments of the wanted operation
 		 */
-		public TypeDefinition getOperationType(TypeDefinition currentType, String opName){
+		public TypeDefinition getOperationType(TypeDefinition currentType, String opName, int nbArgs){
 			
 			if(currentType instanceof ClassDefinition){
 				
@@ -620,7 +596,12 @@ public class KermetaModelAccessor {
 					
 					if(op.getName().equals(opName)){
 						
-						if(op.getType() instanceof Class) return ((Class)(op.getType())).getTypeDefinition();
+						if(op.getOwnedParameter().size() == nbArgs){
+							
+							if(op.getType() instanceof Class) return ((Class)(op.getType())).getTypeDefinition();
+							
+						}
+						
 					}
 					
 				}
@@ -678,9 +659,13 @@ public class KermetaModelAccessor {
 						else if(callChain.get(pos+1).toString().equals("(")){
 							
 							int endParenthese = endOfOperation(callChain, pos+1);
+							int nbArgs = countArgs(callChain, pos+1, endParenthese);
 							if(endParenthese != -1  && callChain.get(endParenthese+1).toString().equals(".")){
 								
-								firstType = getReturnType(fileUrl,documentOffset, callChain.get(pos).toString());
+								Package pack = currentOffsetPackage(fileUrl, documentOffset);
+								ClassDefinition closestClassDef = getClosestClass(fileUrl, documentOffset, pack);
+								
+								firstType = getOperationType(closestClassDef, callChain.get(pos).toString(), nbArgs);
 								pos = endParenthese + 2;
 								
 							}
@@ -711,9 +696,10 @@ public class KermetaModelAccessor {
 							else if(callChain.get(pos+1).toString().equals("(")){
 								
 								int endParenthese = endOfOperation(callChain, pos+1);
+								int nbArgs = countArgs(callChain, pos+1, endParenthese);
 								if(endParenthese != -1  && callChain.get(endParenthese+1).toString().equals(".")){
 									
-									currentElem = getOperationType(currentElem, callChain.get(pos).toString() );
+									currentElem = getOperationType(currentElem, callChain.get(pos).toString(), nbArgs);
 									pos = endParenthese + 2;
 									
 								}
@@ -782,6 +768,29 @@ public class KermetaModelAccessor {
 			if(count != 0) return -1;
 			return pos;
 		}	
+		
+		/*
+		 * Return the number of argument between two parentheses
+		 * @begin Position of the first parenthese
+		 * @end Position of the last parenthese
+		 */
+		private int countArgs(List<IKToken>callChain, int begin, int end){
+			
+			if(begin == end-1) return 0; //no arguments
+			
+			int res = 1;
+			int depth = 0; //count opened parentheses
+			
+			for(int i = begin+1; i < end; i++){
+				
+				if(callChain.get(i).toString().equals("(")) depth++;
+				else if(callChain.get(i).toString().equals(")")) depth--;
+				else if(callChain.get(i).toString().equals(",") && depth == 0) res++;
+			}
+			
+			return res;
+			
+		}
 		
 		
 		//-------------------------------------------------------------------------------------------------------
