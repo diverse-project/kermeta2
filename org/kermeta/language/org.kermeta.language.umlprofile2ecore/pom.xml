@@ -98,7 +98,7 @@
                             org.scala-ide.scala.library,
 							fr.irisa.triskell.kermeta.model,
 							org.kermeta.traceability.model,
-							org.kermeta.language.framework.scala,
+							org.kermeta.kermeta1.framework.scala,
             				org.kermeta.language.model,
             				org.kermeta.language.umlprofile2ecore.api,
             				org.kermeta.utils.systemservices.api

@@ -195,7 +195,7 @@
 							org.eclipse.ui.workbench,
 							org.eclipse.ui.ide,
 							org.eclipse.equinox.registry,
-							org.kermeta.language.framework.scala,
+							org.kermeta.kermeta1.framework.scala,
 							org.kermeta.utils.systemservices.api,
 							org.kermeta.utils.systemservices.eclipse,
 							org.kermeta.kp.model,
@@ -231,7 +231,7 @@
 			    <configuration>
 			      <downloadSources>true</downloadSources>
 			      <downloadJavadocs>true</downloadJavadocs>
-			 	  <projectNameTemplate>org.kermeta.[artifactId]</projectNameTemplate>
+			 	  <projectNameTemplate>[artifactId]</projectNameTemplate>
 			      <projectnatures>
 			        <projectnature>org.scala-ide.sdt.core.scalanature</projectnature>
 			        <projectnature>org.eclipse.jdt.core.javanature</projectnature>
