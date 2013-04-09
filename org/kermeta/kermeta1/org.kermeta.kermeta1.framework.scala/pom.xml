@@ -7,8 +7,8 @@
     <packaging>bundle</packaging>
     <name>kermeta1.framework.scala</name>
    	<parent>
-		<groupId>org.kermeta.language</groupId>
-		<artifactId>org.kermeta.language.root</artifactId>
+		<groupId>org.kermeta</groupId>
+		<artifactId>org.kermeta.root</artifactId>
 		<version>2.0.99-SNAPSHOT</version>
 	</parent>
     <version>1.4.5-SNAPSHOT</version>
