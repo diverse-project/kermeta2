@@ -47,6 +47,7 @@ aspect class EPackage {
 		
 		self.eachOwnedElement{ e |
 			content.append(e.binaryMergerPropertyResolverAspectKmtPrinter(context) + "\n")
+			e
 		}
 		
 		if not self.container.isVoid() then

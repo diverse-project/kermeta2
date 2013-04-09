@@ -197,7 +197,7 @@ Copyright (c) 2003-2007, Terence Parr. All rights reserved.
          unpack="false"/>
 
    <plugin
-         id="org.kermeta.language.framework.scala"
+         id="org.kermeta.kermeta1.framework.scala"
          download-size="0"
          install-size="0"
          version="0.0.0"

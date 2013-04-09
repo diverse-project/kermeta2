@@ -37,8 +37,8 @@
 			<version>${scala.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.kermeta.language</groupId>
-			<artifactId>language.framework.scala</artifactId>
+			<groupId>org.kermeta.kermeta1</groupId>
+			<artifactId>org.kermeta.kermeta1.framework.scala</artifactId>
 			<version>${framework.scala.version}</version>
 		</dependency>
 		<!-- <dependency> <groupId>${project.groupId}</groupId> <artifactId>language.api</artifactId> 
@@ -153,7 +153,7 @@
 								fr.irisa.triskell.kermeta.model,
 								org.kermeta.language.model,
 								org.kermeta.language.merger.binarymerger.api,
-								org.kermeta.language.framework.scala,
+								org.kermeta.kermeta1.framework.scala,
 								org.kermeta.utils.systemservices.api
                         	</Require-Bundle>
 							<Import-Package>

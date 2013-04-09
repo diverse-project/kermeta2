@@ -47,6 +47,7 @@ aspect class EPackage {
 		
 		self.eachOwnedElement{ e |
 			content.append(e.binaryMergerMoveAspectKmtPrinter(context) + "\n")
+			e
 		}
 		
 		if not self.container.isVoid() then
@@ -125,6 +126,7 @@ aspect class EClass {
 		content.append("//stdio.writeln(\"Merging content of a " + self.name + "\")")						
 		self.eachOwnedElement{ e |
 				content.append(e.binaryMergerMoveAspectKmtPrinter(context))
+				e
 		}
 		
 		
@@ -137,6 +139,7 @@ aspect class EClass {
 				if (not allFirstSuperTypes.contains(s)) then
 					s.eachOwnedElement{ e |
 						content.append(e.binaryMergerMoveAspectKmtPrinter(context))
+						e
 					}
 				else					
 					if(self.eSuperTypes.first().name == "Object") then
@@ -144,6 +147,7 @@ aspect class EClass {
 						content.append("// workaround compiler V2 bug, embed code that should have been called via super \n")
 						s.eachOwnedElement{ e |
 							content.append(e.binaryMergerMoveAspectKmtPrinter(context))
+							e
 						}
 					end
 				end
@@ -272,6 +276,8 @@ aspect class EReference {
 				content.append("end")	
 			else	
 				content.append(context.indentString)
+				content.append("var "+mangledName+"_needingMove : OrderedSet<"+context.ecoreHelper.getClassifierQualifiedName(self.eType)+"> init OrderedSet<"+context.ecoreHelper.getClassifierQualifiedName(self.eType)+">.new")
+				content.append(context.indentString)
 				content.append("self.")				
 				content.append(mangledName)
 				content.append(".each{aspect_")
@@ -317,7 +323,8 @@ aspect class EReference {
 						content.append(context.indentString)
 						content.append("// move it in merged model")
 						content.append(context.indentString)
-						content.append("mergedModelElement."+mangledName+".add(aspect_"+self.name+")")
+						content.append(mangledName+"_needingMove.add(aspect_"+self.name+")")
+					//	content.append("mergedModelElement."+mangledName+".add(aspect_"+self.name+")")
 						content.append(context.indentString)
 						content.append("if aspect_"+self.name+".asType(Mergeable).isAddedForReferenceFix.isVoid   then")
 						context.pushIndent
@@ -336,6 +343,8 @@ aspect class EReference {
 				context.popIndent
 				content.append(context.indentString)
 				content.append("}")
+				content.append(context.indentString)
+				content.append("mergedModelElement."+mangledName+".addAll("+mangledName+"_needingMove)")
 			end	
 		else
 			var involvedInComposition : Boolean init self.containment

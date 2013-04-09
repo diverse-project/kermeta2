@@ -11,6 +11,7 @@ require "platform:/lookup/org.kermeta.language.merger.binarymerger/src/main/kmt/
 
 using kermeta::language::structure
 using org::kermeta::ecore::binarymerger
+using kermeta::standard
 
 package kermeta {
 	package language {
@@ -46,6 +47,7 @@ package kermeta {
 							end
 							// select value for unary attribute
 							mergedModelElement.isCast ?= self.selectUnaryProperty("isCast", self.isCast, mergedModelElement.isCast)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -60,7 +62,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -68,6 +70,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -90,6 +93,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -104,7 +108,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -112,6 +116,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -129,6 +134,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a CallExpression")
+							var parameters_needingMove : OrderedSet<org::kermeta::language::behavior::Expression> init OrderedSet<org::kermeta::language::behavior::Expression>.new
 							self.parameters.each{aspect_parameters | 
 								var equivalent_parameters : org::kermeta::language::behavior::Expression
 								equivalent_parameters := mergedModelElement.parameters.detect{ merged_parameters |
@@ -143,7 +149,7 @@ package kermeta {
 									aspect_parameters.similarElementInMergedModel := equivalent_parameters
 								else
 									// move it in merged model
-									mergedModelElement.parameters.add(aspect_parameters)
+									parameters_needingMove.add(aspect_parameters)
 									if aspect_parameters.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_parameters.asType(Mergeable))
@@ -151,6 +157,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.parameters.addAll(parameters_needingMove)
 							if self.isAddedForReferenceMerge.isVoid   then
 								// it has some reference (staticTypeVariableBindings) not involved in composition, these aspects elements will need to be passed to mergeReferences function
 								context.elementsNeedingReferenceMerge.add(self)
@@ -158,6 +165,7 @@ package kermeta {
 							end
 							// select value for unary attribute
 							mergedModelElement.name ?= self.selectUnaryProperty("name", self.name, mergedModelElement.name)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -172,7 +180,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -180,6 +188,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -197,6 +206,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a Block")
+							var statement_needingMove : OrderedSet<org::kermeta::language::behavior::Expression> init OrderedSet<org::kermeta::language::behavior::Expression>.new
 							self.statement.each{aspect_statement | 
 								var equivalent_statement : org::kermeta::language::behavior::Expression
 								equivalent_statement := mergedModelElement.statement.detect{ merged_statement |
@@ -211,7 +221,7 @@ package kermeta {
 									aspect_statement.similarElementInMergedModel := equivalent_statement
 								else
 									// move it in merged model
-									mergedModelElement.statement.add(aspect_statement)
+									statement_needingMove.add(aspect_statement)
 									if aspect_statement.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_statement.asType(Mergeable))
@@ -219,6 +229,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.statement.addAll(statement_needingMove)
+							var rescueBlock_needingMove : OrderedSet<org::kermeta::language::behavior::Rescue> init OrderedSet<org::kermeta::language::behavior::Rescue>.new
 							self.rescueBlock.each{aspect_rescueBlock | 
 								var equivalent_rescueBlock : org::kermeta::language::behavior::Rescue
 								equivalent_rescueBlock := mergedModelElement.rescueBlock.detect{ merged_rescueBlock |
@@ -233,7 +245,7 @@ package kermeta {
 									aspect_rescueBlock.similarElementInMergedModel := equivalent_rescueBlock
 								else
 									// move it in merged model
-									mergedModelElement.rescueBlock.add(aspect_rescueBlock)
+									rescueBlock_needingMove.add(aspect_rescueBlock)
 									if aspect_rescueBlock.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_rescueBlock.asType(Mergeable))
@@ -241,6 +253,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.rescueBlock.addAll(rescueBlock_needingMove)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -255,7 +269,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -263,6 +277,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -282,6 +297,7 @@ package kermeta {
 							//stdio.writeln("Merging content of a CallVariable")
 							// select value for unary attribute
 							mergedModelElement.isAtpre ?= self.selectUnaryProperty("isAtpre", self.isAtpre, mergedModelElement.isAtpre)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -296,7 +312,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -304,6 +320,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -334,6 +351,7 @@ package kermeta {
 							end
 							// select value for unary attribute
 							mergedModelElement.isAtpre ?= self.selectUnaryProperty("isAtpre", self.isAtpre, mergedModelElement.isAtpre)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -348,7 +366,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -356,6 +374,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -378,6 +397,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -392,7 +412,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -400,6 +420,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -417,6 +438,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a CallResult")
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -431,7 +453,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -439,6 +461,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -456,6 +479,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a CallValue")
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -470,7 +494,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -478,6 +502,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -528,6 +553,7 @@ package kermeta {
 									mergedModelElement.condition.isAddedForReferenceFix := true
 								end
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -542,7 +568,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -550,6 +576,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -578,6 +605,7 @@ package kermeta {
 									mergedModelElement.expression.isAddedForReferenceFix := true
 								end
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -592,7 +620,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -600,6 +628,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -617,6 +646,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a Rescue")
+							var body_needingMove : OrderedSet<org::kermeta::language::behavior::Expression> init OrderedSet<org::kermeta::language::behavior::Expression>.new
 							self.body.each{aspect_body | 
 								var equivalent_body : org::kermeta::language::behavior::Expression
 								equivalent_body := mergedModelElement.body.detect{ merged_body |
@@ -631,7 +661,7 @@ package kermeta {
 									aspect_body.similarElementInMergedModel := equivalent_body
 								else
 									// move it in merged model
-									mergedModelElement.body.add(aspect_body)
+									body_needingMove.add(aspect_body)
 									if aspect_body.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_body.asType(Mergeable))
@@ -639,6 +669,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.body.addAll(body_needingMove)
 							if context.useGenericMerge then
 								mergedModelElement.exceptionType ?= self.selectFirstNonVoidProperty("exceptionType", self.exceptionType, mergedModelElement.exceptionType)
 							else
@@ -688,6 +719,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a Literal")
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -702,7 +734,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -710,6 +742,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -727,6 +760,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a EmptyExpression")
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -741,7 +775,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -749,6 +783,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -766,6 +801,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a JavaStaticCall")
+							var parameters_needingMove : OrderedSet<org::kermeta::language::behavior::Expression> init OrderedSet<org::kermeta::language::behavior::Expression>.new
 							self.parameters.each{aspect_parameters | 
 								var equivalent_parameters : org::kermeta::language::behavior::Expression
 								equivalent_parameters := mergedModelElement.parameters.detect{ merged_parameters |
@@ -780,7 +816,7 @@ package kermeta {
 									aspect_parameters.similarElementInMergedModel := equivalent_parameters
 								else
 									// move it in merged model
-									mergedModelElement.parameters.add(aspect_parameters)
+									parameters_needingMove.add(aspect_parameters)
 									if aspect_parameters.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_parameters.asType(Mergeable))
@@ -788,10 +824,12 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.parameters.addAll(parameters_needingMove)
 							// select value for unary attribute
 							mergedModelElement.jclass ?= self.selectUnaryProperty("jclass", self.jclass, mergedModelElement.jclass)
 							// select value for unary attribute
 							mergedModelElement.jmethod ?= self.selectUnaryProperty("jmethod", self.jmethod, mergedModelElement.jmethod)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -806,7 +844,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -814,6 +852,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -831,6 +870,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a LambdaExpression")
+							var parameters_needingMove : OrderedSet<org::kermeta::language::behavior::LambdaParameter> init OrderedSet<org::kermeta::language::behavior::LambdaParameter>.new
 							self.parameters.each{aspect_parameters | 
 								var equivalent_parameters : org::kermeta::language::behavior::LambdaParameter
 								equivalent_parameters := mergedModelElement.parameters.detect{ merged_parameters |
@@ -845,7 +885,7 @@ package kermeta {
 									aspect_parameters.similarElementInMergedModel := equivalent_parameters
 								else
 									// move it in merged model
-									mergedModelElement.parameters.add(aspect_parameters)
+									parameters_needingMove.add(aspect_parameters)
 									if aspect_parameters.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_parameters.asType(Mergeable))
@@ -853,6 +893,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.parameters.addAll(parameters_needingMove)
 							if context.useGenericMerge then
 								mergedModelElement.body ?= self.selectFirstNonVoidProperty("body", self.body, mergedModelElement.body)
 							else
@@ -864,6 +905,7 @@ package kermeta {
 									mergedModelElement.body.isAddedForReferenceFix := true
 								end
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -878,7 +920,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -886,6 +928,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -935,6 +978,7 @@ package kermeta {
 							//stdio.writeln("Merging content of a IntegerLiteral")
 							// select value for unary attribute
 							mergedModelElement.~value ?= self.selectUnaryProperty("~value", self.~value, mergedModelElement.~value)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -949,7 +993,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -957,6 +1001,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -976,6 +1021,7 @@ package kermeta {
 							//stdio.writeln("Merging content of a StringLiteral")
 							// select value for unary attribute
 							mergedModelElement.~value ?= self.selectUnaryProperty("~value", self.~value, mergedModelElement.~value)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -990,7 +1036,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -998,6 +1044,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1017,6 +1064,7 @@ package kermeta {
 							//stdio.writeln("Merging content of a BooleanLiteral")
 							// select value for unary attribute
 							mergedModelElement.~value ?= self.selectUnaryProperty("~value", self.~value, mergedModelElement.~value)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1031,7 +1079,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1039,6 +1087,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1067,6 +1116,7 @@ package kermeta {
 									mergedModelElement.typeref.isAddedForReferenceFix := true
 								end
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1081,7 +1131,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1089,6 +1139,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1106,6 +1157,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a VoidLiteral")
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1120,7 +1172,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1128,6 +1180,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1178,6 +1231,7 @@ package kermeta {
 									mergedModelElement.stopCondition.isAddedForReferenceFix := true
 								end
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1192,7 +1246,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1200,6 +1254,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1217,6 +1272,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a SelfExpression")
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1231,7 +1287,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1239,6 +1295,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1280,6 +1337,7 @@ package kermeta {
 							end
 							// select value for unary attribute
 							mergedModelElement.identifier ?= self.selectUnaryProperty("identifier", self.identifier, mergedModelElement.identifier)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1294,7 +1352,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1302,6 +1360,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1319,6 +1378,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a UnresolvedCall")
+							var usings_needingMove : OrderedSet<org::kermeta::language::structure::Using> init OrderedSet<org::kermeta::language::structure::Using>.new
 							self.usings.each{aspect_usings | 
 								var equivalent_usings : org::kermeta::language::structure::Using
 								equivalent_usings := mergedModelElement.usings.detect{ merged_usings |
@@ -1333,7 +1393,7 @@ package kermeta {
 									aspect_usings.similarElementInMergedModel := equivalent_usings
 								else
 									// move it in merged model
-									mergedModelElement.usings.add(aspect_usings)
+									usings_needingMove.add(aspect_usings)
 									if aspect_usings.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_usings.asType(Mergeable))
@@ -1341,6 +1401,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.usings.addAll(usings_needingMove)
 							if context.useGenericMerge then
 								mergedModelElement.target ?= self.selectFirstNonVoidProperty("target", self.target, mergedModelElement.target)
 							else
@@ -1366,6 +1427,7 @@ package kermeta {
 							mergedModelElement.isAtpre ?= self.selectUnaryProperty("isAtpre", self.isAtpre, mergedModelElement.isAtpre)
 							// select value for unary attribute
 							mergedModelElement.isCalledWithParenthesis ?= self.selectUnaryProperty("isCalledWithParenthesis", self.isCalledWithParenthesis, mergedModelElement.isCalledWithParenthesis)
+							var parameters_needingMove : OrderedSet<org::kermeta::language::behavior::Expression> init OrderedSet<org::kermeta::language::behavior::Expression>.new
 							self.parameters.each{aspect_parameters | 
 								var equivalent_parameters : org::kermeta::language::behavior::Expression
 								equivalent_parameters := mergedModelElement.parameters.detect{ merged_parameters |
@@ -1380,7 +1442,7 @@ package kermeta {
 									aspect_parameters.similarElementInMergedModel := equivalent_parameters
 								else
 									// move it in merged model
-									mergedModelElement.parameters.add(aspect_parameters)
+									parameters_needingMove.add(aspect_parameters)
 									if aspect_parameters.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_parameters.asType(Mergeable))
@@ -1388,6 +1450,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.parameters.addAll(parameters_needingMove)
 							if self.isAddedForReferenceMerge.isVoid   then
 								// it has some reference (staticTypeVariableBindings) not involved in composition, these aspects elements will need to be passed to mergeReferences function
 								context.elementsNeedingReferenceMerge.add(self)
@@ -1395,6 +1458,7 @@ package kermeta {
 							end
 							// select value for unary attribute
 							mergedModelElement.name ?= self.selectUnaryProperty("name", self.name, mergedModelElement.name)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1409,7 +1473,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1417,6 +1481,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 							if self.isAddedForReferenceMerge.isVoid   then
 								// it has some reference (staticType) not involved in composition, these aspects elements will need to be passed to mergeReferences function
 								context.elementsNeedingReferenceMerge.add(self)
@@ -1444,6 +1509,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1458,7 +1524,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1466,6 +1532,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1488,6 +1555,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1502,7 +1570,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1510,6 +1578,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1532,6 +1601,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1546,7 +1616,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1554,6 +1624,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1576,6 +1647,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1590,7 +1662,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1598,6 +1670,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1626,6 +1699,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var kOwnedTags_needingMove : OrderedSet<org::kermeta::language::structure::Tag> init OrderedSet<org::kermeta::language::structure::Tag>.new
 							self.kOwnedTags.each{aspect_kOwnedTags | 
 								var equivalent_kOwnedTags : org::kermeta::language::structure::Tag
 								equivalent_kOwnedTags := mergedModelElement.kOwnedTags.detect{ merged_kOwnedTags |
@@ -1640,7 +1714,7 @@ package kermeta {
 									aspect_kOwnedTags.similarElementInMergedModel := equivalent_kOwnedTags
 								else
 									// move it in merged model
-									mergedModelElement.kOwnedTags.add(aspect_kOwnedTags)
+									kOwnedTags_needingMove.add(aspect_kOwnedTags)
 									if aspect_kOwnedTags.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_kOwnedTags.asType(Mergeable))
@@ -1648,6 +1722,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.kOwnedTags.addAll(kOwnedTags_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -1676,6 +1751,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var ownedParameter_needingMove : OrderedSet<org::kermeta::language::structure::Parameter> init OrderedSet<org::kermeta::language::structure::Parameter>.new
 							self.ownedParameter.each{aspect_ownedParameter | 
 								var equivalent_ownedParameter : org::kermeta::language::structure::Parameter
 								equivalent_ownedParameter := mergedModelElement.ownedParameter.detect{ merged_ownedParameter |
@@ -1690,7 +1766,7 @@ package kermeta {
 									aspect_ownedParameter.similarElementInMergedModel := equivalent_ownedParameter
 								else
 									// move it in merged model
-									mergedModelElement.ownedParameter.add(aspect_ownedParameter)
+									ownedParameter_needingMove.add(aspect_ownedParameter)
 									if aspect_ownedParameter.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedParameter.asType(Mergeable))
@@ -1698,6 +1774,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedParameter.addAll(ownedParameter_needingMove)
+							var ~pre_needingMove : OrderedSet<org::kermeta::language::structure::Constraint> init OrderedSet<org::kermeta::language::structure::Constraint>.new
 							self.~pre.each{aspect_pre | 
 								var equivalent_pre : org::kermeta::language::structure::Constraint
 								equivalent_pre := mergedModelElement.~pre.detect{ merged_pre |
@@ -1712,7 +1790,7 @@ package kermeta {
 									aspect_pre.similarElementInMergedModel := equivalent_pre
 								else
 									// move it in merged model
-									mergedModelElement.~pre.add(aspect_pre)
+									~pre_needingMove.add(aspect_pre)
 									if aspect_pre.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_pre.asType(Mergeable))
@@ -1720,6 +1798,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.~pre.addAll(~pre_needingMove)
+							var ~post_needingMove : OrderedSet<org::kermeta::language::structure::Constraint> init OrderedSet<org::kermeta::language::structure::Constraint>.new
 							self.~post.each{aspect_post | 
 								var equivalent_post : org::kermeta::language::structure::Constraint
 								equivalent_post := mergedModelElement.~post.detect{ merged_post |
@@ -1734,7 +1814,7 @@ package kermeta {
 									aspect_post.similarElementInMergedModel := equivalent_post
 								else
 									// move it in merged model
-									mergedModelElement.~post.add(aspect_post)
+									~post_needingMove.add(aspect_post)
 									if aspect_post.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_post.asType(Mergeable))
@@ -1742,6 +1822,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.~post.addAll(~post_needingMove)
 							if context.useGenericMerge then
 								mergedModelElement.body ?= self.selectFirstNonVoidProperty("body", self.body, mergedModelElement.body)
 							else
@@ -1753,6 +1834,7 @@ package kermeta {
 									mergedModelElement.body.isAddedForReferenceFix := true
 								end
 							end
+							var ownedUnresolvedOperations_needingMove : OrderedSet<org::kermeta::language::structure::UnresolvedOperation> init OrderedSet<org::kermeta::language::structure::UnresolvedOperation>.new
 							self.ownedUnresolvedOperations.each{aspect_ownedUnresolvedOperations | 
 								var equivalent_ownedUnresolvedOperations : org::kermeta::language::structure::UnresolvedOperation
 								equivalent_ownedUnresolvedOperations := mergedModelElement.ownedUnresolvedOperations.detect{ merged_ownedUnresolvedOperations |
@@ -1767,7 +1849,7 @@ package kermeta {
 									aspect_ownedUnresolvedOperations.similarElementInMergedModel := equivalent_ownedUnresolvedOperations
 								else
 									// move it in merged model
-									mergedModelElement.ownedUnresolvedOperations.add(aspect_ownedUnresolvedOperations)
+									ownedUnresolvedOperations_needingMove.add(aspect_ownedUnresolvedOperations)
 									if aspect_ownedUnresolvedOperations.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedUnresolvedOperations.asType(Mergeable))
@@ -1775,6 +1857,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedUnresolvedOperations.addAll(ownedUnresolvedOperations_needingMove)
 							if self.isAddedForReferenceMerge.isVoid   then
 								// it has some reference (typeParameter) not involved in composition, these aspects elements will need to be passed to mergeReferences function
 								context.elementsNeedingReferenceMerge.add(self)
@@ -1828,6 +1911,7 @@ package kermeta {
 									mergedModelElement.setterBody.isAddedForReferenceFix := true
 								end
 							end
+							var ownedUnresolvedProperties_needingMove : OrderedSet<org::kermeta::language::structure::UnresolvedProperty> init OrderedSet<org::kermeta::language::structure::UnresolvedProperty>.new
 							self.ownedUnresolvedProperties.each{aspect_ownedUnresolvedProperties | 
 								var equivalent_ownedUnresolvedProperties : org::kermeta::language::structure::UnresolvedProperty
 								equivalent_ownedUnresolvedProperties := mergedModelElement.ownedUnresolvedProperties.detect{ merged_ownedUnresolvedProperties |
@@ -1842,7 +1926,7 @@ package kermeta {
 									aspect_ownedUnresolvedProperties.similarElementInMergedModel := equivalent_ownedUnresolvedProperties
 								else
 									// move it in merged model
-									mergedModelElement.ownedUnresolvedProperties.add(aspect_ownedUnresolvedProperties)
+									ownedUnresolvedProperties_needingMove.add(aspect_ownedUnresolvedProperties)
 									if aspect_ownedUnresolvedProperties.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedUnresolvedProperties.asType(Mergeable))
@@ -1850,6 +1934,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedUnresolvedProperties.addAll(ownedUnresolvedProperties_needingMove)
 							// select value for unary attribute
 							mergedModelElement.isReadOnly ?= self.selectUnaryProperty("isReadOnly", self.isReadOnly, mergedModelElement.isReadOnly)
 							// select value for unary attribute
@@ -1900,6 +1985,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a TypeContainer")
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -1914,7 +2000,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -1922,6 +2008,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -2017,6 +2104,7 @@ package kermeta {
 							end
 							// select value for unary attribute
 							mergedModelElement.isAspect ?= self.selectUnaryProperty("isAspect", self.isAspect, mergedModelElement.isAspect)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -2031,7 +2119,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -2039,6 +2127,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -2082,6 +2171,7 @@ package kermeta {
 							mergedModelElement.isAspect ?= self.selectUnaryProperty("isAspect", self.isAspect, mergedModelElement.isAspect)
 							// select value for unary attribute
 							mergedModelElement.name ?= self.selectUnaryProperty("name", self.name, mergedModelElement.name)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -2096,7 +2186,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -2104,6 +2194,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -2121,6 +2212,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a Enumeration")
+							var ownedLiteral_needingMove : OrderedSet<org::kermeta::language::structure::EnumerationLiteral> init OrderedSet<org::kermeta::language::structure::EnumerationLiteral>.new
 							self.ownedLiteral.each{aspect_ownedLiteral | 
 								var equivalent_ownedLiteral : org::kermeta::language::structure::EnumerationLiteral
 								equivalent_ownedLiteral := mergedModelElement.ownedLiteral.detect{ merged_ownedLiteral |
@@ -2135,7 +2227,7 @@ package kermeta {
 									aspect_ownedLiteral.similarElementInMergedModel := equivalent_ownedLiteral
 								else
 									// move it in merged model
-									mergedModelElement.ownedLiteral.add(aspect_ownedLiteral)
+									ownedLiteral_needingMove.add(aspect_ownedLiteral)
 									if aspect_ownedLiteral.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedLiteral.asType(Mergeable))
@@ -2143,6 +2235,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedLiteral.addAll(ownedLiteral_needingMove)
 							if self.isAddedForReferenceMerge.isVoid   then
 								// it has some reference (superType) not involved in composition, these aspects elements will need to be passed to mergeReferences function
 								context.elementsNeedingReferenceMerge.add(self)
@@ -2152,6 +2245,7 @@ package kermeta {
 							mergedModelElement.isAspect ?= self.selectUnaryProperty("isAspect", self.isAspect, mergedModelElement.isAspect)
 							// select value for unary attribute
 							mergedModelElement.name ?= self.selectUnaryProperty("name", self.name, mergedModelElement.name)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -2166,7 +2260,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -2174,6 +2268,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -2210,6 +2305,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a Package")
+							var nestedPackage_needingMove : OrderedSet<org::kermeta::language::structure::Package> init OrderedSet<org::kermeta::language::structure::Package>.new
 							self.nestedPackage.each{aspect_nestedPackage | 
 								var equivalent_nestedPackage : org::kermeta::language::structure::Package
 								equivalent_nestedPackage := mergedModelElement.nestedPackage.detect{ merged_nestedPackage |
@@ -2224,7 +2320,7 @@ package kermeta {
 									aspect_nestedPackage.similarElementInMergedModel := equivalent_nestedPackage
 								else
 									// move it in merged model
-									mergedModelElement.nestedPackage.add(aspect_nestedPackage)
+									nestedPackage_needingMove.add(aspect_nestedPackage)
 									if aspect_nestedPackage.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_nestedPackage.asType(Mergeable))
@@ -2232,6 +2328,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.nestedPackage.addAll(nestedPackage_needingMove)
+							var ownedAdaptationOperators_needingMove : OrderedSet<org::kermeta::language::structure::AdaptationOperator> init OrderedSet<org::kermeta::language::structure::AdaptationOperator>.new
 							self.ownedAdaptationOperators.each{aspect_ownedAdaptationOperators | 
 								var equivalent_ownedAdaptationOperators : org::kermeta::language::structure::AdaptationOperator
 								equivalent_ownedAdaptationOperators := mergedModelElement.ownedAdaptationOperators.detect{ merged_ownedAdaptationOperators |
@@ -2246,7 +2344,7 @@ package kermeta {
 									aspect_ownedAdaptationOperators.similarElementInMergedModel := equivalent_ownedAdaptationOperators
 								else
 									// move it in merged model
-									mergedModelElement.ownedAdaptationOperators.add(aspect_ownedAdaptationOperators)
+									ownedAdaptationOperators_needingMove.add(aspect_ownedAdaptationOperators)
 									if aspect_ownedAdaptationOperators.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedAdaptationOperators.asType(Mergeable))
@@ -2254,8 +2352,10 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedAdaptationOperators.addAll(ownedAdaptationOperators_needingMove)
 							// select value for unary attribute
 							mergedModelElement.uri ?= self.selectUnaryProperty("uri", self.uri, mergedModelElement.uri)
+							var ownedTypeDefinition_needingMove : OrderedSet<org::kermeta::language::structure::ModelElementTypeDefinition> init OrderedSet<org::kermeta::language::structure::ModelElementTypeDefinition>.new
 							self.ownedTypeDefinition.each{aspect_ownedTypeDefinition | 
 								var equivalent_ownedTypeDefinition : org::kermeta::language::structure::ModelElementTypeDefinition
 								equivalent_ownedTypeDefinition := mergedModelElement.ownedTypeDefinition.detect{ merged_ownedTypeDefinition |
@@ -2270,7 +2370,7 @@ package kermeta {
 									aspect_ownedTypeDefinition.similarElementInMergedModel := equivalent_ownedTypeDefinition
 								else
 									// move it in merged model
-									mergedModelElement.ownedTypeDefinition.add(aspect_ownedTypeDefinition)
+									ownedTypeDefinition_needingMove.add(aspect_ownedTypeDefinition)
 									if aspect_ownedTypeDefinition.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedTypeDefinition.asType(Mergeable))
@@ -2278,6 +2378,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedTypeDefinition.addAll(ownedTypeDefinition_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -2328,6 +2429,7 @@ package kermeta {
 							mergedModelElement.isAspect ?= self.selectUnaryProperty("isAspect", self.isAspect, mergedModelElement.isAspect)
 							// select value for unary attribute
 							mergedModelElement.name ?= self.selectUnaryProperty("name", self.name, mergedModelElement.name)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -2342,7 +2444,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -2350,6 +2452,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -2474,6 +2577,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a ClassDefinition")
+							var ~inv_needingMove : OrderedSet<org::kermeta::language::structure::Constraint> init OrderedSet<org::kermeta::language::structure::Constraint>.new
 							self.~inv.each{aspect_inv | 
 								var equivalent_inv : org::kermeta::language::structure::Constraint
 								equivalent_inv := mergedModelElement.~inv.detect{ merged_inv |
@@ -2488,7 +2592,7 @@ package kermeta {
 									aspect_inv.similarElementInMergedModel := equivalent_inv
 								else
 									// move it in merged model
-									mergedModelElement.~inv.add(aspect_inv)
+									~inv_needingMove.add(aspect_inv)
 									if aspect_inv.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_inv.asType(Mergeable))
@@ -2496,6 +2600,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.~inv.addAll(~inv_needingMove)
+							var ownedAttribute_needingMove : OrderedSet<org::kermeta::language::structure::Property> init OrderedSet<org::kermeta::language::structure::Property>.new
 							self.ownedAttribute.each{aspect_ownedAttribute | 
 								var equivalent_ownedAttribute : org::kermeta::language::structure::Property
 								equivalent_ownedAttribute := mergedModelElement.ownedAttribute.detect{ merged_ownedAttribute |
@@ -2510,7 +2616,7 @@ package kermeta {
 									aspect_ownedAttribute.similarElementInMergedModel := equivalent_ownedAttribute
 								else
 									// move it in merged model
-									mergedModelElement.ownedAttribute.add(aspect_ownedAttribute)
+									ownedAttribute_needingMove.add(aspect_ownedAttribute)
 									if aspect_ownedAttribute.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedAttribute.asType(Mergeable))
@@ -2518,6 +2624,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedAttribute.addAll(ownedAttribute_needingMove)
+							var ownedOperation_needingMove : OrderedSet<org::kermeta::language::structure::Operation> init OrderedSet<org::kermeta::language::structure::Operation>.new
 							self.ownedOperation.each{aspect_ownedOperation | 
 								var equivalent_ownedOperation : org::kermeta::language::structure::Operation
 								equivalent_ownedOperation := mergedModelElement.ownedOperation.detect{ merged_ownedOperation |
@@ -2532,7 +2640,7 @@ package kermeta {
 									aspect_ownedOperation.similarElementInMergedModel := equivalent_ownedOperation
 								else
 									// move it in merged model
-									mergedModelElement.ownedOperation.add(aspect_ownedOperation)
+									ownedOperation_needingMove.add(aspect_ownedOperation)
 									if aspect_ownedOperation.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedOperation.asType(Mergeable))
@@ -2540,12 +2648,14 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedOperation.addAll(ownedOperation_needingMove)
 							// select value for unary attribute
 							mergedModelElement.isAbstract ?= self.selectUnaryProperty("isAbstract", self.isAbstract, mergedModelElement.isAbstract)
 							// select value for unary attribute
 							mergedModelElement.isSingleton ?= self.selectUnaryProperty("isSingleton", self.isSingleton, mergedModelElement.isSingleton)
 							// select value for unary attribute
 							mergedModelElement.isFinal ?= self.selectUnaryProperty("isFinal", self.isFinal, mergedModelElement.isFinal)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -2560,7 +2670,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -2568,6 +2678,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -2586,6 +2697,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a Metamodel")
+							var packages_needingMove : OrderedSet<org::kermeta::language::structure::Package> init OrderedSet<org::kermeta::language::structure::Package>.new
 							self.packages.each{aspect_packages | 
 								var equivalent_packages : org::kermeta::language::structure::Package
 								equivalent_packages := mergedModelElement.packages.detect{ merged_packages |
@@ -2600,7 +2712,7 @@ package kermeta {
 									aspect_packages.similarElementInMergedModel := equivalent_packages
 								else
 									// move it in merged model
-									mergedModelElement.packages.add(aspect_packages)
+									packages_needingMove.add(aspect_packages)
 									if aspect_packages.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_packages.asType(Mergeable))
@@ -2608,6 +2720,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.packages.addAll(packages_needingMove)
+							var referencedMetamodels_needingMove : OrderedSet<org::kermeta::language::structure::FilteredMetamodelReference> init OrderedSet<org::kermeta::language::structure::FilteredMetamodelReference>.new
 							self.referencedMetamodels.each{aspect_referencedMetamodels | 
 								var equivalent_referencedMetamodels : org::kermeta::language::structure::FilteredMetamodelReference
 								equivalent_referencedMetamodels := mergedModelElement.referencedMetamodels.detect{ merged_referencedMetamodels |
@@ -2622,7 +2736,7 @@ package kermeta {
 									aspect_referencedMetamodels.similarElementInMergedModel := equivalent_referencedMetamodels
 								else
 									// move it in merged model
-									mergedModelElement.referencedMetamodels.add(aspect_referencedMetamodels)
+									referencedMetamodels_needingMove.add(aspect_referencedMetamodels)
 									if aspect_referencedMetamodels.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_referencedMetamodels.asType(Mergeable))
@@ -2630,12 +2744,14 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.referencedMetamodels.addAll(referencedMetamodels_needingMove)
 							// select value for unary attribute
 							mergedModelElement.uri ?= self.selectUnaryProperty("uri", self.uri, mergedModelElement.uri)
 							// select value for unary attribute
 							mergedModelElement.isResolved ?= self.selectUnaryProperty("isResolved", self.isResolved, mergedModelElement.isResolved)
 							// select value for unary attribute
 							mergedModelElement.name ?= self.selectUnaryProperty("name", self.name, mergedModelElement.name)
+							var ownedModelTypeDefinitions_needingMove : OrderedSet<org::kermeta::language::structure::ModelTypeDefinition> init OrderedSet<org::kermeta::language::structure::ModelTypeDefinition>.new
 							self.ownedModelTypeDefinitions.each{aspect_ownedModelTypeDefinitions | 
 								var equivalent_ownedModelTypeDefinitions : org::kermeta::language::structure::ModelTypeDefinition
 								equivalent_ownedModelTypeDefinitions := mergedModelElement.ownedModelTypeDefinitions.detect{ merged_ownedModelTypeDefinitions |
@@ -2650,7 +2766,7 @@ package kermeta {
 									aspect_ownedModelTypeDefinitions.similarElementInMergedModel := equivalent_ownedModelTypeDefinitions
 								else
 									// move it in merged model
-									mergedModelElement.ownedModelTypeDefinitions.add(aspect_ownedModelTypeDefinitions)
+									ownedModelTypeDefinitions_needingMove.add(aspect_ownedModelTypeDefinitions)
 									if aspect_ownedModelTypeDefinitions.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedModelTypeDefinitions.asType(Mergeable))
@@ -2658,6 +2774,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedModelTypeDefinitions.addAll(ownedModelTypeDefinitions_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -2675,6 +2792,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a ModelElementTypeDefinitionContainer")
+							var ownedTypeDefinition_needingMove : OrderedSet<org::kermeta::language::structure::ModelElementTypeDefinition> init OrderedSet<org::kermeta::language::structure::ModelElementTypeDefinition>.new
 							self.ownedTypeDefinition.each{aspect_ownedTypeDefinition | 
 								var equivalent_ownedTypeDefinition : org::kermeta::language::structure::ModelElementTypeDefinition
 								equivalent_ownedTypeDefinition := mergedModelElement.ownedTypeDefinition.detect{ merged_ownedTypeDefinition |
@@ -2689,7 +2807,7 @@ package kermeta {
 									aspect_ownedTypeDefinition.similarElementInMergedModel := equivalent_ownedTypeDefinition
 								else
 									// move it in merged model
-									mergedModelElement.ownedTypeDefinition.add(aspect_ownedTypeDefinition)
+									ownedTypeDefinition_needingMove.add(aspect_ownedTypeDefinition)
 									if aspect_ownedTypeDefinition.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedTypeDefinition.asType(Mergeable))
@@ -2697,6 +2815,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedTypeDefinition.addAll(ownedTypeDefinition_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -2719,6 +2838,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -2733,7 +2853,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -2741,6 +2861,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -2758,6 +2879,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a ParameterizedType")
+							var virtualTypeBinding_needingMove : OrderedSet<org::kermeta::language::structure::TypeVariableBinding> init OrderedSet<org::kermeta::language::structure::TypeVariableBinding>.new
 							self.virtualTypeBinding.each{aspect_virtualTypeBinding | 
 								var equivalent_virtualTypeBinding : org::kermeta::language::structure::TypeVariableBinding
 								equivalent_virtualTypeBinding := mergedModelElement.virtualTypeBinding.detect{ merged_virtualTypeBinding |
@@ -2772,7 +2894,7 @@ package kermeta {
 									aspect_virtualTypeBinding.similarElementInMergedModel := equivalent_virtualTypeBinding
 								else
 									// move it in merged model
-									mergedModelElement.virtualTypeBinding.add(aspect_virtualTypeBinding)
+									virtualTypeBinding_needingMove.add(aspect_virtualTypeBinding)
 									if aspect_virtualTypeBinding.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_virtualTypeBinding.asType(Mergeable))
@@ -2780,6 +2902,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.virtualTypeBinding.addAll(virtualTypeBinding_needingMove)
+							var typeParamBinding_needingMove : OrderedSet<org::kermeta::language::structure::TypeVariableBinding> init OrderedSet<org::kermeta::language::structure::TypeVariableBinding>.new
 							self.typeParamBinding.each{aspect_typeParamBinding | 
 								var equivalent_typeParamBinding : org::kermeta::language::structure::TypeVariableBinding
 								equivalent_typeParamBinding := mergedModelElement.typeParamBinding.detect{ merged_typeParamBinding |
@@ -2794,7 +2918,7 @@ package kermeta {
 									aspect_typeParamBinding.similarElementInMergedModel := equivalent_typeParamBinding
 								else
 									// move it in merged model
-									mergedModelElement.typeParamBinding.add(aspect_typeParamBinding)
+									typeParamBinding_needingMove.add(aspect_typeParamBinding)
 									if aspect_typeParamBinding.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_typeParamBinding.asType(Mergeable))
@@ -2802,6 +2926,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.typeParamBinding.addAll(typeParamBinding_needingMove)
 							if self.isAddedForReferenceMerge.isVoid   then
 								// it has some reference (typeDefinition) not involved in composition, these aspects elements will need to be passed to mergeReferences function
 								context.elementsNeedingReferenceMerge.add(self)
@@ -2901,6 +3026,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var typeParamBinding_needingMove : OrderedSet<org::kermeta::language::structure::TypeVariableBinding> init OrderedSet<org::kermeta::language::structure::TypeVariableBinding>.new
 							self.typeParamBinding.each{aspect_typeParamBinding | 
 								var equivalent_typeParamBinding : org::kermeta::language::structure::TypeVariableBinding
 								equivalent_typeParamBinding := mergedModelElement.typeParamBinding.detect{ merged_typeParamBinding |
@@ -2915,7 +3041,7 @@ package kermeta {
 									aspect_typeParamBinding.similarElementInMergedModel := equivalent_typeParamBinding
 								else
 									// move it in merged model
-									mergedModelElement.typeParamBinding.add(aspect_typeParamBinding)
+									typeParamBinding_needingMove.add(aspect_typeParamBinding)
 									if aspect_typeParamBinding.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_typeParamBinding.asType(Mergeable))
@@ -2923,6 +3049,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.typeParamBinding.addAll(typeParamBinding_needingMove)
 							// select value for unary attribute
 							mergedModelElement.name ?= self.selectUnaryProperty("name", self.name, mergedModelElement.name)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
@@ -2981,6 +3108,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a UnresolvedType")
+							var usings_needingMove : OrderedSet<org::kermeta::language::structure::Using> init OrderedSet<org::kermeta::language::structure::Using>.new
 							self.usings.each{aspect_usings | 
 								var equivalent_usings : org::kermeta::language::structure::Using
 								equivalent_usings := mergedModelElement.usings.detect{ merged_usings |
@@ -2995,7 +3123,7 @@ package kermeta {
 									aspect_usings.similarElementInMergedModel := equivalent_usings
 								else
 									// move it in merged model
-									mergedModelElement.usings.add(aspect_usings)
+									usings_needingMove.add(aspect_usings)
 									if aspect_usings.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_usings.asType(Mergeable))
@@ -3003,6 +3131,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.usings.addAll(usings_needingMove)
 							if self.isAddedForReferenceMerge.isVoid   then
 								// it has some reference (generics) not involved in composition, these aspects elements will need to be passed to mergeReferences function
 								context.elementsNeedingReferenceMerge.add(self)
@@ -3010,6 +3139,7 @@ package kermeta {
 							end
 							// select value for unary attribute
 							mergedModelElement.typeIdentifier ?= self.selectUnaryProperty("typeIdentifier", self.typeIdentifier, mergedModelElement.typeIdentifier)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -3024,7 +3154,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -3032,6 +3162,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -3087,6 +3218,7 @@ package kermeta {
 							//stdio.writeln("Merging content of a UnresolvedOperation")
 							// select value for unary attribute
 							mergedModelElement.operationIdentifier ?= self.selectUnaryProperty("operationIdentifier", self.operationIdentifier, mergedModelElement.operationIdentifier)
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -3101,7 +3233,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -3109,6 +3241,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -3235,6 +3368,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -3249,7 +3383,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -3257,6 +3391,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 							// select value for unary attribute
 							mergedModelElement.name ?= self.selectUnaryProperty("name", self.name, mergedModelElement.name)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
@@ -3276,6 +3411,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a ModelTypeDefinitionBinding")
+							var ownedClassDefinitionBindings_needingMove : OrderedSet<org::kermeta::language::structure::ClassDefinitionBinding> init OrderedSet<org::kermeta::language::structure::ClassDefinitionBinding>.new
 							self.ownedClassDefinitionBindings.each{aspect_ownedClassDefinitionBindings | 
 								var equivalent_ownedClassDefinitionBindings : org::kermeta::language::structure::ClassDefinitionBinding
 								equivalent_ownedClassDefinitionBindings := mergedModelElement.ownedClassDefinitionBindings.detect{ merged_ownedClassDefinitionBindings |
@@ -3290,7 +3426,7 @@ package kermeta {
 									aspect_ownedClassDefinitionBindings.similarElementInMergedModel := equivalent_ownedClassDefinitionBindings
 								else
 									// move it in merged model
-									mergedModelElement.ownedClassDefinitionBindings.add(aspect_ownedClassDefinitionBindings)
+									ownedClassDefinitionBindings_needingMove.add(aspect_ownedClassDefinitionBindings)
 									if aspect_ownedClassDefinitionBindings.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedClassDefinitionBindings.asType(Mergeable))
@@ -3298,6 +3434,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedClassDefinitionBindings.addAll(ownedClassDefinitionBindings_needingMove)
+							var usedAdaptationOperators_needingMove : OrderedSet<org::kermeta::language::structure::UseAdaptationOperator> init OrderedSet<org::kermeta::language::structure::UseAdaptationOperator>.new
 							self.usedAdaptationOperators.each{aspect_usedAdaptationOperators | 
 								var equivalent_usedAdaptationOperators : org::kermeta::language::structure::UseAdaptationOperator
 								equivalent_usedAdaptationOperators := mergedModelElement.usedAdaptationOperators.detect{ merged_usedAdaptationOperators |
@@ -3312,7 +3450,7 @@ package kermeta {
 									aspect_usedAdaptationOperators.similarElementInMergedModel := equivalent_usedAdaptationOperators
 								else
 									// move it in merged model
-									mergedModelElement.usedAdaptationOperators.add(aspect_usedAdaptationOperators)
+									usedAdaptationOperators_needingMove.add(aspect_usedAdaptationOperators)
 									if aspect_usedAdaptationOperators.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_usedAdaptationOperators.asType(Mergeable))
@@ -3320,6 +3458,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.usedAdaptationOperators.addAll(usedAdaptationOperators_needingMove)
+							var ownedEnumerationBindings_needingMove : OrderedSet<org::kermeta::language::structure::EnumerationBinding> init OrderedSet<org::kermeta::language::structure::EnumerationBinding>.new
 							self.ownedEnumerationBindings.each{aspect_ownedEnumerationBindings | 
 								var equivalent_ownedEnumerationBindings : org::kermeta::language::structure::EnumerationBinding
 								equivalent_ownedEnumerationBindings := mergedModelElement.ownedEnumerationBindings.detect{ merged_ownedEnumerationBindings |
@@ -3334,7 +3474,7 @@ package kermeta {
 									aspect_ownedEnumerationBindings.similarElementInMergedModel := equivalent_ownedEnumerationBindings
 								else
 									// move it in merged model
-									mergedModelElement.ownedEnumerationBindings.add(aspect_ownedEnumerationBindings)
+									ownedEnumerationBindings_needingMove.add(aspect_ownedEnumerationBindings)
 									if aspect_ownedEnumerationBindings.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedEnumerationBindings.asType(Mergeable))
@@ -3342,6 +3482,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedEnumerationBindings.addAll(ownedEnumerationBindings_needingMove)
 							if self.isAddedForReferenceMerge.isVoid   then
 								// it has some reference (boundModelTypeDefinition) not involved in composition, these aspects elements will need to be passed to mergeReferences function
 								context.elementsNeedingReferenceMerge.add(self)
@@ -3352,6 +3493,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var ownedModelTypeDefinitions_needingMove : OrderedSet<org::kermeta::language::structure::ModelTypeDefinition> init OrderedSet<org::kermeta::language::structure::ModelTypeDefinition>.new
 							self.ownedModelTypeDefinitions.each{aspect_ownedModelTypeDefinitions | 
 								var equivalent_ownedModelTypeDefinitions : org::kermeta::language::structure::ModelTypeDefinition
 								equivalent_ownedModelTypeDefinitions := mergedModelElement.ownedModelTypeDefinitions.detect{ merged_ownedModelTypeDefinitions |
@@ -3366,7 +3508,7 @@ package kermeta {
 									aspect_ownedModelTypeDefinitions.similarElementInMergedModel := equivalent_ownedModelTypeDefinitions
 								else
 									// move it in merged model
-									mergedModelElement.ownedModelTypeDefinitions.add(aspect_ownedModelTypeDefinitions)
+									ownedModelTypeDefinitions_needingMove.add(aspect_ownedModelTypeDefinitions)
 									if aspect_ownedModelTypeDefinitions.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedModelTypeDefinitions.asType(Mergeable))
@@ -3374,6 +3516,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedModelTypeDefinitions.addAll(ownedModelTypeDefinitions_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -3391,6 +3534,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a ClassDefinitionBinding")
+							var ownedPropertyBindings_needingMove : OrderedSet<org::kermeta::language::structure::PropertyBinding> init OrderedSet<org::kermeta::language::structure::PropertyBinding>.new
 							self.ownedPropertyBindings.each{aspect_ownedPropertyBindings | 
 								var equivalent_ownedPropertyBindings : org::kermeta::language::structure::PropertyBinding
 								equivalent_ownedPropertyBindings := mergedModelElement.ownedPropertyBindings.detect{ merged_ownedPropertyBindings |
@@ -3405,7 +3549,7 @@ package kermeta {
 									aspect_ownedPropertyBindings.similarElementInMergedModel := equivalent_ownedPropertyBindings
 								else
 									// move it in merged model
-									mergedModelElement.ownedPropertyBindings.add(aspect_ownedPropertyBindings)
+									ownedPropertyBindings_needingMove.add(aspect_ownedPropertyBindings)
 									if aspect_ownedPropertyBindings.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedPropertyBindings.asType(Mergeable))
@@ -3413,6 +3557,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedPropertyBindings.addAll(ownedPropertyBindings_needingMove)
+							var ownedOperationBindings_needingMove : OrderedSet<org::kermeta::language::structure::OperationBinding> init OrderedSet<org::kermeta::language::structure::OperationBinding>.new
 							self.ownedOperationBindings.each{aspect_ownedOperationBindings | 
 								var equivalent_ownedOperationBindings : org::kermeta::language::structure::OperationBinding
 								equivalent_ownedOperationBindings := mergedModelElement.ownedOperationBindings.detect{ merged_ownedOperationBindings |
@@ -3427,7 +3573,7 @@ package kermeta {
 									aspect_ownedOperationBindings.similarElementInMergedModel := equivalent_ownedOperationBindings
 								else
 									// move it in merged model
-									mergedModelElement.ownedOperationBindings.add(aspect_ownedOperationBindings)
+									ownedOperationBindings_needingMove.add(aspect_ownedOperationBindings)
 									if aspect_ownedOperationBindings.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedOperationBindings.asType(Mergeable))
@@ -3435,6 +3581,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedOperationBindings.addAll(ownedOperationBindings_needingMove)
 							if self.isAddedForReferenceMerge.isVoid   then
 								// it has some reference (source) not involved in composition, these aspects elements will need to be passed to mergeReferences function
 								context.elementsNeedingReferenceMerge.add(self)
@@ -3570,6 +3717,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var ownedUnresolved_needingMove : OrderedSet<org::kermeta::language::structure::UnresolvedReference> init OrderedSet<org::kermeta::language::structure::UnresolvedReference>.new
 							self.ownedUnresolved.each{aspect_ownedUnresolved | 
 								var equivalent_ownedUnresolved : org::kermeta::language::structure::UnresolvedReference
 								equivalent_ownedUnresolved := mergedModelElement.ownedUnresolved.detect{ merged_ownedUnresolved |
@@ -3584,7 +3732,7 @@ package kermeta {
 									aspect_ownedUnresolved.similarElementInMergedModel := equivalent_ownedUnresolved
 								else
 									// move it in merged model
-									mergedModelElement.ownedUnresolved.add(aspect_ownedUnresolved)
+									ownedUnresolved_needingMove.add(aspect_ownedUnresolved)
 									if aspect_ownedUnresolved.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedUnresolved.asType(Mergeable))
@@ -3592,6 +3740,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedUnresolved.addAll(ownedUnresolved_needingMove)
 							if self.isAddedForReferenceMerge.isVoid   then
 								// it has some reference (usedOperator) not involved in composition, these aspects elements will need to be passed to mergeReferences function
 								context.elementsNeedingReferenceMerge.add(self)
@@ -3704,6 +3853,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a ModelElementTypeDefinition")
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -3718,7 +3868,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -3726,6 +3876,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -3792,6 +3943,7 @@ package kermeta {
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var ownedBindings_needingMove : OrderedSet<org::kermeta::language::structure::ModelTypeDefinitionBinding> init OrderedSet<org::kermeta::language::structure::ModelTypeDefinitionBinding>.new
 							self.ownedBindings.each{aspect_ownedBindings | 
 								var equivalent_ownedBindings : org::kermeta::language::structure::ModelTypeDefinitionBinding
 								equivalent_ownedBindings := mergedModelElement.ownedBindings.detect{ merged_ownedBindings |
@@ -3806,7 +3958,7 @@ package kermeta {
 									aspect_ownedBindings.similarElementInMergedModel := equivalent_ownedBindings
 								else
 									// move it in merged model
-									mergedModelElement.ownedBindings.add(aspect_ownedBindings)
+									ownedBindings_needingMove.add(aspect_ownedBindings)
 									if aspect_ownedBindings.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedBindings.asType(Mergeable))
@@ -3814,6 +3966,8 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedBindings.addAll(ownedBindings_needingMove)
+							var ownedTransformations_needingMove : OrderedSet<org::kermeta::language::structure::ModelTransformation> init OrderedSet<org::kermeta::language::structure::ModelTransformation>.new
 							self.ownedTransformations.each{aspect_ownedTransformations | 
 								var equivalent_ownedTransformations : org::kermeta::language::structure::ModelTransformation
 								equivalent_ownedTransformations := mergedModelElement.ownedTransformations.detect{ merged_ownedTransformations |
@@ -3828,7 +3982,7 @@ package kermeta {
 									aspect_ownedTransformations.similarElementInMergedModel := equivalent_ownedTransformations
 								else
 									// move it in merged model
-									mergedModelElement.ownedTransformations.add(aspect_ownedTransformations)
+									ownedTransformations_needingMove.add(aspect_ownedTransformations)
 									if aspect_ownedTransformations.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedTransformations.asType(Mergeable))
@@ -3836,11 +3990,13 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedTransformations.addAll(ownedTransformations_needingMove)
 							if self.isAddedForReferenceMerge.isVoid   then
 								// it has some reference (typeDefinitions) not involved in composition, these aspects elements will need to be passed to mergeReferences function
 								context.elementsNeedingReferenceMerge.add(self)
 								self.isAddedForReferenceMerge := true
 							end
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -3855,7 +4011,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -3863,6 +4019,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -3896,6 +4053,7 @@ package kermeta {
 									mergedModelElement.body.isAddedForReferenceFix := true
 								end
 							end
+							var ownedParameter_needingMove : OrderedSet<org::kermeta::language::structure::Parameter> init OrderedSet<org::kermeta::language::structure::Parameter>.new
 							self.ownedParameter.each{aspect_ownedParameter | 
 								var equivalent_ownedParameter : org::kermeta::language::structure::Parameter
 								equivalent_ownedParameter := mergedModelElement.ownedParameter.detect{ merged_ownedParameter |
@@ -3910,7 +4068,7 @@ package kermeta {
 									aspect_ownedParameter.similarElementInMergedModel := equivalent_ownedParameter
 								else
 									// move it in merged model
-									mergedModelElement.ownedParameter.add(aspect_ownedParameter)
+									ownedParameter_needingMove.add(aspect_ownedParameter)
 									if aspect_ownedParameter.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedParameter.asType(Mergeable))
@@ -3918,6 +4076,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedParameter.addAll(ownedParameter_needingMove)
 							// select value for unary attribute
 							mergedModelElement.isAbstract ?= self.selectUnaryProperty("isAbstract", self.isAbstract, mergedModelElement.isAbstract)
 							// select value for unary attribute
@@ -3939,6 +4098,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a UnresolvedModelTypeDefinition")
+							var containedType_needingMove : OrderedSet<org::kermeta::language::structure::Type> init OrderedSet<org::kermeta::language::structure::Type>.new
 							self.containedType.each{aspect_containedType | 
 								var equivalent_containedType : org::kermeta::language::structure::Type
 								equivalent_containedType := mergedModelElement.containedType.detect{ merged_containedType |
@@ -3953,7 +4113,7 @@ package kermeta {
 									aspect_containedType.similarElementInMergedModel := equivalent_containedType
 								else
 									// move it in merged model
-									mergedModelElement.containedType.add(aspect_containedType)
+									containedType_needingMove.add(aspect_containedType)
 									if aspect_containedType.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_containedType.asType(Mergeable))
@@ -3961,6 +4121,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.containedType.addAll(containedType_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
@@ -3997,6 +4158,7 @@ package kermeta {
 					if (not mergedModelElement.isVoid) then
 						do
 							//stdio.writeln("Merging content of a ModelTypeDefinitionContainer")
+							var ownedModelTypeDefinitions_needingMove : OrderedSet<org::kermeta::language::structure::ModelTypeDefinition> init OrderedSet<org::kermeta::language::structure::ModelTypeDefinition>.new
 							self.ownedModelTypeDefinitions.each{aspect_ownedModelTypeDefinitions | 
 								var equivalent_ownedModelTypeDefinitions : org::kermeta::language::structure::ModelTypeDefinition
 								equivalent_ownedModelTypeDefinitions := mergedModelElement.ownedModelTypeDefinitions.detect{ merged_ownedModelTypeDefinitions |
@@ -4011,7 +4173,7 @@ package kermeta {
 									aspect_ownedModelTypeDefinitions.similarElementInMergedModel := equivalent_ownedModelTypeDefinitions
 								else
 									// move it in merged model
-									mergedModelElement.ownedModelTypeDefinitions.add(aspect_ownedModelTypeDefinitions)
+									ownedModelTypeDefinitions_needingMove.add(aspect_ownedModelTypeDefinitions)
 									if aspect_ownedModelTypeDefinitions.asType(Mergeable).isAddedForReferenceFix.isVoid   then
 										// mark moved element so its references could be fixed
 										context.movedElementsNeedingReferenceFix.add(aspect_ownedModelTypeDefinitions.asType(Mergeable))
@@ -4019,6 +4181,7 @@ package kermeta {
 									end
 								end
 							}
+							mergedModelElement.ownedModelTypeDefinitions.addAll(ownedModelTypeDefinitions_needingMove)
 						rescue (mergeException : org::kermeta::ecore::binarymerger::BinaryMergerException)
 						   context.errors.add(mergeException)
 						end
