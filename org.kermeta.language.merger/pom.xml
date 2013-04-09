@@ -1,0 +1,58 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <artifactId>language.root</artifactId>
+        <groupId>org.kermeta.language</groupId>
+        <version>2</version>
+    </parent>
+
+    <groupId>${parent.groupId}</groupId>
+    <version>${kermeta.version}</version>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>language.merger</artifactId>
+    <packaging>bundle</packaging>
+    <name>Kermeta :: Merger</name>
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.0.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>org.kermeta.language.merger</Export-Package>
+                        <Import-Package>org.osgi.framework</Import-Package>
+                        <Bundle-ClassPath>.</Bundle-ClassPath>
+                        <Bundle-SymbolicName>org.kermeta.language.merger;singleton:=true</Bundle-SymbolicName>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.kermeta.art2</groupId>
+            <artifactId>art2.framework</artifactId>
+            <version>${art2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${parent.groupId}</groupId>
+            <artifactId>language.model</artifactId>
+            <version>${kermeta.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${parent.groupId}</groupId>
+            <artifactId>language.api</artifactId>
+            <version>${kermeta.version}</version>
+        </dependency>
+    </dependencies>
+
+
+</project>

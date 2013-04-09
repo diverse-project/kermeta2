@@ -1,0 +1,23 @@
+/* $Id:$ 
+ * Creation : May 27, 2010
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            ffouquet
+ */
+@mainClass "org::kermeta::kp::kp2pom::Main"
+@mainOperation "convertKP2POM"
+
+package org::kermeta::kp::kp2pom;
+
+require kermeta
+require "platform:/resource/org.apache.maven.pom.model/model/maven.ecore"
+
+using kermeta::language::structure
+
+class Main
+{
+	operation convertKP2POM() : Void is do 
+		var kpmodelURI : String init ""
+	end
+}

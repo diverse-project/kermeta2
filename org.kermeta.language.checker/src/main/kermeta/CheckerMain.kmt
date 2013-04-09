@@ -1,0 +1,38 @@
+/* $Id:$ 
+ * Creation : September 14, 2010
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            jfalcou
+ */
+@mainClass "org::kermeta::language::checker::CheckerMain"
+@mainOperation "check"
+
+
+package org::kermeta::language::checker;
+
+require "platform:/lookup/checkerV2ToBeCompiled/src/kermeta/Checker.kmt"
+require kermeta
+
+using kermeta::language::structure
+
+class CheckerMain
+{
+	operation check() : Void is do 
+		
+		stdio.writeln("-> Main")
+		var mu : ModelingUnit init ModelingUnit.new
+		
+		stdio.writeln(" ModelingUnit : " + mu.toString())
+				
+		var myChecker : Checker init Checker.new
+		
+		stdio.writeln(" Checker : " + myChecker.toString)
+		
+		myChecker.check(mu)
+				
+		stdio.writeln(" check done ...")
+		
+		stdio.writeln("<- Main")
+	end
+}
