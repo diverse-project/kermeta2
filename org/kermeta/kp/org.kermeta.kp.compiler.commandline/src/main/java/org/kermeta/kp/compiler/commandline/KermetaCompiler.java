@@ -809,6 +809,15 @@ public class KermetaCompiler {
 			
 			getSingleThreadExector().shutdown();
 			singleThreadExector = null;
+			// try to finish all the job properly, cannot simply shutdown because 
+			// the diagnostic jobs may have to push more this to the pool
+			while(((ThreadPoolExecutor)getThreadExector()).getActiveCount() > 0){
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					logger.error(e.getMessage(), LOG_MESSAGE_GROUP,e);
+				}}
+		    
 			getThreadExector().shutdown();
 			threadExector = null;
 			logger.doneProgress(getMainProgressGroup()+".kp2bytecode", "End of compilation for " +kpFileURL , LOG_MESSAGE_GROUP);
