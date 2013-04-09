@@ -76,7 +76,8 @@ class BinaryMergerMoveAspectGenerator
 		content.append(additionalRequireDirectives)
 		content.append("\n")
 		content.append("using kermeta::language::structure\n")
-		content.append("using org::kermeta::ecore::binarymerger\n\n")
+		content.append("using org::kermeta::ecore::binarymerger\n")
+		content.append("using kermeta::standard\n\n")
 		
 		content.append(root.binaryMergerMoveAspectKmtPrinter(generatorContext))
 		

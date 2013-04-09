@@ -6,7 +6,7 @@
   	<artifactId>org.kermeta.language.checker</artifactId>
 
     <parent>
-        <artifactId>language.root</artifactId>
+        <artifactId>org.kermeta.language.root</artifactId>
         <groupId>org.kermeta.language</groupId>
         <version>2.0.99-SNAPSHOT</version>
     </parent>
@@ -28,8 +28,8 @@
             <version>${scala.version}</version>
 		</dependency>
 		<dependency>
-            <groupId>org.kermeta.language</groupId>
-            <artifactId>language.framework.scala</artifactId>
+            <groupId>org.kermeta.kermeta1</groupId>
+            <artifactId>org.kermeta.kermeta1.framework.scala</artifactId>
             <version>${framework.scala.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
@@ -146,7 +146,7 @@
 								org.kermeta.diagnostic.model,
 								fr.irisa.triskell.kermeta.model,
 								org.kermeta.language.model,
-								org.kermeta.language.framework.scala,
+								org.kermeta.kermeta1.framework.scala,
 								org.kermeta.language.checker.api
 							</Require-Bundle>
 							<Import-Package>

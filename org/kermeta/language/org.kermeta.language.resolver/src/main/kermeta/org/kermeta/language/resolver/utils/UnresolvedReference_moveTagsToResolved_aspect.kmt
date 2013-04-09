@@ -11,14 +11,16 @@ package org::kermeta::language::structure;
 
 require kermeta
 require "platform:/lookup/org.kermeta.language.model/src/main/ecore/kermeta.ecore"
-
+using kermeta::standard
 /**
  * Move referenced tags (.kTag) to the corresponding resolved model element
  */
 aspect class UnresolvedReference
 {
 	operation moveTagsToResolved(resolvedElement : KermetaModelElement) : Void is do 
-		self.kTag.each{tag|
+		var tagtoMove : OrderedSet<Tag> init OrderedSet<Tag>.new
+		tagtoMove.addAll(self.kTag)
+		tagtoMove.each{tag|
 			tag.object.remove(self)
 			tag.object.add(resolvedElement)
 		}
