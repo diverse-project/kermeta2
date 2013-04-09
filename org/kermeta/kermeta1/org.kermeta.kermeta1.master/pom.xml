@@ -16,10 +16,10 @@
 	<name>org.kermeta.kermeta1.master</name>
 
 	<parent>
-		<artifactId>org.kermeta.language.root</artifactId>
-		<groupId>org.kermeta.language</groupId>
+		<artifactId>org.kermeta.root</artifactId>
+		<groupId>org.kermeta</groupId>
 		<version>2.0.99-SNAPSHOT</version>
-		<relativePath>../../org.kermeta.language.root/pom.xml</relativePath>
+		<relativePath>../org.kermeta.root/pom.xml</relativePath>
 	</parent>
 
 	<modules>		
