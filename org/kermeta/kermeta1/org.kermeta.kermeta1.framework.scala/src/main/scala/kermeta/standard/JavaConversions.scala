@@ -238,7 +238,7 @@ object JavaConversions {
     /**
      * implementation of each that cannot raise the ConcurrentAccess exception because it clone the collection first
      */
-    def safeEach(func: A => Unit): Unit = {
+    def concurrentEach(func: A => Unit): Unit = {
       var clone: ju.List[A] = new ju.ArrayList[A]
       if (value != null) {
         clone.addAll(value)
@@ -636,7 +636,7 @@ object JavaConversions {
     /**
      * implementation of each that cannot raise the ConcurrentAccess exception because it clone the collection first
      */
-    def safeEach(func: A => Unit): Unit = {
+    def concurrentEach(func: A => Unit): Unit = {
       var clone: ju.List[A] = new ju.ArrayList[A]
       if (value != null) {
         clone.addAll(value)
