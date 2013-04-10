@@ -29,7 +29,7 @@
 		</dependency>
 		<dependency>
             <groupId>org.kermeta.kermeta1</groupId>
-            <artifactId>kermeta1.framework.scala</artifactId>
+            <artifactId>org.kermeta.kermeta1.framework.scala</artifactId>
             <version>${framework.scala.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
