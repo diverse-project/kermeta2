@@ -457,10 +457,7 @@ public class KermetaCompiler {
 			// merging importProject
 			logger.progress(getMainProgressGroup()+".kp2bytecode", "Identifing projects to import...", LOG_MESSAGE_GROUP, 1);
 						
-			MergeImportProjectBuilder mergeImportProjectBuilder = new MergeImportProjectBuilder(this, logger);
-			ErrorProneResult<ModelingUnit> mergedImportProjects = mergeImportProjectBuilder.getMergedImportProjects(kp);
-			// TODO find a way to disable previous preresolve if mergedImport has changed
-			// currently the preresolve isn't aware if the import changes !!!
+			
 			
 			
 			logger.progress(getMainProgressGroup()+".kp2bytecode", "Identifing sources to load...", LOG_MESSAGE_GROUP, 1);
@@ -474,7 +471,7 @@ public class KermetaCompiler {
 			
 			
 			// deal with preresolve process
-			logger.debug("Preparing preresolve : "+targetIntermediateFolder+"/preresolve/preresolved.km",LOG_MESSAGE_GROUP);
+			/* logger.debug("Preparing preresolve : "+targetIntermediateFolder+"/preresolve/preresolved.km",LOG_MESSAGE_GROUP);
 			String preResolveCacheUrl = URI.createFileURI(targetIntermediateFolder+"/preresolve/preresolved.km").toString();
 			String preResolveSrcListUrl = URI.createFileURI(targetIntermediateFolder+"/preresolve/srcList.txt").toString();
 			if (dirtyMU != null && !dirtyMU.isEmpty()){
@@ -564,8 +561,88 @@ public class KermetaCompiler {
 			
 				
 			}
+			*/
+			// Merge all but last modified and dirty unit in order to be able to go faster if none have changed since last time
+			logger.debug("Preparing premerge : "+targetIntermediateFolder+"/premerge/premerged.km",LOG_MESSAGE_GROUP);
+			String preMergeCacheUrl = URI.createFileURI(targetIntermediateFolder+"/premerge/premerged.km").toString();
+			String preMergeSrcListUrl = URI.createFileURI(targetIntermediateFolder+"/premerge/srcList.txt").toString();
+			if (dirtyMU != null && !dirtyMU.isEmpty()){
+				logger.info("dirty mode  "+dirtyMU.size()+" dirty modeling units (ie. units being modified by the user)", LOG_MESSAGE_GROUP);
+				for(URL u : dirtyMU.keySet()){
+					logger.devInfo("   dirty file "+u, LOG_MESSAGE_GROUP);
+				}
+			}
+						
+			ArrayList<TracedURL> kpPreMergeSources = collectSourceHelper.getAllButLastModifiedFile(kpSources,dirtyMU);
+			if (collectSourceHelper.getLastModifiedFile(kpSources,dirtyMU) != null){
+				logger.info("Premerge all but : "+collectSourceHelper.getLastModifiedFile(kpSources,dirtyMU).getUrl(),LOG_MESSAGE_GROUP);
+			}
+			else{
+				StringBuilder dirtyUnits = new StringBuilder();
+				for(URL u : dirtyMU.keySet()){
+					dirtyUnits.append(u.toString());
+					dirtyUnits.append(", ");
+				}
+				logger.info("Premerge all but dirty units: "+dirtyUnits,LOG_MESSAGE_GROUP);
+			}
+			ModelingUnit preMergedUnit = null;
+
+			ArrayList<TracedURL> allUrlToMerge = collectSourceHelper.getProjects4GenericMerge(kp);
+			allUrlToMerge.addAll(kpPreMergeSources);
+			if( isCacheUpToDate(allUrlToMerge, preMergeCacheUrl, preMergeSrcListUrl)){
+				logger.info("Reusing  : "+preMergeCacheUrl,LOG_MESSAGE_GROUP);
+				if (runInEclipse) {
+					new KmBinaryMergerImpl4Eclipse();
+				} else {
+					new KmBinaryMergerImpl();
+				}
+				ModelingUnitCacheHelper cacheHelper = new ModelingUnitCacheHelper(logger);
+				preMergedUnit = cacheHelper.getCachedModelingUnit(preMergeCacheUrl);
+			}
+			else
+			{
+				flushProblems(kpPreMergeSources);
+				// deal with importProject separately				
+				MergeImportProjectBuilder mergeImportProjectBuilder = new MergeImportProjectBuilder(this, logger);
+				ErrorProneResult<ModelingUnit> mergedImportProjects = mergeImportProjectBuilder.getMergedImportProjects(kp);
+				// TODO maybe we can have a cache here too in case of complex importProject
+				
+				// sources local to the project
+				logger.progress(getMainProgressGroup()+".kp2bytecode", "PreMerging "+kpPreMergeSources.size()+" sources...", LOG_MESSAGE_GROUP, 1);
+				
+				if (kpPreMergeSources.size() != 0) {
+					List<ModelingUnit> preresolveModelingUnits = collectSourceHelper.getSourceModelingUnits(kp, kpPreMergeSources, dirtyMU);
+					if (mergedImportProjects != null) {
+						// add the importProject as preresolve
+						preresolveModelingUnits.add(0, mergedImportProjects.getResult());
+					}
+					logger.progress(getMainProgressGroup()+".kp2bytecode", "PreMerging " + preresolveModelingUnits.size() + " files...", LOG_MESSAGE_GROUP, 1);
+					ErrorProneResult<ModelingUnit> preMergedUnitWithErrors = mergeModelingUnits(kp, preresolveModelingUnits);
 			
-			// deal with the remaining merge an resolve
+					// Did errors occur during the merge ?
+					if (preMergedUnitWithErrors.getProblems().size() > 0) {
+						errorHandlingHelper.processErrors(preMergedUnitWithErrors, FileHelpers.StringToURL(kpFileURL));
+						if (stopOnError) {
+							this.errorMessage = "Unable to merge the files. Compilation not complete for this project.";
+							logger.logProblem(MessagingSystem.Kind.UserERROR, this.errorMessage, LOG_MESSAGE_GROUP, new FileReference(FileHelpers.StringToURL(kpFileURL)));
+							logger.log(MessagingSystem.Kind.UserERROR, this.errorMessage, LOG_MESSAGE_GROUP);
+							this.hasFailed = true;
+							return preMergedUnitWithErrors.getResult();
+						}
+					}
+					preMergedUnit = preMergedUnitWithErrors.getResult();
+				}
+				if (preMergedUnit != null && !preMergedUnit.getMetamodels().isEmpty()) {
+					URI saveKMURI = URI.createURI(preMergeCacheUrl);
+					preMergedUnit.setName(saveKMURI.lastSegment());
+					new ModelingUnitConverter(true,saveKMURI.toFileString(), logger).saveMu(preMergedUnit, saveKMURI);
+					
+					savePreResolveSrcList(preMergeSrcListUrl,allUrlToMerge);
+				}
+			
+			}
+			
+			// deal with the remaining merge 
 			ArrayList<TracedURL> remainingSources = new ArrayList<TracedURL>();
 			TracedURL lastModifiedFileTracedUrl = collectSourceHelper.getLastModifiedFile(kpSources, dirtyMU);
 			if(lastModifiedFileTracedUrl!= null){
@@ -577,7 +654,7 @@ public class KermetaCompiler {
 			
 			List<ModelingUnit> modelingUnits = collectSourceHelper.getSourceModelingUnits(kp, remainingSources,  dirtyMU);
 	
-			if (modelingUnits.size() == 0 && preResolvedUnit == null) {
+			if (modelingUnits.size() == 0 && preMergedUnit == null) {
 				this.errorMessage = "Kermeta project invalid.  There is no modeling unit to compile.";
 				logger.logProblem(MessagingSystem.Kind.UserERROR, this.errorMessage, LOG_MESSAGE_GROUP, new FileReference(FileHelpers.StringToURL(kpFileURL)));
 				logger.error(this.errorMessage, LOG_MESSAGE_GROUP);
@@ -595,8 +672,8 @@ public class KermetaCompiler {
 				return null;
 			}
 			
-			if(preResolvedUnit!= null){
-				modelingUnits.add(0,preResolvedUnit);
+			if(preMergedUnit!= null){
+				modelingUnits.add(0,preMergedUnit);
 			}
 			if(dirtyMU != null && ! dirtyMU.isEmpty()){
 				logger.info("adding  "+dirtyMU.size()+" dirty modeling units (ie. unit being modified by the user)", LOG_MESSAGE_GROUP);
@@ -605,7 +682,7 @@ public class KermetaCompiler {
 				}
 				modelingUnits.addAll(dirtyMU.values());
 			}
-			
+			preMergedUnit = null; // at this point we don't need to keep this variable anymore so gc can collect it (refactoring in a separate method ?)
 			logger.progress(getMainProgressGroup()+".kp2bytecode", "Merging " + modelingUnits.size() + " files...", LOG_MESSAGE_GROUP, 1);
 			ErrorProneResult<ModelingUnit> mergedUnit = mergeModelingUnits(kp, modelingUnits);
 	
@@ -666,13 +743,14 @@ public class KermetaCompiler {
 			// workaround cache problem in compiler
 			kermeta.standard.JavaConversions.cleanCache();
 			
+			// -------------- RESOLVING -----------------------
 			//MODELTYPE ADDITION
 			mergedUnit.getResult().setCurrentMetamodelByName(kp.getMetamodelName());
 			
 			logger.progress(getMainProgressGroup()+".kp2bytecode", "Resolving...", LOG_MESSAGE_GROUP, 1);
 			logger.info("Resolving...",LOG_MESSAGE_GROUP);
 			ModelingUnit resolvedUnit = resolveModelingUnit(mergedUnit.getResult(), kpFileURL, false);
-	
+			mergedUnit = null; // at this point we don't need this variable anymore so gc can collect it (refactoring in separate method required ?)
 			if (resolvedUnit == null) {
 				this.errorMessage = "The resolved result is not valid. Compilation not complete for this project.";
 				logger.logProblem(MessagingSystem.Kind.UserERROR, this.errorMessage, LOG_MESSAGE_GROUP, new FileReference(FileHelpers.StringToURL(kpFileURL)));
@@ -770,6 +848,7 @@ public class KermetaCompiler {
 				logger.debug("stopping after phase "+PHASE_GENERATE_LEGACY_SOURCE_BYTECODE, LOG_MESSAGE_GROUP);
 				return resolvedUnit;
 			}
+			// -------------- Generating scala -----------------------
 			// deal with km to scala
 			// compiler require a file location not an URL
 			logger.progress(getMainProgressGroup()+".kp2bytecode", "Generating scala...", LOG_MESSAGE_GROUP, 1);
@@ -794,6 +873,7 @@ public class KermetaCompiler {
 
 			logger.progress(getMainProgressGroup()+".kp2bytecode", "Generating bytecode...", LOG_MESSAGE_GROUP, 1);
 			
+			// -------------- Generating scala bytecode -----------------------
 			// deal with scala to bytecode
 			int result =scala2bytecode(fullBinaryDependencyClassPath);
 			if(result != 0){
@@ -1367,26 +1447,32 @@ public class KermetaCompiler {
 		return 8;
 	}
 	
-	
-	protected boolean isPreresolveUpToDate(ArrayList<TracedURL> kpPreResolveSources, String preResolveCacheUrl, String preResolveSrcListUrl){
+	/**
+	 * function that allow to know if the previously processed file, is still valid with the new sources
+	 * @param newSourcesToProcess
+	 * @param previouslyProcessedCacheUrl
+	 * @param previouslyProcessedSrcListUrl
+	 * @return
+	 */
+	protected boolean isCacheUpToDate(ArrayList<TracedURL> newSourcesToProcess, String previouslyProcessedCacheUrl, String previouslyProcessedSrcListUrl){
 		try {
-			File preResolveSrcListfile = new java.io.File(FileHelpers.StringToURI(preResolveSrcListUrl));
-			File preResolveCachefile = new java.io.File(FileHelpers.StringToURI(preResolveCacheUrl));
+			File preResolveSrcListfile = new java.io.File(FileHelpers.StringToURI(previouslyProcessedSrcListUrl));
+			File preResolveCachefile = new java.io.File(FileHelpers.StringToURI(previouslyProcessedCacheUrl));
 			if(preResolveSrcListfile.exists() && preResolveCachefile.exists()){
 				String olderOutFile;
 				if(preResolveSrcListfile.lastModified()<preResolveCachefile.lastModified()){
-					olderOutFile=preResolveSrcListUrl;					
+					olderOutFile=previouslyProcessedSrcListUrl;					
 				}
 				else{
-					olderOutFile=preResolveCacheUrl;	
+					olderOutFile=previouslyProcessedCacheUrl;	
 				}
 				ModelingUnitCacheHelper cacheHelper = new ModelingUnitCacheHelper(logger);
-				ArrayList<String> inputfilesUrls = readPreviousPreResolveSrcList(preResolveSrcListUrl);
+				ArrayList<String> inputfilesUrls = readPreviousPreResolveSrcList(previouslyProcessedSrcListUrl);
 				// if this list is the same as the previous one
-				if(inputfilesUrls.size() != kpPreResolveSources.size()){
+				if(inputfilesUrls.size() != newSourcesToProcess.size()){
 					return false;
 				}
-				for(TracedURL tracedUrl: kpPreResolveSources){
+				for(TracedURL tracedUrl: newSourcesToProcess){
 					if(!inputfilesUrls.contains(tracedUrl.getUrl().toString())){
 						logger.debug("cannot reuse preresolved due to unmatched source for "+tracedUrl.getUrl(), LOG_MESSAGE_GROUP);
 						return false;
