@@ -180,12 +180,19 @@ object ReflexivityLoader {
    def qualifiedName(enumdef: org.kermeta.language.structure.Enumeration): java.lang.String = {
       return qualifiedName(enumdef.eContainer.asInstanceOf[org.kermeta.language.structure.Package]) + "." + enumdef.getName
    }
-   def qualifiedName(pack: org.kermeta.language.structure.Package): java.lang.String = {
-      if (pack.getNestingPackage != null) {
-         return qualifiedName(pack.getNestingPackage) + "." + pack.getName
-      }
-      return pack.getName;
-   }
+   def qualifiedName(pack:  org.kermeta.language.structure.Package):java.lang.String = {
+        val buffer : StringBuilder = new StringBuilder
+        qualifiedName(pack, buffer)
+        return buffer.toString;
+    }
+    /** internal builder for efficient build of the name */
+    def qualifiedName(pack:  org.kermeta.language.structure.Package, buffer : StringBuilder) {
+        if (pack.getNestingPackage !=null){
+            qualifiedName(pack.getNestingPackage, buffer)
+            buffer.append(".")
+        }
+        buffer.append(pack.getName);
+    }
 
    def loadKmModel(uri: String): TreeIterator[EObject] = {
       var rs: ResourceSetImpl = new ResourceSetImpl();

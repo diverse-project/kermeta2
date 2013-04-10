@@ -71,30 +71,37 @@ object ReflexivityLoader {
         return qualifiedName(classdef.eContainer.asInstanceOf[ fr.irisa.triskell.kermeta.language.structure.Package])  + "." + classdef.getName
     }
     def qualifiedName(pack:  fr.irisa.triskell.kermeta.language.structure.Package):java.lang.String = {
+        val buffer : StringBuilder = new StringBuilder
+        qualifiedName(pack, buffer)
+        return buffer.toString;
+    }
+    
+    def qualifiedName(pack:  fr.irisa.triskell.kermeta.language.structure.Package, buffer : StringBuilder) {
         if (pack.getNestingPackage !=null){
-            return  qualifiedName(pack.getNestingPackage) + "." + pack.getName
+            qualifiedName(pack.getNestingPackage, buffer)
+            buffer.append(".")
         }
-        return pack.getName;
+        buffer.append(pack.getName);
     }
 
 
     def loadKmModel( uri: String):TreeIterator[EObject] ={
-        var rs : ResourceSetImpl = new ResourceSetImpl();
+        val rs : ResourceSetImpl = new ResourceSetImpl();
         rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*",new XMIResourceFactoryImpl());
         rs.getPackageRegistry().put(StructurePackage.eNS_URI, StructurePackage.eINSTANCE);
         return  rs.getResource(URI.createURI(uri),true).getAllContents();
     }
     def loadKmModelRoot( uri: String):ModelingUnit ={
-        var rs : ResourceSetImpl = new ResourceSetImpl();
+        val rs : ResourceSetImpl = new ResourceSetImpl();
         rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*",new XMIResourceFactoryImpl());
         rs.getPackageRegistry().put(StructurePackage.eNS_URI, StructurePackage.eINSTANCE);
         return  rs.getResource(URI.createURI(uri),true).getContents.get(0).asInstanceOf[ModelingUnit];
     }
     
     def copyFile(in : File, out  : File) :Unit = {
-        var fis : FileInputStream  = new FileInputStream(in);
-        var fos : FileOutputStream = new FileOutputStream(out);
-        var     buf :Array[Byte]  = new Array[Byte](1024);
+        val fis : FileInputStream  = new FileInputStream(in);
+        val fos : FileOutputStream = new FileOutputStream(out);
+        val     buf :Array[Byte]  = new Array[Byte](1024);
         var i :Int= fis.read(buf);
         while (i != -1) {
             fos.write(buf, 0, i);
