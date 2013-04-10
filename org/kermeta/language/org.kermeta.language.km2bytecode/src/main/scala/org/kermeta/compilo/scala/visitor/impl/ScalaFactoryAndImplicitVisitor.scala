@@ -78,7 +78,7 @@ class ScalaFactoryAndImplicitVisitor(compilerConfiguration: CompilerConfiguratio
       }
       res.append("      _root_.org.eclipse.emf.ecore.EPackage.Registry.INSTANCE.put(_root_." + Util.protectScalaKeyword(packName) + "." + packNameUpper + "Package.eNS_URI, pack)\n")
       res.append("      k2.persistence.EcorePackages.getPacks().put(_root_." + Util.protectScalaKeyword(packName) + "." + packNameUpper + "Package.eNS_URI, pack)\n")
-      res.append("      " + impName + ".init\n    }\n")
+      res.append("      _root_." + impName + ".init\n    }\n")
       return res.toString
     } else {
       res.append("\n    {\n")
