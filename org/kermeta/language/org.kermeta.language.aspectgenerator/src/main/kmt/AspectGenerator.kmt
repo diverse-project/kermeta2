@@ -1,0 +1,54 @@
+using kermeta::standard::*
+using kermeta::io::StdIO => stdio
+
+using kermeta::emfpersistence::*
+using ecore_aspectgenerator^ecore::*
+using ecore_aspectgenerator^ecore_aspectgenerator::Context
+
+package org::kermeta::language::aspectgenerator{
+	class AspectGenerator
+	{				
+		@main ""
+	    operation aspectGenerator(pathFolder : String, ecoreFile : String) : Void is do 
+	       
+	        var inputPackages	: Collection[EPackage] init loadEcoreModel(ecoreFile)
+	        var context : Context := Context.new
+	        
+	        //context.initialize("platform:/resource/org.kermeta.kp.loader.ecore/target/result")
+	        context.initialize(pathFolder)
+	        inputPackages.each{p | p.generateAspect(context)}
+	    end
+	    
+	        
+		operation loadEcoreModel(ecoreFile : String) : Collection[EPackage] is do             
+			var repository : ResourceSet init ResourceSet.new 
+			/*var resource : Resource init repository.createResource("platform:/resource/org.kermeta.kp.loader.ecore/src/test/fuml.ecore",
+																	"platform:/resource/org.kermeta.kp.loader.ecore/src/main/ecore/Ecore.ecore")*/
+			var resource : Resource init repository.createResource(ecoreFile, "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore")
+			
+			resource.load(void)      
+			result := OrderedSet[EPackage].new
+			resource.getContents.each{next |
+				if (next.isInstanceOf(EPackage)) then                 
+					result.add(next.asType(EPackage))
+				end
+			}
+			
+			/* 
+			 * If result is not a NULL value
+			 * Check if the EPackage is the first node
+			 * if not the first go to the first node of the Ecore Metamodel
+			 */ 
+			/*if not result.isVoid then 
+				// from var finish : Boolean init (result.eSuperPackage.equals(void))
+				from var first : Boolean init result.eSuperPackage == void
+				until first
+				loop 
+					result := result.eSuperPackage.asType(EPackage)
+					first := result.eSuperPackage == void
+				end 
+			end*/
+			
+		end			
+	}
+}

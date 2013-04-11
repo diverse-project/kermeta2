@@ -1,0 +1,265 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>org.kermeta.language.root</artifactId>
+        <groupId>org.kermeta.language</groupId>
+        <version>2.0.99-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>org.kermeta.language.aspectgenerator</artifactId>
+    <packaging>jar</packaging>
+    <name>language.aspectgenerator :: a generator of aspect view from an ecore file</name>
+
+    <dependencies>   
+    	 <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>org.kermeta.language.model</artifactId>
+            <version>${kermeta.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>   
+    	 <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>org.kermeta.language.library.standard</artifactId>
+            <version>${kermeta.version}</version>
+        </dependency>
+    </dependencies>
+    
+    <build>
+		<resources>
+		    <resource>
+		      <directory>${project.build.directory}/resources</directory>
+			</resource>
+		</resources>
+        <plugins>
+            <!-- Kermeta Compiler plugin -->
+            <plugin>
+                <groupId>org.kermeta.kp</groupId>
+                <artifactId>org.kermeta.kp.compiler.mavenplugin</artifactId>
+                <version>2.0.99-SNAPSHOT</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <kp>project.kp</kp>
+                            <resourceOutputDirectory>${project.build.directory}/resources</resourceOutputDirectory>
+                            <targetGroupId>${project.groupId}</targetGroupId>
+                            <targetArtifactId>${project.artifactId}</targetArtifactId>
+                            <checkingEnabled>true</checkingEnabled>
+                            <continueOnError>false</continueOnError>
+                            <useDefaultClasspath>true</useDefaultClasspath>
+                            <intermediateFilesRequired>true</intermediateFilesRequired>
+                            <stopAfterPhase>GENERATE_SCALA</stopAfterPhase>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin> 
+            <!-- Add generated source to build cycle -->
+	      <plugin>
+	        <groupId>org.codehaus.mojo</groupId>
+	        <artifactId>build-helper-maven-plugin</artifactId>
+	        <version>1.7</version>
+	        <executions>
+	          <execution>
+	            <id>add-source</id>
+	            <phase>generate-sources</phase>
+	            <goals>
+	              <goal>add-source</goal>
+	            </goals>
+	            <configuration>
+	              <sources>
+	                <source>${project.build.directory}/scala</source>
+	              </sources>
+	            </configuration>
+	          </execution>
+	        </executions>
+	      </plugin>
+             
+      		<!-- package into a jar for OSGI -->
+      		<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-jar-plugin</artifactId>
+		        <version>2.3.2</version>		        
+		        <configuration>
+		          <archive>
+		            <manifestEntries>
+			            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${project.name}</Bundle-Name>
+                        <Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
+						<Bundle-Version>${bundle.version}</Bundle-Version>						
+						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+                        <Bundle-ClassPath>.</Bundle-ClassPath>
+                        <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+                        <Export-Package>
+			org.kermeta.language.aspectgenerator,
+			ecore_aspectgenerator.org.kermeta.language.aspectgenerator,
+			ecore_aspectgeneratorrunner,		
+			ecore_aspectgeneratorrunner.org.kermeta.language.aspectgenerator
+                        </Export-Package>
+                        <Require-Bundle>
+            org.scala-ide.scala.library,
+            org.kermeta.language.model,
+            org.kermeta.language.library.core,
+            org.kermeta.language.library.standard,             
+			org.kermeta.utils.systemservices.eclipse,           
+			org.kermeta.utils.systemservices.api
+                        </Require-Bundle>
+                        <Import-Package>
+            org.eclipse.emf.common.notify,
+			org.eclipse.emf.common.util,
+			org.eclipse.emf.ecore,
+			org.eclipse.emf.ecore.impl,
+			org.eclipse.emf.ecore.resource,
+			org.eclipse.emf.ecore.util,
+			org.eclipse.emf.ecore.xmi,
+			org.eclipse.emf.ecore.xmi.impl,
+			org.osgi.framework;version="[1.5,2)",
+			org.kermeta.language.structure,
+			org.kermeta.language.behavior,
+			org.kermeta.language.structure.impl,
+			org.kermeta.language.behavior.impl,
+			org.kermeta.language.util
+                        </Import-Package>
+		            </manifestEntries>		            
+		          </archive>
+		        </configuration>
+      		</plugin>
+       		<!-- <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.3.5</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                    	<Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
+		            	<Bundle-Name>${project.name}</Bundle-Name>
+		            	<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
+						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+		            	<Bundle-ClassPath>.</Bundle-ClassPath>
+						<Bundle-Version>${bundle.version}</Bundle-Version>
+              -->          <!-- Dependency used for compiling all the bundle (with dependency to org.eclipse.core.* -->
+             <!--        	<Require-Bundle>
+                    		org.kermeta.language.library.core,
+                    		org.kermeta.language.library.standard,
+                    		org.kermeta.utils.systemservices
+		            	</Require-Bundle>
+		          -->  
+		            	<!-- note: imports k2 to workaround problem about loading reflexivity.km
+		            	     and reexport it to allow an external plugin (ui for ex) to set the messagingsystem of stdio -->
+                  <!--      <Export-Package>org.kermeta.language.aspectgenerator.*,
+                        	ecore_aspectgenerator.*,
+		            		ecore_aspectgeneratorrunner.*,
+		            		k2.utils.*,
+		            		k2.exceptions.*,
+		            		k2.io.*,
+		            		k2.persistence.*,
+		            		k2.standard.*,
+		            		org.k2.compilo.scala.loader.*,
+		            		org.k2.console.*
+		            	</Export-Package>
+		            	<Private-Package>
+		            		ScalaImplicit.ecore_aspectgenerator.*,
+		            		scalaUtil
+		            	</Private-Package>
+		        -->   	<!--
+		              		specify the packages that should be imported to correctly build
+		              		the bundle (i.e <packaging>bundle<packaging> ".*" to also include
+		              		sub packages use the ! for avoiding to import some packages that
+		              		are already there with the Require-Bundle
+			            -->
+		          <!--   	<Import-Package>
+		            	</Import-Package>		            
+                    </instructions>
+                </configuration>
+            </plugin>-->
+            <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-eclipse-plugin</artifactId>
+			    <version>2.8</version>
+			    <!-- see http://maven.apache.org/plugins/maven-eclipse-plugin/eclipse-mojo.html for more information -->
+			    <configuration>
+			      <downloadSources>true</downloadSources>
+			      <downloadJavadocs>true</downloadJavadocs>
+			      <projectNameTemplate>org.kermeta.[artifactId]</projectNameTemplate>
+			      <projectnatures>
+			        <projectnature>org.kermeta.language.texteditor.eclipse.nature.KermetaNatureID</projectnature>
+			        <projectnature>org.scala-ide.sdt.core.scalanature</projectnature>
+			        <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+			      </projectnatures>
+			      <buildcommands>
+			        <buildcommand>org.scala-ide.sdt.core.scalabuilder</buildcommand>
+			      </buildcommands>
+			      <classpathContainers>
+			        <classpathContainer>org.scala-ide.sdt.launching.SCALA_CONTAINER</classpathContainer>
+			        <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+			      </classpathContainers>
+			      <excludes>
+			        <exclude>org.scala-lang:scala-library</exclude>
+			        <!-- <exclude>org.scala-lang:scala-compiler</exclude> -->
+			      </excludes>
+			      <sourceIncludes>
+			        <sourceInclude>**/*.scala</sourceInclude>
+			        <sourceInclude>**/*.java</sourceInclude>
+			      </sourceIncludes>
+			      <useProjectReferences>false</useProjectReferences>
+			    </configuration>
+			</plugin>
+			<!-- make sure there is enough memory for scala compiler -->
+            <plugin>
+		        <groupId>org.scala-tools</groupId>
+		        <artifactId>maven-scala-plugin</artifactId>
+		        <configuration>
+		          <jvmArgs>
+		            <jvmArg>-Xss1m</jvmArg>
+		            <jvmArg>-Xmx1024m</jvmArg>
+		          </jvmArgs>
+		        </configuration>
+			</plugin>
+        </plugins>
+        
+        <pluginManagement>
+        	<plugins>
+        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        		<plugin>
+        			<groupId>org.eclipse.m2e</groupId>
+        			<artifactId>lifecycle-mapping</artifactId>
+        			<version>1.0.0</version>
+        			<configuration>
+        				<lifecycleMappingMetadata>
+        					<pluginExecutions>
+        						<pluginExecution>
+        							<pluginExecutionFilter>
+        								<groupId>
+        									org.kermeta.kp
+        								</groupId>
+        								<artifactId>
+        									kp.compiler.mavenplugin
+        								</artifactId>
+        								<versionRange>
+        									[2.0.99-SNAPSHOT,)
+        								</versionRange>
+        								<goals>
+        									<goal>generate</goal>
+        								</goals>
+        							</pluginExecutionFilter>
+        							<action>
+        								<ignore></ignore>
+        								<!-- <execute></execute> -->
+        							</action>
+        						</pluginExecution>
+        					</pluginExecutions>
+        				</lifecycleMappingMetadata>
+        			</configuration>
+        		</plugin>
+        	</plugins>
+        </pluginManagement>
+    </build>
+</project>
+

@@ -1,0 +1,69 @@
+using kermeta::standard::*
+using kermeta::io::StdIO => stdio
+
+using ecore_aspectgenerator^ecore::*
+
+package org::kermeta::language::aspectgenerator{
+	class Context
+	{
+	
+		attribute fileName						: String
+		attribute kmtContent 					: StringBuffer
+		attribute packageCollection				: Collection[String]
+		attribute counter 						: Integer		
+		reference currentPackage 				: EPackage
+		
+		operation initialize( folderLocation : String ) : Void is do
+			counter := 0
+			//fileName := "platform:/resource/org.kermeta.kp.loader.ecore/target/result"			
+			fileName := folderLocation
+			//projectFolder := folderLocation
+			
+			kmtContent := StringBuffer.new
+			packageCollection := OrderedSet[String].new
+		end	
+		
+		operation addTab() : Void is do
+			counter := counter + 1
+		end
+		
+		operation deleteTab() : Void is do
+			if (counter > 0) then
+				counter := counter - 1
+			end
+		end
+		
+		operation counterTab(iCounter : Integer) : String is do
+			result := ""
+			from var i : Integer init 1
+			until
+			i == iCounter
+			loop
+				result := result + "\t"
+				i := i + 1
+			end
+		end
+		
+		operation initKmtFile () : String is do
+			result := "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
+		end 
+		
+		operation finishKmtFile() : String is do
+			result := ""
+			from var c : Integer init counter
+			until
+			c == 0
+			loop
+				from var i : Integer init 1
+				until
+				i == c
+				loop
+					result := result + "\t"
+					i := i + 1
+				end
+				result := result + "}\n"
+				c := c - 1
+			end
+		end
+	}
+}

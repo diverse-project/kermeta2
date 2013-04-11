@@ -1,0 +1,16 @@
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/language.library.standard/2.0.99-SNAPSHOT"
+resource ecore_model ="platform:/plugin/org.eclipse.emf.ecore" alternative "mvn:org.kermeta.emf/emf.lib/LATEST"
+
+
+importProject library_standard
+project ecore_aspectgenerator {
+	mainClass "ecore_aspectgenerator^org::kermeta::language::aspectgenerator::AspectGenerator"
+	mainOperation "aspectGenerator"
+	
+	import "${project.baseUri}/src/main/kmt/Context.kmt"
+	import "${project.baseUri}/src/main/kmt/AspectGenerator.kmt"
+	import "${project.baseUri}/src/main/kmt/GenerateAspect_Ecore_Aspect.kmt"
+	import "${ecore_model.baseUri}/model/Ecore.ecore" using EMFBytecode(ecore_model) {
+		packageEquivalence "ecore" = "org.eclipse.emf.ecore"
+	}
+}

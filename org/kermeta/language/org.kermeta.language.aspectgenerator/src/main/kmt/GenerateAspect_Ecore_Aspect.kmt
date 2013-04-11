@@ -1,0 +1,78 @@
+using kermeta::standard::*
+using org::kermeta::language::aspectgenerator::Context
+using kermeta::io::StdIO => stdio
+using kermeta::io::FileIO => FileIO
+
+package ecore{
+	aspect class EPackage
+	{
+		operation generateAspect(context : Context) : Void is do 
+			var file 				: StringBuffer init StringBuffer.new
+			var kmtFileGenerated 	: StringBuffer init StringBuffer.new
+			
+			// add of the current package for the descendant visibility
+			context.packageCollection.add(self.name)
+			
+			file.append(context.fileName)
+			
+			//display into the kmt file
+			context.addTab
+			
+			// management path of the generated kermeta file
+			do
+				var iCounter : Integer init 1
+				kmtFileGenerated.append(context.initKmtFile)
+				context.packageCollection.each { pc |
+					kmtFileGenerated.append(context.counterTab(iCounter) + "package " + pc + " {\n\n")
+					file.append("/" + pc)
+					iCounter := iCounter + 1}
+			end
+			
+			// check if it does not exist subPackages
+			self.eSubpackages.each{ p | p.generateAspect(context)}
+			context.currentPackage := self
+			
+			// check if this package owns classes - Creation of one kermeta file if classes exist
+			if(self.eClassifiers.exists{c | c.isInstanceOf(EClass)}) then
+				file.append("_aspect.kmt")
+				context.kmtContent.append(kmtFileGenerated.toString)
+				self.eClassifiers.each{ c | 
+					if (c.isInstanceOf(EClass)) then
+						c.asType(EClass).generateAspect(context)
+					end}
+			context.kmtContent.append(context.finishKmtFile)
+			//stdio.writeln("FileName : " + file + "\n" + context.kmtContent.toString)
+			
+			// Creation of the kermeta file
+			FileIO.writeTextFile((file.toString).toURI, context.kmtContent.toString)
+			
+			// reinit the kermeta file
+			context.kmtContent := StringBuffer.new
+			end
+			
+			//delete for the brothers visibility
+			context.packageCollection.remove(self.name)
+			
+			context.deleteTab
+		end
+	}
+	
+	aspect class EClass
+	{
+		method generateAspect(context : Context) : Void is do
+			context.addTab
+			
+			
+			context.kmtContent.append(context.counterTab(context.counter))
+				if (self.~abstract) then
+					context.kmtContent.append("aspect abstract class ")
+				else
+					context.kmtContent.append("aspect class ")
+				end
+			context.kmtContent.append(self.name + " {\n" + context.counterTab(context.counter) + " }\n\n")
+			
+			
+			context.deleteTab
+		end
+	}
+}

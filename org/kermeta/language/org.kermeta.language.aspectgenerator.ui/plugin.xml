@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.kermeta.language.aspectgenerator.ui.contribution1">
+         <menu
+               label="GenerateAspectFromEcore"
+               path="additions"
+               id="org.kermeta.language.aspectgenerator.ui.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="GenerateAspectKmtProjectFromEcore"
+               class="org.kermeta.language.aspectgenerator.ui.popup.actions.GenerateKmtAspect"
+               menubarPath="org.kermeta.language.aspectgenerator.ui.menu1/group1"
+               enablesFor="1"
+               id="org.kermeta.language.aspectgenerator.ui.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
