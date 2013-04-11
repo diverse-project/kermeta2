@@ -470,6 +470,15 @@ class RichCharacter(value:java.lang.Character)  extends RichValueType with EObje
   
   //end generated
 	
+	// from Java
+	def reverseBytes() : java.lang.Character = java.lang.Character.reverseBytes(value)
+	
+	def toLowerCase() : java.lang.Character = java.lang.Character.toLowerCase(value)
+	def toUpperCase() : java.lang.Character = java.lang.Character.toUpperCase(value)
+	
+	// end from Java
+	
+	
 	def ktoChars(arg0:java.lang.Integer,arg1:KermetaSequence[java.lang.Character],arg2:java.lang.Integer):java.lang.Integer={
 	  val temp = new Array[Char](arg1.size)
 	  val result = java.lang.Character.toChars(arg0,temp,arg2)

@@ -1563,22 +1563,7 @@ class StringBuffer {
 @CompilerIgnore "true"
 @ScalaCompilerName "k2.standard.Character"
 class Character {        
-		/*@CompilerIgnore "true"
-         operation isJavaIdentifierStart(arg0:Character) : Boolean is do
-
-          end
-        @CompilerIgnore "true"
-         operation isJavaIdentifierStart(arg0:Integer) : Boolean is do
-
-          end
-        @CompilerIgnore "true"
-         operation isJavaIdentifierPart(arg0:Character) : Boolean is do
-
-          end
-        @CompilerIgnore "true"
-         operation isJavaIdentifierPart(arg0:Integer) : Boolean is do
-
-          end*/
+		
         @CompilerIgnore "true"
          operation equals(arg0:Object) : Boolean is do
 
@@ -1588,15 +1573,11 @@ class Character {
 
           end
         @CompilerIgnore "true"
-         operation toString(arg0:Character) : String is do
-
-          end
-        @CompilerIgnore "true"
          operation hashCode() : Integer is do
 
           end
         @CompilerIgnore "true"
-         operation reverseBytes(arg0:Character) : Character is do
+         operation reverseBytes() : Character is do
 
           end
         /*@CompilerIgnore "true"
@@ -1652,21 +1633,14 @@ class Character {
 
           end
         @CompilerIgnore "true"
-         operation toLowerCase(arg0:Character) : Character is do
+         operation toLowerCase() : Character is do
 
           end
-        /*@CompilerIgnore "true"
-         operation toLowerCase(arg0:Integer) : Integer is do
-
-          end*/
         @CompilerIgnore "true"
-         operation toUpperCase(arg0:Character) : Character is do
+         operation toUpperCase() : Character is do
 
           end
-        /*@CompilerIgnore "true"
-         operation toUpperCase(arg0:Integer) : Integer is do
-
-          end*/
+        
         @CompilerIgnore "true"
          operation getType(arg0:Character) : Integer is do
 
