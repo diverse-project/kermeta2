@@ -437,7 +437,7 @@ public class KPBuilder {
 		finally{
 			Activator.getDefault().getMessaggingSystem().doneProgress(getProgressGroup(), "kpFileURL", this.getClass().toString());
 		}
-		if (isBuildNeeded && result == null) {
+		if (isBuildNeeded && (result == null || compiler.hasFailed)) {
 			return false;
 		}
 		else return true;

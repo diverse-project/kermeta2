@@ -111,7 +111,7 @@ public class KermetaBuilder extends org.kermeta.language.builder.api.Builder{
 						kpBuilders.get(kpIdentifier).runKP(mainClass, mainOperation, params, monitor);						
 					}
 					else{
-						Activator.getDefault().getMessaggingSystem4Runner(kpIdentifier).logProblem(MessagingSystem.Kind.UserERROR, "Cannot run. The project has build error\n ", KermetaBuilder.LOG_MESSAGE_GROUP, new FileReference(FileHelpers.StringToURL(kpBuilders.get(kpIdentifier).getKpFileURL())));
+						Activator.getDefault().getMessaggingSystem4Runner(kpIdentifier).error( kpIdentifier+ " cannot run. The project has build error\nPlease have a look in the \"Problem view\", the \"Error log view\" and the \"K2 builder console\" for more details.", KermetaBuilder.LOG_MESSAGE_GROUP);
 					}
 					
 				} catch (Exception e) {
