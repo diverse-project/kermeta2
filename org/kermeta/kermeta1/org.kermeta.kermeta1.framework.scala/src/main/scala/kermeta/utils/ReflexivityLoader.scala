@@ -24,8 +24,7 @@ object ReflexivityLoader {
     def isInit :Boolean = _isInit
      def isInit_=(value: Boolean ) = {_isInit = value};
 
-
-    var classdefs :java.util.List[ClassDefinition]=new java.util.ArrayList[ClassDefinition]()
+    var classdefsTable : java.util.Hashtable[String, ClassDefinition] = new java.util.Hashtable[String, ClassDefinition]
     
     var prefix : String = ""
     def pref_=(arg: String){prefix = arg;isInit=false}
@@ -41,7 +40,7 @@ object ReflexivityLoader {
         import scala.collection.JavaConversions._
         var classQualifiedName1 = classQualifiedName.replace("_root_.","")
         if (!isInit){
-          classdefs.clear();
+          classdefsTable.clear();
           var c: java.lang.Class[_] = null
           if (bundleContext== null)
             c= this.getClass()
@@ -53,18 +52,12 @@ object ReflexivityLoader {
           }
           this.loadKmModel(c.getClassLoader.getResource(prefix +"Reflexivity.km").toURI().toString()).foreach(e=>
                 if (e.isInstanceOf[ClassDefinition])
-                    classdefs .add(e.asInstanceOf[ClassDefinition])
+                    classdefsTable.put(qualifiedName(e.asInstanceOf[ClassDefinition]), e.asInstanceOf[ClassDefinition]) 
             )
             //println("init reflexive layer")
             isInit= true
         }
-        var selectedclassdefs = classdefs.filter(e=> qualifiedName(e) .equals(classQualifiedName1))
-        
-        if (selectedclassdefs.size>0){
-            return selectedclassdefs.get(0);
-        }
-        else
-            return null;
+        return classdefsTable.get(classQualifiedName1)        
     }
 
     def qualifiedName(classdef : ClassDefinition):java.lang.String = {

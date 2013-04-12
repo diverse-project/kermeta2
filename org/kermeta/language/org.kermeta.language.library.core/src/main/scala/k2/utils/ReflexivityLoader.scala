@@ -88,9 +88,9 @@ object ReflexivityLoader {
    def isInit: Boolean = _isInit
    def isInit_=(value: Boolean) = { _isInit = value };
 
-   var classdefs: java.util.List[ClassDefinition] = new java.util.ArrayList[ClassDefinition]()
-   var enumdefs: java.util.List[org.kermeta.language.structure.Enumeration] = new java.util.ArrayList[org.kermeta.language.structure.Enumeration]()
-
+   var classdefsTable : java.util.Hashtable[String, ClassDefinition] = new java.util.Hashtable[String, ClassDefinition]
+   var enumdefsTable: java.util.Hashtable[String,org.kermeta.language.structure.Enumeration] = new java.util.Hashtable[String, org.kermeta.language.structure.Enumeration]()
+   
    var prefix: String = ""
    def pref_=(arg: String) { prefix = arg; isInit = false }
 
@@ -104,7 +104,8 @@ object ReflexivityLoader {
    def initReflexivityLoader() {
       import scala.collection.JavaConversions._
       if (!isInit) {
-         classdefs.clear();
+         classdefsTable.clear();
+         enumdefsTable.clear();
          var c: java.lang.Class[_] = null
          if (bundleContext == null)
             c = this.getClass()
@@ -116,9 +117,9 @@ object ReflexivityLoader {
          }
          this.loadKmModel(c.getClassLoader.getResource(prefix + "Reflexivity.km").toURI().toString()).foreach(e =>
             if (e.isInstanceOf[ClassDefinition])
-               classdefs.add(e.asInstanceOf[ClassDefinition])
+               classdefsTable.put(qualifiedName(e.asInstanceOf[ClassDefinition]), e.asInstanceOf[ClassDefinition])
             else if (e.isInstanceOf[org.kermeta.language.structure.Enumeration])
-               enumdefs.add(e.asInstanceOf[org.kermeta.language.structure.Enumeration])
+               enumdefsTable.put(qualifiedName(e.asInstanceOf[org.kermeta.language.structure.Enumeration]),e.asInstanceOf[org.kermeta.language.structure.Enumeration])
                )
          println("init reflexive layer")
          isInit = true
@@ -131,12 +132,7 @@ object ReflexivityLoader {
       if (!isInit) {
          initReflexivityLoader()
       }
-      var selectedclassdefs = classdefs.filter(e => qualifiedName(e).equals(classQualifiedName1))
-
-      if (selectedclassdefs.size > 0) {
-         return selectedclassdefs.get(0);
-      } else
-         return null;
+      return classdefsTable.get(classQualifiedName1)      
    }
 
    /**
@@ -148,12 +144,7 @@ object ReflexivityLoader {
       if (!isInit) {
          initReflexivityLoader()
       }
-      var selectedenudefs = enumdefs.filter(e => qualifiedName(e).equals(enumerationQualifiedName1))
-
-      if (selectedenudefs.size > 0) {
-         return selectedenudefs.get(0);
-      } else
-         return null;
+      return enumdefsTable.get(enumerationQualifiedName1)
    }
 
    def createMetaClass(name: String): org.kermeta.language.structure.Class = {
