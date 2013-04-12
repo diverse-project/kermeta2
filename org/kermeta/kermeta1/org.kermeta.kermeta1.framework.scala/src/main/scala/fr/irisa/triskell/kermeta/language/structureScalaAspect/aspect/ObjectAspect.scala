@@ -111,9 +111,11 @@ trait ObjectAspect extends EObject  with Contracted {
 
   def containingResource() : kermeta.persistence.Resource ={
     // implementation isn't perfect, but better than nothing
-    var res : EMFResource = new EMFResource()
-    res.setEMFResource(this.eResource())
-    
+    var res : EMFResource = null
+    if ( this.eResource() != null){
+    	res = new EMFResource()
+    	res.setEMFResource(this.eResource())
+    }
     res
     
   }
