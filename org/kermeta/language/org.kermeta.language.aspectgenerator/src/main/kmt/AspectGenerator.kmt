@@ -3,27 +3,42 @@ using kermeta::io::StdIO => stdio
 
 using kermeta::emfpersistence::*
 using ecore_aspectgenerator^ecore::*
-using ecore_aspectgenerator^ecore_aspectgenerator::Context
+using ecore_aspectgenerator::Context
 
 package org::kermeta::language::aspectgenerator{
 	class AspectGenerator
-	{				
+	{					
 		@main ""
-	    operation aspectGenerator(pathFolder : String, ecoreFile : String) : Void is do 
-	       
-	        var inputPackages	: Collection[EPackage] init loadEcoreModel(ecoreFile)
-	        var context : Context := Context.new
+	    operation aspectGenerator() : Void is do
+	        var ecoreFile		: String init "platform:/resource/org.kermeta.language.aspectgenerator/src/test/fuml.ecore"
+
+	        var userDefined		: OrderedSet[String] init OrderedSet[String].new
+	        var visitor			: OrderedSet[String] init OrderedSet[String].new
+	        var test			: OrderedSet[String] init OrderedSet[String].new
 	        
-	        //context.initialize("platform:/resource/org.kermeta.kp.loader.ecore/target/result")
-	        context.initialize(pathFolder)
-	        inputPackages.each{p | p.generateAspect(context)}
+	        userDefined.add("path : String")
+	        userDefined.add("index : Integer")
+	        
+	        visitor.add("v : Visitor")
+	        
+	        stdio.writeln("generation of a compiler project")
+	        generateCompilerProject("Compiler", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/result_compile", ecoreFile)
+	        
+	        stdio.writeln("generation of a interpret project")
+	        generateInterpreterProject("Interpreter", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/result_interpret", ecoreFile)
+	        
+	        stdio.writeln("generation of a visitor pattern project")
+	        generateVisitorProject("visit", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/result_patternvisitor", ecoreFile)
+	        
+	        stdio.writeln("generation of a user defined project")
+	        generateUserDefinedProject("userdefined", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/result_userDefined", ecoreFile, "userDefined", "Integer", userDefined)
+	        
+	        stdio.writeln("generation of a aspect project")
+	        generateAspectProject("aspect", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/result_aspect", ecoreFile)
 	    end
-	    
 	        
 		operation loadEcoreModel(ecoreFile : String) : Collection[EPackage] is do             
-			var repository : ResourceSet init ResourceSet.new 
-			/*var resource : Resource init repository.createResource("platform:/resource/org.kermeta.kp.loader.ecore/src/test/fuml.ecore",
-																	"platform:/resource/org.kermeta.kp.loader.ecore/src/main/ecore/Ecore.ecore")*/
+			var repository : ResourceSet init ResourceSet.new
 			var resource : Resource init repository.createResource(ecoreFile, "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore")
 			
 			resource.load(void)      
@@ -34,21 +49,65 @@ package org::kermeta::language::aspectgenerator{
 				end
 			}
 			
-			/* 
-			 * If result is not a NULL value
-			 * Check if the EPackage is the first node
-			 * if not the first go to the first node of the Ecore Metamodel
-			 */ 
-			/*if not result.isVoid then 
-				// from var finish : Boolean init (result.eSuperPackage.equals(void))
-				from var first : Boolean init result.eSuperPackage == void
-				until first
-				loop 
-					result := result.eSuperPackage.asType(EPackage)
-					first := result.eSuperPackage == void
-				end 
-			end*/
+		end
+		
+		operation generateCompilerProject (nameProject : String, folderLocation : String, ecoreFile : String) : Void is do
+			var inputPackages	: Collection[EPackage] init loadEcoreModel(ecoreFile)
+	        var context 		: Context := Context.new
+		
+		
+			var operationParams	: OrderedSet[String] init OrderedSet[String].new
+			operationParams.add("context : Context")
 			
-		end			
+			//compile
+	        context.initialize("compiler", nameProject, folderLocation, "compile", "Void", operationParams)
+	        inputPackages.each{p | p.generateAspect(context)}
+	        context.writeNewClass("Context")
+		end
+		
+		operation generateInterpreterProject (nameProject : String, folderLocation : String, ecoreFile : String) : Void is do
+			var inputPackages	: Collection[EPackage] init loadEcoreModel(ecoreFile)
+	        var context 		: Context := Context.new
+	        
+			//useless
+			var operationParams	: OrderedSet[String] init OrderedSet[String].new
+			
+			//interpret
+	        context.initialize("interpreter", nameProject, folderLocation, "interpret", "Void", operationParams)
+	        inputPackages.each{p | p.generateAspect(context)}		
+		end
+		
+		operation generateUserDefinedProject (nameProject : String, folderLocation : String, ecoreFile : String, operationName : String, operationReturnType : String, operationParams : OrderedSet[String]) : Void is do
+			var inputPackages	: Collection[EPackage] init loadEcoreModel(ecoreFile)
+	        var context 		: Context := Context.new
+	        
+	        //userDefined
+	        context.initialize("userDefined", nameProject, folderLocation, operationName,operationReturnType, operationParams)
+	        inputPackages.each{p | p.generateAspect(context)}		
+		end
+		
+		operation generateVisitorProject (nameProject : String, folderLocation : String, ecoreFile : String) : Void is do
+			var inputPackages	: Collection[EPackage] init loadEcoreModel(ecoreFile)
+	        var context 		: Context := Context.new
+	        var visitor			: OrderedSet[String] init OrderedSet[String].new
+	        visitor.add("v : Visitor")
+	        
+			//visitor pattern
+	        context.initialize("visitor", nameProject, folderLocation, "accept", "Void", visitor)
+	        inputPackages.each{p | p.generateAspect(context)}
+	        context.writeVisitorPattern	
+		end
+		
+		operation generateAspectProject (nameProject : String, folderLocation : String, ecoreFile : String) : Void is do
+			var inputPackages	: Collection[EPackage] init loadEcoreModel(ecoreFile)
+	        var context 		: Context := Context.new
+	        
+			//useless
+			var operationParams	: OrderedSet[String] init OrderedSet[String].new
+	        
+			//aspect
+	        context.initialize("", nameProject, folderLocation, "", "", operationParams)
+	        inputPackages.each{p | p.generateAspect(context)}	
+		end
 	}
 }

@@ -13,6 +13,6 @@ public class KM2KMTAspectGeneratorImpl implements KM2KMTAspectGenerator {
 		ecore_aspectgeneratorrunner.DefaultRunner$.MODULE$.init();
 
 		ecore_aspectgenerator.org.kermeta.language.aspectgenerator.AspectGenerator aspectGenerator_ = ecore_aspectgenerator.org.kermeta.language.aspectgenerator.KerRichFactory.createAspectGenerator();
-        aspectGenerator_.aspectGenerator(pathFolder, ecoreFile);
+        //aspectGenerator_.aspectGenerator(pathFolder, ecoreFile);
 	}
 }
