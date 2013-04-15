@@ -469,99 +469,7 @@ public class KermetaCompiler {
 				return null;
 			}
 			
-			
-			// deal with preresolve process
-			/* logger.debug("Preparing preresolve : "+targetIntermediateFolder+"/preresolve/preresolved.km",LOG_MESSAGE_GROUP);
-			String preResolveCacheUrl = URI.createFileURI(targetIntermediateFolder+"/preresolve/preresolved.km").toString();
-			String preResolveSrcListUrl = URI.createFileURI(targetIntermediateFolder+"/preresolve/srcList.txt").toString();
-			if (dirtyMU != null && !dirtyMU.isEmpty()){
-				logger.info("dirty mode  "+dirtyMU.size()+" dirty modeling units (ie. units being modified by the user)", LOG_MESSAGE_GROUP);
-				for(URL u : dirtyMU.keySet()){
-					logger.devInfo("   dirty file "+u, LOG_MESSAGE_GROUP);
-				}
-			}
-						
-			ArrayList<TracedURL> kpPreResolveSources = collectSourceHelper.getAllButLastModifiedFile(kpSources,dirtyMU);
-			if (collectSourceHelper.getLastModifiedFile(kpSources,dirtyMU) != null){
-				logger.info("Preresolve all but : "+collectSourceHelper.getLastModifiedFile(kpSources,dirtyMU).getUrl(),LOG_MESSAGE_GROUP);
-			}
-			else{
-				StringBuilder dirtyUnits = new StringBuilder();
-				for(URL u : dirtyMU.keySet()){
-					dirtyUnits.append(u.toString());
-					dirtyUnits.append(", ");
-				}
-				logger.info("Preresolve all but dirty units: "+dirtyUnits,LOG_MESSAGE_GROUP);
-			}
-			ModelingUnit preResolvedUnit = null;
-			if( isPreresolveUpToDate(kpPreResolveSources, preResolveCacheUrl, preResolveSrcListUrl)){
-				logger.info("Reusing  : "+preResolveCacheUrl,LOG_MESSAGE_GROUP);
-				if (runInEclipse) {
-					new KmBinaryMergerImpl4Eclipse();
-				} else {
-					new KmBinaryMergerImpl();
-				}
-				ModelingUnitCacheHelper cacheHelper = new ModelingUnitCacheHelper(logger);
-				preResolvedUnit = cacheHelper.getCachedModelingUnit(preResolveCacheUrl);
-			}
-			else
-			{
-				flushProblems(kpPreResolveSources);
-				logger.progress(getMainProgressGroup()+".kp2bytecode", "PreresolveLoading "+kpPreResolveSources.size()+" sources...", LOG_MESSAGE_GROUP, 1);
 				
-				if (kpPreResolveSources.size() != 0) {
-					List<ModelingUnit> preresolveModelingUnits = collectSourceHelper.getSourceModelingUnits(kp, kpPreResolveSources, dirtyMU);
-					if (mergedImportProjects != null) {
-						// add the importProject as preresolve
-						preresolveModelingUnits.add(0, mergedImportProjects.getResult());
-					}
-					logger.progress(getMainProgressGroup()+".kp2bytecode", "PreresolveMerging " + preresolveModelingUnits.size() + " files...", LOG_MESSAGE_GROUP, 1);
-					ErrorProneResult<ModelingUnit> preresolvedMergedUnit = mergeModelingUnits(kp, preresolveModelingUnits);
-			
-					// Did errors occur during the merge ?
-					if (preresolvedMergedUnit.getProblems().size() > 0) {
-						errorHandlingHelper.processErrors(preresolvedMergedUnit, FileHelpers.StringToURL(kpFileURL));
-						if (stopOnError) {
-							this.errorMessage = "Unable to merge the files. Compilation not complete for this project.";
-							logger.logProblem(MessagingSystem.Kind.UserERROR, this.errorMessage, LOG_MESSAGE_GROUP, new FileReference(FileHelpers.StringToURL(kpFileURL)));
-							logger.log(MessagingSystem.Kind.UserERROR, this.errorMessage, LOG_MESSAGE_GROUP);
-							this.hasFailed = true;
-							return preresolvedMergedUnit.getResult();
-						}
-					}
-
-					// workaround cache problem in compiler
-					kermeta.standard.JavaConversions.cleanCache();
-
-					// adding kermeta::standard::Objet if necessary					
-					//addStandardObjectIfRequired(preresolvedMergedUnit.getResult());
-					
-					
-					logger.progress(getMainProgressGroup()+".kp2bytecode", "PreResolving...", LOG_MESSAGE_GROUP, 1);
-					preResolvedUnit = resolveModelingUnit(preresolvedMergedUnit.getResult(), kpFileURL, true);
-				}
-				else {
-					// use the importProject as preresolve
-					if (mergedImportProjects != null){preResolvedUnit = mergedImportProjects.getResult();}
-				}
-				if (preResolvedUnit == null || preResolvedUnit.getMetamodels().isEmpty()) {
-					this.errorMessage = "The preresolved result is not valid. Compilation not complete for this project.";
-					logger.logProblem(MessagingSystem.Kind.UserERROR, this.errorMessage, LOG_MESSAGE_GROUP, new FileReference(FileHelpers.StringToURL(kpFileURL)));
-					logger.log(MessagingSystem.Kind.UserERROR, this.errorMessage, LOG_MESSAGE_GROUP);
-					this.hasFailed = true;
-					return preResolvedUnit;
-				}
-				else{
-					URI saveKMURI = URI.createURI(preResolveCacheUrl);
-					preResolvedUnit.setName(saveKMURI.lastSegment());
-					new ModelingUnitConverter(true,saveKMURI.toFileString(), logger).saveMu(preResolvedUnit, saveKMURI);
-					
-					savePreResolveSrcList(preResolveSrcListUrl,kpPreResolveSources);
-				}
-			
-				
-			}
-			*/
 			// Merge all but last modified and dirty unit in order to be able to go faster if none have changed since last time
 			logger.debug("Preparing premerge : "+targetIntermediateFolder+"/premerge/premerged.km",LOG_MESSAGE_GROUP);
 			String preMergeCacheUrl = URI.createFileURI(targetIntermediateFolder+"/premerge/premerged.km").toString();
@@ -631,6 +539,12 @@ public class KermetaCompiler {
 						}
 					}
 					preMergedUnit = preMergedUnitWithErrors.getResult();
+				}
+				else{
+					// no local source to premerge, but we still have the importProjects to use
+					if (mergedImportProjects != null) {
+						preMergedUnit = mergedImportProjects.getResult();
+					}
 				}
 				if (preMergedUnit != null && !preMergedUnit.getMetamodels().isEmpty()) {
 					URI saveKMURI = URI.createURI(preMergeCacheUrl);
