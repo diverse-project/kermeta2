@@ -12,7 +12,7 @@ public class KM2KMTAspectGeneratorImpl4Eclipse implements KM2KMTAspectGenerator 
 		ecore_aspectgeneratorrunner.DefaultRunner$.MODULE$.init4eclipse();
 
 		ecore_aspectgenerator.org.kermeta.language.aspectgenerator.AspectGenerator aspectGenerator_ = ecore_aspectgenerator.org.kermeta.language.aspectgenerator.KerRichFactory.createAspectGenerator();
-		aspectGenerator_.aspectGenerator(pathFolder, ecoreFile);
+		//aspectGenerator_.aspectGenerator(pathFolder, ecoreFile);
 	}
 
 }
