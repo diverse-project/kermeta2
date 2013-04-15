@@ -114,27 +114,46 @@ public class KmBinaryMergerOperations {
     	
     	mu.gatherInMainEResource();
     	
-    	ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    	URI uri;
-		Map<String, String> options = null;
-    	uri = URI.createURI(mu.getMainEResource().getURI().toString() + ".km_in_memory");
-		// let's suppose that the ModelingUnit contains everything (otherwise we would have to look for references and save them too ...)
-		ResourceSet resourceSet = new ResourceSetImpl();
-		Resource.Factory.Registry f = resourceSet.getResourceFactoryRegistry();
-		Map<String,Object> m = f.getExtensionToFactoryMap();
-		m.put("km_in_memory",new XMIResourceFactoryImpl());
-		Resource resource = resourceSet.createResource(uri);
-		resource.getContents().addAll(mu.getMetamodels());
-		resource.save(outputStream, options);
+    	// check if this is an instance of the BinaryMergerAspect or a standard EMF (compatible with implicit conversion)
+    	boolean needConversion = false;
+    	for (Metamodel mm : mms) {
+    		if (! (mm.getClass().getCanonicalName().equals("org.kermeta.language.language.merger.binarymerger.org.kermeta.language.structure.RichMetamodel") ) ) {
 
-    	ResourceSet resourceSet2 = new ResourceSetImpl();
-		Resource.Factory.Registry f2 = resourceSet2.getResourceFactoryRegistry();
-		Map<String,Object> m2 = f2.getExtensionToFactoryMap();
-		m2.put("*",new XMIResourceFactoryImpl());
-		Resource resource2 = resourceSet2.createResource(uri);
-		resource2.load(new ByteArrayInputStream(outputStream.toByteArray()), options);
+        		MessagingSystem logger = new org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem();
+        		logger.debug("convertion required for "+mu.getDescriptionString()+" for binaryMerger due to "+mm.getClass().getCanonicalName(), "KmBinaryMergerOperations");
+    			needConversion = true;
+    			break;
+    		}
+    	}
     	
-		return new ModelingUnit(uri.toString(), resource2.getContents()).getMetamodels();
+    	
+    	if(needConversion){
+	    	ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+	    	URI uri;
+			Map<String, String> options = null;
+	    	uri = URI.createURI(mu.getMainEResource().getURI().toString() + ".km_in_memory");
+			// let's suppose that the ModelingUnit contains everything (otherwise we would have to look for references and save them too ...)
+			ResourceSet resourceSet = new ResourceSetImpl();
+			Resource.Factory.Registry f = resourceSet.getResourceFactoryRegistry();
+			Map<String,Object> m = f.getExtensionToFactoryMap();
+			m.put("km_in_memory",new XMIResourceFactoryImpl());
+			Resource resource = resourceSet.createResource(uri);
+			resource.getContents().addAll(mu.getMetamodels());
+			resource.save(outputStream, options);
+	
+	    	ResourceSet resourceSet2 = new ResourceSetImpl();
+			Resource.Factory.Registry f2 = resourceSet2.getResourceFactoryRegistry();
+			Map<String,Object> m2 = f2.getExtensionToFactoryMap();
+			m2.put("*",new XMIResourceFactoryImpl());
+			Resource resource2 = resourceSet2.createResource(uri);
+			resource2.load(new ByteArrayInputStream(outputStream.toByteArray()), options);
+	    	
+			return new ModelingUnit(uri.toString(), resource2.getContents()).getMetamodels();
+    	}
+    	else{
+    		// no conversion required
+    		return mu.getMetamodels();
+    	}
 
     }
 
