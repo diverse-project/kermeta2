@@ -4,6 +4,7 @@ using kermeta::io::StdIO => stdio
 using kermeta::emfpersistence::*
 using ecore_aspectgenerator^ecore::*
 using ecore_aspectgenerator::Context
+using ecore_aspectgenerator::KmtFileGeneration
 
 package org::kermeta::language::aspectgenerator{
 	class AspectGenerator
@@ -47,13 +48,13 @@ package org::kermeta::language::aspectgenerator{
 				if (next.isInstanceOf(EPackage)) then                 
 					result.add(next.asType(EPackage))
 				end
-			}
-			
+			}			
 		end
 		
 		operation generateCompilerProject (nameProject : String, folderLocation : String, ecoreFile : String) : Void is do
 			var inputPackages	: Collection[EPackage] init loadEcoreModel(ecoreFile)
 	        var context 		: Context := Context.new
+	        var kmtFile 		: KmtFileGeneration init KmtFileGeneration.new.initialize(context)
 		
 		
 			var operationParams	: OrderedSet[String] init OrderedSet[String].new
@@ -62,7 +63,7 @@ package org::kermeta::language::aspectgenerator{
 			//compile
 	        context.initialize("compiler", nameProject, folderLocation, "compile", "Void", operationParams)
 	        inputPackages.each{p | p.generateAspect(context)}
-	        context.writeNewClass("Context")
+	        kmtFile.writeNewClass("Context")
 		end
 		
 		operation generateInterpreterProject (nameProject : String, folderLocation : String, ecoreFile : String) : Void is do
@@ -89,13 +90,14 @@ package org::kermeta::language::aspectgenerator{
 		operation generateVisitorProject (nameProject : String, folderLocation : String, ecoreFile : String) : Void is do
 			var inputPackages	: Collection[EPackage] init loadEcoreModel(ecoreFile)
 	        var context 		: Context := Context.new
+	        var kmtFile 		: KmtFileGeneration init KmtFileGeneration.new.initialize(context)
 	        var visitor			: OrderedSet[String] init OrderedSet[String].new
 	        visitor.add("v : Visitor")
 	        
 			//visitor pattern
 	        context.initialize("visitor", nameProject, folderLocation, "accept", "Void", visitor)
 	        inputPackages.each{p | p.generateAspect(context)}
-	        context.writeVisitorPattern	
+	        kmtFile.writeVisitorPattern
 		end
 		
 		operation generateAspectProject (nameProject : String, folderLocation : String, ecoreFile : String) : Void is do

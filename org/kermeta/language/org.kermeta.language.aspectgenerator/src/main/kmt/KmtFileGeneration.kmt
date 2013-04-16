@@ -1,0 +1,128 @@
+using kermeta::standard::*
+using kermeta::io::FileIO => FileIO
+using kermeta::io::StdIO => stdio
+
+using org::kermeta::language::aspectgenerator::Context
+
+package org::kermeta::language::aspectgenerator{
+	class KmtFileGeneration
+	{
+		attribute context : Context
+
+		operation initialize (context : Context) : KmtFileGeneration is do 
+			self.context := context
+			result := self
+		end
+
+		operation writeFileIO () : Void is do 
+			var contentFile : StringBuffer init StringBuffer.new
+			
+			contentFile.append(initKmtFile)
+			contentFile.append(self.context.kmtContent)
+			contentFile.append(finishKmtFile)
+			
+			FileIO.writeTextFile(writePathFile.toURI, contentFile.toString)
+		end
+
+		operation initKmtFile () : String is do
+			result := "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
+			if (self.context.typeProject == "visitor") then
+				result := result + "using visitorpattern::Visitor\n\n"
+			end
+			if(self.context.typeProject == "compiler") then
+				result := result + "using " + self.context.nameProject + "::" + "Context\n\n"
+			end
+		end 
+		
+		operation finishKmtFile() : String is do
+			result := ""
+			from var c : Integer init self.context.counterPackage
+			until
+			c == 0
+			loop
+				from var i : Integer init 1
+				until
+				i == c
+				loop
+					result := result + "\t"
+					i := i + 1
+				end
+				result := result + "}\n"
+				c := c - 1
+			end
+		end
+		
+		operation writePathFile () : String is do
+			result := ""
+			result := result + self.context.fileName + "/"
+			self.context.packageCollection.each { pc |
+				result := result + pc + "/"
+				if (self.context.packageCollection.indexOf(pc) == self.context.packageCollection.size - 1) then 
+				result := result + pc + "_aspect.kmt"
+				end}
+		end
+		
+		operation writeVisitorPattern () : Void is do
+			var vpFile 	: String init "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
+			var vcFile 	: String init "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
+			var vpPath	: String init self.context.fileName + "/visitorpattern/visitorpattern.kmt"
+			var vcPath	: String init self.context.fileName + "/visitorpattern/concretevisitor.kmt"
+			
+			// Package openning 
+			vpFile := vpFile + "package visitorpattern {\n"
+			
+			vpFile := vpFile + writeVisitableElement
+			vpFile := vpFile + "\n" + writeVisitor
+			vpFile := vpFile + "\n}"
+			
+			vcFile := vcFile + "package visitorpattern {\n"
+			vcFile := vcFile + "\n" + writeConcreteVisitor
+			vcFile := vcFile + "\n}"
+			
+			FileIO.writeTextFile(vpPath.toURI, vpFile)
+			FileIO.writeTextFile(vcPath.toURI, vcFile)
+		end
+		
+		operation writeVisitableElement() : String is do
+			result := ""
+			result := result + "\tabstract class VisitableElement{\n\t\toperation accept(v : Visitor) : Void is do\n"
+			result := result + "\t\t\t// should never go here if all accept are correctly generated\n"		
+			result := result + "\t\t\tvar e : Exception := Exception.new\n"
+			result := result + "\t\t\te.message := \"Missing accept(v : Visitor) method for \"+ ve.getMetaClass.name\n"
+			result := result + "\t\t\traise e\n"
+			result := result + "\t\tend\n\t}\n"
+		end
+		
+		operation writeVisitor() : String is do
+			result := ""
+			result := result + "\tabstract class Visitor{\n"
+			self.context.classCollection.each{ cc | result := result + "\t\toperation visit" + cc + "(" + cc + "_" + " : " + cc + ") : Void is abstract" + "\n"}
+			result := result + "\t}"
+		end
+		
+		operation writeConcreteVisitor() : String is do
+			result := ""
+			result := result + "\tclass SampleConcreteVisitor inherits Visitor{\n"
+			self.context.classCollection.each{ cc | result := result + "\t\tmethod visit" + cc + "(" + cc + "_" + " : " + cc + ") : Void is do" + "\n\n\t\tend\n\n"}
+			result := result + "\t}"
+		end
+		
+		operation writeNewClass(nameClass : String) : Void is do
+			var classPath	: String init self.context.fileName + "/src/main/kmt/" + nameClass + ".kmt"
+			var classFile	: String init ""
+			
+			classFile := ""
+			classFile := classFile + "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
+			
+			// Package openning 
+			classFile := classFile + "package " + self.context.nameProject + " {\n"
+			classFile := classFile + "\tclass " + nameClass + "{\n\n"
+			classFile := classFile + "\t\toperation initialize() : Void is do\n"
+			classFile := classFile + "\t\t\tresult := void\n"
+			classFile := classFile + "\t\tend"
+			classFile := classFile + "\n\t}\n}"
+			
+			FileIO.writeTextFile(classPath.toURI, classFile)
+		end
+	}
+}

@@ -1,34 +1,117 @@
 using kermeta::standard::*
 using org::kermeta::language::aspectgenerator::Context
+using org::kermeta::language::aspectgenerator::KmtFileGeneration
 
 package ecore{
 	aspect class EPackage
 	{
+		attribute context : Context
+	
 		operation generateAspect(context : Context) : Void is do
-			context.addPackage(self.name)
+			var iCounter 	: Integer 	init 1
+			var kmtFile 	: KmtFileGeneration
+			
+			self.context := context
+			kmtFile := KmtFileGeneration.new.initialize(self.context)
+			
+			addPackage
 			
 			// Processing on the subpackages if it exists there
-			self.eSubpackages.each{ p | p.generateAspect(context)}
+			self.eSubpackages.each{ p | p.generateAspect(self.context)}
 			
 			// Processing on the class of the package if it exists there
 			if(self.eClassifiers.exists{c | c.isInstanceOf(EClass)}) then
-				context.writePackage
+				self.context.packageCollection.each { pc |
+					self.context.kmtContent.append(self.context.counterTab(iCounter) + "package " + pc + " {\n\n")
+					iCounter := iCounter + 1}
 				self.eClassifiers.each{ c | 
 					if (c.isInstanceOf(EClass)) then
-						c.asType(EClass).generateAspect(context)
+						c.asType(EClass).generateAspect(self.context)
 					end}
-				context.writeFileIO
+				kmtFile.writeFileIO
+				self.context.kmtContent := StringBuffer.new
 			end
 			
-			context.deletePackage
+			deletePackage
+		end
+		
+		operation addPackage () : Void is do
+			self.context.counterPackage := self.context.counterPackage + 1
+			self.context.packageCollection.add(self.name)
+		end
+		
+		operation deletePackage () : Void is do
+			self.context.packageCollection.removeAt(self.context.counterPackage - 1)
+			if (self.context.counterPackage > 0) then
+				self.context.counterPackage := self.context.counterPackage - 1
+			end
 		end
 	}
 	
 	aspect class EClass
 	{
+		attribute context : Context
+		
 		method generateAspect(context : Context) : Void is do
-			context.addClass(self.name)
-			context.writeClass(self.~abstract, self.name)
+			var scriptNewClass : String init ""
+			
+			self.context := context
+			
+			addClass
+			
+			scriptNewClass := scriptNewClass + self.context.counterTab(self.context.counterPackage + 1)
+			if (self.~abstract) then
+				scriptNewClass := scriptNewClass + "aspect abstract class "
+			else
+				scriptNewClass := scriptNewClass + "aspect class "
+			end
+						
+			scriptNewClass := scriptNewClass + self.name
+			
+			if (self.context.typeProject == "visitor") then
+				scriptNewClass := scriptNewClass + " inherits VisitableElement"
+			end
+			
+			scriptNewClass := scriptNewClass + " {\n" + writeOperation + "\n" + self.context.counterTab(self.context.counterPackage + 1) + "}\n\n"
+			
+			self.context.kmtContent.append(scriptNewClass)
+		end
+		
+		operation writeOperation () : String is do
+			result := ""
+			if(not self.context.operationName.isVoid) then
+				result := result + "\n" + self.context.counterTab(self.context.counterPackage + 2)
+				if (self.context.typeProject == "visitor") then
+					result := result + "method " + self.context.operationName + writeParamatersOperation
+					result := result + self.context.counterTab(self.context.counterPackage + 3) + "v.visit" + self.name + "(self)\n"
+				else
+					result := result + "operation " + self.context.operationName + writeParamatersOperation
+					result := result + self.context.counterTab(self.context.counterPackage + 3) + "result := void\n"
+				end
+				result := result + self.context.counterTab(self.context.counterPackage + 2) + "end\n"
+			end
+		end
+		
+		operation writeParamatersOperation () : String is do
+			result := " ("
+			if (self.context.operationParams.isNotEmpty) then
+				self.context.operationParams.each{op |
+					result := result + op
+					if (self.context.operationParams.indexOf(op) < self.context.operationParams.size - 1) then 
+						result := result + ", "
+					end}
+			end
+			result := result + ") : "
+			if (self.context.operationReturnType != void) then
+				result := result + self.context.operationReturnType
+			else
+				result := result + "Void"
+			end
+			result := result + " is do\n"
+		end
+		
+		operation addClass () : Void is do
+			self.context.classCollection.add(self.name)
 		end
 	}
 }
