@@ -25,6 +25,8 @@
 
    <windowImages i16="/images/kermeta_icon_16.png" i32="/images/kermeta_icon_32.png" i48="/images/kermeta_icon_48.png" i64="/images/kermeta_icon_64.png" i128="/images/kermeta_icon_128.png"/>
 
+   <splash
+      location="org.kermeta.studio.branding" />
    <launcher>
       <linux icon="/images/kermeta_icon_128.xpm"/>
       <solaris/>
@@ -43,6 +45,7 @@
 
    <vm>
    </vm>
+
 
    <plugins>
    </plugins>
@@ -68,7 +71,7 @@
       <feature id="org.scala-ide.sdt.feature"/>
       <feature id="org.scala-ide.sdt.dev.feature"/>
       <feature id="org.scala-ide.sdt.source.feature"/>
-      <feature id="org.kermeta.studio.feature" version="2.0.99.qualifier"/>
+      <feature id="org.kermeta.studio.feature"/>
    </features>
 
    <configurations>

@@ -112,7 +112,7 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 	method visitEOperation(op : EOperation) : Void is do
 		if((not op.eContainingClass.targetKermetaObject.isVoid).andThen{b | op.eContainingClass.targetKermetaObject.isKindOf(ClassDefinition)}) then
 			// Getting the type of the operation.
-			stdio.writeln("getUnresolvedType 1 from visitEOperation")
+			//stdio.writeln("getUnresolvedType 1 from visitEOperation")
 			var returnType : UnresolvedType init getUnresolvedType(op.eGenericType, op.eType)
 			
 			// Creation of the ouput Kermeta operation.
@@ -264,7 +264,7 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 					end 
 				end
 
-				stdio.writeln(" creating UnresolvedType "+typeName )
+				//stdio.writeln(" creating UnresolvedType "+typeName )
 				result := UnresolvedType.new.initialize(typeName)
 								
 				if(not genericType.isVoid) then
@@ -280,14 +280,14 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 			else
 				typeName := genericType.getQualifiedName()
 			end
-			stdio.writeln(" creating UnresolvedType "+typeName + " isDataType="+isDataType.toString+" eDataType="+eDataType.toString)
+			//stdio.writeln(" creating UnresolvedType "+typeName + " isDataType="+isDataType.toString+" eDataType="+eDataType.toString)
 			result := UnresolvedType.new.initialize(checkEObjectType(typeName))
 			genericType.targetKermetaObject := result
 		end
 		if(not genericType.isVoid) then
 			
 			genericType.eTypeArguments.each{ ta |	
-				stdio.writeln("getUnresolvedType 2")				
+				//stdio.writeln("getUnresolvedType 2")				
 				var unresolvedTypeArgument : UnresolvedType init getUnresolvedType(ta, ta.eClassifier)
 				// When it is null, e.g. A<?> we need to add a unresolved to Object, 
 				// otherwise the case is taken into account by the normal visitor
@@ -314,7 +314,7 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 			// Checking that the corresponding kermeta objet has been created and mapped.
 			if((not object.targetKermetaObject.isVoid).andThen{b | object.targetKermetaObject.isInstanceOf(UnresolvedType)}) then
 				// Creating the unresolved type.
-				stdio.writeln("getUnresolvedType 3 visitEGenericType")
+				//stdio.writeln("getUnresolvedType 3 visitEGenericType")
 				var type : UnresolvedType init getUnresolvedType(genType, genType.eClassifier)
 				
 				// It can be null, e.g. A<?>
@@ -338,7 +338,7 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 							readOnly : Boolean, eType : EClassifier, eGenericType : EGenericType,
 							lower : Integer, upper : Integer) : Property is do
 		// Getting the type of the property.
-		stdio.writeln("getUnresolvedType 4 addProperty")
+		//stdio.writeln("getUnresolvedType 4 addProperty")
 		var type : UnresolvedType init getUnresolvedType(eGenericType, eType)
 
 		// Creation of the output Kermeta property.
@@ -397,7 +397,7 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 			// Getting the kermeta operation.
 	 		var op : Operation init param.eOperation.targetKermetaObject.asType(Operation)
 	 		// Getting the type of the parameter.
-	 		stdio.writeln("getUnresolvedType from visitEParameter")
+	 		//stdio.writeln("getUnresolvedType from visitEParameter")
 			var type : UnresolvedType init getUnresolvedType(param.eGenericType, param.eType)
 			
 			//Creation of the output Kermeta parameter.
@@ -432,7 +432,7 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 			if eclass.eSuperTypes.size == eclass.eGenericSuperTypes.size then
 				// use the generic information as much as possible
 				eclass.eGenericSuperTypes.each{st |
-					stdio.writeln("getUnresolvedType 1 from visitEClass")
+					//stdio.writeln("getUnresolvedType 1 from visitEClass")
 					var type : UnresolvedType init getUnresolvedType(st, st.eClassifier)
 					kmClassDef.containedType.add(type)
 					kmClassDef.superType.add(type)
@@ -440,7 +440,7 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 			else
 				// we seem to not have generic, so we use only the "normal" type
 				eclass.eSuperTypes.each{st |
-					stdio.writeln("getUnresolvedType 2 from visitEClass")
+					//stdio.writeln("getUnresolvedType 2 from visitEClass")
 					var type : UnresolvedType init getUnresolvedType(void, st)
 					kmClassDef.containedType.add(type)
 					kmClassDef.superType.add(type)
@@ -552,7 +552,7 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 				end
 				typeVar.supertype := unresolvedBound
 				typeVar.containedType.add(unresolvedBound)
-				stdio.writeln("$$$$$$$$ Adding supertype: " + unresolvedBound.typeIdentifier + " to type variable: " + typeVar.name)
+				//stdio.writeln("$$$$$$$$ Adding supertype: " + unresolvedBound.typeIdentifier + " to type variable: " + typeVar.name)
 				
 				// Adding the type variable into the generic type definition.
 				gtd.typeParameter.add(typeVar)

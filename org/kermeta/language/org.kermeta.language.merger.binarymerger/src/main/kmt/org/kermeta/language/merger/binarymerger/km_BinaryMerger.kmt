@@ -106,7 +106,7 @@ class BinaryMerger
 				}*/
 			}
 			// indirectly moved elements, will also need reference fix
-			stdio.writeln("standard kermeta merge : ignores fixing references of indirectly moved elements")
+			//stdio.writeln("standard kermeta merge : ignores fixing references of indirectly moved elements")
 			/*indirectlyMovedElements.each{ o |
 				o.fixReferences
 			}*/

@@ -17,41 +17,17 @@
       It is available under the terms of the open source license EPL.
    </license>
 
-   <includes
-         id="org.kermeta.language.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.kermeta.utils.feature"
-         version="0.0.0"/>
-         
-   <includes
-         id="org.eclipse.emf.ecoretools.registration.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.xtext.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.ocl.all.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.ecoretools.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.epp.mpc"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.amalgam.discovery"
-         version="0.0.0"/>
+   <requires>
+      <import feature="org.kermeta.language.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.kermeta.utils.feature" version="0.0.0" match="greaterOrEqual"/>
+	  <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.0.0" match="greaterOrEqual"/>
+	  <import feature="org.eclipse.xtext.sdk" version="0.0.0" match="greaterOrEqual"/>
+	  <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
+	  <import feature="org.eclipse.emf.ecoretools.sdk" version="0.0.0" match="greaterOrEqual"/>
+	  <import feature="org.eclipse.emf.sdk" version="0.0.0" match="greaterOrEqual"/>
+	  <import feature="org.eclipse.epp.mpc" version="0.0.0" match="greaterOrEqual"/>
+	  <import feature="org.eclipse.amalgam.discovery" version="0.0.0" match="greaterOrEqual"/>
+   </requires>
 
    <plugin
          id="org.kermeta.studio.branding"
