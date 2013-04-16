@@ -1,7 +1,9 @@
 package org.kermeta.utils.systemservices.eclipse.internal;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -10,10 +12,14 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.ui.texteditor.MarkerUtilities;
 import org.kermeta.utils.helpers.FileHelpers;
+import org.kermeta.utils.helpers.eclipse.ResourceHelpers;
 import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
 import org.kermeta.utils.systemservices.api.messaging.MessagingSystem.Kind;
 import org.kermeta.utils.systemservices.api.reference.FileReference;
@@ -37,7 +43,7 @@ public class EclipseReporter {
 	public void addMarker( int markerSeverity, Reference ref, String msg, String msgGroup){
 		if(ref instanceof TextReference){
 			try {
-				IFile iFile = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(cleanString(((TextReference)ref).getFileURL()));
+				IFile iFile = (IFile)  ResourceHelpers.getIResourceFromURL(((TextReference)ref).getFileURL());
 				iFile = check(iFile,((TextReference)ref).getFileURL());
 				addMarker(markerSeverity, PROBLEM_MARKER_ID, iFile,msg, ((TextReference) ref).getBeginLine(), ((TextReference) ref).getBeginOffset(), ((TextReference) ref).getEndOffset(),msgGroup);
 				ms.log(Kind.DevDEBUG, "File marked ("+iFile+")", Activator.PLUGIN_ID);
@@ -47,7 +53,7 @@ public class EclipseReporter {
 		}
 		else if(ref instanceof FileReference){
 			try {
-				IFile iFile = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(cleanString(((FileReference)ref).getFileURL()));
+				IFile iFile = (IFile) ResourceHelpers.getIResourceFromURL(((FileReference)ref).getFileURL());
 				iFile = check(iFile,((FileReference)ref).getFileURL());
 				addMarker(markerSeverity, PROBLEM_MARKER_ID, iFile,msg,msgGroup);
 				ms.log(Kind.DevDEBUG, "File marked ("+iFile+")", Activator.PLUGIN_ID);
@@ -130,10 +136,10 @@ public class EclipseReporter {
 		return null;
 	}
 	
-	public void flushProblem(final String problemGroup,final URL uri) {
+	public void flushProblem(final String problemGroup,final URL url) {
 		try {
-			IResource file = (IResource) ResourcesPlugin.getWorkspace().getRoot().findMember(cleanString(uri));
-			for (IMarker aMarker : file.findMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE)) {
+			IResource ifile = ResourceHelpers.getIResourceFromURL(url);
+			for (IMarker aMarker : ifile.findMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE)) {
 				if (aMarker.getAttribute(KERMETA_MARKER_ATTRIBUTE).equals(problemGroup)) {
 					//ms.log(Kind.DevDEBUG, "#removing marker on "+ uri+" - problemGroup="+problemGroup, Activator.PLUGIN_ID , new Exception());
 					aMarker.delete();
@@ -144,10 +150,10 @@ public class EclipseReporter {
 		} catch (NullPointerException e) {}
 	}
 	
-	public void flushAllProblems(URL uri) {
+	public void flushAllProblems(URL url) {
 		try {
-			IFile file = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(cleanString(uri));
-			file.deleteMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE);
+			IResource ifile = ResourceHelpers.getIResourceFromURL(url);			
+			if(ifile !=null) ifile.deleteMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE);
 		} catch (CoreException e) {
 			ms.log(Kind.DevERROR, "Failed to flush all markers", Activator.PLUGIN_ID, e);
 		} catch (NullPointerException e) {}
