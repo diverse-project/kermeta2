@@ -431,7 +431,9 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 			// A unresolved type is created for each super type.
 			if eclass.eSuperTypes.size == eclass.eGenericSuperTypes.size then
 				// use the generic information as much as possible
-				eclass.eGenericSuperTypes.each{st |
+				var genericSuperTypes : kermeta::standard::OrderedSet<EGenericType> init kermeta::standard::OrderedSet<EGenericType>.new
+				genericSuperTypes.addAll(eclass.eGenericSuperTypes) // workaround strange EMF implementation, this can raise ConcurentModificationException otherwise
+				genericSuperTypes.each{st |
 					//stdio.writeln("getUnresolvedType 1 from visitEClass")
 					var type : UnresolvedType init getUnresolvedType(st, st.eClassifier)
 					kmClassDef.containedType.add(type)
