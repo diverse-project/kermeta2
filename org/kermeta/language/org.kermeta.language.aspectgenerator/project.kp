@@ -11,10 +11,9 @@ project ecore_aspectgenerator {
 	
 	// Main Page
 	import "${project.baseUri}/src/main/kmt/AspectGenerator.kmt"
-	
-	// Type of generator available
+
 	import "${project.baseUri}/src/main/kmt/GenerateAspect_Ecore_Aspect.kmt"
-	import "${project.baseUri}/src/main/kmt/GenerateVisitor_Ecore_Aspect.kmt"
+	import "${project.baseUri}/src/main/kmt/KmtFileGeneration.kmt"
 	
 	import "${ecore_model.baseUri}/model/Ecore.ecore" using EMFBytecode(ecore_model) {
 		packageEquivalence "ecore" = "org.eclipse.emf.ecore"

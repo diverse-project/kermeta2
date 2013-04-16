@@ -19,9 +19,7 @@ package org::kermeta::language::aspectgenerator{
 		attribute kmtContent 			: StringBuffer
 		attribute packageCollection		: OrderedSet[String] 
 		attribute classCollection		: OrderedSet[String] 
-		attribute fileCollection		: OrderedSet[String]
 		attribute counterPackage		: Integer
-		
 		
 		operation initialize(typeProject : String, nameProject : String, folderLocation : String, operationName : String, operationReturnType : String, operationParams : OrderedSet[String] ) : Void is do
 			
@@ -48,24 +46,7 @@ package org::kermeta::language::aspectgenerator{
 			self.kmtContent 				:= StringBuffer.new
 			self.packageCollection 			:= OrderedSet[String].new
 			self.classCollection 			:= OrderedSet[String].new
-			self.fileCollection 			:= OrderedSet[String].new
 		end	
-		
-		operation addClass (className : String) : Void is do
-			classCollection.add(className)
-		end
-		
-		operation addPackage (packageName : String) : Void is do
-			self.counterPackage := self.counterPackage + 1
-			packageCollection.add(packageName)
-		end
-		
-		operation deletePackage () : Void is do
-			packageCollection.removeAt(self.counterPackage - 1)
-			if (self.counterPackage > 0) then
-				self.counterPackage := self.counterPackage - 1
-			end
-		end
 		
 		operation counterTab(iCounter : Integer) : String is do
 			result := ""
@@ -76,184 +57,6 @@ package org::kermeta::language::aspectgenerator{
 				result := result + "\t"
 				i := i + 1
 			end
-		end
-		
-		operation initKmtFile () : String is do
-			result := "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
-			if (self.typeProject == "visitor") then
-				result := result + "using visitorpattern::Visitor\n\n"
-			end
-			if(self.typeProject == "compiler") then
-				result := result + "using " + self.nameProject + "::" + "Context\n\n"
-			end
-		end 
-		
-		operation finishKmtFile() : String is do
-			result := ""
-			from var c : Integer init self.counterPackage
-			until
-			c == 0
-			loop
-				from var i : Integer init 1
-				until
-				i == c
-				loop
-					result := result + "\t"
-					i := i + 1
-				end
-				result := result + "}\n"
-				c := c - 1
-			end
-		end
-		
-		operation writePathFile () : String is do
-			result := ""
-			result := result + self.fileName + "/"
-			self.packageCollection.each { pc |
-				result := result + pc + "/"
-				if (packageCollection.indexOf(pc) == packageCollection.size - 1) then 
-				result := result + pc + "_aspect.kmt"
-				end}
-		end
-		
-		operation writeFileIO () : Void is do
-			var contentFile : StringBuffer init StringBuffer.new
-			
-			contentFile.append(self.initKmtFile)
-			contentFile.append(self.kmtContent)
-			contentFile.append(self.finishKmtFile)
-			
-			FileIO.writeTextFile(writePathFile.toURI, contentFile.toString)
-			self.kmtContent := StringBuffer.new
-		end
-		
-		operation writePackage () : Void is do
-			var iCounter 			: Integer 	init 1		
-			var scriptNewPackage 	: String 	init ""
-			
-			self.packageCollection.each { pc |
-					scriptNewPackage := scriptNewPackage + self.counterTab(iCounter) + "package " + pc + " {\n\n"
-					iCounter := iCounter + 1}
-			self.kmtContent.append(scriptNewPackage)		
-		end
-		
-		operation writeClass(bAbstract : Boolean, className : String) : Void is do
-			var scriptNewClass : String init ""
-			
-			scriptNewClass := scriptNewClass + self.counterTab(self.counterPackage + 1)
-			if (bAbstract) then
-				scriptNewClass := scriptNewClass + "aspect abstract class "
-			else
-				scriptNewClass := scriptNewClass + "aspect class "
-			end
-						
-			scriptNewClass := scriptNewClass + className
-			
-			if (self.typeProject == "visitor") then
-				scriptNewClass := scriptNewClass + " inherits VisitableElement"
-			end
-			
-			scriptNewClass := scriptNewClass + " {\n" + self.writeOperation(className) + "\n" + self.counterTab(self.counterPackage + 1) + "}\n\n"
-			
-			self.kmtContent.append(scriptNewClass)
-		end
-		
-		operation writeOperation (className : String) : String is do
-			result := ""
-			if(not operationName.isVoid) then
-				result := result + "\n" + counterTab(self.counterPackage + 2)
-				if (self.typeProject == "visitor") then
-					result := result + "method " + self.operationName + writeParamatersOperation
-					result := result + counterTab(self.counterPackage + 3) + "v.visit" + className + "(self)\n"
-				else
-					result := result + "operation " + self.operationName + writeParamatersOperation
-					result := result + counterTab(self.counterPackage + 3) + "result := void\n"
-				end
-				result := result + counterTab(self.counterPackage + 2) + "end\n"
-			end
-		end
-		
-		operation writeParamatersOperation () : String is do
-			result := " ("
-			if (operationParams.isNotEmpty) then
-				operationParams.each{op |
-					result := result + op
-					if (operationParams.indexOf(op) < operationParams.size - 1) then 
-						result := result + ", "
-					end}
-			end
-			result := result + ") : "
-			if (operationReturnType != void) then
-				result := result + operationReturnType
-			else
-				result := result + "Void"
-			end
-			result := result + " is do\n"
-		end
-		
-		operation writeVisitorPattern () : Void is do
-			var vpFile 	: String init "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
-			var vcFile 	: String init "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
-			var vpPath	: String init self.fileName + "/visitorpattern/visitorpattern.kmt"
-			var vcPath	: String init self.fileName + "/visitorpattern/concretevisitor.kmt"
-			
-			// Package openning 
-			vpFile := vpFile + "package visitorpattern {\n"
-			
-			vpFile := vpFile + writeVisitableElement
-			vpFile := vpFile + "\n" + writeVisitor
-			vpFile := vpFile + "\n}"
-			
-			vcFile := vcFile + "package visitorpattern {\n"
-			vcFile := vcFile + "\n" + writeConcreteVisitor
-			vcFile := vcFile + "\n}"
-			
-			FileIO.writeTextFile(vpPath.toURI, vpFile)
-			FileIO.writeTextFile(vcPath.toURI, vcFile)
-		end
-		
-		operation writeVisitableElement() : String is do
-			result := ""
-			result := result + "\tabstract class VisitableElement{\n\t\toperation accept(v : Visitor) : Void is do\n"
-			result := result + "\t\t\t// should never go here if all accept are correctly generated\n"		
-							 + "\t\t\tvar e : Exception := Exception.new\n"
-							 + "\t\t\te.message := \"Missing accept(v : Visitor) method for \"+ ve.getMetaClass.name\n"
-							 + "\t\t\traise e\n"
-			result := result + "\t\tend\n\t}\n"
-		end
-		
-		operation writeVisitor() : String is do
-			
-			result := ""
-			result := result + "\tabstract class Visitor{\n"
-			self.classCollection.each{ cc | result := result + "\t\toperation visit" + cc + "(" + cc + "_" + " : " + cc + ") : Void is abstract" + "\n"}
-			result := result + "\t}"
-		end
-		
-		operation writeConcreteVisitor() : String is do
-			
-			result := ""
-			result := result + "\tclass SampleConcreteVisitor inherits Visitor{\n"
-			self.classCollection.each{ cc | result := result + "\t\tmethod visit" + cc + "(" + cc + "_" + " : " + cc + ") : Void is do" + "\n\n\t\tend\n\n"}
-			result := result + "\t}"
-		end
-		
-		operation writeNewClass(nameClass : String) : Void is do
-			var classPath	: String init self.fileName + "/src/main/kmt/" + nameClass + ".kmt"
-			var classFile	: String init ""
-			
-			classFile := ""
-			classFile := classFile + "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
-			
-			// Package openning 
-			classFile := classFile + "package " + self.nameProject + " {\n"
-			classFile := classFile + "\tclass " + nameClass + "{\n\n"
-			classFile := classFile + "\t\toperation initialize() : Void is do\n"
-			classFile := classFile + "\t\t\tresult := void\n" 
-			classFile := classFile + "\t\tend"
-			classFile := classFile + "\n\t}\n}"
-			
-			FileIO.writeTextFile(classPath.toURI, classFile)
 		end
 	}
 }
