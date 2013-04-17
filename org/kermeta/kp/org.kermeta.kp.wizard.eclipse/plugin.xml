@@ -62,6 +62,30 @@
                menubarPath="org.kermeta.language.ui.menu/kermetagroup2">
          </action>
       </objectContribution>
+      
+      <objectContribution
+            id="org.kermeta.kp.wizard.eclipse.generateSimpleJar"
+            nameFilter="*.kp"
+            objectClass="org.eclipse.core.resources.IFile">         
+         <menu
+              icon="platform:/plugin/org.kermeta.kp.launcher.eclipse/icons/kermeta.gif"
+              id="org.kermeta.language.ui.menu"
+              label="Kermeta 2"
+              path="additions">
+           <separator name="kermetagroup1"/>
+           <separator name="kermetagroup2"/>
+           <separator name="kermetagroup3"/>
+         </menu>
+         <action
+               class="org.kermeta.kp.wizard.eclipse.popup.actions.GenerateSimpleJarAction"
+               enablesFor="1"
+               id="org.kermeta.kp.wizard.eclipse.GenerateSimpleJarAction"
+               label="generate simple jar"
+               menubarPath="org.kermeta.language.ui.menu/kermetagroup2">
+         </action>
+      </objectContribution>
+      
+      
       <objectContribution
             id="org.kermeta.kp.wizard.eclipse.AddFileToImportsAction"
             nameFilter="*.kmt"
