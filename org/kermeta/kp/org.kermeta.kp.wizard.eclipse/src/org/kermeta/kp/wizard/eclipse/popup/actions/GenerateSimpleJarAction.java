@@ -64,7 +64,7 @@ public class GenerateSimpleJarAction implements IObjectActionDelegate {
 				if(MessageDialog.openConfirm(shell, "overiding "+jarName, "target/"+jarName+" file already exists. Are you sure you wish to overide it ?")){
 					mustDo = true;
 					try {
-						jarIFile.delete(true, null);
+						jarIFile.delete(true, new NullProgressMonitor());
 					} catch (CoreException e) {
 						Activator.logErrorMessage("problem deleting "+jarName, e);
 					}

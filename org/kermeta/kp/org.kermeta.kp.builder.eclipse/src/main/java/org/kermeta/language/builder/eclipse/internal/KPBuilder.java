@@ -132,7 +132,7 @@ public class KPBuilder {
 		try {
 			delta.accept(needBuildVisitor);
 		} catch (CoreException e) {
-			e.printStackTrace();
+			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, IStatus.ERROR, e.getMessage() ,e));
 		}
 		return needBuildVisitor.isBuildNeeded();
 	}
@@ -183,7 +183,8 @@ public class KPBuilder {
 						e, 
 						new FileReference(FileHelpers.StringToURL(kpFileURL)));
 			} catch (Exception f) {
-				e.printStackTrace();
+				Activator.getDefault().getLog().log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, IStatus.WARNING, e.getMessage() ,e));
+				Activator.getDefault().getLog().log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, IStatus.WARNING, f.getMessage() ,f));
 			}
 		}
 		Activator.getDefault().getMessaggingSystem().doneProgress(getProgressGroup(), "End of km generation for "+kpFileURL, KermetaBuilder.LOG_MESSAGE_GROUP);
@@ -388,13 +389,15 @@ public class KPBuilder {
 							targetScalaBinFolder.delete(true, null);
 						}
 						res.copy(destScalaBinFolder.append("/"+res.getName()), true, new NullProgressMonitor());
-						if(destEmfBinFolder != null){
+						/* do not duplicate files, but we need to be more careful with the classpath for the reflexivity
+						 if(destEmfBinFolder != null){						 
 							IResource targetEmfBinFolder =  kpProjectFile.getWorkspace().getRoot().findMember(destEmfBinFolder.append("/"+res.getName()));						
 							if(targetEmfBinFolder != null && targetEmfBinFolder.exists()){
 								targetEmfBinFolder.delete(true, null);
 							}
 							res.copy(destEmfBinFolder.append("/"+res.getName()), true, new NullProgressMonitor());
 						}
+						*/
 					}
 
 					
