@@ -57,11 +57,11 @@ object JarCreatorScala {
 	  var in : BufferedInputStream= null
 	  try
 	  {
-	    if (source.isDirectory() && !(source.getPath()equals(rootDir.getPath())) )
+	    if (source.isDirectory() )
 	    {
 	      
 	      var name = source.getPath().replace(rootDir.getPath() + File.separator ,"").replace("\\", "/");
-	      if (!name.isEmpty())
+	      if (!name.isEmpty() && source != rootDir)
 	      {
 	        if (!name.endsWith("/"))
 	          name += "/";
