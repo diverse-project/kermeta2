@@ -17,7 +17,7 @@ package org::kermeta::language::aspectgenerator{
 	        var visitor			: OrderedSet[String] init OrderedSet[String].new
 	        var test			: OrderedSet[String] init OrderedSet[String].new
 	        
-	        userDefined.add("path : String")
+	        userDefined.add("path : Path")
 	        userDefined.add("index : Integer")
 	        
 	        visitor.add("v : Visitor")
@@ -84,7 +84,7 @@ package org::kermeta::language::aspectgenerator{
 	        
 	        //userDefined
 	        context.initialize("userDefined", nameProject, folderLocation, operationName,operationReturnType, operationParams)
-	        inputPackages.each{p | p.generateAspect(context)}		
+	        inputPackages.each{p | p.generateAspect(context)}
 		end
 		
 		operation generateVisitorProject (nameProject : String, folderLocation : String, ecoreFile : String) : Void is do
