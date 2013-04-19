@@ -88,9 +88,10 @@ public class CallableModelingUnitLoader implements Callable<ModelingUnit> {
 			compiler.logger.logProblem(MessagingSystem.Kind.UserERROR, "Source "+urlToLoad.getUrl()+" not found", KermetaCompiler.LOG_MESSAGE_GROUP, KpResourceHelper.createFileReference(urlToLoad.getSource()));
 			compiler.failWithMessage("Source "+urlToLoad.getUrl()+" not found");
 		}
-		catch (Exception e) {				
-			compiler.logger.logProblem(MessagingSystem.Kind.UserERROR, "Problem loading "+urlToLoad.getUrl()+" "+e.getMessage(), KermetaCompiler.LOG_MESSAGE_GROUP, e, KpResourceHelper.createFileReference(urlToLoad.getSource()));			
-			compiler.failWithMessage("Problem loading "+urlToLoad.getUrl()+" "+e.getMessage());
+		catch (Exception e) {		
+			String exceptionMessage = e.getMessage() != null ? e.getMessage() : e.getClass().toString();
+			compiler.logger.logProblem(MessagingSystem.Kind.UserERROR, "Problem loading "+urlToLoad.getUrl()+" due to "+exceptionMessage, KermetaCompiler.LOG_MESSAGE_GROUP, e, KpResourceHelper.createFileReference(urlToLoad.getSource()));			
+			compiler.failWithMessage("Problem loading "+urlToLoad.getUrl()+" due to "+exceptionMessage);
 		}
 		return null;
 	}

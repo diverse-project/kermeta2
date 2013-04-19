@@ -1,7 +1,9 @@
 package org.kermeta.utils.helpers.eclipse;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Hashtable;
 
@@ -14,9 +16,11 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.QualifiedName;
+import org.kermeta.utils.helpers.FileHelpers;
 
 public class ResourceHelpers {
 	/**
@@ -126,6 +130,21 @@ public class ResourceHelpers {
 		} catch (java.lang.IllegalArgumentException exception) {
 			return null;
 		}
+	}
+	
+	static public IResource getIResourceFromURL(URL url){
+		IWorkspace workspace= ResourcesPlugin.getWorkspace();
+		IResource ifile = (IResource) workspace.getRoot().findMember(FileHelpers.URLToStringWithoutFile(url));
+		if(ifile == null){
+			// try another method
+			try {
+				File file = new File(url.toURI());
+				IPath location= Path.fromOSString(file.getAbsolutePath()); 
+				ifile = workspace.getRoot().getFileForLocation(location);
+			} catch (URISyntaxException e) {
+			}
+		}
+		return ifile;
 	}
 	
 	/**

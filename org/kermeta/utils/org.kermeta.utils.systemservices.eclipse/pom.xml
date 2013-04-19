@@ -39,6 +39,11 @@
 			<artifactId>utils.helpers</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.kermeta.utils</groupId>
+			<artifactId>utils.helpers.eclipse</artifactId>
+			<version>${kermeta.version}</version>
+		</dependency>
 		
 		<!-- Eclipse dependencies -->
 		<dependency>
@@ -141,7 +146,8 @@
                     		org.eclipse.ui,
                     		org.eclipse.ui.console,
                     		org.eclipse.ui.editors,
-                    		org.kermeta.utils.helpers
+                    		org.kermeta.utils.helpers,
+                    		org.kermeta.utils.helpers.eclipse
                         </Require-Bundle>
 		            </manifestEntries>		            
 		          </archive>

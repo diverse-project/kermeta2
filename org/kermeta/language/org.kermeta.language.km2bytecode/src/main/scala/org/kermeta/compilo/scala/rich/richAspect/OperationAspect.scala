@@ -108,9 +108,9 @@ trait OperationAspect extends ObjectVisitor with LogAspect with ClassDefinitionA
     if (!Util.hasCompilerIgnoreTag(thi)) {
       log.debug("Operation={}", thi.getName)
       res.append("\n   ")
-      if (this.getSuperOperation(thi) != null
+      if ((this.getSuperOperation(thi) != null
         && !Util.hasEcoreTag(this.getSuperOperation(thi))
-        && !Util.hasEcoreTag(thi)) {
+        && !Util.hasEcoreTag(thi)) || (Util.hasNoEcoreRenameTag(thi)) ) {
         res.append(" override")
       }
       if (isImplementingModelTypeInterface()) {

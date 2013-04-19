@@ -33,6 +33,11 @@ object Util extends LogAspect {
     obj.getKOwnedTags().exists(e => "ecore".equals(e.asInstanceOf[Tag].getName()))
   }
 
+  def hasNoEcoreRenameTag(obj: KermetaModelElement): Boolean = {
+    obj.getKOwnedTags().exists(e => "NOECORERENAME".equals(e.asInstanceOf[Tag].getName()))
+  }
+  
+
   /**
    * Check if a model element has a Main Tag
    * @param obj model element to test
@@ -347,7 +352,7 @@ object Util extends LogAspect {
   }
 
   def getEcoreRenameOperation(op1: Operation): String = {
-    if ((Util.hasEcoreTag(op1) && op1.getBody != null) ||
+    if ((Util.hasEcoreTag(op1) && op1.getBody != null && !Util.hasNoEcoreRenameTag(op1)) ||
       (op1.eContainer.asInstanceOf[ClassDefinition].getOwnedOperation.filter(op => op.getName().equals("op_" + op1.getName())).size > 0)) {
       return "EMFRENAME" + op1.getName
     } /*else if (op1.getSuperOperation != null && op1.getSuperOperation() != op1) {
@@ -355,7 +360,7 @@ object Util extends LogAspect {
     }*/ else {
       return op1.getName
     }
-  }
+  } 
 
   def getClassLoaderForClasspath(classpath: String): java.net.URLClassLoader = {
     var urls: scala.Array[java.net.URL] = scala.Array[java.net.URL]()
@@ -378,7 +383,7 @@ object Util extends LogAspect {
       })
     } catch {
       case e: java.lang.ClassNotFoundException => {
-        log.debug(e + " in " + cl.getURLs().deepToString() + " cl.getURL.size=" + cl.getURLs().length)
+        log.debug(e + " in " + cl.getURLs().mkString + " cl.getURL.size=" + cl.getURLs().length)
         return false
       }
     }
