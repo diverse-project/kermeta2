@@ -213,6 +213,16 @@
             <version>${emf.version}</version>
         </dependency>
         <dependency>
+        	<groupId>org.kermeta.eclipse</groupId>
+        	<artifactId>org.eclipse.emf.common.ui</artifactId>
+        	<version>[2.6.0.0,)</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.kermeta.eclipse</groupId>
+        	<artifactId>org.eclipse.emf.mapping.ecore2ecore.editor</artifactId>
+        	<version>[2.4.0.0,)</version>
+        </dependency>
+        <dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.ui</artifactId>
 			<version>[3.5.2.0,)</version>

@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
