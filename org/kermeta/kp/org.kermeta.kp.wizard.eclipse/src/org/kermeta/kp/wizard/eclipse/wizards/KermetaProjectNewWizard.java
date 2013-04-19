@@ -37,15 +37,22 @@ import org.kermeta.kp.wizard.eclipse.preferences.PreferenceConstants;
 
 public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 
-	KermetaProjectNewWizardPage page = new KermetaProjectNewWizardPage();
+	KermetaProjectNewWizardPage 		projectPage 		= new KermetaProjectNewWizardPage();
+	KermetaProjectNewWizardPageCustom 	projectPageCustom	= new KermetaProjectNewWizardPageCustom();
 	
 	public KermetaProjectNewWizard() {
-		addPage( page );
+		//addPage( page );
 	}
 
-	public KermetaProjectNewWizardPage getPage() {
-		return page;
+	@Override
+	public void addPages() {
+		addPage(projectPage);
+		addPage(projectPageCustom);
 	}
+	
+	/*public KermetaProjectNewWizardPage getPage() {
+		return page;
+	}*/
 	
 	public static void addKermetaNatureToProject(IProject project) {
 		IProjectDescription description;
@@ -70,7 +77,7 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 	@Override
 	public boolean performFinish() {
 		try {
-			 final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(page.getProjectName());
+			 final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectPage.getProjectName());
 			 IWorkspaceRunnable operation = new IWorkspaceRunnable() {
 				 public void run(IProgressMonitor monitor) throws CoreException {
 					 project.create(monitor);

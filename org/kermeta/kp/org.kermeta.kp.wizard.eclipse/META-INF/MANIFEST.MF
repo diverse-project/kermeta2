@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1366189322741
-Build-Jdk: 1.6.0_43
-Built-By: dvojtise
+Bnd-LastModified: 1366353888943
+Build-Jdk: 1.7.0_17
+Built-By: vfontane
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.kermeta.kp.wizard.eclipse.Activator
 Bundle-ClassPath: .
@@ -10,22 +10,22 @@ Bundle-Name: kp.wizard.eclipse
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-SymbolicName: org.kermeta.kp.wizard.eclipse; singleton:=true
 Bundle-Vendor: IRISA/INRIA
-Bundle-Version: 2.0.99.SNAPSHOT_20130417_1101
+Bundle-Version: 2.0.99.SNAPSHOT_20130419_0844
 Created-By: Apache Maven Bundle Plugin
 Export-Package: org.kermeta.kp.wizard.eclipse.wizards;uses:="org.eclipse
  .jface.wizard,org.eclipse.jface.preference,org.kermeta.kp.wizard.eclips
- e,org.eclipse.jface.viewers,org.eclipse.swt.widgets,org.eclipse.jface.o
- peration,org.eclipse.emf.ecore.resource,org.kermeta.utils.systemservice
- s.api.messaging,org.kermeta.kp,org.eclipse.emf.common.util,org.kermeta.
- kp.loader.kp,org.kermeta.language.builder.eclipse,org.kermeta.utils.sys
- temservices.eclipse,org.eclipse.jface.dialogs,org.eclipse.swt.events,or
- g.eclipse.swt.layout";version="2.0.99.SNAPSHOT_20130417_1101",org.kerme
+ e,org.eclipse.jface.viewers,org.eclipse.swt.widgets,org.eclipse.swt.eve
+ nts,org.eclipse.jface.operation,org.eclipse.emf.ecore.resource,org.kerm
+ eta.utils.systemservices.api.messaging,org.kermeta.kp,org.eclipse.emf.c
+ ommon.util,org.kermeta.kp.loader.kp,org.kermeta.language.builder.eclips
+ e,org.kermeta.utils.systemservices.eclipse,org.eclipse.jface.dialogs,or
+ g.eclipse.swt.layout";version="2.0.99.SNAPSHOT_20130419_0844",org.kerme
  ta.kp.wizard.eclipse;uses:="org.eclipse.jface.resource,org.osgi.framewo
- rk";version="2.0.99.SNAPSHOT_20130417_1101",org.kermeta.kp.wizard.eclip
+ rk";version="2.0.99.SNAPSHOT_20130419_0844",org.kermeta.kp.wizard.eclip
  se.preferences;uses:="org.kermeta.kp.wizard.eclipse,org.eclipse.jface.p
  reference,org.kermeta.utils.helpers.eclipse.jface.preference,org.eclips
  e.swt.widgets,org.eclipse.core.runtime.preferences";version="2.0.99.SNA
- PSHOT_20130417_1101",org.kermeta.kp.wizard.eclipse.popup.actions;uses:=
+ PSHOT_20130419_0844",org.kermeta.kp.wizard.eclipse.popup.actions;uses:=
  "org.eclipse.emf.ecore.resource,org.kermeta.kp.wizard.eclipse.wizards,o
  rg.kermeta.utils.systemservices.api.messaging,org.kermeta.kp,org.eclips
  e.emf.common.util,org.kermeta.kp.loader.kp,org.eclipse.jface.action,org
@@ -34,10 +34,10 @@ Export-Package: org.kermeta.kp.wizard.eclipse.wizards;uses:="org.eclipse
  .dialogs,org.kermeta.kp.wizard.eclipse,org.kermeta.kp.editor.analysis.h
  elper,org.kermeta.utils.helpers.eclipse,org.osgi.framework,org.kermeta.
  utils.helpers,org.kermeta.kp.wizard.eclipse.helper,org.kermeta.language
- .km2bytecode.embedded.scala";version="2.0.99.SNAPSHOT_20130417_1101",or
+ .km2bytecode.embedded.scala";version="2.0.99.SNAPSHOT_20130419_0844",or
  g.kermeta.kp.wizard.eclipse.helper;uses:="org.kermeta.kp,org.kermeta.ut
  ils.systemservices.api.messaging,org.kermeta.kp.editor.analysis.helper"
- ;version="2.0.99.SNAPSHOT_20130417_1101"
+ ;version="2.0.99.SNAPSHOT_20130419_0844"
 Ignore-Package: org.eclipse.ui.ide,org.eclipse.core.runtime,org.apache.m
  aven.model,org.eclipse.ui,org.eclipse.core.resources,org.eclipse.ui.plu
  gin,org.eclipse.ui.dialogs,org.kermeta.kp.compiler.commandline,org.apac
