@@ -135,7 +135,7 @@ public class ResourceHelpers {
 	static public IResource getIResourceFromURL(URL url){
 		IWorkspace workspace= ResourcesPlugin.getWorkspace();
 		IResource ifile = (IResource) workspace.getRoot().findMember(FileHelpers.URLToStringWithoutFile(url));
-		if(ifile == null){
+		if(ifile == null && url.getProtocol().equals("file")){
 			// try another method
 			try {
 				File file = new File(url.toURI());
