@@ -33,26 +33,18 @@ import org.eclipse.ui.IWorkbench;
 import org.kermeta.kp.wizard.eclipse.Activator;
 import org.kermeta.kp.wizard.eclipse.preferences.PreferenceConstants;
 
-
-
 public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 
 	KermetaProjectNewWizardPage 		projectPage 		= new KermetaProjectNewWizardPage();
 	KermetaProjectNewWizardPageCustom 	projectPageCustom	= new KermetaProjectNewWizardPageCustom();
 	
-	public KermetaProjectNewWizard() {
-		//addPage( page );
-	}
+	public KermetaProjectNewWizard() {}
 
 	@Override
 	public void addPages() {
 		addPage(projectPage);
 		addPage(projectPageCustom);
 	}
-	
-	/*public KermetaProjectNewWizardPage getPage() {
-		return page;
-	}*/
 	
 	public static void addKermetaNatureToProject(IProject project) {
 		IProjectDescription description;
