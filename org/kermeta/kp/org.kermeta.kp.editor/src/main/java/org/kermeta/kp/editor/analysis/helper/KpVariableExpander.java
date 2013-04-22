@@ -132,6 +132,8 @@ public class KpVariableExpander {
 						}
 					} catch (IOException e) {
 						// not a valid zip					
+					} catch (java.lang.RuntimeException e2){
+						// aether may report such RuntimeExecption if it cannot resolve the url
 					}
 				} catch (URISyntaxException e) {} 
 				  catch (MalformedURLException e) {	}
