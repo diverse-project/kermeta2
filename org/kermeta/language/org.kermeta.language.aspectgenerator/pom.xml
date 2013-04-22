@@ -104,10 +104,7 @@
 			ecore_aspectgeneratorrunner.org.kermeta.language.aspectgenerator
                         </Export-Package>
                         <Require-Bundle>
-            org.scala-ide.scala.library,
-            org.kermeta.language.model,
-            org.kermeta.language.library.core,
-            org.kermeta.language.library.standard,             
+            org.scala-ide.scala.library,             
 			org.kermeta.utils.systemservices.eclipse,           
 			org.kermeta.utils.systemservices.api
                         </Require-Bundle>
@@ -125,7 +122,8 @@
 			org.kermeta.language.behavior,
 			org.kermeta.language.structure.impl,
 			org.kermeta.language.behavior.impl,
-			org.kermeta.language.util
+			org.kermeta.language.util,
+			kermeta_standard.org.kermeta.language.structure
                         </Import-Package>
 		            </manifestEntries>		            
 		          </archive>

@@ -16,6 +16,5 @@ project ecore_aspectgenerator {
 	import "${project.baseUri}/src/main/kmt/KmtFileGeneration.kmt"
 	
 	import "${ecore_model.baseUri}/model/Ecore.ecore" using EMFBytecode(ecore_model) {
-		packageEquivalence "ecore" = "org.eclipse.emf.ecore"
-	}
+		packageEquivalence "ecore" = "org.eclipse.emf.ecore"}
 }

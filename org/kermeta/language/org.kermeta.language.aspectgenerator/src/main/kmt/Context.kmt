@@ -1,5 +1,4 @@
 using kermeta::standard::*
-using kermeta::io::FileIO => FileIO
 using kermeta::io::StdIO => stdio
 
 using ecore_aspectgenerator^ecore::*
@@ -7,7 +6,6 @@ using ecore_aspectgenerator^ecore::*
 package org::kermeta::language::aspectgenerator{
 	class Context
 	{
-	
 		attribute operationName 		: String
 		attribute operationReturnType 	: String
 		attribute operationParams 		: OrderedSet[String]
