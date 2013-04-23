@@ -61,7 +61,7 @@ public class KpDependenciesHelper {
 			}
 			
 			// if it is a kermeta project, add its DependentProjectsClassPath
-			String kpFileURL = containerUrl.endsWith(".jar")?	"jar:"+containerUrl+"!"+KermetaProjectHelper.DEFAULT_KP_LOCATION_IN_JAR : containerUrl+KermetaProjectHelper.DEFAULT_KP_LOCATION_IN_FOLDER; 
+			String kpFileURL = containerUrl.endsWith(".jar")|| containerUrl.endsWith("bundlefile")?	"jar:"+containerUrl+"!"+KermetaProjectHelper.DEFAULT_KP_LOCATION_IN_JAR : containerUrl+KermetaProjectHelper.DEFAULT_KP_LOCATION_IN_FOLDER; 
 			KermetaProject foundProject = KpResourceHelper.findKermetaProject( kpFileURL, kp.eResource());
 			if(foundProject != null){
 				KpVariableExpander innerVarExpander = new KpVariableExpander(kpFileURL, foundProject, varExpander.getFileSystemConverter(), varExpander.getLogger());				

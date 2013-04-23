@@ -293,9 +293,10 @@ public class CollectSourcesHelper {
 		for (ImportProject importedProjectJar : kp.getImportedProjects()) {
 			String containerUrl = varExpander
 					.getSelectedUrl4ReusableResource(importedProjectJar.getProjectResource());
+			boolean isAJar = containerUrl.endsWith(".jar") || containerUrl.endsWith("bundlefile");
 			KermetaProject foundProject = KpResourceHelper
 					.findKermetaProject(
-							containerUrl.endsWith(".jar") ? "jar:"
+							isAJar ? "jar:"
 									+ containerUrl
 									+ "!"
 									+ KermetaProjectHelper.DEFAULT_KP_LOCATION_IN_JAR
@@ -303,7 +304,7 @@ public class CollectSourcesHelper {
 											+ KermetaProjectHelper.DEFAULT_KP_LOCATION_IN_FOLDER,
 							kp.eResource());
 			if (foundProject != null) {
-				if (containerUrl.endsWith(".jar")) {
+				if (isAJar) {
 
 					kpSources
 							.add(new TracedURL(
