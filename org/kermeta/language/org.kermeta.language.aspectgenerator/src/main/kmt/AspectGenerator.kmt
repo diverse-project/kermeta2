@@ -1,5 +1,6 @@
 using kermeta::standard::*
 using kermeta::io::StdIO => stdio
+using kermeta::io::FileIO => FileIO
 
 using kermeta::emfpersistence::*
 using ecore_aspectgenerator^ecore::*
@@ -14,11 +15,13 @@ package org::kermeta::language::aspectgenerator{
 	        var ecoreFile		: String init "platform:/resource/org.kermeta.language.aspectgenerator/src/test/fuml.ecore"
 
 	        var userDefined		: OrderedSet[String] init OrderedSet[String].new
+	        var newClass		: OrderedSet[String] init OrderedSet[String].new
 	        var visitor			: OrderedSet[String] init OrderedSet[String].new
 	        var test			: OrderedSet[String] init OrderedSet[String].new
 	        
 	        userDefined.add("path : Path")
 	        userDefined.add("index : Integer")
+	      	newClass.add("Path")
 	        
 	        visitor.add("v : Visitor")
 	        
@@ -32,10 +35,11 @@ package org::kermeta::language::aspectgenerator{
 	        generateVisitorProject("visit", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/result_patternvisitor", ecoreFile)
 	        
 	        stdio.writeln("generation of a user defined project")
-	        generateUserDefinedProject("userdefined", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/result_userDefined", ecoreFile, "userDefined", "Integer", userDefined)
+	        generateUserDefinedProject("userdefined", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/result_userDefined", ecoreFile, "userDefined", "Integer", userDefined, newClass)
 	        
 	        stdio.writeln("generation of a aspect project")
 	        generateAspectProject("aspect", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/result_aspect", ecoreFile)
+	        
 	    end
 	        
 		operation loadEcoreModel(ecoreFile : String) : Collection[EPackage] is do             
@@ -78,7 +82,7 @@ package org::kermeta::language::aspectgenerator{
 	        inputPackages.each{p | p.generateAspect(context)}		
 		end
 		
-		operation generateUserDefinedProject (nameProject : String, folderLocation : String, ecoreFile : String, operationName : String, operationReturnType : String, operationParams : OrderedSet[String]) : Void is do
+		operation generateUserDefinedProject (nameProject : String, folderLocation : String, ecoreFile : String, operationName : String, operationReturnType : String, operationParams : OrderedSet[String], listNewClass : OrderedSet[String]) : Void is do
 			var inputPackages	: Collection[EPackage] init loadEcoreModel(ecoreFile)
 	        var context 		: Context := Context.new
 	        

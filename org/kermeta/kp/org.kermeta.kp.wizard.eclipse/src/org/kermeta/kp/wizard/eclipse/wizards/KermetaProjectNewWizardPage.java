@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -30,6 +31,12 @@ import org.eclipse.emf.mapping.ecore2ecore.presentation.Ecore2EcoreEditorPlugin;
 
 public class KermetaProjectNewWizardPage extends WizardPage {
 
+	private String 		projectLocation = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
+	private String		projectName		= "NewKermetaProject";
+	private String		projectType		= "None";
+	private String		ecoreFile		= "None";
+	private boolean		ecoreProject	= false;
+	
 	private static final List<String> FILE_EXTENSIONS = Arrays.asList(new String [] { "ecore" });
 	private boolean 	enableNext;
 	
@@ -68,7 +75,7 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		
 		txtProjectName = new Text(container, SWT.BORDER);
 		txtProjectName.setBounds(93, 7, 255, 21);
-		txtProjectName.setText("NewKermetaProject");
+		txtProjectName.setText(this.projectName);
 		
 		lblProjectName = new Label(container, SWT.NONE);
 		lblProjectName.setBounds(10, 10, 98, 15);
@@ -83,12 +90,13 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		btnBrowseLocation.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				locationDialog();
+				txtProjectLocation.setText(locationDialog());
 			}
 		});
 		
 		txtProjectLocation = new Text(container, SWT.BORDER);
 		txtProjectLocation.setBounds(10, 68, 333, 21);
+		txtProjectLocation.setText(this.projectLocation);
 		
 		btnCheckLocation = new Button(container, SWT.CHECK);
 		btnCheckLocation.setText("use default location");
@@ -119,6 +127,7 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (btnCheckEcore.getSelection()) {
+					updateEcoreProject(true);
 					btnBrowseEcore.setEnabled(true);
 					txtPathEcore.setEnabled(true);
 					combo.setEnabled(true);
@@ -127,6 +136,7 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 					}
 				}
 				else {
+					updateEcoreProject(false);
 					btnBrowseEcore.setEnabled(false);
 					txtPathEcore.setEnabled(false);
 					combo.setEnabled(false);
@@ -147,7 +157,7 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		btnBrowseEcore.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (worksplaceDialog() || !txtPathEcore.getText().isEmpty()) {
+				if (workspaceDialog() || !txtPathEcore.getText().isEmpty()) {
 					setPageComplete(true);
 				}
 			}
@@ -183,18 +193,15 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		setControl(container);
 		setPageComplete(true);
 	}
-
-	public String getProjectName() {
-		return txtProjectName.getText();
-	}
 	
-	public void locationDialog () {
+	private String locationDialog () {
 		DirectoryDialog dirDialog = new DirectoryDialog(new Shell());
 	    dirDialog.setText("Select location directory");
-	    String selectedDir = dirDialog.open();
+	    this.projectLocation = dirDialog.open();
+	    return this.projectLocation;
 	}
 	  
-	public boolean worksplaceDialog() {
+	private boolean workspaceDialog() {
 		boolean bResult = false;
 		
 		final IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
@@ -223,11 +230,16 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 																		Collections.singletonList(viewerFilter));
 		if (files.length > 0) {
 			for (int i = 0; i < files.length; i++) {
+				this.ecoreFile = files[i].getFullPath().toOSString();
 				txtPathEcore.setText(files[i].getFullPath().toOSString());
 			}
 			bResult = true;
 		}
 		return bResult;
+	}
+	
+	private void updateEcoreProject (boolean bState) {
+		this.ecoreProject = bState;
 	}
 	
 	private void updateNextButton (boolean enable) {
@@ -237,7 +249,27 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 	}
 	
 	@Override
-	public boolean canFlipToNextPage() {
+	public boolean canFlipToNextPage () {
 		return enableNext;
+	}
+	
+	public String getProjectLocation () {
+		return this.projectLocation;
+	}
+
+	public String getProjectName () { 
+		return this.txtProjectName.getText();
+	}
+
+	public String getProjectType () {
+		return this.projectType 	;
+	}
+	
+	public String getEcoreFile () {
+		return this.ecoreFile;
+	}
+	
+	public boolean getProjectWithEcore () {
+		return ecoreProject;
 	}
 }

@@ -1,5 +1,7 @@
 package org.kermeta.kp.wizard.eclipse.wizards;
 
+import java.util.ArrayList;
+
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -14,6 +16,9 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
 public class KermetaProjectNewWizardPageCustom extends WizardPage {
+	
+	private ArrayList<String> collectionParameters 	= new ArrayList<String>();	
+	private ArrayList<String> collectionClass		= new ArrayList<String>();
 	
 	private Composite 	container;
 	private Label 		lblOperationName;
@@ -150,5 +155,28 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	        table.remove(table.getSelectionIndices());
 	        table.redraw();
         }
+		getNewClass();
+	}
+	
+	public ArrayList<String> getParameters () {
+		TableItem[] tItem = table.getItems();
+		if (tItem.length > 0) {
+			for (int i =0; i < tItem.length; i++) {
+				this.collectionParameters.add(tItem[i].getText(1) + " : " + tItem[i].getText(2));
+			}
+		}
+		return this.collectionParameters;
+	}
+	
+	public ArrayList<String> getNewClass () {
+		TableItem[] tItem = table.getItems();
+		if (tItem.length > 0) {
+			for (int i =0; i < tItem.length; i++) {
+				if (tItem[i].getText(0) == "yes") {
+					this.collectionClass.add(tItem[i].getText(2));
+				}
+			}
+		}
+		return this.collectionClass;
 	}
 }
