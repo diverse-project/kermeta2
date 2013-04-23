@@ -1142,7 +1142,8 @@ package kermeta {
 						
 						result := super( aspectElement)
 						if (not self.uri.isVoid) and (not aspectElement.uri.isVoid) then
-							result := result and self.uri == aspectElement.uri
+							// TODO can be improved: we may accept package with different names with TypeDefinition coming from kermeta but not from ecore
+							result := result and ((self.uri == aspectElement.uri) or (self.ownedTypeDefinition.empty and aspectElement.ownedTypeDefinition.empty))
 						end
 					else
 						result := false
