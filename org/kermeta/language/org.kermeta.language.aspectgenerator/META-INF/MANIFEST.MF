@@ -1,15 +1,36 @@
 Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
-Bundle-SymbolicName: org.kermeta.language.aspectgenerator;singleton:=true
-Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: .
-Bundle-Vendor: %providerName
-Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: ecore,
- ecore.impl,
- ecore.util
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: dvojtise
+Build-Jdk: 1.6.0_43
 Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-ManifestVersion: 2
+Bundle-Name: language.aspectgenerator :: a generator of aspect view fr
+ om an ecore file
+Bundle-SymbolicName: org.kermeta.language.aspectgenerator
+Bundle-Vendor: IRISA/INRIA
+Bundle-Version: 2.0.99.SNAPSHOT_20130423_1351
+Export-Package: org.kermeta.language.aspectgenerator,
+ 			ecore_aspectgenerator.org.kermeta.language.aspectgenerator,
+ 			ecore_aspectgeneratorrunner,		
+ 			ecore_aspectgeneratorrunner.org.kermeta.language.aspectgenerator
+Import-Package: org.eclipse.emf.common.notify,
+ 			org.eclipse.emf.common.util,
+ 			org.eclipse.emf.ecore,
+ 			org.eclipse.emf.ecore.impl,
+ 			org.eclipse.emf.ecore.resource,
+ 			org.eclipse.emf.ecore.util,
+ 			org.eclipse.emf.ecore.xmi,
+ 			org.eclipse.emf.ecore.xmi.impl,
+ 			org.osgi.framework;version="[1.5,2)",
+ 			org.kermeta.language.structure,
+ 			org.kermeta.language.behavior,
+ 			org.kermeta.language.structure.impl,
+ 			org.kermeta.language.behavior.impl,
+ 			org.kermeta.language.util,
+ 			kermeta_standard.org.kermeta.language.structure
+Require-Bundle: org.scala-ide.scala.library,             
+ 			org.kermeta.utils.systemservices.eclipse,           
+ 			org.kermeta.utils.systemservices.api
+
