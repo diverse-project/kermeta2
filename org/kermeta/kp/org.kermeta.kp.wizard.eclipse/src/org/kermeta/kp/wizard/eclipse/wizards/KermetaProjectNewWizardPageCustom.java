@@ -1,5 +1,7 @@
 package org.kermeta.kp.wizard.eclipse.wizards;
 
+import org.kermeta.kp.wizard.eclipse.wizards.utils.Context;
+
 import java.util.ArrayList;
 
 import org.eclipse.jface.viewers.ISelection;
@@ -17,8 +19,7 @@ import org.eclipse.swt.widgets.Text;
 
 public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	
-	private ArrayList<String> collectionParameters 	= new ArrayList<String>();	
-	private ArrayList<String> collectionClass		= new ArrayList<String>();
+	private Context		context;
 	
 	private Composite 	container;
 	private Label 		lblOperationName;
@@ -37,8 +38,9 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	private Button 		btnRemove;
 	private String[] 	tabItem =  {"yes", "context", "Context"};
 	
-	public KermetaProjectNewWizardPageCustom (){
+	public KermetaProjectNewWizardPageCustom (Context context){
 		super("wizardPage");
+		this.context = context;
 		setTitle("Custom Operation for New Kermeta project");
 		setDescription("This wizard configures the operation which has to add at the aspect files at the new kermeta project");
 		setPageComplete(true);
@@ -155,17 +157,16 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	        table.remove(table.getSelectionIndices());
 	        table.redraw();
         }
-		getNewClass();
 	}
 	
-	public ArrayList<String> getParameters () {
+	/*public <String> getParameters () {
 		TableItem[] tItem = table.getItems();
 		if (tItem.length > 0) {
 			for (int i =0; i < tItem.length; i++) {
-				this.collectionParameters.add(tItem[i].getText(1) + " : " + tItem[i].getText(2));
+				this.context.operationParams.add(tItem[i].getText(1) + " : " + tItem[i].getText(2));
 			}
 		}
-		return this.collectionParameters;
+		return this.context.operationParams;
 	}
 	
 	public ArrayList<String> getNewClass () {
@@ -173,10 +174,10 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 		if (tItem.length > 0) {
 			for (int i =0; i < tItem.length; i++) {
 				if (tItem[i].getText(0) == "yes") {
-					this.collectionClass.add(tItem[i].getText(2));
+					this.context.listNewClass.add(tItem[i].getText(2));
 				}
 			}
 		}
-		return this.collectionClass;
-	}
+		return this.context.listNewClass;
+	}*/
 }

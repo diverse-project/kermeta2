@@ -1,5 +1,7 @@
 package org.kermeta.kp.wizard.eclipse.wizards;
 
+import org.kermeta.kp.wizard.eclipse.wizards.utils.ErrorMessage;
+import org.kermeta.kp.wizard.eclipse.wizards.utils.Context;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -8,6 +10,10 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.events.ControlListener;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Button;
@@ -31,17 +37,15 @@ import org.eclipse.emf.mapping.ecore2ecore.presentation.Ecore2EcoreEditorPlugin;
 
 public class KermetaProjectNewWizardPage extends WizardPage {
 
-	private String 		projectLocation = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
-	private String		projectName		= "NewKermetaProject";
-	private String		projectType		= "None";
-	private String		ecoreFile		= "None";
-	private boolean		ecoreProject	= false;
+	private Context		context;
 	
 	private static final List<String> FILE_EXTENSIONS = Arrays.asList(new String [] { "ecore" });
+	private ErrorMessage[] errorMessage;
 	private boolean 	enableNext;
 	
 	private Composite 	container;
 	private Label 		lblProjectName;
+	private Label 		lblTemplateEcore;
 	private Text 		txtProjectName;
 	private Text 		txtProjectLocation;
 	private Text 		txtPathEcore;
@@ -51,10 +55,14 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 	private Button 		btnCheckEcore;
 	private Combo 		combo;
 
-	public KermetaProjectNewWizardPage(){
+	public KermetaProjectNewWizardPage(Context context){
 		super("wizardPage");
+		this.context = context;
 		setTitle("New Kermeta project");
 		setDescription("This wizard creates a new kermeta project");
+		this.errorMessage =  new ErrorMessage[2];
+		this.errorMessage[0] = new ErrorMessage("A project with this name already exist.", false);
+		this.errorMessage[1] = new ErrorMessage("There is not ecore file selected.", false);
 	}
 	
 	/**
@@ -75,7 +83,29 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		
 		txtProjectName = new Text(container, SWT.BORDER);
 		txtProjectName.setBounds(93, 7, 255, 21);
-		txtProjectName.setText(this.projectName);
+		txtProjectName.setText(this.context.nameProject);
+				
+		txtProjectName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent arg0) {
+				boolean bFinder = false;
+				int i = 0;
+				
+				while (bFinder == false && i < ResourcesPlugin.getWorkspace().getRoot().getProjects().length) {
+		    		  if (ResourcesPlugin.getWorkspace().getRoot().getProjects()[i].getName().contentEquals(txtProjectName.getText())) {
+		    			  activErrorMessage (0, true);
+		    			  setPageComplete(false);
+		    			  bFinder = true;
+		    		  }
+		    		  else {
+		    			  activErrorMessage(0 , false);
+		    			  setPageComplete(true);
+		    		  }
+		    		  i++;
+		    	}
+				updateNameProject(txtProjectName.getText());
+			}
+		});
 		
 		lblProjectName = new Label(container, SWT.NONE);
 		lblProjectName.setBounds(10, 10, 98, 15);
@@ -96,7 +126,7 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		
 		txtProjectLocation = new Text(container, SWT.BORDER);
 		txtProjectLocation.setBounds(10, 68, 333, 21);
-		txtProjectLocation.setText(this.projectLocation);
+		txtProjectLocation.setText(this.context.locationProject);
 		
 		btnCheckLocation = new Button(container, SWT.CHECK);
 		btnCheckLocation.setText("use default location");
@@ -130,8 +160,10 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 					updateEcoreProject(true);
 					btnBrowseEcore.setEnabled(true);
 					txtPathEcore.setEnabled(true);
+					lblTemplateEcore.setEnabled(true);
 					combo.setEnabled(true);
 					if ( txtPathEcore.getText().isEmpty()) {
+						activErrorMessage(1, true);
 						setPageComplete(false);
 					}
 				}
@@ -139,10 +171,12 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 					updateEcoreProject(false);
 					btnBrowseEcore.setEnabled(false);
 					txtPathEcore.setEnabled(false);
+					lblTemplateEcore.setEnabled(false);
 					combo.setEnabled(false);
 					combo.select(0);
 					updateNextButton (false);
 					setPageComplete(true);
+					activErrorMessage(1, false);
 				} 
 			}
 		});
@@ -163,15 +197,19 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 			}
 		});
 		
+		lblTemplateEcore = new Label(container, SWT.NONE);
+		lblTemplateEcore.setText("use template on ecore file");
+		lblTemplateEcore.setBounds(10, 167, 218, 15);
+		
 		combo = new Combo(container, SWT.NONE);
-		combo.setItems(new String[] {"None", "1 aspect class per 1 ecore class", "Compiler template", "Interpreter template", "Traditional Visitor design patter", "Custom operation per ecore class"});
-		combo.setBounds(10, 157, 333, 23);
+		combo.setItems(new String[] {"None", "Aspect class from ecore file", "Customize", "Traditional Visitor design patter (Not Recommended)"});
+		combo.setBounds(10, 188, 333, 23);
 		combo.select(0);
 		
 		combo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if(combo.getSelectionIndex() == 5) {
+				if(combo.getSelectionIndex() == 2) {
 					updateNextButton (true);
 				}
 				else {
@@ -187,6 +225,7 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		btnBrowseLocation.setEnabled(false);
 		btnBrowseEcore.setEnabled(false);
 		txtPathEcore.setEnabled(false);
+		lblTemplateEcore.setEnabled(false);
 		combo.setEnabled(false);
 		
 		// Required to avoid an error in the system
@@ -197,8 +236,8 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 	private String locationDialog () {
 		DirectoryDialog dirDialog = new DirectoryDialog(new Shell());
 	    dirDialog.setText("Select location directory");
-	    this.projectLocation = dirDialog.open();
-	    return this.projectLocation;
+	    this.context.locationProject = dirDialog.open();
+	    return this.context.locationProject;
 	}
 	  
 	private boolean workspaceDialog() {
@@ -230,16 +269,41 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 																		Collections.singletonList(viewerFilter));
 		if (files.length > 0) {
 			for (int i = 0; i < files.length; i++) {
-				this.ecoreFile = files[i].getFullPath().toOSString();
+				this.context.ecoreFile = files[i].getFullPath().toOSString().substring(files[i].getProject().getName().length() + 1);
 				txtPathEcore.setText(files[i].getFullPath().toOSString());
+				this.context.ecoreProjectPath = files[i].getProject().getFullPath().toOSString();
 			}
 			bResult = true;
 		}
 		return bResult;
 	}
 	
+	private void activErrorMessage (int index, boolean bActiv) {
+		this.errorMessage[index].setActive(bActiv);
+		setMessageError();
+	}
+	
+	private void setMessageError () {
+		StringBuffer result = new StringBuffer();
+		for (int i = 0; i < this.errorMessage.length; i++) {
+			if (this.errorMessage[i].isActive()) {
+				result.append(this.errorMessage[i].getMessageError() + "\n");
+			}
+		}
+		if (result.length() > 0) {
+			setErrorMessage(result.toString());
+		}
+		else {
+			setErrorMessage(null);
+		}
+	}
+	
 	private void updateEcoreProject (boolean bState) {
-		this.ecoreProject = bState;
+		this.context.ecoreProject = bState;
+	}
+	
+	private void updateNameProject (String nameProject) {
+		this.context.nameProject = nameProject;
 	}
 	
 	private void updateNextButton (boolean enable) {
@@ -251,25 +315,5 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 	@Override
 	public boolean canFlipToNextPage () {
 		return enableNext;
-	}
-	
-	public String getProjectLocation () {
-		return this.projectLocation;
-	}
-
-	public String getProjectName () { 
-		return this.txtProjectName.getText();
-	}
-
-	public String getProjectType () {
-		return this.projectType 	;
-	}
-	
-	public String getEcoreFile () {
-		return this.ecoreFile;
-	}
-	
-	public boolean getProjectWithEcore () {
-		return ecoreProject;
 	}
 }

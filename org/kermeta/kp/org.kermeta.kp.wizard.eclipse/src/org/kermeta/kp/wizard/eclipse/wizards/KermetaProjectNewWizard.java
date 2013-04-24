@@ -11,10 +11,15 @@
 */
 package org.kermeta.kp.wizard.eclipse.wizards;
 
+import org.kermeta.kp.wizard.eclipse.wizards.utils.Context;
+import org.kermeta.kp.wizard.eclipse.wizards.utils.GenerateAspect;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.regex.Pattern;
+
+import k2.io.StdIO;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -35,8 +40,10 @@ import org.kermeta.kp.wizard.eclipse.preferences.PreferenceConstants;
 
 public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 
-	KermetaProjectNewWizardPage 		projectPage 		= new KermetaProjectNewWizardPage();
-	KermetaProjectNewWizardPageCustom 	projectPageCustom	= new KermetaProjectNewWizardPageCustom();
+	private Context context = new Context ();
+	
+	KermetaProjectNewWizardPage 		projectPage 		= new KermetaProjectNewWizardPage(context);
+	KermetaProjectNewWizardPageCustom 	projectPageCustom	= new KermetaProjectNewWizardPageCustom(context);
 	
 	public KermetaProjectNewWizard() {}
 
@@ -68,12 +75,15 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 	@Override
 	public boolean performFinish() {
 		try {
-			 final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectPage.getProjectName());
+			 final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(this.context.nameProject);
+			 StdIO.writeln(this.context.nameProject);
 			 IWorkspaceRunnable operation = new IWorkspaceRunnable() {
 				 public void run(IProgressMonitor monitor) throws CoreException {
 					 project.create(monitor);
 					 project.open(monitor);
 					 addKermetaNatureToProject(project);
+					 manageCreationProject(project, monitor);
+					 /*
 					 createFolder(project, "src/main/kmt", monitor);
 					 createDefaultKmt(project, "src/main/kmt/MainClass.kmt", monitor);
 					 createDefaultKp(project, "project.kp", monitor);
@@ -81,7 +91,7 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 					 if(!ecoreFile.equals("None")){
 						 createEcoreAspect(project.getName(),"src/main/kmt2",ecoreFile);
 					 }
-					 
+					 */
 				 }
 			};
 			ResourcesPlugin.getWorkspace().run(operation, null);
@@ -103,6 +113,19 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 	}
 
+	
+	private void manageCreationProject (IProject project, IProgressMonitor monitor) throws CoreException {
+		createFolder(project, "src/main/kmt", monitor);
+		if (this.context.ecoreProject) {
+			GenerateAspect ga = new GenerateAspect (this.context);
+			ga.generateKermetaProject();
+		}
+		else {
+			createDefaultKmt(project, "src/main/kmt/MainClass.kmt", monitor);
+			createDefaultKp(project, "project.kp", monitor);	
+		}
+	}
+	
 	/**
 	 * Creates folder hierarchically from a path relative to a project.
 	 * @param project
