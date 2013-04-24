@@ -1,4 +1,6 @@
-package org.kermeta.language.aspectgenerator;
+package org.kermeta.language.aspectgenerator.impl;
+
+import org.kermeta.language.aspectgenerator.KM2KMTAspectGenerator;
 
 public class KM2KMTAspectGeneratorImpl4Eclipse implements KM2KMTAspectGenerator {
 	

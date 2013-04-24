@@ -1,4 +1,4 @@
-package org.kermeta.language.aspectgenerator;
+package org.kermeta.language.aspectgenerator.impl;
 
 import org.kermeta.language.aspectgenerator.KM2KMTAspectGenerator;
 
