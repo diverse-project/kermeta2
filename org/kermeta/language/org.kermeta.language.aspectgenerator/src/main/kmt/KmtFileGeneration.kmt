@@ -14,14 +14,14 @@ package org::kermeta::language::aspectgenerator{
 			result := self
 		end
 
-		operation writeFileIO () : Void is do 
+		operation writeKmtFile () : Void is do 
 			var contentFile : StringBuffer init StringBuffer.new
 			
 			contentFile.append(initKmtFile)
 			contentFile.append(self.context.kmtContent)
 			contentFile.append(finishKmtFile)
 			
-			FileIO.writeTextFile(writePathFile.toURI, contentFile.toString)
+			writeFileIo(writePathFile, contentFile.toString)
 		end
 
 		operation initKmtFile () : String is do
@@ -54,7 +54,6 @@ package org::kermeta::language::aspectgenerator{
 		
 		operation writePathFile () : String is do
 			result := ""
-			result := result + self.context.fileName + "/"
 			self.context.packageCollection.each { pc |
 				result := result + pc + "/"
 				if (self.context.packageCollection.indexOf(pc) == self.context.packageCollection.size - 1) then 
@@ -65,8 +64,8 @@ package org::kermeta::language::aspectgenerator{
 		operation writeVisitorPattern () : Void is do
 			var vpFile 	: String init "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
 			var vcFile 	: String init "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
-			var vpPath	: String init self.context.fileName + "/visitorpattern/visitorpattern.kmt"
-			var vcPath	: String init self.context.fileName + "/visitorpattern/concretevisitor.kmt"
+			var vpPath	: String init "visitorpattern/visitorpattern.kmt"
+			var vcPath	: String init "visitorpattern/concretevisitor.kmt"
 			
 			// Package openning 
 			vpFile := vpFile + "package visitorpattern {\n"
@@ -79,8 +78,8 @@ package org::kermeta::language::aspectgenerator{
 			vcFile := vcFile + "\n" + writeConcreteVisitor
 			vcFile := vcFile + "\n}"
 			
-			FileIO.writeTextFile(vpPath.toURI, vpFile)
-			FileIO.writeTextFile(vcPath.toURI, vcFile)
+			writeFileIo(vpPath, vpFile)
+			writeFileIo(vcPath, vcFile)
 		end
 		
 		operation writeVisitableElement() : String is do
@@ -108,7 +107,7 @@ package org::kermeta::language::aspectgenerator{
 		end
 		
 		operation writeNewClass(nameClass : String) : Void is do
-			var classPath	: String init self.context.fileName + "/src/main/kmt/" + nameClass + ".kmt"
+			var classPath	: String init "src/main/kmt/" + nameClass + ".kmt"
 			var classFile	: String init ""
 			
 			classFile := ""
@@ -122,7 +121,60 @@ package org::kermeta::language::aspectgenerator{
 			classFile := classFile + "\t\tend"
 			classFile := classFile + "\n\t}\n}"
 			
-			FileIO.writeTextFile(classPath.toURI, classFile)
+			writeFileIo(classPath, classFile)
+		end
+		
+		operation writeFileIo (path : String, content : String) : Void is do
+			FileIO.writeTextFile((self.context.fileName + "/" + path).toURI, content)
+			self.context.listFilesToImport.add(path)
+		end
+		
+		operation writeProjectKp () : Void is do
+			var projectKp 		: StringBuffer init StringBuffer.new
+			
+			writeFileIo ("src/main/kmt/MainClass.kmt", writeMainClass)
+			
+			projectKp.append(writeInitKpFile)
+			projectKp.append(writeImportKpFile)
+			projectKp.append("\n}")
+			
+			FileIO.writeTextFile((self.context.fileName + "/project.kp").toURI, projectKp.toString)
+		end
+		
+		operation writeInitKpFile () : String is do
+			result := ""
+			result := result + "resource library_standard = \"platform:/plugin/org.kermeta.language.library.standard\" alternative \"mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT\" \n"
+			result := result + "resource ecore_model = \"patform:/resource/" + self.context.ecoreProjectPath + "\"\n"
+			result := result + "\n\nimportProject library_standard\n"
+			result := result + "\nimportProject ecore_model\n\n"
+			result := result + "project " + self.context.nameProject + " {\n"
+			
+			result := result + "\tmainClass \"" + self.context.nameProject + "^mainPackage::MainClass\"\n"
+			result := result + "\tmainOperation \"mainOperation\"\n\n"
+		end
+		
+		operation writeImportKpFile () : String is do
+			result := ""
+			result := result + "\timport \"${ecore_model.baseUri}" + self.context.ecoreFile + "\"\n\n"
+			
+			self.context.listFilesToImport.each{ f | result := result + "\timport \"${project.baseUri}/" + f + "\"\n"}
+		end
+		
+		operation writeMainClass () : String is do
+			
+			result := ""
+			result := result + "using kermeta::standard::*\n"
+			result := result + "using kermeta::io::StdIO => stdio\n\n"
+			result := result + "package " + self.context.nameProject + " {\n"
+			result := result + "\tclass MainClass {\n"
+			result := result + "\t\t@main \"\" // declares that operation as a possible entry point of the program\n"
+			result := result + "\t\toperation mainOperation() : Void is do\n"
+			result := result + "\t\t\t// TODO: implement '${operation.name}' operation\n"
+			result := result + "\t\t\tstdio.writeln(\"Hello world!!\")\n"
+			result := result + "\t\tend\n"
+			result := result + "\t}\n"
+			result := result + "}"
+						
 		end
 	}
 }

@@ -28,7 +28,7 @@ package ecore{
 					if (c.isInstanceOf(EClass)) then
 						c.asType(EClass).generateAspect(self.context)
 					end}
-				kmtFile.writeFileIO
+				kmtFile.writeKmtFile
 				self.context.kmtContent := StringBuffer.new
 			end
 			
