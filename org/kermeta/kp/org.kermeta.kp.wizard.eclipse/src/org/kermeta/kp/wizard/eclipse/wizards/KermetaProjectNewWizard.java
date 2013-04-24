@@ -60,8 +60,7 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 				
 			}
 		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Activator.logErrorMessage(e.getMessage(), e);
 		}
 	}
 	
@@ -78,16 +77,29 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 					 createFolder(project, "src/main/kmt", monitor);
 					 createDefaultKmt(project, "src/main/kmt/MainClass.kmt", monitor);
 					 createDefaultKp(project, "project.kp", monitor);
+					 String ecoreFile = projectPage.getEcoreFile();
+					 if(!ecoreFile.equals("None")){
+						 createEcoreAspect(project.getName(),"src/main/kmt2",ecoreFile);
+					 }
+					 
 				 }
 			};
 			ResourcesPlugin.getWorkspace().run(operation, null);
 		} catch (CoreException exception) {
-			exception.printStackTrace();
+			Activator.logErrorMessage(exception.getMessage(), exception);
 			return false;
 		}
 		return true;
 	}
 
+	public void createEcoreAspect(String nameProject, String folderLocation, String ecoreFile){
+	//	org.kermeta.language.aspectgenerator.KM2KMTAspectGenerator generator = Activator.getKM2KMTAspectGenerator();
+	//	if(generator != null)			
+	//		generator.generateAspectProjectScala(nameProject, folderLocation, ecoreFile);
+	//	else
+			Activator.logErrorMessage("Cannot call AspectGenerator because the service isn't available", null);
+	}
+	
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 	}
 
