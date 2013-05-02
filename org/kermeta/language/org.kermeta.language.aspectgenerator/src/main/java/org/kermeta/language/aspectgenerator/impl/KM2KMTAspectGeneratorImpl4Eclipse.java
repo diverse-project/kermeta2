@@ -5,6 +5,9 @@ import org.kermeta.language.aspectgenerator.KM2KMTAspectGenerator;
 public class KM2KMTAspectGeneratorImpl4Eclipse implements KM2KMTAspectGenerator {
 	
 	public KM2KMTAspectGeneratorImpl4Eclipse(){
+
+		kermeta_standard.org.kermeta.language.structure.KerRichFactory$ k;
+		
 		ecore_aspectgeneratorrunner.DefaultRunner$.MODULE$.init4eclipse();   	
     }
 	

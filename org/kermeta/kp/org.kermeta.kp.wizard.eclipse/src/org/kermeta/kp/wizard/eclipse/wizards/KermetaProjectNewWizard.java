@@ -17,6 +17,7 @@ import org.kermeta.kp.wizard.eclipse.wizards.utils.GenerateAspect;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.util.regex.Pattern;
 
 import k2.io.StdIO;
@@ -26,10 +27,12 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -83,15 +86,21 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 					 project.open(monitor);
 					 addKermetaNatureToProject(project);
 					 manageCreationProject(project, monitor);
-					 /*
+					 
 					 createFolder(project, "src/main/kmt", monitor);
 					 createDefaultKmt(project, "src/main/kmt/MainClass.kmt", monitor);
 					 createDefaultKp(project, "project.kp", monitor);
-					 String ecoreFile = projectPage.getEcoreFile();
-					 if(!ecoreFile.equals("None")){
-						 createEcoreAspect(project.getName(),"src/main/kmt2",ecoreFile);
+					 IFile ecoreFile = projectPage.getEcoreIFile();
+					 if(ecoreFile != null){
+						 try {
+							 
+							createEcoreAspect(project.getName(),project.getLocationURI().toURL().toString()+"/src/main/kmt",ecoreFile.getLocationURI().toURL().toString());
+						} catch (MalformedURLException e) {
+							Activator.logErrorMessage("Cannot call AspectGenerator due to exception "+e, e);
+						}
 					 }
-					 */
+					 project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+					 
 				 }
 			};
 			ResourcesPlugin.getWorkspace().run(operation, null);
@@ -103,10 +112,10 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 	}
 
 	public void createEcoreAspect(String nameProject, String folderLocation, String ecoreFile){
-	//	org.kermeta.language.aspectgenerator.KM2KMTAspectGenerator generator = Activator.getKM2KMTAspectGenerator();
-	//	if(generator != null)			
-	//		generator.generateAspectProjectScala(nameProject, folderLocation, ecoreFile);
-	//	else
+		org.kermeta.language.aspectgenerator.KM2KMTAspectGenerator generator = Activator.getKM2KMTAspectGenerator();
+		if(generator != null)			
+			generator.generateCompilerProjectScala(nameProject, folderLocation, ecoreFile);
+		else
 			Activator.logErrorMessage("Cannot call AspectGenerator because the service isn't available", null);
 	}
 	
