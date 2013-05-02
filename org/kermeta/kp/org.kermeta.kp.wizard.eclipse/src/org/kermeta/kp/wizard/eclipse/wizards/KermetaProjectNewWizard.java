@@ -87,14 +87,17 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 					 addKermetaNatureToProject(project);
 					 manageCreationProject(project, monitor);
 					 
-					 createFolder(project, "src/main/kmt", monitor);
+					 //createFolder(project, "src/main/kmt", monitor);
 					 createDefaultKmt(project, "src/main/kmt/MainClass.kmt", monitor);
 					 createDefaultKp(project, "project.kp", monitor);
-					 IFile ecoreFile = projectPage.getEcoreIFile();
+					 IFile ecoreFile = context.ecoreIFile;
 					 if(ecoreFile != null){
 						 try {
 							 
-							createEcoreAspect(project.getName(),project.getLocationURI().toURL().toString()+"/src/main/kmt",ecoreFile.getLocationURI().toURL().toString());
+							createEcoreAspect(project.getName(),
+											  project.getLocationURI().toURL().toString()+"/src/main/kmt",
+											  "/"+ecoreFile.getProjectRelativePath().toString(),
+											  ecoreFile.getProject().getName());
 						} catch (MalformedURLException e) {
 							Activator.logErrorMessage("Cannot call AspectGenerator due to exception "+e, e);
 						}
@@ -111,10 +114,10 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 		return true;
 	}
 
-	public void createEcoreAspect(String nameProject, String folderLocation, String ecoreFile){
+	public void createEcoreAspect(String nameProject, String folderLocation, String ecoreFile, String ecoreProject){
 		org.kermeta.language.aspectgenerator.KM2KMTAspectGenerator generator = Activator.getKM2KMTAspectGenerator();
 		if(generator != null)			
-			generator.generateCompilerProjectScala(nameProject, folderLocation, ecoreFile);
+			generator.generateCompilerProjectScala(nameProject, folderLocation, ecoreFile, ecoreProject);
 		else
 			Activator.logErrorMessage("Cannot call AspectGenerator because the service isn't available", null);
 	}

@@ -268,6 +268,7 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		if (files.length > 0) {
 			for (int i = 0; i < files.length; i++) {
 				this.context.ecoreFile = files[i].getFullPath().toOSString().substring(files[i].getProject().getName().length() + 1);
+				this.context.ecoreIFile = files[i];				
 				txtPathEcore.setText(files[i].getFullPath().toOSString());
 				this.context.ecoreProjectPath = files[i].getProject().getFullPath().toOSString();
 			}

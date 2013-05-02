@@ -17,42 +17,42 @@ public class KM2KMTAspectGeneratorImpl implements KM2KMTAspectGenerator {
 	}
 	
 	@Override
-    public void generateCompilerProjectScala(String nameProject, String folderLocation, String ecoreFile) {
+    public void generateCompilerProjectScala(String nameProject, String folderLocation, String ecoreFile, String ecoreProject) {
 		ecore_aspectgeneratorrunner.DefaultRunner$.MODULE$.init();
 		
 		ecore_aspectgenerator.org.kermeta.language.aspectgenerator.AspectGenerator aspectGenerator_ = ecore_aspectgenerator.org.kermeta.language.aspectgenerator.KerRichFactory.createAspectGenerator();
-        aspectGenerator_.generateCompilerProject (nameProject, folderLocation, ecoreFile);
+        aspectGenerator_.generateCompilerProject (nameProject, folderLocation, ecoreFile, ecoreProject);
 	}
     
 	@Override
-	public void generateInterpreterProjectScala(String nameProject, String folderLocation, String ecoreFile) {
+	public void generateInterpreterProjectScala(String nameProject, String folderLocation, String ecoreFile, String ecoreProject) {
 		ecore_aspectgeneratorrunner.DefaultRunner$.MODULE$.init();
 		
 		ecore_aspectgenerator.org.kermeta.language.aspectgenerator.AspectGenerator aspectGenerator_ = ecore_aspectgenerator.org.kermeta.language.aspectgenerator.KerRichFactory.createAspectGenerator();
-		aspectGenerator_.generateInterpreterProject(nameProject, folderLocation, ecoreFile);
+		aspectGenerator_.generateInterpreterProject(nameProject, folderLocation, ecoreFile, ecoreProject);
 	}
     
 	@Override
-	public void generateUserDefinedProjectScala(String nameProject, String folderLocation, String ecoreFile, String operationName, String operationReturnType, k2.standard.KermetaOrderedSet<String> operationParams, k2.standard.KermetaOrderedSet<String> listNewClass) {
+	public void generateUserDefinedProjectScala(String nameProject, String folderLocation, String ecoreFile, String ecoreProject, String operationName, String operationReturnType, k2.standard.KermetaOrderedSet<String> operationParams, k2.standard.KermetaOrderedSet<String> listNewClass) {
 		ecore_aspectgeneratorrunner.DefaultRunner$.MODULE$.init();
 		
 		ecore_aspectgenerator.org.kermeta.language.aspectgenerator.AspectGenerator aspectGenerator_ = ecore_aspectgenerator.org.kermeta.language.aspectgenerator.KerRichFactory.createAspectGenerator();
-		aspectGenerator_.generateUserDefinedProject(nameProject, folderLocation, ecoreFile, operationName, operationReturnType, operationParams, listNewClass);
+		aspectGenerator_.generateCustomizeProject(nameProject, folderLocation, ecoreFile, ecoreProject, operationName, operationReturnType, operationParams, listNewClass);
 	}
     
 	@Override
-	public void generateVisitorProjectScala(String nameProject, String folderLocation, String ecoreFile) {
+	public void generateVisitorProjectScala(String nameProject, String folderLocation, String ecoreFile, String ecoreProject) {
 		ecore_aspectgeneratorrunner.DefaultRunner$.MODULE$.init();
 		
 		ecore_aspectgenerator.org.kermeta.language.aspectgenerator.AspectGenerator aspectGenerator_ = ecore_aspectgenerator.org.kermeta.language.aspectgenerator.KerRichFactory.createAspectGenerator();
-		aspectGenerator_.generateVisitorProject (nameProject, folderLocation, ecoreFile);
+		aspectGenerator_.generateVisitorProject (nameProject, folderLocation, ecoreFile, ecoreProject);
 	}
     
 	@Override
-	public void generateAspectProjectScala(String nameProject, String folderLocation, String ecoreFile) {
+	public void generateAspectProjectScala(String nameProject, String folderLocation, String ecoreFile, String ecoreProject) {
 		ecore_aspectgeneratorrunner.DefaultRunner$.MODULE$.init();
 		
 		ecore_aspectgenerator.org.kermeta.language.aspectgenerator.AspectGenerator aspectGenerator_ = ecore_aspectgenerator.org.kermeta.language.aspectgenerator.KerRichFactory.createAspectGenerator();
-		aspectGenerator_.generateAspectProject (nameProject, folderLocation, ecoreFile);
+		aspectGenerator_.generateAspectProject (nameProject, folderLocation, ecoreFile, ecoreProject);
 	}	
 }
