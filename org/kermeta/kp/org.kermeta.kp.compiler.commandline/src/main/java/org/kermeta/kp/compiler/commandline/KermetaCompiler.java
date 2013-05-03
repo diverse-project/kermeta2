@@ -150,7 +150,9 @@ public class KermetaCompiler {
 	 * @return the threadExector
 	 */
 	public ExecutorService getThreadExector() {
-		if(threadExector == null) threadExector = new ThreadPoolExecutor(16, 16, 1, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
+		// keepalive time is relatively long in order to make sure to still have available threads 
+		// they will be shutdown anyway at the end of the build
+		if(threadExector == null) threadExector = new ThreadPoolExecutor(16, 16, 240, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 		return threadExector;
 	}
 
@@ -812,11 +814,17 @@ public class KermetaCompiler {
 					logger.error(e.getMessage(), LOG_MESSAGE_GROUP,e);
 				}}
 		    
-			getThreadExector().shutdown();
-			threadExector = null;
 			logger.doneProgress(getMainProgressGroup()+".kp2bytecode", "End of compilation for " +kpFileURL , LOG_MESSAGE_GROUP);
 			// workaround cache problem in compiler
 			kermeta.standard.JavaConversions.cleanCache();
+
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				logger.error(e.getMessage(), LOG_MESSAGE_GROUP,e);
+			}
+			getThreadExector().shutdown();
+			threadExector = null;
 			lock.unlock();
 			
 		}
