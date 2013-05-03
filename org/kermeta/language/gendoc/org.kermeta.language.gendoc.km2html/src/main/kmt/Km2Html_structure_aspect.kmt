@@ -635,7 +635,7 @@ aspect class Package{
 		var parent : String := ""
 		if(not container.isVoid) then
 			if(container.isInstanceOf(Package)) then
-				parent := container.asType(Package).getQualifiedName() + "_"
+				parent := container.asType(Package).getQualifiedName4File() + "_"
 			end
 		end
 		result := parent + name
