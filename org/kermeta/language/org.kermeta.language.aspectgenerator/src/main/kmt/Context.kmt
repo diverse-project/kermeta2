@@ -42,7 +42,7 @@ package org::kermeta::language::aspectgenerator{
 			
 			self.typeProject				:= typeProject
 			self.nameProject				:= nameProject
-			self.fileName 					:= folderLocation + nameProject
+			self.fileName 					:= folderLocation + "/" + nameProject
 			self.ecoreFile 					:= ecoreFile
 			self.ecoreProjectPath			:= ecoreProjectPath
 			
