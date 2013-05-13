@@ -109,23 +109,18 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 		if (generator != null) {
 			switch (this.context.indexTransfomation) {
 			case 0:
-				System.out.println("None function launched");
 				generator.generateNoneScala (this.context.nameProject,
 											 "file:///" + this.context.locationProject,
 											 "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
 											 this.context.ecoreIFile.getProject().getName());
-				System.out.println("None function finished");
 				break;
 			case 1:
-				System.out.println("Aspect function launched");
 				generator.generateAspectProjectScala (this.context.nameProject,
 													  "file:///" + this.context.locationProject,
 						 							  "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
 						 							  this.context.ecoreIFile.getProject().getName());
-				System.out.println("Aspect function finished");
 				break; 
 			case 2:
-				System.out.println("Customize function launched");
 				generator.generateCustomizeProjectScala (this.context.nameProject,
 														 "file:///" + this.context.locationProject,
 						 								 "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
@@ -134,15 +129,12 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 						 								 this.context.operationReturnType,
 						 								 this.context.operationParams,
 						 								 this.context.listNewClass);
-				System.out.println("Customize function finished");
 				break;
 			case 3:
-				System.out.println("Visitor pattern function launched");
 				generator.generateVisitorProjectScala (this.context.nameProject,
 													   "file:///" + this.context.locationProject,
 						 							   "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
 						 							   this.context.ecoreIFile.getProject().getName());
-				System.out.println("Visitor pattern function finished");
 				break;
 			}
 		}
