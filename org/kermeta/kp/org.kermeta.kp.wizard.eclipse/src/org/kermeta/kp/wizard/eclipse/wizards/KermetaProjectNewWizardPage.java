@@ -1,7 +1,5 @@
 package org.kermeta.kp.wizard.eclipse.wizards;
 
-import org.kermeta.kp.wizard.eclipse.wizards.utils.ErrorMessage;
-import org.kermeta.kp.wizard.eclipse.wizards.utils.Context;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -35,7 +33,7 @@ import org.eclipse.emf.mapping.ecore2ecore.presentation.Ecore2EcoreEditorPlugin;
 
 public class KermetaProjectNewWizardPage extends WizardPage {
 
-	private Context		context;
+	private ContextWizardNewProject		context;
 	
 	private static final List<String> FILE_EXTENSIONS = Arrays.asList(new String [] { "ecore" });
 	private ErrorMessage[] errorMessage;
@@ -53,7 +51,7 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 	private Button 		btnCheckEcore;
 	private Combo 		combo;
 
-	public KermetaProjectNewWizardPage(Context context){
+	public KermetaProjectNewWizardPage(ContextWizardNewProject context){
 		super("wizardPage");
 		this.context = context;
 		setTitle("New Kermeta project");
@@ -86,21 +84,14 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		txtProjectName.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
-				boolean bFinder = false;
-				int i = 0;
-				
-				while (bFinder == false && i < ResourcesPlugin.getWorkspace().getRoot().getProjects().length) {
-		    		  if (ResourcesPlugin.getWorkspace().getRoot().getProjects()[i].getName().contentEquals(txtProjectName.getText())) {
-		    			  activErrorMessage (0, true);
-		    			  setPageComplete(false);
-		    			  bFinder = true;
-		    		  }
-		    		  else {
-		    			  activErrorMessage(0 , false);
-		    			  setPageComplete(true);
-		    		  }
-		    		  i++;
-		    	}
+				if (existNameProject()) {
+					activErrorMessage (0, true);
+					setPageComplete(false);
+				}
+				else {
+	    			  activErrorMessage(0 , false);
+	    			  setPageComplete(true);					
+				}
 				updateNameProject(txtProjectName.getText());
 			}
 		});
@@ -226,6 +217,16 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		lblTemplateEcore.setEnabled(false);
 		combo.setEnabled(false);
 		
+		//analysis of the existing of the project name
+		if (existNameProject()) {
+			activErrorMessage (0, true);
+			setPageComplete(false);
+		}
+		else {
+			  activErrorMessage(0 , false);
+			  setPageComplete(true);					
+		}
+		
 		// Required to avoid an error in the system
 		setControl(container);
 		setPageComplete(true);
@@ -267,10 +268,11 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 																		Collections.singletonList(viewerFilter));
 		if (files.length > 0) {
 			for (int i = 0; i < files.length; i++) {
-				this.context.ecoreFile = files[i].getFullPath().toOSString().substring(files[i].getProject().getName().length() + 1);
+				//this.context.ecoreFile = files[i].getFullPath().toOSString().substring(files[i].getProject().getName().length() + 1);
 				this.context.ecoreIFile = files[i];				
 				txtPathEcore.setText(files[i].getFullPath().toOSString());
 				this.context.ecoreProjectPath = files[i].getProject().getFullPath().toOSString();
+				activErrorMessage (1, false);
 			}
 			bResult = true;
 		}
@@ -280,6 +282,18 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 	private void activErrorMessage (int index, boolean bActiv) {
 		this.errorMessage[index].setActive(bActiv);
 		setMessageError();
+	}
+	
+	private boolean existNameProject () {
+		boolean bFinder = false;
+		int i = 0;
+		while (bFinder == false && i < ResourcesPlugin.getWorkspace().getRoot().getProjects().length) {
+  		  if (ResourcesPlugin.getWorkspace().getRoot().getProjects()[i].getName().contentEquals(txtProjectName.getText())) {
+  			  bFinder = true;
+  		  }
+  		  i++;
+		}
+		return bFinder;
 	}
 	
 	private void setMessageError () {
@@ -308,7 +322,8 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 	private void updateNextButton (boolean enable) {
 		enableNext = enable;
 		canFlipToNextPage();
-		getWizard().getContainer().updateButtons();		
+		getWizard().getContainer().updateButtons();
+		this.context.indexTransfomation = this.combo.getSelectionIndex();
 	}
 	
 	@Override

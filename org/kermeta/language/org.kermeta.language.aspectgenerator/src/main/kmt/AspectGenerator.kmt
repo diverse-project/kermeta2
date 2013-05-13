@@ -26,19 +26,22 @@ package org::kermeta::language::aspectgenerator{
 	        visitor.add("v : Visitor")
 	        
 	        stdio.writeln("generation of a compiler project")
-	        generateCompilerProject("Compiler", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/", ecoreFile, "org.kermeta.language.aspectgenerator")
+	        generateCompilerProject("Compiler", "platform:/resource/org.kermeta.language.aspectgenerator/target/result", ecoreFile, "org.kermeta.language.aspectgenerator")
 	        
 	        stdio.writeln("generation of a interpret project")
-	        generateInterpreterProject("InterpreterK2", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/", ecoreFile, "org.kermeta.language.aspectgenerator")
+	        generateInterpreterProject("Interpreter", "platform:/resource/org.kermeta.language.aspectgenerator/target/result", ecoreFile, "org.kermeta.language.aspectgenerator")
 	        
 	        stdio.writeln("generation of a visitor pattern project")
-	        generateVisitorProject("visit", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/", ecoreFile, "org.kermeta.language.aspectgenerator")
+	        generateVisitorProject("visit", "platform:/resource/org.kermeta.language.aspectgenerator/target/result", ecoreFile, "org.kermeta.language.aspectgenerator")
 	        
 	        stdio.writeln("generation of a user defined project")
-	        generateCustomizeProject("userdefined", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/", ecoreFile, "org.kermeta.language.aspectgenerator", "userDefined", "Integer", userDefined, newClass)
+	        generateCustomizeProject("userdefined", "platform:/resource/org.kermeta.language.aspectgenerator/target/result", ecoreFile, "org.kermeta.language.aspectgenerator", "userDefined", "Integer", userDefined, newClass)
 	        
 	        stdio.writeln("generation of a aspect project")
-	        generateAspectProject("aspect", "platform:/resource/org.kermeta.language.aspectgenerator/target/result/", ecoreFile, "org.kermeta.language.aspectgenerator")
+	        generateAspectProject("aspect", "platform:/resource/org.kermeta.language.aspectgenerator/target/result", ecoreFile, "org.kermeta.language.aspectgenerator")
+	        
+	        stdio.writeln("generation of a none project")
+	        generateNone("none", "platform:/resource/org.kermeta.language.aspectgenerator/target/result", ecoreFile, "org.kermeta.language.aspectgenerator")
 	        
 	    end
 	        

@@ -1,4 +1,4 @@
-package org.kermeta.kp.wizard.eclipse.wizards.utils;
+package org.kermeta.kp.wizard.eclipse.wizards;
 
 public class ErrorMessage {
 	
