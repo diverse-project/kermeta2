@@ -185,8 +185,8 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	private void removeParameter () {
 		if (table.getSelectionIndices().length > 0) {
 			for(int i = table.getSelectionIndices().length - 1; i >= 0; i--) {
-				unregisterParameter(table.getSelectionIndices()[i]);
-				if (table.getItems()[table.getSelectionIndices()[i]].getText(0) == "Yes") {
+				unregisterParameter(table.getSelectionIndices()[i]); 
+				if (table.getItems()[table.getSelectionIndices()[i]].getText(0) == "yes") {
 					unregisterNewClass(table.getItems()[table.getSelectionIndices()[i]].getText(2));
 				}
 			}
@@ -210,11 +210,13 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	
 	private void registerNewClass (String newClass) {
 		if(!this.context.listNewClass.contains(newClass)) {
+			System.out.println("Ajout classe " + newClass + " à la liste.");
 			this.context.listNewClass.add(newClass);
 		}
 	}
 	
 	private void unregisterNewClass (String newClass) {
+		System.out.println("Supprime classe " + newClass + " à la liste.");
 		this.context.listNewClass.remove(newClass);
 	}
 	

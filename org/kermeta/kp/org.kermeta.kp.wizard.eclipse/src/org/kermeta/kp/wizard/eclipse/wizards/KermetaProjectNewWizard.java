@@ -82,7 +82,6 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 					 project.create(monitor);
 					 project.open(monitor);
 					 addKermetaNatureToProject(project);
-					 manageCreationProject(project, monitor);
 					 IFile ecoreFile = context.ecoreIFile;
 					 if(ecoreFile != null){
 						 createKmtProjectWithEcore();
@@ -144,19 +143,6 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 	}
 	
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-	}
-
-	
-	private void manageCreationProject (IProject project, IProgressMonitor monitor) throws CoreException {
-		createFolder(project, "src/main/kmt", monitor);
-		if (this.context.ecoreProject) {
-			GenerateAspect ga = new GenerateAspect (this.context);
-			ga.generateKermetaProject();
-		}
-		else {
-			createDefaultKmt(project, "src/main/kmt/MainClass.kmt", monitor);
-			createDefaultKp(project, "project.kp", monitor);	
-		}
 	}
 	
 	/**
