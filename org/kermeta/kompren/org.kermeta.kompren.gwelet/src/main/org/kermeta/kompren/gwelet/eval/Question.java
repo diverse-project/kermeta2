@@ -1,13 +1,11 @@
 package org.kermeta.kompren.gwelet.eval;
 
+import org.kermeta.kompren.gwelet.eval.QuestionsPanel.QuestionList;
+
 public class Question {
-	protected static int cpt = 0;
-
-	protected String subject;
-
+	protected QuestionList question;
+	
 	protected String answer;
-
-	protected String helper;
 
 	protected double time;
 
@@ -27,21 +25,16 @@ public class Question {
 
 	protected long nbHierachy = 0;
 
-	protected int id;
 
-
-	public Question() {
+	public Question(QuestionList question) {
 		super();
-
-		id 				= cpt++;
-		subject 		= "";
 		answer 			= "";
-		helper			= "";
 		time 			= -1.;
 		nbMouseDistance = 0l;
 		nbMousePress 	= 0l;
 		nbScrolls 		= 0l;
 		nbZooms 		= 0l;
+		this.question 	= question;
 	}
 
 
@@ -52,7 +45,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return id + "\t" + nbFlat + "\t" + nbHierachy + "\t" + nbPruning + "\t" + nbUndoRedo + "\t" +
+		return question.name() + "\t" + nbFlat + "\t" + nbHierachy + "\t" + nbPruning + "\t" + nbUndoRedo + "\t" +
 		nbMouseDistance + "\t" + nbMousePress + "\t" + nbScrolls + "\t" + nbZooms +
 		"\t" + time + "\t\"" + answer + "\"\n";
 	}

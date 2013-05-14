@@ -11,6 +11,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +37,45 @@ public class QuestionsPanel extends JPanel {
 	public enum TypeEval {
 		WITH_VISU_TOOLS,
 		WITHOUT_VISU_TOOLS
+	}
+	
+	public enum QuestionList {
+		Q1 {
+			@Override public String getTitle() { return "<html><font size=\"10\">What are the super classes of the class <b>Type</b>?</font></html>"; }
+			@Override public String getHelper() { return "Give the name of the classes:"; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+		},
+		Q2 {
+			@Override public String getTitle() { return "<html><font size=\"10\">What is the role </font><font size=\"5\">(i.e. the name)</font><font size=\"10\"> of the relation that links the class <b>State</b> to the class <b>Comment</b>?</font></html>"; }
+			@Override public String getHelper() { return "Give the name of the role:"; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+		},
+		Q3 {
+			@Override public String getTitle() { return "<html><font size=\"10\">What are the classes <b>directly</b> linked </font><font size=\"5\">(by inheritance, composition, and association)</font><font size=\"10\"> to the class <b>Class?</b></font></html>"; }
+			@Override public String getHelper() { return "Give the name of the classes:"; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+		},
+		Q4 {
+			@Override public String getTitle() { return "<html><font size=\"10\">What are the name of the, native and inherited, relations and attributes of the class <b>Abstraction</b>?</font></html>"; }
+			@Override public String getHelper() { return "Enumerate the names:"; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+		};
+		
+		public abstract String getTitle();
+		public abstract Metamodel getMetamodel();
+		public abstract String getHelper();
+		public static QuestionList getQuestion(String q) {
+			QuestionList[] val = values();
+			for(int i=0; i<val.length; i++)
+				if(val[i].name().equals(q))
+					return val[i];
+			return null;
+		}
+	}
+	
+	public enum Metamodel {
+		UML,
+		KERMETA
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -69,6 +112,8 @@ public class QuestionsPanel extends JPanel {
 
 	protected GweletFrame frame;
 
+	protected Formular formular;
+	
 
 	public QuestionsPanel(final GweletFrame frame, final MToolBar toolbar) {
 		super();
@@ -77,7 +122,7 @@ public class QuestionsPanel extends JPanel {
 		this.toolbar	= toolbar;
 		userInformations= "";
 		sniffer 		= new Sniffer(frame);
-		questions 		= new ArrayList<Question>();
+		questions 		= new ArrayList<>();
 		currentNbQuestions = -1;
 
 		resultLabel = new EditorPaneAntiAlias(true);
@@ -142,33 +187,53 @@ public class QuestionsPanel extends JPanel {
 		initQuestions();
 		setNextQuestion();
 	}
+	
+	
+	public void setFormular(Formular f) {
+		formular = f;
+	}
 
 
 	public void initQuestions() {
-		Question question = new Question();
-		question.subject = "<html><font size=\"10\">What are the super classes of the class <b>Type</b>?</font></html>";
-		question.helper = "Give the name of the classes:";
-		questions.add(question);
+		Path confFile = Paths.get("target/classes/config/config.txt");
+		try {
+			List<String> conf = Files.readAllLines(confFile, Charset.defaultCharset());
+			if(conf.size()==1) {
+				String[] questionsTxt = conf.get(0).split(" ");
+				QuestionList q;
 
-		question = new Question();
-		question.subject = "<html><font size=\"10\">What is the role </font><font size=\"5\">(i.e. the name)</font><font size=\"10\"> of the relation that links the class <b>State</b> to the class <b>Comment</b>?</font></html>";
-		question.helper = "Give the name of the role:";
-		questions.add(question);
+				for(int i=0; i<questionsTxt.length; i++) {
+					q = QuestionList.getQuestion(questionsTxt[i]);
+					if(q==null) throw new NullPointerException(questionsTxt[i] + " is not a question.");
+					questions.add(new Question(q));
+				}
+			}
+		}catch(IOException e) { e.printStackTrace(); }
+		
+//		Question question = new Question();
+//		question.subject = "<html><font size=\"10\">What are the super classes of the class <b>Type</b>?</font></html>";
+//		question.helper = "Give the name of the classes:";
+//		questions.add(question);
+//
+//		question = new Question();
+//		question.subject = "<html><font size=\"10\">What is the role </font><font size=\"5\">(i.e. the name)</font><font size=\"10\"> of the relation that links the class <b>State</b> to the class <b>Comment</b>?</font></html>";
+//		question.helper = "Give the name of the role:";
+//		questions.add(question);
+//
+//		question = new Question();
+//		question.subject = "<html><font size=\"10\">What are the classes <b>directly</b> linked </font><font size=\"5\">(by inheritance, composition, and association)</font><font size=\"10\"> to the class <b>Class?</b></font></html>";
+//		question.helper = "Give the name of the classes:";
+//		questions.add(question);
+//
+//		question = new Question();
+//		question.subject = "<html><font size=\"10\">What are the name of the, native and inherited, relations and attributes of the class <b>Abstraction</b>?</font></html>";
+//		question.helper = "Enumerate the names:";
+//		questions.add(question);
 
-		question = new Question();
-		question.subject = "<html><font size=\"10\">What are the classes <b>directly</b> linked </font><font size=\"5\">(by inheritance, composition, and association)</font><font size=\"10\"> to the class <b>Class?</b></font></html>";
-		question.helper = "Give the name of the classes:";
-		questions.add(question);
-
-		question = new Question();
-		question.subject = "<html><font size=\"10\">What are the name of the, native and inherited, relations and attributes of the class <b>Abstraction</b>?</font></html>";
-		question.helper = "Enumerate the names:";
-		questions.add(question);
-
-		question = new Question();
-		question.subject = "<html><font size=\"10\">Propose 3 <b>entry points</b> <font size=\"5\">(main classes)</font> into the UML metamodel.</font></html>";
-		question.helper = "Give the name of the classes:";
-		questions.add(question);
+//		question = new Question();
+//		question.subject = "<html><font size=\"10\">Propose 3 <b>entry points</b> <font size=\"5\">(main classes)</font> into the UML metamodel.</font></html>";
+//		question.helper = "Give the name of the classes:";
+//		questions.add(question);
 	}
 
 
@@ -185,7 +250,7 @@ public class QuestionsPanel extends JPanel {
 
 	public void setQuestionMode(final Question question) {
 		sniffer.setQuestion(null);
-		questionArea.setText(question.subject);
+		questionArea.setText(question.question.getTitle());
 		questionLabel.setText("<html><font size=\"+1\"><b>Question " + (currentNbQuestions+1) + "/" + questions.size() + "</b></font></html>");
 		startButton.setVisible(true);
 		answerArea.setVisible(false);
@@ -194,7 +259,7 @@ public class QuestionsPanel extends JPanel {
 		frame.setActivated(false);
 		toolbar.setVisible(false);
 		helperLabel.setVisible(false);
-		helperLabel.setText(question.helper);
+		helperLabel.setText(question.question.getHelper());
 	}
 
 	public void setAnswerMode() {
@@ -229,6 +294,13 @@ public class QuestionsPanel extends JPanel {
 		toolbar.setVisible(false);
 		questionArea.setVisible(false);
 		questionLabel.setVisible(false);
+		setVisible(false);
+		formular.setVisible(true);
+		frame.pack();
+	}
+	
+	public void setTerminated2() {
+		setVisible(true);
 		resultField.setVisible(true);
 		resultLabel.setVisible(true);
 		resultLabel.setText("<html><center>Return the results by mail to:<br><b>arnaud.blouin@inria.fr</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
@@ -236,6 +308,7 @@ public class QuestionsPanel extends JPanel {
 		resultField.setPreferredSize(dim);
 		resultField.setMinimumSize(dim);
 		resultField.setText(TYPE_EVAL + "\n" + userInformations + "\n");
+		frame.pack();
 
 		for(Question q : questions)
 			resultField.setText(resultField.getText() + q + "\n");
@@ -253,13 +326,10 @@ public class QuestionsPanel extends JPanel {
 				fileName = fileName + i;
 			}
 
-			FileWriter fw = new FileWriter(fileName+ext);
-			PrintWriter out = new PrintWriter(fw);
-
-			out.print(resultField.getText());
-
-			fw.flush();
-			fw.close();
+			try(FileWriter fw = new FileWriter(fileName+ext);
+				PrintWriter out = new PrintWriter(fw)) {
+				out.print(resultField.getText());
+			}
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
