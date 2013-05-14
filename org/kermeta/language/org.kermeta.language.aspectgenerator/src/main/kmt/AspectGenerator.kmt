@@ -3,7 +3,7 @@ using kermeta::io::StdIO => stdio
 using kermeta::io::FileIO => FileIO
 
 using kermeta::emfpersistence::*
-using ecore_aspectgenerator^ecore::*
+using ecore::*
 using ecore_aspectgenerator::Context
 using ecore_aspectgenerator::KmtFileGeneration
 
@@ -11,7 +11,7 @@ package org::kermeta::language::aspectgenerator{
 	class AspectGenerator
 	{					
 		@main ""
-	    operation aspectGenerator() : Void is do
+	    operation aspectGeneratorTestMain() : Void is do
 	        var ecoreFile		: String init "/src/test/Kermeta.ecore"
 
 	        var userDefined		: OrderedSet[String] init OrderedSet[String].new
@@ -58,6 +58,7 @@ package org::kermeta::language::aspectgenerator{
 			}			
 		end
 		
+		@main "generate a compiler"
 		operation generateCompilerProject (nameProject : String, folderLocation : String, ecoreFile : String, ecoreProjectPath : String) : Void is do
 			var inputPackages	: Collection[EPackage] init loadEcoreModel("platform:/resource/" + ecoreProjectPath + ecoreFile)
 	        var context 		: Context := Context.new
@@ -74,6 +75,7 @@ package org::kermeta::language::aspectgenerator{
 	        kmtFile.writeProjectKp
 		end
 		
+		@main "generate an interpreter"
 		operation generateInterpreterProject (nameProject : String, folderLocation : String, ecoreFile : String, ecoreProjectPath : String) : Void is do
 			var inputPackages	: Collection[EPackage] init loadEcoreModel("platform:/resource/" + ecoreProjectPath + ecoreFile)
 	        var context 		: Context := Context.new
@@ -100,6 +102,7 @@ package org::kermeta::language::aspectgenerator{
 	        kmtFile.writeProjectKp
 		end
 		
+		@main "generate a visitor as an object view"
 		operation generateVisitorProject (nameProject : String, folderLocation : String, ecoreFile : String, ecoreProjectPath : String) : Void is do
 			var inputPackages	: Collection[EPackage] init loadEcoreModel("platform:/resource/" + ecoreProjectPath + ecoreFile)
 	        var context 		: Context := Context.new
@@ -114,6 +117,7 @@ package org::kermeta::language::aspectgenerator{
 	        kmtFile.writeProjectKp
 		end
 		
+		@main "generate a visitor as an aspect view"
 		operation generateAspectProject (nameProject : String, folderLocation : String, ecoreFile : String, ecoreProjectPath : String) : Void is do
 			var inputPackages	: Collection[EPackage] init loadEcoreModel("platform:/resource/" + ecoreProjectPath + ecoreFile)
 	        var context 		: Context := Context.new
@@ -128,6 +132,7 @@ package org::kermeta::language::aspectgenerator{
 	        kmtFile.writeProjectKp
 		end
 		
+		@main "generate no transformation"
 		operation generateNone (nameProject : String, folderLocation : String, ecoreFile : String, ecoreProjectPath : String) : Void is do
 			var context 		: Context := Context.new
 	        var kmtFile 		: KmtFileGeneration init KmtFileGeneration.new.initialize(context)
