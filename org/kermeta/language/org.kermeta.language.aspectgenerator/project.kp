@@ -5,7 +5,7 @@ importProject library_standard
 
 project ecore_aspectgenerator {
 	mainClass "ecore_aspectgenerator^org::kermeta::language::aspectgenerator::AspectGenerator"
-	mainOperation "aspectGenerator"
+	mainOperation "aspectGeneratorTestMain"
 	
 	import "${project.baseUri}/src/main/kmt/Context.kmt"
 	

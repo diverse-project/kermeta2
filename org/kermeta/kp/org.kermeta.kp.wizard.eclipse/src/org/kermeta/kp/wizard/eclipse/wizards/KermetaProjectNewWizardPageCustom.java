@@ -210,13 +210,11 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	
 	private void registerNewClass (String newClass) {
 		if(!this.context.listNewClass.contains(newClass)) {
-			System.out.println("Ajout classe " + newClass + " à la liste.");
 			this.context.listNewClass.add(newClass);
 		}
 	}
 	
 	private void unregisterNewClass (String newClass) {
-		System.out.println("Supprime classe " + newClass + " à la liste.");
 		this.context.listNewClass.remove(newClass);
 	}
 	
