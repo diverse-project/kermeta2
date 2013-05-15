@@ -85,9 +85,6 @@
          id="EcoreToolsPresentation">
          <Priority name="Lowest"/>
          <ViewId id="org.eclipse.emf.ecoretools.diagram.part.EcoreDiagramEditorID">
-            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-               <GlobalActionId actionId="delete"/>
-            </ElementType>
             <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
                <GlobalActionId actionId="save"/>
             </ElementType>
@@ -751,15 +748,6 @@
 	</extension>
 	
 	<!-- Bug 211856 : Restore related links -->
-	<extension point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
-		<contributionItemProvider checkPluginLoaded="false" class="org.eclipse.emf.ecoretools.diagram.providers.EcoreDiagramContributionItemProvider">
-			<Priority name="Low"/>
-			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
-				<popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"/>
-				<popupAction id="restoreRelatedLinksAction" path="/navigateMenu/additions"/>
-			</popupContribution>
-		</contributionItemProvider>
-	</extension>
 
 	<!-- Provide shortcut access to wizards when the Ecore Tools perspective is activated -->
 	<extension point="org.eclipse.ui.perspectiveExtensions">

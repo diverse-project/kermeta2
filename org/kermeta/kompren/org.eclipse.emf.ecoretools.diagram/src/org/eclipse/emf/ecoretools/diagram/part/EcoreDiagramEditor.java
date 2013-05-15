@@ -49,11 +49,10 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.EditPartViewer;
-import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.ui.actions.ActionRegistry;
+import org.eclipse.gef.ui.rulers.RulerComposite;
 import org.eclipse.gmf.runtime.common.ui.services.marker.MarkerNavigationService;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
-import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramDropTargetListener;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.DiagramDocument;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument;
@@ -73,8 +72,11 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.dnd.TransferData;
+import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
@@ -89,6 +91,7 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+import org.kermeta.kompren.gwelet.eval.QuestionsPanel;
 
 /**
  * @generated
@@ -127,29 +130,43 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 	 * @generated
 	 */
 	public EcoreDiagramEditor() {
-		super(true);
+		super(false);
 		navigation = new NavigationManager(this);
+		
+	}
+	
+	
+	public QuestionsPanel qPanel;
+	
+	
+	@Override
+	public void createPartControl(Composite parent) {
+		super.createPartControl(parent);
+		RulerComposite ruler = (RulerComposite) parent.getChildren()[0];
+		ruler.setSize(1000, 690);
+		
+		RowLayout layout = new RowLayout();
+		layout.wrap = false;
+		layout.type=SWT.HORIZONTAL;
+		parent.setLayout(layout);
+		
+		qPanel = new QuestionsPanel(parent);
 	}
 
+	
 	/**
 	 * @generated
 	 */
+	@Override
 	protected String getContextID() {
 		return CONTEXT_ID;
 	}
 
-	/**
-	 * @generated
-	 */
-	protected PaletteRoot createPaletteRoot(PaletteRoot existingPaletteRoot) {
-//		PaletteRoot root = super.createPaletteRoot(existingPaletteRoot);
-//		new EcorePaletteFactory().fillPalette(root);
-		return null;
-	}
 
 	/**
 	 * @generated
 	 */
+	@Override
 	protected PreferencesHint getPreferencesHint() {
 		return EcoreDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT;
 	}
@@ -157,6 +174,7 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 	/**
 	 * @generated
 	 */
+	@Override
 	public String getContributorId() {
 		return EcoreDiagramEditorPlugin.ID;
 	}
@@ -166,6 +184,7 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 	 * 
 	 * @generated NOT
 	 */
+	@Override
 	public Object getAdapter(Class type) {
 		if (type == IShowInTargetList.class) {
 			return new IShowInTargetList() {
@@ -184,6 +203,7 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 	/**
 	 * @generated
 	 */
+	@Override
 	protected IDocumentProvider getDocumentProvider(IEditorInput input) {
 		if (input instanceof IFileEditorInput || input instanceof URIEditorInput) {
 			return EcoreDiagramEditorPlugin.getInstance().getDocumentProvider();
@@ -194,6 +214,7 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 	/**
 	 * @generated
 	 */
+	@Override
 	public TransactionalEditingDomain getEditingDomain() {
 		IDocument document = getEditorInput() != null ? getDocumentProvider().getDocument(getEditorInput()) : null;
 		if (document instanceof IDiagramDocument) {
@@ -205,6 +226,7 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 	/**
 	 * @generated
 	 */
+	@Override
 	protected void setDocumentProvider(IEditorInput input) {
 		if (input instanceof IFileEditorInput || input instanceof URIEditorInput) {
 			setDocumentProvider(EcoreDiagramEditorPlugin.getInstance().getDocumentProvider());
@@ -223,13 +245,15 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 	/**
 	 * @generated
 	 */
+	@Override
 	public boolean isSaveAsAllowed() {
-		return true;
+		return false;
 	}
 
 	/**
 	 * @generated
 	 */
+	@Override
 	public void doSaveAs() {
 		performSaveAs(new NullProgressMonitor());
 	}
@@ -237,6 +261,7 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 	/**
 	 * @generated
 	 */
+	@Override
 	protected void performSaveAs(IProgressMonitor progressMonitor) {
 		Shell shell = getSite().getShell();
 		IEditorInput input = getEditorInput();
@@ -305,6 +330,7 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 	/**
 	 * @generated
 	 */
+	@Override
 	public ShowInContext getShowInContext() {
 		return new ShowInContext(getEditorInput(), getNavigatorSelection());
 	}
@@ -326,23 +352,16 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 		return StructuredSelection.EMPTY;
 	}
 
-	/**
-	 * @generated
-	 */
-	protected void configureGraphicalViewer() {
-		super.configureGraphicalViewer();
-		DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(this, getDiagramGraphicalViewer());
-		getDiagramGraphicalViewer().setContextMenu(provider);
-		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
-	}
 
 	/**
 	 * @generated
 	 */
+	@Override
 	protected void initializeGraphicalViewer() {
 		super.initializeGraphicalViewer();
 		getDiagramGraphicalViewer().addDropTargetListener(new DropTargetListener(getDiagramGraphicalViewer(), LocalSelectionTransfer.getTransfer()) {
 
+			@Override
 			protected Object getJavaObject(TransferData data) {
 				return LocalSelectionTransfer.getTransfer().nativeToJava(data);
 			}
@@ -350,6 +369,7 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 		});
 		getDiagramGraphicalViewer().addDropTargetListener(new DropTargetListener(getDiagramGraphicalViewer(), LocalTransfer.getInstance()) {
 
+			@Override
 			protected Object getJavaObject(TransferData data) {
 				return LocalTransfer.getInstance().nativeToJava(data);
 			}
@@ -372,6 +392,7 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 		/**
 		 * @generated
 		 */
+		@Override
 		protected List getObjectsBeingDropped() {
 			TransferData data = getCurrentEvent().currentDataType;
 			Collection uris = new HashSet();

@@ -654,10 +654,6 @@ Name: org/eclipse/emf/ecoretools/diagram/part/EcoreCreationWizardPage$
  1.class
 SHA1-Digest: A7tHWvOdNgx8bFCdTknHUsRn7eE=
 
-Name: org/eclipse/emf/ecoretools/diagram/part/EcorePaletteFactory$Link
- ToolEntry.class
-SHA1-Digest: jCvqIwa4XS5ml/4546vlT594xgU=
-
 Name: org/eclipse/emf/ecoretools/diagram/edit/figures/AlphaDropShadowB
  order.class
 SHA1-Digest: PzaXIMhUoAP5Ybza+5ilKz+nOig=
@@ -736,10 +732,6 @@ SHA1-Digest: JO/f9noP187RUK6WigbVAAEzUro=
 Name: org/eclipse/emf/ecoretools/diagram/edit/parts/EClass2EditPart$2.
  class
 SHA1-Digest: 5gomLASloMUBuQRPYO9d3VdNzls=
-
-Name: org/eclipse/emf/ecoretools/diagram/part/EcorePaletteFactory.clas
- s
-SHA1-Digest: O3XA0rk7K78N1A2QyQr/01doXqc=
 
 Name: icons/elcl16/go-previous.png
 SHA1-Digest: DyMGDGlADXIuTP+R0SmKhAZp68Y=
@@ -1077,10 +1069,6 @@ Name: org/eclipse/emf/ecoretools/diagram/edit/parts/EEnum2EditPart$2.c
  lass
 SHA1-Digest: Gxuzv3Xvs2a3YxynYraJfYmQUb0=
 
-Name: org/eclipse/emf/ecoretools/diagram/part/DeleteElementAction.clas
- s
-SHA1-Digest: IGRqlaIkCWjXPCN07bTbK6o1J/c=
-
 Name: org/eclipse/emf/ecoretools/diagram/edit/parts/EDataTypeNameEditP
  art$4.class
 SHA1-Digest: 9TgKnmUUp/qbCIrdeMKo/ZqGo8c=
@@ -1142,10 +1130,6 @@ SHA1-Digest: KqMZuhjfzGQ7bmwb1DJyLKnKi84=
 Name: org/eclipse/emf/ecoretools/diagram/edit/helpers/EPackageEditHelp
  er.class
 SHA1-Digest: RtLwnait3TOf3wULSirItoTuAz0=
-
-Name: org/eclipse/emf/ecoretools/diagram/part/EcorePaletteFactory$Node
- ToolEntry.class
-SHA1-Digest: nwTRlWqY0RyRNa5f3igSgDxE1K8=
 
 Name: org/eclipse/emf/ecoretools/diagram/edit/parts/EDataTypeInstanceC
  lass2EditPart$1.class

@@ -95,10 +95,10 @@ public class EcoreDiagramActionBarContributor extends DiagramActionBarContributo
 		// TODO Auto-generated method stub
 		super.contributeToToolBar(toolBarManager);
 		
-		// Navigate actions
-        toolBarManager.add(new Separator());
-        toolBarManager.add(getAction(EcoreActionConstants.PREVIOUS_DIAGRAM));
-        toolBarManager.add(getAction(EcoreActionConstants.OPEN_PARENT_DIAGRAM));
-        toolBarManager.add(getAction(EcoreActionConstants.NEXT_DIAGRAM));
+//		// Navigate actions
+//        toolBarManager.add(new Separator());
+//        toolBarManager.add(getAction(EcoreActionConstants.PREVIOUS_DIAGRAM));
+//        toolBarManager.add(getAction(EcoreActionConstants.OPEN_PARENT_DIAGRAM));
+//        toolBarManager.add(getAction(EcoreActionConstants.NEXT_DIAGRAM));
 	}
 }
