@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.gef.ui.rulers.RulerComposite;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
@@ -27,7 +28,7 @@ import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 
 public class QuestionsPanel extends Composite {
-	public static final TypeEval TYPE_EVAL = TypeEval.WITH_VISU_TOOLS;
+	public static final TypeEval TYPE_EVAL = TypeEval.WITHOUT_VISU_TOOLS;
 
 	public enum TypeEval {
 		WITH_VISU_TOOLS,
@@ -97,7 +98,7 @@ public class QuestionsPanel extends Composite {
 
 	protected long currentTime;
 
-//	protected Sniffer sniffer;
+	protected Sniffer sniffer;
 
 	protected String userInformations;
 
@@ -129,7 +130,7 @@ public class QuestionsPanel extends Composite {
 		this.editor 	= editor;
 		this.frame 		= frame;
 		userInformations= "";
-//		sniffer 		= new Sniffer(frame);
+		sniffer 		= new Sniffer((FigureCanvas) editor.getChildren()[0], editor);
 		questions 		= new ArrayList<Question>();
 		currentNbQuestions = -1;
 
@@ -314,7 +315,6 @@ public class QuestionsPanel extends Composite {
 					"\t" + xpMdeCB.getText() + "\t" + xpUmlCB.getText() +
 					"\t" + mouse.getText() + "\t" + screen.getText() +
 					"\t" + dim.width + "\t" + dim.height);
-//			QuestionsPanel.this.frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		}
 
 	}
@@ -345,11 +345,6 @@ public class QuestionsPanel extends Composite {
 //	}
 	
 	
-//	public void setFormular(Formular f) {
-//		formular = f;
-//	}
-
-
 	public void initQuestions() {
 		try {
 			URL url = new URL("platform:/plugin/org.eclipse.emf.ecoretools.diagram/config/config.txt");
@@ -382,7 +377,7 @@ public class QuestionsPanel extends Composite {
 	}
 
 	public void setQuestionMode(final Question question) {
-//		sniffer.setQuestion(null);
+		sniffer.setQuestion(null);
 		questionArea.setText(question.question.getTitle());
 		questionLabel.setText("Question " + (currentNbQuestions+1) + "/" + questions.size());
 		startButton.setVisible(true);
@@ -404,7 +399,7 @@ public class QuestionsPanel extends Composite {
 	}
 
 	public void setAnswerMode() {
-//		sniffer.setQuestion(questions.get(currentNbQuestions));
+		sniffer.setQuestion(questions.get(currentNbQuestions));
 		startButton.setVisible(false);
 		((GridData)startButton.getLayoutData()).exclude = true;
 		answerArea.setText("");
@@ -421,7 +416,6 @@ public class QuestionsPanel extends Composite {
 		editor.setEnabled(true);
 		layout(true);
 		pack();
-
 //        Runnable moveScrollbars = new Runnable() {
 //            @Override
 //			public void run() {
