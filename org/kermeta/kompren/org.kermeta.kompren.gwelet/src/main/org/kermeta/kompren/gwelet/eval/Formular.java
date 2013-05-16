@@ -69,6 +69,7 @@ public class Formular extends JPanel {
 		constraint.gridx++;
 
 		mouse = new JComboBox<>(new String[]{"Mouse", "Touchpad"});
+		mouse.setSelectedIndex(0);
 		questionsP.add(mouse, constraint);
 		constraint.gridx=0;
 		constraint.gridy++;
@@ -92,7 +93,7 @@ public class Formular extends JPanel {
      	questionsP.add(new JLabel("Age:"), constraint);
      	constraint.gridx++;
 
-		ageS = new JSpinner(new SpinnerNumberModel(25, 1, 200, 1));
+		ageS = new JSpinner(new SpinnerNumberModel(30, 1, 200, 1));
 		questionsP.add(ageS, constraint);
 		constraint.gridx=0;
 		constraint.gridy++;
@@ -108,7 +109,7 @@ public class Formular extends JPanel {
 		questionsP.add(new JLabel("Status:"), constraint);
 		constraint.gridx++;
 
-		statusCB = new JComboBox<>(new String[]{"Student", "Ph.D. student", "Engineer", "Researcher"});
+		statusCB = new JComboBox<>(new String[]{"Researcher", "Industrial", "Research engineer", "Ph.D. student", "Other"});
 		questionsP.add(statusCB, constraint);
 		constraint.gridx=0;
 		constraint.gridy++;
@@ -116,7 +117,7 @@ public class Formular extends JPanel {
 		questionsP.add(new JLabel("MDE background:"), constraint);
 		constraint.gridx++;
 
-		xpMdeCB = new JComboBox<>(new String[]{"None", "0-2 years", "2-5 years", "5-10 years", "+10 years"});
+		xpMdeCB = new JComboBox<>(new String[]{"Expert", "Proficient", "Competent", "Advanced beginner", "Novice"});
 		questionsP.add(xpMdeCB, constraint);
 		constraint.gridx=0;
 		constraint.gridy++;
@@ -124,7 +125,7 @@ public class Formular extends JPanel {
 		questionsP.add(new JLabel("UML background:"), constraint);
 		constraint.gridx++;
 
-		xpUmlCB = new JComboBox<>(new String[]{"No knowledge", "Few knowledge", "Some knowledge", "Expert"});
+		xpUmlCB = new JComboBox<>(new String[]{"Expert", "Proficient", "Competent", "Advanced beginner", "Novice"});
 		questionsP.add(xpUmlCB, constraint);
 		constraint.gridx=0;
 		constraint.gridy++;

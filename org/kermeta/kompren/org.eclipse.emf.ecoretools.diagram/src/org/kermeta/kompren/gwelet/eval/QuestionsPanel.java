@@ -1,5 +1,7 @@
 package org.kermeta.kompren.gwelet.eval;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -39,12 +41,12 @@ public class QuestionsPanel extends Composite {
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 		},
 		Q2 {
-			@Override public String getTitle() { return "<html><font size=\"6\">What is the role </font><font size=\"5\">(i.e. the name)</font><font size=\"10\"> of the relation that links the class <b>State</b> to the class <b>Comment</b>?</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">What is the role </font><font size=\"3\">(i.e. the name)</font><font size=\"6\"> of the relation that links the class <b>State</b> to the class <b>Comment</b>?</font></html>"; }
 			@Override public String getHelper() { return "Give the name of the role:"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 		},
 		Q3 {
-			@Override public String getTitle() { return "<html><font size=\"6\">What are the classes <b>directly</b> linked </font><font size=\"5\">(by inheritance, composition, and association)</font><font size=\"10\"> to the class <b>Class?</b></font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">What are the classes <b>directly</b> linked </font><font size=\"3\">(by inheritance, composition, and association)</font><font size=\"6\"> to the class <b>Class?</b></font></html>"; }
 			@Override public String getHelper() { return "Give the name of the classes:"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 		},
@@ -89,7 +91,7 @@ public class QuestionsPanel extends Composite {
 
 	protected Text resultField;
 
-	protected Text resultLabel;
+	protected Browser resultLabel;
 
 	protected List<Question> questions;
 
@@ -101,10 +103,9 @@ public class QuestionsPanel extends Composite {
 
 	protected Composite frame;
 
-	protected Formular formular;
-	
 	protected RulerComposite editor;
 	
+	protected Group formular;
 	
 	protected Combo mouse;
 
@@ -152,15 +153,14 @@ public class QuestionsPanel extends Composite {
 		data.widthHint = 380;
 		questionArea.setLayoutData(data);
 		
-		resultLabel = new Text(this, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
-		resultLabel.setEditable(false);
+		resultLabel = new Browser(this, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
 		data = new GridData();
 		data.exclude = false;
 		data.verticalAlignment = SWT.CENTER;
 		data.grabExcessHorizontalSpace = true;
 		data.grabExcessVerticalSpace = true;
-		data.heightHint = 80;
-		data.widthHint = 350;
+		data.heightHint = 130;
+		data.widthHint = 330;
 		resultLabel.setLayoutData(data);
 		
 		startButton = new Button(this, SWT.NONE);
@@ -221,8 +221,12 @@ public class QuestionsPanel extends Composite {
 		gridData = new GridData();
 		gridData.exclude = false;
 		gridData.horizontalAlignment = GridData.FILL;
+		gridData.heightHint = 500;
+		gridData.widthHint = 330;
 		resultField.setLayoutData(gridData);
 
+		createFormular();
+		
 		setLayout(new GridLayout(1, false));
 		setSize(380, 800);
 
@@ -239,56 +243,80 @@ public class QuestionsPanel extends Composite {
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 2;
 	
-		Group group = new Group(this, SWT.SHADOW_ETCHED_IN);
-		group.setText("Required Information");
+		formular = new Group(this, SWT.SHADOW_ETCHED_IN);
+		formular.setText("Required Information");
 		GridData gridData = new GridData();
 		gridData.exclude = true;
-		gridData.horizontalAlignment = GridData.FILL;
-		group.setLayoutData(gridData);
+		gridData.widthHint = 300;
+		formular.setLayoutData(gridData);
+		formular.setVisible(false);
+		formular.setLayout(gridLayout);
 		
-		CLabel label = new CLabel(group, SWT.NONE);
+		CLabel label = new CLabel(formular, SWT.NONE);
 		label.setText("Mouse/touchpad:");
+		label.setVisible(true);
 	
-		mouse = new Combo(group, SWT.NONE);
+		mouse = new Combo(formular, SWT.READ_ONLY);
 		mouse.setItems(new String[]{"Mouse", "Touchpad"});
+		mouse.setText(mouse.getItem(0));
 	
-		label = new CLabel(group, SWT.NONE);
+		label = new CLabel(formular, SWT.NONE);
 		label.setText("Screen size (inch):");
 	
-		screen = new Spinner(group, SWT.NONE);
+		screen = new Spinner(formular, SWT.NONE);
 		screen.setValues(15, 1, 50, 0, 1, 1);
 	
-		label = new CLabel(group, SWT.NONE);
+		label = new CLabel(formular, SWT.NONE);
 		label.setText("Age:");
 	
-		ageS = new Spinner(group, SWT.NONE); 
-		ageS.setValues(25, 1, 200, 0, 1, 1);
+		ageS = new Spinner(formular, SWT.NONE); 
+		ageS.setValues(30, 1, 200, 0, 1, 1);
 	
-		label = new CLabel(group, SWT.NONE);
+		label = new CLabel(formular, SWT.NONE);
 		label.setText("Status:");
 	
-		statusCB = new Combo(group, SWT.NONE);
-		mouse.setItems(new String[]{"Student", "Ph.D. student", "Engineer", "Researcher"});
+		statusCB = new Combo(formular, SWT.READ_ONLY);
+		statusCB.setItems(new String[]{"Researcher", "Industrial", "Research engineer", "Ph.D. student", "Other"});
 	
-		label = new CLabel(group, SWT.NONE);
+		label = new CLabel(formular, SWT.NONE);
 		label.setText("MDE background:");
 	
-		xpMdeCB = new Combo(group, SWT.NONE);
-		mouse.setItems(new String[]{"None", "0-2 years", "2-5 years", "5-10 years", "+10 years"});
+		xpMdeCB = new Combo(formular, SWT.READ_ONLY);
+		xpMdeCB.setItems(new String[]{"Expert", "Proficient", "Competent", "Advanced beginner", "Novice"});
 	
-		label = new CLabel(group, SWT.NONE);
+		label = new CLabel(formular, SWT.NONE);
 		label.setText("UML background:");
 	
-		xpUmlCB = new Combo(group, SWT.NONE);
-		mouse.setItems(new String[]{"No knowledge", "Few knowledge", "Some knowledge", "Expert"});
+		xpUmlCB = new Combo(formular, SWT.READ_ONLY);
+		xpUmlCB.setItems(new String[]{"Expert", "Proficient", "Competent", "Advanced beginner", "Novice"});
 	
-		validateB = new Button(group, SWT.NONE);
+		validateB = new Button(formular, SWT.NONE);
 		validateB.setText("Validate");
 		gridData = new GridData();
 		gridData.horizontalAlignment = GridData.FILL;
 		gridData.horizontalSpan = 2;
-		group.setLayoutData(validateB);
-	//	validateB.addActionListener(new ValideListener());
+		validateB.setLayoutData(gridData);
+		validateB.addListener(SWT.Selection, new ValideListener());
+	}
+	
+	
+	class ValideListener implements Listener {
+		public void handleEvent(final Event e) {
+			QuestionsPanel.this.formular.setVisible(false);
+			((GridData)formular.getLayoutData()).exclude = true;
+			
+			QuestionsPanel.this.setTerminated2();
+			QuestionsPanel.this.pack();
+			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+//			Formular.this.frame.setLocation((dim.width-Formular.this.frame.getWidth())/2,
+//											(dim.height-Formular.this.frame.getHeight())/2);
+			QuestionsPanel.this.setUserInformations(ageS.getText() + "\t" + statusCB.getText() +
+					"\t" + xpMdeCB.getText() + "\t" + xpUmlCB.getText() +
+					"\t" + mouse.getText() + "\t" + screen.getText() +
+					"\t" + dim.width + "\t" + dim.height);
+//			QuestionsPanel.this.frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+		}
+
 	}
 	
 	
@@ -407,6 +435,8 @@ public class QuestionsPanel extends Composite {
 
 
 	public void setTerminated() {
+		editor.setVisible(false);
+		editor.setEnabled(false);
 		startButton.setVisible(false);
 		((GridData)startButton.getLayoutData()).exclude = true;
 		answerArea.setVisible(false);
@@ -415,14 +445,13 @@ public class QuestionsPanel extends Composite {
 		((GridData)answerLabel.getLayoutData()).exclude = true;
 		answerButton.setVisible(false);
 		((GridData)answerButton.getLayoutData()).exclude = true;
-//		frame.setActivated(false);
 //		toolbar.setVisible(false);
 		questionArea.setVisible(false);
 		((GridData)questionArea.getLayoutData()).exclude = true;
 		questionLabel.setVisible(false);
 		((GridData)questionLabel.getLayoutData()).exclude = true;
-		setVisible(false);
-//		formular.setVisible(true);//TODO
+		formular.setVisible(true);
+		((GridData)formular.getLayoutData()).exclude = false;
 		frame.pack();
 	}
 	
@@ -433,9 +462,6 @@ public class QuestionsPanel extends Composite {
 		resultLabel.setVisible(true);
 		((GridData)resultLabel.getLayoutData()).exclude = false;
 		resultLabel.setText("<html><center>Return the results by mail to:<br><b>arnaud.blouin@inria.fr</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
-//		Dimension dim = new Dimension(380, 500);
-//		resultField.setPreferredSize(dim);
-//		resultField.setMinimumSize(dim);
 		resultField.setText(TYPE_EVAL + "\n" + userInformations + "\n");
 		frame.pack();
 

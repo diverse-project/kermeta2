@@ -91,7 +91,6 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
-import org.kermeta.kompren.gwelet.eval.Formular;
 import org.kermeta.kompren.gwelet.eval.QuestionsPanel;
 
 /**
