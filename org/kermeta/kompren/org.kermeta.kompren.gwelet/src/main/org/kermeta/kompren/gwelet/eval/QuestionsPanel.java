@@ -2,9 +2,6 @@ package org.kermeta.kompren.gwelet.eval;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -24,7 +21,6 @@ import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import org.kermeta.kompren.gwelet.actions.ReinitView;
@@ -86,17 +82,17 @@ public class QuestionsPanel extends JPanel {
 
 	protected int currentNbQuestions;
 
-	protected LabelAntiAlias questionLabel;
+	protected JLabel questionLabel;
 
-	protected LabelAntiAlias answerLabel;
+	protected JLabel answerLabel;
 
-	protected LabelAntiAlias helperLabel;
+	protected JLabel helperLabel;
 
 	protected MToolBar toolbar;
 
-	protected AntiAliasButton startButton;
+	protected JButton startButton;
 
-	protected AntiAliasButton answerButton;
+	protected JButton answerButton;
 
 	protected EditorPaneAntiAlias resultField;
 
@@ -134,19 +130,19 @@ public class QuestionsPanel extends JPanel {
 		resultField.setEditable(false);
 		resultField.setBackground(Color.WHITE);
 
-		startButton = new AntiAliasButton("<html><font size=\"+2\"><b>Start</b></font></html>");
+		startButton = new JButton("<html><font size=\"+2\"><b>Start</b></font></html>");
 		startButton.setAlignmentX(CENTER_ALIGNMENT);
 		startButton.addActionListener(new ShowAnswerFieldListener());
 		startButton.setMaximumSize(new Dimension(120, 50));
 
-		answerButton = new AntiAliasButton("<html><font size=\"+2\"><b>Validate Answer</b></font></html>");
+		answerButton = new JButton("<html><font size=\"+2\"><b>Validate Answer</b></font></html>");
 		answerButton.setAlignmentX(CENTER_ALIGNMENT);
 		answerButton.addActionListener(new ShowQuestionFieldListener());
 		answerButton.setMaximumSize(new Dimension(230, 50));
-		questionLabel = new LabelAntiAlias();
+		questionLabel = new JLabel();
 		questionLabel.setAlignmentX(CENTER_ALIGNMENT);
 		questionLabel.setMaximumSize(new Dimension(120, 40));
-		answerLabel = new LabelAntiAlias();
+		answerLabel = new JLabel();
 		answerLabel.setText("<html><font size=\"+1\"><b>Answer</b></font></html>");
 		answerLabel.setAlignmentX(CENTER_ALIGNMENT);
 		answerLabel.setMaximumSize(new Dimension(120, 40));
@@ -158,7 +154,7 @@ public class QuestionsPanel extends JPanel {
 		answerArea.setBackground(Color.WHITE);
 
 		JPanel panel = new JPanel();
-		helperLabel = new LabelAntiAlias();
+		helperLabel = new JLabel();
 		helperLabel.setAlignmentX(LEFT_ALIGNMENT);
 		panel.add(helperLabel);
 
@@ -377,65 +373,4 @@ class EditorPaneAntiAlias extends JEditorPane {
 	public EditorPaneAntiAlias(final boolean html) {
 		super(html ? "text/html" : "text", "");
 	}
-
-	@Override
-	public void paint (final Graphics g) {
-        if(g instanceof Graphics2D) {
-        	Graphics2D g2 = (Graphics2D) g;
-        	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        	g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-        	g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        	g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        	g2.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-        	g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        }
-        super.paint (g);
-    }
-}
-
-
-class AntiAliasButton extends JButton {
-	private static final long serialVersionUID = 1L;
-
-	public AntiAliasButton(final String text) {
-		super(text);
-	}
-
-	@Override
-	public void paint (final Graphics g) {
-        if(g instanceof Graphics2D) {
-        	Graphics2D g2 = (Graphics2D) g;
-        	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        	g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-        	g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        	g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        	g2.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-        	g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        }
-        super.paint (g);
-    }
-}
-
-
-
-class LabelAntiAlias extends JLabel {
-	private static final long serialVersionUID = 1L;
-
-	public LabelAntiAlias() {
-		super("", SwingConstants.CENTER);
-	}
-
-	@Override
-	public void paint (final Graphics g) {
-        if(g instanceof Graphics2D) {
-        	Graphics2D g2 = (Graphics2D) g;
-        	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        	g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-        	g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        	g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        	g2.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-        	g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        }
-        super.paint (g);
-    }
 }
