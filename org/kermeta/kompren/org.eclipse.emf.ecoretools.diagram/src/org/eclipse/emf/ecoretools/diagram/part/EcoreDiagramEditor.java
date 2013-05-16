@@ -91,6 +91,7 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+import org.kermeta.kompren.gwelet.eval.Formular;
 import org.kermeta.kompren.gwelet.eval.QuestionsPanel;
 
 /**
@@ -142,17 +143,15 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 	@Override
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
-		RulerComposite ruler = (RulerComposite) parent.getChildren()[0];
-		ruler.setSize(1000, 690);
-		
+		RulerComposite ruler = getRulerComposite();
+		ruler.setSize(970, 690);
 		RowLayout layout = new RowLayout();
 		layout.wrap = false;
 		layout.type=SWT.HORIZONTAL;
 		parent.setLayout(layout);
-		
-		qPanel = new QuestionsPanel(parent);
+		qPanel = new QuestionsPanel(parent, ruler);
 	}
-
+	
 	
 	/**
 	 * @generated

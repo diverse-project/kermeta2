@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.gef.ui.rulers.RulerComposite;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.custom.CLabel;
@@ -15,9 +16,12 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 
 public class QuestionsPanel extends Composite {
@@ -30,22 +34,22 @@ public class QuestionsPanel extends Composite {
 	
 	public enum QuestionList {
 		Q1 {
-			@Override public String getTitle() { return "<html><font size=\"10\">What are the super classes of the class <b>Type</b>?</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">What are the super classes of the class <b>Type</b>?</font></html>"; }
 			@Override public String getHelper() { return "Give the name of the classes:"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 		},
 		Q2 {
-			@Override public String getTitle() { return "<html><font size=\"10\">What is the role </font><font size=\"5\">(i.e. the name)</font><font size=\"10\"> of the relation that links the class <b>State</b> to the class <b>Comment</b>?</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">What is the role </font><font size=\"5\">(i.e. the name)</font><font size=\"10\"> of the relation that links the class <b>State</b> to the class <b>Comment</b>?</font></html>"; }
 			@Override public String getHelper() { return "Give the name of the role:"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 		},
 		Q3 {
-			@Override public String getTitle() { return "<html><font size=\"10\">What are the classes <b>directly</b> linked </font><font size=\"5\">(by inheritance, composition, and association)</font><font size=\"10\"> to the class <b>Class?</b></font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">What are the classes <b>directly</b> linked </font><font size=\"5\">(by inheritance, composition, and association)</font><font size=\"10\"> to the class <b>Class?</b></font></html>"; }
 			@Override public String getHelper() { return "Give the name of the classes:"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 		},
 		Q4 {
-			@Override public String getTitle() { return "<html><font size=\"10\">What are the name of the, native and inherited, relations and attributes of the class <b>Abstraction</b>?</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">What are the name of the, native and inherited, relations and attributes of the class <b>Abstraction</b>?</font></html>"; }
 			@Override public String getHelper() { return "Enumerate the names:"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 		};
@@ -99,10 +103,29 @@ public class QuestionsPanel extends Composite {
 
 	protected Formular formular;
 	
+	protected RulerComposite editor;
+	
+	
+	protected Combo mouse;
 
-	public QuestionsPanel(Composite frame) {//final GweletFrame frame, final MToolBar toolbar) {
+	protected Spinner ageS;
+
+	protected Spinner screen;
+
+	protected Combo statusCB;
+
+	protected Combo xpMdeCB;
+
+	protected Combo xpUmlCB;
+
+	protected Button validateB;
+	
+	
+
+	public QuestionsPanel(Composite frame, RulerComposite editor) {
 		super(frame, SWT.NONE);
 
+		this.editor 	= editor;
 		this.frame 		= frame;
 		userInformations= "";
 //		sniffer 		= new Sniffer(frame);
@@ -111,7 +134,7 @@ public class QuestionsPanel extends Composite {
 
 		questionLabel = new CLabel(this, SWT.NONE);
 		FontData[] fD = questionLabel.getFont().getFontData();
-		fD[0].setHeight(16);
+		fD[0].setHeight(14);
 		fD[0].setStyle(SWT.BOLD);
 		questionLabel.setFont(new Font(frame.getDisplay(),fD[0]));
 		GridData gridData = new GridData();
@@ -126,7 +149,7 @@ public class QuestionsPanel extends Composite {
 		data.grabExcessHorizontalSpace = true;
 		data.grabExcessVerticalSpace = true;
 		data.heightHint = 250;
-		data.widthHint = 300;
+		data.widthHint = 380;
 		questionArea.setLayoutData(data);
 		
 		resultLabel = new Text(this, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
@@ -142,7 +165,7 @@ public class QuestionsPanel extends Composite {
 		
 		startButton = new Button(this, SWT.NONE);
 		fD = startButton.getFont().getFontData();
-		fD[0].setHeight(16);
+		fD[0].setHeight(14);
 		fD[0].setStyle(SWT.BOLD);
 		startButton.setFont(new Font(frame.getDisplay(),fD[0]));
 		startButton.setText("Start");
@@ -155,7 +178,7 @@ public class QuestionsPanel extends Composite {
 		answerLabel = new CLabel(this, SWT.NONE);
 		answerLabel.setText("Answer");
 		fD = answerLabel.getFont().getFontData();
-		fD[0].setHeight(16);
+		fD[0].setHeight(14);
 		fD[0].setStyle(SWT.BOLD);
 		answerLabel.setFont(new Font(frame.getDisplay(),fD[0]));
 		gridData = new GridData();
@@ -177,17 +200,16 @@ public class QuestionsPanel extends Composite {
 		data.grabExcessHorizontalSpace = true;
 		data.grabExcessVerticalSpace = true;
 		data.heightHint = 250;
-		data.widthHint = 300;
+		data.widthHint = 380;
 		answerArea.setLayoutData(data);
 		
 		answerButton = new Button(this, SWT.NONE);
 		fD = answerButton.getFont().getFontData();
-		fD[0].setHeight(16);
+		fD[0].setHeight(14);
 		fD[0].setStyle(SWT.BOLD);
 		answerButton.setFont(new Font(frame.getDisplay(),fD[0]));
 		answerButton.setText("Validate Answer");
-//		answerButton.addActionListener(new ShowQuestionFieldListener());
-//		answerButton.setSize(230, 50);
+		answerButton.addListener(SWT.Selection, new ShowQuestionFieldListener());
 		gridData = new GridData();
 		gridData.exclude = false;
 		gridData.horizontalAlignment = GridData.CENTER;
@@ -203,19 +225,7 @@ public class QuestionsPanel extends Composite {
 
 		setLayout(new GridLayout(1, false));
 		setSize(380, 800);
-//		add(questionLabel);
-//		add(questionArea);
-//		add(Box.createVerticalStrut(10));
-//		add(resultLabel);
-//		add(Box.createVerticalStrut(10));
-//		add(startButton);
-//		add(Box.createVerticalStrut(15));
-//		add(answerLabel);
-//		add(panel);
-//		add(answerArea);
-//		add(Box.createVerticalStrut(10));
-//		add(answerButton);
-//		add(resultField);
+
 		resultLabel.setVisible(false);
 		((GridData)resultLabel.getLayoutData()).exclude = true;
 		resultField.setVisible(false);
@@ -225,14 +235,94 @@ public class QuestionsPanel extends Composite {
 	}
 	
 	
-	public void setFormular(Formular f) {
-		formular = f;
+	protected void createFormular() {
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 2;
+	
+		Group group = new Group(this, SWT.SHADOW_ETCHED_IN);
+		group.setText("Required Information");
+		GridData gridData = new GridData();
+		gridData.exclude = true;
+		gridData.horizontalAlignment = GridData.FILL;
+		group.setLayoutData(gridData);
+		
+		CLabel label = new CLabel(group, SWT.NONE);
+		label.setText("Mouse/touchpad:");
+	
+		mouse = new Combo(group, SWT.NONE);
+		mouse.setItems(new String[]{"Mouse", "Touchpad"});
+	
+		label = new CLabel(group, SWT.NONE);
+		label.setText("Screen size (inch):");
+	
+		screen = new Spinner(group, SWT.NONE);
+		screen.setValues(15, 1, 50, 0, 1, 1);
+	
+		label = new CLabel(group, SWT.NONE);
+		label.setText("Age:");
+	
+		ageS = new Spinner(group, SWT.NONE); 
+		ageS.setValues(25, 1, 200, 0, 1, 1);
+	
+		label = new CLabel(group, SWT.NONE);
+		label.setText("Status:");
+	
+		statusCB = new Combo(group, SWT.NONE);
+		mouse.setItems(new String[]{"Student", "Ph.D. student", "Engineer", "Researcher"});
+	
+		label = new CLabel(group, SWT.NONE);
+		label.setText("MDE background:");
+	
+		xpMdeCB = new Combo(group, SWT.NONE);
+		mouse.setItems(new String[]{"None", "0-2 years", "2-5 years", "5-10 years", "+10 years"});
+	
+		label = new CLabel(group, SWT.NONE);
+		label.setText("UML background:");
+	
+		xpUmlCB = new Combo(group, SWT.NONE);
+		mouse.setItems(new String[]{"No knowledge", "Few knowledge", "Some knowledge", "Expert"});
+	
+		validateB = new Button(group, SWT.NONE);
+		validateB.setText("Validate");
+		gridData = new GridData();
+		gridData.horizontalAlignment = GridData.FILL;
+		gridData.horizontalSpan = 2;
+		group.setLayoutData(validateB);
+	//	validateB.addActionListener(new ValideListener());
 	}
+	
+	
+//	private void setToolbarVisibility(final boolean visible) {
+////		IWorkbenchWindow workbenchWindow =  PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+////	    IContributionItem[] items = ((WorkbenchWindow)workbenchWindow).getMenuBarManager().getItems();
+////	    for (IContributionItem item : items)
+////	        item.setVisible(visible);
+////	    ((WorkbenchWindow)workbenchWindow).getMenuBarManager().setVisible(visible);
+////	    ((WorkbenchWindow)workbenchWindow).getMenuBarManager().update();
+////	    System.out.println(visible + " coucou\n---------");
+////	    items = ((WorkbenchWindow)workbenchWindow).getCoolBarManager2().getItems();
+////	    for (IContributionItem item : items)
+////	        item.setVisible(visible);
+////	    ((WorkbenchWindow)workbenchWindow).getCoolBarManager2().update(true);
+////	    ((WorkbenchWindow)workbenchWindow).getCoolBarManager().setVisible(visible);
+//	    
+//	    try {
+//	        IHandlerService service = (IHandlerService) PlatformUI
+//	                .getWorkbench().getActiveWorkbenchWindow().getService(IHandlerService.class);
+//	        if(service != null)
+//	            service.executeCommand("org.eclipse.ui.ToggleCoolbarAction", null);
+//	    } catch (Exception e) {
+//	        //handle error
+//	    }
+//	}
+	
+	
+//	public void setFormular(Formular f) {
+//		formular = f;
+//	}
 
 
 	public void initQuestions() {
-//		URL url = Platform.getBundle("org.eclipse.emf.ecoretools.diagram").
-//				getEntry("config/config.txt");
 		try {
 			URL url = new URL("platform:/plugin/org.eclipse.emf.ecoretools.diagram/config/config.txt");
 			InputStream inputStream = url.
@@ -275,11 +365,12 @@ public class QuestionsPanel extends Composite {
 		((GridData)answerLabel.getLayoutData()).exclude = true;
 		answerButton.setVisible(false);
 		((GridData)answerButton.getLayoutData()).exclude = true;
-//		frame.setActivated(false);
-//		toolbar.setVisible(false);
+//		setToolbarVisibility(false);
 		helperLabel.setVisible(false);
 		((GridData)helperLabel.getLayoutData()).exclude = true;
 		helperLabel.setText(question.question.getHelper());
+		editor.setVisible(false);
+		editor.setEnabled(false);
 		layout(true);
 		pack();
 	}
@@ -295,10 +386,11 @@ public class QuestionsPanel extends Composite {
 		((GridData)answerLabel.getLayoutData()).exclude = false;
 		answerButton.setVisible(true);
 		((GridData)answerButton.getLayoutData()).exclude = false;
-//		frame.setActivated(true);
-//		toolbar.setVisible(true);
+//		setToolbarVisibility(true);
 		helperLabel.setVisible(true);
 		((GridData)helperLabel.getLayoutData()).exclude = false;
+		editor.setVisible(true);
+		editor.setEnabled(true);
 		layout(true);
 		pack();
 
@@ -330,7 +422,7 @@ public class QuestionsPanel extends Composite {
 		questionLabel.setVisible(false);
 		((GridData)questionLabel.getLayoutData()).exclude = true;
 		setVisible(false);
-		formular.setVisible(true);//TODO
+//		formular.setVisible(true);//TODO
 		frame.pack();
 	}
 	
@@ -377,101 +469,28 @@ public class QuestionsPanel extends Composite {
 		public void handleEvent(final Event e) {
 			QuestionsPanel.this.currentTime = System.currentTimeMillis();
 			QuestionsPanel.this.setAnswerMode();
-//			frame.getCanvas().requestFocusInWindow();
 		}
 	}
 
 
-//	class ShowQuestionFieldListener implements ActionListener {
-//		@Override
-//		public void actionPerformed(final ActionEvent e) {
-//			final boolean hasNextQuestion = QuestionsPanel.this.currentNbQuestions+1<QuestionsPanel.this.questions.size();
-//			final Question question = hasNextQuestion ? QuestionsPanel.this.questions.get(QuestionsPanel.this.currentNbQuestions) :
-//														QuestionsPanel.this.questions.get(QuestionsPanel.this.questions.size()-1);
-//
-//			question.computeTime(QuestionsPanel.this.currentTime, System.currentTimeMillis());
-//			question.setAnswer(QuestionsPanel.this.answerArea.getText());
-//
-//			if(hasNextQuestion)
-//				QuestionsPanel.this.setNextQuestion();
-//			else
-//				QuestionsPanel.this.setTerminated();
-//			frame.getCanvas().requestFocusInWindow();
-//		}
-//	}
+	class ShowQuestionFieldListener implements Listener {
+		public void handleEvent(final Event e) {
+			final boolean hasNextQuestion = QuestionsPanel.this.currentNbQuestions+1<QuestionsPanel.this.questions.size();
+			final Question question = hasNextQuestion ? QuestionsPanel.this.questions.get(QuestionsPanel.this.currentNbQuestions) :
+														QuestionsPanel.this.questions.get(QuestionsPanel.this.questions.size()-1);
+
+			question.computeTime(QuestionsPanel.this.currentTime, System.currentTimeMillis());
+			question.setAnswer(QuestionsPanel.this.answerArea.getText());
+
+			if(hasNextQuestion)
+				QuestionsPanel.this.setNextQuestion();
+			else
+				QuestionsPanel.this.setTerminated();
+		}
+	}
 
 
 	public void setUserInformations(final String userInformations) {
 		this.userInformations = userInformations;
 	}
 }
-
-
-//class EditorPaneAntiAlias extends JEditorPane {
-//	private static final long serialVersionUID = 1L;
-//
-//	public EditorPaneAntiAlias(final boolean html) {
-//		super(html ? "text/html" : "text", "");
-//	}
-//
-//	@Override
-//	public void paint (final Graphics g) {
-//        if(g instanceof Graphics2D) {
-//        	Graphics2D g2 = (Graphics2D) g;
-//        	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-//        	g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-//        	g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        	g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-//        	g2.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-//        	g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-//        }
-//        super.paint (g);
-//    }
-//}
-
-
-//class AntiAliasButton extends JButton {
-//	private static final long serialVersionUID = 1L;
-//
-//	public AntiAliasButton(final String text) {
-//		super(text);
-//	}
-//
-//	@Override
-//	public void paint (final Graphics g) {
-//        if(g instanceof Graphics2D) {
-//        	Graphics2D g2 = (Graphics2D) g;
-//        	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-//        	g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-//        	g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        	g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-//        	g2.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-//        	g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-//        }
-//        super.paint (g);
-//    }
-//}
-
-
-
-//class LabelAntiAlias extends JLabel {
-//	private static final long serialVersionUID = 1L;
-//
-//	public LabelAntiAlias() {
-//		super("", SwingConstants.CENTER);
-//	}
-//
-//	@Override
-//	public void paint (final Graphics g) {
-//        if(g instanceof Graphics2D) {
-//        	Graphics2D g2 = (Graphics2D) g;
-//        	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-//        	g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-//        	g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        	g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-//        	g2.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-//        	g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-//        }
-//        super.paint (g);
-//    }
-//}
