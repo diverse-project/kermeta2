@@ -82,7 +82,6 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 					 project.create(monitor);
 					 project.open(monitor);
 					 addKermetaNatureToProject(project);
-					 manageCreationProject(project, monitor);
 					 IFile ecoreFile = context.ecoreIFile;
 					 if(ecoreFile != null){
 						 createKmtProjectWithEcore();
@@ -109,23 +108,18 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 		if (generator != null) {
 			switch (this.context.indexTransfomation) {
 			case 0:
-				System.out.println("None function launched");
 				generator.generateNoneScala (this.context.nameProject,
 											 "file:///" + this.context.locationProject,
 											 "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
 											 this.context.ecoreIFile.getProject().getName());
-				System.out.println("None function finished");
 				break;
 			case 1:
-				System.out.println("Aspect function launched");
 				generator.generateAspectProjectScala (this.context.nameProject,
 													  "file:///" + this.context.locationProject,
 						 							  "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
 						 							  this.context.ecoreIFile.getProject().getName());
-				System.out.println("Aspect function finished");
 				break; 
 			case 2:
-				System.out.println("Customize function launched");
 				generator.generateCustomizeProjectScala (this.context.nameProject,
 														 "file:///" + this.context.locationProject,
 						 								 "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
@@ -134,15 +128,12 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 						 								 this.context.operationReturnType,
 						 								 this.context.operationParams,
 						 								 this.context.listNewClass);
-				System.out.println("Customize function finished");
 				break;
 			case 3:
-				System.out.println("Visitor pattern function launched");
 				generator.generateVisitorProjectScala (this.context.nameProject,
 													   "file:///" + this.context.locationProject,
 						 							   "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
 						 							   this.context.ecoreIFile.getProject().getName());
-				System.out.println("Visitor pattern function finished");
 				break;
 			}
 		}
@@ -152,19 +143,6 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 	}
 	
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-	}
-
-	
-	private void manageCreationProject (IProject project, IProgressMonitor monitor) throws CoreException {
-		createFolder(project, "src/main/kmt", monitor);
-		if (this.context.ecoreProject) {
-			GenerateAspect ga = new GenerateAspect (this.context);
-			ga.generateKermetaProject();
-		}
-		else {
-			createDefaultKmt(project, "src/main/kmt/MainClass.kmt", monitor);
-			createDefaultKp(project, "project.kp", monitor);	
-		}
 	}
 	
 	/**

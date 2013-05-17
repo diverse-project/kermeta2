@@ -1,7 +1,7 @@
 using kermeta::standard::*
 using kermeta::io::StdIO => stdio
 
-using ecore_aspectgenerator^ecore::*
+using ecore::*
 
 package org::kermeta::language::aspectgenerator{
 	class Context

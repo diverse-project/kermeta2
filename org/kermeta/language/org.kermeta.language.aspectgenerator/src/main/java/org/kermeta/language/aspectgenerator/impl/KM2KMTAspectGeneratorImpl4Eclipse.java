@@ -12,14 +12,6 @@ public class KM2KMTAspectGeneratorImpl4Eclipse implements KM2KMTAspectGenerator 
     }
 	
 	@Override
-	public void aspectGeneratorScala() {
-		ecore_aspectgeneratorrunner.DefaultRunner$.MODULE$.init4eclipse();
-
-		ecore_aspectgenerator.org.kermeta.language.aspectgenerator.AspectGenerator aspectGenerator_ = ecore_aspectgenerator.org.kermeta.language.aspectgenerator.KerRichFactory.createAspectGenerator();
-        aspectGenerator_.aspectGenerator();
-	}
-	
-	@Override
     public void generateCompilerProjectScala(String nameProject, String folderLocation, String ecoreFile, String ecoreProject) {
 		ecore_aspectgeneratorrunner.DefaultRunner$.MODULE$.init4eclipse();
 		

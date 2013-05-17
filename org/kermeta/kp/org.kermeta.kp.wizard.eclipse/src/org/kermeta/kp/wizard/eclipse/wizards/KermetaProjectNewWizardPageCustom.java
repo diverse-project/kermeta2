@@ -185,8 +185,8 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	private void removeParameter () {
 		if (table.getSelectionIndices().length > 0) {
 			for(int i = table.getSelectionIndices().length - 1; i >= 0; i--) {
-				unregisterParameter(table.getSelectionIndices()[i]);
-				if (table.getItems()[table.getSelectionIndices()[i]].getText(0) == "Yes") {
+				unregisterParameter(table.getSelectionIndices()[i]); 
+				if (table.getItems()[table.getSelectionIndices()[i]].getText(0) == "yes") {
 					unregisterNewClass(table.getItems()[table.getSelectionIndices()[i]].getText(2));
 				}
 			}

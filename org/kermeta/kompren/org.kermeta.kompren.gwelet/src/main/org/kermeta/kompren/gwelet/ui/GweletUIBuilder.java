@@ -5,6 +5,9 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Frame;
 
+import org.kermeta.kompren.gwelet.Gwelet;
+import org.kermeta.kompren.gwelet.eval.Formular;
+import org.kermeta.kompren.gwelet.eval.QuestionsPanel;
 import org.kermeta.kompren.gwelet.view.MetamodelView;
 import org.malai.swing.ui.UIComposer;
 import org.malai.swing.widget.MProgressBar;
@@ -16,14 +19,18 @@ public class GweletUIBuilder extends UIComposer<GweletFrame> {
 		widget = frame;
 	}
 
-//	public Formular formular;// EVAL
+	public Formular formular = null;
 
 
 	@Override
 	public void compose(final MProgressBar progressBar) {
 		MetamodelView mmv = widget.getCanvas();
-//		QuestionsPanel qpanel = new QuestionsPanel(widget, widget.toolbar);// EVAL
-//		formular = new Formular(qpanel, mmv.getScrollpane(), new JPanel(), widget);
+		QuestionsPanel qpanel = null;
+		if(Gwelet.EVAL) {
+			qpanel = new QuestionsPanel(widget, widget.toolbar);
+			formular = new Formular(qpanel, widget);
+			qpanel.setFormular(formular);
+		}
 		MPieMenu menu = widget.visualiserManager.getMenu();
 		menu.add(widget.reiniter.getReinit());
 		menu.add(widget.visualiser.getSuperClasses());
@@ -66,9 +73,12 @@ public class GweletUIBuilder extends UIComposer<GweletFrame> {
 		pane.setLayout(new BorderLayout());
 		pane.add(widget.toolbar, BorderLayout.NORTH);
 		pane.add(widget.getLayeredPanel(), BorderLayout.CENTER);
-//		pane.add(qpanel, BorderLayout.EAST);// EVAL
-//		pane.add(formular, BorderLayout.SOUTH);
-//		formular.setVisible(false);
+
+		if(Gwelet.EVAL) {
+			pane.add(qpanel, BorderLayout.EAST);
+			pane.add(formular, BorderLayout.SOUTH);
+			formular.setVisible(false);
+		}
 		widget.pack();
 		widget.setLocation(200, 200);
 		widget.setExtendedState(Frame.MAXIMIZED_BOTH);
