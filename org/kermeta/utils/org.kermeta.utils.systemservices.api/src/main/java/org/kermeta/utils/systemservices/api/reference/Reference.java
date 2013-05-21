@@ -8,6 +8,8 @@
 */
 package org.kermeta.utils.systemservices.api.reference;
 
-public abstract class Reference {
+import java.io.Serializable;
+
+public abstract class Reference implements Serializable{
 
 }

@@ -5,91 +5,49 @@
 
 package k2.io
 
+import java.net._;
+import java.io._;
+import org.kermeta.utils.systemservices.api.messaging.Request;
+import org.kermeta.utils.systemservices.api.messaging.MessagingSystem.Kind
 
 class StdIOClass extends k2.standard.EObjectImplForPrimitive {
-
-    // by default no messaging system, use System in, out, err
-    // in more complex environment, one can use _root_.org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem
-    var _messagingSystem : _root_.org.kermeta.utils.systemservices.api.messaging.MessagingSystem  = null
-    def messagingSystem_=(arg : _root_.org.kermeta.utils.systemservices.api.messaging.MessagingSystem) = {
-      _messagingSystem = arg
-    }
+  
+	var out : ObjectOutputStream = null
 
     // writebuffer is used to make sure we create an info message only when a \n is reached or another messages needs it to be flushed
     var _writeBuffer : StringBuffer = new  StringBuffer
     def write(obj : AnyRef) : Unit = {
-      if(_messagingSystem != null){
-         val message : String = obj.toString
-        _writeBuffer.synchronized{         // basic way to handle buffer, flush if ends with \n
-            _writeBuffer.append(message)
-            if(message.endsWith("\n")){
-                flushBuffers()
-            }
-        }
-      }
-      else{
+
         System.out.print(obj.toString)
-      }
+
     }
 
     def errorln(obj : AnyRef) : Unit = {
-      if(_messagingSystem != null){
-        flushBuffers()
-        _messagingSystem.error(obj.toString,"")
-      }
-      else{
-        System.err.println(obj.toString)
-      }
+
+        log(3,obj.toString,"")
+
     }
 
 
     var _errorBuffer : StringBuffer = new  StringBuffer
     def error(obj : AnyRef) : Unit = {
-      if(_messagingSystem != null){
-        val message : String = obj.toString
-        _errorBuffer.synchronized{         // basic way to handle error buffer, wait for
-          _errorBuffer.append(message)
-          if(message.endsWith("\n")){
-              flushBuffers()
-          }
-        }
-      }
-      else{
+
         System.err.print(obj.toString)
-      }
+
     }
 
     def flushBuffers() : Unit = {
 
-      _errorBuffer.synchronized{         // basic way to handle error buffer,
-          if(_errorBuffer.length() != 0){
-              _messagingSystem.error(_errorBuffer.toString,"")
-              _errorBuffer = new  StringBuffer
-          }
-      }
-      _writeBuffer.synchronized{         // basic way to handle write buffer,
-          if(_writeBuffer.length() != 0){
-              _messagingSystem.info(_writeBuffer.toString,"")
-              _writeBuffer = new  StringBuffer
-          }
-      }
     }
 
     def writeln(obj : AnyRef) : Unit = {
-        if(_messagingSystem != null){
-          flushBuffers()
-          _messagingSystem.info(obj.toString,"")
-        }
-        else{
-          System.out.println(obj.toString)
-        }
+
+    	log(1,obj.toString,"");
+      
     }
 
     def read(prompt : String) : String = {
-        if(_messagingSystem != null){
-          return _messagingSystem.readLine(prompt)
-        }
-        else{
+
           System.out.print(prompt)
           System.out.flush()
           Thread.`yield`()
@@ -104,10 +62,78 @@ class StdIOClass extends k2.standard.EObjectImplForPrimitive {
           var entree:java.io.BufferedReader =new java.io.BufferedReader(lecteur);
           ligne_lue=entree.readLine();
           return ligne_lue;
-        }
-    }
 
+    }
+    
+    def log(kind : Int, message : String, messageGroup : String) : Unit = {
+
+      var req : Request = new Request();
+      req.message = message;
+      req.messageGroup = messageGroup;
+      req.calledMethod = Request.Method.log;
+      kind match {
+        case 1 => req.msgKind = Kind.UserINFO;
+        case 2 => req.msgKind = Kind.UserWARNING;
+        case 3 => req.msgKind = Kind.UserERROR;
+        case 4 => req.msgKind = Kind.DevDEBUG;
+        case 5 => req.msgKind = Kind.DevINFO;
+        case 6 => req.msgKind = Kind.DevWARNING;
+        case 7 => req.msgKind = Kind.DevERROR;
+      }
+      out.writeObject(req);
+      out.flush();
+    }
+    
+    def initProgress(progressGroup : String, message : String, messageGroup : String, nbWorkUnit : Int) : Unit = {
+      var req : Request = new Request();
+      req.message = message;
+      req.progressGroup = progressGroup;
+      req.messageGroup = messageGroup;
+      req.calledMethod = Request.Method.initProgress;
+      req.nbUnit = nbWorkUnit;
+      out.writeObject(req);
+      out.flush();
+    }
+		
+	def progress(progressGroup : String, message : String, messageGroup : String, workedUnit : Int) : Unit = {
+	  var req : Request = new Request();
+      req.message = message;
+      req.progressGroup = progressGroup;
+      req.messageGroup = messageGroup;
+      req.calledMethod = Request.Method.progress;
+      req.nbUnit = workedUnit;
+      out.writeObject(req);
+      out.flush();
+	}
+		
+	def doneProgress(progressGroup : String, message : String, messageGroup : String) : Unit = {
+	  var req : Request = new Request();
+      req.message = message;
+      req.progressGroup = progressGroup;
+      req.messageGroup = messageGroup;
+      req.calledMethod = Request.Method.doneProgress;
+      req.messageGroup = messageGroup;
+      out.writeObject(req);
+      out.flush();
+	}
+	
+	def clearLog() : Unit = {
+	  var req : Request = new Request();
+      req.calledMethod = Request.Method.clearLog;
+      out.writeObject(req);
+      out.flush()
+	}
+	
 }
 
 object StdIO extends StdIOClass{
+  var port : Int = 4444;
+  var address : String = "localhost";
+	try{   
+		   var kkSocket : Socket = new Socket(address, port);
+		   out = new ObjectOutputStream(kkSocket.getOutputStream()); 
+		   
+	} catch {
+		case e: Exception => System.out.println("exception caught: " + e);
+	}
 }

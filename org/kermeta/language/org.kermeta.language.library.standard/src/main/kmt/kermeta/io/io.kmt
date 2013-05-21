@@ -69,6 +69,8 @@ singleton StdIO
 	
 	/**
 	 * Writeln the object to error output
+	 *
+	 * Convenient operation for log(Kind.UserINFO,object,"")
 	 */ 
 	operation errorln(object : String) : Void is do
 
@@ -82,7 +84,9 @@ singleton StdIO
 	end
 	
 	/**
-	 * Writeln the object to standard output
+	 * Writeln the object to standard output.
+	 *
+	 * Convenient operation for log(Kind.UserERROR,object,"")
 	 */ 
 	operation writeln(object : String) : Void is do
 
@@ -95,6 +99,88 @@ singleton StdIO
 
 	end
 	
+	/**
+	 * Log a message to the output
+	 *
+	 * @kind The level of logging.
+	 * @message Text printed.
+	 * @messageGroup Destination. Default console is ""
+	 */
+	operation log(kind : Integer, message : String, messageGroup : String) : Void is do
+	end
+	
+	/*
+	 * Start and print a progress
+	 * 
+	 * @progressGroup Name of the progress
+	 * @message Text printed
+	 * @messageGroup Destination
+	 * @nbWorkingUnit Size of the progress
+	 */
+	operation initProgress(progressGroup : String, message : String, messageGroup : String, nbWorkUnit : Integer) : Void is do
+	end
+	
+	/**
+	 * Print step of a progress is done
+	 *
+	 * @progressGroup Name of the progress
+	 * @message Text printed
+	 * @messageGroup Destination
+	 * @workedUnit Progression
+	 */
+	operation progress(progressGroup : String, message : String, messageGroup : String, workedUnit : Integer) : Void is do
+	end
+	
+	/**
+	 * End a progress
+	 *
+	 * @progressGroup Name of the progress
+	 * @message Text printed
+	 * @messageGroup Destination
+	 */
+	operation doneProgress(progressGroup : String, message : String, messageGroup : String) : Void is do
+	end
+	
+	/**
+	 * Clean the console.
+	 */
+	operation clearLog() is do
+	end
+	
+}
+
+/**
+ * Level of logging
+ */
+singleton Kind { 
+
+	operation UserINFO() : Integer is do
+		result := 1
+	end
+
+	operation UserWARNING() : Integer is do
+		result := 2
+	end
+
+	operation UserERROR() : Integer is do
+		result := 3
+	end
+
+	operation DevDEBUG() : Integer is do
+		result := 4
+	end
+
+	operation DevINFO() : Integer is do
+		result := 5
+	end
+
+	operation DevWARNING() : Integer is do
+		result := 6
+	end
+
+	operation DevERROR() : Integer is do
+		result := 7
+	end
 }
 
 
