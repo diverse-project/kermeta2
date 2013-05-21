@@ -1,8 +1,8 @@
 <!-- $Id: pom.xml 14766 2011-03-31 07:30:48Z cbouhour $ -->
-<!-- License    : EPL                                    -->
-<!-- Project    : utils.error.report.eclipse.api         -->
-<!-- Copyright  : IRISA / INRIA / Universite de Rennes 1 --> 
-<!-- Authors : Cédric Bouhours <cedric.bouhours@inria.fr> --> 
+<!-- License : EPL -->
+<!-- Project : utils.error.report.eclipse.api -->
+<!-- Copyright : IRISA / INRIA / Universite de Rennes 1 -->
+<!-- Authors : Cédric Bouhours <cedric.bouhours@inria.fr> -->
 
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
@@ -12,12 +12,12 @@
 	<name>utils.systemservices.api :: API for all eclipse systemservices for kermeta V2</name>
 	<artifactId>utils.systemservices.api</artifactId>
 
-    <parent>
-        <artifactId>utils.root</artifactId>
-        <groupId>org.kermeta.utils</groupId>
-        <version>2.0.99-SNAPSHOT</version>
-    </parent>
-    
+	<parent>
+		<artifactId>utils.root</artifactId>
+		<groupId>org.kermeta.utils</groupId>
+		<version>2.0.99-SNAPSHOT</version>
+	</parent>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.kermeta.emf</groupId>
@@ -25,44 +25,74 @@
 			<version>${emf.version}</version>
 		</dependency>
 	</dependencies>
-    
+
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-jar-plugin</artifactId>
+				<artifactId>maven-jar-plugin</artifactId>
 
 				<configuration>
-		          <archive>
-		            <manifestEntries>
+					<archive>
+						<manifestEntries>
 							<Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName>
 							<Bundle-Name>${project.name}</Bundle-Name>
 							<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-						    <Bundle-Version>${bundle.version}</Bundle-Version>
+							<Bundle-Version>${bundle.version}</Bundle-Version>
 							<Bundle-ClassPath>.</Bundle-ClassPath>
 							<Bundle-Localization>plugin</Bundle-Localization>
 							<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 							<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
-							<Export-Package>								
-                        		org.kermeta.utils.systemservices.api.impl,
-                        		org.kermeta.utils.systemservices.api.messaging,
-                        		org.kermeta.utils.systemservices.api.reference,
-                        		org.kermeta.utils.systemservices.api.result
-                        	</Export-Package>
+							<Export-Package>
+								org.kermeta.utils.systemservices.api.impl,
+								org.kermeta.utils.systemservices.api.messaging,
+								org.kermeta.utils.systemservices.api.reference,
+								org.kermeta.utils.systemservices.api.result
+							</Export-Package>
 							<Require-Bundle>
 								org.eclipse.core.resources,
 								org.eclipse.core.runtime,
 								org.eclipse.ui.workbench,
-                    			org.eclipse.emf.ecore
-                        	</Require-Bundle>
-                        	<Import-Package>
-                        		org.kermeta.utils.helpers,
-                        		org.kermeta.utils.helpers.emf
-                        	</Import-Package>
-		            </manifestEntries>		            
-		          </archive>
-		        </configuration>
+								org.eclipse.emf.ecore
+							</Require-Bundle>
+							<Import-Package>
+								org.kermeta.utils.helpers,
+								org.kermeta.utils.helpers.emf
+							</Import-Package>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<!-- copy the generated manifest to a place where eclipse expects it so 
+				it doesn't raise error -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>copy-manifest-for-eclipse-ide</id>
+						<phase>install</phase>
+						<configuration>
+							<tasks>
+								<echo
+									message="copy the generated manifest to a place where eclipse expects it so it doesn't raise error" />
+								<unzip
+									src="${project.build.directory}/${project.artifactId}-${project.version}.jar"
+									dest="">
+									<patternset>
+										<include name="META-INF/**" />
+										<exclude name="META-INF/maven/**" />
+									</patternset>
+								</unzip>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
