@@ -8,9 +8,16 @@
 */
 package org.kermeta.kp.editor.analysis.helper;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import org.kermeta.kp.ImportProject;
 import org.kermeta.kp.ImportProjectSources;
@@ -51,7 +58,7 @@ public class KermetaProjectHelper {
 		List<KermetaProject> result = new ArrayList<KermetaProject>();
 		for (ImportProject importedProjectJar : kp.getImportedProjects()) {
 			String containerUrl = varExpander.getSelectedUrl4ReusableResource(importedProjectJar.getProjectResource());
-			KermetaProject foundProject = KpResourceHelper.findKermetaProject(containerUrl.endsWith(".jar")? "jar:"+containerUrl+"!"+DEFAULT_KP_LOCATION_IN_JAR : containerUrl+DEFAULT_KP_LOCATION_IN_FOLDER,
+			KermetaProject foundProject = KpResourceHelper.findKermetaProject(doesUrlPointToJar(containerUrl)? "jar:"+containerUrl+"!"+DEFAULT_KP_LOCATION_IN_JAR : containerUrl+DEFAULT_KP_LOCATION_IN_FOLDER,
 					kp.eResource());
 			if(foundProject != null){
 				result.add(foundProject);
@@ -75,7 +82,7 @@ public class KermetaProjectHelper {
 			String containerUrl = varExpander.getSelectedUrl4ReusableResource(importedProjectSources.getProjectResource());
 			java.net.URI fileURI = fileSystemConverter.convertSpecialURItoFileURI(java.net.URI.create(containerUrl));
 			String containerLocalUrl = fileURI != null ? fileURI.toString(): containerUrl;
-			KermetaProject foundProject = KpResourceHelper.findKermetaProject(containerLocalUrl.endsWith(".jar") ? "jar:"+containerLocalUrl+"!"+DEFAULT_KP_LOCATION_IN_JAR : containerLocalUrl+DEFAULT_KP_LOCATION_IN_FOLDER,
+			KermetaProject foundProject = KpResourceHelper.findKermetaProject(doesUrlPointToJar(containerLocalUrl) ? "jar:"+containerLocalUrl+"!"+DEFAULT_KP_LOCATION_IN_JAR : containerLocalUrl+DEFAULT_KP_LOCATION_IN_FOLDER,
 					kp.eResource());
 			if(foundProject != null){
 				result.add(foundProject);
@@ -95,4 +102,33 @@ public class KermetaProjectHelper {
 						new LocalFileConverterForAether(logger,"KermetaProjectHelper","http://maven.inria.fr/artifactory/public"))));
 	}
 
+	public static boolean doesUrlPointToJar(String urlString){
+		// name ends with jar extenseion, so we suppose that this is a jar
+		if(urlString.endsWith(".jar")) return true;
+		// some bundle may not have the .jar extension, let's analyse them
+		try{
+			URL fileURL = new URL(urlString);
+			if( fileURL.getProtocol().equals("file")){
+				File theFile;
+				theFile = new File(fileURL.toURI());
+				if (theFile!=null) {
+					if(theFile.exists()){
+						if(theFile.isFile()){
+							ZipInputStream zip;
+							try {
+								zip = new ZipInputStream(fileURL.openStream());
+								return true;
+							} catch (IOException e) {
+								// not a valid zip					
+							} catch (java.lang.RuntimeException e2){
+								// aether may report such RuntimeExecption if it cannot resolve the url
+							}
+						}
+					}
+				}						
+			}
+		} catch (URISyntaxException e) {} 
+		  catch (MalformedURLException e) {	}
+		return false;
+	}
 }

@@ -1,12 +1,11 @@
 package org.kermeta.kp.wizard.eclipse.wizards;
 
-import org.kermeta.kp.wizard.eclipse.wizards.utils.Context;
-
-import java.util.ArrayList;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Button;
@@ -19,13 +18,15 @@ import org.eclipse.swt.widgets.Text;
 
 public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	
-	private Context		context;
+	private ContextWizardNewProject		context;
 	
 	private Composite 	container;
 	private Label 		lblOperationName;
+	private Label 		lblReturnType;
 	private Label 		lblParameterName;
 	private Label 		lblParameterType;
 	private Text 		txtOperationName;
+	private Text 		txtReturnType;
 	private Text 		txtParameterName;
 	private Text 		txtParameterType;
 	private Button 		btnCheckCreateClass;
@@ -38,7 +39,7 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	private Button 		btnRemove;
 	private String[] 	tabItem =  {"yes", "context", "Context"};
 	
-	public KermetaProjectNewWizardPageCustom (Context context){
+	public KermetaProjectNewWizardPageCustom (ContextWizardNewProject context){
 		super("wizardPage");
 		this.context = context;
 		setTitle("Custom Operation for New Kermeta project");
@@ -63,8 +64,32 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 		//-----------------------------------------------
 		
 		txtOperationName = new Text(container, SWT.BORDER);
-		txtOperationName.setBounds(135, 10, 294, 21);
+		txtOperationName.setBounds(112, 10, 147, 21);
 		txtOperationName.setText("customize");
+		
+		txtOperationName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent arg0) {
+				
+				updateNameOperation(txtOperationName.getText());
+			}
+		});
+		
+		lblReturnType = new Label(container, SWT.NONE);
+		lblReturnType.setText("Return type :");
+		lblReturnType.setBounds(284, 13, 75, 15);
+		
+		txtReturnType = new Text(container, SWT.BORDER);
+		txtReturnType.setBounds(365, 10, 147, 21);
+		txtReturnType.setText("void");
+		
+		txtReturnType.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent arg0) {
+				
+				updateReturnType(txtReturnType.getText());
+			}
+		});
 		
 		lblOperationName = new Label(container, SWT.NONE);
 		lblOperationName.setText("Operation name :");
@@ -102,6 +127,9 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 		
 		item = new TableItem(table, SWT.LEFT);
 		item.setText(tabItem);
+
+		registerParameter (tabItem[1], tabItem[2]);
+		registerNewClass(tabItem[2]);
 		
 		table.setBounds(10, 135, 305, 163);
 		table.setHeaderVisible(true);
@@ -135,7 +163,7 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	}
 	
 	private void addParameter () {
-		if (!txtParameterName.getText().isEmpty() && !txtParameterType.getText().isEmpty()) {
+		if (!txtParameterName.getText().isEmpty() && !txtParameterType.getText().isEmpty() && !existParameter()) {
 			
 			TableItem 	newItem 		= new TableItem(table, SWT.LEFT);
 			String [] 	tabNewItem 		= new String[3];
@@ -143,41 +171,69 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 			
 			if (btnCheckCreateClass.getSelection()) {
 				sCreateClass = "Yes";
+				registerNewClass (txtParameterType.getText());
 			}
 			tabNewItem[0] = sCreateClass;
 			tabNewItem[1] = txtParameterName.getText();
 			tabNewItem[2] = txtParameterType.getText();
 			newItem.setText(tabNewItem);
+			registerParameter (txtParameterName.getText(), txtParameterType.getText());
 		}
 		table.redraw();
 	}
 	
 	private void removeParameter () {
 		if (table.getSelectionIndices().length > 0) {
+			for(int i = table.getSelectionIndices().length - 1; i >= 0; i--) {
+				unregisterParameter(table.getSelectionIndices()[i]); 
+				if (table.getItems()[table.getSelectionIndices()[i]].getText(0) == "yes") {
+					unregisterNewClass(table.getItems()[table.getSelectionIndices()[i]].getText(2));
+				}
+			}
+			
 	        table.remove(table.getSelectionIndices());
 	        table.redraw();
         }
 	}
 	
-	/*public <String> getParameters () {
-		TableItem[] tItem = table.getItems();
-		if (tItem.length > 0) {
-			for (int i =0; i < tItem.length; i++) {
-				this.context.operationParams.add(tItem[i].getText(1) + " : " + tItem[i].getText(2));
-			}
-		}
-		return this.context.operationParams;
+	private void updateNameOperation (String operationName) {
+		this.context.operationName = operationName;
 	}
 	
-	public ArrayList<String> getNewClass () {
-		TableItem[] tItem = table.getItems();
-		if (tItem.length > 0) {
-			for (int i =0; i < tItem.length; i++) {
-				if (tItem[i].getText(0) == "yes") {
-					this.context.listNewClass.add(tItem[i].getText(2));
-				}
+	private void updateReturnType (String returnType) {
+		this.context.operationReturnType = returnType;
+	}
+	
+	private void registerParameter (String nameParameter, String typeParameter) {
+		this.context.operationParams.add(nameParameter + " : " + typeParameter);
+	}
+	
+	private void registerNewClass (String newClass) {
+		if(!this.context.listNewClass.contains(newClass)) {
+			this.context.listNewClass.add(newClass);
+		}
+	}
+	
+	private void unregisterNewClass (String newClass) {
+		this.context.listNewClass.remove(newClass);
+	}
+	
+	private void unregisterParameter (int iIndex) {
+		this.context.operationParams.removeAt(iIndex);
+	}
+	
+	private boolean existParameter () {
+		boolean result = false;
+		String nameParameter = txtParameterName.getText();
+		String typeParameter = txtParameterType.getText();
+		
+		setErrorMessage(null);
+		for (int i = 0; i < table.getItems().length; i++) {
+			if (table.getItem(i).getText(1).endsWith(nameParameter) && table.getItem(i).getText(2).equals(typeParameter)) {
+				result = true;
+				setErrorMessage("This parameter already exists.");
 			}
 		}
-		return this.context.listNewClass;
-	}*/
+		return result;
+	}
 }

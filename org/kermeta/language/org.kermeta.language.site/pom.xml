@@ -496,7 +496,17 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.kermeta.language</groupId>
+			<artifactId>org.kermeta.language.aspectgenerator</artifactId>
+			<version>${kermeta.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>org.kermeta.language</groupId>
 			<artifactId>org.kermeta.language.library.standard</artifactId>

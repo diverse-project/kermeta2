@@ -14,9 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
-import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 
@@ -25,21 +23,17 @@ public class Formular extends JPanel {
 
 	protected QuestionsPanel questionsPanel;
 
-	protected JScrollPane diagramPane;
-
 	protected JFrame frame;
-
-	protected JPanel toolbar;
 
 	protected JComboBox<String> mouse;
 
 	protected JSpinner ageS;
 
-	protected JTextField name;
+//	protected JTextField name;
 
 	protected JSpinner screen;
 
-	protected JComboBox<String> sexCB;
+//	protected JComboBox<String> sexCB;
 
 	protected JComboBox<String> statusCB;
 
@@ -50,17 +44,11 @@ public class Formular extends JPanel {
 	protected JButton validateB;
 
 
-	public Formular(final QuestionsPanel questionsPanel, final JScrollPane scrollPane, final JPanel toolbar, final JFrame frame) {
+	public Formular(final QuestionsPanel questionsPanel, final JFrame frame) {
 		super();
-
-		this.toolbar		= toolbar;
 		this.frame			= frame;
 		this.questionsPanel = questionsPanel;
-		this.diagramPane	= scrollPane;
 		createFormular();
-		this.toolbar.setVisible(false);
-		this.questionsPanel.setVisible(false);
-		diagramPane.setVisible(false);
 	}
 
 
@@ -80,7 +68,8 @@ public class Formular extends JPanel {
 		questionsP.add(new JLabel("Mouse/touchpad:"), constraint);
 		constraint.gridx++;
 
-		mouse = new JComboBox<String>(new String[]{"Mouse", "Touchpad"});
+		mouse = new JComboBox<>(new String[]{"Mouse", "Touchpad"});
+		mouse.setSelectedIndex(0);
 		questionsP.add(mouse, constraint);
 		constraint.gridx=0;
 		constraint.gridy++;
@@ -93,34 +82,34 @@ public class Formular extends JPanel {
 		constraint.gridx=0;
 		constraint.gridy++;
 
-		questionsP.add(new JLabel("Name:"), constraint);
-		constraint.gridx++;
-
-		name = new JTextField();
-		questionsP.add(name, constraint);
-		constraint.gridx=0;
-		constraint.gridy++;
+//		questionsP.add(new JLabel("Name:"), constraint);
+//		constraint.gridx++;
+//
+//		name = new JTextField();
+//		questionsP.add(name, constraint);
+//		constraint.gridx=0;
+//		constraint.gridy++;
 
      	questionsP.add(new JLabel("Age:"), constraint);
      	constraint.gridx++;
 
-		ageS = new JSpinner(new SpinnerNumberModel(25, 1, 200, 1));
+		ageS = new JSpinner(new SpinnerNumberModel(30, 1, 200, 1));
 		questionsP.add(ageS, constraint);
 		constraint.gridx=0;
 		constraint.gridy++;
 
-		questionsP.add(new JLabel("Gender:"), constraint);
-		constraint.gridx++;
-
-		sexCB = new JComboBox<String>(new String[]{"Male", "Female"});
-		questionsP.add(sexCB, constraint);
-		constraint.gridx=0;
-		constraint.gridy++;
+//		questionsP.add(new JLabel("Gender:"), constraint);
+//		constraint.gridx++;
+//
+//		sexCB = new JComboBox<String>(new String[]{"Male", "Female"});
+//		questionsP.add(sexCB, constraint);
+//		constraint.gridx=0;
+//		constraint.gridy++;
 
 		questionsP.add(new JLabel("Status:"), constraint);
 		constraint.gridx++;
 
-		statusCB = new JComboBox<String>(new String[]{"Student", "Ph.D. student", "Engineer", "Researcher"});
+		statusCB = new JComboBox<>(new String[]{"Researcher", "Industrial", "Research engineer", "Ph.D. student", "Other"});
 		questionsP.add(statusCB, constraint);
 		constraint.gridx=0;
 		constraint.gridy++;
@@ -128,7 +117,7 @@ public class Formular extends JPanel {
 		questionsP.add(new JLabel("MDE background:"), constraint);
 		constraint.gridx++;
 
-		xpMdeCB = new JComboBox<String>(new String[]{"None", "0-2 years", "2-5 years", "5-10 years", "+10 years"});
+		xpMdeCB = new JComboBox<>(new String[]{"Expert", "Proficient", "Competent", "Advanced beginner", "Novice"});
 		questionsP.add(xpMdeCB, constraint);
 		constraint.gridx=0;
 		constraint.gridy++;
@@ -136,7 +125,7 @@ public class Formular extends JPanel {
 		questionsP.add(new JLabel("UML background:"), constraint);
 		constraint.gridx++;
 
-		xpUmlCB = new JComboBox<String>(new String[]{"No knowledge", "Few knowledge", "Some knowledge", "Expert"});
+		xpUmlCB = new JComboBox<>(new String[]{"Expert", "Proficient", "Competent", "Advanced beginner", "Novice"});
 		questionsP.add(xpUmlCB, constraint);
 		constraint.gridx=0;
 		constraint.gridy++;
@@ -157,15 +146,15 @@ public class Formular extends JPanel {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
 			Formular.this.setVisible(false);
-			Formular.this.diagramPane.setVisible(true);
-			Formular.this.questionsPanel.setVisible(true);
-			Formular.this.toolbar.setVisible(false);
-			Formular.this.frame.pack();
+			Formular.this.questionsPanel.setTerminated2();
+//			Formular.this.frame.pack();
 			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 			Formular.this.frame.setLocation((dim.width-Formular.this.frame.getWidth())/2,
 											(dim.height-Formular.this.frame.getHeight())/2);
-			Formular.this.questionsPanel.setUserInformations(name.getText() + "\t" + ageS.getValue().toString() + "\t" +
-					sexCB.getSelectedItem().toString() + "\t" + statusCB.getSelectedItem().toString() +
+			Formular.this.questionsPanel.setUserInformations(//name.getText() + "\t" + 
+											ageS.getValue().toString() + "\t" +
+//					sexCB.getSelectedItem().toString() + "\t" + 
+											statusCB.getSelectedItem().toString() +
 					"\t" + xpMdeCB.getSelectedItem().toString() + "\t" + xpUmlCB.getSelectedItem().toString() +
 					"\t" + mouse.getSelectedItem().toString() + "\t" + screen.getValue().toString() +
 					"\t" + dim.width + "\t" + dim.height);

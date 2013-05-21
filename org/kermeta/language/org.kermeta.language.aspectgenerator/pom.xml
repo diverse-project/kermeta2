@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.kermeta.language.aspectgenerator</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>org.kermeta.language.aspectgenerator</name>
 
     <dependencies>   
@@ -85,49 +85,47 @@
              
       		<!-- package into a jar for OSGI -->
       		<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-jar-plugin</artifactId>
-		        <version>2.3.2</version>		        
-		        <configuration>
-		          <archive>
-		            <manifestEntries>
-			            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Bundle-Name>${project.name}</Bundle-Name>
-                        <Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-						<Bundle-Version>${bundle.version}</Bundle-Version>						
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.3.5</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                    	<Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
+		            	<Bundle-Name>${project.name}</Bundle-Name>
+		            	<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
-                        <Bundle-ClassPath>.</Bundle-ClassPath>
-                        <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
-                        <Bundle-Activator>org.kermeta.language.aspectgenerator.Activator</Bundle-Activator>
-                        <Export-Package>
-			org.kermeta.language.aspectgenerator
-                        </Export-Package>
-                        <Require-Bundle>
-            org.scala-ide.scala.library,             
-			org.kermeta.utils.systemservices.eclipse,           
-			org.kermeta.utils.systemservices.api
-                        </Require-Bundle>
-                        <Import-Package>
-            org.eclipse.emf.common.notify,
-			org.eclipse.emf.common.util,
-			org.eclipse.emf.ecore,
-			org.eclipse.emf.ecore.impl,
-			org.eclipse.emf.ecore.resource,
-			org.eclipse.emf.ecore.util,
-			org.eclipse.emf.ecore.xmi,
-			org.eclipse.emf.ecore.xmi.impl,
-			org.osgi.framework;version="[1.5,2)",
-			org.kermeta.language.structure,
-			org.kermeta.language.behavior,
-			org.kermeta.language.structure.impl,
-			org.kermeta.language.behavior.impl,
-			org.kermeta.language.util,
-			kermeta_standard.org.kermeta.language.structure
-                        </Import-Package>
-		            </manifestEntries>		            
-		          </archive>
-		        </configuration>
-      		</plugin>
+		            	<Bundle-ClassPath>.</Bundle-ClassPath>
+						<Bundle-Version>${bundle.version}</Bundle-Version>
+						<Bundle-Activator>org.kermeta.language.aspectgenerator.Activator</Bundle-Activator>
+                        <!-- Dependency used for compiling all the bundle (with dependency to org.eclipse.core.* -->
+                    	<Require-Bundle>
+		            	</Require-Bundle>
+		            
+		            	<!-- note: imports k2 to workaround problem about loading reflexivity.km
+		            	     and reexport it to allow an external plugin (ui for ex) to set the messagingsystem of stdio -->
+                        <Export-Package>org.kermeta.language.aspectgenerator
+		            	</Export-Package>
+		            	<Private-Package>
+		            		ecore_aspectgenerator.*,
+		            		ecore_aspectgeneratorrunner.*,
+		            		ScalaImplicit.ecore_aspectgenerator.*,
+		            		scalaUtil;-split-package:=merge-last,
+			            	org.kermeta.language.aspectgenerator.impl,
+			            	kermeta_standard.*
+		            	</Private-Package>
+		            	<!--
+		              		specify the packages that should be imported to correctly build
+		              		the bundle (i.e <packaging>bundle<packaging> ".*" to also include
+		              		sub packages use the ! for avoiding to import some packages that
+		              		are already there with the Require-Bundle
+			            -->
+		            	<Import-Package>
+		            	*
+		            	</Import-Package>		            
+                    </instructions>
+                </configuration>
+            </plugin>
        		<!-- copy the generated manifest to a place where eclipse expects it so it doesn't raise error -->
             <plugin>
 			    <groupId>org.apache.maven.plugins</groupId>

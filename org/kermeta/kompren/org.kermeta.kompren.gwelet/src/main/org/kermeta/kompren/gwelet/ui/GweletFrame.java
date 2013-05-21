@@ -121,7 +121,7 @@ public class GweletFrame extends UI {
 		Model model  = new Model();
 		MetamodelView canvas = new MetamodelView(true);
 
-		presentations.add(new Presentation<Model, MetamodelView>(model, canvas));
+		presentations.add(new Presentation<>(model, canvas));
 
 //		canvas = createEcoreClassDiagram();
 	}

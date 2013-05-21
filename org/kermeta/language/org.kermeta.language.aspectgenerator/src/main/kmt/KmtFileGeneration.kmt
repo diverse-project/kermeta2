@@ -144,12 +144,12 @@ package org::kermeta::language::aspectgenerator{
 		operation writeInitKpFile () : String is do
 			result := ""
 			result := result + "resource library_standard = \"platform:/plugin/org.kermeta.language.library.standard\" alternative \"mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT\" \n"
-			result := result + "resource ecore_model = \"patform:/resource/" + self.context.ecoreProjectPath + "\"\n"
-			result := result + "\n\nimportProject library_standard\n"
+			result := result + "resource ecore_model = \"platform:/resource/" + self.context.ecoreProjectPath + "\"\n"
+			result := result + "\n\nimportProject library_standard"
 			result := result + "\nimportProject ecore_model\n\n"
 			result := result + "project " + self.context.nameProject + " {\n"
 			
-			result := result + "\tmainClass \"" + self.context.nameProject + "^mainPackage::MainClass\"\n"
+			result := result + "\tmainClass \"" + self.context.nameProject + "^" + self.context.nameProject + "Package::MainClass\"\n"
 			result := result + "\tmainOperation \"mainOperation\"\n\n"
 		end
 		
@@ -165,7 +165,7 @@ package org::kermeta::language::aspectgenerator{
 			result := ""
 			result := result + "using kermeta::standard::*\n"
 			result := result + "using kermeta::io::StdIO => stdio\n\n"
-			result := result + "package " + self.context.nameProject + " {\n"
+			result := result + "package " + self.context.nameProject + "Package {\n"
 			result := result + "\tclass MainClass {\n"
 			result := result + "\t\t@main \"\" // declares that operation as a possible entry point of the program\n"
 			result := result + "\t\toperation mainOperation() : Void is do\n"

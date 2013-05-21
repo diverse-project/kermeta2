@@ -7,6 +7,8 @@ import org.kermeta.kompren.gwelet.ui.GweletFrame;
 import org.kermeta.kompren.org.kermeta.kompren.gwelet.slicerrunner.MainRunner;
 
 public class Gwelet {
+	public static final boolean EVAL = true;
+	
 	public static void main(final String[] args) {
 		MainRunner.init();
 
@@ -26,6 +28,7 @@ public class Gwelet {
 		ToolTipManager.sharedInstance().setDismissDelay(100000);
 		frame.open("src/resources/examples/UML.km");
 		frame.getCanvas().requestFocusInWindow();
-//		((GweletUIBuilder)frame.getComposer()).formular.setVisible(true);// EVAL
+//		if(EVAL)
+//			((GweletUIBuilder)frame.getComposer()).formular.setVisible(true);
 	}
 }

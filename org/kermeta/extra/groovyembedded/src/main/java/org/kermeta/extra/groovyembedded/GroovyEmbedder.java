@@ -3,6 +3,7 @@ package org.kermeta.extra.groovyembedded;
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -20,6 +21,28 @@ public class GroovyEmbedder
 	 * @return
 	 */
     public static Object run(String expression, Map<String,? extends Object> args )
+    {
+
+    	
+    	Binding binding = new Binding();
+    	
+    	for (Entry<String ,? extends Object> e : args.entrySet())
+        	binding.setVariable(e.getKey(), e.getValue());
+    		
+    	GroovyShell shell = new GroovyShell(binding);
+
+    	return  shell.evaluate(expression);
+    	
+    
+    }
+    /**
+	 * Simple Groovy runner
+	 * It executes in a new shell
+	 * @param expression
+	 * @param args
+	 * @return
+	 */
+    public static Object run(String expression, HashMap<String,?> args )
     {
 
     	
