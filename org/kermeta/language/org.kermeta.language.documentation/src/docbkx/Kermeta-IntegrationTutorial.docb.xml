@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id$ -->
+<book lang="en-US">
+	<bookinfo>
+		<mediaobject>
+			<imageobject>
+				<imagedata fileref="Kermeta-Manual_figures/KermetaLogo.png"
+					format="PNG" />
+			</imageobject>
+		</mediaobject>
+		<title>Kermeta integration tutorials</title>
+		<subtitle>How to integrate Kermeta programs with Java programs
+		</subtitle>
+
+		<pubdate>Build
+			: &version; &buildNumber;
+		</pubdate>
+		<date>$Date:: $</date>
+
+		<author>
+			<firstname>Vincent</firstname>
+			<surname>Fontanella</surname>
+		</author>
+		<author>
+			<firstname>Didier</firstname>
+			<surname>Vojtisek</surname>
+		</author>
+
+		<keywordset>
+			<keyword>Kermeta</keyword>
+			<keyword>metamodeling</keyword>
+			<keyword>language</keyword>
+		</keywordset>
+
+		<abstract>
+			<para>These tutorials serie demonstrates how to use the kermeta
+				workbench in various scenarii that integrate kermeta programs with
+				java programs.
+			</para>
+			<para>The first serie shows how to call kermeta code from java
+				programs.
+			</para>
+			<para>The second serie shows how to call java compatible code from
+				kermeta
+				action language.
+			</para>
+		</abstract>
+
+		<publisher>
+			<publishername>INRIA</publishername>
+
+			<address>
+				<state>France</state>
+				<otheraddr>
+					<ulink url="http://www.inria.fr">http://www.inria.fr</ulink>
+				</otheraddr>
+			</address>
+		</publisher>
+	</bookinfo>
+
+	<preface id="preface.link">
+		<title id="preface.title.link">
+			Presentation
+			<phrase id="preface"></phrase>
+		</title>
+		<para>Kermeta is language allowing to manipulate models.</para>
+		<important>
+			<para>Preconditions so that tutorials should run correctly</para>
+			<itemizedlist>
+				<listitem>
+					<para>Use an Eclipse Modeling Tools based on a Juno version</para>
+				</listitem>
+				<listitem>
+					<para>On Eclipse IDE should be installed Kermeta language plug-in
+						based upon a Release version
+					</para>
+				</listitem>
+				<listitem>
+					<para>On Eclipse IDE should be installed Maven plug-in</para>
+				</listitem>
+				<listitem>
+					<para>Eclipse must be started using a JDK (not a JRE). This must be
+						specified in the eclipse.ini file using the -vm option.
+					</para>
+				</listitem>
+			</itemizedlist>
+			<para>Alternatively to the first 3 points, you can use the predefined
+				eclipse package with all kermeta tools preinstalled.
+			</para>
+		</important>
+	</preface>
+
+	<part id="part_java_2_kermeta.link">
+		<title>Calling Kermeta code from a Java program</title>
+		<partintro>
+			<para>There are various ways to call Kermeta code from java programs.
+				The details changes due to the actual deployment of the final code,
+				this part present various scenarii that acheive that. Just pick the
+				one which is most adpated to your architecture and deployment
+				strategy.
+			</para>
+		</partintro>
+		<chapter id="chapter_standalone_java_2_kermeta.link">
+			<title id="chapter_standalone_java_2_kermeta.title.link">Calling Kermeta code from a standalone Java program
+			</title>
+
+			<para>This tutorial aims to show how to call kermeta code from a
+				standalone Java program.
+			</para>
+
+			<section id="sec_standalone_java_2_kermeta_presentation.link">
+				<title id="sec_standalone_java_2_kermeta_presentation.title.link">Presentation</title>
+				<para> We are presenting this tutorial in 6 steps :</para>
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>Generate a new Kermeta project "HelloWorldKmt"</para>
+					</listitem>
+					<listitem>
+						<para>Add a new operation which returns a string "hello world from
+							a
+							Kermeta project!!!"
+						</para>
+					</listitem>
+					<listitem>
+						<para>Generate a Jar file of the Kermeta project</para>
+					</listitem>
+					<listitem>
+						<para>Generate a new Java project</para>
+					</listitem>
+					<listitem>
+						<para>Called the Kermeta API from to the java project</para>
+					</listitem>
+					<listitem>
+						<para>Execute as a java application</para>
+					</listitem>
+				</orderedlist>
+			</section>
+
+			<section>
+				<title>Generate a new Kermeta project "HelloWorldKmt"</title>
+				<para>We are using the new project Wizard which creates a new
+					kermeta
+					project "HelloWorldKmt" automatically.
+				</para>
+				<para></para>
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>Inside eclipse context menu, select : File -> New ->
+							Project...
+						</para>
+					</listitem>
+
+					<listitem>
+						<para>Select "Kermeta project" and Click on "Next" Button</para>
+					</listitem>
+
+					<listitem>
+						<para>Wizard "New Project Kermeta" has just opened</para>
+					</listitem>
+				</orderedlist>
+				<figure id="reftutoillustration1">
+					<title>Wizard selection to access of a new project kermeta</title>
+
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-IntegrationTutorial_figures/KermetaNewProject.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+				</figure>
+
+				<orderedlist continuation="continues">
+
+					<listitem>
+						<para>Replace project name by "HelloWorldKmt" and Click on
+							"Finish"
+							Button
+						</para>
+					</listitem>
+
+				</orderedlist>
+
+				<figure id="reftutoillustration2">
+					<title>Wizard to generate a new project kermeta</title>
+
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-IntegrationTutorial_figures/KermetaNewProjectWizard.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+				</figure>
+			</section>
+
+			<section>
+				<title>Add a new operation</title>
+				<para>We are adding a new operation of the HelloWorld project,
+					this
+					operation should return a string : "Hello world from a Kermeta
+					project!!!"
+				</para>
+				<para></para>
+				<orderedlist>
+					<listitem>
+						<para>In the new kermeta project, open file : "MainClass.kmt"
+						</para>
+					</listitem>
+
+					<listitem>
+						<para>Add in class MainClass the following program listing :
+						</para>
+					</listitem>
+				</orderedlist>
+
+				<programlisting language="kermeta">
+				operation helloWorld() : String is do
+				result := "Hello world from a Kermeta project!!!"
+				end
+			</programlisting>
+
+				<orderedlist continuation="continues">
+					<listitem>
+						<para>Compile the project and check there is no error</para>
+						<para>To Compile : right click on file "project.kp", select
+							Kermeta2
+							-> Clean and Build Kermeta Project
+						</para>
+					</listitem>
+				</orderedlist>
+			</section>
+
+			<section>
+				<title>Generate the Jar file</title>
+				<para>We are creating the Jar file which should allow the
+					interfacing
+					of the Java project with a Kermeta API
+				</para>
+				<para></para>
+				<orderedlist>
+					<listitem>
+						<para>Right click on file "project.kp", and select : Kermeta2 ->
+							generate standalone jar exporter (via simple pom.xml)
+						</para>
+						<para>A new file called "pom.xml" has been generated at the root
+							of the project
+						</para>
+					</listitem>
+
+					<listitem>
+						<para>Right click on file "pom.xml", select Run as -> Maven
+							build...
+						</para>
+					</listitem>
+
+					<listitem>
+						<para>A window is openned, in field "Goals:", put : "package" and
+							then press button "run"
+						</para>
+					</listitem>
+				</orderedlist>
+
+				<figure id="reftutoillustration3">
+					<title>Wizard to configure a pom running</title>
+
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-IntegrationTutorial_figures/KermetaPomXmlPackage.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+				</figure>
+				<orderedlist continuation="continues">
+					<listitem>
+						<para>After have refreshed the project, In "target" folder check
+							that a "helloworldkmt-0.0.1-SNAPSHOT.jar" has been created
+						</para>
+					</listitem>
+				</orderedlist>
+			</section>
+
+			<section>
+				<title>Generate a new java project</title>
+				<para>This part consists to generate a new project java containing
+					the jar file generated by the kermeta project before and its
+					dependencies
+				</para>
+				<para></para>
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>Inside eclipse context menu, select : File -> New -> Java
+							Project
+						</para>
+					</listitem>
+
+					<listitem>
+						<para>Wizard "New Java Project" has just opened</para>
+					</listitem>
+
+					<listitem>
+						<para>in field "Project name:", enter "helloworld" and click on
+							button "next"
+						</para>
+					</listitem>
+				</orderedlist>
+
+				<figure id="reftutoillustration4">
+					<title>Wizard selection to access of a new project java</title>
+
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-IntegrationTutorial_figures/JavaNewProject.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+				</figure>
+
+				<orderedlist continuation="continues">
+
+					<listitem>
+						<para>At the following window "Java Settings", select the tab
+							"Libraries"
+						</para>
+					</listitem>
+
+					<listitem>
+						<para>Click on button "Add JARs..."</para>
+						<para>Go to folder "helloworldKmt/target", select the jar file and
+							then all jar file existing in the folder ""dependencies"
+						</para>
+					</listitem>
+
+					<listitem>
+						<para>you should obtain that below :</para>
+					</listitem>
+
+				</orderedlist>
+
+				<figure id="reftutoillustration5">
+					<title>Wizard to select libraries for the new project </title>
+
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-IntegrationTutorial_figures/JavaNewProjectAddJar.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+				</figure>
+				<orderedlist continuation="continues">
+					<listitem>
+						<para>Click on button "Finish" and a new java project "helloworld"
+							has been created in the workspace
+						</para>
+					</listitem>
+				</orderedlist>
+			</section>
+			<section>
+				<title>Called a kermeta API from to the project java</title>
+				<para>This part consists to use the operation "helloWorld" defined
+					in the project kermeta "helloworldkmt"
+				</para>
+				<para>to display the message transmitting by the API kermeta on the
+					console
+				</para>
+
+				<orderedlist>
+					<listitem>
+						<para>Create a new class containing the following listing programm
+						</para>
+					</listitem>
+				</orderedlist>
+				<programlisting language="java">	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		helloworldkmt.mainPackage.MainClass mc = helloworldkmt.mainPackage.KerRichFactory.createMainClass();
+		System.out.println("Essai avec un code kermeta distant");
+		System.out.println(mc.helloWorld());
+		
+	}
+			</programlisting>
+				<orderedlist>
+					<listitem>
+						<para>Launch the java program</para>
+						<para>Right click on the class containing main operation -> Run As
+							-> Java Application
+						</para>
+					</listitem>
+					<listitem>
+						<para>Check the message "Hello world from a Kermeta project!!!"
+							has been displayed on the console
+						</para>
+					</listitem>
+				</orderedlist>
+			</section>
+		</chapter>
+		<chapter id="chapter_standalone_java_2_kermeta.link">
+			<title id="chapter_standalone_java_2_kermeta.title.link">Calling Kermeta code from a standalone Java program
+			</title>
+
+			<para>This tutorial aims to show how to call kermeta code from an
+				Eclipse plugin.
+			</para>
+			<para>Due to the requirement of OSGI deployment used by eclipse. The
+				simple packaging strategy used in the previous chapter isn't enough.
+				Some special care is required while packaging the code.
+			</para>
+			<para>TODO
+			</para>
+		</chapter>
+		<chapter id="chapter_java_2_kermeta_internal.link">
+			<title id="chapter_java_2_kermeta_internal.title.link">Calling Kermeta internal code from a standalone Java
+				program
+			</title>
+
+			<para>This tutorial aims to show how to directly call the richFoo and
+				they operations without going through the @main operations. (usefull
+				for example for fine grain UI integration with aspectized code)
+			</para>
+			<para>
+			</para>
+			<para>TODO explain and illustrate
+			</para>
+		</chapter>
+	</part>
+	<part id="part_kermeta_2_java.link">
+		<title>Calling Java code from a Kermeta program</title>
+		<partintro>
+			<para>Kermeta offers several ways to call Java
+				code from a kermeta
+				program. This also works with any Java compatible
+				code like Scala and
+				groovy. This part presents various scenarii
+				explaining how to achieve
+				that.
+			</para>
+		</partintro>
+		<chapter id="chapter_kermeta_extern.link">
+			<title id="chapter_kermeta_extern.title.link">Calling java static operation with kermeta extern
+			</title>
+		</chapter>
+
+		<chapter id="chapter_kermeta_2_ecorejava.link">
+			<title id="chapter_kermeta_2_ecorejava.title.link">Calling EMF Java operations from Kermeta
+			</title>
+			<para>Kermeta 2 is able to reuse the java code generated from an
+				ecore model. Thus, if the generated code is customized through the
+				GENERATED NOT annotations, this code will natively be used by
+				kermeta. This provides a nice and elegant way to encapsualte java
+				code in a model.
+			</para>
+			<para>TODO illustrate that on a small sample.
+			</para>
+		</chapter>
+		<chapter id="chapter_kermeta_2_groovy.link">
+			<title id="chapter_kermeta_2_groovy.title.link">Calling Groovy from Kermeta
+			</title>
+			<para>Kermeta 2 provides a wrapper for Groovy. This allows to call
+				this dynamic language directly from Kermeta.
+			</para>
+			<para>TODO illustrate that on a small sample.
+			</para>
+		</chapter>
+		<chapter id="chapter_kermeta_2_compilerignorescala.link">
+			<title id="chapter_kermeta_2_compilerignorescala.title.link">[advanced]Using compiler ignore directive to call
+				hand written scala code
+			</title>
+
+			<para>TODO explain and illustrate that on a small sample.
+			</para>
+		</chapter>
+	</part>
+
+</book>
+			

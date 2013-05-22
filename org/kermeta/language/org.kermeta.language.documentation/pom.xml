@@ -165,7 +165,7 @@
 					
 					
 					<execution>
-						<id>tutorial-single-page-html</id>
+						<id>integrationtutorial-single-page-html</id>
 						<goals>
 							<goal>generate-html</goal>
 						</goals>
@@ -176,16 +176,16 @@
 							<htmlCustomization>${basedir}/src/docbkx/custom/xsl/customized.html-base.xsl</htmlCustomization>
 							<base.dir></base.dir>
 							<preProcess>
-								<copy todir="target/docbkx/html/Kermeta-Tutorial.docb/Kermeta-Tutorial_figures">
-									<fileset dir="src/docbkx/Kermeta-Tutorial_figures" />
+								<copy todir="target/docbkx/html/Kermeta-IntegrationTutorial.docb/Kermeta-IntegrationTutorial_figures">
+									<fileset dir="src/docbkx/Kermeta-IntegrationTutorial_figures" />
 								</copy>
-								<copy todir="target/docbkx/html/Kermeta-Tutorial.docb">
+								<copy todir="target/docbkx/html/Kermeta-IntegrationTutorial.docb">
 									<fileset dir="src/docbkx/resources" />
 								</copy>
 							</preProcess>
 							<postProcess>
-								<move 	file="target/docbkx/html/Kermeta-Tutorial.docb.html" 
-										tofile="target/docbkx/html/Kermeta-Tutorial.docb/Kermeta-Tutorial.docb.single.html"/>
+								<move 	file="target/docbkx/html/Kermeta-IntegrationTutorial.docb.html" 
+										tofile="target/docbkx/html/Kermeta-IntegrationTutorial.docb/Kermeta-IntegrationTutorial.docb.single.html"/>
 							</postProcess>
 						</configuration>
 						<phase>generate-resources</phase>
@@ -234,7 +234,7 @@
 					</execution>
 					
 					<execution>
-						<id>tutorial-multi-page-html</id>
+						<id>integrationtutorial-multi-page-html</id>
 						<goals>
 							<goal>generate-html</goal>
 						</goals>
@@ -245,10 +245,10 @@
 							<htmlCustomization>${basedir}/src/docbkx/custom/xsl/customized.html-base.xsl</htmlCustomization>
 							<base.dir></base.dir>
 							<preProcess>
-								<copy todir="target/docbkx/html/Kermeta-Tutorial.docb/Kermeta-Tutorial_figures">
-									<fileset dir="src/docbkx/Kermeta-Tutorial_figures" />
+								<copy todir="target/docbkx/html/Kermeta-IntegrationTutorial.docb/Kermeta-IntegrationTutorial_figures">
+									<fileset dir="src/docbkx/Kermeta-IntegrationTutorial_figures" />
 								</copy>
-								<copy todir="target/docbkx/html/Kermeta-Tutorial.docb">
+								<copy todir="target/docbkx/html/Kermeta-IntegrationTutorial.docb">
 									<fileset dir="src/docbkx/resources" />
 								</copy>
 							</preProcess>
