@@ -173,7 +173,7 @@
 			<orderedlist continuation="continues">
 				<listitem>
 					<para>Compile the project and check there is no error</para>
-					<para>To Compile : left click on file "project.kp", select Kermeta2
+					<para>To Compile : right click on file "project.kp", select Kermeta2
 						-> Clean and Build Kermeta Project</para>
 				</listitem>
 			</orderedlist>
@@ -191,7 +191,7 @@
 				</listitem>
 
 				<listitem>
-					<para>Left click on file "pom.xml", select Run as -> Maven build...</para>
+					<para>Right click on file "pom.xml", select Run as -> Maven build...</para>
 				</listitem>
 
 				<listitem>
