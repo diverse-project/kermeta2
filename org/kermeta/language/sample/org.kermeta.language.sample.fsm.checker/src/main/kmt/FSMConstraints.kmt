@@ -1,0 +1,21 @@
+package fsm;
+using kermeta::standard::*
+
+aspect class State{ 
+	inv invariant1 is
+	do
+		true
+		//self.outgoingTransition.forAll{ tr1 | self.outgoingTransition.forAll{ tr2 | tr2.input.equals(tr1.input).equals(tr1.equals(tr2))}}
+	end
+
+
+	 operation step(c : String) :String
+		pre pre2 is do
+			c.equals(void).~not.~and(c.size.isGreater(0)) 
+		end
+		post post3 is do
+			result.equals(void).~not.~and(result.size.isGreater(0)) 
+		end
+		is abstract
+	
+}
