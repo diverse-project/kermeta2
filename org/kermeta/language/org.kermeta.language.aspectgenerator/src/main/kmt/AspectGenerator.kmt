@@ -69,7 +69,7 @@ package org::kermeta::language::aspectgenerator{
 			operationParams.add("context : Context")
 			
 			//compile
-	        context.initialize("compiler", nameProject, folderLocation, ecoreFile, ecoreProjectPath, "compile", "Void", operationParams)
+	        context.initialize("compiler", nameProject, folderLocation, ecoreFile, ecoreProjectPath, "compile", "Void", operationParams, OrderedSet[String].new)
 	        inputPackages.each{p | p.generateAspect(context)}
 	        kmtFile.writeNewClass("Context")
 	        kmtFile.writeProjectKp
@@ -85,7 +85,7 @@ package org::kermeta::language::aspectgenerator{
 			var operationParams	: OrderedSet[String] init OrderedSet[String].new
 			
 			//interpret
-	        context.initialize("interpreter", nameProject, folderLocation, ecoreFile, ecoreProjectPath, "interpret", "Void", operationParams)
+	        context.initialize("interpreter", nameProject, folderLocation, ecoreFile, ecoreProjectPath, "interpret", "Void", operationParams, OrderedSet[String].new)
 	        inputPackages.each{p | p.generateAspect(context)}
 	        kmtFile.writeProjectKp
 		end
@@ -96,9 +96,9 @@ package org::kermeta::language::aspectgenerator{
 	        var kmtFile 		: KmtFileGeneration init KmtFileGeneration.new.initialize(context)
 	        
 	        //customize
-	        context.initialize("userDefined", nameProject, folderLocation, ecoreFile, ecoreProjectPath, operationName,operationReturnType, operationParams)
+	        context.initialize("userDefined", nameProject, folderLocation, ecoreFile, ecoreProjectPath, operationName,operationReturnType, operationParams, listNewClass)
 	        inputPackages.each{p | p.generateAspect(context)}
-	        listNewClass.each{ nc | kmtFile.writeNewClass(nc)}
+	        context.listNewClass.each{ nc | kmtFile.writeNewClass(nc)}
 	        kmtFile.writeProjectKp
 		end
 		
@@ -111,7 +111,7 @@ package org::kermeta::language::aspectgenerator{
 	        visitor.add("v : Visitor")
 	        
 			//visitor pattern
-	        context.initialize("visitor", nameProject, folderLocation, ecoreFile, ecoreProjectPath, "accept", "Void", visitor)
+	        context.initialize("visitor", nameProject, folderLocation, ecoreFile, ecoreProjectPath, "accept", "Void", visitor, OrderedSet[String].new)
 	        inputPackages.each{p | p.generateAspect(context)}
 	        kmtFile.writeVisitorPattern
 	        kmtFile.writeProjectKp
@@ -127,7 +127,7 @@ package org::kermeta::language::aspectgenerator{
 			var operationParams	: OrderedSet[String] init OrderedSet[String].new
 	        
 			//aspect
-	        context.initialize("", nameProject, folderLocation, ecoreFile, ecoreProjectPath, "", "", operationParams)
+	        context.initialize("", nameProject, folderLocation, ecoreFile, ecoreProjectPath, "", "", operationParams, OrderedSet[String].new)
 	        inputPackages.each{p | p.generateAspect(context)}	
 	        kmtFile.writeProjectKp
 		end
@@ -139,7 +139,7 @@ package org::kermeta::language::aspectgenerator{
 			//useless
 			var operationParams	: OrderedSet[String] init OrderedSet[String].new
 	        
-	        context.initialize("", nameProject, folderLocation, ecoreFile, ecoreProjectPath, "", "", operationParams)
+	        context.initialize("", nameProject, folderLocation, ecoreFile, ecoreProjectPath, "", "", operationParams, OrderedSet[String].new)
 	        kmtFile.writeProjectKp
 		end
 	}

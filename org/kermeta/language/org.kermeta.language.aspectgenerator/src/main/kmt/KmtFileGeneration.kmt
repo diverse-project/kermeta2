@@ -26,6 +26,7 @@ package org::kermeta::language::aspectgenerator{
 
 		operation initKmtFile () : String is do
 			result := "using kermeta::standard::*\nusing kermeta::io::StdIO => stdio\n\n"
+			self.context.listNewClass.each{ newC | result := result + "using " + self.context.nameProject + "::" + newC + "\n"}
 			if (self.context.typeProject == "visitor") then
 				result := result + "using visitorpattern::Visitor\n\n"
 			end

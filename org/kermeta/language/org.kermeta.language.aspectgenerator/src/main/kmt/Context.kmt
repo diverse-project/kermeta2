@@ -21,8 +21,9 @@ package org::kermeta::language::aspectgenerator{
 		attribute classCollection		: OrderedSet[String] 
 		attribute counterPackage		: Integer
 		attribute listFilesToImport		: OrderedSet[String]
+		attribute listNewClass			: OrderedSet[String]
 		
-		operation initialize(typeProject : String, nameProject : String, folderLocation : String, ecoreFile : String, ecoreProjectPath : String, operationName : String, operationReturnType : String, operationParams : OrderedSet[String] ) : Void is do
+		operation initialize(typeProject : String, nameProject : String, folderLocation : String, ecoreFile : String, ecoreProjectPath : String, operationName : String, operationReturnType : String, operationParams : OrderedSet[String], listNewClass : OrderedSet[String]) : Void is do
 			
 			self.counterPackage 		:= 0
 			
@@ -39,6 +40,7 @@ package org::kermeta::language::aspectgenerator{
 			end
 			
 			self.operationParams			:= operationParams
+			self.listNewClass				:= listNewClass
 			
 			self.typeProject				:= typeProject
 			self.nameProject				:= nameProject
@@ -50,7 +52,7 @@ package org::kermeta::language::aspectgenerator{
 			self.packageCollection 			:= OrderedSet[String].new
 			self.classCollection 			:= OrderedSet[String].new
 			self.listFilesToImport 			:= OrderedSet[String].new
-		end	
+		end
 		
 		operation counterTab(iCounter : Integer) : String is do
 			result := ""
