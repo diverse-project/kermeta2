@@ -109,7 +109,7 @@ public class KermetaRunner {
 			try {
 				
 				process = builder.start();
-				InputStream in = null;
+				/*InputStream in = null;
 				int port = 4444;
 				try {
 					ServerSocket serverSocket = new ServerSocket(port);
@@ -119,29 +119,29 @@ public class KermetaRunner {
 				catch (IOException e) {
 				    System.out.println("Could not listen on port: "+port);
 				    System.exit(-1);
-				}
+				}*/
 				
 				// redirect logger.getReader to process System.in
 				KermetaRunner.BufferedReader2Stream in2Stream = new KermetaRunner.BufferedReader2Stream(logger.getReader(), process.getOutputStream(),logger);
 				// redirect process System.out to logger.info
-				KermetaRunner.SocketStream2MessagingSystem outSoc2ms = new KermetaRunner.SocketStream2MessagingSystem(in,logger);
+				//KermetaRunner.SocketStream2MessagingSystem outSoc2ms = new KermetaRunner.SocketStream2MessagingSystem(in,logger);
 				KermetaRunner.Stream2MessagingSystem out2ms = new KermetaRunner.Stream2MessagingSystem(process.getInputStream(),logger, false);
 				KermetaRunner.Stream2MessagingSystem err2ms = new KermetaRunner.Stream2MessagingSystem(process.getErrorStream(),logger, true);
 				CancelMonitor cancelMonitor = new CancelMonitor(process, this);
 				 
 				Thread in2StreamThread = new Thread(in2Stream);
-				Thread outSoc2msThread = new Thread(outSoc2ms);
+				//Thread outSoc2msThread = new Thread(outSoc2ms);
 				Thread out2msThread = new Thread(out2ms);
 				Thread err2msThread = new Thread(err2ms);
 				Thread cancelMonitorThread = new Thread(cancelMonitor);
 				
 				in2StreamThread.start();
-				outSoc2msThread.start();
+				//outSoc2msThread.start();
 				out2msThread.start();
 				err2msThread.start();
 				cancelMonitorThread.start();
 				
-				outSoc2msThread.join();
+				//outSoc2msThread.join();
 				out2msThread.join();
 				err2msThread.join();
 				in2Stream.close();
