@@ -65,9 +65,16 @@
 			Presentation
 			<phrase id="preface"></phrase>
 		</title>
-		<para>Kermeta is language allowing to manipulate models.</para>
+		<para>Kermeta action language is a DSL that allows to manipulate models. However it
+			isn't a general purpose language and thus doesn't directly offer all
+			the libraries to build an application for example with a
+			sophisticated GUI.</para>
+		<para>This serie of tutorials is about integrating Kermeta 2 code with
+			its environment </para>
+
 		<important>
-			<para>Preconditions so that tutorials should run correctly</para>
+			<title>Prerequisite</title>
+			<para>Preconditions so that the tutorials could run correctly</para>
 			<itemizedlist>
 				<listitem>
 					<para>Use an Eclipse Modeling Tools based on a Juno version</para>
@@ -88,6 +95,37 @@
 			</itemizedlist>
 			<para>Alternatively to the first 3 points, you can use the predefined
 				eclipse package with all kermeta tools preinstalled.
+			</para>
+		</important>
+		<important>
+			<para>This tutorial serie explain various procedure to acheive some
+				goal, however, the attentive reader must know that even if the
+				presented procedure work, you may acheive similar results using
+				alternative or slightly modifying the proposed procedure because you
+				ma decide to use another tool or use it differently. Roughly,
+				all
+				this tutorial serie is actually about :
+			</para>
+			<itemizedlist>
+				<listitem>
+					<para>Java compilation, and the support of java compatible language
+						like Scala and groovy. (special care to the compilation classpath)
+					</para>
+				</listitem>
+				<listitem>
+					<para>OSGI/Eclipse packaging and deployment, which requires to take
+						care to the jar content and to the runtime classpath (which can be
+						different from the compilation classpath !)
+					</para>
+				</listitem>
+			</itemizedlist>
+			<para>In all cases, there are various ways to compile, package and
+				deploy, either using Eclipse builders or using maven.
+			</para>
+			<para>This tutorial will try to give suggestions and explain the
+				underlying process but explaining maven, Eclipse, java, OSGI isn't
+				in the scope of this document. The user must be ready to find and
+				read the appropriate documentations.
 			</para>
 		</important>
 	</preface>
@@ -176,8 +214,7 @@
 
 					<listitem>
 						<para>Replace project name by "HelloWorldKmt" and Click on
-							"Finish"
-							Button
+							"Finish" Button
 						</para>
 					</listitem>
 
@@ -216,10 +253,9 @@
 					</listitem>
 				</orderedlist>
 
-				<programlisting language="kermeta">
-				operation helloWorld() : String is do
-				result := "Hello world from a Kermeta project!!!"
-				end
+				<programlisting language="kermeta">operation helloWorld() : String is do
+	result := "Hello world from a Kermeta project!!!"
+end
 			</programlisting>
 
 				<orderedlist continuation="continues">
@@ -371,18 +407,17 @@
 
 				<orderedlist>
 					<listitem>
-						<para>Create a new class containing the following listing programm
+						<para>Create a new java class containing the following listing
+							programm
 						</para>
 					</listitem>
 				</orderedlist>
-				<programlisting language="java">	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		helloworldkmt.mainPackage.MainClass mc = helloworldkmt.mainPackage.KerRichFactory.createMainClass();
-		System.out.println("Essai avec un code kermeta distant");
-		System.out.println(mc.helloWorld());
-		
-	}
+				<programlisting language="java">public static void main(String[] args) {
+	// TODO Auto-generated method stub
+	helloworldkmt.mainPackage.MainClass mc = helloworldkmt.mainPackage.KerRichFactory.createMainClass();
+	System.out.println("Essai avec un code kermeta distant");
+	System.out.println(mc.helloWorld());	
+}
 			</programlisting>
 				<orderedlist>
 					<listitem>
