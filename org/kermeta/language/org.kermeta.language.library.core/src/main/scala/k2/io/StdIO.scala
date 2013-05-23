@@ -8,9 +8,9 @@ package k2.io
 
 class StdIOClass extends k2.standard.EObjectImplForPrimitive {
 
-    // by default no messaging system, use System in, out, err
-    // in more complex environment, one can use _root_.org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem
-    var _messagingSystem : _root_.org.kermeta.utils.systemservices.api.messaging.MessagingSystem  = null
+    // by default _root_.org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem
+    // in more complex environment, one can override it
+    var _messagingSystem : _root_.org.kermeta.utils.systemservices.api.messaging.MessagingSystem  = new _root_.org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem();
     def messagingSystem_=(arg : _root_.org.kermeta.utils.systemservices.api.messaging.MessagingSystem) = {
       _messagingSystem = arg
     }
@@ -28,6 +28,7 @@ class StdIOClass extends k2.standard.EObjectImplForPrimitive {
         }
       }
       else{
+        // should never happen
         System.out.print(obj.toString)
       }
     }
@@ -38,6 +39,7 @@ class StdIOClass extends k2.standard.EObjectImplForPrimitive {
         _messagingSystem.error(obj.toString,"")
       }
       else{
+        // should never happen
         System.err.println(obj.toString)
       }
     }
@@ -55,6 +57,7 @@ class StdIOClass extends k2.standard.EObjectImplForPrimitive {
         }
       }
       else{
+        // should never happen
         System.err.print(obj.toString)
       }
     }
@@ -81,6 +84,7 @@ class StdIOClass extends k2.standard.EObjectImplForPrimitive {
           _messagingSystem.info(obj.toString,"")
         }
         else{
+        // should never happen
           System.out.println(obj.toString)
         }
     }
@@ -90,6 +94,7 @@ class StdIOClass extends k2.standard.EObjectImplForPrimitive {
           return _messagingSystem.readLine(prompt)
         }
         else{
+          // should never happen
           System.out.print(prompt)
           System.out.flush()
           Thread.`yield`()
