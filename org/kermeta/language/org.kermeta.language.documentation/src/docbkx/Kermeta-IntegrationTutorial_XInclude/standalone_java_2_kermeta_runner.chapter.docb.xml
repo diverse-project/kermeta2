@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+                 "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<chapter id="chapter_standalone_java_2_kermeta_runner.link">
+	<title id="chapter_standalone_java_2_kermeta_runner.title.link">Calling Kermeta main operations from a standalone Java
+		program
+	</title>
+
+	<para>This tutorial shows how a standalone java program can call
+		kermeta operations that have been declared as main entry point of the
+		kermeta program thanks to the @main tag on operations.
+	</para>
+	<para>
+	</para>
+	<para>TODO explain and illustrate
+	</para>
+	<section>
+		<title>Presentation/key points</title>
+		<para>This tutorial will detail the following points:</para>
+		<orderedlist numeration="arabic">
+			<listitem>
+				<para>Create a new Kermeta project</para>
+			</listitem>
+			<listitem>
+				<para>Declare one or many operations as main operations using the
+					@main tag
+				</para>
+			</listitem>
+			<listitem>
+				<para>Generate a basic jar file from the Kermeta project (using a
+					simplified pom.xml)
+				</para>
+			</listitem>
+			<listitem>
+				<para>Create a new Java project that depends or embedds the jar of
+					the kermeta project
+				</para>
+			</listitem>
+			<listitem>
+				<para>Call a Kermeta main operation using the corresponding Runner
+					class from to the java project. These Runner classes will take
+					care
+					of the required initialization
+				</para>
+			</listitem>
+			<listitem>
+				<para>Execute the java program as a standalone application</para>
+			</listitem>
+		</orderedlist>
+	</section>
+	<section>
+		<title>Generate a basic jar file from the Kermeta project</title>
+		<para>TODO</para>
+		<para>
+			The generated
+			<literal>pom.xml</literal>
+			will look like the following :
+		</para>
+		<programlisting><xi:include
+			href="listings/standalone_jar_exporter_simple_pom.xml" parse="text"
+			xmlns:xi="http://www.w3.org/2001/XInclude" /></programlisting>
+
+	</section>
+</chapter>

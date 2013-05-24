@@ -444,56 +444,9 @@ end
 			</section>
 		</chapter>
 
-		<chapter id="chapter_standalone_java_2_kermeta_runner.link">
-			<title id="chapter_standalone_java_2_kermeta_runner.title.link">Calling Kermeta main operations from a standalone
-				Java program
-			</title>
-
-			<para>This tutorial shows how a standalone java program can call
-				kermeta operations that have
-				been declared as main entry point of the
-				kermeta program thanks to
-				the @main tag on operations.
-			</para>
-			<para>
-			</para>
-			<para>TODO explain and illustrate
-			</para>
-			<section>
-				<title>Presentation/key points</title>
-				<para>This tutorial will detail the following points:</para>
-				<orderedlist numeration="arabic">
-					<listitem>
-						<para>Create a new Kermeta project</para>
-					</listitem>
-					<listitem>
-						<para>Declare one or many operations as main operations using the
-							@main tag
-						</para>
-					</listitem>
-					<listitem>
-						<para>Generate a basic jar file from the Kermeta project (using a
-							simplified pom.xml)
-						</para>
-					</listitem>
-					<listitem>
-						<para>Create a new Java project that depends or embedds the jar of
-							the kermeta project
-						</para>
-					</listitem>
-					<listitem>
-						<para>Call a Kermeta main operation using the corresponding Runner
-							class from to the java project. These Runner classes will take
-							care of the required initialization
-						</para>
-					</listitem>
-					<listitem>
-						<para>Execute the java program as a standalone application</para>
-					</listitem>
-				</orderedlist>
-			</section>
-		</chapter>
-
+		<!-- chapter id="chapter_standalone_java_2_kermeta_runner.link"-->
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Kermeta-IntegrationTutorial_XInclude/standalone_java_2_kermeta_runner.chapter.docb.xml" />
+		
 		<chapter id="chapter_java_2_kermeta_internal.link">
 			<title id="chapter_java_2_kermeta_internal.title.link">Calling Kermeta internal code from a standalone Java
 				program
@@ -776,96 +729,10 @@ end
 				</orderedlist>
 			</section>
 		</chapter>
-		<chapter id="chapter_kermeta_2_groovy.link">
-			<title id="chapter_kermeta_2_groovy.title.link">Calling Groovy from Kermeta
-			</title>
-			<para>Kermeta 2 provides a wrapper for Groovy. This allows to call
-				this dynamic language directly from Kermeta.
-			</para>
-			<para>TODO illustrate that on a small sample.
-			</para>
-			<section>
-				<title>Presentation/key points</title>
-				<para>This tutorial will detail the following points: </para>
-				<orderedlist numeration="arabic">
-					<listitem>
-						<para>create a kermeta project</para>
-						<para>configure the project to use the groovy wrapper</para>
-					</listitem>
-					<listitem>
-						<para>add kermeta code that will call a groovy expression that
-							uses some kermeta elements.
-						</para>
-					</listitem>
-					<listitem>
-						<para>add a sample ecore model in the project</para>
-						<para>add some kermeta code that will use groovy to navigate and
-							call operations in the model.
-						</para>
-						<para>Add kermeta code that extract the groovy expression from the
-							model itself before applying it.
-						</para>
-					</listitem>
-					<listitem>
-						<para>compile and run the kermeta application</para>
-					</listitem>
-				</orderedlist>
-			</section>
-			<section>
-				<title>Create and configure a kermeta project to use Groovy</title>
-				<para>Create a new Kermeta project with the wizard.(see previous
-					tutorials)
-				</para>
-				<para>In the project.kp, add the following resources</para>
-				<programlisting language="kp">resource groovy = "platform:/plugin/org.kermeta.extra.groovyembedded" alternative "mvn:org.kermeta.extra/groovyembedded/2.0.99-SNAPSHOT"
-resource groovy_all = "mvn:org.codehaus.groovy/groovy-all/2.1.2"
-				</programlisting>
-				<para>and the following importProject</para>
-				<programlisting language="kp">importProject groovy 
-importProject groovy_all
-				</programlisting>
-				<para>This indicates that the wrapper and its bytecode
-					dependencies will be available when compiling and when launching as a standalone
-					kermeta application.
-				</para>
-			</section>
-			<section>
-				<title>Calling some simple groovy expression</title>
-				<para>Somewhere in your kermeta code you can call a groovy
-					expression stored in a string. For example:
-				</para>
-				<programlisting language="kermeta">var args :kermeta::utils::Hashtable&lt;kermeta::standard::String, kermeta::standard::Object&gt; init 
-	kermeta::utils::Hashtable&lt;kermeta::standard::String, kermeta::standard::Object&gt;.new
-args.put("self", self)
-args.put("anotherParam", "someString")
-var res1 :kermeta::standard::Object init 
-	extern org::kermeta::extra::groovyembedded::GroovyEmbedder.run("println 'Hello GroovyWorld! ' +self' '+anotherParam; return 'foo';", args)
-stdio.writeln(res1.toString)</programlisting>
-				<para>
-					Where
-					<literal>args</literal>
-					can store object coming from Kermeta and be accessed by the groovy
-					script. In the above sample,
-					<literal>self</literal>
-					is mapped to a Groovy argument named self, and some string is
-					mapped to a Groovy argument named anotherParam. Both are printed on
-					the standard output. The return can be used to send back data to
-					the Kermeta side in
-					<literal>res1</literal>
-					. Another way to send back data would be to simply
-					send an object in
-					an argument and change its content from Groovy.
-				</para>
-			</section>
-			<section>
-				<title>Calling groovy expression on ecore model</title>
-				<para>TODO</para>
-			</section>
-			<section>
-				<title>Compile and run</title>
-				<para>TODO</para>
-			</section>
-		</chapter>
+		
+		<!-- chapter id="chapter_kermeta_2_groovy.link"-->		
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Kermeta-IntegrationTutorial_XInclude/kermeta_2_groovy.chapter.docb.xml" />
+		
 		<chapter id="chapter_kermeta_2_compilerignorescala.link">
 			<title id="chapter_kermeta_2_compilerignorescala.title.link">[advanced]Using compiler ignore directive to call
 				hand written scala code

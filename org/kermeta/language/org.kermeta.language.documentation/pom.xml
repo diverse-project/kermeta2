@@ -174,6 +174,7 @@
 							<highlightSource>true</highlightSource>
 							<highlightXslthlConfig>${basedir}/src/docbkx/custom/highlighters/xslthl-config.xml</highlightXslthlConfig> 
 							<htmlCustomization>${basedir}/src/docbkx/custom/xsl/customized.html-base.xsl</htmlCustomization>
+							<xincludeSupported>true</xincludeSupported>
 							<base.dir></base.dir>
 							<preProcess>
 								<copy todir="target/docbkx/html/Kermeta-IntegrationTutorial.docb/Kermeta-IntegrationTutorial_figures">
@@ -201,6 +202,7 @@
 							<highlightSource>true</highlightSource>
 							<highlightXslthlConfig>${basedir}/src/docbkx/custom/highlighters/xslthl-config.xml</highlightXslthlConfig> 
 							<htmlCustomization>${basedir}/src/docbkx/custom/xsl/customized.html-base.xsl</htmlCustomization>
+							<xincludeSupported>true</xincludeSupported>
 							<base.dir></base.dir>
 						</configuration>
 						<phase>generate-resources</phase>
@@ -243,6 +245,7 @@
 							<highlightSource>true</highlightSource>
 							<highlightXslthlConfig>${basedir}/src/docbkx/custom/highlighters/xslthl-config.xml</highlightXslthlConfig> 
 							<htmlCustomization>${basedir}/src/docbkx/custom/xsl/customized.html-base.xsl</htmlCustomization>
+							<xincludeSupported>true</xincludeSupported>
 							<base.dir></base.dir>
 							<preProcess>
 								<copy todir="target/docbkx/html/Kermeta-IntegrationTutorial.docb/Kermeta-IntegrationTutorial_figures">
@@ -290,6 +293,7 @@
 				</executions>
 				<configuration> <!-- global configuration for all executions -->
           			<highlightSource>1</highlightSource>
+          			<xincludeSupported>true</xincludeSupported>
 	          		<entities>
 			            <entity>
 			            	<name>version</name> <!-- replace occurence of &version; -->
