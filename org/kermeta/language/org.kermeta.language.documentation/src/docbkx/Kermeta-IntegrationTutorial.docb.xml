@@ -543,20 +543,26 @@ end
 						</para>
 					</listitem>
 					<listitem>
-						<para>In the java code, call the initialization of the kermeta code</para>
-						<para> create some object from Kermeta classes and call operation on it it.
+						<para>In the java code, call the initialization of the kermeta
+							code
+						</para>
+						<para> create some object from Kermeta classes and call operation
+							on it it.
 						</para>
 					</listitem>
 					<listitem>
-						<para>In the Kermeta project, add an ecore model with some operation
+						<para>In the Kermeta project, add an ecore model with some
+							operation
 						</para>
 						<para>By aspect, add some behavior to the operation.
 						</para>
 					</listitem>
 					<listitem>
-						<para>In the java code, in pure EMF style, load a model conforming to this ecore.
+						<para>In the java code, in pure EMF style, load a model conforming
+							to this ecore.
 						</para>
-						<para>Call kermeta aspect operation by using exclusively the EMF api.
+						<para>Call kermeta aspect operation by using exclusively the EMF
+							api.
 						</para>
 					</listitem>
 					<listitem>
@@ -585,7 +591,8 @@ end
 				<orderedlist numeration="arabic">
 					<listitem>
 						<para>the Kermeta code must be exposed to and used by several
-							plugins</para>
+							plugins
+						</para>
 					</listitem>
 					<listitem>
 						<para>the Kermeta code is used by a single plugin and can be
@@ -637,7 +644,8 @@ end
 				</para>
 				<orderedlist numeration="arabic">
 					<title>Kermeta code is used by a single plugin and is privatly used
-						by it</title>
+						by it
+					</title>
 					<listitem>
 						<para>Create an eclipse plugin</para>
 					</listitem>
@@ -698,18 +706,22 @@ end
 				<para>This tutorial will detail the following points: </para>
 				<orderedlist numeration="arabic">
 					<listitem>
-						<para>create a java project that proposes some static operations</para>
+						<para>create a java project that proposes some static operations
+						</para>
 					</listitem>
 					<listitem>
 						<para>create a jar from this java project
 						</para>
-						<para>the current recommanded packaging method is to use maven</para>
-					</listitem>					
+						<para>the current recommanded packaging method is to use maven
+						</para>
+					</listitem>
 					<listitem>
 						<para>create a kermeta project</para>
-						<para>configure the project to use this java project and its eventual depdendencies</para>
+						<para>configure the project to use this java project and its
+							eventual depdendencies
+						</para>
 						<para>call the static operation</para>
-					</listitem>					
+					</listitem>
 					<listitem>
 						<para>compile and run the kermeta application</para>
 					</listitem>
@@ -733,23 +745,31 @@ end
 				<para>This tutorial will detail the following points: </para>
 				<orderedlist numeration="arabic">
 					<listitem>
-						<para>create an EMF project with an ecore model that proposes some operations</para>
+						<para>create an EMF project with an ecore model that proposes some
+							operations
+						</para>
 						<para>generate the java code from the ecore model</para>
 					</listitem>
 					<listitem>
 						<para>add some custom code in the model operations</para>
-						<para>use "generated NOT" annotation to make sure the code cannot be overidden when regenerating the model </para>
+						<para>use "generated NOT" annotation to make sure the code cannot
+							be overidden when regenerating the model
+						</para>
 					</listitem>
 					<listitem>
 						<para>create a jar from this java project
 						</para>
-						<para>the current recommanded packaging method is to use maven and tycho</para>
-					</listitem>					
+						<para>the current recommanded packaging method is to use maven and
+							tycho
+						</para>
+					</listitem>
 					<listitem>
 						<para>create a kermeta project</para>
-						<para>configure the project to use this java project and its eventual depdendencies</para>
+						<para>configure the project to use this java project and its
+							eventual depdendencies
+						</para>
 						<para>call the operations in the model</para>
-					</listitem>					
+					</listitem>
 					<listitem>
 						<para>compile and run the kermeta application</para>
 					</listitem>
@@ -767,23 +787,83 @@ end
 			<section>
 				<title>Presentation/key points</title>
 				<para>This tutorial will detail the following points: </para>
-				<orderedlist numeration="arabic">					
+				<orderedlist numeration="arabic">
 					<listitem>
 						<para>create a kermeta project</para>
 						<para>configure the project to use the groovy wrapper</para>
-					</listitem>					
+					</listitem>
 					<listitem>
-						<para>add kermeta code that will call a groovy expression that uses some kermeta elements.</para>
-					</listitem>					
+						<para>add kermeta code that will call a groovy expression that
+							uses some kermeta elements.
+						</para>
+					</listitem>
 					<listitem>
 						<para>add a sample ecore model in the project</para>
-						<para>add some kermeta code that will use groovy to navigate and call operations in the model.</para>
-						<para>Add kermeta code that extract the groovy expression from the model itself before applying it.</para>
+						<para>add some kermeta code that will use groovy to navigate and
+							call operations in the model.
+						</para>
+						<para>Add kermeta code that extract the groovy expression from the
+							model itself before applying it.
+						</para>
 					</listitem>
 					<listitem>
 						<para>compile and run the kermeta application</para>
 					</listitem>
 				</orderedlist>
+			</section>
+			<section>
+				<title>Create and configure a kermeta project to use Groovy</title>
+				<para>Create a new Kermeta project with the wizard.(see previous
+					tutorials)
+				</para>
+				<para>In the project.kp, add the following resources</para>
+				<programlisting language="kp">resource groovy = "platform:/plugin/org.kermeta.extra.groovyembedded" alternative "mvn:org.kermeta.extra/groovyembedded/2.0.99-SNAPSHOT"
+resource groovy_all = "mvn:org.codehaus.groovy/groovy-all/2.1.2"
+				</programlisting>
+				<para>and the following importProject</para>
+				<programlisting language="kp">importProject groovy 
+importProject groovy_all
+				</programlisting>
+				<para>This indicates that the wrapper and its bytecode
+					dependencies will be available when compiling and when launching as a standalone
+					kermeta application.
+				</para>
+			</section>
+			<section>
+				<title>Calling some simple groovy expression</title>
+				<para>Somewhere in your kermeta code you can call a groovy
+					expression stored in a string. For example:
+				</para>
+				<programlisting language="kermeta">var args :kermeta::utils::Hashtable&lt;kermeta::standard::String, kermeta::standard::Object&gt; init 
+	kermeta::utils::Hashtable&lt;kermeta::standard::String, kermeta::standard::Object&gt;.new
+args.put("self", self)
+args.put("anotherParam", "someString")
+var res1 :kermeta::standard::Object init 
+	extern org::kermeta::extra::groovyembedded::GroovyEmbedder.run("println 'Hello GroovyWorld! ' +self' '+anotherParam; return 'foo';", args)
+stdio.writeln(res1.toString)</programlisting>
+				<para>
+					Where
+					<literal>args</literal>
+					can store object coming from Kermeta and be accessed by the groovy
+					script. In the above sample,
+					<literal>self</literal>
+					is mapped to a Groovy argument named self, and some string is
+					mapped to a Groovy argument named anotherParam. Both are printed on
+					the standard output. The return can be used to send back data to
+					the Kermeta side in
+					<literal>res1</literal>
+					. Another way to send back data would be to simply
+					send an object in
+					an argument and change its content from Groovy.
+				</para>
+			</section>
+			<section>
+				<title>Calling groovy expression on ecore model</title>
+				<para>TODO</para>
+			</section>
+			<section>
+				<title>Compile and run</title>
+				<para>TODO</para>
 			</section>
 		</chapter>
 		<chapter id="chapter_kermeta_2_compilerignorescala.link">
