@@ -21,9 +21,7 @@ public class GweletSlicer extends RichVisualiserKermetaModel {
 
 	@Override
 	public void onPackageAdded(final Package pkg) {
-//		String qname = ModelUtils.INSTANCE.getQualifiedName(pkg);
-//		if(!qname.startsWith("org.kermeta") && !qname.startsWith("kermeta"))
-//			System.out.println("Java pkg added: " + pkg.getName());
+		//
 	}
 
 

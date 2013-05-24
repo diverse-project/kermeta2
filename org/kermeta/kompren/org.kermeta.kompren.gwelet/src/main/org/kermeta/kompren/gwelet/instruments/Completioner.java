@@ -1,6 +1,7 @@
 package org.kermeta.kompren.gwelet.instruments;
 
 import java.awt.Component;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -265,47 +266,48 @@ public class Completioner extends WidgetInstrument {
 			this.zoomer = zoomer;
 		}
 
+		
+		public static Point getMoveCameraToPoint(final ClassView cv, final double zoom, final JScrollPane pane) {
+			final Point2D centre = cv.getCentre();
+			final JScrollBar vertSB  = pane.getVerticalScrollBar();
+			final JScrollBar horizSB = pane.getHorizontalScrollBar();
+			Point pt = new Point();
+			
+			BoundedRangeModel model = vertSB.getModel();
+			int value	= model.getValue();
+			final int cy 	= pane.getHeight()/2 + value;
+			int newValue 	= value+(int)(centre.getY()*zoom)-cy;
+
+			if(newValue>model.getMaximum())
+				newValue = model.getMaximum();
+			else if(newValue<model.getMinimum())
+				newValue = model.getMinimum();
+
+			pt.y = newValue;
+
+			model = horizSB.getModel();
+			value	= model.getValue();
+			final int cx 	= pane.getWidth()/2 + value;
+			newValue 	= value+(int)(centre.getX()*zoom)-cx;
+
+			if(newValue>model.getMaximum())
+				newValue = model.getMaximum();
+			else if(newValue<model.getMinimum())
+				newValue = model.getMinimum();
+			
+			pt.x = newValue;
+			
+			return pt;
+		}
+		
 
 		public static void setAction(final String qualifiedPath, final MetamodelView canvas, MoveCamera action) {
 			final ClassView cv = ModelViewMapper.getMapper().getClassView(qualifiedPath);
 			final double zoom = canvas.getZoom();
 
-			if(cv!=null) {
-				JScrollPane pane = canvas.getScrollpane();
-				action.setScrollPane(pane);
-
-				final Point2D centre = cv.getCentre();
-				final JScrollBar vertSB  = pane.getVerticalScrollBar();
-				final JScrollBar horizSB = pane.getHorizontalScrollBar();
-
-				if(vertSB.isVisible()) {
-					final BoundedRangeModel model = vertSB.getModel();
-					final int value	= model.getValue();
-					final int cy 	= pane.getHeight()/2 + value;
-					int newValue 	= value+(int)(centre.getY()*zoom)-cy;
-
-					if(newValue>model.getMaximum())
-						newValue = model.getMaximum();
-					else if(newValue<model.getMinimum())
-						newValue = model.getMinimum();
-
-					action.setPy(newValue);
-				}
-
-				if(horizSB.isVisible()) {
-					final BoundedRangeModel model = horizSB.getModel();
-					final int value	= model.getValue();
-					final int cx 	= pane.getWidth()/2 + value;
-					int newValue 	= value+(int)(centre.getX()*zoom)-cx;
-
-					if(newValue>model.getMaximum())
-						newValue = model.getMaximum();
-					else if(newValue<model.getMinimum())
-						newValue = model.getMinimum();
-
-					action.setPx(newValue);
-				}
-			}
+			Point pt = getMoveCameraToPoint(cv, zoom, canvas.getScrollpane());
+			action.setPy(pt.y);
+			action.setPx(pt.x);
 		}
 	}
 }

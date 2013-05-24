@@ -26,9 +26,7 @@ public class Gwelet {
 		frame.setVisible(true);
 		ToolTipManager.sharedInstance().setInitialDelay(10);
 		ToolTipManager.sharedInstance().setDismissDelay(100000);
-		frame.open("src/resources/examples/UML.km");
+		frame.open("src/resources/examples/RAM.km");
 		frame.getCanvas().requestFocusInWindow();
-//		if(EVAL)
-//			((GweletUIBuilder)frame.getComposer()).formular.setVisible(true);
 	}
 }

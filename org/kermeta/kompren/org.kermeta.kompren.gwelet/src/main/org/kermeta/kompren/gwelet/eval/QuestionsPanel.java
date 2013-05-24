@@ -2,6 +2,7 @@ package org.kermeta.kompren.gwelet.eval;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -24,7 +25,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import org.kermeta.kompren.gwelet.actions.ReinitView;
+import org.kermeta.kompren.gwelet.instruments.Completioner;
 import org.kermeta.kompren.gwelet.ui.GweletFrame;
+import org.kermeta.kompren.gwelet.view.ClassView;
+import org.kermeta.kompren.gwelet.view.ModelViewMapper;
 import org.malai.swing.widget.MToolBar;
 
 public class QuestionsPanel extends JPanel {
@@ -40,26 +44,31 @@ public class QuestionsPanel extends JPanel {
 			@Override public String getTitle() { return "<html><font size=\"10\">What are the super classes of the class <b>Type</b>?</font></html>"; }
 			@Override public String getHelper() { return "Give the name of the classes:"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }
 		},
 		Q2 {
 			@Override public String getTitle() { return "<html><font size=\"10\">What is the role </font><font size=\"5\">(i.e. the name)</font><font size=\"10\"> of the relation that links the class <b>State</b> to the class <b>Comment</b>?</font></html>"; }
 			@Override public String getHelper() { return "Give the name of the role:"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }
 		},
 		Q3 {
 			@Override public String getTitle() { return "<html><font size=\"10\">What are the classes <b>directly</b> linked </font><font size=\"5\">(by inheritance, composition, and association)</font><font size=\"10\"> to the class <b>Class?</b></font></html>"; }
 			@Override public String getHelper() { return "Give the name of the classes:"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }
 		},
 		Q4 {
 			@Override public String getTitle() { return "<html><font size=\"10\">What are the name of the, native and inherited, relations and attributes of the class <b>Abstraction</b>?</font></html>"; }
 			@Override public String getHelper() { return "Enumerate the names:"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }
 		};
 		
 		public abstract String getTitle();
 		public abstract Metamodel getMetamodel();
 		public abstract String getHelper();
+		public abstract String getInitialClassToFocusOn();
 		public static QuestionList getQuestion(String q) {
 			QuestionList[] val = values();
 			for(int i=0; i<val.length; i++)
@@ -205,31 +214,6 @@ public class QuestionsPanel extends JPanel {
 				}
 			}
 		}catch(IOException e) { e.printStackTrace(); }
-		
-//		Question question = new Question();
-//		question.subject = "<html><font size=\"10\">What are the super classes of the class <b>Type</b>?</font></html>";
-//		question.helper = "Give the name of the classes:";
-//		questions.add(question);
-//
-//		question = new Question();
-//		question.subject = "<html><font size=\"10\">What is the role </font><font size=\"5\">(i.e. the name)</font><font size=\"10\"> of the relation that links the class <b>State</b> to the class <b>Comment</b>?</font></html>";
-//		question.helper = "Give the name of the role:";
-//		questions.add(question);
-//
-//		question = new Question();
-//		question.subject = "<html><font size=\"10\">What are the classes <b>directly</b> linked </font><font size=\"5\">(by inheritance, composition, and association)</font><font size=\"10\"> to the class <b>Class?</b></font></html>";
-//		question.helper = "Give the name of the classes:";
-//		questions.add(question);
-//
-//		question = new Question();
-//		question.subject = "<html><font size=\"10\">What are the name of the, native and inherited, relations and attributes of the class <b>Abstraction</b>?</font></html>";
-//		question.helper = "Enumerate the names:";
-//		questions.add(question);
-
-//		question = new Question();
-//		question.subject = "<html><font size=\"10\">Propose 3 <b>entry points</b> <font size=\"5\">(main classes)</font> into the UML metamodel.</font></html>";
-//		question.helper = "Give the name of the classes:";
-//		questions.add(question);
 	}
 
 
@@ -243,6 +227,7 @@ public class QuestionsPanel extends JPanel {
 		if(currentNbQuestions<questions.size())
 			setQuestionMode(questions.get(currentNbQuestions));
 	}
+	
 
 	public void setQuestionMode(final Question question) {
 		sniffer.setQuestion(null);
@@ -257,6 +242,7 @@ public class QuestionsPanel extends JPanel {
 		helperLabel.setVisible(false);
 		helperLabel.setText(question.question.getHelper());
 	}
+	
 
 	public void setAnswerMode() {
 		sniffer.setQuestion(questions.get(currentNbQuestions));
@@ -272,8 +258,10 @@ public class QuestionsPanel extends JPanel {
         Runnable moveScrollbars = new Runnable() {
             @Override
 			public void run() {
-            	frame.getCanvas().getScrollpane().getHorizontalScrollBar().setValue(frame.getCanvas().getWidth()/2);
-            	frame.getCanvas().getScrollpane().getVerticalScrollBar().setValue(frame.getCanvas().getHeight()/2);
+        		final ClassView cv = ModelViewMapper.getMapper().getClassView(questions.get(currentNbQuestions).question.getInitialClassToFocusOn());
+        		final Point pt = Completioner.Interaction2MoveCamera.getMoveCameraToPoint(cv, frame.getCanvas().getZoom(), frame.getCanvas().getScrollpane());
+            	frame.getCanvas().getScrollpane().getHorizontalScrollBar().setValue(pt.x);
+            	frame.getCanvas().getScrollpane().getVerticalScrollBar().setValue(pt.y);
             }
         };
 

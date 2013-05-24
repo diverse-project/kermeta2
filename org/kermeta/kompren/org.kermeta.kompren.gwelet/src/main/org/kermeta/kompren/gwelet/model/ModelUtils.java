@@ -25,7 +25,8 @@ public final class ModelUtils {
 
 
 	public boolean isKermetaPrimitiveType(final String name) {
-		return name.equals("String") || name.equals("Boolean") || name.equals("Real") || name.equals("Integer");
+		return name.equals("String") || name.equals("Boolean") || name.equals("Real") || name.equals("Integer")
+				|| name.equals("Float") || name.equals("Object") || name.equals("Bag");
 	}
 
 
