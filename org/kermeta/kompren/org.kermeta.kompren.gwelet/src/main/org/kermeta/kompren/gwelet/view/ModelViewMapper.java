@@ -16,11 +16,9 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.kermeta.kompren.gwelet.model.Model;
 import org.kermeta.kompren.gwelet.model.ModelUtils;
-import org.kermeta.language.ecore2km.Ecore2KMImpl4Eclipse;
+import org.kermeta.language.ecore2km.Ecore2KMImpl;
 import org.kermeta.language.structure.ClassDefinition;
-import org.kermeta.language.structure.DataType;
 import org.kermeta.language.structure.ModelingUnit;
-import org.kermeta.language.structure.NamedElement;
 import org.kermeta.language.structure.Operation;
 import org.kermeta.language.structure.Package;
 import org.kermeta.language.structure.Property;
@@ -135,7 +133,7 @@ public final class ModelViewMapper {
 								contents.get(0) : null);
 
 				if(root!=null) {
-					Ecore2KMImpl4Eclipse ecore2km = new Ecore2KMImpl4Eclipse();
+					Ecore2KMImpl ecore2km = new Ecore2KMImpl();
 					return ecore2km.convertPackage(root, null);
 				}
 			}
@@ -299,19 +297,16 @@ public final class ModelViewMapper {
 
 	private void addAttributes(final ClassDefinition cd, final ClassView cv) {
 		Type type;
-		String name;
 
 		for(Property prop : cd.getOwnedAttribute()) {
 			type = prop.getType();
-
-			if(type instanceof NamedElement) {
-				name = ((NamedElement)prop.getType()).getName();
-
-				if(type instanceof DataType)
-					cv.addAttribute(prop.getName(), name);
-				else if(type instanceof org.kermeta.language.structure.Class && ModelUtils.INSTANCE.isKermetaPrimitiveType(name))
-					cv.addAttribute(prop.getName(), name);
-			}
+			
+			if(type instanceof org.kermeta.language.structure.Class && 
+					ModelUtils.INSTANCE.isKermetaPrimitiveType(((org.kermeta.language.structure.Class)prop.getType()).getTypeDefinition().getName()))
+				cv.addAttribute(prop.getName(), 
+						((org.kermeta.language.structure.Class)prop.getType()).getTypeDefinition().getName());
+			else if(type instanceof org.kermeta.language.structure.DataType)
+				cv.addAttribute(prop.getName(), ((org.kermeta.language.structure.DataType)prop.getType()).getName());
 		}
 	}
 }

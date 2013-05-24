@@ -255,13 +255,6 @@ public class ClassView extends RectangleEntityView {
 		fillingColor = new Color(198,218,218, opacity);
 	}
 
-//	
-//	protected int titleFontSizeAdd = 0;
-//	
-//	public void highlightTitle(boolean highlight) {
-//		if(highlight) titleFontSizeAdd = 5;
-//		else titleFontSizeAdd = 0;
-//	}
 	
 
 	/**
@@ -334,6 +327,7 @@ public class ClassView extends RectangleEntityView {
 		for(final AttributeView attr : attributes)
 			attr.position.setLocation(attr.position.getX()+tx, attr.position.getY()+ty);
 
+		bound.setRect(bound.getX()+tx, bound.getY()+ty, bound.getWidth(), bound.getHeight());
 		boundPath.transform(AffineTransform.getTranslateInstance(tx, ty));
 	}
 
