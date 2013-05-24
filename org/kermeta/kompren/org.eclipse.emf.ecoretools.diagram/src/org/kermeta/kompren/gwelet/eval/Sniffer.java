@@ -45,14 +45,9 @@ public class Sniffer {
 		public void mouseScrolled(MouseEvent e) {
 			if(currentQuestion!=null)
 				if((e.stateMask & SWT.MODIFIER_MASK)==0) // only scroll
-				{
 					currentQuestion.nbScrolls++;
-					System.out.println("scrolls");
-				}
-				else {
+				else
 					currentQuestion.nbZooms++;
-					System.out.println("zooms");
-				}
 		}
 	}
 	
