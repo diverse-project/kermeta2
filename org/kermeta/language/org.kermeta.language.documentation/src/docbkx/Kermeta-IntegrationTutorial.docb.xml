@@ -65,12 +65,17 @@
 			Presentation
 			<phrase id="preface"></phrase>
 		</title>
-		<para>Kermeta action language is a DSL that allows to manipulate models. However it
-			isn't a general purpose language and thus doesn't directly offer all
-			the libraries to build an application for example with a
-			sophisticated GUI.</para>
+		<para>Kermeta action language is a DSL that allows to manipulate
+			models. However it
+			isn't a general purpose language and thus doesn't
+			directly offer all
+			the libraries to build an application for example
+			with a
+			sophisticated GUI.
+		</para>
 		<para>This serie of tutorials is about integrating Kermeta 2 code with
-			its environment </para>
+			its environment
+		</para>
 
 		<important>
 			<title>Prerequisite</title>
@@ -144,9 +149,11 @@
 			<title id="chapter_standalone_java_2_kermeta.title.link">Calling Kermeta code from a standalone Java program
 			</title>
 
+
 			<para>This tutorial aims to show how to call kermeta code from a
 				standalone Java program.
 			</para>
+
 
 			<section id="sec_standalone_java_2_kermeta_presentation.link">
 				<title id="sec_standalone_java_2_kermeta_presentation.title.link">Presentation</title>
@@ -162,13 +169,15 @@
 						</para>
 					</listitem>
 					<listitem>
-						<para>Generate a Jar file of the Kermeta project</para>
+						<para>Generate a Jar file of the Kermeta project (using a
+							simplified pom.xml)
+						</para>
 					</listitem>
 					<listitem>
-						<para>Generate a new Java project</para>
+						<para>Create a new Java project</para>
 					</listitem>
 					<listitem>
-						<para>Called the Kermeta API from to the java project</para>
+						<para>Call the Kermeta API from to the java project</para>
 					</listitem>
 					<listitem>
 						<para>Execute as a java application</para>
@@ -434,12 +443,135 @@ end
 				</orderedlist>
 			</section>
 		</chapter>
-		<chapter id="chapter_standalone_java_2_kermeta.link">
-			<title id="chapter_standalone_java_2_kermeta.title.link">Calling Kermeta code from a standalone Java program
+
+		<chapter id="chapter_standalone_java_2_kermeta_runner.link">
+			<title id="chapter_standalone_java_2_kermeta_runner.title.link">Calling Kermeta main operations from a standalone
+				Java program
 			</title>
 
-			<para>This tutorial aims to show how to call kermeta code from an
-				Eclipse plugin.
+			<para>This tutorial shows how a standalone java program can call
+				kermeta operations that have
+				been declared as main entry point of the
+				kermeta program thanks to
+				the @main tag on operations.
+			</para>
+			<para>
+			</para>
+			<para>TODO explain and illustrate
+			</para>
+			<section>
+				<title>Presentation/key points</title>
+				<para>This tutorial will detail the following points:</para>
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>Create a new Kermeta project</para>
+					</listitem>
+					<listitem>
+						<para>Declare one or many operations as main operations using the
+							@main tag
+						</para>
+					</listitem>
+					<listitem>
+						<para>Generate a basic jar file from the Kermeta project (using a
+							simplified pom.xml)
+						</para>
+					</listitem>
+					<listitem>
+						<para>Create a new Java project that depends or embedds the jar of
+							the kermeta project
+						</para>
+					</listitem>
+					<listitem>
+						<para>Call a Kermeta main operation using the corresponding Runner
+							class from to the java project. These Runner classes will take
+							care of the required initialization
+						</para>
+					</listitem>
+					<listitem>
+						<para>Execute the java program as a standalone application</para>
+					</listitem>
+				</orderedlist>
+			</section>
+		</chapter>
+
+		<chapter id="chapter_java_2_kermeta_internal.link">
+			<title id="chapter_java_2_kermeta_internal.title.link">Calling Kermeta internal code from a standalone Java
+				program
+			</title>
+
+			<para>
+				This tutorial aims to show how to directly call the richFoo and
+				they
+				operations without going through the @main operations. (usefull
+				for
+				example for fine grain UI integration with aspectized code).
+				This is
+				a variant of the tutorial
+				<xref linkend="chapter_standalone_java_2_kermeta_runner.link" />
+				but instead of relying on the generated runner classes, the user
+				directly call the kermeta classes and operations. Then, depending on
+				the origin of the classes, these classes can then be used either
+				with a pure EMF point of view (ie. only using the EMF generated
+				code) or
+				might be manipulated as Kermeta (ie. using the aspect). This
+				requires some understanding of the architecture of the generated
+				code.
+			</para>
+			<para>
+			</para>
+			<para>TODO explain and illustrate
+			</para>
+			<section>
+				<title>Presentation/key points</title>
+				<para>This tutorial will detail the following points:</para>
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>Create a new Kermeta project</para>
+					</listitem>
+					<listitem>
+						<para>Declare some classes and some operations
+						</para>
+					</listitem>
+					<listitem>
+						<para>Generate a basic jar file from the Kermeta project (using a
+							simplified pom.xml)
+						</para>
+					</listitem>
+					<listitem>
+						<para>Create a new Java project that depends or embedds the jar of
+							the kermeta project
+						</para>
+					</listitem>
+					<listitem>
+						<para>In the java code, call the initialization of the kermeta code</para>
+						<para> create some object from Kermeta classes and call operation on it it.
+						</para>
+					</listitem>
+					<listitem>
+						<para>In the Kermeta project, add an ecore model with some operation
+						</para>
+						<para>By aspect, add some behavior to the operation.
+						</para>
+					</listitem>
+					<listitem>
+						<para>In the java code, in pure EMF style, load a model conforming to this ecore.
+						</para>
+						<para>Call kermeta aspect operation by using exclusively the EMF api.
+						</para>
+					</listitem>
+					<listitem>
+						<para>Execute the java program as a standalone application</para>
+					</listitem>
+				</orderedlist>
+			</section>
+		</chapter>
+		<chapter id="chapter_plugin_embedding_kermeta.link">
+			<title id="chapter_plugin_embedding_kermeta.title.link">Embedding Kermeta code in an Eclipse plugin
+			</title>
+
+			<para>This tutorial aims to show how to embedd kermeta code in an
+				Eclipse plugin. It also shows how to add some java code that is able
+				to initialize and call the kermeta code in Eclipse context.
 			</para>
 			<para>Due to the requirement of OSGI deployment used by eclipse. The
 				simple packaging strategy used in the previous chapter isn't enough.
@@ -447,20 +579,97 @@ end
 			</para>
 			<para>TODO
 			</para>
-		</chapter>
-		<chapter id="chapter_java_2_kermeta_internal.link">
-			<title id="chapter_java_2_kermeta_internal.title.link">Calling Kermeta internal code from a standalone Java
-				program
-			</title>
+			<section>
+				<title>Presentation/key points</title>
+				<para>This tutorial will detail two scenarii: </para>
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>the Kermeta code must be exposed to and used by several
+							plugins</para>
+					</listitem>
+					<listitem>
+						<para>the Kermeta code is used by a single plugin and can be
+							privatly used by it
+						</para>
+					</listitem>
+				</orderedlist>
+				<orderedlist numeration="arabic">
+					<title>Kermeta plugin needing to be exposed to several plugins
+					</title>
+					<listitem>
+						<para>Create a new Kermeta project</para>
+					</listitem>
+					<listitem>
+						<para>Configure the project and a pom.xml that is able to take
+							into account both Kermeta code and some java code that is able to
+							generate an OSGI compatible jar file
+						</para>
+						<para>The current recommanded way is to use maven-bundle-plugin.
+						</para>
+					</listitem>
+					<listitem>
+						<para>Add some java code that initialize the kermeta code and
+							expose some operations of the kermeta code as a simplified API
+						</para>
+						<para>Add some java code that redirect kermeta StdIO messages to a
+							dedicated eclipse console
+						</para>
+					</listitem>
+					<listitem>
+						Create a plugin project that will use it. (for example an user
+						interface)
+					</listitem>
 
-			<para>This tutorial aims to show how to directly call the richFoo and
-				they operations without going through the @main operations. (usefull
-				for example for fine grain UI integration with aspectized code)
-			</para>
-			<para>
-			</para>
-			<para>TODO explain and illustrate
-			</para>
+					<listitem>
+						<para>Deploy and execute the plugins in an eclipse runtime
+							workbench
+						</para>
+						<para>Currently, the recommanded way to deploy the plugins is to
+							use the OSGI provisionner
+						</para>
+						<para>tips about how debugging</para>
+					</listitem>
+
+				</orderedlist>
+				<para>The tutorial also presents an alternative packaging that ease
+					eclipse UI debugging: the UI plugin directly embedds the kermeta
+					jar
+				</para>
+				<orderedlist numeration="arabic">
+					<title>Kermeta code is used by a single plugin and is privatly used
+						by it</title>
+					<listitem>
+						<para>Create an eclipse plugin</para>
+					</listitem>
+					<listitem>
+						<para>Automate the copy of the jar produced from the kermeta
+							project to an internal lib folder: with eclipse ant builder
+						</para>
+					</listitem>
+					<listitem>
+						<para>configure the plugin to use the jar</para>
+						<para>update the dependencies according to the one computed from
+							the kermeta jar
+						</para>
+					</listitem>
+					<listitem>
+						Create a plugin project that will use it. (for example an user
+						interface)
+					</listitem>
+
+					<listitem>
+						<para>Deploy and execute the plugins in an eclipse runtime
+							workbench with the classic eclipse approeches
+						</para>
+					</listitem>
+					<listitem>
+						<para>Use of a tycho driven pom.xml to automate the build of such
+							plugin (use copy-dependency to grab the kermeta jar as a
+							precompile step)
+						</para>
+					</listitem>
+				</orderedlist>
+			</section>
 		</chapter>
 	</part>
 	<part id="part_kermeta_2_java.link">
@@ -478,6 +687,34 @@ end
 		<chapter id="chapter_kermeta_extern.link">
 			<title id="chapter_kermeta_extern.title.link">Calling java static operation with kermeta extern
 			</title>
+			<para>This tutorial show how to call some java static operations
+				directly with the extern operator. It also shows how to package and
+				declare the java code for being used by the extern operator.
+			</para>
+			<para>TODO
+			</para>
+			<section>
+				<title>Presentation/key points</title>
+				<para>This tutorial will detail the following points: </para>
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>create a java project that proposes some static operations</para>
+					</listitem>
+					<listitem>
+						<para>create a jar from this java project
+						</para>
+						<para>the current recommanded packaging method is to use maven</para>
+					</listitem>					
+					<listitem>
+						<para>create a kermeta project</para>
+						<para>configure the project to use this java project and its eventual depdendencies</para>
+						<para>call the static operation</para>
+					</listitem>					
+					<listitem>
+						<para>compile and run the kermeta application</para>
+					</listitem>
+				</orderedlist>
+			</section>
 		</chapter>
 
 		<chapter id="chapter_kermeta_2_ecorejava.link">
@@ -491,6 +728,33 @@ end
 			</para>
 			<para>TODO illustrate that on a small sample.
 			</para>
+			<section>
+				<title>Presentation/key points</title>
+				<para>This tutorial will detail the following points: </para>
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>create an EMF project with an ecore model that proposes some operations</para>
+						<para>generate the java code from the ecore model</para>
+					</listitem>
+					<listitem>
+						<para>add some custom code in the model operations</para>
+						<para>use "generated NOT" annotation to make sure the code cannot be overidden when regenerating the model </para>
+					</listitem>
+					<listitem>
+						<para>create a jar from this java project
+						</para>
+						<para>the current recommanded packaging method is to use maven and tycho</para>
+					</listitem>					
+					<listitem>
+						<para>create a kermeta project</para>
+						<para>configure the project to use this java project and its eventual depdendencies</para>
+						<para>call the operations in the model</para>
+					</listitem>					
+					<listitem>
+						<para>compile and run the kermeta application</para>
+					</listitem>
+				</orderedlist>
+			</section>
 		</chapter>
 		<chapter id="chapter_kermeta_2_groovy.link">
 			<title id="chapter_kermeta_2_groovy.title.link">Calling Groovy from Kermeta
@@ -500,6 +764,27 @@ end
 			</para>
 			<para>TODO illustrate that on a small sample.
 			</para>
+			<section>
+				<title>Presentation/key points</title>
+				<para>This tutorial will detail the following points: </para>
+				<orderedlist numeration="arabic">					
+					<listitem>
+						<para>create a kermeta project</para>
+						<para>configure the project to use the groovy wrapper</para>
+					</listitem>					
+					<listitem>
+						<para>add kermeta code that will call a groovy expression that uses some kermeta elements.</para>
+					</listitem>					
+					<listitem>
+						<para>add a sample ecore model in the project</para>
+						<para>add some kermeta code that will use groovy to navigate and call operations in the model.</para>
+						<para>Add kermeta code that extract the groovy expression from the model itself before applying it.</para>
+					</listitem>
+					<listitem>
+						<para>compile and run the kermeta application</para>
+					</listitem>
+				</orderedlist>
+			</section>
 		</chapter>
 		<chapter id="chapter_kermeta_2_compilerignorescala.link">
 			<title id="chapter_kermeta_2_compilerignorescala.title.link">[advanced]Using compiler ignore directive to call
