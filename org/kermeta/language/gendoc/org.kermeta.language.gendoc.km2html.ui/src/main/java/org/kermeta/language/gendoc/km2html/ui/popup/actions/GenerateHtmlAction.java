@@ -37,14 +37,10 @@ public class GenerateHtmlAction implements IObjectActionDelegate {
 	 * @see IActionDelegate#run(IAction)
 	 */
 	public void run(IAction action) {
-		k2.io.StdIO$.MODULE$.messagingSystem_$eq(Activator.getDefault().getMessaggingSystem());
-        //Activator.getDefault().getMessaggingSystem().debug("console test", Activator.PLUGIN_ID);
-        //k2.io.StdIO$.MODULE$.writeln("test message using kermeta stdio redirection");
-		
-		
+				
 		Activator.getDefault().getMessaggingSystem().debug("Generating documentation for "+ selectedfile.getLocationURI().toString(), Activator.PLUGIN_ID);
 		org.kermeta.language.gendoc.km2html.Km2Html generator = new org.kermeta.language.gendoc.km2html.Km2HtmlImpl4Eclipse();
-		
+		generator.setMessagingSystem(Activator.getDefault().getMessaggingSystem());
 		generator.genHtmlDoc4File(selectedfile.getLocationURI().toString(), selectedfile.getParent().getLocationURI().toString()+"/html", "", "GeneratedDocumentation");
 		Activator.getDefault().getMessaggingSystem().debug("Done", Activator.PLUGIN_ID);
 		try {

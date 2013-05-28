@@ -10,7 +10,7 @@
 	<artifactId>org.kermeta.language.gendoc.km2html.ui</artifactId>
 	<groupId>org.kermeta.language.gendoc</groupId>
 	<packaging>bundle</packaging>
-	<name>org.kermeta.language.gendoc</name>
+	<name>org.kermeta.language.gendoc.ui</name>
 
     <parent>
         <artifactId>org.kermeta.language.root</artifactId>
