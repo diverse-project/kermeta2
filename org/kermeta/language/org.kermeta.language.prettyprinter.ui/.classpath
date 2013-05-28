@@ -4,9 +4,6 @@
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/emf/emf.lib/2.7.0/emf.lib-2.7.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.8.1/junit-4.8.1.jar" sourcepath="M2_REPO/junit/junit/4.8.1/junit-4.8.1-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/language.library.core/2.0.1-SNAPSHOT/language.library.core-2.0.1-SNAPSHOT.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/language.model/2.0.1-SNAPSHOT/language.model-2.0.1-SNAPSHOT.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/language.prettyprinter/2.0.1-SNAPSHOT/language.prettyprinter-2.0.1-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.core.commands/3.6.0.I20100512-1500/org.eclipse.core.commands-3.6.0.I20100512-1500.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.core.jobs/3.5.1.R36x_v20100824/org.eclipse.core.jobs-3.5.1.R36x_v20100824.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.core.resources/3.6.1.R36x_v20110131-1630/org.eclipse.core.resources-3.6.1.R36x_v20110131-1630.jar"/>
@@ -23,18 +20,23 @@
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.ui.editors/3.6.1.r361_v20100825-0800/org.eclipse.ui.editors-3.6.1.r361_v20100825-0800.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.ui.ide/3.6.2.M20101201-0800/org.eclipse.ui.ide-3.6.2.M20101201-0800.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.ui.workbench/3.6.2.M20110210-1200/org.eclipse.ui.workbench-3.6.2.M20110210-1200.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.library.core/2.0.99-SNAPSHOT/org.kermeta.language.library.core-2.0.99-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT/org.kermeta.language.library.standard-2.0.99-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.model/2.0.99-SNAPSHOT/org.kermeta.language.model-2.0.99-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.prettyprinter/2.0.99-SNAPSHOT/org.kermeta.language.prettyprinter-2.0.99-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/osgi/org.osgi.core/4.2.0/org.osgi.core-4.2.0.jar" sourcepath="M2_REPO/org/osgi/org.osgi.core/4.2.0/org.osgi.core-4.2.0-sources.jar">
     <attributes>
-      <attribute value="jar:file:/C:/Users/dvojtise/.m2/repository/org/osgi/org.osgi.core/4.2.0/org.osgi.core-4.2.0-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/D:/Users/dvojtise/.m2/repository/org/osgi/org.osgi.core/4.2.0/org.osgi.core-4.2.0-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/scala-lang/scala-library/2.9.0-1/scala-library-2.9.0-1.jar" sourcepath="M2_REPO/org/scala-lang/scala-library/2.9.0-1/scala-library-2.9.0-1-sources.jar">
     <attributes>
-      <attribute value="jar:file:/C:/Users/dvojtise/.m2/repository/org/scala-lang/scala-library/2.9.0-1/scala-library-2.9.0-1-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/D:/Users/dvojtise/.m2/repository/org/scala-lang/scala-library/2.9.0-1/scala-library-2.9.0-1-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.helpers/2.0.1-SNAPSHOT/utils.helpers-2.0.1-SNAPSHOT.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.systemservices.api/2.0.1-SNAPSHOT/utils.systemservices.api-2.0.1-SNAPSHOT.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.systemservices.eclipse/2.0.1-SNAPSHOT/utils.systemservices.eclipse-2.0.1-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.helpers/2.0.99-SNAPSHOT/utils.helpers-2.0.99-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.helpers.eclipse/2.0.99-SNAPSHOT/utils.helpers.eclipse-2.0.99-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.systemservices.api/2.0.99-SNAPSHOT/utils.systemservices.api-2.0.99-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.systemservices.eclipse/2.0.99-SNAPSHOT/utils.systemservices.eclipse-2.0.99-SNAPSHOT.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 </classpath>

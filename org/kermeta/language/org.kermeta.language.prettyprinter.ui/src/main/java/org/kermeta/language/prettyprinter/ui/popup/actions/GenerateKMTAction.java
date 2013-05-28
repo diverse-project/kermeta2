@@ -45,7 +45,7 @@ public class GenerateKMTAction implements IObjectActionDelegate {
 			*/
 		// assign this plugin messaging system console to kermeta stdio
 				// note: this works correctly only because we make sure to call the correct classes that are duplicated in fr.inria.varymde.fuml.behavior (verify the manifest !)
-				k2.io.StdIO$.MODULE$.messagingSystem_$eq(Activator.getDefault().getMessaggingSystem());
+				//k2.io.StdIO$.MODULE$.messagingSystem_$eq(Activator.getDefault().getMessaggingSystem());
 		        //Activator.getDefault().getMessaggingSystem().debug("console test", Activator.PLUGIN_ID);
 		        //k2.io.StdIO$.MODULE$.writeln("test message using kermeta stdio redirection");
 				
@@ -53,6 +53,7 @@ public class GenerateKMTAction implements IObjectActionDelegate {
 				//if(input.open()==org.eclipse.jface.window.Window.OK) {
 					Activator.getDefault().getMessaggingSystem().debug("Prettyprinting "+ selectedfile.getLocationURI().toString(), Activator.PLUGIN_ID);
 					org.kermeta.language.prettyprinter.KM2KMTPrettyPrinter printer = new org.kermeta.language.prettyprinter.KM2KMTPrettyPrinterImpl4Eclipse();
+					printer.setMessagingSystem(Activator.getDefault().getMessaggingSystem());
 					printer.prettyPrintFile(selectedfile.getLocationURI().toString(), selectedfile.getLocationURI().toString()+".kmt");
 					Activator.getDefault().getMessaggingSystem().debug("Done", Activator.PLUGIN_ID);
 				//}

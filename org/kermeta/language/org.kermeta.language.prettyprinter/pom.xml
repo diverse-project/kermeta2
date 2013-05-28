@@ -105,15 +105,15 @@
                         <Export-Package>org.kermeta.language.prettyprinter.*,
                         	kermeta_prettyprinter.*,
 		            		kermeta_prettyprinterrunner.*,
+		            		org.k2.compilo.scala.loader.*,
+		            		org.k2.console.*
+		            	</Export-Package>
+		            	<Private-Package>
 		            		k2.utils.*,
 		            		k2.exceptions.*,
 		            		k2.io.*,
 		            		k2.persistence.*,
 		            		k2.standard.*,
-		            		org.k2.compilo.scala.loader.*,
-		            		org.k2.console.*
-		            	</Export-Package>
-		            	<Private-Package>
 		            		ScalaImplicit.kermeta_prettyprinter.*,
 		            		scalaUtil
 		            	</Private-Package>
