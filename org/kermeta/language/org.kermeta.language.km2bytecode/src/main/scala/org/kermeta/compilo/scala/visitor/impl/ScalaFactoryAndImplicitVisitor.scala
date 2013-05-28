@@ -228,6 +228,11 @@ class ScalaFactoryAndImplicitVisitor(compilerConfiguration: CompilerConfiguratio
     res.append(resinitEclipse.toString)
     res.append("\n    k2.utils.ReflexivityLoader.pref(\"" + GlobalConfiguration.scalaAspectPrefix + "\")\n")
     res.append("\n    k2.utils.UTilScala.setScalaAspectPrefix(\"" + GlobalConfiguration.scalaAspectPrefix + "\")\n")
+    
+    
+    //res.append("System.out.println(\">>>\"+System.getProperty(\"port\"))")
+    res.append("k2.io.StdIO._messagingSystem = new _root_.org.kermeta.utils.systemservices.api.impl.ClientMessagingSystem(\"4444\",\"localhost\")")
+
     res.append("  }\n")
 
     res.append("}\n")
