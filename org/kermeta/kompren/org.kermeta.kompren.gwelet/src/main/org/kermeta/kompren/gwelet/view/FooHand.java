@@ -217,7 +217,13 @@ public class FooHand implements MouseListener, MouseMotionListener {
 				}else if(relation instanceof RelationClassView) {
 					txt +="<b>Reference</b><br>";
 				}
-				txt += "Opposite Class: <b><a href=\""+qname+"\">"+qname+"</a></b><br>";
+				txt += "Opposite Class: <b>";
+				if(oppClass.isAbstract)
+					txt +="<i>";
+				txt += "<a href=\""+qname+"\">"+qname+"</a></b>";
+				if(oppClass.isAbstract)
+					txt +="</i>";
+				txt += "<br>";
 				if(role!=null) {
 					txt += "Opposite role: <b>"+role.getName()+"</b><br>Opposite cardinality: <b>"+role.getCardText()+"</b>";
 				}
