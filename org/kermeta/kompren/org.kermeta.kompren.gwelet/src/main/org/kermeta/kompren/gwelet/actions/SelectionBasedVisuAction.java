@@ -21,7 +21,7 @@ public abstract class SelectionBasedVisuAction extends VisualisationAction {
 	@Override
 	protected void doVisualisation() {
 		if(classes==null) {
-			classes = new ArrayList<ClassView>();
+			classes = new ArrayList<>();
 			for(Selectable sel : canvas.getSelection())
 				if(sel instanceof ClassView)
 					classes.add((ClassView) sel);

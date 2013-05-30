@@ -54,7 +54,7 @@ public class Visualiser extends WidgetInstrument {
 		superClasses 	= new MPieMenuButton(new ImageIcon(Class.class.getResource("/res/hierar.png")));
 		pruning 		= new MPieMenuButton(new ImageIcon(Class.class.getResource("/res/prune.png")));
 		flat 			= new MPieMenuButton(new ImageIcon(Class.class.getResource("/res/flat.png")));
-		lowerClasses 	= new MPieMenuButton("subCl");
+		lowerClasses 	= new MPieMenuButton(new ImageIcon(Class.class.getResource("/res/subType.png")));
 		radius 			= new MSpinner(new MSpinner.MSpinnerNumberModel(0, 0, 1000, 1), new JLabel("Radius:"));
 
 		superClasses.setToolTipText("Shows the super classes of the selected class.");

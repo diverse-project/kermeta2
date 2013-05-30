@@ -30,8 +30,8 @@ public class ClassModelBasicStrategy implements ILayoutStrategy {
 		if(diagram==null)
 			return ;
 
-		Map<IEntityView, IEntityView> hashMap 	= new IdentityHashMap<IEntityView, IEntityView>();
-		List<List<List<IEntityView>>> forest 	= new ArrayList<List<List<IEntityView>>>();
+		Map<IEntityView, IEntityView> hashMap 	= new IdentityHashMap<>();
+		List<List<List<IEntityView>>> forest 	= new ArrayList<>();
 		List<List<IEntityView>> levels;
 
 		for(IEntityView entity : diagram.getEntities())
@@ -45,7 +45,7 @@ public class ClassModelBasicStrategy implements ILayoutStrategy {
 
 		while(!roots.isEmpty()) {
 			if(hashMap.get(roots.get(0))!=null) {
-				levels = new ArrayList<List<IEntityView>>();
+				levels = new ArrayList<>();
 
 				setLevels(roots.get(0), levels, hashMap);
 				forest.add(levels);
@@ -175,7 +175,7 @@ public class ClassModelBasicStrategy implements ILayoutStrategy {
 		if(diagram==null)
 			return null;
 
-		List<IEntityView> sub = new ArrayList<IEntityView>();
+		List<IEntityView> sub = new ArrayList<>();
 
 		for(IRelationView link : diagram.getRelations())
 			if(link instanceof InheritanceView && link.getEntityTar()==entity)

@@ -57,10 +57,10 @@ public final class ModelViewMapper {
 		super();
 
 		this.presentation = presentation;
-		cdAdded = new HashMap<String, List<ClassDefinition>>();
-		classMappings = new IdentityHashMap<ClassDefinition, ClassView>();
-		classMappingsInverted = new IdentityHashMap<ClassView, ClassDefinition>();
-		addedInheritances = new HashMap<String, InheritanceView>();
+		cdAdded = new HashMap<>();
+		classMappings = new IdentityHashMap<>();
+		classMappingsInverted = new IdentityHashMap<>();
+		addedInheritances = new HashMap<>();
 	}
 
 
@@ -79,7 +79,7 @@ public final class ModelViewMapper {
 
 
 	public List<ClassDefinition> getClassDefinitionAdded() {
-		List<ClassDefinition> list = new ArrayList<ClassDefinition>();
+		List<ClassDefinition> list = new ArrayList<>();
 
 		for(List<ClassDefinition> l : cdAdded.values())
 			list.addAll(l);
@@ -234,8 +234,8 @@ public final class ModelViewMapper {
 		ClassView cv = null;
 
 		if(cdFirst==null) {
-			List<ClassDefinition> cds = new ArrayList<ClassDefinition>();
-			cv = new ClassView(cd.getName(), qname, view);
+			List<ClassDefinition> cds = new ArrayList<>();
+			cv = new ClassView(cd.getName(), qname, cd.getIsAbstract(), view);
 			cds.add(cd);
 
 			addAttributes(cd, cv);

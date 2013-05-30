@@ -48,7 +48,7 @@ public class MetamodelView extends ModelView {
 
 	@Override
 	public List<IEntityView> getRootEntities() {
-		List<IEntityView> roots = new ArrayList<IEntityView>();
+		List<IEntityView> roots = new ArrayList<>();
 		boolean again;
 		int i;
 		final int size = relations.size();
@@ -164,50 +164,50 @@ public class MetamodelView extends ModelView {
 	}
 
 
-	public IEntityView addEntity(final String name, final String qname, final int position, final boolean isAspect) {
-		IEntityView view = null;
-		double xMax = -Double.MAX_VALUE;
-		double x;
-		IEntityView maxEntity = null;
-
-		if(isAspect) {
-			int i = 0;
-			final int size = entities.size();
-
-			while(view==null && i<size) {
-				if(((ClassView)entities.get(i)).getQname().equals(qname))
-					view = entities.get(i);
-				else
-					i++;
-			}
-
-			if(view==null)
-				System.err.println("ERROR: aspect added but not its reference class");
-
-			return view;
-		}
-
-		view = new ClassView(name, qname, this);
-
-		// entities must not located at the same position. Otherwise it may have problem
-		// during the anchoring of relations.
-		// So we search to maximal X-coordinate.
-		for(final IEntityView entityView : entities) {
-			x = entityView.getCentre().getX();
-
-			if(x>xMax) {
-				xMax 		= x;
-				maxEntity 	= entityView;
-			}
-		}
-
-		// The max coordinate plus a value is set to the view to be located
-		// at a unique position.
-		view.move(maxEntity==null ? 0. : xMax+maxEntity.getWidth(), view.getCentre().getY());
-		addEntity(position, view);
-
-		return view;
-	}
+//	public IEntityView addEntity(final String name, final String qname, final boolean isAbstract, final int position, final boolean isAspect) {
+//		IEntityView view = null;
+//		double xMax = -Double.MAX_VALUE;
+//		double x;
+//		IEntityView maxEntity = null;
+//
+//		if(isAspect) {
+//			int i = 0;
+//			final int size = entities.size();
+//
+//			while(view==null && i<size) {
+//				if(((ClassView)entities.get(i)).getQname().equals(qname))
+//					view = entities.get(i);
+//				else
+//					i++;
+//			}
+//
+//			if(view==null)
+//				System.err.println("ERROR: aspect added but not its reference class");
+//
+//			return view;
+//		}
+//
+//		view = new ClassView(name, qname, isAbstract, this);
+//
+//		// entities must not located at the same position. Otherwise it may have problem
+//		// during the anchoring of relations.
+//		// So we search to maximal X-coordinate.
+//		for(final IEntityView entityView : entities) {
+//			x = entityView.getCentre().getX();
+//
+//			if(x>xMax) {
+//				xMax 		= x;
+//				maxEntity 	= entityView;
+//			}
+//		}
+//
+//		// The max coordinate plus a value is set to the view to be located
+//		// at a unique position.
+//		view.move(maxEntity==null ? 0. : xMax+maxEntity.getWidth(), view.getCentre().getY());
+//		addEntity(position, view);
+//
+//		return view;
+//	}
 
 
 	public boolean isOperationsVisible() {

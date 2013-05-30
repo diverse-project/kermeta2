@@ -34,7 +34,7 @@ public class GweletUIBuilder extends UIComposer<GweletFrame> {
 		MPieMenu menu = widget.visualiserManager.getMenu();
 		menu.add(widget.reiniter.getReinit());
 		menu.add(widget.visualiser.getSuperClasses());
-//		menu.add(widget.visualiser.getLowerClasses());
+		menu.add(widget.visualiser.getLowerClasses());
 		menu.add(widget.visualiser.getPruning());
 		menu.add(widget.visualiser.getFlat());
 		menu.add(widget.undoredoer.getRedoB());

@@ -9,12 +9,11 @@ import java.util.List;
 
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.kermeta.kompren.diagram.view.interfaces.IHandler;
-import org.kermeta.kompren.diagram.view.interfaces.IModelView;
 import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 import org.malai.picking.Pickable;
 
 public class FooHand implements MouseListener, MouseMotionListener {
-	protected IModelView diagram;
+	protected MetamodelView diagram;
 
 	protected IHandler draggedHandler;
 
@@ -28,10 +27,10 @@ public class FooHand implements MouseListener, MouseMotionListener {
 
 
 
-	public FooHand(final IModelView diagram) {
+	public FooHand(final MetamodelView diagram) {
 		super();
 
-		visibleHandlers = new ArrayList<IRelationView>();
+		visibleHandlers = new ArrayList<>();
 		this.diagram 	= diagram;
 		reinit();
 	}
@@ -73,7 +72,7 @@ public class FooHand implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseEntered(final MouseEvent e) {
-		//
+		diagram.requestFocusInWindow();
 	}
 
 	@Override
@@ -171,7 +170,7 @@ public class FooHand implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseMoved(final MouseEvent e) {
-		((MetamodelView)diagram).setToolTipText(null);
+		diagram.setToolTipText(null);
 		final double zoom = diagram.getZoom();
 		if(zoom<0.5) return;
 		final double x = e.getX()/zoom;
@@ -218,7 +217,7 @@ public class FooHand implements MouseListener, MouseMotionListener {
 				}
 				
 				txt += "</html>";
-				((MetamodelView)diagram).setToolTipText(txt);
+				diagram.setToolTipText(txt);
 			}
 		}
 		

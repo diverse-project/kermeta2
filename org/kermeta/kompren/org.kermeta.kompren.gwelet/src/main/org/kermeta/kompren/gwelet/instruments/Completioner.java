@@ -229,7 +229,7 @@ public class Completioner extends WidgetInstrument {
 
 		@Override
 		public void initAction() {
-			database = new ArrayList<String>();
+			database = new ArrayList<>();
 			ModelViewMapper mapper = ModelViewMapper.getMapper();
 
 			for(ClassDefinition clazz : mapper.getClassDefinitionAdded())
@@ -308,6 +308,7 @@ public class Completioner extends WidgetInstrument {
 			Point pt = getMoveCameraToPoint(cv, zoom, canvas.getScrollpane());
 			action.setPy(pt.y);
 			action.setPx(pt.x);
+			action.setScrollPane(canvas.getScrollpane());
 		}
 	}
 }

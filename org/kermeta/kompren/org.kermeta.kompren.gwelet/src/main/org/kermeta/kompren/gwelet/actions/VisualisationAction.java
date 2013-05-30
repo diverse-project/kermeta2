@@ -25,7 +25,7 @@ public abstract class VisualisationAction extends ModelViewAction implements Und
 
 	@Override
 	protected void doActionBody() {
-		viewStates = new ArrayList<IComponentView.Visibility>();
+		viewStates = new ArrayList<>();
 
 		for(IEntityView ent : canvas.getEntities())
 			viewStates.add(ent.getVisibility());

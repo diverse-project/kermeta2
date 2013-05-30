@@ -31,7 +31,7 @@ public class Slice extends SelectionBasedVisuAction {
 	protected void doVisualisation() {
 		super.doVisualisation();
 
-		final BasicEList<ClassDefinition> cds = new BasicEList<ClassDefinition>();
+		final BasicEList<ClassDefinition> cds = new BasicEList<>();
 		final ModelViewMapper mapper =  ModelViewMapper.getMapper();
 
 		for(IEntityView cl : canvas.getEntities())

@@ -46,6 +46,8 @@ public class ClassView extends RectangleEntityView {
 	protected List<OperationView> operations;
 
 	protected List<RelationClassView> relations;
+	
+	private List<ClassView> subClasses;
 
 	/** Defines if the attributes must be visible or not. */
 	protected boolean propertiesVisible;
@@ -62,6 +64,8 @@ public class ClassView extends RectangleEntityView {
 	protected String qname;
 	
 	protected MetamodelView mmView;
+	
+	protected boolean isAbstract;
 
 
 
@@ -71,7 +75,7 @@ public class ClassView extends RectangleEntityView {
 	 * @param qname The qualified name of the class.
 	 * @throws IllegalArgumentException If the given name is null.
 	 */
-	public ClassView(final String name, final String qname, final MetamodelView mmView) {
+	public ClassView(final String name, final String qname, final boolean isAbstract, final MetamodelView mmView) {
 		super(name);
 
 		this.qname			= qname;
@@ -80,10 +84,12 @@ public class ClassView extends RectangleEntityView {
 		operationsVisible 	= true;
 		propertiesVisible	= true;
 		selected			= false;
-		attributes	   		= new ArrayList<AttributeView>();
-		operations	   		= new ArrayList<OperationView>();
-		relations			= new ArrayList<RelationClassView>();
+		this.isAbstract		= isAbstract;
+		attributes	   		= new ArrayList<>();
+		operations	   		= new ArrayList<>();
+		relations			= new ArrayList<>();
 		bound				= new Rectangle();
+		subClasses			= new ArrayList<>();
 		setSelected(false);
 		update();
 		initAnchors();
@@ -103,9 +109,18 @@ public class ClassView extends RectangleEntityView {
 			((RelationClassView)relation).reinitRoles();
 			if(!atEnd)
 				relations.add((RelationClassView)relation);
-		}
+		}else
+			if(relation instanceof InheritanceView) {
+				InheritanceView inh = (InheritanceView)relation;
+				inh.getEntityTar().subClasses.add(this);
+			}
 	}
 
+	
+	public List<ClassView> getLowerTypes() {
+		return subClasses;
+	}
+	
 
 	/**
 	 * Adds an attribute to the class.
@@ -262,7 +277,9 @@ public class ClassView extends RectangleEntityView {
 	 */
 	public Font getTitleFont(double zoom) {
 		double factor = Math.max(1., (2-zoom));
-		return new Font(getFontName(), fontStyle+Font.BOLD, (int)(factor*factor*fontSize));
+		int style = fontStyle+Font.BOLD;
+		if(isAbstract) style +=Font.ITALIC;
+		return new Font(getFontName(), style, (int)(factor*factor*fontSize));
 	}
 
 
@@ -310,7 +327,6 @@ public class ClassView extends RectangleEntityView {
 //			for(IAnchor anchor : anchors)
 //				if(!anchor.isFree())
 //					anchor.paint(g);
-			
 			g.setFont(formerFont);
 			isOptimHidden = false;
 		} else isOptimHidden = true;
@@ -327,8 +343,8 @@ public class ClassView extends RectangleEntityView {
 		for(final AttributeView attr : attributes)
 			attr.position.setLocation(attr.position.getX()+tx, attr.position.getY()+ty);
 
-		bound.setRect(bound.getX()+tx, bound.getY()+ty, bound.getWidth(), bound.getHeight());
 		boundPath.transform(AffineTransform.getTranslateInstance(tx, ty));
+		bound = path.getBounds();
 	}
 
 
@@ -447,11 +463,6 @@ public class ClassView extends RectangleEntityView {
 	 */
 	public void setOperationsVisible(final boolean operationsVisible) {
 		this.operationsVisible = operationsVisible;
-	}
-
-
-	public void setIsAbstract(final boolean isAbstract) {
-		fontStyle = isAbstract ? Font.ITALIC : Font.PLAIN;
 	}
 
 

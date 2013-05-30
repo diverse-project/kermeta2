@@ -30,12 +30,12 @@ public class Flat extends SelectionBasedVisuAction {
 
 	public Flat() {
 		super();
-		attrs = new IdentityHashMap<ClassView, List<AttributeView>>();
-		ops = new java.util.IdentityHashMap<ClassView, List<OperationView>>();
-		attrsKm = new java.util.IdentityHashMap<ClassDefinition, List<Property>>();
-		opsKm = new java.util.IdentityHashMap<ClassDefinition, List<Operation>>();
-		superTypes = new ArrayList<Type>();
-		relationsAdded = new ArrayList<IRelationView>();
+		attrs = new IdentityHashMap<>();
+		ops = new java.util.IdentityHashMap<>();
+		attrsKm = new java.util.IdentityHashMap<>();
+		opsKm = new java.util.IdentityHashMap<>();
+		superTypes = new ArrayList<>();
+		relationsAdded = new ArrayList<>();
 	}
 
 
@@ -137,8 +137,8 @@ public class Flat extends SelectionBasedVisuAction {
 				if(cvSup!=null) {
 					cvSup.setVisibility(Visibility.NONE);
 //FIXME to refactor
-					List<AttributeView> avs = new ArrayList<AttributeView>();
-					List<Property> props = new ArrayList<Property>();
+					List<AttributeView> avs = new ArrayList<>();
+					List<Property> props = new ArrayList<>();
 
 					for(AttributeView av : cvSup.getAttributes()) {
 						if(!cvRef.getAttributes().contains(av)) {
@@ -164,8 +164,8 @@ public class Flat extends SelectionBasedVisuAction {
 						}
 					}
 
-					List<OperationView> ovs = new ArrayList<OperationView>();
-					List<Operation> opkms = new ArrayList<Operation>();
+					List<OperationView> ovs = new ArrayList<>();
+					List<Operation> opkms = new ArrayList<>();
 
 					for(OperationView ov : cvSup.getOperations()) {
 						if(!cvRef.getOperations().contains(ov)) {

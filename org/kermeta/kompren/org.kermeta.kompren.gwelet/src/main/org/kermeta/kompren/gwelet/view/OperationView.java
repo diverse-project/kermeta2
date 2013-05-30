@@ -17,7 +17,7 @@ public class OperationView extends ClassElementView {
 	public OperationView(String name, String typeName, boolean isAbstract, ClassView parent) {
 		super(name, typeName, parent);
 		
-		parameters 		= new ArrayList<ParameterView>();
+		parameters 		= new ArrayList<>();
 		this.isAbstract = isAbstract;
 		
 		update();

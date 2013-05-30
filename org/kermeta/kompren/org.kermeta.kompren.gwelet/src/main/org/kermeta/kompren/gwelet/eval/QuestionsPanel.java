@@ -143,18 +143,22 @@ public class QuestionsPanel extends JPanel {
 		startButton.setAlignmentX(CENTER_ALIGNMENT);
 		startButton.addActionListener(new ShowAnswerFieldListener());
 		startButton.setMaximumSize(new Dimension(120, 50));
+		startButton.setFocusable(false);
 
 		answerButton = new JButton("<html><font size=\"+2\"><b>Validate Answer</b></font></html>");
 		answerButton.setAlignmentX(CENTER_ALIGNMENT);
 		answerButton.addActionListener(new ShowQuestionFieldListener());
 		answerButton.setMaximumSize(new Dimension(230, 50));
+		answerButton.setFocusable(false);
 		questionLabel = new JLabel();
 		questionLabel.setAlignmentX(CENTER_ALIGNMENT);
 		questionLabel.setMaximumSize(new Dimension(120, 40));
+		questionLabel.setFocusable(false);
 		answerLabel = new JLabel();
 		answerLabel.setText("<html><font size=\"+1\"><b>Answer</b></font></html>");
 		answerLabel.setAlignmentX(CENTER_ALIGNMENT);
 		answerLabel.setMaximumSize(new Dimension(120, 40));
+		answerLabel.setFocusable(false);
 
 		answerArea = new EditorPaneAntiAlias(false);
         answerArea.setPreferredSize(new Dimension(380, 250));
@@ -165,6 +169,7 @@ public class QuestionsPanel extends JPanel {
 		JPanel panel = new JPanel();
 		helperLabel = new JLabel();
 		helperLabel.setAlignmentX(LEFT_ALIGNMENT);
+		helperLabel.setFocusable(false);
 		panel.add(helperLabel);
 
 		questionArea = new EditorPaneAntiAlias(true);
@@ -173,6 +178,7 @@ public class QuestionsPanel extends JPanel {
 		questionArea.setPreferredSize(new Dimension(380, 250));
 		questionArea.setMaximumSize(new Dimension(380, 250));
 		questionArea.setAlignmentX(CENTER_ALIGNMENT);
+		questionArea.setFocusable(false);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(questionLabel);
 		add(questionArea);
@@ -259,9 +265,13 @@ public class QuestionsPanel extends JPanel {
             @Override
 			public void run() {
         		final ClassView cv = ModelViewMapper.getMapper().getClassView(questions.get(currentNbQuestions).question.getInitialClassToFocusOn());
-        		final Point pt = Completioner.Interaction2MoveCamera.getMoveCameraToPoint(cv, frame.getCanvas().getZoom(), frame.getCanvas().getScrollpane());
-            	frame.getCanvas().getScrollpane().getHorizontalScrollBar().setValue(pt.x);
-            	frame.getCanvas().getScrollpane().getVerticalScrollBar().setValue(pt.y);
+        		if(cv==null)
+        			System.err.println("CLASS NOT FOUND: " + questions.get(currentNbQuestions).question.getInitialClassToFocusOn() + " in QuestionPanel");
+        		else {
+	        		final Point pt = Completioner.Interaction2MoveCamera.getMoveCameraToPoint(cv, frame.getCanvas().getZoom(), frame.getCanvas().getScrollpane());
+	            	frame.getCanvas().getScrollpane().getHorizontalScrollBar().setValue(pt.x);
+	            	frame.getCanvas().getScrollpane().getVerticalScrollBar().setValue(pt.y);
+        		}
             }
         };
 

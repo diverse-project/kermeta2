@@ -18,7 +18,7 @@
 	<classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.systemservices.api/2.0.6/utils.systemservices.api-2.0.6.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.helpers/2.0.6/utils.helpers-2.0.6.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/kermeta/kompren/kompren.diagram/2.0.9-SNAPSHOT/kompren.diagram-2.0.9-SNAPSHOT.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/malai/malai.core/0.2-SNAPSHOT/malai.core-0.2-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/malai/malai.core/0.2-SNAPSHOT/malai.core-0.2-SNAPSHOT.jar" sourcepath="/M2_REPO/org/malai/malai.core/1.0/malai.core-1.0-src.zip"/>
 	<classpathentry kind="var" path="M2_REPO/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/xerces/xercesImpl/2.8.1/xercesImpl-2.8.1.jar"/>
@@ -34,6 +34,6 @@
 	<classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-digester/commons-digester/1.6/commons-digester-1.6.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/ow2/asm/asm-all/4.1/asm-all-4.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/malai/malai.swing/0.2-SNAPSHOT/malai.swing-0.2-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/malai/malai.swing/0.2-SNAPSHOT/malai.swing-0.2-SNAPSHOT.jar" sourcepath="/M2_REPO/org/malai/malai.swing/1.0/malai.swing-1.0-src.zip"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
