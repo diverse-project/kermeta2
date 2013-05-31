@@ -100,7 +100,7 @@
         <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="//kermeta/standard/Boolean"/>
       </ownedAttribute>
       <ownedAttribute name="visibility" type="//ram/Visibility" isOrdered="true" isComposite="true"/>
-      <ownedAttribute name="returnType" type="//ram/Operation/returnType/@containedType.0" isOrdered="true" lower="1">
+      <ownedAttribute name="returnType" type="//ram/Operation/returnType/@containedType.0" isOrdered="true" lower="0">
         <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="//ram/Type"/>
       </ownedAttribute>
       <ownedAttribute name="parameters" type="//ram/Operation/parameters/@containedType.0" isOrdered="true" upper="-1" isComposite="true">
@@ -398,7 +398,7 @@
     </ownedTypeDefinition>
     <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" name="FragmentContainer" superType="//ram/FragmentContainer/@containedType.0" isAbstract="true">
       <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="//kermeta/standard/Object"/>
-      <ownedAttribute name="fragments" type="//ram/FragmentContainer/fragments/@containedType.0" isOrdered="true" lower="1" upper="-1" opposite="//ram/InteractionFragment/container" isComposite="true">
+      <ownedAttribute name="fragments" type="//ram/FragmentContainer/fragments/@containedType.0" isOrdered="true" lower="0" upper="-1" opposite="//ram/InteractionFragment/container" isComposite="true">
         <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="//ram/InteractionFragment"/>
       </ownedAttribute>
     </ownedTypeDefinition>
@@ -481,6 +481,7 @@
     </ownedTypeDefinition>
     <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" name="Property" superType="//ram/Property/@containedType.0" isAbstract="true">
       <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="//ram/StructuralFeature"/>
+      <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="//kermeta/standard/Object"/>
       <ownedAttribute name="lowerBound" type="//ram/Property/lowerBound/@containedType.0" isOrdered="true" isComposite="true">
         <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="//kermeta/standard/Integer"/>
       </ownedAttribute>
@@ -488,6 +489,9 @@
         <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="//kermeta/standard/Integer"/>
       </ownedAttribute>
       <ownedAttribute name="referenceType" type="//ram/ReferenceType" isOrdered="true" isComposite="true"/>
+      <ownedAttribute name="name" type="//ram/Property/name/@containedType.0" isOrdered="true" lower="1" isComposite="true">
+        <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="//kermeta/standard/String"/>
+      </ownedAttribute>
     </ownedTypeDefinition>
   </packages>
   <packages name="kermeta">

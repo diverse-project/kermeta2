@@ -194,46 +194,61 @@ public class FooHand implements MouseListener, MouseMotionListener {
 		}
 
 		if(relation!=null) {
-			ClassView oppClass = null;
-			RoleView role = null;
+			ClassView c1 = null;
+			ClassView c2 = null;
+			RoleView role1 = null;
+			RoleView role2 = null;
+			String txt = "<html>";
 			
-			if(relation.getEntitySrc().isOptimHidden()) {
-				oppClass = (ClassView) relation.getEntitySrc();
-				if(relation instanceof RelationClassView)
-					role = ((RelationClassView)relation).getRoleTar();
-			}
-			else
-				if(relation.getEntityTar().isOptimHidden()) {
-					oppClass = (ClassView) relation.getEntityTar();
-					if(relation instanceof RelationClassView)
-						role = ((RelationClassView)relation).getRoleSrc();
-				}
+			c1 = (ClassView) relation.getEntitySrc();
+			if(relation instanceof RelationClassView)
+				role1 = ((RelationClassView)relation).getRoleTar();
+			c2 = (ClassView) relation.getEntityTar();
+			if(relation instanceof RelationClassView)
+				role2 = ((RelationClassView)relation).getRoleSrc();
 			
-			if(oppClass!=null) {
-				String qname = oppClass.getQname();
-				String txt = "<html>";
-				if(relation instanceof InheritanceView) {
-					txt +="<b>Inheritance</b><br>";
-				}else if(relation instanceof RelationClassView) {
-					txt +="<b>Reference</b><br>";
-				}
-				txt += "Opposite Class: <b>";
-				if(oppClass.isAbstract)
-					txt +="<i>";
-				txt += "<a href=\""+qname+"\">"+qname+"</a></b>";
-				if(oppClass.isAbstract)
-					txt +="</i>";
-				txt += "<br>";
-				if(role!=null) {
-					txt += "Opposite role: <b>"+role.getName()+"</b><br>Opposite cardinality: <b>"+role.getCardText()+"</b>";
-				}
-				
-				txt += "</html>";
-				diagram.setToolTipText(txt);
+			if(relation instanceof InheritanceView) {
+				txt +="<b>Inheritance</b><br>";
+				txt += "<b>" + getHTMLClassName(c1) + "</b> -> ";
+				txt += "<b>" + getHTMLClassName(c2) + "</b>";
+			}else if(relation instanceof RelationClassView) {
+				RelationClassView rcv = (RelationClassView) relation;
+				txt +="<b>Reference</b><br>";
+				txt += "<b>" + getHTMLClassName(c1) + "</b>";
+				if(role1!=null)
+					txt += ".<b>"+role1.getName()+"["+role1.getCardText()+"]</b>";
+				txt +="<br>";
+				if(rcv.getSourceDecoration() instanceof CompositionDecorationView)
+					txt += "&diams;";
+				else if(rcv.getSourceDecoration() instanceof RelationDecorationView)
+					txt += "&lt;";
+				txt += "-";
+				if(rcv.getTargetDecoration() instanceof CompositionDecorationView)
+					txt += "&diams;";
+				else if(rcv.getTargetDecoration() instanceof RelationDecorationView)
+					txt += "&gt;";
+				txt += "<br><b>" + getHTMLClassName(c2) + "</b>";
+				if(role2!=null)
+					txt += ".<b>"+role2.getName()+"["+role2.getCardText()+"]</b>";
 			}
+			
+			txt += "</html>";
+			diagram.setToolTipText(txt);
 		}
 		
 		if(mustRefresh)
 			diagram.refresh();
+	}
+	
+	
+	private String getHTMLClassName(ClassView c) {
+		String txt = "";
+		String qn = c.getQname();
+		if(c.isAbstract)
+			txt +="<i>";
+		txt += "<a href=\""+qn+"\">"+qn+"</a>";
+		if(c.isAbstract)
+			txt +="</i>";
+		return txt;
 	}
 }
