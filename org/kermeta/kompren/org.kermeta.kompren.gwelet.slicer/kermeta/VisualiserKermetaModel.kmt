@@ -11,6 +11,10 @@ class VisualiserKermetaModel {
 	attribute considerownedAttribute : Boolean
 
 	attribute considertype : Boolean
+	
+	attribute compositionOnly : Boolean
+	
+	attribute card1Only : Boolean
 
 	attribute idPass : Integer
 
@@ -21,11 +25,20 @@ class VisualiserKermetaModel {
 	reference addedPackages : Bag<Package>
 
 	reference addedClassDefinitions : Bag<ClassDefinition>
+	
+	reference addedsuperClasses : Bag<ClasssuperClasses>
+	
+	reference addedProperties : Bag<Property>
 
-	operation initialise(requiredClassDefinitions : bag ClassDefinition[0..*], requiredModelingUnits : bag ModelingUnit[0..*], radius : Integer, considersuperType : Boolean, considerownedAttribute : Boolean, considertype : Boolean) : VisualiserKermetaModel is do
+	operation initialise(requiredClassDefinitions : bag ClassDefinition[0..*], 
+		requiredModelingUnits : bag ModelingUnit[0..*], radius : Integer, 
+		considersuperType : Boolean, considerownedAttribute : Boolean, 
+		considertype : Boolean, compositionOnly : Boolean, card1Only : Boolean) : VisualiserKermetaModel is do
 		result := self
 		self.addedPackages := Bag<Package>.new
 		self.addedClassDefinitions := Bag<ClassDefinition>.new
+		self.addedProperties := Bag<Property>.new
+		self.addedsuperClasses := Bag<ClasssuperClasses>.new
 		self.radius := radius
 		self.requiredClassDefinitions.clear()
 		self.requiredClassDefinitions.addAll(requiredClassDefinitions)
@@ -34,6 +47,8 @@ class VisualiserKermetaModel {
 		self.considersuperType := considersuperType
 		self.considerownedAttribute := considerownedAttribute
 		self.considertype := considertype
+		self.compositionOnly := compositionOnly
+		self.card1Only := card1Only
 
 		if(idPass.isVoid) then idPass := 0
 		else idPass := idPass + 1 end
@@ -47,22 +62,32 @@ class VisualiserKermetaModel {
 		self.requiredModelingUnits.each{theModelingUnit | theModelingUnit.visitToAddRelations(self, 0) }
 		self.addedPackages.each{thePackage | if(thePackage.checkCanReallyBeAdded()) then onPackageAdded(thePackage) end }
 		self.addedClassDefinitions.each{theClassDefinition | onClassDefinitionAdded(theClassDefinition) }
+		self.addedProperties.each{theProperty | onPropertyAdded(theProperty) }
+		self.addedsuperClasses.each{thesuperClasses | self.onClazzsuperClassesAdded(thesuperClasses.src, thesuperClasses.tar) }
 		onEnd()
 	end
 
 	operation onPackageAdded(pkg : Package) is do
-
-		stdio.writeln("package: " + pkg.name)
-	
 	end
 	operation onClassDefinitionAdded(cl : ClassDefinition) is do
-
-		stdio.writeln("clazz: " + cl.name)
-	
+	end
+	operation onPropertyAdded(prop : Property) is do
+	end
+	operation onClazzsuperClassesAdded(srcClass : TypeDefinition, tgtClass : TypeDefinition) is do 
 	end
 	operation onEnd() is do
 	end
 	operation onStart() is do
 	end
-
 }
+
+class ClasssuperClasses {
+	reference src : TypeDefinition
+	reference tar : TypeDefinition
+	operation initialise(src : TypeDefinition, tar : TypeDefinition) : ClasssuperClasses is do
+		result := self
+		self.src := src
+		self.tar := tar
+	end
+}
+

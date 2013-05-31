@@ -128,38 +128,43 @@ public class MetamodelView extends ModelView {
 	}
 
 
-
-
-	public IRelationView addRelation(final ClassView srcClass, final ClassView tarClass, final boolean isComposition, final boolean isCompoAtSrc,
-						final String srcRole, final String targetRole, final String srcCard, final String targetCard) {
+	public IRelationView getOppositeRelation(final ClassView srcClass, final ClassView tarClass,
+						final String srcRole, final String targetRole, final String srcCard) {
+		IRelationView oppositeRel = null;
+		
 		if(targetRole!=null) {
 			//checking if the target relation has been already added by its opposite.
-			boolean again 	= true;
 			int i 			= 0;
 			final int size 	= relations.size();
 			IRelationView link;
+			
 			RoleView role;
 
-			while(again && i<size) {
+			while(oppositeRel==null && i<size) {
 				link = relations.get(i);
 
 				if(link.getEntitySrc()==tarClass && link.getEntityTar()==srcClass && link instanceof RelationClassView) {
 					role = ((RelationClassView)link).getRoleTar();
 
 					if(role!=null && role.name.text.equals(srcRole) && role.cardText.text.equals(srcCard))
-						again = false;
+						oppositeRel = link;
 				}
 				i++;
 			}
-
-			if(!again)
-				return null;
 		}
+		
+		return oppositeRel;
+	}
+
+
+	public IRelationView addRelation(final ClassView srcClass, final ClassView tarClass, final boolean isComposition, final boolean isCompoAtSrc,
+						final String srcRole, final String targetRole, final String srcCard, final String targetCard) {
+		if(getOppositeRelation(srcClass, tarClass, srcRole, targetRole, srcCard)!=null)
+			return null;
 
 		final IRelationView view = new RelationClassView(srcClass, tarClass, isComposition, isCompoAtSrc, srcRole, targetRole,
 														 Cardinality.getCardinality(srcCard), Cardinality.getCardinality(targetCard));
 		addRelation(view);
-
 		return view;
 	}
 

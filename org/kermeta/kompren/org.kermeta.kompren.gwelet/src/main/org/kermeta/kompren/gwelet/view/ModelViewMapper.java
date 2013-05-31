@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 import org.kermeta.kompren.gwelet.model.Model;
 import org.kermeta.kompren.gwelet.model.ModelUtils;
 import org.kermeta.language.ecore2km.Ecore2KMImpl;
@@ -38,6 +39,8 @@ public final class ModelViewMapper {
 	protected Map<ClassView, ClassDefinition> classMappingsInverted;
 
 	protected Map<String, InheritanceView> addedInheritances;
+	
+	protected Map<String, RelationClassView> addedReferences;
 
 
 	public static ModelViewMapper getMapper() {
@@ -61,6 +64,7 @@ public final class ModelViewMapper {
 		classMappings = new IdentityHashMap<>();
 		classMappingsInverted = new IdentityHashMap<>();
 		addedInheritances = new HashMap<>();
+		addedReferences = new HashMap<>();
 	}
 
 
@@ -69,6 +73,7 @@ public final class ModelViewMapper {
 		classMappings.clear();
 		classMappingsInverted.clear();
 		addedInheritances.clear();
+		addedReferences.clear();
 	}
 
 
@@ -85,6 +90,16 @@ public final class ModelViewMapper {
 			list.addAll(l);
 
 		return list;
+	}
+	
+	
+	public RelationClassView getRelationClassView(final Property prop) {
+		return addedReferences.get(prop.toString());
+	}
+	
+	
+	public InheritanceView getInheritanceView(ClassDefinition td1, ClassDefinition td2) {
+		return addedInheritances.get(ModelUtils.INSTANCE.getQualifiedName(td1)+","+ModelUtils.INSTANCE.getQualifiedName(td2));
 	}
 
 
@@ -188,7 +203,7 @@ public final class ModelViewMapper {
 				String qname = ModelUtils.INSTANCE.getQualifiedName(cd);//FIXME only for eval
 				if(!qname.startsWith("org.kermeta") && !qname.startsWith("kermeta") && !qname.startsWith("org.Dummy")) {//FIXME only for eval
 					createInheritanceView(cd, ModelUtils.INSTANCE.getQualifiedName(cd), view);
-					createAssociations(cd, view);
+					createReferences(cd, view);
 				}
 			}
 	}
@@ -263,7 +278,7 @@ public final class ModelViewMapper {
 
 
 
-	private void createAssociations(final ClassDefinition cd, final MetamodelView mv) {
+	private void createReferences(final ClassDefinition cd, final MetamodelView mv) {
 		Type type;
 		boolean oppositeCompo;
 		String oppositeCardString;
@@ -288,8 +303,11 @@ public final class ModelViewMapper {
 			if(type instanceof org.kermeta.language.structure.Class &&
 					!ModelUtils.INSTANCE.isKermetaPrimitiveType(((org.kermeta.language.structure.Class)type).getName())) {
 				cv2 = classMappings.get(((org.kermeta.language.structure.Class)type).getTypeDefinition());
-				mv.addRelation(cv, cv2, prop.getIsComposite() || oppositeCompo, oppositeCompo,
+				IRelationView relV = mv.addRelation(cv, cv2, prop.getIsComposite() || oppositeCompo, oppositeCompo,
 						prop.getName(), oppositeName, ModelUtils.INSTANCE.getCardinalityString(prop), oppositeCardString);
+				if(relV==null)
+					relV = mv.getOppositeRelation(cv, cv2, prop.getName(), oppositeName, ModelUtils.INSTANCE.getCardinalityString(prop));
+				addedReferences.put(prop.toString(), (RelationClassView) relV);
 			}
 		}
 	}

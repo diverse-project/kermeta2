@@ -110,9 +110,10 @@ public class ClassView extends RectangleEntityView {
 			if(!atEnd)
 				relations.add((RelationClassView)relation);
 		}else
-			if(relation instanceof InheritanceView) {
+			if(relation instanceof InheritanceView && !atEnd) {
 				InheritanceView inh = (InheritanceView)relation;
-				inh.getEntityTar().subClasses.add(this);
+				if(!inh.getEntityTar().subClasses.contains(this))
+					inh.getEntityTar().subClasses.add(this);
 			}
 	}
 

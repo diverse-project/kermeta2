@@ -2,6 +2,7 @@ package org.kermeta.kompren.gwelet.actions;
 
 import org.kermeta.kompren.diagram.view.interfaces.IComponentView;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
+import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 
 public class ReinitView extends VisualisationAction {
 	public ReinitView() {
@@ -17,6 +18,8 @@ public class ReinitView extends VisualisationAction {
 	protected void doVisualisation() {
 		for(IEntityView ent : canvas.getEntities())
 			ent.setVisibility(IComponentView.Visibility.STANDARD);
+		for(IRelationView rel : canvas.getRelations())
+			rel.setVisibility(IComponentView.Visibility.STANDARD);
 		canvas.updateLayout();
 		canvas.update();
 		done();

@@ -8,10 +8,12 @@ import javax.swing.SwingUtilities;
 import org.kermeta.kompren.diagram.action.ModelViewAction;
 import org.kermeta.kompren.diagram.view.interfaces.IComponentView;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
+import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
 import org.malai.undo.Undoable;
 
 public abstract class VisualisationAction extends ModelViewAction implements Undoable {
-	protected List<IComponentView.Visibility> viewStates;
+	protected List<IComponentView.Visibility> viewClassesStates;
+	protected List<IComponentView.Visibility> viewRelationStates;
 
 	protected int xScrollbarPos;
 
@@ -25,10 +27,13 @@ public abstract class VisualisationAction extends ModelViewAction implements Und
 
 	@Override
 	protected void doActionBody() {
-		viewStates = new ArrayList<>();
+		viewClassesStates = new ArrayList<>();
+		viewRelationStates = new ArrayList<>();
 
 		for(IEntityView ent : canvas.getEntities())
-			viewStates.add(ent.getVisibility());
+			viewClassesStates.add(ent.getVisibility());
+		for(IRelationView rel : canvas.getRelations())
+			viewRelationStates.add(rel.getVisibility());
 
 		xScrollbarPos = canvas.getScrollpane().getHorizontalScrollBar().getValue();
 		yScrollbarPos = canvas.getScrollpane().getVerticalScrollBar().getValue();
@@ -51,7 +56,12 @@ public abstract class VisualisationAction extends ModelViewAction implements Und
 	public void undo() {
 		int i=0;
 		for(IEntityView ent : canvas.getEntities()) {
-			ent.setVisibility(viewStates.get(i));
+			ent.setVisibility(viewClassesStates.get(i));
+			i++;
+		}
+		i=0;
+		for(IRelationView rel : canvas.getRelations()) {
+			rel.setVisibility(viewRelationStates.get(i));
 			i++;
 		}
 		canvas.updateLayout();

@@ -25,6 +25,7 @@ public class GweletUIBuilder extends UIComposer<GweletFrame> {
 	@Override
 	public void compose(final MProgressBar progressBar) {
 		MetamodelView mmv = widget.getCanvas();
+		widget.toolbar.setFloatable(false);
 		QuestionsPanel qpanel = null;
 		if(Gwelet.EVAL) {
 			qpanel = new QuestionsPanel(widget, widget.toolbar);

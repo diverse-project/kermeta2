@@ -196,8 +196,9 @@ public class FooHand implements MouseListener, MouseMotionListener {
 				mustRefresh = true;
 			}else relation = null;
 		}
-
-		if(relation!=null && !(relation.getPickableAt(e.getX(), e.getY()) instanceof RoleView)) {
+		
+		Pickable pickable = relation==null?null:relation.getPickableAt(e.getX(), e.getY());
+		if(relation!=null && !(pickable instanceof RoleView) && !(pickable instanceof IHandler)) {
 			ClassView c1 = null;
 			ClassView c2 = null;
 			RoleView role1 = null;

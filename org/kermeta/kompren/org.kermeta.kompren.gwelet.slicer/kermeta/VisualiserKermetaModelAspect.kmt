@@ -114,7 +114,13 @@ aspect class TypeDefinition inherits SlicerVisitor {
 		if(not self.visitedForRelations and (theVisualiserKermetaModel.radius<=0 or currentRadius<=theVisualiserKermetaModel.radius)) then
 			super(theVisualiserKermetaModel, currentRadius)
 			self.visitedForRelations := true
-			if(theVisualiserKermetaModel.considersuperType) then self.superType.each{theType | theType.visitToAddRelations(theVisualiserKermetaModel, currentRadius+1)} end
+			if(theVisualiserKermetaModel.considersuperType) then 
+				self.superType.each{theType | 
+					theType.visitToAddRelations(theVisualiserKermetaModel, currentRadius+1)
+					theVisualiserKermetaModel.addedsuperClasses.add(ClasssuperClasses.new.initialise(self, 
+						theType.asType(Class).typeDefinition)) 
+				} 
+			end
 		end
 	end
 }
@@ -146,6 +152,22 @@ aspect class ParameterizedType {
 	end
 }
 
+
+aspect class Property {
+	method visitToAddClasses(theVisualiserKermetaModel : VisualiserKermetaModel, currentRadius : Integer) is do
+		checkInitialisation(theVisualiserKermetaModel.idPass)
+		if(not self.visitedPass) then
+			super(theVisualiserKermetaModel, currentRadius)
+			if(not self.sliced) then
+				theVisualiserKermetaModel.addedProperties.add(self)
+				self.sliced := true
+			end
+			self.visitedPass := true
+		end
+	end
+}
+
+
 aspect class ClassDefinition {
 	method visitToAddClasses(theVisualiserKermetaModel : VisualiserKermetaModel, currentRadius : Integer) is do
 		checkInitialisation(theVisualiserKermetaModel.idPass)
@@ -154,7 +176,14 @@ aspect class ClassDefinition {
 			if(not self.sliced and (theVisualiserKermetaModel.radius<=0 or currentRadius<=theVisualiserKermetaModel.radius)) then
 				theVisualiserKermetaModel.addedClassDefinitions.add(self)
 				self.sliced := true
-				if(theVisualiserKermetaModel.considerownedAttribute) then self.ownedAttribute.each{theProperty | theProperty.visitToAddClasses(theVisualiserKermetaModel, currentRadius+1)} end
+				if(theVisualiserKermetaModel.considerownedAttribute) then 
+					self.ownedAttribute.each{theProperty | 
+						if((not theVisualiserKermetaModel.compositionOnly or theProperty.isComposite) and
+							(not theVisualiserKermetaModel.card1Only or theProperty.lower>0)) then
+							theProperty.visitToAddClasses(theVisualiserKermetaModel, currentRadius+1)
+						end
+					} 
+				end
 			end
 			self.visitedPass := true
 		end
@@ -163,7 +192,15 @@ aspect class ClassDefinition {
 		if(not self.visitedForRelations and (theVisualiserKermetaModel.radius<=0 or currentRadius<=theVisualiserKermetaModel.radius)) then
 			super(theVisualiserKermetaModel, currentRadius)
 			self.visitedForRelations := true
-			if(theVisualiserKermetaModel.considerownedAttribute) then self.ownedAttribute.each{theProperty | theProperty.visitToAddRelations(theVisualiserKermetaModel, currentRadius+1)} end
+			if(theVisualiserKermetaModel.considerownedAttribute) then 
+				self.ownedAttribute.each{theProperty |
+					if((not theVisualiserKermetaModel.compositionOnly or theProperty.isComposite) and
+						(not theVisualiserKermetaModel.card1Only or theProperty.lower>0)) then
+						theProperty.visitToAddRelations(theVisualiserKermetaModel, currentRadius+1)
+					end
+				} 
+			end
+			
 		end
 	end
 	method checkCanReallyBeAdded() : Boolean is do
