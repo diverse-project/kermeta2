@@ -9,9 +9,10 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.plaf.ToolTipUI;
 
+import org.kermeta.kompren.gwelet.actions.MoveCameraUndoable;
 import org.kermeta.kompren.gwelet.instruments.Completioner;
 import org.kermeta.kompren.gwelet.view.MetamodelView;
-import org.malai.swing.action.library.MoveCamera;
+import org.malai.undo.UndoCollector;
 
 public class ClickableToolTip extends JToolTip {
 	private static final long serialVersionUID = 1L;
@@ -34,12 +35,12 @@ public class ClickableToolTip extends JToolTip {
 			@Override
 			public void hyperlinkUpdate(HyperlinkEvent e) {
 				if(e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-					MoveCamera action = new MoveCamera();
+					MoveCameraUndoable action = new MoveCameraUndoable();
 					Completioner.Interaction2MoveCamera.setAction(e.getDescription(), ClickableToolTip.this.mmView, action);
 					
 					if(action.canDo())
 						action.doIt();
-					action.flush();
+					UndoCollector.INSTANCE.add(action, null);
 				}
 			}
 		});
