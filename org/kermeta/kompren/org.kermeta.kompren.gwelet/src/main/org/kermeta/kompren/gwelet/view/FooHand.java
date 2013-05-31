@@ -137,6 +137,10 @@ public class FooHand implements MouseListener, MouseMotionListener {
 		final double gapX = e.getX()/zoom - startX;
 		final double gapY = e.getY()/zoom - startY;
 
+		if(draggedRole!=null) {
+			draggedRole.translate(gapX, gapY);
+			diagram.refresh();
+		}else
 		if(draggedHandler!=null) {
 			draggedHandler.translate(gapX, gapY);
 
@@ -193,7 +197,7 @@ public class FooHand implements MouseListener, MouseMotionListener {
 			}else relation = null;
 		}
 
-		if(relation!=null) {
+		if(relation!=null && !(relation.getPickableAt(e.getX(), e.getY()) instanceof RoleView)) {
 			ClassView c1 = null;
 			ClassView c2 = null;
 			RoleView role1 = null;
