@@ -53,25 +53,25 @@ public class QuestionsPanel extends JPanel {
 			@Override public String getInitialClassToFocusOn() { return "ram.Operation"; }
 		},
 		T1B_UML{
-			@Override public String getTitle() { return "<html><font size=\"6\">If you have to create an instance of the class <b>ConditionalNode</b>, what would be the mandatory concrete classes in relation with <b>ConditionalNode</b> that require to be also instantiated?</font></html>"; }
-			@Override public String getHelper() { return "<html><font size=\"5\">Mandatory classes are: classes directly or indirectly in relation with <b>ConditionalNode</b> with a min cardinality greater than 0; concrete sub-classes of mandatory abstract classes</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">If you have to create an instance of the class <b>ConditionalNode</b>, what would be the mandatory concrete classes in relation with <b>ConditionalNode</b> that must be also instantiated?</font></html>"; }
+			@Override public String getHelper() { return "<html><font size=\"5\">The concept of mandatory classes has been explained during the tutorial and are summarised in the drawings sketched on the whiteboard.</font></html>"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 			@Override public String getInitialClassToFocusOn() { return "uml.ConditionalNode"; }
 		},
 		T1B_RAM{
-			@Override public String getTitle() { return "<html><font size=\"6\">If you have to create an instance of the class <b>Message</b>, what would be the mandatory concrete classes in relation with <b>Message</b> that require to be also instantiated?</font></html>"; }
-			@Override public String getHelper() { return "<html><font size=\"5\">Mandatory classes are: classes directly or indirectly in relation with <b>Message</b> with a min cardinality greater than 0; concrete sub-classes of mandatory abstract classes</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">If you have to create an instance of the class <b>Message</b>, what would be the mandatory concrete classes in relation with <b>Message</b> that must be also instantiated?</font></html>"; }
+			@Override public String getHelper() { return "<html><font size=\"5\">The concept of mandatory classes has been explained during the tutorial and are summarised in the drawings sketched on the whiteboard.</font></html>"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
 			@Override public String getInitialClassToFocusOn() { return "ram.Message"; }
 		},
 		T2A_UML{
-			@Override public String getTitle() { return "<html><font size=\"6\">List the name of the abstract<br> classes in the class hierarchy of <b>FlowFinalNode</b> that are not<br> doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">List the name of the abstract<br> classes in the super class hierarchy of <b>FlowFinalNode</b> that are not<br> doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
 			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 			@Override public String getInitialClassToFocusOn() { return "uml.FlowFinalNode"; }
 		},
 		T2A_RAM{
-			@Override public String getTitle() { return "<html><font size=\"6\">List the name of the abstract classes in the class hierarchy of <b>Class</b> that are not doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">List the name of the abstract classes in the super class hierarchy of <b>Class</b> that are not doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
 			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 			@Override public String getInitialClassToFocusOn() { return "uml.Class"; }
@@ -101,13 +101,13 @@ public class QuestionsPanel extends JPanel {
 			@Override public String getInitialClassToFocusOn() { return "ram.Aspect"; }
 		},
 		T3B_UML{
-			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of at least one class that has a high number of incoming <i>and</i> outgoing references</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of at least one class that has a high number of incoming and a high number of outgoing references compared to the other classes</font></html>"; }
 			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 			@Override public String getInitialClassToFocusOn() { return "uml.Class"; }
 		},
 		T3B_RAM{
-			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of at least one class that has a high number of incoming <i>and</i> outgoing references</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of at least one class that has a high number of incoming and a high number of outgoing references compared to the other classes</font></html>"; }
 			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
 			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }

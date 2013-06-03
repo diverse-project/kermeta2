@@ -49,25 +49,25 @@ public class QuestionsPanel extends Composite {
 			@Override public String getInitialClassToFocusOn() { return "ram.Operation"; }
 		},
 		T1B_UML{
-			@Override public String getTitle() { return "<html><font size=\"5\">If you have to create an instance of the class <b>ConditionalNode</b>, what would be the mandatory concrete classes in relation with <b>ConditionalNode</b> that require to be also instantiated?</font></html>"; }
-			@Override public String getHelper() { return "<html><font size=\"4\">Mandatory classes are: classes directly or indirectly in relation with <b>ConditionalNode</b> with a min cardinality greater than 0; concrete sub-classes of mandatory abstract classes</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"5\">If you have to create an instance of the class <b>ConditionalNode</b>, what would be the mandatory concrete classes in relation with <b>ConditionalNode</b> that must be also instantiated?</font></html>"; }
+			@Override public String getHelper() { return "<html><font size=\"4\">The concept of mandatory classes has been explained during the tutorial and are summarised in the drawings sketched on the whiteboard.</font></html>"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 			@Override public String getInitialClassToFocusOn() { return "uml.ConditionalNode"; }
 		},
 		T1B_RAM{
-			@Override public String getTitle() { return "<html><font size=\"5\">If you have to create an instance of the class <b>Message</b>, what would be the mandatory concrete classes in relation with <b>Message</b> that require to be also instantiated?</font></html>"; }
-			@Override public String getHelper() { return "<html><font size=\"4\">Mandatory classes are: classes directly or indirectly in relation with <b>Message</b> with a min cardinality greater than 0; concrete sub-classes of mandatory abstract classes</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"5\">If you have to create an instance of the class <b>Message</b>, what would be the mandatory concrete classes in relation with <b>Message</b> that must be also instantiated?</font></html>"; }
+			@Override public String getHelper() { return "<html><font size=\"4\">The concept of mandatory classes has been explained during the tutorial and are summarised in the drawings sketched on the whiteboard.</font></html>"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
 			@Override public String getInitialClassToFocusOn() { return "ram.Message"; }
 		},
 		T2A_UML{
-			@Override public String getTitle() { return "<html><font size=\"5\">List the name of the abstract classes in the class hierarchy of <b>FlowFinalNode</b> that are not doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"5\">List the name of the abstract classes in the super class hierarchy of <b>FlowFinalNode</b> that are not doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
 			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 			@Override public String getInitialClassToFocusOn() { return "uml.FlowFinalNode"; }
 		},
 		T2A_RAM{
-			@Override public String getTitle() { return "<html><font size=\"5\">List the name of the abstract classes in the class hierarchy of <b>Class</b> that are not doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"5\">List the name of the abstract classes in the super class hierarchy of <b>Class</b> that are not doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
 			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 			@Override public String getInitialClassToFocusOn() { return "uml.Class"; }
@@ -97,13 +97,13 @@ public class QuestionsPanel extends Composite {
 			@Override public String getInitialClassToFocusOn() { return "ram.Aspect"; }
 		},
 		T3B_UML{
-			@Override public String getTitle() { return "<html><font size=\"5\">Give the name of at least one class that has a high number of incoming <i>and</i> outgoing references</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"5\">Give the name of at least one class that has a high number of incoming and a high number of outgoing references compared to the other classes</font></html>"; }
 			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
 			@Override public String getInitialClassToFocusOn() { return "uml.Class"; }
 		},
 		T3B_RAM{
-			@Override public String getTitle() { return "<html><font size=\"5\">Give the name of at least one class that has a high number of incoming <i>and</i> outgoing references</font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"5\">Give the name of at least one class that has a high number of incoming and a high number of outgoing references compared to the other classes</html>"; }
 			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
 			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }
@@ -510,7 +510,7 @@ public class QuestionsPanel extends Composite {
 		((GridData)resultField.getLayoutData()).exclude = false;
 		resultLabel.setVisible(true);
 		((GridData)resultLabel.getLayoutData()).exclude = false;
-		resultLabel.setText("<html><center>Return the results by mail to:<br><b>arnaud.blouin@inria.fr</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
+		resultLabel.setText("<html><center><b>Thank you!</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
 		resultField.setText(TYPE_EVAL + "\n" + userInformations + "\n");
 		frame.pack();
 
