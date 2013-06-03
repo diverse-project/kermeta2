@@ -3,12 +3,16 @@ package org.kermeta.kompren.gwelet.eval;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.gef.ui.rulers.RulerComposite;
 import org.eclipse.swt.SWT;
@@ -426,15 +430,37 @@ public class QuestionsPanel extends Composite {
 
 
 	public void setNextQuestion() {
-//		ReinitView action = new ReinitView();
-//		action.setModelView(frame.getCanvas());
-//		if(action.canDo())
-//			action.doIt();
-
+		execute(new String[] {"git", "reset", "--hard"}, new File("/home/ablouin/wpXP/testProject"));
+		try {
+			ResourcesPlugin.getWorkspace().getRoot().getProjects()[0].refreshLocal(IResource.DEPTH_INFINITE, null);
+		} catch (CoreException e) { e.printStackTrace(); }
 		currentNbQuestions++;
 		if(currentNbQuestions<questions.size())
 			setQuestionMode(questions.get(currentNbQuestions));
 	}
+	
+	
+	private static String execute(final String[] cmd, final File tmpdir) {
+		if(cmd==null || cmd.length==0)
+			return null;
+
+		try {
+			Process process 	 = Runtime.getRuntime().exec(cmd, null, tmpdir);  // Command launched
+			StreamExecReader err = new StreamExecReader(process.getErrorStream());// Catch the error log
+			StreamExecReader inp = new StreamExecReader(process.getInputStream());// Catch the log
+
+			err.start();
+			inp.start();
+
+			process.waitFor();// Waiting for the end of the process.
+
+			return err.getLog() + System.getProperty("line.separator") + inp.getLog();
+		} catch(Exception e) {
+			e.printStackTrace();
+			return ""; //$NON-NLS-1$
+		}
+	}
+	
 
 	public void setQuestionMode(final Question question) {
 		sniffer.setQuestion(null);
