@@ -1,0 +1,12 @@
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
+
+importProject library_standard
+
+project org_kermeta_language_sample_fsm_minimization {
+
+	mainClass "org_kermeta_language_sample_fsm_minimization^fsm::Minimization"
+	mainOperation "main"
+
+	import "${project.baseUri}/src/main/kmt/minimization.kmt"
+	
+}
