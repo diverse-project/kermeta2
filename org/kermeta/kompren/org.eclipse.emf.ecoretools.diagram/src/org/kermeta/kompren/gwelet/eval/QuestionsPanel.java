@@ -36,30 +36,107 @@ public class QuestionsPanel extends Composite {
 	}
 	
 	public enum QuestionList {
-		Q1 {
-			@Override public String getTitle() { return "<html><font size=\"6\">What are the super classes of the class <b>Type</b>?</font></html>"; }
-			@Override public String getHelper() { return "Give the name of the classes:"; }
+		T1A_UML{
+			@Override public String getTitle() { return "<html><font size=\"5\">If you have to create an instance of the class <b>Operation</b> corresponding to the operation <b>Double add(Double value)</b>, what would be the other concrete classes of the metamodel to instantiate?</font></html>"; }
+			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Operation"; }
 		},
-		Q2 {
-			@Override public String getTitle() { return "<html><font size=\"6\">What is the role </font><font size=\"3\">(i.e. the name)</font><font size=\"6\"> of the relation that links the class <b>State</b> to the class <b>Comment</b>?</font></html>"; }
-			@Override public String getHelper() { return "Give the name of the role:"; }
-			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+		T1A_RAM{
+			@Override public String getTitle() { return "<html><font size=\"5\">If you have to create an instance of the class <b>Operation</b> corresponding to the operation <b>Double add(Double value)</b>, what would be the other concrete classes of the metamodel to instantiate?</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Operation"; }
 		},
-		Q3 {
-			@Override public String getTitle() { return "<html><font size=\"6\">What are the classes <b>directly</b> linked </font><font size=\"3\">(by inheritance, composition, and association)</font><font size=\"6\"> to the class <b>Class?</b></font></html>"; }
-			@Override public String getHelper() { return "Give the name of the classes:"; }
+		T1B_UML{
+			@Override public String getTitle() { return "<html><font size=\"5\">If you have to create an instance of the class <b>ConditionalNode</b>, what would be the mandatory concrete classes in relation with <b>ConditionalNode</b> that require to be also instantiated?</font></html>"; }
+			@Override public String getHelper() { return "<html><font size=\"4\">Mandatory classes are: classes directly or indirectly in relation with <b>ConditionalNode</b> with a min cardinality greater than 0; concrete sub-classes of mandatory abstract classes</font></html>"; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.ConditionalNode"; }
 		},
-		Q4 {
-			@Override public String getTitle() { return "<html><font size=\"6\">What are the name of the, native and inherited, relations and attributes of the class <b>Abstraction</b>?</font></html>"; }
-			@Override public String getHelper() { return "Enumerate the names:"; }
+		T1B_RAM{
+			@Override public String getTitle() { return "<html><font size=\"5\">If you have to create an instance of the class <b>Message</b>, what would be the mandatory concrete classes in relation with <b>Message</b> that require to be also instantiated?</font></html>"; }
+			@Override public String getHelper() { return "<html><font size=\"4\">Mandatory classes are: classes directly or indirectly in relation with <b>Message</b> with a min cardinality greater than 0; concrete sub-classes of mandatory abstract classes</font></html>"; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Message"; }
+		},
+		T2A_UML{
+			@Override public String getTitle() { return "<html><font size=\"5\">List the name of the abstract classes in the class hierarchy of <b>FlowFinalNode</b> that are not doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
+			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.FlowFinalNode"; }
+		},
+		T2A_RAM{
+			@Override public String getTitle() { return "<html><font size=\"5\">List the name of the abstract classes in the class hierarchy of <b>Class</b> that are not doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Class"; }
+		},
+		T2B_UML{
+			@Override public String getTitle() { return "<html><font size=\"5\">Give the name of the redundant attribute (direct or inherited) of the class <b>Device</b> (i.e. same name and type)</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Device"; }
+		},
+		T2B_RAM{
+			@Override public String getTitle() { return "<html><font size=\"5\">Give the name of the redundant attribute (direct or inherited) of the class <b>Reference</b> (i.e. same name and type)</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Reference"; }
+		},
+		T3A_UML{
+			@Override public String getTitle() { return "<html><font size=\"5\">The classes <b>Actor</b> and <b>Trigger</b> are coupled only by one unique reference via another class. Give the name of this reference that would make these classes independent if removed</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Actor"; }
+		},
+		T3A_RAM{
+			@Override public String getTitle() { return "<html><font size=\"5\">The classes <b>Aspect</b> and <b>Type</b> are coupled only by one unique reference via another class. Give the name of this reference that would make these classes independent if removed</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Aspect"; }
+		},
+		T3B_UML{
+			@Override public String getTitle() { return "<html><font size=\"5\">Give the name of at least one class that has a high number of incoming <i>and</i> outgoing references</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Class"; }
+		},
+		T3B_RAM{
+			@Override public String getTitle() { return "<html><font size=\"5\">Give the name of at least one class that has a high number of incoming <i>and</i> outgoing references</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }
+		},
+		T4A_UML{
+			@Override public String getTitle() { return "<html><font size=\"5\">Give the name of at least one intermediate class between the class <b>State</b> to the class <b>Transition</b></font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.State"; }
+		},
+		T4A_RAM{
+			@Override public String getTitle() { return "<html><font size=\"5\">Give the name of at least one intermediate class between the class <b>Aspect</b> to the class <b>AspectMessageView</b></font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Aspect"; }
+		},
+		T4B_UML{
+			@Override public String getTitle() { return "<html><font size=\"5\">Enumerate the name of all the attributes (direct or inherited) of the class <b>Feature</b></font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Feature"; }
+		},
+		T4B_RAM{
+			@Override public String getTitle() { return "<html><font size=\"5\">Enumerate the name of all the attributes (direct or inherited) of the class <b>RInt</b></font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.RInt"; }
 		};
 		
 		public abstract String getTitle();
 		public abstract Metamodel getMetamodel();
 		public abstract String getHelper();
+		public abstract String getInitialClassToFocusOn();
 		public static QuestionList getQuestion(String q) {
 			QuestionList[] val = values();
 			for(int i=0; i<val.length; i++)
@@ -71,7 +148,7 @@ public class QuestionsPanel extends Composite {
 	
 	public enum Metamodel {
 		UML,
-		KERMETA
+		RAM
 	}
 
 	protected Browser questionArea;
@@ -84,7 +161,7 @@ public class QuestionsPanel extends Composite {
 
 	protected CLabel answerLabel;
 
-	protected CLabel helperLabel;
+	protected Browser helperLabel;
 
 	protected Button startButton;
 
@@ -119,6 +196,7 @@ public class QuestionsPanel extends Composite {
 	protected Combo xpMdeCB;
 
 	protected Combo xpUmlCB;
+	protected Combo xpRAMCB;
 
 	protected Button validateB;
 	
@@ -154,6 +232,14 @@ public class QuestionsPanel extends Composite {
 		data.widthHint = 380;
 		questionArea.setLayoutData(data);
 		
+		helperLabel = new Browser(this, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
+		gridData = new GridData();
+		gridData.exclude = false;
+		gridData.heightHint = 130;
+		gridData.widthHint = 380;
+		gridData.horizontalAlignment = GridData.FILL;
+		helperLabel.setLayoutData(gridData);
+		
 		resultLabel = new Browser(this, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
 		data = new GridData();
 		data.exclude = false;
@@ -187,12 +273,6 @@ public class QuestionsPanel extends Composite {
 		gridData.horizontalAlignment = GridData.CENTER;
 		answerLabel.setLayoutData(gridData);
 
-		helperLabel = new CLabel(this, SWT.NONE);
-		gridData = new GridData();
-		gridData.exclude = false;
-		gridData.horizontalAlignment = GridData.FILL;
-		helperLabel.setLayoutData(gridData);
-		
 		answerArea = new Text(this, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
 		answerArea.setBackground(frame.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		data = new GridData();
@@ -290,6 +370,12 @@ public class QuestionsPanel extends Composite {
 	
 		xpUmlCB = new Combo(formular, SWT.READ_ONLY);
 		xpUmlCB.setItems(new String[]{"Expert", "Proficient", "Competent", "Advanced beginner", "Novice"});
+		
+		label = new CLabel(formular, SWT.NONE);
+		label.setText("RAM background:");
+		
+		xpRAMCB = new Combo(formular, SWT.READ_ONLY);
+		xpRAMCB.setItems(new String[]{"Expert", "Proficient", "Competent", "Advanced beginner", "Novice"});
 	
 		validateB = new Button(formular, SWT.NONE);
 		validateB.setText("Validate");
@@ -306,43 +392,17 @@ public class QuestionsPanel extends Composite {
 			QuestionsPanel.this.formular.setVisible(false);
 			((GridData)formular.getLayoutData()).exclude = true;
 			
-			QuestionsPanel.this.setTerminated2();
 			QuestionsPanel.this.pack();
 			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-//			Formular.this.frame.setLocation((dim.width-Formular.this.frame.getWidth())/2,
-//											(dim.height-Formular.this.frame.getHeight())/2);
 			QuestionsPanel.this.setUserInformations(ageS.getText() + "\t" + statusCB.getText() +
-					"\t" + xpMdeCB.getText() + "\t" + xpUmlCB.getText() +
+					"\t" + xpMdeCB.getText() + "\t" + xpUmlCB.getText() + "\t" + xpRAMCB.getText() +
 					"\t" + mouse.getText() + "\t" + screen.getText() +
 					"\t" + dim.width + "\t" + dim.height);
+			QuestionsPanel.this.setTerminated2();
 		}
 
 	}
 	
-	
-//	private void setToolbarVisibility(final boolean visible) {
-////		IWorkbenchWindow workbenchWindow =  PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-////	    IContributionItem[] items = ((WorkbenchWindow)workbenchWindow).getMenuBarManager().getItems();
-////	    for (IContributionItem item : items)
-////	        item.setVisible(visible);
-////	    ((WorkbenchWindow)workbenchWindow).getMenuBarManager().setVisible(visible);
-////	    ((WorkbenchWindow)workbenchWindow).getMenuBarManager().update();
-////	    System.out.println(visible + " coucou\n---------");
-////	    items = ((WorkbenchWindow)workbenchWindow).getCoolBarManager2().getItems();
-////	    for (IContributionItem item : items)
-////	        item.setVisible(visible);
-////	    ((WorkbenchWindow)workbenchWindow).getCoolBarManager2().update(true);
-////	    ((WorkbenchWindow)workbenchWindow).getCoolBarManager().setVisible(visible);
-//	    
-//	    try {
-//	        IHandlerService service = (IHandlerService) PlatformUI
-//	                .getWorkbench().getActiveWorkbenchWindow().getService(IHandlerService.class);
-//	        if(service != null)
-//	            service.executeCommand("org.eclipse.ui.ToggleCoolbarAction", null);
-//	    } catch (Exception e) {
-//	        //handle error
-//	    }
-//	}
 	
 	
 	public void initQuestions() {
@@ -382,15 +442,14 @@ public class QuestionsPanel extends Composite {
 		questionLabel.setText("Question " + (currentNbQuestions+1) + "/" + questions.size());
 		startButton.setVisible(true);
 		((GridData)startButton.getLayoutData()).exclude = false;
+		helperLabel.setVisible(question.question.getHelper()!=null && question.question.getHelper().length()>0);
+		((GridData)helperLabel.getLayoutData()).exclude = !helperLabel.isVisible();
 		answerArea.setVisible(false);
 		((GridData)answerArea.getLayoutData()).exclude = true;
 		answerLabel.setVisible(false);
 		((GridData)answerLabel.getLayoutData()).exclude = true;
 		answerButton.setVisible(false);
 		((GridData)answerButton.getLayoutData()).exclude = true;
-//		setToolbarVisibility(false);
-		helperLabel.setVisible(false);
-		((GridData)helperLabel.getLayoutData()).exclude = true;
 		helperLabel.setText(question.question.getHelper());
 		editor.setVisible(false);
 		editor.setEnabled(false);
@@ -409,9 +468,6 @@ public class QuestionsPanel extends Composite {
 		((GridData)answerLabel.getLayoutData()).exclude = false;
 		answerButton.setVisible(true);
 		((GridData)answerButton.getLayoutData()).exclude = false;
-//		setToolbarVisibility(true);
-		helperLabel.setVisible(true);
-		((GridData)helperLabel.getLayoutData()).exclude = false;
 		editor.setVisible(true);
 		editor.setEnabled(true);
 		layout(true);
@@ -439,7 +495,6 @@ public class QuestionsPanel extends Composite {
 		((GridData)answerLabel.getLayoutData()).exclude = true;
 		answerButton.setVisible(false);
 		((GridData)answerButton.getLayoutData()).exclude = true;
-//		toolbar.setVisible(false);
 		questionArea.setVisible(false);
 		((GridData)questionArea.getLayoutData()).exclude = true;
 		questionLabel.setVisible(false);

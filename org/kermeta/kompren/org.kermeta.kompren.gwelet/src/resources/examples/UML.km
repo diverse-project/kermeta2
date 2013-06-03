@@ -1882,6 +1882,9 @@
       <ownedAttribute name="ownedConnector" type="#//uml/StructuredClassifier/ownedConnector/@containedType.0" upper="-1" isComposite="true">
         <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="#//uml/Connector"/>
       </ownedAttribute>
+      <ownedAttribute name="qualifiedName" type="#//uml/StructuredClassifier/qualifiedName/@containedType.0" isReadOnly="true" isComposite="true" isDerived="true">
+        <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="#//kermeta/standard/String"/>
+      </ownedAttribute>
       <ownedOperation name="createOwnedAttribute" type="#//uml/StructuredClassifier/createOwnedAttribute/@containedType.0">
         <containedType xsi:type="org_kermeta_language_structure:Class" typeDefinition="#//uml/Property"/>
         <ownedParameter name="name" type="#//uml/StructuredClassifier/createOwnedAttribute/@ownedParameter.0/@containedType.0">
