@@ -9,6 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
+import org.kermeta.utils.systemservices.api.messaging.MessagingSystem.Kind;
 import org.kermeta.utils.systemservices.api.messaging.Request;
 
 /*
@@ -38,6 +39,8 @@ public class Server4MessagingSystem implements Runnable{
     		
     		InputStream in = clientSocket.getInputStream();
         	reader = new ObjectInputStream(new BufferedInputStream(in));
+        	
+        	logger.log(Kind.DevINFO, "Messaging system server started on port "+port, "");	
         	
             while(true) {
             	msg = reader.readObject();

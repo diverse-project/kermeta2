@@ -63,6 +63,7 @@ public class KermetaRunner {
 		runK2Program(mainClass.replaceAll("::", ".")+"_"+mainOperation, params, uriMapFileLocation);
 	}
 	public void runK2Program( String runnerClass, List<String> params, String uriMapFileLocation) {	
+		int port = 12345;
 		String runProjectName = scalaAspectPrefix;
 		String runClassName = runnerClass;
 		if(runnerClass.contains("^")){
@@ -89,13 +90,13 @@ public class KermetaRunner {
 			} 
 	        ArrayList<String> processBuilderParams = 
 	        		new ArrayList<String>(Arrays.asList(getJavaVMbin(), "-cp", scalaToolJarCP,
+	        				"-Dport="+port,
 	        				"-Durimap.file.location="+(uriMapFileLocation!=null?uriMapFileLocation:""),
 	        				"scala.tools.nsc.MainGenericRunner", 
 	        				"-savecompiled",
 	        				"-classpath",f.toString() + outputBinFolder,
-	        				runProjectName + "runner."+runClassName,
-	        				"-Dport",
-	        				"4444"));
+	        				runProjectName + "runner."+runClassName
+	        				));
 	        processBuilderParams.addAll(params);
 	        ProcessBuilder builder = new ProcessBuilder(processBuilderParams);
 	        this.logger.debug("starting new process with command " +builder.command().toString(), KermetaCompiler.LOG_MESSAGE_GROUP);
@@ -117,7 +118,7 @@ public class KermetaRunner {
 				Thread err2msThread = new Thread(err2ms);
 				Thread cancelMonitorThread = new Thread(cancelMonitor);
 				
-				Thread server4ms = new Thread(new Server4MessagingSystem(4444,logger));
+				Thread server4ms = new Thread(new Server4MessagingSystem(port,logger));
 				
 				in2StreamThread.start();
 				server4ms.start();
