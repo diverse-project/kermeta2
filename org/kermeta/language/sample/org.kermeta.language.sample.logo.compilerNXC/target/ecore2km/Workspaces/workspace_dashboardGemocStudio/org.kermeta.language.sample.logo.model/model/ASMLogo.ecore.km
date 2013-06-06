@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org_kermeta_language_structure:Metamodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/structure" uri="http://www.kermeta.org/kmLogo">
+  <packages kTag="//@packages.0/@kOwnedTags.0" name="kmLogo" uri="http://www.kermeta.org/kmLogo">
+    <kOwnedTags name="ecore" value="true" object="//@packages.0"/>
+    <nestedPackage kTag="//@packages.0/@nestedPackage.0/@kOwnedTags.0" name="ASM" uri="http://www.kermeta.org/kmLogo/ASM">
+      <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0"/>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@kOwnedTags.0" name="Instruction" isAbstract="true">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@kOwnedTags.0" name="Primitive" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@containedType.0" isAbstract="true">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Instruction"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.2/@kOwnedTags.0" name="Back" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.2/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.2"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Primitive"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.2/@ownedAttribute.0/@kOwnedTags.0" name="steps" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.2/@ownedAttribute.0/@containedType.0" isOrdered="true" lower="1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.2/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.3/@kOwnedTags.0" name="Forward" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.3/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.3"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Primitive"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.3/@ownedAttribute.0/@kOwnedTags.0" name="steps" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.3/@ownedAttribute.0/@containedType.0" isOrdered="true" lower="1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.3/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.4/@kOwnedTags.0" name="Left" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.4/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.4"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Primitive"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.4/@ownedAttribute.0/@kOwnedTags.0" name="angle" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.4/@ownedAttribute.0/@containedType.0" isOrdered="true" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.4/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.5/@kOwnedTags.0" name="Right" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.5/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.5"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Primitive"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.5/@ownedAttribute.0/@kOwnedTags.0" name="angle" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.5/@ownedAttribute.0/@containedType.0" isOrdered="true" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.5/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.6/@kOwnedTags.0" name="PenDown" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.6/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.6"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Primitive"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.7/@kOwnedTags.0" name="PenUp" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.7/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.7"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Primitive"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.8/@kOwnedTags.0" name="Clear" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.8/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.8"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Primitive"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.9/@kOwnedTags.0" name="Expression" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.9/@containedType.0" isAbstract="true">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.9"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Instruction"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.10/@kOwnedTags.0" name="BinaryExp" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.10/@containedType.0" isAbstract="true">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.10"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.10/@ownedAttribute.0/@kOwnedTags.0" name="lhs" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.10/@ownedAttribute.0/@containedType.0" isOrdered="true" lower="1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.10/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        </ownedAttribute>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.10/@ownedAttribute.1/@kOwnedTags.0" name="rhs" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.10/@ownedAttribute.1/@containedType.0" isOrdered="true" lower="1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.10/@ownedAttribute.1"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.11/@kOwnedTags.0" name="Constant" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.11/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.11"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.11/@ownedAttribute.0/@kOwnedTags.0" name="integerValue" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.11/@ownedAttribute.0/@containedType.0" isOrdered="true" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.11/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Integer"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12/@kOwnedTags.0" name="ProcCall" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12/@ownedAttribute.0/@kOwnedTags.0" name="actualArgs" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12/@ownedAttribute.0/@containedType.0" isOrdered="true" upper="-1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        </ownedAttribute>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12/@ownedAttribute.1/@kOwnedTags.0" name="declaration" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12/@ownedAttribute.1/@containedType.0" isOrdered="true" lower="1" opposite="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12/@ownedAttribute.1/@ownedUnresolvedProperties.0">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12/@ownedAttribute.1"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::ProcDeclaration"/>
+          <ownedUnresolvedProperties propertyIdentifier="procCall"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@kOwnedTags.0" name="ProcDeclaration" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Instruction"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.0/@kOwnedTags.0" name="name" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.0/@containedType.0" isOrdered="true" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String"/>
+        </ownedAttribute>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.1/@kOwnedTags.0" name="args" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.1/@containedType.0" isOrdered="true" upper="-1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.1"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Parameter"/>
+        </ownedAttribute>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.2/@kOwnedTags.0" name="procCall" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.2/@containedType.0" isOrdered="true" upper="-1" opposite="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.2/@ownedUnresolvedProperties.0">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.2"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::ProcCall"/>
+          <ownedUnresolvedProperties propertyIdentifier="declaration"/>
+        </ownedAttribute>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.3/@kOwnedTags.0" name="instructions" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.3/@containedType.0" isOrdered="true" upper="-1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@ownedAttribute.3"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Instruction"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.14/@kOwnedTags.0" name="Block" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.14/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.14"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Instruction"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.14/@ownedAttribute.0/@kOwnedTags.0" name="instructions" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.14/@ownedAttribute.0/@containedType.0" isOrdered="true" upper="-1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.14/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Instruction"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.15/@kOwnedTags.0" name="If" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.15/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.15"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::ControlStructure"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.15/@ownedAttribute.0/@kOwnedTags.0" name="thenPart" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.15/@ownedAttribute.0/@containedType.0" isOrdered="true" lower="1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.15/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Block"/>
+        </ownedAttribute>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.15/@ownedAttribute.1/@kOwnedTags.0" name="elsePart" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.15/@ownedAttribute.1/@containedType.0" isOrdered="true" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.15/@ownedAttribute.1"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Block"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.16/@kOwnedTags.0" name="ControlStructure" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.16/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.16"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Instruction"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.16/@ownedAttribute.0/@kOwnedTags.0" name="condition" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.16/@ownedAttribute.0/@containedType.0" isOrdered="true" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.16/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.17/@kOwnedTags.0" name="Repeat" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.17/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.17"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::ControlStructure"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.17/@ownedAttribute.0/@kOwnedTags.0" name="block" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.17/@ownedAttribute.0/@containedType.0" isOrdered="true" lower="1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.17/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Block"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.18/@kOwnedTags.0" name="While" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.18/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.18"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::ControlStructure"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.18/@ownedAttribute.0/@kOwnedTags.0" name="block" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.18/@ownedAttribute.0/@containedType.0" isOrdered="true" lower="1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.18/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Block"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.19/@kOwnedTags.0" name="Parameter">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.19"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.19/@ownedAttribute.0/@kOwnedTags.0" name="name" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.19/@ownedAttribute.0/@containedType.0" isOrdered="true" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.19/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::String"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.20/@kOwnedTags.0" name="ParameterCall" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.20/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.20"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Expression"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.20/@ownedAttribute.0/@kOwnedTags.0" name="parameter" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.20/@ownedAttribute.0/@containedType.0" isOrdered="true" lower="1">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.20/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Parameter"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.21/@kOwnedTags.0" name="Plus" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.21/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.21"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::BinaryExp"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.22/@kOwnedTags.0" name="Minus" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.22/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.22"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::BinaryExp"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.23/@kOwnedTags.0" name="Mult" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.23/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.23"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::BinaryExp"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.24/@kOwnedTags.0" name="Div" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.24/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.24"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::BinaryExp"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.25/@kOwnedTags.0" name="Equals" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.25/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.25"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::BinaryExp"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.26/@kOwnedTags.0" name="Greater" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.26/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.26"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::BinaryExp"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.27/@kOwnedTags.0" name="Lower" superType="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.27/@containedType.0">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.27"/>
+        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::BinaryExp"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.28/@kOwnedTags.0" name="LogoProgram">
+        <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.28"/>
+        <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.28/@ownedAttribute.0/@kOwnedTags.0" name="instructions" type="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.28/@ownedAttribute.0/@containedType.0" isOrdered="true" upper="-1" isComposite="true">
+          <kOwnedTags name="ecore" value="true" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.28/@ownedAttribute.0"/>
+          <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kmLogo::ASM::Instruction"/>
+        </ownedAttribute>
+      </ownedTypeDefinition>
+    </nestedPackage>
+  </packages>
+</org_kermeta_language_structure:Metamodel>

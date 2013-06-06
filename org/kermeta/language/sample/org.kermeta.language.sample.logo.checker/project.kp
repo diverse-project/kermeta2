@@ -1,0 +1,17 @@
+resource library_standard = "platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT" 
+resource ecore_model = "platform:/resource/org.kermeta.language.sample.logo.model"
+
+
+importProject library_standard
+importProject ecore_model
+
+project logo_checker {
+	mainClass "logo_checker^org::kermeta::language::sample::logo::checkerPackage::MainClass"
+	mainOperation "check"
+
+	import "${ecore_model.baseUri}/model/ASMLogo.ecore"
+
+	import "${project.baseUri}/kmLogo/ASM/ASM_aspect.kmt"
+	import "${project.baseUri}/src/main/kmt/MainClass.kmt"
+
+}

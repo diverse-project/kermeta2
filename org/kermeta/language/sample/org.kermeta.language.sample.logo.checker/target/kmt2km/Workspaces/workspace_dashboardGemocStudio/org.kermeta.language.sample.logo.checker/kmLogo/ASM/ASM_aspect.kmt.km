@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org_kermeta_language_structure:Metamodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/structure">
+  <packages kTag="//@packages.0/@kOwnedTags.0" name="kmLogo">
+    <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;62;1039" object="//@packages.0"/>
+    <nestedPackage kTag="//@packages.0/@nestedPackage.0/@kOwnedTags.0" name="ASM">
+      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;81;1037" object="//@packages.0/@nestedPackage.0"/>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0/@kOwnedTags.0" name="Instruction" isAspect="true" isAbstract="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;98;137" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.0"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1/@kOwnedTags.0" name="Primitive" isAspect="true" isAbstract="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;142;179" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.1"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.2/@kOwnedTags.0" name="Back" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;184;207" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.2"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.3/@kOwnedTags.0" name="Forward" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;212;238" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.3"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.4/@kOwnedTags.0" name="Left" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;243;266" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.4"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.5/@kOwnedTags.0" name="Right" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;271;295" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.5"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.6/@kOwnedTags.0" name="PenDown" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;300;326" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.6"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.7/@kOwnedTags.0" name="PenUp" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;331;355" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.7"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.8/@kOwnedTags.0" name="Clear" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;360;384" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.8"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.9/@kOwnedTags.0" name="Expression" isAspect="true" isAbstract="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;389;427" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.9"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.10/@kOwnedTags.0" name="BinaryExp" isAspect="true" isAbstract="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;432;469" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.10"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.11/@kOwnedTags.0" name="Constant" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;474;501" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.11"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12/@kOwnedTags.0" name="ProcCall" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;506;533" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.12"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13/@kOwnedTags.0" name="ProcDeclaration" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;538;572" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.13"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.14/@kOwnedTags.0" name="Block" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;577;601" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.14"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.15/@kOwnedTags.0" name="If" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;606;627" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.15"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.16/@kOwnedTags.0" name="ControlStructure" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;632;667" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.16"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.17/@kOwnedTags.0" name="Repeat" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;672;697" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.17"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.18/@kOwnedTags.0" name="While" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;702;726" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.18"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.19/@kOwnedTags.0" name="Parameter" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;731;759" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.19"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.20/@kOwnedTags.0" name="ParameterCall" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;764;796" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.20"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.21/@kOwnedTags.0" name="Plus" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;801;824" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.21"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.22/@kOwnedTags.0" name="Minus" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;829;853" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.22"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.23/@kOwnedTags.0" name="Mult" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;858;881" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.23"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.24/@kOwnedTags.0" name="Div" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;886;908" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.24"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.25/@kOwnedTags.0" name="Equals" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;913;938" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.25"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.26/@kOwnedTags.0" name="Greater" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;943;969" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.26"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.27/@kOwnedTags.0" name="Lower" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;974;998" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.27"/>
+      </ownedTypeDefinition>
+      <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.28/@kOwnedTags.0" name="LogoProgram" isAspect="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.checker/kmLogo/ASM/ASM_aspect.kmt;1003;1033" object="//@packages.0/@nestedPackage.0/@ownedTypeDefinition.28"/>
+      </ownedTypeDefinition>
+    </nestedPackage>
+  </packages>
+</org_kermeta_language_structure:Metamodel>

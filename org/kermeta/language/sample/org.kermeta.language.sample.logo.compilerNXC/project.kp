@@ -1,0 +1,18 @@
+resource library_standard = "platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT" 
+resource ecore_model = "platform:/resource/org.kermeta.language.sample.logo.model"
+
+
+importProject library_standard
+importProject ecore_model
+
+project logo_compilerNXC {
+	mainClass "logo_compilerNXC^org::kermeta::language::sample::logo::compilerNXC::NXCCompiler"
+	mainOperation "main"
+
+	import "${ecore_model.baseUri}/model/ASMLogo.ecore"
+
+	import "${project.baseUri}/kmLogo/ASM/ASM_aspect.kmt"
+	import "${project.baseUri}/src/main/kmt/NXCCompiler.kmt"
+	import "${project.baseUri}/src/main/kmt/NXCCodeGenerator.kmt"
+
+}

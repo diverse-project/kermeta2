@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org_kermeta_language_structure:Metamodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_behavior="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/behavior" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/structure">
+  <packages kTag="//@packages.0/@kOwnedTags.0" name="org">
+    <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;62;630" object="//@packages.0"/>
+    <nestedPackage name="kermeta">
+      <nestedPackage name="language">
+        <nestedPackage name="sample">
+          <nestedPackage name="logo">
+            <nestedPackage name="interpreter">
+              <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@kOwnedTags.0" name="Math">
+                <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;123;628" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0"/>
+                <ownedOperation kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@kOwnedTags.0" name="sin" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@containedType.0" isOrdered="true">
+                  <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;139;228" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0"/>
+                  <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Double">
+                    <usings fromQName="kermeta::standard::*" toName=""/>
+                    <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                  </containedType>
+                  <ownedParameter name="a" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@ownedParameter.0/@containedType.0" isOrdered="true">
+                    <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Double">
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                    </containedType>
+                  </ownedParameter>
+                  <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@kOwnedTags.0">
+                    <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;177;228" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body"/>
+                    <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@kOwnedTags.0" isCast="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;183;222" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0"/>
+                      <target xsi:type="org_kermeta_language_behavior:CallResult" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@target/@kOwnedTags.0">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;183;191" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@target"/>
+                      </target>
+                      <value xsi:type="org_kermeta_language_behavior:JavaStaticCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@value/@kOwnedTags.0" jclass="java::lang::Math" jmethod="sin">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;193;222" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@value"/>
+                        <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@value/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@value/@parameters.0/@kOwnedTags.1" name="a">
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;221;222" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@value/@parameters.0"/>
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;221;222" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@value/@parameters.0"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        </parameters>
+                      </value>
+                    </statement>
+                  </body>
+                </ownedOperation>
+                <ownedOperation kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@kOwnedTags.0" name="cos" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@containedType.0" isOrdered="true">
+                  <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;235;324" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1"/>
+                  <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Double">
+                    <usings fromQName="kermeta::standard::*" toName=""/>
+                    <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                  </containedType>
+                  <ownedParameter name="a" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@ownedParameter.0/@containedType.0" isOrdered="true">
+                    <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Double">
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                    </containedType>
+                  </ownedParameter>
+                  <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@kOwnedTags.0">
+                    <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;273;324" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body"/>
+                    <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@kOwnedTags.0" isCast="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;279;318" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0"/>
+                      <target xsi:type="org_kermeta_language_behavior:CallResult" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@target/@kOwnedTags.0">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;279;287" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@target"/>
+                      </target>
+                      <value xsi:type="org_kermeta_language_behavior:JavaStaticCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@value/@kOwnedTags.0" jclass="java::lang::Math" jmethod="cos">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;289;318" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@value"/>
+                        <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@value/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@value/@parameters.0/@kOwnedTags.1" name="a">
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;317;318" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@value/@parameters.0"/>
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;317;318" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@value/@parameters.0"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        </parameters>
+                      </value>
+                    </statement>
+                  </body>
+                </ownedOperation>
+                <ownedOperation kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@kOwnedTags.0" name="toDegrees" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@containedType.0" isOrdered="true">
+                  <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;416;517" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2"/>
+                  <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Double">
+                    <usings fromQName="kermeta::standard::*" toName=""/>
+                    <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                  </containedType>
+                  <ownedParameter name="a" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@ownedParameter.0/@containedType.0" isOrdered="true">
+                    <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Double">
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                    </containedType>
+                  </ownedParameter>
+                  <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@kOwnedTags.0">
+                    <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;460;517" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body"/>
+                    <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@kOwnedTags.0" isCast="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;466;511" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0"/>
+                      <target xsi:type="org_kermeta_language_behavior:CallResult" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@target/@kOwnedTags.0">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;466;474" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@target"/>
+                      </target>
+                      <value xsi:type="org_kermeta_language_behavior:JavaStaticCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@value/@kOwnedTags.0" jclass="java::lang::Math" jmethod="toDegrees">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;476;511" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@value"/>
+                        <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@value/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@value/@parameters.0/@kOwnedTags.1" name="a">
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;510;511" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@value/@parameters.0"/>
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;510;511" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@value/@parameters.0"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        </parameters>
+                      </value>
+                    </statement>
+                  </body>
+                </ownedOperation>
+                <ownedOperation kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@kOwnedTags.0" name="toRadians" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@containedType.0" isOrdered="true">
+                  <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;524;625" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3"/>
+                  <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Double">
+                    <usings fromQName="kermeta::standard::*" toName=""/>
+                    <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                  </containedType>
+                  <ownedParameter name="a" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@ownedParameter.0/@containedType.0" isOrdered="true">
+                    <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Double">
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                    </containedType>
+                  </ownedParameter>
+                  <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@kOwnedTags.0">
+                    <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;568;625" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body"/>
+                    <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@statement.0/@kOwnedTags.0" isCast="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;574;619" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@statement.0"/>
+                      <target xsi:type="org_kermeta_language_behavior:CallResult" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@statement.0/@target/@kOwnedTags.0">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;574;582" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@statement.0/@target"/>
+                      </target>
+                      <value xsi:type="org_kermeta_language_behavior:JavaStaticCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@statement.0/@value/@kOwnedTags.0" jclass="java::lang::Math" jmethod="toRadians">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;584;619" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@statement.0/@value"/>
+                        <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@statement.0/@value/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@statement.0/@value/@parameters.0/@kOwnedTags.1" name="a">
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;618;619" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@statement.0/@value/@parameters.0"/>
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/Math.kmt;618;619" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.3/@body/@statement.0/@value/@parameters.0"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        </parameters>
+                      </value>
+                    </statement>
+                  </body>
+                </ownedOperation>
+              </ownedTypeDefinition>
+            </nestedPackage>
+          </nestedPackage>
+        </nestedPackage>
+      </nestedPackage>
+    </nestedPackage>
+  </packages>
+</org_kermeta_language_structure:Metamodel>
