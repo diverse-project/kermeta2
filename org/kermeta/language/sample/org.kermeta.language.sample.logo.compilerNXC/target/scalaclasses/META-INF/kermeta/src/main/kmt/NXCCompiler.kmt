@@ -1,0 +1,59 @@
+using kermeta::standard::*
+using kermeta::io::StdIO => stdio
+using kermeta::io::FileIO => FileIO
+using kermeta::emfpersistence::*
+
+using kmLogo::ASM::LogoProgram
+
+package org::kermeta::language::sample::logo::compilerNXC {
+
+	class NXCCompiler{
+		
+		reference root : LogoProgram
+		reference subs : String[*]
+		reference depth : Integer
+		
+		property readonly prefix : String 
+		getter is do
+			result := ""
+			depth.times{i | result.append("\t")}
+		end
+		
+		operation incDepth() is do depth := depth + 1 end
+		
+		operation decDepth() is do depth := depth - 1 end
+		
+		@main ""
+		operation main() is do
+			var projectPath : String init "platform:/resource/org.kermeta.language.sample.logo.compilerNXC"
+			compile(projectPath + "/tests/k.xmi", projectPath +  "/tests/k.nxc", void)
+		end
+		
+		operation compile(uri : String, out : String, api : String) : String is
+		do
+			depth := 0
+			root := loadProgram(uri)
+			var nxc : String init root.compileToNXC(self)
+			// We shoudl read API from the file but right now it is hard codded
+			result := NXCCodeGenerator.new.generate(subs, nxc)
+			//stdio.writeln(out)
+			FileIO.writeTextFile(out.toURI, result)
+		end
+		
+		operation compileToStdOut(uri : String) : String is do
+			depth := 0
+			root := loadProgram(uri)
+			var nxc : String init root.compileToNXC(self)
+			// We shoudl read API from the file but right now it is hard codded
+			result := NXCCodeGenerator.new.generate(subs, nxc)
+			stdio.writeln(result)
+		end
+		
+		operation loadProgram(ecoreFile : String) : LogoProgram is do             
+			var repository : ResourceSet init ResourceSet.new
+			var resource : Resource init repository.createResource(ecoreFile, "platform:/resource/org.kermeta.kmlogo.logoasm.model/model/ASMLogo.ecore")
+			resource.load(void)      
+			result ?= resource.getContents().one
+		end		
+	}
+}

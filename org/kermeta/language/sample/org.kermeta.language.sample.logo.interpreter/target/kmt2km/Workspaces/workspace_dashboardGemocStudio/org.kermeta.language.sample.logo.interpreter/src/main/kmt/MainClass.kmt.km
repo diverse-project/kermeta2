@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org_kermeta_language_structure:Metamodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_behavior="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/behavior" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/structure">
+  <packages kTag="//@packages.0/@kOwnedTags.0" name="org">
+    <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;160;1193" object="//@packages.0"/>
+    <nestedPackage name="kermeta">
+      <nestedPackage name="language">
+        <nestedPackage name="sample">
+          <nestedPackage name="logo">
+            <nestedPackage name="interpreter">
+              <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@kOwnedTags.0" name="MainClass">
+                <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;221;1191" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0"/>
+                <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedAttribute.0/@kOwnedTags.0" name="context" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedAttribute.0/@containedType.0" isOrdered="true" isComposite="true">
+                  <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;243;270" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedAttribute.0"/>
+                  <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Context">
+                    <usings fromQName="kermeta::standard::*" toName=""/>
+                    <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                    <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                    <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                    <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                  </containedType>
+                </ownedAttribute>
+                <ownedAttribute kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedAttribute.1/@kOwnedTags.0" name="root" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedAttribute.1/@containedType.0" isOrdered="true">
+                  <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;274;303" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedAttribute.1"/>
+                  <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="LogoProgram">
+                    <usings fromQName="kermeta::standard::*" toName=""/>
+                    <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                    <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                    <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                    <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                  </containedType>
+                </ownedAttribute>
+                <ownedOperation kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@kOwnedTags.1" name="mainOperation" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@containedType.0" isOrdered="true">
+                  <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;388;836" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0"/>
+                  <kOwnedTags name="main" value="" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0"/>
+                  <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Void">
+                    <usings fromQName="kermeta::standard::*" toName=""/>
+                    <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                    <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                    <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                    <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                  </containedType>
+                  <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@kOwnedTags.0">
+                    <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;424;836" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body"/>
+                    <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@kOwnedTags.0">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;434;455" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0"/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@target/@kOwnedTags.0" name="context">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;434;443" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      </target>
+                      <value xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@value/@kOwnedTags.0" name="new">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;452;455" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@value"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@value/@target/@kOwnedTags.0" name="Context">
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;445;452" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@value/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                          <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                        </target>
+                      </value>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@kOwnedTags.1" name="initialize">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;467;477" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;460;477" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1"/>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                      <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@target/@kOwnedTags.0" name="context">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;460;467" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      </target>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@kOwnedTags.1" name="writeln" isCalledWithParenthesis="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;510;541" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;505;541" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2"/>
+                      <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@parameters.0/@kOwnedTags.1" value="Loading logoasm file">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;519;541" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@parameters.0"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;519;541" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@parameters.0"/>
+                      </parameters>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                      <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@target/@kOwnedTags.0" name="stdio">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;505;510" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      </target>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@kOwnedTags.0">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;546;649" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3"/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@target/@kOwnedTags.0" name="root">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;546;552" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      </target>
+                      <value xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@kOwnedTags.0" name="loadProgram" isCalledWithParenthesis="true">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;554;649" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value"/>
+                        <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@parameters.0/@kOwnedTags.1" value="platform:/resource/org.kermeta.language.sample.logo.interpreter/test/test.logoasm">
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;566;649" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@parameters.0"/>
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;566;649" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@parameters.0"/>
+                        </parameters>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      </value>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@kOwnedTags.1" name="writeln" isCalledWithParenthesis="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;659;689" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;654;689" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4"/>
+                      <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@parameters.0/@kOwnedTags.1" value="Logoasm file loaded">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;668;689" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@parameters.0"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;668;689" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@parameters.0"/>
+                      </parameters>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                      <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@target/@kOwnedTags.0" name="stdio">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;654;659" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      </target>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.5/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.5/@kOwnedTags.1" name="writeln" isCalledWithParenthesis="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;724;757" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.5"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;719;757" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.5"/>
+                      <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.5/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.5/@parameters.0/@kOwnedTags.1" value="Interpretation running">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;733;757" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.5/@parameters.0"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;733;757" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.5/@parameters.0"/>
+                      </parameters>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                      <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.5/@target/@kOwnedTags.0" name="stdio">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;719;724" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.5/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      </target>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.6/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.6/@kOwnedTags.1" name="eval" isCalledWithParenthesis="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;766;779" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.6"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;762;779" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.6"/>
+                      <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.6/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.6/@parameters.0/@kOwnedTags.1" name="context">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;772;779" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.6/@parameters.0"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;772;779" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.6/@parameters.0"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      </parameters>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                      <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.6/@target/@kOwnedTags.0" name="root">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;762;766" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.6/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      </target>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.7/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.7/@kOwnedTags.1" name="writeln" isCalledWithParenthesis="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;789;820" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.7"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;784;820" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.7"/>
+                      <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.7/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.7/@parameters.0/@kOwnedTags.1" value="Ended Interpretation">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;798;820" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.7/@parameters.0"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;798;820" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.7/@parameters.0"/>
+                      </parameters>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                      <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.7/@target/@kOwnedTags.0" name="stdio">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;784;789" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.7/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      </target>
+                    </statement>
+                  </body>
+                </ownedOperation>
+                <ownedOperation kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@kOwnedTags.0" name="loadProgram" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@containedType.0" isOrdered="true">
+                  <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;843;1188" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1"/>
+                  <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="LogoProgram">
+                    <usings fromQName="kermeta::standard::*" toName=""/>
+                    <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                    <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                    <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                    <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                  </containedType>
+                  <ownedParameter name="ecoreFile" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@ownedParameter.0/@containedType.0" isOrdered="true">
+                    <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="String">
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                      <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                    </containedType>
+                  </ownedParameter>
+                  <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@kOwnedTags.0">
+                    <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;902;1188" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body"/>
+                    <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@kOwnedTags.0" identifier="repository">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;921;969" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0"/>
+                      <initialization xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@initialization/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@initialization/@kOwnedTags.1" name="new">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;966;969" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@initialization"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;955;969" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@initialization"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@initialization/@target/@kOwnedTags.0" name="ResourceSet">
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;955;966" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@initialization/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                          <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                        </target>
+                      </initialization>
+                      <type name="ResourceSet" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@type/@containedType.0" isOrdered="true">
+                        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="ResourceSet">
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                          <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                        </containedType>
+                      </type>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@kOwnedTags.0" identifier="resource">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;974;1113" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1"/>
+                      <initialization xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@kOwnedTags.1" name="createResource" isCalledWithParenthesis="true">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1013;1113" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1003;1113" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization"/>
+                        <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@parameters.0/@kOwnedTags.1" name="ecoreFile">
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1029;1038" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@parameters.0"/>
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1029;1038" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@parameters.0"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                          <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                        </parameters>
+                        <parameters xsi:type="org_kermeta_language_behavior:StringLiteral" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@parameters.1/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@parameters.1/@kOwnedTags.1" value="platform:/resource/org.kermeta.kmlogo.logoasm.model/model/ASMLogo.ecore">
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1040;1113" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@parameters.1"/>
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1040;1113" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@parameters.1"/>
+                        </parameters>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@target/@kOwnedTags.0" name="repository">
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1003;1013" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@initialization/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                          <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                        </target>
+                      </initialization>
+                      <type name="Resource" type="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.1/@type/@containedType.0" isOrdered="true">
+                        <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Resource">
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                          <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                        </containedType>
+                      </type>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.2/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.2/@kOwnedTags.1" name="load" isCalledWithParenthesis="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1126;1136" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.2"/>
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1118;1136" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.2"/>
+                      <parameters xsi:type="org_kermeta_language_behavior:VoidLiteral" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.2/@parameters.0/@kOwnedTags.0 //@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.2/@parameters.0/@kOwnedTags.1">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1132;1136" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.2/@parameters.0"/>
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1132;1136" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.2/@parameters.0"/>
+                      </parameters>
+                      <usings fromQName="kermeta::standard::*" toName=""/>
+                      <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                      <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                      <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                      <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.2/@target/@kOwnedTags.0" name="resource">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1118;1126" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.2/@target"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                      </target>
+                    </statement>
+                    <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.3/@kOwnedTags.0" isCast="true">
+                      <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1147;1182" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.3"/>
+                      <target xsi:type="org_kermeta_language_behavior:CallResult" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.3/@target/@kOwnedTags.0">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1147;1155" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.3/@target"/>
+                      </target>
+                      <value xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.3/@value/@kOwnedTags.0" name="one">
+                        <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1179;1182" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.3/@value"/>
+                        <usings fromQName="kermeta::standard::*" toName=""/>
+                        <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                        <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                        <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                        <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                        <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.3/@value/@target/@kOwnedTags.0" name="getContents" isCalledWithParenthesis="true">
+                          <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1165;1178" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.3/@value/@target"/>
+                          <usings fromQName="kermeta::standard::*" toName=""/>
+                          <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                          <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                          <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                          <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                          <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.3/@value/@target/@target/@kOwnedTags.0" name="resource">
+                            <kOwnedTags name="traceability_text_reference" value="file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.interpreter/src/main/kmt/MainClass.kmt;1157;1165" object="//@packages.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@nestedPackage.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.3/@value/@target/@target"/>
+                            <usings fromQName="kermeta::standard::*" toName=""/>
+                            <usings fromQName="kermeta::io::StdIO" toName="stdio"/>
+                            <usings fromQName="kermeta::emfpersistence::*" toName=""/>
+                            <usings fromQName="logo_interpreter::Context" toName="Context"/>
+                            <usings fromQName="kmLogo::ASM::LogoProgram" toName="LogoProgram"/>
+                          </target>
+                        </target>
+                      </value>
+                    </statement>
+                  </body>
+                </ownedOperation>
+              </ownedTypeDefinition>
+            </nestedPackage>
+          </nestedPackage>
+        </nestedPackage>
+      </nestedPackage>
+    </nestedPackage>
+  </packages>
+</org_kermeta_language_structure:Metamodel>

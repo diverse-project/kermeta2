@@ -1,0 +1,125 @@
+using kermeta::standard::*
+using kermeta::io::StdIO => stdio
+
+package kmLogo {
+
+	package ASM {
+
+		aspect abstract class Instruction {
+
+		}
+
+		aspect abstract class Primitive {
+
+		}
+
+		aspect class Back {
+
+		}
+
+		aspect class Forward {
+
+		}
+
+		aspect class Left {
+
+		}
+
+		aspect class Right {
+
+		}
+
+		aspect class PenDown {
+
+		}
+
+		aspect class PenUp {
+
+		}
+
+		aspect class Clear {
+
+		}
+
+		aspect abstract class Expression {
+
+		}
+
+		aspect abstract class BinaryExp {
+
+		}
+
+		aspect class Constant {
+
+		}
+
+		aspect class ProcCall {
+
+		}
+
+		aspect class ProcDeclaration {
+
+		}
+
+		aspect class Block {
+
+		}
+
+		aspect class If {
+
+		}
+
+		aspect class ControlStructure {
+
+		}
+
+		aspect class Repeat {
+
+		}
+
+		aspect class While {
+
+		}
+
+		aspect class Parameter {
+
+		}
+
+		aspect class ParameterCall {
+
+		}
+
+		aspect class Plus {
+
+		}
+
+		aspect class Minus {
+
+		}
+
+		aspect class Mult {
+
+		}
+
+		aspect class Div {
+
+		}
+
+		aspect class Equals {
+
+		}
+
+		aspect class Greater {
+
+		}
+
+		aspect class Lower {
+
+		}
+
+		aspect class LogoProgram {
+
+		}
+
+	}
+}
