@@ -40,6 +40,7 @@ public class Formular extends JPanel {
 	protected JComboBox<String> xpMdeCB;
 
 	protected JComboBox<String> xpUmlCB;
+	protected JComboBox<String> xpRAMCB;
 
 	protected JButton validateB;
 
@@ -129,6 +130,14 @@ public class Formular extends JPanel {
 		questionsP.add(xpUmlCB, constraint);
 		constraint.gridx=0;
 		constraint.gridy++;
+		
+		questionsP.add(new JLabel("RAM background:"), constraint);
+		constraint.gridx++;
+		
+		xpRAMCB = new JComboBox<>(new String[]{"Expert", "Proficient", "Competent", "Advanced beginner", "Novice"});
+		questionsP.add(xpRAMCB, constraint);
+		constraint.gridx=0;
+		constraint.gridy++;
 
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
@@ -146,7 +155,6 @@ public class Formular extends JPanel {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
 			Formular.this.setVisible(false);
-			Formular.this.questionsPanel.setTerminated2();
 //			Formular.this.frame.pack();
 			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 			Formular.this.frame.setLocation((dim.width-Formular.this.frame.getWidth())/2,
@@ -156,8 +164,10 @@ public class Formular extends JPanel {
 //					sexCB.getSelectedItem().toString() + "\t" + 
 											statusCB.getSelectedItem().toString() +
 					"\t" + xpMdeCB.getSelectedItem().toString() + "\t" + xpUmlCB.getSelectedItem().toString() +
+					"\t" + xpRAMCB.getSelectedItem().toString() +
 					"\t" + mouse.getSelectedItem().toString() + "\t" + screen.getValue().toString() +
 					"\t" + dim.width + "\t" + dim.height);
+			Formular.this.questionsPanel.setTerminated2();
 			Formular.this.frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		}
 

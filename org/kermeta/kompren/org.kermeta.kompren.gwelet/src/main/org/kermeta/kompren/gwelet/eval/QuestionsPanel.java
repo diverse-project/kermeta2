@@ -40,29 +40,101 @@ public class QuestionsPanel extends JPanel {
 	}
 	
 	public enum QuestionList {
-		Q1 {
-			@Override public String getTitle() { return "<html><font size=\"10\">What are the super classes of the class <b>Type</b>?</font></html>"; }
-			@Override public String getHelper() { return "Give the name of the classes:"; }
+		T1A_UML{
+			@Override public String getTitle() { return "<html><font size=\"6\">If you have to create an instance of the class <b>Operation</b> corresponding to the operation <b>Double add(Double value)</b>, what would be the other concrete classes of the metamodel to instantiate?</font></html>"; }
+			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Operation"; }
+		},
+		T1A_RAM{
+			@Override public String getTitle() { return "<html><font size=\"6\">If you have to create an instance of the class <b>Operation</b> corresponding to the operation <b>Double add(Double value)</b>, what would be the other concrete classes of the metamodel to instantiate?</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Operation"; }
+		},
+		T1B_UML{
+			@Override public String getTitle() { return "<html><font size=\"6\">If you have to create an instance of the class <b>ConditionalNode</b>, what would be the mandatory concrete classes in relation with <b>ConditionalNode</b> that must be also instantiated?</font></html>"; }
+			@Override public String getHelper() { return "<html><font size=\"5\">The concept of mandatory classes has been explained during the tutorial and are summarised in the drawings sketched on the whiteboard.</font></html>"; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.ConditionalNode"; }
+		},
+		T1B_RAM{
+			@Override public String getTitle() { return "<html><font size=\"6\">If you have to create an instance of the class <b>Message</b>, what would be the mandatory concrete classes in relation with <b>Message</b> that must be also instantiated?</font></html>"; }
+			@Override public String getHelper() { return "<html><font size=\"5\">The concept of mandatory classes has been explained during the tutorial and are summarised in the drawings sketched on the whiteboard.</font></html>"; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Message"; }
+		},
+		T2A_UML{
+			@Override public String getTitle() { return "<html><font size=\"6\">List the name of the abstract<br> classes in the super class hierarchy of <b>FlowFinalNode</b> that are not<br> doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.FlowFinalNode"; }
+		},
+		T2A_RAM{
+			@Override public String getTitle() { return "<html><font size=\"6\">List the name of the abstract classes in the super class hierarchy of <b>Class</b> that are not doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Class"; }
+		},
+		T2B_UML{
+			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of the redundant attribute (direct or inherited) of the class <b>Device</b> (i.e. same name and type)</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Device"; }
+		},
+		T2B_RAM{
+			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of the redundant attribute (direct or inherited) of the class <b>Reference</b> (i.e. same name and type)</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Reference"; }
+		},
+		T3A_UML{
+			@Override public String getTitle() { return "<html><font size=\"6\">The classes <b>Actor</b> and <b>Trigger</b> are coupled only by one unique reference via another class. Give the name of this reference that would make these classes independent if removed</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Actor"; }
+		},
+		T3A_RAM{
+			@Override public String getTitle() { return "<html><font size=\"6\">The classes <b>Aspect</b> and <b>Type</b> are coupled only by one unique reference via another class. Give the name of this reference that would make these classes independent if removed</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Aspect"; }
+		},
+		T3B_UML{
+			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of at least one class that has a high number of incoming and a high number of outgoing references compared to the other classes</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Class"; }
+		},
+		T3B_RAM{
+			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of at least one class that has a high number of incoming and a high number of outgoing references compared to the other classes</font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
 			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }
 		},
-		Q2 {
-			@Override public String getTitle() { return "<html><font size=\"10\">What is the role </font><font size=\"5\">(i.e. the name)</font><font size=\"10\"> of the relation that links the class <b>State</b> to the class <b>Comment</b>?</font></html>"; }
-			@Override public String getHelper() { return "Give the name of the role:"; }
+		T4A_UML{
+			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of at least one intermediate class between the class <b>State</b> to the class <b>Transition</b></font></html>"; }
+			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
-			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }
+			@Override public String getInitialClassToFocusOn() { return "uml.State"; }
 		},
-		Q3 {
-			@Override public String getTitle() { return "<html><font size=\"10\">What are the classes <b>directly</b> linked </font><font size=\"5\">(by inheritance, composition, and association)</font><font size=\"10\"> to the class <b>Class?</b></font></html>"; }
-			@Override public String getHelper() { return "Give the name of the classes:"; }
-			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
-			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }
+		T4A_RAM{
+			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of at least one intermediate class between the class <b>Aspect</b> to the class <b>AspectMessageView</b></font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Aspect"; }
 		},
-		Q4 {
-			@Override public String getTitle() { return "<html><font size=\"10\">What are the name of the, native and inherited, relations and attributes of the class <b>Abstraction</b>?</font></html>"; }
-			@Override public String getHelper() { return "Enumerate the names:"; }
+		T4B_UML{
+			@Override public String getTitle() { return "<html><font size=\"6\">Enumerate the name of all the attributes (direct or inherited) of the class <b>Feature</b></font></html>"; }
+			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
-			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }
+			@Override public String getInitialClassToFocusOn() { return "uml.Feature"; }
+		},
+		T4B_RAM{
+			@Override public String getTitle() { return "<html><font size=\"6\">Enumerate the name of all the attributes (direct or inherited) of the class <b>RInt</b></font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.RInt"; }
 		};
 		
 		public abstract String getTitle();
@@ -80,7 +152,7 @@ public class QuestionsPanel extends JPanel {
 	
 	public enum Metamodel {
 		UML,
-		KERMETA
+		RAM
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -95,7 +167,7 @@ public class QuestionsPanel extends JPanel {
 
 	protected JLabel answerLabel;
 
-	protected JLabel helperLabel;
+	protected EditorPaneAntiAlias helperLabel;
 
 	protected MToolBar toolbar;
 
@@ -166,29 +238,31 @@ public class QuestionsPanel extends JPanel {
 		answerArea.setAlignmentX(CENTER_ALIGNMENT);
 		answerArea.setBackground(Color.WHITE);
 
-		JPanel panel = new JPanel();
-		helperLabel = new JLabel();
-		helperLabel.setAlignmentX(LEFT_ALIGNMENT);
-		helperLabel.setFocusable(false);
-		panel.add(helperLabel);
+		helperLabel = new EditorPaneAntiAlias(true);
+		helperLabel.setPreferredSize(new Dimension(380, 130));
+		helperLabel.setMaximumSize(new Dimension(380, 130));
+		helperLabel.setAlignmentX(CENTER_ALIGNMENT);
+		helperLabel.setBackground(Color.WHITE);
+		helperLabel.setEditable(false);
 
 		questionArea = new EditorPaneAntiAlias(true);
 		questionArea.setBackground(Color.WHITE);
 		questionArea.setEditable(false);
+		questionArea.setEditable(false);
 		questionArea.setPreferredSize(new Dimension(380, 250));
 		questionArea.setMaximumSize(new Dimension(380, 250));
+		questionArea.setSize(new Dimension(380, 250));
 		questionArea.setAlignmentX(CENTER_ALIGNMENT);
-		questionArea.setFocusable(false);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(questionLabel);
 		add(questionArea);
+		add(Box.createVerticalStrut(3));
+		add(helperLabel);
 		add(Box.createVerticalStrut(10));
 		add(resultLabel);
-		add(Box.createVerticalStrut(10));
 		add(startButton);
 		add(Box.createVerticalStrut(15));
 		add(answerLabel);
-		add(panel);
 		add(answerArea);
 		add(Box.createVerticalStrut(10));
 		add(answerButton);
@@ -245,8 +319,8 @@ public class QuestionsPanel extends JPanel {
 		answerButton.setVisible(false);
 		frame.setActivated(false);
 		toolbar.setVisible(false);
-		helperLabel.setVisible(false);
 		helperLabel.setText(question.question.getHelper());
+		helperLabel.setVisible(question.question.getHelper()!=null && question.question.getHelper().length()>0);
 	}
 	
 
@@ -259,7 +333,6 @@ public class QuestionsPanel extends JPanel {
 		answerButton.setVisible(true);
 		frame.setActivated(true);
 		toolbar.setVisible(true);
-		helperLabel.setVisible(true);
 
         Runnable moveScrollbars = new Runnable() {
             @Override
@@ -297,7 +370,7 @@ public class QuestionsPanel extends JPanel {
 		setVisible(true);
 		resultField.setVisible(true);
 		resultLabel.setVisible(true);
-		resultLabel.setText("<html><center>Return the results by mail to:<br><b>arnaud.blouin@inria.fr</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
+		resultLabel.setText("<html><center><b>Thank you!</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
 		Dimension dim = new Dimension(380, 500);
 		resultField.setPreferredSize(dim);
 		resultField.setMinimumSize(dim);

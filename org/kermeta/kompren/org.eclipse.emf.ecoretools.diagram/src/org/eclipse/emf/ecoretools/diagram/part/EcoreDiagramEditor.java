@@ -143,7 +143,7 @@ public class EcoreDiagramEditor extends DiagramDocumentEditor implements IGotoMa
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 		RulerComposite ruler = getRulerComposite();
-		ruler.setSize(970, 690);
+		ruler.setSize(1080, 690);
 		RowLayout layout = new RowLayout();
 		layout.wrap = false;
 		layout.type=SWT.HORIZONTAL;
