@@ -1,4 +1,0 @@
-jar:file:/C:/IDE_Eclipse/eclipse_JUNO64MT_K2tools-2.0.99-SNAPSHOT/configuration/org.eclipse.osgi/bundles/17880/1/bundlefile!/META-INF/kermeta/kermeta_standard.km
-file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.model/model/ASMLogo.ecore
-file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.compilerNXC/kmLogo/ASM/ASM_aspect.kmt
-file:/C:/Workspaces/workspace_dashboardGemocStudio/org.kermeta.language.sample.logo.compilerNXC/src/main/kmt/NXCCodeGenerator.kmt
