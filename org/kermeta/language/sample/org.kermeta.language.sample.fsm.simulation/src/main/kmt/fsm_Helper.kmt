@@ -14,7 +14,8 @@
  
 using fsm::*
 using kermeta::standard::*
-using kermeta::persistence::*
+using kermeta::io::StdIO => stdio
+using kermeta::emfpersistence::*
 using kermeta::exceptions::*
 	
 package fsm{
@@ -106,12 +107,12 @@ package fsm{
 		/** 
 		 * Serialization helpers
 		 */  
-	    operation saveEMFAutomaton(repository : EMFRepository, a : FSM, uri : String, mmuri : String) : FSM is do
+	    operation saveEMFAutomaton(repository : ResourceSet, a : FSM, uri : String, mmuri : String) : FSM is do
 			if AutomatonHelper.new.conformityChecker(a) == true then 
 		    	var resource : Resource init repository.createResource(uri , mmuri)
-		    	resource.instances.add(a)
+		    	resource.getContents.add(a)
 		    	//a.stateSet.each { z | resource.instances.add(z)}
-		    	resource.save()
+		    	resource.save(void)
 		    else
 		    	stdio.writeln("I'm sorry, I'm afraid that your automaton is not valid; please check the following rules : ")
 		    	stdio.writeln(" - Do the transitions source and target states belong to the set of states of the automaton?")
@@ -119,11 +120,10 @@ package fsm{
 		    result := void
 	    end
 	    
-	     operation loadEMFAutomaton(repository : EMFRepository, uri : String, mmuri : String) : FSM is do
+	     operation loadEMFAutomaton(repository : ResourceSet, uri : String, mmuri : String) : FSM is do
 	    	var resource : Resource init repository.createResource(uri , mmuri)
-	    	resource.load
-	    	var roots : Set<Object> init resource.instances
-	    	result ?= roots.one
+	    	resource.load(void)
+	    	result ?= resource.getContents().one
 	    end
 	    
 	    /** Print in dot format the given automaton */
@@ -149,10 +149,10 @@ package fsm{
 	    end
 	    
 	    operation ask_emfmodel(prompt : String) : FSM is do
-	    	var file : String init stdio.read(prompt+"\nplatform:/resource/fr.irisa.triskell.kermeta.samples.fsm.demoAspect/models/")
-	    	file := "platform:/resource/fr.irisa.triskell.kermeta.samples.fsm.demoAspect/models/"+file 
+	    	var file : String init stdio.read(prompt+"\nplatform:/resource/org.kermeta.language.sample.fsm.model/models/")
+	    	file := "platform:/resource/org.kermeta.language.sample.fsm.model/models/"+file 
 	    	stdio.writeln(file)
-	    	var r : EMFRepository init EMFRepository.new
+	    	var r : ResourceSet init ResourceSet.new
 	    	result := loadEMFAutomaton(r, file, "http://www.kermeta.org/fsm")
 	    end
 	    

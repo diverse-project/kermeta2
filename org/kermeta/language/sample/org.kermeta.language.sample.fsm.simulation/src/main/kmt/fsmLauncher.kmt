@@ -14,28 +14,29 @@
  */
 
 using fsm::*
-using kermeta::exceptions::*
-using kermeta::persistence::*
 using kermeta::standard::*
+using kermeta::io::StdIO => stdio
+using kermeta::emfpersistence::*
+using kermeta::exceptions::*
 
 package fsm{
 	
 	class Main
 	{
 		@main ""
-		operation mainloadFSM(input_automaton : String) is do
+		operation mainloadFSM(input_automaton : String) : Void is do
 			var theFSM : FSM init loadfsm(input_automaton)
 			printFSM(theFSM)
 			theFSM.run()
 		end
 		
-		 /**
+		 /*
 		 * Load the FSM model from the xmi file sample1.fsm
 		 * It's an instance of the FSM metamodel
 		 * "../models/sample1.fsm"
 		 */
 		operation loadfsm(input_automaton : String) : FSM is do
-			var rep : EMFRepository init EMFRepository.new
+			var rep : ResourceSet init ResourceSet.new
 			result := AutomatonHelper.new.loadEMFAutomaton(rep, input_automaton, "http://www.kermeta.org/fsm")
 	        
 	        // Uncomment to check the invariant properties : WFR
@@ -44,7 +45,7 @@ package fsm{
 	        // To check only the states that are contained in "result"
 	        //checkWFR(result)
 		end
-	
+
 		/**
 		 * For all states, we check the Well-Formedness rules
 		 */

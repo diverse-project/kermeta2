@@ -14,6 +14,7 @@
 
 using fsm::*
 using kermeta::standard::*
+using kermeta::io::StdIO => stdio
 using kermeta::persistence::*
 using kermeta::exceptions::*
 
@@ -23,9 +24,9 @@ package fsm{
 	aspect class FSM 
 	{
 	
-	attribute ownedState : oset State[0..*]#owningFSM
+	//attribute ownedState : oset State[0..*]#owningFSM
 		//reference initialState : Transition[1..*] 
-		reference finalState : State[0..*]
+		//reference finalState : State[0..*]
 		reference currentState : State
 
 		  
@@ -116,7 +117,7 @@ package fsm{
 		// Create a new state from self state
 		operation copy() : State is do
 			result := State.new
-			result.name := String.clone(name)
+			result.name := ""+name //clone
 			result.combination := Set<State>.new
 		end
 	}
@@ -136,7 +137,7 @@ package fsm{
 	
 	
 	
-	abstract class FSMException {}
+	abstract class FSMException inherits Exception{}
 	class NonDeterminism inherits FSMException {}
 	class NoTransition inherits FSMException {}
 	class NoInitialStateException inherits FSMException{}
