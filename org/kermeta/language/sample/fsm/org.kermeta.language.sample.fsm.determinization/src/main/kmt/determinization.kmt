@@ -15,14 +15,14 @@
 
 using fsm::*
 using kermeta::standard::*
-using kermeta::persistence::*
+using kermeta::emfpersistence::*
 
 package fsm{
 	 
 	class Determinization 
 	{ 
 		reference processed_states : Set<State>
-		reference repository : EMFRepository
+		reference repository : ResourceSet
 		reference helper : AutomatonHelper
 		
 		@main ""
@@ -34,7 +34,7 @@ package fsm{
 			var output_path : String
 			// Initialize attributes
 			processed_states := Set<State>.new
-			repository := EMFRepository.new
+			repository := ResourceSet.new
 			helper := AutomatonHelper.new 
 			 
 			// The input automaton to determinize
@@ -58,7 +58,7 @@ package fsm{
 	    	output.ownedState.each { e | e.combination.clear } 
 	    	helper.dotprint(output)
 	    	// Save the automaton
-	    	helper.saveEMFAutomaton(EMFRepository.new, output, output_path, "http://www.kermeta.org/fsm")
+	    	helper.saveEMFAutomaton(ResourceSet.new, output, output_path, "http://www.kermeta.org/fsm")
 	
 	    end
 	    

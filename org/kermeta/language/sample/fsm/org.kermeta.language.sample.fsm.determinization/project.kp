@@ -1,8 +1,9 @@
 resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
+resource fsm_model = "platform:/resource/org.kermeta.language.sample.fsm.simulation"
 
 importProject library_standard
 
-project org_kermeta_language_sample_fsm_determinization {
+project org_kermeta_language_sample_fsm_determinization extends fsm_model{
 
 	mainClass "org_kermeta_language_sample_fsm_determinization^fsm::Determinization"
 	mainOperation "main"

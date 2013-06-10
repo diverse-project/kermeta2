@@ -15,6 +15,7 @@
  
 using fsm::*
 using kermeta::standard::*
+using kermeta::io::StdIO => stdio
 //using kermeta::persistence
 
 package fsm{
@@ -27,6 +28,7 @@ package fsm{
 		reference all_input_pairs : set Pair[0..*]       // The QxQ set of possible pairs, where Q is the stateSet
 		reference helper : AutomatonHelper
 		
+		@main ""
 	    operation main() : Void is do 
 	    
 	    	// Input automaton (non-determinist)
@@ -39,8 +41,8 @@ package fsm{
 			//input := Sampler.new.createSampleM1() // "../models/sampleM1min.automaton"
 			
 			input := helper.ask_emfmodel("Enter the EMF model of the automaton to minimize: ")
-			output_path := stdio.read("Enter the output file where to store the minimal automaton:\nplatform:/resource/fr.irisa.triskell.kermeta.samples.fsm.demoAspect/models/") 
-			output_path := "platform:/resource/fr.irisa.triskell.kermeta.samples.fsm.demoAspect/models/"+output_path
+			output_path := stdio.read("Enter the output file where to store the minimal automaton:\nplatform:/resource/org.kermeta.language.sample.fsm.model/models/") 
+			output_path := "platform:/resource/org.kermeta.language.sample.fsm.model/models/"+output_path
 			
 			stdio.writeln("input:"+ input.isVoid.toString + "tostring : "+ input.toString)
 	
@@ -67,7 +69,7 @@ package fsm{
 	    	// We do not want to store combination
 	    	output.ownedState.each { s | s.combination.clear } 
 			helper.dotprint(output)
-			helper.saveEMFAutomaton(kermeta::persistence::EMFRepository.new, output, output_path, "http://www.kermeta.org/fsm")
+			helper.saveEMFAutomaton(kermeta::emfpersistence::ResourceSet.new, output, output_path, "http://www.kermeta.org/fsm")
 	    end
 	
 	
@@ -107,7 +109,7 @@ package fsm{
 	    	// Create the equivalent classes, which become the new states
 	    	createEquivalenceClasses(output, input.ownedState, old_equivalent_pairs)
 	    	stdio.writeln("Equivalence classes creation succeeded : " + output.ownedState.size.toString)
-			output.ownedState.each { s | s.name := String.clone(helper.join(s.combination.collect{ a | a.name }))  }
+			output.ownedState.each { s | s.name := helper.join(s.combination.collect{ a | a.name })  }
 			// Create the transition between the new states -- inputStates contains the links to their eq.class
 	    	createEquivalentTransitions(output.ownedState, input.ownedState, input.ownedTransition)
 	    	stdio.writeln("Transition set creation succeeded")
