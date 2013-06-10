@@ -68,8 +68,7 @@ class StdIOClass extends k2.standard.EObjectImplForPrimitive {
     }
 
     def read(prompt : String) : String = {
-    	_messagingSystem.readLine(prompt)
-      return ""
+      return	_messagingSystem.readLine(prompt)
     }
     
     def log(kind: Int, message: String, messageGroup: String): Unit = {

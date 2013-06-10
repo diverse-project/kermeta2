@@ -26,8 +26,7 @@ public class ClientMessagingSystem extends MessagingSystem{
 	    Socket kkSocket = new Socket(address, port);
 	    out = new ObjectOutputStream(kkSocket.getOutputStream());
 	    
-	    InputStream is = kkSocket.getInputStream();
-	    java.io.InputStreamReader isr = new java.io.InputStreamReader(is);
+	    java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
 	    in  = new java.io.BufferedReader(isr);
 
 	  } catch (Exception e){

@@ -21,10 +21,23 @@ public class Server4MessagingSystem implements Runnable{
 	int port;
 	
 	MessagingSystem logger;
+	
+	ServerSocket serverSocket;
 
-	public Server4MessagingSystem(int port, MessagingSystem ms) {
-		this.port = port;
-		this.logger = ms;
+	public Server4MessagingSystem(int port, MessagingSystem ms) {	
+		try {
+			
+			this.logger = ms;
+			serverSocket = new ServerSocket(port);
+			this.port = serverSocket.getLocalPort();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public int getPort(){
+		return port;
 	}
 
 	@Override
@@ -34,7 +47,6 @@ public class Server4MessagingSystem implements Runnable{
         Object msg;
         
         try {
-        	ServerSocket serverSocket = new ServerSocket(port);
     		Socket clientSocket = serverSocket.accept();
     		
     		InputStream in = clientSocket.getInputStream();

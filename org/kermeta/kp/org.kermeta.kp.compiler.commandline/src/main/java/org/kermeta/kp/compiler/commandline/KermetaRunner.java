@@ -63,7 +63,7 @@ public class KermetaRunner {
 		runK2Program(mainClass.replaceAll("::", ".")+"_"+mainOperation, params, uriMapFileLocation);
 	}
 	public void runK2Program( String runnerClass, List<String> params, String uriMapFileLocation) {	
-		int port = 12345;
+		int port = 0;
 		String runProjectName = scalaAspectPrefix;
 		String runClassName = runnerClass;
 		if(runnerClass.contains("^")){
@@ -88,9 +88,13 @@ public class KermetaRunner {
 			} catch (URISyntaxException e1) {
 				this.logger.error(e1.toString(), KermetaCompiler.LOG_MESSAGE_GROUP, e1);
 			} 
+	        
+	        Server4MessagingSystem serverMS = new Server4MessagingSystem(port,logger);
+	        
+	        
 	        ArrayList<String> processBuilderParams = 
 	        		new ArrayList<String>(Arrays.asList(getJavaVMbin(), "-cp", scalaToolJarCP,
-	        				"-Dport="+port,
+	        				"-Dport="+serverMS.getPort(),
 	        				"-Durimap.file.location="+(uriMapFileLocation!=null?uriMapFileLocation:""),
 	        				"scala.tools.nsc.MainGenericRunner", 
 	        				"-savecompiled",
@@ -118,7 +122,7 @@ public class KermetaRunner {
 				Thread err2msThread = new Thread(err2ms);
 				Thread cancelMonitorThread = new Thread(cancelMonitor);
 				
-				Thread server4ms = new Thread(new Server4MessagingSystem(port,logger));
+				Thread server4ms = new Thread(serverMS);
 				
 				in2StreamThread.start();
 				server4ms.start();
