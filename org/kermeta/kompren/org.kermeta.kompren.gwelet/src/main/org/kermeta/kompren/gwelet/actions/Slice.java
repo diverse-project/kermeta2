@@ -1,8 +1,13 @@
 package org.kermeta.kompren.gwelet.actions;
 
+import java.awt.Point;
+
+import javax.swing.SwingUtilities;
+
 import org.eclipse.emf.common.util.BasicEList;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
 import org.kermeta.kompren.diagram.view.interfaces.IComponentView.Visibility;
+import org.kermeta.kompren.gwelet.instruments.Completioner;
 import org.kermeta.kompren.gwelet.view.ClassView;
 import org.kermeta.kompren.gwelet.view.ModelViewMapper;
 import org.kermeta.language.structure.ClassDefinition;
@@ -45,6 +50,18 @@ public class Slice extends SelectionBasedVisuAction {
 
 		slicer.initialise(cds, new BasicEList<ModelingUnit>(), radius, true, true, true, considerOnlyComposition, considerOnlyCard1);
 		slicer.launch();
+		
+        Runnable moveScrollbars = new Runnable() {
+            @Override
+			public void run() {
+            	final Point pt = Completioner.Interaction2MoveCamera.getMoveCameraToPoint(classes.get(0), canvas.getZoom(), canvas.getScrollpane());
+            	getCanvas().getScrollpane().getHorizontalScrollBar().setValue((int)pt.getX());
+            	getCanvas().getScrollpane().getVerticalScrollBar().setValue((int)pt.getY());
+            }
+        };
+
+        SwingUtilities.invokeLater(moveScrollbars);
+		
 		done();
 	}
 

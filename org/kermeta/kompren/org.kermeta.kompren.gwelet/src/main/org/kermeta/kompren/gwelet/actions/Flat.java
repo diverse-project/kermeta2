@@ -1,12 +1,16 @@
 package org.kermeta.kompren.gwelet.actions;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.SwingUtilities;
+
 import org.kermeta.kompren.diagram.view.interfaces.IComponentView.Visibility;
 import org.kermeta.kompren.diagram.view.interfaces.IRelationView;
+import org.kermeta.kompren.gwelet.instruments.Completioner;
 import org.kermeta.kompren.gwelet.view.AttributeView;
 import org.kermeta.kompren.gwelet.view.ClassView;
 import org.kermeta.kompren.gwelet.view.ModelViewMapper;
@@ -65,6 +69,18 @@ public class Flat extends SelectionBasedVisuAction {
 		flat(cdRef);
 		cdRef.getSuperType().clear();
 		classes.get(0).update();
+		
+        Runnable moveScrollbars = new Runnable() {
+            @Override
+			public void run() {
+            	final Point pt = Completioner.Interaction2MoveCamera.getMoveCameraToPoint(classes.get(0), canvas.getZoom(), canvas.getScrollpane());
+            	getCanvas().getScrollpane().getHorizontalScrollBar().setValue((int)pt.getX());
+            	getCanvas().getScrollpane().getVerticalScrollBar().setValue((int)pt.getY());
+            }
+        };
+
+        SwingUtilities.invokeLater(moveScrollbars);
+		
 		canvas.update();
 		done();
 	}
@@ -118,6 +134,18 @@ public class Flat extends SelectionBasedVisuAction {
 
 		cdRef.getSuperType().addAll(superTypes);
 		cvRef.update();
+		
+        Runnable moveScrollbars = new Runnable() {
+            @Override
+			public void run() {
+            	final Point pt = Completioner.Interaction2MoveCamera.getMoveCameraToPoint(classes.get(0), canvas.getZoom(), canvas.getScrollpane());
+            	getCanvas().getScrollpane().getHorizontalScrollBar().setValue((int)pt.getX());
+            	getCanvas().getScrollpane().getVerticalScrollBar().setValue((int)pt.getY());
+            }
+        };
+
+        SwingUtilities.invokeLater(moveScrollbars);
+		
 		canvas.update();
 
 		super.undo();
