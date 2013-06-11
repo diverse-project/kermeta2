@@ -4,11 +4,10 @@ import java.awt.Dimension;
 
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import org.kermeta.kompren.gwelet.actions.Flat;
-import org.kermeta.kompren.gwelet.actions.Slice;
 import org.kermeta.kompren.gwelet.actions.ShowHierarchy;
+import org.kermeta.kompren.gwelet.actions.Slice;
 import org.kermeta.kompren.gwelet.eval.QuestionsPanel;
 import org.kermeta.kompren.gwelet.eval.QuestionsPanel.TypeEval;
 import org.kermeta.kompren.gwelet.instruments.Completioner.Interaction2MoveCamera;
@@ -22,6 +21,7 @@ import org.malai.instrument.Link;
 import org.malai.swing.instrument.WidgetInstrument;
 import org.malai.swing.interaction.library.ButtonPressed;
 import org.malai.swing.ui.UIComposer;
+import org.malai.swing.widget.MCheckBox;
 import org.malai.swing.widget.MSpinner;
 
 public class Visualiser extends WidgetInstrument {
@@ -39,6 +39,10 @@ public class Visualiser extends WidgetInstrument {
 	protected GweletSlicer slicer;
 
 	protected MSpinner radius;
+	
+	protected MCheckBox compo;
+	
+	protected MCheckBox card1;
 
 
 	public Visualiser(final UIComposer<?> composer) {
@@ -55,15 +59,23 @@ public class Visualiser extends WidgetInstrument {
 		pruning 		= new MPieMenuButton(new ImageIcon(Class.class.getResource("/res/prune.png")));
 		flat 			= new MPieMenuButton(new ImageIcon(Class.class.getResource("/res/flat.png")));
 		lowerClasses 	= new MPieMenuButton(new ImageIcon(Class.class.getResource("/res/subType.png")));
-		radius 			= new MSpinner(new MSpinner.MSpinnerNumberModel(0, 0, 1000, 1), new JLabel("Radius:"));
+		radius 			= new MSpinner(new MSpinner.MSpinnerNumberModel(0, 0, 1000, 1), null);
+		compo			= new MCheckBox("Composition");
+		card1			= new MCheckBox("Card. 1");
 
 		superClasses.setToolTipText("Show all its super classes.");
 		lowerClasses.setToolTipText("Show all its lower classes.");
 		pruning.setToolTipText("Show all the classes in relation with the selected class.");
 		flat.setToolTipText("Show all its direct inherited attributes, references, inheritances, and operations (by flattening its hierarchy).");
 		radius.setToolTipText("Set the radius of the hierarchy and pruning slicing: 0, there is no radius; 1, only the direct classes are kept; etc.");
+		compo.setToolTipText("Define whether only the composition must be sliced (ie references will be ignored).");
+		card1.setToolTipText("Define whether only relations with a min cardinality of 1 must be sliced.");
 		radius.setMaximumSize(new Dimension(50, 40));
 		radius.setSize(new Dimension(50, 40));
+		compo.setMaximumSize(new Dimension(120, 40));
+		compo.setSize(new Dimension(120, 40));
+		card1.setMaximumSize(new Dimension(75, 40));
+		card1.setSize(new Dimension(75, 40));
 
 		if(QuestionsPanel.TYPE_EVAL==TypeEval.WITHOUT_VISU_TOOLS)
 			radius.setVisible(false);
@@ -113,6 +125,9 @@ public class Visualiser extends WidgetInstrument {
 	public MPieMenuButton getFlat() {
 		return flat;
 	}
+	
+	public MCheckBox getCompo() { return compo; }
+	public MCheckBox getCard1() { return card1; }
 
 
 	public MSpinner getRadius() {
@@ -173,6 +188,8 @@ public class Visualiser extends WidgetInstrument {
 			action.setModelView(instrument.frame.getCanvas());
 			action.setSlicer(instrument.slicer);
 			action.setRadius((Integer)instrument.radius.getValue());
+			action.setConsiderCompositionOnly(instrument.compo.isSelected());
+			action.setConsiderCard1Only(instrument.card1.isSelected());
 		}
 
 		@Override

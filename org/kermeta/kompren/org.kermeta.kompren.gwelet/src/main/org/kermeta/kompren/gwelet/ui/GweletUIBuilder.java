@@ -34,9 +34,12 @@ public class GweletUIBuilder extends UIComposer<GweletFrame> {
 		}
 		MPieMenu menu = widget.visualiserManager.getMenu();
 		menu.add(widget.reiniter.getReinit());
-		menu.add(widget.visualiser.getSuperClasses());
 		menu.add(widget.visualiser.getLowerClasses());
+		menu.add(widget.visualiser.getSuperClasses());
 		menu.add(widget.visualiser.getPruning());
+		menu.add(widget.visualiser.getRadius());
+		menu.add(widget.visualiser.getCard1());
+		menu.add(widget.visualiser.getCompo());
 		menu.add(widget.visualiser.getFlat());
 		menu.add(widget.undoredoer.getRedoB());
 		menu.add(widget.undoredoer.getUndoB());
@@ -65,8 +68,6 @@ public class GweletUIBuilder extends UIComposer<GweletFrame> {
 		field.setMaximumSize(dim);
 		widget.toolbar.add(widget.completioner.getLabel());
 		widget.toolbar.add(field);
-		widget.toolbar.add(widget.visualiser.getRadius().getLabel());
-		widget.toolbar.add(widget.visualiser.getRadius());
 		field.removeActionListener(widget.toolbar.getEventManager());
 		widget.setMinimumSize(new Dimension(800, 600));
 

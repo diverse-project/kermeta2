@@ -36,7 +36,7 @@ public class RelationClassView extends RelationView<ClassView, ClassView> {
 	public RelationClassView(final ClassView src, final ClassView target, final boolean isComposition, final boolean compositionAtStart,
 							final String srcRole, final String targetRole, final Cardinality srcCard, final Cardinality targetCard) {
 		super(src, target);
-
+		if(src.getName().equals("Component") || target.getName().equals("Component"))
 		this.isComposition = isComposition;
 
 		if(isComposition)

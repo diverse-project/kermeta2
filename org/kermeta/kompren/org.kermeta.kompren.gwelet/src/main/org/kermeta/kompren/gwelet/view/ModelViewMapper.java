@@ -303,7 +303,7 @@ public final class ModelViewMapper {
 			if(type instanceof org.kermeta.language.structure.Class &&
 					!ModelUtils.INSTANCE.isKermetaPrimitiveType(((org.kermeta.language.structure.Class)type).getName())) {
 				cv2 = classMappings.get(((org.kermeta.language.structure.Class)type).getTypeDefinition());
-				IRelationView relV = mv.addRelation(cv, cv2, prop.getIsComposite() || oppositeCompo, oppositeCompo,
+				IRelationView relV = mv.addRelation(cv, cv2, prop.getIsComposite() || oppositeCompo, prop.getIsComposite(),
 						prop.getName(), oppositeName, ModelUtils.INSTANCE.getCardinalityString(prop), oppositeCardString);
 				if(relV==null)
 					relV = mv.getOppositeRelation(cv, cv2, prop.getName(), oppositeName, ModelUtils.INSTANCE.getCardinalityString(prop));

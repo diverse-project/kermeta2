@@ -1,5 +1,10 @@
 package org.kermeta.kompren.gwelet.ui;
 
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.LayoutManager2;
+import java.awt.Rectangle;
 import java.awt.geom.Arc2D;
 
 import javax.swing.AbstractButton;
@@ -29,6 +34,7 @@ public class MPieMenuButton extends AbstractButton {
 		setUI(new MPieMenuButtonUI());
 		setModel(new DefaultButtonModel());
 		init(text, null);
+		setLayout(new PieButtonMenuLayout());
 	}
 
 
@@ -142,5 +148,63 @@ public class MPieMenuButton extends AbstractButton {
 
 	public void setPieMenu(final MPieMenu pieMenu) {
 		this.pieMenu = pieMenu;
+	}
+	
+	
+	private class PieButtonMenuLayout implements LayoutManager2 {
+		public PieButtonMenuLayout() {
+			super();
+		}
+		@Override
+		public void addLayoutComponent(final String name, final Component comp) {
+		}
+		@Override
+		public void removeLayoutComponent(final Component comp) {
+		}
+		@Override
+		public Dimension preferredLayoutSize(final Container parent) {
+			Rectangle rec = path.getBounds();
+			return new Dimension((int)rec.getWidth(), (int)rec.getHeight());
+		}
+		@Override
+		public Dimension minimumLayoutSize(final Container parent) {
+			return null;
+		}
+
+		@Override
+		public void layoutContainer(final Container parent) {
+			synchronized(MPieMenuButton.this.getTreeLock()) {
+				final int nbComp = MPieMenuButton.this.getPieMenu().getComponentCount();
+				Component comp;
+		        double width  = getWidth();
+		        double height = getHeight();
+		        
+				int x = (int)(width/2.+width/3.2*Math.cos(angle*(positionInMenu+1.)+Math.PI/2.+Math.PI/nbComp));
+				int y = (int)(height/2.+height/3.2*Math.sin(angle*(positionInMenu+1.)+Math.PI/2.+Math.PI/nbComp));
+				
+				for(int i=0; i<MPieMenuButton.this.getComponentCount(); i++) {
+					comp = MPieMenuButton.this.getComponent(i);
+					comp.setLocation(x-comp.getWidth()/2, y-comp.getHeight()/2);
+				}
+			}
+		}
+		@Override
+		public void addLayoutComponent(Component arg0, Object arg1) {
+		}
+		@Override
+		public float getLayoutAlignmentX(Container arg0) {
+			return 0;
+		}
+		@Override
+		public float getLayoutAlignmentY(Container arg0) {
+			return 0;
+		}
+		@Override
+		public void invalidateLayout(Container arg0) {
+		}
+		@Override
+		public Dimension maximumLayoutSize(Container arg0) {
+			return null;
+		}
 	}
 }

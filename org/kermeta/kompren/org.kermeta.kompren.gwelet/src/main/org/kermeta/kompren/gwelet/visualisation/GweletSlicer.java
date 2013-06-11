@@ -35,8 +35,10 @@ public class GweletSlicer extends RichVisualiserKermetaModel {
 	public void onPropertyAdded(final Property prop) {
 		Type type = prop.getType();
 		if(type instanceof org.kermeta.language.structure.Class &&
-				!ModelUtils.INSTANCE.isKermetaPrimitiveType(((org.kermeta.language.structure.Class)type).getName()))
+				!ModelUtils.INSTANCE.isKermetaPrimitiveType(((org.kermeta.language.structure.Class)type).getName())) {
+//			System.out.println(prop.getName());
 			ModelViewMapper.getMapper().getRelationClassView(prop).setVisibility(IComponentView.Visibility.STANDARD);
+		}
 	}
 
 
@@ -45,8 +47,10 @@ public class GweletSlicer extends RichVisualiserKermetaModel {
 		String qname = ModelUtils.INSTANCE.getQualifiedName(cl);// EVAL
 
 		if(!qname.startsWith("org.kermeta") && !qname.startsWith("kermeta") && !qname.startsWith("org.Dummy") &&
-			ModelViewMapper.getMapper().getClassView(cl).getVisibility()==IComponentView.Visibility.HIDE_START)
+			ModelViewMapper.getMapper().getClassView(cl).getVisibility()==IComponentView.Visibility.HIDE_START) {
+//			System.out.println(cl.getName());
 				ModelViewMapper.getMapper().getClassView(cl).setVisibility(IComponentView.Visibility.STANDARD);
+		}
 	}
 
 

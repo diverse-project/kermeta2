@@ -35,7 +35,7 @@ public class MPieMenu extends MPanel {
 		super(false, true);
 
 		objToRequestFocus = objToFocus;
-		diameter = 200;
+		diameter = 320;
 		thicknessBorder = 1;
 
 		setBounds(0, 0, diameter, diameter);
@@ -120,7 +120,9 @@ public class MPieMenu extends MPanel {
 			addToMenu(comp);
 			return super.add(comp);
 		}
-		return null;
+		MPieMenuButton but = new MPieMenuButton("");
+		but.add(comp);
+		return add(but);
 	}
 
 
@@ -130,7 +132,9 @@ public class MPieMenu extends MPanel {
 			addToMenu(comp);
 			return super.add(name, comp);
 		}
-		return null;
+		MPieMenuButton but = new MPieMenuButton("");
+		but.add(name, comp);
+		return add(name, but);
 	}
 
 

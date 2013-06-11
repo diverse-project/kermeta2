@@ -11,13 +11,16 @@ import org.kermeta.language.structure.ModelingUnit;
 public class Slice extends SelectionBasedVisuAction {
 	protected int radius;
 
-	protected boolean considerComposition;//TODO
+	protected boolean considerOnlyComposition;
+	
+	protected boolean considerOnlyCard1;
 
 
 	public Slice() {
 		super();
 		radius = 0;
-		considerComposition = true;
+		considerOnlyComposition = false;
+		considerOnlyCard1 = false;
 	}
 
 
@@ -40,7 +43,7 @@ public class Slice extends SelectionBasedVisuAction {
 		for(ClassView cl : classes)
 			cds.add(mapper.getClassDefinition(cl));
 
-		slicer.initialise(cds, new BasicEList<ModelingUnit>(), radius, true, true, true, false, false);
+		slicer.initialise(cds, new BasicEList<ModelingUnit>(), radius, true, true, true, considerOnlyComposition, considerOnlyCard1);
 		slicer.launch();
 		done();
 	}
@@ -57,7 +60,11 @@ public class Slice extends SelectionBasedVisuAction {
 	}
 
 
-	public void setConsiderComposition(final boolean considerComposition) {
-		this.considerComposition = considerComposition;
+	public void setConsiderCompositionOnly(final boolean considerComposition) {
+		this.considerOnlyComposition = considerComposition;
+	}
+	
+	public void setConsiderCard1Only(final boolean considerOnlyCard1) {
+		this.considerOnlyCard1 = considerOnlyCard1;
 	}
 }
