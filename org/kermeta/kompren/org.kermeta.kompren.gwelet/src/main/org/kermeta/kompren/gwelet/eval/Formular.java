@@ -155,13 +155,11 @@ public class Formular extends JPanel {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
 			Formular.this.setVisible(false);
-//			Formular.this.frame.pack();
 			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 			Formular.this.frame.setLocation((dim.width-Formular.this.frame.getWidth())/2,
 											(dim.height-Formular.this.frame.getHeight())/2);
-			Formular.this.questionsPanel.setUserInformations(//name.getText() + "\t" + 
+			Formular.this.questionsPanel.setUserInformations(
 											ageS.getValue().toString() + "\t" +
-//					sexCB.getSelectedItem().toString() + "\t" + 
 											statusCB.getSelectedItem().toString() +
 					"\t" + xpMdeCB.getSelectedItem().toString() + "\t" + xpUmlCB.getSelectedItem().toString() +
 					"\t" + xpRAMCB.getSelectedItem().toString() +

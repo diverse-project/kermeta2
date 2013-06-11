@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,6 +32,7 @@ import org.malai.swing.widget.MToolBar;
 
 public class QuestionsPanel extends JPanel {
 	public static final TypeEval TYPE_EVAL = TypeEval.WITH_VISU_TOOLS;
+	public static final String END_MSG = "---END---";
 
 	public enum TypeEval {
 		WITH_VISU_TOOLS,
@@ -157,9 +157,9 @@ public class QuestionsPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	protected EditorPaneAntiAlias questionArea;
+	protected EditorPaneHTML questionArea;
 
-	protected EditorPaneAntiAlias answerArea;
+	protected EditorPaneHTML answerArea;
 
 	protected int currentNbQuestions;
 
@@ -167,7 +167,7 @@ public class QuestionsPanel extends JPanel {
 
 	protected JLabel answerLabel;
 
-	protected EditorPaneAntiAlias helperLabel;
+	protected EditorPaneHTML helperLabel;
 
 	protected MToolBar toolbar;
 
@@ -175,9 +175,9 @@ public class QuestionsPanel extends JPanel {
 
 	protected JButton answerButton;
 
-	protected EditorPaneAntiAlias resultField;
+	protected EditorPaneHTML resultField;
 
-	protected EditorPaneAntiAlias resultLabel;
+	protected EditorPaneHTML resultLabel;
 
 	protected List<Question> questions;
 
@@ -202,14 +202,15 @@ public class QuestionsPanel extends JPanel {
 		questions 		= new ArrayList<>();
 		currentNbQuestions = -1;
 
-		resultLabel = new EditorPaneAntiAlias(true);
+		resultLabel = new EditorPaneHTML(true);
 		resultLabel.setEditable(false);
 		resultLabel.setAlignmentX(CENTER_ALIGNMENT);
 		resultLabel.setMaximumSize(new Dimension(500, 80));
 
-		resultField = new EditorPaneAntiAlias(false);
+		resultField = new EditorPaneHTML(false);
 		resultField.setEditable(false);
 		resultField.setBackground(Color.WHITE);
+		resultLabel.setText("<html><center><b>Thank you!</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
 
 		startButton = new JButton("<html><font size=\"+2\"><b>Start</b></font></html>");
 		startButton.setAlignmentX(CENTER_ALIGNMENT);
@@ -232,20 +233,20 @@ public class QuestionsPanel extends JPanel {
 		answerLabel.setMaximumSize(new Dimension(120, 40));
 		answerLabel.setFocusable(false);
 
-		answerArea = new EditorPaneAntiAlias(false);
+		answerArea = new EditorPaneHTML(false);
         answerArea.setPreferredSize(new Dimension(380, 250));
 		answerArea.setMaximumSize(new Dimension(380, 250));
 		answerArea.setAlignmentX(CENTER_ALIGNMENT);
 		answerArea.setBackground(Color.WHITE);
 
-		helperLabel = new EditorPaneAntiAlias(true);
+		helperLabel = new EditorPaneHTML(true);
 		helperLabel.setPreferredSize(new Dimension(380, 130));
 		helperLabel.setMaximumSize(new Dimension(380, 130));
 		helperLabel.setAlignmentX(CENTER_ALIGNMENT);
 		helperLabel.setBackground(Color.WHITE);
 		helperLabel.setEditable(false);
 
-		questionArea = new EditorPaneAntiAlias(true);
+		questionArea = new EditorPaneHTML(true);
 		questionArea.setBackground(Color.WHITE);
 		questionArea.setEditable(false);
 		questionArea.setEditable(false);
@@ -270,7 +271,7 @@ public class QuestionsPanel extends JPanel {
 		resultLabel.setVisible(false);
 		resultField.setVisible(false);
 		initQuestions();
-		setNextQuestion();
+		setNextQuestion(false);
 	}
 	
 	
@@ -292,17 +293,46 @@ public class QuestionsPanel extends JPanel {
 					if(q==null) throw new NullPointerException(questionsTxt[i] + " is not a question.");
 					questions.add(new Question(q));
 				}
+				
+				Path dataFile = Paths.get("./data.txt");
+				StringBuilder res = new StringBuilder();
+
+				if(Files.exists(dataFile)) {
+					List<String> linesRes = Files.readAllLines(dataFile, Charset.defaultCharset());
+					if(!linesRes.isEmpty() && !linesRes.get(linesRes.size()-1).equals(END_MSG)) {
+						for(String line : linesRes)
+							res.append(line).append('\n');
+						resultField.setText(res.toString());
+						
+						for(Question question : questions)
+							if(existsLineStartingWith(linesRes, question.question.name()))
+								currentNbQuestions++;
+					}
+				}
 			}
 		}catch(IOException e) { e.printStackTrace(); }
 	}
+	
+	
+	private boolean existsLineStartingWith(List<String> linesRes, String name) {
+		for(String line : linesRes)
+			if(line.startsWith(name))
+				return true;
+		return false;
+	}
 
 
-	public void setNextQuestion() {
+	public void setNextQuestion(boolean serialise) {
 		ReinitView action = new ReinitView();
 		action.setModelView(frame.getCanvas());
 		if(action.canDo())
 			action.doIt();
 
+		if(currentNbQuestions>=0 && serialise) {
+			resultField.setText(resultField.getText() + questions.get(currentNbQuestions) + "\n");
+			saveResults();
+		}
+		
 		currentNbQuestions++;
 		if(currentNbQuestions<questions.size())
 			setQuestionMode(questions.get(currentNbQuestions));
@@ -370,30 +400,22 @@ public class QuestionsPanel extends JPanel {
 		setVisible(true);
 		resultField.setVisible(true);
 		resultLabel.setVisible(true);
-		resultLabel.setText("<html><center><b>Thank you!</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
 		Dimension dim = new Dimension(380, 500);
 		resultField.setPreferredSize(dim);
 		resultField.setMinimumSize(dim);
-		resultField.setText(TYPE_EVAL + "\n" + userInformations + "\n");
+		
+		if(!questions.isEmpty())
+			resultField.setText(resultField.getText() + questions.get(questions.size()-1) + "\n");
+		
+		resultField.setText(resultField.getText() + "\n" + TYPE_EVAL + "\n" + userInformations + "\n" + END_MSG);
 		frame.pack();
-
-		for(Question q : questions)
-			resultField.setText(resultField.getText() + q + "\n");
-
+		saveResults();
+	}
+	
+	
+	protected void saveResults() {
 		try {
-			String fileName = "./data";
-			String ext = ".txt";
-
-			if(new File(fileName+ext).exists()) {
-				int i=1;
-
-				while(new File(fileName+i+ext).exists())
-					i++;
-
-				fileName = fileName + i;
-			}
-
-			try(FileWriter fw = new FileWriter(fileName+ext);
+			try(FileWriter fw = new FileWriter("./data.txt");
 				PrintWriter out = new PrintWriter(fw)) {
 				out.print(resultField.getText());
 			}
@@ -401,7 +423,6 @@ public class QuestionsPanel extends JPanel {
 			e.printStackTrace();
 		}
 	}
-
 
 	class ShowAnswerFieldListener implements ActionListener {
 		@Override
@@ -424,7 +445,7 @@ public class QuestionsPanel extends JPanel {
 			question.setAnswer(QuestionsPanel.this.answerArea.getText());
 
 			if(hasNextQuestion)
-				QuestionsPanel.this.setNextQuestion();
+				QuestionsPanel.this.setNextQuestion(true);
 			else
 				QuestionsPanel.this.setTerminated();
 			frame.getCanvas().requestFocusInWindow();
@@ -438,10 +459,10 @@ public class QuestionsPanel extends JPanel {
 }
 
 
-class EditorPaneAntiAlias extends JEditorPane {
+class EditorPaneHTML extends JEditorPane {
 	private static final long serialVersionUID = 1L;
 
-	public EditorPaneAntiAlias(final boolean html) {
+	public EditorPaneHTML(final boolean html) {
 		super(html ? "text/html" : "text", "");
 	}
 }
