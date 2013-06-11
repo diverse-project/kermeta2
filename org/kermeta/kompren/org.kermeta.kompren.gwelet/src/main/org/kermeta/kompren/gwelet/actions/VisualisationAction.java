@@ -3,8 +3,6 @@ package org.kermeta.kompren.gwelet.actions;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.SwingUtilities;
-
 import org.kermeta.kompren.diagram.action.ModelViewAction;
 import org.kermeta.kompren.diagram.view.interfaces.IComponentView;
 import org.kermeta.kompren.diagram.view.interfaces.IEntityView;
@@ -14,10 +12,6 @@ import org.malai.undo.Undoable;
 public abstract class VisualisationAction extends ModelViewAction implements Undoable {
 	protected List<IComponentView.Visibility> viewClassesStates;
 	protected List<IComponentView.Visibility> viewRelationStates;
-
-	protected int xScrollbarPos;
-
-	protected int yScrollbarPos;
 
 
 	public VisualisationAction() {
@@ -34,9 +28,6 @@ public abstract class VisualisationAction extends ModelViewAction implements Und
 			viewClassesStates.add(ent.getVisibility());
 		for(IRelationView rel : canvas.getRelations())
 			viewRelationStates.add(rel.getVisibility());
-
-		xScrollbarPos = canvas.getScrollpane().getHorizontalScrollBar().getValue();
-		yScrollbarPos = canvas.getScrollpane().getVerticalScrollBar().getValue();
 
 		doVisualisation();
 		done();
@@ -66,16 +57,6 @@ public abstract class VisualisationAction extends ModelViewAction implements Und
 		}
 		canvas.updateLayout();
 		canvas.update();
-
-        Runnable moveScrollbars = new Runnable() {
-            @Override
-			public void run() {
-            	getCanvas().getScrollpane().getHorizontalScrollBar().setValue(xScrollbarPos);
-            	getCanvas().getScrollpane().getVerticalScrollBar().setValue(yScrollbarPos);
-            }
-        };
-
-        SwingUtilities.invokeLater(moveScrollbars);
 	}
 
 
