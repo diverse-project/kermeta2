@@ -225,7 +225,7 @@ public class QuestionsPanel extends JPanel {
 		answerButton.setFocusable(false);
 		questionLabel = new JLabel();
 		questionLabel.setAlignmentX(CENTER_ALIGNMENT);
-		questionLabel.setMaximumSize(new Dimension(120, 40));
+		questionLabel.setMaximumSize(new Dimension(280, 40));
 		questionLabel.setFocusable(false);
 		answerLabel = new JLabel();
 		answerLabel.setText("<html><font size=\"+1\"><b>Answer</b></font></html>");
@@ -342,7 +342,8 @@ public class QuestionsPanel extends JPanel {
 	public void setQuestionMode(final Question question) {
 		sniffer.setQuestion(null);
 		questionArea.setText(question.question.getTitle());
-		questionLabel.setText("<html><font size=\"+1\"><b>Question " + (currentNbQuestions+1) + "/" + questions.size() + "</b></font></html>");
+		questionLabel.setText("<html><font size=\"+1\"><b>Question " + (currentNbQuestions+1) + "/" + questions.size() + " -- " +
+				questions.get(currentNbQuestions).question.getMetamodel() + " metamodel</b></font></html>");
 		startButton.setVisible(true);
 		answerArea.setVisible(false);
 		answerLabel.setVisible(false);

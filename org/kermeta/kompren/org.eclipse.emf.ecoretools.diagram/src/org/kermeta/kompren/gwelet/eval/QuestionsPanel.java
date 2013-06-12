@@ -512,7 +512,8 @@ public class QuestionsPanel extends Composite {
 	public void setQuestionMode(final Question question) {
 		sniffer.setQuestion(null);
 		questionArea.setText(question.question.getTitle());
-		questionLabel.setText("Question " + (currentNbQuestions+1) + "/" + questions.size());
+		questionLabel.setText("Question " + (currentNbQuestions+1) + "/" + questions.size() + " -- " +
+				questions.get(currentNbQuestions).question.getMetamodel() + " metamodel");
 		startButton.setVisible(true);
 		((GridData)startButton.getLayoutData()).exclude = false;
 		helperLabel.setVisible(question.question.getHelper()!=null && question.question.getHelper().length()>0);
@@ -557,7 +558,6 @@ public class QuestionsPanel extends Composite {
         			IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
         			RenderedDiagramRootEditPart ren = (RenderedDiagramRootEditPart) ((EcoreDiagramEditor) editorPart).getDiagramEditPart().getRoot();
         			double zoom = ren.getZoomManager().getZoom();
-        			System.out.println(zoom + " " + cv);
         			fc.scrollTo((int) (zoom*cv.x)-editor.getSize().x/2, (int) (zoom*cv.y)-editor.getSize().y/2);
         		}
             }
