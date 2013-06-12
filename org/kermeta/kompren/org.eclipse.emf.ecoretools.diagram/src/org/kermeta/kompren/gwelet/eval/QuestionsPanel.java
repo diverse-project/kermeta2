@@ -21,7 +21,11 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.draw2d.FigureCanvas;
+import org.eclipse.emf.ecoretools.diagram.edit.parts.EClassEditPart;
+import org.eclipse.emf.ecoretools.diagram.part.EcoreDiagramEditor;
 import org.eclipse.gef.ui.rulers.RulerComposite;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.render.editparts.RenderedDiagramRootEditPart;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.custom.CLabel;
@@ -32,11 +36,14 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 
 public class QuestionsPanel extends Composite {
 	public static final TypeEval TYPE_EVAL = TypeEval.WITHOUT_VISU_TOOLS;
@@ -538,9 +545,44 @@ public class QuestionsPanel extends Composite {
 		editor.setEnabled(true);
 		layout(true);
 		pack();
+		
+        Runnable moveScrollbars = new Runnable() {
+            @Override
+			public void run() {
+        		final org.eclipse.draw2d.geometry.Point cv = getClassLocation(questions.get(currentNbQuestions).question.getInitialClassToFocusOn());
+        		if(cv==null)
+        			System.err.println("CLASS NOT FOUND: " + questions.get(currentNbQuestions).question.getInitialClassToFocusOn() + " in QuestionPanel");
+        		else {
+        			FigureCanvas fc = (FigureCanvas) editor.getChildren()[0];
+        			IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+        			RenderedDiagramRootEditPart ren = (RenderedDiagramRootEditPart) ((EcoreDiagramEditor) editorPart).getDiagramEditPart().getRoot();
+        			double zoom = ren.getZoomManager().getZoom();
+        			System.out.println(zoom + " " + cv);
+        			fc.scrollTo((int) (zoom*cv.x)-editor.getSize().x/2, (int) (zoom*cv.y)-editor.getSize().y/2);
+        		}
+            }
+        };
+        
+        
+        Display.getDefault().syncExec(moveScrollbars);
 	}
-
-
+	
+	
+	public org.eclipse.draw2d.geometry.Point getClassLocation(String name) {
+		String className = name.split("\\.")[1];
+		IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		
+		if(editorPart instanceof EcoreDiagramEditor) {
+			DiagramEditPart host = ((EcoreDiagramEditor) editorPart).getDiagramEditPart();
+			for(Object obj : host.getChildren()) {
+				if(obj instanceof EClassEditPart && ((EClassEditPart)obj).getPrimaryShape().getFigureClassNameLabel().getText().equals(className))
+					return ((EClassEditPart)obj).getLocation();
+			}
+		}
+		return null;
+	}
+	
+	
 	public void setTerminated() {
 		editor.setVisible(false);
 		editor.setEnabled(false);
