@@ -4,9 +4,16 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +40,7 @@ import org.eclipse.swt.widgets.Text;
 
 public class QuestionsPanel extends Composite {
 	public static final TypeEval TYPE_EVAL = TypeEval.WITHOUT_VISU_TOOLS;
+	public static final String END_MSG = "---END---";
 
 	public enum TypeEval {
 		WITH_VISU_TOOLS,
@@ -213,7 +221,7 @@ public class QuestionsPanel extends Composite {
 		this.frame 		= frame;
 		userInformations= "";
 		sniffer 		= new Sniffer((FigureCanvas) editor.getChildren()[0], editor);
-		questions 		= new ArrayList<Question>();
+		questions 		= new ArrayList<>();
 		currentNbQuestions = -1;
 
 		questionLabel = new CLabel(this, SWT.NONE);
@@ -309,6 +317,7 @@ public class QuestionsPanel extends Composite {
 		gridData.heightHint = 500;
 		gridData.widthHint = 330;
 		resultField.setLayoutData(gridData);
+		resultLabel.setText("<html><center><b>Thank you!</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
 
 		createFormular();
 		
@@ -320,7 +329,7 @@ public class QuestionsPanel extends Composite {
 		resultField.setVisible(false);
 		((GridData)resultField.getLayoutData()).exclude = true;
 		initQuestions();
-		setNextQuestion();
+		setNextQuestion(false);
 	}
 	
 	
@@ -392,6 +401,7 @@ public class QuestionsPanel extends Composite {
 	
 	
 	class ValideListener implements Listener {
+		@Override
 		public void handleEvent(final Event e) {
 			QuestionsPanel.this.formular.setVisible(false);
 			((GridData)formular.getLayoutData()).exclude = true;
@@ -425,15 +435,45 @@ public class QuestionsPanel extends Composite {
 				if(q==null) throw new NullPointerException(questionsTxt[i] + " is not a question.");
 				questions.add(new Question(q));
 			}
+			
+			Path dataFile = Paths.get("./data.txt");
+			StringBuilder res = new StringBuilder();
+
+			if(Files.exists(dataFile)) {
+				List<String> linesRes = Files.readAllLines(dataFile, Charset.defaultCharset());
+				if(!linesRes.isEmpty() && !linesRes.get(linesRes.size()-1).equals(END_MSG)) {
+					for(String line : linesRes)
+						res.append(line).append('\n');
+					resultField.setText(res.toString());
+					
+					for(Question question : questions)
+						if(existsLineStartingWith(linesRes, question.question.name()))
+							currentNbQuestions++;
+				}
+			}
 		}catch(Exception e1) {e1.printStackTrace();}
+	}
+	
+	
+	private boolean existsLineStartingWith(List<String> linesRes, String name) {
+		for(String line : linesRes)
+			if(line.startsWith(name))
+				return true;
+		return false;
 	}
 
 
-	public void setNextQuestion() {
+	public void setNextQuestion(boolean serialise) {
 		execute(new String[] {"git", "reset", "--hard"}, new File("/home/ablouin/wpXP/testProject"));
 		try {
 			ResourcesPlugin.getWorkspace().getRoot().getProjects()[0].refreshLocal(IResource.DEPTH_INFINITE, null);
 		} catch (CoreException e) { e.printStackTrace(); }
+		
+		if(currentNbQuestions>=0 && serialise) {
+			resultField.setText(resultField.getText() + questions.get(currentNbQuestions) + "\n");
+			saveResults();
+		}
+		
 		currentNbQuestions++;
 		if(currentNbQuestions<questions.size())
 			setQuestionMode(questions.get(currentNbQuestions));
@@ -498,15 +538,6 @@ public class QuestionsPanel extends Composite {
 		editor.setEnabled(true);
 		layout(true);
 		pack();
-//        Runnable moveScrollbars = new Runnable() {
-//            @Override
-//			public void run() {
-//            	frame.getCanvas().getScrollpane().getHorizontalScrollBar().setValue(frame.getCanvas().getWidth()/2);
-//            	frame.getCanvas().getScrollpane().getVerticalScrollBar().setValue(frame.getCanvas().getHeight()/2);
-//            }
-//        };
-//
-//        SwingUtilities.invokeLater(moveScrollbars);
 	}
 
 
@@ -536,37 +567,30 @@ public class QuestionsPanel extends Composite {
 		((GridData)resultField.getLayoutData()).exclude = false;
 		resultLabel.setVisible(true);
 		((GridData)resultLabel.getLayoutData()).exclude = false;
-		resultLabel.setText("<html><center><b>Thank you!</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
-		resultField.setText(TYPE_EVAL + "\n" + userInformations + "\n");
+		
+		if(!questions.isEmpty())
+			resultField.setText(resultField.getText() + questions.get(questions.size()-1) + "\n");
+		
+		resultField.setText(resultField.getText() + "\n" + TYPE_EVAL + "\n" + userInformations + "\n" + END_MSG);
 		frame.pack();
-
-		for(Question q : questions)
-			resultField.setText(resultField.getText() + q + "\n");
-
-//		try {
-//			String fileName = "./data";
-//			String ext = ".txt";
-//
-//			if(new File(fileName+ext).exists()) {
-//				int i=1;
-//
-//				while(new File(fileName+i+ext).exists())
-//					i++;
-//
-//				fileName = fileName + i;
-//			}
-//
-//			try(FileWriter fw = new FileWriter(fileName+ext);
-//				PrintWriter out = new PrintWriter(fw)) {
-//				out.print(resultField.getText());
-//			}
-//		}catch(IOException e) {
-//			e.printStackTrace();
-//		}
+		saveResults();
+	}
+	
+	
+	protected void saveResults() {
+		try {
+			try(FileWriter fw = new FileWriter("./data.txt");
+				PrintWriter out = new PrintWriter(fw)) {
+				out.print(resultField.getText());
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 
 	class ShowAnswerFieldListener implements Listener {
+		@Override
 		public void handleEvent(final Event e) {
 			QuestionsPanel.this.currentTime = System.currentTimeMillis();
 			QuestionsPanel.this.setAnswerMode();
@@ -575,6 +599,7 @@ public class QuestionsPanel extends Composite {
 
 
 	class ShowQuestionFieldListener implements Listener {
+		@Override
 		public void handleEvent(final Event e) {
 			final boolean hasNextQuestion = QuestionsPanel.this.currentNbQuestions+1<QuestionsPanel.this.questions.size();
 			final Question question = hasNextQuestion ? QuestionsPanel.this.questions.get(QuestionsPanel.this.currentNbQuestions) :
@@ -584,7 +609,7 @@ public class QuestionsPanel extends Composite {
 			question.setAnswer(QuestionsPanel.this.answerArea.getText());
 
 			if(hasNextQuestion)
-				QuestionsPanel.this.setNextQuestion();
+				QuestionsPanel.this.setNextQuestion(true);
 			else
 				QuestionsPanel.this.setTerminated();
 		}
