@@ -27,6 +27,7 @@ import org.kermeta.kompren.gwelet.actions.ReinitView;
 import org.kermeta.kompren.gwelet.instruments.Completioner;
 import org.kermeta.kompren.gwelet.ui.GweletFrame;
 import org.kermeta.kompren.gwelet.view.ClassView;
+import org.kermeta.kompren.gwelet.view.MetamodelView;
 import org.kermeta.kompren.gwelet.view.ModelViewMapper;
 import org.malai.swing.widget.MToolBar;
 
@@ -154,6 +155,9 @@ public class QuestionsPanel extends JPanel {
 		UML,
 		RAM
 	}
+	
+	private MetamodelView uml = null;
+	private MetamodelView ram = null;
 
 	private static final long serialVersionUID = 1L;
 
@@ -340,6 +344,10 @@ public class QuestionsPanel extends JPanel {
 	
 
 	public void setQuestionMode(final Question question) {
+		if(currentNbQuestions<1 ||
+			(currentNbQuestions>0 && question.question.getMetamodel()!=questions.get(currentNbQuestions-1).question.getMetamodel()))
+			ModelViewMapper.getMapper().build("src/resources/examples/"+question.question.getMetamodel().name()+".km");
+		
 		sniffer.setQuestion(null);
 		questionArea.setText(question.question.getTitle());
 		questionLabel.setText("<html><font size=\"+1\"><b>Question " + (currentNbQuestions+1) + "/" + questions.size() + " -- " +

@@ -26,7 +26,6 @@ public class Gwelet {
 		frame.setVisible(true);
 		ToolTipManager.sharedInstance().setInitialDelay(10);
 		ToolTipManager.sharedInstance().setDismissDelay(100000);
-		frame.open("src/resources/examples/UML.km");
 		frame.getCanvas().requestFocusInWindow();
 	}
 }
