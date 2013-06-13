@@ -149,6 +149,22 @@
 		                <zip destfile="${project.build.outputDirectory}/zips/org.kermeta.language.sample.class2rdbms.zip">
 		                	<fileset dir="${basedir}/../class2rdbms/org.kermeta.language.sample.class2rdbms/"/>
 		                </zip>
+		                
+		                <zip destfile="${project.build.outputDirectory}/zips/org.kermeta.language.sample.fsm.model.zip">
+		                	<fileset dir="${basedir}/../fsm/org.kermeta.language.sample.fsm.model/"/>
+		                </zip>
+		                <zip destfile="${project.build.outputDirectory}/zips/org.kermeta.language.sample.fsm.checker.zip">
+		                	<fileset dir="${basedir}/../fsm/org.kermeta.language.sample.fsm.checker/"/>
+		                </zip>
+		                <zip destfile="${project.build.outputDirectory}/zips/org.kermeta.language.sample.fsm.simulation.zip">
+		                	<fileset dir="${basedir}/../fsm/org.kermeta.language.sample.fsm.simulation/"/>
+		                </zip>
+		                <zip destfile="${project.build.outputDirectory}/zips/org.kermeta.language.sample.fsm.minimization.zip">
+		                	<fileset dir="${basedir}/../fsm/org.kermeta.language.sample.fsm.minimization/"/>
+		                </zip>
+		              	<zip destfile="${project.build.outputDirectory}/zips/org.kermeta.language.sample.fsm.determinization.zip">
+		                	<fileset dir="${basedir}/../fsm/org.kermeta.language.sample.fsm.determinization/"/>
+		                </zip>
 		              	</tasks>
             		</configuration>
 	          	</execution>
