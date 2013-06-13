@@ -17,7 +17,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.draw2d.FigureCanvas;
@@ -43,7 +46,11 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 
 public class QuestionsPanel extends Composite {
 	public static final TypeEval TYPE_EVAL = TypeEval.WITHOUT_VISU_TOOLS;
@@ -510,25 +517,41 @@ public class QuestionsPanel extends Composite {
 	
 
 	public void setQuestionMode(final Question question) {
-		sniffer.setQuestion(null);
-		questionArea.setText(question.question.getTitle());
-		questionLabel.setText("Question " + (currentNbQuestions+1) + "/" + questions.size() + " -- " +
-				questions.get(currentNbQuestions).question.getMetamodel() + " metamodel");
-		startButton.setVisible(true);
-		((GridData)startButton.getLayoutData()).exclude = false;
-		helperLabel.setVisible(question.question.getHelper()!=null && question.question.getHelper().length()>0);
-		((GridData)helperLabel.getLayoutData()).exclude = !helperLabel.isVisible();
-		answerArea.setVisible(false);
-		((GridData)answerArea.getLayoutData()).exclude = true;
-		answerLabel.setVisible(false);
-		((GridData)answerLabel.getLayoutData()).exclude = true;
-		answerButton.setVisible(false);
-		((GridData)answerButton.getLayoutData()).exclude = true;
-		helperLabel.setText(question.question.getHelper());
-		editor.setVisible(false);
-		editor.setEnabled(false);
-		layout(true);
-		pack();
+		IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+
+		if(editorPart!=null && !editorPart.getTitle().split("\\.")[0].equals(question.question.getMetamodel().name())) {
+			editorPart.getEditorSite().getPage().closeEditor(editorPart, false);
+			IWorkspaceRoot myWorkspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+			IProject project = myWorkspaceRoot.getProjects()[0];
+			IFile file = project.getFile("src/"+question.question.getMetamodel().name()+".ecorediag");
+			FileEditorInput fei = new FileEditorInput(file);
+			
+			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		    IWorkbenchPage page = window.getActivePage();
+		    try { page.openEditor(fei, "org.eclipse.emf.ecoretools.diagram.part.EcoreDiagramEditorID"); } 
+		    catch (PartInitException e) { e.printStackTrace(); }
+		}
+		else {
+			sniffer.setQuestion(null);
+			questionArea.setText(question.question.getTitle());
+			questionLabel.setText("Question " + (currentNbQuestions+1) + "/" + questions.size() + " -- " +
+					questions.get(currentNbQuestions).question.getMetamodel() + " metamodel");
+			startButton.setVisible(true);
+			((GridData)startButton.getLayoutData()).exclude = false;
+			helperLabel.setVisible(question.question.getHelper()!=null && question.question.getHelper().length()>0);
+			((GridData)helperLabel.getLayoutData()).exclude = !helperLabel.isVisible();
+			answerArea.setVisible(false);
+			((GridData)answerArea.getLayoutData()).exclude = true;
+			answerLabel.setVisible(false);
+			((GridData)answerLabel.getLayoutData()).exclude = true;
+			answerButton.setVisible(false);
+			((GridData)answerButton.getLayoutData()).exclude = true;
+			helperLabel.setText(question.question.getHelper());
+			editor.setVisible(false);
+			editor.setEnabled(false);
+			layout(true);
+			pack();
+		}
 	}
 
 	public void setAnswerMode() {
