@@ -27,7 +27,6 @@ import org.kermeta.kompren.gwelet.actions.ReinitView;
 import org.kermeta.kompren.gwelet.instruments.Completioner;
 import org.kermeta.kompren.gwelet.ui.GweletFrame;
 import org.kermeta.kompren.gwelet.view.ClassView;
-import org.kermeta.kompren.gwelet.view.MetamodelView;
 import org.kermeta.kompren.gwelet.view.ModelViewMapper;
 import org.malai.swing.widget.MToolBar;
 
@@ -156,9 +155,8 @@ public class QuestionsPanel extends JPanel {
 		RAM
 	}
 	
-	private MetamodelView uml = null;
-	private MetamodelView ram = null;
-
+	protected boolean questionsAreEnding;
+	
 	private static final long serialVersionUID = 1L;
 
 	protected EditorPaneHTML questionArea;
@@ -214,7 +212,6 @@ public class QuestionsPanel extends JPanel {
 		resultField = new EditorPaneHTML(false);
 		resultField.setEditable(false);
 		resultField.setBackground(Color.WHITE);
-		resultLabel.setText("<html><center><b>Thank you!</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
 
 		startButton = new JButton("<html><font size=\"+2\"><b>Start</b></font></html>");
 		startButton.setAlignmentX(CENTER_ALIGNMENT);
@@ -291,8 +288,22 @@ public class QuestionsPanel extends JPanel {
 			if(conf.size()==1) {
 				String[] questionsTxt = conf.get(0).split(" ");
 				QuestionList q;
+				
+				switch(questionsTxt[0]) {
+					case "S": questionsAreEnding = false; break; // Starting
+					case "E": questionsAreEnding = true; break; // Ending
+					case "U": questionsAreEnding = true; break; // Unique
+				}
+				
+				String t1 = "<html><center><b>Thank you!</b>";
+				String t2 = "<br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>";
+				
+				if(questionsAreEnding)
+					resultLabel.setText(t1 + t2);
+				else
+					resultLabel.setText(t1 + "<br><b>Now, use the ecoreDiag editor (eclipse) to complete the experiment.</b>" + t2);
 
-				for(int i=0; i<questionsTxt.length; i++) {
+				for(int i=1; i<questionsTxt.length; i++) {
 					q = QuestionList.getQuestion(questionsTxt[i]);
 					if(q==null) throw new NullPointerException(questionsTxt[i] + " is not a question.");
 					questions.add(new Question(q));
@@ -401,7 +412,10 @@ public class QuestionsPanel extends JPanel {
 		questionArea.setVisible(false);
 		questionLabel.setVisible(false);
 		setVisible(false);
-		formular.setVisible(true);
+		if(questionsAreEnding)
+			formular.setVisible(true);
+		else
+			setTerminated2();
 		frame.pack();
 	}
 	

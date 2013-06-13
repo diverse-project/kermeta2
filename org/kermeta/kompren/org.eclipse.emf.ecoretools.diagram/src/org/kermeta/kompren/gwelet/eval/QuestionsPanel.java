@@ -176,6 +176,8 @@ public class QuestionsPanel extends Composite {
 		UML,
 		RAM
 	}
+	
+	protected boolean questionsAreEnding;
 
 	protected Browser questionArea;
 
@@ -331,7 +333,6 @@ public class QuestionsPanel extends Composite {
 		gridData.heightHint = 500;
 		gridData.widthHint = 330;
 		resultField.setLayoutData(gridData);
-		resultLabel.setText("<html><center><b>Thank you!</b><br>A backup of the results called \"data.txt\"<br>has been created near the jar file you launch.</center></html>");
 
 		createFormular();
 		
@@ -443,8 +444,22 @@ public class QuestionsPanel extends Composite {
 			String[] questionsTxt	= in.readLine().split(" ");
 			in.close();
 			QuestionList q;
+			
+			switch(questionsTxt[0]) {
+				case "S": questionsAreEnding = false; break; // Starting
+				case "E": questionsAreEnding = true; break; // Ending
+				case "U": questionsAreEnding = true; break; // Unique
+			}
+			
+			String t1 = "<html><center><b>Thank you!</b>";
+			String t2 = "<br>A backup of the results called \"data.txt\"<br>has been created in your home dir.</center></html>";
+			
+			if(questionsAreEnding)
+				resultLabel.setText(t1 + t2);
+			else
+				resultLabel.setText(t1 + "<br><b>Now, use the Kompren editor to complete the experiment.</b>" + t2);
 
-			for(int i=0; i<questionsTxt.length; i++) {
+			for(int i=1; i<questionsTxt.length; i++) {
 				q = QuestionList.getQuestion(questionsTxt[i]);
 				if(q==null) throw new NullPointerException(questionsTxt[i] + " is not a question.");
 				questions.add(new Question(q));
@@ -621,8 +636,12 @@ public class QuestionsPanel extends Composite {
 		((GridData)questionArea.getLayoutData()).exclude = true;
 		questionLabel.setVisible(false);
 		((GridData)questionLabel.getLayoutData()).exclude = true;
-		formular.setVisible(true);
-		((GridData)formular.getLayoutData()).exclude = false;
+		if(questionsAreEnding) {
+			formular.setVisible(true);
+			((GridData)formular.getLayoutData()).exclude = false;
+		}
+		else
+			setTerminated2();
 		frame.pack();
 	}
 	
