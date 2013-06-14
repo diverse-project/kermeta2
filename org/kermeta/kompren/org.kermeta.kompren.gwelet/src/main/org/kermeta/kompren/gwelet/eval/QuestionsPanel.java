@@ -119,7 +119,7 @@ public class QuestionsPanel extends JPanel {
 			@Override public String getInitialClassToFocusOn() { return "uml.State"; }
 		},
 		T4A_RAM{
-			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of at least one intermediate class between the class <b>Aspect</b> to the class <b>AspectMessageView</b></font></html>"; }
+			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of at least one intermediate class between the class <b>LifeLine</b> to the class <b>FragmentContainer</b></font></html>"; }
 			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
 			@Override public String getInitialClassToFocusOn() { return "ram.Aspect"; }
