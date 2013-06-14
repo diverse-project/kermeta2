@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id$ -->
+<book lang="en-US">
+	<bookinfo>
+		<mediaobject>
+			<imageobject>
+				<imagedata fileref="Kermeta-Manual_figures/KermetaLogo.png"
+					format="PNG" />
+			</imageobject>
+		</mediaobject>
+		<title>Use case of Kermeta 2</title>
+		<subtitle>Finite state machine sample</subtitle>
+
+		<pubdate>Build
+			: &version; &buildNumber;
+		</pubdate>
+		<date>$Date:: $</date>
+		
+		<author>
+			<firstname>Fabien</firstname>
+			<surname>Coulon</surname>
+		</author>
+
+		<keywordset>
+			<keyword>Kermeta</keyword>
+			<keyword>metamodeling</keyword>
+			<keyword>language</keyword>
+			<keyword>dsl</keyword>
+			<keyword>FSM</keyword>
+			<keyword>sample</keyword>
+		</keywordset>
+
+		<abstract>
+			<para>In this tutorial we will show how Kermeta 2 can help you to add sematic on your own model, how to transform it to another model and how to build a basic interpreter.</para>
+		</abstract>
+
+		<publisher>
+			<publishername>INRIA</publishername>
+
+			<address>
+				<state>France</state>
+				<otheraddr>
+					<ulink url="http://www.inria.fr">http://www.inria.fr</ulink>
+				</otheraddr>
+			</address>
+		</publisher>
+	</bookinfo>
+
+	<preface id="preface.link">
+		<title id="preface.title.link">
+			Presentation
+			<phrase id="preface"></phrase>
+		</title>
+		<para>Kermeta action language is a DSL designed to manipulate
+			models. However it
+			isn't a general purpose language and thus doesn't
+			directly offer all
+			the libraries to build for example an application 
+			with a
+			sophisticated GUI.
+		</para>
+
+		<important>
+			<title>Prerequisite</title>
+			<para>Preconditions so that the tutorials could run correctly</para>
+			<itemizedlist>
+				<listitem>
+					<para>Use an Eclipse Modeling Tools based on a Juno version</para>
+				</listitem>
+				<listitem>
+					<para>On Eclipse IDE should be installed Kermeta language plug-in
+						based upon a Release version
+					</para>
+				</listitem>
+				<listitem>
+					<para>On Eclipse IDE should be installed Maven plug-in</para>
+				</listitem>
+				<listitem>
+					<para>Eclipse must be started using a JDK (not a JRE). This must be
+						specified in the eclipse.ini file using the -vm option.
+					</para>
+				</listitem>
+			</itemizedlist>
+			<para>Alternatively to the first 3 points, you can use the predefined
+				eclipse package with all kermeta tools preinstalled.
+			</para>
+		</important>
+		<important>
+			<para>This tutorial serie explain various procedure to acheive some
+				goal, however, the attentive reader must know that even if the
+				presented procedure work, you may acheive similar results using
+				alternative or slightly modifying the proposed procedure because you
+				ma decide to use another tool or use it differently. Roughly,
+				all
+				this tutorial serie is actually about :
+			</para>
+			<itemizedlist>
+				<listitem>
+					<para>Java compilation, and the support of java compatible language
+						like Scala and groovy. (special care to the compilation classpath)
+					</para>
+				</listitem>
+				<listitem>
+					<para>OSGI/Eclipse packaging and deployment, which requires to take
+						care to the jar content and to the runtime classpath (which can be
+						different from the compilation classpath !)
+					</para>
+				</listitem>
+			</itemizedlist>
+			<para>In all cases, there are various ways to compile, package and
+				deploy, either using Eclipse builders or using maven.
+			</para>
+			<para>This tutorial will try to give suggestions and explain the
+				underlying process but explaining maven, Eclipse, java, OSGI isn't
+				in the scope of this document. The user must be ready to find and
+				read the appropriate documentations.
+			</para>
+		</important>
+	</preface>
+	
+	<chapter>
+		<title>Introduction</title>
+		To illustrate the use of Kermeta 2, we will see the study case of a Finite state machine(FSM).
+		At the end of this tutorial you will know how to use Kermeta 2 for :
+		<para> 
+			<itemizedlist>
+				<listitem>
+					<para>Import a model in Kermeta 2</para>
+				</listitem>
+				<listitem>
+					<para>Adding constaints on your model</para>
+				</listitem>
+				<listitem>
+					<para>Browsing your model</para>
+				</listitem>
+				<listitem>
+					<para>Adding behavior on your model</para>
+				</listitem>
+				<listitem>
+					<para>Make a running application based on your model</para>
+				</listitem>
+			</itemizedlist>
+		</para>
+	</chapter>
+	
+	<chapter>
+		<title>Define the FSM metamodel</title>
+		<para> An IO/state machine  is composed with two kind of elements: states and transitions which linking them. The current state of the machine move between states by following transitions. A transition is followed if the input is read. And if transition is followed the ouput is writed</para>
+		<para>
+			This example recognizes the "hello!" motif and produces the "world!" motif. Here, we present this finite-state machine in a specific graphical syntax where states are squares and transitions are arrows between squares. Input and outputs are present above transitions. Here, "h/w" says that we consume an "h" to produce a "w"
+			<mediaobject>
+				<imageobject>
+					<imagedata
+						fileref="Kermeta-FSMDslTutorial_figures/helloWorldFSM.png"
+						format="PNG" />
+				</imageobject>
+			</mediaobject>
+		</para>
+	</chapter>
+	
+	<chapter>
+		<title>Getting the FSM sample</title>
+		<para>TODO: this is the result of the tuto, so move to the end chapter?</para>
+		<para>Kermeta 2 provides a set of examples to show his skills. Among them you can retrieve the FSM sample, which will install Kermeta 2 projects in your workspace. You will find into them, as a support of this tutorial, the working source code. To do this just go in File -> New -> Example and then select "Kermeta 2 FSM sample" in "Kermeta 2 samples"</para>
+	</chapter>
+	
+	<chapter>
+		<title>Models &amp; Metamodel</title>
+		<para> TODO: explain how to desgin the fsm model with emf tools </para>
+	</chapter>
+	
+	<chapter>
+		<title>Adding constraints on the model</title>
+		<para> TODO: not yet working on K2 but explain the OCL-like feature and for what is it. Ex: not duplicated transitions allowed</para>
+	</chapter>
+	
+	<chapter>
+		<title>Make the machine alive</title>
+		<para> TODO: explain how to write the interpreter and what is it</para>
+	</chapter>
+	
+	<chapter>
+		<title>Model transformation</title>
+		<para> TODO </para>
+		<section id="determinization">
+			<title>Determinization</title>
+			<para>TODO</para>
+		</section>
+		<section id="minimization">
+			<title>Minimization</title>
+			<para>Delete duplicated states</para>
+		</section>
+	</chapter>
+
+</book>
+			
