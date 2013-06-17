@@ -122,7 +122,7 @@
 	
 	<chapter>
 		<title>Introduction</title>
-		To illustrate the use of Kermeta 2, we will see the study case of a Finite state machine(FSM).
+		To illustrate the use of Kermeta 2, we will study the case of a Finite state machine(FSM).
 		At the end of this tutorial you will know how to use Kermeta 2 for :
 		<para> 
 			<itemizedlist>
@@ -161,19 +161,212 @@
 	</chapter>
 	
 	<chapter>
-		<title>Getting the FSM sample</title>
-		<para>TODO: this is the result of the tuto, so move to the end chapter?</para>
-		<para>Kermeta 2 provides a set of examples to show his skills. Among them you can retrieve the FSM sample, which will install Kermeta 2 projects in your workspace. You will find into them, as a support of this tutorial, the working source code. To do this just go in File -> New -> Example and then select "Kermeta 2 FSM sample" in "Kermeta 2 samples"</para>
-	</chapter>
-	
-	<chapter>
 		<title>Models &amp; Metamodel</title>
 		<para> TODO: explain how to desgin the fsm model with emf tools </para>
+		<para> In this section we will define the metamodel and make a simple editor to create some conforms models, which will be the input of Kermeta 2 with using EMF technology. You can do this works with Kermeta but this is not the purpose of this tutorial, here we want show how the 2 technologies work together</para>
+		
+		<section id="metamodel">
+			<title>Creation of the metamodel</title>
+			<para>
+				The first step is to make the .ecore file, which will describe your metamodel.
+				Create a new project in File -> New -> Project and in "Eclipse Modeling Framework" select "Empty EMF Project". 
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/1_empty_project.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Name your project "model".
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/2_name_empty_project.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				The project appear now in your workspace.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/3_empty_project_created.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Then create the .ecore file with a right clic on your project and select New -> Other. Choose "Ecore Model" in "Eclipse Modeling Framework".
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/4_add_ecore.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Name your file fsm.ecore and put it in the "model" folder of your project.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/5_name_ecore.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Select "EPackage" and clic on finish.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/6_type_ecore.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Your .ecore is created, we must fill it now !
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/7_project_with_ecore.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Open fsm.ecore with the "Sample Ecore Model Editor". It is the default Eclipse editor for .ecore file.
+				Then do a right clic on the fsm package in the model and in "New Child" select "EClass" to create the three mains elements of our model: FSM, State and Transition.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/8_ecore_classes.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				We will creates attributes and references for the State. Reference types are related to EClass whereas EAttributes are simple types.
+				Right clic on State, New Child and clic on EAttribute. 
+				Open the Properties view in "Window" -> "Show view" -> "Other" and "Properties" in "General" folder. This view is usefull to edit attributes of model elements. Set "name" as Name of the EAttibute created.
+				Create three other EReference for the State and name them "outgoingTransition", "incomingTransition" and "owningFSM". You can change the cardinality with "Lower" and "Upper Bound", where -1 means infinity. 
+				Set the EType for each one. We will also set EOpposite values after we have defined attributes of others Classes.
+				I let you to finish yourself the fsm.ecore according to the "Define the FSM metamodel" section. ;)
+				You can get the solution in the subsection "Getting the solution: the FSM sample" of the last chapter of this tutorial.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/9_ecore_attributes.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Now we suppose your fsm.ecore looks like mine in the screenshot.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/10_ecore_full.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</para>
+		</section>
+		<section id="genmodel">
+			<title>Creation of the editor</title>
+			<para>
+				We will now create the .genmodel file. This is a code generator based on an .ecore file. To be simple: it creates a Java implementation of your metamodel and can generate a simple editor with creating instance of your metamodel.
+				Right clic on your project and select New -> Other, and "EMF Generator Model" in "Eclipse Modeling Framework".
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/11_create_genmodel.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Name it "fsm.genmodel".
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/12_name_genmodel.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Base on Ecore model.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/13_type_import_genmodel.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Select "fsm.ecore" from your workspace.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/14_import_ecore_genmodel.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Then clic on Finish.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/15_package_genmodel.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Once you have the genmodel, in the Properties view go to Edit section of "ownedState" of FSM to allow creation of Children in the editor.
+				Do the same operation for "outgoingTransition" of State.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/16_edit_genmodel.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Right clic on the root node of the genmodel and select Generate All. This will generate Java classes implementation of the .ecore in the "src" folder of your project.
+				The two projects generated "model.edit" and "model.editor" will be used as Eclipse plugin and are the implementation of your model editor.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/17_generate_all_genmodel.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Right clic on "model.editor" and Run as -> Eclipse Application. 
+				Create a new empty project in your new instance of Eclipse (where your editor is running as a pluging).
+				Then go to File -> New -> Other -> Example EMF Model Creation Wizard and select Fsm Model.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/18_create_model_editor.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Give a name to your model. (note: the extension of your model file is the name of your metamodel)
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/19_name_model_editor.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Set "FSM" as a type of object model.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/20_type_model_editor.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+				Then you can add elements in the model with right clic -> New Child. Your editor will propose you object of the right allowing type.
+				<mediaobject>
+					<imageobject>
+						<imagedata
+							fileref="Kermeta-FSMDslTutorial_figures/21_edit_model.png"
+							format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</para>
+			
+			<para>Congratulation you have build a simple editor from your metamodel !</para>
+		</section>
+		<para>For more informations about EMF modeling go to "http://www.eclipse.org/documentation/", chose your version of Eclipse and select EMF Developer Guide -> Tutorials</para>
 	</chapter>
 	
 	<chapter>
 		<title>Adding constraints on the model</title>
 		<para> TODO: not yet working on K2 but explain the OCL-like feature and for what is it. Ex: not duplicated transitions allowed</para>
+		<section id="Creation of the project">
+			<title>Creation of the project</title>
+		</section>
 		<section>
 			<title>Run configurations</title>
 			<section>
@@ -208,6 +401,9 @@
 			<section id="Expercted behavior">
 				<title>Expected behaviour for this tutorial</title>
 			</section>
+			<section id="Creation of the project">
+				<title>Creation of the project</title>
+			</section>
 			<section id="Aspect behavior">
 				<title>Structuration of this behavior with aspects</title>
 			</section>
@@ -230,6 +426,18 @@
 		<section id="minimization">
 			<title>Minimization</title>
 			<para>Delete duplicated states</para>
+		</section>
+	</chapter>
+	
+	<chapter>
+		<title>Overview</title>
+		<para>TODO: this is the result of the tuto</para>
+		<section>
+			<title>What you get at the end</title>
+		</section>
+		<section>
+			<title>Getting the solution: the FSM sample</title>
+			<para>Kermeta 2 provides a set of examples to show his skills. Among them you can retrieve the FSM sample, which will install Kermeta 2 projects in your workspace. You will find into them, as a support of this tutorial, the working source code. To do this just go in File -> New -> Example and then select "Kermeta 2 FSM sample" in "Kermeta 2 samples"</para>
 		</section>
 	</chapter>
 
