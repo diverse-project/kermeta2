@@ -268,103 +268,132 @@
 			</para>
 		</section>
 		<section id="genmodel">
-			<title>Creation of the editor</title>
-			<para>
-				We will now create the .genmodel file. This is a code generator based on an .ecore file. To be simple: it creates a Java implementation of your metamodel and can generate a simple editor with creating instance of your metamodel.
-				Right clic on your project and select New -> Other, and "EMF Generator Model" in "Eclipse Modeling Framework".
-				<mediaobject>
-					<imageobject>
-						<imagedata
-							fileref="Kermeta-FSMDslTutorial_figures/11_create_genmodel.png"
-							format="PNG" />
-					</imageobject>
-				</mediaobject>
-				Name it "fsm.genmodel".
-				<mediaobject>
-					<imageobject>
-						<imagedata
-							fileref="Kermeta-FSMDslTutorial_figures/12_name_genmodel.png"
-							format="PNG" />
-					</imageobject>
-				</mediaobject>
-				Base on Ecore model.
-				<mediaobject>
-					<imageobject>
-						<imagedata
-							fileref="Kermeta-FSMDslTutorial_figures/13_type_import_genmodel.png"
-							format="PNG" />
-					</imageobject>
-				</mediaobject>
-				Select "fsm.ecore" from your workspace.
-				<mediaobject>
-					<imageobject>
-						<imagedata
-							fileref="Kermeta-FSMDslTutorial_figures/14_import_ecore_genmodel.png"
-							format="PNG" />
-					</imageobject>
-				</mediaobject>
-				Then clic on Finish.
-				<mediaobject>
-					<imageobject>
-						<imagedata
-							fileref="Kermeta-FSMDslTutorial_figures/15_package_genmodel.png"
-							format="PNG" />
-					</imageobject>
-				</mediaobject>
-				Once you have the genmodel, in the Properties view go to Edit section of "ownedState" of FSM to allow creation of Children in the editor.
-				Do the same operation for "outgoingTransition" of State.
-				<mediaobject>
-					<imageobject>
-						<imagedata
-							fileref="Kermeta-FSMDslTutorial_figures/16_edit_genmodel.png"
-							format="PNG" />
-					</imageobject>
-				</mediaobject>
-				Right clic on the root node of the genmodel and select Generate All. This will generate Java classes implementation of the .ecore in the "src" folder of your project.
-				The two projects generated "model.edit" and "model.editor" will be used as Eclipse plugin and are the implementation of your model editor.
-				<mediaobject>
-					<imageobject>
-						<imagedata
-							fileref="Kermeta-FSMDslTutorial_figures/17_generate_all_genmodel.png"
-							format="PNG" />
-					</imageobject>
-				</mediaobject>
-				Right clic on "model.editor" and Run as -> Eclipse Application. 
-				Create a new empty project in your new instance of Eclipse (where your editor is running as a pluging).
-				Then go to File -> New -> Other -> Example EMF Model Creation Wizard and select Fsm Model.
-				<mediaobject>
-					<imageobject>
-						<imagedata
-							fileref="Kermeta-FSMDslTutorial_figures/18_create_model_editor.png"
-							format="PNG" />
-					</imageobject>
-				</mediaobject>
-				Give a name to your model. (note: the extension of your model file is the name of your metamodel)
-				<mediaobject>
-					<imageobject>
-						<imagedata
-							fileref="Kermeta-FSMDslTutorial_figures/19_name_model_editor.png"
-							format="PNG" />
-					</imageobject>
-				</mediaobject>
-				Set "FSM" as a type of object model.
-				<mediaobject>
-					<imageobject>
-						<imagedata
-							fileref="Kermeta-FSMDslTutorial_figures/20_type_model_editor.png"
-							format="PNG" />
-					</imageobject>
-				</mediaobject>
-				Then you can add elements in the model with right clic -> New Child. Your editor will propose you object of the right allowing type.
-				<mediaobject>
-					<imageobject>
-						<imagedata
-							fileref="Kermeta-FSMDslTutorial_figures/21_edit_model.png"
-							format="PNG" />
-					</imageobject>
-				</mediaobject>
-			</para>
-			
+			<title>Make instances models</title>
+			<section id="Dynamic instances">
+				<title>Dynamic instances</title>
+				<para>
+					Create a dynamic instance is an easy way to create an instance of a metamodel during the first development phases. To do so :
+					<itemizedlist>
+						<listitem>Open the fsm.ecore file with the Sample Ecore Model Editor (Right click on the file -> Open with -> Sample Reflective Ecore Model Editor)</listitem>
+						<listitem>To open the content of this file click on the arrows at the left. Then, right click on the FSM metaclass -> Create Dynamic Instance and select the folder dynamic_instance. Name your instance fsm.xmi.</listitem>
+					</itemizedlist> 
+					
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/create_dynamic_instance.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+					
+					Open this instance with the Sample Reflexive Ecore Model Editor (like shown above). You can add two State st1 and st2 on the FSM class and then a transition 'a' that produce 'b' between st1 and st2 like in the following image : 
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/example_dynamic_instance.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+				</para>
+			</section>
+			<section id="editor">
+				<title>Tree view editor</title>
+				<para>
+					We will now create the .genmodel file. This is a code generator based on an .ecore file. It make a Java implementation of your metamodel and can generate a simple editor, with which you will create instances of your metamodel.
+					Right clic on your project and select New -> Other, and "EMF Generator Model" in "Eclipse Modeling Framework".
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/11_create_genmodel.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+					Name it "fsm.genmodel".
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/12_name_genmodel.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+					Base on Ecore model.
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/13_type_import_genmodel.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+					Select "fsm.ecore" from your workspace.
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/14_import_ecore_genmodel.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+					Then clic on Finish.
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/15_package_genmodel.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+					Once you have the genmodel, in the Properties view go to Edit section of "ownedState" of FSM to allow creation of Children in the editor.
+					Do the same operation for "outgoingTransition" of State.
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/16_edit_genmodel.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+					Right clic on the root node of the genmodel and select Generate All. This will generate Java classes implementation of the .ecore in the "src" folder of your project.
+					The two projects generated "model.edit" and "model.editor" will be used as Eclipse plugin and are the implementation of your model editor.
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/17_generate_all_genmodel.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+					Right clic on "model.editor" and Run as -> Eclipse Application. 
+					Create a new empty project in your new instance of Eclipse (where your editor is running as a pluging).
+					Then go to File -> New -> Other -> Example EMF Model Creation Wizard and select Fsm Model.
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/18_create_model_editor.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+					Give a name to your model. (note: the extension of your model file is the name of your metamodel)
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/19_name_model_editor.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+					Set "FSM" as a type of object model.
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/20_type_model_editor.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+					Then you can add elements in the model with right clic -> New Child. Your editor will propose you object of the right allowing type.
+					<mediaobject>
+						<imageobject>
+							<imagedata
+								fileref="Kermeta-FSMDslTutorial_figures/21_edit_model.png"
+								format="PNG" />
+						</imageobject>
+					</mediaobject>
+				</para>
+			</section>
 			<para>Congratulation you have build a simple editor from your metamodel !</para>
 		</section>
 		<para>For more informations about EMF modeling go to "http://www.eclipse.org/documentation/", chose your version of Eclipse and select EMF Developer Guide -> Tutorials</para>
@@ -865,10 +894,419 @@ package fsm{
 		<section id="determinization">
 			<title>Determinization</title>
 			<para>TODO</para>
+			<section>
+				<title>Algorithm</title>
+				<para>In your FSM you can have states where two (or more) outgoing transitions have the same input. 
+				This implies the machine have to determine which way to go. 
+				That why we use an algorithm on to FSM to remove choices. 
+				In other words, we tranform our model to another model, which will be determinist.</para>
+			</section>
+			<section>
+				<title>Implementation</title>
+				<itemizedlist>
+					<listitem>Create an new Kermeta Project</listitem>
+					<listitem>
+					Rename MainClass.kmt to Determinization.kmt
+					<programlisting language="kermeta">
+using fsm::*
+using kermeta::standard::*
+using kermeta::emfpersistence::*
+
+package fsm{
+	 
+	class Determinization 
+	{ 
+		reference processed_states : &lt;SetState&gt;
+		reference repository : ResourceSet
+		reference helper : AutomatonHelper
+		
+		@main ""
+	    operation main(input_automaton : String) : Void is do 
+	    
+	    	// Input automaton (non-determinist)
+	    	var input : FSM
+			var output : FSM init FSM.new
+			var output_path : String
+			// Initialize attributes
+			processed_states := Set&lt;State&gt;.new
+			repository := ResourceSet.new
+			helper := AutomatonHelper.new 
+			 
+			// The input automaton to determinize
+			input :=  helper.loadEMFAutomaton(repository, input_automaton, "http://www.kermeta.org/fsm")
+			
+			output_path := input_automaton.substring(0, input_automaton.size-3)+"det.fsm"
+	
+		   	output.initialize(input.initialState, true)
+	
+	    	determinize(input, output, output.initialState)
+	
+		    // Define the final states : q' intersection initial Final states is void
+		    output.finalState.addAll
+		    ( 
+				AutomatonHelper.new.seqToSet( output.ownedState.select { 
+			e | e.combination.detect{ a | 
+			    input.finalState.contains(a) } != void  } )
+			)
+			
+	    	// We don't need combination to be stored
+	    	output.ownedState.each { e | e.combination.clear } 
+	    	helper.dotprint(output)
+	    	// Save the automaton
+	    	helper.saveEMFAutomaton(ResourceSet.new, output, output_path, "http://www.kermeta.org/fsm")
+	
+	    end
+	    
+	    operation determinize(input : FSM, output : FSM, output_state : State) is do
+	    
+	    	if not processed_states.contains(output_state) then
+	   			processed_states.add(output_state)
+		    	// For each letter of the alphabet
+		    	input.alphabet.each { nextl |
+	    			// There exists a state x of q' (where q' is a P(Q))
+	    			// and state-y from Q so that : x --l-->  y belongs to input.transitionSet
+			    	var newq : State init State.new
+					newq.combination := helper.seqToSet(
+	    				input.ownedTransition.select { e | e.input.equals(nextl) }.
+	    				select { a | 
+	    					output_state.name == a.source.name
+	    					or
+	    					output_state.combination.detect { i | 
+	    						i.name==a.source.name } != void }.collect { b | 
+	    							b.target }  
+	    				)
+	    				
+	    			newq.name := join(newq.combination.collect{ a | a.name })
+	
+	    			// Add the state to the output automaton if we found one
+	    			if (newq.name.size > 0) then  
+						// Add the new state
+						if (output.ownedState.detect { e | newq.name == e.name } == void) then  
+							output.ownedState.add(newq)
+						else
+							newq := output.ownedState.detect { e | e.name == newq.name }
+						end
+						// Add the new transition
+						var newt : Transition init helper.createTransition(output_state, newq, nextl)  
+						output.ownedTransition.add(newt)
+						self.determinize(input, output, newq)
+		    		end
+				}	// End of Loop
+	    	end  
+	    end
+	   
+	    operation join( str_seq : Collection&lt;String&gt;) : String is do
+	    	result := ""
+			from var it : Iterator&lt;String&gt; init str_seq.iterator
+			until it.isOff
+			loop
+				result.append(it.next)
+			end
+	    end
+	    
+	}
+}
+/*
+Algorithme: we begin with a non deterministic automaton.
+We build the deterministic automaton which has:
+
+   1. states: the parts of Q
+   2. initial state: the I state
+   3. transitions: (U,a,V) where V is the set of reachable states from U through a transition 'a'
+   4. terminal states: states which combination contains the final state of initial automaton
+   */
+					</programlisting>
+					</listitem>
+					<listitem>
+					Change the project.kp
+					<programlisting language="kermeta">
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
+resource fsm_model = "platform:/resource/org.kermeta.language.sample.fsm.simulation"
+
+importProject library_standard
+
+project org_kermeta_language_sample_fsm_determinization extends fsm_model{
+
+	mainClass "org_kermeta_language_sample_fsm_determinization^fsm::Determinization"
+	mainOperation "main"
+
+	import "${project.baseUri}/src/main/kmt/determinization.kmt"
+	
+}
+					</programlisting>
+					</listitem>
+				</itemizedlist> 
+			</section>
 		</section>
 		<section id="minimization">
 			<title>Minimization</title>
-			<para>Delete duplicated states</para>
+			<para>TODO</para>
+			<section>
+				<title>Algorithm</title>
+				<para>In some case a FSM have redundant parts. So we can use a transformation of model to remove duplicated states and reduce the size of the graph</para>
+			</section>
+			<section>
+				<title>Implementation</title>
+				<itemizedlist>
+					<listitem>Create an new Kermeta Project</listitem>
+					<listitem>
+					Rename MainClass.kmt to Minimization.kmt
+					<programlisting language="kermeta">
+using fsm::*
+using kermeta::standard::*
+using kermeta::io::StdIO => stdio
+//using kermeta::persistence
+
+package fsm{
+	
+	
+	
+	class Minimization
+	{
+		reference equivalent_pairs : set Pair[0..*]  // The initial pairSet of the equivalence relation { F \ Q }ï¿½ ^ Fï¿½
+		reference all_input_pairs : set Pair[0..*]       // The QxQ set of possible pairs, where Q is the stateSet
+		reference helper : AutomatonHelper
+		
+		@main ""
+	    operation main() : Void is do 
+	    
+	    	// Input automaton (non-determinist)
+	    	var input : FSM
+			var output_path : String
+			var output : FSM init FSM.new
+			
+			// Initialize attributes
+		   	helper := AutomatonHelper.new 
+			//input := Sampler.new.createSampleM1() // "../models/sampleM1min.automaton"
+			
+			input := helper.ask_emfmodel("Enter the EMF model of the automaton to minimize: ")
+			output_path := stdio.read("Enter the output file where to store the minimal automaton:\nplatform:/resource/org.kermeta.language.sample.fsm.model/models/") 
+			output_path := "platform:/resource/org.kermeta.language.sample.fsm.model/models/"+output_path
+			
+			stdio.writeln("input:"+ input.isVoid.toString + "tostring : "+ input.toString)
+	
+		   	// Initialize equivalent_pairs and possible all_input_pairs
+		   	input.ownedState.each { p | input.ownedState.each { b | 
+		   		// Check : (p,q) is in Eo, i.e either both are final states or both are NOT final states
+		   		var isFinalLeft : Boolean init input.finalState.detect { e | p.name == e.name }!=void
+		   		var isFinalB    : Boolean init input.finalState.detect { e | b.name == e.name }!=void
+		   		// Also fill the all input pairs
+		   		if find_one(all_input_pairs, p, b) == void then all_input_pairs.add(helper.createPair(p, b)) end
+		   		if  ((isFinalLeft and isFinalB) or (not isFinalLeft and not isFinalB)) 
+			      and
+				      find_one(equivalent_pairs, p, b) == void
+			    then 
+			    	stdio.writeln("{"+p.name + ","+b.name+"} ,")
+			   		equivalent_pairs.add(helper.createPair(p, b))
+		   	    end
+		   	    } } 
+			stdio.writeln("Eo = Square{F-Q}^Square{F} is initialized")	   	     
+		   	// Minimalize 
+	    	minimalize(input, output)
+	    	
+	    	//output.prettyprint
+	    	// We do not want to store combination
+	    	output.ownedState.each { s | s.combination.clear } 
+			helper.dotprint(output)
+			helper.saveEMFAutomaton(kermeta::emfpersistence::ResourceSet.new, output, output_path, "http://www.kermeta.org/fsm")
+	    end
+	
+	
+	    /**
+	     * MINIMIZATION ALGORITHM
+	     * params : 
+	     *    - input : the non-minimalized automaton
+	     *    - output : the minimal automaton equivalent to input
+	     */
+	    operation minimalize(input : FSM, output : FSM) is do
+	    	// Remove not accessible states
+	    	remove_unavailable_states(input)
+	    	// final_equivalent_pairs : the smallest equivalent pair set
+			var final_equivalent_pairs : Set&lt;Pair&gt; init Set&lt;Pair&gt;.new
+			final_equivalent_pairs.addAll(equivalent_pairs)
+			var old_equivalent_pairs : Set&lt;Pair&gt; init all_input_pairs
+	    	from var it : Iterator&lt;Pair&gt; init old_equivalent_pairs.iterator
+	    	until old_equivalent_pairs == final_equivalent_pairs
+	    	loop
+	    		old_equivalent_pairs := final_equivalent_pairs
+	    		// For each pair
+	    		old_equivalent_pairs.each { eqPair |
+	    			// For all letters of input, if eqPair is not valid, remove it
+		    		if (isNotOwnedTransition(input, eqPair, old_equivalent_pairs) == true) then 
+		    			// remove this pair from final eq. pairs (H)
+		    			final_equivalent_pairs := old_equivalent_pairs
+		    			var fp : Pair init find_one(final_equivalent_pairs, eqPair.left, eqPair.right)
+		    			if (fp!=void) then
+		    				if (fp.left.name!=fp.right.name) then // the twin pairs are always valid!
+			    				final_equivalent_pairs.remove(fp)
+			    			end 
+		    			end
+		    		end
+	    		}
+	    	end
+	    	stdio.writeln("Minimalize succeeded")
+	    	// Create the equivalent classes, which become the new states
+	    	createEquivalenceClasses(output, input.ownedState, old_equivalent_pairs)
+	    	stdio.writeln("Equivalence classes creation succeeded : " + output.ownedState.size.toString)
+			output.ownedState.each { s | s.name := helper.join(s.combination.collect{ a | a.name })  }
+			// Create the transition between the new states -- inputStates contains the links to their eq.class
+	    	createEquivalentTransitions(output.ownedState, input.ownedState, input.ownedTransition)
+	    	stdio.writeln("Transition set creation succeeded")
+	    	// Set the initial and the final states
+	    	output.initialState := input.initialState.combination.one
+	    	output.finalState.addAll(input.finalState.one.combination) 
+	    end     
+	               
+	    /** Find the pair in pairSet which equals (left, right) or (right, left) (xRy => yRx) */
+	    operation find_one(pairSet : Set&lt;Pair&gt;, left : State, right : State) : Pair is do
+	    	result := pairSet.detect { p | 
+	   		(p.left.name == left.name and p.right.name == right.name) or
+	   		(p.right.name == left.name and p.left.name == right.name) }
+	    end
+	    
+	    /** Remove the states to which no transition leads */
+	    operation remove_unavailable_states(a : FSM) is do
+	    
+	    var tmpState : State init State.new
+	    
+			var as_seq : Sequence&lt;State&gt; init a.ownedState.reject { s | not a.ownedTransition.collect { t | t.target}.contains(s) and s != a.initialState}
+			var at_seq : Sequence&lt;Transition&gt; init a.ownedTransition.reject { t | not as_seq.contains(t.target) }
+			a.ownedTransition.clear
+			a.ownedTransition.addAll(at_seq)
+			a.ownedState.clear
+			a.ownedState.addAll(as_seq)
+	    end
+	         
+	    /** 
+	     *  If the result state-pair ( T(pair.left), T(pair.right) ) does not belong to equivalent pairs then
+	     *  return true otherwise false
+	     *  params : 
+	     *    - automaton : the automaton in which we test the validity of the result state-pair
+	     *    - pair : the pair on which we apply each transition of automaton
+	     *    - equivalent_pairs : the equivalent_pairs in which we search the result state-pair
+	     */
+	    operation isNotOwnedTransition(automaton : FSM, pair : Pair, equivalent_pairs : Set&lt;Pair&gt;) : Boolean is do 
+	    	//  if there exists a letter a in the automaton such as T(pair.left, a), T(pair.right, a) belongs to distinct_pairs
+	    	//  "void" pair is allowed!
+	    	result := false
+	    	from var it : Iterator&lt;String&gt; init automaton.alphabet.iterator
+	    	until it.isOff or result == true
+	    	loop
+	    		var letter : String init it.next
+	    		var tleft : Transition init automaton.ownedTransition.detect { t | t.source.name==pair.left.name and t.input == letter }
+	    		var tright : Transition init automaton.ownedTransition.detect { t | t.source.name==pair.right.name and t.input == letter }    		
+	    		if (tleft!=void and tright!=void) then // empty word belongs to accepted words
+	    			if find_one(equivalent_pairs, tleft.target, tright.target) == void then
+		    			result := true	    		
+		    		end
+		    	else if (tleft==void and tright!=void) or (tleft!=void and tright==void) then result:=true end
+		    	end
+	    	end
+	    end
+	    
+	    /**
+	     * Principle of the creation of the equivalent classes :
+	     *     for each state of the initial automaton do :
+	     *           select all the pairs which first element is this state
+	     *                for each of these pairs, if right element is not "classed" yet, do :
+	     *                    * if a class does not exist for the left element, create one
+	     *                    * add the right element to the class of the left one
+	     *                end
+	     *     end
+	     */
+	    operation createEquivalenceClasses(output : FSM, stateSet : Set&lt;State&gt;, equivalent_pairs : Set&lt;Pair&gt;) is do
+	    	var eqClass : Set&lt;State&gt; init Set&lt;State&gt;.new
+	    	from var it : Iterator&lt;State&gt; init stateSet.iterator
+	    	until it.isOff
+	    	loop
+	    		var state : State init it.next
+	    		var news : State init State.new// eqClass as new state of output
+		    	equivalent_pairs.select
+		    	{ pair | pair.left.name == state.name }.each
+		    	{ pair |
+		    		// combination becomes an improvised "marker"
+		    		// if it is void, it means that it does not belong to a eqclass yet
+	    			if (state.combination == void) then 
+	    				// create the eq. class and the state
+		    			news.combination := Set&lt;State&gt;.new
+		    			news.combination.add(pair.left)
+		    			output.ownedState.add(news)
+		    			// Mark state that is already added // we use combination to ease the transition computation
+		    			state.combination := Set&lt;State&gt;.new 
+		    			state.combination.add(news)
+		    		end
+		    		// Process the right element of the pair : add it to the eq.class of the left element!
+		    		var sright : State init stateSet.detect { s | pair.right.name == s.name and s.combination == void }
+	    			if (sright != void) then
+	    				// Complete the eq. class
+	    				var found_eq : State init output.ownedState.detect{ c | c.combination.detect{ s| s.name==state.name }!=void }
+	    				found_eq.combination.add(pair.right) 
+	    				if (sright.combination == void) then
+		    				sright.combination := Set&lt;State&gt;.new 
+		    				sright.combination.add(found_eq)
+		    			end
+	    			end
+	    		}
+	    	end
+	    end
+	    
+	    /** 
+	     * Create the transitions of the minimal automaton
+	     * params :
+	     *     - eqClassStateSet : the minimal automaton set of states
+	     *     - ownedState : the input automaton set of states
+	     *     - ownedTransition : the intput automaton set of transitions
+	     */
+	    operation createEquivalentTransitions(
+	    	eqClassStateSet : OrderedSet&lt;State&gt;, ownedState : OrderedSet&lt;State&gt;, ownedTransition : OrderedSet&lt;Transition&gt;) : Void is do
+	    	var aResult : OrderedSet&lt;Transition&gt; init OrderedSet&lt;Transition&gt;.new
+	    	
+	    	// for each eq-class
+	    	ownedState.each { nextInputState |
+	    		
+	    		// Get the eq.class to which the current state belongs
+	    		var nextEqClassState : State init nextInputState.combination.one 
+	    		
+				// For each letter, Get the transition for which the current state is a source
+				var nextTransitionSet : Sequence&lt;Transition&gt; init ownedTransition.select { t | t.source == nextInputState }
+				
+				// The target combination is the eq. class target of the new transition!
+				nextTransitionSet.each { t |
+					// Add this transition
+					if aResult.detect {  rt | rt.source == nextEqClassState and rt.input == t.input } == void then
+						var nextEqClassStateTarget : State init eqClassStateSet.detect { s | s.combination.detect{ cs | cs.name==t.target.name }!=void }
+						var newTransition : Transition init helper.createTransition(nextEqClassState, nextEqClassStateTarget, t.input)
+						aResult.add(newTransition)
+					end
+				}
+	    	}
+	    end
+	    
+	}
+}
+					</programlisting>
+					</listitem>
+					<listitem>
+					Change the project.kp
+					<programlisting language="kermeta">
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
+resource fsm_model = "platform:/resource/org.kermeta.language.sample.fsm.simulation"//"mvn:org.kermeta.language.sample.fsm/org.kermeta.language.sample.fsm.simulation/2.0.99-SNAPSHOT"
+
+importProject library_standard
+//importProject fsm_model
+
+project org_kermeta_language_sample_fsm_minimization extends fsm_model{
+
+	mainClass "org_kermeta_language_sample_fsm_minimization^fsm::Minimization"
+	mainOperation "main"
+
+	import "${project.baseUri}/src/main/kmt/minimization.kmt"
+
+}
+					</programlisting>
+					</listitem>
+				</itemizedlist> 
+			</section>
 		</section>
 	</chapter>
 	
@@ -877,10 +1315,75 @@ package fsm{
 		<para>TODO: this is the result of the tuto</para>
 		<section>
 			<title>What you get at the end</title>
+			<itemizedlist>
+				<listitem>A metamodel of FSM</listitem>
+				<listitem>An model editor</listitem>
+				<listitem>A FSM simulator</listitem>
+				<listitem>Two model transformations</listitem>
+			</itemizedlist> 
 		</section>
 		<section>
 			<title>Getting the solution: the FSM sample</title>
 			<para>Kermeta 2 provides a set of examples to show his skills. Among them you can retrieve the FSM sample, which will install Kermeta 2 projects in your workspace. You will find into them, as a support of this tutorial, the working source code. To do this just go in File -> New -> Example and then select "Kermeta 2 FSM sample" in "Kermeta 2 samples"</para>
+		</section>
+		<section>
+			<title>Test cases</title>
+			<para>TODO</para>
+			 <table frame="all"><title>Provided models in the "model" folder and their uses</title>
+				 <tgroup cols="3" align="left" colsep="1" rowsep="1">
+					 <thead>
+					 <row>
+					   <entry>Input FSM Model</entry>
+					   <entry>Motivation</entry>
+					   <entry>Kermeta Run Configuration Uses</entry>
+					 </row>
+					 </thead>
+					 <tbody>
+						<row>
+						    <entry>complextodet.fsm</entry>   
+						    <entry>a FSM model with a lot of states and transitions for testing and improving the determinization algorithm</entry>
+						    <entry> fsm.demo.determinization (not by default)
+									fsm.demo.checkInvariants (not by default)</entry>
+						</row>  
+						<row>
+						    <entry>exampledemo.fsm</entry>   
+						    <entry>a very simple example with 2 states and non-deterministic transitions => checkInvariant returns "the invariant will be violated"</entry>
+						    <entry>fsm.demo.checkInvariants (not by default)</entry>
+						</row> 
+						<row>
+						    <entry>helloWorld.fsm</entry>   
+						    <entry>an example for printing "Helloworld!"</entry>
+						    <entry>fsm.demo.loaderFsm (not by default)</entry>
+						</row> 
+						<row>
+						    <entry>sample1.fsm</entry>   
+						    <entry>that is the nominal test case: a very simple example with 2 states and with deterministic transitions => "none invariant will be violated"</entry>
+						    <entry>	fsm.demo.checkInvariants (by default)
+ 									fsm.demo.loaderFsm (by default)</entry>
+						</row> 
+						<row>
+						    <entry>sample1postv.fsm</entry>   
+						    <entry>an example with 2 states and with deterministic transitions, but the first transition has not output parameter, thus the post condition will be violated</entry>
+						    <entry>fsm.demo.loaderFsm4prepost (by default)</entry>
+						</row> 
+						<row>
+						    <entry>samplerun.fsm</entry>   
+						    <entry>an example with 2 states and deterministic transitions</entry>
+						    <entry>fsm.demo.loaderFsm (not by default)</entry>
+						</row> 
+						<row>
+						    <entry>sampletodeterminize.fsm</entry>   
+						    <entry>an example with 2 states and non-deterministic transitions</entry>
+						    <entry>fsm.demo.determinization (by default)</entry>
+						</row> 
+					 </tbody>
+				</tgroup>
+			</table>
+			Note:
+			<itemizedlist>
+				<listitem>"not by default" means that you must adapt arguments in the given "Kermeta Run Configuration".</listitem>
+				<listitem>*.fsmdi are the graphical view of FSM models.</listitem>
+			</itemizedlist> 
 		</section>
 	</chapter>
 
