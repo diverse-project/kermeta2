@@ -948,7 +948,7 @@ resource.save(void)
 				In other words, we tranform our model to another model, which will be determinist.</para>
 			<section>
 				<title>Algorithm</title>
-				<para>TODO</para>
+				<para>See Powerset construction on https://en.wikipedia.org/wiki/Powerset_construction</para>
 			</section>
 			<section>
 				<title>Implementation</title>
@@ -1092,7 +1092,7 @@ project org_kermeta_language_sample_fsm_determinization extends fsm_model{
 			<para>In some case a FSM have redundant parts. So we can use a transformation of model to remove duplicated states and reduce the size of the graph.</para>
 			<section>
 				<title>Algorithm</title>
-				<para>TODO</para>
+				<para>See DFA minimization on https://en.wikipedia.org/wiki/DFA_minimization</para>
 			</section>
 			<section>
 				<title>Implementation</title>
@@ -1361,7 +1361,6 @@ project org_kermeta_language_sample_fsm_minimization extends fsm_model{
 	
 	<chapter>
 		<title>Overview</title>
-		<para>TODO: this is the result of the tuto</para>
 		<section>
 			<title>What you get at the end</title>
 			<itemizedlist>
@@ -1377,7 +1376,6 @@ project org_kermeta_language_sample_fsm_minimization extends fsm_model{
 		</section>
 		<section>
 			<title>Test cases</title>
-			<para>TODO</para>
 			 <table frame="all"><title>Provided models in the "model" folder and their uses</title>
 				 <tgroup cols="3" align="left" colsep="1" rowsep="1">
 					 <thead>
@@ -1431,7 +1429,6 @@ project org_kermeta_language_sample_fsm_minimization extends fsm_model{
 			Note:
 			<itemizedlist>
 				<listitem>"not by default" means that you must adapt arguments in the given "Kermeta Run Configuration".</listitem>
-				<listitem>*.fsmdi are the graphical view of FSM models.</listitem>
 			</itemizedlist> 
 		</section>
 	</chapter>
