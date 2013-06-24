@@ -33,6 +33,7 @@
 		</keywordset>
 
 		<abstract>
+			<para>Kermeta is a Domain Specific Language dedicated to metamodel engineering. It fills the gap let by MOF which defines only the structure of metamodels, by adding a way to specify static semantic (similar to OCL) and dynamic semantic (using operational semantic in the operation of the metamodel). Kermeta uses the object-oriented paradigm like Java or Eiffel.This document presents various aspects of the language, including the textual syntax, the metamodel (which can be viewed as the abstract syntax) and some more advanced features typically included in its framework. </para>
 			<para>In this tutorial we will show how Kermeta 2 can help you to add sematic on your own model, how to transform it to another model and how to build a basic interpreter.</para>
 		</abstract>
 
@@ -87,43 +88,16 @@
 				eclipse package with all kermeta tools preinstalled.
 			</para>
 		</important>
-		<important>
-			<para>This tutorial serie explain various procedure to acheive some
-				goal, however, the attentive reader must know that even if the
-				presented procedure work, you may acheive similar results using
-				alternative or slightly modifying the proposed procedure because you
-				ma decide to use another tool or use it differently. Roughly,
-				all
-				this tutorial serie is actually about :
-			</para>
-			<itemizedlist>
-				<listitem>
-					<para>Java compilation, and the support of java compatible language
-						like Scala and groovy. (special care to the compilation classpath)
-					</para>
-				</listitem>
-				<listitem>
-					<para>OSGI/Eclipse packaging and deployment, which requires to take
-						care to the jar content and to the runtime classpath (which can be
-						different from the compilation classpath !)
-					</para>
-				</listitem>
-			</itemizedlist>
-			<para>In all cases, there are various ways to compile, package and
-				deploy, either using Eclipse builders or using maven.
-			</para>
-			<para>This tutorial will try to give suggestions and explain the
-				underlying process but explaining maven, Eclipse, java, OSGI isn't
-				in the scope of this document. The user must be ready to find and
-				read the appropriate documentations.
-			</para>
-		</important>
 	</preface>
 	
 	<chapter>
 		<title>Introduction</title>
-		To illustrate the use of Kermeta 2, we will study the case of a Finite state machine(FSM).
+		<para>
+		This tutorial gives an overview of many concepts used through Kermeta 2 project creation.
+		</para>
+		<para>To illustrate the use of Kermeta 2, we will study the case of a Finite state machine(FSM).
 		At the end of this tutorial you will know how to use Kermeta 2 for :
+		</para>
 		<para> 
 			<itemizedlist>
 				<listitem>
@@ -172,7 +146,7 @@
 	
 	<chapter>
 		<title>Models &amp; Metamodel</title>
-		<para> In this section we will define, with EMF, the metamodel and make a simple editor to create some conforms models, which will be the input of Kermeta 2. You can do this works with Kermeta but this is not the purpose of this tutorial, here we want show how the 2 technologies work together</para>
+		<para> In this section we will define, with EMF, the metamodel and make a simple editor to create some conforms models, which will be the input of Kermeta 2. You can do this works with Kermeta language but this is not the purpose of this tutorial, here we want show how the 2 technologies work together</para>
 		
 		<section id="metamodel">
 			<title>Creation of the metamodel</title>
@@ -243,13 +217,18 @@
 							format="PNG" />
 					</imageobject>
 				</mediaobject>
-				We will creates attributes and references for the State. Reference types are related to EClass whereas EAttributes are simple types.
-				Right clic on State, New Child and clic on EAttribute. 
-				Open the Properties view in "Window" -> "Show view" -> "Other" and "Properties" in "General" folder. This view is useful to edit attributes of model elements. Set "name" as Name of the EAttibute created.
-				Create three other EReference for the State and name them "outgoingTransition", "incomingTransition" and "owningFSM". You can change the cardinality with "Lower" and "Upper Bound", where -1 means infinity. 
-				Set the EType for each one. We will also set EOpposite values after we have defined attributes of others Classes.
-				I let you to finish yourself the fsm.ecore according to the "Define the FSM metamodel" section. ;)
-				You can get the solution in the subsection "Getting the solution: the FSM sample" of the last chapter of this tutorial.
+				<para>We will creates attributes and references for the State. Reference types are related to EClass whereas EAttributes are simple types.</para>
+				<para>Open the Properties view in "Window" -> "Show view" -> "Other" and "Properties" in "General" folder. This view is useful to edit attributes of model elements.</para>
+				<para>Right clic on State, New Child and clic on EAttribute. Set "name" as Name of the EAttibute created.</para>
+				 
+				<para>Create three other EReference for the State and name them "outgoingTransition", "incomingTransition" and "owningFSM". 
+				You can change the cardinality with "Lower" and "Upper Bound", where -1 means infinity.
+				Set the EType for each one. We will also set EOpposite values after we have defined attributes of others Classes.</para> 
+				
+				
+				
+				<para>I let you to finish yourself the fsm.ecore according to the "Define the FSM metamodel" section.
+				You can get the solution in the subsection "Getting the solution: the FSM sample" of the last chapter of this tutorial.</para>
 				<mediaobject>
 					<imageobject>
 						<imagedata
@@ -269,13 +248,14 @@
 		</section>
 		<section id="genmodel">
 			<title>Make instances models</title>
+			<para>In this chapter we present how to create instances of the Fsm metamodel. You can use two ways to do that, creating dynamic instances directly or using an EMF tree editor.</para>
 			<section id="Dynamic instances">
 				<title>Dynamic instances</title>
 				<para>
 					Create a dynamic instance is an easy way to create an instance of a metamodel during the first development phases. To do so :
 					<itemizedlist>
 						<listitem>Open the fsm.ecore file with the Sample Ecore Model Editor (Right click on the file -> Open with -> Sample Reflective Ecore Model Editor)</listitem>
-						<listitem>To open the content of this file click on the arrows at the left. Then, right click on the FSM metaclass -> Create Dynamic Instance and select the folder dynamic_instance. Name your instance fsm.xmi.</listitem>
+						<listitem>Then, right click on the FSM metaclass -> Create Dynamic Instance and select a folder. Name your instance fsm.xmi.</listitem>
 					</itemizedlist> 
 					
 					<mediaobject>
@@ -298,105 +278,136 @@
 			</section>
 			<section id="editor">
 				<title>Tree view editor</title>
-				<para>
-					We will now create the .genmodel file. This is a code generator based on an .ecore file. It make a Java implementation of your metamodel and can generate a simple editor, with which you will create instances of your metamodel.
-					Right clic on your project and select New -> Other, and "EMF Generator Model" in "Eclipse Modeling Framework".
-					<mediaobject>
-						<imageobject>
-							<imagedata
-								fileref="Kermeta-FSMDslTutorial_figures/11_create_genmodel.png"
-								format="PNG" />
-						</imageobject>
-					</mediaobject>
-					Name it "fsm.genmodel".
-					<mediaobject>
-						<imageobject>
-							<imagedata
-								fileref="Kermeta-FSMDslTutorial_figures/12_name_genmodel.png"
-								format="PNG" />
-						</imageobject>
-					</mediaobject>
-					Base on Ecore model.
-					<mediaobject>
-						<imageobject>
-							<imagedata
-								fileref="Kermeta-FSMDslTutorial_figures/13_type_import_genmodel.png"
-								format="PNG" />
-						</imageobject>
-					</mediaobject>
-					Select "fsm.ecore" from your workspace.
-					<mediaobject>
-						<imageobject>
-							<imagedata
-								fileref="Kermeta-FSMDslTutorial_figures/14_import_ecore_genmodel.png"
-								format="PNG" />
-						</imageobject>
-					</mediaobject>
-					Then clic on Finish.
-					<mediaobject>
-						<imageobject>
-							<imagedata
-								fileref="Kermeta-FSMDslTutorial_figures/15_package_genmodel.png"
-								format="PNG" />
-						</imageobject>
-					</mediaobject>
-					Once you have the genmodel, in the Properties view go to Edit section of "ownedState" of FSM to allow creation of Children in the editor.
-					Do the same operation for "outgoingTransition" of State.
-					<mediaobject>
-						<imageobject>
-							<imagedata
-								fileref="Kermeta-FSMDslTutorial_figures/16_edit_genmodel.png"
-								format="PNG" />
-						</imageobject>
-					</mediaobject>
-					Right clic on the root node of the genmodel and select Generate All. This will generate Java classes implementation of the .ecore in the "src" folder of your project.
-					The two projects generated "model.edit" and "model.editor" will be used as Eclipse plugin and are the implementation of your model editor.
-					<mediaobject>
-						<imageobject>
-							<imagedata
-								fileref="Kermeta-FSMDslTutorial_figures/17_generate_all_genmodel.png"
-								format="PNG" />
-						</imageobject>
-					</mediaobject>
-					Right clic on "model.editor" and Run as -> Eclipse Application. 
-					Create a new empty project in your new instance of Eclipse (where your editor is running as a pluging).
-					Then go to File -> New -> Other -> Example EMF Model Creation Wizard and select Fsm Model.
-					<mediaobject>
-						<imageobject>
-							<imagedata
-								fileref="Kermeta-FSMDslTutorial_figures/18_create_model_editor.png"
-								format="PNG" />
-						</imageobject>
-					</mediaobject>
-					Give a name to your model. (note: the extension of your model file is the name of your metamodel)
-					<mediaobject>
-						<imageobject>
-							<imagedata
-								fileref="Kermeta-FSMDslTutorial_figures/19_name_model_editor.png"
-								format="PNG" />
-						</imageobject>
-					</mediaobject>
-					Set "FSM" as a type of object model.
-					<mediaobject>
-						<imageobject>
-							<imagedata
-								fileref="Kermeta-FSMDslTutorial_figures/20_type_model_editor.png"
-								format="PNG" />
-						</imageobject>
-					</mediaobject>
-					Then you can add elements in the model with right clic -> New Child. Your editor will propose you object of the right allowing type.
-					<mediaobject>
-						<imageobject>
-							<imagedata
-								fileref="Kermeta-FSMDslTutorial_figures/21_edit_model.png"
-								format="PNG" />
-						</imageobject>
-					</mediaobject>
-				</para>
+				<section>
+					<title>Generate the editor </title>
+						<para>We will now create the .genmodel file. This is a code generator based on an .ecore file. It makes a Java implementation of your metamodel and can generate a simple editor, with which you will create instances of your metamodel.</para>
+						<para>Right clic on your project and select New -> Other, and "EMF Generator Model" in "Eclipse Modeling Framework".</para>
+						<mediaobject>
+							<imageobject>
+								<imagedata
+									fileref="Kermeta-FSMDslTutorial_figures/11_create_genmodel.png"
+									format="PNG" />
+							</imageobject>
+						</mediaobject>
+						
+						<para>Name it "fsm.genmodel".</para>
+						
+						<mediaobject>
+							<imageobject>
+								<imagedata
+									fileref="Kermeta-FSMDslTutorial_figures/12_name_genmodel.png"
+									format="PNG" />
+							</imageobject>
+						</mediaobject>
+						
+						<para>Base on Ecore model.</para>
+						
+						<mediaobject>
+							<imageobject>
+								<imagedata
+									fileref="Kermeta-FSMDslTutorial_figures/13_type_import_genmodel.png"
+									format="PNG" />
+							</imageobject>
+						</mediaobject>
+						
+						<para>Select "fsm.ecore" from your workspace.</para>
+						
+						<mediaobject>
+							<imageobject>
+								<imagedata
+									fileref="Kermeta-FSMDslTutorial_figures/14_import_ecore_genmodel.png"
+									format="PNG" />
+							</imageobject>
+						</mediaobject>
+						
+						<para>Then clic on Finish.</para>
+						
+						<mediaobject>
+							<imageobject>
+								<imagedata
+									fileref="Kermeta-FSMDslTutorial_figures/15_package_genmodel.png"
+									format="PNG" />
+							</imageobject>
+						</mediaobject>
+						
+						<para>
+						Once you have the genmodel, in the Properties view go to Edit section of "ownedState" of FSM to allow creation of Children in the editor.
+						Do the same operation for "outgoingTransition" of State.
+						</para>
+						
+						<mediaobject>
+							<imageobject>
+								<imagedata
+									fileref="Kermeta-FSMDslTutorial_figures/16_edit_genmodel.png"
+									format="PNG" />
+							</imageobject>
+						</mediaobject>
+						
+						<para>
+						Right clic on the root node of the genmodel and select Generate All. This will generate Java classes implementation of the .ecore in the "src" folder of your project.
+						The two projects generated "model.edit" and "model.editor" will be used as Eclipse plugin and are the implementation of your model editor.
+						</para>
+						
+						<mediaobject>
+							<imageobject>
+								<imagedata
+									fileref="Kermeta-FSMDslTutorial_figures/17_generate_all_genmodel.png"
+									format="PNG" />
+							</imageobject>
+						</mediaobject>
+					</section>
+					
+					<section>
+						<title>Use the editor</title>
+						<para>
+						Right clic on "model.editor" and Run as -> Eclipse Application. 
+						Create a new empty project in your new instance of Eclipse (where your editor is running as a pluging).
+						Then go to File -> New -> Other -> Example EMF Model Creation Wizard and select Fsm Model.
+						</para>
+						
+						<mediaobject>
+							<imageobject>
+								<imagedata
+									fileref="Kermeta-FSMDslTutorial_figures/18_create_model_editor.png"
+									format="PNG" />
+							</imageobject>
+						</mediaobject>
+						
+						<para>Give a name to your model. (note: the extension of your model file is the name of your metamodel)</para>
+						
+						<mediaobject>
+							<imageobject>
+								<imagedata
+									fileref="Kermeta-FSMDslTutorial_figures/19_name_model_editor.png"
+									format="PNG" />
+							</imageobject>
+						</mediaobject>
+						
+						<para>Set "FSM" as a type of object model.</para>
+						
+						<mediaobject>
+							<imageobject>
+								<imagedata
+									fileref="Kermeta-FSMDslTutorial_figures/20_type_model_editor.png"
+									format="PNG" />
+							</imageobject>
+						</mediaobject>
+						
+						<para>Then you can add elements in the model with right clic -> New Child. Your editor will propose you object of the right allowed type.</para>
+						
+						<mediaobject>
+							<imageobject>
+								<imagedata
+									fileref="Kermeta-FSMDslTutorial_figures/21_edit_model.png"
+									format="PNG" />
+							</imageobject>
+						</mediaobject>
+					</section>
+
 			</section>
 			<para>Congratulation you have build a simple editor from your metamodel !</para>
 		</section>
-		<para>For more informations about EMF modeling go to "http://www.eclipse.org/documentation/", chose your version of Eclipse and select EMF Developer Guide -> Tutorials</para>
+		<para>For more informations about EMF modeling go to "http://www.eclipse.org/documentation/", choose your version of Eclipse and select EMF Developer Guide -> Tutorials</para>
 	</chapter>
 	
 	<chapter>
@@ -427,7 +438,7 @@
 			<section id="Expercted behavior">
 				<title>Expected behaviour for this tutorial</title>
 				<para>
-					Adding a behaviour to the FSM meta-model consists in to make a simulation of execution with operations and an execution context represented by the current state of the FSM. That's why you need to add a currentState reference and three operation : 
+					Adding a behaviour to the FSM meta-model consists in to do a simulation of execution with operations and an execution context represented by the current state of the FSM. That's why you need to add a currentState reference and three operation : 
 					<itemizedlist>
 						<listitem>
 							<para>run() for FSM class</para>
@@ -621,13 +632,15 @@ import "${fsm_model.baseUri}/model/fsm.ecore" using EMFBytecode(fsm_model)
 				</para>
 				
 				<para>
-				Now right clic on your project.kp -> clean and build. Then in the target folder open "beforeCheckingforScopeRESOLVED.km". This is the final model generated by the Kermeta 2 compilator. It is a reflect of the assemblage defined in the "project.kp".
-				You can see two metamodels: kermeta and your own. Open yours to see the FSM model was successfully imported. Congratulation! 
+				Now right clic on your project.kp -> clean and build. Then in the target folder open "beforeCheckingforScopeRESOLVED.km". This is the final model generated by the Kermeta 2 compiler. It is a reflect of the assemblage defined in the "project.kp".
+				You can see two metamodels: kermeta and your own. Open yours to see the FSM model was successfully imported. 
 				</para>
 			</section>
 			<section id="Implementation">
 				<title>Write aspects on the classes</title>
-				Right clic on your project New -> Other -> Kermeta -> Kermeta File.
+				
+				<para>Right clic on your project New -> Other -> Kermeta -> Kermeta File.</para>
+				
 				<mediaobject>
 					<imageobject>
 						<imagedata
@@ -635,7 +648,9 @@ import "${fsm_model.baseUri}/model/fsm.ecore" using EMFBytecode(fsm_model)
 							format="PNG" />
 					</imageobject>
 				</mediaobject>
-				Rename it "fsm_Operationnal_Semantics.kmt".
+				
+				<para>Rename it "fsm_Operationnal_Semantics.kmt".</para>
+				
 				<mediaobject>
 					<imageobject>
 						<imagedata
@@ -643,11 +658,15 @@ import "${fsm_model.baseUri}/model/fsm.ecore" using EMFBytecode(fsm_model)
 							format="PNG" />
 					</imageobject>
 				</mediaobject>
-				And add it in the "project.kp":
+				
+				<para>And add it in the "project.kp":</para>
+				
 				<programlisting language="kermeta">
 import "${project.baseUri}/src/main/kmt/fsm_Operationnal_Semantics.kmt"
 				</programlisting>
-				Then you can write aspect on the metaclasses to add the behavior:
+				
+				<para>Then you can write aspect on the metaclasses to add the behavior:</para>
+				
 				<programlisting language="kermeta">
 using fsm::*
 using kermeta::standard::*
@@ -785,7 +804,7 @@ package fsm{
 import "${project.baseUri}/src/main/kmt/fsmLauncher.kmt"
 				</programlisting>
 				This file will contains the simulator, which will call operations from your aspects.
-				As an entry point of your program it contains also the main method ( fix your "project.kp" if needed ;) ) and a method to load an instance model of your metamodel.
+				As an entry point of your program it contains also the main method ( fix your "project.kp" if needed ) and a method to load an instance model of your metamodel.
 				<programlisting language="kermeta">
 using fsm::*
 using kermeta::standard::*
@@ -860,9 +879,28 @@ package fsm{
 	}
 }
 				</programlisting>
-				AutomatonHelper is an object defined in "fsm_Helper.kmt" from the "org.kermeta.language.sample.fsm.simulation" project. It provide useful operations like save  and load model.
 				
-				TODO: speak about loading model
+				<section>
+					<title>Load/Save models</title>
+					<para>
+					AutomatonHelper is an object defined in "fsm_Helper.kmt" from the "org.kermeta.language.sample.fsm.simulation" project. It provide useful operations like save  and load model.
+					</para>
+					<para>
+					In Kermeta 2, models import/export are managed by Resources object, which need URI of the model and metamodel both.
+					<programlisting language="kermeta">
+var resource : Resource init repository.createResource(model_uri , metamodel_uri)
+					</programlisting>
+					Then you can use load method to get a model:
+					<programlisting language="kermeta">
+resource.load(void)
+					</programlisting>
+					Or use the save method:
+					<programlisting language="kermeta">
+resource.save(void)
+					</programlisting>
+					</para>
+				</section>
+
 				</para>
 			</section>
 			<section id="Run the simulation">
@@ -872,10 +910,10 @@ package fsm{
 				</para>
 				<para>
 				In this example we execute a step into the fsm behaviour algorithm with the file samplerun.fsm stored into org.kermeta.language.sample.fsm.model/models/samplerun.fsm.
-
 				You use the transition c to go to s1 to s2 and produce the string v. The behaviour can be produced thanks to the operations run(), step() and fire() defined in the last section.
-				
-				You should obtain the following trace : 
+				</para>
+				<para>Do a right clic on the "project.kp" of your simulation and in "Run As" select "Run Configurations...". Create a new "Kermeta Application" launcher. Fields are automatically filled but you have to set "Operation arguments". Indeed your main operation need the location of your model (the "samplerun.fsm" so).</para>
+				<para>You should obtain the following trace : </para>
 				<mediaobject>
 					<imageobject>
 						<imagedata
@@ -883,23 +921,34 @@ package fsm{
 							format="PNG" />
 					</imageobject>
 				</mediaobject>
-				</para>
+				
 			</section>
 		</section>
 	</chapter>
 	
 	<chapter>
 		<title>Model transformation</title>
-		<para> TODO </para>
+		<para>  
+		The projects Minimization and Determinization are examples of transformations of one model to one another,let you have a look on it.
+		</para> 
+		<para>
+		These examples are separated into three main steps :
+		<itemizedlist>
+			<listitem>load the model to transform and initialize the output model</listitem>
+			<listitem>traitment of the transformation (use an algoritm to determin the new results and add it into other output model)</listitem>
+			<listitem>save the output model</listitem>
+		</itemizedlist>
+    	</para>
+    	
 		<section id="determinization">
 			<title>Determinization</title>
-			<para>TODO</para>
-			<section>
-				<title>Algorithm</title>
-				<para>In your FSM you can have states where two (or more) outgoing transitions have the same input. 
+			<para>In your FSM you can have states where two (or more) outgoing transitions have the same input. 
 				This implies the machine have to determine which way to go. 
 				That why we use an algorithm on to FSM to remove choices. 
 				In other words, we tranform our model to another model, which will be determinist.</para>
+			<section>
+				<title>Algorithm</title>
+				<para>TODO</para>
 			</section>
 			<section>
 				<title>Implementation</title>
@@ -1040,10 +1089,10 @@ project org_kermeta_language_sample_fsm_determinization extends fsm_model{
 		</section>
 		<section id="minimization">
 			<title>Minimization</title>
-			<para>TODO</para>
+			<para>In some case a FSM have redundant parts. So we can use a transformation of model to remove duplicated states and reduce the size of the graph.</para>
 			<section>
 				<title>Algorithm</title>
-				<para>In some case a FSM have redundant parts. So we can use a transformation of model to remove duplicated states and reduce the size of the graph</para>
+				<para>TODO</para>
 			</section>
 			<section>
 				<title>Implementation</title>
