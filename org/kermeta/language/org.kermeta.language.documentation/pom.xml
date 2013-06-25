@@ -192,33 +192,33 @@
 						<phase>generate-resources</phase>
 					</execution>
 					
-					<execution>
-						<id>sampleTutorialLogo-single-page-html</id>
-						<goals>
-							<goal>generate-html</goal>
-						</goals>
-						<configuration>
-							<chunkedOutput>false</chunkedOutput>
-							<highlightSource>true</highlightSource>
-							<highlightXslthlConfig>${basedir}/src/docbkx/custom/highlighters/xslthl-config.xml</highlightXslthlConfig> 
-							<htmlCustomization>${basedir}/src/docbkx/custom/xsl/customized.html-base.xsl</htmlCustomization>
-							<xincludeSupported>true</xincludeSupported>
-							<base.dir></base.dir>
-							<preProcess>
-								<copy todir="target/docbkx/html/Kermeta-LogoDslTutorial.docb/Kermeta-LogoDslTutorial_figures">
-									<fileset dir="src/docbkx/Kermeta-LogoDslTutorial_figures" />
-								</copy>
-								<copy todir="target/docbkx/html/Kermeta-LogoDslTutorial.docb">
-									<fileset dir="src/docbkx/resources" />
-								</copy>
-							</preProcess>
-							<postProcess>
-								<move 	file="target/docbkx/html/Kermeta-LogoDslTutorial.docb.html" 
-										tofile="target/docbkx/html/Kermeta-LogoDslTutorial.docb/Kermeta-LogoDslTutorial.docb.single.html"/>
-							</postProcess>
-						</configuration>
-						<phase>generate-resources</phase>
-					</execution>
+<!-- 					<execution> -->
+<!-- 						<id>sampleTutorialLogo-single-page-html</id> -->
+<!-- 						<goals> -->
+<!-- 							<goal>generate-html</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<chunkedOutput>false</chunkedOutput> -->
+<!-- 							<highlightSource>true</highlightSource> -->
+<!-- 							<highlightXslthlConfig>${basedir}/src/docbkx/custom/highlighters/xslthl-config.xml</highlightXslthlConfig>  -->
+<!-- 							<htmlCustomization>${basedir}/src/docbkx/custom/xsl/customized.html-base.xsl</htmlCustomization> -->
+<!-- 							<xincludeSupported>true</xincludeSupported> -->
+<!-- 							<base.dir></base.dir> -->
+<!-- 							<preProcess> -->
+<!-- 								<copy todir="target/docbkx/html/Kermeta-LogoDslTutorial.docb/Kermeta-LogoDslTutorial_figures"> -->
+<!-- 									<fileset dir="src/docbkx/Kermeta-LogoDslTutorial_figures" /> -->
+<!-- 								</copy> -->
+<!-- 								<copy todir="target/docbkx/html/Kermeta-LogoDslTutorial.docb"> -->
+<!-- 									<fileset dir="src/docbkx/resources" /> -->
+<!-- 								</copy> -->
+<!-- 							</preProcess> -->
+<!-- 							<postProcess> -->
+<!-- 								<move 	file="target/docbkx/html/Kermeta-LogoDslTutorial.docb.html"  -->
+<!-- 										tofile="target/docbkx/html/Kermeta-LogoDslTutorial.docb/Kermeta-LogoDslTutorial.docb.single.html"/> -->
+<!-- 							</postProcess> -->
+<!-- 						</configuration> -->
+<!-- 						<phase>generate-resources</phase> -->
+<!-- 					</execution> -->
 					
 					<execution>
 						<id>sampleTutorialFSM-single-page-html</id>
