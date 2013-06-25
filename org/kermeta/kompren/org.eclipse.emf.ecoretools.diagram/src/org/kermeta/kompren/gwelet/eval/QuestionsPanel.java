@@ -157,6 +157,36 @@ public class QuestionsPanel extends Composite {
 			@Override public String getHelper() { return ""; }
 			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
 			@Override public String getInitialClassToFocusOn() { return "ram.RInt"; }
+		},
+		TUTORIAL1{
+			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of the super and lower classes of the class <b>State</b></font></html>"; }
+			@Override public String getHelper() { return "Use the super/sub classes features.<br>Look at the tutorial document to see how to proceed."; }
+			@Override public Metamodel getMetamodel() { return Metamodel.INTERACTION; }
+			@Override public String getInitialClassToFocusOn() { return "malaiInteraction.State"; }
+		},
+		TUTORIAL2{
+			@Override public String getTitle() { return "<html><font size=\"6\">What are the classes linked, directly or undirectly, by composition to the class <b>Interaction</b></font></html>"; }
+			@Override public String getHelper() { return "Use the pruning+composition feature.<br>Look at the tutorial document to see how to proceed."; }
+			@Override public Metamodel getMetamodel() { return Metamodel.INTERACTION; }
+			@Override public String getInitialClassToFocusOn() { return "malaiInteraction.Interaction"; }
+		},
+		TUTORIAL3{
+			@Override public String getTitle() { return "<html><font size=\"6\">What are the classes linked, directly or undirectly, to the class <b>Interaction</b> by relations which min cardinality equals 1</font></html>"; }
+			@Override public String getHelper() { return "Use the pruning+card1 feature.<br>Look at the tutorial document to see how to proceed."; }
+			@Override public Metamodel getMetamodel() { return Metamodel.INTERACTION; }
+			@Override public String getInitialClassToFocusOn() { return "malaiInteraction.Interaction"; }
+		},
+		TUTORIAL4{
+			@Override public String getTitle() { return "<html><font size=\"6\">What are the classes <b>directly</b> linked to the class <b>State</b></font></html>"; }
+			@Override public String getHelper() { return "Use the pruning+radius feature.<br>Look at the tutorial document to see how to proceed."; }
+			@Override public Metamodel getMetamodel() { return Metamodel.INTERACTION; }
+			@Override public String getInitialClassToFocusOn() { return "malaiInteraction.State"; }
+		},
+		TUTORIAL5{
+			@Override public String getTitle() { return "<html><font size=\"6\">What are the name of the attributes, native or inherited, of the class <b>AbortingState</b></font></html>"; }
+			@Override public String getHelper() { return "Use the flattening feature.<br>Look at the tutorial document to see how to proceed."; }
+			@Override public Metamodel getMetamodel() { return Metamodel.INTERACTION; }
+			@Override public String getInitialClassToFocusOn() { return "malaiInteraction.AbortingState"; }
 		};
 		
 		public abstract String getTitle();
@@ -174,8 +204,11 @@ public class QuestionsPanel extends Composite {
 	
 	public enum Metamodel {
 		UML,
-		RAM
+		RAM,
+		INTERACTION
 	}
+
+	protected boolean isTutorial = false;
 	
 	protected boolean questionsAreEnding;
 
@@ -449,6 +482,7 @@ public class QuestionsPanel extends Composite {
 				case "S": questionsAreEnding = false; break; // Starting
 				case "E": questionsAreEnding = true; break; // Ending
 				case "U": questionsAreEnding = true; break; // Unique
+				case "T": questionsAreEnding = true; isTutorial = true; break; // Tutorial
 			}
 			
 			String t1 = "<html><center><b>Thank you!</b>";
@@ -549,7 +583,10 @@ public class QuestionsPanel extends Composite {
 		else {
 			sniffer.setQuestion(null);
 			questionArea.setText(question.question.getTitle());
-			questionLabel.setText("Question " + (currentNbQuestions+1) + "/" + questions.size() + " -- " +
+			if(isTutorial)
+				questionLabel.setText("Question " + (currentNbQuestions+1) + "/" + questions.size() + " -- Tutorial");
+			else
+				questionLabel.setText("Question " + (currentNbQuestions+1) + "/" + questions.size() + " -- " +
 					questions.get(currentNbQuestions).question.getMetamodel() + " metamodel");
 			startButton.setVisible(true);
 			((GridData)startButton.getLayoutData()).exclude = false;
@@ -652,8 +689,14 @@ public class QuestionsPanel extends Composite {
 		resultLabel.setVisible(true);
 		((GridData)resultLabel.getLayoutData()).exclude = false;
 		
-		if(!questions.isEmpty())
-			resultField.setText(resultField.getText() + questions.get(questions.size()-1) + "\n");
+		if(isTutorial)
+			resultField.setText("");
+		else {
+			if(!questions.isEmpty())
+				resultField.setText(resultField.getText() + questions.get(questions.size()-1) + "\n");
+			
+			resultField.setText(resultField.getText() + "\n" + TYPE_EVAL + "\n" + userInformations + "\n" + END_MSG);
+		}
 		
 		resultField.setText(resultField.getText() + "\n" + TYPE_EVAL + "\n" + userInformations + "\n" + END_MSG);
 		frame.pack();
@@ -662,14 +705,15 @@ public class QuestionsPanel extends Composite {
 	
 	
 	protected void saveResults() {
-		try {
-			try(FileWriter fw = new FileWriter("./data.txt");
-				PrintWriter out = new PrintWriter(fw)) {
-				out.print(resultField.getText());
+		if(!isTutorial)
+			try {
+				try(FileWriter fw = new FileWriter("./data.txt");
+					PrintWriter out = new PrintWriter(fw)) {
+					out.print(resultField.getText());
+				}
+			}catch(IOException e) {
+				e.printStackTrace();
 			}
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 
