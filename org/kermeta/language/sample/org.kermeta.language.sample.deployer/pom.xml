@@ -153,6 +153,9 @@
 		                <zip destfile="${project.build.outputDirectory}/zips/org.kermeta.language.sample.fsm.model.zip">
 		                	<fileset dir="${basedir}/../fsm/org.kermeta.language.sample.fsm.model/"/>
 		                </zip>
+		                <zip destfile="${project.build.outputDirectory}/zips/org.kermeta.language.sample.fsm.extended.zip">
+		                	<fileset dir="${basedir}/../fsm/org.kermeta.language.sample.fsm.extended/"/>
+		                </zip>
 		                <zip destfile="${project.build.outputDirectory}/zips/org.kermeta.language.sample.fsm.checker.zip">
 		                	<fileset dir="${basedir}/../fsm/org.kermeta.language.sample.fsm.checker/"/>
 		                </zip>
