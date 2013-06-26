@@ -1,5 +1,5 @@
 resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
-resource fsm_model = "platform:/resource/org.kermeta.language.sample.fsm.simulation"
+resource fsm_model = "platform:/resource/org.kermeta.language.sample.fsm.extended"
 
 importProject library_standard
 

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fsm:FSM xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fsm="http://www.kermeta.org/fsm" initialState="//@ownedState.0">
+  <ownedState name="State1"/>
+</fsm:FSM>

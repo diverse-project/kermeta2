@@ -1,8 +1,7 @@
 resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
-resource fsm_model = "platform:/resource/org.kermeta.language.sample.fsm.simulation"//"mvn:org.kermeta.language.sample.fsm/org.kermeta.language.sample.fsm.simulation/2.0.99-SNAPSHOT"
+resource fsm_model = "platform:/resource/org.kermeta.language.sample.fsm.extended"
 
 importProject library_standard
-//importProject fsm_model
 
 project org_kermeta_language_sample_fsm_minimization extends fsm_model{
 

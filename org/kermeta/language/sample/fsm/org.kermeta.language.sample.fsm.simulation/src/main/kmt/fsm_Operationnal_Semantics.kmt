@@ -23,12 +23,8 @@ package fsm{
 
 	aspect class FSM 
 	{
-	
-	//attribute ownedState : oset State[0..*]#owningFSM
-		//reference initialState : Transition[1..*] 
-		//reference finalState : State[0..*]
-		reference currentState : State
 
+		reference currentState : State
 		  
 		// Operational semantic
 		operation run() :  Void is do  
@@ -80,25 +76,10 @@ package fsm{
 			end
 		end
 		
-		/** Initialize a new automaton from an existing one 
-		 *  param :
-		 *    p_state : the initial state
-		 *    isInitComb
-		 */
-		operation initialize(p_state : State, isInitComb : Boolean) is do
-			var initState : State init p_state.copy
-			ownedState.add(initState)
-			initialState := initState 
-			if (isInitComb == true) then initialState.combination := Set<State>.new end 
-		end
-		
 	}
 	
 	
 	aspect class State {
-		
-			reference combination : Set<State>
-		
 	
 		// Go to the next state
 		operation step(c : String) : String
@@ -114,12 +95,6 @@ package fsm{
 			result := validTransitions.one.fire
 		end
 		
-		// Create a new state from self state
-		operation copy() : State is do
-			result := State.new
-			result.name := ""+name //clone
-			result.combination := Set<State>.new
-		end
 	}
 	
 	

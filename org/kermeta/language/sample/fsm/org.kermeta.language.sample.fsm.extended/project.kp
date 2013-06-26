@@ -1,0 +1,9 @@
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
+resource fsm_model = "mvn:org.kermeta.language.sample.fsm/org.kermeta.language.sample.fsm.model/1.0.0-SNAPSHOT"
+
+importProject library_standard
+project org_kermeta_language_sample_fsm_extended {
+
+	import "${project.baseUri}/src/main/kmt/fsm_Helper.kmt"
+	import "${fsm_model.baseUri}/model/fsm.ecore" using EMFBytecode(fsm_model)
+}
