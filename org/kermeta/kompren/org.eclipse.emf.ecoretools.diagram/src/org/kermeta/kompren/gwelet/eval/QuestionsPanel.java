@@ -282,7 +282,7 @@ public class QuestionsPanel extends Composite {
 		this.frame 		= frame;
 		userInformations= "";
 		sniffer 		= new Sniffer((FigureCanvas) editor.getChildren()[0], editor);
-		questions 		= new ArrayList<>();
+		questions 		= new ArrayList<Question>();
 		currentNbQuestions = -1;
 
 		questionLabel = new CLabel(this, SWT.NONE);
@@ -461,7 +461,6 @@ public class QuestionsPanel extends Composite {
 	
 	
 	class ValideListener implements Listener {
-		@Override
 		public void handleEvent(final Event e) {
 			QuestionsPanel.this.formular.setVisible(false);
 			((GridData)formular.getLayoutData()).exclude = true;
@@ -490,12 +489,10 @@ public class QuestionsPanel extends Composite {
 			in.close();
 			QuestionList q;
 			
-			switch(questionsTxt[0]) {
-				case "S": questionsAreEnding = false; break; // Starting
-				case "E": questionsAreEnding = true; break; // Ending
-				case "U": questionsAreEnding = true; break; // Unique
-				case "T": questionsAreEnding = true; isTutorial = true; break; // Tutorial
-			}
+			if("S".equals(questionsTxt[0])) questionsAreEnding = false; // Starting
+			else if("E".equals(questionsTxt[0])) questionsAreEnding = true; // Ending
+			else if("U".equals(questionsTxt[0])) questionsAreEnding = true; // Unique
+			else if("T".equals(questionsTxt[0])) questionsAreEnding = true; isTutorial = true; // Unique
 			
 			String t1 = "<html><center><b>Thank you!</b>";
 			String t2 = "<br>A backup of the results called \"data.txt\"<br>has been created in your home dir.</center></html>";
@@ -635,7 +632,6 @@ public class QuestionsPanel extends Composite {
 		pack();
 		
         Runnable moveScrollbars = new Runnable() {
-            @Override
 			public void run() {
         		final org.eclipse.draw2d.geometry.Point cv = getClassLocation(questions.get(currentNbQuestions).question.getInitialClassToFocusOn());
         		if(cv==null)
@@ -719,10 +715,10 @@ public class QuestionsPanel extends Composite {
 	protected void saveResults() {
 		if(!isTutorial)
 			try {
-				try(FileWriter fw = new FileWriter("./data.txt");
-					PrintWriter out = new PrintWriter(fw)) {
-					out.print(resultField.getText());
-				}
+				FileWriter fw = new FileWriter("./data.txt");
+				PrintWriter out = new PrintWriter(fw);
+				out.print(resultField.getText());
+				out.close();
 			}catch(IOException e) {
 				e.printStackTrace();
 			}
@@ -730,7 +726,6 @@ public class QuestionsPanel extends Composite {
 
 
 	class ShowAnswerFieldListener implements Listener {
-		@Override
 		public void handleEvent(final Event e) {
 			QuestionsPanel.this.currentTime = System.currentTimeMillis();
 			QuestionsPanel.this.setAnswerMode();
@@ -739,7 +734,6 @@ public class QuestionsPanel extends Composite {
 
 
 	class ShowQuestionFieldListener implements Listener {
-		@Override
 		public void handleEvent(final Event e) {
 			final boolean hasNextQuestion = QuestionsPanel.this.currentNbQuestions+1<QuestionsPanel.this.questions.size();
 			final Question question = hasNextQuestion ? QuestionsPanel.this.questions.get(QuestionsPanel.this.currentNbQuestions) :

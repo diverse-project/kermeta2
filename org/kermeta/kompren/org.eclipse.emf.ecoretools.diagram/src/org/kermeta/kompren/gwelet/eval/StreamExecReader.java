@@ -48,17 +48,18 @@ public class StreamExecReader extends Thread {
 	@Override
 	public void run() {
 		try {
-			try(final InputStreamReader isr = new InputStreamReader(stream);
-				final BufferedReader br = new BufferedReader(isr)){
-		        log = new StringBuilder();
-		        String line = br.readLine();
-		        String eol = System.getProperty("line.separator");
+			final InputStreamReader isr = new InputStreamReader(stream);
+			final BufferedReader br = new BufferedReader(isr);
+	        log = new StringBuilder();
+	        String line = br.readLine();
+	        String eol = System.getProperty("line.separator");
 
-		        while(line != null) {
-		            log.append(line).append(eol);
-		            line = br.readLine();
-		        }
-			}
+	        while(line != null) {
+	            log.append(line).append(eol);
+	            line = br.readLine();
+	        }
+	        br.close();
+	        isr.close();
         }catch(IOException ex) { ex.printStackTrace(); }
 	}
 
