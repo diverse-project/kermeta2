@@ -26,10 +26,21 @@ public class KermetaLauncher implements ILaunchConfigurationDelegate {
 			transmetedParams.add(aParam);
 		}
 		
+		String str_port = configuration.getAttribute(KermetaLauncherConfiguration.KM_LAUNCH_PORT,"");
+		int port = 0;
+		try{
+			port = Integer.parseInt(str_port);
+		}
+		catch (NumberFormatException e){
+			port = 0;
+		}
+		
 		KermetaBuilder.getDefault().runFromKP(configuration.getAttribute(KermetaLauncherConfiguration.KM_LAUNCH_KP_FILE,""),
 				configuration.getAttribute(KermetaLauncherConfiguration.KM_LAUNCH_MAIN_CLASS,""), 
 				configuration.getAttribute(KermetaLauncherConfiguration.KM_LAUNCH_MAIN_OPERATION,""), 
-				transmetedParams);
+				transmetedParams,
+				port
+				);
 	}
 
 }

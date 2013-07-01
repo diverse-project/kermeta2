@@ -446,6 +446,9 @@ public class KPBuilder {
 		else return true;
 	}
 	synchronized public void runKP(final String mainClass, final String mainOperation, ArrayList<String> params, IProgressMonitor monitor){
+		runKP(mainClass,mainOperation,params,monitor,0);
+	}
+	synchronized public void runKP(final String mainClass, final String mainOperation, ArrayList<String> params, IProgressMonitor monitor, int port){
 		KpLoaderImpl ldr = new KpLoaderImpl(compiler.logger);
 		
 		// Load KP file
@@ -465,10 +468,10 @@ public class KPBuilder {
 					Activator.getDefault().getMessaggingSystem4Runner(kp.getMetamodelName()), 
 					monitor);
 			if((!mainClass.isEmpty()) && (!mainOperation.isEmpty())){
-				runner.runK2Program(mainClass, mainOperation, params,outputRootFolder+File.separator+"urimap.properties");
+				runner.runK2Program(mainClass, mainOperation, params,outputRootFolder+File.separator+"urimap.properties",port);
 			}
 			else{
-				runner.runK2Program(params,outputRootFolder+File.separator+"urimap.properties");
+				runner.runK2Program(params,outputRootFolder+File.separator+"urimap.properties",port);
 			}
 			kpProjectFile.getProject().refreshLocal(IResource.DEPTH_INFINITE, null); // refresh local project in case a file is created there
 			

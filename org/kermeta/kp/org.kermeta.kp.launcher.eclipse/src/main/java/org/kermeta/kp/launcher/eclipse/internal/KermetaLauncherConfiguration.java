@@ -20,7 +20,7 @@ public class KermetaLauncherConfiguration {
 	public static final String KM_LAUNCH_MAIN_CLASS = "KM_LAUNCH_MAIN_CLASS";
 	public static final String KM_LAUNCH_MAIN_OPERATION = "KM_LAUNCH_MAIN_OPERATION";
 	public static final String KM_LAUNCH_PROJECT = "KM_LAUNCH_PROJECT";
-	
+	public static final String KM_LAUNCH_PORT = "KM_LAUNCH_PORT";
 	
 	
 	

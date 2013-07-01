@@ -57,13 +57,24 @@ public class KermetaRunner {
 	 * @param uriMapFileLocation
 	 */
 	public void runK2Program( List<String> params, String uriMapFileLocation) {
-		runK2Program("DefaultRunner", params, uriMapFileLocation);
+		runK2Program("DefaultRunner", params, uriMapFileLocation,0);
+	}
+	public void runK2Program( List<String> params, String uriMapFileLocation, int port) {
+		runK2Program("DefaultRunner", params, uriMapFileLocation, port);
+	}
+	public void runK2Program( String mainClass, String mainOperation, List<String> params, String uriMapFileLocation,int port) {
+		runK2Program(mainClass.replaceAll("::", ".")+"_"+mainOperation, params, uriMapFileLocation, port);
 	}
 	public void runK2Program( String mainClass, String mainOperation, List<String> params, String uriMapFileLocation) {
 		runK2Program(mainClass.replaceAll("::", ".")+"_"+mainOperation, params, uriMapFileLocation);
 	}
-	public void runK2Program( String runnerClass, List<String> params, String uriMapFileLocation) {	
-		int port = 0;
+	public void runK2Program( String runnerClass, List<String> params, String uriMapFileLocation) {
+		runK2Program(runnerClass,params,uriMapFileLocation,0);
+	}
+	/*
+	 * @port If equal 0 a free port is selected. See java.net.ServerSocket API.
+	 */
+	public void runK2Program( String runnerClass, List<String> params, String uriMapFileLocation, int port) {	
 		String runProjectName = scalaAspectPrefix;
 		String runClassName = runnerClass;
 		if(runnerClass.contains("^")){

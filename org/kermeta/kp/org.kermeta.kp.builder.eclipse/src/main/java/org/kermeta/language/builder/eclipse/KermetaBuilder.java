@@ -80,6 +80,9 @@ public class KermetaBuilder extends org.kermeta.language.builder.api.Builder{
 	}
 	@Override
 	public synchronized void runFromKP(final String kpIdentifier, final String mainClass, final String mainOperation,final ArrayList<String> params) {
+		runFromKP(kpIdentifier,mainClass,mainOperation,params,0);
+	}
+	public synchronized void runFromKP(final String kpIdentifier, final String mainClass, final String mainOperation,final ArrayList<String> params, final int port) {
 		StringBuilder sb = new StringBuilder();
 		if(params != null){
 			for(String s : params)
@@ -109,7 +112,7 @@ public class KermetaBuilder extends org.kermeta.language.builder.api.Builder{
 					buildJob.schedule();
 					buildJob.join();
 					if(buildJob.getResult() == Status.OK_STATUS){
-						kpBuilders.get(kpIdentifier).runKP(mainClass, mainOperation, params, monitor);						
+						kpBuilders.get(kpIdentifier).runKP(mainClass, mainOperation, params, monitor, port);						
 					}
 					else{
 						Activator.getDefault().getMessaggingSystem4Runner(kpIdentifier).error( kpIdentifier+ " cannot run. The project has build error\nPlease have a look in the \"Problem view\", the \"Error log view\" and the \"K2 builder console\" for more details.", KermetaBuilder.LOG_MESSAGE_GROUP);
