@@ -10,6 +10,7 @@ package org.kermeta.kp.compiler.commandline;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +19,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Scanner;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.maven.model.Dependency;
 import org.kermeta.kp.ImportFile;
@@ -29,6 +36,10 @@ import org.kermeta.kp.editor.analysis.helper.KermetaProjectHelper;
 import org.kermeta.kp.editor.analysis.helper.KpResourceHelper;
 import org.kermeta.kp.editor.analysis.helper.KpVariableExpander;
 import org.kermeta.language.km2bytecode.embedded.maven.POMGeneratorHelper;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  * Useful methods related to KP dependencies (including calculation of classpath)
@@ -55,9 +66,10 @@ public class KpDependenciesHelper {
 				result.add(convertUrlToclassPath(containerUrl));
 			}
 			else{
-				// add it as an eclipse project
-				result.add(currenEntryPath+KermetaProjectHelper.DEFAULT_BINARY_LOCATION_IN_FOLDER+"/");
-				result.add(currenEntryPath+KermetaProjectHelper.DEFAULT_EMFBINARY_LOCATION_IN_FOLDER+"/");
+				// detect binaryfolders and use them in the classpath
+				for(String s : getBinaryFoldersForProject(currenEntryPath)){
+					result.add(s);
+				}
 			}
 			
 			// if it is a kermeta project, add its DependentProjectsClassPath
@@ -88,10 +100,84 @@ public class KpDependenciesHelper {
 		for(ImportFile importedFile : kp.getImportedFiles()){
 			if (importedFile.getBytecodeFrom() != null){
 				String containerUrl = varExpander.getSelectedUrl4ReusableResource(importedFile.getBytecodeFrom());
-				// add it in classpath			
-				result.add(convertUrlToclassPath(containerUrl));
+				
+				String currenEntryPath = convertUrlToclassPath(containerUrl);
+				if( currenEntryPath.endsWith(".jar")){
+					result.add(convertUrlToclassPath(containerUrl));
+				}
+				else{
+					// detect binaryfolders and use them in the classpath
+					for(String s : getBinaryFoldersForProject(currenEntryPath)){
+						result.add(s);
+					}
+				}
+				
 			}
 		}
+		return result;
+	}
+	
+	/** 
+	 * analyse the project to know where the binary folders are.
+	 * if .classpath detected use its info for the path
+	 * If project.kp detected, use DEFAULT_BINARY_LOCATION_IN_FOLDER and DEFAULT_EMFBINARY_LOCATION_IN_FOLDER
+	 * @return
+	 */
+	static public List<String> getBinaryFoldersForProject(String currenPath){
+		ArrayList<String> result = new ArrayList<String>();
+		
+		File theFile = new File(currenPath);
+		if(theFile.isDirectory() && theFile.exists()){
+			// is this an eclipse project ?		
+			File classpathFile = new File(currenPath+"/.classpath");
+			if(classpathFile.exists()){
+				//todo
+				//check if .classpath file exists, analyse it and retrieve its out	
+				// typical entry will look like
+				//   <classpathentry kind="output" path="target/classes"/>				
+				// multi output entry will look like
+				// <classpathentry kind="src" path="src/test/java" output="target/test-classes" including="**/*.scala|**/*.java|**/*.java"/>
+
+				try{
+					DocumentBuilderFactory fabrique = DocumentBuilderFactory.newInstance();
+					DocumentBuilder constructeur = fabrique.newDocumentBuilder();
+					
+					Document document = constructeur.parse(classpathFile);
+					
+					Element rootnode = document.getDocumentElement();
+					String tag = "classpathentry";
+					NodeList nodeList = rootnode.getElementsByTagName(tag);
+					//rootnode.
+					for(int i=0; i<nodeList.getLength(); i++){
+						Element e = (Element)nodeList.item(i); 
+						if(e.hasAttribute("kind") && e.getAttribute("kind").equals("output") && e.hasAttribute("path")){
+							result.add(currenPath+"/"+e.getAttribute("path")+"/");
+						}
+						if(e.hasAttribute("kind") && e.getAttribute("kind").equals("src") && e.hasAttribute("output") ){
+							result.add(currenPath+"/"+e.getAttribute("output")+"/");
+						}  
+					}
+				
+				}catch(ParserConfigurationException pce){
+					System.out.println("Erreur de configuration du parseur DOM");
+					System.out.println("lors de l'appel à fabrique.newDocumentBuilder();");
+				}catch(SAXException se){
+					System.out.println("Erreur lors du parsing du document");
+					System.out.println("lors de l'appel à construteur.parse(xml)");
+				}catch(IOException ioe){
+					System.out.println("Erreur d'entrée/sortie");
+					System.out.println("lors de l'appel à construteur.parse(xml)");
+				}
+			 
+			}			 
+			// is this a kermeta project ? check if project.kp file exists
+			File kpFile = new File(currenPath+"/project.kp");
+			if(kpFile.exists()){
+				result.add(currenPath+KermetaProjectHelper.DEFAULT_BINARY_LOCATION_IN_FOLDER+"/");
+				result.add(currenPath+KermetaProjectHelper.DEFAULT_EMFBINARY_LOCATION_IN_FOLDER+"/");
+			}
+		}
+		
 		return result;
 	}
 	

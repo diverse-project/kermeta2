@@ -22,7 +22,7 @@
       <attribute value="jar:file:/D:/Users/dvojtise/.m2/repository/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/language.framework.scala/1.4.4-SNAPSHOT/language.framework.scala-1.4.4-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/kermeta1/org.kermeta.kermeta1.framework.scala/1.4.5-SNAPSHOT/org.kermeta.kermeta1.framework.scala-1.4.5-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.ecore2km.api/2.0.99-SNAPSHOT/org.kermeta.language.ecore2km.api-2.0.99-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/traceability/traceability.model/2.0.99-SNAPSHOT/traceability.model-2.0.99-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.umlprofile2ecore/2.0.99-SNAPSHOT/org.kermeta.language.umlprofile2ecore-2.0.99-SNAPSHOT.jar"/>
@@ -223,9 +223,9 @@
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.checker.api/2.0.99-SNAPSHOT/org.kermeta.language.checker.api-2.0.99-SNAPSHOT.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/language.model/2.0.99-SNAPSHOT/language.model-2.0.99-SNAPSHOT.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/diagnostic/diagnostic.model/2.0.99-SNAPSHOT/diagnostic.model-2.0.99-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/diagnostic/org.kermeta.diagnostic.model/2.0.99-SNAPSHOT/org.kermeta.diagnostic.model-2.0.99-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.checker/2.0.99-SNAPSHOT/org.kermeta.language.checker-2.0.99-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/diagnostic/diagnostic.model/2.0.99-SNAPSHOT/diagnostic.model-2.0.99-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/emf/emf.genmodel/2.0.99-SNAPSHOT/emf.genmodel-2.0.99-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.emf.codegen/2.6.0.v20100914-1218/org.eclipse.emf.codegen-2.6.0.v20100914-1218.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.emf.codegen.ecore/2.6.1.v20100914-1218/org.eclipse.emf.codegen.ecore-2.6.1.v20100914-1218.jar"/>
