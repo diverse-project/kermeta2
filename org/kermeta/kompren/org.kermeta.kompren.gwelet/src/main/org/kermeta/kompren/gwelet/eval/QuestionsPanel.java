@@ -165,6 +165,18 @@ public class QuestionsPanel extends JPanel {
 			@Override public String getHelper() { return "Use the flattening feature.<br>Look at the tutorial document to see how to proceed."; }
 			@Override public Metamodel getMetamodel() { return Metamodel.INTERACTION; }
 			@Override public String getInitialClassToFocusOn() { return "malaiInteraction.AbortingState"; }
+		},
+		TUTORIAL6{
+			@Override public String getTitle() { return "<html><font size=\"6\">Gives the name of all the classes in relation (direct or undirect) with the class <b>Transition</b></font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.INTERACTION; }
+			@Override public String getInitialClassToFocusOn() { return "malaiInteraction.Transition"; }
+		},
+		TUTORIAL7{
+			@Override public String getTitle() { return "<html><font size=\"6\">Give the name of the attributes (inherited or native) of the class <b<Interaction</b></font></html>"; }
+			@Override public String getHelper() { return ""; }
+			@Override public Metamodel getMetamodel() { return Metamodel.INTERACTION; }
+			@Override public String getInitialClassToFocusOn() { return "malaiInteraction.Interaction"; }
 		};
 		
 		public abstract String getTitle();
