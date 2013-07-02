@@ -30,7 +30,13 @@ public class StdioSimpleMessagingSystem extends MessagingSystem {
 	
 	@Override
 	public void log(Kind msgKind, String message, String messageGroup) {
-		System.out.println(getKindString(msgKind) + " [" +messageGroup + "] " + message +" "+getCallerString());
+		if(messageGroup.isEmpty()){
+			// simplified message when no group is specified
+			System.out.println(message);
+		}
+		else{
+			System.out.println(getKindString(msgKind) + " [" +messageGroup + "] " + message +" "+getCallerString());
+		}
 	}
 
 	@Override
@@ -40,9 +46,15 @@ public class StdioSimpleMessagingSystem extends MessagingSystem {
 		StringWriter sw = new StringWriter();
 		if(throwable != null){
 			throwable.printStackTrace(new PrintWriter(sw));
-			stackTrace = sw.toString();
+			stackTrace = "\n"+sw.toString();
 		}
-		System.out.println(getKindString(msgKind)+" [" +messageGroup + "] " + message + " "+getCallerString()+"\n"+ stackTrace);
+		if(messageGroup.isEmpty()){
+			// simplified message when no group is specified
+			System.out.println(message+ stackTrace);
+		}
+		else{
+			System.out.println(getKindString(msgKind)+" [" +messageGroup + "] " + message + " "+getCallerString()+"\n"+ stackTrace);
+		}
 		
 	}
 
@@ -62,9 +74,9 @@ public class StdioSimpleMessagingSystem extends MessagingSystem {
 		StringWriter sw = new StringWriter();
 		if(throwable != null){
 			throwable.printStackTrace(new PrintWriter(sw));
-			stackTrace = sw.toString();
+			stackTrace ="\n"+ sw.toString();
 		}
-		System.out.println(getKindString(msgKind)+" [" +messageGroup + "] " + message+ " " + causeObject + " "+getCallerString()+"\n"+ stackTrace);
+		System.out.println(getKindString(msgKind)+" [" +messageGroup + "] " + message+ " " + causeObject + " "+getCallerString()+ stackTrace);
 
 	}
 

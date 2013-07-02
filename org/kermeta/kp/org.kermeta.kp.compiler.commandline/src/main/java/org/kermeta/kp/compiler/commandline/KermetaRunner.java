@@ -54,7 +54,6 @@ public class KermetaRunner {
 		this.scalaAspectPrefix = scalaAspectPrefix;
 		this.classpath = classpath; 
 
-		classpath.add("/local/fcoulon/git/kermeta2/org/kermeta/utils/org.kermeta.utils.systemservices.api/target/utils.systemservices.api-2.0.99-SNAPSHOT.jar");
 		this.logger = logger;
 	}
 	
