@@ -27,6 +27,20 @@
       <wizard
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.kermeta.language.samples.category"
+            class="org.kermeta.language.sample.deployer.wizards.Class2LogoExampleWizard"
+            finalPerspective="org.kermeta.language.texteditor.eclipse.nature.internal.KermetaPerspectiveID"
+            hasPages="false"
+            icon="icons/newkermetafile.png"
+            id="org.kermeta.language.samples.wizard"
+            name="Kermeta 2 Class2Logo sample"
+            preferredPerspectives="org.eclipse.ui.resourcePerspective">
+         <description>
+            This project should present tools Suite for the Logo DSL
+         </description>
+      </wizard>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.kermeta.language.samples.category"
             class="org.kermeta.language.sample.deployer.wizards.FsmExampleWizard"
             finalPerspective="org.kermeta.language.texteditor.eclipse.nature.internal.KermetaPerspectiveID"
             hasPages="false"
