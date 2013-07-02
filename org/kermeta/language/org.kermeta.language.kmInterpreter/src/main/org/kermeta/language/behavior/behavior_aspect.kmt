@@ -1,0 +1,447 @@
+using kermeta::standard::*
+using kermeta::utils::*
+using kermeta::io::StdIO => stdio
+
+using org::keremta::language::kmInterpreter ::*
+
+package org {
+
+	package kermeta {
+
+		package language {
+
+			package behavior {
+
+				aspect class Assignment {
+
+					operation eval (context : Context) : Object is do
+						
+						var target 	: Object := self.target.eval(context)
+						var val 	: Object := self.~value.eval(context)
+						
+						if (val.isInstanceOf(Variable)) then
+							val := val.asType(Variable).~value
+						end
+						
+						if(target.isInstanceOf(Variable)) then
+							if(target.asType(Variable).type == "attribute") then
+								context.stackAttribute.peek.asType(ObjectRunning).put(target.asType(Variable).name, val)
+							else
+								if (target.asType(Variable).type == "variable") then
+									var objet : ObjectRunning := context.stackVar.peek.asType(Hashtable<String, Object>).getValue(target.asType(Variable).parent).asType(ObjectRunning)
+									objet.put(target.asType(Variable).name, val)
+								else
+									context.stackVar.peek.asType(Hashtable<String, Object>).put(target.asType(Variable).name, val)
+								end
+							end
+						end
+						result := void
+					end
+
+				}
+
+				aspect abstract class Expression {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect abstract class CallExpression {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class Block {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						self.statement.each {st | st.eval(context)}
+					end
+
+				}
+
+				aspect class CallVariable {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						var variable : Variable := Variable.new
+						
+						variable.name 	:= self.name
+						variable.~value := context.stackVar.peek.asType(Hashtable<String, Object>).getValue(self.name)
+						result := variable
+					end
+
+				}
+
+				aspect abstract class CallFeature {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class CallSuperOperation {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class CallResult {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						var variable : Variable := Variable.new
+						variable.name 	:= "result"
+						variable.~value := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+						result := variable
+					end
+
+				}
+
+				aspect class CallValue {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class Conditional {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						var condition : Object := self.condition.eval(context)
+						if (condition.isInstanceOf(Variable)) then
+							condition := condition.asType(Variable).~value
+						end
+						
+						if (condition.asType(Boolean)) then
+							self.thenBody.eval(context)
+						else
+							self.elseBody.eval(context)
+						end
+					end
+
+				}
+
+				aspect class Raise {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class Rescue {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class TypeReference {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect abstract class Literal {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class EmptyExpression {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class JavaStaticCall {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class LambdaExpression {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						var tmp : Sequence[Object]
+						
+						if(context.currentObject.isInstanceOf(Sequence[Object])) then
+							tmp := context.currentObject.asType(Sequence[Object])
+							tmp.each {obj | 
+								self.parameters.each{param |
+									context.stackVar.peek.asType(Hashtable<String, Object>).put(param.name, obj)}
+								self.body.eval(context)}
+						end
+					end
+
+				}
+
+				aspect class LambdaParameter {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class IntegerLiteral {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						result := self.~value
+					end
+
+				}
+
+				aspect class StringLiteral {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						self.staticType.eval(context)
+						result := self.~value
+					end
+
+				}
+
+				aspect class BooleanLiteral {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						result := self.~value
+					end
+
+				}
+
+				aspect class CallTypeLiteral {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						
+						var type : Object := self.typeref.type.eval(context)
+						
+						//if(type.isInstanceOf(OrderedSet[Integer])) then
+						if(type.isInstanceOf(Sequence[Object])) then
+							result := type
+						else
+							// creation of an object
+							var objet : ObjectRunning := ObjectRunning.new
+							objet.initialize
+							objet.~attribute := type.asType(Hashtable<String, Object>)
+							result := objet
+						end			
+					end
+
+				}
+
+				aspect class VoidLiteral {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class Loop {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						from var iterator : Object := self.initialization.eval(context)
+						until self.stopCondition.eval(context).asType(Boolean)
+						loop
+							self.body.eval(context)
+						end
+					end
+
+				}
+
+				aspect class SelfExpression {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						if (context.stackAttribute.isNotEmpty) then
+							result := context.stackAttribute.peek
+						end
+					end
+
+				}
+
+				aspect class VariableDecl {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						var variable : Variable := Variable.new
+						
+						variable.name := self.identifier
+						variable.~value := self.initialization.eval(context)
+						context.stackVar.peek.asType(Hashtable<String, Object>).put(variable.name, variable.~value)
+						
+						result := variable
+					end
+
+				}
+
+				aspect class UnresolvedCall {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class CallOperation {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						var tmp : Object
+						var resultObj 	: Hashtable<String, Object> := Hashtable<String, Object>.new
+						//var params 		: OrderedSet[Object]		:= OrderedSet[Object].new
+						var params 		: Sequence[Object] := Sequence[Object].new
+						var resultVar 	: Object
+						var bParameter	: Boolean := false
+						var bAttribute	: Boolean := false
+						
+						// initialization of variable stack
+						resultVar := self.target.eval(context)
+						
+						if (resultVar.isInstanceOf(Variable)) then
+							if (resultVar.asType(Variable).~value.isInstanceOf(ObjectRunning)) then
+								context.stackAttribute.push(resultVar.asType(Variable).~value)
+								context.currentObject := resultVar
+								bAttribute := true								
+							else
+								resultObj.put("result", resultVar.asType(Variable).~value)
+								context.currentObject := resultVar.asType(Variable).~value
+							end
+				 		else
+							resultObj.put("result", resultVar)
+							context.currentObject := resultVar
+						end
+						
+						
+						// initialization of parameters stack
+						if(self.parameters.isNotEmpty) then
+							self.parameters.each {param | 
+													var res : Object := param.eval(context)
+													if (res.isInstanceOf(Variable)) then
+														params.add(res.asType(Variable).~value)
+													else
+														params.add(res)
+													end}
+							context.stackParam.push(params)
+							bParameter := true
+						end						
+						
+						// creation of an area for new data 
+						context.stackVar.push(resultObj)
+						
+						// execute body of the operation called
+						self.staticOperation.eval(context)						
+						
+						// update result of the operation
+						tmp := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+						
+						if(bParameter) then
+							context.stackParam.pop
+						end
+						
+						context.stackVar.pop
+						
+						if(bAttribute) then
+							context.stackAttribute.pop
+						end
+						result := tmp
+					end
+
+				}
+
+				aspect class CallProperty {
+
+					operation eval (context : Context) : Object is do
+						result := void
+						
+						var target : Object := self.target.eval(context)
+						
+						if(target.isInstanceOf(Variable)) then
+							if( target.asType(Variable).~value.isInstanceOf(ObjectRunning)) then
+								var variable : Variable := Variable.new
+								variable.parent 	:= target.asType(Variable).name 
+								variable.name 		:= self.name
+								variable.~value 	:= target.asType(Variable).~value.asType(ObjectRunning).getValue(self.name)
+								variable.type 		:= "variable"
+								result := variable
+							else
+								var variable : Variable := Variable.new
+								variable.parent 	:= target.asType(Variable).name 
+								variable.name 		:= self.name
+								variable.~value 	:= target.asType(Variable).~value
+								variable.type 		:= "variable"
+								result := variable
+							end
+						else
+							var variable 	: Variable := Variable.new
+							var attributeTable : Hashtable <String, Object> := context.stackAttribute.peek.asType(Hashtable<String, Object>)
+							var bValFound 	: Boolean := false
+							var element : Integer := context.stackAttribute.count -1
+							
+							from element
+							until (bValFound or element == 0)
+							loop
+								var attributeTable : ObjectRunning := context.stackAttribute.peekElementAt(element).asType(ObjectRunning)
+								if (attributeTable.containsKey(self.name)) then
+									bValFound := true
+								else
+									element := element - 1 
+								end
+							end
+										
+							variable.name 	:= self.name
+							variable.type := "attribute"
+							variable.~value := context.stackAttribute.peekElementAt(element).asType(ObjectRunning).getValue(self.name)
+							
+							result := variable
+						end
+					end
+
+				}
+
+				aspect class CallEnumLiteral {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+				aspect class CallModelTransformation {
+
+					operation eval (context : Context) : Object is do
+						result := void
+					end
+
+				}
+
+			}
+		}
+	}
+}

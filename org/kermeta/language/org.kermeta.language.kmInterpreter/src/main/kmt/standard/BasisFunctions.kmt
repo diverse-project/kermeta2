@@ -1,0 +1,108 @@
+using kermeta::standard::*
+using kermeta::exceptions::*
+using kermeta::io::StdIO => stdio
+
+package org::keremta::language::kmInterpreter::standard{
+	singleton BasisFunctions
+	{
+
+		operation ErrorWriteln(param : String) : Void is do
+			extern p1::ConsoleDisplayer.displayTrace(param)
+		end
+		
+		operation writeln(param : String) : Void is do
+			extern p1::ConsoleDisplayer.displayMove(param)
+		end
+		
+		operation plus (a : Object, b : Object) : Object is do
+			result := void
+			
+			if (a.isInstanceOf(Integer)) then
+				result := a.asType(Integer) + b.asType(Integer)
+			end
+			
+			if (a.isInstanceOf(String)) then
+				result := a.toString + b.toString
+			end
+		end
+		
+		operation minus (a : Object, b : Object) : Object is do
+			result := void
+			
+			if (a.isInstanceOf(Integer)) then
+				result := a.asType(Integer) - b.asType(Integer)
+			end
+		end
+		
+		operation mult (a : Object, b : Object) : Object is do
+			result := void
+			
+			if (a.isInstanceOf(Integer)) then
+				result := a.asType(Integer) * b.asType(Integer)
+			end
+		end
+		
+		operation div (a : Object, b : Object) : Object is do
+			result := void
+			
+			if (a.isInstanceOf(Integer)) then
+				if (b.asType(Integer) == 0) then 
+					raise DivisionByZero.new
+				else
+					result := a.asType(Integer) / b.asType(Integer)
+				end
+			end
+		end
+		
+		operation isEquals (a : Object, b : Object) : Object is do
+			result := void
+			if (a.isInstanceOf(Integer)) then
+				if (a.asType(Integer) == b.asType(Integer)) then
+					result := true
+				else
+					result := false
+				end
+			end
+			
+			if (a.isInstanceOf(String)) then
+				if (a.toString == b.toString) then
+					result := true
+				else
+					result := false
+				end
+			end
+			
+			if (a.isInstanceOf(Boolean)) then
+				if (a.asType(Boolean) == b.asType(Boolean)) then
+					result := true
+				else
+					result := false
+				end
+			end
+			
+		end
+		
+		operation isLower (a : Object, b : Object) : Object is do
+			result := void
+			
+			if (a.isInstanceOf(Integer)) then
+				if (a.asType(Integer) < b.asType(Integer)) then
+					result := true
+				else
+					result := false
+				end
+			end
+		end
+		
+		operation isGreater (a : Object, b : Object) : Object is do
+			result := void
+			if (a.isInstanceOf(Integer)) then
+				if (a.asType(Integer) > b.asType(Integer)) then
+					result := true
+				else
+					result := false
+				end
+			end
+		end		
+	}
+}

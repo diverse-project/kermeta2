@@ -1,0 +1,51 @@
+using kermeta::standard::*
+using kermeta::utils::*
+using kermeta::io::StdIO => stdio
+
+package org::keremta::language::kmInterpreter {
+
+	class Variable {
+	
+		attribute name 		: String
+		attribute ~value 	: Object
+		attribute type 		: String
+		attribute parent 	: String
+		
+		operation toString() : String is do
+			result := self.name + " = " + self.~value.toString
+		end
+	}
+	
+	class ObjectRunning {
+	
+		attribute ~attribute : Hashtable<String, Object>
+		
+		operation initialize() : Void is do
+			self.~attribute := Hashtable<String, Object>.new
+		end
+		
+		operation size() : Integer is do
+			result := self.~attribute.size
+		end
+		
+		operation getValue(key : String) : Object is do
+			result := self.~attribute.getValue(key)
+		end
+		
+		operation put(key : String, ~value : Object) : Object is do
+			result := self.~attribute.put(key, ~value)
+		end
+		
+		operation remove(key : String) : Void is do
+			self.~attribute.remove(key)
+		end
+		
+		operation containsKey(key : String) : Boolean is do
+			result := self.~attribute.containsKey(key)
+		end
+		
+		operation toString() : String is do
+			result := " attributes => " + self.~attribute.toString
+		end
+	}
+}

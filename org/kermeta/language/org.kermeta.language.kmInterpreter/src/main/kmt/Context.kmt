@@ -1,0 +1,30 @@
+using kermeta::standard::*
+using kermeta::utils::*
+using kermeta::io::StdIO => stdio
+
+using InterpreterK2::Stack
+
+package org::keremta::language::kmInterpreter {
+	
+	class Context {
+	
+		attribute stackParam 		: Stack[Object]
+		attribute stackVar 			: Stack[Object]
+		attribute stackAttribute 	: Stack[Object]
+		attribute stackLambdaE		: Stack[Object]
+		attribute currentObject		: Object
+
+		operation initialize() : Void is do
+			self.stackVar		:= Stack[Object].new
+			self.stackAttribute	:= Stack[Object].new
+			self.stackParam		:= Stack[Object].new
+			self.stackLambdaE	:= Stack[Object].new
+			self.stackVar.reset
+			self.stackAttribute.reset
+			self.stackLambdaE.reset
+			self.stackParam.reset
+			result := void
+		end
+		
+	}
+}

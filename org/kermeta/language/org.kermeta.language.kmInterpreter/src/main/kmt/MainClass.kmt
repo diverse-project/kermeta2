@@ -1,0 +1,57 @@
+using kermeta::standard::*
+using kermeta::utils::*
+using kermeta::io::StdIO => stdio
+using kermeta::emfpersistence::*
+
+using org::kermeta::language::structure::*
+using InterpreterK2::*
+
+package org::keremta::language::kmInterpreter {
+
+	class MainClass {
+
+		attribute context : Context
+	
+		@main "" // declares that operation as a possible entry point of the program
+		operation mainOperation() : Void is do
+			//var kmFile : String := "platform:/resource/InterpreterK2/src/test/HelloWorld_beforeCheckingforScopeRESOLVED.km"
+			//var kmFile : String := "platform:/resource/InterpreterK2/src/test/ClassOperation_beforeCheckingforScopeRESOLVED.km"
+			//var kmFile : String := "platform:/resource/InterpreterK2/src/test/Affectation_beforeCheckingforScopeRESOLVED.km"
+			//var kmFile : String := "platform:/resource/InterpreterK2/src/test/conditionnal_beforeCheckingforScopeRESOLVED.km"
+			//var kmFile : String := "platform:/resource/InterpreterK2/src/test/ObjectUsing_beforeCheckingforScopeRESOLVED.km"
+			//var kmFile : String := "platform:/resource/InterpreterK2/src/test/FootballPlayer_beforeCheckingforScopeRESOLVED.km"
+			var kmFile : String := "platform:/resource/InterpreterK2/src/test/beforeCheckingforScopeRESOLVED.km"
+			var rootCollection : Collection[Metamodel] init loadProgram(kmFile)
+			context := Context.new
+			context.initialize
+			runMainOperation("mainOperation",context, rootCollection)
+		end
+	
+		operation loadProgram(kmFile : String) : Collection[Metamodel] is do             
+			var repository : ResourceSet init ResourceSet.new
+			var resource : Resource init repository.createResource(kmFile, "platform:/resource/org.kermeta.language.kmInterpreter/src/ecore/kermeta.ecore")
+			resource.load(void) 
+			result := OrderedSet[Metamodel].new
+			resource.getContents.each{res |
+				if (res.isInstanceOf(Metamodel)) then                 
+					result.add(res.asType(Metamodel))
+				end
+			}
+		end
+		
+		operation runMainOperation(mainOperation : String, context : Context, program : Collection[Metamodel]) : Void is do
+			program.each {mm | 
+							mm.packages.each { p | 
+								p.ownedTypeDefinition.each { td | 
+									if (td.isInstanceOf(ClassDefinition)) then
+										td.asType(ClassDefinition).ownedOperation.each { op |
+											if (op.name == mainOperation) then
+												op.interpret(context)												
+											end}
+									end
+								}
+						}
+				}
+		end
+	}
+}

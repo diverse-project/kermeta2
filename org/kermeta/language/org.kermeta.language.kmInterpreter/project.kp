@@ -1,0 +1,17 @@
+resource library_standard	= "platform:/plugin/org.kermeta.language.library.standard" 	alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT" 
+resource console_displayer 	= "mvn:ConsoleDisplayer/ConsoleDisplayer/0.0.1-SNAPSHOT"
+
+importProject console_displayer
+
+project InterpreterK2 extends library_standard {
+	mainClass "InterpreterK2^org::keremta::language::kmInterpreter::MainClass"
+	mainOperation "mainOperation"
+
+	import "${project.baseUri}/src/main/org/kermeta/language/behavior/behavior_aspect.kmt"
+	import "${project.baseUri}/src/main/org/kermeta/language/structure/structure_aspect.kmt"
+	import "${project.baseUri}/src/main/kmt/Context.kmt"
+	import "${project.baseUri}/src/main/kmt/MainClass.kmt"
+	import "${project.baseUri}/src/main/kmt/Bindings.kmt"
+	import "${project.baseUri}/src/main/kmt/Stack.kmt"
+	import "${project.baseUri}/src/main/kmt/standard/BasisFunctions.kmt"
+}

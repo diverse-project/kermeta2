@@ -1,0 +1,678 @@
+using kermeta::standard::*
+using kermeta::utils::*
+using kermeta::io::StdIO => stdio
+
+using org::kermeta::language::behavior
+using org::keremta::language::kmInterpreter::*
+using org::keremta::language::kmInterpreter::standard::*
+
+package org {
+
+	package kermeta {
+
+		package language {
+
+			package structure {
+
+				aspect abstract class KermetaModelElement {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("KermetaModelElement")
+						result := void
+					end
+
+				}
+
+				aspect class Operation {
+
+					operation interpret(context : Context) : Object is do
+						result := void
+						var resultObj : Hashtable<String, Object> := Hashtable<String, Object>.new
+						resultObj.put("result", void)
+						context.stackVar.push(resultObj)
+						self.eval(context)
+					end
+
+					operation eval (context : Context) : Object is do
+						result := void
+						
+						// indicates if the functions owns a body (due to kermeta_standard)
+						var bBody : Boolean := true
+						
+						// management of parameters of the operation
+						var index : Integer := 0
+						self.ownedParameter.each {p | 
+								context.stackVar.peek.asType(Hashtable<String, Object>).put(p.name, context.stackParam.peek.asType(Sequence[Object]).elementAt(index))
+								index := index + 1}
+						
+						if (self.name == "writeln") then
+							BasisFunctions.ErrorWriteln(context.stackParam.peek.asType(Sequence[Object]).last.toString)
+							bBody := false
+						end
+						
+						if (self.name == "new") then
+							bBody := false
+						end
+						
+						if (self.name == "add") then
+							var tmp : Sequence[Object] := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result").asType(Sequence[Object])
+							tmp.add(context.stackParam.peek.asType(Sequence[Object]).last.asType(Object))
+							context.stackVar.peek.asType(Hashtable<String, Object>).put("result", tmp)
+							bBody := false
+						end
+						
+						if (self.name == "plus") then
+							var eltA : Object := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+							var eltB : Object := context.stackParam.peek.asType(Sequence[Object]).last
+							var res  : Object := BasisFunctions.plus(eltA, eltB)
+							
+							context.stackVar.peek.asType(Hashtable<String, Object>).put("result", res)
+							bBody := false
+						end
+						
+						if (self.name == "minus") then
+							var eltA : Object := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+							var eltB : Object := context.stackParam.peek.asType(Sequence[Object]).last
+							var res  : Object := BasisFunctions.minus(eltA, eltB)
+							
+							context.stackVar.peek.asType(Hashtable<String, Object>).put("result", res)
+							bBody := false
+						end
+						
+						if (self.name == "uminus") then
+							bBody := false
+						end
+						
+						if (self.name == "mult") then
+							var eltA : Object := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+							var eltB : Object := context.stackParam.peek.asType(Sequence[Object]).last
+							var res  : Object := BasisFunctions.mult(eltA, eltB)
+							
+							context.stackVar.peek.asType(Hashtable<String, Object>).put("result", res)
+							bBody := false
+						end
+						
+						if (self.name == "div") then
+							var eltA : Object := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+							var eltB : Object := context.stackParam.peek.asType(Sequence[Object]).last
+							var res  : Object := BasisFunctions.div(eltA, eltB)
+							
+							context.stackVar.peek.asType(Hashtable<String, Object>).put("result", res)
+							bBody := false
+						end
+						
+						if (self.name == "equals") then
+							var eltA : Object := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+							var eltB : Object := context.stackParam.peek.asType(Sequence[Object]).last
+							var res  : Object :=  BasisFunctions.isEquals(eltA, eltB)
+							
+							context.stackVar.peek.asType(Hashtable<String, Object>).put("result", res)
+							bBody := false
+						end
+						
+						if (self.name == "isLower") then
+							var eltA : Object := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+							var eltB : Object := context.stackParam.peek.asType(Sequence[Object]).last
+							var res  : Object :=  BasisFunctions.isLower(eltA, eltB)
+							
+							context.stackVar.peek.asType(Hashtable<String, Object>).put("result", res)
+							bBody := false
+						end
+						
+						if (self.name == "isGreater") then
+							var eltA : Object := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+							var eltB : Object := context.stackParam.peek.asType(Sequence[Object]).last
+							var res  : Object :=  BasisFunctions.isGreater(eltA, eltB)
+							
+							context.stackVar.peek.asType(Hashtable<String, Object>).put("result", res)
+							bBody := false
+						end
+						
+						if (bBody) then
+							self.body.eval(context)
+						end
+					end
+
+				}
+
+				aspect class Property {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("Property")
+						result := void
+					end
+
+				}
+
+				aspect abstract class Type {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("Type")
+						result := void
+					end
+
+				}
+
+				aspect abstract class TypeContainer {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("TypeContainer")
+						result := void
+					end
+
+				}
+
+				aspect class EnumerationLiteral {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("EnumerationLiteral")
+						result := void
+					end
+
+				}
+
+				aspect class TypeVariableBinding {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("TypeVariableBinding")
+						result := void
+					end
+
+				}
+
+				aspect abstract class MultiplicityElement {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("MultiplicityElement")
+						result := void
+					end
+
+				}
+
+				aspect class TypeDefinition {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("TypeDefinition")
+						result := void
+					end
+
+				}
+
+				aspect class Class {
+
+					operation eval (context : Context) : Object is do
+						var bKnown : Boolean := false
+						result := void
+						
+						//if (self.name == "OrderedSet[Integer]") then
+						if (self.name.contains("Sequence")) then
+							result := Sequence[Object].new
+							bKnown := true
+						end
+						
+						if(not bKnown) then
+							var resultObj 	: Hashtable<String, Object> := Hashtable<String, Object>.new
+							self.ownedAttribute.each {att | resultObj.put(att.name, void)}
+							result := resultObj
+						end
+					end
+
+				}
+
+				aspect abstract class DataType {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("DataType")
+						result := void
+					end
+
+				}
+
+				aspect class Enumeration {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("Enumeration")
+						result := void
+					end
+
+				}
+
+				aspect abstract class NamedElement {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("NamedElement")
+						result := void
+					end
+
+				}
+
+				aspect class Package {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("Package")
+						self.ownedTypeDefinition.each {otp | otp.eval(context)}
+						result := void
+					end
+
+				}
+
+				aspect class Parameter {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("Parameter")
+						result := void
+					end
+
+				}
+
+				aspect class PrimitiveType {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("PrimitiveType")
+						result := void
+					end
+
+				}
+
+				aspect abstract class TypedElement {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("TypedElement")
+						result := void
+					end
+
+				}
+
+				aspect class Tag {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("Tag")
+						result := void
+					end
+
+				}
+
+				aspect abstract class AbstractProperty {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("AbstractProperty")
+						result := void
+					end
+
+				}
+
+				aspect class Constraint {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("Constraint")
+						result := void
+					end
+
+				}
+
+				aspect class ClassDefinition {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ClassDefinition")
+						self.ownedOperation.each {oo | oo.eval(context)}
+						result := void
+					end
+
+				}
+
+				aspect class Metamodel {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("Metamodel")
+						self.packages.each{pack | pack.eval(context)}
+						result := void
+					end
+
+				}
+
+				aspect abstract class ModelElementTypeDefinitionContainer {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ModelElementTypeDefinitionContainer")
+						result := void
+					end
+
+				}
+
+				aspect abstract class GenericTypeDefinition {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("GenericTypeDefinition")
+						result := void
+					end
+
+				}
+
+				aspect abstract class ParameterizedType {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ParameterizedType")
+						result := void
+					end
+
+				}
+
+				aspect abstract class TypeVariable {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("TypeVariable")
+						result := void
+					end
+
+				}
+
+				aspect class ObjectTypeVariable {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ObjectTypeVariable")
+						result := void
+					end
+
+				}
+
+				aspect class ModelTypeVariable {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ModelTypeVariable")
+						result := void
+					end
+
+				}
+
+				aspect class VirtualType {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("VirtualType")
+						result := void
+					end
+
+				}
+
+				aspect class Model {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("Model")
+						result := void
+					end
+
+				}
+
+				aspect abstract class AbstractOperation {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("AbstractOperation")
+						result := void
+					end
+
+				}
+
+				aspect class UnresolvedType {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("UnresolvedType")
+						result := void
+					end
+
+				}
+
+				aspect abstract class UnresolvedReference {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("UnresolvedReference")
+						result := void
+					end
+
+				}
+
+				aspect class UnresolvedProperty {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("UnresolvedRProperty")
+						result := void
+					end
+
+				}
+
+				aspect class UnresolvedOperation {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("UnresolvedOperation")
+						result := void
+					end
+
+				}
+
+				aspect class Using {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("using")
+						result := void
+					end
+
+				}
+
+				aspect class ProductType {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ProductType")
+						result := void
+					end
+
+				}
+
+				aspect class FunctionType {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("FunctionType")
+						result := void
+					end
+
+				}
+
+				aspect class VoidType {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("VoidType")
+						result := void
+					end
+
+				}
+
+				aspect class UnresolvedInferredType {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("UnresolvedInferredType")
+						result := void
+					end
+
+				}
+
+				aspect class UnresolvedTypeVariable {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("UnresolvedTypeVariable")
+						result := void
+					end
+
+				}
+
+				aspect class ModelTypeDefinitionBinding {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ModelTypeDefinitionBinding")
+						result := void
+					end
+
+				}
+
+				aspect class ClassDefinitionBinding {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ClassDefinitionBinding")
+						result := void
+					end
+
+				}
+
+				aspect class EnumerationBinding {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("EnumerationBinding")
+						result := void
+					end
+
+				}
+
+				aspect class PropertyBinding {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("PropertyBinding")
+						result := void
+					end
+
+				}
+
+				aspect class OperationBinding {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("OperationBinding")
+						result := void
+					end
+
+				}
+
+				aspect class AdaptationOperator {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("AdaptationOperator")
+						result := void
+					end
+
+				}
+
+				aspect class UseAdaptationOperator {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("UseAdaptationOperator")
+						result := void
+					end
+
+				}
+
+				aspect class PropertyAdaptationOperator {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("PropertyAdaptationOperator")
+						result := void
+					end
+
+				}
+
+				aspect class UnresolvedAdaptationOperator {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("UnresolvedAdaptationOperator")
+						result := void
+					end
+
+				}
+
+				aspect class AdaptationParameter {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("AdaptationParameter")
+						result := void
+					end
+
+				}
+
+				aspect class OperationAdaptationOperator {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("OperationAdaptationOperator")
+						result := void
+					end
+
+				}
+
+				aspect abstract class ModelElementTypeDefinition {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ModelElementTypeDefinition")
+						result := void
+					end
+
+				}
+
+				aspect class ModelType {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ModelType")
+						result := void
+					end
+
+				}
+
+				aspect class FilteredMetamodelReference {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("FilteredMetamodelReference")
+						result := void
+					end
+
+				}
+
+				aspect class ModelTypeDefinition {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ModelTypeDefinition")
+						result := void
+					end
+
+				}
+
+				aspect class ModelTransformation {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ModelTransformation")
+						result := void
+					end
+
+				}
+
+				aspect class UnresolvedModelTypeDefinition {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("UnresolvedModelTypeDefinition")
+						result := void
+					end
+
+				}
+
+				aspect class UnresolvedModelTransformation {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("UnresolvedModelTransformation")
+						result := void
+					end
+
+				}
+
+				aspect abstract class ModelTypeDefinitionContainer {
+
+					operation eval (context : Context) : Object is do
+						stdio.writeln("ModelTypeDefinitionContainer")
+						result := void
+					end
+
+				}
+
+			}
+		}
+	}
+}

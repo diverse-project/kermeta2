@@ -1,0 +1,49 @@
+using kermeta::standard::*
+using kermeta::io::StdIO => stdio
+
+package org::keremta::language::kmInterpreter {
+	
+	class Stack[G]
+	{
+		attribute stack : OrderedSet[G]
+		
+		operation reset () : Void is do
+			self.stack 	:= OrderedSet[G].new
+		end
+		
+		operation peek() : G is do
+			result := self.stack.last
+		end
+		
+		operation peekElementAt (element : Integer) : G is do
+			result := self.stack.elementAt(element)
+		end
+		
+		operation pop() :  G is do
+			result := self.stack.last
+			stack.removeAt(self.stack.size - 1)
+		end
+		
+		operation push(elem : G) : Void is do
+			self.stack.add(elem)
+		end
+		
+		operation count() : Integer is do
+			result := self.stack.size
+		end
+		
+		operation peekToString() : String is do
+			result := self.stack.last.toString
+		end
+		
+		operation isNotEmpty() : Boolean is do
+			var bResult : Boolean := false
+			
+			result := bResult
+			if (self.stack.size > 0) then
+				bResult := true
+			end
+			result := bResult
+		end
+	}
+}
