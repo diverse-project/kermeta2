@@ -446,6 +446,9 @@ public class KPBuilder {
 		else return true;
 	}
 	synchronized public void runKP(final String mainClass, final String mainOperation, ArrayList<String> params, IProgressMonitor monitor){
+		runKP(mainClass,mainOperation,params,monitor,0);
+	}
+	synchronized public void runKP(final String mainClass, final String mainOperation, ArrayList<String> params, IProgressMonitor monitor, int port){
 		KpLoaderImpl ldr = new KpLoaderImpl(compiler.logger);
 		
 		// Load KP file
@@ -465,10 +468,10 @@ public class KPBuilder {
 					Activator.getDefault().getMessaggingSystem4Runner(kp.getMetamodelName()), 
 					monitor);
 			if((!mainClass.isEmpty()) && (!mainOperation.isEmpty())){
-				runner.runK2Program(mainClass, mainOperation, params,outputRootFolder+File.separator+"urimap.properties");
+				runner.runK2Program(mainClass, mainOperation, params,outputRootFolder+File.separator+"urimap.properties",port);
 			}
 			else{
-				runner.runK2Program(params,outputRootFolder+File.separator+"urimap.properties");
+				runner.runK2Program(params,outputRootFolder+File.separator+"urimap.properties",port);
 			}
 			kpProjectFile.getProject().refreshLocal(IResource.DEPTH_INFINITE, null); // refresh local project in case a file is created there
 			
@@ -529,34 +532,42 @@ public class KPBuilder {
 	 */
 	private void findBundleLocationForClassPath(String bundleSymbolicName, ArrayList<String> additionalClassPath) {
 		try {
-			StringBuffer thePath = new StringBuffer(FileLocator.resolve(Platform.getBundle(bundleSymbolicName).getEntry("/")).getFile());
-			thePath = thePath.replace(thePath.length()-2, thePath.length(), "");
-			String fixedPath =	thePath.toString().replaceAll(" ", "%20");
-			File theFile = new File(new URI(fixedPath));
-			if (theFile!=null) {
-				if(theFile.getAbsolutePath().endsWith("bundlefile")){
-					//some version of scala compiler doesn't accept classpath to jar that doesn't end with .jar
-					File outFile = new File(new URI(fixedPath+".jar"));
-					if(!outFile.exists()){
-						// copy the file
-						InputStream inputStream = new FileInputStream(theFile);					
-						OutputStream out = new FileOutputStream(outFile);
+			String p = FileLocator.resolve(Platform.getBundle(bundleSymbolicName).getEntry("/")).getFile();
+			File f = new File(p);
+			if(f.isDirectory()) {
+				additionalClassPath.add(f.getAbsolutePath()+"/target/classes/");
+			}
+			else{
+				
+				StringBuffer thePath = new StringBuffer(p);
+				thePath = thePath.replace(thePath.length()-2, thePath.length(), "");
+				String fixedPath =	thePath.toString().replaceAll(" ", "%20");
+				File theFile = new File(new URI(fixedPath));
+				if (theFile!=null) {
+					if(theFile.getAbsolutePath().endsWith("bundlefile")){
+						//some version of scala compiler doesn't accept classpath to jar that doesn't end with .jar
+						File outFile = new File(new URI(fixedPath+".jar"));
+						if(!outFile.exists()){
+							// copy the file
+							InputStream inputStream = new FileInputStream(theFile);					
+							OutputStream out = new FileOutputStream(outFile);
+							 
+							int read = 0;
+							byte[] bytes = new byte[1024];
 						 
-						int read = 0;
-						byte[] bytes = new byte[1024];
-					 
-						while ((read = inputStream.read(bytes)) != -1) {
-							out.write(bytes, 0, read);
+							while ((read = inputStream.read(bytes)) != -1) {
+								out.write(bytes, 0, read);
+							}
+						 
+							inputStream.close();
+							out.flush();
+							out.close();
 						}
-					 
-						inputStream.close();
-						out.flush();
-						out.close();
+						additionalClassPath.add(theFile.getAbsolutePath()+".jar");
 					}
-					additionalClassPath.add(theFile.getAbsolutePath()+".jar");
-				}
-				else{
-					additionalClassPath.add(theFile.getAbsolutePath());
+					else{
+						additionalClassPath.add(theFile.getAbsolutePath());
+					}
 				}
 			}
 		} catch (Exception e) {

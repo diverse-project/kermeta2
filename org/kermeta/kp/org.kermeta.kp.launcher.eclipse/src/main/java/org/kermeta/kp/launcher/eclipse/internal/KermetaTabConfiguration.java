@@ -65,6 +65,14 @@ public class KermetaTabConfiguration extends AbstractLaunchConfigurationTab {
 			updateLaunchConfigurationDialog();
 		}
 	};
+	
+	/** Basic modify listener stolen from CommonTab source */
+	private ModifyListener fBasicModifyListener_Port = new ModifyListener() {
+		@Override
+		public void modifyText(ModifyEvent arg0) {
+			updateLaunchConfigurationDialog();
+		}
+	};
 
 	/** Listener for class Name modification */
 	private ModifyListener fOperationModifyListener = new ModifyListener() {
@@ -141,6 +149,8 @@ public class KermetaTabConfiguration extends AbstractLaunchConfigurationTab {
 
 	private Text projectLocationText;
 	private Text argumentsText;
+	
+	private Text portField;
 
 	public KermetaTabConfiguration() {
 		super();
@@ -175,6 +185,8 @@ public class KermetaTabConfiguration extends AbstractLaunchConfigurationTab {
 		createOperationNameLayout(paramArea, null);
 
 		createArgumentsLayout(paramArea, null);
+		
+		createPortLayout(paramArea, null);
 
 		Composite checkconstraintArea = new Composite(area, SWT.SINGLE);
 		GridLayout layout = new GridLayout();
@@ -242,6 +254,11 @@ public class KermetaTabConfiguration extends AbstractLaunchConfigurationTab {
 					configuration.getAttribute(
 							KermetaLauncherConfiguration.KM_LAUNCH_PARAMETERS,
 							""));
+			
+			getPortText().setText(
+					configuration.getAttribute(
+							KermetaLauncherConfiguration.KM_LAUNCH_PORT,
+							""));
 			canSave();
 		} catch (CoreException e) {
 			e.printStackTrace();
@@ -278,6 +295,9 @@ public class KermetaTabConfiguration extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(
 				KermetaLauncherConfiguration.KM_LAUNCH_PROJECT,
 				projectLocationText.getText());
+		configuration.setAttribute(
+				KermetaLauncherConfiguration.KM_LAUNCH_PORT,
+				portField.getText());
 	}
 
 	@Override
@@ -366,6 +386,21 @@ public class KermetaTabConfiguration extends AbstractLaunchConfigurationTab {
 			projectLocationText.setText("");
 		}
 
+	}
+	
+	public Composite createPortLayout(Composite parent, Font font) {
+		createInputTextLayout(parent, "Messaging system port");
+		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+
+		gd.widthHint = GRID_DEFAULT_WIDTH;
+
+		portField = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		portField.setLayoutData(gd);
+		portField.setFont(font);
+		portField.setText("0");
+		portField.addModifyListener(fBasicModifyListener_Port);
+
+		return parent;
 	}
 
 	private ArrayList<IProject> getWorkspaceProject(String name) {
@@ -825,6 +860,10 @@ public class KermetaTabConfiguration extends AbstractLaunchConfigurationTab {
 
 	public Text getArgumentsText() {
 		return argumentsText;
+	}
+	
+	public Text getPortText() {
+		return portField;
 	}
 
 	public void setKpFileLocationLabel(Label label) {

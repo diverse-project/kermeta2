@@ -8,20 +8,15 @@
 */
 package org.kermeta.kp.compiler.commandline;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.EOFException;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -30,8 +25,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.kermeta.language.km2bytecode.embedded.scala.EmbeddedScalaRunner;
+import org.kermeta.utils.systemservices.api.impl.Server4MessagingSystem;
 import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
-import org.kermeta.utils.systemservices.api.messaging.Request;
 
 /**
  * Runner for Kermeta compiled programs
@@ -52,8 +47,7 @@ public class KermetaRunner {
 	public KermetaRunner(String outputBinFolder, String scalaAspectPrefix, List<String> classpath, MessagingSystem logger){
 		this.outputBinFolder = outputBinFolder;
 		this.scalaAspectPrefix = scalaAspectPrefix;
-		this.classpath = classpath; 
-
+		this.classpath = classpath;
 		this.logger = logger;
 	}
 	
@@ -63,12 +57,24 @@ public class KermetaRunner {
 	 * @param uriMapFileLocation
 	 */
 	public void runK2Program( List<String> params, String uriMapFileLocation) {
-		runK2Program("DefaultRunner", params, uriMapFileLocation);
+		runK2Program("DefaultRunner", params, uriMapFileLocation,0);
+	}
+	public void runK2Program( List<String> params, String uriMapFileLocation, int port) {
+		runK2Program("DefaultRunner", params, uriMapFileLocation, port);
+	}
+	public void runK2Program( String mainClass, String mainOperation, List<String> params, String uriMapFileLocation,int port) {
+		runK2Program(mainClass.replaceAll("::", ".")+"_"+mainOperation, params, uriMapFileLocation, port);
 	}
 	public void runK2Program( String mainClass, String mainOperation, List<String> params, String uriMapFileLocation) {
 		runK2Program(mainClass.replaceAll("::", ".")+"_"+mainOperation, params, uriMapFileLocation);
 	}
-	public void runK2Program( String runnerClass, List<String> params, String uriMapFileLocation) {	
+	public void runK2Program( String runnerClass, List<String> params, String uriMapFileLocation) {
+		runK2Program(runnerClass,params,uriMapFileLocation,0);
+	}
+	/*
+	 * @port If equal 0 a free port is selected. See java.net.ServerSocket API.
+	 */
+	public void runK2Program( String runnerClass, List<String> params, String uriMapFileLocation, int port) {	
 		String runProjectName = scalaAspectPrefix;
 		String runClassName = runnerClass;
 		if(runnerClass.contains("^")){
@@ -93,13 +99,19 @@ public class KermetaRunner {
 			} catch (URISyntaxException e1) {
 				this.logger.error(e1.toString(), KermetaCompiler.LOG_MESSAGE_GROUP, e1);
 			} 
+	        
+	        Server4MessagingSystem serverMS = new Server4MessagingSystem(port,logger);
+	        
+	        
 	        ArrayList<String> processBuilderParams = 
 	        		new ArrayList<String>(Arrays.asList(getJavaVMbin(), "-cp", scalaToolJarCP,
+	        				"-Dport="+serverMS.getPort(),
 	        				"-Durimap.file.location="+(uriMapFileLocation!=null?uriMapFileLocation:""),
 	        				"scala.tools.nsc.MainGenericRunner", 
 	        				"-savecompiled",
 	        				"-classpath",f.toString() + outputBinFolder,
-	        				runProjectName + "runner."+runClassName));
+	        				runProjectName + "runner."+runClassName
+	        				));
 	        processBuilderParams.addAll(params);
 	        ProcessBuilder builder = new ProcessBuilder(processBuilderParams);
 	        this.logger.debug("starting new process with command " +builder.command().toString(), KermetaCompiler.LOG_MESSAGE_GROUP);
@@ -108,39 +120,28 @@ public class KermetaRunner {
 			try {
 				
 				process = builder.start();
-				/*InputStream in = null;
-				int port = 4444;
-				try {
-					ServerSocket serverSocket = new ServerSocket(port);
-					Socket clientSocket = serverSocket.accept();
-					in = clientSocket.getInputStream();
-				} 
-				catch (IOException e) {
-				    System.out.println("Could not listen on port: "+port);
-				    System.exit(-1);
-				}*/
 				
 				// redirect logger.getReader to process System.in
 				KermetaRunner.BufferedReader2Stream in2Stream = new KermetaRunner.BufferedReader2Stream(logger.getReader(), process.getOutputStream(),logger);
 				// redirect process System.out to logger.info
-				//KermetaRunner.SocketStream2MessagingSystem outSoc2ms = new KermetaRunner.SocketStream2MessagingSystem(in,logger);
 				KermetaRunner.Stream2MessagingSystem out2ms = new KermetaRunner.Stream2MessagingSystem(process.getInputStream(),logger, false);
 				KermetaRunner.Stream2MessagingSystem err2ms = new KermetaRunner.Stream2MessagingSystem(process.getErrorStream(),logger, true);
 				CancelMonitor cancelMonitor = new CancelMonitor(process, this);
 				 
 				Thread in2StreamThread = new Thread(in2Stream);
-				//Thread outSoc2msThread = new Thread(outSoc2ms);
 				Thread out2msThread = new Thread(out2ms);
 				Thread err2msThread = new Thread(err2ms);
 				Thread cancelMonitorThread = new Thread(cancelMonitor);
 				
+				Thread server4ms = new Thread(serverMS);
+				
 				in2StreamThread.start();
-				//outSoc2msThread.start();
+				server4ms.start();
 				out2msThread.start();
 				err2msThread.start();
 				cancelMonitorThread.start();
 				
-				//outSoc2msThread.join();
+				server4ms.join();
 				out2msThread.join();
 				err2msThread.join();
 				in2Stream.close();
@@ -154,6 +155,7 @@ public class KermetaRunner {
 			} catch (InterruptedException e) {
 				this.logger.error(e.toString(), KermetaCompiler.LOG_MESSAGE_GROUP, e);
 			}
+			
 		}
 		else{
 			// in the same JVM, but classpath is still different, output not redirected
@@ -214,70 +216,6 @@ public class KermetaRunner {
                 }
         }
     }
-	
-	/*
-	 * Reads Request objects from a socket and calls corresponding MessagingSystem methods 
-	 */
-	public static class SocketStream2MessagingSystem implements Runnable {
-	        
-		private BufferedInputStream in;
-        private MessagingSystem logger;
-
-        public SocketStream2MessagingSystem(InputStream inputStream, MessagingSystem logger) {
-           	in = new BufferedInputStream(inputStream);
-            this.logger = logger;
-        }
-
-        public void run() {
-            Object msg;
-            ObjectInputStream reader = null;
-            try {
-            	reader = new ObjectInputStream(in);
-                while(true) {
-                	msg = reader.readObject();
-                	Request req = (Request)msg;
-                	
-                	switch (req.calledMethod) {
-					case clearLog:
-						logger.clearLog();
-						break;
-					case log:
-						logger.log(req.msgKind, req.message, req.messageGroup);		
-						break;
-					case logProblem:
-						//not implemented
-						break;
-					case initProgress:
-						logger.initProgress(req.progressGroup, req.message, req.messageGroup, req.nbUnit);
-						break;
-					case progress:
-						logger.progress(req.progressGroup, req.message, req.messageGroup, req.nbUnit);
-						break;
-					case doneProgress:
-						logger.doneProgress(req.progressGroup, req.message, req.messageGroup);
-						break;
-
-					default:
-						//do nothing
-						break;
-					}
-                }
-            }
-            catch (EOFException e) {
-            	try {
-            		if(reader != null) reader.close();
-				} catch (IOException e1) {
-					logger.error(e1.getMessage(), "",e1);
-				}
-            }
-            catch (Exception e) {
-            	logger.error(e.getMessage(), "",e);
-            }
-        }
-    }
-	
-	
-	
 	
 	public static class BufferedReader2Stream implements Runnable {
         private BufferedReader reader;
