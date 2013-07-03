@@ -20,6 +20,7 @@ import org.eclipse.jface.text.contentassist.ICompletionProposalExtension2;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
+import org.kermeta.language.texteditor.eclipse.internal.Activator;
 
 public class KermetaCompletionProposal implements ICompletionProposal, ICompletionProposalExtension2, Comparable<KermetaCompletionProposal>{
 
@@ -160,7 +161,7 @@ public class KermetaCompletionProposal implements ICompletionProposal, ICompleti
 			try {
 				s = document.getChar(i--) + s;
 			} catch (BadLocationException e) {
-				e.printStackTrace();
+				Activator.getDefault().getMessaggingSystem().error(e.getMessage(), "autocompletion", e);
 			}
 		}
 		String regex = s.toLowerCase() + ".+";

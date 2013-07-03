@@ -39,6 +39,7 @@ import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.TypeDefinition;
 import org.kermeta.language.structure.TypeVariable;
 import org.kermeta.language.structure.TypeVariableBinding;
+import org.kermeta.language.texteditor.eclipse.internal.autocompletion.VariableProposalItem;
 import org.kermeta.language.util.ModelingUnit;
 
 public class KermetaModelAccessor {
@@ -945,35 +946,43 @@ public class KermetaModelAccessor {
 	 * Get class attributes, operation parameters and local variables
 	 * declarations Format result is "variableName:variableType"
 	 */
-	public List<String> getAccessibleVariable(String fileUrl, int documentOffset) {
+	public List<VariableProposalItem> getAccessibleVariable(String fileUrl, int documentOffset) {
 		updateAccessorForDocument();
-		List<String> result = new ArrayList<String>();
+		List<VariableProposalItem> result = new ArrayList<VariableProposalItem>();
 
 		Package currentPack = currentOffsetPackage(fileUrl, documentOffset);
 		ClassDefinition currentClass = getClosestClass(fileUrl, documentOffset,
 				currentPack);
 		Operation operation = getClosestOperation(fileUrl, documentOffset,
 				currentClass);
-
+		
 		for (Property prop : currentClass.getOwnedAttribute()) {
 			Type type = prop.getType();
 			String propType = extractTypeName(type);
-			result.add(prop.getName() + ":" + propType);
+			if(prop.getIsComposite())
+				result.add(new VariableProposalItem(VariableProposalItem.VariableKind.ATTRIBUTE,prop.getName(), propType));
+			else
+				result.add(new VariableProposalItem(VariableProposalItem.VariableKind.REFERENCE,prop.getName(), propType));
 		}
 
 		for (Parameter param : operation.getOwnedParameter()) {
 			Type type = param.getType();
 			String paramType = extractTypeName(type);
-			result.add(param.getName() + ":" + paramType);
+			result.add(new VariableProposalItem(VariableProposalItem.VariableKind.PARAMETER,param.getName(), paramType));
 		}
+		
+		String resultType = extractTypeName(operation.getType());
+		if(!resultType.equals("Void"))
+			result.add(new VariableProposalItem(VariableProposalItem.VariableKind.RESULT,"result", resultType));
 
 		getLocalVariables(fileUrl, documentOffset, operation.getBody(), result);
 
+		result.add(new VariableProposalItem(VariableProposalItem.VariableKind.SELF,"self", currentClass.getName()));
 		return result;
 	}
 
 	private void getLocalVariables(String fileUrl, int documentOffset,
-			Expression currentExpr, List<String> result) {
+			Expression currentExpr, List<VariableProposalItem> result) {
 		if (currentExpr instanceof Block) {
 			localVarBlock(fileUrl, documentOffset, (Block) currentExpr, result);
 		} else if (currentExpr instanceof Loop) {
@@ -1005,13 +1014,13 @@ public class KermetaModelAccessor {
 	}
 
 	private void localVarLamdaExpr(String fileUrl, int documentOffset,
-			LambdaExpression currentLambdaExpr, List<String> result) {
+			LambdaExpression currentLambdaExpr, List<VariableProposalItem> result) {
 
 		EList<LambdaParameter> params = currentLambdaExpr.getParameters();
 		for (LambdaParameter p : params) {
 			Type type = p.getType().getType();
 			String paramType = extractTypeName(type);
-			result.add(p.getName() + ":" + paramType);
+			result.add(new VariableProposalItem(VariableProposalItem.VariableKind.LOCAL,p.getName(), paramType));
 		}
 
 		if (containsThisOffset(fileUrl, documentOffset,
@@ -1025,7 +1034,7 @@ public class KermetaModelAccessor {
 	}
 
 	private void localVarIf(String fileUrl, int documentOffset,
-			Conditional currentConditional, List<String> result) {
+			Conditional currentConditional, List<VariableProposalItem> result) {
 
 		if (containsThisOffset(fileUrl, documentOffset,
 				currentConditional.getThenBody())) {
@@ -1043,14 +1052,14 @@ public class KermetaModelAccessor {
 	}
 
 	private void localVarLoop(String fileUrl, int documentOffset,
-			Loop currentLoop, List<String> result) {
+			Loop currentLoop, List<VariableProposalItem> result) {
 
 		if (currentLoop.getInitialization() instanceof VariableDecl) {
 			VariableDecl varDecl = (VariableDecl) currentLoop
 					.getInitialization();
 			Type type = varDecl.getType().getType();
 			String varType = extractTypeName(type);
-			result.add(varDecl.getIdentifier() + ":" + varType);
+			result.add(new VariableProposalItem(VariableProposalItem.VariableKind.LOCAL,varDecl.getIdentifier(), varType));
 		}
 
 		if (containsThisOffset(fileUrl, documentOffset, currentLoop.getBody())) {
@@ -1060,7 +1069,7 @@ public class KermetaModelAccessor {
 	}
 
 	private void localVarBlock(String fileUrl, int documentOffset,
-			Block currentBlock, List<String> result) {
+			Block currentBlock, List<VariableProposalItem> result) {
 		EList<Expression> statments = currentBlock.getStatement();
 		// TODO: Statements are in the right order ?
 
@@ -1076,7 +1085,7 @@ public class KermetaModelAccessor {
 					Type type = varDecl.getType().getType();
 
 					String varType = extractTypeName(type);
-					result.add(varDecl.getIdentifier() + ":" + varType);
+					result.add(new VariableProposalItem(VariableProposalItem.VariableKind.LOCAL,varDecl.getIdentifier(), varType));
 
 				}
 			} else {
@@ -1093,7 +1102,7 @@ public class KermetaModelAccessor {
 				Type type = currentRescue.getExceptionType().getType();
 				if (type instanceof Class)
 					varType = ((Class) type).getTypeDefinition().getName();
-				result.add(currentRescue.getExceptionName() + ":" + varType);
+				result.add(new VariableProposalItem(VariableProposalItem.VariableKind.LOCAL,currentRescue.getExceptionName(), varType));
 
 				for (Expression currentExpr : currentRescue.getBody()) {
 
@@ -1107,7 +1116,7 @@ public class KermetaModelAccessor {
 							VariableDecl varDecl = (VariableDecl) currentExpr;
 							type = varDecl.getType().getType();
 							varType = extractTypeName(type);
-							result.add(varDecl.getIdentifier() + ":" + varType);
+							result.add(new VariableProposalItem(VariableProposalItem.VariableKind.LOCAL,varDecl.getIdentifier(), varType));
 
 						}
 					} else {

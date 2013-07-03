@@ -413,36 +413,35 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 				}				
 			}
 		} catch (BadLocationException e) {
-			e.printStackTrace();
+			Activator.getDefault().getMessaggingSystem().error(e.getMessage(), "autocompletion", e);
 		}
 		
-		List<String> theVariables = editor.myAccess.getAccessibleVariable(editor.getFile().getLocationURI().toString(), documentOffset);	
+		List<VariableProposalItem> theVariables = editor.myAccess.getAccessibleVariable(editor.getFile().getLocationURI().toString(), documentOffset);	
 		
 		if (theVariables != null) {
-			for (String aVariable : theVariables) {
-				String[] myVar = aVariable.split(":");
-				int cursor = myVar[0].length();
+			for (VariableProposalItem aVariable : theVariables) {
+				int cursor = aVariable.getName().length();
 				if (lastQualifier.length() > 0) {
-					if (aVariable.startsWith(lastQualifier)) {
+					if (aVariable.getName().startsWith(lastQualifier)) {
 						propList.add(
-								new KermetaCompletionProposal(	myVar[0],
+								new KermetaCompletionProposal(	aVariable.getName(),
 																documentOffset-lastQualifier.length(),
 																lastQualifier.length(),
 																cursor,
-																KermetaImage.getImage("/icons/specific/VariableDecl.gif"),
-																myVar.length==2?myVar[0]+" : "+myVar[1]:myVar[0],
+																aVariable.getProposalImage(),
+																aVariable.getProposalText(),
 																null,
 																null)
 							);
 					}
 				} else {
 					propList.add(
-							new KermetaCompletionProposal(	myVar[0],
+							new KermetaCompletionProposal(	aVariable.getName(),
 															documentOffset-qlen,
 															qlen,
 															cursor,
-															KermetaImage.getImage("/icons/specific/VariableDecl.gif"),
-															myVar.length==2?myVar[0]+" : "+myVar[1]:myVar[0],
+															aVariable.getProposalImage(),
+															aVariable.getProposalText(),
 															null,
 															null)
 						);
