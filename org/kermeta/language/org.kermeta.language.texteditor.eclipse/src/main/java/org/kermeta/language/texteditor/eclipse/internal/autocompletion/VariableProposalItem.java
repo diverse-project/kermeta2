@@ -8,7 +8,11 @@ import org.eclipse.swt.graphics.Image;
  */
 public class VariableProposalItem {
 
-	public enum VariableKind { LOCAL, ATTRIBUTE, REFERENCE, PARAMETER, RESULT, SELF, SINGLETON };
+	public enum VariableKind { LOCAL, ATTRIBUTE, REFERENCE, DERIVED, PARAMETER, RESULT, SELF, SINGLETON };
+	
+	public enum LocalizationKind { IN_DOCUMENT, NOT_IN_DOCUMENT };
+	
+	protected LocalizationKind localizationKind = LocalizationKind.IN_DOCUMENT;
 	
 	protected VariableKind variableKind = VariableKind.LOCAL; 
 	
@@ -60,11 +64,20 @@ public class VariableProposalItem {
 	}
 	
 	public Image getProposalImage(){
+		String localizationColor;
+		switch (localizationKind) {
+		case IN_DOCUMENT:
+			localizationColor = "red";
+			break;
+		default:
+			localizationColor = "blue";
+			break;
+		}
 		switch (variableKind) {
 		case ATTRIBUTE:
-			return KermetaImage.getImage("/icons/red/property_contained.png");
+			return KermetaImage.getImage("/icons/"+localizationColor+"/property_contained.png");
 		case REFERENCE:
-			return KermetaImage.getImage("/icons/red/property.png");
+			return KermetaImage.getImage("/icons/"+localizationColor+"/property.png");
 		case PARAMETER:
 			return KermetaImage.getImage("/icons/specific/Parameter.gif");
 		case RESULT:

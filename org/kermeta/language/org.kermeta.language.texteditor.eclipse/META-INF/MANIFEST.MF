@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1361971980988
-Build-Jdk: 1.6.0_17
+Bnd-LastModified: 1372853766444
+Build-Jdk: 1.6.0_43
 Built-By: dvojtise
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.kermeta.language.texteditor.eclipse.internal.Activ
@@ -8,10 +8,10 @@ Bundle-Activator: org.kermeta.language.texteditor.eclipse.internal.Activ
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Bundle-ManifestVersion: 2
-Bundle-Name: org.kermeta.org.kermeta.language.texteditor.eclipse
-Bundle-SymbolicName: org.kermeta.org.kermeta.language.texteditor.eclipse
- ;singleton:=true
-Bundle-Version: 2.0.99.SNAPSHOT_20130227_1432
+Bundle-Name: org.kermeta.language.texteditor.eclipse
+Bundle-SymbolicName: org.kermeta.language.texteditor.eclipse;singleton:=
+ true
+Bundle-Version: 2.0.99.SNAPSHOT_20130703_1415
 Created-By: Apache Maven Bundle Plugin
 Import-Package: org.eclipse.core.resources,org.eclipse.core.runtime;vers
  ion="[3.4,4)",org.eclipse.core.runtime.jobs,org.eclipse.debug.core.sour
@@ -20,18 +20,18 @@ Import-Package: org.eclipse.core.resources,org.eclipse.core.runtime;vers
  clipse.jface.preference,org.eclipse.jface.resource,org.eclipse.jface.te
  xt,org.eclipse.jface.text.contentassist,org.eclipse.jface.text.presenta
  tion,org.eclipse.jface.text.rules,org.eclipse.jface.text.source,org.ecl
- ipse.jface.util,org.eclipse.jface.viewers,org.eclipse.swt.custom,org.ec
- lipse.swt.events,org.eclipse.swt.graphics,org.eclipse.swt.widgets,org.e
- clipse.ui,org.eclipse.ui.editors.text,org.eclipse.ui.part,org.eclipse.u
- i.plugin,org.eclipse.ui.texteditor,org.eclipse.ui.views.contentoutline,
- org.kermeta.language.autocompletion,org.kermeta.language.autocompletion
- .api,org.kermeta.language.behavior;version="[2.0,3)",org.kermeta.langua
- ge.builder.eclipse,org.kermeta.language.loader.kmt.scala,org.kermeta.la
- nguage.loader.kmt.scala.api,org.kermeta.language.structure;version="[2.
- 0,3)",org.kermeta.language.util;version="[2.0,3)",org.kermeta.utils.hel
- pers,org.kermeta.utils.helpers.emf,org.kermeta.utils.systemservices.api
- .messaging,org.kermeta.utils.systemservices.eclipse.api,org.osgi.framew
- ork;version="[1.6,2)"
+ ipse.jface.text.templates,org.eclipse.jface.util,org.eclipse.jface.view
+ ers,org.eclipse.swt.custom,org.eclipse.swt.events,org.eclipse.swt.graph
+ ics,org.eclipse.swt.widgets,org.eclipse.ui,org.eclipse.ui.editors.text,
+ org.eclipse.ui.part,org.eclipse.ui.plugin,org.eclipse.ui.texteditor,org
+ .eclipse.ui.views.contentoutline,org.kermeta.language.autocompletion,or
+ g.kermeta.language.autocompletion.api,org.kermeta.language.behavior;ver
+ sion="[2.0,3)",org.kermeta.language.builder.eclipse,org.kermeta.languag
+ e.loader.kmt.scala,org.kermeta.language.loader.kmt.scala.api,org.kermet
+ a.language.structure;version="[2.0,3)",org.kermeta.language.util;versio
+ n="[2.0,3)",org.kermeta.utils.helpers,org.kermeta.utils.helpers.emf,org
+ .kermeta.utils.systemservices.api.messaging,org.kermeta.utils.systemser
+ vices.eclipse.api,org.osgi.framework;version="[1.6,2)"
 Import-Packages: !*,org.kermeta.language.structure,org.kermeta.language.
  behavior
 Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,org.

@@ -270,7 +270,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			TypeDefinition t = editor.myAccess.getCallType(editor.getFile().getLocationURI().toString(), documentOffset, qualifier);
 			if(t instanceof ClassDefinition){
 				String lastQualifier = getLastIdentifier(qualifier);
-				classDefHierarchyProposals(lastQualifier, documentOffset, propList, (ClassDefinition)t);
+				classDefHierarchyProposals(lastQualifier, documentOffset, propList, (ClassDefinition)t, false);
 			}
 			
 		} else if (! isTerminatedbyKeyword(qualifier)) {
@@ -294,13 +294,14 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 	 */
 	private void classDefHierarchyProposals(String lastQualifier, 
 			int documentOffset, List<ICompletionProposal> propList,
-			ClassDefinition cd){
+			ClassDefinition cd,
+			boolean isParent){
 		
-		computeClassDefProposals(lastQualifier, documentOffset, propList, cd);
+		computeClassDefProposals(lastQualifier, documentOffset, propList, cd, isParent);
 		
 		for(Type t : cd.getSuperType()){
 			if(t instanceof Class){
-				classDefHierarchyProposals(lastQualifier, documentOffset, propList, ((ClassDefinition)((Class) t).getTypeDefinition()));
+				classDefHierarchyProposals(lastQualifier, documentOffset, propList, ((ClassDefinition)((Class) t).getTypeDefinition()),true);
 			}
 		}
 	}
@@ -310,10 +311,11 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 	 */
 	private void computeClassDefProposals(String lastQualifier,
 			int documentOffset, List<ICompletionProposal> propList,
-			ClassDefinition cd) {
+			ClassDefinition cd,
+			boolean isParent) {
 		
 		String containerClass = cd.getName();
-		
+		String colorSet = isParent ? "yellow":"blue";
 		//List attr and methods for current class
 		for(Property prop : cd.getOwnedAttribute()){
 			if(prop.getName().startsWith(lastQualifier)){
@@ -324,7 +326,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 													documentOffset-lastQualifier.length(),
 													lastQualifier.length(),
 													prop.getName().length(),
-													null,
+													prop.getIsComposite()?KermetaImage.getImage("/icons/"+colorSet+"/property_contained.png"):KermetaImage.getImage("/icons/"+colorSet+"/property.png"),
 													prop.getName()+" : "+type+" - "+containerClass,
 													null,
 													null)
@@ -360,7 +362,10 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 				showedText.append(" : "+type);
 				
 				propList.add(
-						createTemplateProp(showedText.toString(),containerClass,printedText.toString(), documentOffset-lastQualifier.length(), null)
+						createTemplateProp(showedText.toString(),
+								containerClass,printedText.toString(), 
+								documentOffset-lastQualifier.length(), 
+								KermetaImage.getImage("/icons/"+colorSet+"/operation.png"))
 					);
 			}
 		}
