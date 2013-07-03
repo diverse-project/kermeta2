@@ -45,6 +45,7 @@ import org.kermeta.language.structure.TypeDefinition;
 import org.kermeta.language.texteditor.eclipse.internal.Activator;
 import org.kermeta.language.texteditor.eclipse.internal.ClosestElementFinder;
 import org.kermeta.language.texteditor.eclipse.internal.KermetaEditor;
+import org.kermeta.language.texteditor.eclipse.internal.KermetaModelAccessor;
 import org.kermeta.language.util.ModelingUnit;
 
 public class KermetaContentAssistProcessor implements IContentAssistProcessor {
@@ -319,7 +320,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 		//List attr and methods for current class
 		for(Property prop : cd.getOwnedAttribute()){
 			if(prop.getName().startsWith(lastQualifier)){
-				String type = editor.myAccess.extractTypeName(prop.getType());							
+				String type = KermetaModelAccessor.extractTypeName(prop.getType())+KermetaModelAccessor.getSimplifiedMultiplicityString(prop);							
 				
 				propList.add(
 					new KermetaCompletionProposal(	prop.getName(),
@@ -337,7 +338,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 			if(op.getName().startsWith(lastQualifier)){
 				StringBuffer showedText = new StringBuffer();
 				StringBuffer printedText = new StringBuffer();
-				String type = editor.myAccess.extractTypeName(op.getType());
+				String type = KermetaModelAccessor.extractTypeName(op.getType())+KermetaModelAccessor.getSimplifiedMultiplicityString(op);
 				
 				showedText.append(op.getName());
 				printedText.append(op.getName());
@@ -348,7 +349,7 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 				List<Parameter> params = op.getOwnedParameter();
 				for(int i = 0; i < params.size(); i++){
 					Parameter p = params.get(i);
-					showedText.append(editor.myAccess.extractTypeName(p.getType())+" ");
+					showedText.append(KermetaModelAccessor.extractTypeName(p.getType())+" ");
 					showedText.append(p.getName());
 					printedText.append("${"+p.getName()+"}");
 					if(i < params.size() - 1){

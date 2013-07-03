@@ -29,6 +29,7 @@ import org.kermeta.language.structure.DataType;
 import org.kermeta.language.structure.FunctionType;
 import org.kermeta.language.structure.KermetaModelElement;
 import org.kermeta.language.structure.Metamodel;
+import org.kermeta.language.structure.MultiplicityElement;
 import org.kermeta.language.structure.Operation;
 import org.kermeta.language.structure.Package;
 import org.kermeta.language.structure.Parameter;
@@ -40,6 +41,7 @@ import org.kermeta.language.structure.TypeDefinition;
 import org.kermeta.language.structure.TypeVariable;
 import org.kermeta.language.structure.TypeVariableBinding;
 import org.kermeta.language.texteditor.eclipse.internal.autocompletion.VariableProposalItem;
+import org.kermeta.language.util.Helper;
 import org.kermeta.language.util.ModelingUnit;
 
 public class KermetaModelAccessor {
@@ -342,6 +344,7 @@ public class KermetaModelAccessor {
 	 * 
 	 * @name The name of the variable wanted
 	 */
+	// TODO actually this should return a Type and not a TypeDefinition in order to be able to deal with generics in a call chains
 	private TypeDefinition getVariableType(String fileUrl, int documentOffset,
 			String name) {
 
@@ -376,8 +379,26 @@ public class KermetaModelAccessor {
 			for (Property prop : properties) {
 
 				if (prop.getName().equals(name)) {
-
-					if (prop.getType() instanceof Class)
+					if(prop.getUpper() != 1){
+						// this is a multiplicity element
+						if(prop.getIsUnique()){
+							if(prop.getIsOrdered()){
+								return Helper.getTypeDefinitionByName(this.currentModelingUnit, "kermeta::standard::OrderedSet");
+							}
+							else{
+								return Helper.getTypeDefinitionByName(this.currentModelingUnit, "kermeta::standard::Set");
+							}
+						}
+						else{
+							if(prop.getIsOrdered()){
+								return Helper.getTypeDefinitionByName(this.currentModelingUnit, "kermeta::standard::Sequence");
+							}
+							else{
+								return Helper.getTypeDefinitionByName(this.currentModelingUnit, "kermeta::standard::Bag");
+							}
+						}
+					}
+					else if (prop.getType() instanceof Class)
 						return ((Class) (prop.getType())).getTypeDefinition();
 
 				}
@@ -1177,5 +1198,20 @@ public class KermetaModelAccessor {
 		}
 
 		return res;
+	}
+	
+	public static String getSimplifiedMultiplicityString(MultiplicityElement me){
+		StringBuffer result = new StringBuffer();
+		if(me.getUpper() != 1){
+			result.append("[");
+			result.append(me.getLower());
+			result.append("..");
+			if(me.getUpper()==-1)
+				result.append("*");
+			else 
+				result.append(me.getUpper());
+			result.append("]");
+		}
+		return result.toString();
 	}
 }
