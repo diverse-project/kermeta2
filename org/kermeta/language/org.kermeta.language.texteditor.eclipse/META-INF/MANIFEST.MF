@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1372853766444
+Bnd-LastModified: 1372867410241
 Build-Jdk: 1.6.0_43
 Built-By: dvojtise
 Bundle-ActivationPolicy: lazy
@@ -11,7 +11,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.kermeta.language.texteditor.eclipse
 Bundle-SymbolicName: org.kermeta.language.texteditor.eclipse;singleton:=
  true
-Bundle-Version: 2.0.99.SNAPSHOT_20130703_1415
+Bundle-Version: 2.0.99.SNAPSHOT_20130703_1803
 Created-By: Apache Maven Bundle Plugin
 Import-Package: org.eclipse.core.resources,org.eclipse.core.runtime;vers
  ion="[3.4,4)",org.eclipse.core.runtime.jobs,org.eclipse.debug.core.sour

@@ -979,7 +979,7 @@ public class KermetaModelAccessor {
 		
 		for (Property prop : currentClass.getOwnedAttribute()) {
 			Type type = prop.getType();
-			String propType = extractTypeName(type);
+			String propType = extractTypeName(type)+KermetaModelAccessor.getSimplifiedMultiplicityString(prop);
 			if(prop.getIsComposite())
 				result.add(new VariableProposalItem(VariableProposalItem.VariableKind.ATTRIBUTE,prop.getName(), propType));
 			else

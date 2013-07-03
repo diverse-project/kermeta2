@@ -36,9 +36,11 @@ import org.kermeta.language.loader.kmt.scala.Lexer;
 import org.kermeta.language.loader.kmt.scala.api.IKToken;
 import org.kermeta.language.structure.Class;
 import org.kermeta.language.structure.ClassDefinition;
+import org.kermeta.language.structure.FunctionType;
 import org.kermeta.language.structure.KermetaModelElement;
 import org.kermeta.language.structure.Operation;
 import org.kermeta.language.structure.Parameter;
+import org.kermeta.language.structure.ProductType;
 import org.kermeta.language.structure.Property;
 import org.kermeta.language.structure.Type;
 import org.kermeta.language.structure.TypeDefinition;
@@ -344,32 +346,71 @@ public class KermetaContentAssistProcessor implements IContentAssistProcessor {
 				printedText.append(op.getName());
 				
 				//Show parameters
-				showedText.append("(");
-				printedText.append("(");
 				List<Parameter> params = op.getOwnedParameter();
-				for(int i = 0; i < params.size(); i++){
-					Parameter p = params.get(i);
-					showedText.append(KermetaModelAccessor.extractTypeName(p.getType())+" ");
-					showedText.append(p.getName());
-					printedText.append("${"+p.getName()+"}");
-					if(i < params.size() - 1){
-						showedText.append(",");
-						printedText.append(",");
-					}
+				if(params.size() == 1 && params.get(0).getType() instanceof FunctionType){
+					// use simplified syntax for lambda with one param
+					showedText.append("{");
+					printedText.append("{");
+					showedText.append(KermetaModelAccessor.extractTypeName(params.get(0).getType())+" ");
+					showedText.append(params.get(0).getName());
+					printedText.append(getProposedTextForFunctionParameter((FunctionType) params.get(0).getType(),params.get(0).getName()));
+					showedText.append("}");
+					printedText.append("}");
 				}
-				showedText.append(")");
-				printedText.append(")");
-				
+				else{
+					// normal syntax for operation call
+					showedText.append("(");
+					printedText.append("(");				
+					for(int i = 0; i < params.size(); i++){
+						Parameter p = params.get(i);
+						showedText.append(KermetaModelAccessor.extractTypeName(p.getType())+" ");
+						showedText.append(p.getName());
+						printedText.append("${"+p.getName()+"}");
+						if(i < params.size() - 1){
+							showedText.append(",");
+							printedText.append(",");
+						}
+					}
+					showedText.append(")");
+					printedText.append(")");
+				}
 				showedText.append(" : "+type);
 				
 				propList.add(
 						createTemplateProp(showedText.toString(),
-								containerClass,printedText.toString(), 
+								containerClass,
+								printedText.toString(), 
 								documentOffset-lastQualifier.length(), 
 								KermetaImage.getImage("/icons/"+colorSet+"/operation.png"))
 					);
 			}
 		}
+	}
+	
+	private String getProposedTextForFunctionParameter(FunctionType func, String paramName){
+		StringBuffer result = new StringBuffer();
+		if(func.getLeft() instanceof ProductType){
+			ProductType pt = (ProductType)func.getLeft();
+			for (int i = 0; i < pt.getType().size(); i++) {
+				String tName = KermetaModelAccessor.extractTypeName(pt.getType().get(i));
+				if(!tName.equals("Void")){
+					result.append("a"+tName+i);
+				}
+				if(i < pt.getType().size() - 1){
+					result.append(", ");
+				}
+			}
+			result.append("|");
+		}
+		else{
+			String tName = KermetaModelAccessor.extractTypeName(func.getLeft());
+			if(!tName.equals("Void")){
+				result.append("a"+tName);
+				result.append("|");
+			}
+		}
+		result.append("${"+paramName+"}");
+		return result.toString();
 	}
 	
 	private TemplateProposal createTemplateProp(String name, String description, String pattern, int docOffset, Image img){
