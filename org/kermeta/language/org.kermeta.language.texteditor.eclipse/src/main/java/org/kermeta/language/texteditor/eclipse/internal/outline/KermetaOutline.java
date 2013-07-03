@@ -177,7 +177,7 @@ public class KermetaOutline extends ContentOutlinePage implements IDoubleClickLi
 	}
 	public OutlineItem getInitialModel(){
 		if (this.KHelper == null){
-			ModelingUnit res = loadResource();
+			ModelingUnit res = this.textEditor.loadPrecompiledKMForFile();
 			if (res != null){
 				this.KHelper = new KermetaOutlineHelper(res);
 				this.KHelper.setOutlineForFile(this.textEditor.getFile().getLocationURI());
@@ -187,21 +187,7 @@ public class KermetaOutline extends ContentOutlinePage implements IDoubleClickLi
 		}
 		return this.KHelper.getRootStructure();
 	}
-	public ModelingUnit loadResource(){
-		IFile file = this.textEditor.getFile().getProject().getFile("target/beforeCheckingforScopeRESOLVED.km");
-		if (file != null){
-			try {
-				ResourceSet resSet = new ResourceSetImpl();
-				Resource res = resSet.getResource(org.kermeta.utils.helpers.emf.EMFUriHelper.convertToEMFUri(file.getLocationURI()), true);
-				ModelingUnit rtNode = new ModelingUnit( "beforeCheckingforScopeRESOLVED.km", res.getContents());	
-				
-				return rtNode;
-			} catch(RuntimeException e){
-				return null;
-			}
-		}
-		return null;
-	}
+	
 	public void update(final ModelingUnit lastCompiledKm){
 		
 		Display.getDefault().asyncExec(new Runnable() {

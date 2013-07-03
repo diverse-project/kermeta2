@@ -2,9 +2,14 @@ package org.kermeta.language.texteditor.eclipse.internal;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.text.ITextViewerExtension;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.editors.text.TextEditor;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
@@ -83,13 +88,45 @@ public class KermetaEditor extends TextEditor implements  KermetaBuilderEventLis
         }
     	return null;
     }
+    
+    /*
+	 * @see AbstractTextEditor#doSetInput(IEditorInput)
+	 */
+	protected void doSetInput(IEditorInput input) throws CoreException {
+		super.doSetInput(input);
+		// update accessor so it will know about the current file in the editor
+		if( input instanceof IFileEditorInput ) {
+			myAccess.setEditor(this);
+        }
+	}
+    
 	@Override
 	public void projectCompiled(IProject project, ModelingUnit lastCompiledKm) {
 		// Check if file belongs to project that update
 		// TODO the file may still be visible from another eclipse project via the kp require statement
 		if(getFile().getProject().getName().equals(project.getName())){
-			myAccess.setSourceModelingUnit(lastCompiledKm,getDocumentProvider().getDocument(getEditorInput()));
+			myAccess.setSourceModelingUnit(lastCompiledKm);
 			outline.update(lastCompiledKm);
 		}		
 	}
+	
+	public ModelingUnit loadPrecompiledKMForFile(){
+		IFile file = this.getFile().getProject().getFile("target/beforeCheckingforScopeRESOLVED.km");
+		if (file == null){
+			file = this.getFile().getProject().getFile("target/beforeCheckingforScopeMERGED.km");
+		}
+		if (file != null){
+			try {
+				ResourceSet resSet = new ResourceSetImpl();
+				Resource res = resSet.getResource(org.kermeta.utils.helpers.emf.EMFUriHelper.convertToEMFUri(file.getLocationURI()), true);
+				ModelingUnit rtNode = new ModelingUnit( file.getName(), res.getContents());	
+				
+				return rtNode;
+			} catch(RuntimeException e){
+				return null;
+			}
+		}
+		return null;
+	}
+	
 }
