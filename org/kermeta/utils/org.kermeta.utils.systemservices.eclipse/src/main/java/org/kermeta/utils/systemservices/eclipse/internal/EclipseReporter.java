@@ -139,10 +139,12 @@ public class EclipseReporter {
 	public void flushProblem(final String problemGroup,final URL url) {
 		try {
 			IResource ifile = ResourceHelpers.getIResourceFromURL(url);
-			for (IMarker aMarker : ifile.findMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE)) {
-				if (aMarker.getAttribute(KERMETA_MARKER_ATTRIBUTE).equals(problemGroup)) {
-					//ms.log(Kind.DevDEBUG, "#removing marker on "+ uri+" - problemGroup="+problemGroup, Activator.PLUGIN_ID , new Exception());
-					aMarker.delete();
+			if(ifile != null){
+				for (IMarker aMarker : ifile.findMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE)) {
+					if (aMarker.getAttribute(KERMETA_MARKER_ATTRIBUTE).equals(problemGroup)) {
+						//ms.log(Kind.DevDEBUG, "#removing marker on "+ uri+" - problemGroup="+problemGroup, Activator.PLUGIN_ID , new Exception());
+						aMarker.delete();
+					}
 				}
 			}
 		} catch (CoreException e) {
