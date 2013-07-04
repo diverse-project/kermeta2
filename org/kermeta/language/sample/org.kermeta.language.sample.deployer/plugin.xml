@@ -32,7 +32,7 @@
             hasPages="false"
             icon="icons/newkermetafile.png"
             id="org.kermeta.language.samples.wizard"
-            name="Kermeta 2 Class2Logo sample"
+            name="Kermeta 2 Logo sample"
             preferredPerspectives="org.eclipse.ui.resourcePerspective">
          <description>
             This project should present tools Suite for the Logo DSL
