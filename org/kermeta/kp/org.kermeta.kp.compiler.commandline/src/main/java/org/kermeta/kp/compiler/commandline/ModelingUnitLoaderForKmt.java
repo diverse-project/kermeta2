@@ -108,7 +108,7 @@ public class ModelingUnitLoaderForKmt implements ModelingUnitLoader{
 
 
 		ModelingUnit mu = parser.load(FileHelpers.StringToURL(fileuri), buf.toString(), logger);
-		mu.setName(filename);
+		if( mu!= null) mu.setName(filename);
 		return mu;
 
 	}

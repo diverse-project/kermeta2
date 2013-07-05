@@ -1285,7 +1285,9 @@ public class KermetaCompiler {
 		}
 		logger.debug("End Classpath: " + classpath.size(), LOG_MESSAGE_GROUP);
 
-		int result = EmbeddedScalaCompiler.compile(GlobalConfiguration.outputFolder(), GlobalConfiguration.outputBinFolder(), true, classpath, useFSC);
+		EmbeddedScalaCompiler scalaCompiler = new EmbeddedScalaCompiler();
+		scalaCompiler.log_$eq(logger);
+		int result = scalaCompiler.compile(GlobalConfiguration.outputFolder(), GlobalConfiguration.outputBinFolder(), true, classpath, useFSC);
 		if (result != 0) {
 			hasFailed = true;
 			errorMessage = "Failed to generate bytecode from intermediate scala";

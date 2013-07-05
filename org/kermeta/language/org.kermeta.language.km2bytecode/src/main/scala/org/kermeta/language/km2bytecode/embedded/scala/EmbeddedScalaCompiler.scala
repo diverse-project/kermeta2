@@ -8,11 +8,14 @@ import tools.nsc.reporters.ConsoleReporter
 import tools.nsc.io.AbstractFile
 import tools.nsc.Properties._
 import java.io.File._
-import tools.nsc._
 import scala.tools.nsc.interactive.{ RefinedBuildManager, SimpleBuildManager }
+import org.kermeta.utils.systemservices.api.messaging.MessagingSystem
+import org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem
 
-object EmbeddedScalaCompiler extends LogAspect {
+class EmbeddedScalaCompiler {
 	
+  var log : MessagingSystem = new StdioSimpleMessagingSystem
+   
   def getActualClasspath = {
     var classpath = List[String]()
     if(System.getProperty("java.classpath") != null ) {
@@ -39,7 +42,7 @@ object EmbeddedScalaCompiler extends LogAspect {
     var listSrcFiles = InternalCompilerHelper.listFile(new File(srcPATH))
     /* Build class path */
 		
-    log.info("Scala2bytecode compilation step begin on "+listSrcFiles.size+" files")
+    log.info("Scala2bytecode compilation step begin on "+listSrcFiles.size+" files",this.getClass().getName())
 		
     var classpath : StringBuilder = new StringBuilder("."+File.pathSeparator)
     for(path <- jars) {
@@ -54,7 +57,9 @@ object EmbeddedScalaCompiler extends LogAspect {
       try scala.tools.nsc.CompileClient.main(compilParams.toArray) catch { case e : Exception => compilationResult = 1 }
     } else {
       try {
-        _root_.scala.tools.nsc.Main.process(compilParams.toArray)
+        val nscMain = new NSCMain
+        nscMain.log = log
+        nscMain.process(compilParams.toArray)
         compilationResult = if (scala.tools.nsc.Main.reporter.hasErrors) 1 else 0
       }
       catch {
@@ -64,7 +69,7 @@ object EmbeddedScalaCompiler extends LogAspect {
     }
 		
     var endTime= System.currentTimeMillis() - startTime
-    log.info("Scala2bytecode compilation step complete in "+(endTime)+" millisecondes ")
+    log.info("Scala2bytecode compilation step complete in "+(endTime)+" millisecondes ",this.getClass().getName())
 		
     return compilationResult
   }
@@ -73,3 +78,5 @@ object EmbeddedScalaCompiler extends LogAspect {
 
 
 }
+object  EmbeddedScalaCompiler extends EmbeddedScalaCompiler
+
