@@ -17,13 +17,13 @@ import org.kermeta.utils.systemservices.api.reference.Reference;
  * Use Server4MessagingSystem for the server side.
  */
 public class ClientMessagingSystem extends MessagingSystem{
-	
+	Socket kkSocket;
 	ObjectOutputStream out = null;
 	java.io.BufferedReader in = null;
 	
 	public ClientMessagingSystem(int port, String address) {
 	  try {
-	    Socket kkSocket = new Socket(address, port);
+	    kkSocket = new Socket(address, port);
 	    out = new ObjectOutputStream(kkSocket.getOutputStream());
 	    
 	    java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
@@ -167,4 +167,13 @@ public class ClientMessagingSystem extends MessagingSystem{
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		out.flush();
+		kkSocket.close();
+		super.finalize();
+	}
+	
+	
 }

@@ -49,7 +49,7 @@
             name="Kermeta 2 FSM sample"
             preferredPerspectives="org.eclipse.ui.resourcePerspective">
          <description>
-            This project should present tools Suite for the Logo DSL
+            This project should present tools Suite for the FSM DSL
          </description>
       </wizard>
    </extension>
