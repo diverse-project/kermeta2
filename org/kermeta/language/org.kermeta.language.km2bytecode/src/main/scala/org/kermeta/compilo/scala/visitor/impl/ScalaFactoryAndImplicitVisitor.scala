@@ -227,7 +227,7 @@ class ScalaFactoryAndImplicitVisitor(compilerConfiguration: CompilerConfiguratio
     res.append("	if(port != null) {\n")
     res.append("		var messagingSystem = new _root_.org.kermeta.utils.systemservices.api.impl.ClientMessagingSystem(port,\"localhost\")\n")
     res.append("		k2.io.StdIO._messagingSystem = messagingSystem\n")
-    res.append("		messagingSystem.log(org.kermeta.utils.systemservices.api.messaging.MessagingSystem.Kind.DevINFO, \"Messaging system client started on port \"+port, \"\")\n")
+    res.append("		messagingSystem.log(_root_.org.kermeta.utils.systemservices.api.messaging.MessagingSystem.Kind.DevINFO, \"Messaging system client started on port \"+port, \"\")\n")
     res.append("	}\n")
     
     res.append("  }\n")
