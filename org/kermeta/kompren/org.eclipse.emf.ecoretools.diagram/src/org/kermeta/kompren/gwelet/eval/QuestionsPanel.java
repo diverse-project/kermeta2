@@ -95,8 +95,8 @@ public class QuestionsPanel extends Composite {
 		T2A_RAM{
 			@Override public String getTitle() { return "<html><font size=\"5\">List the name of the abstract classes in the super class hierarchy of <b>Class</b> that are not doing much (i.e. that do not contain attributes, operations, and output references/compositions) and that can be removed</font></html>"; }
 			@Override public String getHelper() { return ""; }
-			@Override public Metamodel getMetamodel() { return Metamodel.UML; }
-			@Override public String getInitialClassToFocusOn() { return "uml.Class"; }
+			@Override public Metamodel getMetamodel() { return Metamodel.RAM; }
+			@Override public String getInitialClassToFocusOn() { return "ram.Class"; }
 		},
 		T2B_UML{
 			@Override public String getTitle() { return "<html><font size=\"5\">Give the name of the redundant attribute (direct or inherited) of the class <b>Device</b> (i.e. same name and type)</font></html>"; }
