@@ -7,11 +7,11 @@ package org::keremta::language::kmInterpreter::standard{
 	{
 
 		operation ErrorWriteln(param : String) : Void is do
-			extern p1::ConsoleDisplayer.displayTrace(param)
+			stdio.writeln(param)
 		end
 		
 		operation writeln(param : String) : Void is do
-			extern p1::ConsoleDisplayer.displayMove(param)
+			stdio.writeln(param)
 		end
 		
 		operation plus (a : Object, b : Object) : Object is do

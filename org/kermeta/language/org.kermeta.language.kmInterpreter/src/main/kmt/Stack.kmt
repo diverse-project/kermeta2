@@ -5,10 +5,10 @@ package org::keremta::language::kmInterpreter {
 	
 	class Stack[G]
 	{
-		attribute stack : OrderedSet[G]
+		attribute stack : Sequence[G]
 		
 		operation reset () : Void is do
-			self.stack 	:= OrderedSet[G].new
+			self.stack 	:= Sequence[G].new
 		end
 		
 		operation peek() : G is do
@@ -34,6 +34,11 @@ package org::keremta::language::kmInterpreter {
 		
 		operation peekToString() : String is do
 			result := self.stack.last.toString
+		end
+		
+		operation peekAllToString() : String is do
+			result := ""
+			self.stack.each{st | result := result + st.toString + "\n"}
 		end
 		
 		operation isNotEmpty() : Boolean is do

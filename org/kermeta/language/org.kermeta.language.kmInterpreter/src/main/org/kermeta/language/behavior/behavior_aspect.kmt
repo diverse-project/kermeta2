@@ -2,6 +2,7 @@ using kermeta::standard::*
 using kermeta::utils::*
 using kermeta::io::StdIO => stdio
 
+using org::kermeta::language::structure::*
 using org::keremta::language::kmInterpreter ::*
 
 package org {
@@ -15,7 +16,6 @@ package org {
 				aspect class Assignment {
 
 					operation eval (context : Context) : Object is do
-						
 						var target 	: Object := self.target.eval(context)
 						var val 	: Object := self.~value.eval(context)
 						
@@ -28,16 +28,16 @@ package org {
 								context.stackAttribute.peek.asType(ObjectRunning).put(target.asType(Variable).name, val)
 							else
 								if (target.asType(Variable).type == "variable") then
-									var objet : ObjectRunning := context.stackVar.peek.asType(Hashtable<String, Object>).getValue(target.asType(Variable).parent).asType(ObjectRunning)
+									var objet : ObjectRunning := context.stackVar.peek.getValue(target.asType(Variable).parent).asType(ObjectRunning)
 									objet.put(target.asType(Variable).name, val)
 								else
-									context.stackVar.peek.asType(Hashtable<String, Object>).put(target.asType(Variable).name, val)
+									context.stackVar.peek.put(target.asType(Variable).name, val)
 								end
 							end
-						end
+	 					end
 						result := void
 					end
-
+					
 				}
 
 				aspect abstract class Expression {
@@ -72,7 +72,7 @@ package org {
 						var variable : Variable := Variable.new
 						
 						variable.name 	:= self.name
-						variable.~value := context.stackVar.peek.asType(Hashtable<String, Object>).getValue(self.name)
+						variable.~value := context.stackVar.peek.getValue(self.name)
 						result := variable
 					end
 
@@ -89,7 +89,16 @@ package org {
 				aspect class CallSuperOperation {
 
 					operation eval (context : Context) : Object is do
+						var tmp : Object
 						result := void
+						
+						var resultObj : Hashtable<String, Object> := Hashtable<String, Object>.new
+						resultObj.put("result", void)
+						
+						self.staticOperation.body.eval(context)
+						
+						tmp := context.stackVar.peek.getValue("result")
+						result := tmp
 					end
 
 				}
@@ -100,7 +109,7 @@ package org {
 						result := void
 						var variable : Variable := Variable.new
 						variable.name 	:= "result"
-						variable.~value := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+						variable.~value := context.stackVar.peek.getValue("result")
 						result := variable
 					end
 
@@ -190,7 +199,7 @@ package org {
 							tmp := context.currentObject.asType(Sequence[Object])
 							tmp.each {obj | 
 								self.parameters.each{param |
-									context.stackVar.peek.asType(Hashtable<String, Object>).put(param.name, obj)}
+									context.stackVar.peek.put(param.name, obj)}
 								self.body.eval(context)}
 						end
 					end
@@ -235,19 +244,24 @@ package org {
 
 				aspect class CallTypeLiteral {
 
+					operation attributeList(context : Context, currentClass : Class, resultObj : Hashtable<String, Object>) : Void is do
+						currentClass.ownedAttribute.each {att | resultObj.put(att.name, void)}
+						currentClass.superClass.each{sc | attributeList(context, sc, resultObj)}
+					end
+
 					operation eval (context : Context) : Object is do
 						result := void
 						
 						var type : Object := self.typeref.type.eval(context)
 						
-						//if(type.isInstanceOf(OrderedSet[Integer])) then
 						if(type.isInstanceOf(Sequence[Object])) then
 							result := type
 						else
+						
 							// creation of an object
 							var objet : ObjectRunning := ObjectRunning.new
 							objet.initialize
-							objet.~attribute := type.asType(Hashtable<String, Object>)
+							attributeList(context, self.typeref.type.asType(Class), objet.~attribute)
 							result := objet
 						end			
 					end
@@ -294,7 +308,7 @@ package org {
 						
 						variable.name := self.identifier
 						variable.~value := self.initialization.eval(context)
-						context.stackVar.peek.asType(Hashtable<String, Object>).put(variable.name, variable.~value)
+						context.stackVar.peek.put(variable.name, variable.~value)
 						
 						result := variable
 					end
@@ -311,18 +325,28 @@ package org {
 
 				aspect class CallOperation {
 
-					operation eval (context : Context) : Object is do
-						result := void
-						var tmp : Object
-						var resultObj 	: Hashtable<String, Object> := Hashtable<String, Object>.new
-						//var params 		: OrderedSet[Object]		:= OrderedSet[Object].new
-						var params 		: Sequence[Object] := Sequence[Object].new
-						var resultVar 	: Object
-						var bParameter	: Boolean := false
-						var bAttribute	: Boolean := false
+					operation manageParams(context : Context) : Boolean is do
+						var params 		: Sequence[Object] 	:= Sequence[Object].new
+						var bParameter	: Boolean	 		:= false
 						
-						// initialization of variable stack
-						resultVar := self.target.eval(context)
+						if(self.parameters.isNotEmpty) then
+							self.parameters.each {param | 
+													var res : Object := param.eval(context)
+													if (res.isInstanceOf(Variable)) then
+														params.add(res.asType(Variable).~value)
+													else
+														params.add(res)
+													end}
+							context.stackParam.push(params)
+							bParameter := true
+						end
+						
+						result := bParameter
+					end
+					
+					operation manageVars(context : Context, resultObj : Hashtable<String, Object>) : Boolean is do
+						var bAttribute	: Boolean := false
+						var resultVar 	: Object := self.target.eval(context)
 						
 						if (resultVar.isInstanceOf(Variable)) then
 							if (resultVar.asType(Variable).~value.isInstanceOf(ObjectRunning)) then
@@ -334,33 +358,45 @@ package org {
 								context.currentObject := resultVar.asType(Variable).~value
 							end
 				 		else
+				 			if (resultVar.isInstanceOf(ObjectRunning)) then
+								context.stackAttribute.push(resultVar)
+								context.currentObject := resultVar
+								bAttribute := true
+				 			end
 							resultObj.put("result", resultVar)
 							context.currentObject := resultVar
 						end
 						
+						result := bAttribute
+					end
+
+					operation eval (context : Context) : Object is do
+						result := void
+						var tmp : Object
+						var resultObj 	: Hashtable<String, Object> := Hashtable<String, Object>.new
+						var bParameter	: Boolean := false
+						var bAttribute	: Boolean := false
+						var bCompiler	: Boolean := false
+						
+						resultObj.put("result", void)
+						
+						// initialization of variable stack
+						bAttribute := manageVars(context, resultObj)
 						
 						// initialization of parameters stack
-						if(self.parameters.isNotEmpty) then
-							self.parameters.each {param | 
-													var res : Object := param.eval(context)
-													if (res.isInstanceOf(Variable)) then
-														params.add(res.asType(Variable).~value)
-													else
-														params.add(res)
-													end}
-							context.stackParam.push(params)
-							bParameter := true
-						end						
-						
+						bParameter := manageParams(context)
+												
 						// creation of an area for new data 
 						context.stackVar.push(resultObj)
 						
-						// execute body of the operation called
-						self.staticOperation.eval(context)						
+						// execution of the operation (body)
+						self.staticOperation.eval(context)
 						
 						// update result of the operation
-						tmp := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+						//tmp := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result")
+						tmp := context.stackVar.peek.getValue("result")
 						
+						//Update elements contained in stack
 						if(bParameter) then
 							context.stackParam.pop
 						end
@@ -372,7 +408,7 @@ package org {
 						end
 						result := tmp
 					end
-
+					
 				}
 
 				aspect class CallProperty {
@@ -399,10 +435,10 @@ package org {
 								result := variable
 							end
 						else
-							var variable 	: Variable := Variable.new
-							var attributeTable : Hashtable <String, Object> := context.stackAttribute.peek.asType(Hashtable<String, Object>)
-							var bValFound 	: Boolean := false
-							var element : Integer := context.stackAttribute.count -1
+							var variable 		: Variable := Variable.new
+							var attributeTable 	: Hashtable<String, Object> := context.stackAttribute.peek.asType(Hashtable<String, Object>)
+							var bValFound 		: Boolean := false
+							var element 		: Integer := context.stackAttribute.count -1
 							
 							from element
 							until (bValFound or element == 0)

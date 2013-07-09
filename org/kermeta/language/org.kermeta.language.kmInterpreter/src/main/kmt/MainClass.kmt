@@ -4,7 +4,7 @@ using kermeta::io::StdIO => stdio
 using kermeta::emfpersistence::*
 
 using org::kermeta::language::structure::*
-using InterpreterK2::*
+using org::keremta::language::kmInterpreter::*
 
 package org::keremta::language::kmInterpreter {
 
@@ -20,7 +20,8 @@ package org::keremta::language::kmInterpreter {
 			//var kmFile : String := "platform:/resource/InterpreterK2/src/test/conditionnal_beforeCheckingforScopeRESOLVED.km"
 			//var kmFile : String := "platform:/resource/InterpreterK2/src/test/ObjectUsing_beforeCheckingforScopeRESOLVED.km"
 			//var kmFile : String := "platform:/resource/InterpreterK2/src/test/FootballPlayer_beforeCheckingforScopeRESOLVED.km"
-			var kmFile : String := "platform:/resource/InterpreterK2/src/test/beforeCheckingforScopeRESOLVED.km"
+			var kmFile : String := "platform:/resource/InterpreterK2/src/test/Collection_beforeCheckingforScopeRESOLVED.km"
+			//var kmFile : String := "platform:/resource/InterpreterK2/src/test/beforeCheckingforScopeRESOLVED.km"
 			var rootCollection : Collection[Metamodel] init loadProgram(kmFile)
 			context := Context.new
 			context.initialize
@@ -29,7 +30,7 @@ package org::keremta::language::kmInterpreter {
 	
 		operation loadProgram(kmFile : String) : Collection[Metamodel] is do             
 			var repository : ResourceSet init ResourceSet.new
-			var resource : Resource init repository.createResource(kmFile, "platform:/resource/org.kermeta.language.kmInterpreter/src/ecore/kermeta.ecore")
+			var resource : Resource init repository.createResource(kmFile, "platform:/resource/InterpreterK2/ecore/kermeta.ecore")
 			resource.load(void) 
 			result := OrderedSet[Metamodel].new
 			resource.getContents.each{res |

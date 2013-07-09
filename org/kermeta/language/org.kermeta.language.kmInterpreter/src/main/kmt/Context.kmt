@@ -8,20 +8,17 @@ package org::keremta::language::kmInterpreter {
 	
 	class Context {
 	
-		attribute stackParam 		: Stack[Object]
-		attribute stackVar 			: Stack[Object]
+		attribute stackVar 			: Stack[Hashtable<String, Object>]
 		attribute stackAttribute 	: Stack[Object]
-		attribute stackLambdaE		: Stack[Object]
+		attribute stackParam 		: Stack[Sequence[Object]]
 		attribute currentObject		: Object
 
 		operation initialize() : Void is do
-			self.stackVar		:= Stack[Object].new
+			self.stackVar		:= Stack[Hashtable<String, Object>].new
 			self.stackAttribute	:= Stack[Object].new
-			self.stackParam		:= Stack[Object].new
-			self.stackLambdaE	:= Stack[Object].new
+			self.stackParam		:= Stack[Sequence[Object]].new
 			self.stackVar.reset
 			self.stackAttribute.reset
-			self.stackLambdaE.reset
 			self.stackParam.reset
 			result := void
 		end

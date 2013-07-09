@@ -42,8 +42,8 @@ package org {
 						// management of parameters of the operation
 						var index : Integer := 0
 						self.ownedParameter.each {p | 
-								context.stackVar.peek.asType(Hashtable<String, Object>).put(p.name, context.stackParam.peek.asType(Sequence[Object]).elementAt(index))
-								index := index + 1}
+								context.stackVar.peek.put(p.name, context.stackParam.peek.elementAt(index))
+								index := index + 1}						
 						
 						if (self.name == "writeln") then
 							BasisFunctions.ErrorWriteln(context.stackParam.peek.asType(Sequence[Object]).last.toString)
@@ -51,6 +51,7 @@ package org {
 						end
 						
 						if (self.name == "new") then
+							//ObjectBehavior.newObject(context)
 							bBody := false
 						end
 						
@@ -58,6 +59,7 @@ package org {
 							var tmp : Sequence[Object] := context.stackVar.peek.asType(Hashtable<String, Object>).getValue("result").asType(Sequence[Object])
 							tmp.add(context.stackParam.peek.asType(Sequence[Object]).last.asType(Object))
 							context.stackVar.peek.asType(Hashtable<String, Object>).put("result", tmp)
+							context.stackVar.peek.put("result", tmp)
 							bBody := false
 						end
 						
@@ -201,19 +203,10 @@ package org {
 				aspect class Class {
 
 					operation eval (context : Context) : Object is do
-						var bKnown : Boolean := false
 						result := void
 						
-						//if (self.name == "OrderedSet[Integer]") then
 						if (self.name.contains("Sequence")) then
 							result := Sequence[Object].new
-							bKnown := true
-						end
-						
-						if(not bKnown) then
-							var resultObj 	: Hashtable<String, Object> := Hashtable<String, Object>.new
-							self.ownedAttribute.each {att | resultObj.put(att.name, void)}
-							result := resultObj
 						end
 					end
 
