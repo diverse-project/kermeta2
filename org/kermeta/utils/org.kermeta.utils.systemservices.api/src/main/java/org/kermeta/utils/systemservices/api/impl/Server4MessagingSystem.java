@@ -91,6 +91,9 @@ public class Server4MessagingSystem implements Runnable{
 				logger.error(e1.getMessage(), "",e1);
 			}
         }
+        catch(java.net.SocketException e){
+        	logger.log(Kind.DevDEBUG, e.getMessage(), Server4MessagingSystem.class.getName(), e);
+        }
         catch (Exception e) {
         	logger.error(e.getMessage(), "",e);
         }		
