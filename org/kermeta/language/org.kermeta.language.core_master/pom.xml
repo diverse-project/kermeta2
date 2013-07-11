@@ -12,7 +12,7 @@
 	<groupId>org.kermeta.language</groupId>
 	<artifactId>org.kermeta.language.core_master</artifactId>
 	<packaging>pom</packaging>
-	<version>${kermeta.version}</version>
+	<version>2.1.0</version>
 	<name>language.core_master :: core modules for kermeta language</name>
 
 	<parent>

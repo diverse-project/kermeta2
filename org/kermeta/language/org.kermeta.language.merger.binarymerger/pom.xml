@@ -4,6 +4,7 @@
 		<artifactId>org.kermeta.language.root</artifactId>
 		<groupId>org.kermeta.language</groupId>
 		<version>2.1.0</version>
+        <relativePath>../org.kermeta.language.root/pom.xml</relativePath>
 	</parent>
 	<!-- workaround bug apt !? -->
 	<!-- <groupId>org.kermeta.language</groupId> <version>2.1.0</version> 
