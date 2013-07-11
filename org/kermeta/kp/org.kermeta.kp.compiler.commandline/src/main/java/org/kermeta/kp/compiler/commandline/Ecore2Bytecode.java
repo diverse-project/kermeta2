@@ -83,11 +83,11 @@ public class Ecore2Bytecode {
 			logger.debug("runInEclipse = false", KermetaCompiler.LOG_MESSAGE_GROUP);
 			logger.debug("EcorePlugin.getPlatformResourceMap().put(\""+getEclipseName(kp)+"\", URI.createURI(\"file:///"+rootFolder.replaceAll("\\\\", "/")+"\"));", KermetaCompiler.LOG_MESSAGE_GROUP);
 			EcorePlugin.getPlatformResourceMap().put(getEclipseName(kp), URI.createURI("file:///"+rootFolder.replaceAll("\\\\", "/")));
-			EcorePlugin.getPlatformResourceMap().put("org.eclipse.emf.codegen.ecore", URI.createURI("jar\\:file\\:/C:/Users/dvojtise/git/kermeta2/org/kermeta/kp/org.kermeta.kp.compiler.commandline.standalone/target/org.kermeta.kp.compiler.commandline.standalone-2.0.99-SNAPSHOT.jar\\!/"));
-			logger.debug("ExtensibleURIConverterImpl.URI_MAP.put(platform\\:/plugin/org.eclipse.emf.codegen.ecore/ jar\\:file\\:/C:/Users/dvojtise/git/kermeta2/org/kermeta/kp/org.kermeta.kp.compiler.commandline.standalone/target/org.kermeta.kp.compiler.commandline.standalone-2.0.99-SNAPSHOT.jar\\!/", KermetaCompiler.LOG_MESSAGE_GROUP);
+			EcorePlugin.getPlatformResourceMap().put("org.eclipse.emf.codegen.ecore", URI.createURI("jar\\:file\\:/C:/Users/dvojtise/git/kermeta2/org/kermeta/kp/org.kermeta.kp.compiler.commandline.standalone/target/org.kermeta.kp.compiler.commandline.standalone-2.1.0.jar\\!/"));
+			logger.debug("ExtensibleURIConverterImpl.URI_MAP.put(platform\\:/plugin/org.eclipse.emf.codegen.ecore/ jar\\:file\\:/C:/Users/dvojtise/git/kermeta2/org/kermeta/kp/org.kermeta.kp.compiler.commandline.standalone/target/org.kermeta.kp.compiler.commandline.standalone-2.1.0.jar\\!/", KermetaCompiler.LOG_MESSAGE_GROUP);
 			
 			ExtensibleURIConverterImpl.URI_MAP.put(URI.createURI("platform\\:/plugin/org.eclipse.emf.codegen.ecore/"),
-					URI.createURI("jar\\:file\\:/C:/Users/dvojtise/git/kermeta2/org/kermeta/kp/org.kermeta.kp.compiler.commandline.standalone/target/org.kermeta.kp.compiler.commandline.standalone-2.0.99-SNAPSHOT.jar\\!/"));
+					URI.createURI("jar\\:file\\:/C:/Users/dvojtise/git/kermeta2/org/kermeta/kp/org.kermeta.kp.compiler.commandline.standalone/target/org.kermeta.kp.compiler.commandline.standalone-2.1.0.jar\\!/"));
 			//platform\:/plugin/org.eclipse.emf.codegen.ecore/=jar\:file\:/C\:/eclipse_modeling_4.2/eclipse-modeling-juno-k2.0.7-snapshot/eclipse/plugins/org.eclipse.emf.codegen.ecore_2.8.1.v20120917-0436.jar\!/
 			
 			

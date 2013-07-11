@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1364554926217
-Build-Jdk: 1.7.0_17
+Bnd-LastModified: 1373550198071
+Build-Jdk: 1.6.0_43
 Built-By: dvojtise
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
@@ -9,12 +9,12 @@ Bundle-ManifestVersion: 2
 Bundle-Name: language.model.edit :: Kermeta2 model edit
 Bundle-SymbolicName: org.kermeta.language.model.edit; singleton=true
 Bundle-Vendor: IRISA/INRIA
-Bundle-Version: 2.0.99.SNAPSHOT_20130329_1201
+Bundle-Version: 2.1.0
 Created-By: Apache Maven Bundle Plugin
 Export-Package: org.kermeta.language.structure.provider;uses:="org.kerme
- ta.language.behavior.provider";version="2.0.99.SNAPSHOT_20130329_1201",
- org.kermeta.language.behavior.provider;uses:="org.kermeta.language.stru
- cture.provider";version="2.0.99.SNAPSHOT_20130329_1201"
+ ta.language.behavior.provider";version="2.1.0",org.kermeta.language.beh
+ avior.provider;uses:="org.kermeta.language.structure.provider";version=
+ "2.1.0"
 Ignore-Package: org.eclipse.emf.ecore,org.eclipse.emf.edit.command,org.k
  ermeta.language.behavior,org.eclipse.emf.common.util,org.kermeta.langua
  ge.behavior.util,org.kermeta.language.structure,org.eclipse.emf.common,

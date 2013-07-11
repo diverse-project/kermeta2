@@ -9,7 +9,7 @@
     <parent>
         <groupId>org.kermeta.language</groupId>
         <artifactId>org.kermeta.language.root</artifactId>
-        <version>2.0.99-SNAPSHOT</version>
+        <version>2.1.0</version>
     </parent>
 
     <build>
@@ -86,13 +86,13 @@
     <dependencies>
     	<dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>language.model</artifactId>
+            <artifactId>org.kermeta.language.model</artifactId>
             <version>${kermeta.version}</version>
         </dependency>
         
     	<dependency> <!-- TODO find a way to retrieve this information directly from the kp -->
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>language.library.standard</artifactId>
+            <artifactId>org.kermeta.language.library.standard</artifactId>
             <version>${kermeta.version}</version>
         </dependency>
     </dependencies>

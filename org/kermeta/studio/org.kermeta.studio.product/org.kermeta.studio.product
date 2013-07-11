@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Kermeta 2 studio" uid="org.kermeta.studio" id="org.kermeta.studio.branding.kermeta_studio" application="org.eclipse.ui.ide.workbench" version="2.0.99.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Kermeta 2 studio" uid="org.kermeta.studio" id="org.kermeta.studio.branding.kermeta_studio" application="org.eclipse.ui.ide.workbench" version="2.1.0" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/images/kermeta_icon_128.png"/>
       <text>
          Kermeta 2 Studio
+         v2.1.0
       </text>
    </aboutInfo>
 

@@ -1,0 +1,1353 @@
+/* $Id:$ */
+/* Generated using /fr.irisa.triskell.kermeta.ecore/src/kermeta/transformations/ContainmentBasedActionPerformerGenerator.kmt */
+
+package org;
+
+require kermeta
+require "platform:/resource/org.kermeta.language.model/src/main/ecore/kermeta.ecore"
+
+using kermeta::language::structure
+
+package kermeta {
+
+package language {
+
+package behavior {
+
+aspect class Assignment {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		if (not self.target.isVoid) then
+			func(self.target)
+		end
+		if (not self.~value.isVoid) then
+			func(self.~value)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Expression {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class CallExpression {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		self.parameters.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Block {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		self.statement.each{ e |
+			func(e)
+		}
+		self.rescueBlock.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class CallVariable {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::CallExpression is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.parameters.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class CallFeature {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::CallExpression is do
+		// properties directly owned by this element
+		if (not self.target.isVoid) then
+			func(self.target)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.parameters.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class CallSuperOperation {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::CallOperation is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		if (not self.target.isVoid) then
+			func(self.target)
+		end
+		self.parameters.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class CallResult {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::CallVariable is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.parameters.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class CallValue {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::CallExpression is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.parameters.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Conditional {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		if (not self.thenBody.isVoid) then
+			func(self.thenBody)
+		end
+		if (not self.elseBody.isVoid) then
+			func(self.elseBody)
+		end
+		if (not self.condition.isVoid) then
+			func(self.condition)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Raise {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		if (not self.expression.isVoid) then
+			func(self.expression)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Rescue {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		self.body.each{ e |
+			func(e)
+		}
+		if (not self.exceptionType.isVoid) then
+			func(self.exceptionType)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class TypeReference {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::MultiplicityElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Literal {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class EmptyExpression {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class JavaStaticCall {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		self.parameters.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class LambdaExpression {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		self.parameters.each{ e |
+			func(e)
+		}
+		if (not self.body.isVoid) then
+			func(self.body)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class LambdaParameter {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		if (not self.type.isVoid) then
+			func(self.type)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class IntegerLiteral {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Literal is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class StringLiteral {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Literal is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class BooleanLiteral {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Literal is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class CallTypeLiteral {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Literal is do
+		// properties directly owned by this element
+		if (not self.typeref.isVoid) then
+			func(self.typeref)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class VoidLiteral {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Literal is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Loop {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		if (not self.initialization.isVoid) then
+			func(self.initialization)
+		end
+		if (not self.body.isVoid) then
+			func(self.body)
+		end
+		if (not self.stopCondition.isVoid) then
+			func(self.stopCondition)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class SelfExpression {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class VariableDecl {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::Expression is do
+		// properties directly owned by this element
+		if (not self.initialization.isVoid) then
+			func(self.initialization)
+		end
+		if (not self.type.isVoid) then
+			func(self.type)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class UnresolvedCall {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::UnresolvedReference is do
+		// properties directly owned by this element
+		self.usings.each{ e |
+			func(e)
+		}
+		if (not self.target.isVoid) then
+			func(self.target)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.parameters.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class CallOperation {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::CallFeature is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		if (not self.target.isVoid) then
+			func(self.target)
+		end
+		self.parameters.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class CallProperty {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::CallFeature is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		if (not self.target.isVoid) then
+			func(self.target)
+		end
+		self.parameters.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class CallEnumLiteral {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::CallExpression is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.parameters.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class CallModelTransformation {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::behavior::CallFeature is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		if (not self.target.isVoid) then
+			func(self.target)
+		end
+		self.parameters.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+}
+
+package structure {
+
+
+
+aspect class KermetaModelElement {
+	operation eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void is do
+		// properties directly owned by this element
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+	end
+}
+
+
+aspect class Operation {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::MultiplicityElement is do
+		// properties directly owned by this element
+		self.ownedParameter.each{ e |
+			func(e)
+		}
+		self.~pre.each{ e |
+			func(e)
+		}
+		self.~post.each{ e |
+			func(e)
+		}
+		if (not self.body.isVoid) then
+			func(self.body)
+		end
+		self.ownedUnresolvedOperations.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Property {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::MultiplicityElement is do
+		// properties directly owned by this element
+		if (not self.getterBody.isVoid) then
+			func(self.getterBody)
+		end
+		if (not self.setterBody.isVoid) then
+			func(self.setterBody)
+		end
+		self.ownedUnresolvedProperties.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Type {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class TypeContainer {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		self.containedType.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class EnumerationLiteral {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::NamedElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class TypeVariableBinding {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::TypeContainer is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class MultiplicityElement {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::TypedElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class TypeDefinition {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::NamedElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Class {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::ParameterizedType is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.virtualTypeBinding.each{ e |
+			func(e)
+		}
+		self.typeParamBinding.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class DataType {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::Type is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Enumeration {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::DataType is do
+		// properties directly owned by this element
+		self.ownedLiteral.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class NamedElement {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Package {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::NamedElement is do
+		// properties directly owned by this element
+		self.nestedPackage.each{ e |
+			func(e)
+		}
+		self.ownedAdaptationOperators.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.ownedTypeDefinition.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Parameter {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::MultiplicityElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class PrimitiveType {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::DataType is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class TypedElement {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::TypeContainer is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+
+aspect class Tag {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class AbstractProperty {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Constraint {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::NamedElement is do
+		// properties directly owned by this element
+		if (not self.body.isVoid) then
+			func(self.body)
+		end
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+
+aspect class ClassDefinition {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::GenericTypeDefinition is do
+		// properties directly owned by this element
+		self.~inv.each{ e |
+			func(e)
+		}
+		self.ownedAttribute.each{ e |
+			func(e)
+		}
+		self.ownedOperation.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+
+aspect class Metamodel {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		self.packages.each{ e |
+			func(e)
+		}
+		self.referencedMetamodels.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.ownedModelTypeDefinitions.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ModelElementTypeDefinitionContainer {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::NamedElement is do
+		// properties directly owned by this element
+		self.ownedTypeDefinition.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class GenericTypeDefinition {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::ModelElementTypeDefinition is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ParameterizedType {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::Type is do
+		// properties directly owned by this element
+		self.virtualTypeBinding.each{ e |
+			func(e)
+		}
+		self.typeParamBinding.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class TypeVariable {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::TypeContainer is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ObjectTypeVariable {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::TypeVariable is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ModelTypeVariable {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::TypeVariable is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class VirtualType {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::ObjectTypeVariable is do
+		// properties directly owned by this element
+		self.typeParamBinding.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Model {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class AbstractOperation {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class UnresolvedType {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::Type is do
+		// properties directly owned by this element
+		self.usings.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class UnresolvedReference {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class UnresolvedProperty {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::AbstractProperty is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class UnresolvedOperation {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::AbstractOperation is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class Using {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ProductType {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::TypeContainer is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class FunctionType {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::TypeContainer is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class VoidType {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::Type is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class UnresolvedInferredType {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::UnresolvedReference is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class UnresolvedTypeVariable {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::UnresolvedReference is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ModelTypeDefinitionBinding {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		self.ownedClassDefinitionBindings.each{ e |
+			func(e)
+		}
+		self.usedAdaptationOperators.each{ e |
+			func(e)
+		}
+		self.ownedEnumerationBindings.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+		self.ownedModelTypeDefinitions.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ClassDefinitionBinding {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		self.ownedPropertyBindings.each{ e |
+			func(e)
+		}
+		self.ownedOperationBindings.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class EnumerationBinding {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class PropertyBinding {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class OperationBinding {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class AdaptationOperator {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::NamedElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class UseAdaptationOperator {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		self.ownedUnresolved.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class PropertyAdaptationOperator {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::AdaptationOperator is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class UnresolvedAdaptationOperator {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::AdaptationOperator is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class AdaptationParameter {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::TypedElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class OperationAdaptationOperator {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::AdaptationOperator is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ModelElementTypeDefinition {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::TypeDefinition is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ModelType {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::Type is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class FilteredMetamodelReference {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ModelTypeDefinition {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::TypeDefinition is do
+		// properties directly owned by this element
+		self.ownedBindings.each{ e |
+			func(e)
+		}
+		self.ownedTransformations.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ModelTransformation {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::MultiplicityElement is do
+		// properties directly owned by this element
+		if (not self.body.isVoid) then
+			func(self.body)
+		end
+		self.ownedParameter.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class UnresolvedModelTypeDefinition {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::ModelTypeDefinition is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.ownedBindings.each{ e |
+			func(e)
+		}
+		self.ownedTransformations.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class UnresolvedModelTransformation {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::ModelTransformation is do
+		// properties directly owned by this element
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		if (not self.body.isVoid) then
+			func(self.body)
+		end
+		self.ownedParameter.each{ e |
+			func(e)
+		}
+		self.containedType.each{ e |
+			func(e)
+		}
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+aspect class ModelTypeDefinitionContainer {
+	method eachOwnedElement(func : <org::kermeta::language::structure::KermetaModelElement -> kermeta::standard::Object>) : Void from org::kermeta::language::structure::KermetaModelElement is do
+		// properties directly owned by this element
+		self.ownedModelTypeDefinitions.each{ e |
+			func(e)
+		}
+		// properties indirectly owned by this element, deal with EReference that comes from inheritance
+		self.kOwnedTags.each{ e |
+			func(e)
+		}
+	end
+}
+
+}
+
+}
+
+}
+

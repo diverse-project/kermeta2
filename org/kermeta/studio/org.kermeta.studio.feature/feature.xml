@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.kermeta.studio.feature"
-      label="Feature for the Gemoc branding"
+      label="Feature for the Kermeta Studio branding"
       version="2.0.99.qualifier"
       plugin="org.kermeta.studio">
 
@@ -20,13 +20,13 @@
    <requires>
       <import feature="org.kermeta.language.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.kermeta.utils.feature" version="0.0.0" match="greaterOrEqual"/>
-	  <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.0.0" match="greaterOrEqual"/>
-	  <import feature="org.eclipse.xtext.sdk" version="0.0.0" match="greaterOrEqual"/>
-	  <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
-	  <import feature="org.eclipse.emf.ecoretools.sdk" version="0.0.0" match="greaterOrEqual"/>
-	  <import feature="org.eclipse.emf.sdk" version="0.0.0" match="greaterOrEqual"/>
-	  <import feature="org.eclipse.epp.mpc" version="0.0.0" match="greaterOrEqual"/>
-	  <import feature="org.eclipse.amalgam.discovery" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecoretools.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.epp.mpc" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.amalgam.discovery" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

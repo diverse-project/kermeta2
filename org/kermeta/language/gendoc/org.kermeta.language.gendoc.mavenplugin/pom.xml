@@ -4,12 +4,12 @@
 	<parent>
 		<artifactId>org.kermeta.language.root</artifactId>
 		<groupId>org.kermeta.language</groupId>
-		<version>2.0.99-SNAPSHOT</version>
+		<version>2.1.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
     <groupId>org.kermeta.language.gendoc</groupId>
     <artifactId>org.kermeta.language.gendoc.mavenplugin</artifactId>
-	<version>2.0.99-SNAPSHOT</version>
+	<version>2.1.0</version>
     <packaging>maven-plugin</packaging>
     <name>language.gendoc.mavenplugin</name>
 	<description>Maven plugin that generates documentation from kermeta2 models </description>

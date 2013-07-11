@@ -103,7 +103,7 @@ public class ModelingUnitLoaderForUmlProfile implements ModelingUnitLoader {
 			logger.debug("Profile loaded, name : " + profile.getName(), this.getClass().getName());
 						
 			// Now, convert the profile to Ecore packages
-			UmlProfile2Ecore converter = new UmlProfile2EcoreImpl();
+			UmlProfile2Ecore converter = (UmlProfile2Ecore) new UmlProfile2EcoreImpl();
 			Collection<EPackage> myEPackages = converter.convertUmlProfile(profile);
 			
 			// An Ecore to KM converter is also needed

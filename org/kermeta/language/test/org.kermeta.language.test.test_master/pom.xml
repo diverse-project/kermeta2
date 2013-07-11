@@ -17,15 +17,15 @@
 	<parent>
 		<artifactId>org.kermeta.language.root</artifactId>
 		<groupId>org.kermeta.language</groupId>
-		<version>2.0.99-SNAPSHOT</version>
+		<version>2.1.0</version>
 		<relativePath>../org.kermeta.language.root/pom.xml</relativePath>
 	</parent>
 
 	<modules>
 		<module>../org.kermeta.language.test.loader.kmt.scala</module>
-		<module>../org.kermeta.language.test.checker</module>
 		<module>../org.kermeta.language.test.merger.binarymerger</module>
 		<module>../org.kermeta.language.test.resolver</module>
+		<module>../org.kermeta.language.test.checker</module>
 	</modules>
 
 </project>

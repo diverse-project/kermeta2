@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1361972672538
-Build-Jdk: 1.6.0_17
+Bnd-LastModified: 1373551083445
+Build-Jdk: 1.6.0_43
 Built-By: dvojtise
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
@@ -10,7 +10,7 @@ Bundle-Name: org.kermeta.org.kermeta.kp.launcher.eclipse
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-SymbolicName: org.kermeta.kp.launcher.eclipse;singleton:=true
 Bundle-Vendor: IRISA/INRIA
-Bundle-Version: 2.0.99.SNAPSHOT_20130227_1443
+Bundle-Version: 2.1.0
 Created-By: Apache Maven Bundle Plugin
 Ignore-Package: org.eclipse.core.runtime,java.util,org.eclipse.jdt.ui,ja
  va.net,org.eclipse.emf.ecore.resource.impl,org.kermeta.utils.systemserv
@@ -19,13 +19,13 @@ Ignore-Package: org.eclipse.core.runtime,java.util,org.eclipse.jdt.ui,ja
  compilo.scala.rich.richAspect,org.eclipse.core.resources,org.kermeta.la
  nguage.util,org.eclipse.jface.viewers,org.eclipse.ui.dialogs,java.lang,
  org.eclipse.debug.core,org.eclipse.emf.ecore.resource,org.eclipse.debug
- .ui,org.eclipse.jface.resource,org.eclipse.emf.common.util,org.kermeta.
- compilo.scala,org.eclipse.swt.events,org.kermeta.language.loader.kmt.sc
+ .ui,org.eclipse.jface.resource,org.kermeta.compilo.scala,org.eclipse.em
+ f.common.util,org.eclipse.swt.events,org.kermeta.language.loader.kmt.sc
  ala,org.eclipse.ui,org.kermeta.utils.helpers.emf,org.eclipse.swt.layout
  ,org.kermeta.language.structure,org.eclipse.swt.graphics,org.eclipse.sw
  t.widgets,org.eclipse.jface.dialogs
-Import-Package: org.kermeta.language.behavior;version="[2.0,3)",org.kerm
- eta.language.structure;version="[2.0,3)"
+Import-Package: org.kermeta.language.behavior;version="[2.1,3)",org.kerm
+ eta.language.structure;version="[2.1,3)"
 Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,org.
  eclipse.core.commands,org.eclipse.equinox.registry,org.eclipse.emf.ecor
  e,org.eclipse.emf.ecore.xmi,org.eclipse.ui,org.eclipse.ui.ide,org.eclip
