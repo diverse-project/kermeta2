@@ -18,6 +18,7 @@
         <groupId>org.kermeta.language</groupId>
         <artifactId>org.kermeta.language.root</artifactId>
         <version>2.1.0</version>
+        <relativePath>../org.kermeta.language.root/pom.xml</relativePath>
     </parent>
     
     <build>
