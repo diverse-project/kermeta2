@@ -524,6 +524,8 @@ end
 				</orderedlist>
 			</section>
 		</chapter>
+		
+		plugin_embedding_private_kermeta_eclipse_and_simple_pom
 		<chapter id="chapter_plugin_embedding_kermeta.link">
 			<title id="chapter_plugin_embedding_kermeta.title.link">Embedding Kermeta code in an Eclipse plugin
 			</title>
@@ -594,6 +596,45 @@ end
 				<para>The tutorial also presents an alternative packaging that ease
 					eclipse UI debugging: the UI plugin directly embedds the kermeta
 					jar
+				</para>
+				<orderedlist numeration="arabic">
+					<title>Kermeta code is used by a single plugin and is privatly used
+						by it. The kermeta code is compiled using eclipse and the simple pom.xml
+					</title>
+					<listitem>
+						<para>Create an eclipse plugin</para>
+					</listitem>
+					<listitem>
+						<para>Automate the copy of the jar produced from the kermeta
+							project to an internal lib folder: with eclipse ant builder
+						</para>
+					</listitem>
+					<listitem>
+						<para>configure the plugin to use the jar</para>
+						<para>update the dependencies according to the one computed from
+							the kermeta jar
+						</para>
+					</listitem>
+					<listitem>
+						Create a plugin project that will use it. (for example an user
+						interface)
+					</listitem>
+
+					<listitem>
+						<para>Deploy and execute the plugins in an eclipse runtime
+							workbench with the classic eclipse approeches
+						</para>
+					</listitem>
+					<listitem>
+						<para>Use of a tycho driven pom.xml to automate the build of such
+							plugin (use copy-dependency to grab the kermeta jar as a
+							precompile step)
+						</para>
+					</listitem>
+				</orderedlist>
+				<para>Alternative, The tutorial also presents an alternative packaging that ease
+					eclipse UI debugging: the UI plugin directly embedds the kermeta
+					jar, the Kermeta code is fully compiled using maven
 				</para>
 				<orderedlist numeration="arabic">
 					<title>Kermeta code is used by a single plugin and is privatly used
