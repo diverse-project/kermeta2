@@ -60,7 +60,7 @@ class EmbeddedScalaCompiler {
         val nscMain = new NSCMain
         nscMain.log = log
         nscMain.process(compilParams.toArray)
-        compilationResult = if (scala.tools.nsc.Main.reporter.hasErrors) 1 else 0
+        compilationResult = if (nscMain.reporter.hasErrors) 1 else 0
       }
       catch {
         case e : Exception =>
