@@ -12,7 +12,7 @@
 	<groupId>org.kermeta.utils</groupId>
 	<artifactId>org.kermeta.utils.master</artifactId>
 	<packaging>pom</packaging>
-	<version>${kermeta.version}</version>
+	<version>2.1.0</version>
 	<name>utils.master :: utils modules </name>
 
 	<parent>

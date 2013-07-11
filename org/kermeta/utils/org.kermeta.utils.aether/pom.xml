@@ -16,6 +16,7 @@
         <artifactId>utils.root</artifactId>
         <groupId>org.kermeta.utils</groupId>
         <version>2.1.0</version>
+        <relativePath>../org.kermeta.utils.root</relativePath>
     </parent>
 
     <dependencies>
