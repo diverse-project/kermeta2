@@ -299,8 +299,8 @@ trait ClassDefinitionAspect extends ObjectVisitor {
           if (att.getUpper() > 1 || att.getUpper() == -1)
             res1.append(GlobalConfiguration.scalaPrefix + att.getName() + ".each(e=>\n  if(e!=null)\n    e.checkAllInvariants(stopOnError))\n")
           else
-            res1.append("if(" + att.getName() + "!=null)\n  "
-              + att.getName() + ".checkAllInvariants(stopOnError)\n")
+            res1.append("if("+ GlobalConfiguration.scalaPrefix + att.getName() + "!=null)\n  "
+              + GlobalConfiguration.scalaPrefix + att.getName() + ".checkAllInvariants(stopOnError)\n")
         })
       /*
              this.getSuperType.foreach(superC => {
