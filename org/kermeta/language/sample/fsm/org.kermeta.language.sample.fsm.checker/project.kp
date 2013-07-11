@@ -1,15 +1,14 @@
 resource library_standard="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
-resource fsm_model = "platform:/resource/org.kermeta.language.sample.fsm.model" alternative "mvn:org.kermeta.language.sample.fsm/org.kermeta.language.sample.fsm.model/1.0.0-SNAPSHOT"
+resource fsm_model = "platform:/resource/org.kermeta.language.sample.fsm.extended"
 
 importProject library_standard
 
-project org_kermeta_language_sample_fsm_checker {
+project org_kermeta_language_sample_fsm_checker extends fsm_model{
 
 	mainClass "org_kermeta_language_sample_fsm_checker^fsm::InvariantChecker"
 	mainOperation "main"
 
 	import "${project.baseUri}/src/main/kmt/checkInvariants.kmt"
 	import "${project.baseUri}/src/main/kmt/FSMConstraints.kmt"
-	import "${fsm_model.baseUri}/model/fsm.ecore" using  EMFBytecode(fsm_model)
 	
 }

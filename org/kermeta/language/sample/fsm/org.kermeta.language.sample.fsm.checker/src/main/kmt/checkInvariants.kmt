@@ -1,43 +1,41 @@
-/* $Id: checkInvariants.kmt,v 1.4 2007-12-06 23:22:55 bmorin Exp $
- * Project    : fr.irisa.triskell.kermeta.samples.fsm.demoAspect
- * File       : checkInvariants.kmt
- * License    : EPL
- * Copyright  : IRISA / INRIA / Universite de Rennes 1
- * -------------------------------------------------------------------
-  * Creation date: May 24, 2006
- * Authors:
- *      Cyril Faucher <cfaucher@irisa.fr>
- * Description : 
- */
-
-
-//package fsm;
-/*
-require kermeta
-require "platform:/resource/fr.irisa.triskell.kermeta.samples.fsm.demoAspect/metamodels/fsm_Helper.kmt"
-require "platform:/resource/fr.irisa.triskell.kermeta.samples.fsm.demoAspect/launcher/fsmLauncher.kmt"
-*/
-
 using fsm::*
 using kermeta::standard::*
-using kermeta::persistence::*
+using kermeta::emfpersistence::*
 using kermeta::io::StdIO => stdio
+using kermeta::exceptions::*
 
 package fsm{
 	class InvariantChecker
 	{
 		@main ""
 	    operation main(input_automaton : String) : Void is do 
-	       /* var rep : EMFRepository init EMFRepository.new
+	        var rep : ResourceSet init ResourceSet.new
 	        var theFSM : FSM init AutomatonHelper.new.loadEMFAutomaton(rep, input_automaton, "http://www.kermeta.org/fsm")
 	        
-	        // Uncomment to check the invariant properties : WFR
 	        // To check all contained elements by "theFSM"
 	        stdio.writeln("> call of the checkAllInvariants method")
 	        theFSM.checkAllInvariants
 	        // To check only the states that are contained in "theFSM"
 	        stdio.writeln("> call of the checkInvariants method")
-	        Main.new.checkWFR(theFSM)*/
+	        checkWFR(theFSM)
+		end
+		
+		/**
+		 * For all states, we check the Well-Formedness rules
+		 */
+		operation checkWFR(theFSM : FSM) is do
+			stdio.writeln("Check WFR : start")
+			theFSM.ownedState.each{ s | 
+				do
+					// Call the invariant verification
+					s.checkInvariants
+					rescue (err : ConstraintViolatedInv)
+			            stdio.writeln(err.toString)
+			            stdio.write(err.message)
+			            stdio.writeln(" on " + s.name)
+			    end
+			}
+			stdio.writeln("Check WFR : end")
 		end
 	}
 }
