@@ -17,6 +17,7 @@
         <groupId>org.kermeta</groupId>
         <artifactId>org.kermeta.root</artifactId>
         <version>2.1.0</version>
+        <relativePath>../org.kermeta.language.root</relativePath>
     </parent>
     
     <build>
