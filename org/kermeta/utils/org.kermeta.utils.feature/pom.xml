@@ -18,6 +18,7 @@
         <groupId>org.kermeta.utils</groupId>
         <artifactId>utils.root</artifactId>
         <version>2.1.0</version>
+        <relativePath>../org.kermeta.utils.root</relativePath>
     </parent>
     <properties>
     	<maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
