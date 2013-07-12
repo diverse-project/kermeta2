@@ -6,7 +6,7 @@ importProject library_standard
 project nestedCallResult {
 	mainClass "^helloworld::HelloWorld"
 	mainOperation "main"
-	import "${project.baseUri}/src/main/kmt/010_operationWithMultiplicity.kmt"
+	import "${project.baseUri}/src/main/kmt/011_callToSuper.kmt"
 }
-
+  
  

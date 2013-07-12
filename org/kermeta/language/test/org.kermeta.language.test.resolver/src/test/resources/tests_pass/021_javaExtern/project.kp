@@ -4,9 +4,7 @@ resource library_standard = "platform:/plugin/org.kermeta.language.library.stand
 importProject library_standard
 
 project nestedCallResult {
-	mainClass "^helloworld::HelloWorld"
-	mainOperation "main"
-	import "${project.baseUri}/src/main/kmt/010_operationWithMultiplicity.kmt"
+	mainClass "^mainpackage::MainClass"
+	mainOperation "mainOperation"
+	import "${project.baseUri}/src/main/kmt/MainClass.kmt"
 }
-
- 

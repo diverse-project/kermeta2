@@ -11,8 +11,8 @@
 package root_package;
 
 
-using kermeta::io
-using kermeta::standard
+using kermeta::io::*
+using kermeta::standard::*
 
 
 
