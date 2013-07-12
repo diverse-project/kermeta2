@@ -1,9 +1,9 @@
-package trace;
 
-require kermeta
 
-using kermeta::utils
 
+using kermeta::utils::*
+
+package trace{}
 /**
  * This class represents the trace of a transfo
  */
@@ -54,3 +54,4 @@ class BidirectionalTrace<SRC, TGT> inherits Trace<SRC, TGT>
 		result := tgt2src.getValue(tgt)
 	end
 } 
+}

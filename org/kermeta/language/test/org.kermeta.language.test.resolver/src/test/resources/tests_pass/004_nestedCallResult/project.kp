@@ -3,8 +3,9 @@ resource library_standard = "platform:/plugin/org.kermeta.language.library.stand
 
 importProject library_standard
 
-project genericsAsReturnType_001 {
-	mainClass "^trace::Trace"
-	mainOperation "create"
-	import "${project.baseUri}/src/main/kmt/trace.kmt"
+project nestedCallResult {
+	mainClass "^root_package::Foo"
+	mainOperation "bar"
+	import "${project.baseUri}/src/main/kmt/004_nestedCallResult.kmt"
 }
+  

@@ -22,4 +22,7 @@ class Trace<SRC, TGT>
 	end
 
 }
+class Main{
+	operation main() is do end
+}
 

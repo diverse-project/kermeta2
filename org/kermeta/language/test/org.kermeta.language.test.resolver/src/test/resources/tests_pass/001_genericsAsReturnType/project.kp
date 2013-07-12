@@ -4,7 +4,7 @@ resource library_standard = "platform:/plugin/org.kermeta.language.library.stand
 importProject library_standard
 
 project genericsAsReturnType_001 {
-	mainClass "^trace::Trace"
-	mainOperation "create"
-	import "${project.baseUri}/src/main/kmt/trace.kmt"
+	mainClass "^root_package::Main"
+	mainOperation "main"
+	import "${project.baseUri}/src/main/kmt/001_genericsAsReturnType.kmt"
 }

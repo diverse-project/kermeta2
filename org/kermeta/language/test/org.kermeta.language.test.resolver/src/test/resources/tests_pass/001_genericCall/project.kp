@@ -5,7 +5,7 @@ resource library_standard = "platform:/plugin/org.kermeta.language.library.stand
 importProject library_standard
 
 project p001_genericCall {
-	mainClass "class2RDBMS::Main"
+	mainClass "^trace::Main"
 	mainOperation "main"
 	import "${project.baseUri}/src/main/kmt/001_genericCall.kmt"
 }
