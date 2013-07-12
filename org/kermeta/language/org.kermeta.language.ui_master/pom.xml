@@ -30,6 +30,7 @@
 		<module>../org.kermeta.language.prettyprinter.ui</module>
 		<module>../org.kermeta.language.aspectgenerator</module>
 		<module>../../kp/org.kermeta.kp.wizard.eclipse</module>
+		<module>../../kp/org.kermeta.kp.migrateRequireV1ToKp.eclipse.ui</module>
 		<module>../org.kermeta.language.feature</module>
 		<module>../org.kermeta.language.dev.feature</module>
 	</modules>
