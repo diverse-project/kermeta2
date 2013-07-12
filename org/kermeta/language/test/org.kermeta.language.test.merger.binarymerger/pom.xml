@@ -10,7 +10,7 @@
 		<properties> <kermeta.version>2.1.0</kermeta.version> <art2.version>2.2.1-beta2</art2.version> 
 		</properties> -->
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>org.kermeta.language.merger.binarymerger</artifactId>
+	<artifactId>org.kermeta.language.test.merger.binarymerger</artifactId>
 	<packaging>jar</packaging>
 	<name>language.test.merger.binarymerger :: test fort K2 binary merger</name>
 
@@ -61,7 +61,7 @@
 						<include>**/*TestSuite.java</include>
 					</includes>
 				</configuration>
-			</plugin>
+			</plugin>				
 		</plugins>
 	</build>
 </project>
