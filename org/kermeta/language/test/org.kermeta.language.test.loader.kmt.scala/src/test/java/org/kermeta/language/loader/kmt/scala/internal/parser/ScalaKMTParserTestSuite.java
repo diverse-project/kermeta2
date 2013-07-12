@@ -11,7 +11,6 @@ package org.kermeta.language.loader.kmt.scala.internal.parser;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 

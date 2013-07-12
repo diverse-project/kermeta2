@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+  <classpathentry kind="src" path="src/test/java" output="target/test-classes" including="**/*.scala|**/*.java|**/*.java"/>
+  <classpathentry kind="src" path="src/test/resources" output="target/test-classes" excluding="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.model/2.1.0/org.kermeta.language.model-2.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/emf/emf.lib/2.7.0/emf.lib-2.7.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.loader.kmt.scala/2.1.0/org.kermeta.language.loader.kmt.scala-2.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.loader.kmt.scala.api/2.1.0/org.kermeta.language.loader.kmt.scala.api-2.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.systemservices.api/2.1.0/utils.systemservices.api-2.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.helpers/2.1.0/utils.helpers-2.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.test.basehelper/2.1.0/org.kermeta.language.test.basehelper-2.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.emf.compare/1.1.1.v201009150438/org.eclipse.emf.compare-1.1.1.v201009150438.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.emf.compare.diff/1.1.1.v201009150438/org.eclipse.emf.compare.diff-1.1.1.v201009150438.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.emf.compare.match/1.1.1.v201009150438/org.eclipse.emf.compare.match-1.1.1.v201009150438.jar"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/4.8.1/junit-4.8.1.jar" sourcepath="M2_REPO/junit/junit/4.8.1/junit-4.8.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/ui/workbench/3.7.1-v20120104-1859/workbench-3.7.1-v20120104-1859.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/core/runtime/3.8.0-v20120521-2346/runtime-3.8.0-v20120521-2346.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/osgi/3.8.1-v20120830-144521/osgi-3.8.1-v20120830-144521.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/equinox/common/3.6.100-v20120522-1841/common-3.6.100-v20120522-1841.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/core/jobs/3.5.300-v20120622-204750/jobs-3.5.300-v20120622-204750.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/equinox/registry/3.5.200-v20120522-1841/registry-3.5.200-v20120522-1841.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/equinox/preferences/3.5.0-v20120522-1841/preferences-3.5.0-v20120522-1841.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/core/contenttype/3.4.200-v20120523-2004/contenttype-3.4.200-v20120523-2004.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/help/3.6.0-v20120521-2344/help-3.6.0-v20120521-2344.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/core/expressions/3.4.401-v20120627-124442/expressions-3.4.401-v20120627-124442.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jface/3.8.101-v20120817-083647/jface-3.8.101-v20120817-083647.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/swt/3.100.1-v4234e/swt-3.100.1-v4234e.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/core/commands/3.6.1-v20120814-150512/commands-3.6.1-v20120814-150512.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jface/databinding/1.6.0-v20120521-2329/databinding-1.6.0-v20120521-2329.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/core/databinding/observable/1.4.1-v20120521-2329/observable-1.4.1-v20120521-2329.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/core/databinding/property/1.4.100-v20120523-1955/property-1.4.100-v20120523-1955.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/core/databinding/1.4.1-v20120521-2329/databinding-1.4.1-v20120521-2329.jar"/>
+</classpath>

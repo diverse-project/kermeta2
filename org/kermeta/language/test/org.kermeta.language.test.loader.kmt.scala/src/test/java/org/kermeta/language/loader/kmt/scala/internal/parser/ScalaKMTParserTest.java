@@ -8,27 +8,24 @@
  */
 package org.kermeta.language.loader.kmt.scala.internal.parser;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Map;
 
 import junit.framework.TestCase;
 
-import org.kermeta.language.loader.kmt.scala.KMTparser;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.kermeta.language.util.ModelingUnit;
-import org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem;
-import org.kermeta.utils.helpers.FileHelpers;
-import java.io.File;
-import java.net.URISyntaxException;
-import java.net.URL;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.kermeta.language.helper.tests.utils.EMFCompareModelHelper;
 import org.kermeta.language.helper.tests.utils.FileHelper;
 import org.kermeta.language.helper.tests.utils.ModelingUnitBaseUtil;
-import org.kermeta.language.helper.tests.utils.EMFCompareModelHelper;
+import org.kermeta.language.loader.kmt.scala.KMTparser;
+import org.kermeta.language.util.ModelingUnit;
+import org.kermeta.utils.helpers.FileHelpers;
 
 
 
