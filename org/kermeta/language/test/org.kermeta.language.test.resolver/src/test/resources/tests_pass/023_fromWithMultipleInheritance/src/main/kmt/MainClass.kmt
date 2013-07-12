@@ -1,4 +1,4 @@
-using kermeta::standard
+using kermeta::standard::*
 using kermeta::io::StdIO => stdio
 
 package mainPackage{
@@ -16,13 +16,13 @@ package mainPackage{
     }
 
     class Class3 inherits Class1, Class2 {
-    	operation toto() : Void from Class1 is do
+    	operation toto() : Void  is do
             stdio.writeln("class4")
         end
     }
 
     class Class4 inherits Class3 {
-        operation toto() : Void from Class3 is do
+        operation toto() : Void  is do
             stdio.writeln("class4")
         end
     }
