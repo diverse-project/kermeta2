@@ -1,0 +1,7 @@
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.languge/language.library.standard/2.1.0"
+importProject library_standard
+project resultInInvariant {
+	import "${project.baseUri}/src/main/kmt/resultInInvariant.kmt"
+}
+
+ 

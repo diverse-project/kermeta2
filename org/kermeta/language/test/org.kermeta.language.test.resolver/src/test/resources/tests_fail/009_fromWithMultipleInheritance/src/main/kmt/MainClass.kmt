@@ -17,6 +17,7 @@ package mainPackage{
 
     class Class3 inherits Class1, Class2 {
     	operation toto() : Void  is do
+    		super.toto
             stdio.writeln("class4")
         end
     }

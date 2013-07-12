@@ -73,8 +73,14 @@ public class KmResolverTest extends TestCase {
 		if(!ms.errorTrace.isEmpty()){
         	assertTrue(ms.errorTrace.get(0), ms.errorTrace.isEmpty());
         }
-		assertTrue("Failed to resolve ! "+firstError, 
-				epr.hasSevereProblems() ^ shouldPass);//for noobs :p : ^ is XOR 
+		if(shouldPass){
+			assertTrue("Failed to resolve ! "+firstError, 
+				epr.hasSevereProblems() ^ shouldPass);//for noobs :p : ^ is XOR
+		}
+		else{
+			assertTrue("Resolver should have failed ! "+firstError, 
+					epr.hasSevereProblems() ^ shouldPass);//for noobs :p : ^ is XOR
+		}
     }
     
     @Override

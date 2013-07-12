@@ -1,4 +1,4 @@
-resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/language.library.standard/2.0.99-SNAPSHOT"
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/language.library.standard/2.1.0"
 importProject library_standard
 project variable_visibility {
 	import "${project.baseUri}/src/main/kmt/001_variable_visibility.kmt"
