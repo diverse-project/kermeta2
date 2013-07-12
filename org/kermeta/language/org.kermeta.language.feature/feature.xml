@@ -365,13 +365,13 @@ Copyright (c) 2003-2007, Terence Parr. All rights reserved.
          version="0.0.0"
          unpack="false"/>
 
-   <plugin
+   <!--<plugin
          id="org.kermeta.slf4j.eclipse"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
+	-->
    <plugin
          id="org.kermeta.traceability.model"
          download-size="0"
