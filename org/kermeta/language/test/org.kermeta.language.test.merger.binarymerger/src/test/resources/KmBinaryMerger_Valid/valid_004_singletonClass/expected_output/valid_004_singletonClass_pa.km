@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org_kermeta_language_structure:ModelingUnit xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/structure">
-  <packages name="mainpackage">
-    <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/primary/Primary.kmt;1;93"/>
-    <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/aspect/Aspect.kmt;2;110"/>
-    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" name="SingletonClass" superType="//mainpackage/SingletonClass/@containedType.0" isAspect="false" isAbstract="false" isSingleton="true">
-      <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/primary/Primary.kmt;23;58"/>
-      <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/aspect/Aspect.kmt;26;68"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Object"/>
+<org_kermeta_language_structure:Metamodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/structure">
+  <packages kTag="//@packages.0/@kOwnedTags.0 //@packages.0/@kOwnedTags.1" name="mainpackage">
+    <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/primary/Primary.kmt;1;91" object="//@packages.0"/>
+    <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/aspect/Aspect.kmt;2;108" object="//@packages.0"/>
+    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@ownedTypeDefinition.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@kOwnedTags.1" name="SingletonClass" isSingleton="true">
+      <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/primary/Primary.kmt;23;55" object="//@packages.0/@ownedTypeDefinition.0"/>
+      <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/aspect/Aspect.kmt;26;65" object="//@packages.0/@ownedTypeDefinition.0"/>
     </ownedTypeDefinition>
-    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" name="NonSingletonClass" superType="//mainpackage/NonSingletonClass/@containedType.0" isAspect="false" isAbstract="false" isSingleton="false">
-      <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/primary/Primary.kmt;58;91"/>
-      <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/aspect/Aspect.kmt;68;108"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Object"/>
+    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@ownedTypeDefinition.1/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.1/@kOwnedTags.1" name="NonSingletonClass">
+      <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/primary/Primary.kmt;58;89" object="//@packages.0/@ownedTypeDefinition.1"/>
+      <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_Valid/valid_004_singletonClass/aspect/Aspect.kmt;68;106" object="//@packages.0/@ownedTypeDefinition.1"/>
     </ownedTypeDefinition>
   </packages>
-</org_kermeta_language_structure:ModelingUnit>
+</org_kermeta_language_structure:Metamodel>
