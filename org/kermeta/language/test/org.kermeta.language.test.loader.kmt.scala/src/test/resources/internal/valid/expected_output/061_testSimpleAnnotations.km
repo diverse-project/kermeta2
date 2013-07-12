@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="ASCII"?>
 <org_kermeta_language_structure:Metamodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_behavior="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/behavior" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/structure">
   <packages name="testSimpleAnnotations">
-    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/String/@kOwnedTags.0" name="String">
-      <kOwnedTags name="traceability_text_reference" value="65;81" object="//@packages.0/String"/>
+    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@ownedTypeDefinition.0/@kOwnedTags.0" name="String">
+      <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/workspaces/k2_dev_runtimeworkbench/test2/src/main/kmt/061_testSimpleAnnotations.kmt;65;79" object="//@packages.0/@ownedTypeDefinition.0"/>
     </ownedTypeDefinition>
-    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/Integer/@kOwnedTags.0" name="Integer">
-      <kOwnedTags name="traceability_text_reference" value="81;98" object="//@packages.0/Integer"/>
+    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@ownedTypeDefinition.1/@kOwnedTags.0" name="Integer">
+      <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/workspaces/k2_dev_runtimeworkbench/test2/src/main/kmt/061_testSimpleAnnotations.kmt;81;96" object="//@packages.0/@ownedTypeDefinition.1"/>
     </ownedTypeDefinition>
-    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/Boolean/@kOwnedTags.0" name="Boolean">
-      <kOwnedTags name="traceability_text_reference" value="98;154" object="//@packages.0/Boolean"/>
+    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@ownedTypeDefinition.2/@kOwnedTags.0" name="Boolean">
+      <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/workspaces/k2_dev_runtimeworkbench/test2/src/main/kmt/061_testSimpleAnnotations.kmt;98;113" object="//@packages.0/@ownedTypeDefinition.2"/>
     </ownedTypeDefinition>
-    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/Class1/@kOwnedTags.0" name="Class1">
-      <kOwnedTags name="traceability_text_reference" value="154;445" object="//@packages.0/Class1"/>
-      <ownedOperation kTag="//@packages.0/Class1/operation1/@kOwnedTags.0 //@packages.0/Class1/operation1/@kOwnedTags.1 //@packages.0/Class1/operation1/@kOwnedTags.2" name="operation1" type="//@packages.0/Class1/operation1/@containedType.0">
-        <kOwnedTags name="traceability_text_reference" value="217;401" object="//@packages.0/Class1/operation1"/>
-        <kOwnedTags name="documentation" value=" Mon operation " object="//@packages.0/Class1/operation1"/>
-        <kOwnedTags name="return" value="of the jedi" object="//@packages.0/Class1/operation1"/>
+    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@ownedTypeDefinition.3/@kOwnedTags.0" name="Class1">
+      <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/workspaces/k2_dev_runtimeworkbench/test2/src/main/kmt/061_testSimpleAnnotations.kmt;154;401" object="//@packages.0/@ownedTypeDefinition.3"/>
+      <ownedOperation kTag="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@kOwnedTags.1 //@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@kOwnedTags.2" name="operation1" type="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@containedType.0">
+        <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/workspaces/k2_dev_runtimeworkbench/test2/src/main/kmt/061_testSimpleAnnotations.kmt;217;385" object="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0"/>
+        <kOwnedTags name="documentation" value=" Mon operation " object="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0"/>
+        <kOwnedTags name="return" value="of the jedi" object="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0"/>
         <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Void"/>
-        <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/Class1/operation1/@body/@kOwnedTags.0">
-          <kOwnedTags name="traceability_text_reference" value="243;401" object="//@packages.0/Class1/operation1/@body"/>
-          <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/Class1/operation1/@body/@statement.0/@kOwnedTags.0" identifier="v1">
-            <kOwnedTags name="traceability_text_reference" value="283;302" object="//@packages.0/Class1/operation1/@body/@statement.0"/>
-            <type name="Boolean" type="//@packages.0/Class1/operation1/@body/@statement.0/@type/@containedType.0" isOrdered="true">
+        <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@body/@kOwnedTags.0">
+          <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/workspaces/k2_dev_runtimeworkbench/test2/src/main/kmt/061_testSimpleAnnotations.kmt;243;385" object="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@body"/>
+          <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@body/@statement.0/@kOwnedTags.0" identifier="v1">
+            <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/workspaces/k2_dev_runtimeworkbench/test2/src/main/kmt/061_testSimpleAnnotations.kmt;283;298" object="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@body/@statement.0"/>
+            <type name="Boolean" type="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@body/@statement.0/@type/@containedType.0" isOrdered="true">
               <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
             </type>
           </statement>
-          <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/Class1/operation1/@body/@statement.1/@kOwnedTags.0" identifier="v2">
-            <kOwnedTags name="traceability_text_reference" value="302;383" object="//@packages.0/Class1/operation1/@body/@statement.1"/>
-            <type name="Boolean" type="//@packages.0/Class1/operation1/@body/@statement.1/@type/@containedType.0" isOrdered="true">
+          <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@body/@statement.1/@kOwnedTags.0" identifier="v2">
+            <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/workspaces/k2_dev_runtimeworkbench/test2/src/main/kmt/061_testSimpleAnnotations.kmt;302;317" object="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@body/@statement.1"/>
+            <type name="Boolean" type="//@packages.0/@ownedTypeDefinition.3/@ownedOperation.0/@body/@statement.1/@type/@containedType.0" isOrdered="true">
               <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="Boolean"/>
             </type>
           </statement>
