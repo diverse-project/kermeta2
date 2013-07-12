@@ -1,130 +1,123 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org_kermeta_language_structure:ModelingUnit xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_behavior="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/behavior" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/structure">
+<org_kermeta_language_structure:Metamodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org_kermeta_language_behavior="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/behavior" xmlns:org_kermeta_language_structure="http://www.kermeta.org/kermeta/2_1_0//org/kermeta/language/structure">
   <packages name="testArithm">
-    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" name="Test_arithm" superType="//testArithm/Test_arithm/@containedType.0">
-      <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;100;420"/>
-      <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;100;389"/>
-      <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Object">
-        <usings fromQName="kermeta::standard" toName=""/>
-      </containedType>
-      <ownedOperation kTag="//testArithm/Test_arithm/operation1/@kOwnedTags.1" name="operation1" type="//testArithm/Test_arithm/operation1/@containedType.0" isOrdered="true">
-        <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;184;416"/>
-        <kOwnedTags name="documentation" value="&#xA; First documentation annotation on operation1" object="//testArithm/Test_arithm/operation1"/>
+    <ownedTypeDefinition xsi:type="org_kermeta_language_structure:ClassDefinition" kTag="//@packages.0/@ownedTypeDefinition.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@kOwnedTags.1" name="Test_arithm">
+      <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;87;403" object="//@packages.0/@ownedTypeDefinition.0"/>
+      <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;87;372" object="//@packages.0/@ownedTypeDefinition.0"/>
+      <ownedOperation kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@kOwnedTags.1" name="operation1" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@containedType.0" isOrdered="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;171;401" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0"/>
+        <kOwnedTags name="documentation" value="&#xA; First documentation annotation on operation1" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0"/>
         <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Integer">
-          <usings fromQName="kermeta::standard" toName=""/>
+          <usings fromQName="kermeta::standard::*" toName=""/>
         </containedType>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;239;416"/>
-          <statement xsi:type="org_kermeta_language_behavior:VariableDecl" identifier="result">
-            <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;250;299"/>
-            <type name="kermeta::standard::Integer" type="//testArithm/Test_arithm/operation1/@body/@statement.0/@type/@containedType.0" isOrdered="true">
+        <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@kOwnedTags.0">
+          <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;226;401" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body"/>
+          <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@kOwnedTags.0" identifier="result">
+            <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;237;276" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0"/>
+            <type name="kermeta::standard::Integer" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.0/@type/@containedType.0" isOrdered="true">
               <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Integer">
-                <usings fromQName="kermeta::standard" toName=""/>
+                <usings fromQName="kermeta::standard::*" toName=""/>
               </containedType>
             </type>
           </statement>
-          <statement xsi:type="org_kermeta_language_behavior:VariableDecl" identifier="a">
-            <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;299;342"/>
-            <type name="kermeta::standard::Integer" type="//testArithm/Test_arithm/operation1/@body/@statement.1/@type/@containedType.0" isOrdered="true">
+          <statement xsi:type="org_kermeta_language_behavior:VariableDecl" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@kOwnedTags.0" identifier="a">
+            <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;286;319" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1"/>
+            <type name="kermeta::standard::Integer" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.1/@type/@containedType.0" isOrdered="true">
               <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Integer">
-                <usings fromQName="kermeta::standard" toName=""/>
+                <usings fromQName="kermeta::standard::*" toName=""/>
               </containedType>
             </type>
           </statement>
-          <statement xsi:type="org_kermeta_language_behavior:Assignment">
-            <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;342;357"/>
-            <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" name="a">
-              <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;342;344"/>
-              <usings fromQName="kermeta::standard" toName=""/>
+          <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;329;334" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2"/>
+            <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@target/@kOwnedTags.0" name="a">
+              <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;329;332" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@target"/>
+              <usings fromQName="kermeta::standard::*" toName=""/>
             </target>
-            <value xsi:type="org_kermeta_language_behavior:IntegerLiteral" value="4">
-              <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;347;357"/>
+            <value xsi:type="org_kermeta_language_behavior:IntegerLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@value/@kOwnedTags.0" value="4">
+              <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;334;349" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.2/@value"/>
             </value>
           </statement>
-          <statement xsi:type="org_kermeta_language_behavior:Assignment">
-            <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;357;390"/>
-            <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" name="result">
-              <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;357;365"/>
-              <usings fromQName="kermeta::standard" toName=""/>
+          <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;344;367" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3"/>
+            <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@target/@kOwnedTags.0" name="result">
+              <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;344;353" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@target"/>
+              <usings fromQName="kermeta::standard::*" toName=""/>
             </target>
             <value xsi:type="org_kermeta_language_behavior:UnresolvedCall" name="mult">
-              <parameters xsi:type="org_kermeta_language_behavior:IntegerLiteral" value="2">
-                <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;380;390"/>
+              <parameters xsi:type="org_kermeta_language_behavior:IntegerLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@parameters.0/@kOwnedTags.0" value="2">
+                <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;367;382" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@parameters.0"/>
               </parameters>
-              <usings fromQName="kermeta::standard" toName=""/>
-              <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" name="plus">
-                <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;370;376"/>
-                <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;368;378"/>
-                <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" name="a">
-                  <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;374;376"/>
-                  <usings fromQName="kermeta::standard" toName=""/>
+              <usings fromQName="kermeta::standard::*" toName=""/>
+              <target xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@target/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@target/@kOwnedTags.1" name="plus">
+                <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;357;361" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@target"/>
+                <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;355;363" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@target"/>
+                <parameters xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@target/@parameters.0/@kOwnedTags.0" name="a">
+                  <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;361;363" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@target/@parameters.0"/>
+                  <usings fromQName="kermeta::standard::*" toName=""/>
                 </parameters>
-                <usings fromQName="kermeta::standard" toName=""/>
-                <target xsi:type="org_kermeta_language_behavior:IntegerLiteral" value="3">
-                  <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;370;372"/>
+                <usings fromQName="kermeta::standard::*" toName=""/>
+                <target xsi:type="org_kermeta_language_behavior:IntegerLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@target/@target/@kOwnedTags.0" value="3">
+                  <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;357;359" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.3/@value/@target/@target"/>
                 </target>
               </target>
             </value>
           </statement>
-          <statement xsi:type="org_kermeta_language_behavior:Assignment">
-            <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;390;412"/>
-            <target xsi:type="org_kermeta_language_behavior:CallResult">
-              <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;390;397"/>
+          <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;377;392" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4"/>
+            <target xsi:type="org_kermeta_language_behavior:CallResult" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@target/@kOwnedTags.0">
+              <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;377;385" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@target"/>
             </target>
-            <value xsi:type="org_kermeta_language_behavior:UnresolvedCall" name="result">
-              <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;400;412"/>
-              <usings fromQName="kermeta::standard" toName=""/>
+            <value xsi:type="org_kermeta_language_behavior:UnresolvedCall" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@value/@kOwnedTags.0" name="result">
+              <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;387;401" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.0/@body/@statement.4/@value"/>
+              <usings fromQName="kermeta::standard::*" toName=""/>
             </value>
           </statement>
         </body>
       </ownedOperation>
-      <ownedOperation kTag="//testArithm/Test_arithm/operation1.1/@kOwnedTags.1" name="operation1" type="//testArithm/Test_arithm/operation1.1/@containedType.0" isOrdered="true">
-        <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;192;290"/>
-        <kOwnedTags name="documentation" value="&#xA; Second documentation annotation on operation1" object="//testArithm/Test_arithm/operation1.1"/>
+      <ownedOperation kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@kOwnedTags.0 //@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@kOwnedTags.1" name="operation1" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@containedType.0" isOrdered="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;179;271" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1"/>
+        <kOwnedTags name="documentation" value="&#xA; Second documentation annotation on operation1" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1"/>
         <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Integer">
-          <usings fromQName="kermeta::standard" toName=""/>
+          <usings fromQName="kermeta::standard::*" toName=""/>
         </containedType>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;247;290"/>
-          <statement xsi:type="org_kermeta_language_behavior:Assignment">
-            <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;263;282"/>
-            <target xsi:type="org_kermeta_language_behavior:CallResult">
-              <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;263;270"/>
+        <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@kOwnedTags.0">
+          <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;234;271" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@body"/>
+          <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;250;263" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0"/>
+            <target xsi:type="org_kermeta_language_behavior:CallResult" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@target/@kOwnedTags.0">
+              <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;250;258" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@target"/>
             </target>
             <value xsi:type="org_kermeta_language_behavior:UnresolvedCall" name="plus">
-              <parameters xsi:type="org_kermeta_language_behavior:IntegerLiteral" value="2">
-                <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;276;282"/>
+              <parameters xsi:type="org_kermeta_language_behavior:IntegerLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@value/@parameters.0/@kOwnedTags.0" value="2">
+                <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;263;271" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@value/@parameters.0"/>
               </parameters>
-              <usings fromQName="kermeta::standard" toName=""/>
-              <target xsi:type="org_kermeta_language_behavior:IntegerLiteral" value="40">
-                <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;273;275"/>
+              <usings fromQName="kermeta::standard::*" toName=""/>
+              <target xsi:type="org_kermeta_language_behavior:IntegerLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@value/@target/@kOwnedTags.0" value="40">
+                <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;260;262" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.1/@body/@statement.0/@value/@target"/>
               </target>
             </value>
           </statement>
         </body>
       </ownedOperation>
-      <ownedOperation name="operation2" type="//testArithm/Test_arithm/operation2/@containedType.0" isOrdered="true">
-        <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;290;385"/>
+      <ownedOperation kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.2/@kOwnedTags.0" name="operation2" type="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.2/@containedType.0" isOrdered="true">
+        <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;277;370" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.2"/>
         <containedType xsi:type="org_kermeta_language_structure:UnresolvedType" typeIdentifier="kermeta::standard::Integer">
-          <usings fromQName="kermeta::standard" toName=""/>
+          <usings fromQName="kermeta::standard::*" toName=""/>
         </containedType>
-        <body xsi:type="org_kermeta_language_behavior:Block">
-          <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;345;385"/>
-          <statement xsi:type="org_kermeta_language_behavior:Assignment">
-            <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;364;381"/>
-            <target xsi:type="org_kermeta_language_behavior:CallResult">
-              <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;364;371"/>
+        <body xsi:type="org_kermeta_language_behavior:Block" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@kOwnedTags.0">
+          <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;332;370" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.2/@body"/>
+          <statement xsi:type="org_kermeta_language_behavior:Assignment" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@kOwnedTags.0">
+            <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;351;362" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0"/>
+            <target xsi:type="org_kermeta_language_behavior:CallResult" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@target/@kOwnedTags.0">
+              <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;351;359" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@target"/>
             </target>
-            <value xsi:type="org_kermeta_language_behavior:IntegerLiteral" value="42">
-              <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;374;381"/>
+            <value xsi:type="org_kermeta_language_behavior:IntegerLiteral" kTag="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@value/@kOwnedTags.0" value="42">
+              <kOwnedTags name="traceability_text_reference" value="file:/D:/Users/dvojtise/git/kermeta2/org/kermeta/language/test/org.kermeta.language.test.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;361;370" object="//@packages.0/@ownedTypeDefinition.0/@ownedOperation.2/@body/@statement.0/@value"/>
             </value>
           </statement>
         </body>
       </ownedOperation>
     </ownedTypeDefinition>
   </packages>
-  <requires uri="kermeta">
-    <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/primary/testArithm_p.kmt;21;38"/>
-    <kOwnedTags name="traceability_text_reference" value="file:/C:/Users/dvojtise/workspaces/kermetaV2_svn_5/org.kermeta.language.merger.binarymerger/target/test-classes/KmBinaryMerger_ValidPA/valid_002_merge_concrete_operations/aspect/testArithm_a.kmt;21;38"/>
-  </requires>
-</org_kermeta_language_structure:ModelingUnit>
+</org_kermeta_language_structure:Metamodel>
