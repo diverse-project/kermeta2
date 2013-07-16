@@ -10,7 +10,7 @@
 	<artifactId>org.kermeta.language.prettyprinter.ui</artifactId>
 	<groupId>org.kermeta.language</groupId>
 	<packaging>bundle</packaging>
-	<name>UI for kermeta 2 prettyprinter</name>
+	<name>language.prettyprinter.ui :: UI for kermeta 2 prettyprinter</name>
 
     <parent>
         <artifactId>org.kermeta.language.root</artifactId>

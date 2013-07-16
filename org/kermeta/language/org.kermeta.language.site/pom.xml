@@ -136,7 +136,7 @@
 			                </artifactItem>
 			              	<artifactItem>
 			                  <groupId>org.kermeta.language</groupId>
-			                  <artifactId>language.dev.feature</artifactId>
+			                  <artifactId>org.kermeta.language.dev.feature</artifactId>
 			                  <version>${kermeta.version}</version>
 			                  <outputDirectory>${project.build.directory}/features_and_bundles/features</outputDirectory>
 			                </artifactItem>
