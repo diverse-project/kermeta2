@@ -23,62 +23,24 @@
 	<build>
 		<plugins>
 			<!-- Creation of the bundle jar and its manifest -->
-			<!-- <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-jar-plugin</artifactId>
-
-		        <version>2.3.1</version>
-		        <configuration>
-		          <archive>
-		            <manifestEntries>
-						<Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Name>org.kermeta.${project.artifactId}</Bundle-Name>
-						<Bundle-Version>${bundle.version}</Bundle-Version>
-						<Manifest-Version>1.0</Manifest-Version>
-						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
-						<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
-						<Bundle-ClassPath>.</Bundle-ClassPath>
-						<Export-Package>
-								org.kermeta.kp.compiler.commandline
-                        </Export-Package>
-						<Require-Bundle>
-							org.kermeta.scala.scala-library,
-							org.kermeta.scala.scala-compiler,
-							org.kermeta.language.km2bytecode,
-							org.kermeta.utils.systemservices.api,
-							org.kermeta.utils.helpers,
-            				fr.irisa.triskell.kermeta.model,
-							org.kermeta.language.framework.scala,
-							org.kermeta.language.ecore2km,
-							org.kermeta.language.ecore2km.api,
-							org.kermeta.language.loader.kmt.scala.api,
-							org.kermeta.language.loader.kmt.scala,
-							org.kermeta.language.checker,
-							org.kermeta.language.checker.api,
-							org.kermeta.diagnostic.model,
-							org.kermeta.language.merger.binarymerger,
-							org.kermeta.language.merger.binarymerger.api,
-							org.kermeta.language.resolver,
-							org.kermeta.language.resolver.api,
-							org.kermeta.kp.model,
-							org.kermeta.kp.loader.kp,
-							org.kermeta.kp.loader.kp.api,
-							org.kermeta.language.model,
-							org.eclipse.emf.ecore,
-							org.eclipse.emf.ecore.xmi,
-							org.ops4j.pax.url.mvn
-                        </Require-Bundle>
-                        <Import-Package>
-							org.kermeta.kp.editor,
-							org.kermeta.kp.editor.mopp,
-							org.kermeta.emf.genmodel,
-							org.kermeta.language.km2bytecode
-                        </Import-Package>
-		            </manifestEntries>		            
-		          </archive>
-		        </configuration>
-			</plugin>
-			-->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jar-plugin</artifactId> 
+				<version>2.3.1</version> <configuration> <archive> <manifestEntries> <Bundle-SymbolicName>org.kermeta.${project.artifactId}</Bundle-SymbolicName> 
+				<Bundle-Name>org.kermeta.${project.artifactId}</Bundle-Name> <Bundle-Version>${bundle.version}</Bundle-Version> 
+				<Manifest-Version>1.0</Manifest-Version> <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy> 
+				<Bundle-ManifestVersion>2</Bundle-ManifestVersion> <Bundle-ClassPath>.</Bundle-ClassPath> 
+				<Export-Package> org.kermeta.kp.compiler.commandline </Export-Package> <Require-Bundle> 
+				org.kermeta.scala.scala-library, org.kermeta.scala.scala-compiler, org.kermeta.language.km2bytecode, 
+				org.kermeta.utils.systemservices.api, org.kermeta.utils.helpers, fr.irisa.triskell.kermeta.model, 
+				org.kermeta.language.framework.scala, org.kermeta.language.ecore2km, org.kermeta.language.ecore2km.api, 
+				org.kermeta.language.loader.kmt.scala.api, org.kermeta.language.loader.kmt.scala, 
+				org.kermeta.language.checker, org.kermeta.language.checker.api, org.kermeta.diagnostic.model, 
+				org.kermeta.language.merger.binarymerger, org.kermeta.language.merger.binarymerger.api, 
+				org.kermeta.language.resolver, org.kermeta.language.resolver.api, org.kermeta.kp.model, 
+				org.kermeta.kp.loader.kp, org.kermeta.kp.loader.kp.api, org.kermeta.language.model, 
+				org.eclipse.emf.ecore, org.eclipse.emf.ecore.xmi, org.ops4j.pax.url.mvn </Require-Bundle> 
+				<Import-Package> org.kermeta.kp.editor, org.kermeta.kp.editor.mopp, org.kermeta.emf.genmodel, 
+				org.kermeta.language.km2bytecode </Import-Package> </manifestEntries> </archive> 
+				</configuration> </plugin> -->
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -103,8 +65,9 @@
 						<Import-Package>
 							!javax.*,
 							!org.kermeta.language.language.ecore2km.org.eclipse.emf.ecore,
-							!org.apache.commons.cli;version="[0,)",						
+							!org.apache.commons.cli;version="[0,)",
 							!org.apache.maven.*,
+							org.kermeta.utils.aether;version="[2.0,3)",
 							*
 						</Import-Package>
 						<Private-Package>
@@ -122,95 +85,126 @@
 					<includes>
 						<include>**/*TestSuite.java</include>
 					</includes>
-          			<argLine>-Xmx768m -Xss1m</argLine> <!-- make sure it also run on windows 32 -->
+					<argLine>-Xmx768m -Xss1m</argLine> <!-- make sure it also run on windows 32 -->
 				</configuration>
-				
-			</plugin>	 	
+
+			</plugin>
 			<!-- Generating a better test report -->
 			<plugin>
-			    <artifactId>maven-antrun-plugin</artifactId>
-			    <executions>
-			      <execution>
-			        <id>test-reports</id>
-			        <phase>test</phase>
-			        <configuration>
-			          <target  unless="maven.test.skip">
-			            <junitreport todir="target/surefire-reports" >
-			              <fileset dir="target/surefire-reports">
-			                <include name="**/*.xml"/>
-			              </fileset>
-			              <report format="frames" todir="target/surefire-reports"/>
-			            </junitreport>
-			          </target>
-			        </configuration>
-			        <goals>
-			          <goal>run</goal>
-			        </goals>
-			      </execution>
-			    </executions>
-			    <dependencies>
-			      <dependency>
-			        <groupId>ant</groupId>
-			        <artifactId>ant-junit</artifactId>
-			        <version>1.6.5</version>
-			      </dependency>
-			    </dependencies>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>test-reports</id>
+						<phase>test</phase>
+						<configuration>
+							<target unless="maven.test.skip">
+								<junitreport todir="target/surefire-reports">
+									<fileset dir="target/surefire-reports">
+										<include name="**/*.xml" />
+									</fileset>
+									<report format="frames" todir="target/surefire-reports" />
+								</junitreport>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>ant</groupId>
+						<artifactId>ant-junit</artifactId>
+						<version>1.6.5</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-eclipse-plugin</artifactId>
-			    <version>2.9</version>
-			    <!-- see http://maven.apache.org/plugins/maven-eclipse-plugin/eclipse-mojo.html for more information -->
-			    <configuration>
-			      <downloadSources>true</downloadSources>
-			      <downloadJavadocs>true</downloadJavadocs>
-			      <projectNameTemplate>[artifactId]</projectNameTemplate>
-			      <projectnatures>
-			        <projectnature>org.scala-ide.sdt.core.scalanature</projectnature>
-			        <projectnature>org.eclipse.jdt.core.javanature</projectnature>
-			      </projectnatures>
-			      <buildcommands>
-			        <buildcommand>org.scala-ide.sdt.core.scalabuilder</buildcommand>
-			      </buildcommands>
-			      <classpathContainers>
-			        <classpathContainer>org.scala-ide.sdt.launching.SCALA_CONTAINER</classpathContainer>
-			        <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
-			      </classpathContainers>
-			      <excludes>
-			        <exclude>org.scala-lang:scala-library</exclude>
-			        <!-- <exclude>org.scala-lang:scala-compiler</exclude> -->
-			      </excludes>
-			      <sourceIncludes>
-			        <sourceInclude>**/*.scala</sourceInclude>
-			        <sourceInclude>**/*.java</sourceInclude>
-			      </sourceIncludes>
-			      <useProjectReferences>false</useProjectReferences>
-			    </configuration>
-			  </plugin>
-			  <plugin>
-		        <groupId>org.codehaus.mojo</groupId>
-		        <artifactId>build-helper-maven-plugin</artifactId>
-		        <executions>
-		          <execution>
-		            <id>add-source</id>
-		            <phase>generate-sources</phase>
-		            <goals>
-		              <goal>add-source</goal>
-		            </goals>
-		            <configuration>
-		              <sources>
-		                <source>src/main/scala</source>
-		              </sources>
-		            </configuration>
-		          </execution>
-		        </executions>
-		      </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<!-- see http://maven.apache.org/plugins/maven-eclipse-plugin/eclipse-mojo.html 
+					for more information -->
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+					<projectNameTemplate>[artifactId]</projectNameTemplate>
+					<projectnatures>
+						<projectnature>org.scala-ide.sdt.core.scalanature</projectnature>
+						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+					</projectnatures>
+					<buildcommands>
+						<buildcommand>org.scala-ide.sdt.core.scalabuilder</buildcommand>
+					</buildcommands>
+					<classpathContainers>
+						<classpathContainer>org.scala-ide.sdt.launching.SCALA_CONTAINER</classpathContainer>
+						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+					</classpathContainers>
+					<excludes>
+						<exclude>org.scala-lang:scala-library</exclude>
+						<!-- <exclude>org.scala-lang:scala-compiler</exclude> -->
+					</excludes>
+					<sourceIncludes>
+						<sourceInclude>**/*.scala</sourceInclude>
+						<sourceInclude>**/*.java</sourceInclude>
+					</sourceIncludes>
+					<useProjectReferences>false</useProjectReferences>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/scala</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- copy the generated manifest to a place where eclipse expects it so 
+				it doesn't raise error -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>copy-manifest-for-eclipse-ide</id>
+						<phase>install</phase>
+						<configuration>
+							<tasks>
+								<echo
+									message="copy the generated manifest to a place where eclipse expects it so it doesn't raise error" />
+								<unzip
+									src="${project.build.directory}/${project.artifactId}-${project.version}.jar"
+									dest="">
+									<patternset>
+										<include name="META-INF/**" />
+										<exclude name="META-INF/maven/**" />
+									</patternset>
+								</unzip>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
 	<dependencies>
 		<!-- be careful to the order this has impacts on the classpath !!! -->
-		
+
 		<dependency>
 			<groupId>org.kermeta.emf</groupId>
 			<artifactId>emf.lib.patched</artifactId>
@@ -271,8 +265,9 @@
 			<artifactId>org.kermeta.language.resolver</artifactId>
 			<version>${kermeta.version}</version>
 		</dependency>
-		
-		<dependency> <!-- need to be before km2bytecode in order to ensure the version of maven for aether -->
+
+		<dependency> <!-- need to be before km2bytecode in order to ensure the version of maven 
+				for aether -->
 			<groupId>org.kermeta.utils</groupId>
 			<artifactId>utils.aether</artifactId>
 			<version>${utils.version}</version>
@@ -281,12 +276,12 @@
 			<groupId>org.kermeta.language</groupId>
 			<artifactId>org.kermeta.language.km2bytecode</artifactId>
 			<version>${kermeta.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>maven-classpath-plugin</artifactId>
-                    <groupId>com.github.joel1di1</groupId>
-                </exclusion>
-            </exclusions>
+			<exclusions>
+				<exclusion>
+					<artifactId>maven-classpath-plugin</artifactId>
+					<groupId>com.github.joel1di1</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.kp</groupId>
@@ -340,8 +335,8 @@
 			<artifactId>emf.genmodel</artifactId>
 			<version>2.1.0</version>
 		</dependency>
-		
-		
+
+
 		<!-- test dependencies -->
 		<dependency>
 			<groupId>org.eclipse.jdt</groupId>
@@ -354,31 +349,27 @@
 					<artifactId>*</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>		
-		<!-- <dependency>
-			<groupId>org.eclipse.core</groupId>
-			<artifactId>runtime</artifactId>
-			<version>[3.6.0.0,)</version>
-			<scope>test</scope>
-		</dependency> -->
-		
+		</dependency>
+		<!-- <dependency> <groupId>org.eclipse.core</groupId> <artifactId>runtime</artifactId> 
+			<version>[3.6.0.0,)</version> <scope>test</scope> </dependency> -->
+
 		<dependency> <!-- required to be able to call org.eclipse.core.runtime.Platform.isRunning() -->
-		    <groupId>org.eclipse</groupId>
-		    <artifactId>osgi</artifactId>
-		    <version>3.7.2-v20120110-1415</version>
+			<groupId>org.eclipse</groupId>
+			<artifactId>osgi</artifactId>
+			<version>3.7.2-v20120110-1415</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kermeta.eclipse</groupId>
 			<artifactId>org.eclipse.core.runtime</artifactId>
 			<version>[3.6.0.0,)</version>
 		</dependency>
-		
-        <dependency>
-        	<groupId>org.kermeta.language</groupId>
-        	<artifactId>org.kermeta.language.test.helper</artifactId>
-        	<version>${kermeta.version}</version>
+
+		<dependency>
+			<groupId>org.kermeta.language</groupId>
+			<artifactId>org.kermeta.language.test.helper</artifactId>
+			<version>${kermeta.version}</version>
 			<scope>test</scope>
-        </dependency>
+		</dependency>
 	</dependencies>
 </project>
 
