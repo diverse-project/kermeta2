@@ -18,7 +18,7 @@
             <plugin>
                 <groupId>org.kermeta.kp</groupId>
                 <artifactId>org.kermeta.kp.compiler.mavenplugin</artifactId>
-                <version>${kermeta.version}</version>
+                <version>${kermeta.previous.version}</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
