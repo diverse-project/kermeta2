@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Kermeta 2 Studio
 Bundle-SymbolicName: org.kermeta.studio.branding;singleton:=true
-Bundle-Version: 2.0.99.qualifier
+Bundle-Version: 2.1.0
 Bundle-Vendor: IRISA/INRIA
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
