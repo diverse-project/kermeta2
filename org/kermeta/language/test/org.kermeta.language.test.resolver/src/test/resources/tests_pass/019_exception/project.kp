@@ -1,0 +1,11 @@
+//resource kermeta_standard = "platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/LATEST"
+resource library_utils = "mvn:org.kermeta.language/org.kermeta.language.library.utils/LATEST"
+
+//importProject kermeta_standard
+importProject library_utils
+
+project Test_019_exception {
+	//mainClass "^testExceptionsPackage::TestExceptions"
+	//mainOperation "main"
+	import "${project.baseUri}/019_exception.kmt"
+}
