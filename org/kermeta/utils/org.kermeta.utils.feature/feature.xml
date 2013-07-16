@@ -29,13 +29,13 @@ This includes :
       - initial API and implementation
    </license>
 
-   <plugin
+   <!--<plugin
          id="org.kermeta.slf4j.eclipse"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
+   -->
    <plugin
          id="org.kermeta.utils.aether"
          download-size="0"
