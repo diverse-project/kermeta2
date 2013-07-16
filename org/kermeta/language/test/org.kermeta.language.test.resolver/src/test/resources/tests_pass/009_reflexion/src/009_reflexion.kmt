@@ -1,6 +1,5 @@
 package testReflexion;
 
-require kermeta
 
 
 class Test {
