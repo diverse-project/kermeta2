@@ -1,8 +1,7 @@
-resource kermeta_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
+resource kermeta_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.1.0"
 
-importProject kermeta_standard
 
-project library_utils {
+project library_utils extends kermeta_standard{
 
 	import "${project.baseUri}/src/main/kmt/kunit/assert.kmt"
 	import "${project.baseUri}/src/main/kmt/kunit/kunit.kmt"

@@ -25,7 +25,7 @@
 	<modules>		
 		<module>../org.kermeta.language.library.standard</module>
 		<module>../org.kermeta.language.documentation</module>
-		<!-- <module>../org.kermeta.language.library.utils</module> -->
+		<module>../org.kermeta.language.library.utils</module>
 	</modules>
 
 </project>
