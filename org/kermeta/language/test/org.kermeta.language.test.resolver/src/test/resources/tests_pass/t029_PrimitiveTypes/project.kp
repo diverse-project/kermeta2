@@ -1,0 +1,9 @@
+resource kermeta_standard = "platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/LATEST"
+
+importProject kermeta_standard
+
+project t029_PrimitiveTypes {
+	mainClass "^testExceptionsPackage::TestExceptions"
+	mainOperation "main"
+	import "${project.baseUri}/src/main/kmt/MainClass.kmt"
+}

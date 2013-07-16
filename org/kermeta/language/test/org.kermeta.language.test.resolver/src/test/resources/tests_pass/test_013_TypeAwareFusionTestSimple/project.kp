@@ -1,0 +1,8 @@
+resource kermeta_standard = "platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/LATEST"
+
+importProject kermeta_standard
+
+project Test_013_TypeAwareFusion {
+	import "${project.baseUri}/src/main/kmt/Main.kmt"
+	import "${project.baseUri}/src/main/kmt/Main2.kmt"
+}
