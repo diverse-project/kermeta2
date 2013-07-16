@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.kermeta.kp.launcher.eclipse.internal.KermetaLauncherID">
+<stringAttribute key="KM_LAUNCH_KP_FILE" value="/org.kermeta.language.sample.fsm.determinization/project.kp"/>
+<stringAttribute key="KM_LAUNCH_MAIN_CLASS" value="org_kermeta_language_sample_fsm_determinization^fsm::Determinization"/>
+<stringAttribute key="KM_LAUNCH_MAIN_OPERATION" value="main"/>
+<stringAttribute key="KM_LAUNCH_PARAMETERS" value="platform:/resource/org.kermeta.language.sample.fsm.model/models/sampletodeterminize.fsm"/>
+<stringAttribute key="KM_LAUNCH_PORT" value=""/>
+<stringAttribute key="KM_LAUNCH_PROJECT" value="org.kermeta.language.sample.fsm.determinization"/>
+<stringAttribute key="process_factory_id" value="org.kermeta.debug.processFactory"/>
+</launchConfiguration>
