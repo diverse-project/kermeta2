@@ -3,8 +3,8 @@ addRepository(type:0,location:http${#58}//download.eclipse.org/eclipse/updates/4
 addRepository(type:1,location:http${#58}//download.eclipse.org/eclipse/updates/4.2,name:The Eclipse project update);\
 addRepository(type:0,location:http${#58}//download.eclipse.org/releases/juno,name:Juno);\
 addRepository(type:1,location:http${#58}//download.eclipse.org/releases/juno,name:Juno);\
-addRepository(type:0,location:http${#58}//www.kermeta.org/integration_build/kermeta2_snapshot/update/,name:Kermeta 2 Snapshot);\
-addRepository(type:1,location:http${#58}//www.kermeta.org/integration_build/kermeta2_snapshot/update/,name:Kermeta 2 Snapshot);\
+addRepository(type:0,location:http${#58}//www.kermeta.org/k2/update/,name:Kermeta 2);\
+addRepository(type:1,location:http${#58}//www.kermeta.org/k2/update/,name:Kermeta 2);\
 addRepository(type:0,location:http${#58}//download.scala-ide.org/sdk/e38/scala29/stable/site,name:Scala-IDE for scala 2.9);\
 addRepository(type:1,location:http${#58}//download.scala-ide.org/sdk/e38/scala29/stable/site,name:Scala-IDE for scala 2.9);\
   mkdir(path:${installFolder}/dropins);
