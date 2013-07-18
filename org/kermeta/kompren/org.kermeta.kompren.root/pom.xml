@@ -13,10 +13,10 @@
 	<name>kompren.root :: Root for the projects dedicated to Kompren</name>
 
 	<properties>
-		<kermeta.version>2.0.6</kermeta.version>
+		<kermeta.version>2.1.0</kermeta.version>
 		<kompren.version>2.0.9-SNAPSHOT</kompren.version>
-		<utils.version>2.0.6</utils.version>
-		<traceability.version>2.0.6</traceability.version>
+		<utils.version>2.1.0</utils.version>
+		<traceability.version>2.1.0</traceability.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<emf.version>2.7.0</emf.version>
 		<scala.version>2.9.1</scala.version>
