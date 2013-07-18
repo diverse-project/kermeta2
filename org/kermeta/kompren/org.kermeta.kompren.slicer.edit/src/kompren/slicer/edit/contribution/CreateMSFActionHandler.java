@@ -45,10 +45,9 @@ public class CreateMSFActionHandler extends KomprenHandler {
 					project.setDescription(description, null);
 				}
 				else project.open(null);
-	
-				org.kermeta.kompren.org.kermeta.kompren.slicer.compilerrunner.MainRunner.init();
-				org.kermeta.kompren.org.kermeta.kompren.slicer.compiler.org2.kermeta.kompren.slicer.KomprenCompiler compiler =
-					org.kermeta.kompren.org.kermeta.kompren.slicer.compiler.org2.kermeta.kompren.slicer.KerRichFactory.createKomprenCompiler();
+//				org2.kermeta.kompren.slicer.provider.MainRunner.init();
+				org_kermeta_kompren_slicer_compiler.org2.kermeta.kompren.slicer.KomprenCompiler compiler = 
+						org_kermeta_kompren_slicer_compiler.org2.kermeta.kompren.slicer.KerRichFactory.createKomprenCompiler();
 	
 				compiler.compile("platform:/resource"+file.getFullPath());
 				project.refreshLocal(IResource.DEPTH_INFINITE, null);
