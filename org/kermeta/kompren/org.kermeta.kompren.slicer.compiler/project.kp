@@ -1,4 +1,4 @@
-resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/language.library.standard/2.1.0"
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/language.library.standard/2.0.98"
 resource slicing_model = "platform:/plugin/org.kermeta.kompren.slicer.model" alternative "mvn:org.kermeta.kompren/kompren.slicer.model/2.0.9-SNAPSHOT"
 resource ecore_model = "platform:/plugin/org.eclipse.emf.ecore" alternative "mvn:org.kermeta.emf/emf.lib.patched/2.7.0"
 
