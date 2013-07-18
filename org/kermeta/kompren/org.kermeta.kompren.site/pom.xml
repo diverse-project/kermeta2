@@ -120,7 +120,7 @@
 			              <artifactItems>
 			              	<artifactItem>
 			                  <groupId>org.kermeta.kompren</groupId>
-			                  <artifactId>kompren.feature</artifactId>
+			                  <artifactId>org.kermeta.kompren.feature</artifactId>
 			                  <version>${kompren.version}</version>
 			                  <outputDirectory>${project.build.directory}/features_and_bundles/features</outputDirectory>
 			                </artifactItem>
