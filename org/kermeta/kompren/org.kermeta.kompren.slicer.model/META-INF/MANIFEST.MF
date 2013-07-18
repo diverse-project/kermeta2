@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: kompren.slicer.model;singleton:=true
-Bundle-Version: 2.0.0
+Bundle-SymbolicName: org.kermeta.kompren.slicer.model;singleton:=true
+Bundle-Version: 2.0.8
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
