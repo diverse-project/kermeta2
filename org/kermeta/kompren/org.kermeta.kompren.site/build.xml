@@ -12,7 +12,7 @@
 	<property name="source.features" location="${source.features.and.bundles}/features"/>
 	<property name="source.bundles" location="${source.features.and.bundles}/plugins"/>
 	
-	<property name="studio.base.dir" location="${env.WORKSPACE}/target/studiobase/"/>
+	<property name="studio.base.dir" location="${workdirectory}E}/target/studiobase/"/>
 	<property name="studio.archive.extension" value="tar.gz"/>
 	<property name="studio.eclipse.code.name" value="indigo"/>
 	<property name="studio.os.variant" value="linux_x86_64"/>
