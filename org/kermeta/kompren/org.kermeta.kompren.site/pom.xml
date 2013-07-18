@@ -147,7 +147,7 @@
 						</goals>
 						<configuration>
 							<source>
-								String dirString= "target/updatesite/features"
+								String dirString= "org/kermeta/kompren/org.kermeta.kompren.site/target/updatesite/features"
 								println "look into "+dirString + " for defining properties from jar names"
 								def dir = new File(dirString)
 								dir.eachFile { 
