@@ -1,4 +1,4 @@
-<project name="full_kermeta_studio_updatesite" default="all">
+<project name="full_kermeta_studio_updatesite" default="publish_jars">
 	<!-- configuration properties -->		
 	<!-- project configuration -->
 	<property environment="env"/>
@@ -45,6 +45,7 @@
 	</target>
 	
 	<target name="publish_features_and_bundles" > 
+		<echo>workdirectory=${workdirectory}</echo>
 		<java jar="${eclipse.bin.home}/plugins/${equinox.jar.filename}"
 				           fork="true"
 				           failonerror="true"
@@ -84,7 +85,7 @@
 	</target>
 	<target name="get_site_template">
 		<copy todir="${updatesite.repository}">
-			<fileset dir="${env.WORKSPACE}/target/classes" includes="**" >
+			<fileset dir="${workdirectory}/target/classes" includes="**" >
 				<!--<exclude name="readme.txt"/>
 				<exclude name="*_build.xml"/>-->
 			</fileset>	
