@@ -41,6 +41,7 @@
 						<id>gen-site-publish-feature-and-bundles</id>
 						<phase>process-sources</phase>
 						<configuration>
+							<property name="workdirectory">${basedir}</property>
 							<tasks>
 								<ant antfile="build.xml" target="publish_jars" /> 
 							</tasks>							
@@ -53,6 +54,7 @@
 						<id>gen-site-deploy</id>
 						<phase>compile</phase>
 						<configuration>
+							<property name="workdirectory">${basedir}</property>
 							<tasks>
 								<ant antfile="build.xml" target="deploy" /> 
 							</tasks>							
