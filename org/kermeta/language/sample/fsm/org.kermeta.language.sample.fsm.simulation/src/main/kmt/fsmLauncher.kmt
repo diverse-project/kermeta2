@@ -24,8 +24,9 @@ package fsm{
 	class Main
 	{
 		@main ""
-		operation mainloadFSM(input_automaton : String) : Void is do
-			var theFSM : FSM init loadfsm(input_automaton)
+		operation mainloadFSM() : Void is do
+			var theFSM : FSM := AutomatonHelper.new.ask_emfmodel("Enter the EMF model of the automaton to run: (ex: helloWorld.fsm)")
+			
 			printFSM(theFSM)
 			theFSM.run()
 		end

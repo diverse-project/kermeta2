@@ -16,6 +16,7 @@
 using fsm::*
 using kermeta::standard::*
 using kermeta::emfpersistence::*
+using kermeta::io::StdIO => stdio
 
 package fsm{
 	 
@@ -26,7 +27,7 @@ package fsm{
 		reference helper : AutomatonHelper
 		
 		@main ""
-	    operation main(input_automaton : String) : Void is do 
+	    operation main() : Void is do 
 	    
 	    	// Input automaton (non-determinist)
 	    	var input : FSM
@@ -38,6 +39,9 @@ package fsm{
 			helper := AutomatonHelper.new 
 			 
 			// The input automaton to determinize
+			var prompt : String := "Enter the EMF model of the automaton to determinize: (ex: helloWorld.fsm)"
+			var input_automaton : String init stdio.read(prompt+"\nplatform:/resource/org.kermeta.language.sample.fsm.model/models/")
+	    	input_automaton := "platform:/resource/org.kermeta.language.sample.fsm.model/models/"+input_automaton 
 			input :=  helper.loadEMFAutomaton(repository, input_automaton, "http://www.kermeta.org/fsm")
 			
 			output_path := input_automaton.substring(0, input_automaton.size-3)+"det.fsm"

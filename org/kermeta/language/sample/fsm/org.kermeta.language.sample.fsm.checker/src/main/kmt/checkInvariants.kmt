@@ -8,9 +8,9 @@ package fsm{
 	class InvariantChecker
 	{
 		@main ""
-	    operation main(input_automaton : String) : Void is do 
+	    operation main() : Void is do 
 	        var rep : ResourceSet init ResourceSet.new
-	        var theFSM : FSM init AutomatonHelper.new.loadEMFAutomaton(rep, input_automaton, "http://www.kermeta.org/fsm")
+	        var theFSM : FSM := AutomatonHelper.new.ask_emfmodel("Enter the EMF model of the automaton to check: (ex: helloWorld.fsm)")
 	        
 	        // To check all contained elements by "theFSM"
 	        stdio.writeln("> call of the checkAllInvariants method")
