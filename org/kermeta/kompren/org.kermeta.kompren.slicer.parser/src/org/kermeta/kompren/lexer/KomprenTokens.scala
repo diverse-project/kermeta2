@@ -7,24 +7,24 @@ import scala.util.parsing.input.Positional
 
 trait KomprenTokens extends Tokens with Parsers {
 
-  abstract case class KomprenToken() extends Token with Positional {
+  trait KomprenToken extends Token with Positional {
     def getOffset : java.lang.Integer  = this.pos.asInstanceOf[OffsetPosition].offset
     def getLength : java.lang.Integer = this.toString.length
   }
 
   /** The class of comment tokens */
-  case class Whitespace() extends KomprenToken() {
-    override def chars = ' '.toString
-    override def toString = ' '.toString
+  case class Whitespace() extends KomprenToken {
+    override def chars = " "
+    override def toString = " "
   }
 
   /** The class of comment tokens */
-  case class Comment(chars: String) extends KomprenToken() {
+  case class Comment(chars: String) extends KomprenToken {
     override def toString = "//"+chars
   }
 
   /** The class of comment tokens */
-  case class MLComment(chars: String) extends KomprenToken() {
+  case class MLComment(chars: String) extends KomprenToken {
     override def toString = "/*"+chars+"*/"
   }
 //  /** The class of comment tokens */
@@ -32,50 +32,50 @@ trait KomprenTokens extends Tokens with Parsers {
 //    override def toString = "/* "+chars+" */"
 //  }
   /** The class of delim tokens */
-  case class Delimiter(chars: String) extends KomprenToken() {
+  case class Delimiter(chars: String) extends KomprenToken {
     override def toString = chars
   }
 
   /** The class of keyword tokens */
-  case class Keyword(chars: String) extends KomprenToken() {
+  case class Keyword(chars: String) extends KomprenToken {
     override def toString = chars
   }
 
   /** The class of numeric literal tokens */
-  case class NumericLit(chars: String) extends KomprenToken() {
+  case class NumericLit(chars: String) extends KomprenToken {
     override def toString = chars
   }
 
   /** The class of string literal tokens */
-  case class StringLit(chars: String) extends KomprenToken() {
+  case class StringLit(chars: String) extends KomprenToken {
     override def toString = "\""+chars+"\""
   }
   
   /** The class of code literal tokens */
-  case class MLCode(chars: String) extends KomprenToken() {
+  case class MLCode(chars: String) extends KomprenToken {
 	  override def toString = "[["+chars+"]]"
   }
   
   /** The class of identifier tokens */
-  case class Identifier(chars: String) extends KomprenToken() {
+  case class Identifier(chars: String) extends KomprenToken {
     override def toString = chars
   }
   
    /** The class of identifier tokens */
-  case class PointedIdentifier(chars: String) extends KomprenToken() {
+  case class PointedIdentifier(chars: String) extends KomprenToken {
     override def toString = chars
   }
   
-  case class KEOF() extends KomprenToken() {
+  case class KEOF() extends KomprenToken {
     override def toString = ""
-    override def chars = ' '.toString
+    override def chars = " "
   }
 
-  case class KIncomplet(chars:String,msg:String) extends KomprenToken() {
+  case class KIncomplet(chars:String,msg:String) extends KomprenToken {
     override def toString = chars
   }
 
-  case class KError(chars: String) extends KomprenToken() {
+  case class KError(chars: String) extends KomprenToken {
     override def toString = chars
     override def getLength = 1
   }
