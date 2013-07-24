@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>org.kermeta.diagnostic</groupId>
 			<artifactId>org.kermeta.diagnostic.model</artifactId>
-			<version>${kermeta.version}</version>		
+			<version>${diagnostic.version}</version>		
 		</dependency>
     </dependencies>
     
