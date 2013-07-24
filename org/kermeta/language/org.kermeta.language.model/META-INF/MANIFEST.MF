@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1373555278988
+Bnd-LastModified: 1374670446182
 Build-Jdk: 1.6.0_43
 Built-By: dvojtise
 Bundle-ClassPath: .
@@ -7,34 +7,36 @@ Bundle-ManifestVersion: 2
 Bundle-Name: language.model :: Kermeta2 model
 Bundle-SymbolicName: org.kermeta.language.model;singleton=true
 Bundle-Vendor: IRISA/INRIA
-Bundle-Version: 2.1.0
+Bundle-Version: 2.1.1.SNAPSHOT_20130724_1454
 Created-By: Apache Maven Bundle Plugin
 Export-Package: org.kermeta.language.behavior;uses:="org.eclipse.emf.eco
  re,org.kermeta.language.behavior.impl,org.eclipse.emf.common.util,org.k
- ermeta.language.structure";version="2.1.0",org.kermeta.language.behavio
- r.util;uses:="org.eclipse.emf.ecore,org.kermeta.language.behavior,org.k
- ermeta.language.structure,org.eclipse.emf.common.notify,org.eclipse.emf
- .common.notify.impl,org.eclipse.emf.ecore.util";version="2.1.0",org.ker
- meta.language.structure;uses:="org.eclipse.emf.common.util,org.kermeta.
- language.behavior,org.eclipse.emf.ecore,org.kermeta.language.structure.
- impl";version="2.1.0",org.kermeta.language.structure.impl;uses:="org.ec
- lipse.emf.ecore,org.kermeta.language.structure,org.eclipse.emf.ecore.ut
- il,org.eclipse.emf.common.util,org.eclipse.emf.common.notify,org.eclips
- e.emf.ecore.impl,org.kermeta.language.util,org.kermeta.language.behavio
- r,org.kermeta.language.structure.util,org.eclipse.emf.ecore.plugin,org.
- eclipse.emf.ecore.resource,org.kermeta.language.behavior.impl";version=
- "2.1.0",org.kermeta.language.util;uses:="org.eclipse.emf.common.util,or
- g.kermeta.language.structure,org.eclipse.emf.ecore.xmi.impl,org.eclipse
- .emf.ecore.resource,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resourc
- e.impl";version="2.1.0",org.kermeta.language.behavior.impl;uses:="org.e
- clipse.emf.ecore,org.kermeta.language.behavior,org.eclipse.emf.common.n
- otify,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.eclip
- se.emf.ecore.resource,org.eclipse.emf.common.util,org.kermeta.language.
- structure,org.kermeta.language.structure.impl,org.eclipse.emf.ecore.uti
- l";version="2.1.0",org.kermeta.language.structure.util;uses:="org.eclip
- se.emf.ecore,org.eclipse.emf.ecore.util,org.kermeta.language.structure,
- org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl";versi
- on="2.1.0"
+ ermeta.language.structure";version="2.1.1.SNAPSHOT_20130724_1440",org.k
+ ermeta.language.behavior.util;uses:="org.eclipse.emf.ecore,org.kermeta.
+ language.behavior,org.kermeta.language.structure,org.eclipse.emf.common
+ .notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.ecore.util";
+ version="2.1.1.SNAPSHOT_20130724_1440",org.kermeta.language.structure;u
+ ses:="org.eclipse.emf.common.util,org.kermeta.language.behavior,org.ecl
+ ipse.emf.ecore,org.kermeta.language.structure.impl";version="2.1.1.SNAP
+ SHOT_20130724_1440",org.kermeta.language.structure.impl;uses:="org.ecli
+ pse.emf.ecore,org.kermeta.language.structure,org.eclipse.emf.ecore.util
+ ,org.eclipse.emf.common.util,org.eclipse.emf.common.notify,org.eclipse.
+ emf.ecore.impl,org.kermeta.language.util,org.kermeta.language.behavior,
+ org.kermeta.language.structure.util,org.eclipse.emf.ecore.plugin,org.ec
+ lipse.emf.ecore.resource,org.kermeta.language.behavior.impl";version="2
+ .1.1.SNAPSHOT_20130724_1440",org.kermeta.language.util;uses:="org.eclip
+ se.emf.common.util,org.kermeta.language.structure,org.eclipse.emf.ecore
+ .xmi.impl,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore,org.ecli
+ pse.emf.ecore.resource.impl";version="2.1.1.SNAPSHOT_20130724_1440",org
+ .kermeta.language.behavior.impl;uses:="org.eclipse.emf.ecore,org.kermet
+ a.language.behavior,org.eclipse.emf.common.notify,org.eclipse.emf.ecore
+ .impl,org.eclipse.emf.ecore.plugin,org.eclipse.emf.ecore.resource,org.e
+ clipse.emf.common.util,org.kermeta.language.structure,org.kermeta.langu
+ age.structure.impl,org.eclipse.emf.ecore.util";version="2.1.1.SNAPSHOT_
+ 20130724_1440",org.kermeta.language.structure.util;uses:="org.eclipse.e
+ mf.ecore,org.eclipse.emf.ecore.util,org.kermeta.language.structure,org.
+ eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl";version="
+ 2.1.1.SNAPSHOT_20130724_1440"
 Import-Package: org.eclipse.emf.common.notify,org.eclipse.emf.common.not
  ify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.
  emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.eclipse.emf.ecore.resou

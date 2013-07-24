@@ -2,7 +2,7 @@
 <feature
       id="org.kermeta.studio.feature"
       label="Feature for the Kermeta Studio branding"
-      version="2.1.0"
+      version="2.1.1.qualifier"
       plugin="org.kermeta.studio">
 
    <description url="http://www.kermeta/org">

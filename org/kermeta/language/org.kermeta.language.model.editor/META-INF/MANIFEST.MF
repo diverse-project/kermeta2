@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1373555295362
+Bnd-LastModified: 1374670456402
 Build-Jdk: 1.6.0_43
 Built-By: dvojtise
 Bundle-ActivationPolicy: lazy
@@ -9,12 +9,13 @@ Bundle-ManifestVersion: 2
 Bundle-Name: language.model.editor :: Kermeta2 model editor
 Bundle-SymbolicName: org.kermeta.language.model.editor; singleton=true
 Bundle-Vendor: IRISA/INRIA
-Bundle-Version: 2.1.0
+Bundle-Version: 2.1.1.SNAPSHOT_20130724_1454
 Created-By: Apache Maven Bundle Plugin
 Export-Package: org.kermeta.language.behavior.presentation;uses:="org.pr
- esentation";version="2.1.0",org.kermeta.language.structure.presentation
- ;uses:="org.kermeta.language.behavior.presentation";version="2.1.0",org
- .presentation;version="2.1.0"
+ esentation";version="2.1.1.SNAPSHOT_20130724_1440",org.kermeta.language
+ .structure.presentation;uses:="org.kermeta.language.behavior.presentati
+ on";version="2.1.1.SNAPSHOT_20130724_1440",org.presentation;version="2.
+ 1.1.SNAPSHOT_20130724_1440"
 Ignore-Package: org.eclipse.jface.wizard,org.eclipse.jface.operation,org
  .eclipse.core.runtime,org.eclipse.emf.edit.ui.provider,org.eclipse.swt.
  custom,org.eclipse.ui.actions,org.eclipse.emf.common.notify,org.eclipse
