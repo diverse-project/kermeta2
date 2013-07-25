@@ -26,6 +26,7 @@
 		<module>../org.kermeta.language.test.merger.binarymerger</module>
 		<module>../org.kermeta.language.test.resolver</module>
 		<module>../org.kermeta.language.test.checker</module>
+		<!-- <module>../org.kermeta.language.test.ecore2km</module> -->
 	</modules>
 
 </project>
