@@ -207,5 +207,9 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 			stream.close();
 		} catch (IOException e) { }
 	}
+
+	public ContextWizardNewProject getContext() {
+		return context;
+	}
 	
 }
