@@ -1,11 +1,17 @@
 package org.kermeta.extra.groovyembedded;
 
 import groovy.lang.Binding;
+import groovy.lang.GroovyClassLoader;
+import groovy.lang.GroovyObject;
 import groovy.lang.GroovyShell;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import org.codehaus.groovy.control.CompilationFailedException;
 
 /**
  * Hello world!
@@ -57,6 +63,29 @@ public class GroovyEmbedder
     	
     
     }
+    
+    
+    /**
+     * Run a simple method without parameters in a Groovy script declared in a file (must contain a Groovy class)
+     * @param fileName
+     * @param methodName
+     * @return
+     * @throws CompilationFailedException
+     * @throws IOException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
+    public static Object runSimpleMethodInFile(String fileName, String methodName) throws CompilationFailedException, IOException, InstantiationException, IllegalAccessException {
+    	System.out.println();
+    	GroovyObject groovyObj;
+    	GroovyClassLoader gcl = new GroovyClassLoader();
+    	Class clazz = null;
+    	clazz = gcl.parseClass(new File(fileName));
+    	groovyObj = (GroovyObject) clazz.newInstance();
+    	Object r =  groovyObj.invokeMethod(methodName, new Object[] {});
+    	return r;
+    }
+    
     
     private static Binding sharedBinding = new Binding();
     private static GroovyShell sharedShell = new GroovyShell(new Binding());
