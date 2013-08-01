@@ -11,7 +11,7 @@
 		<artifactId>org.kermeta.root</artifactId>
 		<version>2.1.1-SNAPSHOT</version>
 	</parent>
-    <version>1.4.5-SNAPSHOT</version>
+    <version>1.4.6</version>
     <pluginRepositories>
         <pluginRepository>
             <id>scala-tools.org</id>
