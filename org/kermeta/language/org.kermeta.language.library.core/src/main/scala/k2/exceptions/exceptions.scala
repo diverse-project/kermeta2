@@ -44,7 +44,13 @@ trait ExceptionAspect extends _root_.java.lang.Throwable with org.eclipse.emf.ec
 	
 	// Throwable method redefined as aliases to Exception method
 	override def getLocalizedMessage=Scalamessage
-	override def getMessage=Scalamessage
+	//override def getMessage=Scalamessage
+	override def getMessage():String = {
+	  if(eClass() != null){
+		  return eClass().getName() +" "+this.message
+	  }
+	  else return this.message
+	}
 	def initCause=ScalanestedException_= _
 	def setStackTrace=ScalastackTrace_= _
 	
