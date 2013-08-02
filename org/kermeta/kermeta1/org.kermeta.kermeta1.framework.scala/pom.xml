@@ -62,6 +62,7 @@
                             kermeta.persistence.*,
                             kermeta.standard.*,
                             kermeta.utils.*,
+                            org.kermeta.console.*,
                             utils.*,
                         	fr.irisa.triskell.kermeta.*,
                         	fr.irisa.triskell.scala.*

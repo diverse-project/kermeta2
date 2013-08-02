@@ -59,13 +59,17 @@
 							org.kermeta.kp.compiler.commandline.*
 						</Export-Package>
 						<Require-Bundle>
-							org.kermeta.utils.maven.runtime
+							org.kermeta.utils.maven.runtime,
+							org.kermeta.kermeta1.framework.scala
 						</Require-Bundle>
 						<Import-Package>
 							!javax.*,
 							!org.kermeta.language.language.ecore2km.org.eclipse.emf.ecore,
 							!org.apache.commons.cli;version="[0,)",
 							!org.apache.maven.*,
+							!kermeta.standard,
+							!fr.irisa.triskell.kermeta.language.behavior,
+							!org.kermeta.console,
 							org.kermeta.utils.aether;version="[2.0,3)",
 							*
 						</Import-Package>

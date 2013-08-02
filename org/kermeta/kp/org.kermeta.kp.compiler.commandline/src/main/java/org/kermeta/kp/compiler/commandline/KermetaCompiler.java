@@ -200,7 +200,9 @@ public class KermetaCompiler {
 		}
 		/*if (threadExector instanceof ThreadPoolExecutor)
 		    ((ThreadPoolExecutor) threadExector).setMaximumPoolSize(32);*/
-		
+		// redirect K1 StdIO to the messaging system
+		kermeta.io.stdio.console_$eq(new MessagingSystemV1Console(logger));
+
 		this.runInEclipse = willRunInEclipse;
 		errorHandlingHelper = new ErrorHandlingHelper(logger, LOG_MESSAGE_GROUP, getMainProgressGroup(), getThreadExector());
 	}
@@ -241,6 +243,8 @@ public class KermetaCompiler {
 		}
 		/*if (threadExector instanceof ThreadPoolExecutor)
 		    ((ThreadPoolExecutor) threadExector).setMaximumPoolSize(32);*/
+		// redirect K1 StdIO to the messaging system
+		kermeta.io.stdio.console_$eq(new MessagingSystemV1Console(logger));
 		
 		errorHandlingHelper = new ErrorHandlingHelper(logger, LOG_MESSAGE_GROUP, getMainProgressGroup(), getThreadExector());
 	}
