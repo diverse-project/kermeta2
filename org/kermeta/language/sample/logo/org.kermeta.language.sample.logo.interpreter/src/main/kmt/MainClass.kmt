@@ -28,9 +28,9 @@ package org::kermeta::language::sample::logo::interpreter {
 									
 		end
 		
-		operation loadProgram(ecoreFile : String) : LogoProgram is do             
+		operation loadProgram(logoFile : String) : LogoProgram is do             
 			var repository : ResourceSet init ResourceSet.new
-			var resource : Resource init repository.createResource(ecoreFile, "platform:/resource/org.kermeta.kmlogo.logoasm.model/model/ASMLogo.ecore")
+			var resource : Resource init repository.createResource(logoFile, "platform:/resource/org.kermeta.kmlogo.logoasm.model/model/ASMLogo.ecore")
 			resource.load(void)      
 			result ?= resource.getContents().one
 		end

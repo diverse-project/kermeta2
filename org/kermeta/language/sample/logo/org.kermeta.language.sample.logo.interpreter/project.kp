@@ -1,14 +1,14 @@
-resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
-resource ecore_model = "platform:/resource/org.kermeta.language.sample.logo.model"
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.1.0"
+resource logo_model = "platform:/resource/org.kermeta.language.sample.logo.model" alternative "${project.baseUri}/../org.kermeta.language.sample.logo.model"
 
 importProject library_standard
-importProject ecore_model
+importProject logo_model
 
 project logo_interpreter {
 	mainClass "logo_interpreter^org::kermeta::language::sample::logo::interpreter::MainClass"
 	mainOperation "mainOperation"
 
-	import "${ecore_model.baseUri}/model/ASMLogo.ecore"
+	import "${logo_model.baseUri}/model/ASMLogo.ecore"
 	import "${project.baseUri}/ecore/VMLogo.ecore"
 
 	import "${project.baseUri}/kmLogo/ASM/ASM_aspect.kmt"
@@ -16,4 +16,5 @@ project logo_interpreter {
 	import "${project.baseUri}/src/main/kmt/Context.kmt"
 	import "${project.baseUri}/src/main/kmt/Math.kmt"
 	import "${project.baseUri}/src/main/kmt/MainClass.kmt"
+	import "${project.baseUri}/src/main/kmt/TurtleGUI.kmt"
 }

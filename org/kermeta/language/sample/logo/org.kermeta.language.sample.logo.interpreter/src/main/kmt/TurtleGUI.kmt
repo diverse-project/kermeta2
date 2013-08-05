@@ -1,0 +1,51 @@
+/* $Id: TurtleGUI.kmt,v 1.2 2008-05-29 12:09:40 vmahe Exp $
+ * Creation date: May 31, 2007
+ * License:
+ * Copyright:
+ * Authors:
+ */
+
+
+package kmLogo::gui;
+
+
+using kermeta::standard::*
+
+/**
+ * Kermeta wrapper class for an IJavaTurtleGUI
+ * it uses TurtleGUIExternWrapper to hold all the static operations
+ */
+class TurtleGUI
+{
+
+	reference javaObject : IJavaTurtleGUI
+	
+	/**
+	 * initialize the real javaObject, ie. call the concrete java constructor
+	 */
+	operation initialize(name : String) : TurtleGUI is do
+		//  call the java wrapper
+		//extern org::kermeta::kmLogo::wrapper::TurtleGUIExternWrapper.initialize(self, name)
+		result := self
+	end
+	operation drawLine(x1: Integer, y1: Integer, x2: Integer, y2 : Integer) : Void is do
+		// call the java wrapper
+		//extern org::kermeta::kmLogo::wrapper::TurtleGUIExternWrapper.drawLine(self, x1,y1, x2, y2)
+	end
+	operation drawTurtle(x: Integer, y : Integer, angle : Double, isPenUp : Boolean) : Void is do
+		// call the java wrapper
+		//extern org::kermeta::kmLogo::wrapper::TurtleGUIExternWrapper.drawTurtle(self, x,y, angle, isPenUp)
+	end
+	operation clearDrawing() : Void is do
+		// call the java wrapper
+		//extern org::kermeta::kmLogo::wrapper::TurtleGUIExternWrapper.clearDrawing(self)
+	end
+}
+
+/**
+ * allow to use the java object in the kermeta program
+ */
+@CompilerIgnore "true"
+@ScalaCompilerName "org.kermeta.language.logo.interpreter.gui.ITurtleGUI"
+abstract class IJavaTurtleGUI {
+}

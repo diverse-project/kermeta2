@@ -1,12 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.kermeta.language.sample.logo.interpreter</name>
-	<comment></comment>
-	<projects>
-	</projects>
-	<buildSpec>
-	</buildSpec>
-	<natures>
-		<nature>org.kermeta.language.texteditor.eclipse.nature.KermetaNatureID</nature>
-	</natures>
+  <name>org.kermeta.language.sample.logo.interpreter</name>
+  <comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.kermeta.kp.editor.builder</name>
+    </buildCommand>
+    <buildCommand>
+      <name>org.scala-ide.sdt.core.scalabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.kermeta.language.texteditor.eclipse.nature.KermetaNatureID</nature>
+    <nature>org.kermeta.kp.editor.nature</nature>
+    <nature>org.scala-ide.sdt.core.scalanature</nature>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
 </projectDescription>
