@@ -25,20 +25,20 @@ class TurtleGUI
 	 */
 	operation initialize(name : String) : TurtleGUI is do
 		//  call the java wrapper
-		//extern org::kermeta::kmLogo::wrapper::TurtleGUIExternWrapper.initialize(self, name)
+		extern org::kermeta::language::logo::interpreter::gui::TurtleGUIExternWrapper.initialize(self, name)
 		result := self
 	end
 	operation drawLine(x1: Integer, y1: Integer, x2: Integer, y2 : Integer) : Void is do
 		// call the java wrapper
-		//extern org::kermeta::kmLogo::wrapper::TurtleGUIExternWrapper.drawLine(self, x1,y1, x2, y2)
+		extern org::kermeta::language::logo::interpreter::gui::TurtleGUIExternWrapper.drawLine(self, x1,y1, x2, y2)
 	end
 	operation drawTurtle(x: Integer, y : Integer, angle : Double, isPenUp : Boolean) : Void is do
 		// call the java wrapper
-		//extern org::kermeta::kmLogo::wrapper::TurtleGUIExternWrapper.drawTurtle(self, x,y, angle, isPenUp)
+		extern org::kermeta::language::logo::interpreter::gui::TurtleGUIExternWrapper.drawTurtle(self, x,y, angle, isPenUp)
 	end
 	operation clearDrawing() : Void is do
 		// call the java wrapper
-		//extern org::kermeta::kmLogo::wrapper::TurtleGUIExternWrapper.clearDrawing(self)
+		extern org::kermeta::language::logo::interpreter::gui::TurtleGUIExternWrapper.clearDrawing(self)
 	end
 }
 

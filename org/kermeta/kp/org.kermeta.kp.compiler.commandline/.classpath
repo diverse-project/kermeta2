@@ -22,7 +22,7 @@
       <attribute value="jar:file:/D:/Users/dvojtise/.m2/repository/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/kermeta1/org.kermeta.kermeta1.framework.scala/1.4.5-SNAPSHOT/org.kermeta.kermeta1.framework.scala-1.4.5-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/kermeta1/org.kermeta.kermeta1.framework.scala/1.4.6/org.kermeta.kermeta1.framework.scala-1.4.6.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.ecore2km.api/2.1.1-SNAPSHOT/org.kermeta.language.ecore2km.api-2.1.1-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/traceability/traceability.model/2.1.0/traceability.model-2.1.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.uml2.uml/3.1.1.v201008191505/org.eclipse.uml2.uml-3.1.1.v201008191505.jar"/>

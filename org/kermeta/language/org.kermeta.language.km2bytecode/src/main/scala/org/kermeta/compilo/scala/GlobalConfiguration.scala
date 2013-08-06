@@ -129,6 +129,7 @@ object GlobalConfiguration extends LogAspect {
   var outputProject: String = null
   var outputFolder: String = null
   var javaOutputFolder: String = null
+  var nativeJavaSrcFolder: String = null
   var outputBinFolder: String = null
   var scalaPrefix: String = "Scala"
   @scala.reflect.BeanProperty

@@ -166,7 +166,7 @@ object Main extends LogAspect {
           System.setErr(new java.io.PrintStream(outputStream))
         }
 
-        var compilationResult = EmbeddedScalaCompiler.compile(GlobalConfiguration.outputFolder, GlobalConfiguration.outputBinFolder, true, classpath, useFSC)
+        var compilationResult = EmbeddedScalaCompiler.compile(GlobalConfiguration.outputFolder, GlobalConfiguration.nativeJavaSrcFolder, GlobalConfiguration.outputBinFolder, true, classpath, useFSC)
         endscalatime = System.currentTimeMillis()
         println("time to compile scala : " + (endscalatime - endtime))
         println("time to compile km : " + (endscalatime - time))

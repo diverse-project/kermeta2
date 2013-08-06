@@ -5,6 +5,7 @@ using kermeta::emfpersistence::*
 
 using logo_interpreter::Context
 using kmLogo::ASM::LogoProgram
+using kmLogo::controler::TurtleControler
 
 package org::kermeta::language::sample::logo::interpreter {
 	class MainClass {
@@ -21,10 +22,18 @@ package org::kermeta::language::sample::logo::interpreter {
 			stdio.writeln("Loading logoasm file")
 			root := loadProgram("platform:/resource/org.kermeta.language.sample.logo.interpreter/test/test.logoasm")
 			stdio.writeln("Logoasm file loaded")
+			
+			// create and initialize the GUI
+			var controler : TurtleControler init TurtleControler.new
+			controler.initialize(context.turtle)
+			
 			// Run interpretation
 			stdio.writeln("Interpretation running")
 			root.eval(context)
 			stdio.writeln("Ended Interpretation")
+			
+			// update the GUI
+			controler.modelChanged
 									
 		end
 		

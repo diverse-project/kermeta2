@@ -18,6 +18,6 @@ package org.kermeta.language.logo.interpreter.gui;
 public interface ITurtleGUI {
 	public void drawLine(int x1, int y1, int x2, int y2);
 	public void drawTurtle(int x, int y, double angle, boolean isPenUp);
-	public void clearDrawing();
+	public void clearDrawing(); 
 	
 }

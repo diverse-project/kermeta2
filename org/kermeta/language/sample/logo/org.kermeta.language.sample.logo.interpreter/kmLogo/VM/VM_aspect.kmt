@@ -7,7 +7,7 @@ package kmLogo {
 		aspect class Turtle
 		{
 			attribute math : Math 
-			//reference moveListener : kmLogo::listener::TurtleMoveListener[0..*]
+			reference moveListener : kmLogo::listener::TurtleMoveListener[0..*]
 	
 			operation reset() : Void is do
 				math := Math.new
@@ -25,7 +25,7 @@ package kmLogo {
 			
 			operation rotate(angle : Integer)  : Void is do
 				heading := (heading + angle).mod(360)
-				//moveListener.each{l | l.turtleHasRotated() }
+				moveListener.each{l | l.turtleHasRotated() }
 			end
 		
 			operation move(dx : Double, dy : Double)  : Void is do
@@ -40,7 +40,7 @@ package kmLogo {
 					drawings.add(trace)
 				end
 				position := newPos
-				//moveListener.each{l | l.turtleHasMoved(trace) }
+				moveListener.each{l | l.turtleHasMoved(trace) }
 			end
 				
 			operation forward(steps : Integer) : Void is do

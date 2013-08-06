@@ -6,16 +6,30 @@ import java.io.File
 
 object InternalCompilerHelper {
 	
-	var ext = "scala"
+	var scalaExt = "scala"
+	var javaExt = "java"
 		
-	def listFile(f : File) : List[String] = {
+	def listScalaFile(f : File) : List[String] = {
 		var result = List[String]()
 		if (f.isDirectory()) {
 			for(subf <- f.listFiles){ 
-				result = result ++ listFile(subf)
+				result = result ++ listScalaFile(subf)
 			}
 		} else {
-			if (f.getName().toLowerCase().endsWith("." + ext)){
+			if (f.getName().toLowerCase().endsWith("." + scalaExt)){
+				result = result ++ List(f.getAbsolutePath)
+			}
+		}
+		return result
+	}
+	def listJavaFile(f : File) : List[String] = {
+		var result = List[String]()
+		if (f.isDirectory()) {
+			for(subf <- f.listFiles){ 
+				result = result ++ listJavaFile(subf)
+			}
+		} else {
+			if (f.getName().toLowerCase().endsWith("." + javaExt)){
 				result = result ++ List(f.getAbsolutePath)
 			}
 		}

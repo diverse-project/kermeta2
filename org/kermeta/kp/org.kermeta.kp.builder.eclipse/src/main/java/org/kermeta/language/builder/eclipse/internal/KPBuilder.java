@@ -84,6 +84,7 @@ public class KPBuilder {
 	private String outputEMFJavaFolder;
 	private String outputGenmodelFolder;
 	private String outputEMFBinaryFolder;
+	private String outputUserBinaryFolder;
 	private String kpFileURL;
 	
 	public static final String DEFAULT_RESOURCE_LOCATION =  "resources";
@@ -92,6 +93,7 @@ public class KPBuilder {
 	public static final String DEFAULT_GENMODEL_LOCATION =  "genmodel";
 	public static final String DEFAULT_EMFSOURCES_LOCATION =  "emfjava";
 	public static final String DEFAULT_EMFBIN_LOCATION =  "emfclasses";
+	public static final String DEFAULT_USERBIN_LOCATION =  "userclasses";
 	
 	public KPBuilder(IFile kpProjectFile) {
 		super();
@@ -110,6 +112,7 @@ public class KPBuilder {
 			outputEMFJavaFolder  = outputRootFolder+File.separatorChar+DEFAULT_EMFSOURCES_LOCATION;
 			outputGenmodelFolder  = outputRootFolder+File.separatorChar+DEFAULT_GENMODEL_LOCATION;
 			outputEMFBinaryFolder  = outputRootFolder+File.separatorChar+DEFAULT_EMFBIN_LOCATION;
+			outputUserBinaryFolder = outputRootFolder+File.separatorChar+DEFAULT_USERBIN_LOCATION;
 			
 			
 			//compiler = new KermetaCompiler(false, Activator.getDefault().getMessaggingSystem(),false,outputFolder, true, true, false);
@@ -300,6 +303,7 @@ public class KPBuilder {
 		fullClassPath.addAll(getBuildAdditionalClassPath());
 		fullClassPath.addAll(compiler.getImportProjetClasspath(kp, new KpVariableExpander(kpFileURL, kp, compiler.fileSystemConverter, compiler.logger )));
 		fullClassPath.add(outputEMFBinaryFolder);
+		fullClassPath.add(outputUserBinaryFolder);
 		
 		return fullClassPath;
 	}

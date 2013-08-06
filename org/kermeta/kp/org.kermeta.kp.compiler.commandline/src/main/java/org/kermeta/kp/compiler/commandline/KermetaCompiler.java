@@ -88,6 +88,7 @@ public class KermetaCompiler {
 	public static String DEFAULT_ALL_IMPORTFILE_RESULT_LOCATION_IN_ECLIPSE = "/target/all_importFiles_merged.km";
 	public static String INTERMEDIATE_SUBFOLDER = "";
 	public static String INTERMEDIATE_SCALA_SUBFOLDER = INTERMEDIATE_SUBFOLDER + "/scala";
+	public static String DEFAULT_ADDITIONNAL_JAVA_SRC_FOLDER = "/src/main/java";
 
 
 	
@@ -773,7 +774,7 @@ public class KermetaCompiler {
 			// compiler require a file location not an URL
 			logger.progress(getMainProgressGroup()+".kp2bytecode", "Generating scala...", LOG_MESSAGE_GROUP, 1);
 			
-			fullBinaryDependencyClassPath.add(0,targetEMFBinaryFolder+"/"); // add the path to java code frome generated emf
+			fullBinaryDependencyClassPath.add(0,targetEMFBinaryFolder+"/"); // add the path to java code from generated emf
 			
 			logger.debug("Generating scala for "+kpFileURL, LOG_MESSAGE_GROUP);
 			String fileLocation = resolvedFile.toURI().toURL().getFile(); 
@@ -803,6 +804,13 @@ public class KermetaCompiler {
 				logger.error(this.errorMessage, LOG_MESSAGE_GROUP);
 				this.hasFailed = true;
 			}
+			
+			// -------------- Generating User java bytecode -----------------------
+			fullBinaryDependencyClassPath.add(targetScalaBinaryFolder+"/");
+			UserJava2Bytecode userJava2Bytecode = new UserJava2Bytecode(logger, getMainProgressGroup(), kp,  targetRootFolder , targetRootFolder+"/../src/main/java", targetRootFolder+"/userclasses", fullBinaryDependencyClassPath, runInEclipse);
+			Future<Boolean> userJavaFuture = userJava2Bytecode.java2bytecode(getSingleThreadExector());
+			// process java diagnostic and ensure this thread is finished
+			userJava2Bytecode.processDiagnostic(userJavaFuture);
 			
 			return resolvedUnit;
 		} finally {
@@ -1144,10 +1152,12 @@ public class KermetaCompiler {
 		km2ScalaCompiler.compile(URLDecoder.decode(kmFileURL,"UTF-8"), new CompilerConfiguration(), kp.getMetamodelName());
 	}
 
-	private void initializeforBuilding(KermetaProject kp, String targetGeneratedSourceFolder, String targetFolder, String userAdditionalClassPath) {
+	private void initializeforBuilding(KermetaProject kp, String targetGeneratedSourceFolder,  String targetFolder, String userAdditionalClassPath) {
 		
 		GlobalConfiguration.outputFolder_$eq(targetGeneratedSourceFolder + "/" + INTERMEDIATE_SCALA_SUBFOLDER);
 		GlobalConfiguration.outputProject_$eq(targetGeneratedSourceFolder + "/" + INTERMEDIATE_SUBFOLDER);
+		
+		GlobalConfiguration.nativeJavaSrcFolder_$eq(targetGeneratedSourceFolder + "/../src/main/java");
 		//If classes is modified, please impact it on method checkIfBuildIsNeeded on KPBuilder.java
 		//*************
 		GlobalConfiguration.outputBinFolder_$eq(targetScalaBinaryFolder);
@@ -1291,7 +1301,7 @@ public class KermetaCompiler {
 
 		EmbeddedScalaCompiler scalaCompiler = new EmbeddedScalaCompiler();
 		scalaCompiler.log_$eq(logger);
-		int result = scalaCompiler.compile(GlobalConfiguration.outputFolder(), GlobalConfiguration.outputBinFolder(), true, classpath, useFSC);
+		int result = scalaCompiler.compile(GlobalConfiguration.outputFolder(), GlobalConfiguration.nativeJavaSrcFolder(), GlobalConfiguration.outputBinFolder(), true, classpath, useFSC);
 		if (result != 0) {
 			hasFailed = true;
 			errorMessage = "Failed to generate bytecode from intermediate scala";

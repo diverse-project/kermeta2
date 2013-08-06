@@ -27,7 +27,7 @@ class EmbeddedScalaCompiler {
     classpath
   }
 	
-  def compile(srcPATH : String, outputPATH : String, cleanOutput : Boolean, jars : java.util.List[String], fsc : Boolean) : Int = {
+  def compile(srcScalaPATH : String, srcJavaPATH : String, outputPATH : String, cleanOutput : Boolean, jars : java.util.List[String], fsc : Boolean) : Int = {
 
     var startTime = System.currentTimeMillis
     var compilationResult = 0
@@ -39,11 +39,20 @@ class EmbeddedScalaCompiler {
       new File(outputPATH).mkdir
     }
     /* Src files collect step */
-    var listSrcFiles = InternalCompilerHelper.listFile(new File(srcPATH))
-    /* Build class path */
-		
-    log.info("Scala2bytecode compilation step begin on "+listSrcFiles.size+" files",this.getClass().getName())
-		
+    var listSrcScalaFiles = InternalCompilerHelper.listScalaFile(new File(srcScalaPATH))
+    var listSrcFiles = if(srcJavaPATH !=null){
+    	var listSrcJavaFiles = InternalCompilerHelper.listJavaFile(new File(srcJavaPATH))
+    	/* Build class path */
+    	log.info("Scala2bytecode compilation step begin on "+(listSrcScalaFiles.size+listSrcJavaFiles.size)+" files ("+listSrcScalaFiles.size+" scala, "+listSrcJavaFiles.size+" java)",this.getClass().getName())
+	
+    	listSrcScalaFiles ++ listSrcJavaFiles
+    }
+    else{
+      log.info("Scala2bytecode compilation step begin on "+listSrcScalaFiles.size+" scala files ",this.getClass().getName())
+	
+      listSrcScalaFiles
+    }
+    	
     var classpath : StringBuilder = new StringBuilder("."+File.pathSeparator)
     for(path <- jars) {
       classpath.append(path+File.pathSeparator)

@@ -1,0 +1,53 @@
+/* $Id: TurtleControler.kmt,v 1.2 2008-05-29 12:09:43 vmahe Exp $
+ * Creation date: May 31, 2007
+ * License:
+ * Copyright:
+ * Authors:
+ */
+
+package kmLogo::controler;
+
+
+
+using kermeta::standard::*
+using kmLogo::gui::*
+using kmLogo::VM::*
+
+class TurtleControler inherits kmLogo::listener::TurtleMoveListener
+{
+	attribute registeredGUI : TurtleGUI
+	reference turtleModel : Turtle
+	
+	operation initialize(model : Turtle) : TurtleControler is do
+		turtleModel := model
+		turtleModel.moveListener.add(self)		
+		// create a default GUI
+		var gui : TurtleGUI init TurtleGUI.new.initialize("My Turtle")
+		registeredGUI := gui
+		result := self
+	end
+	operation modelChanged() : Void is do 
+		// use the data in the model to draw the board
+		turtleModel.drawings.each{s | 
+			registeredGUI.drawLine(s.origin.x.intValue, s.origin.y.intValue, 
+								   s.destination.x.intValue, s.destination.y.intValue)
+		}
+		registeredGUI.drawTurtle(turtleModel.position.x.intValue, turtleModel.position.y.intValue, 
+								   turtleModel.heading.doubleValue, turtleModel.penUp)
+	end
+	
+	/** implement TurtleMoveListener operation */
+	method turtleHasMoved(newSegment : kmLogo::VM::Segment) : Void is do
+		if  not newSegment.isVoid then
+			// maybe it has simply moved but not traced something 
+			registeredGUI.drawLine(newSegment.origin.x.intValue, newSegment.origin.y.intValue, 
+							   newSegment.destination.x.intValue, newSegment.destination.y.intValue)
+        end					
+		registeredGUI.drawTurtle(turtleModel.position.x.intValue, turtleModel.position.y.intValue, 
+								turtleModel.heading.doubleValue, turtleModel.penUp)
+	end
+	method turtleHasRotated() : Void is do
+		registeredGUI.drawTurtle(turtleModel.position.x.intValue, turtleModel.position.y.intValue, 
+								turtleModel.heading.doubleValue, turtleModel.penUp)
+	end
+}

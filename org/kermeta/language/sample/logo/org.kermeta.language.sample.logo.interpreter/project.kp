@@ -17,4 +17,6 @@ project logo_interpreter {
 	import "${project.baseUri}/src/main/kmt/Math.kmt"
 	import "${project.baseUri}/src/main/kmt/MainClass.kmt"
 	import "${project.baseUri}/src/main/kmt/TurtleGUI.kmt"
+	import "${project.baseUri}/src/main/kmt/MoveListener.kmt"
+	import "${project.baseUri}/src/main/kmt/TurtleControler.kmt"
 }
