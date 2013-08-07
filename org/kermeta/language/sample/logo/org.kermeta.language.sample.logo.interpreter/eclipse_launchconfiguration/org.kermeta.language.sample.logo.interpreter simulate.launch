@@ -3,7 +3,7 @@
 <stringAttribute key="KM_LAUNCH_KP_FILE" value="/org.kermeta.language.sample.logo.interpreter/project.kp"/>
 <stringAttribute key="KM_LAUNCH_MAIN_CLASS" value="logo_interpreter^org::kermeta::language::sample::logo::interpreter::MainClass"/>
 <stringAttribute key="KM_LAUNCH_MAIN_OPERATION" value="mainOperation"/>
-<stringAttribute key="KM_LAUNCH_PARAMETERS" value="platform:/resource/org.kermeta.language.sample.logo.interpreter/test/spiral.logoasm"/>
+<stringAttribute key="KM_LAUNCH_PARAMETERS" value="platform:/resource/org.kermeta.language.sample.logo.interpreter/test/mandala.logoasm"/>
 <stringAttribute key="KM_LAUNCH_PORT" value=""/>
 <stringAttribute key="KM_LAUNCH_PROJECT" value="org.kermeta.language.sample.logo.interpreter"/>
 <stringAttribute key="process_factory_id" value="org.kermeta.debug.processFactory"/>

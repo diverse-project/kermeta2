@@ -5,21 +5,21 @@ package org::kermeta::language::sample::logo::interpreter {
  
 	class Context{
 	
-		attribute stack 		: OrderedSet[Hashtable<String,Integer>]
+		attribute stack 		: Sequence[Hashtable<String,Integer>]
 		reference turtle		: kmLogo::VM::Turtle
 
 		operation initialize() : Void is do
-			self.stack 		:= OrderedSet[Hashtable<String,Integer>].new
+			self.stack 		:= Sequence[Hashtable<String,Integer>].new
 			self.turtle		:= kmLogo::VM::Turtle.new
+			self.turtle.reset
 			result := void
 		end
 		
 		operation reset () : Void is do
-			self.stack 		:= OrderedSet[Hashtable<String,Integer>].new
+			self.stack 		:= Sequence[Hashtable<String,Integer>].new
 		end
 		
 		operation peek() : Hashtable<String,Integer> is do
-		
 			result := stack.last
 		
 		end

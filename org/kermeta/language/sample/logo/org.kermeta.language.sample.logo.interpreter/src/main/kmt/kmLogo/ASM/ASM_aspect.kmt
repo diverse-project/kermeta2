@@ -19,7 +19,7 @@ package kmLogo {
 		aspect abstract class Primitive {
 
 			operation eval (context : Context) : Integer is do
-				result := void
+				result := 0
 			end
 
 		}
@@ -28,7 +28,7 @@ package kmLogo {
 
 			operation eval (context : Context) : Integer is do
 				context.turtle.forward(-steps.eval(context))
-				result := void
+				result := 0
 			end
 
 		}
@@ -37,7 +37,7 @@ package kmLogo {
 
 			operation eval (context : Context) : Integer is do
 				context.turtle.forward(steps.eval(context))
-				result := void
+				result := 0
 			end
 
 		}
@@ -46,7 +46,7 @@ package kmLogo {
 
 			operation eval (context : Context) : Integer is do
 				context.turtle.rotate(-angle.eval(context))
-				result := void
+				result := 0
 			end
 
 		}
@@ -55,7 +55,7 @@ package kmLogo {
 
 			operation eval (context : Context) : Integer is do
 				context.turtle.rotate(angle.eval(context))
-				result := void
+				result := 0
 			end
 
 		}
@@ -64,7 +64,7 @@ package kmLogo {
 
 			operation eval (context : Context) : Integer is do
 				context.turtle.penUp := false
-				result := void
+				result := 0
 			end
 
 		}
@@ -82,7 +82,7 @@ package kmLogo {
 
 			operation eval (context : Context) : Integer is do
 				context.turtle.reset
-				result := void
+				result := 0
 			end
 
 		}
@@ -90,7 +90,7 @@ package kmLogo {
 		aspect abstract class Expression {
 
 			operation eval (context : Context) : Integer is do
-				result := void
+				result := 0
 			end
 
 		}
@@ -106,10 +106,8 @@ package kmLogo {
 		aspect class ProcCall {
 
 			operation eval (context : Context) : Integer is do
-				result := void
-				stdio.writeln("Calling of : " + self.declaration.name)
+				result := 0
 				var params : Hashtable<String,Integer> := Hashtable<String,Integer>.new
-				
 				from var i : Integer := 0
 				until i == actualArgs.size
 				loop
@@ -119,7 +117,6 @@ package kmLogo {
 				end
 				
 				context.push(params)
-				
 				declaration.instructions.each{instruction | result := instruction.eval(context)}
 				
 				context.pop
@@ -130,7 +127,7 @@ package kmLogo {
 		aspect class Block {
 
 			operation eval (context : Context) : Integer is do
-				result := void
+				result := 0
 				instructions.each{instruction | result := instruction.eval(context)}
 			end
 			
@@ -142,9 +139,12 @@ package kmLogo {
 				if (condition.eval(context) != 0) then
 					result := thenPart.eval(context)
 				else
-					result := elsePart.eval(context)
+					if(not elsePart.isVoid)then
+						result := elsePart.eval(context)
+					else
+						result := 0
+					end
 				end
-				result := void
 			end
 
 		}
@@ -152,12 +152,13 @@ package kmLogo {
 		aspect class Repeat {
 
 			operation eval (context : Context) : Integer is do
+				
+				result := 0
 				from var i : Integer init condition.eval(context)
 				until i < 1 loop
-					block.eval(context)
+					result := block.eval(context)
 					i := i - 1 
 				end
-				result := void
 			end
 
 		}
@@ -165,7 +166,7 @@ package kmLogo {
 		aspect class While {
 
 			operation eval (context : Context) : Integer is do
-				result := void
+				result := 0
 				from var i : Integer init condition.eval(context)
 				until i == 0
 				loop
@@ -179,7 +180,7 @@ package kmLogo {
 		aspect class Parameter {
 
 			operation eval (context : Context) : Integer is do
-				result := context.peek.getValue(self.name)
+				result := 0
 			end
 
 		}
@@ -187,7 +188,8 @@ package kmLogo {
 		aspect class ParameterCall {
 
 			operation eval (context : Context) : Integer is do
-				result := parameter.eval(context)
+				result := context.peek.getValue(parameter.name)
+					
 			end
 
 		}
@@ -232,9 +234,9 @@ package kmLogo {
 
 			operation eval (context : Context) : Integer is do
 				if(lhs.eval(context) == rhs.eval(context)) then
-					result := 0
-				else
 					result := 1
+				else
+					result := 0
 				end
 			end
 
@@ -244,9 +246,9 @@ package kmLogo {
 
 			operation eval (context : Context) : Integer is do
 				if(lhs.eval(context) > rhs.eval(context)) then
-					result := 0
-				else
 					result := 1
+				else
+					result := 0
 				end
 			end
 
@@ -256,9 +258,9 @@ package kmLogo {
 
 			operation eval (context : Context) : Integer is do
 				if(lhs.eval(context) < rhs.eval(context)) then
-					result := 0
-				else
 					result := 1
+				else
+					result := 0
 				end
 			end
 
@@ -267,8 +269,8 @@ package kmLogo {
 		aspect class LogoProgram {
 
 			operation eval (context : Context) : Integer is do
+				result := 0
 				instructions.each{instruction  | result := instruction.eval(context)}
-				result := void
 			end
 
 		}

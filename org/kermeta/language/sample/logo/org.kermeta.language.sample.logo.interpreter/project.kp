@@ -9,10 +9,10 @@ project logo_interpreter {
 	mainOperation "mainOperation"
 
 	import "${logo_model.baseUri}/model/ASMLogo.ecore"
-	import "${project.baseUri}/ecore/VMLogo.ecore"
+	import "${project.baseUri}/src/main/ecore/VMLogo.ecore"
 
-	import "${project.baseUri}/kmLogo/ASM/ASM_aspect.kmt"
-	import "${project.baseUri}/kmLogo/VM/VM_aspect.kmt"
+	import "${project.baseUri}/src/main/kmt//kmLogo/ASM/ASM_aspect.kmt"
+	import "${project.baseUri}/src/main/kmt//kmLogo/VM/VM_aspect.kmt"
 	import "${project.baseUri}/src/main/kmt/Context.kmt"
 	import "${project.baseUri}/src/main/kmt/Math.kmt"
 	import "${project.baseUri}/src/main/kmt/MainClass.kmt"
