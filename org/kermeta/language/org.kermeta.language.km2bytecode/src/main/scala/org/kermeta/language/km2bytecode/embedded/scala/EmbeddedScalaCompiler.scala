@@ -43,7 +43,7 @@ class EmbeddedScalaCompiler {
     var listSrcFiles = if(srcJavaPATH !=null){
     	var listSrcJavaFiles = InternalCompilerHelper.listJavaFile(new File(srcJavaPATH))
     	/* Build class path */
-    	log.info("Scala2bytecode compilation step begin on "+(listSrcScalaFiles.size+listSrcJavaFiles.size)+" files ("+listSrcScalaFiles.size+" scala, "+listSrcJavaFiles.size+" java)",this.getClass().getName())
+    	log.info("Scala2bytecode compilation step begin on "+(listSrcScalaFiles.size)+" scala files (+"+listSrcJavaFiles.size+" java)",this.getClass().getName())
 	
     	listSrcScalaFiles ++ listSrcJavaFiles
     }

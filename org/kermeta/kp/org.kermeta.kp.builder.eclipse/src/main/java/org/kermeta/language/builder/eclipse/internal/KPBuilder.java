@@ -84,6 +84,7 @@ public class KPBuilder {
 	private String outputEMFJavaFolder;
 	private String outputGenmodelFolder;
 	private String outputEMFBinaryFolder;
+	private String userSrcFolder;
 	private String outputUserBinaryFolder;
 	private String kpFileURL;
 	
@@ -94,6 +95,7 @@ public class KPBuilder {
 	public static final String DEFAULT_EMFSOURCES_LOCATION =  "emfjava";
 	public static final String DEFAULT_EMFBIN_LOCATION =  "emfclasses";
 	public static final String DEFAULT_USERBIN_LOCATION =  "userclasses";
+	public static final String DEFAULT_USERSRC_LOCATION =  "src"+File.separatorChar+"main"+File.separatorChar+"java";
 	
 	public KPBuilder(IFile kpProjectFile) {
 		super();
@@ -112,13 +114,14 @@ public class KPBuilder {
 			outputEMFJavaFolder  = outputRootFolder+File.separatorChar+DEFAULT_EMFSOURCES_LOCATION;
 			outputGenmodelFolder  = outputRootFolder+File.separatorChar+DEFAULT_GENMODEL_LOCATION;
 			outputEMFBinaryFolder  = outputRootFolder+File.separatorChar+DEFAULT_EMFBIN_LOCATION;
+			userSrcFolder = projectUri+File.separatorChar+DEFAULT_USERSRC_LOCATION;
 			outputUserBinaryFolder = outputRootFolder+File.separatorChar+DEFAULT_USERBIN_LOCATION;
 			
 			
 			//compiler = new KermetaCompiler(false, Activator.getDefault().getMessaggingSystem(),false,outputFolder, true, true, false);
 			boolean saveIntermediateFiles = Activator.getDefault().getPreferenceStore().getBoolean(PreferenceConstants.P_SAVE_BUILD_INTERMEDIATE_FILES_BOOLEAN);
 			compiler = new KermetaCompiler(false, Activator.getDefault().getMessaggingSystem(), new LocalFileConverterForEclipse(),saveIntermediateFiles, true, true, true);
-			compiler.initializeTargetFolders(outputRootFolder, outputRootFolder, outputScalaFolder, outputScalaBinaryFolder, outputGenmodelFolder, outputEMFJavaFolder, outputEMFBinaryFolder, outputResourceFolder);
+			compiler.initializeFolders(outputRootFolder, outputRootFolder, outputScalaFolder, outputScalaBinaryFolder, outputGenmodelFolder, outputEMFJavaFolder, outputEMFBinaryFolder, outputResourceFolder, userSrcFolder, outputUserBinaryFolder);
 			refreshFileIndex();
 		} catch (IOException e) {
 			Activator.getDefault().getMessaggingSystem().log(Kind.DevERROR,"KPBuilder initialization failed for project "+kpFileURL, this.getClass().getName(), e);
@@ -149,7 +152,8 @@ public class KPBuilder {
 					return Status.OK_STATUS;
 				}
 			};
-		    job.setPriority(Job.LONG);
+		    job.setPriority(Job.LONG);	
+		    //job.setRule(getKpProjectFile().getProject()); // protect from other compilation while doing this one 
 		    job.schedule(); // start as soon as possible
 		}
 	}

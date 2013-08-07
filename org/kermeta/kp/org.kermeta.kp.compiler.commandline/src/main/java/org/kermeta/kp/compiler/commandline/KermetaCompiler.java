@@ -167,14 +167,15 @@ public class KermetaCompiler {
 	private ExecutorService singleThreadExector = null;
 	
 	
-	
+	protected String userSrcFolder;
 	protected String targetRootFolder; 
 	protected String targetGeneratedScalaSourceFolder; 
 	protected String targetScalaBinaryFolder; 
 	protected String targetGeneratedGenmodelFolder; 
 	protected String targetGeneratedEMFSourceFolder; 
 	protected String targetEMFBinaryFolder; 
-	protected  String targetGeneratedResourcesFolder;
+	protected String targetGeneratedResourcesFolder;
+	protected String targetUserBinaryFolder;
 
 	/**
 	 * Simple constructor
@@ -299,13 +300,16 @@ public class KermetaCompiler {
 	 * @param targetEMFBinaryFolder
 	 * @param targetGeneratedResourcesFolder
 	 */
-	public void initializeTargetFolders(String targetRootFolder,
+	public void initializeFolders(String targetRootFolder,
 			String targetIntermediateFolder,
 			String targetGeneratedScalaSourceFolder,
 			String targetScalaBinaryFolder,
 			String targetGeneratedGenmodelFolder,
 			String targetGeneratedEMFSourceFolder,
-			String targetEMFBinaryFolder, String targetGeneratedResourcesFolder) {
+			String targetEMFBinaryFolder, 
+			String targetGeneratedResourcesFolder,
+			String userSrcFolder,
+			String targetUserBinaryFolder) {
 		this.targetRootFolder = targetRootFolder;
 		this.targetIntermediateFolder = targetIntermediateFolder;
 		this.targetGeneratedScalaSourceFolder = targetGeneratedScalaSourceFolder;
@@ -314,6 +318,8 @@ public class KermetaCompiler {
 		this.targetGeneratedEMFSourceFolder = targetGeneratedEMFSourceFolder;
 		this.targetEMFBinaryFolder = targetEMFBinaryFolder;
 		this.targetGeneratedResourcesFolder = targetGeneratedResourcesFolder;
+		this.userSrcFolder = userSrcFolder;
+		this.targetUserBinaryFolder = targetUserBinaryFolder;
 		logger.log(MessagingSystem.Kind.UserINFO, "targetRootFolder="+targetRootFolder , LOG_MESSAGE_GROUP);
 		logger.log(MessagingSystem.Kind.UserINFO, "targetIntermediateFolder="+targetIntermediateFolder , LOG_MESSAGE_GROUP);
 		logger.log(MessagingSystem.Kind.UserINFO, "targetGeneratedScalaSourceFolder="+targetGeneratedScalaSourceFolder , LOG_MESSAGE_GROUP);
@@ -322,6 +328,8 @@ public class KermetaCompiler {
 		logger.log(MessagingSystem.Kind.UserINFO, "targetGeneratedEMFSourceFolder="+targetGeneratedEMFSourceFolder , LOG_MESSAGE_GROUP);
 		logger.log(MessagingSystem.Kind.UserINFO, "targetEMFBinaryFolder="+targetEMFBinaryFolder , LOG_MESSAGE_GROUP);
 		logger.log(MessagingSystem.Kind.UserINFO, "targetGeneratedResourcesFolder="+targetGeneratedResourcesFolder , LOG_MESSAGE_GROUP);
+		logger.log(MessagingSystem.Kind.UserINFO, "userSrcFolder="+userSrcFolder , LOG_MESSAGE_GROUP);
+		logger.log(MessagingSystem.Kind.UserINFO, "targetUserBinaryFolder="+targetUserBinaryFolder , LOG_MESSAGE_GROUP);
 		
 	}
 
@@ -807,7 +815,7 @@ public class KermetaCompiler {
 			
 			// -------------- Generating User java bytecode -----------------------
 			fullBinaryDependencyClassPath.add(targetScalaBinaryFolder+"/");
-			UserJava2Bytecode userJava2Bytecode = new UserJava2Bytecode(logger, getMainProgressGroup(), kp,  targetRootFolder , targetRootFolder+"/../src/main/java", targetRootFolder+"/userclasses", fullBinaryDependencyClassPath, runInEclipse);
+			UserJava2Bytecode userJava2Bytecode = new UserJava2Bytecode(logger, getMainProgressGroup(), kp,  targetRootFolder , userSrcFolder, targetUserBinaryFolder, fullBinaryDependencyClassPath, runInEclipse);
 			Future<Boolean> userJavaFuture = userJava2Bytecode.java2bytecode(getSingleThreadExector());
 			// process java diagnostic and ensure this thread is finished
 			userJava2Bytecode.processDiagnostic(userJavaFuture);
@@ -1157,7 +1165,7 @@ public class KermetaCompiler {
 		GlobalConfiguration.outputFolder_$eq(targetGeneratedSourceFolder + "/" + INTERMEDIATE_SCALA_SUBFOLDER);
 		GlobalConfiguration.outputProject_$eq(targetGeneratedSourceFolder + "/" + INTERMEDIATE_SUBFOLDER);
 		
-		GlobalConfiguration.nativeJavaSrcFolder_$eq(targetGeneratedSourceFolder + "/../src/main/java");
+		GlobalConfiguration.nativeJavaSrcFolder_$eq(userSrcFolder);
 		//If classes is modified, please impact it on method checkIfBuildIsNeeded on KPBuilder.java
 		//*************
 		GlobalConfiguration.outputBinFolder_$eq(targetScalaBinaryFolder);

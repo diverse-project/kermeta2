@@ -109,6 +109,7 @@ public class KermetaBuilder extends org.kermeta.language.builder.api.Builder{
 						}
 					};
 					buildJob.setPriority(Job.LONG);
+					//buildJob.setRule(kpBuilders.get(kpIdentifier).getKpProjectFile().getProject()); // protect from other compilation while doing this one
 					buildJob.schedule();
 					buildJob.join();
 					if(buildJob.getResult() == Status.OK_STATUS){
@@ -152,6 +153,7 @@ public class KermetaBuilder extends org.kermeta.language.builder.api.Builder{
 	        }
 	    };
 	    job.setPriority(Job.LONG);
+	    //job.setRule(kpBuilders.get(kpIdentifier).getKpProjectFile().getProject()); // protect from other compilation while doing this one		
 	    job.schedule();	
 	}
 	
@@ -176,6 +178,7 @@ public class KermetaBuilder extends org.kermeta.language.builder.api.Builder{
 	        }
 	    };
 	    job.setPriority(Job.LONG);
+	    //job.setRule(kpBuilders.get(kpIdentifier).getKpProjectFile().getProject()); // protect from other compilation while doing this one
 	    job.schedule();	
 	}
 	
