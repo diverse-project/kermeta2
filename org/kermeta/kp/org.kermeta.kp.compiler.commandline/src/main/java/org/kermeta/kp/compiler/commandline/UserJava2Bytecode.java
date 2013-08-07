@@ -91,7 +91,7 @@ public class UserJava2Bytecode {
 		
 		// launch javac		
 	    Iterable<? extends JavaFileObject> compilationUnits =
-	            fileManager.getJavaFileObjectsFromFiles(getJavaSources(new File(userJavaFolder)));
+	            fileManager.getJavaFileObjectsFromFiles(getJavaSources(new File(userJavaFolder)));	    
 	    List<String> optionList = new ArrayList<String>();
 		 // set compiler's classpath 
 	    StringBuffer additionalClassPathStringBuffer = new StringBuffer();
@@ -169,14 +169,17 @@ public class UserJava2Bytecode {
 		getJavaSources(javaFiles, currentFolder);
 	    return javaFiles;
 	}
-	private void getJavaSources(ArrayList<File> javaFiles, File currentFolder){;
-		for(File f : currentFolder.listFiles()){
-			if(f.isDirectory()){
-				getJavaSources(javaFiles, f);
-			}
-			else{
-				if (f.getName().endsWith(".java")){
-					javaFiles.add(f);
+	private void getJavaSources(ArrayList<File> javaFiles, File currentFolder){
+		File[] listfiles = currentFolder.listFiles();
+		if(listfiles != null){
+			for(File f : listfiles){
+				if(f.isDirectory()){
+					getJavaSources(javaFiles, f);
+				}
+				else{
+					if (f.getName().endsWith(".java")){
+						javaFiles.add(f);
+					}
 				}
 			}
 		}
