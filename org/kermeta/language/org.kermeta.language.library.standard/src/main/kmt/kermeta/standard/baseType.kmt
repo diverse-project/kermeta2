@@ -481,26 +481,7 @@ class String {
          operation trim() : String is do
 
           end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long,arg1:Integer) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notify() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notifyAll() : Void is do
-
-          end
+        
 
 
         //Add missing methods from Kermeta V1
@@ -682,28 +663,10 @@ class Integer inherits Numeric<Integer> {
         @CompilerIgnore "true"
          operation toOctalString(arg0:Integer) : String is do
 
-          end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long,arg1:Integer) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notify() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notifyAll() : Void is do
-
-          end
-          
+          end        
+          /**
+           * call the function "self" times 
+           */
         @CompilerIgnore "true"
          operation times(body : <Integer->Object>) : Void is do
 
@@ -727,10 +690,7 @@ class Boolean {
          operation equals(arg0:Object) : Boolean is do
 
           end
-        @CompilerIgnore "true"
-         operation toString(arg0:Boolean) : String is do
 
-          end
         @CompilerIgnore "true"
          operation toString() : String is do
 
@@ -739,56 +699,38 @@ class Boolean {
          operation hashCode() : Integer is do
 
           end
-/*        @CompilerIgnore "true"
-         operation compareTo(arg0:Boolean) : Integer is do
 
-          end*/
         @CompilerIgnore "true"
          operation compareTo(arg0:Object) : Integer is do
 
           end
-        @CompilerIgnore "true"
-         operation getBoolean(arg0:String) : Boolean is do
-
-          end
+       
         @CompilerIgnore "true"
          operation booleanValue() : Boolean is do
 
           end
-/*        @CompilerIgnore "true"
-         operation valueOf(arg0:Boolean) : Boolean is do
-
-          end
+         
+        /** return self implies other
+       	 * http://en.wikipedia.org/wiki/Material_implication
+	     * meaning : (not self) or other
+         */
         @CompilerIgnore "true"
-         operation valueOf(arg0:String) : Boolean is do
-
-          end*/
-        @CompilerIgnore "true"
-         operation parseBoolean(arg0:String) : Boolean is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long,arg1:Integer) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notify() : Void is do
-
-          end
+        operation implies(other : Boolean) : Boolean is do
+        end
+        
         @CompilerIgnore "true"
          operation ~or(other : Boolean) : Boolean is do
 
           end
            @CompilerIgnore "true"
          operation ~and(other : Boolean) : Boolean is do
+
+          end
+          /**
+           * not (self and other)
+           */
+          @CompilerIgnore "true"
+         operation nand(other : Boolean) : Boolean is do
 
           end
            @CompilerIgnore "true"
@@ -864,10 +806,7 @@ class Date inherits Comparable<Date> {
          operation clone() : Object is do
 
           end
-/*        @CompilerIgnore "true"
-         operation compareTo(arg0:Date) : Integer is do
 
-          end*/
         @CompilerIgnore "true"
          operation compareTo(arg0:Object) : Integer is do
 
@@ -960,26 +899,7 @@ class Date inherits Comparable<Date> {
          operation toLocaleString() : String is do
 
           end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long,arg1:Integer) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notify() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notifyAll() : Void is do
-
-          end
+        
 }
 @CompilerIgnore "true"
 @ScalaCompilerName "k2.standard.Short"
@@ -1004,10 +924,7 @@ class Short inherits Numeric<Short> {
          operation reverseBytes(arg0:Short) : Short is do
 
           end
- /*       @CompilerIgnore "true"
-         operation compareTo(arg0:Short) : Integer is do
-
-          end*/
+ 
         @CompilerIgnore "true"
          operation compareTo(arg0:Object) : Integer is do
 
@@ -1056,26 +973,7 @@ class Short inherits Numeric<Short> {
          operation parseShort(arg0:String,arg1:Integer) : Short is do
 
           end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long,arg1:Integer) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notify() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notifyAll() : Void is do
-
-          end
+        
 }
 
 /**
@@ -1205,26 +1103,7 @@ class Double inherits Numeric<Double> {
          operation parseDouble(arg0:String) : Double is do
 
           end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long,arg1:Integer) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notify() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notifyAll() : Void is do
-
-          end
+        
 }
 @CompilerIgnore "true"
 @ScalaCompilerName "k2.standard.Float"
@@ -1257,10 +1136,7 @@ class Float inherits Numeric<Float> {
          operation intBitsToFloat(arg0:Integer) : Float is do
 
           end
-/*        @CompilerIgnore "true"
-         operation compareTo(arg0:Float) : Integer is do
 
-          end*/
         @CompilerIgnore "true"
          operation compareTo(arg0:Object) : Integer is do
 
@@ -1321,26 +1197,7 @@ class Float inherits Numeric<Float> {
          operation parseFloat(arg0:String) : Float is do
 
           end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long) : Void is do
 
-          end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long,arg1:Integer) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notify() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notifyAll() : Void is do
-
-          end
 }
 @CompilerIgnore "true"
 @ScalaCompilerName "k2.standard.StringBuffer"
@@ -1531,18 +1388,7 @@ class StringBuffer {
          operation trimToSize() : Void is do
 
           end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long) : Void is do
 
-          end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long,arg1:Integer) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait() : Void is do
-
-          end
         @CompilerIgnore "true"
          operation equals(arg0:Object) : Boolean is do
 
@@ -1551,14 +1397,7 @@ class StringBuffer {
          operation hashCode() : Integer is do
 
           end
-        @CompilerIgnore "true"
-         operation notify() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notifyAll() : Void is do
-
-          end
+ 
 }
 @CompilerIgnore "true"
 @ScalaCompilerName "k2.standard.Character"
@@ -1821,30 +1660,7 @@ class Character {
          operation toTitleCase(arg0:Character) : Character is do
 
           end
-        /*@CompilerIgnore "true"
-         operation toTitleCase(arg0:Integer) : Integer is do
-
-          end*/
-        @CompilerIgnore "true"
-         operation wait(arg0:Long) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait(arg0:Long,arg1:Integer) : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation wait() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notify() : Void is do
-
-          end
-        @CompilerIgnore "true"
-         operation notifyAll() : Void is do
-
-          end
+ 
 }
 
 /**

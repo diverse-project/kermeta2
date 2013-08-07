@@ -172,7 +172,7 @@ class RichBoolean (value: java.lang.Boolean) extends RichValueType[java.lang.Boo
     //override def equals(other : Object) :Boolean={return true}
     def or(other : java.lang.Boolean) : java.lang.Boolean={value || other}
     def nand(other : java.lang.Boolean) : java.lang.Boolean={!(value && other)}
-    def implies(other : java.lang.Boolean) : java.lang.Boolean={true}
+    def implies(other : java.lang.Boolean) : java.lang.Boolean={!value || other}
     override def toString() :java.lang.String={
         if (value){
             return "true";
