@@ -14,13 +14,13 @@ package org::kermeta::language::sample::logo::interpreter {
 		reference root 		: LogoProgram
 	
 		@main "" // declares that operation as a possible entry point of the program
-		operation mainOperation() : Void is do
+		operation mainOperation(inputLogofile : String) : Void is do
 			
 			context := Context.new
 			context.initialize
 			// load the program
 			stdio.writeln("Loading logoasm file")
-			root := loadProgram("platform:/resource/org.kermeta.language.sample.logo.interpreter/test/test.logoasm")
+			root := loadProgram(inputLogofile)
 			stdio.writeln("Logoasm file loaded")
 			
 			// create and initialize the GUI

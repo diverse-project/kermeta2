@@ -4,15 +4,11 @@
   <projects/>
   <buildSpec>
     <buildCommand>
-      <name>org.kermeta.kp.editor.builder</name>
-    </buildCommand>
-    <buildCommand>
       <name>org.scala-ide.sdt.core.scalabuilder</name>
     </buildCommand>
   </buildSpec>
   <natures>
     <nature>org.kermeta.language.texteditor.eclipse.nature.KermetaNatureID</nature>
-    <nature>org.kermeta.kp.editor.nature</nature>
     <nature>org.scala-ide.sdt.core.scalanature</nature>
     <nature>org.eclipse.jdt.core.javanature</nature>
   </natures>
