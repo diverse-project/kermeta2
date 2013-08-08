@@ -388,22 +388,11 @@ class String {
          operation isEmpty() : Boolean is do
 
           end
-        /*@CompilerIgnore "true"
-         operation lastIndexOf(arg0:Integer) : Integer is do
-
-          end
+        
         @CompilerIgnore "true"
-         operation lastIndexOf(arg0:Integer,arg1:Integer) : Integer is do
-
-          end*/
-        @CompilerIgnore "true"
-         operation lastIndexOf(arg0:String) : Integer is do
-
-          end
-       /* @CompilerIgnore "true"
-         operation lastIndexOf(arg0:String,arg1:Integer) : Integer is do
-
-          end*/
+        operation lastIndexOf(arg0:String) : Integer is do
+		end
+       
         @CompilerIgnore "true"
          operation size() : Integer is do
 
@@ -469,18 +458,41 @@ class String {
          operation toCharArray() : Sequence<Character> is do
 
           end
+        /**
+         * Converts all of the characters in this String to lower case
+         */
         @CompilerIgnore "true"
          operation toLowerCase() : String is do
 
           end
+        
+        /**
+         * Converts all of the characters in this String to upper case
+         */
         @CompilerIgnore "true"
-         operation toUpperCase() : String is do
-
-          end
+        operation toUpperCase() : String is do
+        end
+        
+        /**
+         * Converts the first character in this String to upper case
+         */
         @CompilerIgnore "true"
-         operation trim() : String is do
-
-          end
+        operation toUpperFirst() : String is do
+        end
+        
+        /**
+         * Converts the first character in this String to lower case
+         */
+        @CompilerIgnore "true"
+        operation toLowerFirst() : String is do
+        end
+        
+        /**
+         * Returns a copy of the string, with leading and trailing whitespace omitted.
+         */
+        @CompilerIgnore "true"
+        operation trim() : String is do
+		end
         
 
 

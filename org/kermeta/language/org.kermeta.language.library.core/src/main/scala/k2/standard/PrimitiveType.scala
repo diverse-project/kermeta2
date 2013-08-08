@@ -4,546 +4,527 @@ package k2.standard
 import scala._
 import scala.collection.JavaConversions._
 import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.{EStructuralFeature, EClass}
+import org.eclipse.emf.ecore.{ EStructuralFeature, EClass }
 import k2.exceptions.ConstraintsDiagnostic
 
 //import org.k2.language.behavior._
 
+object PrimitiveConversion {
 
-object PrimitiveConversion{
-  
-  implicit def any2kermeta(o : Any)  =  o match {
-    case s:String => new k2.standard.RichString(s)
-    case s : java.lang.Boolean => new k2.standard.RichBoolean(s)
-    case s : java.lang.Integer => new k2.standard.RichInteger(s.intValue)
-    case s:  k2.standard.KermetaObject => s
+  implicit def any2kermeta(o: Any) = o match {
+    case s: String => new k2.standard.RichString(s)
+    case s: java.lang.Boolean => new k2.standard.RichBoolean(s)
+    case s: java.lang.Integer => new k2.standard.RichInteger(s.intValue)
+    case s: k2.standard.KermetaObject => s
     case s: java.util.Iterator[_] => new k2.standard.RichIterator(s)
     case s: java.lang.Double => new k2.standard.RichDouble(s)
     case s: java.lang.Float => new k2.standard.RichFloat(s)
-    case s:java.lang.StringBuilder => new k2.standard.RichStringBuffer(s)
-    case s:java.lang.Short => new k2.standard.RichShort(s)
-    case s:java.lang.Long => new k2.standard.RichLong(s)
-    case s:java.lang.Character=> new k2.standard.RichCharacter(s)
-    case s:org.eclipse.emf.common.util.URI => new k2.standard.RichURI(s)
-    case _ =>  
-      if (o!=null)
+    case s: java.lang.StringBuilder => new k2.standard.RichStringBuffer(s)
+    case s: java.lang.Short => new k2.standard.RichShort(s)
+    case s: java.lang.Long => new k2.standard.RichLong(s)
+    case s: java.lang.Character => new k2.standard.RichCharacter(s)
+    case s: org.eclipse.emf.common.util.URI => new k2.standard.RichURI(s)
+    case _ =>
+      if (o != null)
         new k2.standard.RichEnum(o.asInstanceOf[java.lang.Object])
       else
         null.asInstanceOf[k2.standard.EObjectImplForPrimitive]
   }
-  
-    implicit def string2kermeta(x: String) = new RichString(x)
-    implicit def stringbuffer2kermeta(x: java.lang.StringBuilder) = new RichStringBuffer(x)
 
-    implicit def boolean2kermeta(x: Boolean) = new RichBoolean(x)
-    // implicit def boolean2javaboolean(x: java.lang.Boolean) : Boolean = {if (x== null) return false else return x.booleanValue()}
-    implicit def javaboolean2kermeta(x: java.lang.Boolean) :RichBoolean= {if (x== null) return new RichBoolean(false) else new RichBoolean(x.booleanValue())}
-    implicit def iterator2kermeta(x: java.util.Iterator[_])= new RichIterator(x)
-    implicit def iteratorEObject2kermeta(x:java.util.Iterator[_<: org.eclipse.emf.ecore.EObject]) :  _root_.java.util.Iterator[Any] =x.asInstanceOf[_root_.java.util.Iterator[Any]]
+  implicit def string2kermeta(x: String) = new RichString(x)
+  implicit def stringbuffer2kermeta(x: java.lang.StringBuilder) = new RichStringBuffer(x)
 
-    implicit def random2kermeta(x: java.util.Random) = new RichRandom(x)
-    implicit def integer2kermeta(x: Int) = new RichInteger(x)
-    implicit def javainteger2kermeta(x: java.lang.Integer) = new RichInteger(x)
-    implicit def kermeta2javainteger(x : RichInteger) = x.getValue
-        
-    implicit def long2kermeta(x: Long) = new RichLong(x)
-    implicit def javalong2kermeta(x: java.lang.Long) = new RichLong(x)
-    implicit def kermeta2javalong(x : RichLong) = x.getValue
-    
-    implicit def short2kermeta(x: Short) = new RichShort(x)
-    implicit def javashort2kermeta(x: java.lang.Short) = new RichShort(x)
-    implicit def kermeta2javashort(x : RichShort) = x.getValue
-    
-    implicit def float2kermeta(x: Float) = new RichFloat(x)
-    implicit def javafloat2kermeta(x: java.lang.Float) = new RichFloat(x)
-    implicit def kermeta2javafloat(x : RichFloat) = x.getValue
-    
-    implicit def double2kermeta(x: Double) = new RichDouble(x)
-    implicit def javadouble2kermeta(x: java.lang.Double) = new RichDouble(x)
-    implicit def kermeta2javadouble(x : RichDouble) = x.getValue
-    
-    implicit def date2kermeta(x: java.util.Date) = new RichDate(x)
-    implicit def uri2kermeta(x: org.eclipse.emf.common.util.URI) = new RichURI(x)
-    implicit def resource2KerResource(x: org.eclipse.emf.ecore.resource.Resource) = new _root_.k2.persistence.RichResource(x)
-    implicit def resourceset2KerResourceset(x: org.eclipse.emf.ecore.resource.ResourceSet) = new _root_.k2.persistence.RichResourceSet(x)
+  implicit def boolean2kermeta(x: Boolean) = new RichBoolean(x)
+  // implicit def boolean2javaboolean(x: java.lang.Boolean) : Boolean = {if (x== null) return false else return x.booleanValue()}
+  implicit def javaboolean2kermeta(x: java.lang.Boolean): RichBoolean = { if (x == null) return new RichBoolean(false) else new RichBoolean(x.booleanValue()) }
+  implicit def iterator2kermeta(x: java.util.Iterator[_]) = new RichIterator(x)
+  implicit def iteratorEObject2kermeta(x: java.util.Iterator[_ <: org.eclipse.emf.ecore.EObject]): _root_.java.util.Iterator[Any] = x.asInstanceOf[_root_.java.util.Iterator[Any]]
 
+  implicit def random2kermeta(x: java.util.Random) = new RichRandom(x)
+  implicit def integer2kermeta(x: Int) = new RichInteger(x)
+  implicit def javainteger2kermeta(x: java.lang.Integer) = new RichInteger(x)
+  implicit def kermeta2javainteger(x: RichInteger) = x.getValue
 
-    implicit def character2kermeta(x: Char) = new RichCharacter(x)
-    //implicit def listToEList[G](l : java.util.List[G]) = l.asInstanceOf[org.eclipse.emf.common.util.EList[G]]
-	
-    //implicit def toInt2(in:java.lang.Integer) : Int = in.intValue
-    //implicit def toReal2(in:java.lang.Double) : Double = in.doubleValue
+  implicit def long2kermeta(x: Long) = new RichLong(x)
+  implicit def javalong2kermeta(x: java.lang.Long) = new RichLong(x)
+  implicit def kermeta2javalong(x: RichLong) = x.getValue
 
+  implicit def short2kermeta(x: Short) = new RichShort(x)
+  implicit def javashort2kermeta(x: java.lang.Short) = new RichShort(x)
+  implicit def kermeta2javashort(x: RichShort) = x.getValue
 
+  implicit def float2kermeta(x: Float) = new RichFloat(x)
+  implicit def javafloat2kermeta(x: java.lang.Float) = new RichFloat(x)
+  implicit def kermeta2javafloat(x: RichFloat) = x.getValue
 
-    implicit def IteratorEObject2IteratorKObject(x:  java.util.Iterator[org.eclipse.emf.ecore.EObject]) :java.util.Iterator[_root_.k2.standard.KermetaObject] = {
-        import k2.standard.JavaCollectionConversions._
-        var res = new _root_.java.util.Iterator[_root_.k2.standard.KermetaObject]{
-          def hasNext() : Boolean = x.hasNext
-          def next() : _root_.k2.standard.KermetaObject = x.next.asInstanceOf[_root_.k2.standard.KermetaObject]
-          def remove() = x.remove()
-        }
-        res
-        
+  implicit def double2kermeta(x: Double) = new RichDouble(x)
+  implicit def javadouble2kermeta(x: java.lang.Double) = new RichDouble(x)
+  implicit def kermeta2javadouble(x: RichDouble) = x.getValue
+
+  implicit def date2kermeta(x: java.util.Date) = new RichDate(x)
+  implicit def uri2kermeta(x: org.eclipse.emf.common.util.URI) = new RichURI(x)
+  implicit def resource2KerResource(x: org.eclipse.emf.ecore.resource.Resource) = new _root_.k2.persistence.RichResource(x)
+  implicit def resourceset2KerResourceset(x: org.eclipse.emf.ecore.resource.ResourceSet) = new _root_.k2.persistence.RichResourceSet(x)
+
+  implicit def character2kermeta(x: Char) = new RichCharacter(x)
+  //implicit def listToEList[G](l : java.util.List[G]) = l.asInstanceOf[org.eclipse.emf.common.util.EList[G]]
+
+  //implicit def toInt2(in:java.lang.Integer) : Int = in.intValue
+  //implicit def toReal2(in:java.lang.Double) : Double = in.doubleValue
+
+  implicit def IteratorEObject2IteratorKObject(x: java.util.Iterator[org.eclipse.emf.ecore.EObject]): java.util.Iterator[_root_.k2.standard.KermetaObject] = {
+    import k2.standard.JavaCollectionConversions._
+    var res = new _root_.java.util.Iterator[_root_.k2.standard.KermetaObject] {
+      def hasNext(): Boolean = x.hasNext
+      def next(): _root_.k2.standard.KermetaObject = x.next.asInstanceOf[_root_.k2.standard.KermetaObject]
+      def remove() = x.remove()
     }
+    res
 
-    
-    implicit def ListInteger2ListInt(x:  org.eclipse.emf.common.util.EList[java.lang.Integer]) :java.util.List[Int] = {
-        import k2.standard.JavaCollectionConversions._
-        var l=new java.util.ArrayList[Int]() ;
-        x.foreach(e=> l.add(e.intValue) );
-        return l;
-    }
-    implicit def ListInt2ListInteger(x: java.util.List[Int] ) :org.eclipse.emf.common.util.EList[java.lang.Integer] = {
-        import k2.standard.JavaCollectionConversions._
-        var l=new java.util.ArrayList[Integer]()
-        x.foreach(e=> l.add(new Integer(e)))
-        //return l;
+  }
+
+  implicit def ListInteger2ListInt(x: org.eclipse.emf.common.util.EList[java.lang.Integer]): java.util.List[Int] = {
+    import k2.standard.JavaCollectionConversions._
+    var l = new java.util.ArrayList[Int]();
+    x.foreach(e => l.add(e.intValue));
+    return l;
+  }
+  implicit def ListInt2ListInteger(x: java.util.List[Int]): org.eclipse.emf.common.util.EList[java.lang.Integer] = {
+    import k2.standard.JavaCollectionConversions._
+    var l = new java.util.ArrayList[Integer]()
+    x.foreach(e => l.add(new Integer(e)))
+    //return l;
 
     return null;
-    }
+  }
 
-    implicit def ListBoolean2ListBool(x:  org.eclipse.emf.common.util.EList[java.lang.Boolean]) :java.util.List[Boolean] = {
-        import k2.standard.JavaCollectionConversions._
-        var l=new java.util.ArrayList[Boolean]() ;
-        x.foreach(e=> l.add(e.booleanValue) );
-        return l;
-    }
-    implicit def ListBool2ListBoolean(x: java.util.List[Boolean] ) :org.eclipse.emf.common.util.EList[java.lang.Boolean] = {
-        import k2.standard.JavaCollectionConversions._
-        var l=new java.util.ArrayList[java.lang.Boolean]()
-        x.foreach(e=> l.add(new java.lang.Boolean(e)))
-        //return l;
-return null;
-    }
-    
-    implicit def kermetaCol2ColEObject(x:k2.standard.KermetaCol[_<:Any]):java.util.Collection[org.eclipse.emf.ecore.EObject]={
-      x.asInstanceOf[java.util.Collection[org.eclipse.emf.ecore.EObject]]
-    }
+  implicit def ListBoolean2ListBool(x: org.eclipse.emf.common.util.EList[java.lang.Boolean]): java.util.List[Boolean] = {
+    import k2.standard.JavaCollectionConversions._
+    var l = new java.util.ArrayList[Boolean]();
+    x.foreach(e => l.add(e.booleanValue));
+    return l;
+  }
+  implicit def ListBool2ListBoolean(x: java.util.List[Boolean]): org.eclipse.emf.common.util.EList[java.lang.Boolean] = {
+    import k2.standard.JavaCollectionConversions._
+    var l = new java.util.ArrayList[java.lang.Boolean]()
+    x.foreach(e => l.add(new java.lang.Boolean(e)))
+    //return l;
+    return null;
+  }
 
-    implicit def throwable2kermeta(value:java.lang.Throwable):k2.exceptions.Exception = value.asInstanceOf[k2.exceptions.Exception]
-    
-    implicit def listEObject2listAny(x:java.util.List[org.eclipse.emf.ecore.EObject]):java.util.List[Any]={
-      x.asInstanceOf[java.util.List[Any]]
-    }
+  implicit def kermetaCol2ColEObject(x: k2.standard.KermetaCol[_ <: Any]): java.util.Collection[org.eclipse.emf.ecore.EObject] = {
+    x.asInstanceOf[java.util.Collection[org.eclipse.emf.ecore.EObject]]
+  }
 
-}  
- 
+  implicit def throwable2kermeta(value: java.lang.Throwable): k2.exceptions.Exception = value.asInstanceOf[k2.exceptions.Exception]
 
-class Void  extends  EObjectImplForPrimitive //with org.k2.scala.framework.emf.aspects.KermetaObjectAspect
+  implicit def listEObject2listAny(x: java.util.List[org.eclipse.emf.ecore.EObject]): java.util.List[Any] = {
+    x.asInstanceOf[java.util.List[Any]]
+  }
+
+}
+
+class Void extends EObjectImplForPrimitive //with org.k2.scala.framework.emf.aspects.KermetaObjectAspect
 {
-    override def toString() :java.lang.String={return  "<void>";}
-    override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Void")
+  override def toString(): java.lang.String = { return "<void>"; }
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Void")
 }
- 
-abstract class RichValueType[G]  extends EObjectImplForPrimitive with ScalaWrapper{}
 
-abstract class Comparable[G]  extends RichValueType[G] {
-    def isLower(other : G) : java.lang.Boolean
-    def isGreaterOrEqual(other : G) : java.lang.Boolean
-    def compareTo(other : G) : java.lang.Integer
-    def isLowerOrEqual(other : G) : java.lang.Boolean
-    def isGreater(other : G) : java.lang.Boolean
+abstract class RichValueType[G] extends EObjectImplForPrimitive with ScalaWrapper {}
+
+abstract class Comparable[G] extends RichValueType[G] {
+  def isLower(other: G): java.lang.Boolean
+  def isGreaterOrEqual(other: G): java.lang.Boolean
+  def compareTo(other: G): java.lang.Integer
+  def isLowerOrEqual(other: G): java.lang.Boolean
+  def isGreater(other: G): java.lang.Boolean
 }
-trait Summable[G]  extends Object {
-    def plus(other : G) :G
+trait Summable[G] extends Object {
+  def plus(other: G): G
 }
 //class RichNotComparableException  extends Exception  {}
 
-class RichIterator (value: java.util.Iterator[_]) extends EObjectImplForPrimitive with ScalaWrapper{
-	override  def isVoid(): java.lang.Boolean = false;
-	def isOff(): java.lang.Boolean = {return !value.hasNext()}
-	override def getValue():Object = value 
-	
-    override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Iterator")
+class RichIterator(value: java.util.Iterator[_]) extends EObjectImplForPrimitive with ScalaWrapper {
+  override def isVoid(): java.lang.Boolean = false;
+  def isOff(): java.lang.Boolean = { return !value.hasNext() }
+  override def getValue(): Object = value
+
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Iterator")
 }
 
-
-class RichBoolean (value: java.lang.Boolean) extends RichValueType[java.lang.Boolean] {
-	//generated
-//	 def compareTo(arg0:java.lang.Boolean) : Int = value.compareTo(arg0)
-	def booleanValue() : java.lang.Boolean = value.booleanValue()
-  //end generated
-
-    override def isVoid(): java.lang.Boolean = false;
-	
-    def not() : java.lang.Boolean={return !value}
-    def xor(other : java.lang.Boolean) : java.lang.Boolean={(value || other) && !(value && other)}
-    //override def equals(other : Object) :Boolean={return true}
-    def or(other : java.lang.Boolean) : java.lang.Boolean={value || other}
-    def nand(other : java.lang.Boolean) : java.lang.Boolean={!(value && other)}
-    def implies(other : java.lang.Boolean) : java.lang.Boolean={!value || other}
-    override def toString() :java.lang.String={
-        if (value){
-            return "true";
-        }
-        else{
-            return "false";
-        }
-    }
-    def and(other : java.lang.Boolean) : java.lang.Boolean={value && other}
-    def toBoolean() : java.lang.Boolean = {value}
-    //def andThen(func : Boolean => Boolean):Boolean ={ if (value) {return func(value) }else return false; }
-    def andThen(func : java.lang.Boolean => java.lang.Boolean):java.lang.Boolean ={ if (value) {return func(value) }else return false; }
-    
-    //def orElse(func : Boolean => Boolean):Boolean ={ if (!value) {return func(value)}else return true; }
-    def orElse(func : java.lang.Boolean => java.lang.Boolean):java.lang.Boolean ={ if (!value) {return func(value)}else return true; }
-    override def getValue():Object = new java.lang.Boolean(value)
-    override def getMetaClass():org.kermeta.language.structure.Class={
-        return k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Boolean")
-    }
-	
-}
-
-
-
-class RichRandom(value : java.util.Random) extends EObjectImplForPrimitive with ScalaWrapper{
-	override def isVoid() = value==null;
-	
-	override def getValue():Object = value
-	
-	def nextBoolean() : java.lang.Boolean = value.nextBoolean()
-	def nextDouble() : java.lang.Double = value.nextDouble()
-	def nextFloat() : java.lang.Float = value.nextFloat()
-	def nextGaussian() : java.lang.Double = value.nextGaussian()
-	def nextInt() : java.lang.Integer = value.nextInt()
-	def nextInt(n : java.lang.Integer) : java.lang.Integer = value.nextInt(n)
-	def nextLong() : java.lang.Long = value.nextLong()
-	def setSeed(s : java.lang.Long) = value.setSeed(s)
-	
-	override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Random")
-}
-
-
-
-class RichDate(value: java.util.Date) extends EObjectImplForPrimitive with ScalaWrapper{
-	override  def isVoid(): java.lang.Boolean = value==null;
-    
+class RichBoolean(value: java.lang.Boolean) extends RichValueType[java.lang.Boolean] {
   //generated
-	override def clone() : AnyRef = value.clone
-	def compareTo(arg0:java.util.Date) : Int = value.compareTo(arg0)
-//	 def compareTo(arg0:AnyRef) : Int = value.compareTo(arg0)
-	def after(arg0:java.util.Date) : java.lang.Boolean = value.after(arg0)
-	def before(arg0:java.util.Date) : java.lang.Boolean = value.before(arg0)
-	def getDate() : java.lang.Integer = value.getDate()
-	def getHours() : java.lang.Integer = value.getHours()
-	def getMinutes() : java.lang.Integer = value.getMinutes()
-	def getMonth() : java.lang.Integer = value.getMonth()
-	def getSeconds() : java.lang.Integer = value.getSeconds()
-	def getTime() : java.lang.Long = value.getTime()
-	def getYear() : java.lang.Integer = value.getYear()
-	def setTime(arg0:Long) : Any = value.setTime(arg0)
-	def getDay() : java.lang.Integer = value.getDay()
-	def getTimezoneOffset() : java.lang.Integer = value.getTimezoneOffset()
-	def setDate(arg0 : java.lang.Integer) : Any = value.setDate(arg0)
-	def setHours(arg0 : java.lang.Integer) : Any = value.setHours(arg0)
-	def setMinutes(arg0 : java.lang.Integer) : Any = value.setMinutes(arg0)
-	def setMonth(arg0 : java.lang.Integer) : Any = value.setMonth(arg0)
-	def setSeconds(arg0 : java.lang.Integer) : Any = value.setSeconds(arg0)
-	def setYear(arg0 : java.lang.Integer) : Any = value.setYear(arg0)
-	def toGMTString() : java.lang.String = value.toGMTString()
-	def toLocaleString() : java.lang.String = value.toLocaleString()
+  //	 def compareTo(arg0:java.lang.Boolean) : Int = value.compareTo(arg0)
+  def booleanValue(): java.lang.Boolean = value.booleanValue()
   //end generated
-	override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Date")
-	override def getValue():Object = value
+
+  override def isVoid(): java.lang.Boolean = false;
+
+  def not(): java.lang.Boolean = { return !value }
+  def xor(other: java.lang.Boolean): java.lang.Boolean = { (value || other) && !(value && other) }
+  //override def equals(other : Object) :Boolean={return true}
+  def or(other: java.lang.Boolean): java.lang.Boolean = { value || other }
+  def nand(other: java.lang.Boolean): java.lang.Boolean = { !(value && other) }
+  def implies(other: java.lang.Boolean): java.lang.Boolean = { !value || other }
+  override def toString(): java.lang.String = {
+    if (value) {
+      return "true";
+    } else {
+      return "false";
+    }
+  }
+  def and(other: java.lang.Boolean): java.lang.Boolean = { value && other }
+  def toBoolean(): java.lang.Boolean = { value }
+  //def andThen(func : Boolean => Boolean):Boolean ={ if (value) {return func(value) }else return false; }
+  def andThen(func: java.lang.Boolean => java.lang.Boolean): java.lang.Boolean = { if (value) { return func(value) } else return false; }
+
+  //def orElse(func : Boolean => Boolean):Boolean ={ if (!value) {return func(value)}else return true; }
+  def orElse(func: java.lang.Boolean => java.lang.Boolean): java.lang.Boolean = { if (!value) { return func(value) } else return true; }
+  override def getValue(): Object = new java.lang.Boolean(value)
+  override def getMetaClass(): org.kermeta.language.structure.Class = {
+    return k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Boolean")
+  }
+
 }
 
-class RichDouble(value: java.lang.Double) extends RichNumeric[java.lang.Double]{
-	def plus(other : java.lang.Double) : java.lang.Double={value+other}
-	def mult(other : java.lang.Double) : java.lang.Double={value*other}
-	def minus(other : java.lang.Double) : java.lang.Double={return value-other}
-	def mod(other : java.lang.Double) : java.lang.Double={return value % other}
-	def div(other : java.lang.Double) : java.lang.Double={return value/other}
-	def uminus() : java.lang.Double={return (value * (-1)).toDouble}
+class RichRandom(value: java.util.Random) extends EObjectImplForPrimitive with ScalaWrapper {
+  override def isVoid() = value == null;
 
-	override def isLower(other : java.lang.Double) : java.lang.Boolean={value<other}
-	def compareTo(other : java.lang.Double) : java.lang.Integer={return value.asInstanceOf[Double].compare(other)}
-	override def isGreater(other : java.lang.Double) : java.lang.Boolean={return value>other}
-	override def isGreaterOrEqual(other : java.lang.Double) : java.lang.Boolean={value>=other}
-	def isLowerOrEqual(other : java.lang.Double) : java.lang.Boolean={return  value<=other.intValue}
+  override def getValue(): Object = value
 
-	override def getValue():Object = new java.lang.Double(value)
-	override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Double")
+  def nextBoolean(): java.lang.Boolean = value.nextBoolean()
+  def nextDouble(): java.lang.Double = value.nextDouble()
+  def nextFloat(): java.lang.Float = value.nextFloat()
+  def nextGaussian(): java.lang.Double = value.nextGaussian()
+  def nextInt(): java.lang.Integer = value.nextInt()
+  def nextInt(n: java.lang.Integer): java.lang.Integer = value.nextInt(n)
+  def nextLong(): java.lang.Long = value.nextLong()
+  def setSeed(s: java.lang.Long) = value.setSeed(s)
 
-   //generated
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Random")
+}
+
+class RichDate(value: java.util.Date) extends EObjectImplForPrimitive with ScalaWrapper {
+  override def isVoid(): java.lang.Boolean = value == null;
+
+  //generated
+  override def clone(): AnyRef = value.clone
+  def compareTo(arg0: java.util.Date): Int = value.compareTo(arg0)
+  //	 def compareTo(arg0:AnyRef) : Int = value.compareTo(arg0)
+  def after(arg0: java.util.Date): java.lang.Boolean = value.after(arg0)
+  def before(arg0: java.util.Date): java.lang.Boolean = value.before(arg0)
+  def getDate(): java.lang.Integer = value.getDate()
+  def getHours(): java.lang.Integer = value.getHours()
+  def getMinutes(): java.lang.Integer = value.getMinutes()
+  def getMonth(): java.lang.Integer = value.getMonth()
+  def getSeconds(): java.lang.Integer = value.getSeconds()
+  def getTime(): java.lang.Long = value.getTime()
+  def getYear(): java.lang.Integer = value.getYear()
+  def setTime(arg0: Long): Any = value.setTime(arg0)
+  def getDay(): java.lang.Integer = value.getDay()
+  def getTimezoneOffset(): java.lang.Integer = value.getTimezoneOffset()
+  def setDate(arg0: java.lang.Integer): Any = value.setDate(arg0)
+  def setHours(arg0: java.lang.Integer): Any = value.setHours(arg0)
+  def setMinutes(arg0: java.lang.Integer): Any = value.setMinutes(arg0)
+  def setMonth(arg0: java.lang.Integer): Any = value.setMonth(arg0)
+  def setSeconds(arg0: java.lang.Integer): Any = value.setSeconds(arg0)
+  def setYear(arg0: java.lang.Integer): Any = value.setYear(arg0)
+  def toGMTString(): java.lang.String = value.toGMTString()
+  def toLocaleString(): java.lang.String = value.toLocaleString()
+  //end generated
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Date")
+  override def getValue(): Object = value
+}
+
+class RichDouble(value: java.lang.Double) extends RichNumeric[java.lang.Double] {
+  def plus(other: java.lang.Double): java.lang.Double = { value + other }
+  def mult(other: java.lang.Double): java.lang.Double = { value * other }
+  def minus(other: java.lang.Double): java.lang.Double = { return value - other }
+  def mod(other: java.lang.Double): java.lang.Double = { return value % other }
+  def div(other: java.lang.Double): java.lang.Double = { return value / other }
+  def uminus(): java.lang.Double = { return (value * (-1)).toDouble }
+
+  override def isLower(other: java.lang.Double): java.lang.Boolean = { value < other }
+  def compareTo(other: java.lang.Double): java.lang.Integer = { return value.asInstanceOf[Double].compare(other) }
+  override def isGreater(other: java.lang.Double): java.lang.Boolean = { return value > other }
+  override def isGreaterOrEqual(other: java.lang.Double): java.lang.Boolean = { value >= other }
+  def isLowerOrEqual(other: java.lang.Double): java.lang.Boolean = { return value <= other.intValue }
+
+  override def getValue(): Object = new java.lang.Double(value)
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Double")
+
+  //generated
   //override def equals(arg0:Any) : Boolean = value.equals(arg0)
-	// def compareTo(arg0:java.lang.Double) : Int = value.compareTo(arg0)
-	//def shortValue() : java.lang.Short = value.shortValue()
-	//def intValue() : java.lang.Integer = value.intValue()
-	//def longValue() : java.lang.Long = value.longValue()
-	//def floatValue() : java.lang.Float = value.floatValue()
-	//def doubleValue() : java.lang.Double = value.doubleValue()
-  
-	def isNaN() : Boolean = value.isNaN()
-	def isInfinite() : Boolean = value.isInfinite()
-   //end generated
-}
-
-class RichFloat(value: java.lang.Float)extends RichNumeric[java.lang.Float] {
-  def plus(other : java.lang.Float) : java.lang.Float={value+other}
-  def mult(other : java.lang.Float) : java.lang.Float={value*other}
-  def minus(other : java.lang.Float) : java.lang.Float={return value-other}
-  def mod(other : java.lang.Float) : java.lang.Float={return value % other}
-  def div(other : java.lang.Float) : java.lang.Float={return value/other}
-  def uminus() : java.lang.Float={return (value * (-1)).toFloat}
-
-  override def isLower(other : java.lang.Float) : java.lang.Boolean={value<other}
-  def compareTo(other : java.lang.Float) : java.lang.Integer={return value.asInstanceOf[Float].compare(other)}
-  override def isGreater(other : java.lang.Float) : java.lang.Boolean={return value>other}
-  override def isGreaterOrEqual(other : java.lang.Float) : java.lang.Boolean={value>=other}
-  def isLowerOrEqual(other : java.lang.Float) : java.lang.Boolean={return  value<=other.intValue}
-
-  override def getValue():Object = new java.lang.Float(value)
-	override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Float")
-     //generated
-     // override def equals(arg0:Any) : Boolean = value.equals(arg0)
+  // def compareTo(arg0:java.lang.Double) : Int = value.compareTo(arg0)
   //def shortValue() : java.lang.Short = value.shortValue()
   //def intValue() : java.lang.Integer = value.intValue()
   //def longValue() : java.lang.Long = value.longValue()
   //def floatValue() : java.lang.Float = value.floatValue()
   //def doubleValue() : java.lang.Double = value.doubleValue()
-  def isNaN() : java.lang.Boolean = value.isNaN()
-  def isInfinite() : java.lang.Boolean = value.isInfinite()
-   //end generated
+
+  def isNaN(): Boolean = value.isNaN()
+  def isInfinite(): Boolean = value.isInfinite()
+  //end generated
 }
 
-class RichStringBuffer(value: java.lang.StringBuilder) extends KermetaObject with EObjectImplForPrimitive with ScalaWrapper{
-	 override  def isVoid() : java.lang.Boolean = value==null;
-	 def append(arg0:java.lang.Object) : java.lang.StringBuilder = value.append(arg0)
-	 def append(arg0:java.lang.String) : java.lang.StringBuilder = value.append(arg0)
-	 def append(arg0:java.lang.StringBuffer) : java.lang.StringBuilder = value.append(arg0)
-	 def append(arg0:Array[java.lang.Character]) : java.lang.StringBuilder = value.append(arg0)
-	 def append(arg0:Array[Char], arg1 : java.lang.Integer, arg2 : java.lang.Integer) : java.lang.StringBuilder = value.append(arg0,arg1,arg2)
-	 def append(arg0 : java.lang.Boolean) : java.lang.StringBuilder = value.append(arg0)
-	 def append(arg0 : java.lang.Character) : java.lang.StringBuilder = value.append(arg0)
-	 def append(arg0 : java.lang.Integer) : java.lang.StringBuilder = value.append(arg0)
-	 def append(arg0 : java.lang.Long) : java.lang.StringBuilder = value.append(arg0)
-	 def append(arg0 : java.lang.Float) : java.lang.StringBuilder = value.append(arg0)
-	 def append(arg0 : java.lang.Double) : java.lang.StringBuilder = value.append(arg0)
-	 def indexOf(arg0 : java.lang.String) : java.lang.Integer = value.indexOf(arg0)
-	 def indexOf(arg0:java.lang.String, arg1 : java.lang.Integer) : java.lang.Integer = value.indexOf(arg0,arg1)
-	 def charAt(arg0 : java.lang.Integer) : java.lang.Character = value.charAt(arg0)
-	 def codePointAt(arg0 : java.lang.Integer) : java.lang.Integer = value.codePointAt(arg0)
-	 def codePointBefore(arg0 : java.lang.Integer) : java.lang.Integer = value.codePointBefore(arg0)
-	 def codePointCount(arg0 : java.lang.Integer, arg1 : java.lang.Integer) : java.lang.Integer = value.codePointCount(arg0,arg1)
-	 def getChars(arg0 : java.lang.Integer, arg1 : java.lang.Integer, arg2:Array[Char], arg3 : java.lang.Integer) : Any = value.getChars(arg0,arg1,arg2,arg3)
-	 def lastIndexOf(arg0:java.lang.String) : java.lang.Integer = value.lastIndexOf(arg0)
-	 def lastIndexOf(arg0:java.lang.String, arg1 : java.lang.Integer) : java.lang.Integer = value.lastIndexOf(arg0,arg1)
-	 def size() : java.lang.Integer = value.length()
-	 def offsetByCodePoints(arg0: java.lang.Integer,arg1: java.lang.Integer) : java.lang.Integer = value.offsetByCodePoints(arg0,arg1)
-	 def replace(arg0:java.lang.Integer, arg1:java.lang.Integer, arg2:java.lang.String) : java.lang.StringBuilder = value.replace(arg0,arg1,arg2)
-	 def substring(arg0: java.lang.Integer) : java.lang.String = value.substring(arg0)
-	 def substring(arg0: java.lang.Integer, arg1: java.lang.Integer) : java.lang.String = value.substring(arg0,arg1)
-	 def appendCodePoint(arg0: java.lang.Integer) : java.lang.StringBuilder = value.appendCodePoint(arg0)
-	 def capacity() : java.lang.Integer = value.capacity()
-	 def delete(arg0: java.lang.Integer, arg1: java.lang.Integer) : java.lang.StringBuilder = value.delete(arg0,arg1)
-	 def deleteCharAt(arg0: java.lang.Integer) : java.lang.StringBuilder = value.deleteCharAt(arg0)
-	 def ensureCapacity(arg0: java.lang.Integer) : Any = value.ensureCapacity(arg0)
-	 def insert(arg0 : java.lang.Integer, arg1:Array[Char], arg2: java.lang.Integer, arg3: java.lang.Integer) : java.lang.StringBuilder = value.insert(arg0,arg1,arg2,arg3)
-	 def insert(arg0 : java.lang.Integer, arg1:java.lang.Object) : java.lang.StringBuilder = value.insert(arg0,arg1)
-	 def insert(arg0 : java.lang.Integer, arg1:java.lang.String) : java.lang.StringBuilder = value.insert(arg0,arg1)
-	 def insert(arg0 : java.lang.Integer, arg1:Array[Char]) : java.lang.StringBuilder = value.insert(arg0,arg1)
-	 def insert(arg0 : java.lang.Integer, arg1: java.lang.Boolean) : java.lang.StringBuilder = value.insert(arg0,arg1)
-	 def insert(arg0 : java.lang.Integer, arg1: java.lang.Character) : java.lang.StringBuilder = value.insert(arg0,arg1)
-	 def insert(arg0 : java.lang.Integer, arg1: java.lang.Integer) : java.lang.StringBuilder = value.insert(arg0,arg1)
-	 def insert(arg0 : java.lang.Integer, arg1: java.lang.Long) : java.lang.StringBuilder = value.insert(arg0,arg1)
-	 def insert(arg0 : java.lang.Integer, arg1: java.lang.Float) : java.lang.StringBuilder = value.insert(arg0,arg1)
-	 def insert(arg0 : java.lang.Integer, arg1: java.lang.Double) : java.lang.StringBuilder = value.insert(arg0,arg1)
-	 def reverse() : java.lang.StringBuilder = value.reverse()
-	 def setCharAt(arg0 : java.lang.Integer,arg1: java.lang.Character) : Any = value.setCharAt(arg0,arg1)
-	 def setLength(arg0 : java.lang.Integer) : Any = value.setLength(arg0)
-	 def trimToSize() : Any = value.trimToSize()
-	 override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.StringBuffer")
-	 override def getValue():Object = value
+class RichFloat(value: java.lang.Float) extends RichNumeric[java.lang.Float] {
+  def plus(other: java.lang.Float): java.lang.Float = { value + other }
+  def mult(other: java.lang.Float): java.lang.Float = { value * other }
+  def minus(other: java.lang.Float): java.lang.Float = { return value - other }
+  def mod(other: java.lang.Float): java.lang.Float = { return value % other }
+  def div(other: java.lang.Float): java.lang.Float = { return value / other }
+  def uminus(): java.lang.Float = { return (value * (-1)).toFloat }
+
+  override def isLower(other: java.lang.Float): java.lang.Boolean = { value < other }
+  def compareTo(other: java.lang.Float): java.lang.Integer = { return value.asInstanceOf[Float].compare(other) }
+  override def isGreater(other: java.lang.Float): java.lang.Boolean = { return value > other }
+  override def isGreaterOrEqual(other: java.lang.Float): java.lang.Boolean = { value >= other }
+  def isLowerOrEqual(other: java.lang.Float): java.lang.Boolean = { return value <= other.intValue }
+
+  override def getValue(): Object = new java.lang.Float(value)
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Float")
+  //generated
+  // override def equals(arg0:Any) : Boolean = value.equals(arg0)
+  //def shortValue() : java.lang.Short = value.shortValue()
+  //def intValue() : java.lang.Integer = value.intValue()
+  //def longValue() : java.lang.Long = value.longValue()
+  //def floatValue() : java.lang.Float = value.floatValue()
+  //def doubleValue() : java.lang.Double = value.doubleValue()
+  def isNaN(): java.lang.Boolean = value.isNaN()
+  def isInfinite(): java.lang.Boolean = value.isInfinite()
+  //end generated
+}
+
+class RichStringBuffer(value: java.lang.StringBuilder) extends KermetaObject with EObjectImplForPrimitive with ScalaWrapper {
+  override def isVoid(): java.lang.Boolean = value == null;
+  def append(arg0: java.lang.Object): java.lang.StringBuilder = value.append(arg0)
+  def append(arg0: java.lang.String): java.lang.StringBuilder = value.append(arg0)
+  def append(arg0: java.lang.StringBuffer): java.lang.StringBuilder = value.append(arg0)
+  def append(arg0: Array[java.lang.Character]): java.lang.StringBuilder = value.append(arg0)
+  def append(arg0: Array[Char], arg1: java.lang.Integer, arg2: java.lang.Integer): java.lang.StringBuilder = value.append(arg0, arg1, arg2)
+  def append(arg0: java.lang.Boolean): java.lang.StringBuilder = value.append(arg0)
+  def append(arg0: java.lang.Character): java.lang.StringBuilder = value.append(arg0)
+  def append(arg0: java.lang.Integer): java.lang.StringBuilder = value.append(arg0)
+  def append(arg0: java.lang.Long): java.lang.StringBuilder = value.append(arg0)
+  def append(arg0: java.lang.Float): java.lang.StringBuilder = value.append(arg0)
+  def append(arg0: java.lang.Double): java.lang.StringBuilder = value.append(arg0)
+  def indexOf(arg0: java.lang.String): java.lang.Integer = value.indexOf(arg0)
+  def indexOf(arg0: java.lang.String, arg1: java.lang.Integer): java.lang.Integer = value.indexOf(arg0, arg1)
+  def charAt(arg0: java.lang.Integer): java.lang.Character = value.charAt(arg0)
+  def codePointAt(arg0: java.lang.Integer): java.lang.Integer = value.codePointAt(arg0)
+  def codePointBefore(arg0: java.lang.Integer): java.lang.Integer = value.codePointBefore(arg0)
+  def codePointCount(arg0: java.lang.Integer, arg1: java.lang.Integer): java.lang.Integer = value.codePointCount(arg0, arg1)
+  def getChars(arg0: java.lang.Integer, arg1: java.lang.Integer, arg2: Array[Char], arg3: java.lang.Integer): Any = value.getChars(arg0, arg1, arg2, arg3)
+  def lastIndexOf(arg0: java.lang.String): java.lang.Integer = value.lastIndexOf(arg0)
+  def lastIndexOf(arg0: java.lang.String, arg1: java.lang.Integer): java.lang.Integer = value.lastIndexOf(arg0, arg1)
+  def size(): java.lang.Integer = value.length()
+  def offsetByCodePoints(arg0: java.lang.Integer, arg1: java.lang.Integer): java.lang.Integer = value.offsetByCodePoints(arg0, arg1)
+  def replace(arg0: java.lang.Integer, arg1: java.lang.Integer, arg2: java.lang.String): java.lang.StringBuilder = value.replace(arg0, arg1, arg2)
+  def substring(arg0: java.lang.Integer): java.lang.String = value.substring(arg0)
+  def substring(arg0: java.lang.Integer, arg1: java.lang.Integer): java.lang.String = value.substring(arg0, arg1)
+  def appendCodePoint(arg0: java.lang.Integer): java.lang.StringBuilder = value.appendCodePoint(arg0)
+  def capacity(): java.lang.Integer = value.capacity()
+  def delete(arg0: java.lang.Integer, arg1: java.lang.Integer): java.lang.StringBuilder = value.delete(arg0, arg1)
+  def deleteCharAt(arg0: java.lang.Integer): java.lang.StringBuilder = value.deleteCharAt(arg0)
+  def ensureCapacity(arg0: java.lang.Integer): Any = value.ensureCapacity(arg0)
+  def insert(arg0: java.lang.Integer, arg1: Array[Char], arg2: java.lang.Integer, arg3: java.lang.Integer): java.lang.StringBuilder = value.insert(arg0, arg1, arg2, arg3)
+  def insert(arg0: java.lang.Integer, arg1: java.lang.Object): java.lang.StringBuilder = value.insert(arg0, arg1)
+  def insert(arg0: java.lang.Integer, arg1: java.lang.String): java.lang.StringBuilder = value.insert(arg0, arg1)
+  def insert(arg0: java.lang.Integer, arg1: Array[Char]): java.lang.StringBuilder = value.insert(arg0, arg1)
+  def insert(arg0: java.lang.Integer, arg1: java.lang.Boolean): java.lang.StringBuilder = value.insert(arg0, arg1)
+  def insert(arg0: java.lang.Integer, arg1: java.lang.Character): java.lang.StringBuilder = value.insert(arg0, arg1)
+  def insert(arg0: java.lang.Integer, arg1: java.lang.Integer): java.lang.StringBuilder = value.insert(arg0, arg1)
+  def insert(arg0: java.lang.Integer, arg1: java.lang.Long): java.lang.StringBuilder = value.insert(arg0, arg1)
+  def insert(arg0: java.lang.Integer, arg1: java.lang.Float): java.lang.StringBuilder = value.insert(arg0, arg1)
+  def insert(arg0: java.lang.Integer, arg1: java.lang.Double): java.lang.StringBuilder = value.insert(arg0, arg1)
+  def reverse(): java.lang.StringBuilder = value.reverse()
+  def setCharAt(arg0: java.lang.Integer, arg1: java.lang.Character): Any = value.setCharAt(arg0, arg1)
+  def setLength(arg0: java.lang.Integer): Any = value.setLength(arg0)
+  def trimToSize(): Any = value.trimToSize()
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.StringBuffer")
+  override def getValue(): Object = value
 }
 
 class RichShort(value: java.lang.Short) extends RichNumeric[java.lang.Short] {
-      override def plus(other : java.lang.Short) : java.lang.Short={(value+other).toShort}
-      override def mult(other : java.lang.Short) : java.lang.Short={(value*other).toShort}
-      override def minus(other : java.lang.Short) : java.lang.Short={(value-other).toShort}
-      override def mod(other : java.lang.Short) : java.lang.Short={return (value % other).toShort}
-      override def div(other : java.lang.Short) : java.lang.Short={return (value/other).toShort}
-      override def uminus() : java.lang.Short={return (value * (-1)).toShort}
+  override def plus(other: java.lang.Short): java.lang.Short = { (value + other).toShort }
+  override def mult(other: java.lang.Short): java.lang.Short = { (value * other).toShort }
+  override def minus(other: java.lang.Short): java.lang.Short = { (value - other).toShort }
+  override def mod(other: java.lang.Short): java.lang.Short = { return (value % other).toShort }
+  override def div(other: java.lang.Short): java.lang.Short = { return (value / other).toShort }
+  override def uminus(): java.lang.Short = { return (value * (-1)).toShort }
 
-      override def isLower(other : java.lang.Short) : java.lang.Boolean={value<other}
-      def compareTo(other : java.lang.Short) : java.lang.Integer={return value.asInstanceOf[Short].compare(other)}
-      def compareTo(other : java.lang.Integer) : java.lang.Integer={return value.asInstanceOf[Short].compare(other.shortValue())}
-      def compareTo(other : Int) : java.lang.Integer={return value.asInstanceOf[Short].compare(other.shortValue())}
-      override def isGreater(other : java.lang.Short) : java.lang.Boolean={return value>other}
-      override def isGreaterOrEqual(other : java.lang.Short) : java.lang.Boolean={value>=other}
-      def isLowerOrEqual(other : java.lang.Short) : java.lang.Boolean={return  value<=other.intValue}
+  override def isLower(other: java.lang.Short): java.lang.Boolean = { value < other }
+  def compareTo(other: java.lang.Short): java.lang.Integer = { return value.asInstanceOf[Short].compare(other) }
+  def compareTo(other: java.lang.Integer): java.lang.Integer = { return value.asInstanceOf[Short].compare(other.shortValue()) }
+  def compareTo(other: Int): java.lang.Integer = { return value.asInstanceOf[Short].compare(other.shortValue()) }
+  override def isGreater(other: java.lang.Short): java.lang.Boolean = { return value > other }
+  override def isGreaterOrEqual(other: java.lang.Short): java.lang.Boolean = { value >= other }
+  def isLowerOrEqual(other: java.lang.Short): java.lang.Boolean = { return value <= other.intValue }
 
-      override def getValue():Object = new java.lang.Short(value)
-	override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Short")
+  override def getValue(): Object = new java.lang.Short(value)
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Short")
 
-     //generated
-     //override def equals(arg0:Any) : Boolean = value.equals(arg0)
-	 //def compareTo(arg0:java.lang.Short) : Int = value.compareTo(arg0)
-	 //def shortValue() : java.lang.Short = value.shortValue()
-	 //def intValue() : java.lang.Integer = value.intValue()
-	 //def longValue() : java.lang.Long = value.longValue()
-	 //def floatValue() : java.lang.Float = value.floatValue()
-	 //def doubleValue() :java.lang. Double = value.doubleValue()
-     //end generated
-
-}
-
-abstract class RichNumeric[G]  extends Comparable[G] with Summable[G]{
-  override def isVoid() = false
-  def mult(other : G) : G
-  def minus(other : G) : G
-  def mod(other : G) : G
-  def div(other : G) : G
-  def uminus() : G
-}
-
-class RichLong(value: java.lang.Long)  extends RichNumeric[java.lang.Long]{
-	override def plus(other : java.lang.Long) : java.lang.Long = value+other
-	override def mult(other : java.lang.Long) : java.lang.Long = value*other
-	override def minus(other : java.lang.Long) : java.lang.Long = value-other
-	override def mod(other : java.lang.Long) : java.lang.Long = value % other
-	override def div(other : java.lang.Long) : java.lang.Long = value/other
-	override def uminus() : java.lang.Long = value * (-1)
-
-	override def isLower(other : java.lang.Long) = value<other
-	def compareTo(other : java.lang.Long) : java.lang.Integer = value.asInstanceOf[Long].compare(other.longValue)
-	override def isGreater(other : java.lang.Long) : java.lang.Boolean = value>other
-	override def isGreaterOrEqual(other : java.lang.Long) = value>=other
-	def isLowerOrEqual(other : java.lang.Long) = value<=other.intValue
-
-	override def getValue() : Object = new java.lang.Long(value)
-	override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Long")
-
-  	//generated
-	//def shortValue() : java.lang.Short = value.shortValue()
-	//def intValue() : java.lang.Integer = value.intValue()
-	//def longValue() : java.lang.Long = value.longValue()
-	//def floatValue() : java.lang.Float = value.floatValue()
-	//def doubleValue() : java.lang.Double = value.doubleValue()
-    //end generated
-}
-
-
-
-class RichInteger(value: java.lang.Integer)  extends RichNumeric[java.lang.Integer]{
- 	override def uminus() : java.lang.Integer = value * (-1)
-    def isLower(other : java.lang.Integer) : java.lang.Boolean={value<other}
-    def plus(other : Int) :java.lang.Integer={value+other}
-    override def plus(other : java.lang.Integer) :java.lang.Integer={value+other.intValue}
-    def mult(other : Int) :java.lang.Integer={value*other}
-    override def mult(other : java.lang.Integer) :java.lang.Integer={value*other.intValue}
-    override def minus(other : java.lang.Integer) :java.lang.Integer= value-other.intValue
-    def minus(other : Int) :java.lang.Integer= value-other
-    def equals(other : Int) :Boolean= value==other
-    def equals(other : Integer) :Boolean= value == other.intValue
-    def mod(other : Int) :java.lang.Integer= value % other
-    override def mod(other : java.lang.Integer) :java.lang.Integer= value % other.intValue
-    def div(other : Int) :java.lang.Integer= value/other
-    override def div(other : java.lang.Integer) :java.lang.Integer= value/(other.intValue)
-	//def shortValue() : java.lang.Short = value.shortValue()
-	//def intValue() : java.lang.Integer = value.intValue()
-	//def longValue() : java.lang.Long = value.longValue()
-	//def floatValue() : java.lang.Float = value.floatValue()
-	//def doubleValue() : java.lang.Double = value.doubleValue()
-    def toReal() : java.lang.Double= value.doubleValue() // deprecated in kmt framework
-	def toDouble() : java.lang.Double= value.doubleValue()
-    override def compareTo(other : java.lang.Integer) :java.lang.Integer= value.asInstanceOf[Int].compare(other)
-    def kcompareTo(other : Int) :java.lang.Integer= value.asInstanceOf[Int].compare(other.intValue)
-    def isGreater(other : Int) :java.lang.Boolean= value>other
-    override def isGreater(other : java.lang.Integer) :java.lang.Boolean= value>other.intValue
-    def isGreaterOrEqual(other : Int) :java.lang.Boolean={value>=other}
-    override def isGreaterOrEqual(other : java.lang.Integer) :java.lang.Boolean= value>=other.intValue
-    def isLowerOrEqual(other : Int) :java.lang.Boolean= value<=other
-    override def isLowerOrEqual(other : java.lang.Integer) :java.lang.Boolean= value<=other.intValue
-    def toInt() : java.lang.Integer = value
-    def times(func : java.lang.Integer => Unit):Unit ={ for(i <- 0 until value){func(i)} }
-    override def getValue():Object = new java.lang.Integer(value)		
-	override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Integer")
-}
-
-
-
-class RichCharacter(value:java.lang.Character)  extends RichValueType with EObjectImplForPrimitive{
-	//generated
-	def compareTo(arg0 : java.lang.Character) : java.lang.Integer = value.compareTo(arg0)
-	def charValue() : java.lang.Character = value.charValue()
-  
+  //generated
+  //override def equals(arg0:Any) : Boolean = value.equals(arg0)
+  //def compareTo(arg0:java.lang.Short) : Int = value.compareTo(arg0)
+  //def shortValue() : java.lang.Short = value.shortValue()
+  //def intValue() : java.lang.Integer = value.intValue()
+  //def longValue() : java.lang.Long = value.longValue()
+  //def floatValue() : java.lang.Float = value.floatValue()
+  //def doubleValue() :java.lang. Double = value.doubleValue()
   //end generated
-	
-	// from Java
-	def reverseBytes() : java.lang.Character = java.lang.Character.reverseBytes(value)
-	
-	def toLowerCase() : java.lang.Character = java.lang.Character.toLowerCase(value)
-	def toUpperCase() : java.lang.Character = java.lang.Character.toUpperCase(value)
-	
-	// end from Java
-	
-	
-	def ktoChars(arg0:java.lang.Integer,arg1:KermetaSequence[java.lang.Character],arg2:java.lang.Integer):java.lang.Integer={
-	  val temp = new Array[Char](arg1.size)
-	  val result = java.lang.Character.toChars(arg0,temp,arg2)
-	  if(result>0)
-	    arg1.addAt(arg2,temp(arg2))
-	  if(result>1)
-	    arg1.addAt(arg2+1,temp(arg2))
-	  result
-	}
-	
-	def ktoChars(arg0:java.lang.Integer) : KermetaSequence[java.lang.Character] = {
-	  val result = new RichKermetaSequence[java.lang.Character]
-	  java.lang.Character.toChars(arg0).toList.foreach(result.add(_))
-	  result
-	}
-
-    //TODO
-    def compareTo(other : Object) :Int={//TODO
-        0}
-    override  def isVoid(): java.lang.Boolean = false;
-    override def getValue():Object = value
-	override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Character")
 
 }
 
-
-class RichEnum(value:java.lang.Object)  extends  EObjectImplForPrimitive with ScalaWrapper{
-    override  def isVoid(): java.lang.Boolean = value==null;
-    def getValue():java.lang.Object = value
-	override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("org.kermeta.language.structure.Enumeration")
+abstract class RichNumeric[G] extends Comparable[G] with Summable[G] {
+  override def isVoid() = false
+  def mult(other: G): G
+  def minus(other: G): G
+  def mod(other: G): G
+  def div(other: G): G
+  def uminus(): G
 }
 
-trait EObjectImplForPrimitive extends EObjectImplForKO{
-	override def eAdapters(): org.eclipse.emf.common.util.EList[org.eclipse.emf.common.notify.Adapter] =null;
-    def eDeliver():Boolean =true;
-    def eSetDeliver(deliver:Boolean):Unit={}
+class RichLong(value: java.lang.Long) extends RichNumeric[java.lang.Long] {
+  override def plus(other: java.lang.Long): java.lang.Long = value + other
+  override def mult(other: java.lang.Long): java.lang.Long = value * other
+  override def minus(other: java.lang.Long): java.lang.Long = value - other
+  override def mod(other: java.lang.Long): java.lang.Long = value % other
+  override def div(other: java.lang.Long): java.lang.Long = value / other
+  override def uminus(): java.lang.Long = value * (-1)
+
+  override def isLower(other: java.lang.Long) = value < other
+  def compareTo(other: java.lang.Long): java.lang.Integer = value.asInstanceOf[Long].compare(other.longValue)
+  override def isGreater(other: java.lang.Long): java.lang.Boolean = value > other
+  override def isGreaterOrEqual(other: java.lang.Long) = value >= other
+  def isLowerOrEqual(other: java.lang.Long) = value <= other.intValue
+
+  override def getValue(): Object = new java.lang.Long(value)
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Long")
+
+  //generated
+  //def shortValue() : java.lang.Short = value.shortValue()
+  //def intValue() : java.lang.Integer = value.intValue()
+  //def longValue() : java.lang.Long = value.longValue()
+  //def floatValue() : java.lang.Float = value.floatValue()
+  //def doubleValue() : java.lang.Double = value.doubleValue()
+  //end generated
+}
+
+class RichInteger(value: java.lang.Integer) extends RichNumeric[java.lang.Integer] {
+  override def uminus(): java.lang.Integer = value * (-1)
+  def isLower(other: java.lang.Integer): java.lang.Boolean = { value < other }
+  def plus(other: Int): java.lang.Integer = { value + other }
+  override def plus(other: java.lang.Integer): java.lang.Integer = { value + other.intValue }
+  def mult(other: Int): java.lang.Integer = { value * other }
+  override def mult(other: java.lang.Integer): java.lang.Integer = { value * other.intValue }
+  override def minus(other: java.lang.Integer): java.lang.Integer = value - other.intValue
+  def minus(other: Int): java.lang.Integer = value - other
+  def equals(other: Int): Boolean = value == other
+  def equals(other: Integer): Boolean = value == other.intValue
+  def mod(other: Int): java.lang.Integer = value % other
+  override def mod(other: java.lang.Integer): java.lang.Integer = value % other.intValue
+  def div(other: Int): java.lang.Integer = value / other
+  override def div(other: java.lang.Integer): java.lang.Integer = value / (other.intValue)
+  //def shortValue() : java.lang.Short = value.shortValue()
+  //def intValue() : java.lang.Integer = value.intValue()
+  //def longValue() : java.lang.Long = value.longValue()
+  //def floatValue() : java.lang.Float = value.floatValue()
+  //def doubleValue() : java.lang.Double = value.doubleValue()
+  def toReal(): java.lang.Double = value.doubleValue() // deprecated in kmt framework
+  def toDouble(): java.lang.Double = value.doubleValue()
+  override def compareTo(other: java.lang.Integer): java.lang.Integer = value.asInstanceOf[Int].compare(other)
+  def kcompareTo(other: Int): java.lang.Integer = value.asInstanceOf[Int].compare(other.intValue)
+  def isGreater(other: Int): java.lang.Boolean = value > other
+  override def isGreater(other: java.lang.Integer): java.lang.Boolean = value > other.intValue
+  def isGreaterOrEqual(other: Int): java.lang.Boolean = { value >= other }
+  override def isGreaterOrEqual(other: java.lang.Integer): java.lang.Boolean = value >= other.intValue
+  def isLowerOrEqual(other: Int): java.lang.Boolean = value <= other
+  override def isLowerOrEqual(other: java.lang.Integer): java.lang.Boolean = value <= other.intValue
+  def toInt(): java.lang.Integer = value
+  def times(func: java.lang.Integer => Unit): Unit = { for (i <- 0 until value) { func(i) } }
+  override def getValue(): Object = new java.lang.Integer(value)
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Integer")
+}
+
+class RichCharacter(value: java.lang.Character) extends RichValueType with EObjectImplForPrimitive {
+  //generated
+  def compareTo(arg0: java.lang.Character): java.lang.Integer = value.compareTo(arg0)
+  def charValue(): java.lang.Character = value.charValue()
+
+  //end generated
+
+  // from Java
+  def reverseBytes(): java.lang.Character = java.lang.Character.reverseBytes(value)
+
+  def toLowerCase(): java.lang.Character = java.lang.Character.toLowerCase(value)
+  def toUpperCase(): java.lang.Character = java.lang.Character.toUpperCase(value)
+
+  // end from Java
+
+  def ktoChars(arg0: java.lang.Integer, arg1: KermetaSequence[java.lang.Character], arg2: java.lang.Integer): java.lang.Integer = {
+    val temp = new Array[Char](arg1.size)
+    val result = java.lang.Character.toChars(arg0, temp, arg2)
+    if (result > 0)
+      arg1.addAt(arg2, temp(arg2))
+    if (result > 1)
+      arg1.addAt(arg2 + 1, temp(arg2))
+    result
+  }
+
+  def ktoChars(arg0: java.lang.Integer): KermetaSequence[java.lang.Character] = {
+    val result = new RichKermetaSequence[java.lang.Character]
+    java.lang.Character.toChars(arg0).toList.foreach(result.add(_))
+    result
+  }
+
+  //TODO
+  def compareTo(other: Object): Int = { //TODO
+    0
+  }
+  override def isVoid(): java.lang.Boolean = false;
+  override def getValue(): Object = value
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.Character")
 
 }
 
+class RichEnum(value: java.lang.Object) extends EObjectImplForPrimitive with ScalaWrapper {
+  override def isVoid(): java.lang.Boolean = value == null;
+  def getValue(): java.lang.Object = value
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("org.kermeta.language.structure.Enumeration")
+}
+
+trait EObjectImplForPrimitive extends EObjectImplForKO {
+  override def eAdapters(): org.eclipse.emf.common.util.EList[org.eclipse.emf.common.notify.Adapter] = null;
+  def eDeliver(): Boolean = true;
+  def eSetDeliver(deliver: Boolean): Unit = {}
+
+}
 
 trait EObjectImplForKO extends KermetaObject {
-    def eUnset(feature: org.eclipse.emf.ecore.EStructuralFeature)={}
-    def eIsSet(feature: org.eclipse.emf.ecore.EStructuralFeature): Boolean = true
-    def eSet(feature: org.eclipse.emf.ecore.EStructuralFeature,x:Any):Unit={}
-    def eGet(feature: org.eclipse.emf.ecore.EStructuralFeature,resolv: Boolean):java.lang.Object={null}
-    def eGet(feature: org.eclipse.emf.ecore.EStructuralFeature):java.lang.Object={null}
-    def eCrossReferences():  org.eclipse.emf.common.util.EList[org.eclipse.emf.ecore.EObject] = null
-    def eIsProxy(): Boolean = false
-    def eAllContents(): org.eclipse.emf.common.util.TreeIterator[org.eclipse.emf.ecore.EObject] =null
-    def eContents():  org.eclipse.emf.common.util.EList[org.eclipse.emf.ecore.EObject] = null
-    def eContainmentFeature():org.eclipse.emf.ecore.EReference =null;
-    def eContainingFeature():   org.eclipse.emf.ecore.EStructuralFeature =null
-    def eContainer() : org.eclipse.emf.ecore.EObject =null
-    def eResource() :   org.eclipse.emf.ecore.resource.Resource =null;
-    def eClass() : org.eclipse.emf.ecore.EClass = null;
-    def eNotify( notification:org.eclipse.emf.common.notify.Notification):Unit=null;
-    override  def isVoid(): java.lang.Boolean;
-    def eInvoke(x1: org.eclipse.emf.ecore.EOperation,x2: org.eclipse.emf.common.util.EList[_]):java.lang.Object = null
+  def eUnset(feature: org.eclipse.emf.ecore.EStructuralFeature) = {}
+  def eIsSet(feature: org.eclipse.emf.ecore.EStructuralFeature): Boolean = true
+  def eSet(feature: org.eclipse.emf.ecore.EStructuralFeature, x: Any): Unit = {}
+  def eGet(feature: org.eclipse.emf.ecore.EStructuralFeature, resolv: Boolean): java.lang.Object = { null }
+  def eGet(feature: org.eclipse.emf.ecore.EStructuralFeature): java.lang.Object = { null }
+  def eCrossReferences(): org.eclipse.emf.common.util.EList[org.eclipse.emf.ecore.EObject] = null
+  def eIsProxy(): Boolean = false
+  def eAllContents(): org.eclipse.emf.common.util.TreeIterator[org.eclipse.emf.ecore.EObject] = null
+  def eContents(): org.eclipse.emf.common.util.EList[org.eclipse.emf.ecore.EObject] = null
+  def eContainmentFeature(): org.eclipse.emf.ecore.EReference = null;
+  def eContainingFeature(): org.eclipse.emf.ecore.EStructuralFeature = null
+  def eContainer(): org.eclipse.emf.ecore.EObject = null
+  def eResource(): org.eclipse.emf.ecore.resource.Resource = null;
+  def eClass(): org.eclipse.emf.ecore.EClass = null;
+  def eNotify(notification: org.eclipse.emf.common.notify.Notification): Unit = null;
+  override def isVoid(): java.lang.Boolean;
+  def eInvoke(x1: org.eclipse.emf.ecore.EOperation, x2: org.eclipse.emf.common.util.EList[_]): java.lang.Object = null
 }
 
-class RichString(value: java.lang.String)  extends RichValueType with EObjectImplForPrimitive{
-    //TODO
+class RichString(value: java.lang.String) extends RichValueType with EObjectImplForPrimitive {
+  //TODO
 
-	
-    //def size():Int={return value.size}
+  //def size():Int={return value.size}
   /*  def append(other : String):String={return value + other}
     def toReal() :Double={return java.lang.Double.parseDouble(value)}
     def toBoolean() :Boolean={return java.lang.Boolean.parseBoolean(value)}
@@ -559,104 +540,123 @@ class RichString(value: java.lang.String)  extends RichValueType with EObjectImp
     def substring(startIndex : Int, endIndex : Int) :java.lang.String={return value.substring(startIndex,endIndex)}
     override def toString() :java.lang.String={if (value != null) {return value.toString} else { return null}}
 */
-   //override def equals(arg0:Any) : Boolean = value.equals(arg0)
-	 def plus(other : Object) : java.lang.String={return value + other.toString()}
-	 def compareTo(arg0:java.lang.String) : java.lang.Integer = value.compareTo(arg0)
-	 def indexOf(arg0:java.lang.Integer) : java.lang.Integer = value.indexOf(arg0)
-	 def indexOf(arg0 : java.lang.Integer, arg1 : java.lang.Integer) : java.lang.Integer = value.indexOf(arg0,arg1)
-	 def indexOf(arg0 : java.lang.String) : java.lang.Integer = value.indexOf(arg0)
-	 def indexOf(arg0 : java.lang.String, arg1:java.lang.Integer) : java.lang.Integer = value.indexOf(arg0,arg1)
-	 def charAt(arg0 : java.lang.Integer) : java.lang.Character = value.charAt(arg0)
-	 def codePointAt(arg0:java.lang.Integer) : java.lang.Integer = value.codePointAt(arg0)
-	 def codePointBefore(arg0:java.lang.Integer) : java.lang.Integer = value.codePointBefore(arg0)
-	 def codePointCount(arg0:java.lang.Integer, arg1:java.lang.Integer) : java.lang.Integer = value.codePointCount(arg0,arg1)
-	 def compareToIgnoreCase(arg0:java.lang.String) : java.lang.Integer = value.compareToIgnoreCase(arg0)
-	 def concat(arg0:java.lang.String) : java.lang.String = value.concat(arg0)
-	 def contentEquals(arg0:java.lang.StringBuffer) : java.lang.Boolean = value.contentEquals(arg0)
-	 def endsWith(arg0:java.lang.String) : java.lang.Boolean = value.endsWith(arg0)
-	 def equalsIgnoreCase(arg0:java.lang.String) : java.lang.Boolean = value.equalsIgnoreCase(arg0)
-	 def getChars(arg0 : java.lang.Integer, arg1 : java.lang.Integer, arg2:Array[Char], arg3 : java.lang.Integer) : Any = value.getChars(arg0,arg1,arg2,arg3)
-	 def intern() : java.lang.String = value.intern()
-	 def isEmpty() : java.lang.Boolean = value.isEmpty()
-	 def lastIndexOf(arg0 : java.lang.Integer) : java.lang.Integer = value.lastIndexOf(arg0)
-	 def lastIndexOf(arg0 : java.lang.Integer, arg1 : java.lang.Integer) : java.lang.Integer = value.lastIndexOf(arg0,arg1)
-	 def lastIndexOf(arg0 : java.lang.String) : java.lang.Integer = value.lastIndexOf(arg0)
-	 def lastIndexOf(arg0 : java.lang.String, arg1 : java.lang.Integer) : java.lang.Integer = value.lastIndexOf(arg0,arg1)
-	 def size() : java.lang.Integer = value.length()
-	 def ksize() : java.lang.Integer = value.length()
-	 def matches(arg0 : java.lang.String) : java.lang.Boolean = value.matches(arg0)
-	 def offsetByCodePoints(arg0 : java.lang.Integer, arg1 : java.lang.Integer) : java.lang.Integer = value.offsetByCodePoints(arg0,arg1)
-	 def regionMatches(arg0 : java.lang.Integer, arg1 : java.lang.String, arg2 : java.lang.Integer, arg3 : java.lang.Integer) : java.lang.Boolean 
-	 	= value.regionMatches(arg0,arg1,arg2,arg3)
-	 def regionMatches(arg0 : java.lang.Boolean, arg1 : java.lang.Integer, arg2 : java.lang.String, arg3 : java.lang.Integer, arg4 : java.lang.Integer) : java.lang.Boolean 
-	 	= value.regionMatches(arg0,arg1,arg2,arg3,arg4)
-	 //def replace(arg0:java.lang.String,arg1:java.lang.String) : java.lang.String = value.replaceAll(arg0,arg1)
-	 def replaceAll(arg0:java.lang.String,arg1:java.lang.String) : java.lang.String = value.replaceAll(arg0,arg1)
-	 def replaceFirst(arg0:java.lang.String,arg1:java.lang.String) : java.lang.String = value.replaceFirst(arg0,arg1)
-	 def ksplit(arg0 : java.lang.String, arg1 : java.lang.Integer) : KermetaSequence[java.lang.String] = new RichKermetaSequence[java.lang.String](value.split(arg0,arg1).toList)
-     def ksplit(delimiter : java.lang.String) :KermetaSequence[String] = new RichKermetaSequence[java.lang.String](value.split(delimiter).toList)
-	 def startsWith(arg0 : java.lang.String, arg1 : java.lang.Integer) : java.lang.Boolean = value.startsWith(arg0,arg1)
-	 def startsWith(arg0 : java.lang.String) : Boolean = value.startsWith(arg0)
-	 def substring(arg0 : java.lang.Integer) : java.lang.String = value.substring(arg0)
-	 def substring(arg0 : java.lang.Integer, arg1 : java.lang.Integer) : java.lang.String = value.substring(arg0,arg1)
-	 def ktoCharArray() : KermetaSequence[Char] = new RichKermetaSequence[Char](value.toCharArray().toList)
-	 def toLowerCase() : java.lang.String = value.toLowerCase()
-	 def toUpperCase() : java.lang.String = value.toUpperCase()
-	 def trim() : java.lang.String = value.trim()
-
-	 //Add missing methods from Kermeta V1
-     def allCharacters() = ktoCharArray 
-	def append(arg0:java.lang.String) : java.lang.String = {return value+arg0}
-	def contains(arg0 : java.lang.String) : java.lang.Boolean = value.contains(arg0)
-	def elementAt(arg0 : java.lang.Integer) : java.lang.Character = value.charAt(arg0)
-	def replace(arg0:java.lang.String,arg1:java.lang.String) : java.lang.String = value.replaceAll(arg0,arg1)
-	def replaceKeyword(arg0:java.lang.String,arg1:java.lang.String) : java.lang.String = value.replaceAll(arg0,arg1)
-	def toInteger() : java.lang.Integer = _root_.java.lang.Integer.parseInt(value)
-	def toReal() : java.lang.Double = _root_.java.lang.Double.parseDouble(value) // deprecated in framework
-	def ktoDouble() : java.lang.Double = _root_.java.lang.Double.parseDouble(value) 
-	def toURI() : org.eclipse.emf.common.util.URI = org.eclipse.emf.common.util.URI.createURI(value)
-	def toBoolean() : java.lang.Boolean = _root_.java.lang.Boolean.parseBoolean(value)
-
-
-	override def isVoid() : java.lang.Boolean = value ==null;
-    override def getValue():Object = value 		   
-
-  
-
-    override def getMetaClass():org.kermeta.language.structure.Class={
-        return k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.String")
+  //override def equals(arg0:Any) : Boolean = value.equals(arg0)
+  def plus(other: Object): java.lang.String = { return value + other.toString() }
+  def compareTo(arg0: java.lang.String): java.lang.Integer = value.compareTo(arg0)
+  def indexOf(arg0: java.lang.Integer): java.lang.Integer = value.indexOf(arg0)
+  def indexOf(arg0: java.lang.Integer, arg1: java.lang.Integer): java.lang.Integer = value.indexOf(arg0, arg1)
+  def indexOf(arg0: java.lang.String): java.lang.Integer = value.indexOf(arg0)
+  def indexOf(arg0: java.lang.String, arg1: java.lang.Integer): java.lang.Integer = value.indexOf(arg0, arg1)
+  def charAt(arg0: java.lang.Integer): java.lang.Character = value.charAt(arg0)
+  def codePointAt(arg0: java.lang.Integer): java.lang.Integer = value.codePointAt(arg0)
+  def codePointBefore(arg0: java.lang.Integer): java.lang.Integer = value.codePointBefore(arg0)
+  def codePointCount(arg0: java.lang.Integer, arg1: java.lang.Integer): java.lang.Integer = value.codePointCount(arg0, arg1)
+  def compareToIgnoreCase(arg0: java.lang.String): java.lang.Integer = value.compareToIgnoreCase(arg0)
+  def concat(arg0: java.lang.String): java.lang.String = value.concat(arg0)
+  def contentEquals(arg0: java.lang.StringBuffer): java.lang.Boolean = value.contentEquals(arg0)
+  def endsWith(arg0: java.lang.String): java.lang.Boolean = value.endsWith(arg0)
+  def equalsIgnoreCase(arg0: java.lang.String): java.lang.Boolean = value.equalsIgnoreCase(arg0)
+  def getChars(arg0: java.lang.Integer, arg1: java.lang.Integer, arg2: Array[Char], arg3: java.lang.Integer): Any = value.getChars(arg0, arg1, arg2, arg3)
+  def intern(): java.lang.String = value.intern()
+  def isEmpty(): java.lang.Boolean = value.isEmpty()
+  def lastIndexOf(arg0: java.lang.Integer): java.lang.Integer = value.lastIndexOf(arg0)
+  def lastIndexOf(arg0: java.lang.Integer, arg1: java.lang.Integer): java.lang.Integer = value.lastIndexOf(arg0, arg1)
+  def lastIndexOf(arg0: java.lang.String): java.lang.Integer = value.lastIndexOf(arg0)
+  def lastIndexOf(arg0: java.lang.String, arg1: java.lang.Integer): java.lang.Integer = value.lastIndexOf(arg0, arg1)
+  def size(): java.lang.Integer = value.length()
+  def ksize(): java.lang.Integer = value.length()
+  def matches(arg0: java.lang.String): java.lang.Boolean = value.matches(arg0)
+  def offsetByCodePoints(arg0: java.lang.Integer, arg1: java.lang.Integer): java.lang.Integer = value.offsetByCodePoints(arg0, arg1)
+  def regionMatches(arg0: java.lang.Integer, arg1: java.lang.String, arg2: java.lang.Integer, arg3: java.lang.Integer): java.lang.Boolean = value.regionMatches(arg0, arg1, arg2, arg3)
+  def regionMatches(arg0: java.lang.Boolean, arg1: java.lang.Integer, arg2: java.lang.String, arg3: java.lang.Integer, arg4: java.lang.Integer): java.lang.Boolean = value.regionMatches(arg0, arg1, arg2, arg3, arg4)
+  //def replace(arg0:java.lang.String,arg1:java.lang.String) : java.lang.String = value.replaceAll(arg0,arg1)
+  def replaceAll(arg0: java.lang.String, arg1: java.lang.String): java.lang.String = value.replaceAll(arg0, arg1)
+  def replaceFirst(arg0: java.lang.String, arg1: java.lang.String): java.lang.String = value.replaceFirst(arg0, arg1)
+  def ksplit(arg0: java.lang.String, arg1: java.lang.Integer): KermetaSequence[java.lang.String] = new RichKermetaSequence[java.lang.String](value.split(arg0, arg1).toList)
+  def ksplit(delimiter: java.lang.String): KermetaSequence[String] = new RichKermetaSequence[java.lang.String](value.split(delimiter).toList)
+  def startsWith(arg0: java.lang.String, arg1: java.lang.Integer): java.lang.Boolean = value.startsWith(arg0, arg1)
+  def startsWith(arg0: java.lang.String): Boolean = value.startsWith(arg0)
+  def substring(arg0: java.lang.Integer): java.lang.String = value.substring(arg0)
+  def substring(arg0: java.lang.Integer, arg1: java.lang.Integer): java.lang.String = value.substring(arg0, arg1)
+  def ktoCharArray(): KermetaSequence[Char] = new RichKermetaSequence[Char](value.toCharArray().toList)
+  def toLowerCase(): java.lang.String = value.toLowerCase()
+  def toUpperCase(): java.lang.String = value.toUpperCase()
+  def toLowerFirst(): java.lang.String = {
+    if (value.size > 0) {
+      if (value.size > 2) {
+        value.charAt(0).toString.toLowerCase + value.substring(1, value.size)
+      } else {
+        value.toLowerCase
+      }
+    } else {
+      value
     }
+  }
+  def toUpperFirst(): java.lang.String = {
+    if (value.size > 0) {
+      if (value.size > 2) {
+        value.charAt(0).toString.toUpperCase + value.substring(1, value.size)
+      } else {
+        value.toUpperCase
+      }
+    } else {
+      value
+    }
+  }
+  def trim(): java.lang.String = value.trim()
+
+  //Add missing methods from Kermeta V1
+  def allCharacters() = ktoCharArray
+  def append(arg0: java.lang.String): java.lang.String = { return value + arg0 }
+  def contains(arg0: java.lang.String): java.lang.Boolean = value.contains(arg0)
+  def elementAt(arg0: java.lang.Integer): java.lang.Character = value.charAt(arg0)
+  def replace(arg0: java.lang.String, arg1: java.lang.String): java.lang.String = value.replaceAll(arg0, arg1)
+  def replaceKeyword(arg0: java.lang.String, arg1: java.lang.String): java.lang.String = value.replaceAll(arg0, arg1)
+  def toInteger(): java.lang.Integer = _root_.java.lang.Integer.parseInt(value)
+  def toReal(): java.lang.Double = _root_.java.lang.Double.parseDouble(value) // deprecated in framework
+  def ktoDouble(): java.lang.Double = _root_.java.lang.Double.parseDouble(value)
+  def toURI(): org.eclipse.emf.common.util.URI = org.eclipse.emf.common.util.URI.createURI(value)
+  def toBoolean(): java.lang.Boolean = _root_.java.lang.Boolean.parseBoolean(value)
+
+  override def isVoid(): java.lang.Boolean = value == null;
+  override def getValue(): Object = value
+
+  override def getMetaClass(): org.kermeta.language.structure.Class = {
+    return k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.String")
+  }
 
 }
-class RichURI(value : org.eclipse.emf.common.util.URI)  extends RichValueType with EObjectImplForPrimitive {
-	override def getValue():Object = value
-    override def toString() :java.lang.String={return value.toString();
-    }
-	def appendSegment(segmentPath : String) : org.eclipse.emf.common.util.URI = { return value.appendSegment(segmentPath)} 
-	def appendSegments(segmentPaths : java.util.List[String]) : org.eclipse.emf.common.util.URI = {	 
-	  return value.appendSegments(segmentPaths.toArray().asInstanceOf[Array[String]])
-	}
-	override def getMetaClass()=k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.URI")
+class RichURI(value: org.eclipse.emf.common.util.URI) extends RichValueType with EObjectImplForPrimitive {
+  override def getValue(): Object = value
+  override def toString(): java.lang.String = {
+    return value.toString();
+  }
+  def appendSegment(segmentPath: String): org.eclipse.emf.common.util.URI = { return value.appendSegment(segmentPath) }
+  def appendSegments(segmentPaths: java.util.List[String]): org.eclipse.emf.common.util.URI = {
+    return value.appendSegments(segmentPaths.toArray().asInstanceOf[Array[String]])
+  }
+  override def getMetaClass() = k2.utils.ReflexivityLoader.createMetaClass("kermeta.standard.URI")
 }
 
-class RichUnknownJavaObject  extends Object {
-    override def toString() :java.lang.String={return "toString of  UnknownJavaObject not implemented yet";
-    }
+class RichUnknownJavaObject extends Object {
+  override def toString(): java.lang.String = {
+    return "toString of  UnknownJavaObject not implemented yet";
+  }
 }
 
 /**
  * Trait inherited by all wrappers.
  * Redirect equals, hashCode and toString.
- * Used by some util operations. 
+ * Used by some util operations.
  */
 trait ScalaWrapper {
-  def getValue():Object
-  override def equals(other : Any) :Boolean= other match {
-    case o:KermetaObject => getValue==k2.utils.UTilScala.getValue(o)
+  def getValue(): Object
+  override def equals(other: Any): Boolean = other match {
+    case o: KermetaObject => getValue == k2.utils.UTilScala.getValue(o)
     case o => getValue == o
   }
-  override def hashCode() : Int = getValue.hashCode()
-  override def toString() : java.lang.String = getValue.toString
+  override def hashCode(): Int = getValue.hashCode()
+  override def toString(): java.lang.String = getValue.toString
 }
 
 
