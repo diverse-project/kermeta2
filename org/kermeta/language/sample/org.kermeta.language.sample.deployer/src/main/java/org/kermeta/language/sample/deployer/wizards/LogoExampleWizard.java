@@ -7,7 +7,7 @@ import java.util.List;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.kermeta.language.sample.deployer.Activator;
 
-public class Class2LogoExampleWizard extends AbstractExampleWizard {
+public class LogoExampleWizard extends AbstractExampleWizard {
 	
 	protected Collection<ProjectDescriptor> getProjectDescriptors() {		
 		// We need the statements example to be unzipped along with the

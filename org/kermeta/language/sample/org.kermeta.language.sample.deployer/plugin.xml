@@ -18,24 +18,24 @@
             hasPages="false"
             icon="icons/newkermetafile.png"
             id="org.kermeta.language.samples.wizard"
-            name="Kermeta 2 Class2Rdbms sample"
+            name="Kermeta 2 Class2Rdbms Example"
             preferredPerspectives="org.eclipse.ui.resourcePerspective">
          <description>
-            T⁮his project features a simple model transformation from Class metamodel to database metamodel. This transformation embeds its own version of the metamodels (ie. doesn't rely on an external model projects).
+            Creates a project that features a simple model transformation from Class metamodel to database metamodel. This transformation embeds its own version of the metamodels (ie. doesn't rely on an external model projects).
          </description>
       </wizard>
       <wizard
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.kermeta.language.samples.category"
-            class="org.kermeta.language.sample.deployer.wizards.Class2LogoExampleWizard"
+            class="org.kermeta.language.sample.deployer.wizards.LogoExampleWizard"
             finalPerspective="org.kermeta.language.texteditor.eclipse.nature.internal.KermetaPerspectiveID"
             hasPages="false"
             icon="icons/newkermetafile.png"
             id="org.kermeta.language.samples.wizard"
-            name="Kermeta 2 Logo sample"
+            name="Kermeta 2 Logo Example"
             preferredPerspectives="org.eclipse.ui.resourcePerspective">
          <description>
-            This project should present tools Suite for the Logo DSL
+            Creates the projects for a DSL of Logo language (model, various tool written in kermeta)
          </description>
       </wizard>
       <wizard
@@ -46,10 +46,10 @@
             hasPages="false"
             icon="icons/newkermetafile.png"
             id="org.kermeta.language.samples.wizard"
-            name="Kermeta 2 FSM sample"
+            name="Kermeta 2 FSM Example"
             preferredPerspectives="org.eclipse.ui.resourcePerspective">
          <description>
-            This project should present tools Suite for the FSM DSL
+            Creates theprojects for a DSL of Finite State Machine language (FSM)(model, various tool written in kermeta)
          </description>
       </wizard>
    </extension>
