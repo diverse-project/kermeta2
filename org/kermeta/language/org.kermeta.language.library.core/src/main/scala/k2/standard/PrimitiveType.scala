@@ -584,7 +584,7 @@ class RichString(value: java.lang.String) extends RichValueType with EObjectImpl
   def toLowerFirst(): java.lang.String = {
     if (value.size > 0) {
       if (value.size > 2) {
-        value.charAt(0).toString.toLowerCase + value.substring(1, value.size)
+        value.charAt(0).toLowerCase + value.substring(1, value.size)
       } else {
         value.toLowerCase
       }
@@ -595,7 +595,7 @@ class RichString(value: java.lang.String) extends RichValueType with EObjectImpl
   def toUpperFirst(): java.lang.String = {
     if (value.size > 0) {
       if (value.size > 2) {
-        value.charAt(0).toString.toUpperCase + value.substring(1, value.size)
+        value.charAt(0).toUpperCase + value.substring(1, value.size)
       } else {
         value.toUpperCase
       }
