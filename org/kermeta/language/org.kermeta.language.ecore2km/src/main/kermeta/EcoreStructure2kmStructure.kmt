@@ -112,7 +112,7 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 	method visitEOperation(op : EOperation) : Void is do
 		if((not op.eContainingClass.targetKermetaObject.isVoid).andThen{b | op.eContainingClass.targetKermetaObject.isKindOf(ClassDefinition)}) then
 			// Getting the type of the operation.
-			//stdio.writeln("getUnresolvedType 1 from visitEOperation")
+			stdio.writeln("getUnresolvedType 1 from visitEOperation "+op.name)
 			var returnType : UnresolvedType init getUnresolvedType(op.eGenericType, op.eType)
 			
 			// Creation of the ouput Kermeta operation.
@@ -162,6 +162,8 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 				if ( not t.isVoid) then
 					kmOp.type := t
 				else
+				
+				stdio.writeln("getUnresolvedType 2 from visitEOperation "+op.name)
 					kmOp.type := getUnresolvedType(op.eGenericType, op.eType)
 					kmOp.containedType.add(kmOp.type)
 				end
@@ -240,14 +242,26 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 				var typeName : String
 				
 				if(isDataType) then
-					typeName := primitiveTypeMappings.getValue(type.instanceClassName)
-
-					if typeName.isVoid then 
-						// If the type is not a kermeta-like primitype type, the type is kermeta::standard::Object.
-						//stdio.writeln("DataType " + type.name + " not mapped in Kermeta; using Object instead")
-						//typeName := "kermeta::standard::Object"
-						typeName := checkEObjectType(type.getQualifiedName())
-					end 
+					if((not genericType.isVoid).andThen{b| not genericType.eTypeParameter.isVoid}) then
+						typeName := genericType.eTypeParameter.name
+					else
+						stdio.writeln("DVK getUnresolvedType on DataType "+eDataType.toString)
+						typeName := primitiveTypeMappings.getValue(eDataType.asType(EDataType).instanceClassName)
+	
+						if typeName.isVoid then 
+							// If the type is not a kermeta-like primitype type, the type is kermeta::standard::Object.
+							//stdio.writeln("DataType " + type.name + " not mapped in Kermeta; using Object instead")
+							//typeName := "kermeta::standard::Object"
+							typeName := checkEObjectType(type.getQualifiedName())
+						end
+					/* rescue (myError : kermeta::exceptions::Exception)
+						if((not genericType.isVoid).andThen{b| not genericType.eTypeParameter.isVoid}) then
+							typeName := genericType.getQualifiedName()
+						else
+							raise myError
+						end
+						*/ 
+					end
 				else
 					if(type.hasInstanceClassName ) then
 						// workaround bug : cannot navigate in ecore.ecore model refered via nsUri
@@ -283,6 +297,7 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 			//stdio.writeln(" creating UnresolvedType "+typeName + " isDataType="+isDataType.toString+" eDataType="+eDataType.toString)
 			result := UnresolvedType.new.initialize(checkEObjectType(typeName))
 			genericType.targetKermetaObject := result
+			
 		end
 		if(not genericType.isVoid) then
 			
@@ -528,38 +543,72 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 
 	method visitETypeParameter(typeParam : ETypeParameter) : Void is do
 		// Getting the classifier that contains the type parameter.
-		var classifier : EClassifier init typeParam.container().asType(EClassifier)
-
-        if classifier.targetKermetaObject.isVoid then
-        	stdio.writeln("[visitETypeParameter.ERROR] applying a TypeParameter on a non generic EClassifier "+classifier.name)
-        else
-			// Checking the target Kermeta object.
-			if(classifier.targetKermetaObject.isInstanceOf(GenericTypeDefinition)) then
-				var gtd : GenericTypeDefinition init classifier.targetKermetaObject.asType(GenericTypeDefinition)
-				// Creating the Kermeta object type variable.
-				var typeVar : ObjectTypeVariable init ObjectTypeVariable.new		
-				typeVar.name := typeParam.name
-				
-				var unresolvedBound : UnresolvedType
-				if (typeParam.eBounds.size() > 1) then
-					//TODO: Message -> Only one bound authorized in Kermeta, by default setted to Object
-					unresolvedBound := UnresolvedType.new.initialize("kermeta::standard::Object")
-				else					
-					if (typeParam.eBounds.size() == 0) then
+		var classifier : EClassifier 
+		classifier ?= typeParam.container()
+		if classifier.isVoid then
+			//stdio.writeln("[visitETypeParameter.ERROR] TypeParameter "+typeParam.name + " not contained by an EClassifier "+ typeParam.toString)
+			var eop : EOperation
+			eop ?= typeParam.container()
+			if eop.isVoid then
+				stdio.writeln("[visitETypeParameter.ERROR] TypeParameter "+typeParam.name + " not contained by an EClassifier or an EOperation "+ typeParam.toString)
+			else
+				if(eop.targetKermetaObject.isInstanceOf(Operation)) then
+					var kop : Operation init eop.targetKermetaObject.asType(Operation)
+					// Creating the Kermeta object type variable.
+					var typeVar : ObjectTypeVariable init ObjectTypeVariable.new		
+					typeVar.name := typeParam.name
+					var unresolvedBound : UnresolvedType
+					if (typeParam.eBounds.size() > 1) then
+						//TODO: Message -> Only one bound authorized in Kermeta, by default setted to Object
 						unresolvedBound := UnresolvedType.new.initialize("kermeta::standard::Object")
-					else
-						var bound : EGenericType init typeParam.eBounds.one
-						unresolvedBound := getUnresolvedType(bound, bound.eClassifier)
+					else					
+						if (typeParam.eBounds.size() == 0) then
+							unresolvedBound := UnresolvedType.new.initialize("kermeta::standard::Object")
+						else
+							var bound : EGenericType init typeParam.eBounds.one
+							unresolvedBound := getUnresolvedType(bound, bound.eClassifier)
+						end
 					end
+					typeVar.supertype := unresolvedBound
+					typeVar.containedType.add(unresolvedBound)
+					
+					// Adding the type variable into the operation.
+					kop.typeParameter.add(typeVar)
+					kop.containedType.add(typeVar)
+				end	
+			end
+		else		
+	        if classifier.targetKermetaObject.isVoid then
+	        	stdio.writeln("[visitETypeParameter.ERROR] applying a TypeParameter on a non generic EClassifier "+classifier.name)
+	        else
+				// Checking the target Kermeta object.
+				if(classifier.targetKermetaObject.isInstanceOf(GenericTypeDefinition)) then
+					var gtd : GenericTypeDefinition init classifier.targetKermetaObject.asType(GenericTypeDefinition)
+					// Creating the Kermeta object type variable.
+					var typeVar : ObjectTypeVariable init ObjectTypeVariable.new		
+					typeVar.name := typeParam.name
+					
+					var unresolvedBound : UnresolvedType
+					if (typeParam.eBounds.size() > 1) then
+						//TODO: Message -> Only one bound authorized in Kermeta, by default setted to Object
+						unresolvedBound := UnresolvedType.new.initialize("kermeta::standard::Object")
+					else					
+						if (typeParam.eBounds.size() == 0) then
+							unresolvedBound := UnresolvedType.new.initialize("kermeta::standard::Object")
+						else
+							var bound : EGenericType init typeParam.eBounds.one
+							unresolvedBound := getUnresolvedType(bound, bound.eClassifier)
+						end
+					end
+					typeVar.supertype := unresolvedBound
+					typeVar.containedType.add(unresolvedBound)
+					//stdio.writeln("$$$$$$$$ Adding supertype: " + unresolvedBound.typeIdentifier + " to type variable: " + typeVar.name)
+					
+					// Adding the type variable into the generic type definition.
+					gtd.typeParameter.add(typeVar)
+					gtd.containedType.add(typeVar)
+					traceRegistry.addTraceFromObjects(typeParam, typeVar, void)
 				end
-				typeVar.supertype := unresolvedBound
-				typeVar.containedType.add(unresolvedBound)
-				//stdio.writeln("$$$$$$$$ Adding supertype: " + unresolvedBound.typeIdentifier + " to type variable: " + typeVar.name)
-				
-				// Adding the type variable into the generic type definition.
-				gtd.typeParameter.add(typeVar)
-				gtd.containedType.add(typeVar)
-				traceRegistry.addTraceFromObjects(typeParam, typeVar, void)
 			end
 		end
 	end
