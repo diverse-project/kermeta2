@@ -6,17 +6,14 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLDecoder;
-import java.nio.charset.Charset;
 
 import org.eclipse.emf.common.util.URI;
+import org.kermeta.kp.compiler.commandline.converter.ModelingUnitConverter;
 import org.kermeta.language.loader.kmt.scala.KMTparser;
 import org.kermeta.language.util.ModelingUnit;
 import org.kermeta.utils.helpers.FileHelpers;
 import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
-
-import scala.collection.Iterator;
 
 public class ModelingUnitLoaderForKmt implements ModelingUnitLoader{
 	MessagingSystem logger;

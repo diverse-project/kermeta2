@@ -44,6 +44,7 @@ import org.kermeta.diagnostic.DiagnosticModel;
 import org.kermeta.kp.ImportFile;
 import org.kermeta.kp.KermetaProject;
 import org.kermeta.kp.PackageEquivalence;
+import org.kermeta.kp.compiler.commandline.converter.ModelingUnitConverter;
 import org.kermeta.kp.compiler.commandline.urlhandler.ExtensibleURLStreamHandlerFactory;
 import org.kermeta.kp.editor.analysis.helper.KpVariableExpander;
 import org.kermeta.kp.loader.kp.KpLoaderImpl;

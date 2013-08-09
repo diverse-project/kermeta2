@@ -5,7 +5,7 @@
  * Authors  : 
  *            Didier Vojtisek <didier.vojtisek@inria.fr>
  */
-package org.kermeta.kp.compiler.commandline;
+package org.kermeta.kp.compiler.commandline.converter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.kermeta.kp.compiler.commandline.KermetaCompiler;
 import org.kermeta.language.structure.Metamodel;
 import org.kermeta.language.structure.StructurePackage;
 import org.kermeta.language.util.ModelingUnit;
