@@ -24,6 +24,7 @@ import org.kermeta.language.structure.TypeContainer;
 import org.kermeta.language.structure.UnresolvedReference;
 import org.kermeta.language.structure.UnresolvedType;
 import org.kermeta.language.structure.Using;
+import org.kermeta.language.structure.util.NonUniqueEObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -174,13 +175,14 @@ public class UnresolvedTypeImpl extends TypeImpl implements UnresolvedType {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Type> getGenerics() {
 		if (generics == null) {
-			generics = new EObjectResolvingEList<Type>(Type.class, this, StructurePackage.UNRESOLVED_TYPE__GENERICS);
+			generics = new NonUniqueEObjectResolvingEList(Type.class, this, StructurePackage.UNRESOLVED_TYPE__GENERICS);
 		}
 		return generics;
+		
 	}
 
 	/**
