@@ -137,7 +137,11 @@ class EcoreStructure2kmStructure inherits EcoreVisitor {
 				var  sb : StringBuffer init 	StringBuffer.new
 				sb.append(op.name)	
 				sb.append("From")
-				op.eParameters.each{ param | sb.append(param.name)}
+				op.eParameters.each{ param | 
+					sb.append("_")
+					sb.append(param.name)
+					sb.append(param.eType.name)
+				}
 				kmOp.name :=  sb.toString
 				var kmTag : Tag init Tag.new.initialize("ecore.name", op.name, kmOp)
 				kmOp.kTag.add(kmTag)
