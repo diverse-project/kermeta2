@@ -47,6 +47,7 @@ aspect class EModelElement {
 	  * Kermeta class definition.
 	 */
 	reference targetKermetaObject : KermetaModelElement
+	
 }
 
 
@@ -54,4 +55,5 @@ aspect class EModelElement {
 aspect class EGenericType {
 	/** See aspect EModelElement. */
 	reference targetKermetaObject : KermetaModelElement
+	
 }

@@ -40,7 +40,10 @@ abstract class EcoreVisitor {
 	operation visitEOperation(op : EOperation) : Void is do
 		visitETypedElement(op)
 		op.eParameters.each{param | param.accept(self)}
-		op.eTypeParameters.each{tp | tp.accept(self)}
+		op.eTypeParameters.each{tp | 
+			stdio.writeln("visitEOperation "+op.name +" on typeParameter "+ tp.toString)
+			tp.accept(self)
+		}
 	end
 	
 	operation visitEParameter(param : EParameter) : Void is do
