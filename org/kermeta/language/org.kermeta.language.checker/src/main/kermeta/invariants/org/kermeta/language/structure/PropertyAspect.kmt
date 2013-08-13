@@ -19,30 +19,58 @@ aspect class Property {
 	/* SOME OTHER CONSTRAINTS IN PropertyChecker.java from fr.irisa.triskell.kermeta.io */
 
 	/**
-	 * The derived property's opposite must be derived
+	 * The derived property's opposite must be derived if both properties comes from kermeta
 	 */
 	@Scope "RESOLVED"
 	inv derived_property_opposite_must_be_derived is do
 		
-		if (self.isDerived)
+		if (self.isDerived and not self.tag.exists{t| t.name == "ecore"})
 		then
 			if (self.opposite.isVoid)
 			then
 				true
 			else
-				if (self.opposite.isInstanceOf(Property))
+				if (self.opposite.isInstanceOf(Property) and not self.opposite.tag.exists{t| t.name == "ecore"})
 				then
+					self.opposite.asType(Property).isDerived
+				else
+					// Error raised elsewhere for UnresolvedProperty or coming from ecore, we don't care in this invariant
+					true				
+				end
+			end
+		else
+			// coming from ecore, we don't care in this invariant
+			true
+		end	
+	end
+	
+	/**
+	 * A kermeta property cannot be opposite of a derived property from ecore
+	 * However if both properties comes from ecore, we consider that the implementation may deal with it. (notifications, and so on)
+	 */
+	@Scope "RESOLVED"
+	inv derived_property_opposite_must_be_derived is do	
+		if(self.opposite.isVoid) then
+			true
+		else
+			if(not self.tag.exists{t| t.name == "ecore"}) then
+				// we are a pure kermeta property
+				if (self.opposite.isInstanceOf(Property) and  self.opposite.tag.exists{t| t.name == "ecore"})
+				then
+					// opposite comes from ecore
 					self.opposite.asType(Property).isDerived
 				else
 					// Error raised elsewhere for UnresolvedProperty
 					true				
 				end
+			else
+				// coming from ecore, we don't care in this invariant
+				true
 			end
-		else
-			true
-		end	
-	
+		end
+		
 	end
+	
 
 	/**
 	 * The attribute's opposite must be a reference
