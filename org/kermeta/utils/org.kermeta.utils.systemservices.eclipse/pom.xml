@@ -154,6 +154,36 @@
 		          </archive>
 		        </configuration>
 			</plugin>
+			<!-- copy the generated manifest to a place where eclipse expects it so 
+				it doesn't raise error -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>copy-manifest-for-eclipse-ide</id>
+						<phase>install</phase>
+						<configuration>
+							<tasks>
+								<echo
+									message="copy the generated manifest to a place where eclipse expects it so it doesn't raise error" />
+								<unzip
+									src="${project.build.directory}/${project.artifactId}-${project.version}.jar"
+									dest="">
+									<patternset>
+										<include name="META-INF/**" />
+										<exclude name="META-INF/maven/**" />
+									</patternset>
+								</unzip>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>

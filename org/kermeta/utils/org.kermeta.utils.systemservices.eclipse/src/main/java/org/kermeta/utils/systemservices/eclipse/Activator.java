@@ -11,6 +11,8 @@ package org.kermeta.utils.systemservices.eclipse;
 
 import java.io.PrintStream;
 
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem;
 import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
@@ -36,6 +38,7 @@ public class Activator extends AbstractUIPlugin {
 	
 	protected MessagingSystem messaggingSystem;
 	protected EclipseConsoleIO consoleIO;
+	protected boolean isStarted = false;
 
 	
 	
@@ -56,13 +59,21 @@ public class Activator extends AbstractUIPlugin {
 		messaggingSystem = new StdioSimpleMessagingSystem();
 		
 		// currently use only  one Console for everything, maybe later we can use a better strategy for having several consoles
-		String bundleSymbolicName = this.getBundle().getHeaders().get("Bundle-SymbolicName").toString();
-		String consoleUId = bundleSymbolicName+this.hashCode();
-		consoleIO = EclipseConsoleIOFactory.getInstance().getConsoleIO(consoleUId, "Default kermeta console");
-		Boolean mustCapture = getPreferenceStore().getBoolean(PreferenceConstants.P_CAPTURE_SYSTEM_ERROUT);
-		if(mustCapture){
-			captureSystemOutAndErr();
-		}
+		final IWorkbench workbench = PlatformUI.getWorkbench();
+		
+		 workbench.getDisplay().asyncExec(new Runnable() {
+		   public void run() {
+			   String bundleSymbolicName = getBundle().getHeaders().get("Bundle-SymbolicName").toString();
+			   String consoleUId = bundleSymbolicName+this.hashCode();
+			   consoleIO = EclipseConsoleIOFactory.getInstance().getConsoleIO(consoleUId, "Default kermeta console");
+				Boolean mustCapture = getPreferenceStore().getBoolean(PreferenceConstants.P_CAPTURE_SYSTEM_ERROUT);
+				if(mustCapture){
+					captureSystemOutAndErr();
+				}
+				isStarted = true;
+		   }
+		 });
+		
 	}
 
 	/*
@@ -93,6 +104,16 @@ public class Activator extends AbstractUIPlugin {
 		getConsoleIO().clear();
 	}
 	public ConsoleIO getConsoleIO() {
+		int i = 0;
+		while(!isStarted && i < 100){
+			try {
+				Thread.currentThread().wait(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			i++;
+		}
 		return consoleIO;
 	}
 	
