@@ -1,12 +1,11 @@
-
 /*$Id:  $
-* License : EPL
-* Copyright : IRISA / INRIA 
-* ----------------------------------------------------------------------------
-* Creation date : 20 avr. 2011
-* Authors : 
-*      Didier Vojtisek <didier.vojtisek@inria.fr>
-*/
+ * License : EPL
+ * Copyright : IRISA / INRIA 
+ * ----------------------------------------------------------------------------
+ * Creation date : 20 avr. 2011
+ * Authors : 
+ *      Didier Vojtisek <didier.vojtisek@inria.fr>
+ */
 package org.kermeta.utils.systemservices.eclipse;
 
 import java.io.PrintStream;
@@ -23,8 +22,6 @@ import org.kermeta.utils.systemservices.eclipse.internal.console.EclipseConsoleI
 import org.kermeta.utils.systemservices.eclipse.preferences.PreferenceConstants;
 import org.osgi.framework.BundleContext;
 
-
-
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -35,13 +32,9 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
-	
-	protected MessagingSystem messaggingSystem;
-	protected EclipseConsoleIO consoleIO;
-	protected boolean isStarted = false;
 
-	
-	
+	protected MessagingSystem messaggingSystem;
+	protected EclipseConsoleIO consoleIO = null;
 
 	/**
 	 * The constructor
@@ -51,34 +44,36 @@ public class Activator extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
+	 * )
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
 		messaggingSystem = new StdioSimpleMessagingSystem();
+
 		
-		// currently use only  one Console for everything, maybe later we can use a better strategy for having several consoles
 		final IWorkbench workbench = PlatformUI.getWorkbench();
-		
-		 workbench.getDisplay().asyncExec(new Runnable() {
+		workbench.getDisplay().asyncExec(new Runnable() {
 		   public void run() {
-			   String bundleSymbolicName = getBundle().getHeaders().get("Bundle-SymbolicName").toString();
-			   String consoleUId = bundleSymbolicName+this.hashCode();
-			   consoleIO = EclipseConsoleIOFactory.getInstance().getConsoleIO(consoleUId, "Default kermeta console");
-				Boolean mustCapture = getPreferenceStore().getBoolean(PreferenceConstants.P_CAPTURE_SYSTEM_ERROUT);
-				if(mustCapture){
+			   Boolean mustCapture = getPreferenceStore().getBoolean(PreferenceConstants.P_CAPTURE_SYSTEM_ERROUT);
+			   if (mustCapture) {
 					captureSystemOutAndErr();
-				}
-				isStarted = true;
+			   }
 		   }
 		 });
+		
 		
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
+	 * )
 	 */
 	public void stop(BundleContext context) throws Exception {
 
@@ -89,7 +84,7 @@ public class Activator extends AbstractUIPlugin {
 
 	/**
 	 * Returns the shared instance
-	 *
+	 * 
 	 * @return the shared instance
 	 */
 	public static Activator getDefault() {
@@ -100,51 +95,55 @@ public class Activator extends AbstractUIPlugin {
 		return messaggingSystem;
 	}
 
-	public void clearConsole(){
+	public void clearConsole() {
 		getConsoleIO().clear();
 	}
+
 	public ConsoleIO getConsoleIO() {
-		int i = 0;
-		while(!isStarted && i < 100){
-			try {
-				Thread.currentThread().wait(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			i++;
+		if (consoleIO == null) {
+			String bundleSymbolicName = getBundle().getHeaders().get("Bundle-SymbolicName").toString();
+			String consoleUId = bundleSymbolicName + this.hashCode();
+			consoleIO = EclipseConsoleIOFactory.getInstance().getConsoleIO(consoleUId, "Default kermeta console");			
 		}
 		return consoleIO;
 	}
-	
+
 	protected PrintStream OriginalSystemOut = null;
 	protected PrintStream OriginalSystemErr = null;
-	/** 
-	 * set the current System.out and System.err so they are redirected to our default console
+
+	/**
+	 * set the current System.out and System.err so they are redirected to our
+	 * default console
 	 */
 	public void captureSystemOutAndErr() {
-		consoleIO.print("Redirecting System.out and System.err to this console.\n");
-		if (OriginalSystemOut != System.out){
+		Activator.getDefault().getConsoleIO().print("Redirecting System.out and System.err to this console.\n");
+		if (OriginalSystemOut != System.out) {
 			OriginalSystemOut = System.out;
-			PrintStream outPrintStream = new PrintStream(new EclipseConsoleOutputStream(Activator.getDefault().getConsoleIO(), false));
+			PrintStream outPrintStream = new PrintStream(
+					new EclipseConsoleOutputStream(Activator.getDefault().getConsoleIO(), false));
 			System.setOut(outPrintStream);
 		}
-		if (OriginalSystemErr != System.err){
+		if (OriginalSystemErr != System.err) {
 			OriginalSystemOut = System.out;
-			PrintStream errPrintStream = new PrintStream(new EclipseConsoleOutputStream(Activator.getDefault().getConsoleIO(), true));
+			PrintStream errPrintStream = new PrintStream(
+					new EclipseConsoleOutputStream(Activator.getDefault().getConsoleIO(), true));
 			System.setErr(errPrintStream);
 		}
 	}
 
-	/** 
+	/**
 	 * set back the System.out and System.err to their original values
 	 */
 	public void releaseSystemOutAndErr() {
-		if(System.out != null) System.out.flush();
-		if(System.err != null) System.err.flush();
+		if (System.out != null)
+			System.out.flush();
+		if (System.err != null)
+			System.err.flush();
 		consoleIO.print("Stopping redirection of System.out and System.err to this console.\n");
-		if(OriginalSystemOut != null) System.setOut(OriginalSystemOut);
-		if(OriginalSystemErr != null) System.setErr(OriginalSystemErr);
+		if (OriginalSystemOut != null)
+			System.setOut(OriginalSystemOut);
+		if (OriginalSystemErr != null)
+			System.setErr(OriginalSystemErr);
 		OriginalSystemOut = null;
 		OriginalSystemErr = null;
 	}

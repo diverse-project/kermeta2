@@ -116,6 +116,14 @@
     
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>.</directory>
+				<includes>
+					<include>plugin.xml</include>
+				</includes>
+				</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -154,7 +162,7 @@
 		          </archive>
 		        </configuration>
 			</plugin>
-			<!-- copy the generated manifest to a place where eclipse expects it so 
+			<!-- copy the generated manifest and pluginto a place where eclipse expects it so 
 				it doesn't raise error -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

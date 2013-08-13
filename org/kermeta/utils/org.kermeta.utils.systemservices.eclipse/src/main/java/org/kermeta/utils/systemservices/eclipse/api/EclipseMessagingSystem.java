@@ -58,6 +58,14 @@ public class EclipseMessagingSystem extends MessagingSystem {
 	protected int progressBarScale = 1000;
 	
 	public ConsoleIO getConsoleIO() {
+		if(consoleIO == null){
+			if(baseMessageGroup == null || baseMessageGroup.isEmpty()){
+				consoleIO = Activator.getDefault().getConsoleIO(); // use default kermeta console
+			}
+			else{
+				consoleIO = EclipseConsoleIOFactory.getInstance().getConsoleIO(baseMessageGroup, consoleTitle);
+			}
+		}
 		return consoleIO;
 	}
 
@@ -78,14 +86,7 @@ public class EclipseMessagingSystem extends MessagingSystem {
 		super();
 		this.baseMessageGroup = baseMessageGroup;
 		this.consoleTitle = consoleTitle;
-		this.eclipseReporter = new EclipseReporter(this);
-		// get Eclipse console for this group
-		if(baseMessageGroup == null || baseMessageGroup.isEmpty()){
-			consoleIO = Activator.getDefault().getConsoleIO(); // use default kermeta console
-		}
-		else{
-			consoleIO = EclipseConsoleIOFactory.getInstance().getConsoleIO(baseMessageGroup, consoleTitle);
-		}
+		this.eclipseReporter = new EclipseReporter(this);		
 	}
 
 	@Override
@@ -228,7 +229,7 @@ public class EclipseMessagingSystem extends MessagingSystem {
 
 	@Override
 	public void clearLog(){
-		this.consoleIO.clear();
+		getConsoleIO().clear();
 	}
 	
 	@Override
@@ -251,7 +252,7 @@ public class EclipseMessagingSystem extends MessagingSystem {
 		}
 		
 		if(ConsoleLogLevel.isLevelEnoughToLog(ConsoleLogLevel.kind2Level(msgKind), getConsoleLogLevel())){
-			consoleIO.print(getConsoleMessageFor(msgKind,message));
+			getConsoleIO().print(getConsoleMessageFor(msgKind,message));
 		}
 		// currently redirect to stdio
 		//StdioSimpleMessagingSystem stdioRedirect = new StdioSimpleMessagingSystem();
@@ -286,7 +287,7 @@ public class EclipseMessagingSystem extends MessagingSystem {
 				throwable.printStackTrace(new PrintWriter(sw));
 				stackTrace = "\n"+sw.toString();
 			}
-			consoleIO.print(getConsoleMessageFor(msgKind,message+stackTrace));
+			getConsoleIO().print(getConsoleMessageFor(msgKind,message+stackTrace));
 		}
 	}
 
@@ -397,7 +398,7 @@ public class EclipseMessagingSystem extends MessagingSystem {
 
 	@Override
 	public String readLine() {
-		return consoleIO.read();
+		return getConsoleIO().read();
 	}
 
 	@Override
@@ -409,7 +410,7 @@ public class EclipseMessagingSystem extends MessagingSystem {
 
 	@Override
 	public BufferedReader getReader() {
-		return consoleIO.getReader();
+		return getConsoleIO().getReader();
 	}
 	
 	/**
