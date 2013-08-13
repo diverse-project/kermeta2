@@ -20,7 +20,7 @@
 		<emf.ecoretools.version>0.1.1</emf.ecoretools.version>
 		<emf.version>2.7.0</emf.version>
 		<scala.version>[2.9.0,2.10.0)</scala.version>
-		<framework.scala.version>1.4.4-SNAPSHOT</framework.scala.version>
+		<framework.scala.version>1.4.6</framework.scala.version>
 		<kermeta.model.version>1.4.0</kermeta.model.version>
 		<language.compiler.version>1.4.4-SNAPSHOT</language.compiler.version>
 		<osgi.version>4.2.0</osgi.version>
