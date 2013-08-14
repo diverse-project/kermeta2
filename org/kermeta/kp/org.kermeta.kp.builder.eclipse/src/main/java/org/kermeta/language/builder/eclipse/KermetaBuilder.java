@@ -112,6 +112,7 @@ public class KermetaBuilder extends org.kermeta.language.builder.api.Builder{
 					//buildJob.setRule(kpBuilders.get(kpIdentifier).getKpProjectFile().getProject()); // protect from other compilation while doing this one
 					buildJob.schedule();
 					buildJob.join();
+					Activator.getDefault().getMessaggingSystem4Runner(kpIdentifier).showConsole();
 					if(buildJob.getResult() == Status.OK_STATUS){
 						kpBuilders.get(kpIdentifier).runKP(mainClass, mainOperation, params, monitor, port);						
 					}

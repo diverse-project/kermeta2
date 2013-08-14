@@ -264,6 +264,14 @@ public class EclipseConsoleIO extends ConsoleIO implements IPropertyChangeListen
 	public void propertyChange(PropertyChangeEvent arg0) {
 		updateOutputLimit();
 	}
+	
+	/**
+	 * Show the console view on this console
+	 */
+	public void showConsole(){
+		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(console);
+		console.activate(); // console will be displayed
+	}
 }
 
 

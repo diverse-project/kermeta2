@@ -348,6 +348,8 @@ public class KPBuilder {
 			
 			
 			if (isBuildNeeded) {
+				Activator.getDefault().getMessaggingSystem().showConsole();
+				
 				ArrayList<URL> impactedFiles = new ArrayList<URL>();
 				impactedFiles.add(FileHelpers.StringToURL(kpFileURL));
 				KermetaBuilder.flushProblems(impactedFiles);

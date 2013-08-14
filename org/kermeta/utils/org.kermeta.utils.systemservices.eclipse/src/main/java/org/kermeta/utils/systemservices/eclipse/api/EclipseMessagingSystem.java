@@ -23,12 +23,14 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.progress.IProgressService;
 import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
 import org.kermeta.utils.systemservices.api.reference.Reference;
 import org.kermeta.utils.systemservices.eclipse.Activator;
 import org.kermeta.utils.systemservices.eclipse.internal.EclipseReporter;
 import org.kermeta.utils.systemservices.eclipse.internal.console.ConsoleIO;
+import org.kermeta.utils.systemservices.eclipse.internal.console.EclipseConsoleIO;
 import org.kermeta.utils.systemservices.eclipse.internal.console.EclipseConsoleIOFactory;
 import org.kermeta.utils.systemservices.eclipse.internal.console.message.ConsoleMessage;
 import org.kermeta.utils.systemservices.eclipse.internal.console.message.DebugErrorMessage;
@@ -464,5 +466,12 @@ public class EclipseMessagingSystem extends MessagingSystem {
 		
 	}
 	*/
-	
+	/**
+	 * Show the console view on this MessagingSystem console
+	 */
+	public void showConsole(){
+		if(getConsoleIO() instanceof EclipseConsoleIO){
+			((EclipseConsoleIO)getConsoleIO()).showConsole();
+		}
+	}
 }
