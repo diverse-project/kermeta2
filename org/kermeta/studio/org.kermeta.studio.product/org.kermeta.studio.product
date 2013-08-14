@@ -27,7 +27,8 @@
    <windowImages i16="/images/kermeta_icon_16.png" i32="/images/kermeta_icon_32.png" i48="/images/kermeta_icon_48.png" i64="/images/kermeta_icon_64.png" i128="/images/kermeta_icon_128.png"/>
 
    <splash
-      location="org.kermeta.studio.branding" />
+      location="org.kermeta.studio.branding"
+      startupProgressRect="5,275,445,15" />
    <launcher>
       <linux icon="/images/kermeta_icon_128.xpm"/>
       <solaris/>
@@ -43,10 +44,8 @@
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
    </plugins>
