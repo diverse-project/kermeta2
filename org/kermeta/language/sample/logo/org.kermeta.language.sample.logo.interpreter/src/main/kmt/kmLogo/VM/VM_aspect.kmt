@@ -32,9 +32,13 @@ package kmLogo {
 				var newPos : Point init position.getDelta(dx,dy)
 				var trace : Segment 
 				if penUp then
-					stdio.writeln("Turtle is moving to  "+ newPos.toString)
+					if(moveListener.size == 0) then
+						stdio.writeln("Turtle is moving to  "+ newPos.toString)
+					end
 				else
-					stdio.writeln("Turtle is tracing to "+ newPos.toString)
+					if(moveListener.size == 0) then
+						stdio.writeln("Turtle is tracing to "+ newPos.toString)
+					end
 					trace := Segment.new
 					trace.make(position,newPos)
 					drawings.add(trace)
