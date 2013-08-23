@@ -1,5 +1,9 @@
 resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.1.0"
-resource logo_model = "platform:/resource/org.kermeta.language.sample.logo.model" alternative "${project.baseUri}/../org.kermeta.language.sample.logo.model"
+resource logo_model = "${project.baseUri}/../org.kermeta.language.sample.logo.model/target/org.kermeta.language.sample.logo.model-1.0.0.jar" 
+		  alternative "${project.baseUri}/../org.kermeta.language.sample.logo.model", 
+		  			  "mvn:org.kermeta.language.sample.logo/org.kermeta.language.sample.logo.model/1.0.0",
+		  			  "platform:/resource/org.kermeta.language.sample.logo.model"
+					  
 
 importProject library_standard
 importProject logo_model
@@ -8,7 +12,9 @@ project logo_interpreter {
 	mainClass "logo_interpreter^org::kermeta::language::sample::logo::interpreter::MainClass"
 	mainOperation "mainOperation"
 
-	import "${logo_model.baseUri}/model/ASMLogo.ecore"
+	import "${logo_model.baseUri}/model/ASMLogo.ecore" using EMFBytecode(logo_model) {
+		packageEquivalence "kmLogo.ASM" = "org.kermeta.language.sample.logo.model.kmLogo.ASM"
+	}
 	import "${project.baseUri}/src/main/ecore/VMLogo.ecore"
 
 	import "${project.baseUri}/src/main/kmt//kmLogo/ASM/ASM_aspect.kmt"
