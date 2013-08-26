@@ -1,17 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.kermeta.language.sampe.logo.model;singleton:=true
+Bundle-SymbolicName: org.kermeta.language.sample.logo.model;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.kermeta.language.sample.logo.model.kmLogo,
- org.kermeta.language.sample.logo.model.kmLogo.impl,
- org.kermeta.language.sample.logo.model.kmLogo.ASM,
- org.kermeta.language.sample.logo.model.kmLogo.ASM.impl,
- org.kermeta.language.sample.logo.model.kmLogo.ASM.util
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: 
+ org.kermeta.language.sample.logo.model.logoASM,
+ org.kermeta.language.sample.logo.model.logoASM.impl,
+ org.kermeta.language.sample.logo.model.logoASM.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -4,7 +4,7 @@ using kermeta::io::StdIO => stdio
 using kermeta::emfpersistence::*
 
 using logo_interpreter::Context
-using kmLogo::ASM::LogoProgram
+using logoASM::LogoProgram
 using kmLogo::controler::TurtleControler
 
 package org::kermeta::language::sample::logo::interpreter {

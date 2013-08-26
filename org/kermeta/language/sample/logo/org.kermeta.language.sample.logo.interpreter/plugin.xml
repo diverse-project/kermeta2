@@ -6,22 +6,6 @@
 
 <plugin>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="http://www.kermeta.org/kmLogo"
-            class="kmLogo.KmLogoPackage"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="http://www.kermeta.org/kmLogo/ASM"
-            class="kmLogo.ASM.ASMPackage"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="http://kmLogo.ecore/VM"
-            class="kmLogo.VM.VMPackage"/>
-   </extension>
+   
 
 </plugin>

@@ -10,16 +10,11 @@
 
 <plugin>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="http://www.kermeta.org/kmLogo"
-            class="org.kermeta.language.sample.logo.model.kmLogo.KmLogoPackage"/>
-   </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://www.kermeta.org/kmLogo/ASM"
-            class="org.kermeta.language.sample.logo.model.kmLogo.ASM.ASMPackage"/>
+            uri="http://www.kermeta.org/logoASM"
+            class="org.kermeta.language.sample.logo.model.logoASM.logoASMPackage"/>
    </extension>
 
 </plugin>

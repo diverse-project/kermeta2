@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.kermeta.language.sample.logo.xtexteditor.ui
+Bundle-Vendor: INRIA
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.kermeta.language.sample.logo.xtexteditor.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.kermeta.language.sample.logo.xtexteditor;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.antlr.runtime,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.kermeta.language.sample.logo.ui.contentassist,
+ org.kermeta.language.sample.logo.ui.contentassist.antlr
+Bundle-Activator: org.kermeta.language.sample.logo.ui.internal.LogoTextualSyntaxActivator
