@@ -40,14 +40,16 @@ package org::kermeta::language::sample::logo::interpreter {
 		operation loadProgram(logoFile : String) : LogoProgram is do   
 			var resource : Resource
 			if(logoFile.endsWith(".logo")) then
-				stdio.writeln("Loading xText resource...")				
-				resource ?= extern org::kermeta::language::sample::logo::interpreter::xtextwrapper::XTextResourceWrapper.getLogoXTextResource(logoFile)
+				stdio.writeln("Loading xText resource...")	
+				var r : Object			
+				r := extern org::kermeta::language::sample::logo::interpreter::xtextwrapper::XTextResourceWrapper.getLogoXTextResource(logoFile)
+				resource ?= r // workaround bug about extern and conditional cast				
 			else          
 				stdio.writeln("Loading XMI resource...")
 				var repository : ResourceSet init ResourceSet.new
 				resource := repository.createResource(logoFile, "platform:/resource/org.kermeta.kmlogo.logoasm.model/model/ASMLogo.ecore")
 				resource.load(void)
-			end      
+			end    
 			result ?= resource.getContents().one
 		end
 	}
