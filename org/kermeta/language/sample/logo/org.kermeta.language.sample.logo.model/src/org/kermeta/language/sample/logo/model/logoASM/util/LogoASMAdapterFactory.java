@@ -16,17 +16,17 @@ import org.kermeta.language.sample.logo.model.logoASM.*;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage
  * @generated
  */
-public class logoASMAdapterFactory extends AdapterFactoryImpl {
+public class LogoASMAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static logoASMPackage modelPackage;
+	protected static LogoASMPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -34,9 +34,9 @@ public class logoASMAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public logoASMAdapterFactory() {
+	public LogoASMAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = logoASMPackage.eINSTANCE;
+			modelPackage = LogoASMPackage.eINSTANCE;
 		}
 	}
 
@@ -65,8 +65,8 @@ public class logoASMAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected logoASMSwitch<Adapter> modelSwitch =
-		new logoASMSwitch<Adapter>() {
+	protected LogoASMSwitch<Adapter> modelSwitch =
+		new LogoASMSwitch<Adapter>() {
 			@Override
 			public Adapter caseInstruction(Instruction object) {
 				return createInstructionAdapter();
@@ -621,4 +621,4 @@ public class logoASMAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //logoASMAdapterFactory
+} //LogoASMAdapterFactory

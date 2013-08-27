@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.kermeta.language.sample.logo.model.logoASM.ControlStructure;
 import org.kermeta.language.sample.logo.model.logoASM.Expression;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class ControlStructureImpl extends InstructionImpl implements ControlStru
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.CONTROL_STRUCTURE;
+		return LogoASMPackage.Literals.CONTROL_STRUCTURE;
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class ControlStructureImpl extends InstructionImpl implements ControlStru
 		Expression oldCondition = condition;
 		condition = newCondition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, logoASMPackage.CONTROL_STRUCTURE__CONDITION, oldCondition, newCondition);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LogoASMPackage.CONTROL_STRUCTURE__CONDITION, oldCondition, newCondition);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -90,14 +90,14 @@ public class ControlStructureImpl extends InstructionImpl implements ControlStru
 		if (newCondition != condition) {
 			NotificationChain msgs = null;
 			if (condition != null)
-				msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.CONTROL_STRUCTURE__CONDITION, null, msgs);
+				msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.CONTROL_STRUCTURE__CONDITION, null, msgs);
 			if (newCondition != null)
-				msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.CONTROL_STRUCTURE__CONDITION, null, msgs);
+				msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.CONTROL_STRUCTURE__CONDITION, null, msgs);
 			msgs = basicSetCondition(newCondition, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.CONTROL_STRUCTURE__CONDITION, newCondition, newCondition));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.CONTROL_STRUCTURE__CONDITION, newCondition, newCondition));
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class ControlStructureImpl extends InstructionImpl implements ControlStru
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.CONTROL_STRUCTURE__CONDITION:
+			case LogoASMPackage.CONTROL_STRUCTURE__CONDITION:
 				return basicSetCondition(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -122,7 +122,7 @@ public class ControlStructureImpl extends InstructionImpl implements ControlStru
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.CONTROL_STRUCTURE__CONDITION:
+			case LogoASMPackage.CONTROL_STRUCTURE__CONDITION:
 				return getCondition();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -136,7 +136,7 @@ public class ControlStructureImpl extends InstructionImpl implements ControlStru
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.CONTROL_STRUCTURE__CONDITION:
+			case LogoASMPackage.CONTROL_STRUCTURE__CONDITION:
 				setCondition((Expression)newValue);
 				return;
 		}
@@ -151,7 +151,7 @@ public class ControlStructureImpl extends InstructionImpl implements ControlStru
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.CONTROL_STRUCTURE__CONDITION:
+			case LogoASMPackage.CONTROL_STRUCTURE__CONDITION:
 				setCondition((Expression)null);
 				return;
 		}
@@ -166,7 +166,7 @@ public class ControlStructureImpl extends InstructionImpl implements ControlStru
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.CONTROL_STRUCTURE__CONDITION:
+			case LogoASMPackage.CONTROL_STRUCTURE__CONDITION:
 				return condition != null;
 		}
 		return super.eIsSet(featureID);

@@ -15,7 +15,7 @@ package org.kermeta.language.sample.logo.model.logoASM;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getConstant()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getConstant()
  * @model
  * @generated
  */
@@ -30,7 +30,7 @@ public interface Constant extends Expression {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Integer Value</em>' attribute.
 	 * @see #setIntegerValue(int)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getConstant_IntegerValue()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getConstant_IntegerValue()
 	 * @model
 	 * @generated
 	 */

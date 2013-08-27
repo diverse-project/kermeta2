@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getParameter()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getParameter()
  * @model
  * @generated
  */
@@ -31,7 +31,7 @@ public interface Parameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getParameter_Name()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getParameter_Name()
 	 * @model
 	 * @generated
 	 */

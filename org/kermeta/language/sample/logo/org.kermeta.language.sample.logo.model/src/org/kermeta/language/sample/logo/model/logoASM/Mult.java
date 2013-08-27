@@ -9,7 +9,7 @@ package org.kermeta.language.sample.logo.model.logoASM;
  * <!-- end-user-doc -->
  *
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getMult()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getMult()
  * @model
  * @generated
  */

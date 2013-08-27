@@ -4,7 +4,7 @@
     modelName="ASMLogo" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
     copyrightFields="false">
   <foreignModel>ASMLogo.ecore</foreignModel>
-  <genPackages prefix="logoASM" basePackage="org.kermeta.language.sample.logo.model"
+  <genPackages prefix="LogoASM" basePackage="org.kermeta.language.sample.logo.model"
       disposableProviderFactory="true" ecorePackage="ASMLogo.ecore#/">
     <genClasses image="false" ecoreClass="ASMLogo.ecore#//Instruction"/>
     <genClasses image="false" ecoreClass="ASMLogo.ecore#//Primitive"/>

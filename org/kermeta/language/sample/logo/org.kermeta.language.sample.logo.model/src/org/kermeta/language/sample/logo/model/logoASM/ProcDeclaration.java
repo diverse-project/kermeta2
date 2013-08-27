@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getProcDeclaration()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getProcDeclaration()
  * @model
  * @generated
  */
@@ -34,7 +34,7 @@ public interface ProcDeclaration extends Instruction {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getProcDeclaration_Name()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getProcDeclaration_Name()
 	 * @model
 	 * @generated
 	 */
@@ -60,7 +60,7 @@ public interface ProcDeclaration extends Instruction {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Args</em>' containment reference list.
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getProcDeclaration_Args()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getProcDeclaration_Args()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -77,7 +77,7 @@ public interface ProcDeclaration extends Instruction {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Proc Call</em>' reference list.
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getProcDeclaration_ProcCall()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getProcDeclaration_ProcCall()
 	 * @see org.kermeta.language.sample.logo.model.logoASM.ProcCall#getDeclaration
 	 * @model opposite="declaration"
 	 * @generated
@@ -94,7 +94,7 @@ public interface ProcDeclaration extends Instruction {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Instructions</em>' containment reference list.
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getProcDeclaration_Instructions()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getProcDeclaration_Instructions()
 	 * @model containment="true"
 	 * @generated
 	 */

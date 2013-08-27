@@ -5,7 +5,7 @@ package org.kermeta.language.sample.logo.model.logoASM.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import org.kermeta.language.sample.logo.model.logoASM.Clear;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ public class ClearImpl extends PrimitiveImpl implements Clear {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.CLEAR;
+		return LogoASMPackage.Literals.CLEAR;
 	}
 
 } //ClearImpl

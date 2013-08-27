@@ -15,7 +15,7 @@ package org.kermeta.language.sample.logo.model.logoASM;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getParameterCall()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getParameterCall()
  * @model
  * @generated
  */
@@ -30,7 +30,7 @@ public interface ParameterCall extends Expression {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference.
 	 * @see #setParameter(Parameter)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getParameterCall_Parameter()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getParameterCall_Parameter()
 	 * @model required="true"
 	 * @generated
 	 */

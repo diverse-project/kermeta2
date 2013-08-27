@@ -8,4 +8,11 @@
 
    
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated logo_interpreterinternalEcores -->
+      <package
+            uri="http://kmLogo.ecore/VM"
+            class="kmLogo.VM.VMPackage"/>
+   </extension>
+
 </plugin>

@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 import org.kermeta.language.sample.logo.model.logoASM.Parameter;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,7 +62,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.PARAMETER;
+		return LogoASMPackage.Literals.PARAMETER;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.PARAMETER__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.PARAMETER__NAME, oldName, name));
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.PARAMETER__NAME:
+			case LogoASMPackage.PARAMETER__NAME:
 				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -108,7 +108,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.PARAMETER__NAME:
+			case LogoASMPackage.PARAMETER__NAME:
 				setName((String)newValue);
 				return;
 		}
@@ -123,7 +123,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.PARAMETER__NAME:
+			case LogoASMPackage.PARAMETER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
@@ -138,7 +138,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.PARAMETER__NAME:
+			case LogoASMPackage.PARAMETER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);

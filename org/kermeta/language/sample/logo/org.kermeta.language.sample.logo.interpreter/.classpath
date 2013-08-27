@@ -4,17 +4,25 @@
   <classpathentry kind="src" path="target/emfjava" including="**/*.scala|**/*.java|**/*.java"/>
   <classpathentry kind="src" path="target/resources" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/scalaclasses"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/emf/common/2.5.0/common-2.5.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/emf/ecore/2.5.0/ecore-2.5.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/emf/emf.lib/2.7.0/emf.lib-2.7.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/inject/3.0.0-v201203062045/inject-3.0.0-v201203062045.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.library.core/2.1.0/org.kermeta.language.library.core-2.1.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT/org.kermeta.language.library.standard-2.0.99-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.model/2.1.0/org.kermeta.language.model-2.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/sample/logo/org.kermeta.language.sample.logo.xtexteditor/1.0.0-SNAPSHOT/org.kermeta.language.sample.logo.xtexteditor-1.0.0-SNAPSHOT.jar" sourcepath="M2_REPO/org/kermeta/language/sample/logo/org.kermeta.language.sample.logo.xtexteditor/1.0.0-SNAPSHOT/org.kermeta.language.sample.logo.xtexteditor-1.0.0-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/osgi/org.osgi.core/4.2.0/org.osgi.core-4.2.0.jar" sourcepath="M2_REPO/org/osgi/org.osgi.core/4.2.0/org.osgi.core-4.2.0-sources.jar">
     <attributes>
       <attribute value="jar:file:/D:/Users/dvojtise/.m2/repository/org/osgi/org.osgi.core/4.2.0/org.osgi.core-4.2.0-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/antlr/runtime/3.2.0-v201101311130/runtime-3.2.0-v201101311130.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/xtext/util/2.0.0/util-2.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.helpers/2.1.0/utils.helpers-2.1.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/utils/utils.systemservices.api/2.1.0/utils.systemservices.api-2.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/emf/ecore/xmi/2.5.0/xmi-2.5.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/xtext/2.3.1-v201208210947/xtext-2.3.1-v201208210947.jar"/>
   <classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 </classpath>

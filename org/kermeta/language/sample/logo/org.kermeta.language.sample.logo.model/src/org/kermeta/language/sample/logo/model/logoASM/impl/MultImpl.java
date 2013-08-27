@@ -4,8 +4,8 @@ package org.kermeta.language.sample.logo.model.logoASM.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 import org.kermeta.language.sample.logo.model.logoASM.Mult;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ public class MultImpl extends BinaryExpImpl implements Mult {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.MULT;
+		return LogoASMPackage.Literals.MULT;
 	}
 
 } //MultImpl

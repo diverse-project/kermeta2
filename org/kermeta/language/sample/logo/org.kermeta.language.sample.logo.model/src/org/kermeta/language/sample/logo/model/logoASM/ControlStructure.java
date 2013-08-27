@@ -15,7 +15,7 @@ package org.kermeta.language.sample.logo.model.logoASM;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getControlStructure()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getControlStructure()
  * @model
  * @generated
  */
@@ -30,7 +30,7 @@ public interface ControlStructure extends Instruction {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Condition</em>' containment reference.
 	 * @see #setCondition(Expression)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getControlStructure_Condition()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getControlStructure_Condition()
 	 * @model containment="true"
 	 * @generated
 	 */

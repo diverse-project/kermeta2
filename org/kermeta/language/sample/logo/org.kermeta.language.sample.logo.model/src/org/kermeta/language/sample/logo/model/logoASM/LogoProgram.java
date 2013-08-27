@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getLogoProgram()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getLogoProgram()
  * @model
  * @generated
  */
@@ -33,7 +33,7 @@ public interface LogoProgram extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Instructions</em>' containment reference list.
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getLogoProgram_Instructions()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getLogoProgram_Instructions()
 	 * @model containment="true"
 	 * @generated
 	 */

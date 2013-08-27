@@ -15,7 +15,7 @@ package org.kermeta.language.sample.logo.model.logoASM;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getRight()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getRight()
  * @model
  * @generated
  */
@@ -30,7 +30,7 @@ public interface Right extends Primitive {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Angle</em>' containment reference.
 	 * @see #setAngle(Expression)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getRight_Angle()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getRight_Angle()
 	 * @model containment="true"
 	 * @generated
 	 */

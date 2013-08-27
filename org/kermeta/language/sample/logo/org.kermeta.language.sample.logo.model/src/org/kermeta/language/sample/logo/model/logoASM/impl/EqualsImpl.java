@@ -5,7 +5,7 @@ package org.kermeta.language.sample.logo.model.logoASM.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import org.kermeta.language.sample.logo.model.logoASM.Equals;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ public class EqualsImpl extends BinaryExpImpl implements Equals {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.EQUALS;
+		return LogoASMPackage.Literals.EQUALS;
 	}
 
 } //EqualsImpl

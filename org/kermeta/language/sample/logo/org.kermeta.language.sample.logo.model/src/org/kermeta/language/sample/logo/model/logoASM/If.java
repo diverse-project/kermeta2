@@ -16,7 +16,7 @@ package org.kermeta.language.sample.logo.model.logoASM;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getIf()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getIf()
  * @model
  * @generated
  */
@@ -31,7 +31,7 @@ public interface If extends ControlStructure {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Then Part</em>' containment reference.
 	 * @see #setThenPart(Block)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getIf_ThenPart()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getIf_ThenPart()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
@@ -57,7 +57,7 @@ public interface If extends ControlStructure {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Else Part</em>' containment reference.
 	 * @see #setElsePart(Block)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getIf_ElsePart()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getIf_ElsePart()
 	 * @model containment="true"
 	 * @generated
 	 */

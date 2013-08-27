@@ -16,7 +16,7 @@ package org.kermeta.language.sample.logo.model.logoASM;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getBinaryExp()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getBinaryExp()
  * @model abstract="true"
  * @generated
  */
@@ -31,7 +31,7 @@ public interface BinaryExp extends Expression {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Lhs</em>' containment reference.
 	 * @see #setLhs(Expression)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getBinaryExp_Lhs()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getBinaryExp_Lhs()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
@@ -57,7 +57,7 @@ public interface BinaryExp extends Expression {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rhs</em>' containment reference.
 	 * @see #setRhs(Expression)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getBinaryExp_Rhs()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getBinaryExp_Rhs()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */

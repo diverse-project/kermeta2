@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getBlock()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getBlock()
  * @model
  * @generated
  */
@@ -31,7 +31,7 @@ public interface Block extends Instruction {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Instructions</em>' containment reference list.
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getBlock_Instructions()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getBlock_Instructions()
 	 * @model containment="true"
 	 * @generated
 	 */

@@ -19,17 +19,17 @@ import org.kermeta.language.sample.logo.model.logoASM.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage
  * @generated
  */
-public class logoASMSwitch<T> extends Switch<T> {
+public class LogoASMSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static logoASMPackage modelPackage;
+	protected static LogoASMPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -37,9 +37,9 @@ public class logoASMSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public logoASMSwitch() {
+	public LogoASMSwitch() {
 		if (modelPackage == null) {
-			modelPackage = logoASMPackage.eINSTANCE;
+			modelPackage = LogoASMPackage.eINSTANCE;
 		}
 	}
 
@@ -66,20 +66,20 @@ public class logoASMSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case logoASMPackage.INSTRUCTION: {
+			case LogoASMPackage.INSTRUCTION: {
 				Instruction instruction = (Instruction)theEObject;
 				T result = caseInstruction(instruction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.PRIMITIVE: {
+			case LogoASMPackage.PRIMITIVE: {
 				Primitive primitive = (Primitive)theEObject;
 				T result = casePrimitive(primitive);
 				if (result == null) result = caseInstruction(primitive);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.BACK: {
+			case LogoASMPackage.BACK: {
 				Back back = (Back)theEObject;
 				T result = caseBack(back);
 				if (result == null) result = casePrimitive(back);
@@ -87,7 +87,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.FORWARD: {
+			case LogoASMPackage.FORWARD: {
 				Forward forward = (Forward)theEObject;
 				T result = caseForward(forward);
 				if (result == null) result = casePrimitive(forward);
@@ -95,7 +95,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.LEFT: {
+			case LogoASMPackage.LEFT: {
 				Left left = (Left)theEObject;
 				T result = caseLeft(left);
 				if (result == null) result = casePrimitive(left);
@@ -103,7 +103,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.RIGHT: {
+			case LogoASMPackage.RIGHT: {
 				Right right = (Right)theEObject;
 				T result = caseRight(right);
 				if (result == null) result = casePrimitive(right);
@@ -111,7 +111,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.PEN_DOWN: {
+			case LogoASMPackage.PEN_DOWN: {
 				PenDown penDown = (PenDown)theEObject;
 				T result = casePenDown(penDown);
 				if (result == null) result = casePrimitive(penDown);
@@ -119,7 +119,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.PEN_UP: {
+			case LogoASMPackage.PEN_UP: {
 				PenUp penUp = (PenUp)theEObject;
 				T result = casePenUp(penUp);
 				if (result == null) result = casePrimitive(penUp);
@@ -127,7 +127,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.CLEAR: {
+			case LogoASMPackage.CLEAR: {
 				Clear clear = (Clear)theEObject;
 				T result = caseClear(clear);
 				if (result == null) result = casePrimitive(clear);
@@ -135,14 +135,14 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.EXPRESSION: {
+			case LogoASMPackage.EXPRESSION: {
 				Expression expression = (Expression)theEObject;
 				T result = caseExpression(expression);
 				if (result == null) result = caseInstruction(expression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.BINARY_EXP: {
+			case LogoASMPackage.BINARY_EXP: {
 				BinaryExp binaryExp = (BinaryExp)theEObject;
 				T result = caseBinaryExp(binaryExp);
 				if (result == null) result = caseExpression(binaryExp);
@@ -150,7 +150,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.CONSTANT: {
+			case LogoASMPackage.CONSTANT: {
 				Constant constant = (Constant)theEObject;
 				T result = caseConstant(constant);
 				if (result == null) result = caseExpression(constant);
@@ -158,7 +158,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.PROC_CALL: {
+			case LogoASMPackage.PROC_CALL: {
 				ProcCall procCall = (ProcCall)theEObject;
 				T result = caseProcCall(procCall);
 				if (result == null) result = caseExpression(procCall);
@@ -166,21 +166,21 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.PROC_DECLARATION: {
+			case LogoASMPackage.PROC_DECLARATION: {
 				ProcDeclaration procDeclaration = (ProcDeclaration)theEObject;
 				T result = caseProcDeclaration(procDeclaration);
 				if (result == null) result = caseInstruction(procDeclaration);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.BLOCK: {
+			case LogoASMPackage.BLOCK: {
 				Block block = (Block)theEObject;
 				T result = caseBlock(block);
 				if (result == null) result = caseInstruction(block);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.IF: {
+			case LogoASMPackage.IF: {
 				If if_ = (If)theEObject;
 				T result = caseIf(if_);
 				if (result == null) result = caseControlStructure(if_);
@@ -188,14 +188,14 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.CONTROL_STRUCTURE: {
+			case LogoASMPackage.CONTROL_STRUCTURE: {
 				ControlStructure controlStructure = (ControlStructure)theEObject;
 				T result = caseControlStructure(controlStructure);
 				if (result == null) result = caseInstruction(controlStructure);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.REPEAT: {
+			case LogoASMPackage.REPEAT: {
 				Repeat repeat = (Repeat)theEObject;
 				T result = caseRepeat(repeat);
 				if (result == null) result = caseControlStructure(repeat);
@@ -203,7 +203,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.WHILE: {
+			case LogoASMPackage.WHILE: {
 				While while_ = (While)theEObject;
 				T result = caseWhile(while_);
 				if (result == null) result = caseControlStructure(while_);
@@ -211,13 +211,13 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.PARAMETER: {
+			case LogoASMPackage.PARAMETER: {
 				Parameter parameter = (Parameter)theEObject;
 				T result = caseParameter(parameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.PARAMETER_CALL: {
+			case LogoASMPackage.PARAMETER_CALL: {
 				ParameterCall parameterCall = (ParameterCall)theEObject;
 				T result = caseParameterCall(parameterCall);
 				if (result == null) result = caseExpression(parameterCall);
@@ -225,7 +225,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.PLUS: {
+			case LogoASMPackage.PLUS: {
 				Plus plus = (Plus)theEObject;
 				T result = casePlus(plus);
 				if (result == null) result = caseBinaryExp(plus);
@@ -234,7 +234,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.MINUS: {
+			case LogoASMPackage.MINUS: {
 				Minus minus = (Minus)theEObject;
 				T result = caseMinus(minus);
 				if (result == null) result = caseBinaryExp(minus);
@@ -243,7 +243,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.MULT: {
+			case LogoASMPackage.MULT: {
 				Mult mult = (Mult)theEObject;
 				T result = caseMult(mult);
 				if (result == null) result = caseBinaryExp(mult);
@@ -252,7 +252,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.DIV: {
+			case LogoASMPackage.DIV: {
 				Div div = (Div)theEObject;
 				T result = caseDiv(div);
 				if (result == null) result = caseBinaryExp(div);
@@ -261,7 +261,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.EQUALS: {
+			case LogoASMPackage.EQUALS: {
 				Equals equals = (Equals)theEObject;
 				T result = caseEquals(equals);
 				if (result == null) result = caseBinaryExp(equals);
@@ -270,7 +270,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.GREATER: {
+			case LogoASMPackage.GREATER: {
 				Greater greater = (Greater)theEObject;
 				T result = caseGreater(greater);
 				if (result == null) result = caseBinaryExp(greater);
@@ -279,7 +279,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.LOWER: {
+			case LogoASMPackage.LOWER: {
 				Lower lower = (Lower)theEObject;
 				T result = caseLower(lower);
 				if (result == null) result = caseBinaryExp(lower);
@@ -288,7 +288,7 @@ public class logoASMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case logoASMPackage.LOGO_PROGRAM: {
+			case LogoASMPackage.LOGO_PROGRAM: {
 				LogoProgram logoProgram = (LogoProgram)theEObject;
 				T result = caseLogoProgram(logoProgram);
 				if (result == null) result = defaultCase(theEObject);
@@ -749,4 +749,4 @@ public class logoASMSwitch<T> extends Switch<T> {
 		return null;
 	}
 
-} //logoASMSwitch
+} //LogoASMSwitch

@@ -19,10 +19,10 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.kermeta.language.sample.logo.model.logoASM.Instruction;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 import org.kermeta.language.sample.logo.model.logoASM.Parameter;
 import org.kermeta.language.sample.logo.model.logoASM.ProcCall;
 import org.kermeta.language.sample.logo.model.logoASM.ProcDeclaration;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -107,7 +107,7 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.PROC_DECLARATION;
+		return LogoASMPackage.Literals.PROC_DECLARATION;
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.PROC_DECLARATION__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.PROC_DECLARATION__NAME, oldName, name));
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	 */
 	public EList<Parameter> getArgs() {
 		if (args == null) {
-			args = new EObjectContainmentEList<Parameter>(Parameter.class, this, logoASMPackage.PROC_DECLARATION__ARGS);
+			args = new EObjectContainmentEList<Parameter>(Parameter.class, this, LogoASMPackage.PROC_DECLARATION__ARGS);
 		}
 		return args;
 	}
@@ -150,7 +150,7 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	 */
 	public EList<ProcCall> getProcCall() {
 		if (procCall == null) {
-			procCall = new EObjectWithInverseResolvingEList<ProcCall>(ProcCall.class, this, logoASMPackage.PROC_DECLARATION__PROC_CALL, logoASMPackage.PROC_CALL__DECLARATION);
+			procCall = new EObjectWithInverseResolvingEList<ProcCall>(ProcCall.class, this, LogoASMPackage.PROC_DECLARATION__PROC_CALL, LogoASMPackage.PROC_CALL__DECLARATION);
 		}
 		return procCall;
 	}
@@ -162,7 +162,7 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	 */
 	public EList<Instruction> getInstructions() {
 		if (instructions == null) {
-			instructions = new EObjectContainmentEList<Instruction>(Instruction.class, this, logoASMPackage.PROC_DECLARATION__INSTRUCTIONS);
+			instructions = new EObjectContainmentEList<Instruction>(Instruction.class, this, LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS);
 		}
 		return instructions;
 	}
@@ -176,7 +176,7 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.PROC_DECLARATION__PROC_CALL:
+			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getProcCall()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -190,11 +190,11 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.PROC_DECLARATION__ARGS:
+			case LogoASMPackage.PROC_DECLARATION__ARGS:
 				return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
-			case logoASMPackage.PROC_DECLARATION__PROC_CALL:
+			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
 				return ((InternalEList<?>)getProcCall()).basicRemove(otherEnd, msgs);
-			case logoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
+			case LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
 				return ((InternalEList<?>)getInstructions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -208,13 +208,13 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.PROC_DECLARATION__NAME:
+			case LogoASMPackage.PROC_DECLARATION__NAME:
 				return getName();
-			case logoASMPackage.PROC_DECLARATION__ARGS:
+			case LogoASMPackage.PROC_DECLARATION__ARGS:
 				return getArgs();
-			case logoASMPackage.PROC_DECLARATION__PROC_CALL:
+			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
 				return getProcCall();
-			case logoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
+			case LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
 				return getInstructions();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -229,18 +229,18 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.PROC_DECLARATION__NAME:
+			case LogoASMPackage.PROC_DECLARATION__NAME:
 				setName((String)newValue);
 				return;
-			case logoASMPackage.PROC_DECLARATION__ARGS:
+			case LogoASMPackage.PROC_DECLARATION__ARGS:
 				getArgs().clear();
 				getArgs().addAll((Collection<? extends Parameter>)newValue);
 				return;
-			case logoASMPackage.PROC_DECLARATION__PROC_CALL:
+			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
 				getProcCall().clear();
 				getProcCall().addAll((Collection<? extends ProcCall>)newValue);
 				return;
-			case logoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
+			case LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
 				getInstructions().clear();
 				getInstructions().addAll((Collection<? extends Instruction>)newValue);
 				return;
@@ -256,16 +256,16 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.PROC_DECLARATION__NAME:
+			case LogoASMPackage.PROC_DECLARATION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case logoASMPackage.PROC_DECLARATION__ARGS:
+			case LogoASMPackage.PROC_DECLARATION__ARGS:
 				getArgs().clear();
 				return;
-			case logoASMPackage.PROC_DECLARATION__PROC_CALL:
+			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
 				getProcCall().clear();
 				return;
-			case logoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
+			case LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
 				getInstructions().clear();
 				return;
 		}
@@ -280,13 +280,13 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.PROC_DECLARATION__NAME:
+			case LogoASMPackage.PROC_DECLARATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case logoASMPackage.PROC_DECLARATION__ARGS:
+			case LogoASMPackage.PROC_DECLARATION__ARGS:
 				return args != null && !args.isEmpty();
-			case logoASMPackage.PROC_DECLARATION__PROC_CALL:
+			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
 				return procCall != null && !procCall.isEmpty();
-			case logoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
+			case LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
 				return instructions != null && !instructions.isEmpty();
 		}
 		return super.eIsSet(featureID);

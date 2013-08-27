@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getInstruction()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getInstruction()
  * @model abstract="true"
  * @generated
  */

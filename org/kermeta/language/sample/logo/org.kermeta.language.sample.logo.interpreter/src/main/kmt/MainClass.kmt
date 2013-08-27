@@ -19,9 +19,9 @@ package org::kermeta::language::sample::logo::interpreter {
 			context := Context.new
 			context.initialize
 			// load the program
-			stdio.writeln("Loading logoasm file")
+			stdio.writeln("Loading file")
 			root := loadProgram(inputLogofile)
-			stdio.writeln("Logoasm file loaded")
+			stdio.writeln("File loaded")
 			
 			// create and initialize the GUI
 			var controler : TurtleControler init TurtleControler.new
@@ -37,10 +37,17 @@ package org::kermeta::language::sample::logo::interpreter {
 									
 		end
 		
-		operation loadProgram(logoFile : String) : LogoProgram is do             
-			var repository : ResourceSet init ResourceSet.new
-			var resource : Resource init repository.createResource(logoFile, "platform:/resource/org.kermeta.kmlogo.logoasm.model/model/ASMLogo.ecore")
-			resource.load(void)      
+		operation loadProgram(logoFile : String) : LogoProgram is do   
+			var resource : Resource
+			if(logoFile.endsWith(".logo")) then
+				stdio.writeln("Loading xText resource...")				
+				resource ?= extern org::kermeta::language::sample::logo::interpreter::xtextwrapper::XTextResourceWrapper.getLogoXTextResource(logoFile)
+			else          
+				stdio.writeln("Loading XMI resource...")
+				var repository : ResourceSet init ResourceSet.new
+				resource := repository.createResource(logoFile, "platform:/resource/org.kermeta.kmlogo.logoasm.model/model/ASMLogo.ecore")
+				resource.load(void)
+			end      
 			result ?= resource.getContents().one
 		end
 	}

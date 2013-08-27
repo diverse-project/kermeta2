@@ -15,7 +15,7 @@ package org.kermeta.language.sample.logo.model.logoASM;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getWhile()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getWhile()
  * @model
  * @generated
  */
@@ -30,7 +30,7 @@ public interface While extends ControlStructure {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Block</em>' containment reference.
 	 * @see #setBlock(Block)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getWhile_Block()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getWhile_Block()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */

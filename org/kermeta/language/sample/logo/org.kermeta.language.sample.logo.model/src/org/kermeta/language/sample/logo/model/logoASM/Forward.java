@@ -15,7 +15,7 @@ package org.kermeta.language.sample.logo.model.logoASM;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getForward()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getForward()
  * @model
  * @generated
  */
@@ -30,7 +30,7 @@ public interface Forward extends Primitive {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Steps</em>' containment reference.
 	 * @see #setSteps(Expression)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getForward_Steps()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getForward_Steps()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */

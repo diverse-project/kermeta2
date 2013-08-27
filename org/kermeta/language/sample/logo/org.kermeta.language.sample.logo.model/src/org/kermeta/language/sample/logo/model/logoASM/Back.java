@@ -15,7 +15,7 @@ package org.kermeta.language.sample.logo.model.logoASM;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getBack()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getBack()
  * @model
  * @generated
  */
@@ -30,7 +30,7 @@ public interface Back extends Primitive {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Steps</em>' containment reference.
 	 * @see #setSteps(Expression)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getBack_Steps()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getBack_Steps()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */

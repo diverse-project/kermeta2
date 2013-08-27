@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getProcCall()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getProcCall()
  * @model
  * @generated
  */
@@ -32,7 +32,7 @@ public interface ProcCall extends Expression {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Actual Args</em>' containment reference list.
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getProcCall_ActualArgs()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getProcCall_ActualArgs()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -49,7 +49,7 @@ public interface ProcCall extends Expression {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Declaration</em>' reference.
 	 * @see #setDeclaration(ProcDeclaration)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getProcCall_Declaration()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getProcCall_Declaration()
 	 * @see org.kermeta.language.sample.logo.model.logoASM.ProcDeclaration#getProcCall
 	 * @model opposite="procCall" required="true"
 	 * @generated

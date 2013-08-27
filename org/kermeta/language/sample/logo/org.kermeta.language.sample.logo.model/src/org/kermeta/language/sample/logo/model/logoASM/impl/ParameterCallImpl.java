@@ -9,9 +9,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 import org.kermeta.language.sample.logo.model.logoASM.Parameter;
 import org.kermeta.language.sample.logo.model.logoASM.ParameterCall;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,7 +53,7 @@ public class ParameterCallImpl extends ExpressionImpl implements ParameterCall {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.PARAMETER_CALL;
+		return LogoASMPackage.Literals.PARAMETER_CALL;
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class ParameterCallImpl extends ExpressionImpl implements ParameterCall {
 			parameter = (Parameter)eResolveProxy(oldParameter);
 			if (parameter != oldParameter) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, logoASMPackage.PARAMETER_CALL__PARAMETER, oldParameter, parameter));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LogoASMPackage.PARAMETER_CALL__PARAMETER, oldParameter, parameter));
 			}
 		}
 		return parameter;
@@ -91,7 +91,7 @@ public class ParameterCallImpl extends ExpressionImpl implements ParameterCall {
 		Parameter oldParameter = parameter;
 		parameter = newParameter;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.PARAMETER_CALL__PARAMETER, oldParameter, parameter));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.PARAMETER_CALL__PARAMETER, oldParameter, parameter));
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class ParameterCallImpl extends ExpressionImpl implements ParameterCall {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.PARAMETER_CALL__PARAMETER:
+			case LogoASMPackage.PARAMETER_CALL__PARAMETER:
 				if (resolve) return getParameter();
 				return basicGetParameter();
 		}
@@ -117,7 +117,7 @@ public class ParameterCallImpl extends ExpressionImpl implements ParameterCall {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.PARAMETER_CALL__PARAMETER:
+			case LogoASMPackage.PARAMETER_CALL__PARAMETER:
 				setParameter((Parameter)newValue);
 				return;
 		}
@@ -132,7 +132,7 @@ public class ParameterCallImpl extends ExpressionImpl implements ParameterCall {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.PARAMETER_CALL__PARAMETER:
+			case LogoASMPackage.PARAMETER_CALL__PARAMETER:
 				setParameter((Parameter)null);
 				return;
 		}
@@ -147,7 +147,7 @@ public class ParameterCallImpl extends ExpressionImpl implements ParameterCall {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.PARAMETER_CALL__PARAMETER:
+			case LogoASMPackage.PARAMETER_CALL__PARAMETER:
 				return parameter != null;
 		}
 		return super.eIsSet(featureID);

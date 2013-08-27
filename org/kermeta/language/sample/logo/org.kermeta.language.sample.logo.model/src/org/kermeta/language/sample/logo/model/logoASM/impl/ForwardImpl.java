@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.kermeta.language.sample.logo.model.logoASM.Expression;
 import org.kermeta.language.sample.logo.model.logoASM.Forward;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class ForwardImpl extends PrimitiveImpl implements Forward {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.FORWARD;
+		return LogoASMPackage.Literals.FORWARD;
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class ForwardImpl extends PrimitiveImpl implements Forward {
 		Expression oldSteps = steps;
 		steps = newSteps;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, logoASMPackage.FORWARD__STEPS, oldSteps, newSteps);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LogoASMPackage.FORWARD__STEPS, oldSteps, newSteps);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -90,14 +90,14 @@ public class ForwardImpl extends PrimitiveImpl implements Forward {
 		if (newSteps != steps) {
 			NotificationChain msgs = null;
 			if (steps != null)
-				msgs = ((InternalEObject)steps).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.FORWARD__STEPS, null, msgs);
+				msgs = ((InternalEObject)steps).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.FORWARD__STEPS, null, msgs);
 			if (newSteps != null)
-				msgs = ((InternalEObject)newSteps).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.FORWARD__STEPS, null, msgs);
+				msgs = ((InternalEObject)newSteps).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.FORWARD__STEPS, null, msgs);
 			msgs = basicSetSteps(newSteps, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.FORWARD__STEPS, newSteps, newSteps));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.FORWARD__STEPS, newSteps, newSteps));
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class ForwardImpl extends PrimitiveImpl implements Forward {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.FORWARD__STEPS:
+			case LogoASMPackage.FORWARD__STEPS:
 				return basicSetSteps(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -122,7 +122,7 @@ public class ForwardImpl extends PrimitiveImpl implements Forward {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.FORWARD__STEPS:
+			case LogoASMPackage.FORWARD__STEPS:
 				return getSteps();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -136,7 +136,7 @@ public class ForwardImpl extends PrimitiveImpl implements Forward {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.FORWARD__STEPS:
+			case LogoASMPackage.FORWARD__STEPS:
 				setSteps((Expression)newValue);
 				return;
 		}
@@ -151,7 +151,7 @@ public class ForwardImpl extends PrimitiveImpl implements Forward {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.FORWARD__STEPS:
+			case LogoASMPackage.FORWARD__STEPS:
 				setSteps((Expression)null);
 				return;
 		}
@@ -166,7 +166,7 @@ public class ForwardImpl extends PrimitiveImpl implements Forward {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.FORWARD__STEPS:
+			case LogoASMPackage.FORWARD__STEPS:
 				return steps != null;
 		}
 		return super.eIsSet(featureID);

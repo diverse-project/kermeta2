@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.kermeta.language.sample.logo.model.logoASM.Instruction;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +35,7 @@ public abstract class InstructionImpl extends EObjectImpl implements Instruction
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.INSTRUCTION;
+		return LogoASMPackage.Literals.INSTRUCTION;
 	}
 
 } //InstructionImpl

@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.kermeta.language.sample.logo.model.logoASM.Constant;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,7 +61,7 @@ public class ConstantImpl extends ExpressionImpl implements Constant {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.CONSTANT;
+		return LogoASMPackage.Literals.CONSTANT;
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class ConstantImpl extends ExpressionImpl implements Constant {
 		int oldIntegerValue = integerValue;
 		integerValue = newIntegerValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.CONSTANT__INTEGER_VALUE, oldIntegerValue, integerValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.CONSTANT__INTEGER_VALUE, oldIntegerValue, integerValue));
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class ConstantImpl extends ExpressionImpl implements Constant {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.CONSTANT__INTEGER_VALUE:
+			case LogoASMPackage.CONSTANT__INTEGER_VALUE:
 				return getIntegerValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -107,7 +107,7 @@ public class ConstantImpl extends ExpressionImpl implements Constant {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.CONSTANT__INTEGER_VALUE:
+			case LogoASMPackage.CONSTANT__INTEGER_VALUE:
 				setIntegerValue((Integer)newValue);
 				return;
 		}
@@ -122,7 +122,7 @@ public class ConstantImpl extends ExpressionImpl implements Constant {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.CONSTANT__INTEGER_VALUE:
+			case LogoASMPackage.CONSTANT__INTEGER_VALUE:
 				setIntegerValue(INTEGER_VALUE_EDEFAULT);
 				return;
 		}
@@ -137,7 +137,7 @@ public class ConstantImpl extends ExpressionImpl implements Constant {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.CONSTANT__INTEGER_VALUE:
+			case LogoASMPackage.CONSTANT__INTEGER_VALUE:
 				return integerValue != INTEGER_VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

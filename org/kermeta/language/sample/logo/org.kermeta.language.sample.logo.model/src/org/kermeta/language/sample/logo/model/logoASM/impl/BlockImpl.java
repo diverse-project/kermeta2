@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.kermeta.language.sample.logo.model.logoASM.Block;
 import org.kermeta.language.sample.logo.model.logoASM.Instruction;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -58,7 +58,7 @@ public class BlockImpl extends InstructionImpl implements Block {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.BLOCK;
+		return LogoASMPackage.Literals.BLOCK;
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class BlockImpl extends InstructionImpl implements Block {
 	 */
 	public EList<Instruction> getInstructions() {
 		if (instructions == null) {
-			instructions = new EObjectContainmentEList<Instruction>(Instruction.class, this, logoASMPackage.BLOCK__INSTRUCTIONS);
+			instructions = new EObjectContainmentEList<Instruction>(Instruction.class, this, LogoASMPackage.BLOCK__INSTRUCTIONS);
 		}
 		return instructions;
 	}
@@ -81,7 +81,7 @@ public class BlockImpl extends InstructionImpl implements Block {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.BLOCK__INSTRUCTIONS:
+			case LogoASMPackage.BLOCK__INSTRUCTIONS:
 				return ((InternalEList<?>)getInstructions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -95,7 +95,7 @@ public class BlockImpl extends InstructionImpl implements Block {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.BLOCK__INSTRUCTIONS:
+			case LogoASMPackage.BLOCK__INSTRUCTIONS:
 				return getInstructions();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -110,7 +110,7 @@ public class BlockImpl extends InstructionImpl implements Block {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.BLOCK__INSTRUCTIONS:
+			case LogoASMPackage.BLOCK__INSTRUCTIONS:
 				getInstructions().clear();
 				getInstructions().addAll((Collection<? extends Instruction>)newValue);
 				return;
@@ -126,7 +126,7 @@ public class BlockImpl extends InstructionImpl implements Block {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.BLOCK__INSTRUCTIONS:
+			case LogoASMPackage.BLOCK__INSTRUCTIONS:
 				getInstructions().clear();
 				return;
 		}
@@ -141,7 +141,7 @@ public class BlockImpl extends InstructionImpl implements Block {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.BLOCK__INSTRUCTIONS:
+			case LogoASMPackage.BLOCK__INSTRUCTIONS:
 				return instructions != null && !instructions.isEmpty();
 		}
 		return super.eIsSet(featureID);

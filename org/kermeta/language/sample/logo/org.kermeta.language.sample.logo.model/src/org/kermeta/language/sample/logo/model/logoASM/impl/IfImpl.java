@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.kermeta.language.sample.logo.model.logoASM.Block;
 import org.kermeta.language.sample.logo.model.logoASM.If;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public class IfImpl extends ControlStructureImpl implements If {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.IF;
+		return LogoASMPackage.Literals.IF;
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class IfImpl extends ControlStructureImpl implements If {
 		Block oldThenPart = thenPart;
 		thenPart = newThenPart;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, logoASMPackage.IF__THEN_PART, oldThenPart, newThenPart);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LogoASMPackage.IF__THEN_PART, oldThenPart, newThenPart);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -101,14 +101,14 @@ public class IfImpl extends ControlStructureImpl implements If {
 		if (newThenPart != thenPart) {
 			NotificationChain msgs = null;
 			if (thenPart != null)
-				msgs = ((InternalEObject)thenPart).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.IF__THEN_PART, null, msgs);
+				msgs = ((InternalEObject)thenPart).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.IF__THEN_PART, null, msgs);
 			if (newThenPart != null)
-				msgs = ((InternalEObject)newThenPart).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.IF__THEN_PART, null, msgs);
+				msgs = ((InternalEObject)newThenPart).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.IF__THEN_PART, null, msgs);
 			msgs = basicSetThenPart(newThenPart, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.IF__THEN_PART, newThenPart, newThenPart));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.IF__THEN_PART, newThenPart, newThenPart));
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class IfImpl extends ControlStructureImpl implements If {
 		Block oldElsePart = elsePart;
 		elsePart = newElsePart;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, logoASMPackage.IF__ELSE_PART, oldElsePart, newElsePart);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LogoASMPackage.IF__ELSE_PART, oldElsePart, newElsePart);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -144,14 +144,14 @@ public class IfImpl extends ControlStructureImpl implements If {
 		if (newElsePart != elsePart) {
 			NotificationChain msgs = null;
 			if (elsePart != null)
-				msgs = ((InternalEObject)elsePart).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.IF__ELSE_PART, null, msgs);
+				msgs = ((InternalEObject)elsePart).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.IF__ELSE_PART, null, msgs);
 			if (newElsePart != null)
-				msgs = ((InternalEObject)newElsePart).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.IF__ELSE_PART, null, msgs);
+				msgs = ((InternalEObject)newElsePart).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.IF__ELSE_PART, null, msgs);
 			msgs = basicSetElsePart(newElsePart, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.IF__ELSE_PART, newElsePart, newElsePart));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.IF__ELSE_PART, newElsePart, newElsePart));
 	}
 
 	/**
@@ -162,9 +162,9 @@ public class IfImpl extends ControlStructureImpl implements If {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.IF__THEN_PART:
+			case LogoASMPackage.IF__THEN_PART:
 				return basicSetThenPart(null, msgs);
-			case logoASMPackage.IF__ELSE_PART:
+			case LogoASMPackage.IF__ELSE_PART:
 				return basicSetElsePart(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -178,9 +178,9 @@ public class IfImpl extends ControlStructureImpl implements If {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.IF__THEN_PART:
+			case LogoASMPackage.IF__THEN_PART:
 				return getThenPart();
-			case logoASMPackage.IF__ELSE_PART:
+			case LogoASMPackage.IF__ELSE_PART:
 				return getElsePart();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -194,10 +194,10 @@ public class IfImpl extends ControlStructureImpl implements If {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.IF__THEN_PART:
+			case LogoASMPackage.IF__THEN_PART:
 				setThenPart((Block)newValue);
 				return;
-			case logoASMPackage.IF__ELSE_PART:
+			case LogoASMPackage.IF__ELSE_PART:
 				setElsePart((Block)newValue);
 				return;
 		}
@@ -212,10 +212,10 @@ public class IfImpl extends ControlStructureImpl implements If {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.IF__THEN_PART:
+			case LogoASMPackage.IF__THEN_PART:
 				setThenPart((Block)null);
 				return;
-			case logoASMPackage.IF__ELSE_PART:
+			case LogoASMPackage.IF__ELSE_PART:
 				setElsePart((Block)null);
 				return;
 		}
@@ -230,9 +230,9 @@ public class IfImpl extends ControlStructureImpl implements If {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.IF__THEN_PART:
+			case LogoASMPackage.IF__THEN_PART:
 				return thenPart != null;
-			case logoASMPackage.IF__ELSE_PART:
+			case LogoASMPackage.IF__ELSE_PART:
 				return elsePart != null;
 		}
 		return super.eIsSet(featureID);

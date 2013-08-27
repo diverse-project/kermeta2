@@ -13,7 +13,7 @@ Workflow {
 	bean = StandaloneSetup {
 		scanClassPath  = true
 		platformUri = "${runtimeProject}/.."
-	registerGeneratedEPackage = "org.kermeta.language.sample.logo.model.logoASM.logoASMPackage"
+	registerGeneratedEPackage = "org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage"
 	// registerGenModelFile = "platform:/resource/org.kermeta.language.sample.logo.model/model/ASMLogo.genmodel"
 	
 	}

@@ -11,8 +11,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.kermeta.language.sample.logo.model.logoASM.Expression;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 import org.kermeta.language.sample.logo.model.logoASM.Right;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class RightImpl extends PrimitiveImpl implements Right {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.RIGHT;
+		return LogoASMPackage.Literals.RIGHT;
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class RightImpl extends PrimitiveImpl implements Right {
 		Expression oldAngle = angle;
 		angle = newAngle;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, logoASMPackage.RIGHT__ANGLE, oldAngle, newAngle);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LogoASMPackage.RIGHT__ANGLE, oldAngle, newAngle);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -90,14 +90,14 @@ public class RightImpl extends PrimitiveImpl implements Right {
 		if (newAngle != angle) {
 			NotificationChain msgs = null;
 			if (angle != null)
-				msgs = ((InternalEObject)angle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.RIGHT__ANGLE, null, msgs);
+				msgs = ((InternalEObject)angle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.RIGHT__ANGLE, null, msgs);
 			if (newAngle != null)
-				msgs = ((InternalEObject)newAngle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.RIGHT__ANGLE, null, msgs);
+				msgs = ((InternalEObject)newAngle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.RIGHT__ANGLE, null, msgs);
 			msgs = basicSetAngle(newAngle, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.RIGHT__ANGLE, newAngle, newAngle));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.RIGHT__ANGLE, newAngle, newAngle));
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class RightImpl extends PrimitiveImpl implements Right {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.RIGHT__ANGLE:
+			case LogoASMPackage.RIGHT__ANGLE:
 				return basicSetAngle(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -122,7 +122,7 @@ public class RightImpl extends PrimitiveImpl implements Right {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.RIGHT__ANGLE:
+			case LogoASMPackage.RIGHT__ANGLE:
 				return getAngle();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -136,7 +136,7 @@ public class RightImpl extends PrimitiveImpl implements Right {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.RIGHT__ANGLE:
+			case LogoASMPackage.RIGHT__ANGLE:
 				setAngle((Expression)newValue);
 				return;
 		}
@@ -151,7 +151,7 @@ public class RightImpl extends PrimitiveImpl implements Right {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.RIGHT__ANGLE:
+			case LogoASMPackage.RIGHT__ANGLE:
 				setAngle((Expression)null);
 				return;
 		}
@@ -166,7 +166,7 @@ public class RightImpl extends PrimitiveImpl implements Right {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.RIGHT__ANGLE:
+			case LogoASMPackage.RIGHT__ANGLE:
 				return angle != null;
 		}
 		return super.eIsSet(featureID);

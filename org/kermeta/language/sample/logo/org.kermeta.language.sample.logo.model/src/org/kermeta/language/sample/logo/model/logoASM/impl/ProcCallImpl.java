@@ -18,9 +18,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.kermeta.language.sample.logo.model.logoASM.Expression;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 import org.kermeta.language.sample.logo.model.logoASM.ProcCall;
 import org.kermeta.language.sample.logo.model.logoASM.ProcDeclaration;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -73,7 +73,7 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.PROC_CALL;
+		return LogoASMPackage.Literals.PROC_CALL;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 	 */
 	public EList<Expression> getActualArgs() {
 		if (actualArgs == null) {
-			actualArgs = new EObjectContainmentEList<Expression>(Expression.class, this, logoASMPackage.PROC_CALL__ACTUAL_ARGS);
+			actualArgs = new EObjectContainmentEList<Expression>(Expression.class, this, LogoASMPackage.PROC_CALL__ACTUAL_ARGS);
 		}
 		return actualArgs;
 	}
@@ -99,7 +99,7 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 			declaration = (ProcDeclaration)eResolveProxy(oldDeclaration);
 			if (declaration != oldDeclaration) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, logoASMPackage.PROC_CALL__DECLARATION, oldDeclaration, declaration));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LogoASMPackage.PROC_CALL__DECLARATION, oldDeclaration, declaration));
 			}
 		}
 		return declaration;
@@ -123,7 +123,7 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 		ProcDeclaration oldDeclaration = declaration;
 		declaration = newDeclaration;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, logoASMPackage.PROC_CALL__DECLARATION, oldDeclaration, newDeclaration);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LogoASMPackage.PROC_CALL__DECLARATION, oldDeclaration, newDeclaration);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -138,14 +138,14 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 		if (newDeclaration != declaration) {
 			NotificationChain msgs = null;
 			if (declaration != null)
-				msgs = ((InternalEObject)declaration).eInverseRemove(this, logoASMPackage.PROC_DECLARATION__PROC_CALL, ProcDeclaration.class, msgs);
+				msgs = ((InternalEObject)declaration).eInverseRemove(this, LogoASMPackage.PROC_DECLARATION__PROC_CALL, ProcDeclaration.class, msgs);
 			if (newDeclaration != null)
-				msgs = ((InternalEObject)newDeclaration).eInverseAdd(this, logoASMPackage.PROC_DECLARATION__PROC_CALL, ProcDeclaration.class, msgs);
+				msgs = ((InternalEObject)newDeclaration).eInverseAdd(this, LogoASMPackage.PROC_DECLARATION__PROC_CALL, ProcDeclaration.class, msgs);
 			msgs = basicSetDeclaration(newDeclaration, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.PROC_CALL__DECLARATION, newDeclaration, newDeclaration));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.PROC_CALL__DECLARATION, newDeclaration, newDeclaration));
 	}
 
 	/**
@@ -156,9 +156,9 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.PROC_CALL__DECLARATION:
+			case LogoASMPackage.PROC_CALL__DECLARATION:
 				if (declaration != null)
-					msgs = ((InternalEObject)declaration).eInverseRemove(this, logoASMPackage.PROC_DECLARATION__PROC_CALL, ProcDeclaration.class, msgs);
+					msgs = ((InternalEObject)declaration).eInverseRemove(this, LogoASMPackage.PROC_DECLARATION__PROC_CALL, ProcDeclaration.class, msgs);
 				return basicSetDeclaration((ProcDeclaration)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -172,9 +172,9 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.PROC_CALL__ACTUAL_ARGS:
+			case LogoASMPackage.PROC_CALL__ACTUAL_ARGS:
 				return ((InternalEList<?>)getActualArgs()).basicRemove(otherEnd, msgs);
-			case logoASMPackage.PROC_CALL__DECLARATION:
+			case LogoASMPackage.PROC_CALL__DECLARATION:
 				return basicSetDeclaration(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -188,9 +188,9 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.PROC_CALL__ACTUAL_ARGS:
+			case LogoASMPackage.PROC_CALL__ACTUAL_ARGS:
 				return getActualArgs();
-			case logoASMPackage.PROC_CALL__DECLARATION:
+			case LogoASMPackage.PROC_CALL__DECLARATION:
 				if (resolve) return getDeclaration();
 				return basicGetDeclaration();
 		}
@@ -206,11 +206,11 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.PROC_CALL__ACTUAL_ARGS:
+			case LogoASMPackage.PROC_CALL__ACTUAL_ARGS:
 				getActualArgs().clear();
 				getActualArgs().addAll((Collection<? extends Expression>)newValue);
 				return;
-			case logoASMPackage.PROC_CALL__DECLARATION:
+			case LogoASMPackage.PROC_CALL__DECLARATION:
 				setDeclaration((ProcDeclaration)newValue);
 				return;
 		}
@@ -225,10 +225,10 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.PROC_CALL__ACTUAL_ARGS:
+			case LogoASMPackage.PROC_CALL__ACTUAL_ARGS:
 				getActualArgs().clear();
 				return;
-			case logoASMPackage.PROC_CALL__DECLARATION:
+			case LogoASMPackage.PROC_CALL__DECLARATION:
 				setDeclaration((ProcDeclaration)null);
 				return;
 		}
@@ -243,9 +243,9 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.PROC_CALL__ACTUAL_ARGS:
+			case LogoASMPackage.PROC_CALL__ACTUAL_ARGS:
 				return actualArgs != null && !actualArgs.isEmpty();
-			case logoASMPackage.PROC_CALL__DECLARATION:
+			case LogoASMPackage.PROC_CALL__DECLARATION:
 				return declaration != null;
 		}
 		return super.eIsSet(featureID);

@@ -5,7 +5,7 @@ package org.kermeta.language.sample.logo.model.logoASM.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import org.kermeta.language.sample.logo.model.logoASM.Div;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ public class DivImpl extends BinaryExpImpl implements Div {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.DIV;
+		return LogoASMPackage.Literals.DIV;
 	}
 
 } //DivImpl

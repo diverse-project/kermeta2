@@ -15,7 +15,7 @@ package org.kermeta.language.sample.logo.model.logoASM;
  * </ul>
  * </p>
  *
- * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getRepeat()
+ * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getRepeat()
  * @model
  * @generated
  */
@@ -30,7 +30,7 @@ public interface Repeat extends ControlStructure {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Block</em>' containment reference.
 	 * @see #setBlock(Block)
-	 * @see org.kermeta.language.sample.logo.model.logoASM.logoASMPackage#getRepeat_Block()
+	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getRepeat_Block()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */

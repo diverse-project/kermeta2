@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.kermeta.language.sample.logo.model.logoASM.BinaryExp;
 import org.kermeta.language.sample.logo.model.logoASM.Expression;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public abstract class BinaryExpImpl extends ExpressionImpl implements BinaryExp 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.BINARY_EXP;
+		return LogoASMPackage.Literals.BINARY_EXP;
 	}
 
 	/**
@@ -86,7 +86,7 @@ public abstract class BinaryExpImpl extends ExpressionImpl implements BinaryExp 
 		Expression oldLhs = lhs;
 		lhs = newLhs;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, logoASMPackage.BINARY_EXP__LHS, oldLhs, newLhs);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LogoASMPackage.BINARY_EXP__LHS, oldLhs, newLhs);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -101,14 +101,14 @@ public abstract class BinaryExpImpl extends ExpressionImpl implements BinaryExp 
 		if (newLhs != lhs) {
 			NotificationChain msgs = null;
 			if (lhs != null)
-				msgs = ((InternalEObject)lhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.BINARY_EXP__LHS, null, msgs);
+				msgs = ((InternalEObject)lhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.BINARY_EXP__LHS, null, msgs);
 			if (newLhs != null)
-				msgs = ((InternalEObject)newLhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.BINARY_EXP__LHS, null, msgs);
+				msgs = ((InternalEObject)newLhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.BINARY_EXP__LHS, null, msgs);
 			msgs = basicSetLhs(newLhs, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.BINARY_EXP__LHS, newLhs, newLhs));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.BINARY_EXP__LHS, newLhs, newLhs));
 	}
 
 	/**
@@ -129,7 +129,7 @@ public abstract class BinaryExpImpl extends ExpressionImpl implements BinaryExp 
 		Expression oldRhs = rhs;
 		rhs = newRhs;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, logoASMPackage.BINARY_EXP__RHS, oldRhs, newRhs);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LogoASMPackage.BINARY_EXP__RHS, oldRhs, newRhs);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -144,14 +144,14 @@ public abstract class BinaryExpImpl extends ExpressionImpl implements BinaryExp 
 		if (newRhs != rhs) {
 			NotificationChain msgs = null;
 			if (rhs != null)
-				msgs = ((InternalEObject)rhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.BINARY_EXP__RHS, null, msgs);
+				msgs = ((InternalEObject)rhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.BINARY_EXP__RHS, null, msgs);
 			if (newRhs != null)
-				msgs = ((InternalEObject)newRhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.BINARY_EXP__RHS, null, msgs);
+				msgs = ((InternalEObject)newRhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.BINARY_EXP__RHS, null, msgs);
 			msgs = basicSetRhs(newRhs, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.BINARY_EXP__RHS, newRhs, newRhs));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.BINARY_EXP__RHS, newRhs, newRhs));
 	}
 
 	/**
@@ -162,9 +162,9 @@ public abstract class BinaryExpImpl extends ExpressionImpl implements BinaryExp 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.BINARY_EXP__LHS:
+			case LogoASMPackage.BINARY_EXP__LHS:
 				return basicSetLhs(null, msgs);
-			case logoASMPackage.BINARY_EXP__RHS:
+			case LogoASMPackage.BINARY_EXP__RHS:
 				return basicSetRhs(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -178,9 +178,9 @@ public abstract class BinaryExpImpl extends ExpressionImpl implements BinaryExp 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.BINARY_EXP__LHS:
+			case LogoASMPackage.BINARY_EXP__LHS:
 				return getLhs();
-			case logoASMPackage.BINARY_EXP__RHS:
+			case LogoASMPackage.BINARY_EXP__RHS:
 				return getRhs();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -194,10 +194,10 @@ public abstract class BinaryExpImpl extends ExpressionImpl implements BinaryExp 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.BINARY_EXP__LHS:
+			case LogoASMPackage.BINARY_EXP__LHS:
 				setLhs((Expression)newValue);
 				return;
-			case logoASMPackage.BINARY_EXP__RHS:
+			case LogoASMPackage.BINARY_EXP__RHS:
 				setRhs((Expression)newValue);
 				return;
 		}
@@ -212,10 +212,10 @@ public abstract class BinaryExpImpl extends ExpressionImpl implements BinaryExp 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.BINARY_EXP__LHS:
+			case LogoASMPackage.BINARY_EXP__LHS:
 				setLhs((Expression)null);
 				return;
-			case logoASMPackage.BINARY_EXP__RHS:
+			case LogoASMPackage.BINARY_EXP__RHS:
 				setRhs((Expression)null);
 				return;
 		}
@@ -230,9 +230,9 @@ public abstract class BinaryExpImpl extends ExpressionImpl implements BinaryExp 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.BINARY_EXP__LHS:
+			case LogoASMPackage.BINARY_EXP__LHS:
 				return lhs != null;
-			case logoASMPackage.BINARY_EXP__RHS:
+			case LogoASMPackage.BINARY_EXP__RHS:
 				return rhs != null;
 		}
 		return super.eIsSet(featureID);

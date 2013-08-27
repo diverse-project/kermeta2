@@ -5,7 +5,7 @@ package org.kermeta.language.sample.logo.model.logoASM.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import org.kermeta.language.sample.logo.model.logoASM.Greater;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ public class GreaterImpl extends BinaryExpImpl implements Greater {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.GREATER;
+		return LogoASMPackage.Literals.GREATER;
 	}
 
 } //GreaterImpl

@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.kermeta.language.sample.logo.model.logoASM.Back;
 import org.kermeta.language.sample.logo.model.logoASM.Expression;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class BackImpl extends PrimitiveImpl implements Back {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.BACK;
+		return LogoASMPackage.Literals.BACK;
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class BackImpl extends PrimitiveImpl implements Back {
 		Expression oldSteps = steps;
 		steps = newSteps;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, logoASMPackage.BACK__STEPS, oldSteps, newSteps);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LogoASMPackage.BACK__STEPS, oldSteps, newSteps);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -90,14 +90,14 @@ public class BackImpl extends PrimitiveImpl implements Back {
 		if (newSteps != steps) {
 			NotificationChain msgs = null;
 			if (steps != null)
-				msgs = ((InternalEObject)steps).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.BACK__STEPS, null, msgs);
+				msgs = ((InternalEObject)steps).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.BACK__STEPS, null, msgs);
 			if (newSteps != null)
-				msgs = ((InternalEObject)newSteps).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.BACK__STEPS, null, msgs);
+				msgs = ((InternalEObject)newSteps).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.BACK__STEPS, null, msgs);
 			msgs = basicSetSteps(newSteps, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.BACK__STEPS, newSteps, newSteps));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.BACK__STEPS, newSteps, newSteps));
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class BackImpl extends PrimitiveImpl implements Back {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.BACK__STEPS:
+			case LogoASMPackage.BACK__STEPS:
 				return basicSetSteps(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -122,7 +122,7 @@ public class BackImpl extends PrimitiveImpl implements Back {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.BACK__STEPS:
+			case LogoASMPackage.BACK__STEPS:
 				return getSteps();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -136,7 +136,7 @@ public class BackImpl extends PrimitiveImpl implements Back {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.BACK__STEPS:
+			case LogoASMPackage.BACK__STEPS:
 				setSteps((Expression)newValue);
 				return;
 		}
@@ -151,7 +151,7 @@ public class BackImpl extends PrimitiveImpl implements Back {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.BACK__STEPS:
+			case LogoASMPackage.BACK__STEPS:
 				setSteps((Expression)null);
 				return;
 		}
@@ -166,7 +166,7 @@ public class BackImpl extends PrimitiveImpl implements Back {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.BACK__STEPS:
+			case LogoASMPackage.BACK__STEPS:
 				return steps != null;
 		}
 		return super.eIsSet(featureID);

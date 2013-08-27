@@ -5,7 +5,7 @@ package org.kermeta.language.sample.logo.model.logoASM.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import org.kermeta.language.sample.logo.model.logoASM.Expression;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ public abstract class ExpressionImpl extends InstructionImpl implements Expressi
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.EXPRESSION;
+		return LogoASMPackage.Literals.EXPRESSION;
 	}
 
 } //ExpressionImpl

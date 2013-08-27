@@ -4,8 +4,8 @@ package org.kermeta.language.sample.logo.model.logoASM.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 import org.kermeta.language.sample.logo.model.logoASM.Lower;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ public class LowerImpl extends BinaryExpImpl implements Lower {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.LOWER;
+		return LogoASMPackage.Literals.LOWER;
 	}
 
 } //LowerImpl

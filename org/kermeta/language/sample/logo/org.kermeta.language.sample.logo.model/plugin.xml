@@ -14,7 +14,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://www.kermeta.org/logoASM"
-            class="org.kermeta.language.sample.logo.model.logoASM.logoASMPackage"/>
+            class="org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage"/>
    </extension>
 
 </plugin>

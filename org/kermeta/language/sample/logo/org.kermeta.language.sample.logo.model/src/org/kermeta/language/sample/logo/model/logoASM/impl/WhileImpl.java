@@ -11,8 +11,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.kermeta.language.sample.logo.model.logoASM.Block;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 import org.kermeta.language.sample.logo.model.logoASM.While;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class WhileImpl extends ControlStructureImpl implements While {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.WHILE;
+		return LogoASMPackage.Literals.WHILE;
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class WhileImpl extends ControlStructureImpl implements While {
 		Block oldBlock = block;
 		block = newBlock;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, logoASMPackage.WHILE__BLOCK, oldBlock, newBlock);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LogoASMPackage.WHILE__BLOCK, oldBlock, newBlock);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -90,14 +90,14 @@ public class WhileImpl extends ControlStructureImpl implements While {
 		if (newBlock != block) {
 			NotificationChain msgs = null;
 			if (block != null)
-				msgs = ((InternalEObject)block).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.WHILE__BLOCK, null, msgs);
+				msgs = ((InternalEObject)block).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.WHILE__BLOCK, null, msgs);
 			if (newBlock != null)
-				msgs = ((InternalEObject)newBlock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - logoASMPackage.WHILE__BLOCK, null, msgs);
+				msgs = ((InternalEObject)newBlock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LogoASMPackage.WHILE__BLOCK, null, msgs);
 			msgs = basicSetBlock(newBlock, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, logoASMPackage.WHILE__BLOCK, newBlock, newBlock));
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.WHILE__BLOCK, newBlock, newBlock));
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class WhileImpl extends ControlStructureImpl implements While {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.WHILE__BLOCK:
+			case LogoASMPackage.WHILE__BLOCK:
 				return basicSetBlock(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -122,7 +122,7 @@ public class WhileImpl extends ControlStructureImpl implements While {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.WHILE__BLOCK:
+			case LogoASMPackage.WHILE__BLOCK:
 				return getBlock();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -136,7 +136,7 @@ public class WhileImpl extends ControlStructureImpl implements While {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.WHILE__BLOCK:
+			case LogoASMPackage.WHILE__BLOCK:
 				setBlock((Block)newValue);
 				return;
 		}
@@ -151,7 +151,7 @@ public class WhileImpl extends ControlStructureImpl implements While {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.WHILE__BLOCK:
+			case LogoASMPackage.WHILE__BLOCK:
 				setBlock((Block)null);
 				return;
 		}
@@ -166,7 +166,7 @@ public class WhileImpl extends ControlStructureImpl implements While {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.WHILE__BLOCK:
+			case LogoASMPackage.WHILE__BLOCK:
 				return block != null;
 		}
 		return super.eIsSet(featureID);

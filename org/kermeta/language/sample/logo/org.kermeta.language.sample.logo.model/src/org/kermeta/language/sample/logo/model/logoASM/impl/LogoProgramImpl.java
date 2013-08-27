@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.kermeta.language.sample.logo.model.logoASM.Instruction;
+import org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage;
 import org.kermeta.language.sample.logo.model.logoASM.LogoProgram;
-import org.kermeta.language.sample.logo.model.logoASM.logoASMPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,7 +60,7 @@ public class LogoProgramImpl extends EObjectImpl implements LogoProgram {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return logoASMPackage.Literals.LOGO_PROGRAM;
+		return LogoASMPackage.Literals.LOGO_PROGRAM;
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class LogoProgramImpl extends EObjectImpl implements LogoProgram {
 	 */
 	public EList<Instruction> getInstructions() {
 		if (instructions == null) {
-			instructions = new EObjectContainmentEList<Instruction>(Instruction.class, this, logoASMPackage.LOGO_PROGRAM__INSTRUCTIONS);
+			instructions = new EObjectContainmentEList<Instruction>(Instruction.class, this, LogoASMPackage.LOGO_PROGRAM__INSTRUCTIONS);
 		}
 		return instructions;
 	}
@@ -83,7 +83,7 @@ public class LogoProgramImpl extends EObjectImpl implements LogoProgram {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case logoASMPackage.LOGO_PROGRAM__INSTRUCTIONS:
+			case LogoASMPackage.LOGO_PROGRAM__INSTRUCTIONS:
 				return ((InternalEList<?>)getInstructions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -97,7 +97,7 @@ public class LogoProgramImpl extends EObjectImpl implements LogoProgram {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case logoASMPackage.LOGO_PROGRAM__INSTRUCTIONS:
+			case LogoASMPackage.LOGO_PROGRAM__INSTRUCTIONS:
 				return getInstructions();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -112,7 +112,7 @@ public class LogoProgramImpl extends EObjectImpl implements LogoProgram {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case logoASMPackage.LOGO_PROGRAM__INSTRUCTIONS:
+			case LogoASMPackage.LOGO_PROGRAM__INSTRUCTIONS:
 				getInstructions().clear();
 				getInstructions().addAll((Collection<? extends Instruction>)newValue);
 				return;
@@ -128,7 +128,7 @@ public class LogoProgramImpl extends EObjectImpl implements LogoProgram {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.LOGO_PROGRAM__INSTRUCTIONS:
+			case LogoASMPackage.LOGO_PROGRAM__INSTRUCTIONS:
 				getInstructions().clear();
 				return;
 		}
@@ -143,7 +143,7 @@ public class LogoProgramImpl extends EObjectImpl implements LogoProgram {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case logoASMPackage.LOGO_PROGRAM__INSTRUCTIONS:
+			case LogoASMPackage.LOGO_PROGRAM__INSTRUCTIONS:
 				return instructions != null && !instructions.isEmpty();
 		}
 		return super.eIsSet(featureID);
