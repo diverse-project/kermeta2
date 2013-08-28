@@ -1,7 +1,7 @@
-CLEAR
-PENDOWN 
-REPEAT 4 [ 
-	FORWARD 25 
-	RIGHT 90 
+clear
+pendown 
+repeat 4 [ 
+	forward 25 
+	right 90 
 ] 
-PENUP 
+penup 

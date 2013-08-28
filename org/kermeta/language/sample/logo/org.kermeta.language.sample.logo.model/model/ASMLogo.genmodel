@@ -38,7 +38,6 @@
     <genClasses ecoreClass="ASMLogo.ecore#//ProcDeclaration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASMLogo.ecore#//ProcDeclaration/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASMLogo.ecore#//ProcDeclaration/args"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASMLogo.ecore#//ProcDeclaration/procCall"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASMLogo.ecore#//ProcDeclaration/instructions"/>
     </genClasses>
     <genClasses ecoreClass="ASMLogo.ecore#//Block">

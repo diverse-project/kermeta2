@@ -17,23 +17,12 @@
             <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//LogoProgram"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="LogoProgram"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="instructions"/>
-          <elements xsi:type="xtext:Keyword" value="{"/>
-          <elements xsi:type="xtext:Assignment" feature="instructions" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="*">
-            <elements xsi:type="xtext:Keyword" value=","/>
-            <elements xsi:type="xtext:Assignment" feature="instructions" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
-            </elements>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value="}"/>
+        <elements xsi:type="xtext:Assignment" feature="instructions" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="instructions" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Instruction">
@@ -48,39 +37,31 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Expression">
+    <rules xsi:type="xtext:ParserRule" name="BInstruction">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Instruction"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.3"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Back">
@@ -88,13 +69,10 @@
         <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Back"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="Back"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Keyword" value="steps"/>
+        <elements xsi:type="xtext:Keyword" value="back"/>
         <elements xsi:type="xtext:Assignment" feature="steps" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Forward">
@@ -102,13 +80,10 @@
         <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Forward"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="Forward"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Keyword" value="steps"/>
+        <elements xsi:type="xtext:Keyword" value="forward"/>
         <elements xsi:type="xtext:Assignment" feature="steps" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Left">
@@ -121,15 +96,10 @@
             <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Left"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="Left"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="angle"/>
-          <elements xsi:type="xtext:Assignment" feature="angle" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-          </elements>
+        <elements xsi:type="xtext:Keyword" value="left"/>
+        <elements xsi:type="xtext:Assignment" feature="angle" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Right">
@@ -142,15 +112,10 @@
             <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Right"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="Right"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="angle"/>
-          <elements xsi:type="xtext:Assignment" feature="angle" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-          </elements>
+        <elements xsi:type="xtext:Keyword" value="right"/>
+        <elements xsi:type="xtext:Assignment" feature="angle" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="PenDown">
@@ -163,7 +128,7 @@
             <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//PenDown"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="PenDown"/>
+        <elements xsi:type="xtext:Keyword" value="pendown"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="PenUp">
@@ -176,7 +141,7 @@
             <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//PenUp"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="PenUp"/>
+        <elements xsi:type="xtext:Keyword" value="penup"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Clear">
@@ -189,7 +154,7 @@
             <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Clear"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="Clear"/>
+        <elements xsi:type="xtext:Keyword" value="clear"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Constant">
@@ -202,15 +167,9 @@
             <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Constant"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="Constant"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="integerValue"/>
-          <elements xsi:type="xtext:Assignment" feature="integerValue" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
-          </elements>
+        <elements xsi:type="xtext:Assignment" feature="integerValue" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ProcCall">
@@ -218,32 +177,25 @@
         <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//ProcCall"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="ProcCall"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Keyword" value="declaration"/>
         <elements xsi:type="xtext:Assignment" feature="declaration" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.0">
               <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//ProcDeclaration"/>
             </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
           </terminal>
         </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="actualArgs"/>
-          <elements xsi:type="xtext:Keyword" value="{"/>
-          <elements xsi:type="xtext:Assignment" feature="actualArgs" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="*">
-            <elements xsi:type="xtext:Keyword" value=","/>
-            <elements xsi:type="xtext:Assignment" feature="actualArgs" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-            </elements>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value="}"/>
+        <elements xsi:type="xtext:Keyword" value="("/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="actualArgs" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="actualArgs" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=")"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ProcDeclaration">
@@ -256,64 +208,20 @@
             <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//ProcDeclaration"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="ProcDeclaration"/>
+        <elements xsi:type="xtext:Keyword" value="to"/>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="procCall"/>
-          <elements xsi:type="xtext:Keyword" value="("/>
-          <elements xsi:type="xtext:Assignment" feature="procCall" operator="+=">
-            <terminal xsi:type="xtext:CrossReference">
-              <type metamodel="/0/@metamodelDeclarations.0">
-                <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//ProcCall"/>
-              </type>
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
-            </terminal>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="*">
-            <elements xsi:type="xtext:Keyword" value=","/>
-            <elements xsi:type="xtext:Assignment" feature="procCall" operator="+=">
-              <terminal xsi:type="xtext:CrossReference">
-                <type metamodel="/0/@metamodelDeclarations.0">
-                  <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//ProcCall"/>
-                </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
-              </terminal>
-            </elements>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value=")"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="args" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
         </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="args"/>
-          <elements xsi:type="xtext:Keyword" value="{"/>
-          <elements xsi:type="xtext:Assignment" feature="args" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="*">
-            <elements xsi:type="xtext:Keyword" value=","/>
-            <elements xsi:type="xtext:Assignment" feature="args" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
-            </elements>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value="}"/>
+        <elements xsi:type="xtext:Assignment" feature="instructions" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
         </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="instructions"/>
-          <elements xsi:type="xtext:Keyword" value="{"/>
-          <elements xsi:type="xtext:Assignment" feature="instructions" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="*">
-            <elements xsi:type="xtext:Keyword" value=","/>
-            <elements xsi:type="xtext:Assignment" feature="instructions" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
-            </elements>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value="}"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="instructions" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
+        <elements xsi:type="xtext:Keyword" value="end"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Block">
@@ -326,70 +234,39 @@
             <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Block"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="Block"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="instructions"/>
-          <elements xsi:type="xtext:Keyword" value="{"/>
-          <elements xsi:type="xtext:Assignment" feature="instructions" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="*">
-            <elements xsi:type="xtext:Keyword" value=","/>
-            <elements xsi:type="xtext:Assignment" feature="instructions" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
-            </elements>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value="}"/>
+        <elements xsi:type="xtext:Keyword" value="["/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="instructions" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
+        <elements xsi:type="xtext:Keyword" value="]"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="If">
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//If"/>
       </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="If"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="condition"/>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="ifelse"/>
           <elements xsi:type="xtext:Assignment" feature="condition" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
           </elements>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="thenPart"/>
-        <elements xsi:type="xtext:Assignment" feature="thenPart" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="elsePart"/>
+          <elements xsi:type="xtext:Assignment" feature="thenPart" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
+          </elements>
           <elements xsi:type="xtext:Assignment" feature="elsePart" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
           </elements>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="ControlStructure_Impl">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//ControlStructure"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//ControlStructure"/>
-          </type>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="ControlStructure"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="condition"/>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="if"/>
           <elements xsi:type="xtext:Assignment" feature="condition" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="thenPart" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
           </elements>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Repeat">
@@ -397,19 +274,13 @@
         <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Repeat"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="Repeat"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="condition"/>
-          <elements xsi:type="xtext:Assignment" feature="condition" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-          </elements>
+        <elements xsi:type="xtext:Keyword" value="repeat"/>
+        <elements xsi:type="xtext:Assignment" feature="condition" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="block"/>
         <elements xsi:type="xtext:Assignment" feature="block" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="While">
@@ -418,18 +289,12 @@
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="While"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="condition"/>
-          <elements xsi:type="xtext:Assignment" feature="condition" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-          </elements>
+        <elements xsi:type="xtext:Assignment" feature="condition" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="block"/>
         <elements xsi:type="xtext:Assignment" feature="block" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ParameterCall">
@@ -437,144 +302,141 @@
         <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//ParameterCall"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="ParameterCall"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Keyword" value="parameter"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
         <elements xsi:type="xtext:Assignment" feature="parameter" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.0">
               <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Parameter"/>
             </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
           </terminal>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Plus">
+    <rules xsi:type="xtext:ParserRule" name="EqualExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Plus"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="Plus"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Keyword" value="lhs"/>
-        <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Action" feature="lhs" operator="=">
+            <type metamodel="/0/@metamodelDeclarations.0">
+              <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Equals"/>
+            </type>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="="/>
+          <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+          </elements>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="rhs"/>
-        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Minus">
+    <rules xsi:type="xtext:ParserRule" name="ComparisonExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Minus"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="Minus"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Keyword" value="lhs"/>
-        <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Action" feature="lhs" operator="=">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Greater"/>
+                </type>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value=">"/>
+            </elements>
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Action" feature="lhs" operator="=">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Lower"/>
+                </type>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value="&lt;"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+          </elements>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="rhs"/>
-        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Mult">
+    <rules xsi:type="xtext:ParserRule" name="AddExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Mult"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="Mult"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Keyword" value="lhs"/>
-        <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Action" feature="lhs" operator="=">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Plus"/>
+                </type>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value="+"/>
+            </elements>
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Action" feature="lhs" operator="=">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Minus"/>
+                </type>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value="-"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+          </elements>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="rhs"/>
-        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Div">
+    <rules xsi:type="xtext:ParserRule" name="MultExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Div"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="Div"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Keyword" value="lhs"/>
-        <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Action" feature="lhs" operator="=">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Mult"/>
+                </type>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value="*"/>
+            </elements>
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Action" feature="lhs" operator="=">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Div"/>
+                </type>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value="/"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+          </elements>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="rhs"/>
-        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Equals">
+    <rules xsi:type="xtext:ParserRule" name="LiteralsExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Equals"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Expression"/>
       </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="Equals"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Keyword" value="lhs"/>
-        <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="("/>
+          <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+          <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="rhs"/>
-        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Greater">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Greater"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="Greater"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Keyword" value="lhs"/>
-        <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="rhs"/>
-        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Lower">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Lower"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="Lower"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Keyword" value="lhs"/>
-        <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="rhs"/>
-        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="EInt">
@@ -605,9 +467,9 @@
             <classifier xsi:type="ecore:EClass" href="http://www.kermeta.org/logoASM#//Parameter"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="Parameter"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
         </elements>
       </alternatives>
     </rules>

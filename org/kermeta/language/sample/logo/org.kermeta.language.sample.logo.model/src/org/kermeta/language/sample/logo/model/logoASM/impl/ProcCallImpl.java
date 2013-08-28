@@ -119,49 +119,11 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDeclaration(ProcDeclaration newDeclaration, NotificationChain msgs) {
+	public void setDeclaration(ProcDeclaration newDeclaration) {
 		ProcDeclaration oldDeclaration = declaration;
 		declaration = newDeclaration;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LogoASMPackage.PROC_CALL__DECLARATION, oldDeclaration, newDeclaration);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDeclaration(ProcDeclaration newDeclaration) {
-		if (newDeclaration != declaration) {
-			NotificationChain msgs = null;
-			if (declaration != null)
-				msgs = ((InternalEObject)declaration).eInverseRemove(this, LogoASMPackage.PROC_DECLARATION__PROC_CALL, ProcDeclaration.class, msgs);
-			if (newDeclaration != null)
-				msgs = ((InternalEObject)newDeclaration).eInverseAdd(this, LogoASMPackage.PROC_DECLARATION__PROC_CALL, ProcDeclaration.class, msgs);
-			msgs = basicSetDeclaration(newDeclaration, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.PROC_CALL__DECLARATION, newDeclaration, newDeclaration));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LogoASMPackage.PROC_CALL__DECLARATION:
-				if (declaration != null)
-					msgs = ((InternalEObject)declaration).eInverseRemove(this, LogoASMPackage.PROC_DECLARATION__PROC_CALL, ProcDeclaration.class, msgs);
-				return basicSetDeclaration((ProcDeclaration)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LogoASMPackage.PROC_CALL__DECLARATION, oldDeclaration, declaration));
 	}
 
 	/**
@@ -174,8 +136,6 @@ public class ProcCallImpl extends ExpressionImpl implements ProcCall {
 		switch (featureID) {
 			case LogoASMPackage.PROC_CALL__ACTUAL_ARGS:
 				return ((InternalEList<?>)getActualArgs()).basicRemove(otherEnd, msgs);
-			case LogoASMPackage.PROC_CALL__DECLARATION:
-				return basicSetDeclaration(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

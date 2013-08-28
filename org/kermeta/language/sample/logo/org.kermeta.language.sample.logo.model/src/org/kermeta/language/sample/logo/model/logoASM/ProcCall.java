@@ -40,7 +40,6 @@ public interface ProcCall extends Expression {
 
 	/**
 	 * Returns the value of the '<em><b>Declaration</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.kermeta.language.sample.logo.model.logoASM.ProcDeclaration#getProcCall <em>Proc Call</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Declaration</em>' reference isn't clear,
@@ -50,8 +49,7 @@ public interface ProcCall extends Expression {
 	 * @return the value of the '<em>Declaration</em>' reference.
 	 * @see #setDeclaration(ProcDeclaration)
 	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getProcCall_Declaration()
-	 * @see org.kermeta.language.sample.logo.model.logoASM.ProcDeclaration#getProcCall
-	 * @model opposite="procCall" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	ProcDeclaration getDeclaration();

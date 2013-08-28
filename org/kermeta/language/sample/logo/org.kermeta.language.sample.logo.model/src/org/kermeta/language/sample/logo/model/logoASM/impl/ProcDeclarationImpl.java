@@ -33,7 +33,6 @@ import org.kermeta.language.sample.logo.model.logoASM.ProcDeclaration;
  * <ul>
  *   <li>{@link org.kermeta.language.sample.logo.model.logoASM.impl.ProcDeclarationImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.kermeta.language.sample.logo.model.logoASM.impl.ProcDeclarationImpl#getArgs <em>Args</em>}</li>
- *   <li>{@link org.kermeta.language.sample.logo.model.logoASM.impl.ProcDeclarationImpl#getProcCall <em>Proc Call</em>}</li>
  *   <li>{@link org.kermeta.language.sample.logo.model.logoASM.impl.ProcDeclarationImpl#getInstructions <em>Instructions</em>}</li>
  * </ul>
  * </p>
@@ -70,16 +69,6 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	 * @ordered
 	 */
 	protected EList<Parameter> args;
-
-	/**
-	 * The cached value of the '{@link #getProcCall() <em>Proc Call</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProcCall()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ProcCall> procCall;
 
 	/**
 	 * The cached value of the '{@link #getInstructions() <em>Instructions</em>}' containment reference list.
@@ -148,18 +137,6 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProcCall> getProcCall() {
-		if (procCall == null) {
-			procCall = new EObjectWithInverseResolvingEList<ProcCall>(ProcCall.class, this, LogoASMPackage.PROC_DECLARATION__PROC_CALL, LogoASMPackage.PROC_CALL__DECLARATION);
-		}
-		return procCall;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Instruction> getInstructions() {
 		if (instructions == null) {
 			instructions = new EObjectContainmentEList<Instruction>(Instruction.class, this, LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS);
@@ -172,28 +149,11 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getProcCall()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LogoASMPackage.PROC_DECLARATION__ARGS:
 				return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
-			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
-				return ((InternalEList<?>)getProcCall()).basicRemove(otherEnd, msgs);
 			case LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
 				return ((InternalEList<?>)getInstructions()).basicRemove(otherEnd, msgs);
 		}
@@ -212,8 +172,6 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 				return getName();
 			case LogoASMPackage.PROC_DECLARATION__ARGS:
 				return getArgs();
-			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
-				return getProcCall();
 			case LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
 				return getInstructions();
 		}
@@ -235,10 +193,6 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 			case LogoASMPackage.PROC_DECLARATION__ARGS:
 				getArgs().clear();
 				getArgs().addAll((Collection<? extends Parameter>)newValue);
-				return;
-			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
-				getProcCall().clear();
-				getProcCall().addAll((Collection<? extends ProcCall>)newValue);
 				return;
 			case LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
 				getInstructions().clear();
@@ -262,9 +216,6 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 			case LogoASMPackage.PROC_DECLARATION__ARGS:
 				getArgs().clear();
 				return;
-			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
-				getProcCall().clear();
-				return;
 			case LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
 				getInstructions().clear();
 				return;
@@ -284,8 +235,6 @@ public class ProcDeclarationImpl extends InstructionImpl implements ProcDeclarat
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case LogoASMPackage.PROC_DECLARATION__ARGS:
 				return args != null && !args.isEmpty();
-			case LogoASMPackage.PROC_DECLARATION__PROC_CALL:
-				return procCall != null && !procCall.isEmpty();
 			case LogoASMPackage.PROC_DECLARATION__INSTRUCTIONS:
 				return instructions != null && !instructions.isEmpty();
 		}

@@ -1,12 +1,12 @@
-To circle :ne :size 
-	Repeat :ne 
+to circle :ne :size 
+	repeat :ne 
 	[ 
-		Right ( 360 / :ne ) 
-		Forward :size 
+		right  (360 / :ne)  
+		forward :size 
 	] 
-End 
+end 
 
-Clear 
-PenDown 
+clear 
+pendown 
 circle ( 36 , 20 ) 
-PenUp 
+penup 

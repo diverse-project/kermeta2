@@ -6,8 +6,15 @@ resource logo_model = "${project.baseUri}/../org.kermeta.language.sample.logo.mo
 
 resource logo_xtext_jar = "${project.baseUri}/../org.kermeta.language.sample.logo.xtexteditor/target/org.kermeta.language.sample.logo.xtexteditor-1.0.0-SNAPSHOT.jar" 
 			  alternative "mvn:org.kermeta.language.sample.logo/org.kermeta.language.sample.logo.xtexteditor/LATEST"
+// indirect dependencies of xtext parser (required to compile)			  
 resource xtext_jar = "mvn:org.eclipse/xtext/2.3.1-v201208210947"
-resource google_inject_jar = "mvn:com.google/inject/3.0.0-v201203062045"					  
+resource google_inject_jar = "mvn:com.google/inject/3.0.0-v201203062045"
+// indirect dependencies of xtext parser (required to run)	
+resource javax_inject_jar = "mvn:javax/inject/LATEST"			
+resource apache_log4j_jar = "mvn:org.apache/log4j/1.2.15-v201012070815"		
+resource google_guava_jar = "mvn:com.google/guava/10.0.1-v201203051515"  		
+resource antlr_runtime_jar = "mvn:org.antlr/runtime/3.2.0-v201101311130"		  
+resource xtext_util_jar = "mvn:org.eclipse.xtext/util/LATEST"
 
 importProject library_standard
 importProject logo_model
@@ -16,6 +23,11 @@ importProject logo_model
 importProject logo_xtext_jar
 importProject xtext_jar
 importProject google_inject_jar
+importProject javax_inject_jar
+importProject apache_log4j_jar
+importProject google_guava_jar
+importProject antlr_runtime_jar
+importProject xtext_util_jar
 
 project logo_interpreter {
 	mainClass "logo_interpreter^org::kermeta::language::sample::logo::interpreter::MainClass"

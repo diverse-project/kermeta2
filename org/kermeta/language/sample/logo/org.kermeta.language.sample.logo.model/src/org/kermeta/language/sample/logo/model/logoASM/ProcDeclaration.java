@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.kermeta.language.sample.logo.model.logoASM.ProcDeclaration#getName <em>Name</em>}</li>
  *   <li>{@link org.kermeta.language.sample.logo.model.logoASM.ProcDeclaration#getArgs <em>Args</em>}</li>
- *   <li>{@link org.kermeta.language.sample.logo.model.logoASM.ProcDeclaration#getProcCall <em>Proc Call</em>}</li>
  *   <li>{@link org.kermeta.language.sample.logo.model.logoASM.ProcDeclaration#getInstructions <em>Instructions</em>}</li>
  * </ul>
  * </p>
@@ -65,24 +64,6 @@ public interface ProcDeclaration extends Instruction {
 	 * @generated
 	 */
 	EList<Parameter> getArgs();
-
-	/**
-	 * Returns the value of the '<em><b>Proc Call</b></em>' reference list.
-	 * The list contents are of type {@link org.kermeta.language.sample.logo.model.logoASM.ProcCall}.
-	 * It is bidirectional and its opposite is '{@link org.kermeta.language.sample.logo.model.logoASM.ProcCall#getDeclaration <em>Declaration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Proc Call</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Proc Call</em>' reference list.
-	 * @see org.kermeta.language.sample.logo.model.logoASM.LogoASMPackage#getProcDeclaration_ProcCall()
-	 * @see org.kermeta.language.sample.logo.model.logoASM.ProcCall#getDeclaration
-	 * @model opposite="declaration"
-	 * @generated
-	 */
-	EList<ProcCall> getProcCall();
 
 	/**
 	 * Returns the value of the '<em><b>Instructions</b></em>' containment reference list.
