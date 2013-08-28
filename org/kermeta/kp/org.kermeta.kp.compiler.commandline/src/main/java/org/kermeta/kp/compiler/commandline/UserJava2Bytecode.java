@@ -78,6 +78,13 @@ public class UserJava2Bytecode {
 		
 	}
 	
+	public boolean hasFileTocompile(){
+		Iterable<? extends JavaFileObject> compilationUnits =
+	            fileManager.getJavaFileObjectsFromFiles(getJavaSources(new File(userJavaFolder)));
+		
+		return compilationUnits.iterator().hasNext();
+	}
+	
 	public Future<Boolean> java2bytecode( ExecutorService threadExector){
 		
 		

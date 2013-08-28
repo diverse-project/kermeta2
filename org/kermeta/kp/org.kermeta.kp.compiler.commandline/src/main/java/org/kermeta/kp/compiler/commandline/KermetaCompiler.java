@@ -37,6 +37,8 @@ import java.util.jar.Attributes;
 import java.util.jar.JarInputStream;
 import java.util.jar.Manifest;
 
+import javax.tools.JavaFileObject;
+
 import org.eclipse.emf.common.util.URI;
 import org.kermeta.compilo.scala.CompilerConfiguration;
 import org.kermeta.compilo.scala.GlobalConfiguration;
@@ -816,12 +818,14 @@ public class KermetaCompiler {
 			}
 			
 			// -------------- Generating User java bytecode -----------------------
+			
 			fullBinaryDependencyClassPath.add(targetScalaBinaryFolder+"/");
 			UserJava2Bytecode userJava2Bytecode = new UserJava2Bytecode(logger, getMainProgressGroup(), kp,  targetRootFolder , userSrcFolder, targetUserBinaryFolder, fullBinaryDependencyClassPath, runInEclipse);
-			Future<Boolean> userJavaFuture = userJava2Bytecode.java2bytecode(getSingleThreadExector());
-			// process java diagnostic and ensure this thread is finished
-			userJava2Bytecode.processDiagnostic(userJavaFuture);
-			
+			if(userJava2Bytecode.hasFileTocompile()){
+				Future<Boolean> userJavaFuture = userJava2Bytecode.java2bytecode(getSingleThreadExector());
+				// process java diagnostic and ensure this thread is finished
+				userJava2Bytecode.processDiagnostic(userJavaFuture);
+			}
 			return resolvedUnit;
 		} finally {
 			
