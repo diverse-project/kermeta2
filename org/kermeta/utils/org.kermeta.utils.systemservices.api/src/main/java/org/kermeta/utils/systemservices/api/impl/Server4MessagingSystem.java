@@ -32,7 +32,7 @@ public class Server4MessagingSystem implements Runnable{
 			this.port = serverSocket.getLocalPort();
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), Server4MessagingSystem.class.getName(),e);
 		}
 	}
 	
@@ -88,14 +88,18 @@ public class Server4MessagingSystem implements Runnable{
         	try {
         		if(reader != null) reader.close();
 			} catch (IOException e1) {
-				logger.error(e1.getMessage(), "",e1);
+				logger.error(e1.getMessage(), Server4MessagingSystem.class.getName(),e1);
 			}
         }
         catch(java.net.SocketException e){
+        	if("Connection reset".equals(e.getMessage())){
+        		logger.log(Kind.DevDEBUG, e.getMessage()+" on sockect port "+port, Server4MessagingSystem.class.getName(), null);
+        	}
+        	else
         	logger.log(Kind.DevDEBUG, e.getMessage(), Server4MessagingSystem.class.getName(), e);
         }
         catch (Exception e) {
-        	logger.error(e.getMessage(), "",e);
+        	logger.error(e.getMessage(), Server4MessagingSystem.class.getName(),e);
         }		
 	}
 	
