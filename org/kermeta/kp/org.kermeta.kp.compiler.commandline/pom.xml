@@ -60,8 +60,11 @@
 						</Export-Package>
 						<Require-Bundle>
 							org.kermeta.utils.maven.runtime,
-							org.kermeta.kermeta1.framework.scala
+							org.kermeta.kermeta1.framework.scala,
+							org.kermeta.language.library.core
 						</Require-Bundle>
+						<!-- due to the workaround of reflexivity.loader used by gendoc and pretty printer, library.core classes are exported by several componet
+						we need to use Require-Bundle instead of Import-Package for the packages of the framework -->
 						<Import-Package>
 							!javax.*,
 							!org.kermeta.language.language.ecore2km.org.eclipse.emf.ecore,
@@ -70,6 +73,7 @@
 							!kermeta.standard,
 							!fr.irisa.triskell.kermeta.language.behavior,
 							!org.kermeta.console,
+							!k2.*,
 							org.kermeta.utils.aether;version="[2.0,3)",
 							*
 						</Import-Package>

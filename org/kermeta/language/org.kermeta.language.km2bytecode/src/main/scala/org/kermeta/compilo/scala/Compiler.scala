@@ -72,5 +72,12 @@ class Compiler extends LogAspect {
         //CopyEcoreFile.copyEcorefiles(GlobalConfiguration.outputFolder)
 
     }
+    
+    /**
+     * Utility method that makes sure to update the singleton used by the compiler even if used across component classpath ...
+     */
+    def addPackageEquivalence(ecorePackName : String, javaPackName : String){
+      k2.utils.TypeEquivalence.packageEquivelence.put(ecorePackName, javaPackName)
+    }
 
 }

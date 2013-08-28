@@ -62,6 +62,11 @@ class ScalaFactoryAndImplicitVisitor(compilerConfiguration: CompilerConfiguratio
       packNameMM = visitor.getQualifiedName(parentpack) + "." + packNam
     }
     packName = k2.utils.TypeEquivalence.getPackageEquivalence(packName)
+    
+    
+    this.log.debug("Current Package equivalence when looking for :"+packName)
+    k2.utils.TypeEquivalence.packageEquivelence.entrySet().foreach(eq => this.log.error("\t"+eq.getKey()+"="+eq.getValue()))
+    
     var impName = packName + Util.getImplPackageSuffix(packName) + Util.getPackagePrefix(packNameUpper) + "PackageImpl"
     if (packName.equals("org.eclipse.emf.ecore")) {
       //res.append("\n{\n\tvar c : java.lang.reflect.Constructor[_] = classOf["+impName+"].getDeclaredConstructors.first\n")

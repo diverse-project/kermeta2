@@ -72,10 +72,12 @@ public class CompilationTest extends TestCase {
 		additionalClassPath.add(aetherUtil.resolveMavenArtifact4J("org.kermeta.utils", "utils.helpers", currentKermetaVersion, repositories).getAbsolutePath());
 		additionalClassPath.add(aetherUtil.resolveMavenArtifact4J("org.kermeta.utils", "utils.systemservices.api", currentKermetaVersion, repositories).getAbsolutePath());
 		
-		compiler.initializeTargetFolders(targetFolder, targetFolder,
+		compiler.initializeFolders(targetFolder, targetFolder,
 				targetFolder+"scala/", targetFolder+"classes/", 
 				targetFolder+"genmodel/", 
-				targetFolder+"java/", targetFolder+"emfclasses/", targetFolder+"resources/");
+				targetFolder+"java/", targetFolder+"emfclasses/", targetFolder+"resources/",
+				kpFile.substring(0, kpFile.lastIndexOf("/"))+"/src/main/java/",
+				targetFolder+"emfclasses/");
 		compiler.setModelingUnitLoaders(getDefaultMuLoaders());
 		compiler.kp2bytecode("file:/"+kpFile,additionalClassPath, KermetaCompiler.PHASE_GENERATE_SCALA_BYTECODE);
 				

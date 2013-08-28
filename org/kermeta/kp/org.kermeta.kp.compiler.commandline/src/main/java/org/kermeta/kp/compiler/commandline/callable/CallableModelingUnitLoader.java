@@ -55,7 +55,7 @@ public class CallableModelingUnitLoader implements Callable<ModelingUnit> {
 			
 			if(muLoader==null){
 				compiler.logger.logProblem(MessagingSystem.Kind.UserERROR, "Problem loading "+urlToLoad.getUrl()+" Unknown file extension", KermetaCompiler.LOG_MESSAGE_GROUP, KpResourceHelper.createFileReference(urlToLoad.getSource()));			
-				compiler.failWithMessage("Problem loading "+urlToLoad.getUrl()+" Unknown file extension");
+				compiler.failWithMessage("Problem loading "+urlToLoad.getUrl()+" Unknown file extension", null);
 				return null;
 			}
 			
@@ -86,12 +86,13 @@ public class CallableModelingUnitLoader implements Callable<ModelingUnit> {
 			
 		} catch( java.io.FileNotFoundException fnfe) {
 			compiler.logger.logProblem(MessagingSystem.Kind.UserERROR, "Source "+urlToLoad.getUrl()+" not found", KermetaCompiler.LOG_MESSAGE_GROUP, KpResourceHelper.createFileReference(urlToLoad.getSource()));
-			compiler.failWithMessage("Source "+urlToLoad.getUrl()+" not found");
+			compiler.failWithMessage("Source "+urlToLoad.getUrl()+" not found", fnfe);
 		}
 		catch (Exception e) {		
 			String exceptionMessage = e.getMessage() != null ? e.getMessage() : e.getClass().toString();
+			//compiler.logger.warn( "Problem loading "+urlToLoad.getUrl()+" due to "+exceptionMessage, KermetaCompiler.LOG_MESSAGE_GROUP, e); //DVK			
 			compiler.logger.logProblem(MessagingSystem.Kind.UserERROR, "Problem loading "+urlToLoad.getUrl()+" due to "+exceptionMessage, KermetaCompiler.LOG_MESSAGE_GROUP, e, KpResourceHelper.createFileReference(urlToLoad.getSource()));			
-			compiler.failWithMessage("Problem loading "+urlToLoad.getUrl()+" due to "+exceptionMessage);
+			compiler.failWithMessage("Problem loading "+urlToLoad.getUrl()+" due to "+exceptionMessage, e);
 		}
 		return null;
 	}

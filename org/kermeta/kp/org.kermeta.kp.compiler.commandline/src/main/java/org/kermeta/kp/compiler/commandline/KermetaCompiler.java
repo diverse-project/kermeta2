@@ -128,6 +128,7 @@ public class KermetaCompiler {
 
 	public Boolean hasFailed = false;
 	public String errorMessage = "";
+	public Throwable errorException = null;
 	private static final Lock lock = new ReentrantLock();
 	
 	protected String contributedProgressGroup = ""; 
@@ -594,7 +595,7 @@ public class KermetaCompiler {
 			if(stopOnError && this.hasFailed){
 				this.errorMessage = "Not able to load all expected sources or dependencies. " +this.errorMessage;
 				logger.logProblem(MessagingSystem.Kind.UserERROR, this.errorMessage, LOG_MESSAGE_GROUP, new FileReference(FileHelpers.StringToURL(kpFileURL)));
-				logger.log(MessagingSystem.Kind.UserERROR, this.errorMessage, LOG_MESSAGE_GROUP);
+				logger.log(MessagingSystem.Kind.UserERROR, this.errorMessage, LOG_MESSAGE_GROUP, this.errorException);
 				return null;
 			}			
 			if(phaseRank(stopAfterPhase) <= phaseRank(PHASE_COLLECT_SOURCES)){
@@ -1145,19 +1146,20 @@ public class KermetaCompiler {
 		 * ().put(equivalence.getEcorePackageName(),
 		 * equivalence.getJavaPackageName()); } }
 		 */
+		org.kermeta.compilo.scala.Compiler km2ScalaCompiler = new org.kermeta.compilo.scala.Compiler();		
 		CollectSourcesHelper helper = new CollectSourcesHelper(this, logger);
 		for( PackageEquivalence packEquivalence : helper.collectAllPackageEquivalences(kp)){
 			if(packEquivalence.getEcorePackage() !=  null && packEquivalence.getJavaPackage() !=  null &&
 					(!packEquivalence.getEcorePackage().isEmpty()) && (!packEquivalence.getJavaPackage().isEmpty()))	{
-				logger.debug("\tadding package equivalence "+packEquivalence.getEcorePackage() +"="+ packEquivalence.getJavaPackage(), LOG_MESSAGE_GROUP);
-				k2.utils.TypeEquivalence.packageEquivelence().put(packEquivalence.getEcorePackage(), packEquivalence.getJavaPackage());
+				logger.debug("\tadding package equivalence "+packEquivalence.getEcorePackage() +" = "+ packEquivalence.getJavaPackage(), LOG_MESSAGE_GROUP);
+				//k2.utils.TypeEquivalence.packageEquivelence().put(packEquivalence.getEcorePackage(), packEquivalence.getJavaPackage());
+				km2ScalaCompiler.addPackageEquivalence(packEquivalence.getEcorePackage(), packEquivalence.getJavaPackage());
 			}
 			else{
 				logger.warn("ignoring invalid (empty) package equivalence", LOG_MESSAGE_GROUP);
 			}
 			
 		}
-		org.kermeta.compilo.scala.Compiler km2ScalaCompiler = new org.kermeta.compilo.scala.Compiler();
 		km2ScalaCompiler.compile(URLDecoder.decode(kmFileURL,"UTF-8"), new CompilerConfiguration(), kp.getMetamodelName());
 	}
 
@@ -1377,9 +1379,10 @@ public class KermetaCompiler {
 			return contributedProgressGroup+".KermetaCompiler["+this.hashCode()+"]";
 	}
 
-	public void failWithMessage(String msg){
+	public void failWithMessage(String msg, Throwable exception){
 		this.hasFailed = true;
 		this.errorMessage = msg;
+		this.errorException = exception;
 	}
 	
 	public static  int phaseRank(String phase){

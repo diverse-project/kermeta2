@@ -79,10 +79,12 @@ public class KRunTest extends TestCase {
 		additionalClassPath.add(aetherUtil.resolveMavenArtifact("org.kermeta.utils", "utils.helpers", currentKermetaVersion, mavenRepository).getAbsolutePath());
 		additionalClassPath.add(aetherUtil.resolveMavenArtifact("org.kermeta.utils", "utils.systemservices.api", currentKermetaVersion, mavenRepository).getAbsolutePath());
 		
-		compiler.initializeTargetFolders(targetFolder, targetFolder,
+		compiler.initializeFolders(targetFolder, targetFolder,
 				targetFolder+"scala/", targetFolder+"classes/", 
 				targetFolder+"genmodel/", 
-				targetFolder+"java/", targetFolder+"emfclasses/", targetFolder+"resources/");
+				targetFolder+"java/", targetFolder+"emfclasses/", targetFolder+"resources/",
+				kpFile.substring(0, kpFile.lastIndexOf("/"))+"/src/main/java/",
+				targetFolder+"emfclasses/");
 		
 		// copy resources in class folder to enable reflexivity
 		FileHelpers.copyDirectory(new File(targetFolder+"resources/"), new File(targetFolder+"classes/"));

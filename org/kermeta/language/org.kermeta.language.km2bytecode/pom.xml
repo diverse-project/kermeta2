@@ -162,11 +162,11 @@
 							!org.apache.maven.*,
 							!org.codehaus.plexus.*,
 							!scala.*,
+							!k2.utils,
 							org.kermeta.language.structure.*,
 							org.kermeta.language.behavior.*,
 							org.kermeta.language.util.*,
 							org.kermeta.utils.systemservices.api.*,
-							k2.utils,
 							org.eclipse.emf.*,
 							org.slf4j;version="[0,2)",
 							org.k2.compilo.scala.loader

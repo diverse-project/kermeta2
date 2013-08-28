@@ -4,9 +4,13 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -130,44 +134,107 @@ public class ModelingUnitLoaderForEcore implements ModelingUnitLoader {
 			// WORKAROUND problem of incomplete conversion if run in eclipse, the ecore.ecore from nsURI is loaded without using the new factory
 			// this fixes bug 1951
 		
-			/*ResourceCopierConverter resourceCopier = new ResourceCopierConverter(logger);
+		/*	ResourceCopierConverter resourceCopier = new ResourceCopierConverter(logger);
 			Resource newresource = resourceCopier.copyConvert(resource);
 			rootPackage = (EPackage) newresource.getContents().get(0);
 			
 			Map<EObject, Collection<Setting>> unresolvedExternalRefs =EcoreUtil.UnresolvedProxyCrossReferencer.find(newresource);
 			for(Entry<EObject, Collection<Setting>> entry : unresolvedExternalRefs.entrySet()){
 				EObject rootExternalObject = getRootContainer(entry.getKey());
-				logger.warn( "Unresolved proxy "+rootExternalObject+" in copied resource", this.getClass().getName());
-			}*/
-		
+				logger.warn( "Unresolved proxy "+entry.getKey()+" "+rootExternalObject+" in copied EObject", this.getClass().getName());
+			}
+		*/
 			logger.log(Kind.DevINFO, "Applying ecore load workaround so it can load ecore model in registry", this.getClass().getName());
-			//EcoreUtil.resolveAll(resourceSet);
-			ArrayList<EObject> objectsToCopy = new ArrayList<EObject>();
+			EcoreUtil.resolveAll(resourceSet);
+			Collection<EObject> objectsToCopy = new LinkedHashSet<EObject>();
 			
 			objectsToCopy.addAll(resource.getContents());
 			for(Resource res : resourceSet.getResources()){
 				if(res != resource){
 					logger.debug( "workaround applied on additional resource "+res.getURI(), this.getClass().getName());
 					objectsToCopy.addAll(res.getContents());
+					/*TreeIterator<EObject> it = res.getAllContents();
+					
+					while(it.hasNext()){
+						objectsToCopy.add(it.next());
+					}*/
 				}
 			}
+			//Collection<Resource> externalResources = new HashSet<Resource>(); 
 			Map<EObject, Collection<Setting>> externalRefs = EcoreUtil.CrossReferencer.find(objectsToCopy);
-			for(Entry<EObject, Collection<Setting>> entry : externalRefs.entrySet()){
+			/*for(Entry<EObject, Collection<Setting>> entry : externalRefs.entrySet()){
 				EObject rootExternalObject = getRootContainer(entry.getKey());
 				if(!objectsToCopy.contains(rootExternalObject)){
-					logger.debug( "workaround applied on external EObject "+rootExternalObject+entry.getKey(), this.getClass().getName());
-					/*EcoreUtil.resolveAll(rootExternalObject);
-					EObject resolvedEObject = EcoreUtil.resolve(rootExternalObject,resourceSet);
-					EObject copiedEObject = EcoreUtil.copy(EcoreUtil.resolve(rootExternalObject,resourceSet));
-					if(copiedEObject.eIsProxy())
-						logger.debug( "copy is still a proxy :-( "+copiedEObject+rootExternalObject, this.getClass().getName());
-					if(resolvedEObject.eIsProxy())
-						logger.debug( "resolvedEObject is still a proxy :-( "+resolvedEObject, this.getClass().getName());*/
+					logger.debug( "workaround applied on external EObject "+rootExternalObject+entry.getKey(), this.getClass().getName());			
 					objectsToCopy.add(rootExternalObject);
+					
+				/*	TreeIterator<EObject> it = EcoreUtil.getAllContents(rootExternalObject, true);
+					
+					while(it.hasNext()){
+						EObject tocopy = it.next();
+						logger.debug( "   Adding for copy "+tocopy.toString()+" contained by "+tocopy.eContainer(), this.getClass().getName());
+						objectsToCopy.add(tocopy);
+					}*/
+					//EcoreUtil.getRootContainer(rootExternalObject)
+					//externalResources.add(rootExternalObject.eResource());
+			//	}
+			//}
+			/*for(Resource res : externalResources){
+				if(res != resource){
+					logger.debug( "workaround applied on additional resource full content"+res.getURI(), this.getClass().getName());
+					TreeIterator<EObject> it = res.getAllContents();
+					
+					while(it.hasNext()){
+						objectsToCopy.add(it.next());
+					}
+					//objectsToCopy.addAll(res.getContents());
 				}
+			}*/
+			/*
+			logger.debug( "Copying "+objectsToCopy.size()+" EObjects", this.getClass().getName());
+			//Collection<EObject> copiedObjects = EcoreUtil.copyAll(objectsToCopy);
+			EcoreUtil.Copier copier = new EcoreUtil.Copier(true, true);
+			 // EObject result = copier.copy(eObject);
+		    Collection<EObject> copiedObjects = copier.copyAll(objectsToCopy);
+		    copier.copyReferences();
+		    */
+			
+			boolean hasExternalRef = externalRefs.size() > 0;
+			int nbPass = 0;
+			Collection<EObject> copiedObjects = objectsToCopy;
+			while(hasExternalRef && nbPass < 1){
+				nbPass++;
+				for(Entry<EObject, Collection<Setting>> entry : externalRefs.entrySet()){
+					EObject rootExternalObject = getRootContainer(entry.getKey());
+					if(!objectsToCopy.contains(rootExternalObject)){
+						//if(!entry.getKey().getClass().getName().startsWith("Rich")){
+							StringBuffer reference = new StringBuffer();
+							for(Setting s :entry.getValue()){
+								reference.append(s.getEStructuralFeature().getName()+", ");
+							}
+							logger.debug( "workaround applied("+nbPass+") on external EObject "+rootExternalObject+" "+entry.getKey()+" via references "+reference.toString(), this.getClass().getName());			
+							objectsToCopy.add(rootExternalObject);
+						/*	TreeIterator<EObject> it = EcoreUtil.getAllContents(rootExternalObject, true);
+							
+							while(it.hasNext()){
+								EObject tocopy = it.next();
+								logger.debug( "   Adding for copy "+tocopy.toString()+" contained by "+tocopy.eContainer(), this.getClass().getName());
+								objectsToCopy.add(tocopy);
+							}*/
+							//objectsToCopy.add(entry.getKey());
+						//}
+					}
+				}
+				EcoreUtil.Copier copier = new EcoreUtil.Copier(true, true);
+				copiedObjects = copier.copyAll(objectsToCopy);
+			    copier.copyReferences();
+				//copiedObjects = EcoreUtil.copyAll(copiedObjects);
+			    objectsToCopy = new LinkedHashSet<EObject>();
+				objectsToCopy.addAll(copiedObjects);
+				externalRefs = EcoreUtil.CrossReferencer.find(objectsToCopy);
+				hasExternalRef = externalRefs.size() > 0;
 			}
 			
-			Collection<EObject> copiedObjects = EcoreUtil.copyAll(objectsToCopy);
 			
 			// check copy
 			Map<EObject, Collection<Setting>> unresolvedExternalRefs =EcoreUtil.UnresolvedProxyCrossReferencer.find(copiedObjects);
@@ -177,6 +244,12 @@ public class ModelingUnitLoaderForEcore implements ModelingUnitLoader {
 			}
 			
 			rootPackage = (EPackage) copiedObjects.toArray()[0];
+			
+			for (Iterator<EObject> iterator = copiedObjects.iterator(); iterator.hasNext();) {
+				EObject eObject = (EObject) iterator.next();
+				logger.debug( "   copied EObject "+eObject.toString()+" contained by "+eObject.eContainer(), this.getClass().getName());
+			}
+			
 			// END OF WORKAROUND
 			
 		/*}
