@@ -1,9 +1,7 @@
 using kermeta::standard::*
 using kermeta::io::StdIO => stdio
 
-package kmLogo {
-
-	package ASM {
+package logoASM {
 
 		aspect abstract class Instruction {
 
@@ -130,8 +128,19 @@ package kmLogo {
 		}
 
 		aspect class LogoProgram {
-
+			// ugly partial workaround for bug #16302, I've put that here just for the demo but this definitivly should be fixed in km2scala
+			operation checkAllInvariants() is do
+				//var res : kermeta::emfpersistence::Resource
+				//res := self.containingResource
+				from var it : Iterator<Object> := self.containingResource.getAllContents
+         		until it.isOff
+         		loop
+         			var cur : Object := it.next
+         			if not (cur == self) then
+             		 	cur.checkAllInvariants
+             		end
+         		end
+			end
 		}
 
-	}
 }
