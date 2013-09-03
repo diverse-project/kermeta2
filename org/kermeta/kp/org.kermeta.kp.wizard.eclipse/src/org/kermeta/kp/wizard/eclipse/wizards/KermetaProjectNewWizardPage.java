@@ -33,23 +33,23 @@ import org.eclipse.emf.mapping.ecore2ecore.presentation.Ecore2EcoreEditorPlugin;
 
 public class KermetaProjectNewWizardPage extends WizardPage {
 
-	private ContextWizardNewProject		context;
+	protected ContextWizardNewProject		context;
 	
-	private static final List<String> FILE_EXTENSIONS = Arrays.asList(new String [] { "ecore" });
-	private ErrorMessage[] errorMessage;
-	private boolean 	enableNext;
+	protected static final List<String> FILE_EXTENSIONS = Arrays.asList(new String [] { "ecore" });
+	protected ErrorMessage[] errorMessage;
+	protected boolean 	enableNext;
 	
-	private Composite 	container;
-	private Label 		lblProjectName;
-	private Label 		lblTemplateEcore;
-	private Text 		txtProjectName;
-	private Text 		txtProjectLocation;
-	private Text 		txtPathEcore;
-	private Button		btnBrowseLocation;
-	private Button 		btnBrowseEcore;
-	private Button 		btnCheckLocation;
-	private Button 		btnCheckEcore;
-	private Combo 		combo;
+	protected Composite 	container;
+	protected Label 		lblProjectName;
+	protected Label 		lblTemplateEcore;
+	protected Text 			txtProjectName;
+	protected Text 			txtProjectLocation;
+	protected Text 			txtPathEcore;
+	protected Button		btnBrowseLocation;
+	protected Button 		btnBrowseEcore;
+	protected Button 		btnCheckLocation;
+	protected Button 		btnCheckEcore;
+	protected Combo 		combo;
 
 	public KermetaProjectNewWizardPage(ContextWizardNewProject context){
 		super("wizardPage");
@@ -232,14 +232,14 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		setPageComplete(true);
 	}
 	
-	private String locationDialog () {
+	protected String locationDialog () {
 		DirectoryDialog dirDialog = new DirectoryDialog(new Shell());
 	    dirDialog.setText("Select location directory");
 	    this.context.locationProject = dirDialog.open();
 	    return this.context.locationProject;
 	}
 	  
-	private boolean workspaceDialog() {
+	protected boolean workspaceDialog() {
 		boolean bResult = false;
 		
 		final IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
@@ -279,12 +279,12 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		return bResult;
 	}
 	
-	private void activErrorMessage (int index, boolean bActiv) {
+	protected void activErrorMessage (int index, boolean bActiv) {
 		this.errorMessage[index].setActive(bActiv);
 		setMessageError();
 	}
 	
-	private boolean existNameProject () {
+	protected boolean existNameProject () {
 		boolean bFinder = false;
 		int i = 0;
 		while (bFinder == false && i < ResourcesPlugin.getWorkspace().getRoot().getProjects().length) {
@@ -296,7 +296,7 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		return bFinder;
 	}
 	
-	private void setMessageError () {
+	protected void setMessageError () {
 		StringBuffer result = new StringBuffer();
 		for (int i = 0; i < this.errorMessage.length; i++) {
 			if (this.errorMessage[i].isActive()) {
@@ -311,15 +311,15 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		}
 	}
 	
-	private void updateEcoreProject (boolean bState) {
+	protected void updateEcoreProject (boolean bState) {
 		this.context.ecoreProject = bState;
 	}
 	
-	private void updateNameProject (String nameProject) {
+	protected void updateNameProject (String nameProject) {
 		this.context.nameProject = nameProject;
 	}
 	
-	private void updateNextButton (boolean enable) {
+	protected void updateNextButton (boolean enable) {
 		enableNext = enable;
 		canFlipToNextPage();
 		getWizard().getContainer().updateButtons();

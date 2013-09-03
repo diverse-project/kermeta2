@@ -11,14 +11,10 @@
 */
 package org.kermeta.kp.wizard.eclipse.wizards;
 
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.util.regex.Pattern;
-
-import k2.io.StdIO;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -30,21 +26,22 @@ import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+
 import org.kermeta.kp.wizard.eclipse.Activator;
 import org.kermeta.kp.wizard.eclipse.preferences.PreferenceConstants;
 
 public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 
-	private ContextWizardNewProject context = new ContextWizardNewProject ();
+	protected ContextWizardNewProject context = new ContextWizardNewProject ();
 	
 	KermetaProjectNewWizardPage 		projectPage 		= new KermetaProjectNewWizardPage(context);
 	KermetaProjectNewWizardPageCustom 	projectPageCustom	= new KermetaProjectNewWizardPageCustom(context);
+	
 	
 	public KermetaProjectNewWizard() {}
 

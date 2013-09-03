@@ -20,24 +20,24 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 	
 	private ContextWizardNewProject		context;
 	
-	private Composite 	container;
-	private Label 		lblOperationName;
-	private Label 		lblReturnType;
-	private Label 		lblParameterName;
-	private Label 		lblParameterType;
-	private Text 		txtOperationName;
-	private Text 		txtReturnType;
-	private Text 		txtParameterName;
-	private Text 		txtParameterType;
-	private Button 		btnCheckCreateClass;
-	private Table		table;
-	private TableColumn	colClassCreation;
-	private TableColumn	colParamName;
-	private TableColumn	colParamType;
-	private TableItem 	item;
-	private Button 		btnAdd;
-	private Button 		btnRemove;
-	private String[] 	tabItem =  {"yes", "context", "Context"};
+	protected Composite 	container;
+	protected Label 		lblOperationName;
+	protected Label 		lblReturnType;
+	protected Label 		lblParameterName;
+	protected Label 		lblParameterType;
+	protected Text 			txtOperationName;
+	protected Text 			txtReturnType;
+	protected Text 			txtParameterName;
+	protected Text 			txtParameterType;
+	protected Button 		btnCheckCreateClass;
+	protected Table			table;
+	protected TableColumn	colClassCreation;
+	protected TableColumn	colParamName;
+	protected TableColumn	colParamType;
+	protected TableItem 	item;
+	protected Button 		btnAdd;
+	protected Button 		btnRemove;
+	protected String[] 		tabItem =  {"yes", "context", "Context"};
 	
 	public KermetaProjectNewWizardPageCustom (ContextWizardNewProject context){
 		super("wizardPage");
@@ -162,7 +162,7 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 		setPageComplete(true);
 	}
 	
-	private void addParameter () {
+	protected void addParameter () {
 		if (!txtParameterName.getText().isEmpty() && !txtParameterType.getText().isEmpty() && !existParameter()) {
 			
 			TableItem 	newItem 		= new TableItem(table, SWT.LEFT);
@@ -182,7 +182,7 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
 		table.redraw();
 	}
 	
-	private void removeParameter () {
+	protected void removeParameter () {
 		if (table.getSelectionIndices().length > 0) {
 			for(int i = table.getSelectionIndices().length - 1; i >= 0; i--) {
 				unregisterParameter(table.getSelectionIndices()[i]); 
@@ -196,33 +196,33 @@ public class KermetaProjectNewWizardPageCustom extends WizardPage {
         }
 	}
 	
-	private void updateNameOperation (String operationName) {
+	protected void updateNameOperation (String operationName) {
 		this.context.operationName = operationName;
 	}
 	
-	private void updateReturnType (String returnType) {
+	protected void updateReturnType (String returnType) {
 		this.context.operationReturnType = returnType;
 	}
 	
-	private void registerParameter (String nameParameter, String typeParameter) {
+	protected void registerParameter (String nameParameter, String typeParameter) {
 		this.context.operationParams.add(nameParameter + " : " + typeParameter);
 	}
 	
-	private void registerNewClass (String newClass) {
+	protected void registerNewClass (String newClass) {
 		if(!this.context.listNewClass.contains(newClass)) {
 			this.context.listNewClass.add(newClass);
 		}
 	}
 	
-	private void unregisterNewClass (String newClass) {
+	protected void unregisterNewClass (String newClass) {
 		this.context.listNewClass.remove(newClass);
 	}
 	
-	private void unregisterParameter (int iIndex) {
+	protected void unregisterParameter (int iIndex) {
 		this.context.operationParams.removeAt(iIndex);
 	}
 	
-	private boolean existParameter () {
+	protected boolean existParameter () {
 		boolean result = false;
 		String nameParameter = txtParameterName.getText();
 		String typeParameter = txtParameterType.getText();
