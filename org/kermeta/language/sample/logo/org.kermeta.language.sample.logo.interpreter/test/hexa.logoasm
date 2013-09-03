@@ -2,7 +2,7 @@
 <ASM:LogoProgram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ASM="http://www.kermeta.org/logoASM">
   <instructions xsi:type="ASM:Clear"/>
   <instructions xsi:type="ASM:ProcCall" declaration="//@instructions.2"/>
-  <instructions xsi:type="ASM:ProcDeclaration" name="hexa" procCall="//@instructions.1">
+  <instructions xsi:type="ASM:ProcDeclaration" name="hexa" >
     <instructions xsi:type="ASM:PenDown"/>
     <instructions xsi:type="ASM:While">
       <condition xsi:type="ASM:Constant" integerValue="6"/>

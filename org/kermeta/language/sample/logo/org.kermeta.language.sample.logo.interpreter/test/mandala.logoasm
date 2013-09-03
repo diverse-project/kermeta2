@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ASM:LogoProgram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ASM="http://www.kermeta.org/logoASM">
-  <instructions xsi:type="ASM:ProcDeclaration" name="n_eck" procCall="//@instructions.1/@instructions.0/@block/@instructions.1">
+  <instructions xsi:type="ASM:ProcDeclaration" name="n_eck" >
     <args name="ne"/>
     <args name="size"/>
     <instructions xsi:type="ASM:Repeat">
@@ -18,7 +18,7 @@
       </block>
     </instructions>
   </instructions>
-  <instructions xsi:type="ASM:ProcDeclaration" name="mn_eck" procCall="//@instructions.4">
+  <instructions xsi:type="ASM:ProcDeclaration" name="mn_eck" >
     <args name="ne"/>
     <args name="size"/>
     <instructions xsi:type="ASM:Repeat">
