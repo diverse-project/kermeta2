@@ -6113,7 +6113,7 @@ class C inherits A {
 }
 aspect class A inherits NamedElement {
 	operation eachOwnedElement(func : &lt;NamedElement -&gt; Void&gt;) : Void is do
-		super(func)
+		super[NamedElement](func)
 		self.ownedAs.each{ e |
 			func(e)
 		}
@@ -6121,7 +6121,7 @@ aspect class A inherits NamedElement {
 }
 aspect class B inherits A {
 	operation eachOwnedElement(func : &lt;NamedElement -&gt; Void&gt;) : Void is do
-		super(func) // makes sure to call func on attributes inherited from A
+		super[A](func) // makes sure to call func on attributes inherited from A
 		self.ownedBs.each{ e |
 			func(e)
 		}
@@ -6129,7 +6129,7 @@ aspect class B inherits A {
 }
 aspect class C inherits A {
 	operation eachOwnedElement(func : &lt;NamedElement -&gt; Void&gt;) : Void is do
-		super(func) // makes sure to call func on attributes inherited from A
+		super[A](func) // makes sure to call func on attributes inherited from A
 		self.ownedBs.each{ e |
 			func(e)
 		}
@@ -7939,7 +7939,7 @@ class testRequireJava inherits kermeta::kunit::TestCase
 
 					<para>
 						In the following example, the type of
-						<emphasis>super(element)</emphasis>
+						<emphasis>super[ParentClass](element)</emphasis>
 						is
 						<emphasis>CallSuperOperation</emphasis>
 						:
@@ -7953,10 +7953,10 @@ class testRequireJava inherits kermeta::kunit::TestCase
 
 }
 
-<emphasis role="strong">class</emphasis> ChildClass {
+<emphasis role="strong">class</emphasis> ChildClass <emphasis role="strong">inherits</emphasis> ParentClass {
     <emphasis role="strong">method</emphasis> op(element : Integer) : Integer <emphasis
 						role="strong">is</emphasis> <emphasis role="strong">do</emphasis>
-        <emphasis role="strong">result</emphasis> := <emphasis role="strong">super</emphasis>(element)
+        <emphasis role="strong">result</emphasis> := <emphasis role="strong">super</emphasis>[ParentClass](element)
     <emphasis role="strong">end</emphasis>
 }</programlisting>
 				</section>
