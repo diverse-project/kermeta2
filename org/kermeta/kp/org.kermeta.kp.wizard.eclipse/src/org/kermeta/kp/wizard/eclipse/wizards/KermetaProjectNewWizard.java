@@ -69,6 +69,10 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 		}
 	}
 	
+	@Override
+	public boolean isHelpAvailable() {
+		return true;
+	}
 	
 	@Override
 	public boolean performFinish() {
@@ -93,6 +97,7 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 				 }
 			};
 			ResourcesPlugin.getWorkspace().run(operation, null);
+			
 		} catch (CoreException exception) {
 			Activator.logErrorMessage(exception.getMessage(), exception);
 			return false;
@@ -209,4 +214,7 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 		return context;
 	}
 	
+	public KermetaProjectNewWizardPage getPageProject() {
+		return this.projectPage;
+	}
 }
