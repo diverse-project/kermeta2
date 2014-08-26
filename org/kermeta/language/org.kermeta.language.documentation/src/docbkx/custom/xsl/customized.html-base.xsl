@@ -50,36 +50,36 @@ task after
 <xsl:param name="highlight.source" select="1"/>
 
 
-<xsl:template match="xslthl:comment">
+<!-- <xsl:template match="xslthl:comment"  mode="xslthl">
     <i class="hl-comment"><xsl:apply-templates/></i>
 </xsl:template>
-<xsl:template match="xslthl:multiline-comment">
+<xsl:template match="xslthl:multiline-comment"  mode="xslthl">
     <i class="hl-comment"><xsl:apply-templates/></i>
 </xsl:template>  
-<xsl:template match="xslthl:oneline-comment">
+<xsl:template match="xslthl:oneline-comment"  mode="xslthl">
     <i class="hl-comment"><xsl:apply-templates/></i>
-</xsl:template> 
+</xsl:template>--> 
   
-<xsl:template match='xslthl:keyword'>
+<xsl:template match='xslthl:keyword'  mode="xslthl">
   <b class="hl-keyword" style="color:darkblue"><xsl:apply-templates/></b>
 </xsl:template>
-<xsl:template match='xslthl:filekeyword'> 
+<xsl:template match='xslthl:filekeyword'  mode="xslthl"> 
   <b class="hl-keyword" style="color: darkred"><xsl:apply-templates/></b>
 </xsl:template>
-<xsl:template match='xslthl:annotation'> 
+<xsl:template match='xslthl:annotation'  mode="xslthl"> 
   <b class="hl-keyword" style="color: darkred"><xsl:apply-templates/></b>
 </xsl:template>
-<xsl:template match='xslthl:specialoperation'> 
+<xsl:template match='xslthl:specialoperation'  mode="xslthl"> 
   <i class="hl-keyword" ><xsl:apply-templates/></i>
 </xsl:template>
 
-<xsl:template match='xslthl:string'>
+<xsl:template match='xslthl:string'  mode="xslthl">
   <i style="color:blue" class="hl-string"><xsl:apply-templates/></i>
 </xsl:template>
-<xsl:template match='xslthl:comment'>
+<xsl:template match='xslthl:comment'  mode="xslthl">
   <i class="hl-comment" style="color: darkgreen"><xsl:apply-templates/></i>
 </xsl:template>
-<xsl:template match='xslthl:doccomment'>
+<xsl:template match='xslthl:doccomment'  mode="xslthl">
   <i class="hl-comment" style="color: darkblue"><xsl:apply-templates/></i>
 </xsl:template>
 

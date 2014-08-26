@@ -14,6 +14,7 @@
 		<artifactId>org.kermeta.root</artifactId>
 		<groupId>org.kermeta</groupId>
 		<version>2.1.1-SNAPSHOT</version>
+		<relativePath>../../org.kermeta.root/pom.xml</relativePath>
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -76,7 +77,7 @@
 			<!-- exemple : http://www.springsurf.org/sites/1.0.0-RC2/spring-surf-devtools/spring-surf-doc-plugin/examples/springsurf.html -->
 				<groupId>com.agilejava.docbkx</groupId>
 				<artifactId>docbkx-maven-plugin</artifactId>
-				<version>2.0.14</version>
+				<version>2.0.15</version>
 				<executions>
 					<!--  <execution>
 						<id>single-page</id>
